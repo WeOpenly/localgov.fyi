@@ -1,6 +1,7 @@
 data
 node_modules
 public
+static
 
 # Logs
 logs

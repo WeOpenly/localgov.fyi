@@ -1,0 +1,2749 @@
+{
+  "nodes": {
+    "SitePage /dev-404-page/": {
+      "path": "/dev-404-page/",
+      "id": "SitePage /dev-404-page/",
+      "parent": "SOURCE",
+      "children": [],
+      "internal": {
+        "type": "SitePage",
+        "contentDigest": "f91d29e10ba680b413138cf9ed86e655",
+        "owner": "internal-data-bridge"
+      }
+    },
+    "Plugin dev-404-page": {
+      "resolve": "/Users/ybv/code/ybv-projects/openly-web/data/explore_static/node_modules/gatsby/dist/internal-plugins/dev-404-page",
+      "id": "Plugin dev-404-page",
+      "name": "dev-404-page",
+      "version": "1.0.0",
+      "pluginOptions": {
+        "plugins": []
+      },
+      "nodeAPIs": [
+        "createPagesStatefully"
+      ],
+      "browserAPIs": [],
+      "ssrAPIs": [],
+      "pluginFilepath": "/Users/ybv/code/ybv-projects/openly-web/data/explore_static/node_modules/gatsby/dist/internal-plugins/dev-404-page",
+      "packageJson": {
+        "name": "dev-404-page",
+        "description": "Internal plugin to add a 404 page in development with helpful information",
+        "version": "1.0.0",
+        "main": "index.js",
+        "author": "Kyle Mathews <mathews.kyle@gmail.com>",
+        "license": "MIT",
+        "dependencies": [],
+        "devDependencies": [],
+        "peerDependencies": [],
+        "optionalDependecies": [],
+        "bundledDependecies": []
+      },
+      "parent": "SOURCE",
+      "children": [],
+      "internal": {
+        "contentDigest": "59b14356fcebb6e37deffd7f044aa59e",
+        "type": "SitePlugin",
+        "owner": "internal-data-bridge"
+      }
+    },
+    "Plugin component-page-creator": {
+      "resolve": "/Users/ybv/code/ybv-projects/openly-web/data/explore_static/node_modules/gatsby/dist/internal-plugins/component-page-creator",
+      "id": "Plugin component-page-creator",
+      "name": "component-page-creator",
+      "version": "1.0.0",
+      "pluginOptions": {
+        "plugins": []
+      },
+      "nodeAPIs": [
+        "createPagesStatefully"
+      ],
+      "browserAPIs": [],
+      "ssrAPIs": [],
+      "pluginFilepath": "/Users/ybv/code/ybv-projects/openly-web/data/explore_static/node_modules/gatsby/dist/internal-plugins/component-page-creator",
+      "packageJson": {
+        "name": "component-page-creator",
+        "description": "An internal Gatsby plugin that creates pages from component files in src/pages",
+        "version": "1.0.0",
+        "main": "index.js",
+        "keywords": [
+          "gatsby",
+          "gatsby-plugin"
+        ],
+        "author": "Kyle Mathews <mathews.kyle@gmail.com>",
+        "license": "MIT",
+        "dependencies": [],
+        "devDependencies": [],
+        "peerDependencies": [],
+        "optionalDependecies": [],
+        "bundledDependecies": []
+      },
+      "parent": "SOURCE",
+      "children": [],
+      "internal": {
+        "contentDigest": "971f4953bcd5981b44aa637f0a01bb90",
+        "type": "SitePlugin",
+        "owner": "internal-data-bridge"
+      }
+    },
+    "Plugin component-layout-creator": {
+      "resolve": "/Users/ybv/code/ybv-projects/openly-web/data/explore_static/node_modules/gatsby/dist/internal-plugins/component-layout-creator",
+      "id": "Plugin component-layout-creator",
+      "name": "component-layout-creator",
+      "version": "1.0.0",
+      "pluginOptions": {
+        "plugins": []
+      },
+      "nodeAPIs": [
+        "createLayouts"
+      ],
+      "browserAPIs": [],
+      "ssrAPIs": [],
+      "pluginFilepath": "/Users/ybv/code/ybv-projects/openly-web/data/explore_static/node_modules/gatsby/dist/internal-plugins/component-layout-creator",
+      "packageJson": {
+        "name": "component-layout-creator",
+        "description": "An internal Gatsby plugin that creates pages from component files in src/layouts",
+        "version": "1.0.0",
+        "main": "index.js",
+        "keywords": [
+          "gatsby",
+          "gatsby-plugin"
+        ],
+        "author": "Kyle Mathews <mathews.kyle@gmail.com>",
+        "license": "MIT",
+        "dependencies": [],
+        "devDependencies": [],
+        "peerDependencies": [],
+        "optionalDependecies": [],
+        "bundledDependecies": []
+      },
+      "parent": "SOURCE",
+      "children": [],
+      "internal": {
+        "contentDigest": "ee7fd8e6185e5a9accd39a4a9f73115e",
+        "type": "SitePlugin",
+        "owner": "internal-data-bridge"
+      }
+    },
+    "Plugin internal-data-bridge": {
+      "resolve": "/Users/ybv/code/ybv-projects/openly-web/data/explore_static/node_modules/gatsby/dist/internal-plugins/internal-data-bridge",
+      "id": "Plugin internal-data-bridge",
+      "name": "internal-data-bridge",
+      "version": "1.0.0",
+      "pluginOptions": {
+        "plugins": []
+      },
+      "nodeAPIs": [
+        "sourceNodes",
+        "onCreatePage"
+      ],
+      "browserAPIs": [],
+      "ssrAPIs": [],
+      "pluginFilepath": "/Users/ybv/code/ybv-projects/openly-web/data/explore_static/node_modules/gatsby/dist/internal-plugins/internal-data-bridge",
+      "packageJson": {
+        "name": "internal-data-bridge",
+        "description": "An internal Gatsby plugin which creates data nodes from internal data",
+        "version": "1.0.0",
+        "main": "index.js",
+        "author": "Kyle Mathews <mathews.kyle@gmail.com>",
+        "license": "MIT",
+        "dependencies": [],
+        "devDependencies": [],
+        "peerDependencies": [],
+        "optionalDependecies": [],
+        "bundledDependecies": []
+      },
+      "parent": "SOURCE",
+      "children": [],
+      "internal": {
+        "contentDigest": "7a9f48c6f5ded98c1bf847a0e719c8b2",
+        "type": "SitePlugin",
+        "owner": "internal-data-bridge"
+      }
+    },
+    "Plugin prod-404": {
+      "resolve": "/Users/ybv/code/ybv-projects/openly-web/data/explore_static/node_modules/gatsby/dist/internal-plugins/prod-404",
+      "id": "Plugin prod-404",
+      "name": "prod-404",
+      "version": "1.0.0",
+      "pluginOptions": {
+        "plugins": []
+      },
+      "nodeAPIs": [
+        "onCreatePage"
+      ],
+      "browserAPIs": [],
+      "ssrAPIs": [],
+      "pluginFilepath": "/Users/ybv/code/ybv-projects/openly-web/data/explore_static/node_modules/gatsby/dist/internal-plugins/prod-404",
+      "packageJson": {
+        "name": "prod-404",
+        "description": "Internal plugin to detect various flavors of 404 pages and ensure there's a 404.html path created as well to ensure compatability with static hosts",
+        "version": "1.0.0",
+        "main": "index.js",
+        "author": "Kyle Mathews <mathews.kyle@gmail.com>",
+        "license": "MIT",
+        "dependencies": [],
+        "devDependencies": [],
+        "peerDependencies": [],
+        "optionalDependecies": [],
+        "bundledDependecies": []
+      },
+      "parent": "SOURCE",
+      "children": [],
+      "internal": {
+        "contentDigest": "0f4433c18c05de75c5c4a347fc2cdd64",
+        "type": "SitePlugin",
+        "owner": "internal-data-bridge"
+      }
+    },
+    "Plugin query-runner": {
+      "resolve": "/Users/ybv/code/ybv-projects/openly-web/data/explore_static/node_modules/gatsby/dist/internal-plugins/query-runner",
+      "id": "Plugin query-runner",
+      "name": "query-runner",
+      "version": "1.0.0",
+      "pluginOptions": {
+        "plugins": []
+      },
+      "nodeAPIs": [
+        "onCreatePage",
+        "onCreateLayout"
+      ],
+      "browserAPIs": [],
+      "ssrAPIs": [],
+      "pluginFilepath": "/Users/ybv/code/ybv-projects/openly-web/data/explore_static/node_modules/gatsby/dist/internal-plugins/query-runner",
+      "packageJson": {
+        "name": "query-runner",
+        "description": "Internal plugin for running queries",
+        "version": "1.0.0",
+        "main": "index.js",
+        "author": "",
+        "license": "MIT",
+        "dependencies": [],
+        "devDependencies": [],
+        "peerDependencies": [],
+        "optionalDependecies": [],
+        "bundledDependecies": []
+      },
+      "parent": "SOURCE",
+      "children": [],
+      "internal": {
+        "contentDigest": "bd9cdb4d0d118dc3873351b909dd7605",
+        "type": "SitePlugin",
+        "owner": "internal-data-bridge"
+      }
+    },
+    "Plugin gatsby-plugin-react-next": {
+      "resolve": "/Users/ybv/code/ybv-projects/openly-web/data/explore_static/node_modules/gatsby-plugin-react-next",
+      "id": "Plugin gatsby-plugin-react-next",
+      "name": "gatsby-plugin-react-next",
+      "version": "1.0.11",
+      "pluginOptions": {
+        "plugins": []
+      },
+      "nodeAPIs": [
+        "modifyWebpackConfig"
+      ],
+      "browserAPIs": [],
+      "ssrAPIs": [],
+      "pluginFilepath": "/Users/ybv/code/ybv-projects/openly-web/data/explore_static/node_modules/gatsby-plugin-react-next",
+      "packageJson": {
+        "name": "gatsby-plugin-react-next",
+        "description": "Use React 16 with your Gatsby v1 site",
+        "version": "1.0.11",
+        "main": "index.js",
+        "keywords": [
+          "gatsby",
+          "gatsby-plugin"
+        ],
+        "author": {
+          "name": "Kyle Mathews",
+          "email": "mathews.kyle@gmail.com"
+        },
+        "license": "MIT",
+        "dependencies": [
+          {
+            "name": "babel-runtime",
+            "version": "^6.26.0"
+          },
+          {
+            "name": "core-js",
+            "version": "^2.5.1"
+          },
+          {
+            "name": "react",
+            "version": "^16.0.0"
+          },
+          {
+            "name": "react-dom",
+            "version": "^16.0.0"
+          }
+        ],
+        "devDependencies": [
+          {
+            "name": "babel-cli",
+            "version": "^6.26.0"
+          },
+          {
+            "name": "cross-env",
+            "version": "^5.0.5"
+          }
+        ],
+        "peerDependencies": [
+          {
+            "name": "gatsby",
+            "version": "^1.0.0"
+          }
+        ],
+        "optionalDependecies": [],
+        "bundledDependecies": []
+      },
+      "parent": "SOURCE",
+      "children": [],
+      "internal": {
+        "contentDigest": "b38023cc7d9f67eb3d9d0fd09c8f56d5",
+        "type": "SitePlugin",
+        "owner": "internal-data-bridge"
+      }
+    },
+    "Plugin gatsby-source-filesystem": {
+      "resolve": "/Users/ybv/code/ybv-projects/openly-web/data/explore_static/node_modules/gatsby-source-filesystem",
+      "id": "Plugin gatsby-source-filesystem",
+      "name": "gatsby-source-filesystem",
+      "version": "1.5.38",
+      "pluginOptions": {
+        "plugins": [],
+        "name": "data",
+        "path": "/Users/ybv/code/ybv-projects/openly-web/data/explore_static/data"
+      },
+      "nodeAPIs": [
+        "sourceNodes",
+        "setFieldsOnGraphQLNodeType"
+      ],
+      "browserAPIs": [],
+      "ssrAPIs": [],
+      "pluginFilepath": "/Users/ybv/code/ybv-projects/openly-web/data/explore_static/node_modules/gatsby-source-filesystem",
+      "packageJson": {
+        "name": "gatsby-source-filesystem",
+        "description": "Gatsby plugin which parses files within a directory for further parsing by other plugins",
+        "version": "1.5.38",
+        "keywords": [
+          "gatsby",
+          "gatsby-plugin"
+        ],
+        "author": {
+          "name": "Kyle Mathews",
+          "email": "mathews.kyle@gmail.com"
+        },
+        "license": "MIT",
+        "dependencies": [
+          {
+            "name": "babel-cli",
+            "version": "^6.26.0"
+          },
+          {
+            "name": "babel-runtime",
+            "version": "^6.26.0"
+          },
+          {
+            "name": "better-queue",
+            "version": "^3.8.7"
+          },
+          {
+            "name": "bluebird",
+            "version": "^3.5.0"
+          },
+          {
+            "name": "chokidar",
+            "version": "^1.7.0"
+          },
+          {
+            "name": "fs-extra",
+            "version": "^4.0.1"
+          },
+          {
+            "name": "got",
+            "version": "^7.1.0"
+          },
+          {
+            "name": "md5-file",
+            "version": "^3.1.1"
+          },
+          {
+            "name": "mime",
+            "version": "^1.3.6"
+          },
+          {
+            "name": "pretty-bytes",
+            "version": "^4.0.2"
+          },
+          {
+            "name": "slash",
+            "version": "^1.0.0"
+          },
+          {
+            "name": "valid-url",
+            "version": "^1.0.9"
+          }
+        ],
+        "devDependencies": [
+          {
+            "name": "cross-env",
+            "version": "^5.0.5"
+          }
+        ],
+        "peerDependencies": [
+          {
+            "name": "gatsby",
+            "version": "^1.9.250"
+          }
+        ],
+        "optionalDependecies": [],
+        "bundledDependecies": []
+      },
+      "parent": "SOURCE",
+      "children": [],
+      "internal": {
+        "contentDigest": "e732363fa64384b4200e2375cc43a083",
+        "type": "SitePlugin",
+        "owner": "internal-data-bridge"
+      }
+    },
+    "Plugin gatsby-plugin-sitemap": {
+      "resolve": "/Users/ybv/code/ybv-projects/openly-web/data/explore_static/node_modules/gatsby-plugin-sitemap",
+      "id": "Plugin gatsby-plugin-sitemap",
+      "name": "gatsby-plugin-sitemap",
+      "version": "1.2.25",
+      "pluginOptions": {
+        "plugins": []
+      },
+      "nodeAPIs": [
+        "onPostBuild"
+      ],
+      "browserAPIs": [],
+      "ssrAPIs": [
+        "onRenderBody"
+      ],
+      "pluginFilepath": "/Users/ybv/code/ybv-projects/openly-web/data/explore_static/node_modules/gatsby-plugin-sitemap",
+      "packageJson": {
+        "name": "gatsby-plugin-sitemap",
+        "description": "Gatsby plugin that automatically creates a sitemap for your site",
+        "version": "1.2.25",
+        "main": "index.js",
+        "keywords": [
+          "gatsby",
+          "gatsby-plugin"
+        ],
+        "author": {
+          "name": "Nicholas Young &lt;nicholas@nicholaswyoung.com&gt;"
+        },
+        "license": "MIT",
+        "dependencies": [
+          {
+            "name": "babel-runtime",
+            "version": "^6.26.0"
+          },
+          {
+            "name": "minimatch",
+            "version": "^3.0.4"
+          },
+          {
+            "name": "sitemap",
+            "version": "^1.12.0"
+          }
+        ],
+        "devDependencies": [
+          {
+            "name": "babel-cli",
+            "version": "^6.26.0"
+          },
+          {
+            "name": "cross-env",
+            "version": "^5.0.5"
+          }
+        ],
+        "peerDependencies": [
+          {
+            "name": "gatsby",
+            "version": "^1.0.0"
+          }
+        ],
+        "optionalDependecies": [],
+        "bundledDependecies": []
+      },
+      "parent": "SOURCE",
+      "children": [],
+      "internal": {
+        "contentDigest": "4d17619080109c30c3626ed1b591f644",
+        "type": "SitePlugin",
+        "owner": "internal-data-bridge"
+      }
+    },
+    "Plugin gatsby-plugin-sharp": {
+      "resolve": "/Users/ybv/code/ybv-projects/openly-web/data/explore_static/node_modules/gatsby-plugin-sharp",
+      "id": "Plugin gatsby-plugin-sharp",
+      "name": "gatsby-plugin-sharp",
+      "version": "1.6.47",
+      "pluginOptions": {
+        "plugins": []
+      },
+      "nodeAPIs": [],
+      "browserAPIs": [],
+      "ssrAPIs": [],
+      "pluginFilepath": "/Users/ybv/code/ybv-projects/openly-web/data/explore_static/node_modules/gatsby-plugin-sharp",
+      "packageJson": {
+        "name": "gatsby-plugin-sharp",
+        "description": "Wrapper of the Sharp image manipulation library for Gatsby plugins",
+        "version": "1.6.47",
+        "main": "index.js",
+        "keywords": [
+          "gatsby",
+          "gatsby-plugin",
+          "image",
+          "sharp"
+        ],
+        "author": {
+          "name": "Kyle Mathews",
+          "email": "mathews.kyle@gmail.com"
+        },
+        "license": "MIT",
+        "dependencies": [
+          {
+            "name": "async",
+            "version": "^2.1.2"
+          },
+          {
+            "name": "babel-runtime",
+            "version": "^6.26.0"
+          },
+          {
+            "name": "bluebird",
+            "version": "^3.5.0"
+          },
+          {
+            "name": "imagemin",
+            "version": "^5.2.2"
+          },
+          {
+            "name": "imagemin-pngquant",
+            "version": "5.0.1"
+          },
+          {
+            "name": "imagemin-webp",
+            "version": "^4.0.0"
+          },
+          {
+            "name": "lodash",
+            "version": "^4.17.4"
+          },
+          {
+            "name": "mini-svg-data-uri",
+            "version": "^1.0.0"
+          },
+          {
+            "name": "potrace",
+            "version": "^2.1.1"
+          },
+          {
+            "name": "probe-image-size",
+            "version": "^4.0.0"
+          },
+          {
+            "name": "progress",
+            "version": "^1.1.8"
+          },
+          {
+            "name": "sharp",
+            "version": "^0.20.0"
+          },
+          {
+            "name": "svgo",
+            "version": "^0.7.2"
+          }
+        ],
+        "devDependencies": [
+          {
+            "name": "babel-cli",
+            "version": "^6.26.0"
+          },
+          {
+            "name": "cross-env",
+            "version": "^5.0.5"
+          }
+        ],
+        "peerDependencies": [
+          {
+            "name": "gatsby",
+            "version": "^1.0.0"
+          }
+        ],
+        "optionalDependecies": [],
+        "bundledDependecies": []
+      },
+      "parent": "SOURCE",
+      "children": [],
+      "internal": {
+        "contentDigest": "aebf9034ec45424f79d5fb87f3208c9a",
+        "type": "SitePlugin",
+        "owner": "internal-data-bridge"
+      }
+    },
+    "Plugin gatsby-transformer-sharp": {
+      "resolve": "/Users/ybv/code/ybv-projects/openly-web/data/explore_static/node_modules/gatsby-transformer-sharp",
+      "id": "Plugin gatsby-transformer-sharp",
+      "name": "gatsby-transformer-sharp",
+      "version": "1.6.26",
+      "pluginOptions": {
+        "plugins": []
+      },
+      "nodeAPIs": [
+        "onCreateNode",
+        "setFieldsOnGraphQLNodeType",
+        "onPreExtractQueries"
+      ],
+      "browserAPIs": [],
+      "ssrAPIs": [],
+      "pluginFilepath": "/Users/ybv/code/ybv-projects/openly-web/data/explore_static/node_modules/gatsby-transformer-sharp",
+      "packageJson": {
+        "name": "gatsby-transformer-sharp",
+        "description": "Gatsby transformer plugin for images using Sharp",
+        "version": "1.6.26",
+        "keywords": [
+          "gatsby",
+          "gatsby-plugin",
+          "image",
+          "sharp"
+        ],
+        "author": {
+          "name": "Kyle Mathews",
+          "email": "mathews.kyle@gmail.com"
+        },
+        "license": "MIT",
+        "dependencies": [
+          {
+            "name": "babel-runtime",
+            "version": "^6.26.0"
+          },
+          {
+            "name": "bluebird",
+            "version": "^3.5.0"
+          },
+          {
+            "name": "fs-extra",
+            "version": "^4.0.2"
+          },
+          {
+            "name": "probe-image-size",
+            "version": "^4.0.0"
+          }
+        ],
+        "devDependencies": [
+          {
+            "name": "babel-cli",
+            "version": "^6.26.0"
+          },
+          {
+            "name": "cross-env",
+            "version": "^5.0.5"
+          }
+        ],
+        "peerDependencies": [],
+        "optionalDependecies": [],
+        "bundledDependecies": []
+      },
+      "parent": "SOURCE",
+      "children": [],
+      "internal": {
+        "contentDigest": "a88063bafe23f4be06f431e13b569d46",
+        "type": "SitePlugin",
+        "owner": "internal-data-bridge"
+      }
+    },
+    "Plugin gatsby-transformer-json": {
+      "resolve": "/Users/ybv/code/ybv-projects/openly-web/data/explore_static/node_modules/gatsby-transformer-json",
+      "id": "Plugin gatsby-transformer-json",
+      "name": "gatsby-transformer-json",
+      "version": "1.0.19",
+      "pluginOptions": {
+        "plugins": []
+      },
+      "nodeAPIs": [
+        "onCreateNode"
+      ],
+      "browserAPIs": [],
+      "ssrAPIs": [],
+      "pluginFilepath": "/Users/ybv/code/ybv-projects/openly-web/data/explore_static/node_modules/gatsby-transformer-json",
+      "packageJson": {
+        "name": "gatsby-transformer-json",
+        "description": "Gatsby transformer plugin for JSON files",
+        "version": "1.0.19",
+        "keywords": [
+          "gatsby",
+          "gatsby-plugin",
+          "json"
+        ],
+        "author": {
+          "name": "Kyle Mathews",
+          "email": "mathews.kyle@gmail.com"
+        },
+        "license": "MIT",
+        "dependencies": [
+          {
+            "name": "babel-runtime",
+            "version": "^6.26.0"
+          },
+          {
+            "name": "bluebird",
+            "version": "^3.5.0"
+          }
+        ],
+        "devDependencies": [
+          {
+            "name": "babel-cli",
+            "version": "^6.26.0"
+          },
+          {
+            "name": "cross-env",
+            "version": "^5.0.5"
+          }
+        ],
+        "peerDependencies": [],
+        "optionalDependecies": [],
+        "bundledDependecies": []
+      },
+      "parent": "SOURCE",
+      "children": [],
+      "internal": {
+        "contentDigest": "f6830734975ed4244b460421f7abb75b",
+        "type": "SitePlugin",
+        "owner": "internal-data-bridge"
+      }
+    },
+    "Plugin gatsby-plugin-manifest": {
+      "resolve": "/Users/ybv/code/ybv-projects/openly-web/data/explore_static/node_modules/gatsby-plugin-manifest",
+      "id": "Plugin gatsby-plugin-manifest",
+      "name": "gatsby-plugin-manifest",
+      "version": "1.0.25",
+      "pluginOptions": {
+        "plugins": [],
+        "name": "Local Gov",
+        "short_name": "localgov",
+        "start_url": "/",
+        "background_color": "#f7f7f7",
+        "theme_color": "#191919",
+        "display": "minimal-ui"
+      },
+      "nodeAPIs": [
+        "onPostBuild"
+      ],
+      "browserAPIs": [],
+      "ssrAPIs": [
+        "onRenderBody"
+      ],
+      "pluginFilepath": "/Users/ybv/code/ybv-projects/openly-web/data/explore_static/node_modules/gatsby-plugin-manifest",
+      "packageJson": {
+        "name": "gatsby-plugin-manifest",
+        "description": "Gatsby plugin which adds a manifest.json to make sites progressive web apps",
+        "version": "1.0.25",
+        "main": "index.js",
+        "keywords": [
+          "gatsby",
+          "gatsby-plugin",
+          "favicon",
+          "icons",
+          "manifest.json",
+          "progressive-web-app",
+          "pwa"
+        ],
+        "author": {
+          "name": "Kyle Mathews",
+          "email": "mathews.kyle@gmail.com"
+        },
+        "license": "MIT",
+        "dependencies": [
+          {
+            "name": "babel-runtime",
+            "version": "^6.26.0"
+          },
+          {
+            "name": "bluebird",
+            "version": "^3.5.0"
+          },
+          {
+            "name": "sharp",
+            "version": "^0.20.1"
+          }
+        ],
+        "devDependencies": [
+          {
+            "name": "babel-cli",
+            "version": "^6.26.0"
+          },
+          {
+            "name": "cross-env",
+            "version": "^5.0.5"
+          }
+        ],
+        "peerDependencies": [
+          {
+            "name": "gatsby",
+            "version": "^1.0.0"
+          }
+        ],
+        "optionalDependecies": [],
+        "bundledDependecies": []
+      },
+      "parent": "SOURCE",
+      "children": [],
+      "internal": {
+        "contentDigest": "c4e364e929551302dba3423b83dc0cd4",
+        "type": "SitePlugin",
+        "owner": "internal-data-bridge"
+      }
+    },
+    "Plugin gatsby-plugin-create-client-paths": {
+      "resolve": "/Users/ybv/code/ybv-projects/openly-web/data/explore_static/node_modules/gatsby-plugin-create-client-paths",
+      "id": "Plugin gatsby-plugin-create-client-paths",
+      "name": "gatsby-plugin-create-client-paths",
+      "version": "1.0.8",
+      "pluginOptions": {
+        "plugins": [],
+        "prefixes": [
+          "/search/*"
+        ]
+      },
+      "nodeAPIs": [
+        "onCreatePage"
+      ],
+      "browserAPIs": [],
+      "ssrAPIs": [],
+      "pluginFilepath": "/Users/ybv/code/ybv-projects/openly-web/data/explore_static/node_modules/gatsby-plugin-create-client-paths",
+      "packageJson": {
+        "name": "gatsby-plugin-create-client-paths",
+        "description": "Gatsby-plugin for creating paths that exist only on the client",
+        "version": "1.0.8",
+        "main": "index.js",
+        "keywords": [
+          "gatsby",
+          "gatsby-plugin"
+        ],
+        "author": {
+          "name": "scott.eckenthal@gmail.com"
+        },
+        "license": "MIT",
+        "dependencies": [
+          {
+            "name": "babel-runtime",
+            "version": "^6.26.0"
+          }
+        ],
+        "devDependencies": [
+          {
+            "name": "babel-cli",
+            "version": "^6.26.0"
+          },
+          {
+            "name": "cross-env",
+            "version": "^5.0.5"
+          }
+        ],
+        "peerDependencies": [
+          {
+            "name": "gatsby",
+            "version": "^1.0.0"
+          }
+        ],
+        "optionalDependecies": [],
+        "bundledDependecies": []
+      },
+      "parent": "SOURCE",
+      "children": [],
+      "internal": {
+        "contentDigest": "5d5465d33c7e39bfb517406221528b3f",
+        "type": "SitePlugin",
+        "owner": "internal-data-bridge"
+      }
+    },
+    "Plugin gatsby-plugin-offline": {
+      "resolve": "/Users/ybv/code/ybv-projects/openly-web/data/explore_static/node_modules/gatsby-plugin-offline",
+      "id": "Plugin gatsby-plugin-offline",
+      "name": "gatsby-plugin-offline",
+      "version": "1.0.18",
+      "pluginOptions": {
+        "plugins": []
+      },
+      "nodeAPIs": [
+        "createPages",
+        "onPostBuild"
+      ],
+      "browserAPIs": [
+        "registerServiceWorker"
+      ],
+      "ssrAPIs": [],
+      "pluginFilepath": "/Users/ybv/code/ybv-projects/openly-web/data/explore_static/node_modules/gatsby-plugin-offline",
+      "packageJson": {
+        "name": "gatsby-plugin-offline",
+        "description": "Gatsby plugin which sets up a site to be able to run offline",
+        "version": "1.0.18",
+        "main": "index.js",
+        "keywords": [
+          "gatsby",
+          "gatsby-plugin",
+          "offline",
+          "precache",
+          "service-worker"
+        ],
+        "author": {
+          "name": "Kyle Mathews",
+          "email": "mathews.kyle@gmail.com"
+        },
+        "license": "MIT",
+        "dependencies": [
+          {
+            "name": "babel-runtime",
+            "version": "^6.26.0"
+          },
+          {
+            "name": "sw-precache",
+            "version": "^5.0.0"
+          }
+        ],
+        "devDependencies": [
+          {
+            "name": "babel-cli",
+            "version": "^6.26.0"
+          },
+          {
+            "name": "cross-env",
+            "version": "^5.0.5"
+          }
+        ],
+        "peerDependencies": [
+          {
+            "name": "gatsby",
+            "version": "^1.0.0"
+          }
+        ],
+        "optionalDependecies": [],
+        "bundledDependecies": []
+      },
+      "parent": "SOURCE",
+      "children": [],
+      "internal": {
+        "contentDigest": "c93043ae056ebda8b75b3af1febde17a",
+        "type": "SitePlugin",
+        "owner": "internal-data-bridge"
+      }
+    },
+    "Plugin gatsby-plugin-google-analytics": {
+      "resolve": "/Users/ybv/code/ybv-projects/openly-web/data/explore_static/node_modules/gatsby-plugin-google-analytics",
+      "id": "Plugin gatsby-plugin-google-analytics",
+      "name": "gatsby-plugin-google-analytics",
+      "version": "1.0.31",
+      "pluginOptions": {
+        "plugins": [],
+        "trackingId": "UA-91652198-1"
+      },
+      "nodeAPIs": [],
+      "browserAPIs": [
+        "onRouteUpdate"
+      ],
+      "ssrAPIs": [
+        "onRenderBody"
+      ],
+      "pluginFilepath": "/Users/ybv/code/ybv-projects/openly-web/data/explore_static/node_modules/gatsby-plugin-google-analytics",
+      "packageJson": {
+        "name": "gatsby-plugin-google-analytics",
+        "description": "Gatsby plugin to add google analytics onto a site",
+        "version": "1.0.31",
+        "main": "index.js",
+        "keywords": [
+          "gatsby",
+          "gatsby-plugin",
+          "google analytics"
+        ],
+        "author": {
+          "name": "Kyle Mathews",
+          "email": "mathews.kyle@gmail.com"
+        },
+        "license": "MIT",
+        "dependencies": [
+          {
+            "name": "babel-runtime",
+            "version": "^6.26.0"
+          }
+        ],
+        "devDependencies": [
+          {
+            "name": "babel-cli",
+            "version": "^6.26.0"
+          },
+          {
+            "name": "cross-env",
+            "version": "^5.0.5"
+          }
+        ],
+        "peerDependencies": [
+          {
+            "name": "gatsby",
+            "version": "^1.0.0"
+          }
+        ],
+        "optionalDependecies": [],
+        "bundledDependecies": []
+      },
+      "parent": "SOURCE",
+      "children": [],
+      "internal": {
+        "contentDigest": "300dd62d494ad5e1aa83d6e063c6772b",
+        "type": "SitePlugin",
+        "owner": "internal-data-bridge"
+      }
+    },
+    "Plugin default-site-plugin": {
+      "resolve": "/Users/ybv/code/ybv-projects/openly-web/data/explore_static",
+      "id": "Plugin default-site-plugin",
+      "name": "default-site-plugin",
+      "version": "19cf28576f8df5afb80567dcec4a87bc",
+      "pluginOptions": {
+        "plugins": []
+      },
+      "nodeAPIs": [
+        "createPages"
+      ],
+      "browserAPIs": [
+        "replaceRouterComponent"
+      ],
+      "ssrAPIs": [
+        "replaceRenderer"
+      ],
+      "pluginFilepath": "/Users/ybv/code/ybv-projects/openly-web/data/explore_static",
+      "packageJson": {
+        "name": "gatsby-example-image-gallery",
+        "description": "Gatsby example site: image gallery",
+        "version": "1.0.0",
+        "main": "n/a",
+        "keywords": [
+          "gatsby"
+        ],
+        "author": "Kyle Mathews <mathews.kyle@gmail.com>",
+        "license": "MIT",
+        "dependencies": [
+          {
+            "name": "@material-ui/core",
+            "version": "latest"
+          },
+          {
+            "name": "@material-ui/icons",
+            "version": "^1.1.0"
+          },
+          {
+            "name": "autosuggest-highlight",
+            "version": "^3.1.1"
+          },
+          {
+            "name": "aws-sdk",
+            "version": "^2.250.1"
+          },
+          {
+            "name": "gatsby",
+            "version": "latest"
+          },
+          {
+            "name": "gatsby-image",
+            "version": "latest"
+          },
+          {
+            "name": "gatsby-link",
+            "version": "latest"
+          },
+          {
+            "name": "gatsby-plugin-create-client-paths",
+            "version": "^1.0.8"
+          },
+          {
+            "name": "gatsby-plugin-glamor",
+            "version": "latest"
+          },
+          {
+            "name": "gatsby-plugin-google-analytics",
+            "version": "latest"
+          },
+          {
+            "name": "gatsby-plugin-manifest",
+            "version": "latest"
+          },
+          {
+            "name": "gatsby-plugin-offline",
+            "version": "latest"
+          },
+          {
+            "name": "gatsby-plugin-react-next",
+            "version": "^1.0.11"
+          },
+          {
+            "name": "gatsby-plugin-sharp",
+            "version": "latest"
+          },
+          {
+            "name": "gatsby-plugin-sitemap",
+            "version": "^1.2.25"
+          },
+          {
+            "name": "gatsby-source-filesystem",
+            "version": "latest"
+          },
+          {
+            "name": "gatsby-transformer-json",
+            "version": "latest"
+          },
+          {
+            "name": "gatsby-transformer-sharp",
+            "version": "latest"
+          },
+          {
+            "name": "lodash",
+            "version": "^4.16.4"
+          },
+          {
+            "name": "material-ui-icons",
+            "version": "^1.0.0-beta.36"
+          },
+          {
+            "name": "mkdirp",
+            "version": "^0.5.1"
+          },
+          {
+            "name": "mousetrap",
+            "version": "^1.6.0"
+          },
+          {
+            "name": "progress",
+            "version": "^1.1.8"
+          },
+          {
+            "name": "prop-types",
+            "version": "^15.5.8"
+          },
+          {
+            "name": "react",
+            "version": "^16.4.0"
+          },
+          {
+            "name": "react-autosuggest",
+            "version": "^9.3.4"
+          },
+          {
+            "name": "react-dom",
+            "version": "16.4.0"
+          },
+          {
+            "name": "react-google-maps",
+            "version": "^9.4.5"
+          },
+          {
+            "name": "react-gravatar",
+            "version": "^2.6.1"
+          },
+          {
+            "name": "react-icons",
+            "version": "^2.2.3"
+          },
+          {
+            "name": "react-modal",
+            "version": "^1.7.6"
+          },
+          {
+            "name": "react-redux",
+            "version": "^5.0.7"
+          },
+          {
+            "name": "react-share",
+            "version": "^2.2.0"
+          },
+          {
+            "name": "react-spinkit",
+            "version": "^3.0.0"
+          },
+          {
+            "name": "react-typography",
+            "version": "^0.15.0"
+          },
+          {
+            "name": "redux",
+            "version": "^4.0.0"
+          },
+          {
+            "name": "redux-logger",
+            "version": "^3.0.6"
+          },
+          {
+            "name": "redux-thunk",
+            "version": "^2.3.0"
+          },
+          {
+            "name": "request",
+            "version": "^2.79.0"
+          },
+          {
+            "name": "serve",
+            "version": "^6.4.0"
+          },
+          {
+            "name": "slug",
+            "version": "^0.9.1"
+          }
+        ],
+        "devDependencies": [
+          {
+            "name": "cypress",
+            "version": "^2.1.0"
+          },
+          {
+            "name": "start-server-and-test",
+            "version": "^1.1.4"
+          }
+        ],
+        "peerDependencies": [],
+        "optionalDependecies": [],
+        "bundledDependecies": []
+      },
+      "parent": "SOURCE",
+      "children": [],
+      "internal": {
+        "contentDigest": "4c47b536c417a9a89815d8e24f40073d",
+        "type": "SitePlugin",
+        "owner": "internal-data-bridge"
+      }
+    },
+    "Site": {
+      "siteMetadata": {
+        "title": "Search for local government organizations, members, and services",
+        "siteUrl": "https://localgov.surge.sh"
+      },
+      "pathPrefix": "",
+      "polyfill": true,
+      "buildTime": "2018-06-09T19:46:54.854Z",
+      "id": "Site",
+      "parent": "SOURCE",
+      "children": [],
+      "internal": {
+        "contentDigest": "fea4349553b5486c62dc152cefdd2001",
+        "type": "Site",
+        "owner": "internal-data-bridge"
+      }
+    },
+    "/Users/ybv/code/ybv-projects/openly-web/data/explore_static/data absPath of file": {
+      "id": "/Users/ybv/code/ybv-projects/openly-web/data/explore_static/data absPath of file",
+      "children": [],
+      "parent": "___SOURCE___",
+      "internal": {
+        "contentDigest": "6d70a24629dafd409fdd3bc14100c7db",
+        "type": "Directory",
+        "description": "Directory \"data\"",
+        "owner": "gatsby-source-filesystem"
+      },
+      "sourceInstanceName": "data",
+      "absolutePath": "/Users/ybv/code/ybv-projects/openly-web/data/explore_static/data",
+      "relativePath": "",
+      "extension": "",
+      "size": 128,
+      "prettySize": "128 B",
+      "modifiedTime": "2018-06-09T00:31:05.139Z",
+      "accessTime": "2018-06-09T19:46:56.884Z",
+      "changeTime": "2018-06-09T00:31:05.139Z",
+      "birthTime": "2018-06-01T17:04:56.172Z",
+      "root": "/",
+      "dir": "/Users/ybv/code/ybv-projects/openly-web/data/explore_static",
+      "base": "data",
+      "ext": "",
+      "name": "data",
+      "relativeDirectory": "..",
+      "dev": 16777220,
+      "mode": 16877,
+      "nlink": 4,
+      "uid": 501,
+      "gid": 20,
+      "rdev": 0,
+      "blksize": 4194304,
+      "ino": 8594189811,
+      "blocks": 0,
+      "atimeMs": 1528573616883.7336,
+      "mtimeMs": 1528504265139.3232,
+      "ctimeMs": 1528504265139.3232,
+      "birthtimeMs": 1527872696172.2903,
+      "atime": "2018-06-09T19:46:56.884Z",
+      "mtime": "2018-06-09T00:31:05.139Z",
+      "ctime": "2018-06-09T00:31:05.139Z",
+      "birthtime": "2018-06-01T17:04:56.172Z"
+    },
+    "/Users/ybv/code/ybv-projects/openly-web/data/explore_static/data/organizations absPath of file": {
+      "id": "/Users/ybv/code/ybv-projects/openly-web/data/explore_static/data/organizations absPath of file",
+      "children": [],
+      "parent": "___SOURCE___",
+      "internal": {
+        "contentDigest": "61e3a201962263e4868f3ed6105c7c2d",
+        "type": "Directory",
+        "description": "Directory \"data/organizations\"",
+        "owner": "gatsby-source-filesystem"
+      },
+      "sourceInstanceName": "data",
+      "absolutePath": "/Users/ybv/code/ybv-projects/openly-web/data/explore_static/data/organizations",
+      "relativePath": "organizations",
+      "extension": "",
+      "size": 64,
+      "prettySize": "64 B",
+      "modifiedTime": "2018-06-01T21:02:47.154Z",
+      "accessTime": "2018-06-09T19:46:56.886Z",
+      "changeTime": "2018-06-01T21:02:47.154Z",
+      "birthTime": "2018-06-01T21:02:47.154Z",
+      "root": "/",
+      "dir": "/Users/ybv/code/ybv-projects/openly-web/data/explore_static/data",
+      "base": "organizations",
+      "ext": "",
+      "name": "organizations",
+      "relativeDirectory": "",
+      "dev": 16777220,
+      "mode": 16877,
+      "nlink": 2,
+      "uid": 501,
+      "gid": 20,
+      "rdev": 0,
+      "blksize": 4194304,
+      "ino": 8594323811,
+      "blocks": 0,
+      "atimeMs": 1528573616885.8352,
+      "mtimeMs": 1527886967154.1292,
+      "ctimeMs": 1527886967154.1292,
+      "birthtimeMs": 1527886967154.1292,
+      "atime": "2018-06-09T19:46:56.886Z",
+      "mtime": "2018-06-01T21:02:47.154Z",
+      "ctime": "2018-06-01T21:02:47.154Z",
+      "birthtime": "2018-06-01T21:02:47.154Z"
+    },
+    "/Users/ybv/code/ybv-projects/openly-web/data/explore_static/data/orgs absPath of file": {
+      "id": "/Users/ybv/code/ybv-projects/openly-web/data/explore_static/data/orgs absPath of file",
+      "children": [],
+      "parent": "___SOURCE___",
+      "internal": {
+        "contentDigest": "bb8ebf602b91da9e3573afc48de22572",
+        "type": "Directory",
+        "description": "Directory \"data/orgs\"",
+        "owner": "gatsby-source-filesystem"
+      },
+      "sourceInstanceName": "data",
+      "absolutePath": "/Users/ybv/code/ybv-projects/openly-web/data/explore_static/data/orgs",
+      "relativePath": "orgs",
+      "extension": "",
+      "size": 96,
+      "prettySize": "96 B",
+      "modifiedTime": "2018-06-09T00:31:05.139Z",
+      "accessTime": "2018-06-09T19:46:56.886Z",
+      "changeTime": "2018-06-09T00:31:05.139Z",
+      "birthTime": "2018-06-09T00:31:05.139Z",
+      "root": "/",
+      "dir": "/Users/ybv/code/ybv-projects/openly-web/data/explore_static/data",
+      "base": "orgs",
+      "ext": "",
+      "name": "orgs",
+      "relativeDirectory": "",
+      "dev": 16777220,
+      "mode": 16877,
+      "nlink": 3,
+      "uid": 501,
+      "gid": 20,
+      "rdev": 0,
+      "blksize": 4194304,
+      "ino": 8595123481,
+      "blocks": 0,
+      "atimeMs": 1528573616885.8699,
+      "mtimeMs": 1528504265139.4565,
+      "ctimeMs": 1528504265139.4565,
+      "birthtimeMs": 1528504265139.3132,
+      "atime": "2018-06-09T19:46:56.886Z",
+      "mtime": "2018-06-09T00:31:05.139Z",
+      "ctime": "2018-06-09T00:31:05.139Z",
+      "birthtime": "2018-06-09T00:31:05.139Z"
+    },
+    "/Users/ybv/code/ybv-projects/openly-web/data/explore_static/data/orgs/98bb2db7-5227-47ed-b2f4-520304d57fe5.json absPath of file": {
+      "id": "/Users/ybv/code/ybv-projects/openly-web/data/explore_static/data/orgs/98bb2db7-5227-47ed-b2f4-520304d57fe5.json absPath of file",
+      "children": [
+        "/Users/ybv/code/ybv-projects/openly-web/data/explore_static/data/orgs/98bb2db7-5227-47ed-b2f4-520304d57fe5.json absPath of file >>> JSON"
+      ],
+      "parent": "___SOURCE___",
+      "internal": {
+        "contentDigest": "dfa6647291900e40364eaeab60295cb9",
+        "mediaType": "application/json",
+        "type": "File",
+        "description": "File \"data/orgs/98bb2db7-5227-47ed-b2f4-520304d57fe5.json\"",
+        "owner": "gatsby-source-filesystem"
+      },
+      "sourceInstanceName": "data",
+      "absolutePath": "/Users/ybv/code/ybv-projects/openly-web/data/explore_static/data/orgs/98bb2db7-5227-47ed-b2f4-520304d57fe5.json",
+      "relativePath": "orgs/98bb2db7-5227-47ed-b2f4-520304d57fe5.json",
+      "extension": "json",
+      "size": 12065,
+      "prettySize": "12.1 kB",
+      "modifiedTime": "2018-06-09T00:31:05.140Z",
+      "accessTime": "2018-06-09T19:39:22.567Z",
+      "changeTime": "2018-06-09T00:31:05.140Z",
+      "birthTime": "2018-06-09T00:31:05.139Z",
+      "root": "/",
+      "dir": "/Users/ybv/code/ybv-projects/openly-web/data/explore_static/data/orgs",
+      "base": "98bb2db7-5227-47ed-b2f4-520304d57fe5.json",
+      "ext": ".json",
+      "name": "98bb2db7-5227-47ed-b2f4-520304d57fe5",
+      "relativeDirectory": "orgs",
+      "dev": 16777220,
+      "mode": 33188,
+      "nlink": 1,
+      "uid": 501,
+      "gid": 20,
+      "rdev": 0,
+      "blksize": 4194304,
+      "ino": 8595123482,
+      "blocks": 24,
+      "atimeMs": 1528573162567.0386,
+      "mtimeMs": 1528504265139.5076,
+      "ctimeMs": 1528504265139.5076,
+      "birthtimeMs": 1528504265139.4502,
+      "atime": "2018-06-09T19:39:22.567Z",
+      "mtime": "2018-06-09T00:31:05.140Z",
+      "ctime": "2018-06-09T00:31:05.140Z",
+      "birthtime": "2018-06-09T00:31:05.139Z"
+    },
+    "/Users/ybv/code/ybv-projects/openly-web/data/explore_static/data/orgs/98bb2db7-5227-47ed-b2f4-520304d57fe5.json absPath of file >>> JSON": {
+      "details": {
+        "services": [
+          {
+            "service_description": "The service is to help senior citizens who are being abused, financially exploited or neglected.",
+            "contact_details": [
+              {
+                "contact_value": "1-800-675-8437",
+                "contact_type": "PHONE"
+              }
+            ],
+            "id": "005179e3-0adc-4b8d-84d8-cfacfeca7276",
+            "service_price": null,
+            "service_name": "Scam Protection"
+          },
+          {
+            "contact_details": [],
+            "service_price": null,
+            "service_del_links": [
+              {
+                "url": "https://apps.smcacre.org/marsched/schedule.aspx",
+                "link_name": "Schedule Now"
+              }
+            ],
+            "service_name": "Schedule Civil Wedding Ceremony",
+            "service_description": "",
+            "id": "573cfa95-ad88-48f2-ab14-dcd0fada9a7a"
+          },
+          {
+            "service_description": "The service is to help senior citizens who are being abused, financially exploited or neglected.",
+            "contact_details": [],
+            "id": "ea1ae014-e98e-4a8b-ac39-c4feee37c226",
+            "service_price": null,
+            "service_name": "Scam Protection"
+          },
+          {
+            "contact_details": [
+              {
+                "contact_value": "650.363.4500",
+                "contact_type": "PHONE"
+              },
+              {
+                "contact_value": "assessor@smcare.org",
+                "contact_type": "EMAIL"
+              }
+            ],
+            "service_price": null,
+            "service_timing": [
+              {
+                "break": "",
+                "open": "08:00-17:00",
+                "day": "Monday-Friday"
+              }
+            ],
+            "service_del_links": [
+              {
+                "url": "https://www.vitalchek.com/",
+                "link_name": "APPLY ONLINE"
+              }
+            ],
+            "service_name": "Marriage Certificate",
+            "service_description": "Marriage certificates are used for many reasons such as a  spouse being added onto health benefits.  You can purchase a certified copy of your marriage certificate in person at the County Clerk-Recorder’s office.",
+            "id": "3287f2a1-bb25-4fef-92cc-1873fd6cb05e"
+          },
+          {
+            "contact_details": [
+              {
+                "contact_value": "(650) 599-7479",
+                "contact_type": "PHONE"
+              }
+            ],
+            "service_price": null,
+            "service_timing": [
+              {
+                "break": "",
+                "open": "08:00-17:00",
+                "day": "Monday-Friday"
+              }
+            ],
+            "service_name": "Victim Compensation Program",
+            "service_description": "Victims may be eligible for reimbursement through the California Victim Compensation Program (CalVCP).  This program is a “payer of last resort” meaning if there is any other source of reimbursement (i.e. medical or vehicle insurance), that reimbursement must be utilized first. Victim Services staff will assist victims and/or their family members with filing their claim(s).\"",
+            "id": "fec10164-9fc8-4bb5-85bd-3f0919debb23"
+          },
+          {
+            "service_timing": [
+              {
+                "break": "",
+                "open": "09:00-17:00",
+                "day": "Monday-Friday"
+              }
+            ],
+            "service_price": null,
+            "service_name": "Dog License",
+            "service_forms": [
+              {
+                "url": "https://s3-us-west-2.amazonaws.com/dsp-static-us/service_form_uploads/Animal License Application - San Mateo County.pdf",
+                "price": null,
+                "name": "Animal License Form - SMC"
+              }
+            ],
+            "contact_details": [
+              {
+                "contact_value": "(866) 925-5906",
+                "contact_type": "PHONE"
+              },
+              {
+                "contact_value": "info@petdata.com",
+                "contact_type": "EMAIL"
+              }
+            ],
+            "service_description": "<p>Dog licensing is required in all cities, towns, and unincorporated areas of San Mateo County. Although it is recommended that you license your cat, licensing is required in Brisbane, Belmont, Hillsborough, Millbrae, San Mateo, Redwood City, and unincorporated areas of the County. Dogs and cats must be licensed by 4 months of age or within 60 days of acquiring the animal. New residents of the county must license their dog or cat within <strong>60 days</strong>.</p>",
+            "id": "483f4140-f84b-483e-b533-daccb6aa3116",
+            "service_faq": [
+              {
+                "answer": "1. Copy of rabies certificate  Copy of proof of spay/neuter (if applicable),  and age documentation\"",
+                "question": "What are the required documents for applying for the license? "
+              },
+              {
+                "answer": "Yearly: 50 $ (unaltered); 20$ (altered)",
+                "question": "What is the cost of the license? "
+              }
+            ]
+          },
+          {
+            "service_location": [
+              {
+                "id": "San Mateo County Veterans Service Office (CVSO)",
+                "description": "",
+                "address": "550 Quarry Road San Carlos , CA 94070"
+              }
+            ],
+            "contact_details": [],
+            "service_price": null,
+            "service_name": "Veteran Services",
+            "service_description": "Established in 1946, the San Mateo County Veterans Services Office (CVSO) helps veterans access state and federal benefits that help veterans, their spouses and family members, as follows: \r\nService-connected disability compensation claims\r\nNon-service connected pension claims\r\nCalifornia State veterans benefits\r\nVeterans Affairs (VA) life insurance\r\nVA burial benefits\r\nVA home loans\r\nCollege fee tuition waivers for dependents",
+            "id": "f504f05a-4509-4f23-a06a-e8a0ef166bca"
+          },
+          {
+            "service_description": "San Mateo County is a full service adoption agency,\r\nthe pre-adoption service caters to any single or multiple\r\nneeds of the following:\r\n\r\n- Pre-adoption counseling for birth parents considering adoption.\r\n- Placement of relinquished children and Dependent Children removed from\r\n their parents by the Juvenile Court.\r\n- Supervision of children placed for adoption until the adoption is finalized.\r\n- Education group for adoptive parents.\r\n- Library for members of the adoption triad.\r\n- Adoption Assistance Program management for eligible children and their \r\nparents, including determination of benefits, information and referral and \r\nadvocacy services.\r\n- Home Study information for persons interested in adopting is described \r\nin Foster Care/Adoption.",
+            "contact_details": [
+              {
+                "contact_value": "650-595-7615",
+                "contact_type": "PHONE"
+              }
+            ],
+            "id": "45d84d58-59b8-451c-a617-6711486d7bfd",
+            "service_price": null,
+            "service_name": "Pre-Adoption Service"
+          },
+          {
+            "service_location": [
+              {
+                "id": "San Mateo County Assessor-County Clerk-Recorder’s Office ",
+                "description": "",
+                "address": "555 County Center, Redwood City, CA 94063"
+              }
+            ],
+            "service_timing": [
+              {
+                "break": "",
+                "open": "08:00-17:00",
+                "day": "Monday-Friday"
+              }
+            ],
+            "service_price": null,
+            "service_del_links": [
+              {
+                "url": "https://www.cdph.ca.gov/Programs/CHSI/Pages/Vital-Records.aspx",
+                "link_name": "APPLY ONLINE"
+              }
+            ],
+            "service_name": "Birth Certificate",
+            "contact_details": [
+              {
+                "contact_value": "(650) 363-4500",
+                "contact_type": "PHONE"
+              },
+              {
+                "contact_value": "555 County Center, First Floor, Redwood City, CA 94063",
+                "contact_type": "ADDRESS"
+              }
+            ],
+            "service_description": "Birth certificates are used for many official governmental purposes such as Social Security, passport applications and school enrollments. They are sometimes used for non-official registrations such as little league. You can purchase a certified copy of a birth certificate in person only.",
+            "id": "69877255-494c-46a8-81de-c1ae44676a7d",
+            "service_faq": [
+              {
+                "answer": "You should get it the same day (except for pre-1966 requests).",
+                "question": "How long does it take to get them if i am there in person? "
+              },
+              {
+                "answer": "5-10 days",
+                "question": "How long does it take to get them if i applied online?"
+              }
+            ]
+          },
+          {
+            "service_description": "",
+            "contact_details": [
+              {
+                "contact_value": "650.554.1000",
+                "contact_type": "PHONE"
+              },
+              {
+                "contact_value": "outreach@missionhospice.org",
+                "contact_type": "EMAIL"
+              },
+              {
+                "contact_value": "1670 South Amphlett Blvd., Suite 300 San Mateo CA 94402",
+                "contact_type": "ADDRESS"
+              }
+            ],
+            "id": "09c1d988-5e46-4c60-a920-44db04b6872e",
+            "service_price": 200,
+            "service_name": "Bereavement Services"
+          },
+          {
+            "contact_details": [
+              {
+                "contact_value": "(650) 802-7637",
+                "contact_type": "PHONE"
+              },
+              {
+                "contact_value": "Csmith@smcgov.org",
+                "contact_type": "EMAIL"
+              }
+            ],
+            "service_price": null,
+            "service_name": "Foster Care",
+            "service_description": "Foster care matches caring families with children and youth who need safe, temporary homes. San Mateo County is seeking strong, stable families who can offer a safe and loving home for children suffering from abuse or neglect.\r\n\r\nThe San Mateo County Human Services Agency is a Concurrent planning agency which means:\r\n\r\n- There is a focus on Family Reunification (returning children to their families once their safety has been \r\nre-established).\r\n\r\n- Concurrently, our social workers prepare appropriate foster placements, in case it is determined that \r\nreunification is not possible.\r\n\r\n- Concurrent Planning allows us to return the child to a stable routine and a home environment as quickly as possible.",
+            "id": "25db992d-eb6f-494c-ba6e-fe29ea99d6fd",
+            "service_faq": [
+              {
+                "answer": "Resource Families, formerly known as \"foster families\" are  people who open their homes to children who have been  removed from their families because they are at risk of  abuse and neglect.  In San Mateo County, you can only adopt if you are an  approved resource family.",
+                "question": "Who can be a Resource Family?"
+              }
+            ]
+          }
+        ],
+        "contact_details": [
+          {
+            "contact_value": "(650) 363-4000",
+            "contact_type": "PHONE"
+          },
+          {
+            "contact_value": " 400 County Ctr Redwood City, California 94063",
+            "contact_type": "ADDRESS"
+          },
+          {
+            "contact_value": "https://www.facebook.com/CountyofSanMateo",
+            "contact_type": "FACEBOOK"
+          },
+          {
+            "contact_value": "https://twitter.com/sanmateoco",
+            "contact_type": "TWITTER"
+          }
+        ],
+        "name": "County of San Mateo",
+        "members": [
+          {
+            "contact_details": [],
+            "person_image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTr_Wkbf9oQMHrrGx-5iE-4EDN5WvWt9YpA1iw3Zydbu233TcQX",
+            "person_name": "Carole Groom",
+            "id": "b2a5127e-4379-4445-92c7-548211583137",
+            "post_label": "Vice-President at County of San Mateo"
+          },
+          {
+            "contact_details": [
+              {
+                "contact_value": "80800",
+                "contact_type": "PHONE"
+              }
+            ],
+            "person_image": null,
+            "person_name": "Dave Pine",
+            "id": "d964b4bf-afce-4100-b0d8-c0d7d1be1cc7",
+            "post_label": "President at County of San Mateo"
+          }
+        ],
+        "id": "98bb2db7-5227-47ed-b2f4-520304d57fe5"
+      },
+      "success": true,
+      "id": "/Users/ybv/code/ybv-projects/openly-web/data/explore_static/data/orgs/98bb2db7-5227-47ed-b2f4-520304d57fe5.json absPath of file >>> JSON",
+      "children": [],
+      "parent": "/Users/ybv/code/ybv-projects/openly-web/data/explore_static/data/orgs/98bb2db7-5227-47ed-b2f4-520304d57fe5.json absPath of file",
+      "internal": {
+        "contentDigest": "2b159a5fddc24e4a348245f551c8216e",
+        "type": "OrgsJson",
+        "owner": "gatsby-transformer-json"
+      }
+    },
+    "SitePage /offline-plugin-app-shell-fallback/": {
+      "layout": null,
+      "jsonName": "offline-plugin-app-shell-fallback.json",
+      "internalComponentName": "ComponentOfflinePluginAppShellFallback",
+      "path": "/offline-plugin-app-shell-fallback/",
+      "component": "/Users/ybv/code/ybv-projects/openly-web/data/explore_static/node_modules/gatsby-plugin-offline/app-shell.js",
+      "componentChunkName": "component---node-modules-gatsby-plugin-offline-app-shell-js",
+      "context": {},
+      "pluginCreator___NODE": "Plugin gatsby-plugin-offline",
+      "pluginCreatorId": "Plugin gatsby-plugin-offline",
+      "componentPath": "/Users/ybv/code/ybv-projects/openly-web/data/explore_static/node_modules/gatsby-plugin-offline/app-shell.js",
+      "id": "SitePage /offline-plugin-app-shell-fallback/",
+      "parent": "SOURCE",
+      "children": [],
+      "internal": {
+        "type": "SitePage",
+        "contentDigest": "99713019d9f5e70f52d88f729c5b53e5",
+        "description": "Plugin gatsby-plugin-offline",
+        "owner": "internal-data-bridge"
+      }
+    },
+    "SitePage /organization/98bb2db7-5227-47ed-b2f4-520304d57fe5": {
+      "layout": "detailTemplate",
+      "jsonName": "organization-98-bb-2-db-7-5227-47-ed-b-2-f-4-520304-d-57-fe-5.json",
+      "internalComponentName": "ComponentOrganization98Bb2Db7522747EdB2F4520304D57Fe5",
+      "path": "/organization/98bb2db7-5227-47ed-b2f4-520304d57fe5",
+      "component": "/Users/ybv/code/ybv-projects/openly-web/data/explore_static/src/templates/organization-detail.js",
+      "componentChunkName": "component---src-templates-organization-detail-js",
+      "context": {
+        "data": {
+          "id": "98bb2db7-5227-47ed-b2f4-520304d57fe5",
+          "name": "County of San Mateo",
+          "contact_details": [
+            {
+              "contact_value": "(650) 363-4000",
+              "contact_type": "PHONE"
+            },
+            {
+              "contact_value": " 400 County Ctr Redwood City, California 94063",
+              "contact_type": "ADDRESS"
+            },
+            {
+              "contact_value": "https://www.facebook.com/CountyofSanMateo",
+              "contact_type": "FACEBOOK"
+            },
+            {
+              "contact_value": "https://twitter.com/sanmateoco",
+              "contact_type": "TWITTER"
+            }
+          ],
+          "services": [
+            {
+              "id": "005179e3-0adc-4b8d-84d8-cfacfeca7276",
+              "contact_details": [
+                {
+                  "contact_value": "1-800-675-8437",
+                  "contact_type": "PHONE"
+                }
+              ],
+              "service_name": "Scam Protection",
+              "service_timing": null,
+              "service_location": null,
+              "service_description": "The service is to help senior citizens who are being abused, financially exploited or neglected.",
+              "service_faq": null,
+              "service_del_links": null,
+              "service_forms": null
+            },
+            {
+              "id": "573cfa95-ad88-48f2-ab14-dcd0fada9a7a",
+              "contact_details": [],
+              "service_name": "Schedule Civil Wedding Ceremony",
+              "service_timing": null,
+              "service_location": null,
+              "service_description": "",
+              "service_faq": null,
+              "service_del_links": [
+                {
+                  "url": "https://apps.smcacre.org/marsched/schedule.aspx",
+                  "link_name": "Schedule Now"
+                }
+              ],
+              "service_forms": null
+            },
+            {
+              "id": "ea1ae014-e98e-4a8b-ac39-c4feee37c226",
+              "contact_details": [],
+              "service_name": "Scam Protection",
+              "service_timing": null,
+              "service_location": null,
+              "service_description": "The service is to help senior citizens who are being abused, financially exploited or neglected.",
+              "service_faq": null,
+              "service_del_links": null,
+              "service_forms": null
+            },
+            {
+              "id": "3287f2a1-bb25-4fef-92cc-1873fd6cb05e",
+              "contact_details": [
+                {
+                  "contact_value": "650.363.4500",
+                  "contact_type": "PHONE"
+                },
+                {
+                  "contact_value": "assessor@smcare.org",
+                  "contact_type": "EMAIL"
+                }
+              ],
+              "service_name": "Marriage Certificate",
+              "service_timing": [
+                {
+                  "break": "",
+                  "open": "08:00-17:00",
+                  "day": "Monday-Friday"
+                }
+              ],
+              "service_location": null,
+              "service_description": "Marriage certificates are used for many reasons such as a  spouse being added onto health benefits.  You can purchase a certified copy of your marriage certificate in person at the County Clerk-Recorder’s office.",
+              "service_faq": null,
+              "service_del_links": [
+                {
+                  "url": "https://www.vitalchek.com/",
+                  "link_name": "APPLY ONLINE"
+                }
+              ],
+              "service_forms": null
+            },
+            {
+              "id": "fec10164-9fc8-4bb5-85bd-3f0919debb23",
+              "contact_details": [
+                {
+                  "contact_value": "(650) 599-7479",
+                  "contact_type": "PHONE"
+                }
+              ],
+              "service_name": "Victim Compensation Program",
+              "service_timing": [
+                {
+                  "break": "",
+                  "open": "08:00-17:00",
+                  "day": "Monday-Friday"
+                }
+              ],
+              "service_location": null,
+              "service_description": "Victims may be eligible for reimbursement through the California Victim Compensation Program (CalVCP).  This program is a “payer of last resort” meaning if there is any other source of reimbursement (i.e. medical or vehicle insurance), that reimbursement must be utilized first. Victim Services staff will assist victims and/or their family members with filing their claim(s).\"",
+              "service_faq": null,
+              "service_del_links": null,
+              "service_forms": null
+            },
+            {
+              "id": "483f4140-f84b-483e-b533-daccb6aa3116",
+              "contact_details": [
+                {
+                  "contact_value": "(866) 925-5906",
+                  "contact_type": "PHONE"
+                },
+                {
+                  "contact_value": "info@petdata.com",
+                  "contact_type": "EMAIL"
+                }
+              ],
+              "service_name": "Dog License",
+              "service_timing": [
+                {
+                  "break": "",
+                  "open": "09:00-17:00",
+                  "day": "Monday-Friday"
+                }
+              ],
+              "service_location": null,
+              "service_description": "<p>Dog licensing is required in all cities, towns, and unincorporated areas of San Mateo County. Although it is recommended that you license your cat, licensing is required in Brisbane, Belmont, Hillsborough, Millbrae, San Mateo, Redwood City, and unincorporated areas of the County. Dogs and cats must be licensed by 4 months of age or within 60 days of acquiring the animal. New residents of the county must license their dog or cat within <strong>60 days</strong>.</p>",
+              "service_faq": [
+                {
+                  "question": "What are the required documents for applying for the license? ",
+                  "answer": "1. Copy of rabies certificate  Copy of proof of spay/neuter (if applicable),  and age documentation\""
+                },
+                {
+                  "question": "What is the cost of the license? ",
+                  "answer": "Yearly: 50 $ (unaltered); 20$ (altered)"
+                }
+              ],
+              "service_del_links": null,
+              "service_forms": [
+                {
+                  "url": "https://s3-us-west-2.amazonaws.com/dsp-static-us/service_form_uploads/Animal License Application - San Mateo County.pdf",
+                  "name": "Animal License Form - SMC"
+                }
+              ]
+            },
+            {
+              "id": "f504f05a-4509-4f23-a06a-e8a0ef166bca",
+              "contact_details": [],
+              "service_name": "Veteran Services",
+              "service_timing": null,
+              "service_location": [
+                {
+                  "description": "",
+                  "address": "550 Quarry Road San Carlos , CA 94070"
+                }
+              ],
+              "service_description": "Established in 1946, the San Mateo County Veterans Services Office (CVSO) helps veterans access state and federal benefits that help veterans, their spouses and family members, as follows: \r\nService-connected disability compensation claims\r\nNon-service connected pension claims\r\nCalifornia State veterans benefits\r\nVeterans Affairs (VA) life insurance\r\nVA burial benefits\r\nVA home loans\r\nCollege fee tuition waivers for dependents",
+              "service_faq": null,
+              "service_del_links": null,
+              "service_forms": null
+            },
+            {
+              "id": "45d84d58-59b8-451c-a617-6711486d7bfd",
+              "contact_details": [
+                {
+                  "contact_value": "650-595-7615",
+                  "contact_type": "PHONE"
+                }
+              ],
+              "service_name": "Pre-Adoption Service",
+              "service_timing": null,
+              "service_location": null,
+              "service_description": "San Mateo County is a full service adoption agency,\r\nthe pre-adoption service caters to any single or multiple\r\nneeds of the following:\r\n\r\n- Pre-adoption counseling for birth parents considering adoption.\r\n- Placement of relinquished children and Dependent Children removed from\r\n their parents by the Juvenile Court.\r\n- Supervision of children placed for adoption until the adoption is finalized.\r\n- Education group for adoptive parents.\r\n- Library for members of the adoption triad.\r\n- Adoption Assistance Program management for eligible children and their \r\nparents, including determination of benefits, information and referral and \r\nadvocacy services.\r\n- Home Study information for persons interested in adopting is described \r\nin Foster Care/Adoption.",
+              "service_faq": null,
+              "service_del_links": null,
+              "service_forms": null
+            },
+            {
+              "id": "69877255-494c-46a8-81de-c1ae44676a7d",
+              "contact_details": [
+                {
+                  "contact_value": "(650) 363-4500",
+                  "contact_type": "PHONE"
+                },
+                {
+                  "contact_value": "555 County Center, First Floor, Redwood City, CA 94063",
+                  "contact_type": "ADDRESS"
+                }
+              ],
+              "service_name": "Birth Certificate",
+              "service_timing": [
+                {
+                  "break": "",
+                  "open": "08:00-17:00",
+                  "day": "Monday-Friday"
+                }
+              ],
+              "service_location": [
+                {
+                  "description": "",
+                  "address": "555 County Center, Redwood City, CA 94063"
+                }
+              ],
+              "service_description": "Birth certificates are used for many official governmental purposes such as Social Security, passport applications and school enrollments. They are sometimes used for non-official registrations such as little league. You can purchase a certified copy of a birth certificate in person only.",
+              "service_faq": [
+                {
+                  "question": "How long does it take to get them if i am there in person? ",
+                  "answer": "You should get it the same day (except for pre-1966 requests)."
+                },
+                {
+                  "question": "How long does it take to get them if i applied online?",
+                  "answer": "5-10 days"
+                }
+              ],
+              "service_del_links": [
+                {
+                  "url": "https://www.cdph.ca.gov/Programs/CHSI/Pages/Vital-Records.aspx",
+                  "link_name": "APPLY ONLINE"
+                }
+              ],
+              "service_forms": null
+            },
+            {
+              "id": "09c1d988-5e46-4c60-a920-44db04b6872e",
+              "contact_details": [
+                {
+                  "contact_value": "650.554.1000",
+                  "contact_type": "PHONE"
+                },
+                {
+                  "contact_value": "outreach@missionhospice.org",
+                  "contact_type": "EMAIL"
+                },
+                {
+                  "contact_value": "1670 South Amphlett Blvd., Suite 300 San Mateo CA 94402",
+                  "contact_type": "ADDRESS"
+                }
+              ],
+              "service_name": "Bereavement Services",
+              "service_timing": null,
+              "service_location": null,
+              "service_description": "",
+              "service_faq": null,
+              "service_del_links": null,
+              "service_forms": null
+            },
+            {
+              "id": "25db992d-eb6f-494c-ba6e-fe29ea99d6fd",
+              "contact_details": [
+                {
+                  "contact_value": "(650) 802-7637",
+                  "contact_type": "PHONE"
+                },
+                {
+                  "contact_value": "Csmith@smcgov.org",
+                  "contact_type": "EMAIL"
+                }
+              ],
+              "service_name": "Foster Care",
+              "service_timing": null,
+              "service_location": null,
+              "service_description": "Foster care matches caring families with children and youth who need safe, temporary homes. San Mateo County is seeking strong, stable families who can offer a safe and loving home for children suffering from abuse or neglect.\r\n\r\nThe San Mateo County Human Services Agency is a Concurrent planning agency which means:\r\n\r\n- There is a focus on Family Reunification (returning children to their families once their safety has been \r\nre-established).\r\n\r\n- Concurrently, our social workers prepare appropriate foster placements, in case it is determined that \r\nreunification is not possible.\r\n\r\n- Concurrent Planning allows us to return the child to a stable routine and a home environment as quickly as possible.",
+              "service_faq": [
+                {
+                  "question": "Who can be a Resource Family?",
+                  "answer": "Resource Families, formerly known as \"foster families\" are  people who open their homes to children who have been  removed from their families because they are at risk of  abuse and neglect.  In San Mateo County, you can only adopt if you are an  approved resource family."
+                }
+              ],
+              "service_del_links": null,
+              "service_forms": null
+            }
+          ],
+          "members": [
+            {
+              "id": "b2a5127e-4379-4445-92c7-548211583137",
+              "person_name": "Carole Groom",
+              "post_label": "Vice-President at County of San Mateo",
+              "person_image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTr_Wkbf9oQMHrrGx-5iE-4EDN5WvWt9YpA1iw3Zydbu233TcQX",
+              "contact_details": []
+            },
+            {
+              "id": "d964b4bf-afce-4100-b0d8-c0d7d1be1cc7",
+              "person_name": "Dave Pine",
+              "post_label": "President at County of San Mateo",
+              "person_image": null,
+              "contact_details": [
+                {
+                  "contact_value": "80800",
+                  "contact_type": "PHONE"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "pluginCreator___NODE": "Plugin default-site-plugin",
+      "pluginCreatorId": "Plugin default-site-plugin",
+      "componentPath": "/Users/ybv/code/ybv-projects/openly-web/data/explore_static/src/templates/organization-detail.js",
+      "id": "SitePage /organization/98bb2db7-5227-47ed-b2f4-520304d57fe5",
+      "parent": "SOURCE",
+      "children": [],
+      "internal": {
+        "type": "SitePage",
+        "contentDigest": "0cbb8e323949e31b0d74a224d99f09f1",
+        "description": "Your site's \"gatsby-node.js\"",
+        "owner": "internal-data-bridge"
+      }
+    },
+    "SitePage /member/b2a5127e-4379-4445-92c7-548211583137": {
+      "layout": "detailTemplate",
+      "jsonName": "member-b-2-a-5127-e-4379-4445-92-c-7-548211583137.json",
+      "internalComponentName": "ComponentMemberB2A5127E4379444592C7548211583137",
+      "path": "/member/b2a5127e-4379-4445-92c7-548211583137",
+      "component": "/Users/ybv/code/ybv-projects/openly-web/data/explore_static/src/templates/member-detail.js",
+      "componentChunkName": "component---src-templates-member-detail-js",
+      "context": {
+        "data": {
+          "contact_details": [],
+          "person_name": "Carole Groom",
+          "person_image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTr_Wkbf9oQMHrrGx-5iE-4EDN5WvWt9YpA1iw3Zydbu233TcQX",
+          "org_id": "98bb2db7-5227-47ed-b2f4-520304d57fe5",
+          "org_name": "County of San Mateo",
+          "related_members": [
+            {
+              "id": "d964b4bf-afce-4100-b0d8-c0d7d1be1cc7",
+              "person_name": "Dave Pine",
+              "post_label": "President at County of San Mateo",
+              "person_image": null,
+              "contact_details": [
+                {
+                  "contact_value": "80800",
+                  "contact_type": "PHONE"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "pluginCreator___NODE": "Plugin default-site-plugin",
+      "pluginCreatorId": "Plugin default-site-plugin",
+      "componentPath": "/Users/ybv/code/ybv-projects/openly-web/data/explore_static/src/templates/member-detail.js",
+      "id": "SitePage /member/b2a5127e-4379-4445-92c7-548211583137",
+      "parent": "SOURCE",
+      "children": [],
+      "internal": {
+        "type": "SitePage",
+        "contentDigest": "9e0d40b2d684a3420edb30b5467b9410",
+        "description": "Your site's \"gatsby-node.js\"",
+        "owner": "internal-data-bridge"
+      }
+    },
+    "SitePage /member/d964b4bf-afce-4100-b0d8-c0d7d1be1cc7": {
+      "layout": "detailTemplate",
+      "jsonName": "member-d-964-b-4-bf-afce-4100-b-0-d-8-c-0-d-7-d-1-be-1-cc-7.json",
+      "internalComponentName": "ComponentMemberD964B4BfAfce4100B0D8C0D7D1Be1Cc7",
+      "path": "/member/d964b4bf-afce-4100-b0d8-c0d7d1be1cc7",
+      "component": "/Users/ybv/code/ybv-projects/openly-web/data/explore_static/src/templates/member-detail.js",
+      "componentChunkName": "component---src-templates-member-detail-js",
+      "context": {
+        "data": {
+          "contact_details": [
+            {
+              "contact_value": "80800",
+              "contact_type": "PHONE"
+            }
+          ],
+          "person_name": "Dave Pine",
+          "person_image": null,
+          "org_id": "98bb2db7-5227-47ed-b2f4-520304d57fe5",
+          "org_name": "County of San Mateo",
+          "related_members": [
+            {
+              "id": "b2a5127e-4379-4445-92c7-548211583137",
+              "person_name": "Carole Groom",
+              "post_label": "Vice-President at County of San Mateo",
+              "person_image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTr_Wkbf9oQMHrrGx-5iE-4EDN5WvWt9YpA1iw3Zydbu233TcQX",
+              "contact_details": []
+            }
+          ]
+        }
+      },
+      "pluginCreator___NODE": "Plugin default-site-plugin",
+      "pluginCreatorId": "Plugin default-site-plugin",
+      "componentPath": "/Users/ybv/code/ybv-projects/openly-web/data/explore_static/src/templates/member-detail.js",
+      "id": "SitePage /member/d964b4bf-afce-4100-b0d8-c0d7d1be1cc7",
+      "parent": "SOURCE",
+      "children": [],
+      "internal": {
+        "type": "SitePage",
+        "contentDigest": "be2a3e165000301a4a503c37299faffa",
+        "description": "Your site's \"gatsby-node.js\"",
+        "owner": "internal-data-bridge"
+      }
+    },
+    "SitePage /service/005179e3-0adc-4b8d-84d8-cfacfeca7276": {
+      "layout": "detailTemplate",
+      "jsonName": "service-005179-e-3-0-adc-4-b-8-d-84-d-8-cfacfeca-7276.json",
+      "internalComponentName": "ComponentService005179E30Adc4B8D84D8Cfacfeca7276",
+      "path": "/service/005179e3-0adc-4b8d-84d8-cfacfeca7276",
+      "component": "/Users/ybv/code/ybv-projects/openly-web/data/explore_static/src/templates/service-detail-2.js",
+      "componentChunkName": "component---src-templates-service-detail-2-js",
+      "context": {
+        "data": {
+          "contact_details": [
+            {
+              "contact_value": "1-800-675-8437",
+              "contact_type": "PHONE"
+            }
+          ],
+          "name": "Scam Protection",
+          "allForms": [],
+          "description": "The service is to help senior citizens who are being abused, financially exploited or neglected.",
+          "allSteps": [],
+          "allMems": [],
+          "alllocations": [],
+          "alltimings": [],
+          "allfaq": [],
+          "service_del_links": [],
+          "org_id": "98bb2db7-5227-47ed-b2f4-520304d57fe5",
+          "org_name": "County of San Mateo"
+        }
+      },
+      "pluginCreator___NODE": "Plugin default-site-plugin",
+      "pluginCreatorId": "Plugin default-site-plugin",
+      "componentPath": "/Users/ybv/code/ybv-projects/openly-web/data/explore_static/src/templates/service-detail-2.js",
+      "id": "SitePage /service/005179e3-0adc-4b8d-84d8-cfacfeca7276",
+      "parent": "SOURCE",
+      "children": [],
+      "internal": {
+        "type": "SitePage",
+        "contentDigest": "a91ca44c08523a0d458a71d0ce4b8e06",
+        "description": "Your site's \"gatsby-node.js\"",
+        "owner": "internal-data-bridge"
+      }
+    },
+    "SitePage /service/573cfa95-ad88-48f2-ab14-dcd0fada9a7a": {
+      "layout": "detailTemplate",
+      "jsonName": "service-573-cfa-95-ad-88-48-f-2-ab-14-dcd-0-fada-9-a-7-a.json",
+      "internalComponentName": "ComponentService573Cfa95Ad8848F2Ab14Dcd0Fada9A7A",
+      "path": "/service/573cfa95-ad88-48f2-ab14-dcd0fada9a7a",
+      "component": "/Users/ybv/code/ybv-projects/openly-web/data/explore_static/src/templates/service-detail-2.js",
+      "componentChunkName": "component---src-templates-service-detail-2-js",
+      "context": {
+        "data": {
+          "contact_details": [],
+          "name": "Schedule Civil Wedding Ceremony",
+          "allForms": [],
+          "description": "",
+          "allSteps": [],
+          "allMems": [],
+          "alllocations": [],
+          "alltimings": [],
+          "allfaq": [],
+          "service_del_links": [
+            {
+              "url": "https://apps.smcacre.org/marsched/schedule.aspx",
+              "link_name": "Schedule Now"
+            }
+          ],
+          "org_id": "98bb2db7-5227-47ed-b2f4-520304d57fe5",
+          "org_name": "County of San Mateo"
+        }
+      },
+      "pluginCreator___NODE": "Plugin default-site-plugin",
+      "pluginCreatorId": "Plugin default-site-plugin",
+      "componentPath": "/Users/ybv/code/ybv-projects/openly-web/data/explore_static/src/templates/service-detail-2.js",
+      "id": "SitePage /service/573cfa95-ad88-48f2-ab14-dcd0fada9a7a",
+      "parent": "SOURCE",
+      "children": [],
+      "internal": {
+        "type": "SitePage",
+        "contentDigest": "0420beaf469b58c5c8e993818f75706e",
+        "description": "Your site's \"gatsby-node.js\"",
+        "owner": "internal-data-bridge"
+      }
+    },
+    "SitePage /service/ea1ae014-e98e-4a8b-ac39-c4feee37c226": {
+      "layout": "detailTemplate",
+      "jsonName": "service-ea-1-ae-014-e-98-e-4-a-8-b-ac-39-c-4-feee-37-c-226.json",
+      "internalComponentName": "ComponentServiceEa1Ae014E98E4A8BAc39C4Feee37C226",
+      "path": "/service/ea1ae014-e98e-4a8b-ac39-c4feee37c226",
+      "component": "/Users/ybv/code/ybv-projects/openly-web/data/explore_static/src/templates/service-detail-2.js",
+      "componentChunkName": "component---src-templates-service-detail-2-js",
+      "context": {
+        "data": {
+          "contact_details": [],
+          "name": "Scam Protection",
+          "allForms": [],
+          "description": "The service is to help senior citizens who are being abused, financially exploited or neglected.",
+          "allSteps": [],
+          "allMems": [],
+          "alllocations": [],
+          "alltimings": [],
+          "allfaq": [],
+          "service_del_links": [],
+          "org_id": "98bb2db7-5227-47ed-b2f4-520304d57fe5",
+          "org_name": "County of San Mateo"
+        }
+      },
+      "pluginCreator___NODE": "Plugin default-site-plugin",
+      "pluginCreatorId": "Plugin default-site-plugin",
+      "componentPath": "/Users/ybv/code/ybv-projects/openly-web/data/explore_static/src/templates/service-detail-2.js",
+      "id": "SitePage /service/ea1ae014-e98e-4a8b-ac39-c4feee37c226",
+      "parent": "SOURCE",
+      "children": [],
+      "internal": {
+        "type": "SitePage",
+        "contentDigest": "db7e1334eb0c07ebcae66119aad25d27",
+        "description": "Your site's \"gatsby-node.js\"",
+        "owner": "internal-data-bridge"
+      }
+    },
+    "SitePage /service/3287f2a1-bb25-4fef-92cc-1873fd6cb05e": {
+      "layout": "detailTemplate",
+      "jsonName": "service-3287-f-2-a-1-bb-25-4-fef-92-cc-1873-fd-6-cb-05-e.json",
+      "internalComponentName": "ComponentService3287F2A1Bb254Fef92Cc1873Fd6Cb05E",
+      "path": "/service/3287f2a1-bb25-4fef-92cc-1873fd6cb05e",
+      "component": "/Users/ybv/code/ybv-projects/openly-web/data/explore_static/src/templates/service-detail-2.js",
+      "componentChunkName": "component---src-templates-service-detail-2-js",
+      "context": {
+        "data": {
+          "contact_details": [
+            {
+              "contact_value": "650.363.4500",
+              "contact_type": "PHONE"
+            },
+            {
+              "contact_value": "assessor@smcare.org",
+              "contact_type": "EMAIL"
+            }
+          ],
+          "name": "Marriage Certificate",
+          "allForms": [],
+          "description": "Marriage certificates are used for many reasons such as a  spouse being added onto health benefits.  You can purchase a certified copy of your marriage certificate in person at the County Clerk-Recorder’s office.",
+          "allSteps": [],
+          "allMems": [],
+          "alllocations": [],
+          "alltimings": [
+            {
+              "break": "",
+              "open": "08:00-17:00",
+              "day": "Monday-Friday"
+            }
+          ],
+          "allfaq": [],
+          "service_del_links": [
+            {
+              "url": "https://www.vitalchek.com/",
+              "link_name": "APPLY ONLINE"
+            }
+          ],
+          "org_id": "98bb2db7-5227-47ed-b2f4-520304d57fe5",
+          "org_name": "County of San Mateo"
+        }
+      },
+      "pluginCreator___NODE": "Plugin default-site-plugin",
+      "pluginCreatorId": "Plugin default-site-plugin",
+      "componentPath": "/Users/ybv/code/ybv-projects/openly-web/data/explore_static/src/templates/service-detail-2.js",
+      "id": "SitePage /service/3287f2a1-bb25-4fef-92cc-1873fd6cb05e",
+      "parent": "SOURCE",
+      "children": [],
+      "internal": {
+        "type": "SitePage",
+        "contentDigest": "9c709427765b6fc1f38468744d249f5a",
+        "description": "Your site's \"gatsby-node.js\"",
+        "owner": "internal-data-bridge"
+      }
+    },
+    "SitePage /service/fec10164-9fc8-4bb5-85bd-3f0919debb23": {
+      "layout": "detailTemplate",
+      "jsonName": "service-fec-10164-9-fc-8-4-bb-5-85-bd-3-f-0919-debb-23.json",
+      "internalComponentName": "ComponentServiceFec101649Fc84Bb585Bd3F0919Debb23",
+      "path": "/service/fec10164-9fc8-4bb5-85bd-3f0919debb23",
+      "component": "/Users/ybv/code/ybv-projects/openly-web/data/explore_static/src/templates/service-detail-2.js",
+      "componentChunkName": "component---src-templates-service-detail-2-js",
+      "context": {
+        "data": {
+          "contact_details": [
+            {
+              "contact_value": "(650) 599-7479",
+              "contact_type": "PHONE"
+            }
+          ],
+          "name": "Victim Compensation Program",
+          "allForms": [],
+          "description": "Victims may be eligible for reimbursement through the California Victim Compensation Program (CalVCP).  This program is a “payer of last resort” meaning if there is any other source of reimbursement (i.e. medical or vehicle insurance), that reimbursement must be utilized first. Victim Services staff will assist victims and/or their family members with filing their claim(s).\"",
+          "allSteps": [],
+          "allMems": [],
+          "alllocations": [],
+          "alltimings": [
+            {
+              "break": "",
+              "open": "08:00-17:00",
+              "day": "Monday-Friday"
+            }
+          ],
+          "allfaq": [],
+          "service_del_links": [],
+          "org_id": "98bb2db7-5227-47ed-b2f4-520304d57fe5",
+          "org_name": "County of San Mateo"
+        }
+      },
+      "pluginCreator___NODE": "Plugin default-site-plugin",
+      "pluginCreatorId": "Plugin default-site-plugin",
+      "componentPath": "/Users/ybv/code/ybv-projects/openly-web/data/explore_static/src/templates/service-detail-2.js",
+      "id": "SitePage /service/fec10164-9fc8-4bb5-85bd-3f0919debb23",
+      "parent": "SOURCE",
+      "children": [],
+      "internal": {
+        "type": "SitePage",
+        "contentDigest": "fe7762ca4fb1322538c59b305393aaef",
+        "description": "Your site's \"gatsby-node.js\"",
+        "owner": "internal-data-bridge"
+      }
+    },
+    "SitePage /service/483f4140-f84b-483e-b533-daccb6aa3116": {
+      "layout": "detailTemplate",
+      "jsonName": "service-483-f-4140-f-84-b-483-e-b-533-daccb-6-aa-3116.json",
+      "internalComponentName": "ComponentService483F4140F84B483EB533Daccb6Aa3116",
+      "path": "/service/483f4140-f84b-483e-b533-daccb6aa3116",
+      "component": "/Users/ybv/code/ybv-projects/openly-web/data/explore_static/src/templates/service-detail-2.js",
+      "componentChunkName": "component---src-templates-service-detail-2-js",
+      "context": {
+        "data": {
+          "contact_details": [
+            {
+              "contact_value": "(866) 925-5906",
+              "contact_type": "PHONE"
+            },
+            {
+              "contact_value": "info@petdata.com",
+              "contact_type": "EMAIL"
+            }
+          ],
+          "name": "Dog License",
+          "allForms": [
+            {
+              "url": "https://s3-us-west-2.amazonaws.com/dsp-static-us/service_form_uploads/Animal License Application - San Mateo County.pdf",
+              "name": "Animal License Form - SMC"
+            }
+          ],
+          "description": "<p>Dog licensing is required in all cities, towns, and unincorporated areas of San Mateo County. Although it is recommended that you license your cat, licensing is required in Brisbane, Belmont, Hillsborough, Millbrae, San Mateo, Redwood City, and unincorporated areas of the County. Dogs and cats must be licensed by 4 months of age or within 60 days of acquiring the animal. New residents of the county must license their dog or cat within <strong>60 days</strong>.</p>",
+          "allSteps": [],
+          "allMems": [],
+          "alllocations": [],
+          "alltimings": [
+            {
+              "break": "",
+              "open": "09:00-17:00",
+              "day": "Monday-Friday"
+            }
+          ],
+          "allfaq": [
+            {
+              "question": "What are the required documents for applying for the license? ",
+              "answer": "1. Copy of rabies certificate  Copy of proof of spay/neuter (if applicable),  and age documentation\""
+            },
+            {
+              "question": "What is the cost of the license? ",
+              "answer": "Yearly: 50 $ (unaltered); 20$ (altered)"
+            }
+          ],
+          "service_del_links": [],
+          "org_id": "98bb2db7-5227-47ed-b2f4-520304d57fe5",
+          "org_name": "County of San Mateo"
+        }
+      },
+      "pluginCreator___NODE": "Plugin default-site-plugin",
+      "pluginCreatorId": "Plugin default-site-plugin",
+      "componentPath": "/Users/ybv/code/ybv-projects/openly-web/data/explore_static/src/templates/service-detail-2.js",
+      "id": "SitePage /service/483f4140-f84b-483e-b533-daccb6aa3116",
+      "parent": "SOURCE",
+      "children": [],
+      "internal": {
+        "type": "SitePage",
+        "contentDigest": "584076cf038d3f8f671cdebee7d91600",
+        "description": "Your site's \"gatsby-node.js\"",
+        "owner": "internal-data-bridge"
+      }
+    },
+    "SitePage /service/f504f05a-4509-4f23-a06a-e8a0ef166bca": {
+      "layout": "detailTemplate",
+      "jsonName": "service-f-504-f-05-a-4509-4-f-23-a-06-a-e-8-a-0-ef-166-bca.json",
+      "internalComponentName": "ComponentServiceF504F05A45094F23A06AE8A0Ef166Bca",
+      "path": "/service/f504f05a-4509-4f23-a06a-e8a0ef166bca",
+      "component": "/Users/ybv/code/ybv-projects/openly-web/data/explore_static/src/templates/service-detail-2.js",
+      "componentChunkName": "component---src-templates-service-detail-2-js",
+      "context": {
+        "data": {
+          "contact_details": [],
+          "name": "Veteran Services",
+          "allForms": [],
+          "description": "Established in 1946, the San Mateo County Veterans Services Office (CVSO) helps veterans access state and federal benefits that help veterans, their spouses and family members, as follows: \r\nService-connected disability compensation claims\r\nNon-service connected pension claims\r\nCalifornia State veterans benefits\r\nVeterans Affairs (VA) life insurance\r\nVA burial benefits\r\nVA home loans\r\nCollege fee tuition waivers for dependents",
+          "allSteps": [],
+          "allMems": [],
+          "alllocations": [
+            {
+              "description": "",
+              "address": "550 Quarry Road San Carlos , CA 94070"
+            }
+          ],
+          "alltimings": [],
+          "allfaq": [],
+          "service_del_links": [],
+          "org_id": "98bb2db7-5227-47ed-b2f4-520304d57fe5",
+          "org_name": "County of San Mateo"
+        }
+      },
+      "pluginCreator___NODE": "Plugin default-site-plugin",
+      "pluginCreatorId": "Plugin default-site-plugin",
+      "componentPath": "/Users/ybv/code/ybv-projects/openly-web/data/explore_static/src/templates/service-detail-2.js",
+      "id": "SitePage /service/f504f05a-4509-4f23-a06a-e8a0ef166bca",
+      "parent": "SOURCE",
+      "children": [],
+      "internal": {
+        "type": "SitePage",
+        "contentDigest": "40debab147920e8a49207afc5f9b5efb",
+        "description": "Your site's \"gatsby-node.js\"",
+        "owner": "internal-data-bridge"
+      }
+    },
+    "SitePage /service/45d84d58-59b8-451c-a617-6711486d7bfd": {
+      "layout": "detailTemplate",
+      "jsonName": "service-45-d-84-d-58-59-b-8-451-c-a-617-6711486-d-7-bfd.json",
+      "internalComponentName": "ComponentService45D84D5859B8451CA6176711486D7Bfd",
+      "path": "/service/45d84d58-59b8-451c-a617-6711486d7bfd",
+      "component": "/Users/ybv/code/ybv-projects/openly-web/data/explore_static/src/templates/service-detail-2.js",
+      "componentChunkName": "component---src-templates-service-detail-2-js",
+      "context": {
+        "data": {
+          "contact_details": [
+            {
+              "contact_value": "650-595-7615",
+              "contact_type": "PHONE"
+            }
+          ],
+          "name": "Pre-Adoption Service",
+          "allForms": [],
+          "description": "San Mateo County is a full service adoption agency,\r\nthe pre-adoption service caters to any single or multiple\r\nneeds of the following:\r\n\r\n- Pre-adoption counseling for birth parents considering adoption.\r\n- Placement of relinquished children and Dependent Children removed from\r\n their parents by the Juvenile Court.\r\n- Supervision of children placed for adoption until the adoption is finalized.\r\n- Education group for adoptive parents.\r\n- Library for members of the adoption triad.\r\n- Adoption Assistance Program management for eligible children and their \r\nparents, including determination of benefits, information and referral and \r\nadvocacy services.\r\n- Home Study information for persons interested in adopting is described \r\nin Foster Care/Adoption.",
+          "allSteps": [],
+          "allMems": [],
+          "alllocations": [],
+          "alltimings": [],
+          "allfaq": [],
+          "service_del_links": [],
+          "org_id": "98bb2db7-5227-47ed-b2f4-520304d57fe5",
+          "org_name": "County of San Mateo"
+        }
+      },
+      "pluginCreator___NODE": "Plugin default-site-plugin",
+      "pluginCreatorId": "Plugin default-site-plugin",
+      "componentPath": "/Users/ybv/code/ybv-projects/openly-web/data/explore_static/src/templates/service-detail-2.js",
+      "id": "SitePage /service/45d84d58-59b8-451c-a617-6711486d7bfd",
+      "parent": "SOURCE",
+      "children": [],
+      "internal": {
+        "type": "SitePage",
+        "contentDigest": "47de0692146794d88d8216efe1d9c74c",
+        "description": "Your site's \"gatsby-node.js\"",
+        "owner": "internal-data-bridge"
+      }
+    },
+    "SitePage /service/69877255-494c-46a8-81de-c1ae44676a7d": {
+      "layout": "detailTemplate",
+      "jsonName": "service-69877255-494-c-46-a-8-81-de-c-1-ae-44676-a-7-d.json",
+      "internalComponentName": "ComponentService69877255494C46A881DeC1Ae44676A7D",
+      "path": "/service/69877255-494c-46a8-81de-c1ae44676a7d",
+      "component": "/Users/ybv/code/ybv-projects/openly-web/data/explore_static/src/templates/service-detail-2.js",
+      "componentChunkName": "component---src-templates-service-detail-2-js",
+      "context": {
+        "data": {
+          "contact_details": [
+            {
+              "contact_value": "(650) 363-4500",
+              "contact_type": "PHONE"
+            },
+            {
+              "contact_value": "555 County Center, First Floor, Redwood City, CA 94063",
+              "contact_type": "ADDRESS"
+            }
+          ],
+          "name": "Birth Certificate",
+          "allForms": [],
+          "description": "Birth certificates are used for many official governmental purposes such as Social Security, passport applications and school enrollments. They are sometimes used for non-official registrations such as little league. You can purchase a certified copy of a birth certificate in person only.",
+          "allSteps": [],
+          "allMems": [],
+          "alllocations": [
+            {
+              "description": "",
+              "address": "555 County Center, Redwood City, CA 94063"
+            }
+          ],
+          "alltimings": [
+            {
+              "break": "",
+              "open": "08:00-17:00",
+              "day": "Monday-Friday"
+            }
+          ],
+          "allfaq": [
+            {
+              "question": "How long does it take to get them if i am there in person? ",
+              "answer": "You should get it the same day (except for pre-1966 requests)."
+            },
+            {
+              "question": "How long does it take to get them if i applied online?",
+              "answer": "5-10 days"
+            }
+          ],
+          "service_del_links": [
+            {
+              "url": "https://www.cdph.ca.gov/Programs/CHSI/Pages/Vital-Records.aspx",
+              "link_name": "APPLY ONLINE"
+            }
+          ],
+          "org_id": "98bb2db7-5227-47ed-b2f4-520304d57fe5",
+          "org_name": "County of San Mateo"
+        }
+      },
+      "pluginCreator___NODE": "Plugin default-site-plugin",
+      "pluginCreatorId": "Plugin default-site-plugin",
+      "componentPath": "/Users/ybv/code/ybv-projects/openly-web/data/explore_static/src/templates/service-detail-2.js",
+      "id": "SitePage /service/69877255-494c-46a8-81de-c1ae44676a7d",
+      "parent": "SOURCE",
+      "children": [],
+      "internal": {
+        "type": "SitePage",
+        "contentDigest": "f54092778fae3ff0b738590e90c49ed4",
+        "description": "Your site's \"gatsby-node.js\"",
+        "owner": "internal-data-bridge"
+      }
+    },
+    "SitePage /service/09c1d988-5e46-4c60-a920-44db04b6872e": {
+      "layout": "detailTemplate",
+      "jsonName": "service-09-c-1-d-988-5-e-46-4-c-60-a-920-44-db-04-b-6872-e.json",
+      "internalComponentName": "ComponentService09C1D9885E464C60A92044Db04B6872E",
+      "path": "/service/09c1d988-5e46-4c60-a920-44db04b6872e",
+      "component": "/Users/ybv/code/ybv-projects/openly-web/data/explore_static/src/templates/service-detail-2.js",
+      "componentChunkName": "component---src-templates-service-detail-2-js",
+      "context": {
+        "data": {
+          "contact_details": [
+            {
+              "contact_value": "650.554.1000",
+              "contact_type": "PHONE"
+            },
+            {
+              "contact_value": "outreach@missionhospice.org",
+              "contact_type": "EMAIL"
+            },
+            {
+              "contact_value": "1670 South Amphlett Blvd., Suite 300 San Mateo CA 94402",
+              "contact_type": "ADDRESS"
+            }
+          ],
+          "name": "Bereavement Services",
+          "allForms": [],
+          "description": "",
+          "allSteps": [],
+          "allMems": [],
+          "alllocations": [],
+          "alltimings": [],
+          "allfaq": [],
+          "service_del_links": [],
+          "org_id": "98bb2db7-5227-47ed-b2f4-520304d57fe5",
+          "org_name": "County of San Mateo"
+        }
+      },
+      "pluginCreator___NODE": "Plugin default-site-plugin",
+      "pluginCreatorId": "Plugin default-site-plugin",
+      "componentPath": "/Users/ybv/code/ybv-projects/openly-web/data/explore_static/src/templates/service-detail-2.js",
+      "id": "SitePage /service/09c1d988-5e46-4c60-a920-44db04b6872e",
+      "parent": "SOURCE",
+      "children": [],
+      "internal": {
+        "type": "SitePage",
+        "contentDigest": "81904da501a18b38c4b6951ddf5444c4",
+        "description": "Your site's \"gatsby-node.js\"",
+        "owner": "internal-data-bridge"
+      }
+    },
+    "SitePage /service/25db992d-eb6f-494c-ba6e-fe29ea99d6fd": {
+      "layout": "detailTemplate",
+      "jsonName": "service-25-db-992-d-eb-6-f-494-c-ba-6-e-fe-29-ea-99-d-6-fd.json",
+      "internalComponentName": "ComponentService25Db992DEb6F494CBa6EFe29Ea99D6Fd",
+      "path": "/service/25db992d-eb6f-494c-ba6e-fe29ea99d6fd",
+      "component": "/Users/ybv/code/ybv-projects/openly-web/data/explore_static/src/templates/service-detail-2.js",
+      "componentChunkName": "component---src-templates-service-detail-2-js",
+      "context": {
+        "data": {
+          "contact_details": [
+            {
+              "contact_value": "(650) 802-7637",
+              "contact_type": "PHONE"
+            },
+            {
+              "contact_value": "Csmith@smcgov.org",
+              "contact_type": "EMAIL"
+            }
+          ],
+          "name": "Foster Care",
+          "allForms": [],
+          "description": "Foster care matches caring families with children and youth who need safe, temporary homes. San Mateo County is seeking strong, stable families who can offer a safe and loving home for children suffering from abuse or neglect.\r\n\r\nThe San Mateo County Human Services Agency is a Concurrent planning agency which means:\r\n\r\n- There is a focus on Family Reunification (returning children to their families once their safety has been \r\nre-established).\r\n\r\n- Concurrently, our social workers prepare appropriate foster placements, in case it is determined that \r\nreunification is not possible.\r\n\r\n- Concurrent Planning allows us to return the child to a stable routine and a home environment as quickly as possible.",
+          "allSteps": [],
+          "allMems": [],
+          "alllocations": [],
+          "alltimings": [],
+          "allfaq": [
+            {
+              "question": "Who can be a Resource Family?",
+              "answer": "Resource Families, formerly known as \"foster families\" are  people who open their homes to children who have been  removed from their families because they are at risk of  abuse and neglect.  In San Mateo County, you can only adopt if you are an  approved resource family."
+            }
+          ],
+          "service_del_links": [],
+          "org_id": "98bb2db7-5227-47ed-b2f4-520304d57fe5",
+          "org_name": "County of San Mateo"
+        }
+      },
+      "pluginCreator___NODE": "Plugin default-site-plugin",
+      "pluginCreatorId": "Plugin default-site-plugin",
+      "componentPath": "/Users/ybv/code/ybv-projects/openly-web/data/explore_static/src/templates/service-detail-2.js",
+      "id": "SitePage /service/25db992d-eb6f-494c-ba6e-fe29ea99d6fd",
+      "parent": "SOURCE",
+      "children": [],
+      "internal": {
+        "type": "SitePage",
+        "contentDigest": "8189afb730f1a2fa200df3ff36bd740a",
+        "description": "Your site's \"gatsby-node.js\"",
+        "owner": "internal-data-bridge"
+      }
+    },
+    "SitePage /about/": {
+      "layout": null,
+      "jsonName": "about.json",
+      "internalComponentName": "ComponentAbout",
+      "path": "/about/",
+      "component": "/Users/ybv/code/ybv-projects/openly-web/data/explore_static/src/pages/about.js",
+      "componentChunkName": "component---src-pages-about-js",
+      "context": {},
+      "pluginCreator___NODE": "Plugin component-page-creator",
+      "pluginCreatorId": "Plugin component-page-creator",
+      "componentPath": "/Users/ybv/code/ybv-projects/openly-web/data/explore_static/src/pages/about.js",
+      "id": "SitePage /about/",
+      "parent": "SOURCE",
+      "children": [],
+      "internal": {
+        "type": "SitePage",
+        "contentDigest": "12050d066b75bf76cf74e436f99b0e46",
+        "description": "Plugin component-page-creator",
+        "owner": "internal-data-bridge"
+      }
+    },
+    "SitePage /": {
+      "layout": null,
+      "jsonName": "index.json",
+      "internalComponentName": "ComponentIndex",
+      "path": "/",
+      "component": "/Users/ybv/code/ybv-projects/openly-web/data/explore_static/src/pages/index.js",
+      "componentChunkName": "component---src-pages-index-js",
+      "context": {},
+      "pluginCreator___NODE": "Plugin component-page-creator",
+      "pluginCreatorId": "Plugin component-page-creator",
+      "componentPath": "/Users/ybv/code/ybv-projects/openly-web/data/explore_static/src/pages/index.js",
+      "id": "SitePage /",
+      "parent": "SOURCE",
+      "children": [],
+      "internal": {
+        "type": "SitePage",
+        "contentDigest": "ad635a1d0f4cc98c5b7336e654a83372",
+        "description": "Plugin component-page-creator",
+        "owner": "internal-data-bridge"
+      }
+    },
+    "SitePage /search/": {
+      "layout": null,
+      "jsonName": "search.json",
+      "internalComponentName": "ComponentSearch",
+      "path": "/search/",
+      "matchPath": "/search/:path",
+      "component": "/Users/ybv/code/ybv-projects/openly-web/data/explore_static/src/pages/search/index.js",
+      "componentChunkName": "component---src-pages-search-index-js",
+      "context": {},
+      "pluginCreator___NODE": "Plugin gatsby-plugin-create-client-paths",
+      "pluginCreatorId": "Plugin gatsby-plugin-create-client-paths",
+      "componentPath": "/Users/ybv/code/ybv-projects/openly-web/data/explore_static/src/pages/search/index.js",
+      "id": "SitePage /search/",
+      "parent": "SOURCE",
+      "children": [],
+      "internal": {
+        "type": "SitePage",
+        "contentDigest": "4ee3a74436b6c5366daf3d9b6d7a6b8c",
+        "description": "Plugin gatsby-plugin-create-client-paths",
+        "owner": "internal-data-bridge"
+      }
+    }
+  },
+  "status": {
+    "plugins": {},
+    "PLUGINS_HASH": "eb5a41bc565ce9d1ae927f61d4c4fce3"
+  },
+  "componentDataDependencies": {
+    "nodes": {},
+    "connections": {}
+  }
+}

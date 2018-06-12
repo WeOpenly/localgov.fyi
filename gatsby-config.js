@@ -50,7 +50,7 @@ module.exports = {
         short_name: `localgov`,
         start_url: `/`,
         background_color: `#f7f7f7`,
-        theme_color: `#191919`,
+        theme_color : `#0000ca`,
         display: `minimal-ui`
       }
     }, {

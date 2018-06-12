@@ -14,7 +14,6 @@
         "gatsby-link": "latest",
         "gatsby-plugin-create-client-paths": "^1.0.8",
         "gatsby-plugin-glamor": "latest",
-        "gatsby-plugin-google-analytics": "latest",
         "gatsby-plugin-manifest": "latest",
         "gatsby-plugin-offline": "latest",
         "gatsby-plugin-react-next": "^1.0.11",
@@ -58,7 +57,7 @@
         "develop": "gatsby develop",
         "dev": "gatsby develop",
         "build": "gatsby build",
-        "deploy": "gatsby build --prefix-paths && gh-pages -d public",
+        "deploy": "gatsby build --prefix-paths --no-uglify=true",
         "cy:open": "cypress open",
         "cy:run": "cypress run"
     },
@@ -66,4 +65,4 @@
         "cypress": "^2.1.0",
         "start-server-and-test": "^1.1.4"
     }
-}
+} =

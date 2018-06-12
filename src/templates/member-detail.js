@@ -39,9 +39,38 @@ class MemberDetail extends React.Component {
         data: PropTypes.shape({postsJson: PropTypes.object.isRequired})
     }
 
+    componentDidMount() {
+        const {org_id, id} = this.props;
+        const eventParams = {
+            event_type: 'overview_query',
+            type: 'membership',
+            org_id,
+            id
+        }
+
+        // fire & forget
+        const payloadParams = Object
+            .keys(eventParams)
+            .map(k => `${encodeURIComponent(k)}=${encodeURIComponent(eventParams[k])}`)
+            .join('&');
+
+        fetch(`https://track.localgov.fyi/localgov.fyi/track.png?${payloadParams}`).then(function (data) {
+            // pass
+        }).catch(function (error) {
+                // pass
+            });
+    }
+
     render() {
         const {classes} = this.props;
-        const {contact_details, person_name, person_image, org_id, org_name, related_members} = this.props.pathContext.data;
+        const {
+            contact_details,
+            person_name,
+            person_image,
+            org_id,
+            org_name,
+            related_members
+        } = this.props.pathContext.data;
 
         let relatedSection = null;
         const personOrg = (
@@ -62,8 +91,8 @@ class MemberDetail extends React.Component {
                 <Grid container spacing={8}>
                     <Grid item xs={12}>
                         <Typography variant="subheading" gutterBottom>
-                            Other members from {org_name} &nbsp;
-                            ({related_members.length})
+                            Other members from {org_name}
+                            &nbsp; ({related_members.length})
                         </Typography>
                     </Grid>
                     <Grid item xs={12}>
@@ -75,37 +104,36 @@ class MemberDetail extends React.Component {
 
         return (
             <Grid container spacing={0}>
-            <Grid item xs={12} sm={12} md={7}>
-                <br />
-                <Card className={classes.mediaContainer}>
+                <Grid item xs={12} sm={12} md={7}>
+                    <br/>
+                    <Card className={classes.mediaContainer}>
                         {person_image
-                            ? <CardMedia className={classes.media} image={person_image} title={person_name} />
-                        : <div className={classes.media}>
-                            <Icon
-                                color="primary"
-                                style={{
+                            ? <CardMedia className={classes.media} image={person_image} title={person_name}/>
+                            : <div className={classes.media}>
+                                <Icon
+                                    color="primary"
+                                    style={{
                                     fontSize: 96
                                 }}>
-                                person_outline
-                            </Icon>
-                        </div>}
-                    <CardContent>
-                        <Typography variant="headline">{person_name}</Typography>
-                        <Typography variant="body1">Member</Typography>
-                    </CardContent>
-                </Card>
-                <br />
-                <div>{personOrg}</div>
-                <br />
-                {relatedSection}
-            </Grid>
-                <Grid tem xs={12} sm={12} md={1} />
+                                    person_outline
+                                </Icon>
+                            </div>}
+                        <CardContent>
+                            <Typography variant="headline">{person_name}</Typography>
+                            <Typography variant="body1">Member</Typography>
+                        </CardContent>
+                    </Card>
+                    <br/>
+                    <div>{personOrg}</div>
+                    <br/> {relatedSection}
+                </Grid>
+                <Grid tem xs={12} sm={12} md={1}/>
                 <Grid item xs={12} sm={12} md={4}>
-                    <br />
+                    <br/>
                     <div>
-                        {contact_details && <ContactDetails info={contact_details} />}
+                        {contact_details && <ContactDetails info={contact_details}/>}
                     </div>
-                    <br />
+                    <br/>
                 </Grid>
             </Grid>
         )

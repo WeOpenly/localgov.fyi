@@ -155,6 +155,7 @@ contact_details {
             layout : "detailTemplate",
             context: {
               data: {
+                id: service.id,
                 contact_details: service.contact_details,
                 name: service.service_name,
                 allForms: service.service_forms || [],

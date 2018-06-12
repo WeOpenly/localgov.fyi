@@ -56,6 +56,28 @@ class ServiceDetail extends React.Component {
         data: PropTypes.shape({postsJson: PropTypes.object.isRequired})
     }
 
+    componentDidMount() {
+        const { org_id, id } = this.props;
+        const eventParams = {
+            event_type: 'overview_query',
+            type: 'service',
+            org_id,
+            id
+        }
+
+        // fire & forget
+        const payloadParams = Object
+            .keys(eventParams)
+            .map(k => `${encodeURIComponent(k)}=${encodeURIComponent(eventParams[k])}`)
+            .join('&');
+
+        fetch(`https://track.localgov.fyi/localgov.fyi/track.png?${payloadParams}`).then(function (data) {
+            // pass
+        }).catch(function (error) {
+            // pass
+        });
+    }
+
     render() {
         const {
             name,

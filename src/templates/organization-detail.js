@@ -32,6 +32,26 @@ const styles = theme => ({
   },
 });
 class OrganizationDetail extends React.Component {
+  componentDidMount() {
+    const { id } = this.props;
+    const eventParams = {
+      event_type: 'overview_query',
+      type: 'organization',
+      org_id: id,
+    }
+
+    // fire & forget
+    const payloadParams = Object
+      .keys(eventParams)
+      .map(k => `${encodeURIComponent(k)}=${encodeURIComponent(eventParams[k])}`)
+      .join('&');
+
+    fetch(`https://track.localgov.fyi/localgov.fyi/track.png?${payloadParams}`).then(function (data) {
+      // pass
+    }).catch(function (error) {
+      // pass
+    });
+  }
 
   render() {
     const {services, members, contact_details, name} = this.props.pathContext.data;

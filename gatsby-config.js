@@ -19,7 +19,8 @@ module.exports = {
      * recursively reads in files and adds them to the data
      * tree.
      */
-    `gatsby-plugin-react-next`, {
+    `gatsby-plugin-react-next`,
+    {
       resolve: `gatsby-source-filesystem`,
       options: {
         name: `data`,
@@ -62,12 +63,5 @@ module.exports = {
     // works offline and is otherwise resistant to bad networks. Works with almost
     // any site!
     `gatsby-plugin-offline`,
-    // This plugin sets up Google Analytics for you.
-    {
-      resolve: `gatsby-plugin-google-analytics`,
-      options: {
-        trackingId: `UA-91652198-1`
-      }
-    }
   ]
 }

@@ -56,7 +56,7 @@ class ServiceDetail extends React.Component {
     }
 
     componentDidMount() {
-        const {org_id, id} = this.props;
+        const { org_id, id } = this.props.pathContext.data;
         const eventParams = {
             event_type: 'overview_query',
             type: 'service',

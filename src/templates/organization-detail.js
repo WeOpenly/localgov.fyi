@@ -33,7 +33,7 @@ const styles = theme => ({
 });
 class OrganizationDetail extends React.Component {
   componentDidMount() {
-    const { id } = this.props;
+    const {id} = this.props.pathContext.data;
     const eventParams = {
       event_type: 'overview_query',
       type: 'organization',

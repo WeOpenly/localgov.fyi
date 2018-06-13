@@ -1,15 +1,15 @@
 import * as PropTypes from "prop-types"
 import React from "react"
-import { withStyles } from '@material-ui/core/styles';
+import {withStyles} from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
 
 import List from '@material-ui/core/List';
 import ListItem from
-    '@material-ui/core/ListItem';
+'@material-ui/core/ListItem';
 import ListItemText from
-    '@material-ui/core/ListItemText';
+'@material-ui/core/ListItemText';
 
 import ContactDetails from '../components/ContactDetails';
 import AddressGoogleMap from '../components/AddressGoogleMap';
@@ -50,14 +50,13 @@ const RawHTML = ({
     }}/>
 );
 
-
 class ServiceDetail extends React.Component {
     static propTypes = {
         data: PropTypes.shape({postsJson: PropTypes.object.isRequired})
     }
 
     componentDidMount() {
-        const { org_id, id } = this.props;
+        const {org_id, id} = this.props;
         const eventParams = {
             event_type: 'overview_query',
             type: 'service',
@@ -73,9 +72,10 @@ class ServiceDetail extends React.Component {
 
         fetch(`https://track.localgov.fyi/localgov.fyi/track.png?${payloadParams}`).then(function (data) {
             // pass
-        }).catch(function (error) {
-            // pass
-        });
+        })
+            .catch(function (error) {
+                // pass
+            });
     }
 
     render() {
@@ -139,7 +139,7 @@ class ServiceDetail extends React.Component {
         if (allForms.length > 0) {
             formList = allForms.map((form, index) => {
                 const {name, url, price} = form;
-return <ListItem button disableGutters>
+                return <ListItem button disableGutters>
                     <ListItemText
                         primary={name}
                         onClick={() => {
@@ -188,127 +188,111 @@ return <ListItem button disableGutters>
             });
         }
 
-
-        const offeredInDetails = <Grid container spacing={8} style={{ marginTop: 16 }}>
+        const offeredInDetails = <Grid container spacing={8} style={{
+            marginTop: 16
+        }}>
             <Grid item xs={12} sm={12}>
                 <Typography variant="subheading" gutterBottom>
                     Offered in
-            </Typography>
+                </Typography>
             </Grid>
             <Grid item xs={12} sm={12}>
-                <SearchResult
-                    key={org_id}
-                    toLink={`/organization/${org_id}`}
-                    title={org_name}/>
+                <SearchResult key={org_id} toLink={`/organization/${org_id}`} title={org_name}/>
             </Grid>
         </Grid>;
 
-
-return (
-    <Grid container spacing={16} className={classes.container}>
-            <Grid item md={6} sm={12}>
-                <Grid item xs={12}>
-                    <Paper className={classes.cards}>
-                        <Grid container spacing={8}>
-                            <Grid item xs={2} sm={1}>
-                               
+        return (
+            <Grid container spacing={16} className={classes.container}>
+                <Grid item md={6} sm={12}>
+                    <Grid item xs={12}>
+                        <Paper className={classes.cards}>
+                            <Grid container spacing={8}>
+                                <Grid item xs={2} sm={1}></Grid>
+                                <Grid item xs={10} sm={11}>
+                                    <div className={classes.cardContent}>
+                                        <Typography variant="subheading" gutterBottom>
+                                            {name}
+                                        </Typography>
+                                        <Typography variant="body1" gutterBottom>
+                                            <RawHTML>{description}</RawHTML>
+                                        </Typography>
+                                    </div>
+                                </Grid>
                             </Grid>
-                            <Grid item xs={10} sm={11}>
-                                <div className={classes.cardContent}>
-                                    <Typography variant="subheading" gutterBottom>
-                                        {name}
-                                    </Typography>
-                                    <Typography variant="body1" gutterBottom>
-                                        <RawHTML>{description}</RawHTML>
-                                    </Typography>
-                                </div>
+                        </Paper>
+                    </Grid>
+                    {price && <Grid item xs={12}>
+                        <Paper className={classes.cards}>
+                            <Grid container spacing={8}>
+                                <Grid item xs={2} sm={1}></Grid>
+                                <Grid item xs={10} sm={11}>
+                                    <div className={classes.cardContent}>
+                                        <Typography variant="body2" gutterBottom>
+                                            {price}
+                                        </Typography>
+                                    </div>
+                                </Grid>
                             </Grid>
-                        </Grid>
-                    </Paper>
+                        </Paper>
+                    </Grid>}
+                    {timingList && <Grid item xs={12}>
+                        <Paper className={classes.cards}>
+                            <Grid container spacing={8}>
+                                <Grid item xs={2} sm={1}></Grid>
+                                <Grid item xs={10} sm={11}>
+                                    <div className={classes.cardContent}>{timingList}</div>
+                                </Grid>
+                            </Grid>
+                        </Paper>
+                    </Grid>}
+                    {formList && <Grid item xs={12}>
+                        <Paper className={classes.cards}>
+                            <Grid container spacing={8}>
+                                <Grid item xs={2} sm={1}></Grid>
+                                <Grid item xs={10} sm={11}>
+                                    <div className={classes.cardContent}>{formList}</div>
+                                </Grid>
+                            </Grid>
+                        </Paper>
+                    </Grid>}
+                    {steplist && <Grid item xs={12}>
+                        <Paper className={classes.cards}>
+                            <Grid container spacing={8}>
+                                <Grid item xs={2} sm={1}></Grid>
+                                <Grid item xs={10} sm={11}>
+                                    <div className={classes.cardContent}>{steplist}</div>
+                                </Grid>
+                            </Grid>
+                        </Paper>
+                    </Grid>}
+                    {qaList && <Grid item xs={12}>
+                        <Paper className={classes.cards}>
+                            <Grid container spacing={8}>
+                                <Grid item xs={2} sm={1}></Grid>
+                                <Grid item xs={10} sm={11}>
+                                    <div className={classes.cardContent}>{qaList}</div>
+                                </Grid>
+                            </Grid>
+                        </Paper>
+                    </Grid>}
+                    {locList && <Grid item xs={12}>
+                        <Paper className={classes.cards}>
+                            <Grid container spacing={8}>
+                                <Grid item xs={2} sm={1}></Grid>
+                                <Grid item xs={10} sm={11}>
+                                    <div className={classes.cardContent}>{locList}</div>
+                                </Grid>
+                            </Grid>
+                        </Paper>
+                    </Grid>}
                 </Grid>
-                {price && <Grid item xs={12}>
-                    <Paper className={classes.cards}>
-                        <Grid container spacing={8}>
-                            <Grid item xs={2} sm={1}>
-                               
-                            </Grid>
-                            <Grid item xs={10} sm={11}>
-                                <div className={classes.cardContent}>
-                                    <Typography variant="body2" gutterBottom>
-                                        {price}
-                                    </Typography>
-                                </div>
-                            </Grid>
-                        </Grid>
-                    </Paper>
-                </Grid>}
-                {timingList && <Grid item xs={12}>
-                    <Paper className={classes.cards}>
-                        <Grid container spacing={8}>
-                            <Grid item xs={2} sm={1}>
-                               
-                            </Grid>
-                            <Grid item xs={10} sm={11}>
-                                <div className={classes.cardContent}>{timingList}</div>
-                            </Grid>
-                        </Grid>
-                    </Paper>
-                </Grid>}
-                {formList && <Grid item xs={12}>
-                    <Paper className={classes.cards}>
-                        <Grid container spacing={8}>
-                            <Grid item xs={2} sm={1}>
-                                
-                            </Grid>
-                            <Grid item xs={10} sm={11}>
-                                <div className={classes.cardContent}>{formList}</div>
-                            </Grid>
-                        </Grid>
-                    </Paper>
-                </Grid>}
-                {steplist && <Grid item xs={12}>
-                    <Paper className={classes.cards}>
-                        <Grid container spacing={8}>
-                            <Grid item xs={2} sm={1}>
-                               
-                            </Grid>
-                            <Grid item xs={10} sm={11}>
-                                <div className={classes.cardContent}>{steplist}</div>
-                            </Grid>
-                        </Grid>
-                    </Paper>
-                </Grid>}
-                {qaList && <Grid item xs={12}>
-                    <Paper className={classes.cards}>
-                        <Grid container spacing={8}>
-                            <Grid item xs={2} sm={1}>
-                               
-                            </Grid>
-                            <Grid item xs={10} sm={11}>
-                                <div className={classes.cardContent}>{qaList}</div>
-                            </Grid>
-                        </Grid>
-                    </Paper>
-                </Grid>}
-                {locList && <Grid item xs={12}>
-                    <Paper className={classes.cards}>
-                        <Grid container spacing={8}>
-                            <Grid item xs={2} sm={1}>
-                                
-                            </Grid>
-                            <Grid item xs={10} sm={11}>
-                                <div className={classes.cardContent}>{locList}</div>
-                            </Grid>
-                        </Grid>
-                    </Paper>
-                </Grid>}
+                <Grid item xs={12} sm={12} md={6}>
+                    {contact_details && <ContactDetails info={contact_details}/>}
+                    {service_del_links && <ServiceDeliveryLink serDelLinks={service_del_links}/>}
+                    {offeredInDetails}
+                </Grid>
             </Grid>
-            <Grid item xs={12} sm={12} md={6}>
-                {contact_details && <ContactDetails info={contact_details}/>}
-                {service_del_links && <ServiceDeliveryLink serDelLinks={service_del_links}/>}
-                {offeredInDetails}
-            </Grid>
-        </Grid>)
+        )
     }
 }
 

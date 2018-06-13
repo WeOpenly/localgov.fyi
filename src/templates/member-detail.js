@@ -56,7 +56,8 @@ class MemberDetail extends React.Component {
 
         fetch(`https://track.localgov.fyi/localgov.fyi/track.png?${payloadParams}`).then(function (data) {
             // pass
-        }).catch(function (error) {
+        })
+            .catch(function (error) {
                 // pass
             });
     }

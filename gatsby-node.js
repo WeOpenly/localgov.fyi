@@ -41,10 +41,6 @@ allOrgsJson {
             open,
             day
           }
-          service_location {
-            description,
-            address
-          }
           service_description
           service_faq { 
             question
@@ -163,7 +159,7 @@ contact_details {
                 price: service.price,
                 allSteps: [],
                 allMems: [],
-                alllocations: service.service_location || [],
+                alllocations: [],
                 alltimings : service.service_timing || [],
                 allfaq : service.service_faq || [],
                 service_del_links: service.service_del_links || [],

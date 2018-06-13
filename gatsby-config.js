@@ -62,6 +62,5 @@ module.exports = {
     // This plugin generates a service worker and AppShell html file so the site
     // works offline and is otherwise resistant to bad networks. Works with almost
     // any site!
-    `gatsby-plugin-offline`,
   ]
 }

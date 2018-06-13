@@ -1,11 +1,5 @@
 [
     {
-        "componentChunkName": "component---node-modules-gatsby-plugin-offline-app-shell-js",
-        "layout": null,
-        "jsonName": "offline-plugin-app-shell-fallback.json",
-        "path": "/offline-plugin-app-shell-fallback/"
-    },
-    {
         "componentChunkName": "component---src-templates-organization-detail-js",
         "layout": "layout---detailTemplate",
         "layoutComponentChunkName": "component---src-layouts-detail-template-js",
@@ -102,6 +96,12 @@
         "layoutComponentChunkName": "component---src-layouts-detail-template-js",
         "jsonName": "service-25-db-992-d-eb-6-f-494-c-ba-6-e-fe-29-ea-99-d-6-fd.json",
         "path": "/service/25db992d-eb6f-494c-ba6e-fe29ea99d6fd"
+    },
+    {
+        "componentChunkName": "component---cache-dev-404-page-js",
+        "layout": null,
+        "jsonName": "dev-404-page.json",
+        "path": "/dev-404-page/"
     },
     {
         "componentChunkName": "component---src-pages-about-js",

@@ -243,7 +243,7 @@ class SearchResults extends Component {
                 listComp.push(comp);
             }
         });
-        console.log(listComp);
+
         return (
             <Grid container className={classes.searchResults} spacing={16}>
                 <Grid item xs={12} sm={8}>

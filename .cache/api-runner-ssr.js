@@ -1,14 +1,11 @@
 var plugins = [{
-      plugin: require('/Users/ybv/code/ybv-projects/openly-web/data/explore_static/node_modules/gatsby-plugin-sitemap/gatsby-ssr'),
+      plugin: require('/Users/ybv/code/ybv-projects/localgov.fyi_frontend/node_modules/gatsby-plugin-sitemap/gatsby-ssr'),
       options: {"plugins":[]},
     },{
-      plugin: require('/Users/ybv/code/ybv-projects/openly-web/data/explore_static/node_modules/gatsby-plugin-manifest/gatsby-ssr'),
-      options: {"plugins":[],"name":"Local Gov","short_name":"localgov","start_url":"/","background_color":"#f7f7f7","theme_color":"#191919","display":"minimal-ui"},
+      plugin: require('/Users/ybv/code/ybv-projects/localgov.fyi_frontend/node_modules/gatsby-plugin-manifest/gatsby-ssr'),
+      options: {"plugins":[],"name":"Local Gov","short_name":"localgov","start_url":"/","background_color":"#f7f7f7","theme_color":"#0000ca","display":"minimal-ui"},
     },{
-      plugin: require('/Users/ybv/code/ybv-projects/openly-web/data/explore_static/node_modules/gatsby-plugin-google-analytics/gatsby-ssr'),
-      options: {"plugins":[],"trackingId":"UA-91652198-1"},
-    },{
-      plugin: require('/Users/ybv/code/ybv-projects/openly-web/data/explore_static/gatsby-ssr'),
+      plugin: require('/Users/ybv/code/ybv-projects/localgov.fyi_frontend/gatsby-ssr'),
       options: {"plugins":[]},
     }]
 // During bootstrap, we write requires at top of this file which looks like:

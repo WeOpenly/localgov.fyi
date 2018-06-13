@@ -173,6 +173,14 @@ class HeaderSuggestBox extends Component {
         const {dispatch} = this.props;
         if(searchText){
             dispatch(updateInput(searchText))
+
+        }
+    }
+
+    componentWillReceiveProps(nextProps){
+        const {searchText} = this.props;
+
+        if (searchText !== nextProps.searchText){
             dispatch(fetchSearchResults)
         }
     }
@@ -293,8 +301,11 @@ class HeaderSuggestBox extends Component {
     }
 
     handleChange(event, {newValue, method}) {
+        console.log("here", event, newValue, method);
         const {dispatch} = this.props;
-        dispatch(updateInput(newValue))
+        if (method === "type") {
+            dispatch(updateInput(newValue))
+        }
     }
 
     selectSuggestion(event, {suggestion, suggestionValue, suggestionIndex, sectionIndex, method}) {

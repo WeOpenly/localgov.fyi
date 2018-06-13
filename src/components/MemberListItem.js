@@ -59,7 +59,7 @@ class MemberListItem extends Component {
                     </div>
                 }
                 <CardContent>
-                    <Typography variant="heading">
+                    <Typography variant="title">
                         {item.person_name}
                     </Typography>
                     <Typography variant="caption">

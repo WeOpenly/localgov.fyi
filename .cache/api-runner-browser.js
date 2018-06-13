@@ -1,11 +1,5 @@
 var plugins = [{
-      plugin: require('/Users/ybv/code/ybv-projects/openly-web/data/explore_static/node_modules/gatsby-plugin-offline/gatsby-browser'),
-      options: {"plugins":[]},
-    },{
-      plugin: require('/Users/ybv/code/ybv-projects/openly-web/data/explore_static/node_modules/gatsby-plugin-google-analytics/gatsby-browser'),
-      options: {"plugins":[],"trackingId":"UA-91652198-1"},
-    },{
-      plugin: require('/Users/ybv/code/ybv-projects/openly-web/data/explore_static/gatsby-browser'),
+      plugin: require('/Users/ybv/code/ybv-projects/localgov.fyi_frontend/gatsby-browser'),
       options: {"plugins":[]},
     }]
 // During bootstrap, we write requires at top of this file which looks

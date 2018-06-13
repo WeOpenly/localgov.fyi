@@ -33,7 +33,6 @@ class Search extends React.Component {
     componentDidMount() {
         const {dispatch} = this.props;
         const { pathname } = windowGlobal.location;
-        console.log(pathname);
  
         if (pathname === '/') {
             dispatch(fetchMeta);

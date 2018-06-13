@@ -72,7 +72,6 @@ function downloadFile(filename) {
 
 const getOrgsFromS3 = async () => {
   const s3Data = await listAllKeys(params);
-  console.log(allKeys)
   allKeys.forEach(async function (s3Object) {
     const data = await downloadFile(s3Object);
   });

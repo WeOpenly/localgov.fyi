@@ -39,8 +39,18 @@ class MemberDetail extends React.Component {
         data: PropTypes.shape({postsJson: PropTypes.object.isRequired})
     }
 
-    componentDidMount() {
-        const { org_id, id } = this.props.pathContext.data;
+    render() {
+        const {classes} = this.props;
+        const {
+            contact_details,
+            person_name,
+            person_image,
+            org_id,
+            id,
+            org_name,
+            related_members
+        } = this.props.pathContext.data;
+
         const eventParams = {
             event_type: 'overview_query',
             type: 'membership',
@@ -53,25 +63,6 @@ class MemberDetail extends React.Component {
             .keys(eventParams)
             .map(k => `${encodeURIComponent(k)}=${encodeURIComponent(eventParams[k])}`)
             .join('&');
-
-        fetch(`https://track.localgov.fyi/localgov.fyi/track.png?${payloadParams}`).then(function (data) {
-            // pass
-        })
-            .catch(function (error) {
-                // pass
-            });
-    }
-
-    render() {
-        const {classes} = this.props;
-        const {
-            contact_details,
-            person_name,
-            person_image,
-            org_id,
-            org_name,
-            related_members
-        } = this.props.pathContext.data;
 
         let relatedSection = null;
         const personOrg = (
@@ -128,13 +119,14 @@ class MemberDetail extends React.Component {
                     <div>{personOrg}</div>
                     <br/> {relatedSection}
                 </Grid>
-                <Grid tem xs={12} sm={12} md={1}/>
+                <Grid item xs={12} sm={12} md={1}/>
                 <Grid item xs={12} sm={12} md={4}>
                     <br/>
                     <div>
                         {contact_details && <ContactDetails info={contact_details}/>}
                     </div>
                     <br/>
+                    <img src={`https://track.localgov.fyi/localgov.fyi/track.png?${payloadParams}`} alt={"localgov-track"} /> 
                 </Grid>
             </Grid>
         )

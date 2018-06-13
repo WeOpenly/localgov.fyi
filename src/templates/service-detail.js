@@ -68,9 +68,6 @@ class ServiceDetails extends Component {
             service_del_links
         } = this.props.pathContext.data;
 
-        console.log(this.props.pathContext.data);
-
-
         let timingList = null;
         if (alltimings.length > 0) {
             timingList = alltimings.map((timing, index) => {

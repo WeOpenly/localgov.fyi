@@ -143,8 +143,8 @@ class ContactDetails extends Component {
             const contactDetailClassName = classNames(iconClasses);
 
             return (
-                <Grid item className={`${classes.detailsGridItem} ${idx < arr.length - 1 ? classes.detailsBorderBottom : ''}`}>
-                    <Grid key={contactType} container spacing={16} className={classes.gridItem}>
+                <Grid key={contactType} item className={`${classes.detailsGridItem} ${idx < arr.length - 1 ? classes.detailsBorderBottom : ''}`}>
+                    <Grid  container spacing={16} className={classes.gridItem}>
                         <Grid item xs={2}>
                             <div className={classes.linkIconContainer}>
                                 <i style={{ fontSize: "24px" }} className={contactDetailClassName}>

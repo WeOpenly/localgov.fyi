@@ -72,13 +72,12 @@ export const fetchSearchResults = async(dispatch, getState) => {
     const {input} = getState().search;
     dispatch(requestSearchResults());
 
-    // dispatch(clearSuggestions());
+    dispatch(clearInput());
     try {
         const data = await GetApi(null, `search?country=usa&q=${input}`);
         const searchResults = await data;
 
         const {results} = searchResults;
-        console.log(results);
 
         if ("semantic_available" in results && results["semantic_available"] === true) {
             dispatch(recvSemanticResults(results));
@@ -106,17 +105,16 @@ export const fetchMeta = async(dispatch, getState) => {
             dispatch(recvMetaFailed())
         }
     } catch (e) {
-        console.log(e)
         dispatch(recvMetaFailed());
     }
 };
 
 export const trackSuggestionClick = (query, index, country) => async(dispatch) => {
     try {
-        console.log(query)
+
         await GetApi('en', `track_suggestion_click?country=${country}&query=${query}&index=${index}`);
     } catch (e) {
-        console.log(e)
+
     }
 };
 
@@ -131,13 +129,11 @@ export const fetchSearchSuggestions = async(dispatch, getState) => {
 
 
         if (searchResults.success) {
-
             dispatch(setSearchSuggesitions(searchResults));
         } else {
             dispatch(recvSuggestionsFailed());
         }
     } catch (e) {
-        console.log(e)
         dispatch(recvSuggestionsFailed());
     }
 };

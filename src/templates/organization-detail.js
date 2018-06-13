@@ -32,8 +32,11 @@ const styles = theme => ({
   },
 });
 class OrganizationDetail extends React.Component {
-  componentDidMount() {
-    const {id} = this.props.pathContext.data;
+
+
+  render() {
+    const {id, services, members, contact_details, name} = this.props.pathContext.data;
+
     const eventParams = {
       event_type: 'overview_query',
       type: 'organization',
@@ -45,17 +48,6 @@ class OrganizationDetail extends React.Component {
       .keys(eventParams)
       .map(k => `${encodeURIComponent(k)}=${encodeURIComponent(eventParams[k])}`)
       .join('&');
-
-    fetch(`https://track.localgov.fyi/localgov.fyi/track.png?${payloadParams}`).then(function (data) {
-      // pass
-    }).catch(function (error) {
-      // pass
-    });
-  }
-
-  render() {
-    const {services, members, contact_details, name} = this.props.pathContext.data;
-    console.log(this.props);
 
     let contactDetailComponent = null;
     let memberListComp = null;
@@ -109,6 +101,7 @@ class OrganizationDetail extends React.Component {
           <Grid item xs={12} sm={12}>
             <br />
          {contactDetailComponent}
+            <img src={`https://track.localgov.fyi/localgov.fyi/track.png?${payloadParams}`} alt={"localgov-track"} /> 
           </Grid>
           <Grid item xs={12} sm={12}>
             <br />

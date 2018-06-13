@@ -75,7 +75,6 @@ contact_details {
       if (result.errors) {
         reject(new Error(result.errors))
       }
-      console.log(result);
       // Create image post pages.
       const orgTemplate = path.resolve(`src/templates/organization-detail.js`)
       // We want to create a detailed page for each Instagram post. Since the scrapped
@@ -124,6 +123,7 @@ contact_details {
             context: {
               data: {
                 contact_details: member.contact_details,
+                id: member.id,
                 person_name: member.person_name,
                 person_image: member.person_image,
                 org_id: edge.node.details.id,

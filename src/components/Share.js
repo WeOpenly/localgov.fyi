@@ -66,18 +66,18 @@ class Share extends React.Component {
             <div className={classes.root}>
                 <Dialog open={open} onClose={this.handleClose}>
                     <Grid container spacing={32} className={classes.dialogContainer}>
-                        <Grid item xs={12} align="center" justify="center">
+                        <Grid item xs={12} align="center" >
                             <Typography variant="subheading" align="center" gutterBottom>
                                 COPY LINK TO SHARE
                             </Typography>
                         </Grid>
-                        <Grid item xs={12} align="center" justify="center">
+                        <Grid item xs={12} align="center">
                             <Typography variant="body2" component="code" align="center" gutterBottom>
                                 {windowGlobal ? windowGlobal.location.href : ''}
                             </Typography>
                             <br/>
                         </Grid>
-                        <Grid item xs={12} align="center" justify="center">
+                        <Grid item xs={12} align="center" >
                             <Grid container spacing={16}>
                                 <Grid item xs={5}/>
                                 <Grid item xs={1}>

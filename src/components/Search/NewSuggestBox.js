@@ -40,14 +40,14 @@ boldWrapper : {
     "&:hover": {
         background: fade(theme.palette.common.white, 0.25)
     },
-    "& $input": {
+    "&input": {
         background: theme.palette.common.white,
         transition: theme
             .transitions
             .create("width"),
         width: "100%"
     },
-    "& $form": {
+    "&form": {
         transition: theme
             .transitions
             .create("width"),
@@ -65,13 +65,13 @@ wrapper : {
         background: fade(theme.palette.common.white, 0.25),
         boxShadow: `0 0 3px 1px ${theme.palette.primary["100"]}`
     },
-    "& $input": {
+    "&input": {
         transition: theme
             .transitions
             .create("width"),
         width: "100%"
     },
-    "& $form": {
+    "&form": {
         transition: theme
             .transitions
             .create("width"),
@@ -317,7 +317,9 @@ class NewSuggestBox extends Component {
 
     handleChange(event, { newValue, method }) {
         const { dispatch } = this.props;
-        dispatch(updateInput(newValue))
+        if (method === "type"){
+            dispatch(updateInput(newValue))
+        }
     }
 
     selectSuggestion(event, { suggestion, suggestionValue, suggestionIndex, sectionIndex, method }) {

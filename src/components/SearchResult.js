@@ -33,7 +33,6 @@ class SearchResult extends Component {
         if (this.props.subtitle){
             subtitle = this.props.subtitle;
         }
-        console.log(this.props, "search result props");
 
         return (
             <Card className={classes.card} onClick={() => navigateTo(toLink)} >

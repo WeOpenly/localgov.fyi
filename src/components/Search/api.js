@@ -43,7 +43,8 @@ export function GetApi(lang = undefined, endPoint, headers = {}) {
     // }
 
     let headersForGet = {
-        credentials: 'include'
+        credentials: 'include',
+        'Access-Control-Allow-Origin': '*',
     }
 
     if (headers) {

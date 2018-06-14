@@ -15,6 +15,8 @@
         "gatsby-plugin-create-client-paths": "^1.0.8",
         "gatsby-plugin-glamor": "latest",
         "gatsby-plugin-manifest": "latest",
+        "gatsby-plugin-netlify": "^1.0.21",
+        "gatsby-plugin-nprogress": "^1.0.14",
         "gatsby-plugin-react-next": "^1.0.11",
         "gatsby-plugin-sharp": "latest",
         "gatsby-plugin-sitemap": "^1.2.25",

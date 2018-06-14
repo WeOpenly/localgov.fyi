@@ -17,7 +17,7 @@ import SemanticResults from '../../components/SemanticResults';
 
 import withRoot from '../../withRoot';
 
-import {fetchSearchResults} from '../../components/Search/actions';
+import {updateInput, fetchSearchResults} from '../../components/Search/actions';
 
 const styles = theme => ({
     root: {
@@ -40,17 +40,28 @@ const styles = theme => ({
 
 class Index extends React.Component {
 
-    render() {
-        const {classes, location, search} = this.props;
+    componentDidMount() {
+        const {dispatch, location } = this.props;
         const { pathname } = location;
-        const {isSemantic, searchResultsLoading, searchResultsLoadingFailed} = search;
-
+ 
         const pathNameFragments = pathname.split('/');
 
         let searchText = null;
         if (pathNameFragments.length > 1) {
             searchText = pathNameFragments[2]
         }
+
+        if (searchText) {
+            dispatch(updateInput(searchText));
+            dispatch(fetchSearchResults);
+        }
+    }
+
+    render() {
+        const {classes, location, search} = this.props;
+        const {pathname} = location;
+        const {isSemantic, searchResultsLoading, searchResultsLoadingFailed} = search;
+       
 
         if (searchResultsLoading) {
             return (<Spinner name="ball-beat" color="blue"/>);
@@ -62,11 +73,13 @@ class Index extends React.Component {
 
         return (
             <div className={classes.root}>
-                <HeaderWithSearch searchText={searchText}/>
+                <HeaderWithSearch />
                 <Grid container spacing={0}>
                     <Grid item xs={1} md={1}/>
                     <Grid className={classes.searchResults} item xs={10} md={10}>
-                        {isSemantic ? (<SemanticResults/> ) : (<SearchResults/>) }
+                        {isSemantic
+                            ? (<SemanticResults/>)
+                            : (<SearchResults/>)}
                     </Grid>
                     <Grid item xs={1} md={1}/>
                 </Grid>

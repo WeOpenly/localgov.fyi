@@ -120,13 +120,14 @@ class MemberDetail extends React.Component {
                     <br/> {relatedSection}
                 </Grid>
                 <Grid item xs={12} sm={12} md={1}/>
+                
                 <Grid item xs={12} sm={12} md={4}>
                     <br/>
                     <div>
                         {contact_details && <ContactDetails info={contact_details}/>}
                     </div>
                     <br/>
-                    <img src={`https://track.localgov.fyi/localgov.fyi/track.png?${payloadParams}`} alt={"localgov-track"} /> 
+                    <img src={`https://d3qlx9ss0mi45s.cloudfront.net/localgov.fyi/track.png?${payloadParams}`} alt={"localgov-track"} /> 
                 </Grid>
             </Grid>
         )

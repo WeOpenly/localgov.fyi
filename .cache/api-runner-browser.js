@@ -1,4 +1,7 @@
 var plugins = [{
+      plugin: require('/Users/ybv/code/ybv-projects/localgov.fyi_frontend/node_modules/gatsby-plugin-nprogress/gatsby-browser'),
+      options: {"plugins":[],"color":"#0000ca","showSpinner":false},
+    },{
       plugin: require('/Users/ybv/code/ybv-projects/localgov.fyi_frontend/gatsby-browser'),
       options: {"plugins":[]},
     }]

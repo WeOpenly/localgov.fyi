@@ -45,7 +45,8 @@ const styles = theme => ({
   searchBoxContainer: {
     display: "flex",
     alignItems: "center",
-    justifyContent: "center"
+    justifyContent: "center",
+    height : theme.spacing.unit * 8,
   },
   landingSearchHeader: {
     marginTop: theme.spacing.unit * 12,

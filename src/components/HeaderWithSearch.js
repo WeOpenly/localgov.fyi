@@ -36,10 +36,8 @@ const styles = theme => ({
 });
 
 class HeaderWithSearch extends Component {
-
-
   render() {
-    const { classes, searchText} = this.props;
+    const { classes} = this.props;
 
     return (
       <AppBar position="static" className={classes.header}>
@@ -50,7 +48,7 @@ class HeaderWithSearch extends Component {
             </Typography>
           </Grid>
           <Grid item xs={12} sm={6}>
-            <Search inHeader={true} searchText={searchText}/>
+            <Search inHeader={true}/>
           </Grid>
           <Grid item sm={3}/>
         </Grid>

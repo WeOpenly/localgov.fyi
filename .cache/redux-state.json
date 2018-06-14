@@ -1,23 +1,13 @@
 {
   "nodes": {
     "SitePage /dev-404-page/": {
-      "layout": null,
-      "jsonName": "dev-404-page.json",
-      "internalComponentName": "ComponentDev404Page",
       "path": "/dev-404-page/",
-      "component": "/Users/ybv/code/ybv-projects/localgov.fyi_frontend/.cache/dev-404-page.js",
-      "componentChunkName": "component---cache-dev-404-page-js",
-      "context": {},
-      "pluginCreator___NODE": "Plugin dev-404-page",
-      "pluginCreatorId": "Plugin dev-404-page",
-      "componentPath": "/Users/ybv/code/ybv-projects/localgov.fyi_frontend/.cache/dev-404-page.js",
       "id": "SitePage /dev-404-page/",
       "parent": "SOURCE",
       "children": [],
       "internal": {
         "type": "SitePage",
-        "contentDigest": "423305532c474e58a64423759fd89460",
-        "description": "Plugin dev-404-page",
+        "contentDigest": "f91d29e10ba680b413138cf9ed86e655",
         "owner": "internal-data-bridge"
       }
     },
@@ -487,186 +477,6 @@
         "owner": "internal-data-bridge"
       }
     },
-    "Plugin gatsby-plugin-sharp": {
-      "resolve": "/Users/ybv/code/ybv-projects/localgov.fyi_frontend/node_modules/gatsby-plugin-sharp",
-      "id": "Plugin gatsby-plugin-sharp",
-      "name": "gatsby-plugin-sharp",
-      "version": "1.6.47",
-      "pluginOptions": {
-        "plugins": []
-      },
-      "nodeAPIs": [],
-      "browserAPIs": [],
-      "ssrAPIs": [],
-      "pluginFilepath": "/Users/ybv/code/ybv-projects/localgov.fyi_frontend/node_modules/gatsby-plugin-sharp",
-      "packageJson": {
-        "name": "gatsby-plugin-sharp",
-        "description": "Wrapper of the Sharp image manipulation library for Gatsby plugins",
-        "version": "1.6.47",
-        "main": "index.js",
-        "keywords": [
-          "gatsby",
-          "gatsby-plugin",
-          "image",
-          "sharp"
-        ],
-        "author": {
-          "name": "Kyle Mathews",
-          "email": "mathews.kyle@gmail.com"
-        },
-        "license": "MIT",
-        "dependencies": [
-          {
-            "name": "async",
-            "version": "^2.1.2"
-          },
-          {
-            "name": "babel-runtime",
-            "version": "^6.26.0"
-          },
-          {
-            "name": "bluebird",
-            "version": "^3.5.0"
-          },
-          {
-            "name": "imagemin",
-            "version": "^5.2.2"
-          },
-          {
-            "name": "imagemin-pngquant",
-            "version": "5.0.1"
-          },
-          {
-            "name": "imagemin-webp",
-            "version": "^4.0.0"
-          },
-          {
-            "name": "lodash",
-            "version": "^4.17.4"
-          },
-          {
-            "name": "mini-svg-data-uri",
-            "version": "^1.0.0"
-          },
-          {
-            "name": "potrace",
-            "version": "^2.1.1"
-          },
-          {
-            "name": "probe-image-size",
-            "version": "^4.0.0"
-          },
-          {
-            "name": "progress",
-            "version": "^1.1.8"
-          },
-          {
-            "name": "sharp",
-            "version": "^0.20.0"
-          },
-          {
-            "name": "svgo",
-            "version": "^0.7.2"
-          }
-        ],
-        "devDependencies": [
-          {
-            "name": "babel-cli",
-            "version": "^6.26.0"
-          },
-          {
-            "name": "cross-env",
-            "version": "^5.0.5"
-          }
-        ],
-        "peerDependencies": [
-          {
-            "name": "gatsby",
-            "version": "^1.0.0"
-          }
-        ],
-        "optionalDependecies": [],
-        "bundledDependecies": []
-      },
-      "parent": "SOURCE",
-      "children": [],
-      "internal": {
-        "contentDigest": "13e36e9854fe121f97e0ed28d2e7ea2b",
-        "type": "SitePlugin",
-        "owner": "internal-data-bridge"
-      }
-    },
-    "Plugin gatsby-transformer-sharp": {
-      "resolve": "/Users/ybv/code/ybv-projects/localgov.fyi_frontend/node_modules/gatsby-transformer-sharp",
-      "id": "Plugin gatsby-transformer-sharp",
-      "name": "gatsby-transformer-sharp",
-      "version": "1.6.26",
-      "pluginOptions": {
-        "plugins": []
-      },
-      "nodeAPIs": [
-        "onCreateNode",
-        "setFieldsOnGraphQLNodeType",
-        "onPreExtractQueries"
-      ],
-      "browserAPIs": [],
-      "ssrAPIs": [],
-      "pluginFilepath": "/Users/ybv/code/ybv-projects/localgov.fyi_frontend/node_modules/gatsby-transformer-sharp",
-      "packageJson": {
-        "name": "gatsby-transformer-sharp",
-        "description": "Gatsby transformer plugin for images using Sharp",
-        "version": "1.6.26",
-        "keywords": [
-          "gatsby",
-          "gatsby-plugin",
-          "image",
-          "sharp"
-        ],
-        "author": {
-          "name": "Kyle Mathews",
-          "email": "mathews.kyle@gmail.com"
-        },
-        "license": "MIT",
-        "dependencies": [
-          {
-            "name": "babel-runtime",
-            "version": "^6.26.0"
-          },
-          {
-            "name": "bluebird",
-            "version": "^3.5.0"
-          },
-          {
-            "name": "fs-extra",
-            "version": "^4.0.2"
-          },
-          {
-            "name": "probe-image-size",
-            "version": "^4.0.0"
-          }
-        ],
-        "devDependencies": [
-          {
-            "name": "babel-cli",
-            "version": "^6.26.0"
-          },
-          {
-            "name": "cross-env",
-            "version": "^5.0.5"
-          }
-        ],
-        "peerDependencies": [],
-        "optionalDependecies": [],
-        "bundledDependecies": []
-      },
-      "parent": "SOURCE",
-      "children": [],
-      "internal": {
-        "contentDigest": "9483703fdf1453387ddb0c0f1205adb4",
-        "type": "SitePlugin",
-        "owner": "internal-data-bridge"
-      }
-    },
     "Plugin gatsby-transformer-json": {
       "resolve": "/Users/ybv/code/ybv-projects/localgov.fyi_frontend/node_modules/gatsby-transformer-json",
       "id": "Plugin gatsby-transformer-json",
@@ -872,11 +682,154 @@
         "owner": "internal-data-bridge"
       }
     },
+    "Plugin gatsby-plugin-nprogress": {
+      "resolve": "/Users/ybv/code/ybv-projects/localgov.fyi_frontend/node_modules/gatsby-plugin-nprogress",
+      "id": "Plugin gatsby-plugin-nprogress",
+      "name": "gatsby-plugin-nprogress",
+      "version": "1.0.14",
+      "pluginOptions": {
+        "plugins": [],
+        "color": "#0000ca",
+        "showSpinner": false
+      },
+      "nodeAPIs": [],
+      "browserAPIs": [
+        "onClientEntry"
+      ],
+      "ssrAPIs": [],
+      "pluginFilepath": "/Users/ybv/code/ybv-projects/localgov.fyi_frontend/node_modules/gatsby-plugin-nprogress",
+      "packageJson": {
+        "name": "gatsby-plugin-nprogress",
+        "description": "Shows page loading indicator when loading page resources is delayed",
+        "version": "1.0.14",
+        "main": "index.js",
+        "keywords": [
+          "gatsby",
+          "gatsby-plugin"
+        ],
+        "author": {
+          "name": "Kyle Mathews",
+          "email": "mathews.kyle@gmail.com"
+        },
+        "license": "MIT",
+        "dependencies": [
+          {
+            "name": "babel-runtime",
+            "version": "^6.26.0"
+          },
+          {
+            "name": "nprogress",
+            "version": "^0.2.0"
+          }
+        ],
+        "devDependencies": [
+          {
+            "name": "babel-cli",
+            "version": "^6.26.0"
+          },
+          {
+            "name": "cross-env",
+            "version": "^5.0.5"
+          }
+        ],
+        "peerDependencies": [
+          {
+            "name": "gatsby",
+            "version": "^1.0.0"
+          }
+        ],
+        "optionalDependecies": [],
+        "bundledDependecies": []
+      },
+      "parent": "SOURCE",
+      "children": [],
+      "internal": {
+        "contentDigest": "49397c16b2085477f65ced56c8c37b86",
+        "type": "SitePlugin",
+        "owner": "internal-data-bridge"
+      }
+    },
+    "Plugin gatsby-plugin-netlify": {
+      "resolve": "/Users/ybv/code/ybv-projects/localgov.fyi_frontend/node_modules/gatsby-plugin-netlify",
+      "id": "Plugin gatsby-plugin-netlify",
+      "name": "gatsby-plugin-netlify",
+      "version": "1.0.21",
+      "pluginOptions": {
+        "plugins": []
+      },
+      "nodeAPIs": [
+        "modifyWebpackConfig",
+        "onPostBuild"
+      ],
+      "browserAPIs": [],
+      "ssrAPIs": [],
+      "pluginFilepath": "/Users/ybv/code/ybv-projects/localgov.fyi_frontend/node_modules/gatsby-plugin-netlify",
+      "packageJson": {
+        "name": "gatsby-plugin-netlify",
+        "description": "A Gatsby plugin which generates a _headers file for netlify",
+        "version": "1.0.21",
+        "main": "index.js",
+        "keywords": [
+          "gatsby",
+          "gatsby-plugin",
+          "http/2-server-push",
+          "netlify"
+        ],
+        "author": {
+          "name": "Kyle Mathews",
+          "email": "mathews.kyle@gmail.com"
+        },
+        "license": "MIT",
+        "dependencies": [
+          {
+            "name": "babel-runtime",
+            "version": "^6.26.0"
+          },
+          {
+            "name": "fs-extra",
+            "version": "^4.0.2"
+          },
+          {
+            "name": "lodash",
+            "version": "^4.17.4"
+          },
+          {
+            "name": "webpack-assets-manifest",
+            "version": "^1.0.0"
+          }
+        ],
+        "devDependencies": [
+          {
+            "name": "babel-cli",
+            "version": "^6.26.0"
+          },
+          {
+            "name": "cross-env",
+            "version": "^5.0.5"
+          }
+        ],
+        "peerDependencies": [
+          {
+            "name": "gatsby",
+            "version": "^1.0.0"
+          }
+        ],
+        "optionalDependecies": [],
+        "bundledDependecies": []
+      },
+      "parent": "SOURCE",
+      "children": [],
+      "internal": {
+        "contentDigest": "69043a497de0e09254cb49fb7a4ac903",
+        "type": "SitePlugin",
+        "owner": "internal-data-bridge"
+      }
+    },
     "Plugin default-site-plugin": {
       "resolve": "/Users/ybv/code/ybv-projects/localgov.fyi_frontend",
       "id": "Plugin default-site-plugin",
       "name": "default-site-plugin",
-      "version": "bdfb9d23e7dbe26dec14397d7e20405b",
+      "version": "4ff15cc612e5a10f84809cf485c0a90d",
       "pluginOptions": {
         "plugins": []
       },
@@ -940,6 +893,14 @@
           {
             "name": "gatsby-plugin-manifest",
             "version": "latest"
+          },
+          {
+            "name": "gatsby-plugin-netlify",
+            "version": "^1.0.21"
+          },
+          {
+            "name": "gatsby-plugin-nprogress",
+            "version": "^1.0.14"
           },
           {
             "name": "gatsby-plugin-react-next",
@@ -1079,7 +1040,7 @@
       "parent": "SOURCE",
       "children": [],
       "internal": {
-        "contentDigest": "d238fb4c501adbb770c39bd5a3f239f7",
+        "contentDigest": "7664db890d3e24753c3e209af8c61e70",
         "type": "SitePlugin",
         "owner": "internal-data-bridge"
       }
@@ -1089,16 +1050,14 @@
         "title": "Search for local government organizations, members, and services",
         "siteUrl": "https://localgov.fyi"
       },
-      "port": "8000",
-      "host": "localhost",
       "pathPrefix": "",
       "polyfill": true,
-      "buildTime": "2018-06-13T22:16:16.136Z",
+      "buildTime": "2018-06-14T19:44:36.621Z",
       "id": "Site",
       "parent": "SOURCE",
       "children": [],
       "internal": {
-        "contentDigest": "c7fc9fe2b665221f0fd56a88040df568",
+        "contentDigest": "ea070b580a20f6beb2a25e5b70ff89c2",
         "type": "Site",
         "owner": "internal-data-bridge"
       }
@@ -1108,7 +1067,7 @@
       "children": [],
       "parent": "___SOURCE___",
       "internal": {
-        "contentDigest": "b8e17cf0c9774470826d952d3bb70daf",
+        "contentDigest": "40027032ccbdef2c93c4673a6b21a188",
         "type": "Directory",
         "description": "Directory \"data\"",
         "owner": "gatsby-source-filesystem"
@@ -1120,7 +1079,7 @@
       "size": 96,
       "prettySize": "96 B",
       "modifiedTime": "2018-06-11T18:25:05.699Z",
-      "accessTime": "2018-06-13T22:16:18.173Z",
+      "accessTime": "2018-06-14T19:44:39.942Z",
       "changeTime": "2018-06-11T18:25:05.699Z",
       "birthTime": "2018-06-01T17:04:56.172Z",
       "root": "/",
@@ -1138,11 +1097,11 @@
       "blksize": 4194304,
       "ino": 8594189811,
       "blocks": 0,
-      "atimeMs": 1528928178173.0715,
+      "atimeMs": 1529005479942.3193,
       "mtimeMs": 1528741505699.2002,
       "ctimeMs": 1528741505699.2002,
       "birthtimeMs": 1527872696172.2903,
-      "atime": "2018-06-13T22:16:18.173Z",
+      "atime": "2018-06-14T19:44:39.942Z",
       "mtime": "2018-06-11T18:25:05.699Z",
       "ctime": "2018-06-11T18:25:05.699Z",
       "birthtime": "2018-06-01T17:04:56.172Z"
@@ -1152,7 +1111,7 @@
       "children": [],
       "parent": "___SOURCE___",
       "internal": {
-        "contentDigest": "8af775ce4725b4edbff351316c74f179",
+        "contentDigest": "a699d42a8dd440281748124c55f7ef01",
         "type": "Directory",
         "description": "Directory \"data/orgs\"",
         "owner": "gatsby-source-filesystem"
@@ -1164,7 +1123,7 @@
       "size": 96,
       "prettySize": "96 B",
       "modifiedTime": "2018-06-11T18:16:01.009Z",
-      "accessTime": "2018-06-13T22:16:18.175Z",
+      "accessTime": "2018-06-14T19:44:39.944Z",
       "changeTime": "2018-06-11T18:16:01.009Z",
       "birthTime": "2018-06-11T18:16:01.009Z",
       "root": "/",
@@ -1182,11 +1141,11 @@
       "blksize": 4194304,
       "ino": 8595310919,
       "blocks": 0,
-      "atimeMs": 1528928178174.7144,
+      "atimeMs": 1529005479944.2917,
       "mtimeMs": 1528740961008.8777,
       "ctimeMs": 1528740961008.8777,
       "birthtimeMs": 1528740961008.7815,
-      "atime": "2018-06-13T22:16:18.175Z",
+      "atime": "2018-06-14T19:44:39.944Z",
       "mtime": "2018-06-11T18:16:01.009Z",
       "ctime": "2018-06-11T18:16:01.009Z",
       "birthtime": "2018-06-11T18:16:01.009Z"
@@ -1211,7 +1170,7 @@
       "size": 12065,
       "prettySize": "12.1 kB",
       "modifiedTime": "2018-06-11T18:16:01.009Z",
-      "accessTime": "2018-06-13T20:43:40.990Z",
+      "accessTime": "2018-06-14T19:19:37.611Z",
       "changeTime": "2018-06-11T18:16:01.009Z",
       "birthTime": "2018-06-11T18:16:01.009Z",
       "root": "/",
@@ -1229,11 +1188,11 @@
       "blksize": 4194304,
       "ino": 8595310920,
       "blocks": 24,
-      "atimeMs": 1528922620990.3096,
+      "atimeMs": 1529003977610.6924,
       "mtimeMs": 1528740961009.0251,
       "ctimeMs": 1528740961009.0251,
       "birthtimeMs": 1528740961008.868,
-      "atime": "2018-06-13T20:43:40.990Z",
+      "atime": "2018-06-14T19:19:37.611Z",
       "mtime": "2018-06-11T18:16:01.009Z",
       "ctime": "2018-06-11T18:16:01.009Z",
       "birthtime": "2018-06-11T18:16:01.009Z"
@@ -1831,7 +1790,7 @@
       "children": [],
       "internal": {
         "type": "SitePage",
-        "contentDigest": "c301e96c4f65bb44a330fb63b2b1ddd3",
+        "contentDigest": "b858ac9de1faba999ea97b13c067265b",
         "description": "Your site's \"gatsby-node.js\"",
         "owner": "internal-data-bridge"
       }
@@ -1875,7 +1834,7 @@
       "children": [],
       "internal": {
         "type": "SitePage",
-        "contentDigest": "8d4bf662b275421017ebf760ae494618",
+        "contentDigest": "fcea4d6bafc26da00c0adc056d6ecbaf",
         "description": "Your site's \"gatsby-node.js\"",
         "owner": "internal-data-bridge"
       }
@@ -1919,7 +1878,7 @@
       "children": [],
       "internal": {
         "type": "SitePage",
-        "contentDigest": "44fbd23e16e276d56749bf01dde26b7c",
+        "contentDigest": "665d1e59e9f55555b87bbf7e118f9041",
         "description": "Your site's \"gatsby-node.js\"",
         "owner": "internal-data-bridge"
       }
@@ -1961,7 +1920,7 @@
       "children": [],
       "internal": {
         "type": "SitePage",
-        "contentDigest": "2ed4cf84bea63389db694c16f8c9262c",
+        "contentDigest": "9f25ef7b80fa4ef59ea5f6182f6fbe48",
         "description": "Your site's \"gatsby-node.js\"",
         "owner": "internal-data-bridge"
       }
@@ -2003,7 +1962,7 @@
       "children": [],
       "internal": {
         "type": "SitePage",
-        "contentDigest": "76b13706f02450535548d684001c90cc",
+        "contentDigest": "cd09e9e9c9b24bcf5fab615f1c68b343",
         "description": "Your site's \"gatsby-node.js\"",
         "owner": "internal-data-bridge"
       }
@@ -2040,7 +1999,7 @@
       "children": [],
       "internal": {
         "type": "SitePage",
-        "contentDigest": "e620cb5161168c7e55f236633d22e6c0",
+        "contentDigest": "386eec74bfebe71a409048fdbc2f0ec0",
         "description": "Your site's \"gatsby-node.js\"",
         "owner": "internal-data-bridge"
       }
@@ -2097,7 +2056,7 @@
       "children": [],
       "internal": {
         "type": "SitePage",
-        "contentDigest": "0d5a5a405a49e44d7d05498b339acbfb",
+        "contentDigest": "d5443e056ba2a3393404a5d3904b9c57",
         "description": "Your site's \"gatsby-node.js\"",
         "owner": "internal-data-bridge"
       }
@@ -2145,7 +2104,7 @@
       "children": [],
       "internal": {
         "type": "SitePage",
-        "contentDigest": "d2605c7d70c051b613148c0b22327c85",
+        "contentDigest": "7997431c2b12e607ae407aa347b27fab",
         "description": "Your site's \"gatsby-node.js\"",
         "owner": "internal-data-bridge"
       }
@@ -2211,7 +2170,7 @@
       "children": [],
       "internal": {
         "type": "SitePage",
-        "contentDigest": "5f57226d1136335ed1991a087cdaadd6",
+        "contentDigest": "904badc9b1108040152aac0f297a980a",
         "description": "Your site's \"gatsby-node.js\"",
         "owner": "internal-data-bridge"
       }
@@ -2248,7 +2207,7 @@
       "children": [],
       "internal": {
         "type": "SitePage",
-        "contentDigest": "5fe99ccf801d7e51313030f31de72fc6",
+        "contentDigest": "9de457430a8ef4ee03eec62fea869497",
         "description": "Your site's \"gatsby-node.js\"",
         "owner": "internal-data-bridge"
       }
@@ -2290,7 +2249,7 @@
       "children": [],
       "internal": {
         "type": "SitePage",
-        "contentDigest": "d3d5a2c6d38b247b6eae79a85d2e30c5",
+        "contentDigest": "f1fd7f85588ad815fa3b49520e42a594",
         "description": "Your site's \"gatsby-node.js\"",
         "owner": "internal-data-bridge"
       }
@@ -2356,7 +2315,7 @@
       "children": [],
       "internal": {
         "type": "SitePage",
-        "contentDigest": "bd04e9b99d488d303bab786ec1e5288f",
+        "contentDigest": "01a93736cba2c0e23a3b1aa573de1d55",
         "description": "Your site's \"gatsby-node.js\"",
         "owner": "internal-data-bridge"
       }
@@ -2406,7 +2365,7 @@
       "children": [],
       "internal": {
         "type": "SitePage",
-        "contentDigest": "a5f0e2bb6e288a7c44a3a0da0de5b501",
+        "contentDigest": "dd3d45d5abeee181e7576a80201449a2",
         "description": "Your site's \"gatsby-node.js\"",
         "owner": "internal-data-bridge"
       }
@@ -2457,7 +2416,7 @@
       "children": [],
       "internal": {
         "type": "SitePage",
-        "contentDigest": "613d18b55555d656688035986bc5081c",
+        "contentDigest": "5aa1e4fdd803e5fc89ba5585df930030",
         "description": "Your site's \"gatsby-node.js\"",
         "owner": "internal-data-bridge"
       }
@@ -2478,7 +2437,7 @@
       "children": [],
       "internal": {
         "type": "SitePage",
-        "contentDigest": "1192a5a10d505b72e267ac684760655c",
+        "contentDigest": "5c0525a9f110d8ad6290cb7650172676",
         "description": "Plugin component-page-creator",
         "owner": "internal-data-bridge"
       }
@@ -2499,7 +2458,7 @@
       "children": [],
       "internal": {
         "type": "SitePage",
-        "contentDigest": "1a125009032868d378de16e3935319b8",
+        "contentDigest": "ecd24f3ca9bf5a38fd1ec1aba93e2ea9",
         "description": "Plugin component-page-creator",
         "owner": "internal-data-bridge"
       }
@@ -2521,7 +2480,7 @@
       "children": [],
       "internal": {
         "type": "SitePage",
-        "contentDigest": "fcae7e25d8edc0a50130a6a5d58913a1",
+        "contentDigest": "36f45b6a42b68b66750694c267520ff9",
         "description": "Plugin gatsby-plugin-create-client-paths",
         "owner": "internal-data-bridge"
       }
@@ -2529,14 +2488,10 @@
   },
   "status": {
     "plugins": {},
-    "PLUGINS_HASH": "91f893b3418cb2403a453e4428964d73"
+    "PLUGINS_HASH": "e1b18aac7bf55fefe14222679efa5cdb"
   },
   "componentDataDependencies": {
     "nodes": {},
-    "connections": {
-      "SitePage": [
-        "/dev-404-page/"
-      ]
-    }
+    "connections": {}
   }
 }

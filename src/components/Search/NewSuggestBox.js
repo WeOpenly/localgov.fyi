@@ -343,12 +343,12 @@ class NewSuggestBox extends Component {
     }
 
     render() {
-          const {classes} = this.props;
+        const {classes} = this.props;
         
         const { input, searchSuggestions} = this.props.search;
         const {userCity} = this.props.search;
 
-        let placeholder = "Try 'Mateo'";
+        let placeholder = "";
 
         if (userCity) { placeholder = `Try '${userCity}'`; }
 
@@ -380,6 +380,7 @@ class NewSuggestBox extends Component {
                     value: input,
                     onChange: this.handleChange,
                     onKeyDown: () => {},
+                    onBlur: (event) => { event.preventDefault() },
                 }}/>
             </form>
         );

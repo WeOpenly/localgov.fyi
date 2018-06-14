@@ -72,22 +72,38 @@ export const fetchSearchResults = async(dispatch, getState) => {
     const {input} = getState().search;
     dispatch(requestSearchResults());
 
-    dispatch(clearInput());
     try {
         const data = await GetApi(null, `search?country=usa&q=${input}`);
         const searchResults = await data;
 
         const {results} = searchResults;
+        let isSemantic = false;
+        let resLen = 0;
 
         if ("semantic_available" in results && results["semantic_available"] === true) {
+            isSemantic = true;
             dispatch(recvSemanticResults(results));
         } else {
             const {list_results} = results;
             const res = {
                 'results': list_results
             }
+            resLen = list_results.length;
             dispatch(recvSearchResults(res));
         }
+
+        const eventParams = {
+            event_type: 'search_query',
+            search_query: input,
+            semantic: isSemantic,
+            number_of_results: resLen
+        }
+        const payloadParams = Object
+            .keys(eventParams)
+            .map(k => `${encodeURIComponent(k)}=${encodeURIComponent(eventParams[k])}`)
+            .join('&');
+
+        fetch(`https://d3qlx9ss0mi45s.cloudfront.net/localgov.fyi/track.png?${payloadParams}`, {}).then((data) => { }).catch((err) => { })
     } catch (e) {
         dispatch(recvSearchResultsFailure());
     }

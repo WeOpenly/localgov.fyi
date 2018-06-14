@@ -98,12 +98,6 @@
         "path": "/service/25db992d-eb6f-494c-ba6e-fe29ea99d6fd"
     },
     {
-        "componentChunkName": "component---cache-dev-404-page-js",
-        "layout": null,
-        "jsonName": "dev-404-page.json",
-        "path": "/dev-404-page/"
-    },
-    {
         "componentChunkName": "component---src-pages-about-js",
         "layout": null,
         "jsonName": "about.json",

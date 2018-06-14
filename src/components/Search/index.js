@@ -14,7 +14,7 @@ import NewSuggestBox from './NewSuggestBox';
 import HeaderSuggestBox from './HeaderSuggestBox';
 import withRoot from '../../withRoot';
 
-import {fetchMeta, setMetaFromUrl,  toggleSearchResultLayout, fetchSearchResults} from "./actions";
+import {fetchMeta, setMetaFromUrl,  toggleSearchResultLayout} from "./actions";
 
 const windowGlobal = typeof window !== 'undefined' && window
 
@@ -45,16 +45,20 @@ class Search extends React.Component {
     }
 
     render() {
-        const { classes, inHeader, searchText} = this.props;
+        const { classes, inHeader} = this.props;
         
         const {metaLoadingFailed, metaLoading, searchSuggestionsLoading} = this.props.search;
 
         if (metaLoading){
-            return (<Spinner name="ball-beat" color="blue" />);
+            return (<Grid container spacing={0}>
+                <Grid item xs={12} align="center">
+                    <Spinner name="ball-beat" color="blue" />
+                </Grid>
+            </Grid>);
         }
 
         if (inHeader) {
-            return (<HeaderSuggestBox searchText={searchText}/>);
+            return (<HeaderSuggestBox />);
         }
 
         return (<NewSuggestBox />);

@@ -29,13 +29,6 @@ module.exports = {
     }, {
       resolve: `gatsby-plugin-sitemap`
     },
-    // This plugin exposes helper functions for processing images with the NPM
-    // package “sharp”. It's used by several other plugins.
-    `gatsby-plugin-sharp`,
-    // This plugin identifies file nodes that are images and transforms these to
-    // create new “ImageSharp” nodes. With them you can resize images and generate
-    // responsive image thumbnails.
-    `gatsby-transformer-sharp`,
     // This plugin transforms JSON file nodes.
     `gatsby-transformer-json`,
     // This plugin sets up the popular css-in-js library Glamor. It handles adding a
@@ -59,6 +52,16 @@ module.exports = {
       prefixes : [`/search/*`]
       }
     },
+    {
+      resolve: `gatsby-plugin-nprogress`,
+      options: {
+        // Setting a color is optional.
+        color: `#0000ca`,
+        // Disable the loading spinner.
+        showSpinner: false,
+      },
+    },
+    `gatsby-plugin-netlify`,
     // This plugin generates a service worker and AppShell html file so the site
     // works offline and is otherwise resistant to bad networks. Works with almost
     // any site!

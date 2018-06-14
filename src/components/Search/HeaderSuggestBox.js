@@ -167,23 +167,6 @@ class HeaderSuggestBox extends Component {
             .shouldRenderSuggestions
             .bind(this);
     }
-    
-    componentDidMount() {
-        const {searchText} = this.props;
-        const {dispatch} = this.props;
-        if(searchText){
-            dispatch(updateInput(searchText))
-
-        }
-    }
-
-    componentWillReceiveProps(nextProps){
-        const {searchText} = this.props;
-
-        if (searchText !== nextProps.searchText){
-            dispatch(fetchSearchResults)
-        }
-    }
 
     renderSectionTitle(section) {
         const {classes} = this.props;
@@ -233,9 +216,13 @@ class HeaderSuggestBox extends Component {
         );
     }
 
+
     clearInput() {
         const {dispatch} = this.props;
         dispatch(clearInput());
+        const uri = `/search/`;
+        const encodedUri = encodeURI(uri);
+        navigateTo(encodedUri);
     }
 
     issueFreeSearch() {
@@ -301,6 +288,7 @@ class HeaderSuggestBox extends Component {
     }
 
     handleChange(event, {newValue, method}) {
+        console.log("onchange", newValue, method);
 
         const {dispatch} = this.props;
         if (method === "type") {
@@ -333,7 +321,7 @@ class HeaderSuggestBox extends Component {
         const {input, searchSuggestions} = this.props.search;
         const {userCity} = this.props.search;
 
-        let placeholder = "Try 'Mateo'";
+        let placeholder = null;
 
         if (userCity) {
             placeholder = `Try '${userCity}'`;
@@ -361,12 +349,13 @@ class HeaderSuggestBox extends Component {
                     onSuggestionSelected={this.selectSuggestion}
                     shouldRenderSuggestions={this.shouldRenderSuggestions}
                     inputProps={{
-                    autoFocus: true,
                     classes,
+                    type: 'search',
                     placeholder: placeholder,
                     value: input,
                     onChange: this.handleChange,
-                    onKeyDown: () => {}
+                    onKeyDown: () => {},
+                    onBlur: (event) => { event.preventDefault()},
                 }}/>
             </form>
         );

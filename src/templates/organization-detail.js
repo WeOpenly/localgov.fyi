@@ -101,7 +101,7 @@ class OrganizationDetail extends React.Component {
           <Grid item xs={12} sm={12}>
             <br />
          {contactDetailComponent}
-            <img src={`https://track.localgov.fyi/localgov.fyi/track.png?${payloadParams}`} alt={"localgov-track"} /> 
+            <img src={`https://d3qlx9ss0mi45s.cloudfront.net/localgov.fyi/track.png?${payloadParams}`} alt={"localgov-track"} /> 
           </Grid>
           <Grid item xs={12} sm={12}>
             <br />

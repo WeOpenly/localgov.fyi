@@ -301,7 +301,7 @@ class HeaderSuggestBox extends Component {
     }
 
     handleChange(event, {newValue, method}) {
-        console.log("here", event, newValue, method);
+
         const {dispatch} = this.props;
         if (method === "type") {
             dispatch(updateInput(newValue))

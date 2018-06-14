@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-
+import Helmet from "react-helmet";
 import {navigateTo} from 'gatsby-link';
 import Button from '@material-ui/core/Button';
 import Grid from '@material-ui/core/Grid';
@@ -76,13 +76,11 @@ const styles = theme => ({
     flexDirection: 'column',
     justifyContent: 'space-around',
   },
-
-  footer: {
+  appFooter: {
     width: "100%",
     textAlign: "fixed",
     position: "absolute",
     padding: theme.spacing.unit * 1,
-    background: theme.palette.primary["A300"],
     bottom: 0
   },
 });
@@ -98,6 +96,15 @@ class Index extends React.Component {
 
     return (
       <div className={classes.root}>
+        <Helmet defaultTitle={`Localgov.fyi`} titleTemplate={`%s | Localgov.fyi`}>
+          <meta name="og:type" content="website" />
+          <meta name="og:site_name" content="Localgov.fyi" />
+          <link
+            rel="canonical"
+            href={`https://localgov.fyi${this.props.location.pathname}`}
+          />
+          <html lang="en" />
+        </Helmet>
         <Grid container spacing={0} className={classes.landingSearch}>
           <Grid item xs={1} sm={2} md={3} />
           <Grid item xs={6} sm={6} md={5} className={classes.appNameHeader}>
@@ -125,9 +132,9 @@ class Index extends React.Component {
         </Grid>
         <div>
         </div>
-        <div className={classes.footer}>
+        <div className={classes.appFooter}>
           <span onClick={() => navigateTo('/about')}>
-            <Typography variant="caption" align="center" color="primary">
+            <Typography variant="caption" align="center">
               About
             </Typography>
           </span>

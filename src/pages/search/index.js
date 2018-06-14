@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import {connect} from "react-redux";
 import {navigateTo} from 'gatsby-link';
-
+import Helmet from "react-helmet";
 import {withStyles} from '@material-ui/core/styles';
 import Spinner from 'react-spinkit';
 
@@ -47,7 +47,7 @@ class Index extends React.Component {
         const pathNameFragments = pathname.split('/');
 
         let searchText = null;
-        if (pathNameFragments.length > 1) {
+        if (pathname.includes('search') && pathNameFragments.length > 1) {
             searchText = pathNameFragments[2]
         }
 
@@ -60,7 +60,7 @@ class Index extends React.Component {
     render() {
         const {classes, location, search} = this.props;
         const {pathname} = location;
-        const {isSemantic, searchResultsLoading, searchResultsLoadingFailed} = search;
+        const {isSemantic, searchResultsLoading, searchResultsLoadingFailed, input} = search;
        
 
         if (searchResultsLoading) {
@@ -73,6 +73,7 @@ class Index extends React.Component {
 
         return (
             <div className={classes.root}>
+                <Helmet title={`Search for - ${input}`} />
                 <HeaderWithSearch />
                 <Grid container spacing={0}>
                     <Grid item xs={1} md={1}/>

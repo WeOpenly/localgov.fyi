@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { navigateTo } from 'gatsby-link';
 import { connect } from "react-redux";
+import Helmet from "react-helmet";
 
 import Spinner from 'react-spinkit';
 import Button from '@material-ui/core/Button';

@@ -1,13 +1,23 @@
 {
   "nodes": {
     "SitePage /dev-404-page/": {
+      "layout": null,
+      "jsonName": "dev-404-page.json",
+      "internalComponentName": "ComponentDev404Page",
       "path": "/dev-404-page/",
+      "component": "/Users/ybv/code/ybv-projects/localgov.fyi_frontend/.cache/dev-404-page.js",
+      "componentChunkName": "component---cache-dev-404-page-js",
+      "context": {},
+      "pluginCreator___NODE": "Plugin dev-404-page",
+      "pluginCreatorId": "Plugin dev-404-page",
+      "componentPath": "/Users/ybv/code/ybv-projects/localgov.fyi_frontend/.cache/dev-404-page.js",
       "id": "SitePage /dev-404-page/",
       "parent": "SOURCE",
       "children": [],
       "internal": {
         "type": "SitePage",
-        "contentDigest": "f91d29e10ba680b413138cf9ed86e655",
+        "contentDigest": "edc5660b72e01a169d709d328d18e609",
+        "description": "Plugin dev-404-page",
         "owner": "internal-data-bridge"
       }
     },
@@ -749,6 +759,83 @@
         "owner": "internal-data-bridge"
       }
     },
+    "Plugin gatsby-plugin-react-helmet": {
+      "resolve": "/Users/ybv/code/ybv-projects/localgov.fyi_frontend/node_modules/gatsby-plugin-react-helmet",
+      "id": "Plugin gatsby-plugin-react-helmet",
+      "name": "gatsby-plugin-react-helmet",
+      "version": "2.0.11",
+      "pluginOptions": {
+        "plugins": []
+      },
+      "nodeAPIs": [],
+      "browserAPIs": [],
+      "ssrAPIs": [
+        "onRenderBody"
+      ],
+      "pluginFilepath": "/Users/ybv/code/ybv-projects/localgov.fyi_frontend/node_modules/gatsby-plugin-react-helmet",
+      "packageJson": {
+        "name": "gatsby-plugin-react-helmet",
+        "description": "Manage document head data with react-helmet. Provides drop-in server rendering support for Gatsby.",
+        "version": "2.0.11",
+        "main": "index.js",
+        "keywords": [
+          "gatsby",
+          "gatsby-plugin",
+          "favicon",
+          "react-helmet",
+          "seo",
+          "document",
+          "head",
+          "title",
+          "meta",
+          "link",
+          "script",
+          "base",
+          "noscript",
+          "style"
+        ],
+        "author": {
+          "name": "Kyle Mathews",
+          "email": "matthews.kyle@gmail.com"
+        },
+        "license": "MIT",
+        "dependencies": [
+          {
+            "name": "babel-runtime",
+            "version": "^6.26.0"
+          }
+        ],
+        "devDependencies": [
+          {
+            "name": "babel-cli",
+            "version": "^6.26.0"
+          },
+          {
+            "name": "cross-env",
+            "version": "^5.0.5"
+          }
+        ],
+        "peerDependencies": [
+          {
+            "name": "gatsby",
+            "version": "^1.0.0"
+          },
+          {
+            "name": "react-helmet",
+            "version": ">=5.1.3"
+          }
+        ],
+        "optionalDependecies": [],
+        "bundledDependecies": []
+      },
+      "parent": "SOURCE",
+      "children": [],
+      "internal": {
+        "contentDigest": "48bcd648e507241c23d5c881402561ae",
+        "type": "SitePlugin",
+        "owner": "internal-data-bridge"
+      }
+    },
     "Plugin gatsby-plugin-netlify": {
       "resolve": "/Users/ybv/code/ybv-projects/localgov.fyi_frontend/node_modules/gatsby-plugin-netlify",
       "id": "Plugin gatsby-plugin-netlify",
@@ -829,7 +916,7 @@
       "resolve": "/Users/ybv/code/ybv-projects/localgov.fyi_frontend",
       "id": "Plugin default-site-plugin",
       "name": "default-site-plugin",
-      "version": "4ff15cc612e5a10f84809cf485c0a90d",
+      "version": "8d6d176d5d2454719dfaa38060fa0a72",
       "pluginOptions": {
         "plugins": []
       },
@@ -901,6 +988,10 @@
           {
             "name": "gatsby-plugin-nprogress",
             "version": "^1.0.14"
+          },
+          {
+            "name": "gatsby-plugin-react-helmet",
+            "version": "^2.0.11"
           },
           {
             "name": "gatsby-plugin-react-next",
@@ -975,6 +1066,10 @@
             "version": "^2.6.1"
           },
           {
+            "name": "react-helmet",
+            "version": "^5.2.0"
+          },
+          {
             "name": "react-icons",
             "version": "^2.2.3"
           },
@@ -1040,7 +1135,7 @@
       "parent": "SOURCE",
       "children": [],
       "internal": {
-        "contentDigest": "7664db890d3e24753c3e209af8c61e70",
+        "contentDigest": "f83714ce31a78beaa125e8769c135628",
         "type": "SitePlugin",
         "owner": "internal-data-bridge"
       }
@@ -1050,14 +1145,16 @@
         "title": "Search for local government organizations, members, and services",
         "siteUrl": "https://localgov.fyi"
       },
+      "port": "8000",
+      "host": "localhost",
       "pathPrefix": "",
       "polyfill": true,
-      "buildTime": "2018-06-14T19:44:36.621Z",
+      "buildTime": "2018-06-14T20:11:08.993Z",
       "id": "Site",
       "parent": "SOURCE",
       "children": [],
       "internal": {
-        "contentDigest": "ea070b580a20f6beb2a25e5b70ff89c2",
+        "contentDigest": "747b590ba9ee31655a63f3ca30e69526",
         "type": "Site",
         "owner": "internal-data-bridge"
       }
@@ -1067,7 +1164,7 @@
       "children": [],
       "parent": "___SOURCE___",
       "internal": {
-        "contentDigest": "40027032ccbdef2c93c4673a6b21a188",
+        "contentDigest": "b786e2873d24d13938426a9f233f9fa0",
         "type": "Directory",
         "description": "Directory \"data\"",
         "owner": "gatsby-source-filesystem"
@@ -1079,7 +1176,7 @@
       "size": 96,
       "prettySize": "96 B",
       "modifiedTime": "2018-06-11T18:25:05.699Z",
-      "accessTime": "2018-06-14T19:44:39.942Z",
+      "accessTime": "2018-06-14T20:11:12.345Z",
       "changeTime": "2018-06-11T18:25:05.699Z",
       "birthTime": "2018-06-01T17:04:56.172Z",
       "root": "/",
@@ -1097,11 +1194,11 @@
       "blksize": 4194304,
       "ino": 8594189811,
       "blocks": 0,
-      "atimeMs": 1529005479942.3193,
+      "atimeMs": 1529007072345.1045,
       "mtimeMs": 1528741505699.2002,
       "ctimeMs": 1528741505699.2002,
       "birthtimeMs": 1527872696172.2903,
-      "atime": "2018-06-14T19:44:39.942Z",
+      "atime": "2018-06-14T20:11:12.345Z",
       "mtime": "2018-06-11T18:25:05.699Z",
       "ctime": "2018-06-11T18:25:05.699Z",
       "birthtime": "2018-06-01T17:04:56.172Z"
@@ -1111,7 +1208,7 @@
       "children": [],
       "parent": "___SOURCE___",
       "internal": {
-        "contentDigest": "a699d42a8dd440281748124c55f7ef01",
+        "contentDigest": "122cf56fe904bf8cab6bfb8db8211614",
         "type": "Directory",
         "description": "Directory \"data/orgs\"",
         "owner": "gatsby-source-filesystem"
@@ -1123,7 +1220,7 @@
       "size": 96,
       "prettySize": "96 B",
       "modifiedTime": "2018-06-11T18:16:01.009Z",
-      "accessTime": "2018-06-14T19:44:39.944Z",
+      "accessTime": "2018-06-14T20:11:12.347Z",
       "changeTime": "2018-06-11T18:16:01.009Z",
       "birthTime": "2018-06-11T18:16:01.009Z",
       "root": "/",
@@ -1141,11 +1238,11 @@
       "blksize": 4194304,
       "ino": 8595310919,
       "blocks": 0,
-      "atimeMs": 1529005479944.2917,
+      "atimeMs": 1529007072347.0332,
       "mtimeMs": 1528740961008.8777,
       "ctimeMs": 1528740961008.8777,
       "birthtimeMs": 1528740961008.7815,
-      "atime": "2018-06-14T19:44:39.944Z",
+      "atime": "2018-06-14T20:11:12.347Z",
       "mtime": "2018-06-11T18:16:01.009Z",
       "ctime": "2018-06-11T18:16:01.009Z",
       "birthtime": "2018-06-11T18:16:01.009Z"
@@ -1170,7 +1267,7 @@
       "size": 12065,
       "prettySize": "12.1 kB",
       "modifiedTime": "2018-06-11T18:16:01.009Z",
-      "accessTime": "2018-06-14T19:19:37.611Z",
+      "accessTime": "2018-06-14T20:11:12.347Z",
       "changeTime": "2018-06-11T18:16:01.009Z",
       "birthTime": "2018-06-11T18:16:01.009Z",
       "root": "/",
@@ -1188,11 +1285,11 @@
       "blksize": 4194304,
       "ino": 8595310920,
       "blocks": 24,
-      "atimeMs": 1529003977610.6924,
+      "atimeMs": 1529007072347.1123,
       "mtimeMs": 1528740961009.0251,
       "ctimeMs": 1528740961009.0251,
       "birthtimeMs": 1528740961008.868,
-      "atime": "2018-06-14T19:19:37.611Z",
+      "atime": "2018-06-14T20:11:12.347Z",
       "mtime": "2018-06-11T18:16:01.009Z",
       "ctime": "2018-06-11T18:16:01.009Z",
       "birthtime": "2018-06-11T18:16:01.009Z"
@@ -1790,7 +1887,7 @@
       "children": [],
       "internal": {
         "type": "SitePage",
-        "contentDigest": "b858ac9de1faba999ea97b13c067265b",
+        "contentDigest": "7d1997e5d633093140a815fbcda0c215",
         "description": "Your site's \"gatsby-node.js\"",
         "owner": "internal-data-bridge"
       }
@@ -1834,7 +1931,7 @@
       "children": [],
       "internal": {
         "type": "SitePage",
-        "contentDigest": "fcea4d6bafc26da00c0adc056d6ecbaf",
+        "contentDigest": "e05fd19c7f77607f146de977fc8e3957",
         "description": "Your site's \"gatsby-node.js\"",
         "owner": "internal-data-bridge"
       }
@@ -1878,7 +1975,7 @@
       "children": [],
       "internal": {
         "type": "SitePage",
-        "contentDigest": "665d1e59e9f55555b87bbf7e118f9041",
+        "contentDigest": "15fed8b9cfd4b09061ada8ed4233d14e",
         "description": "Your site's \"gatsby-node.js\"",
         "owner": "internal-data-bridge"
       }
@@ -1920,7 +2017,7 @@
       "children": [],
       "internal": {
         "type": "SitePage",
-        "contentDigest": "9f25ef7b80fa4ef59ea5f6182f6fbe48",
+        "contentDigest": "79fbd08656ad14afc95754d849425bec",
         "description": "Your site's \"gatsby-node.js\"",
         "owner": "internal-data-bridge"
       }
@@ -1962,7 +2059,7 @@
       "children": [],
       "internal": {
         "type": "SitePage",
-        "contentDigest": "cd09e9e9c9b24bcf5fab615f1c68b343",
+        "contentDigest": "980495b026672bf79a493ee3ff986d2f",
         "description": "Your site's \"gatsby-node.js\"",
         "owner": "internal-data-bridge"
       }
@@ -1999,7 +2096,7 @@
       "children": [],
       "internal": {
         "type": "SitePage",
-        "contentDigest": "386eec74bfebe71a409048fdbc2f0ec0",
+        "contentDigest": "615a961250d6a5a4e44b096bcb899b98",
         "description": "Your site's \"gatsby-node.js\"",
         "owner": "internal-data-bridge"
       }
@@ -2056,7 +2153,7 @@
       "children": [],
       "internal": {
         "type": "SitePage",
-        "contentDigest": "d5443e056ba2a3393404a5d3904b9c57",
+        "contentDigest": "1d10a0b3bab628dc97cc26d5bba16627",
         "description": "Your site's \"gatsby-node.js\"",
         "owner": "internal-data-bridge"
       }
@@ -2104,7 +2201,7 @@
       "children": [],
       "internal": {
         "type": "SitePage",
-        "contentDigest": "7997431c2b12e607ae407aa347b27fab",
+        "contentDigest": "7fbc8e154df95dd93f51813fdd28e6b7",
         "description": "Your site's \"gatsby-node.js\"",
         "owner": "internal-data-bridge"
       }
@@ -2170,7 +2267,7 @@
       "children": [],
       "internal": {
         "type": "SitePage",
-        "contentDigest": "904badc9b1108040152aac0f297a980a",
+        "contentDigest": "e98d33ce7a499e5154ea4b03dd2f41cd",
         "description": "Your site's \"gatsby-node.js\"",
         "owner": "internal-data-bridge"
       }
@@ -2207,7 +2304,7 @@
       "children": [],
       "internal": {
         "type": "SitePage",
-        "contentDigest": "9de457430a8ef4ee03eec62fea869497",
+        "contentDigest": "87036fbeaa7977939857c6d2966ba86b",
         "description": "Your site's \"gatsby-node.js\"",
         "owner": "internal-data-bridge"
       }
@@ -2249,7 +2346,7 @@
       "children": [],
       "internal": {
         "type": "SitePage",
-        "contentDigest": "f1fd7f85588ad815fa3b49520e42a594",
+        "contentDigest": "a85e6fe1d41f5d261422f786e0d4d2d2",
         "description": "Your site's \"gatsby-node.js\"",
         "owner": "internal-data-bridge"
       }
@@ -2315,7 +2412,7 @@
       "children": [],
       "internal": {
         "type": "SitePage",
-        "contentDigest": "01a93736cba2c0e23a3b1aa573de1d55",
+        "contentDigest": "04b2b978b88a6be549d3cacb57d39654",
         "description": "Your site's \"gatsby-node.js\"",
         "owner": "internal-data-bridge"
       }
@@ -2365,7 +2462,7 @@
       "children": [],
       "internal": {
         "type": "SitePage",
-        "contentDigest": "dd3d45d5abeee181e7576a80201449a2",
+        "contentDigest": "102a70bcb3c7f1cf53fceb04a784df68",
         "description": "Your site's \"gatsby-node.js\"",
         "owner": "internal-data-bridge"
       }
@@ -2416,7 +2513,7 @@
       "children": [],
       "internal": {
         "type": "SitePage",
-        "contentDigest": "5aa1e4fdd803e5fc89ba5585df930030",
+        "contentDigest": "21a3ea74f779b7558cd5bf1cd10c8220",
         "description": "Your site's \"gatsby-node.js\"",
         "owner": "internal-data-bridge"
       }
@@ -2437,7 +2534,7 @@
       "children": [],
       "internal": {
         "type": "SitePage",
-        "contentDigest": "5c0525a9f110d8ad6290cb7650172676",
+        "contentDigest": "90f942a041463570ea1fd49700a4f433",
         "description": "Plugin component-page-creator",
         "owner": "internal-data-bridge"
       }
@@ -2458,7 +2555,7 @@
       "children": [],
       "internal": {
         "type": "SitePage",
-        "contentDigest": "ecd24f3ca9bf5a38fd1ec1aba93e2ea9",
+        "contentDigest": "6eb375299a8f694f9eec86196e0629f4",
         "description": "Plugin component-page-creator",
         "owner": "internal-data-bridge"
       }
@@ -2480,7 +2577,7 @@
       "children": [],
       "internal": {
         "type": "SitePage",
-        "contentDigest": "36f45b6a42b68b66750694c267520ff9",
+        "contentDigest": "363603b2442cd131302f7cdc85f0b8c2",
         "description": "Plugin gatsby-plugin-create-client-paths",
         "owner": "internal-data-bridge"
       }
@@ -2488,10 +2585,14 @@
   },
   "status": {
     "plugins": {},
-    "PLUGINS_HASH": "e1b18aac7bf55fefe14222679efa5cdb"
+    "PLUGINS_HASH": "b2804704aba84ad56aa62fb00df951a9"
   },
   "componentDataDependencies": {
     "nodes": {},
-    "connections": {}
+    "connections": {
+      "SitePage": [
+        "/dev-404-page/"
+      ]
+    }
   }
 }

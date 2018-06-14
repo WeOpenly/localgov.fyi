@@ -4,6 +4,7 @@ import {withStyles} from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
+import Helmet from "react-helmet";
 
 import List from '@material-ui/core/List';
 import ListItem from
@@ -193,6 +194,7 @@ class ServiceDetail extends React.Component {
 
         return (
             <Grid container spacing={16} className={classes.container}>
+                <Helmet title={`${name} service offered in ${org_name} | Localgov.fyi`} />
                 <Grid item md={6} sm={12}>
                     <Grid item xs={12}>
                         <Paper className={classes.cards}>

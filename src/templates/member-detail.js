@@ -1,5 +1,6 @@
 import * as PropTypes from "prop-types"
-import React from "react"
+import React from "react";
+import Helmet from "react-helmet";
 import {withStyles} from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
@@ -96,6 +97,7 @@ class MemberDetail extends React.Component {
 
         return (
             <Grid container spacing={0}>
+                <Helmet title={`${person_name} member of ${org_name} | Localgov.fyi`} />
                 <Grid item xs={12} sm={12} md={7}>
                     <br/>
                     <Card className={classes.mediaContainer}>

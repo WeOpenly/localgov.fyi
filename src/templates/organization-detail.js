@@ -1,6 +1,6 @@
 import * as PropTypes from "prop-types"
 import React from "react"
-
+import Helmet from "react-helmet";
 import Grid from '@material-ui/core/Grid';
 import { withStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
@@ -91,6 +91,7 @@ class OrganizationDetail extends React.Component {
 
     return (
       <Grid container spacing={16}>
+        <Helmet title={`${name} info, contact details and services | Localgov.fyi`} />
         <Grid container spacing={16} item xs={12} sm={12} md={6}>
           <Grid item xs={12} sm={12}>
             <br />

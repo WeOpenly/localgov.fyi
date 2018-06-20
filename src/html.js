@@ -24,6 +24,7 @@ module.exports = class HTML extends React.Component {
         <head>
           <meta charSet="utf-8" />
           <meta name="google-site-verification" content= "uH1LpzdwISxquJSjjpqad8DL6vkOs_OVsdLLu8wNXSM" />
+          <meta name="description" content="Search for local government organizations, members, and services"/>
           <meta httpEquiv="x-ua-compatible" content="ie=edge" />
           <meta
             name="viewport"

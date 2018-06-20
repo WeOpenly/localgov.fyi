@@ -194,7 +194,10 @@ class ServiceDetail extends React.Component {
 
         return (
             <Grid container spacing={16} className={classes.container}>
-                <Helmet title={`${name} service offered in ${org_name} | Localgov.fyi`} />
+                <Helmet>
+                    <title>{`${name} service offered in ${org_name} | Localgov.fyi`} </title>
+                    <meta name="description" content={`Forms, Price, Timings and Local Government Service Contact Details for ${name} offered in ${org_name} | Localgov.fyi`}  />
+                </Helmet>
                 <Grid item md={6} sm={12}>
                     <Grid item xs={12}>
                         <Paper className={classes.cards}>

@@ -91,7 +91,10 @@ class OrganizationDetail extends React.Component {
 
     return (
       <Grid container spacing={16}>
-        <Helmet title={`${name} info, contact details and services | Localgov.fyi`} />
+        <Helmet>
+        <title>{`${name} info, contact details and services | Localgov.fyi`} </title>
+          <meta name="description" content={`${name} info, contact details and services`} />
+        </Helmet>
         <Grid container spacing={16} item xs={12} sm={12} md={6}>
           <Grid item xs={12} sm={12}>
             <br />

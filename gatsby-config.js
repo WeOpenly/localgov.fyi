@@ -61,6 +61,7 @@ module.exports = {
         showSpinner: false,
       },
     },
+    `gatsby-plugin-robots-txt`,
     `gatsby-plugin-react-helmet`,
     `gatsby-plugin-netlify`,
     // This plugin generates a service worker and AppShell html file so the site

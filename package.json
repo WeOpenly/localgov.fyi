@@ -9,6 +9,7 @@
         "@material-ui/icons": "^1.1.0",
         "autosuggest-highlight": "^3.1.1",
         "aws-sdk": "^2.250.1",
+        "babel-plugin-transform-regenerator": "^6.26.0",
         "gatsby": "latest",
         "gatsby-image": "latest",
         "gatsby-link": "latest",
@@ -62,12 +63,9 @@
         "develop": "gatsby develop",
         "dev": "gatsby develop",
         "build": "gatsby build",
-        "deploy": "gatsby build --prefix-paths",
-        "cy:open": "cypress open",
-        "cy:run": "cypress run"
+        "deploy": "gatsby build --prefix-paths"
     },
     "devDependencies": {
-        "cypress": "^2.1.0",
         "start-server-and-test": "^1.1.4"
     }
 }

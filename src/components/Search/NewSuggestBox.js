@@ -380,6 +380,7 @@ class NewSuggestBox extends Component {
                     value: input,
                     onChange: this.handleChange,
                     onKeyDown: () => {},
+                    onFocus: (event) => {event.preventDefault()},
                     onBlur: (event) => { event.preventDefault() },
                 }}/>
             </form>

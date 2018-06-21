@@ -74,13 +74,12 @@ export const fetchSearchResults = async(dispatch, getState) => {
 
     try {
         const data = await GetApi(null, `semantic_results?country=usa&query=${input}&requester_city=''`);
-        const searchResults = await data;
+        const results = await data;
 
-        const {results} = searchResults;
         let isSemantic = false;
         let resLen = 0;
 
-        if ("semantic_available" in results && results["semantic_available"] === true) {
+        if (results && "semantic_available" in results && results["semantic_available"] === true) {
             isSemantic = true;
             dispatch(recvSemanticResults(results));
         } else {
@@ -105,6 +104,7 @@ export const fetchSearchResults = async(dispatch, getState) => {
 
         fetch(`https://d3qlx9ss0mi45s.cloudfront.net/localgov.fyi/track.png?${payloadParams}`, {}).then((data) => { }).catch((err) => { })
     } catch (e) {
+        console.log(e)
         dispatch(recvSearchResultsFailure());
     }
 };

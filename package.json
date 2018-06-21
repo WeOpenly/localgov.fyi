@@ -67,6 +67,7 @@
         "deploy": "gatsby build --prefix-paths --no-uglify=true"
     },
     "devDependencies": {
+        "regenerator-runtime": "^0.11.1",
         "start-server-and-test": "^1.1.4"
     }
 }

@@ -61,6 +61,7 @@ module.exports = {
         showSpinner: false,
       },
     },
+    
     {
       resolve: `gatsby-plugin-favicon`,
       options: {

@@ -1,6 +1,6 @@
 import queryString from "query-string";
 import _ from "lodash";
-
+import 'regenerator-runtime/runtime';
 import * as types from "./ActionTypes";
 import {GetApi} from "./api";
 

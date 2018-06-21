@@ -34,7 +34,8 @@ export function getCookie(name) {
 
 // const BACKEND = 'http://127.0.0.1:8090/dashboard/api';
 // console.log(BACKEND);
-let BACKEND = `https://beta.weopenly.com/api`
+//let BACKEND = `https://beta.weopenly.com/api`
+let BACKEND = 'http://yusuf-alb.eu-central-1.elasticbeanstalk.com'
 
 export function GetApi(lang = undefined, endPoint, headers = {}) {
 

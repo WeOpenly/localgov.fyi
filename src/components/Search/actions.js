@@ -73,7 +73,7 @@ export const fetchSearchResults = async(dispatch, getState) => {
     dispatch(requestSearchResults());
 
     try {
-        const data = await GetApi(null, `search?country=usa&q=${input}`);
+        const data = await GetApi(null, `semantic_results?country=usa&query=${input}&requester_city=''`);
         const searchResults = await data;
 
         const {results} = searchResults;
@@ -125,14 +125,6 @@ export const fetchMeta = async(dispatch, getState) => {
     }
 };
 
-export const trackSuggestionClick = (query, index, country) => async(dispatch) => {
-    try {
-
-        await GetApi('en', `track_suggestion_click?country=${country}&query=${query}&index=${index}`);
-    } catch (e) {
-
-    }
-};
 
 export const fetchSearchSuggestions = async(dispatch, getState) => {
     const {input} = getState().search;
@@ -140,7 +132,7 @@ export const fetchSearchSuggestions = async(dispatch, getState) => {
     dispatch(reqSearchSuggestions());
     const country = 'usa'
     try {
-        const data = await GetApi(null, `suggest?country=${country}&query=${input}`);
+        const data = await GetApi(null, `get_results?country=${country}&query=${input}&requester_city=''`);
         const searchResults = await data;
 
 

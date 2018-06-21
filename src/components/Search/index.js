@@ -36,7 +36,7 @@ class Search extends React.Component {
         const { pathname } = windowGlobal.location;
  
         if (pathname === '/') {
-            dispatch(fetchMeta);
+            // dispatch(fetchMeta);
             // if (pathNameFragments[2] === 'search') {
             //     dispatch(setMetaFromUrl(pathNameFragments[1]));
             // } else { //overview

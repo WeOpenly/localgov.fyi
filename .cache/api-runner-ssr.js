@@ -5,6 +5,9 @@ var plugins = [{
       plugin: require('/Users/ybv/code/ybv-projects/localgov.fyi_frontend/node_modules/gatsby-plugin-manifest/gatsby-ssr'),
       options: {"plugins":[],"name":"Local Gov","short_name":"localgov","start_url":"/","background_color":"#f7f7f7","theme_color":"#0000ca","display":"minimal-ui"},
     },{
+      plugin: require('/Users/ybv/code/ybv-projects/localgov.fyi_frontend/node_modules/gatsby-plugin-favicon/gatsby-ssr'),
+      options: {"plugins":[],"logo":"./src/favicon.png","injectHTML":true,"icons":{"android":true,"appleIcon":true,"appleStartup":true,"coast":true,"favicons":true,"firefox":true,"twitter":true,"yandex":true,"windows":true}},
+    },{
       plugin: require('/Users/ybv/code/ybv-projects/localgov.fyi_frontend/node_modules/gatsby-plugin-react-helmet/gatsby-ssr'),
       options: {"plugins":[]},
     },{

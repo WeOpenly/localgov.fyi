@@ -16,7 +16,7 @@
       "children": [],
       "internal": {
         "type": "SitePage",
-        "contentDigest": "7309ad84bc4a2dd360066cd3041ec44a",
+        "contentDigest": "699f3f7648c80a860f1d294a18d0eba9",
         "description": "Plugin dev-404-page",
         "owner": "internal-data-bridge"
       }
@@ -720,6 +720,93 @@
         "owner": "internal-data-bridge"
       }
     },
+    "Plugin gatsby-plugin-favicon": {
+      "resolve": "/Users/ybv/code/ybv-projects/localgov.fyi_frontend/node_modules/gatsby-plugin-favicon",
+      "id": "Plugin gatsby-plugin-favicon",
+      "name": "gatsby-plugin-favicon",
+      "version": "2.1.1",
+      "pluginOptions": {
+        "plugins": [],
+        "logo": "./src/favicon.png",
+        "injectHTML": true,
+        "icons": {
+          "android": true,
+          "appleIcon": true,
+          "appleStartup": true,
+          "coast": true,
+          "favicons": true,
+          "firefox": true,
+          "twitter": true,
+          "yandex": true,
+          "windows": true
+        }
+      },
+      "nodeAPIs": [
+        "modifyWebpackConfig"
+      ],
+      "browserAPIs": [],
+      "ssrAPIs": [
+        "onRenderBody"
+      ],
+      "pluginFilepath": "/Users/ybv/code/ybv-projects/localgov.fyi_frontend/node_modules/gatsby-plugin-favicon",
+      "packageJson": {
+        "name": "gatsby-plugin-favicon",
+        "description": "Gatsby plugin to add favicon for all configurations",
+        "version": "2.1.1",
+        "main": "index.js",
+        "keywords": [
+          "gatsby",
+          "favicon"
+        ],
+        "author": {
+          "name": "Julien Blatecky",
+          "email": "julien.blatecky@creatiwity.net"
+        },
+        "license": "MIT",
+        "dependencies": [
+          {
+            "name": "babel-runtime",
+            "version": "^6.26.0"
+          },
+          {
+            "name": "favicons-webpack-plugin",
+            "version": "0.0.7"
+          }
+        ],
+        "devDependencies": [
+          {
+            "name": "babel-cli",
+            "version": "^6.26.0"
+          },
+          {
+            "name": "babel-plugin-transform-object-rest-spread",
+            "version": "^6.26.0"
+          },
+          {
+            "name": "babel-preset-env",
+            "version": "^1.6.1"
+          },
+          {
+            "name": "babel-preset-react",
+            "version": "^6.24.1"
+          },
+          {
+            "name": "cross-env",
+            "version": "^5.1.1"
+          }
+        ],
+        "peerDependencies": [],
+        "optionalDependecies": [],
+        "bundledDependecies": []
+      },
+      "parent": "SOURCE",
+      "children": [],
+      "internal": {
+        "contentDigest": "ef68f2c2aafe98a82cccfbdb2b5f3578",
+        "type": "SitePlugin",
+        "owner": "internal-data-bridge"
+      }
+    },
     "Plugin gatsby-plugin-robots-txt": {
       "resolve": "/Users/ybv/code/ybv-projects/localgov.fyi_frontend/node_modules/gatsby-plugin-robots-txt",
       "id": "Plugin gatsby-plugin-robots-txt",
@@ -978,7 +1065,7 @@
       "resolve": "/Users/ybv/code/ybv-projects/localgov.fyi_frontend",
       "id": "Plugin default-site-plugin",
       "name": "default-site-plugin",
-      "version": "7861a28941e199de4fb792bf8a6e2bd5",
+      "version": "fbe775f0f2fe855d64e4e6df6770ccbf",
       "pluginOptions": {
         "plugins": []
       },
@@ -1205,7 +1292,7 @@
       "parent": "SOURCE",
       "children": [],
       "internal": {
-        "contentDigest": "a50dd23f885a3cd9668761530082d9df",
+        "contentDigest": "d74f6ccd0601c1ffd90431d45757b68f",
         "type": "SitePlugin",
         "owner": "internal-data-bridge"
       }
@@ -1301,12 +1388,12 @@
       "host": "localhost",
       "pathPrefix": "",
       "polyfill": true,
-      "buildTime": "2018-06-21T18:11:25.032Z",
+      "buildTime": "2018-06-21T19:07:57.144Z",
       "id": "Site",
       "parent": "SOURCE",
       "children": [],
       "internal": {
-        "contentDigest": "ba8dadbb5ea50be361e79d3555d78604",
+        "contentDigest": "09610d6db5dc3a700670c9d8e6c4e9c7",
         "type": "Site",
         "owner": "internal-data-bridge"
       }
@@ -1316,7 +1403,7 @@
       "children": [],
       "parent": "___SOURCE___",
       "internal": {
-        "contentDigest": "c060ec933d15aee8de2392e92ad6dff8",
+        "contentDigest": "127cfc6b0a764da5a8ab8ce18a7b171d",
         "type": "Directory",
         "description": "Directory \"data\"",
         "owner": "gatsby-source-filesystem"
@@ -1327,9 +1414,9 @@
       "extension": "",
       "size": 96,
       "prettySize": "96 B",
-      "modifiedTime": "2018-06-11T18:25:05.699Z",
-      "accessTime": "2018-06-21T18:11:28.762Z",
-      "changeTime": "2018-06-11T18:25:05.699Z",
+      "modifiedTime": "2018-06-21T19:04:40.916Z",
+      "accessTime": "2018-06-21T19:08:00.476Z",
+      "changeTime": "2018-06-21T19:04:40.916Z",
       "birthTime": "2018-06-01T17:04:56.172Z",
       "root": "/",
       "dir": "/Users/ybv/code/ybv-projects/localgov.fyi_frontend",
@@ -1346,13 +1433,13 @@
       "blksize": 4194304,
       "ino": 8594189811,
       "blocks": 0,
-      "atimeMs": 1529604688761.9453,
-      "mtimeMs": 1528741505699.2002,
-      "ctimeMs": 1528741505699.2002,
+      "atimeMs": 1529608080476.081,
+      "mtimeMs": 1529607880915.6296,
+      "ctimeMs": 1529607880915.6296,
       "birthtimeMs": 1527872696172.2903,
-      "atime": "2018-06-21T18:11:28.762Z",
-      "mtime": "2018-06-11T18:25:05.699Z",
-      "ctime": "2018-06-11T18:25:05.699Z",
+      "atime": "2018-06-21T19:08:00.476Z",
+      "mtime": "2018-06-21T19:04:40.916Z",
+      "ctime": "2018-06-21T19:04:40.916Z",
       "birthtime": "2018-06-01T17:04:56.172Z"
     },
     "/Users/ybv/code/ybv-projects/localgov.fyi_frontend/data/orgs absPath of file": {
@@ -1360,7 +1447,7 @@
       "children": [],
       "parent": "___SOURCE___",
       "internal": {
-        "contentDigest": "ef43131dfad38365878e492775bf18a1",
+        "contentDigest": "a1c29f362cf7d2caf937a5e965261923",
         "type": "Directory",
         "description": "Directory \"data/orgs\"",
         "owner": "gatsby-source-filesystem"
@@ -1372,7 +1459,7 @@
       "size": 96,
       "prettySize": "96 B",
       "modifiedTime": "2018-06-11T18:16:01.009Z",
-      "accessTime": "2018-06-21T18:11:28.763Z",
+      "accessTime": "2018-06-21T19:08:00.478Z",
       "changeTime": "2018-06-11T18:16:01.009Z",
       "birthTime": "2018-06-11T18:16:01.009Z",
       "root": "/",
@@ -1390,11 +1477,11 @@
       "blksize": 4194304,
       "ino": 8595310919,
       "blocks": 0,
-      "atimeMs": 1529604688763.4207,
+      "atimeMs": 1529608080477.733,
       "mtimeMs": 1528740961008.8777,
       "ctimeMs": 1528740961008.8777,
       "birthtimeMs": 1528740961008.7815,
-      "atime": "2018-06-21T18:11:28.763Z",
+      "atime": "2018-06-21T19:08:00.478Z",
       "mtime": "2018-06-11T18:16:01.009Z",
       "ctime": "2018-06-11T18:16:01.009Z",
       "birthtime": "2018-06-11T18:16:01.009Z"
@@ -1419,7 +1506,7 @@
       "size": 12065,
       "prettySize": "12.1 kB",
       "modifiedTime": "2018-06-11T18:16:01.009Z",
-      "accessTime": "2018-06-21T18:03:08.294Z",
+      "accessTime": "2018-06-21T19:07:13.997Z",
       "changeTime": "2018-06-11T18:16:01.009Z",
       "birthTime": "2018-06-11T18:16:01.009Z",
       "root": "/",
@@ -1437,11 +1524,11 @@
       "blksize": 4194304,
       "ino": 8595310920,
       "blocks": 24,
-      "atimeMs": 1529604188294.3638,
+      "atimeMs": 1529608033996.5872,
       "mtimeMs": 1528740961009.0251,
       "ctimeMs": 1528740961009.0251,
       "birthtimeMs": 1528740961008.868,
-      "atime": "2018-06-21T18:03:08.294Z",
+      "atime": "2018-06-21T19:07:13.997Z",
       "mtime": "2018-06-11T18:16:01.009Z",
       "ctime": "2018-06-11T18:16:01.009Z",
       "birthtime": "2018-06-11T18:16:01.009Z"
@@ -2039,7 +2126,7 @@
       "children": [],
       "internal": {
         "type": "SitePage",
-        "contentDigest": "509d35d68ca98f923879306284066481",
+        "contentDigest": "f64aa6641c0a1c2a2cbe74c67cf2c71d",
         "description": "Your site's \"gatsby-node.js\"",
         "owner": "internal-data-bridge"
       }
@@ -2083,7 +2170,7 @@
       "children": [],
       "internal": {
         "type": "SitePage",
-        "contentDigest": "a34ef7dd547401ba6ac5b071bd01cb41",
+        "contentDigest": "f52736b673ccd117072edb16d3407c2b",
         "description": "Your site's \"gatsby-node.js\"",
         "owner": "internal-data-bridge"
       }
@@ -2127,7 +2214,7 @@
       "children": [],
       "internal": {
         "type": "SitePage",
-        "contentDigest": "c41ba6b94bb2313efcd0781b45fdee9a",
+        "contentDigest": "57104293b80327976beaa3a22c8150c7",
         "description": "Your site's \"gatsby-node.js\"",
         "owner": "internal-data-bridge"
       }
@@ -2169,7 +2256,7 @@
       "children": [],
       "internal": {
         "type": "SitePage",
-        "contentDigest": "b018d156ef90615a3eb9f1fd7b3fa684",
+        "contentDigest": "045e4304998e1f061dcd0d23d9da5a6c",
         "description": "Your site's \"gatsby-node.js\"",
         "owner": "internal-data-bridge"
       }
@@ -2211,7 +2298,7 @@
       "children": [],
       "internal": {
         "type": "SitePage",
-        "contentDigest": "d04a7d6fa20361f753cc771a166e9045",
+        "contentDigest": "c5b6c6344d29b2cbb54082016421a6e2",
         "description": "Your site's \"gatsby-node.js\"",
         "owner": "internal-data-bridge"
       }
@@ -2248,7 +2335,7 @@
       "children": [],
       "internal": {
         "type": "SitePage",
-        "contentDigest": "d6b785e66f0a63be9496d4d241e08d69",
+        "contentDigest": "3de736604aa6a858cbd2fbcec838faff",
         "description": "Your site's \"gatsby-node.js\"",
         "owner": "internal-data-bridge"
       }
@@ -2305,7 +2392,7 @@
       "children": [],
       "internal": {
         "type": "SitePage",
-        "contentDigest": "1b6124cca20d30e86c4e62cc29994494",
+        "contentDigest": "3c85b6d9bb7467cc8387984f50b27e6d",
         "description": "Your site's \"gatsby-node.js\"",
         "owner": "internal-data-bridge"
       }
@@ -2353,7 +2440,7 @@
       "children": [],
       "internal": {
         "type": "SitePage",
-        "contentDigest": "05e6a176355ea2f6a9d59244fa37b87a",
+        "contentDigest": "624e8f0dfa932597eeae050fa2018027",
         "description": "Your site's \"gatsby-node.js\"",
         "owner": "internal-data-bridge"
       }
@@ -2419,7 +2506,7 @@
       "children": [],
       "internal": {
         "type": "SitePage",
-        "contentDigest": "33161dce696c82dde64655b99de58dfc",
+        "contentDigest": "cdb8d7aa638d9e919c556fea07a98d7d",
         "description": "Your site's \"gatsby-node.js\"",
         "owner": "internal-data-bridge"
       }
@@ -2456,7 +2543,7 @@
       "children": [],
       "internal": {
         "type": "SitePage",
-        "contentDigest": "8dd2fbd3214b50f5c8f160e6515554f4",
+        "contentDigest": "b81761bc26de9447b02c48e0e8c9450d",
         "description": "Your site's \"gatsby-node.js\"",
         "owner": "internal-data-bridge"
       }
@@ -2498,7 +2585,7 @@
       "children": [],
       "internal": {
         "type": "SitePage",
-        "contentDigest": "210dadbec0236d78d5236ed1daed3c15",
+        "contentDigest": "2c16fb583a96b4767c7507564e5d7829",
         "description": "Your site's \"gatsby-node.js\"",
         "owner": "internal-data-bridge"
       }
@@ -2564,7 +2651,7 @@
       "children": [],
       "internal": {
         "type": "SitePage",
-        "contentDigest": "90f93bd86c2ea6d6740321d880d711bd",
+        "contentDigest": "2c82bd2d6e1a5229986430e5517083e6",
         "description": "Your site's \"gatsby-node.js\"",
         "owner": "internal-data-bridge"
       }
@@ -2614,7 +2701,7 @@
       "children": [],
       "internal": {
         "type": "SitePage",
-        "contentDigest": "94b3956020e2e61fc133321e48cdbf12",
+        "contentDigest": "ccac0db412dedd6719109cd79b4302cc",
         "description": "Your site's \"gatsby-node.js\"",
         "owner": "internal-data-bridge"
       }
@@ -2665,7 +2752,7 @@
       "children": [],
       "internal": {
         "type": "SitePage",
-        "contentDigest": "63604809657e10737bdc4521fd675112",
+        "contentDigest": "825161e5e5f0d41202b70c6b6402abc9",
         "description": "Your site's \"gatsby-node.js\"",
         "owner": "internal-data-bridge"
       }
@@ -2686,7 +2773,7 @@
       "children": [],
       "internal": {
         "type": "SitePage",
-        "contentDigest": "541c575758936e833070a511dfa8b38c",
+        "contentDigest": "96a1037f42481aea2c38d12d7a60ea19",
         "description": "Plugin gatsby-plugin-page-creator",
         "owner": "internal-data-bridge"
       }
@@ -2707,7 +2794,7 @@
       "children": [],
       "internal": {
         "type": "SitePage",
-        "contentDigest": "80742f09d9c013b67f656dc81ac4edbf",
+        "contentDigest": "b174dee152ff0491b240891c9b8606e2",
         "description": "Plugin gatsby-plugin-page-creator",
         "owner": "internal-data-bridge"
       }
@@ -2729,7 +2816,7 @@
       "children": [],
       "internal": {
         "type": "SitePage",
-        "contentDigest": "a5f3d68bc4e69a0cbbd61faf558aaf7e",
+        "contentDigest": "b2836f84f53852b85cd0ee34fee642e0",
         "description": "Plugin gatsby-plugin-create-client-paths",
         "owner": "internal-data-bridge"
       }
@@ -2737,7 +2824,7 @@
   },
   "status": {
     "plugins": {},
-    "PLUGINS_HASH": "0013398b3a1fe91a599797105bc1e6e7"
+    "PLUGINS_HASH": "2b6ac03f9b2e83b18ff6d211e39ab2bf"
   },
   "componentDataDependencies": {
     "nodes": {},

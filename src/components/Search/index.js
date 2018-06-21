@@ -77,5 +77,4 @@ const mapStateToProps = function (state, ownProps) {
     };
 };
 
-
 export default connect(mapStateToProps)(withRoot(withStyles(styles)(Search)));

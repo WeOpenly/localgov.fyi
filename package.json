@@ -64,7 +64,7 @@
         "develop": "gatsby develop",
         "dev": "gatsby develop",
         "build": "gatsby build",
-        "deploy": "gatsby build --prefix-paths --no-uglify=true"
+        "deploy": "gatsby build --prefix-paths"
     },
     "devDependencies": {
         "regenerator-runtime": "^0.11.1",

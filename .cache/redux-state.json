@@ -16,7 +16,7 @@
       "children": [],
       "internal": {
         "type": "SitePage",
-        "contentDigest": "edc5660b72e01a169d709d328d18e609",
+        "contentDigest": "11e73c5d41f4fc3ac175caafebde4abd",
         "description": "Plugin dev-404-page",
         "owner": "internal-data-bridge"
       }
@@ -52,45 +52,6 @@
       "children": [],
       "internal": {
         "contentDigest": "0e1aebeb106f98786899bdc27b194c87",
-        "type": "SitePlugin",
-        "owner": "internal-data-bridge"
-      }
-    },
-    "Plugin component-page-creator": {
-      "resolve": "/Users/ybv/code/ybv-projects/localgov.fyi_frontend/node_modules/gatsby/dist/internal-plugins/component-page-creator",
-      "id": "Plugin component-page-creator",
-      "name": "component-page-creator",
-      "version": "1.0.0",
-      "pluginOptions": {
-        "plugins": []
-      },
-      "nodeAPIs": [
-        "createPagesStatefully"
-      ],
-      "browserAPIs": [],
-      "ssrAPIs": [],
-      "pluginFilepath": "/Users/ybv/code/ybv-projects/localgov.fyi_frontend/node_modules/gatsby/dist/internal-plugins/component-page-creator",
-      "packageJson": {
-        "name": "component-page-creator",
-        "description": "An internal Gatsby plugin that creates pages from component files in src/pages",
-        "version": "1.0.0",
-        "main": "index.js",
-        "keywords": [
-          "gatsby",
-          "gatsby-plugin"
-        ],
-        "author": "Kyle Mathews <mathews.kyle@gmail.com>",
-        "license": "MIT",
-        "dependencies": [],
-        "devDependencies": [],
-        "peerDependencies": [],
-        "optionalDependecies": [],
-        "bundledDependecies": []
-      },
-      "parent": "SOURCE",
-      "children": [],
-      "internal": {
-        "contentDigest": "1d69b86e3030008f4add3cec4244d7fc",
         "type": "SitePlugin",
         "owner": "internal-data-bridge"
       }
@@ -318,7 +279,7 @@
       "resolve": "/Users/ybv/code/ybv-projects/localgov.fyi_frontend/node_modules/gatsby-source-filesystem",
       "id": "Plugin gatsby-source-filesystem",
       "name": "gatsby-source-filesystem",
-      "version": "1.5.38",
+      "version": "1.5.39",
       "pluginOptions": {
         "plugins": [],
         "name": "data",
@@ -334,7 +295,7 @@
       "packageJson": {
         "name": "gatsby-source-filesystem",
         "description": "Gatsby plugin which parses files within a directory for further parsing by other plugins",
-        "version": "1.5.38",
+        "version": "1.5.39",
         "keywords": [
           "gatsby",
           "gatsby-plugin"
@@ -412,7 +373,7 @@
       "parent": "SOURCE",
       "children": [],
       "internal": {
-        "contentDigest": "98dc9461fd7149a3bfba80920f515d91",
+        "contentDigest": "0615c4725566c8448aea7f127e3fc26f",
         "type": "SitePlugin",
         "owner": "internal-data-bridge"
       }
@@ -491,7 +452,7 @@
       "resolve": "/Users/ybv/code/ybv-projects/localgov.fyi_frontend/node_modules/gatsby-transformer-json",
       "id": "Plugin gatsby-transformer-json",
       "name": "gatsby-transformer-json",
-      "version": "1.0.19",
+      "version": "1.0.20",
       "pluginOptions": {
         "plugins": []
       },
@@ -504,7 +465,7 @@
       "packageJson": {
         "name": "gatsby-transformer-json",
         "description": "Gatsby transformer plugin for JSON files",
-        "version": "1.0.19",
+        "version": "1.0.20",
         "keywords": [
           "gatsby",
           "gatsby-plugin",
@@ -542,7 +503,7 @@
       "parent": "SOURCE",
       "children": [],
       "internal": {
-        "contentDigest": "8596a13162b345c56534d381804cbcd2",
+        "contentDigest": "23e40d69f9142abff61c8b47f5341da1",
         "type": "SitePlugin",
         "owner": "internal-data-bridge"
       }
@@ -551,7 +512,7 @@
       "resolve": "/Users/ybv/code/ybv-projects/localgov.fyi_frontend/node_modules/gatsby-plugin-manifest",
       "id": "Plugin gatsby-plugin-manifest",
       "name": "gatsby-plugin-manifest",
-      "version": "1.0.25",
+      "version": "1.0.27",
       "pluginOptions": {
         "plugins": [],
         "name": "Local Gov",
@@ -571,15 +532,15 @@
       "pluginFilepath": "/Users/ybv/code/ybv-projects/localgov.fyi_frontend/node_modules/gatsby-plugin-manifest",
       "packageJson": {
         "name": "gatsby-plugin-manifest",
-        "description": "Gatsby plugin which adds a manifest.json to make sites progressive web apps",
-        "version": "1.0.25",
+        "description": "Gatsby plugin which adds a manifest.webmanifest to make sites progressive web apps",
+        "version": "1.0.27",
         "main": "index.js",
         "keywords": [
           "gatsby",
           "gatsby-plugin",
           "favicon",
           "icons",
-          "manifest.json",
+          "manifest.webmanifest",
           "progressive-web-app",
           "pwa"
         ],
@@ -624,7 +585,7 @@
       "parent": "SOURCE",
       "children": [],
       "internal": {
-        "contentDigest": "4e64209c2e36ae027563316449d8dfc6",
+        "contentDigest": "a0ef898881980068d71886b8a0282af4",
         "type": "SitePlugin",
         "owner": "internal-data-bridge"
       }
@@ -755,6 +716,107 @@
       "children": [],
       "internal": {
         "contentDigest": "49397c16b2085477f65ced56c8c37b86",
+        "type": "SitePlugin",
+        "owner": "internal-data-bridge"
+      }
+    },
+    "Plugin gatsby-plugin-robots-txt": {
+      "resolve": "/Users/ybv/code/ybv-projects/localgov.fyi_frontend/node_modules/gatsby-plugin-robots-txt",
+      "id": "Plugin gatsby-plugin-robots-txt",
+      "name": "gatsby-plugin-robots-txt",
+      "version": "1.0.2",
+      "pluginOptions": {
+        "plugins": []
+      },
+      "nodeAPIs": [
+        "onPostBuild"
+      ],
+      "browserAPIs": [],
+      "ssrAPIs": [],
+      "pluginFilepath": "/Users/ybv/code/ybv-projects/localgov.fyi_frontend/node_modules/gatsby-plugin-robots-txt",
+      "packageJson": {
+        "name": "gatsby-plugin-robots-txt",
+        "description": "Gatsby plugin that automatically creates robots.txt for your site",
+        "version": "1.0.2",
+        "main": "index.js",
+        "keywords": [
+          "gatsby",
+          "gatsby-plugin"
+        ],
+        "author": {
+          "name": "Marat Dreizin",
+          "email": "marat.dreizin@gmail.com"
+        },
+        "license": "MIT",
+        "dependencies": [
+          {
+            "name": "babel-runtime",
+            "version": "^6.26.0"
+          },
+          {
+            "name": "generate-robotstxt",
+            "version": "^5.0.5"
+          }
+        ],
+        "devDependencies": [
+          {
+            "name": "babel-cli",
+            "version": "^6.26.0"
+          },
+          {
+            "name": "babel-eslint",
+            "version": "^8.2.3"
+          },
+          {
+            "name": "babel-plugin-transform-object-rest-spread",
+            "version": "^6.26.0"
+          },
+          {
+            "name": "babel-plugin-transform-runtime",
+            "version": "^6.23.0"
+          },
+          {
+            "name": "babel-preset-env",
+            "version": "^1.6.1"
+          },
+          {
+            "name": "eslint",
+            "version": "^4.19.1"
+          },
+          {
+            "name": "eslint-plugin-babel",
+            "version": "^5.1.0"
+          },
+          {
+            "name": "eslint-plugin-markdown",
+            "version": "^1.0.0-beta.6"
+          },
+          {
+            "name": "prettier",
+            "version": "^1.12.1"
+          },
+          {
+            "name": "semantic-release",
+            "version": "^15.1.7"
+          },
+          {
+            "name": "travis-deploy-once",
+            "version": "^4.4.1"
+          }
+        ],
+        "peerDependencies": [
+          {
+            "name": "gatsby",
+            "version": "^1.0.0"
+          }
+        ],
+        "optionalDependecies": [],
+        "bundledDependecies": []
+      },
+      "parent": "SOURCE",
+      "children": [],
+      "internal": {
+        "contentDigest": "0c93fef4939a3ac518b3e7954c901a95",
         "type": "SitePlugin",
         "owner": "internal-data-bridge"
       }
@@ -916,7 +978,7 @@
       "resolve": "/Users/ybv/code/ybv-projects/localgov.fyi_frontend",
       "id": "Plugin default-site-plugin",
       "name": "default-site-plugin",
-      "version": "8d6d176d5d2454719dfaa38060fa0a72",
+      "version": "9b9d7563ea10748bb8894591b48db1f7",
       "pluginOptions": {
         "plugins": []
       },
@@ -996,6 +1058,10 @@
           {
             "name": "gatsby-plugin-react-next",
             "version": "^1.0.11"
+          },
+          {
+            "name": "gatsby-plugin-robots-txt",
+            "version": "^1.0.2"
           },
           {
             "name": "gatsby-plugin-sharp",
@@ -1135,7 +1201,89 @@
       "parent": "SOURCE",
       "children": [],
       "internal": {
-        "contentDigest": "f83714ce31a78beaa125e8769c135628",
+        "contentDigest": "cb91f107a8cec8db7dce5fbe7e137080",
+        "type": "SitePlugin",
+        "owner": "internal-data-bridge"
+      }
+    },
+    "Plugin gatsby-plugin-page-creator": {
+      "resolve": "/Users/ybv/code/ybv-projects/localgov.fyi_frontend/node_modules/gatsby-plugin-page-creator",
+      "id": "Plugin gatsby-plugin-page-creator",
+      "name": "gatsby-plugin-page-creator",
+      "version": "1.0.1",
+      "pluginOptions": {
+        "plugins": [],
+        "path": "/Users/ybv/code/ybv-projects/localgov.fyi_frontend/src/pages",
+        "pathCheck": false
+      },
+      "nodeAPIs": [
+        "createPagesStatefully"
+      ],
+      "browserAPIs": [],
+      "ssrAPIs": [],
+      "pluginFilepath": "/Users/ybv/code/ybv-projects/localgov.fyi_frontend/node_modules/gatsby-plugin-page-creator",
+      "packageJson": {
+        "name": "gatsby-plugin-page-creator",
+        "description": "Gatsby plugin that automatically creates pages from React components in specified directories",
+        "version": "1.0.1",
+        "main": "index.js",
+        "keywords": [
+          "gatsby",
+          "gatsby-plugin"
+        ],
+        "author": {
+          "name": "Kyle Mathews",
+          "email": "mathews.kyle@gmail.com"
+        },
+        "license": "MIT",
+        "dependencies": [
+          {
+            "name": "babel-runtime",
+            "version": "^6.26.0"
+          },
+          {
+            "name": "bluebird",
+            "version": "^3.5.0"
+          },
+          {
+            "name": "chokidar",
+            "version": "^1.7.0"
+          },
+          {
+            "name": "glob",
+            "version": "^7.1.1"
+          },
+          {
+            "name": "lodash",
+            "version": "^4.17.4"
+          },
+          {
+            "name": "parse-filepath",
+            "version": "^1.0.1"
+          },
+          {
+            "name": "slash",
+            "version": "^1.0.0"
+          }
+        ],
+        "devDependencies": [
+          {
+            "name": "babel-cli",
+            "version": "^6.26.0"
+          },
+          {
+            "name": "cross-env",
+            "version": "^5.0.5"
+          }
+        ],
+        "peerDependencies": [],
+        "optionalDependecies": [],
+        "bundledDependecies": []
+      },
+      "parent": "SOURCE",
+      "children": [],
+      "internal": {
+        "contentDigest": "7da0901cfe2ed6d313058da457d2b953",
         "type": "SitePlugin",
         "owner": "internal-data-bridge"
       }
@@ -1149,12 +1297,12 @@
       "host": "localhost",
       "pathPrefix": "",
       "polyfill": true,
-      "buildTime": "2018-06-14T20:11:08.993Z",
+      "buildTime": "2018-06-21T01:28:32.432Z",
       "id": "Site",
       "parent": "SOURCE",
       "children": [],
       "internal": {
-        "contentDigest": "747b590ba9ee31655a63f3ca30e69526",
+        "contentDigest": "889dca670066cdeb35412dc4a0f916aa",
         "type": "Site",
         "owner": "internal-data-bridge"
       }
@@ -1164,7 +1312,7 @@
       "children": [],
       "parent": "___SOURCE___",
       "internal": {
-        "contentDigest": "b786e2873d24d13938426a9f233f9fa0",
+        "contentDigest": "27dc2c5ec56c2d79c3fd5ac86722353e",
         "type": "Directory",
         "description": "Directory \"data\"",
         "owner": "gatsby-source-filesystem"
@@ -1176,7 +1324,7 @@
       "size": 96,
       "prettySize": "96 B",
       "modifiedTime": "2018-06-11T18:25:05.699Z",
-      "accessTime": "2018-06-14T20:11:12.345Z",
+      "accessTime": "2018-06-21T01:28:35.392Z",
       "changeTime": "2018-06-11T18:25:05.699Z",
       "birthTime": "2018-06-01T17:04:56.172Z",
       "root": "/",
@@ -1194,11 +1342,11 @@
       "blksize": 4194304,
       "ino": 8594189811,
       "blocks": 0,
-      "atimeMs": 1529007072345.1045,
+      "atimeMs": 1529544515392.292,
       "mtimeMs": 1528741505699.2002,
       "ctimeMs": 1528741505699.2002,
       "birthtimeMs": 1527872696172.2903,
-      "atime": "2018-06-14T20:11:12.345Z",
+      "atime": "2018-06-21T01:28:35.392Z",
       "mtime": "2018-06-11T18:25:05.699Z",
       "ctime": "2018-06-11T18:25:05.699Z",
       "birthtime": "2018-06-01T17:04:56.172Z"
@@ -1208,7 +1356,7 @@
       "children": [],
       "parent": "___SOURCE___",
       "internal": {
-        "contentDigest": "122cf56fe904bf8cab6bfb8db8211614",
+        "contentDigest": "ee28c7730859c2b7d7dcf1e858c9600b",
         "type": "Directory",
         "description": "Directory \"data/orgs\"",
         "owner": "gatsby-source-filesystem"
@@ -1220,7 +1368,7 @@
       "size": 96,
       "prettySize": "96 B",
       "modifiedTime": "2018-06-11T18:16:01.009Z",
-      "accessTime": "2018-06-14T20:11:12.347Z",
+      "accessTime": "2018-06-21T01:28:35.394Z",
       "changeTime": "2018-06-11T18:16:01.009Z",
       "birthTime": "2018-06-11T18:16:01.009Z",
       "root": "/",
@@ -1238,11 +1386,11 @@
       "blksize": 4194304,
       "ino": 8595310919,
       "blocks": 0,
-      "atimeMs": 1529007072347.0332,
+      "atimeMs": 1529544515394.4673,
       "mtimeMs": 1528740961008.8777,
       "ctimeMs": 1528740961008.8777,
       "birthtimeMs": 1528740961008.7815,
-      "atime": "2018-06-14T20:11:12.347Z",
+      "atime": "2018-06-21T01:28:35.394Z",
       "mtime": "2018-06-11T18:16:01.009Z",
       "ctime": "2018-06-11T18:16:01.009Z",
       "birthtime": "2018-06-11T18:16:01.009Z"
@@ -1267,7 +1415,7 @@
       "size": 12065,
       "prettySize": "12.1 kB",
       "modifiedTime": "2018-06-11T18:16:01.009Z",
-      "accessTime": "2018-06-14T20:11:12.347Z",
+      "accessTime": "2018-06-21T01:28:35.395Z",
       "changeTime": "2018-06-11T18:16:01.009Z",
       "birthTime": "2018-06-11T18:16:01.009Z",
       "root": "/",
@@ -1285,11 +1433,11 @@
       "blksize": 4194304,
       "ino": 8595310920,
       "blocks": 24,
-      "atimeMs": 1529007072347.1123,
+      "atimeMs": 1529544515394.5767,
       "mtimeMs": 1528740961009.0251,
       "ctimeMs": 1528740961009.0251,
       "birthtimeMs": 1528740961008.868,
-      "atime": "2018-06-14T20:11:12.347Z",
+      "atime": "2018-06-21T01:28:35.395Z",
       "mtime": "2018-06-11T18:16:01.009Z",
       "ctime": "2018-06-11T18:16:01.009Z",
       "birthtime": "2018-06-11T18:16:01.009Z"
@@ -1887,7 +2035,7 @@
       "children": [],
       "internal": {
         "type": "SitePage",
-        "contentDigest": "7d1997e5d633093140a815fbcda0c215",
+        "contentDigest": "26309ab99c53cd5e321d04de462b5055",
         "description": "Your site's \"gatsby-node.js\"",
         "owner": "internal-data-bridge"
       }
@@ -1931,7 +2079,7 @@
       "children": [],
       "internal": {
         "type": "SitePage",
-        "contentDigest": "e05fd19c7f77607f146de977fc8e3957",
+        "contentDigest": "26f1070d3c6d21f5d8afa0d7611874d1",
         "description": "Your site's \"gatsby-node.js\"",
         "owner": "internal-data-bridge"
       }
@@ -1975,7 +2123,7 @@
       "children": [],
       "internal": {
         "type": "SitePage",
-        "contentDigest": "15fed8b9cfd4b09061ada8ed4233d14e",
+        "contentDigest": "d68c90351b7a5633ae2109b91b2e7fc8",
         "description": "Your site's \"gatsby-node.js\"",
         "owner": "internal-data-bridge"
       }
@@ -2017,7 +2165,7 @@
       "children": [],
       "internal": {
         "type": "SitePage",
-        "contentDigest": "79fbd08656ad14afc95754d849425bec",
+        "contentDigest": "3c95014ab97275a29decafba22e4b541",
         "description": "Your site's \"gatsby-node.js\"",
         "owner": "internal-data-bridge"
       }
@@ -2059,7 +2207,7 @@
       "children": [],
       "internal": {
         "type": "SitePage",
-        "contentDigest": "980495b026672bf79a493ee3ff986d2f",
+        "contentDigest": "e7c9deecf8aeea43d041c54d83db5bb8",
         "description": "Your site's \"gatsby-node.js\"",
         "owner": "internal-data-bridge"
       }
@@ -2096,7 +2244,7 @@
       "children": [],
       "internal": {
         "type": "SitePage",
-        "contentDigest": "615a961250d6a5a4e44b096bcb899b98",
+        "contentDigest": "d5b2f9fca12ec9dac0f59dbe557fec4b",
         "description": "Your site's \"gatsby-node.js\"",
         "owner": "internal-data-bridge"
       }
@@ -2153,7 +2301,7 @@
       "children": [],
       "internal": {
         "type": "SitePage",
-        "contentDigest": "1d10a0b3bab628dc97cc26d5bba16627",
+        "contentDigest": "de44309bd4a0f950b002620aee7d0700",
         "description": "Your site's \"gatsby-node.js\"",
         "owner": "internal-data-bridge"
       }
@@ -2201,7 +2349,7 @@
       "children": [],
       "internal": {
         "type": "SitePage",
-        "contentDigest": "7fbc8e154df95dd93f51813fdd28e6b7",
+        "contentDigest": "cfb1af0ecc239e3b9f581cb3f8357181",
         "description": "Your site's \"gatsby-node.js\"",
         "owner": "internal-data-bridge"
       }
@@ -2267,7 +2415,7 @@
       "children": [],
       "internal": {
         "type": "SitePage",
-        "contentDigest": "e98d33ce7a499e5154ea4b03dd2f41cd",
+        "contentDigest": "5da559210a7f5af9346a4b3d81b88480",
         "description": "Your site's \"gatsby-node.js\"",
         "owner": "internal-data-bridge"
       }
@@ -2304,7 +2452,7 @@
       "children": [],
       "internal": {
         "type": "SitePage",
-        "contentDigest": "87036fbeaa7977939857c6d2966ba86b",
+        "contentDigest": "7587d87c1f87f3991ae6f7115143cd4d",
         "description": "Your site's \"gatsby-node.js\"",
         "owner": "internal-data-bridge"
       }
@@ -2346,7 +2494,7 @@
       "children": [],
       "internal": {
         "type": "SitePage",
-        "contentDigest": "a85e6fe1d41f5d261422f786e0d4d2d2",
+        "contentDigest": "e2201bb5603ee5ab61da822b9ae89186",
         "description": "Your site's \"gatsby-node.js\"",
         "owner": "internal-data-bridge"
       }
@@ -2412,7 +2560,7 @@
       "children": [],
       "internal": {
         "type": "SitePage",
-        "contentDigest": "04b2b978b88a6be549d3cacb57d39654",
+        "contentDigest": "c5edc0358b3bffa8f2b242e1e2547b4e",
         "description": "Your site's \"gatsby-node.js\"",
         "owner": "internal-data-bridge"
       }
@@ -2462,7 +2610,7 @@
       "children": [],
       "internal": {
         "type": "SitePage",
-        "contentDigest": "102a70bcb3c7f1cf53fceb04a784df68",
+        "contentDigest": "6d028394ad81128490c9e6ff951aa49d",
         "description": "Your site's \"gatsby-node.js\"",
         "owner": "internal-data-bridge"
       }
@@ -2513,7 +2661,7 @@
       "children": [],
       "internal": {
         "type": "SitePage",
-        "contentDigest": "21a3ea74f779b7558cd5bf1cd10c8220",
+        "contentDigest": "08a44d1ee9e5bf691940b1fe27b0eadc",
         "description": "Your site's \"gatsby-node.js\"",
         "owner": "internal-data-bridge"
       }
@@ -2526,16 +2674,16 @@
       "component": "/Users/ybv/code/ybv-projects/localgov.fyi_frontend/src/pages/about.js",
       "componentChunkName": "component---src-pages-about-js",
       "context": {},
-      "pluginCreator___NODE": "Plugin component-page-creator",
-      "pluginCreatorId": "Plugin component-page-creator",
+      "pluginCreator___NODE": "Plugin gatsby-plugin-page-creator",
+      "pluginCreatorId": "Plugin gatsby-plugin-page-creator",
       "componentPath": "/Users/ybv/code/ybv-projects/localgov.fyi_frontend/src/pages/about.js",
       "id": "SitePage /about/",
       "parent": "SOURCE",
       "children": [],
       "internal": {
         "type": "SitePage",
-        "contentDigest": "90f942a041463570ea1fd49700a4f433",
-        "description": "Plugin component-page-creator",
+        "contentDigest": "37a8825c4cccde5aaf9b5156055318e2",
+        "description": "Plugin gatsby-plugin-page-creator",
         "owner": "internal-data-bridge"
       }
     },
@@ -2547,16 +2695,16 @@
       "component": "/Users/ybv/code/ybv-projects/localgov.fyi_frontend/src/pages/index.js",
       "componentChunkName": "component---src-pages-index-js",
       "context": {},
-      "pluginCreator___NODE": "Plugin component-page-creator",
-      "pluginCreatorId": "Plugin component-page-creator",
+      "pluginCreator___NODE": "Plugin gatsby-plugin-page-creator",
+      "pluginCreatorId": "Plugin gatsby-plugin-page-creator",
       "componentPath": "/Users/ybv/code/ybv-projects/localgov.fyi_frontend/src/pages/index.js",
       "id": "SitePage /",
       "parent": "SOURCE",
       "children": [],
       "internal": {
         "type": "SitePage",
-        "contentDigest": "6eb375299a8f694f9eec86196e0629f4",
-        "description": "Plugin component-page-creator",
+        "contentDigest": "75c44762ba4bf7c35ddc9104ba5277e6",
+        "description": "Plugin gatsby-plugin-page-creator",
         "owner": "internal-data-bridge"
       }
     },
@@ -2577,7 +2725,7 @@
       "children": [],
       "internal": {
         "type": "SitePage",
-        "contentDigest": "363603b2442cd131302f7cdc85f0b8c2",
+        "contentDigest": "0a4e2f2f3a4010b7022b1652e9bfd86e",
         "description": "Plugin gatsby-plugin-create-client-paths",
         "owner": "internal-data-bridge"
       }
@@ -2585,7 +2733,7 @@
   },
   "status": {
     "plugins": {},
-    "PLUGINS_HASH": "b2804704aba84ad56aa62fb00df951a9"
+    "PLUGINS_HASH": "a55744a5fcbdaae50c4c0ee84af9320b"
   },
   "componentDataDependencies": {
     "nodes": {},

@@ -62,7 +62,7 @@
         "develop": "gatsby develop",
         "dev": "gatsby develop",
         "build": "gatsby build",
-        "deploy": "gatsby build --prefix-paths --no-uglify=true",
+        "deploy": "gatsby build --prefix-paths",
         "cy:open": "cypress open",
         "cy:run": "cypress run"
     },

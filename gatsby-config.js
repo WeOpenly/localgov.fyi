@@ -78,7 +78,7 @@ module.exports = {
           windows: true
         }
       }
-    }
+    },
     `gatsby-plugin-robots-txt`,
     `gatsby-plugin-react-helmet`,
     `gatsby-plugin-netlify`,

@@ -103,6 +103,7 @@ class Index extends React.Component {
             rel="canonical"
             href={`https://localgov.fyi${this.props.location.pathname}`}
           />
+          <meta property="og:url" content={`https://localgov.fyi${this.props.location.pathname}`} />
           <html lang="en" />
         </Helmet>
         <Grid container spacing={0} className={classes.landingSearch}>

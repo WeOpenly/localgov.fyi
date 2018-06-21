@@ -64,7 +64,7 @@
         "develop": "gatsby develop",
         "dev": "gatsby develop",
         "build": "gatsby build",
-        "deploy": "gatsby build --prefix-paths --no-uglify"
+        "deploy": "gatsby build --prefix-paths --no-uglify=true"
     },
     "devDependencies": {
         "start-server-and-test": "^1.1.4"

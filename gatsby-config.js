@@ -63,13 +63,6 @@ module.exports = {
     },
     `gatsby-plugin-robots-txt`,
     `gatsby-plugin-react-helmet`,
-    {
-      resolve: `gatsby-plugin-favicon`,
-      options: {
-        logo: "./src/favicon.png",
-        injectHTML: true
-      }
-    },
     `gatsby-plugin-netlify`,
     // This plugin generates a service worker and AppShell html file so the site
     // works offline and is otherwise resistant to bad networks. Works with almost

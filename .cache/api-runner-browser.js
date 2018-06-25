@@ -1,8 +1,8 @@
 var plugins = [{
-      plugin: require('/Users/ybv/code/ybv-projects/localgov.fyi_frontend/node_modules/gatsby-plugin-nprogress/gatsby-browser'),
+      plugin: require('/Users/jim/Documents/openly/localgov.fyi/node_modules/gatsby-plugin-nprogress/gatsby-browser'),
       options: {"plugins":[],"color":"#0000ca","showSpinner":false},
     },{
-      plugin: require('/Users/ybv/code/ybv-projects/localgov.fyi_frontend/gatsby-browser'),
+      plugin: require('/Users/jim/Documents/openly/localgov.fyi/gatsby-browser'),
       options: {"plugins":[]},
     }]
 // During bootstrap, we write requires at top of this file which looks

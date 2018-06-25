@@ -16,7 +16,7 @@
       "children": [],
       "internal": {
         "type": "SitePage",
-        "contentDigest": "00e4e8d0c45629c623600a93713816a1",
+        "contentDigest": "8651a1e1857a637ce69ab6201be21eaa",
         "description": "Plugin dev-404-page",
         "owner": "internal-data-bridge"
       }
@@ -275,6 +275,186 @@
         "owner": "internal-data-bridge"
       }
     },
+    "Plugin gatsby-transformer-sharp": {
+      "resolve": "/Users/ybv/code/ybv-projects/localgov.fyi_frontend/node_modules/gatsby-transformer-sharp",
+      "id": "Plugin gatsby-transformer-sharp",
+      "name": "gatsby-transformer-sharp",
+      "version": "1.6.27",
+      "pluginOptions": {
+        "plugins": []
+      },
+      "nodeAPIs": [
+        "onCreateNode",
+        "setFieldsOnGraphQLNodeType",
+        "onPreExtractQueries"
+      ],
+      "browserAPIs": [],
+      "ssrAPIs": [],
+      "pluginFilepath": "/Users/ybv/code/ybv-projects/localgov.fyi_frontend/node_modules/gatsby-transformer-sharp",
+      "packageJson": {
+        "name": "gatsby-transformer-sharp",
+        "description": "Gatsby transformer plugin for images using Sharp",
+        "version": "1.6.27",
+        "keywords": [
+          "gatsby",
+          "gatsby-plugin",
+          "image",
+          "sharp"
+        ],
+        "author": {
+          "name": "Kyle Mathews",
+          "email": "mathews.kyle@gmail.com"
+        },
+        "license": "MIT",
+        "dependencies": [
+          {
+            "name": "babel-runtime",
+            "version": "^6.26.0"
+          },
+          {
+            "name": "bluebird",
+            "version": "^3.5.0"
+          },
+          {
+            "name": "fs-extra",
+            "version": "^4.0.2"
+          },
+          {
+            "name": "probe-image-size",
+            "version": "^4.0.0"
+          }
+        ],
+        "devDependencies": [
+          {
+            "name": "babel-cli",
+            "version": "^6.26.0"
+          },
+          {
+            "name": "cross-env",
+            "version": "^5.0.5"
+          }
+        ],
+        "peerDependencies": [],
+        "optionalDependecies": [],
+        "bundledDependecies": []
+      },
+      "parent": "SOURCE",
+      "children": [],
+      "internal": {
+        "contentDigest": "6c4b9f934279f898f0d9488694895648",
+        "type": "SitePlugin",
+        "owner": "internal-data-bridge"
+      }
+    },
+    "Plugin gatsby-plugin-sharp": {
+      "resolve": "/Users/ybv/code/ybv-projects/localgov.fyi_frontend/node_modules/gatsby-plugin-sharp",
+      "id": "Plugin gatsby-plugin-sharp",
+      "name": "gatsby-plugin-sharp",
+      "version": "1.6.48",
+      "pluginOptions": {
+        "plugins": []
+      },
+      "nodeAPIs": [],
+      "browserAPIs": [],
+      "ssrAPIs": [],
+      "pluginFilepath": "/Users/ybv/code/ybv-projects/localgov.fyi_frontend/node_modules/gatsby-plugin-sharp",
+      "packageJson": {
+        "name": "gatsby-plugin-sharp",
+        "description": "Wrapper of the Sharp image manipulation library for Gatsby plugins",
+        "version": "1.6.48",
+        "main": "index.js",
+        "keywords": [
+          "gatsby",
+          "gatsby-plugin",
+          "image",
+          "sharp"
+        ],
+        "author": {
+          "name": "Kyle Mathews",
+          "email": "mathews.kyle@gmail.com"
+        },
+        "license": "MIT",
+        "dependencies": [
+          {
+            "name": "async",
+            "version": "^2.1.2"
+          },
+          {
+            "name": "babel-runtime",
+            "version": "^6.26.0"
+          },
+          {
+            "name": "bluebird",
+            "version": "^3.5.0"
+          },
+          {
+            "name": "imagemin",
+            "version": "^5.2.2"
+          },
+          {
+            "name": "imagemin-pngquant",
+            "version": "5.0.1"
+          },
+          {
+            "name": "imagemin-webp",
+            "version": "^4.0.0"
+          },
+          {
+            "name": "lodash",
+            "version": "^4.17.4"
+          },
+          {
+            "name": "mini-svg-data-uri",
+            "version": "^1.0.0"
+          },
+          {
+            "name": "potrace",
+            "version": "^2.1.1"
+          },
+          {
+            "name": "probe-image-size",
+            "version": "^4.0.0"
+          },
+          {
+            "name": "progress",
+            "version": "^1.1.8"
+          },
+          {
+            "name": "sharp",
+            "version": "^0.20.0"
+          },
+          {
+            "name": "svgo",
+            "version": "^0.7.2"
+          }
+        ],
+        "devDependencies": [
+          {
+            "name": "babel-cli",
+            "version": "^6.26.0"
+          },
+          {
+            "name": "cross-env",
+            "version": "^5.0.5"
+          }
+        ],
+        "peerDependencies": [
+          {
+            "name": "gatsby",
+            "version": "^1.0.0"
+          }
+        ],
+        "optionalDependecies": [],
+        "bundledDependecies": []
+      },
+      "parent": "SOURCE",
+      "children": [],
+      "internal": {
+        "contentDigest": "fc45f5c10b6983ca8d583cbdce801bfb",
+        "type": "SitePlugin",
+        "owner": "internal-data-bridge"
+      }
+    },
     "Plugin gatsby-source-filesystem": {
       "resolve": "/Users/ybv/code/ybv-projects/localgov.fyi_frontend/node_modules/gatsby-source-filesystem",
       "id": "Plugin gatsby-source-filesystem",
@@ -282,8 +462,8 @@
       "version": "1.5.39",
       "pluginOptions": {
         "plugins": [],
-        "name": "data",
-        "path": "/Users/ybv/code/ybv-projects/localgov.fyi_frontend/data"
+        "name": "img",
+        "path": "/Users/ybv/code/ybv-projects/localgov.fyi_frontend/src/images"
       },
       "nodeAPIs": [
         "sourceNodes",
@@ -373,7 +553,7 @@
       "parent": "SOURCE",
       "children": [],
       "internal": {
-        "contentDigest": "0615c4725566c8448aea7f127e3fc26f",
+        "contentDigest": "9b2cb8267c57555272b916699df00403",
         "type": "SitePlugin",
         "owner": "internal-data-bridge"
       }
@@ -1065,7 +1245,7 @@
       "resolve": "/Users/ybv/code/ybv-projects/localgov.fyi_frontend",
       "id": "Plugin default-site-plugin",
       "name": "default-site-plugin",
-      "version": "a258d98226a1500fcd301dfdd6c326df",
+      "version": "b1fbb5c0068952f19cf612e8f62fd5c3",
       "pluginOptions": {
         "plugins": []
       },
@@ -1110,6 +1290,10 @@
           {
             "name": "babel-plugin-transform-regenerator",
             "version": "^6.26.0"
+          },
+          {
+            "name": "classnames",
+            "version": "^2.2.6"
           },
           {
             "name": "gatsby",
@@ -1216,6 +1400,10 @@
             "version": "^9.3.4"
           },
           {
+            "name": "react-device-detect",
+            "version": "^1.4.6"
+          },
+          {
             "name": "react-dom",
             "version": "16.4.0"
           },
@@ -1297,7 +1485,7 @@
       "parent": "SOURCE",
       "children": [],
       "internal": {
-        "contentDigest": "cd9650501d0247d752a96675514c5ef4",
+        "contentDigest": "4c778379d238073075ee319eb1211034",
         "type": "SitePlugin",
         "owner": "internal-data-bridge"
       }
@@ -1393,12 +1581,12 @@
       "host": "localhost",
       "pathPrefix": "",
       "polyfill": true,
-      "buildTime": "2018-06-21T19:42:49.440Z",
+      "buildTime": "2018-06-23T00:10:57.622Z",
       "id": "Site",
       "parent": "SOURCE",
       "children": [],
       "internal": {
-        "contentDigest": "7eb8bbf117ef6b99aa7d451c2512f589",
+        "contentDigest": "192eff27dd511faf41fcd3612ae80849",
         "type": "Site",
         "owner": "internal-data-bridge"
       }
@@ -1408,7 +1596,7 @@
       "children": [],
       "parent": "___SOURCE___",
       "internal": {
-        "contentDigest": "378a6e6670903706ba78deb74525ef7e",
+        "contentDigest": "1d91f391dcb96bc7e5a01f9dc2cbca72",
         "type": "Directory",
         "description": "Directory \"data\"",
         "owner": "gatsby-source-filesystem"
@@ -1420,7 +1608,7 @@
       "size": 96,
       "prettySize": "96 B",
       "modifiedTime": "2018-06-21T19:04:40.916Z",
-      "accessTime": "2018-06-21T19:42:53.531Z",
+      "accessTime": "2018-06-23T00:11:01.279Z",
       "changeTime": "2018-06-21T19:04:40.916Z",
       "birthTime": "2018-06-01T17:04:56.172Z",
       "root": "/",
@@ -1438,11 +1626,11 @@
       "blksize": 4194304,
       "ino": 8594189811,
       "blocks": 0,
-      "atimeMs": 1529610173531.4756,
+      "atimeMs": 1529712661279.09,
       "mtimeMs": 1529607880915.6296,
       "ctimeMs": 1529607880915.6296,
       "birthtimeMs": 1527872696172.2903,
-      "atime": "2018-06-21T19:42:53.531Z",
+      "atime": "2018-06-23T00:11:01.279Z",
       "mtime": "2018-06-21T19:04:40.916Z",
       "ctime": "2018-06-21T19:04:40.916Z",
       "birthtime": "2018-06-01T17:04:56.172Z"
@@ -1452,7 +1640,7 @@
       "children": [],
       "parent": "___SOURCE___",
       "internal": {
-        "contentDigest": "6008bd0e52f771b556f45503f3c54dde",
+        "contentDigest": "d44a3a533577321a988e89ec288eb696",
         "type": "Directory",
         "description": "Directory \"data/orgs\"",
         "owner": "gatsby-source-filesystem"
@@ -1464,7 +1652,7 @@
       "size": 96,
       "prettySize": "96 B",
       "modifiedTime": "2018-06-11T18:16:01.009Z",
-      "accessTime": "2018-06-21T19:42:53.533Z",
+      "accessTime": "2018-06-23T00:11:01.281Z",
       "changeTime": "2018-06-11T18:16:01.009Z",
       "birthTime": "2018-06-11T18:16:01.009Z",
       "root": "/",
@@ -1482,11 +1670,11 @@
       "blksize": 4194304,
       "ino": 8595310919,
       "blocks": 0,
-      "atimeMs": 1529610173533.4893,
+      "atimeMs": 1529712661280.942,
       "mtimeMs": 1528740961008.8777,
       "ctimeMs": 1528740961008.8777,
       "birthtimeMs": 1528740961008.7815,
-      "atime": "2018-06-21T19:42:53.533Z",
+      "atime": "2018-06-23T00:11:01.281Z",
       "mtime": "2018-06-11T18:16:01.009Z",
       "ctime": "2018-06-11T18:16:01.009Z",
       "birthtime": "2018-06-11T18:16:01.009Z"
@@ -1511,7 +1699,7 @@
       "size": 12065,
       "prettySize": "12.1 kB",
       "modifiedTime": "2018-06-11T18:16:01.009Z",
-      "accessTime": "2018-06-21T19:21:25.305Z",
+      "accessTime": "2018-06-22T23:25:51.798Z",
       "changeTime": "2018-06-11T18:16:01.009Z",
       "birthTime": "2018-06-11T18:16:01.009Z",
       "root": "/",
@@ -1529,11 +1717,11 @@
       "blksize": 4194304,
       "ino": 8595310920,
       "blocks": 24,
-      "atimeMs": 1529608885304.6965,
+      "atimeMs": 1529709951797.641,
       "mtimeMs": 1528740961009.0251,
       "ctimeMs": 1528740961009.0251,
       "birthtimeMs": 1528740961008.868,
-      "atime": "2018-06-21T19:21:25.305Z",
+      "atime": "2018-06-22T23:25:51.798Z",
       "mtime": "2018-06-11T18:16:01.009Z",
       "ctime": "2018-06-11T18:16:01.009Z",
       "birthtime": "2018-06-11T18:16:01.009Z"
@@ -1826,6 +2014,335 @@
         "contentDigest": "2b159a5fddc24e4a348245f551c8216e",
         "type": "OrgsJson",
         "owner": "gatsby-transformer-json"
+      }
+    },
+    "/Users/ybv/code/ybv-projects/localgov.fyi_frontend/src/images absPath of file": {
+      "id": "/Users/ybv/code/ybv-projects/localgov.fyi_frontend/src/images absPath of file",
+      "children": [],
+      "parent": "___SOURCE___",
+      "internal": {
+        "contentDigest": "87e89aa5cedcf18611323b8cc46c5c85",
+        "type": "Directory",
+        "description": "Directory \"src/images\"",
+        "owner": "gatsby-source-filesystem"
+      },
+      "sourceInstanceName": "img",
+      "absolutePath": "/Users/ybv/code/ybv-projects/localgov.fyi_frontend/src/images",
+      "relativePath": "",
+      "extension": "",
+      "size": 224,
+      "prettySize": "224 B",
+      "modifiedTime": "2018-06-22T22:36:03.051Z",
+      "accessTime": "2018-06-23T00:11:01.289Z",
+      "changeTime": "2018-06-22T22:36:03.051Z",
+      "birthTime": "2018-06-22T22:33:16.972Z",
+      "root": "/",
+      "dir": "/Users/ybv/code/ybv-projects/localgov.fyi_frontend/src",
+      "base": "images",
+      "ext": "",
+      "name": "images",
+      "relativeDirectory": "..",
+      "dev": 16777220,
+      "mode": 16877,
+      "nlink": 7,
+      "uid": 501,
+      "gid": 20,
+      "rdev": 0,
+      "blksize": 4194304,
+      "ino": 8597092713,
+      "blocks": 0,
+      "atimeMs": 1529712661289.205,
+      "mtimeMs": 1529706963050.721,
+      "ctimeMs": 1529706963050.721,
+      "birthtimeMs": 1529706796971.6072,
+      "atime": "2018-06-23T00:11:01.289Z",
+      "mtime": "2018-06-22T22:36:03.051Z",
+      "ctime": "2018-06-22T22:36:03.051Z",
+      "birthtime": "2018-06-22T22:33:16.972Z"
+    },
+    "/Users/ybv/code/ybv-projects/localgov.fyi_frontend/src/images/gal1.jpeg absPath of file": {
+      "id": "/Users/ybv/code/ybv-projects/localgov.fyi_frontend/src/images/gal1.jpeg absPath of file",
+      "children": [
+        "/Users/ybv/code/ybv-projects/localgov.fyi_frontend/src/images/gal1.jpeg absPath of file >> ImageSharp"
+      ],
+      "parent": "___SOURCE___",
+      "internal": {
+        "contentDigest": "2b57c8ab32d1037eef023afa021c25f6",
+        "mediaType": "image/jpeg",
+        "type": "File",
+        "description": "File \"src/images/gal1.jpeg\"",
+        "owner": "gatsby-source-filesystem"
+      },
+      "sourceInstanceName": "img",
+      "absolutePath": "/Users/ybv/code/ybv-projects/localgov.fyi_frontend/src/images/gal1.jpeg",
+      "relativePath": "gal1.jpeg",
+      "extension": "jpeg",
+      "size": 46784,
+      "prettySize": "46.8 kB",
+      "modifiedTime": "2018-06-22T22:36:02.960Z",
+      "accessTime": "2018-06-22T23:25:47.432Z",
+      "changeTime": "2018-06-22T22:36:02.961Z",
+      "birthTime": "2018-06-22T22:36:02.958Z",
+      "root": "/",
+      "dir": "/Users/ybv/code/ybv-projects/localgov.fyi_frontend/src/images",
+      "base": "gal1.jpeg",
+      "ext": ".jpeg",
+      "name": "gal1",
+      "relativeDirectory": "",
+      "dev": 16777220,
+      "mode": 33188,
+      "nlink": 1,
+      "uid": 501,
+      "gid": 20,
+      "rdev": 0,
+      "blksize": 4194304,
+      "ino": 8597092931,
+      "blocks": 96,
+      "atimeMs": 1529709947432.2705,
+      "mtimeMs": 1529706962960.016,
+      "ctimeMs": 1529706962961.3535,
+      "birthtimeMs": 1529706962958.023,
+      "atime": "2018-06-22T23:25:47.432Z",
+      "mtime": "2018-06-22T22:36:02.960Z",
+      "ctime": "2018-06-22T22:36:02.961Z",
+      "birthtime": "2018-06-22T22:36:02.958Z"
+    },
+    "/Users/ybv/code/ybv-projects/localgov.fyi_frontend/src/images/gal1.jpeg absPath of file >> ImageSharp": {
+      "id": "/Users/ybv/code/ybv-projects/localgov.fyi_frontend/src/images/gal1.jpeg absPath of file >> ImageSharp",
+      "children": [],
+      "parent": "/Users/ybv/code/ybv-projects/localgov.fyi_frontend/src/images/gal1.jpeg absPath of file",
+      "internal": {
+        "contentDigest": "2b57c8ab32d1037eef023afa021c25f6",
+        "type": "ImageSharp",
+        "owner": "gatsby-transformer-sharp"
+      }
+    },
+    "/Users/ybv/code/ybv-projects/localgov.fyi_frontend/src/images/gal3.jpeg absPath of file": {
+      "id": "/Users/ybv/code/ybv-projects/localgov.fyi_frontend/src/images/gal3.jpeg absPath of file",
+      "children": [
+        "/Users/ybv/code/ybv-projects/localgov.fyi_frontend/src/images/gal3.jpeg absPath of file >> ImageSharp"
+      ],
+      "parent": "___SOURCE___",
+      "internal": {
+        "contentDigest": "85f35908a0a9c5f918e16ecc486e4689",
+        "mediaType": "image/jpeg",
+        "type": "File",
+        "description": "File \"src/images/gal3.jpeg\"",
+        "owner": "gatsby-source-filesystem"
+      },
+      "sourceInstanceName": "img",
+      "absolutePath": "/Users/ybv/code/ybv-projects/localgov.fyi_frontend/src/images/gal3.jpeg",
+      "relativePath": "gal3.jpeg",
+      "extension": "jpeg",
+      "size": 80109,
+      "prettySize": "80.1 kB",
+      "modifiedTime": "2018-06-22T22:36:03.003Z",
+      "accessTime": "2018-06-22T23:25:47.432Z",
+      "changeTime": "2018-06-22T22:36:03.003Z",
+      "birthTime": "2018-06-22T22:36:03.000Z",
+      "root": "/",
+      "dir": "/Users/ybv/code/ybv-projects/localgov.fyi_frontend/src/images",
+      "base": "gal3.jpeg",
+      "ext": ".jpeg",
+      "name": "gal3",
+      "relativeDirectory": "",
+      "dev": 16777220,
+      "mode": 33188,
+      "nlink": 1,
+      "uid": 501,
+      "gid": 20,
+      "rdev": 0,
+      "blksize": 4194304,
+      "ino": 8597092933,
+      "blocks": 160,
+      "atimeMs": 1529709947432.3376,
+      "mtimeMs": 1529706963002.5386,
+      "ctimeMs": 1529706963002.9495,
+      "birthtimeMs": 1529706963000.202,
+      "atime": "2018-06-22T23:25:47.432Z",
+      "mtime": "2018-06-22T22:36:03.003Z",
+      "ctime": "2018-06-22T22:36:03.003Z",
+      "birthtime": "2018-06-22T22:36:03.000Z"
+    },
+    "/Users/ybv/code/ybv-projects/localgov.fyi_frontend/src/images/gal2.jpeg absPath of file": {
+      "id": "/Users/ybv/code/ybv-projects/localgov.fyi_frontend/src/images/gal2.jpeg absPath of file",
+      "children": [
+        "/Users/ybv/code/ybv-projects/localgov.fyi_frontend/src/images/gal2.jpeg absPath of file >> ImageSharp"
+      ],
+      "parent": "___SOURCE___",
+      "internal": {
+        "contentDigest": "436dd2b704788b4b9f1109bef1a0e417",
+        "mediaType": "image/jpeg",
+        "type": "File",
+        "description": "File \"src/images/gal2.jpeg\"",
+        "owner": "gatsby-source-filesystem"
+      },
+      "sourceInstanceName": "img",
+      "absolutePath": "/Users/ybv/code/ybv-projects/localgov.fyi_frontend/src/images/gal2.jpeg",
+      "relativePath": "gal2.jpeg",
+      "extension": "jpeg",
+      "size": 128346,
+      "prettySize": "128 kB",
+      "modifiedTime": "2018-06-22T22:36:02.986Z",
+      "accessTime": "2018-06-22T23:25:47.432Z",
+      "changeTime": "2018-06-22T22:36:02.987Z",
+      "birthTime": "2018-06-22T22:36:02.984Z",
+      "root": "/",
+      "dir": "/Users/ybv/code/ybv-projects/localgov.fyi_frontend/src/images",
+      "base": "gal2.jpeg",
+      "ext": ".jpeg",
+      "name": "gal2",
+      "relativeDirectory": "",
+      "dev": 16777220,
+      "mode": 33188,
+      "nlink": 1,
+      "uid": 501,
+      "gid": 20,
+      "rdev": 0,
+      "blksize": 4194304,
+      "ino": 8597092932,
+      "blocks": 256,
+      "atimeMs": 1529709947432.3064,
+      "mtimeMs": 1529706962986.39,
+      "ctimeMs": 1529706962986.7617,
+      "birthtimeMs": 1529706962984.4626,
+      "atime": "2018-06-22T23:25:47.432Z",
+      "mtime": "2018-06-22T22:36:02.986Z",
+      "ctime": "2018-06-22T22:36:02.987Z",
+      "birthtime": "2018-06-22T22:36:02.984Z"
+    },
+    "/Users/ybv/code/ybv-projects/localgov.fyi_frontend/src/images/gal3.jpeg absPath of file >> ImageSharp": {
+      "id": "/Users/ybv/code/ybv-projects/localgov.fyi_frontend/src/images/gal3.jpeg absPath of file >> ImageSharp",
+      "children": [],
+      "parent": "/Users/ybv/code/ybv-projects/localgov.fyi_frontend/src/images/gal3.jpeg absPath of file",
+      "internal": {
+        "contentDigest": "85f35908a0a9c5f918e16ecc486e4689",
+        "type": "ImageSharp",
+        "owner": "gatsby-transformer-sharp"
+      }
+    },
+    "/Users/ybv/code/ybv-projects/localgov.fyi_frontend/src/images/gal2.jpeg absPath of file >> ImageSharp": {
+      "id": "/Users/ybv/code/ybv-projects/localgov.fyi_frontend/src/images/gal2.jpeg absPath of file >> ImageSharp",
+      "children": [],
+      "parent": "/Users/ybv/code/ybv-projects/localgov.fyi_frontend/src/images/gal2.jpeg absPath of file",
+      "internal": {
+        "contentDigest": "436dd2b704788b4b9f1109bef1a0e417",
+        "type": "ImageSharp",
+        "owner": "gatsby-transformer-sharp"
+      }
+    },
+    "/Users/ybv/code/ybv-projects/localgov.fyi_frontend/src/images/gal4.jpeg absPath of file": {
+      "id": "/Users/ybv/code/ybv-projects/localgov.fyi_frontend/src/images/gal4.jpeg absPath of file",
+      "children": [
+        "/Users/ybv/code/ybv-projects/localgov.fyi_frontend/src/images/gal4.jpeg absPath of file >> ImageSharp"
+      ],
+      "parent": "___SOURCE___",
+      "internal": {
+        "contentDigest": "e461e17f3a4d89b348426c0a9b450da6",
+        "mediaType": "image/jpeg",
+        "type": "File",
+        "description": "File \"src/images/gal4.jpeg\"",
+        "owner": "gatsby-source-filesystem"
+      },
+      "sourceInstanceName": "img",
+      "absolutePath": "/Users/ybv/code/ybv-projects/localgov.fyi_frontend/src/images/gal4.jpeg",
+      "relativePath": "gal4.jpeg",
+      "extension": "jpeg",
+      "size": 107334,
+      "prettySize": "107 kB",
+      "modifiedTime": "2018-06-22T22:36:03.042Z",
+      "accessTime": "2018-06-22T23:25:47.432Z",
+      "changeTime": "2018-06-22T22:36:03.042Z",
+      "birthTime": "2018-06-22T22:36:03.037Z",
+      "root": "/",
+      "dir": "/Users/ybv/code/ybv-projects/localgov.fyi_frontend/src/images",
+      "base": "gal4.jpeg",
+      "ext": ".jpeg",
+      "name": "gal4",
+      "relativeDirectory": "",
+      "dev": 16777220,
+      "mode": 33188,
+      "nlink": 1,
+      "uid": 501,
+      "gid": 20,
+      "rdev": 0,
+      "blksize": 4194304,
+      "ino": 8597092934,
+      "blocks": 216,
+      "atimeMs": 1529709947432.3728,
+      "mtimeMs": 1529706963041.6746,
+      "ctimeMs": 1529706963041.9243,
+      "birthtimeMs": 1529706963036.6934,
+      "atime": "2018-06-22T23:25:47.432Z",
+      "mtime": "2018-06-22T22:36:03.042Z",
+      "ctime": "2018-06-22T22:36:03.042Z",
+      "birthtime": "2018-06-22T22:36:03.037Z"
+    },
+    "/Users/ybv/code/ybv-projects/localgov.fyi_frontend/src/images/gal4.jpeg absPath of file >> ImageSharp": {
+      "id": "/Users/ybv/code/ybv-projects/localgov.fyi_frontend/src/images/gal4.jpeg absPath of file >> ImageSharp",
+      "children": [],
+      "parent": "/Users/ybv/code/ybv-projects/localgov.fyi_frontend/src/images/gal4.jpeg absPath of file",
+      "internal": {
+        "contentDigest": "e461e17f3a4d89b348426c0a9b450da6",
+        "type": "ImageSharp",
+        "owner": "gatsby-transformer-sharp"
+      }
+    },
+    "/Users/ybv/code/ybv-projects/localgov.fyi_frontend/src/images/trends.jpeg absPath of file": {
+      "id": "/Users/ybv/code/ybv-projects/localgov.fyi_frontend/src/images/trends.jpeg absPath of file",
+      "children": [
+        "/Users/ybv/code/ybv-projects/localgov.fyi_frontend/src/images/trends.jpeg absPath of file >> ImageSharp"
+      ],
+      "parent": "___SOURCE___",
+      "internal": {
+        "contentDigest": "813c1fd986895fe698c7c221408f4b10",
+        "mediaType": "image/jpeg",
+        "type": "File",
+        "description": "File \"src/images/trends.jpeg\"",
+        "owner": "gatsby-source-filesystem"
+      },
+      "sourceInstanceName": "img",
+      "absolutePath": "/Users/ybv/code/ybv-projects/localgov.fyi_frontend/src/images/trends.jpeg",
+      "relativePath": "trends.jpeg",
+      "extension": "jpeg",
+      "size": 210907,
+      "prettySize": "211 kB",
+      "modifiedTime": "2018-06-22T22:36:03.053Z",
+      "accessTime": "2018-06-22T23:25:47.432Z",
+      "changeTime": "2018-06-22T22:36:03.053Z",
+      "birthTime": "2018-06-22T22:36:03.051Z",
+      "root": "/",
+      "dir": "/Users/ybv/code/ybv-projects/localgov.fyi_frontend/src/images",
+      "base": "trends.jpeg",
+      "ext": ".jpeg",
+      "name": "trends",
+      "relativeDirectory": "",
+      "dev": 16777220,
+      "mode": 33188,
+      "nlink": 1,
+      "uid": 501,
+      "gid": 20,
+      "rdev": 0,
+      "blksize": 4194304,
+      "ino": 8597092935,
+      "blocks": 416,
+      "atimeMs": 1529709947432.4058,
+      "mtimeMs": 1529706963052.601,
+      "ctimeMs": 1529706963052.9275,
+      "birthtimeMs": 1529706963050.712,
+      "atime": "2018-06-22T23:25:47.432Z",
+      "mtime": "2018-06-22T22:36:03.053Z",
+      "ctime": "2018-06-22T22:36:03.053Z",
+      "birthtime": "2018-06-22T22:36:03.051Z"
+    },
+    "/Users/ybv/code/ybv-projects/localgov.fyi_frontend/src/images/trends.jpeg absPath of file >> ImageSharp": {
+      "id": "/Users/ybv/code/ybv-projects/localgov.fyi_frontend/src/images/trends.jpeg absPath of file >> ImageSharp",
+      "children": [],
+      "parent": "/Users/ybv/code/ybv-projects/localgov.fyi_frontend/src/images/trends.jpeg absPath of file",
+      "internal": {
+        "contentDigest": "813c1fd986895fe698c7c221408f4b10",
+        "type": "ImageSharp",
+        "owner": "gatsby-transformer-sharp"
       }
     },
     "SitePage /organization/98bb2db7-5227-47ed-b2f4-520304d57fe5": {
@@ -2131,7 +2648,7 @@
       "children": [],
       "internal": {
         "type": "SitePage",
-        "contentDigest": "79b57ff29686419ffb7856440a5d5d5b",
+        "contentDigest": "a5002e6ec6948f12573703045f622c75",
         "description": "Your site's \"gatsby-node.js\"",
         "owner": "internal-data-bridge"
       }
@@ -2175,7 +2692,7 @@
       "children": [],
       "internal": {
         "type": "SitePage",
-        "contentDigest": "158e42fffe1f8ed838cd8a3402c5895f",
+        "contentDigest": "a309069124bb87e51e09166b2416c654",
         "description": "Your site's \"gatsby-node.js\"",
         "owner": "internal-data-bridge"
       }
@@ -2219,7 +2736,7 @@
       "children": [],
       "internal": {
         "type": "SitePage",
-        "contentDigest": "1630362b7864c97459681acb1320ccca",
+        "contentDigest": "e61da90e8ca07c36a6f086310cfcc5f3",
         "description": "Your site's \"gatsby-node.js\"",
         "owner": "internal-data-bridge"
       }
@@ -2261,7 +2778,7 @@
       "children": [],
       "internal": {
         "type": "SitePage",
-        "contentDigest": "95f02dd4fa838866ac3283bb886a782d",
+        "contentDigest": "0fbd81760608d823897e820ebb3e670e",
         "description": "Your site's \"gatsby-node.js\"",
         "owner": "internal-data-bridge"
       }
@@ -2303,7 +2820,7 @@
       "children": [],
       "internal": {
         "type": "SitePage",
-        "contentDigest": "a4d09e3bb86ea439fd66f44ecbfd99e8",
+        "contentDigest": "3537ac8962eb69dbeb30e751a7edf885",
         "description": "Your site's \"gatsby-node.js\"",
         "owner": "internal-data-bridge"
       }
@@ -2340,7 +2857,7 @@
       "children": [],
       "internal": {
         "type": "SitePage",
-        "contentDigest": "62716271a554a28bc1a99620aaad98c8",
+        "contentDigest": "30a3186416c03f62e8cea3e50f79d541",
         "description": "Your site's \"gatsby-node.js\"",
         "owner": "internal-data-bridge"
       }
@@ -2397,7 +2914,7 @@
       "children": [],
       "internal": {
         "type": "SitePage",
-        "contentDigest": "799a01520603b25f21e34223709f54e1",
+        "contentDigest": "35a59cf599c5f2715ecfdc578089837a",
         "description": "Your site's \"gatsby-node.js\"",
         "owner": "internal-data-bridge"
       }
@@ -2445,7 +2962,7 @@
       "children": [],
       "internal": {
         "type": "SitePage",
-        "contentDigest": "3063b58746a1caefec1c0739f4738df4",
+        "contentDigest": "821bd2eaa4c4674a1f073d122e5a693a",
         "description": "Your site's \"gatsby-node.js\"",
         "owner": "internal-data-bridge"
       }
@@ -2511,7 +3028,7 @@
       "children": [],
       "internal": {
         "type": "SitePage",
-        "contentDigest": "54f72b532876f07b5f669ff46c8852a3",
+        "contentDigest": "65c87aaec55632e8ae3073010f6d8f21",
         "description": "Your site's \"gatsby-node.js\"",
         "owner": "internal-data-bridge"
       }
@@ -2548,7 +3065,7 @@
       "children": [],
       "internal": {
         "type": "SitePage",
-        "contentDigest": "cb43554042c42eb4ad0c9a2c86f4cc53",
+        "contentDigest": "f3904ab665d912db75aae27a04f80ec4",
         "description": "Your site's \"gatsby-node.js\"",
         "owner": "internal-data-bridge"
       }
@@ -2590,7 +3107,7 @@
       "children": [],
       "internal": {
         "type": "SitePage",
-        "contentDigest": "52cc90794d724b6e2c65b3528c89b01d",
+        "contentDigest": "40daec82aa78513f5c85d25815cd2d31",
         "description": "Your site's \"gatsby-node.js\"",
         "owner": "internal-data-bridge"
       }
@@ -2656,7 +3173,7 @@
       "children": [],
       "internal": {
         "type": "SitePage",
-        "contentDigest": "6e86a3137cf8af3fb99bf5eb1400d268",
+        "contentDigest": "ee7aa7adb26ee06488edf877689897fb",
         "description": "Your site's \"gatsby-node.js\"",
         "owner": "internal-data-bridge"
       }
@@ -2706,7 +3223,7 @@
       "children": [],
       "internal": {
         "type": "SitePage",
-        "contentDigest": "42ec41fcf9bcef4576ef8ad9936d6439",
+        "contentDigest": "cff28064abc90df115bb0d00f7a78f64",
         "description": "Your site's \"gatsby-node.js\"",
         "owner": "internal-data-bridge"
       }
@@ -2757,7 +3274,7 @@
       "children": [],
       "internal": {
         "type": "SitePage",
-        "contentDigest": "ddc9f29e5b7ff8c53048ef7a58275bf1",
+        "contentDigest": "1c7d8f26cf2785c43f94ac995f300d81",
         "description": "Your site's \"gatsby-node.js\"",
         "owner": "internal-data-bridge"
       }
@@ -2778,7 +3295,7 @@
       "children": [],
       "internal": {
         "type": "SitePage",
-        "contentDigest": "197cb61a2cf31ca336416dad39ae6cd1",
+        "contentDigest": "5bf53717cbfaae15471efb145a21266a",
         "description": "Plugin gatsby-plugin-page-creator",
         "owner": "internal-data-bridge"
       }
@@ -2799,7 +3316,7 @@
       "children": [],
       "internal": {
         "type": "SitePage",
-        "contentDigest": "cf207ea38c7801a813545eda690fa73f",
+        "contentDigest": "59c78058af2108fbc82bae43b68f9c70",
         "description": "Plugin gatsby-plugin-page-creator",
         "owner": "internal-data-bridge"
       }
@@ -2821,18 +3338,48 @@
       "children": [],
       "internal": {
         "type": "SitePage",
-        "contentDigest": "77e8caa11fbf3a8245608a7cdcbde651",
+        "contentDigest": "d4ba3e01954e4c46224764fbefacb94d",
         "description": "Plugin gatsby-plugin-create-client-paths",
+        "owner": "internal-data-bridge"
+      }
+    },
+    "SitePage /spotlight/": {
+      "layout": null,
+      "jsonName": "spotlight.json",
+      "internalComponentName": "ComponentSpotlight",
+      "path": "/spotlight/",
+      "component": "/Users/ybv/code/ybv-projects/localgov.fyi_frontend/src/pages/spotlight.js",
+      "componentChunkName": "component---src-pages-spotlight-js",
+      "context": {},
+      "pluginCreator___NODE": "Plugin gatsby-plugin-page-creator",
+      "pluginCreatorId": "Plugin gatsby-plugin-page-creator",
+      "componentPath": "/Users/ybv/code/ybv-projects/localgov.fyi_frontend/src/pages/spotlight.js",
+      "id": "SitePage /spotlight/",
+      "parent": "SOURCE",
+      "children": [],
+      "internal": {
+        "type": "SitePage",
+        "contentDigest": "c9396dcbf57754a4fec7cf6a7d653875",
+        "description": "Plugin gatsby-plugin-page-creator",
         "owner": "internal-data-bridge"
       }
     }
   },
   "status": {
     "plugins": {},
-    "PLUGINS_HASH": "6b8c2780e3c6ba391d07e14149dc7cae"
+    "PLUGINS_HASH": "0baa411518d9977257c13cb5d623eced"
   },
   "componentDataDependencies": {
-    "nodes": {},
+    "nodes": {
+      "/Users/ybv/code/ybv-projects/localgov.fyi_frontend/src/images/gal1.jpeg absPath of file >> ImageSharp": [
+        "/",
+        "/spotlight/"
+      ],
+      "/Users/ybv/code/ybv-projects/localgov.fyi_frontend/src/images/gal1.jpeg absPath of file": [
+        "/",
+        "/spotlight/"
+      ]
+    },
     "connections": {
       "SitePage": [
         "/dev-404-page/"

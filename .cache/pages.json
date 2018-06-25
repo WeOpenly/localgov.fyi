@@ -121,5 +121,11 @@
         "jsonName": "search.json",
         "path": "/search/",
         "matchPath": "/search/:path"
+    },
+    {
+        "componentChunkName": "component---src-pages-spotlight-js",
+        "layout": null,
+        "jsonName": "spotlight.json",
+        "path": "/spotlight/"
     }
 ]

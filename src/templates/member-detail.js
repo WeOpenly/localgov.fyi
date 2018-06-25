@@ -99,6 +99,7 @@ class MemberDetail extends React.Component {
             <Grid container spacing={0}>
                 <Helmet>
                     <title>{`${person_name} member of ${org_name} | Localgov.fyi`} </title>
+                    
                     <meta name="description" content={`Details about ${person_name} member of ${org_name} | Localgov.fyi`} />
                 </Helmet>
                 <Grid item xs={12} sm={12} md={7}>

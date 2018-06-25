@@ -13,7 +13,8 @@ exports.components = {
   "component---cache-dev-404-page-js": preferDefault(require("/Users/ybv/code/ybv-projects/localgov.fyi_frontend/.cache/dev-404-page.js")),
   "component---src-pages-about-js": preferDefault(require("/Users/ybv/code/ybv-projects/localgov.fyi_frontend/src/pages/about.js")),
   "component---src-pages-index-js": preferDefault(require("/Users/ybv/code/ybv-projects/localgov.fyi_frontend/src/pages/index.js")),
-  "component---src-pages-search-index-js": preferDefault(require("/Users/ybv/code/ybv-projects/localgov.fyi_frontend/src/pages/search/index.js"))
+  "component---src-pages-search-index-js": preferDefault(require("/Users/ybv/code/ybv-projects/localgov.fyi_frontend/src/pages/search/index.js")),
+  "component---src-pages-spotlight-js": preferDefault(require("/Users/ybv/code/ybv-projects/localgov.fyi_frontend/src/pages/spotlight.js"))
 }
 
 exports.json = {
@@ -35,5 +36,6 @@ exports.json = {
   "dev-404-page.json": require("/Users/ybv/code/ybv-projects/localgov.fyi_frontend/.cache/json/dev-404-page.json"),
   "about.json": require("/Users/ybv/code/ybv-projects/localgov.fyi_frontend/.cache/json/about.json"),
   "index.json": require("/Users/ybv/code/ybv-projects/localgov.fyi_frontend/.cache/json/index.json"),
-  "search.json": require("/Users/ybv/code/ybv-projects/localgov.fyi_frontend/.cache/json/search.json")
+  "search.json": require("/Users/ybv/code/ybv-projects/localgov.fyi_frontend/.cache/json/search.json"),
+  "spotlight.json": require("/Users/ybv/code/ybv-projects/localgov.fyi_frontend/.cache/json/spotlight.json")
 }

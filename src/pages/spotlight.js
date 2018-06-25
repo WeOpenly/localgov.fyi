@@ -36,7 +36,6 @@ const styles = theme => ({
     },
     dashboardSection: {
         paddingtop: theme.spacing.unit * 2,
-        background: theme.palette.primary['500']
     },
     trendsSectionLeft: {
         marginTop: theme.spacing.unit * 8,
@@ -52,7 +51,7 @@ const styles = theme => ({
     trendsSection: {
         paddingtop: theme.spacing.unit * 2,
         background: theme.palette.primary['400'],
-        boxShadow: `0 0 10px 10px ${theme.palette.primary["50"]}`
+        boxShadow: `0 0 1px 1px ${theme.palette.primary["50"]}`
     },
     heroSection: {
         background: '#fff',
@@ -159,11 +158,10 @@ class Index extends React.Component {
                                         variant="display1"
                                         component="h1"
                                         gutterBottom>
-                                        Serve your citizen
+                                        The fastest way to access gov services.
                                     </Typography>
                                     <Typography align="left" variant="caption" component="span">
-                                        Starting a company is hard. Carta gets you on the right track without spending
-                                        thousands in fees.
+                                      We think that accessing finding and getting gov services should be delightful. Spotlight is our first tool to give access to most important gov services online. 
                                     </Typography>
                                 </Grid>
                                 <Grid item md={1}/>
@@ -198,11 +196,10 @@ class Index extends React.Component {
                                 </Grid>
                                 <Grid item xs={12} sm={4} className={classes[heroSectionRight]}>
                                     <Typography align="center" variant="display1" component="h1" gutterbottom>
-                                        Serve your citizen
+The fastest way to access gov services.
                                     </Typography>
                                     <Typography align="center" variant="subheading" component="span">
-                                        Starting a company is hard. Carta gets you on the right track without spending
-                                        thousands in fees.
+We think that accessing finding and getting gov services should be delightful.Spotlight is our first tool to give access to most important gov services online.
                                     </Typography>
                                 </Grid>
                             </Fragment>
@@ -222,14 +219,14 @@ class Index extends React.Component {
                                         variant="display1"
                                         component="h1"
                                         gutterBottom>
-                                        Understand what your constituents are looking for
+                                      Integrates in a flash
                                     </Typography>
                                     <Typography
                                         align="left"
                                         className={classes.trendsSectionleftHeader}
                                         variant="caption"
                                         component="span">
-                                        Make it easy for them to access
+                                        Add the Spotlight search to your gov website with just a line of code. That’s it.
                                     </Typography>
                                 </Grid>
                                 <Grid item md={1}/>
@@ -271,11 +268,10 @@ class Index extends React.Component {
                                 </Grid>
                                 <Grid item xs={12} sm={4} className={classes[heroSectionRight]}>
                                     <Typography align="center" variant="display1" component="h1" gutterbottom>
-                                        Serve your citizen
+                                      Integrates in a flash
                                     </Typography>
                                     <Typography align="center" variant="subheading" component="span">
-                                        Starting a company is hard. Carta gets you on the right track without spending
-                                        thousands in fees.
+                                       Add the Spotlight search to your gov website with just a line of code. That’s it.
                                     </Typography>
                                 </Grid>
                             </Fragment>
@@ -310,19 +306,17 @@ class Index extends React.Component {
                                 <Grid item md={1}/>
                                 <Grid item xs={10} sm={10} md={4} className={classes[trendsSectionLeft]}>
                                     <Typography
-                                        align="right"
-                                        className={classes.trendsSectionleftHeader}
+                                        align="right"  
                                         variant="display1"
                                         component="h1"
                                         gutterBottom>
-                                        Service discovery made easy
+                                        A single record for all services
                                     </Typography>
                                     <Typography
                                         align="right"
-                                        className={classes.trendsSectionleftHeader}
                                         variant="caption"
                                         component="span">
-                                        Make it easy for them to access
+                                       Understanding what services matter most to people is the starting point to make your gov service centered. Our dashboard is the starting point to get a glimpse of it. 
                                     </Typography>
                                 </Grid>
                             </Fragment>
@@ -346,11 +340,10 @@ class Index extends React.Component {
                                 </Grid>
                                 <Grid item xs={12} sm={4} className={classes[heroSectionRight]}>
                                     <Typography align="center" variant="display1" component="h1" gutterbottom>
-                                        Serve your citizen
+                                        A single record for all services
                                     </Typography>
                                     <Typography align="center" variant="subheading" component="span">
-                                        Starting a company is hard. Carta gets you on the right track without spending
-                                        thousands in fees.
+                                       Understanding what services matter most to people is the starting point to make your gov service centered. Our dashboard is the starting point to get a glimpse of it. 
                                     </Typography>
                                 </Grid>
                             </Fragment>

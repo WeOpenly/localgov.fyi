@@ -46,6 +46,7 @@
         "react-modal": "^1.7.6",
         "react-redux": "^5.0.7",
         "react-share": "^2.2.0",
+        "react-simple-animate": "^1.9.0",
         "react-spinkit": "^3.0.0",
         "react-typography": "^0.15.0",
         "redux": "^4.0.0",

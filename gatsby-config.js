@@ -28,7 +28,7 @@ module.exports = {
         name: `data`,
         path: path.join(__dirname, `data`)
       }
-    }, 
+    },
     {
       resolve: `gatsby-source-filesystem`,
       options: {
@@ -36,6 +36,14 @@ module.exports = {
         path: path.join(__dirname, `src/images`)
       }
     },
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        path: path.join(__dirname, `tos`),
+        name: "tos",
+      },
+    },
+    `gatsby-transformer-remark`,
     {
       resolve: `gatsby-plugin-sitemap`
     },
@@ -57,10 +65,11 @@ module.exports = {
         theme_color : `#0000ca`,
         display: `minimal-ui`
       }
-    }, {
+    },
+    {
       resolve: `gatsby-plugin-create-client-paths`,
       options: {
-      prefixes : [`/search/*`]
+        prefixes : [`/search/*`]
       }
     },
     {
@@ -72,7 +81,6 @@ module.exports = {
         showSpinner: false,
       },
     },
-    
     {
       resolve: `gatsby-plugin-favicon`,
       options: {

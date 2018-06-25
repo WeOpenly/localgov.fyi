@@ -8,7 +8,8 @@ exports.components = {
   "component---cache-dev-404-page-js": require("gatsby-module-loader?name=component---cache-dev-404-page-js!/Users/ybv/code/ybv-projects/localgov.fyi_frontend/.cache/dev-404-page.js"),
   "component---src-pages-about-js": require("gatsby-module-loader?name=component---src-pages-about-js!/Users/ybv/code/ybv-projects/localgov.fyi_frontend/src/pages/about.js"),
   "component---src-pages-index-js": require("gatsby-module-loader?name=component---src-pages-index-js!/Users/ybv/code/ybv-projects/localgov.fyi_frontend/src/pages/index.js"),
-  "component---src-pages-search-index-js": require("gatsby-module-loader?name=component---src-pages-search-index-js!/Users/ybv/code/ybv-projects/localgov.fyi_frontend/src/pages/search/index.js")
+  "component---src-pages-search-index-js": require("gatsby-module-loader?name=component---src-pages-search-index-js!/Users/ybv/code/ybv-projects/localgov.fyi_frontend/src/pages/search/index.js"),
+  "component---src-pages-spotlight-js": require("gatsby-module-loader?name=component---src-pages-spotlight-js!/Users/ybv/code/ybv-projects/localgov.fyi_frontend/src/pages/spotlight.js")
 }
 
 exports.json = {
@@ -30,7 +31,8 @@ exports.json = {
   "dev-404-page.json": require("gatsby-module-loader?name=path---dev-404-page!/Users/ybv/code/ybv-projects/localgov.fyi_frontend/.cache/json/dev-404-page.json"),
   "about.json": require("gatsby-module-loader?name=path---about!/Users/ybv/code/ybv-projects/localgov.fyi_frontend/.cache/json/about.json"),
   "index.json": require("gatsby-module-loader?name=path---index!/Users/ybv/code/ybv-projects/localgov.fyi_frontend/.cache/json/index.json"),
-  "search.json": require("gatsby-module-loader?name=path---search!/Users/ybv/code/ybv-projects/localgov.fyi_frontend/.cache/json/search.json")
+  "search.json": require("gatsby-module-loader?name=path---search!/Users/ybv/code/ybv-projects/localgov.fyi_frontend/.cache/json/search.json"),
+  "spotlight.json": require("gatsby-module-loader?name=path---spotlight!/Users/ybv/code/ybv-projects/localgov.fyi_frontend/.cache/json/spotlight.json")
 }
 
 exports.layouts = {

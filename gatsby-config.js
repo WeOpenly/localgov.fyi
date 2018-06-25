@@ -20,15 +20,26 @@ module.exports = {
      * tree.
      */
     `gatsby-plugin-react-next`,
+    `gatsby-transformer-sharp`,
+    `gatsby-plugin-sharp`,
     {
       resolve: `gatsby-source-filesystem`,
       options: {
         name: `data`,
         path: path.join(__dirname, `data`)
       }
-    }, {
+    }, 
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        name: `img`,
+        path: path.join(__dirname, `src/images`)
+      }
+    },
+    {
       resolve: `gatsby-plugin-sitemap`
     },
+
     // This plugin transforms JSON file nodes.
     `gatsby-transformer-json`,
     // This plugin sets up the popular css-in-js library Glamor. It handles adding a

@@ -5,18 +5,42 @@
       "jsonName": "dev-404-page.json",
       "internalComponentName": "ComponentDev404Page",
       "path": "/dev-404-page/",
+<<<<<<< HEAD
       "component": "/Users/ybv/code/ybv-projects/localgov.fyi_frontend/.cache/dev-404-page.js",
+=======
+<<<<<<< HEAD
+      "component": "/Users/jim/Documents/openly/localgov.fyi/.cache/dev-404-page.js",
+=======
+      "component": "/Users/ybv/code/ybv-projects/localgov.fyi_frontend/.cache/dev-404-page.js",
+>>>>>>> add about page
+>>>>>>> add about page
       "componentChunkName": "component---cache-dev-404-page-js",
       "context": {},
       "pluginCreator___NODE": "Plugin dev-404-page",
       "pluginCreatorId": "Plugin dev-404-page",
+<<<<<<< HEAD
       "componentPath": "/Users/ybv/code/ybv-projects/localgov.fyi_frontend/.cache/dev-404-page.js",
+=======
+<<<<<<< HEAD
+      "componentPath": "/Users/jim/Documents/openly/localgov.fyi/.cache/dev-404-page.js",
+=======
+      "componentPath": "/Users/ybv/code/ybv-projects/localgov.fyi_frontend/.cache/dev-404-page.js",
+>>>>>>> add about page
+>>>>>>> add about page
       "id": "SitePage /dev-404-page/",
       "parent": "SOURCE",
       "children": [],
       "internal": {
         "type": "SitePage",
+<<<<<<< HEAD
         "contentDigest": "f5c21db21d2e3cf37b7c0e72cc02ccfc",
+=======
+<<<<<<< HEAD
+        "contentDigest": "d1dc97c783252b6b7703f607a077c819",
+=======
+        "contentDigest": "5494bf099255a03ccb77751d395d4a54",
+>>>>>>> add about page
+>>>>>>> add about page
         "description": "Plugin dev-404-page",
         "owner": "internal-data-bridge"
       }
@@ -1506,6 +1530,10 @@
             "version": "latest"
           },
           {
+            "name": "install",
+            "version": "^0.12.0"
+          },
+          {
             "name": "jss-debug",
             "version": "^1.0.0"
           },
@@ -1524,6 +1552,10 @@
           {
             "name": "mousetrap",
             "version": "^1.6.0"
+          },
+          {
+            "name": "npm",
+            "version": "^6.1.0"
           },
           {
             "name": "progress",
@@ -1574,12 +1606,20 @@
             "version": "^5.0.7"
           },
           {
+            "name": "react-responsive-carousel",
+            "version": "^3.1.41"
+          },
+          {
             "name": "react-share",
             "version": "^2.2.0"
           },
           {
             "name": "react-simple-animate",
             "version": "^1.9.0"
+          },
+          {
+            "name": "react-slick",
+            "version": "^0.23.1"
           },
           {
             "name": "react-spinkit",
@@ -1727,12 +1767,28 @@
       "host": "localhost",
       "pathPrefix": "",
       "polyfill": true,
+<<<<<<< HEAD
       "buildTime": "2018-06-28T00:17:13.436Z",
+=======
+<<<<<<< HEAD
+      "buildTime": "2018-06-25T23:31:48.304Z",
+=======
+      "buildTime": "2018-06-25T23:13:19.591Z",
+>>>>>>> add about page
+>>>>>>> add about page
       "id": "Site",
       "parent": "SOURCE",
       "children": [],
       "internal": {
+<<<<<<< HEAD
         "contentDigest": "471ee56f7d0549d8471302ed499f43be",
+=======
+<<<<<<< HEAD
+        "contentDigest": "5760642f524fe28e117e839e565f3684",
+=======
+        "contentDigest": "e3091b832cf49def9dde91284c16029a",
+>>>>>>> add about page
+>>>>>>> add about page
         "type": "Site",
         "owner": "internal-data-bridge"
       }
@@ -1742,7 +1798,15 @@
       "children": [],
       "parent": "___SOURCE___",
       "internal": {
+<<<<<<< HEAD
         "contentDigest": "398404df3ea4cf2270a43c7070fdcff5",
+=======
+<<<<<<< HEAD
+        "contentDigest": "524d45edd68bc9a4be3abbdc24a3d278",
+=======
+        "contentDigest": "4e5ef1fe02334807127aec2bca6bb643",
+>>>>>>> add about page
+>>>>>>> add about page
         "type": "Directory",
         "description": "Directory \"data\"",
         "owner": "gatsby-source-filesystem"
@@ -1753,10 +1817,24 @@
       "extension": "",
       "size": 128,
       "prettySize": "128 B",
+<<<<<<< HEAD
       "modifiedTime": "2018-06-25T21:06:54.608Z",
       "accessTime": "2018-06-28T00:17:17.190Z",
       "changeTime": "2018-06-25T21:06:54.608Z",
       "birthTime": "2018-06-01T17:04:56.172Z",
+=======
+<<<<<<< HEAD
+      "modifiedTime": "2018-06-25T21:08:37.232Z",
+      "accessTime": "2018-06-25T23:31:58.547Z",
+      "changeTime": "2018-06-25T21:08:37.232Z",
+      "birthTime": "2018-06-25T21:05:52.917Z",
+=======
+      "modifiedTime": "2018-06-25T21:06:54.608Z",
+      "accessTime": "2018-06-25T23:13:23.090Z",
+      "changeTime": "2018-06-25T21:06:54.608Z",
+      "birthTime": "2018-06-01T17:04:56.172Z",
+>>>>>>> add about page
+>>>>>>> add about page
       "root": "/",
       "dir": "/Users/ybv/code/ybv-projects/localgov.fyi_frontend",
       "base": "data",
@@ -1772,6 +1850,7 @@
       "blksize": 4194304,
       "ino": 8594189811,
       "blocks": 0,
+<<<<<<< HEAD
       "atimeMs": 1530145037190.4873,
       "mtimeMs": 1529960814607.854,
       "ctimeMs": 1529960814607.854,
@@ -1787,6 +1866,41 @@
       "parent": "___SOURCE___",
       "internal": {
         "contentDigest": "90c6dc3b924f38605771f7720917a51a",
+=======
+<<<<<<< HEAD
+      "atimeMs": 1529969518547.0283,
+      "mtimeMs": 1529960917231.54,
+      "ctimeMs": 1529960917231.54,
+      "birthtimeMs": 1529960752917.3862,
+      "atime": "2018-06-25T23:31:58.547Z",
+      "mtime": "2018-06-25T21:08:37.232Z",
+      "ctime": "2018-06-25T21:08:37.232Z",
+      "birthtime": "2018-06-25T21:05:52.917Z"
+    },
+    "/Users/jim/Documents/openly/localgov.fyi/data/orgs absPath of file": {
+      "id": "/Users/jim/Documents/openly/localgov.fyi/data/orgs absPath of file",
+      "children": [],
+      "parent": "___SOURCE___",
+      "internal": {
+        "contentDigest": "ce207e5f87cd3f03e5dac3731f36e5fc",
+=======
+      "atimeMs": 1529968403089.6555,
+      "mtimeMs": 1529960814607.854,
+      "ctimeMs": 1529960814607.854,
+      "birthtimeMs": 1527872696172.2903,
+      "atime": "2018-06-25T23:13:23.090Z",
+      "mtime": "2018-06-25T21:06:54.608Z",
+      "ctime": "2018-06-25T21:06:54.608Z",
+      "birthtime": "2018-06-01T17:04:56.172Z"
+    },
+    "/Users/ybv/code/ybv-projects/localgov.fyi_frontend/data/orgs absPath of file": {
+      "id": "/Users/ybv/code/ybv-projects/localgov.fyi_frontend/data/orgs absPath of file",
+      "children": [],
+      "parent": "___SOURCE___",
+      "internal": {
+        "contentDigest": "e66844463b0f26ae4119ef331dfa36ff",
+>>>>>>> add about page
+>>>>>>> add about page
         "type": "Directory",
         "description": "Directory \"data/orgs\"",
         "owner": "gatsby-source-filesystem"
@@ -1797,10 +1911,24 @@
       "extension": "",
       "size": 96,
       "prettySize": "96 B",
+<<<<<<< HEAD
       "modifiedTime": "2018-06-11T18:16:01.009Z",
       "accessTime": "2018-06-28T00:17:17.192Z",
       "changeTime": "2018-06-11T18:16:01.009Z",
       "birthTime": "2018-06-11T18:16:01.009Z",
+=======
+<<<<<<< HEAD
+      "modifiedTime": "2018-06-25T21:08:39.125Z",
+      "accessTime": "2018-06-25T23:31:58.550Z",
+      "changeTime": "2018-06-25T21:08:39.125Z",
+      "birthTime": "2018-06-25T21:06:59.630Z",
+=======
+      "modifiedTime": "2018-06-11T18:16:01.009Z",
+      "accessTime": "2018-06-25T23:13:23.092Z",
+      "changeTime": "2018-06-11T18:16:01.009Z",
+      "birthTime": "2018-06-11T18:16:01.009Z",
+>>>>>>> add about page
+>>>>>>> add about page
       "root": "/",
       "dir": "/Users/ybv/code/ybv-projects/localgov.fyi_frontend/data",
       "base": "orgs",
@@ -1816,17 +1944,42 @@
       "blksize": 4194304,
       "ino": 8595310919,
       "blocks": 0,
+<<<<<<< HEAD
       "atimeMs": 1530145037192.4246,
       "mtimeMs": 1528740961008.8777,
       "ctimeMs": 1528740961008.8777,
       "birthtimeMs": 1528740961008.7815,
       "atime": "2018-06-28T00:17:17.192Z",
+=======
+<<<<<<< HEAD
+      "atimeMs": 1529969518550.3867,
+      "mtimeMs": 1529960919124.732,
+      "ctimeMs": 1529960919124.732,
+      "birthtimeMs": 1529960819629.9087,
+      "atime": "2018-06-25T23:31:58.550Z",
+      "mtime": "2018-06-25T21:08:39.125Z",
+      "ctime": "2018-06-25T21:08:39.125Z",
+      "birthtime": "2018-06-25T21:06:59.630Z"
+    },
+    "/Users/jim/Documents/openly/localgov.fyi/data/orgs/98bb2db7-5227-47ed-b2f4-520304d57fe5.json absPath of file": {
+      "id": "/Users/jim/Documents/openly/localgov.fyi/data/orgs/98bb2db7-5227-47ed-b2f4-520304d57fe5.json absPath of file",
+=======
+      "atimeMs": 1529968403091.6812,
+      "mtimeMs": 1528740961008.8777,
+      "ctimeMs": 1528740961008.8777,
+      "birthtimeMs": 1528740961008.7815,
+      "atime": "2018-06-25T23:13:23.092Z",
+>>>>>>> add about page
       "mtime": "2018-06-11T18:16:01.009Z",
       "ctime": "2018-06-11T18:16:01.009Z",
       "birthtime": "2018-06-11T18:16:01.009Z"
     },
     "/Users/ybv/code/ybv-projects/localgov.fyi_frontend/data/orgs/98bb2db7-5227-47ed-b2f4-520304d57fe5.json absPath of file": {
       "id": "/Users/ybv/code/ybv-projects/localgov.fyi_frontend/data/orgs/98bb2db7-5227-47ed-b2f4-520304d57fe5.json absPath of file",
+<<<<<<< HEAD
+=======
+>>>>>>> add about page
+>>>>>>> add about page
       "children": [
         "/Users/ybv/code/ybv-projects/localgov.fyi_frontend/data/orgs/98bb2db7-5227-47ed-b2f4-520304d57fe5.json absPath of file >>> JSON"
       ],
@@ -1844,10 +1997,24 @@
       "extension": "json",
       "size": 12065,
       "prettySize": "12.1 kB",
+<<<<<<< HEAD
       "modifiedTime": "2018-06-11T18:16:01.009Z",
       "accessTime": "2018-06-27T03:35:31.555Z",
       "changeTime": "2018-06-11T18:16:01.009Z",
       "birthTime": "2018-06-11T18:16:01.009Z",
+=======
+<<<<<<< HEAD
+      "modifiedTime": "2018-06-25T21:07:48.468Z",
+      "accessTime": "2018-06-25T23:31:58.550Z",
+      "changeTime": "2018-06-25T21:08:39.132Z",
+      "birthTime": "2018-06-25T21:07:48.467Z",
+=======
+      "modifiedTime": "2018-06-11T18:16:01.009Z",
+      "accessTime": "2018-06-25T22:54:37.210Z",
+      "changeTime": "2018-06-11T18:16:01.009Z",
+      "birthTime": "2018-06-11T18:16:01.009Z",
+>>>>>>> add about page
+>>>>>>> add about page
       "root": "/",
       "dir": "/Users/ybv/code/ybv-projects/localgov.fyi_frontend/data/orgs",
       "base": "98bb2db7-5227-47ed-b2f4-520304d57fe5.json",
@@ -1908,6 +2075,7 @@
       "blksize": 4194304,
       "ino": 8597316671,
       "blocks": 24,
+<<<<<<< HEAD
       "atimeMs": 1530070530707.806,
       "mtimeMs": 1529981111364.772,
       "ctimeMs": 1529981111364.772,
@@ -1918,6 +2086,76 @@
       "birthtime": "2018-06-25T21:06:54.608Z"
     },
     "/Users/ybv/code/ybv-projects/localgov.fyi_frontend/data/orgs/98bb2db7-5227-47ed-b2f4-520304d57fe5.json absPath of file >>> JSON": {
+=======
+<<<<<<< HEAD
+      "atimeMs": 1529969518547.3015,
+      "mtimeMs": 1529960918896.9517,
+      "ctimeMs": 1529960918896.9517,
+      "birthtimeMs": 1529960917231.528,
+      "atime": "2018-06-25T23:31:58.547Z",
+      "mtime": "2018-06-25T21:08:38.897Z",
+      "ctime": "2018-06-25T21:08:38.897Z",
+      "birthtime": "2018-06-25T21:08:37.232Z"
+    },
+    "/Users/jim/Documents/openly/localgov.fyi/data/orgs/98bb2db7-5227-47ed-b2f4-520304d57fe5.json absPath of file >>> JSON": {
+=======
+      "atimeMs": 1529967277210.1306,
+      "mtimeMs": 1528740961009.0251,
+      "ctimeMs": 1528740961009.0251,
+      "birthtimeMs": 1528740961008.868,
+      "atime": "2018-06-25T22:54:37.210Z",
+      "mtime": "2018-06-11T18:16:01.009Z",
+      "ctime": "2018-06-11T18:16:01.009Z",
+      "birthtime": "2018-06-11T18:16:01.009Z"
+    },
+    "/Users/ybv/code/ybv-projects/localgov.fyi_frontend/data/.DS_Store absPath of file": {
+      "id": "/Users/ybv/code/ybv-projects/localgov.fyi_frontend/data/.DS_Store absPath of file",
+      "children": [],
+      "parent": "___SOURCE___",
+      "internal": {
+        "contentDigest": "a0a4ad4540098972d098ecd5fb7f8f9a",
+        "mediaType": "application/octet-stream",
+        "type": "File",
+        "description": "File \"data/.DS_Store\"",
+        "owner": "gatsby-source-filesystem"
+      },
+      "sourceInstanceName": "data",
+      "absolutePath": "/Users/ybv/code/ybv-projects/localgov.fyi_frontend/data/.DS_Store",
+      "relativePath": ".DS_Store",
+      "extension": "",
+      "size": 8196,
+      "prettySize": "8.2 kB",
+      "modifiedTime": "2018-06-25T21:55:38.481Z",
+      "accessTime": "2018-06-25T22:54:37.202Z",
+      "changeTime": "2018-06-25T21:55:38.481Z",
+      "birthTime": "2018-06-25T21:06:54.608Z",
+      "root": "/",
+      "dir": "/Users/ybv/code/ybv-projects/localgov.fyi_frontend/data",
+      "base": ".DS_Store",
+      "ext": "",
+      "name": ".DS_Store",
+      "relativeDirectory": "",
+      "dev": 16777220,
+      "mode": 33188,
+      "nlink": 1,
+      "uid": 501,
+      "gid": 20,
+      "rdev": 0,
+      "blksize": 4194304,
+      "ino": 8597316671,
+      "blocks": 24,
+      "atimeMs": 1529967277202.3826,
+      "mtimeMs": 1529963738480.9727,
+      "ctimeMs": 1529963738480.9727,
+      "birthtimeMs": 1529960814607.83,
+      "atime": "2018-06-25T22:54:37.202Z",
+      "mtime": "2018-06-25T21:55:38.481Z",
+      "ctime": "2018-06-25T21:55:38.481Z",
+      "birthtime": "2018-06-25T21:06:54.608Z"
+    },
+    "/Users/ybv/code/ybv-projects/localgov.fyi_frontend/data/orgs/98bb2db7-5227-47ed-b2f4-520304d57fe5.json absPath of file >>> JSON": {
+>>>>>>> add about page
+>>>>>>> add about page
       "details": {
         "services": [
           {
@@ -2212,7 +2450,15 @@
       "children": [],
       "parent": "___SOURCE___",
       "internal": {
+<<<<<<< HEAD
         "contentDigest": "cbed5a9b447f0399fa98fb2cbb0f7877",
+=======
+<<<<<<< HEAD
+        "contentDigest": "5d415e48cd7abd9f1939e8a0fcaafbc8",
+=======
+        "contentDigest": "1d53470636f3cdac2fc363385f75a519",
+>>>>>>> add about page
+>>>>>>> add about page
         "type": "Directory",
         "description": "Directory \"src/images\"",
         "owner": "gatsby-source-filesystem"
@@ -2223,10 +2469,24 @@
       "extension": "",
       "size": 256,
       "prettySize": "256 B",
+<<<<<<< HEAD
       "modifiedTime": "2018-06-27T00:19:36.873Z",
       "accessTime": "2018-06-28T00:17:17.202Z",
       "changeTime": "2018-06-27T00:19:36.873Z",
       "birthTime": "2018-06-27T00:19:36.855Z",
+=======
+<<<<<<< HEAD
+      "modifiedTime": "2018-06-25T22:59:15.242Z",
+      "accessTime": "2018-06-25T23:31:58.621Z",
+      "changeTime": "2018-06-25T22:59:15.242Z",
+      "birthTime": "2018-06-25T22:59:15.225Z",
+=======
+      "modifiedTime": "2018-06-25T19:26:24.165Z",
+      "accessTime": "2018-06-25T23:13:23.100Z",
+      "changeTime": "2018-06-25T19:26:24.165Z",
+      "birthTime": "2018-06-25T17:22:31.136Z",
+>>>>>>> add about page
+>>>>>>> add about page
       "root": "/",
       "dir": "/Users/ybv/code/ybv-projects/localgov.fyi_frontend/src",
       "base": "images",
@@ -2242,6 +2502,7 @@
       "blksize": 4194304,
       "ino": 8597820048,
       "blocks": 0,
+<<<<<<< HEAD
       "atimeMs": 1530145037201.5361,
       "mtimeMs": 1530058776873.0305,
       "ctimeMs": 1530058776873.0305,
@@ -2253,6 +2514,33 @@
     },
     "/Users/ybv/code/ybv-projects/localgov.fyi_frontend/src/images/gal1.jpeg absPath of file": {
       "id": "/Users/ybv/code/ybv-projects/localgov.fyi_frontend/src/images/gal1.jpeg absPath of file",
+=======
+<<<<<<< HEAD
+      "atimeMs": 1529969518621.0408,
+      "mtimeMs": 1529967555242.1216,
+      "ctimeMs": 1529967555242.1216,
+      "birthtimeMs": 1529967555225.4956,
+      "atime": "2018-06-25T23:31:58.621Z",
+      "mtime": "2018-06-25T22:59:15.242Z",
+      "ctime": "2018-06-25T22:59:15.242Z",
+      "birthtime": "2018-06-25T22:59:15.225Z"
+    },
+    "/Users/jim/Documents/openly/localgov.fyi/src/images/gal1.jpeg absPath of file": {
+      "id": "/Users/jim/Documents/openly/localgov.fyi/src/images/gal1.jpeg absPath of file",
+=======
+      "atimeMs": 1529968403100.3333,
+      "mtimeMs": 1529954784165.2256,
+      "ctimeMs": 1529954784165.2256,
+      "birthtimeMs": 1529947351136.4246,
+      "atime": "2018-06-25T23:13:23.100Z",
+      "mtime": "2018-06-25T19:26:24.165Z",
+      "ctime": "2018-06-25T19:26:24.165Z",
+      "birthtime": "2018-06-25T17:22:31.136Z"
+    },
+    "/Users/ybv/code/ybv-projects/localgov.fyi_frontend/src/images/gal1.jpeg absPath of file": {
+      "id": "/Users/ybv/code/ybv-projects/localgov.fyi_frontend/src/images/gal1.jpeg absPath of file",
+>>>>>>> add about page
+>>>>>>> add about page
       "children": [
         "/Users/ybv/code/ybv-projects/localgov.fyi_frontend/src/images/gal1.jpeg absPath of file >> ImageSharp"
       ],
@@ -2270,10 +2558,24 @@
       "extension": "jpeg",
       "size": 46784,
       "prettySize": "46.8 kB",
+<<<<<<< HEAD
       "modifiedTime": "2018-06-27T00:19:36.856Z",
       "accessTime": "2018-06-27T00:19:49.469Z",
       "changeTime": "2018-06-27T00:19:36.856Z",
       "birthTime": "2018-06-27T00:19:36.855Z",
+=======
+<<<<<<< HEAD
+      "modifiedTime": "2018-06-25T22:59:15.226Z",
+      "accessTime": "2018-06-25T23:13:01.159Z",
+      "changeTime": "2018-06-25T22:59:15.226Z",
+      "birthTime": "2018-06-25T22:59:15.226Z",
+=======
+      "modifiedTime": "2018-06-25T17:22:31.138Z",
+      "accessTime": "2018-06-25T22:54:19.114Z",
+      "changeTime": "2018-06-25T17:22:31.138Z",
+      "birthTime": "2018-06-25T17:22:31.136Z",
+>>>>>>> add about page
+>>>>>>> add about page
       "root": "/",
       "dir": "/Users/ybv/code/ybv-projects/localgov.fyi_frontend/src/images",
       "base": "gal1.jpeg",
@@ -2289,6 +2591,7 @@
       "blksize": 4194304,
       "ino": 8597820049,
       "blocks": 96,
+<<<<<<< HEAD
       "atimeMs": 1530058789468.9922,
       "mtimeMs": 1530058776855.8943,
       "ctimeMs": 1530058776855.8943,
@@ -2300,6 +2603,33 @@
     },
     "/Users/ybv/code/ybv-projects/localgov.fyi_frontend/src/images/gal1.jpeg absPath of file >> ImageSharp": {
       "id": "/Users/ybv/code/ybv-projects/localgov.fyi_frontend/src/images/gal1.jpeg absPath of file >> ImageSharp",
+=======
+<<<<<<< HEAD
+      "atimeMs": 1529968381159.0928,
+      "mtimeMs": 1529967555225.9446,
+      "ctimeMs": 1529967555225.9446,
+      "birthtimeMs": 1529967555225.5737,
+      "atime": "2018-06-25T23:13:01.159Z",
+      "mtime": "2018-06-25T22:59:15.226Z",
+      "ctime": "2018-06-25T22:59:15.226Z",
+      "birthtime": "2018-06-25T22:59:15.226Z"
+    },
+    "/Users/jim/Documents/openly/localgov.fyi/src/images/gal1.jpeg absPath of file >> ImageSharp": {
+      "id": "/Users/jim/Documents/openly/localgov.fyi/src/images/gal1.jpeg absPath of file >> ImageSharp",
+=======
+      "atimeMs": 1529967259114.1123,
+      "mtimeMs": 1529947351137.8125,
+      "ctimeMs": 1529947351137.8125,
+      "birthtimeMs": 1529947351136.4822,
+      "atime": "2018-06-25T22:54:19.114Z",
+      "mtime": "2018-06-25T17:22:31.138Z",
+      "ctime": "2018-06-25T17:22:31.138Z",
+      "birthtime": "2018-06-25T17:22:31.136Z"
+    },
+    "/Users/ybv/code/ybv-projects/localgov.fyi_frontend/src/images/gal1.jpeg absPath of file >> ImageSharp": {
+      "id": "/Users/ybv/code/ybv-projects/localgov.fyi_frontend/src/images/gal1.jpeg absPath of file >> ImageSharp",
+>>>>>>> add about page
+>>>>>>> add about page
       "children": [],
       "parent": "/Users/ybv/code/ybv-projects/localgov.fyi_frontend/src/images/gal1.jpeg absPath of file",
       "internal": {
@@ -2327,10 +2657,24 @@
       "extension": "jpeg",
       "size": 80109,
       "prettySize": "80.1 kB",
+<<<<<<< HEAD
       "modifiedTime": "2018-06-27T00:19:36.861Z",
       "accessTime": "2018-06-27T00:19:49.470Z",
       "changeTime": "2018-06-27T00:19:36.861Z",
       "birthTime": "2018-06-27T00:19:36.859Z",
+=======
+<<<<<<< HEAD
+      "modifiedTime": "2018-06-25T22:59:15.231Z",
+      "accessTime": "2018-06-25T23:13:01.159Z",
+      "changeTime": "2018-06-25T22:59:15.231Z",
+      "birthTime": "2018-06-25T22:59:15.230Z",
+=======
+      "modifiedTime": "2018-06-25T17:22:31.141Z",
+      "accessTime": "2018-06-25T22:47:34.993Z",
+      "changeTime": "2018-06-25T17:22:31.141Z",
+      "birthTime": "2018-06-25T17:22:31.140Z",
+>>>>>>> add about page
+>>>>>>> add about page
       "root": "/",
       "dir": "/Users/ybv/code/ybv-projects/localgov.fyi_frontend/src/images",
       "base": "gal3.jpeg",
@@ -2346,6 +2690,7 @@
       "blksize": 4194304,
       "ino": 8597820051,
       "blocks": 160,
+<<<<<<< HEAD
       "atimeMs": 1530058789469.763,
       "mtimeMs": 1530058776860.8794,
       "ctimeMs": 1530058776860.8794,
@@ -2359,6 +2704,107 @@
       "id": "/Users/ybv/code/ybv-projects/localgov.fyi_frontend/src/images/gal2.jpeg absPath of file",
       "children": [
         "/Users/ybv/code/ybv-projects/localgov.fyi_frontend/src/images/gal2.jpeg absPath of file >> ImageSharp"
+=======
+<<<<<<< HEAD
+      "atimeMs": 1529968381159.2039,
+      "mtimeMs": 1529967555230.5574,
+      "ctimeMs": 1529967555230.5574,
+      "birthtimeMs": 1529967555229.8442,
+      "atime": "2018-06-25T23:13:01.159Z",
+      "mtime": "2018-06-25T22:59:15.231Z",
+      "ctime": "2018-06-25T22:59:15.231Z",
+      "birthtime": "2018-06-25T22:59:15.230Z"
+    },
+    "/Users/jim/Documents/openly/localgov.fyi/src/images/gal4.jpeg absPath of file": {
+      "id": "/Users/jim/Documents/openly/localgov.fyi/src/images/gal4.jpeg absPath of file",
+=======
+      "atimeMs": 1529966854993.3484,
+      "mtimeMs": 1529947351141.132,
+      "ctimeMs": 1529947351141.132,
+      "birthtimeMs": 1529947351139.889,
+      "atime": "2018-06-25T22:47:34.993Z",
+      "mtime": "2018-06-25T17:22:31.141Z",
+      "ctime": "2018-06-25T17:22:31.141Z",
+      "birthtime": "2018-06-25T17:22:31.140Z"
+    },
+    "/Users/ybv/code/ybv-projects/localgov.fyi_frontend/src/images/gal2.jpeg absPath of file": {
+      "id": "/Users/ybv/code/ybv-projects/localgov.fyi_frontend/src/images/gal2.jpeg absPath of file",
+>>>>>>> add about page
+      "children": [
+        "/Users/jim/Documents/openly/localgov.fyi/src/images/gal4.jpeg absPath of file >> ImageSharp"
+      ],
+      "parent": "___SOURCE___",
+      "internal": {
+        "contentDigest": "e461e17f3a4d89b348426c0a9b450da6",
+        "mediaType": "image/jpeg",
+        "type": "File",
+        "description": "File \"src/images/gal4.jpeg\"",
+        "owner": "gatsby-source-filesystem"
+      },
+      "sourceInstanceName": "img",
+      "absolutePath": "/Users/jim/Documents/openly/localgov.fyi/src/images/gal4.jpeg",
+      "relativePath": "gal4.jpeg",
+      "extension": "jpeg",
+<<<<<<< HEAD
+      "size": 107334,
+      "prettySize": "107 kB",
+      "modifiedTime": "2018-06-25T22:59:15.235Z",
+      "accessTime": "2018-06-25T23:13:01.159Z",
+      "changeTime": "2018-06-25T22:59:15.235Z",
+      "birthTime": "2018-06-25T22:59:15.231Z",
+=======
+      "size": 128346,
+      "prettySize": "128 kB",
+      "modifiedTime": "2018-06-25T17:22:31.140Z",
+      "accessTime": "2018-06-25T22:54:19.114Z",
+      "changeTime": "2018-06-25T17:22:31.140Z",
+      "birthTime": "2018-06-25T17:22:31.138Z",
+>>>>>>> add about page
+      "root": "/",
+      "dir": "/Users/jim/Documents/openly/localgov.fyi/src/images",
+      "base": "gal4.jpeg",
+      "ext": ".jpeg",
+      "name": "gal4",
+      "relativeDirectory": "",
+      "dev": 16777220,
+      "mode": 33188,
+      "nlink": 1,
+      "uid": 501,
+      "gid": 20,
+      "rdev": 0,
+      "blksize": 4194304,
+<<<<<<< HEAD
+      "ino": 8601807280,
+      "blocks": 216,
+      "atimeMs": 1529968381159.2446,
+      "mtimeMs": 1529967555235.3962,
+      "ctimeMs": 1529967555235.3962,
+      "birthtimeMs": 1529967555230.7148,
+      "atime": "2018-06-25T23:13:01.159Z",
+      "mtime": "2018-06-25T22:59:15.235Z",
+      "ctime": "2018-06-25T22:59:15.235Z",
+      "birthtime": "2018-06-25T22:59:15.231Z"
+    },
+    "/Users/jim/Documents/openly/localgov.fyi/src/images/gal2.jpeg absPath of file": {
+      "id": "/Users/jim/Documents/openly/localgov.fyi/src/images/gal2.jpeg absPath of file",
+=======
+      "ino": 8597295219,
+      "blocks": 256,
+      "atimeMs": 1529967259114.123,
+      "mtimeMs": 1529947351139.776,
+      "ctimeMs": 1529947351139.776,
+      "birthtimeMs": 1529947351137.9927,
+      "atime": "2018-06-25T22:54:19.114Z",
+      "mtime": "2018-06-25T17:22:31.140Z",
+      "ctime": "2018-06-25T17:22:31.140Z",
+      "birthtime": "2018-06-25T17:22:31.138Z"
+    },
+    "/Users/ybv/code/ybv-projects/localgov.fyi_frontend/src/images/gal4.jpeg absPath of file": {
+      "id": "/Users/ybv/code/ybv-projects/localgov.fyi_frontend/src/images/gal4.jpeg absPath of file",
+>>>>>>> add about page
+      "children": [
+        "/Users/jim/Documents/openly/localgov.fyi/src/images/gal2.jpeg absPath of file >> ImageSharp"
+>>>>>>> add about page
       ],
       "parent": "___SOURCE___",
       "internal": {
@@ -2372,12 +2818,28 @@
       "absolutePath": "/Users/ybv/code/ybv-projects/localgov.fyi_frontend/src/images/gal2.jpeg",
       "relativePath": "gal2.jpeg",
       "extension": "jpeg",
+<<<<<<< HEAD
       "size": 128346,
       "prettySize": "128 kB",
+<<<<<<< HEAD
       "modifiedTime": "2018-06-27T00:19:36.859Z",
       "accessTime": "2018-06-27T00:19:49.469Z",
       "changeTime": "2018-06-27T00:19:36.859Z",
       "birthTime": "2018-06-27T00:19:36.856Z",
+=======
+      "modifiedTime": "2018-06-25T22:59:15.229Z",
+      "accessTime": "2018-06-25T23:10:29.096Z",
+      "changeTime": "2018-06-25T22:59:15.229Z",
+      "birthTime": "2018-06-25T22:59:15.226Z",
+=======
+      "size": 107334,
+      "prettySize": "107 kB",
+      "modifiedTime": "2018-06-25T17:22:31.143Z",
+      "accessTime": "2018-06-25T22:54:19.114Z",
+      "changeTime": "2018-06-25T17:22:31.143Z",
+      "birthTime": "2018-06-25T17:22:31.141Z",
+>>>>>>> add about page
+>>>>>>> add about page
       "root": "/",
       "dir": "/Users/ybv/code/ybv-projects/localgov.fyi_frontend/src/images",
       "base": "gal2.jpeg",
@@ -2391,6 +2853,7 @@
       "gid": 20,
       "rdev": 0,
       "blksize": 4194304,
+<<<<<<< HEAD
       "ino": 8597820050,
       "blocks": 256,
       "atimeMs": 1530058789469.3262,
@@ -2404,6 +2867,47 @@
     },
     "/Users/ybv/code/ybv-projects/localgov.fyi_frontend/src/images/gal3.jpeg absPath of file >> ImageSharp": {
       "id": "/Users/ybv/code/ybv-projects/localgov.fyi_frontend/src/images/gal3.jpeg absPath of file >> ImageSharp",
+=======
+<<<<<<< HEAD
+      "ino": 8601807278,
+      "blocks": 256,
+      "atimeMs": 1529968229096.3857,
+      "mtimeMs": 1529967555229.4724,
+      "ctimeMs": 1529967555229.4724,
+      "birthtimeMs": 1529967555226.0984,
+      "atime": "2018-06-25T23:10:29.096Z",
+      "mtime": "2018-06-25T22:59:15.229Z",
+      "ctime": "2018-06-25T22:59:15.229Z",
+      "birthtime": "2018-06-25T22:59:15.226Z"
+    },
+    "/Users/jim/Documents/openly/localgov.fyi/src/images/gal3.jpeg absPath of file >> ImageSharp": {
+      "id": "/Users/jim/Documents/openly/localgov.fyi/src/images/gal3.jpeg absPath of file >> ImageSharp",
+=======
+      "ino": 8597295221,
+      "blocks": 216,
+      "atimeMs": 1529967259114.1384,
+      "mtimeMs": 1529947351142.728,
+      "ctimeMs": 1529947351142.728,
+      "birthtimeMs": 1529947351141.2373,
+      "atime": "2018-06-25T22:54:19.114Z",
+      "mtime": "2018-06-25T17:22:31.143Z",
+      "ctime": "2018-06-25T17:22:31.143Z",
+      "birthtime": "2018-06-25T17:22:31.141Z"
+    },
+    "/Users/ybv/code/ybv-projects/localgov.fyi_frontend/src/images/gal3.jpeg absPath of file >> ImageSharp": {
+      "id": "/Users/ybv/code/ybv-projects/localgov.fyi_frontend/src/images/gal3.jpeg absPath of file >> ImageSharp",
+      "children": [],
+      "parent": "/Users/ybv/code/ybv-projects/localgov.fyi_frontend/src/images/gal3.jpeg absPath of file",
+      "internal": {
+        "contentDigest": "85f35908a0a9c5f918e16ecc486e4689",
+        "type": "ImageSharp",
+        "owner": "gatsby-transformer-sharp"
+      }
+    },
+    "/Users/ybv/code/ybv-projects/localgov.fyi_frontend/src/images/gal2.jpeg absPath of file >> ImageSharp": {
+      "id": "/Users/ybv/code/ybv-projects/localgov.fyi_frontend/src/images/gal2.jpeg absPath of file >> ImageSharp",
+>>>>>>> add about page
+>>>>>>> add about page
       "children": [],
       "parent": "/Users/ybv/code/ybv-projects/localgov.fyi_frontend/src/images/gal3.jpeg absPath of file",
       "internal": {
@@ -2498,10 +3002,24 @@
       "extension": "jpg",
       "size": 370980,
       "prettySize": "371 kB",
+<<<<<<< HEAD
       "modifiedTime": "2018-06-27T00:19:36.879Z",
       "accessTime": "2018-06-27T00:19:49.472Z",
       "changeTime": "2018-06-27T00:19:36.879Z",
       "birthTime": "2018-06-27T00:19:36.873Z",
+=======
+<<<<<<< HEAD
+      "modifiedTime": "2018-06-25T22:59:15.249Z",
+      "accessTime": "2018-06-25T23:13:01.160Z",
+      "changeTime": "2018-06-25T22:59:15.249Z",
+      "birthTime": "2018-06-25T22:59:15.242Z",
+=======
+      "modifiedTime": "2018-06-25T18:47:36.203Z",
+      "accessTime": "2018-06-25T22:54:19.114Z",
+      "changeTime": "2018-06-25T18:47:36.204Z",
+      "birthTime": "2018-06-25T18:47:36.200Z",
+>>>>>>> add about page
+>>>>>>> add about page
       "root": "/",
       "dir": "/Users/ybv/code/ybv-projects/localgov.fyi_frontend/src/images",
       "base": "trends.jpg",
@@ -2517,6 +3035,7 @@
       "blksize": 4194304,
       "ino": 8597820054,
       "blocks": 728,
+<<<<<<< HEAD
       "atimeMs": 1530058789471.5046,
       "mtimeMs": 1530058776879.1316,
       "ctimeMs": 1530058776879.1316,
@@ -2528,6 +3047,33 @@
     },
     "/Users/ybv/code/ybv-projects/localgov.fyi_frontend/src/images/trends.jpg absPath of file >> ImageSharp": {
       "id": "/Users/ybv/code/ybv-projects/localgov.fyi_frontend/src/images/trends.jpg absPath of file >> ImageSharp",
+=======
+<<<<<<< HEAD
+      "atimeMs": 1529968381159.5034,
+      "mtimeMs": 1529967555248.774,
+      "ctimeMs": 1529967555248.774,
+      "birthtimeMs": 1529967555242.1028,
+      "atime": "2018-06-25T23:13:01.160Z",
+      "mtime": "2018-06-25T22:59:15.249Z",
+      "ctime": "2018-06-25T22:59:15.249Z",
+      "birthtime": "2018-06-25T22:59:15.242Z"
+    },
+    "/Users/jim/Documents/openly/localgov.fyi/src/images/trends.jpg absPath of file >> ImageSharp": {
+      "id": "/Users/jim/Documents/openly/localgov.fyi/src/images/trends.jpg absPath of file >> ImageSharp",
+=======
+      "atimeMs": 1529967259114.1523,
+      "mtimeMs": 1529952456203.0322,
+      "ctimeMs": 1529952456204.173,
+      "birthtimeMs": 1529952456200.0732,
+      "atime": "2018-06-25T22:54:19.114Z",
+      "mtime": "2018-06-25T18:47:36.203Z",
+      "ctime": "2018-06-25T18:47:36.204Z",
+      "birthtime": "2018-06-25T18:47:36.200Z"
+    },
+    "/Users/ybv/code/ybv-projects/localgov.fyi_frontend/src/images/trends.jpg absPath of file >> ImageSharp": {
+      "id": "/Users/ybv/code/ybv-projects/localgov.fyi_frontend/src/images/trends.jpg absPath of file >> ImageSharp",
+>>>>>>> add about page
+>>>>>>> add about page
       "children": [],
       "parent": "/Users/ybv/code/ybv-projects/localgov.fyi_frontend/src/images/trends.jpg absPath of file",
       "internal": {
@@ -2555,10 +3101,24 @@
       "extension": "jpg",
       "size": 409595,
       "prettySize": "410 kB",
+<<<<<<< HEAD
       "modifiedTime": "2018-06-27T00:19:36.873Z",
       "accessTime": "2018-06-27T00:19:49.470Z",
       "changeTime": "2018-06-27T00:19:36.873Z",
       "birthTime": "2018-06-27T00:19:36.864Z",
+=======
+<<<<<<< HEAD
+      "modifiedTime": "2018-06-25T22:59:15.242Z",
+      "accessTime": "2018-06-25T23:13:01.159Z",
+      "changeTime": "2018-06-25T22:59:15.242Z",
+      "birthTime": "2018-06-25T22:59:15.236Z",
+=======
+      "modifiedTime": "2018-06-25T19:26:24.169Z",
+      "accessTime": "2018-06-25T22:54:19.114Z",
+      "changeTime": "2018-06-25T19:26:24.170Z",
+      "birthTime": "2018-06-25T19:26:24.165Z",
+>>>>>>> add about page
+>>>>>>> add about page
       "root": "/",
       "dir": "/Users/ybv/code/ybv-projects/localgov.fyi_frontend/src/images",
       "base": "services.jpg",
@@ -2574,6 +3134,7 @@
       "blksize": 4194304,
       "ino": 8597820053,
       "blocks": 800,
+<<<<<<< HEAD
       "atimeMs": 1530058789470.3552,
       "mtimeMs": 1530058776872.6138,
       "ctimeMs": 1530058776872.6138,
@@ -2585,6 +3146,33 @@
     },
     "/Users/ybv/code/ybv-projects/localgov.fyi_frontend/src/images/services.jpg absPath of file >> ImageSharp": {
       "id": "/Users/ybv/code/ybv-projects/localgov.fyi_frontend/src/images/services.jpg absPath of file >> ImageSharp",
+=======
+<<<<<<< HEAD
+      "atimeMs": 1529968381159.3547,
+      "mtimeMs": 1529967555241.6318,
+      "ctimeMs": 1529967555241.6318,
+      "birthtimeMs": 1529967555235.688,
+      "atime": "2018-06-25T23:13:01.159Z",
+      "mtime": "2018-06-25T22:59:15.242Z",
+      "ctime": "2018-06-25T22:59:15.242Z",
+      "birthtime": "2018-06-25T22:59:15.236Z"
+    },
+    "/Users/jim/Documents/openly/localgov.fyi/src/images/services.jpg absPath of file >> ImageSharp": {
+      "id": "/Users/jim/Documents/openly/localgov.fyi/src/images/services.jpg absPath of file >> ImageSharp",
+=======
+      "atimeMs": 1529967259114.1453,
+      "mtimeMs": 1529954784168.7556,
+      "ctimeMs": 1529954784169.6648,
+      "birthtimeMs": 1529954784165.2114,
+      "atime": "2018-06-25T22:54:19.114Z",
+      "mtime": "2018-06-25T19:26:24.169Z",
+      "ctime": "2018-06-25T19:26:24.170Z",
+      "birthtime": "2018-06-25T19:26:24.165Z"
+    },
+    "/Users/ybv/code/ybv-projects/localgov.fyi_frontend/src/images/services.jpg absPath of file >> ImageSharp": {
+      "id": "/Users/ybv/code/ybv-projects/localgov.fyi_frontend/src/images/services.jpg absPath of file >> ImageSharp",
+>>>>>>> add about page
+>>>>>>> add about page
       "children": [],
       "parent": "/Users/ybv/code/ybv-projects/localgov.fyi_frontend/src/images/services.jpg absPath of file",
       "internal": {
@@ -3006,7 +3594,15 @@
       "children": [],
       "internal": {
         "type": "SitePage",
+<<<<<<< HEAD
         "contentDigest": "87a3b165053428d47d5aace1a995dafa",
+=======
+<<<<<<< HEAD
+        "contentDigest": "81157616d7611eebeadd9e554192f5fb",
+=======
+        "contentDigest": "609ff8658dbffdef86e2e3c1580a63eb",
+>>>>>>> add about page
+>>>>>>> add about page
         "description": "Your site's \"gatsby-node.js\"",
         "owner": "internal-data-bridge"
       }
@@ -3050,7 +3646,15 @@
       "children": [],
       "internal": {
         "type": "SitePage",
+<<<<<<< HEAD
         "contentDigest": "4582866cdbbe6347186d5d9e253868de",
+=======
+<<<<<<< HEAD
+        "contentDigest": "152b48af412606a87f332437fa19a4fc",
+=======
+        "contentDigest": "365b5477edb92b50ddfd42ea83ca64ae",
+>>>>>>> add about page
+>>>>>>> add about page
         "description": "Your site's \"gatsby-node.js\"",
         "owner": "internal-data-bridge"
       }
@@ -3094,7 +3698,15 @@
       "children": [],
       "internal": {
         "type": "SitePage",
+<<<<<<< HEAD
         "contentDigest": "52142d388012f39f059519190707c2e7",
+=======
+<<<<<<< HEAD
+        "contentDigest": "cde206b881175cc5ce28265cbf918f81",
+=======
+        "contentDigest": "8d085888be9b87071ee0114e2764e736",
+>>>>>>> add about page
+>>>>>>> add about page
         "description": "Your site's \"gatsby-node.js\"",
         "owner": "internal-data-bridge"
       }
@@ -3136,7 +3748,15 @@
       "children": [],
       "internal": {
         "type": "SitePage",
+<<<<<<< HEAD
         "contentDigest": "a245fc85c4a576a3a46e511c631c34dd",
+=======
+<<<<<<< HEAD
+        "contentDigest": "5a4d3adf66d2187c3b5c8d30093e4519",
+=======
+        "contentDigest": "d9554d12055019141d765b18f3ac69f6",
+>>>>>>> add about page
+>>>>>>> add about page
         "description": "Your site's \"gatsby-node.js\"",
         "owner": "internal-data-bridge"
       }
@@ -3178,7 +3798,15 @@
       "children": [],
       "internal": {
         "type": "SitePage",
+<<<<<<< HEAD
         "contentDigest": "0c7292965fa4e90aa84fe9d7aaf9d041",
+=======
+<<<<<<< HEAD
+        "contentDigest": "3da0a213d733cc0b74eaaa8be71b445a",
+=======
+        "contentDigest": "9256bccaa76ddc97c008f017ee843d56",
+>>>>>>> add about page
+>>>>>>> add about page
         "description": "Your site's \"gatsby-node.js\"",
         "owner": "internal-data-bridge"
       }
@@ -3215,7 +3843,15 @@
       "children": [],
       "internal": {
         "type": "SitePage",
+<<<<<<< HEAD
         "contentDigest": "64add497ca27fca7da87404ef7e16e59",
+=======
+<<<<<<< HEAD
+        "contentDigest": "dc246ffb346bdf83ca18fb84f558400d",
+=======
+        "contentDigest": "4fc257ac3f4b3e882fac884adefa9017",
+>>>>>>> add about page
+>>>>>>> add about page
         "description": "Your site's \"gatsby-node.js\"",
         "owner": "internal-data-bridge"
       }
@@ -3272,7 +3908,15 @@
       "children": [],
       "internal": {
         "type": "SitePage",
+<<<<<<< HEAD
         "contentDigest": "ff8b00d92a375a81715f5d66bb60c52f",
+=======
+<<<<<<< HEAD
+        "contentDigest": "59f1256319f241c89bcceade99357bb6",
+=======
+        "contentDigest": "a72a09fdb6a04d77acb6701d954c9104",
+>>>>>>> add about page
+>>>>>>> add about page
         "description": "Your site's \"gatsby-node.js\"",
         "owner": "internal-data-bridge"
       }
@@ -3320,7 +3964,15 @@
       "children": [],
       "internal": {
         "type": "SitePage",
+<<<<<<< HEAD
         "contentDigest": "6aeda6579fbe32a3a95308bd87eca684",
+=======
+<<<<<<< HEAD
+        "contentDigest": "c1a0463b2f13b07f29b982ea96f7d1f0",
+=======
+        "contentDigest": "d8d38a3dfa98d5874262750ee07e8ef2",
+>>>>>>> add about page
+>>>>>>> add about page
         "description": "Your site's \"gatsby-node.js\"",
         "owner": "internal-data-bridge"
       }
@@ -3386,7 +4038,15 @@
       "children": [],
       "internal": {
         "type": "SitePage",
+<<<<<<< HEAD
         "contentDigest": "7d818caaef57950487b0549f4b2a9117",
+=======
+<<<<<<< HEAD
+        "contentDigest": "b71e35cf3791022b61b829826182df9a",
+=======
+        "contentDigest": "358a4effa116f08bba99025ab993477e",
+>>>>>>> add about page
+>>>>>>> add about page
         "description": "Your site's \"gatsby-node.js\"",
         "owner": "internal-data-bridge"
       }
@@ -3423,7 +4083,15 @@
       "children": [],
       "internal": {
         "type": "SitePage",
+<<<<<<< HEAD
         "contentDigest": "2b5b24e394eb70e4e3add34188ff69cf",
+=======
+<<<<<<< HEAD
+        "contentDigest": "3d9057b7c5ab90c341d29257770e19bb",
+=======
+        "contentDigest": "da398b35588b1ea0d86b8218cc032dad",
+>>>>>>> add about page
+>>>>>>> add about page
         "description": "Your site's \"gatsby-node.js\"",
         "owner": "internal-data-bridge"
       }
@@ -3465,7 +4133,15 @@
       "children": [],
       "internal": {
         "type": "SitePage",
+<<<<<<< HEAD
         "contentDigest": "223374876e2da12348727bee4668ab41",
+=======
+<<<<<<< HEAD
+        "contentDigest": "410c9d0e8265a0ed868e896112e45637",
+=======
+        "contentDigest": "9692b27d7a732a4708c8139466b9bbb7",
+>>>>>>> add about page
+>>>>>>> add about page
         "description": "Your site's \"gatsby-node.js\"",
         "owner": "internal-data-bridge"
       }
@@ -3531,7 +4207,15 @@
       "children": [],
       "internal": {
         "type": "SitePage",
+<<<<<<< HEAD
         "contentDigest": "57c1d78d37ae43aafa774aad8845d357",
+=======
+<<<<<<< HEAD
+        "contentDigest": "e0fdd394189bdc45577da401cc4b53c6",
+=======
+        "contentDigest": "e73d7fa491301131bbb32a25ca608783",
+>>>>>>> add about page
+>>>>>>> add about page
         "description": "Your site's \"gatsby-node.js\"",
         "owner": "internal-data-bridge"
       }
@@ -3581,7 +4265,15 @@
       "children": [],
       "internal": {
         "type": "SitePage",
+<<<<<<< HEAD
         "contentDigest": "2b6a7cd36a8d15d6bb4eee213c9c576f",
+=======
+<<<<<<< HEAD
+        "contentDigest": "10f9327e4d5d60427dba1a8752c419f9",
+=======
+        "contentDigest": "26682060b2767da79fad1ece067a08c6",
+>>>>>>> add about page
+>>>>>>> add about page
         "description": "Your site's \"gatsby-node.js\"",
         "owner": "internal-data-bridge"
       }
@@ -3632,7 +4324,15 @@
       "children": [],
       "internal": {
         "type": "SitePage",
+<<<<<<< HEAD
         "contentDigest": "2883186e11a9400f4970640c2bcb11fb",
+=======
+<<<<<<< HEAD
+        "contentDigest": "3492e107c9ab78a39f2ed173c2755467",
+=======
+        "contentDigest": "9786f9902a05c23fdccf7034a090f628",
+>>>>>>> add about page
+>>>>>>> add about page
         "description": "Your site's \"gatsby-node.js\"",
         "owner": "internal-data-bridge"
       }
@@ -3653,7 +4353,15 @@
       "children": [],
       "internal": {
         "type": "SitePage",
+<<<<<<< HEAD
         "contentDigest": "dddcfe4323c846732ba45866b7206f0e",
+=======
+<<<<<<< HEAD
+        "contentDigest": "ca000f3451b6125a4739641d7ba9b798",
+=======
+        "contentDigest": "a0327375c68c5a09ad4816ee05f00298",
+>>>>>>> add about page
+>>>>>>> add about page
         "description": "Plugin gatsby-plugin-page-creator",
         "owner": "internal-data-bridge"
       }
@@ -3674,7 +4382,12 @@
       "children": [],
       "internal": {
         "type": "SitePage",
+<<<<<<< HEAD
         "contentDigest": "bbe20b1ea5b2200aa067d9efe23f0134",
+=======
+<<<<<<< HEAD
+        "contentDigest": "d3e4a8766e316c5fc0516a3823358853",
+>>>>>>> add about page
         "description": "Plugin gatsby-plugin-page-creator",
         "owner": "internal-data-bridge"
       }
@@ -3695,7 +4408,14 @@
       "children": [],
       "internal": {
         "type": "SitePage",
+<<<<<<< HEAD
         "contentDigest": "b6df0eaf05e89a5f4a5ed9b40b19eaf6",
+=======
+        "contentDigest": "c038d07b803dd56f16161fe6e2d90911",
+=======
+        "contentDigest": "e8d389e496cbfa5904a6c2d4665e825d",
+>>>>>>> add about page
+>>>>>>> add about page
         "description": "Plugin gatsby-plugin-page-creator",
         "owner": "internal-data-bridge"
       }
@@ -3717,7 +4437,15 @@
       "children": [],
       "internal": {
         "type": "SitePage",
+<<<<<<< HEAD
         "contentDigest": "77523a8ee8433ad57dad833d5c0d2133",
+=======
+<<<<<<< HEAD
+        "contentDigest": "4bc06dd0ab9c1c54a48331b99264e086",
+=======
+        "contentDigest": "53b2635f1af0c1b4e16ee732a0aea90e",
+>>>>>>> add about page
+>>>>>>> add about page
         "description": "Plugin gatsby-plugin-create-client-paths",
         "owner": "internal-data-bridge"
       }
@@ -3738,7 +4466,12 @@
       "children": [],
       "internal": {
         "type": "SitePage",
+<<<<<<< HEAD
         "contentDigest": "cfbe26f35272250b3843e3cf8b4b8d2b",
+=======
+<<<<<<< HEAD
+        "contentDigest": "5a7fa716214f8dd52e579e3f08b1c898",
+>>>>>>> add about page
         "description": "Plugin gatsby-plugin-page-creator",
         "owner": "internal-data-bridge"
       }
@@ -3759,7 +4492,14 @@
       "children": [],
       "internal": {
         "type": "SitePage",
+<<<<<<< HEAD
         "contentDigest": "0fb2129830a4cd40c4e3480a910fa529",
+=======
+        "contentDigest": "b434abbc7334a520fbf9f3755ac0d5e0",
+=======
+        "contentDigest": "d259ed0908e646a9b17983ec3893832d",
+>>>>>>> add about page
+>>>>>>> add about page
         "description": "Plugin gatsby-plugin-page-creator",
         "owner": "internal-data-bridge"
       }
@@ -3767,6 +4507,7 @@
   },
   "status": {
     "plugins": {},
+<<<<<<< HEAD
     "PLUGINS_HASH": "e3273131f6cb1091a2be59d37bc7dccc"
   },
   "componentDataDependencies": {
@@ -3799,6 +4540,40 @@
         "/spotlight/"
       ],
       "/Users/jim/Documents/openly/localgov.fyi/src/images/trends.jpg absPath of file": [
+=======
+    "PLUGINS_HASH": "889578ff33e4c2280cc1419fb98a5a71"
+  },
+  "componentDataDependencies": {
+    "nodes": {
+      "/Users/ybv/code/ybv-projects/localgov.fyi_frontend/src/images/gal1.jpeg absPath of file >> ImageSharp": [
+        "/spotlight/"
+      ],
+      "/Users/ybv/code/ybv-projects/localgov.fyi_frontend/src/images/gal1.jpeg absPath of file": [
+        "/spotlight/"
+      ],
+      "/Users/ybv/code/ybv-projects/localgov.fyi_frontend/src/images/services.jpg absPath of file >> ImageSharp": [
+        "/spotlight/"
+      ],
+      "/Users/ybv/code/ybv-projects/localgov.fyi_frontend/src/images/services.jpg absPath of file": [
+        "/spotlight/"
+      ],
+      "/Users/ybv/code/ybv-projects/localgov.fyi_frontend/src/images/gal2.jpeg absPath of file >> ImageSharp": [
+        "/spotlight/"
+      ],
+      "/Users/ybv/code/ybv-projects/localgov.fyi_frontend/src/images/gal2.jpeg absPath of file": [
+        "/spotlight/"
+      ],
+      "/Users/ybv/code/ybv-projects/localgov.fyi_frontend/src/images/gal4.jpeg absPath of file >> ImageSharp": [
+        "/spotlight/"
+      ],
+      "/Users/ybv/code/ybv-projects/localgov.fyi_frontend/src/images/gal4.jpeg absPath of file": [
+        "/spotlight/"
+      ],
+      "/Users/ybv/code/ybv-projects/localgov.fyi_frontend/src/images/trends.jpg absPath of file >> ImageSharp": [
+        "/spotlight/"
+      ],
+      "/Users/ybv/code/ybv-projects/localgov.fyi_frontend/src/images/trends.jpg absPath of file": [
+>>>>>>> add about page
         "/spotlight/"
       ],
       "/Users/jim/Documents/openly/localgov.fyi/tos/terms.md absPath of file >>> MarkdownRemark": [

@@ -2,17 +2,17 @@ import React, {Fragment} from 'react';
 import Img from "gatsby-image";;
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
-
+import Helmet from "react-helmet";
 import Grid from '@material-ui/core/Grid';
-import Button from '@material-ui/core/Button';
-import SearchIcon from '@material-ui/icons/Search'
+
 import Typography from '@material-ui/core/Typography';
 import {withStyles} from '@material-ui/core/styles';
-
 import {isMobileOnly} from 'react-device-detect';
 import Animate from 'react-simple-animate';
 
+
 import withRoot from '../withRoot';
+
 
 const styles = theme => ({
     headerLogo: {
@@ -121,10 +121,14 @@ class Index extends React.Component {
             'trendsSectionRight': !isMobileOnly,
             'trendsSectionRightMob': isMobileOnly
         });
-        console.log(this.props.data);
+
         return (
             <Grid container spacing={0}>
                 {/* header section start */}
+                <Helmet>
+                    <title>{`Openly spotlight | Localgov.fyi`} </title>
+                    <meta name="description" content={`Openly spotlight for local governments `} />
+                </Helmet>
                 <Grid item md={1}/>
                 <Grid item xs={12} sm={12} md={2} className={classes.headerLogo}>
                     <Typography align="left" variant="headline" component="span">
@@ -166,22 +170,11 @@ class Index extends React.Component {
                                 </Grid>
                                 <Grid item md={1}/>
                                 <Grid item xs={10} sm={3} md={3} className={classes[heroSectionRight]}>
-                                    <Animate
-                                        startAnimation
-                                        startStyle={{
-                                        "transform": "translateY(700px)"
-                                    }}
-                                        endStyle={{
-                                        "transform": "translateY(0px)"
-                                    }}
-                                        durationSeconds="0.5"
-                                        easeType="easeInExpo">
                                         <Img
                                             title="Spotlight"
+                                            alt="Spotlight search 1"
                                             className={classes.image}
-                                            alt="Spotlight search"
                                             sizes={this.props.data.gal1.sizes}/>
-                                    </Animate>
                                 </Grid>
                             </Fragment>
                         )
@@ -409,7 +402,7 @@ export const query = graphql `
             ...GatsbyImageSharpSizes_tracedSVG
       }
     }
-    gal3: imageSharp(id: { regex: "/gal3/"}) {
+    gal2: imageSharp(id: { regex: "/gal2/"}) {
       sizes {
             ...GatsbyImageSharpSizes_tracedSVG
       }

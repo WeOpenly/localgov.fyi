@@ -3,6 +3,7 @@ const preferDefault = m => m && m.default || m
 
 exports.components = {
 <<<<<<< HEAD
+<<<<<<< HEAD
   "component---src-templates-organization-detail-js": require("gatsby-module-loader?name=component---src-templates-organization-detail-js!/Users/ybv/code/ybv-projects/localgov.fyi_frontend/src/templates/organization-detail.js"),
   "component---src-templates-member-detail-js": require("gatsby-module-loader?name=component---src-templates-member-detail-js!/Users/ybv/code/ybv-projects/localgov.fyi_frontend/src/templates/member-detail.js"),
   "component---src-templates-service-detail-2-js": require("gatsby-module-loader?name=component---src-templates-service-detail-2-js!/Users/ybv/code/ybv-projects/localgov.fyi_frontend/src/templates/service-detail-2.js"),
@@ -54,14 +55,17 @@ exports.json = {
   "spotlight.json": require("gatsby-module-loader?name=path---spotlight!/Users/jim/Documents/openly/localgov.fyi/.cache/json/spotlight.json"),
   "terms.json": require("gatsby-module-loader?name=path---terms!/Users/jim/Documents/openly/localgov.fyi/.cache/json/terms.json")
 =======
+=======
+>>>>>>> changes to cache
   "component---src-templates-organization-detail-js": require("gatsby-module-loader?name=component---src-templates-organization-detail-js!/Users/ybv/code/ybv-projects/localgov.fyi_frontend/src/templates/organization-detail.js"),
   "component---src-templates-member-detail-js": require("gatsby-module-loader?name=component---src-templates-member-detail-js!/Users/ybv/code/ybv-projects/localgov.fyi_frontend/src/templates/member-detail.js"),
   "component---src-templates-service-detail-2-js": require("gatsby-module-loader?name=component---src-templates-service-detail-2-js!/Users/ybv/code/ybv-projects/localgov.fyi_frontend/src/templates/service-detail-2.js"),
-  "component---cache-dev-404-page-js": require("gatsby-module-loader?name=component---cache-dev-404-page-js!/Users/ybv/code/ybv-projects/localgov.fyi_frontend/.cache/dev-404-page.js"),
   "component---src-pages-about-js": require("gatsby-module-loader?name=component---src-pages-about-js!/Users/ybv/code/ybv-projects/localgov.fyi_frontend/src/pages/about.js"),
   "component---src-pages-index-js": require("gatsby-module-loader?name=component---src-pages-index-js!/Users/ybv/code/ybv-projects/localgov.fyi_frontend/src/pages/index.js"),
+  "component---src-pages-privacy-js": require("gatsby-module-loader?name=component---src-pages-privacy-js!/Users/ybv/code/ybv-projects/localgov.fyi_frontend/src/pages/privacy.js"),
   "component---src-pages-search-index-js": require("gatsby-module-loader?name=component---src-pages-search-index-js!/Users/ybv/code/ybv-projects/localgov.fyi_frontend/src/pages/search/index.js"),
-  "component---src-pages-spotlight-js": require("gatsby-module-loader?name=component---src-pages-spotlight-js!/Users/ybv/code/ybv-projects/localgov.fyi_frontend/src/pages/spotlight.js")
+  "component---src-pages-spotlight-js": require("gatsby-module-loader?name=component---src-pages-spotlight-js!/Users/ybv/code/ybv-projects/localgov.fyi_frontend/src/pages/spotlight.js"),
+  "component---src-pages-terms-js": require("gatsby-module-loader?name=component---src-pages-terms-js!/Users/ybv/code/ybv-projects/localgov.fyi_frontend/src/pages/terms.js")
 }
 
 exports.json = {
@@ -82,6 +86,7 @@ exports.json = {
   "service-09-c-1-d-988-5-e-46-4-c-60-a-920-44-db-04-b-6872-e.json": require("gatsby-module-loader?name=path---service-09-c-1-d-988-5-e-46-4-c-60-a-920-44-db-04-b-6872-e!/Users/ybv/code/ybv-projects/localgov.fyi_frontend/.cache/json/service-09-c-1-d-988-5-e-46-4-c-60-a-920-44-db-04-b-6872-e.json"),
   "service-25-db-992-d-eb-6-f-494-c-ba-6-e-fe-29-ea-99-d-6-fd.json": require("gatsby-module-loader?name=path---service-25-db-992-d-eb-6-f-494-c-ba-6-e-fe-29-ea-99-d-6-fd!/Users/ybv/code/ybv-projects/localgov.fyi_frontend/.cache/json/service-25-db-992-d-eb-6-f-494-c-ba-6-e-fe-29-ea-99-d-6-fd.json"),
 <<<<<<< HEAD
+<<<<<<< HEAD
   "layout-index.json": require("gatsby-module-loader?name=path---!/Users/ybv/code/ybv-projects/localgov.fyi_frontend/.cache/json/layout-index.json"),
   "dev-404-page.json": require("gatsby-module-loader?name=path---dev-404-page!/Users/ybv/code/ybv-projects/localgov.fyi_frontend/.cache/json/dev-404-page.json"),
   "about.json": require("gatsby-module-loader?name=path---about!/Users/ybv/code/ybv-projects/localgov.fyi_frontend/.cache/json/about.json"),
@@ -92,9 +97,13 @@ exports.json = {
   "terms.json": require("gatsby-module-loader?name=path---terms!/Users/ybv/code/ybv-projects/localgov.fyi_frontend/.cache/json/terms.json")
 =======
   "dev-404-page.json": require("gatsby-module-loader?name=path---dev-404-page!/Users/ybv/code/ybv-projects/localgov.fyi_frontend/.cache/json/dev-404-page.json"),
+=======
+>>>>>>> changes to cache
   "about.json": require("gatsby-module-loader?name=path---about!/Users/ybv/code/ybv-projects/localgov.fyi_frontend/.cache/json/about.json"),
   "index.json": require("gatsby-module-loader?name=path---index!/Users/ybv/code/ybv-projects/localgov.fyi_frontend/.cache/json/index.json"),
+  "privacy.json": require("gatsby-module-loader?name=path---privacy!/Users/ybv/code/ybv-projects/localgov.fyi_frontend/.cache/json/privacy.json"),
   "search.json": require("gatsby-module-loader?name=path---search!/Users/ybv/code/ybv-projects/localgov.fyi_frontend/.cache/json/search.json"),
+<<<<<<< HEAD
   "spotlight.json": require("gatsby-module-loader?name=path---spotlight!/Users/ybv/code/ybv-projects/localgov.fyi_frontend/.cache/json/spotlight.json")
 >>>>>>> add about page
 >>>>>>> add about page
@@ -103,4 +112,12 @@ exports.json = {
 exports.layouts = {
   "layout---detailTemplate": require("gatsby-module-loader?name=component---src-layouts-detail-template-js!/Users/ybv/code/ybv-projects/localgov.fyi_frontend/.cache/layouts/detailTemplate.js"),
   "layout---index": require("gatsby-module-loader?name=component---src-layouts-index-js!/Users/ybv/code/ybv-projects/localgov.fyi_frontend/.cache/layouts/index.js")
+=======
+  "spotlight.json": require("gatsby-module-loader?name=path---spotlight!/Users/ybv/code/ybv-projects/localgov.fyi_frontend/.cache/json/spotlight.json"),
+  "terms.json": require("gatsby-module-loader?name=path---terms!/Users/ybv/code/ybv-projects/localgov.fyi_frontend/.cache/json/terms.json")
+}
+
+exports.layouts = {
+  "layout---detailTemplate": require("gatsby-module-loader?name=component---src-layouts-detail-template-js!/Users/ybv/code/ybv-projects/localgov.fyi_frontend/.cache/layouts/detailTemplate.js")
+>>>>>>> changes to cache
 }

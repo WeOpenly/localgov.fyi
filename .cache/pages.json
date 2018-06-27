@@ -98,6 +98,7 @@
         "path": "/service/25db992d-eb6f-494c-ba6e-fe29ea99d6fd"
     },
     {
+<<<<<<< HEAD
         "componentChunkName": "component---cache-dev-404-page-js",
         "layout": "layout---index",
         "layoutComponentChunkName": "component---src-layouts-index-js",
@@ -105,6 +106,8 @@
         "path": "/dev-404-page/"
     },
     {
+=======
+>>>>>>> changes to cache
         "componentChunkName": "component---src-pages-about-js",
         "layout": "layout---index",
         "layoutComponentChunkName": "component---src-layouts-index-js",

@@ -92,6 +92,7 @@ export function search(state = initialState, action) {
         case types.RECV_SEARCH_RESULTS_FAILED:
             return {
                 ...state,
+                searchResultsLoading: false,
                 searchResultsLoadingFailed: true
             }
         default:

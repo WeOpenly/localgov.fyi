@@ -15,7 +15,7 @@ import ListItemText from
 import ContactDetails from '../components/ContactDetails';
 import AddressGoogleMap from '../components/AddressGoogleMap';
 import HorizontalList from '../components/HorizontalList';
-import MemberListItem from '../components/MemberListItem';
+// import MemberListItem from '../components/MemberListItem';
 import SearchResult from '../components/SearchResult';
 import ServiceDeliveryLink from '../components/ServiceDeliveryLink';
 import withRoot from '../withRoot';

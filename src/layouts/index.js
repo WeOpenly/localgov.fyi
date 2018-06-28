@@ -8,15 +8,15 @@ import Footer from '../components/Footer';
 import withRoot from '../withRoot';
 
 const styles = theme => ({
-stickyFooterIndex : {
-    position: 'fixed',
-    bottom: 0,
-    width: '100%',
-    zIndex: 1
-  },
-stickyFooter:{
+  stickyFooterIndex : {
+      position: 'fixed',
+      bottom: 0,
+      width: '100%',
+      zIndex: 1
+    },
+  stickyFooter:{
 
-}
+  }
 });
 
 class Index extends React.Component {
@@ -27,7 +27,7 @@ class Index extends React.Component {
   render() {
     const {classes} = this.props;
     let isIndexOrSearch = false;
-    console.log(this.props.location.pathname);
+
     if (this.props.location && (this.props.location.pathname === '' || this.props.location.pathname === '/' ||this.props.location.pathname.includes('search') || this.props.location.pathname.includes('about') || this.props.location.pathname.includes('privacy'))) {
       isIndexOrSearch = true;
     }

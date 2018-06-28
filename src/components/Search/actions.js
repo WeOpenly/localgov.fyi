@@ -145,3 +145,23 @@ export const fetchSearchSuggestions = async(dispatch, getState) => {
         dispatch(recvSuggestionsFailed());
     }
 };
+
+
+export const fetchAreaSearchSuggestions = async (dispatch, getState) => {
+    const { input } = getState().search;
+
+    dispatch(reqSearchSuggestions());
+    const country = 'usa'
+    try {
+        const data = await GetApi(null, `area_suggestions?country=${country}&query=${input}`);
+        const searchResults = await data;
+
+        if (searchResults.success) {
+            dispatch(setSearchSuggesitions(searchResults));
+        } else {
+            dispatch(recvSuggestionsFailed());
+        }
+    } catch (e) {
+        dispatch(recvSuggestionsFailed());
+    }
+};

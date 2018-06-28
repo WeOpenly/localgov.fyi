@@ -25,7 +25,7 @@ import parse from "autosuggest-highlight/parse";
 import Autosuggest from "react-autosuggest";
 
 import withRoot from '../../withRoot';
-import { fetchSearchSuggestions, clearInput, updateInput } from "./actions";
+import { fetchAreaSearchSuggestions, clearInput, updateInput } from "./actions";
 
 const styles = theme => ({
 boldWrapper : {
@@ -213,7 +213,7 @@ class NewSuggestBox extends Component {
     }
 
     getSuggestionValue(suggestion) {
-        return suggestion.head;
+        return suggestion.org_name;
     }
 
     renderSuggestionsContainer(options) {
@@ -232,12 +232,7 @@ class NewSuggestBox extends Component {
                 <div>
                     <div>
                         <Typography align="left" variant="title">
-                            {suggestion.head}
-                        </Typography>
-                    </div>
-                    <div>
-                        <Typography align="left" variant="caption">
-                            {suggestion.subhead}
+                            {suggestion.org_name}
                         </Typography>
                     </div>
                 </div>
@@ -290,7 +285,7 @@ class NewSuggestBox extends Component {
                     }} />
                 <div className={classes.search}>
                     {searchSuggestionsLoading
-                        ? <CircularProgress size={24} color="accent" />
+                        ? <CircularProgress size={24} color="primary" />
                         : input
                             ? <IconButton aria-label="Clear" onClick={this.clearInput}>
                                 <CloseIcon />
@@ -306,7 +301,7 @@ class NewSuggestBox extends Component {
     handleSuggestionsFetchRequested({ value }) {
         const { dispatch } = this.props;
         if (value && value.length > 1) {
-            dispatch(fetchSearchSuggestions);
+            dispatch(fetchAreaSearchSuggestions);
         }
     }
 
@@ -317,7 +312,7 @@ class NewSuggestBox extends Component {
 
     handleChange(event, { newValue, method }) {
         const { dispatch } = this.props;
-        if (method === "type"){
+        if (method === "type" ){
             dispatch(updateInput(newValue))
         }
     }
@@ -326,10 +321,9 @@ class NewSuggestBox extends Component {
         event.preventDefault();
         const { dispatch } = this.props;
         const { input, userCountry } = this.props.search;
-        const { type, id } = suggestion;
-        navigateTo(`/${type}/${id}`);
+        const {  id } = suggestion;
+        navigateTo(`/organization/${id}`);
     }
-
 
     onSubmit(evt) {
         evt.preventDefault();
@@ -354,18 +348,18 @@ class NewSuggestBox extends Component {
 
         return (
             <form onSubmit={this.onSubmit} className={classes.container}>
+                {/* renderSectionTitle={this.renderSectionTitle}
+                getSectionSuggestions={this.getSectionSuggestions} */}
                 <Autosuggest
                     theme={{
                     container: classes.container,
                     suggestionsContainerOpen: classes.suggestionsContainerOpen,
                     suggestionsList: classes.suggestionsList,
                     suggestion: classes.suggestion
-                }}
+                }}  
+                    highlightFirstSuggestion
                     renderInputComponent={this.renderInput}
                     suggestions={searchSuggestions}
-                    multiSection
-                    renderSectionTitle={this.renderSectionTitle}
-                    getSectionSuggestions={this.getSectionSuggestions}
                     onSuggestionsFetchRequested={this.handleSuggestionsFetchRequested}
                     onSuggestionsClearRequested={this.handleSuggestionsClearRequested}
                     renderSuggestionsContainer={this.renderSuggestionsContainer}
@@ -380,7 +374,6 @@ class NewSuggestBox extends Component {
                     value: input,
                     onChange: this.handleChange,
                     onKeyDown: () => {},
-                    onFocus: (event) => {event.preventDefault()},
                     onBlur: (event) => { event.preventDefault() },
                 }}/>
             </form>

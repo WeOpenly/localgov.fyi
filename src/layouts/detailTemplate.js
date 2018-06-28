@@ -14,12 +14,10 @@ const styles = theme => ({
     margin: 0,
     padding: 0
   },
-  floatingButton: {
-    color: theme.palette.common.white,
-    background: theme.palette.primary['700'],
+  footer: {
     position: 'fixed',
-    bottom: theme.spacing.unit * 2,
-    right: theme.spacing.unit * 2,
+    bottom: 0,
+    width: '100%',
     zIndex: 1
   }
 });
@@ -43,7 +41,7 @@ class DetailTemplate extends React.Component {
           <Grid item xs={1} />
         </Grid>
         <Share />
-        <Footer />
+          <Footer />
       </div>
     );
   }

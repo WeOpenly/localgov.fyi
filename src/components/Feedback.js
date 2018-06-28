@@ -58,6 +58,12 @@ const styles = theme => ({
   },
 });
 
+const encode = (data) => {
+  return Object.keys(data)
+    .map(key => encodeURIComponent(key) + "=" + encodeURIComponent(data[key]))
+    .join("&");
+}
+
 class Feedback extends Component {
   constructor(props) {
     super(props);

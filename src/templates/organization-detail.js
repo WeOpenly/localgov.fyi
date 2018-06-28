@@ -7,7 +7,7 @@ import Typography from '@material-ui/core/Typography';
 import ContactDetails from '../components/ContactDetails';
 import HorizontalListItem from '../components/HorizontalListItem';
 import HorizontalList from '../components/HorizontalList';
-import MemberListItem from '../components/MemberListItem';
+// import MemberListItem from '../components/MemberListItem';
 import SearchResult from '../components/SearchResult';
 
 import withRoot from '../withRoot';
@@ -57,19 +57,19 @@ class OrganizationDetail extends React.Component {
       contactDetailComponent = <ContactDetails info={contact_details}/>
     }
 
-    if (members.length > 0) {
-      memberListComp = (
-        <Grid container spacing={8}>
-              <Typography variant="subheading" component="h4" gutterBottom>
-                    Contact Details
-          </Typography>
-          <Grid item xs={12} sm={12}>
-            <br/>
-            <HorizontalList list={members} component={MemberListItem}/>
-          </Grid>
-        </Grid>
-      )
-    }
+    // if (members.length > 0) {
+    //   memberListComp = (
+    //     <Grid container spacing={8}>
+    //           <Typography variant="subheading" component="h4" gutterBottom>
+    //                 Contact Details
+    //       </Typography>
+    //       <Grid item xs={12} sm={12}>
+    //         <br/>
+    //         <HorizontalList list={members} component={MemberListItem}/>
+    //       </Grid>
+    //     </Grid>
+    //   )
+    // }
 
     if (services.length > 0) {
       const serCards = services.map((ser, index) => {
@@ -106,10 +106,6 @@ class OrganizationDetail extends React.Component {
             <br />
          {contactDetailComponent}
             <img src={`https://d3qlx9ss0mi45s.cloudfront.net/localgov.fyi/track.png?${payloadParams}`} alt={"localgov-track"} /> 
-          </Grid>
-          <Grid item xs={12} sm={12}>
-            <br />
-            {memberListComp}
           </Grid>
         </Grid>
       </Grid>

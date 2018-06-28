@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {connect} from "react-redux";
-import {navigateTo} from 'gatsby-link';
+import Link from 'gatsby-link';
 import Helmet from "react-helmet";
 import {withStyles} from '@material-ui/core/styles';
 import Spinner from 'react-spinkit';
@@ -10,6 +10,7 @@ import Button from '@material-ui/core/Button';
 import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
+import MoodBad from '@material-ui/icons/MoodBad';
 
 import HeaderWithSearch from '../../components/HeaderWithSearch';
 import SearchResults from '../../components/SearchResults';
@@ -24,17 +25,34 @@ const styles = theme => ({
         width: "100%",
         height: "100%",
         margin: 0,
-        padding: 0
+        padding: 0,
     },
     flex: {
         flex: 1
     },
     menuButton: {
         marginLeft: -12,
-        marginRight: 20
+        marginRight: 20,
     },
     searchResults: {
-        paddingTop: theme.spacing.unit * 3
+        paddingTop: theme.spacing.unit * 3,
+    },
+    wrapper: {
+        width: '100%',
+        height: 500,
+        display: 'flex',
+        flexDirection: 'column',
+        justifyContent: 'center',
+        alignItems: 'center',
+    },
+    icon: {
+        fontSize: 48,
+        color: theme.palette.primary['500'],
+        marginBottom: theme.spacing.unit * 2,
+    },
+    link: {
+        color: theme.palette.primary['500'],
+        textDecoration: 'none',
     }
 });
 
@@ -64,11 +82,25 @@ class Index extends React.Component {
        
 
         if (searchResultsLoading) {
-            return (<Spinner name="ball-beat" color="blue"/>);
+            return (
+                <div className={classes.wrapper}>
+                    <Spinner name="ball-beat" color="blue"/>
+                </div>
+            );
         }
 
         if (searchResultsLoadingFailed) {
-            return "something went wrong";
+            return (
+                <div className={classes.wrapper}>
+                    <MoodBad className={classes.icon}/>
+                    <Typography variant="title">
+                        Something went wrong.
+                    </Typography>
+                    <Typography variant="subheading">
+                        Please <Link to="/" className={classes.link}>try another search.</Link>
+                    </Typography>
+                </div>
+            );
         }
 
         return (

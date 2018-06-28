@@ -1,25 +1,22 @@
-import React from "react";
+import React, { Fragment } from "react";
 import Grid from '@material-ui/core/Grid';
 import {withStyles} from '@material-ui/core/styles';
-
+import classNames from 'classnames';
 import Share from "../components/Share";
 import HeaderWithSearch from '../components/HeaderWithSearch';
 import Footer from '../components/Footer';
 import withRoot from '../withRoot';
 
 const styles = theme => ({
-  root: {
-    // width: "100%",
-    // height: "100%",
-    // margin: 0,
-    // padding: 0
-  },
-  stickyFooter: {
+stickyFooterIndex : {
     position: 'fixed',
     bottom: 0,
     width: '100%',
     zIndex: 1
-  }
+  },
+stickyFooter:{
+
+}
 });
 
 class Index extends React.Component {
@@ -29,18 +26,24 @@ class Index extends React.Component {
 
   render() {
     const {classes} = this.props;
+    let isIndexOrSearch = false;
+    console.log(this.props.location.pathname);
+    if (this.props.location && (this.props.location.pathname === '' || this.props.location.pathname === '/' ||this.props.location.pathname.includes('search') || this.props.location.pathname.includes('about') || this.props.location.pathname.includes('privacy'))) {
+      isIndexOrSearch = true;
+    }
+
+    const footerClass = classNames({
+      'stickyFooterIndex': isIndexOrSearch,
+      'stickyFooter': !isIndexOrSearch
+    });
 
     return (
-      <div className={classes.root}>
-
+      <div>
             {this
               .props
               .children()}
- 
-        <div className={classes.stickyFooter}>
-          <div>
+        <div className={classes[footerClass]}>
             <Footer/>
-          </div>
         </div>
       </div>
     );

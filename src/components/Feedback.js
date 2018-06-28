@@ -137,7 +137,7 @@ class Feedback extends Component {
     } = this.state;
     return (
       <div className={classes.wrapper}>
-        <Typography onClick={this.handleClick}>Send feedback</Typography>
+        <Typography onClick={this.handleClick} style={{cursor: 'pointer'}}> Send feedback</Typography>
         {open && <Paper className={classes.paper}>
           {(!success && !failure && !submitting) && <Fragment>
             <Typography variant="title" component="h1">

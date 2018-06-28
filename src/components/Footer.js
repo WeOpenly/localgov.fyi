@@ -15,7 +15,7 @@ const styles = theme => ({
   },
   container: {
     display: 'flex',
-    justifyContent: 'flex-end',
+    justifyContent: 'space-evenly',
   },
   copyright: {
     marginRight: theme.spacing.unit,
@@ -28,7 +28,6 @@ const styles = theme => ({
   privacy: {
     display: 'flex',
     justifyContent: 'flex-end',
-    marginLeft: '3rem',
     marginRight: theme.spacing.unit,
   },
   link: {
@@ -42,7 +41,7 @@ class Footer extends Component {
     return (
       <Grid container>
         <Grid item xs={0} md={1} />
-        <Grid item xs={10} md={10}>
+        <Grid item xs={11} md={10}>
           <footer className={classes.footer}>
             <Grid container className={classes.container}>
               <Grid item md={6} className={classes.copyright}>
@@ -63,7 +62,7 @@ class Footer extends Component {
               </Grid>
               <Grid item xs={12} md={1} className={classes.privacy}>
                 <Link to="/privacy/" className={classes.link}>
-                  <Typography>Privacy Policy</Typography>
+                  <Typography>Privacy</Typography>
                 </Link>
               </Grid>
             </Grid>

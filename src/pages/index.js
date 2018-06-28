@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {Fragment} from 'react';
 import PropTypes from 'prop-types';
 import Helmet from "react-helmet";
 import {navigateTo} from 'gatsby-link';
@@ -48,6 +48,9 @@ const styles = theme => ({
     justifyContent: "center",
     height : theme.spacing.unit * 8,
   },
+landingSearch:{
+    paddingTop: theme.spacing.unit * 16,
+},
   landingSearchHeader: {
     marginTop: theme.spacing.unit * 12,
     display: "flex",
@@ -68,8 +71,6 @@ const styles = theme => ({
     flexWrap: "wrap"
   },
   root: {
-    width: "100%",
-    height: "100%",
     margin: 0,
     padding: 0,
     display: 'flex',
@@ -95,7 +96,7 @@ class Index extends React.Component {
     const { classes } = this.props;
 
     return (
-      <div className={classes.root}>
+      <Fragment>
         <Helmet defaultTitle={`Localgov.fyi`} titleTemplate={`%s | Localgov.fyi`}>
           <meta name="og:type" content="website" />
           <meta name="og:site_name" content="Localgov.fyi" />
@@ -115,7 +116,6 @@ class Index extends React.Component {
             &nbsp;
           </Grid>
           <Grid item xs={4} sm={2} md={1} className={classes.langSelectHeader}>
-
           </Grid>
           <Grid item xs={1} sm={2} md={3} />
           <Grid item xs={1} sm={2} md={3} />
@@ -131,16 +131,7 @@ class Index extends React.Component {
           </Grid>
           <Grid item xs={1} sm={2} md={3} />
         </Grid>
-        <div>
-        </div>
-        <div className={classes.appFooter}>
-          <span onClick={() => navigateTo('/about')}>
-            <Typography variant="caption" align="center">
-              About
-            </Typography>
-          </span>
-        </div>
-      </div>
+      </Fragment>
     );
   }
 }

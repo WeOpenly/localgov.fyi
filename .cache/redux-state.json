@@ -1,28 +1,28 @@
 {
   "nodes": {
     "SitePage /dev-404-page/": {
-      "layout": null,
+      "layout": "index",
       "jsonName": "dev-404-page.json",
       "internalComponentName": "ComponentDev404Page",
       "path": "/dev-404-page/",
-      "component": "/Users/jim/Documents/openly/localgov.fyi/.cache/dev-404-page.js",
+      "component": "/Users/ybv/code/ybv-projects/localgov.fyi_frontend/.cache/dev-404-page.js",
       "componentChunkName": "component---cache-dev-404-page-js",
       "context": {},
       "pluginCreator___NODE": "Plugin dev-404-page",
       "pluginCreatorId": "Plugin dev-404-page",
-      "componentPath": "/Users/jim/Documents/openly/localgov.fyi/.cache/dev-404-page.js",
+      "componentPath": "/Users/ybv/code/ybv-projects/localgov.fyi_frontend/.cache/dev-404-page.js",
       "id": "SitePage /dev-404-page/",
       "parent": "SOURCE",
       "children": [],
       "internal": {
         "type": "SitePage",
-        "contentDigest": "d1dc97c783252b6b7703f607a077c819",
+        "contentDigest": "f5c21db21d2e3cf37b7c0e72cc02ccfc",
         "description": "Plugin dev-404-page",
         "owner": "internal-data-bridge"
       }
     },
     "Plugin dev-404-page": {
-      "resolve": "/Users/jim/Documents/openly/localgov.fyi/node_modules/gatsby/dist/internal-plugins/dev-404-page",
+      "resolve": "/Users/ybv/code/ybv-projects/localgov.fyi_frontend/node_modules/gatsby/dist/internal-plugins/dev-404-page",
       "id": "Plugin dev-404-page",
       "name": "dev-404-page",
       "version": "1.0.0",
@@ -34,7 +34,7 @@
       ],
       "browserAPIs": [],
       "ssrAPIs": [],
-      "pluginFilepath": "/Users/jim/Documents/openly/localgov.fyi/node_modules/gatsby/dist/internal-plugins/dev-404-page",
+      "pluginFilepath": "/Users/ybv/code/ybv-projects/localgov.fyi_frontend/node_modules/gatsby/dist/internal-plugins/dev-404-page",
       "packageJson": {
         "name": "dev-404-page",
         "description": "Internal plugin to add a 404 page in development with helpful information",
@@ -51,13 +51,13 @@
       "parent": "SOURCE",
       "children": [],
       "internal": {
-        "contentDigest": "6ae3e1bd05b6ed107a53618e7efc93b2",
+        "contentDigest": "0e1aebeb106f98786899bdc27b194c87",
         "type": "SitePlugin",
         "owner": "internal-data-bridge"
       }
     },
     "Plugin component-layout-creator": {
-      "resolve": "/Users/jim/Documents/openly/localgov.fyi/node_modules/gatsby/dist/internal-plugins/component-layout-creator",
+      "resolve": "/Users/ybv/code/ybv-projects/localgov.fyi_frontend/node_modules/gatsby/dist/internal-plugins/component-layout-creator",
       "id": "Plugin component-layout-creator",
       "name": "component-layout-creator",
       "version": "1.0.0",
@@ -69,7 +69,7 @@
       ],
       "browserAPIs": [],
       "ssrAPIs": [],
-      "pluginFilepath": "/Users/jim/Documents/openly/localgov.fyi/node_modules/gatsby/dist/internal-plugins/component-layout-creator",
+      "pluginFilepath": "/Users/ybv/code/ybv-projects/localgov.fyi_frontend/node_modules/gatsby/dist/internal-plugins/component-layout-creator",
       "packageJson": {
         "name": "component-layout-creator",
         "description": "An internal Gatsby plugin that creates pages from component files in src/layouts",
@@ -90,13 +90,13 @@
       "parent": "SOURCE",
       "children": [],
       "internal": {
-        "contentDigest": "30258037ab4c4efa5c79c5390293e644",
+        "contentDigest": "dd848f9ac339db3a63cc6a12639deee7",
         "type": "SitePlugin",
         "owner": "internal-data-bridge"
       }
     },
     "Plugin internal-data-bridge": {
-      "resolve": "/Users/jim/Documents/openly/localgov.fyi/node_modules/gatsby/dist/internal-plugins/internal-data-bridge",
+      "resolve": "/Users/ybv/code/ybv-projects/localgov.fyi_frontend/node_modules/gatsby/dist/internal-plugins/internal-data-bridge",
       "id": "Plugin internal-data-bridge",
       "name": "internal-data-bridge",
       "version": "1.0.0",
@@ -109,7 +109,7 @@
       ],
       "browserAPIs": [],
       "ssrAPIs": [],
-      "pluginFilepath": "/Users/jim/Documents/openly/localgov.fyi/node_modules/gatsby/dist/internal-plugins/internal-data-bridge",
+      "pluginFilepath": "/Users/ybv/code/ybv-projects/localgov.fyi_frontend/node_modules/gatsby/dist/internal-plugins/internal-data-bridge",
       "packageJson": {
         "name": "internal-data-bridge",
         "description": "An internal Gatsby plugin which creates data nodes from internal data",
@@ -126,13 +126,13 @@
       "parent": "SOURCE",
       "children": [],
       "internal": {
-        "contentDigest": "659a17d34ed24a374ef6a0483c10f2b5",
+        "contentDigest": "f192871a4736cb948fef7ab5a2eda6d5",
         "type": "SitePlugin",
         "owner": "internal-data-bridge"
       }
     },
     "Plugin prod-404": {
-      "resolve": "/Users/jim/Documents/openly/localgov.fyi/node_modules/gatsby/dist/internal-plugins/prod-404",
+      "resolve": "/Users/ybv/code/ybv-projects/localgov.fyi_frontend/node_modules/gatsby/dist/internal-plugins/prod-404",
       "id": "Plugin prod-404",
       "name": "prod-404",
       "version": "1.0.0",
@@ -144,7 +144,7 @@
       ],
       "browserAPIs": [],
       "ssrAPIs": [],
-      "pluginFilepath": "/Users/jim/Documents/openly/localgov.fyi/node_modules/gatsby/dist/internal-plugins/prod-404",
+      "pluginFilepath": "/Users/ybv/code/ybv-projects/localgov.fyi_frontend/node_modules/gatsby/dist/internal-plugins/prod-404",
       "packageJson": {
         "name": "prod-404",
         "description": "Internal plugin to detect various flavors of 404 pages and ensure there's a 404.html path created as well to ensure compatability with static hosts",
@@ -161,13 +161,13 @@
       "parent": "SOURCE",
       "children": [],
       "internal": {
-        "contentDigest": "d15eeb736c41739355f6c799fb0051d3",
+        "contentDigest": "9740b6623de388bc77c235dce098e0ca",
         "type": "SitePlugin",
         "owner": "internal-data-bridge"
       }
     },
     "Plugin query-runner": {
-      "resolve": "/Users/jim/Documents/openly/localgov.fyi/node_modules/gatsby/dist/internal-plugins/query-runner",
+      "resolve": "/Users/ybv/code/ybv-projects/localgov.fyi_frontend/node_modules/gatsby/dist/internal-plugins/query-runner",
       "id": "Plugin query-runner",
       "name": "query-runner",
       "version": "1.0.0",
@@ -180,7 +180,7 @@
       ],
       "browserAPIs": [],
       "ssrAPIs": [],
-      "pluginFilepath": "/Users/jim/Documents/openly/localgov.fyi/node_modules/gatsby/dist/internal-plugins/query-runner",
+      "pluginFilepath": "/Users/ybv/code/ybv-projects/localgov.fyi_frontend/node_modules/gatsby/dist/internal-plugins/query-runner",
       "packageJson": {
         "name": "query-runner",
         "description": "Internal plugin for running queries",
@@ -197,13 +197,13 @@
       "parent": "SOURCE",
       "children": [],
       "internal": {
-        "contentDigest": "4ae52573919d95a568b83abb1be8c3b1",
+        "contentDigest": "45ed8724b5b85cc0b55eb2fc59e8d92c",
         "type": "SitePlugin",
         "owner": "internal-data-bridge"
       }
     },
     "Plugin gatsby-plugin-react-next": {
-      "resolve": "/Users/jim/Documents/openly/localgov.fyi/node_modules/gatsby-plugin-react-next",
+      "resolve": "/Users/ybv/code/ybv-projects/localgov.fyi_frontend/node_modules/gatsby-plugin-react-next",
       "id": "Plugin gatsby-plugin-react-next",
       "name": "gatsby-plugin-react-next",
       "version": "1.0.11",
@@ -215,7 +215,7 @@
       ],
       "browserAPIs": [],
       "ssrAPIs": [],
-      "pluginFilepath": "/Users/jim/Documents/openly/localgov.fyi/node_modules/gatsby-plugin-react-next",
+      "pluginFilepath": "/Users/ybv/code/ybv-projects/localgov.fyi_frontend/node_modules/gatsby-plugin-react-next",
       "packageJson": {
         "name": "gatsby-plugin-react-next",
         "description": "Use React 16 with your Gatsby v1 site",
@@ -270,13 +270,13 @@
       "parent": "SOURCE",
       "children": [],
       "internal": {
-        "contentDigest": "42b4aaf3268d59d741d3324d0372bf7d",
+        "contentDigest": "54eb4f09210eb6ef16ad4b6a2654049a",
         "type": "SitePlugin",
         "owner": "internal-data-bridge"
       }
     },
     "Plugin gatsby-transformer-sharp": {
-      "resolve": "/Users/jim/Documents/openly/localgov.fyi/node_modules/gatsby-transformer-sharp",
+      "resolve": "/Users/ybv/code/ybv-projects/localgov.fyi_frontend/node_modules/gatsby-transformer-sharp",
       "id": "Plugin gatsby-transformer-sharp",
       "name": "gatsby-transformer-sharp",
       "version": "1.6.27",
@@ -290,7 +290,7 @@
       ],
       "browserAPIs": [],
       "ssrAPIs": [],
-      "pluginFilepath": "/Users/jim/Documents/openly/localgov.fyi/node_modules/gatsby-transformer-sharp",
+      "pluginFilepath": "/Users/ybv/code/ybv-projects/localgov.fyi_frontend/node_modules/gatsby-transformer-sharp",
       "packageJson": {
         "name": "gatsby-transformer-sharp",
         "description": "Gatsby transformer plugin for images using Sharp",
@@ -341,13 +341,13 @@
       "parent": "SOURCE",
       "children": [],
       "internal": {
-        "contentDigest": "77bb7f8978e1a444c2b6fa122fcced32",
+        "contentDigest": "6c4b9f934279f898f0d9488694895648",
         "type": "SitePlugin",
         "owner": "internal-data-bridge"
       }
     },
     "Plugin gatsby-plugin-sharp": {
-      "resolve": "/Users/jim/Documents/openly/localgov.fyi/node_modules/gatsby-plugin-sharp",
+      "resolve": "/Users/ybv/code/ybv-projects/localgov.fyi_frontend/node_modules/gatsby-plugin-sharp",
       "id": "Plugin gatsby-plugin-sharp",
       "name": "gatsby-plugin-sharp",
       "version": "1.6.48",
@@ -357,7 +357,7 @@
       "nodeAPIs": [],
       "browserAPIs": [],
       "ssrAPIs": [],
-      "pluginFilepath": "/Users/jim/Documents/openly/localgov.fyi/node_modules/gatsby-plugin-sharp",
+      "pluginFilepath": "/Users/ybv/code/ybv-projects/localgov.fyi_frontend/node_modules/gatsby-plugin-sharp",
       "packageJson": {
         "name": "gatsby-plugin-sharp",
         "description": "Wrapper of the Sharp image manipulation library for Gatsby plugins",
@@ -450,19 +450,19 @@
       "parent": "SOURCE",
       "children": [],
       "internal": {
-        "contentDigest": "4aee575675ac0967a7549a57af5c79b6",
+        "contentDigest": "fc45f5c10b6983ca8d583cbdce801bfb",
         "type": "SitePlugin",
         "owner": "internal-data-bridge"
       }
     },
     "Plugin gatsby-source-filesystem": {
-      "resolve": "/Users/jim/Documents/openly/localgov.fyi/node_modules/gatsby-source-filesystem",
+      "resolve": "/Users/ybv/code/ybv-projects/localgov.fyi_frontend/node_modules/gatsby-source-filesystem",
       "id": "Plugin gatsby-source-filesystem",
       "name": "gatsby-source-filesystem",
       "version": "1.5.39",
       "pluginOptions": {
         "plugins": [],
-        "path": "/Users/jim/Documents/openly/localgov.fyi/tos",
+        "path": "/Users/ybv/code/ybv-projects/localgov.fyi_frontend/tos",
         "name": "tos"
       },
       "nodeAPIs": [
@@ -471,7 +471,7 @@
       ],
       "browserAPIs": [],
       "ssrAPIs": [],
-      "pluginFilepath": "/Users/jim/Documents/openly/localgov.fyi/node_modules/gatsby-source-filesystem",
+      "pluginFilepath": "/Users/ybv/code/ybv-projects/localgov.fyi_frontend/node_modules/gatsby-source-filesystem",
       "packageJson": {
         "name": "gatsby-source-filesystem",
         "description": "Gatsby plugin which parses files within a directory for further parsing by other plugins",
@@ -553,13 +553,13 @@
       "parent": "SOURCE",
       "children": [],
       "internal": {
-        "contentDigest": "ce25cf38a17fdb0fc612683f0dcb0527",
+        "contentDigest": "74166f44633949e90a4a1ca81fb2de26",
         "type": "SitePlugin",
         "owner": "internal-data-bridge"
       }
     },
     "Plugin gatsby-transformer-remark": {
-      "resolve": "/Users/jim/Documents/openly/localgov.fyi/node_modules/gatsby-transformer-remark",
+      "resolve": "/Users/ybv/code/ybv-projects/localgov.fyi_frontend/node_modules/gatsby-transformer-remark",
       "id": "Plugin gatsby-transformer-remark",
       "name": "gatsby-transformer-remark",
       "version": "1.7.44",
@@ -572,7 +572,7 @@
       ],
       "browserAPIs": [],
       "ssrAPIs": [],
-      "pluginFilepath": "/Users/jim/Documents/openly/localgov.fyi/node_modules/gatsby-transformer-remark",
+      "pluginFilepath": "/Users/ybv/code/ybv-projects/localgov.fyi_frontend/node_modules/gatsby-transformer-remark",
       "packageJson": {
         "name": "gatsby-transformer-remark",
         "description": "Gatsby transformer plugin for Markdown using the Remark library and ecosystem",
@@ -691,13 +691,13 @@
       "parent": "SOURCE",
       "children": [],
       "internal": {
-        "contentDigest": "11b73f3124e0567e0ae1e642aa13fa40",
+        "contentDigest": "2aa569050d30123cdbe84c14113874c5",
         "type": "SitePlugin",
         "owner": "internal-data-bridge"
       }
     },
     "Plugin gatsby-plugin-sitemap": {
-      "resolve": "/Users/jim/Documents/openly/localgov.fyi/node_modules/gatsby-plugin-sitemap",
+      "resolve": "/Users/ybv/code/ybv-projects/localgov.fyi_frontend/node_modules/gatsby-plugin-sitemap",
       "id": "Plugin gatsby-plugin-sitemap",
       "name": "gatsby-plugin-sitemap",
       "version": "1.2.25",
@@ -711,7 +711,7 @@
       "ssrAPIs": [
         "onRenderBody"
       ],
-      "pluginFilepath": "/Users/jim/Documents/openly/localgov.fyi/node_modules/gatsby-plugin-sitemap",
+      "pluginFilepath": "/Users/ybv/code/ybv-projects/localgov.fyi_frontend/node_modules/gatsby-plugin-sitemap",
       "packageJson": {
         "name": "gatsby-plugin-sitemap",
         "description": "Gatsby plugin that automatically creates a sitemap for your site",
@@ -761,13 +761,13 @@
       "parent": "SOURCE",
       "children": [],
       "internal": {
-        "contentDigest": "5f4316d35ac9ce3867c516533fab28b9",
+        "contentDigest": "17cd212ddcc4f8de7417e86491610c33",
         "type": "SitePlugin",
         "owner": "internal-data-bridge"
       }
     },
     "Plugin gatsby-transformer-json": {
-      "resolve": "/Users/jim/Documents/openly/localgov.fyi/node_modules/gatsby-transformer-json",
+      "resolve": "/Users/ybv/code/ybv-projects/localgov.fyi_frontend/node_modules/gatsby-transformer-json",
       "id": "Plugin gatsby-transformer-json",
       "name": "gatsby-transformer-json",
       "version": "1.0.20",
@@ -779,7 +779,7 @@
       ],
       "browserAPIs": [],
       "ssrAPIs": [],
-      "pluginFilepath": "/Users/jim/Documents/openly/localgov.fyi/node_modules/gatsby-transformer-json",
+      "pluginFilepath": "/Users/ybv/code/ybv-projects/localgov.fyi_frontend/node_modules/gatsby-transformer-json",
       "packageJson": {
         "name": "gatsby-transformer-json",
         "description": "Gatsby transformer plugin for JSON files",
@@ -821,13 +821,13 @@
       "parent": "SOURCE",
       "children": [],
       "internal": {
-        "contentDigest": "1a03ee6305ffe1ad9cdec9307f83a949",
+        "contentDigest": "23e40d69f9142abff61c8b47f5341da1",
         "type": "SitePlugin",
         "owner": "internal-data-bridge"
       }
     },
     "Plugin gatsby-plugin-manifest": {
-      "resolve": "/Users/jim/Documents/openly/localgov.fyi/node_modules/gatsby-plugin-manifest",
+      "resolve": "/Users/ybv/code/ybv-projects/localgov.fyi_frontend/node_modules/gatsby-plugin-manifest",
       "id": "Plugin gatsby-plugin-manifest",
       "name": "gatsby-plugin-manifest",
       "version": "1.0.27",
@@ -847,7 +847,7 @@
       "ssrAPIs": [
         "onRenderBody"
       ],
-      "pluginFilepath": "/Users/jim/Documents/openly/localgov.fyi/node_modules/gatsby-plugin-manifest",
+      "pluginFilepath": "/Users/ybv/code/ybv-projects/localgov.fyi_frontend/node_modules/gatsby-plugin-manifest",
       "packageJson": {
         "name": "gatsby-plugin-manifest",
         "description": "Gatsby plugin which adds a manifest.webmanifest to make sites progressive web apps",
@@ -903,13 +903,13 @@
       "parent": "SOURCE",
       "children": [],
       "internal": {
-        "contentDigest": "ffc335c5614f9cf01280288078228036",
+        "contentDigest": "a0ef898881980068d71886b8a0282af4",
         "type": "SitePlugin",
         "owner": "internal-data-bridge"
       }
     },
     "Plugin gatsby-plugin-create-client-paths": {
-      "resolve": "/Users/jim/Documents/openly/localgov.fyi/node_modules/gatsby-plugin-create-client-paths",
+      "resolve": "/Users/ybv/code/ybv-projects/localgov.fyi_frontend/node_modules/gatsby-plugin-create-client-paths",
       "id": "Plugin gatsby-plugin-create-client-paths",
       "name": "gatsby-plugin-create-client-paths",
       "version": "1.0.8",
@@ -924,7 +924,7 @@
       ],
       "browserAPIs": [],
       "ssrAPIs": [],
-      "pluginFilepath": "/Users/jim/Documents/openly/localgov.fyi/node_modules/gatsby-plugin-create-client-paths",
+      "pluginFilepath": "/Users/ybv/code/ybv-projects/localgov.fyi_frontend/node_modules/gatsby-plugin-create-client-paths",
       "packageJson": {
         "name": "gatsby-plugin-create-client-paths",
         "description": "Gatsby-plugin for creating paths that exist only on the client",
@@ -966,13 +966,13 @@
       "parent": "SOURCE",
       "children": [],
       "internal": {
-        "contentDigest": "41ba44721174a80d3bcc099cfb6575b1",
+        "contentDigest": "cc513e82b6623144f257fb9ca9bd05fa",
         "type": "SitePlugin",
         "owner": "internal-data-bridge"
       }
     },
     "Plugin gatsby-plugin-nprogress": {
-      "resolve": "/Users/jim/Documents/openly/localgov.fyi/node_modules/gatsby-plugin-nprogress",
+      "resolve": "/Users/ybv/code/ybv-projects/localgov.fyi_frontend/node_modules/gatsby-plugin-nprogress",
       "id": "Plugin gatsby-plugin-nprogress",
       "name": "gatsby-plugin-nprogress",
       "version": "1.0.14",
@@ -986,7 +986,7 @@
         "onClientEntry"
       ],
       "ssrAPIs": [],
-      "pluginFilepath": "/Users/jim/Documents/openly/localgov.fyi/node_modules/gatsby-plugin-nprogress",
+      "pluginFilepath": "/Users/ybv/code/ybv-projects/localgov.fyi_frontend/node_modules/gatsby-plugin-nprogress",
       "packageJson": {
         "name": "gatsby-plugin-nprogress",
         "description": "Shows page loading indicator when loading page resources is delayed",
@@ -1033,13 +1033,13 @@
       "parent": "SOURCE",
       "children": [],
       "internal": {
-        "contentDigest": "5d3eb800890318604653f5727d5ad871",
+        "contentDigest": "49397c16b2085477f65ced56c8c37b86",
         "type": "SitePlugin",
         "owner": "internal-data-bridge"
       }
     },
     "Plugin gatsby-plugin-favicon": {
-      "resolve": "/Users/jim/Documents/openly/localgov.fyi/node_modules/gatsby-plugin-favicon",
+      "resolve": "/Users/ybv/code/ybv-projects/localgov.fyi_frontend/node_modules/gatsby-plugin-favicon",
       "id": "Plugin gatsby-plugin-favicon",
       "name": "gatsby-plugin-favicon",
       "version": "2.1.1",
@@ -1066,7 +1066,7 @@
       "ssrAPIs": [
         "onRenderBody"
       ],
-      "pluginFilepath": "/Users/jim/Documents/openly/localgov.fyi/node_modules/gatsby-plugin-favicon",
+      "pluginFilepath": "/Users/ybv/code/ybv-projects/localgov.fyi_frontend/node_modules/gatsby-plugin-favicon",
       "packageJson": {
         "name": "gatsby-plugin-favicon",
         "description": "Gatsby plugin to add favicon for all configurations",
@@ -1120,13 +1120,13 @@
       "parent": "SOURCE",
       "children": [],
       "internal": {
-        "contentDigest": "ef4ecc06d61655567581652b298ea88f",
+        "contentDigest": "ef68f2c2aafe98a82cccfbdb2b5f3578",
         "type": "SitePlugin",
         "owner": "internal-data-bridge"
       }
     },
     "Plugin gatsby-plugin-robots-txt": {
-      "resolve": "/Users/jim/Documents/openly/localgov.fyi/node_modules/gatsby-plugin-robots-txt",
+      "resolve": "/Users/ybv/code/ybv-projects/localgov.fyi_frontend/node_modules/gatsby-plugin-robots-txt",
       "id": "Plugin gatsby-plugin-robots-txt",
       "name": "gatsby-plugin-robots-txt",
       "version": "1.0.2",
@@ -1138,7 +1138,7 @@
       ],
       "browserAPIs": [],
       "ssrAPIs": [],
-      "pluginFilepath": "/Users/jim/Documents/openly/localgov.fyi/node_modules/gatsby-plugin-robots-txt",
+      "pluginFilepath": "/Users/ybv/code/ybv-projects/localgov.fyi_frontend/node_modules/gatsby-plugin-robots-txt",
       "packageJson": {
         "name": "gatsby-plugin-robots-txt",
         "description": "Gatsby plugin that automatically creates robots.txt for your site",
@@ -1221,13 +1221,13 @@
       "parent": "SOURCE",
       "children": [],
       "internal": {
-        "contentDigest": "cc2ba2fa4e4bb1cfab5c5392c6098805",
+        "contentDigest": "0c93fef4939a3ac518b3e7954c901a95",
         "type": "SitePlugin",
         "owner": "internal-data-bridge"
       }
     },
     "Plugin gatsby-plugin-react-helmet": {
-      "resolve": "/Users/jim/Documents/openly/localgov.fyi/node_modules/gatsby-plugin-react-helmet",
+      "resolve": "/Users/ybv/code/ybv-projects/localgov.fyi_frontend/node_modules/gatsby-plugin-react-helmet",
       "id": "Plugin gatsby-plugin-react-helmet",
       "name": "gatsby-plugin-react-helmet",
       "version": "2.0.11",
@@ -1239,7 +1239,7 @@
       "ssrAPIs": [
         "onRenderBody"
       ],
-      "pluginFilepath": "/Users/jim/Documents/openly/localgov.fyi/node_modules/gatsby-plugin-react-helmet",
+      "pluginFilepath": "/Users/ybv/code/ybv-projects/localgov.fyi_frontend/node_modules/gatsby-plugin-react-helmet",
       "packageJson": {
         "name": "gatsby-plugin-react-helmet",
         "description": "Manage document head data with react-helmet. Provides drop-in server rendering support for Gatsby.",
@@ -1298,13 +1298,13 @@
       "parent": "SOURCE",
       "children": [],
       "internal": {
-        "contentDigest": "4d73b5e6ebc1853d1668383db52cca0e",
+        "contentDigest": "48bcd648e507241c23d5c881402561ae",
         "type": "SitePlugin",
         "owner": "internal-data-bridge"
       }
     },
     "Plugin gatsby-plugin-netlify": {
-      "resolve": "/Users/jim/Documents/openly/localgov.fyi/node_modules/gatsby-plugin-netlify",
+      "resolve": "/Users/ybv/code/ybv-projects/localgov.fyi_frontend/node_modules/gatsby-plugin-netlify",
       "id": "Plugin gatsby-plugin-netlify",
       "name": "gatsby-plugin-netlify",
       "version": "1.0.21",
@@ -1317,7 +1317,7 @@
       ],
       "browserAPIs": [],
       "ssrAPIs": [],
-      "pluginFilepath": "/Users/jim/Documents/openly/localgov.fyi/node_modules/gatsby-plugin-netlify",
+      "pluginFilepath": "/Users/ybv/code/ybv-projects/localgov.fyi_frontend/node_modules/gatsby-plugin-netlify",
       "packageJson": {
         "name": "gatsby-plugin-netlify",
         "description": "A Gatsby plugin which generates a _headers file for netlify",
@@ -1374,13 +1374,13 @@
       "parent": "SOURCE",
       "children": [],
       "internal": {
-        "contentDigest": "9aa9d8f9d3e7dc5dd23e2e207c4ec75c",
+        "contentDigest": "69043a497de0e09254cb49fb7a4ac903",
         "type": "SitePlugin",
         "owner": "internal-data-bridge"
       }
     },
     "Plugin default-site-plugin": {
-      "resolve": "/Users/jim/Documents/openly/localgov.fyi",
+      "resolve": "/Users/ybv/code/ybv-projects/localgov.fyi_frontend",
       "id": "Plugin default-site-plugin",
       "name": "default-site-plugin",
       "version": "aae68f6688b00a6f8757dd6f7d5e3d47",
@@ -1397,7 +1397,7 @@
       "ssrAPIs": [
         "replaceRenderer"
       ],
-      "pluginFilepath": "/Users/jim/Documents/openly/localgov.fyi",
+      "pluginFilepath": "/Users/ybv/code/ybv-projects/localgov.fyi_frontend",
       "packageJson": {
         "name": "localgov-fyi-gatsby",
         "description": "",
@@ -1631,19 +1631,19 @@
       "parent": "SOURCE",
       "children": [],
       "internal": {
-        "contentDigest": "385ae2cf9e025e0ee1fcbcb5142f8938",
+        "contentDigest": "b4365a3b38f054dc85ddfc175524ca71",
         "type": "SitePlugin",
         "owner": "internal-data-bridge"
       }
     },
     "Plugin gatsby-plugin-page-creator": {
-      "resolve": "/Users/jim/Documents/openly/localgov.fyi/node_modules/gatsby-plugin-page-creator",
+      "resolve": "/Users/ybv/code/ybv-projects/localgov.fyi_frontend/node_modules/gatsby-plugin-page-creator",
       "id": "Plugin gatsby-plugin-page-creator",
       "name": "gatsby-plugin-page-creator",
       "version": "1.0.1",
       "pluginOptions": {
         "plugins": [],
-        "path": "/Users/jim/Documents/openly/localgov.fyi/src/pages",
+        "path": "/Users/ybv/code/ybv-projects/localgov.fyi_frontend/src/pages",
         "pathCheck": false
       },
       "nodeAPIs": [
@@ -1651,7 +1651,7 @@
       ],
       "browserAPIs": [],
       "ssrAPIs": [],
-      "pluginFilepath": "/Users/jim/Documents/openly/localgov.fyi/node_modules/gatsby-plugin-page-creator",
+      "pluginFilepath": "/Users/ybv/code/ybv-projects/localgov.fyi_frontend/node_modules/gatsby-plugin-page-creator",
       "packageJson": {
         "name": "gatsby-plugin-page-creator",
         "description": "Gatsby plugin that automatically creates pages from React components in specified directories",
@@ -1713,7 +1713,7 @@
       "parent": "SOURCE",
       "children": [],
       "internal": {
-        "contentDigest": "ae90e8ad16e967ca4587a9b6d1400fd7",
+        "contentDigest": "7da0901cfe2ed6d313058da457d2b953",
         "type": "SitePlugin",
         "owner": "internal-data-bridge"
       }
@@ -1727,108 +1727,108 @@
       "host": "localhost",
       "pathPrefix": "",
       "polyfill": true,
-      "buildTime": "2018-06-25T23:31:48.304Z",
+      "buildTime": "2018-06-28T00:17:13.436Z",
       "id": "Site",
       "parent": "SOURCE",
       "children": [],
       "internal": {
-        "contentDigest": "5760642f524fe28e117e839e565f3684",
+        "contentDigest": "471ee56f7d0549d8471302ed499f43be",
         "type": "Site",
         "owner": "internal-data-bridge"
       }
     },
-    "/Users/jim/Documents/openly/localgov.fyi/data absPath of file": {
-      "id": "/Users/jim/Documents/openly/localgov.fyi/data absPath of file",
+    "/Users/ybv/code/ybv-projects/localgov.fyi_frontend/data absPath of file": {
+      "id": "/Users/ybv/code/ybv-projects/localgov.fyi_frontend/data absPath of file",
       "children": [],
       "parent": "___SOURCE___",
       "internal": {
-        "contentDigest": "524d45edd68bc9a4be3abbdc24a3d278",
+        "contentDigest": "398404df3ea4cf2270a43c7070fdcff5",
         "type": "Directory",
         "description": "Directory \"data\"",
         "owner": "gatsby-source-filesystem"
       },
       "sourceInstanceName": "data",
-      "absolutePath": "/Users/jim/Documents/openly/localgov.fyi/data",
+      "absolutePath": "/Users/ybv/code/ybv-projects/localgov.fyi_frontend/data",
       "relativePath": "",
       "extension": "",
       "size": 128,
       "prettySize": "128 B",
-      "modifiedTime": "2018-06-25T21:08:37.232Z",
-      "accessTime": "2018-06-25T23:31:58.547Z",
-      "changeTime": "2018-06-25T21:08:37.232Z",
-      "birthTime": "2018-06-25T21:05:52.917Z",
+      "modifiedTime": "2018-06-25T21:06:54.608Z",
+      "accessTime": "2018-06-28T00:17:17.190Z",
+      "changeTime": "2018-06-25T21:06:54.608Z",
+      "birthTime": "2018-06-01T17:04:56.172Z",
       "root": "/",
-      "dir": "/Users/jim/Documents/openly/localgov.fyi",
+      "dir": "/Users/ybv/code/ybv-projects/localgov.fyi_frontend",
       "base": "data",
       "ext": "",
       "name": "data",
       "relativeDirectory": "..",
-      "dev": 16777220,
+      "dev": 16777221,
       "mode": 16877,
       "nlink": 4,
       "uid": 501,
       "gid": 20,
       "rdev": 0,
       "blksize": 4194304,
-      "ino": 8601782718,
+      "ino": 8594189811,
       "blocks": 0,
-      "atimeMs": 1529969518547.0283,
-      "mtimeMs": 1529960917231.54,
-      "ctimeMs": 1529960917231.54,
-      "birthtimeMs": 1529960752917.3862,
-      "atime": "2018-06-25T23:31:58.547Z",
-      "mtime": "2018-06-25T21:08:37.232Z",
-      "ctime": "2018-06-25T21:08:37.232Z",
-      "birthtime": "2018-06-25T21:05:52.917Z"
+      "atimeMs": 1530145037190.4873,
+      "mtimeMs": 1529960814607.854,
+      "ctimeMs": 1529960814607.854,
+      "birthtimeMs": 1527872696172.2903,
+      "atime": "2018-06-28T00:17:17.190Z",
+      "mtime": "2018-06-25T21:06:54.608Z",
+      "ctime": "2018-06-25T21:06:54.608Z",
+      "birthtime": "2018-06-01T17:04:56.172Z"
     },
-    "/Users/jim/Documents/openly/localgov.fyi/data/orgs absPath of file": {
-      "id": "/Users/jim/Documents/openly/localgov.fyi/data/orgs absPath of file",
+    "/Users/ybv/code/ybv-projects/localgov.fyi_frontend/data/orgs absPath of file": {
+      "id": "/Users/ybv/code/ybv-projects/localgov.fyi_frontend/data/orgs absPath of file",
       "children": [],
       "parent": "___SOURCE___",
       "internal": {
-        "contentDigest": "ce207e5f87cd3f03e5dac3731f36e5fc",
+        "contentDigest": "90c6dc3b924f38605771f7720917a51a",
         "type": "Directory",
         "description": "Directory \"data/orgs\"",
         "owner": "gatsby-source-filesystem"
       },
       "sourceInstanceName": "data",
-      "absolutePath": "/Users/jim/Documents/openly/localgov.fyi/data/orgs",
+      "absolutePath": "/Users/ybv/code/ybv-projects/localgov.fyi_frontend/data/orgs",
       "relativePath": "orgs",
       "extension": "",
       "size": 96,
       "prettySize": "96 B",
-      "modifiedTime": "2018-06-25T21:08:39.125Z",
-      "accessTime": "2018-06-25T23:31:58.550Z",
-      "changeTime": "2018-06-25T21:08:39.125Z",
-      "birthTime": "2018-06-25T21:06:59.630Z",
+      "modifiedTime": "2018-06-11T18:16:01.009Z",
+      "accessTime": "2018-06-28T00:17:17.192Z",
+      "changeTime": "2018-06-11T18:16:01.009Z",
+      "birthTime": "2018-06-11T18:16:01.009Z",
       "root": "/",
-      "dir": "/Users/jim/Documents/openly/localgov.fyi/data",
+      "dir": "/Users/ybv/code/ybv-projects/localgov.fyi_frontend/data",
       "base": "orgs",
       "ext": "",
       "name": "orgs",
       "relativeDirectory": "",
-      "dev": 16777220,
+      "dev": 16777221,
       "mode": 16877,
       "nlink": 3,
       "uid": 501,
       "gid": 20,
       "rdev": 0,
       "blksize": 4194304,
-      "ino": 8601782876,
+      "ino": 8595310919,
       "blocks": 0,
-      "atimeMs": 1529969518550.3867,
-      "mtimeMs": 1529960919124.732,
-      "ctimeMs": 1529960919124.732,
-      "birthtimeMs": 1529960819629.9087,
-      "atime": "2018-06-25T23:31:58.550Z",
-      "mtime": "2018-06-25T21:08:39.125Z",
-      "ctime": "2018-06-25T21:08:39.125Z",
-      "birthtime": "2018-06-25T21:06:59.630Z"
+      "atimeMs": 1530145037192.4246,
+      "mtimeMs": 1528740961008.8777,
+      "ctimeMs": 1528740961008.8777,
+      "birthtimeMs": 1528740961008.7815,
+      "atime": "2018-06-28T00:17:17.192Z",
+      "mtime": "2018-06-11T18:16:01.009Z",
+      "ctime": "2018-06-11T18:16:01.009Z",
+      "birthtime": "2018-06-11T18:16:01.009Z"
     },
-    "/Users/jim/Documents/openly/localgov.fyi/data/orgs/98bb2db7-5227-47ed-b2f4-520304d57fe5.json absPath of file": {
-      "id": "/Users/jim/Documents/openly/localgov.fyi/data/orgs/98bb2db7-5227-47ed-b2f4-520304d57fe5.json absPath of file",
+    "/Users/ybv/code/ybv-projects/localgov.fyi_frontend/data/orgs/98bb2db7-5227-47ed-b2f4-520304d57fe5.json absPath of file": {
+      "id": "/Users/ybv/code/ybv-projects/localgov.fyi_frontend/data/orgs/98bb2db7-5227-47ed-b2f4-520304d57fe5.json absPath of file",
       "children": [
-        "/Users/jim/Documents/openly/localgov.fyi/data/orgs/98bb2db7-5227-47ed-b2f4-520304d57fe5.json absPath of file >>> JSON"
+        "/Users/ybv/code/ybv-projects/localgov.fyi_frontend/data/orgs/98bb2db7-5227-47ed-b2f4-520304d57fe5.json absPath of file >>> JSON"
       ],
       "parent": "___SOURCE___",
       "internal": {
@@ -1839,85 +1839,85 @@
         "owner": "gatsby-source-filesystem"
       },
       "sourceInstanceName": "data",
-      "absolutePath": "/Users/jim/Documents/openly/localgov.fyi/data/orgs/98bb2db7-5227-47ed-b2f4-520304d57fe5.json",
+      "absolutePath": "/Users/ybv/code/ybv-projects/localgov.fyi_frontend/data/orgs/98bb2db7-5227-47ed-b2f4-520304d57fe5.json",
       "relativePath": "orgs/98bb2db7-5227-47ed-b2f4-520304d57fe5.json",
       "extension": "json",
       "size": 12065,
       "prettySize": "12.1 kB",
-      "modifiedTime": "2018-06-25T21:07:48.468Z",
-      "accessTime": "2018-06-25T23:31:58.550Z",
-      "changeTime": "2018-06-25T21:08:39.132Z",
-      "birthTime": "2018-06-25T21:07:48.467Z",
+      "modifiedTime": "2018-06-11T18:16:01.009Z",
+      "accessTime": "2018-06-27T03:35:31.555Z",
+      "changeTime": "2018-06-11T18:16:01.009Z",
+      "birthTime": "2018-06-11T18:16:01.009Z",
       "root": "/",
-      "dir": "/Users/jim/Documents/openly/localgov.fyi/data/orgs",
+      "dir": "/Users/ybv/code/ybv-projects/localgov.fyi_frontend/data/orgs",
       "base": "98bb2db7-5227-47ed-b2f4-520304d57fe5.json",
       "ext": ".json",
       "name": "98bb2db7-5227-47ed-b2f4-520304d57fe5",
       "relativeDirectory": "orgs",
-      "dev": 16777220,
+      "dev": 16777221,
       "mode": 33188,
       "nlink": 1,
       "uid": 501,
       "gid": 20,
       "rdev": 0,
       "blksize": 4194304,
-      "ino": 8601783066,
+      "ino": 8595310920,
       "blocks": 24,
-      "atimeMs": 1529969518550.4941,
-      "mtimeMs": 1529960868467.5583,
-      "ctimeMs": 1529960919132.2378,
-      "birthtimeMs": 1529960868467.1453,
-      "atime": "2018-06-25T23:31:58.550Z",
-      "mtime": "2018-06-25T21:07:48.468Z",
-      "ctime": "2018-06-25T21:08:39.132Z",
-      "birthtime": "2018-06-25T21:07:48.467Z"
+      "atimeMs": 1530070531555.1418,
+      "mtimeMs": 1528740961009.0251,
+      "ctimeMs": 1528740961009.0251,
+      "birthtimeMs": 1528740961008.868,
+      "atime": "2018-06-27T03:35:31.555Z",
+      "mtime": "2018-06-11T18:16:01.009Z",
+      "ctime": "2018-06-11T18:16:01.009Z",
+      "birthtime": "2018-06-11T18:16:01.009Z"
     },
-    "/Users/jim/Documents/openly/localgov.fyi/data/.DS_Store absPath of file": {
-      "id": "/Users/jim/Documents/openly/localgov.fyi/data/.DS_Store absPath of file",
+    "/Users/ybv/code/ybv-projects/localgov.fyi_frontend/data/.DS_Store absPath of file": {
+      "id": "/Users/ybv/code/ybv-projects/localgov.fyi_frontend/data/.DS_Store absPath of file",
       "children": [],
       "parent": "___SOURCE___",
       "internal": {
-        "contentDigest": "be225c0cd8558e9cedb888aa0aa784f4",
+        "contentDigest": "a0a4ad4540098972d098ecd5fb7f8f9a",
         "mediaType": "application/octet-stream",
         "type": "File",
         "description": "File \"data/.DS_Store\"",
         "owner": "gatsby-source-filesystem"
       },
       "sourceInstanceName": "data",
-      "absolutePath": "/Users/jim/Documents/openly/localgov.fyi/data/.DS_Store",
+      "absolutePath": "/Users/ybv/code/ybv-projects/localgov.fyi_frontend/data/.DS_Store",
       "relativePath": ".DS_Store",
       "extension": "",
       "size": 8196,
       "prettySize": "8.2 kB",
-      "modifiedTime": "2018-06-25T21:08:38.897Z",
-      "accessTime": "2018-06-25T23:31:58.547Z",
-      "changeTime": "2018-06-25T21:08:38.897Z",
-      "birthTime": "2018-06-25T21:08:37.232Z",
+      "modifiedTime": "2018-06-26T02:45:11.365Z",
+      "accessTime": "2018-06-27T03:35:30.708Z",
+      "changeTime": "2018-06-26T02:45:11.365Z",
+      "birthTime": "2018-06-25T21:06:54.608Z",
       "root": "/",
-      "dir": "/Users/jim/Documents/openly/localgov.fyi/data",
+      "dir": "/Users/ybv/code/ybv-projects/localgov.fyi_frontend/data",
       "base": ".DS_Store",
       "ext": "",
       "name": ".DS_Store",
       "relativeDirectory": "",
-      "dev": 16777220,
+      "dev": 16777221,
       "mode": 33188,
       "nlink": 1,
       "uid": 501,
       "gid": 20,
       "rdev": 0,
       "blksize": 4194304,
-      "ino": 8601783061,
+      "ino": 8597316671,
       "blocks": 24,
-      "atimeMs": 1529969518547.3015,
-      "mtimeMs": 1529960918896.9517,
-      "ctimeMs": 1529960918896.9517,
-      "birthtimeMs": 1529960917231.528,
-      "atime": "2018-06-25T23:31:58.547Z",
-      "mtime": "2018-06-25T21:08:38.897Z",
-      "ctime": "2018-06-25T21:08:38.897Z",
-      "birthtime": "2018-06-25T21:08:37.232Z"
+      "atimeMs": 1530070530707.806,
+      "mtimeMs": 1529981111364.772,
+      "ctimeMs": 1529981111364.772,
+      "birthtimeMs": 1529960814607.83,
+      "atime": "2018-06-27T03:35:30.708Z",
+      "mtime": "2018-06-26T02:45:11.365Z",
+      "ctime": "2018-06-26T02:45:11.365Z",
+      "birthtime": "2018-06-25T21:06:54.608Z"
     },
-    "/Users/jim/Documents/openly/localgov.fyi/data/orgs/98bb2db7-5227-47ed-b2f4-520304d57fe5.json absPath of file >>> JSON": {
+    "/Users/ybv/code/ybv-projects/localgov.fyi_frontend/data/orgs/98bb2db7-5227-47ed-b2f4-520304d57fe5.json absPath of file >>> JSON": {
       "details": {
         "services": [
           {
@@ -2198,63 +2198,63 @@
         "id": "98bb2db7-5227-47ed-b2f4-520304d57fe5"
       },
       "success": true,
-      "id": "/Users/jim/Documents/openly/localgov.fyi/data/orgs/98bb2db7-5227-47ed-b2f4-520304d57fe5.json absPath of file >>> JSON",
+      "id": "/Users/ybv/code/ybv-projects/localgov.fyi_frontend/data/orgs/98bb2db7-5227-47ed-b2f4-520304d57fe5.json absPath of file >>> JSON",
       "children": [],
-      "parent": "/Users/jim/Documents/openly/localgov.fyi/data/orgs/98bb2db7-5227-47ed-b2f4-520304d57fe5.json absPath of file",
+      "parent": "/Users/ybv/code/ybv-projects/localgov.fyi_frontend/data/orgs/98bb2db7-5227-47ed-b2f4-520304d57fe5.json absPath of file",
       "internal": {
         "contentDigest": "2b159a5fddc24e4a348245f551c8216e",
         "type": "OrgsJson",
         "owner": "gatsby-transformer-json"
       }
     },
-    "/Users/jim/Documents/openly/localgov.fyi/src/images absPath of file": {
-      "id": "/Users/jim/Documents/openly/localgov.fyi/src/images absPath of file",
+    "/Users/ybv/code/ybv-projects/localgov.fyi_frontend/src/images absPath of file": {
+      "id": "/Users/ybv/code/ybv-projects/localgov.fyi_frontend/src/images absPath of file",
       "children": [],
       "parent": "___SOURCE___",
       "internal": {
-        "contentDigest": "5d415e48cd7abd9f1939e8a0fcaafbc8",
+        "contentDigest": "cbed5a9b447f0399fa98fb2cbb0f7877",
         "type": "Directory",
         "description": "Directory \"src/images\"",
         "owner": "gatsby-source-filesystem"
       },
       "sourceInstanceName": "img",
-      "absolutePath": "/Users/jim/Documents/openly/localgov.fyi/src/images",
+      "absolutePath": "/Users/ybv/code/ybv-projects/localgov.fyi_frontend/src/images",
       "relativePath": "",
       "extension": "",
       "size": 256,
       "prettySize": "256 B",
-      "modifiedTime": "2018-06-25T22:59:15.242Z",
-      "accessTime": "2018-06-25T23:31:58.621Z",
-      "changeTime": "2018-06-25T22:59:15.242Z",
-      "birthTime": "2018-06-25T22:59:15.225Z",
+      "modifiedTime": "2018-06-27T00:19:36.873Z",
+      "accessTime": "2018-06-28T00:17:17.202Z",
+      "changeTime": "2018-06-27T00:19:36.873Z",
+      "birthTime": "2018-06-27T00:19:36.855Z",
       "root": "/",
-      "dir": "/Users/jim/Documents/openly/localgov.fyi/src",
+      "dir": "/Users/ybv/code/ybv-projects/localgov.fyi_frontend/src",
       "base": "images",
       "ext": "",
       "name": "images",
       "relativeDirectory": "..",
-      "dev": 16777220,
+      "dev": 16777221,
       "mode": 16877,
       "nlink": 8,
       "uid": 501,
       "gid": 20,
       "rdev": 0,
       "blksize": 4194304,
-      "ino": 8601807276,
+      "ino": 8597820048,
       "blocks": 0,
-      "atimeMs": 1529969518621.0408,
-      "mtimeMs": 1529967555242.1216,
-      "ctimeMs": 1529967555242.1216,
-      "birthtimeMs": 1529967555225.4956,
-      "atime": "2018-06-25T23:31:58.621Z",
-      "mtime": "2018-06-25T22:59:15.242Z",
-      "ctime": "2018-06-25T22:59:15.242Z",
-      "birthtime": "2018-06-25T22:59:15.225Z"
+      "atimeMs": 1530145037201.5361,
+      "mtimeMs": 1530058776873.0305,
+      "ctimeMs": 1530058776873.0305,
+      "birthtimeMs": 1530058776854.578,
+      "atime": "2018-06-28T00:17:17.202Z",
+      "mtime": "2018-06-27T00:19:36.873Z",
+      "ctime": "2018-06-27T00:19:36.873Z",
+      "birthtime": "2018-06-27T00:19:36.855Z"
     },
-    "/Users/jim/Documents/openly/localgov.fyi/src/images/gal1.jpeg absPath of file": {
-      "id": "/Users/jim/Documents/openly/localgov.fyi/src/images/gal1.jpeg absPath of file",
+    "/Users/ybv/code/ybv-projects/localgov.fyi_frontend/src/images/gal1.jpeg absPath of file": {
+      "id": "/Users/ybv/code/ybv-projects/localgov.fyi_frontend/src/images/gal1.jpeg absPath of file",
       "children": [
-        "/Users/jim/Documents/openly/localgov.fyi/src/images/gal1.jpeg absPath of file >> ImageSharp"
+        "/Users/ybv/code/ybv-projects/localgov.fyi_frontend/src/images/gal1.jpeg absPath of file >> ImageSharp"
       ],
       "parent": "___SOURCE___",
       "internal": {
@@ -2265,53 +2265,53 @@
         "owner": "gatsby-source-filesystem"
       },
       "sourceInstanceName": "img",
-      "absolutePath": "/Users/jim/Documents/openly/localgov.fyi/src/images/gal1.jpeg",
+      "absolutePath": "/Users/ybv/code/ybv-projects/localgov.fyi_frontend/src/images/gal1.jpeg",
       "relativePath": "gal1.jpeg",
       "extension": "jpeg",
       "size": 46784,
       "prettySize": "46.8 kB",
-      "modifiedTime": "2018-06-25T22:59:15.226Z",
-      "accessTime": "2018-06-25T23:13:01.159Z",
-      "changeTime": "2018-06-25T22:59:15.226Z",
-      "birthTime": "2018-06-25T22:59:15.226Z",
+      "modifiedTime": "2018-06-27T00:19:36.856Z",
+      "accessTime": "2018-06-27T00:19:49.469Z",
+      "changeTime": "2018-06-27T00:19:36.856Z",
+      "birthTime": "2018-06-27T00:19:36.855Z",
       "root": "/",
-      "dir": "/Users/jim/Documents/openly/localgov.fyi/src/images",
+      "dir": "/Users/ybv/code/ybv-projects/localgov.fyi_frontend/src/images",
       "base": "gal1.jpeg",
       "ext": ".jpeg",
       "name": "gal1",
       "relativeDirectory": "",
-      "dev": 16777220,
+      "dev": 16777221,
       "mode": 33188,
       "nlink": 1,
       "uid": 501,
       "gid": 20,
       "rdev": 0,
       "blksize": 4194304,
-      "ino": 8601807277,
+      "ino": 8597820049,
       "blocks": 96,
-      "atimeMs": 1529968381159.0928,
-      "mtimeMs": 1529967555225.9446,
-      "ctimeMs": 1529967555225.9446,
-      "birthtimeMs": 1529967555225.5737,
-      "atime": "2018-06-25T23:13:01.159Z",
-      "mtime": "2018-06-25T22:59:15.226Z",
-      "ctime": "2018-06-25T22:59:15.226Z",
-      "birthtime": "2018-06-25T22:59:15.226Z"
+      "atimeMs": 1530058789468.9922,
+      "mtimeMs": 1530058776855.8943,
+      "ctimeMs": 1530058776855.8943,
+      "birthtimeMs": 1530058776854.678,
+      "atime": "2018-06-27T00:19:49.469Z",
+      "mtime": "2018-06-27T00:19:36.856Z",
+      "ctime": "2018-06-27T00:19:36.856Z",
+      "birthtime": "2018-06-27T00:19:36.855Z"
     },
-    "/Users/jim/Documents/openly/localgov.fyi/src/images/gal1.jpeg absPath of file >> ImageSharp": {
-      "id": "/Users/jim/Documents/openly/localgov.fyi/src/images/gal1.jpeg absPath of file >> ImageSharp",
+    "/Users/ybv/code/ybv-projects/localgov.fyi_frontend/src/images/gal1.jpeg absPath of file >> ImageSharp": {
+      "id": "/Users/ybv/code/ybv-projects/localgov.fyi_frontend/src/images/gal1.jpeg absPath of file >> ImageSharp",
       "children": [],
-      "parent": "/Users/jim/Documents/openly/localgov.fyi/src/images/gal1.jpeg absPath of file",
+      "parent": "/Users/ybv/code/ybv-projects/localgov.fyi_frontend/src/images/gal1.jpeg absPath of file",
       "internal": {
         "contentDigest": "2b57c8ab32d1037eef023afa021c25f6",
         "type": "ImageSharp",
         "owner": "gatsby-transformer-sharp"
       }
     },
-    "/Users/jim/Documents/openly/localgov.fyi/src/images/gal3.jpeg absPath of file": {
-      "id": "/Users/jim/Documents/openly/localgov.fyi/src/images/gal3.jpeg absPath of file",
+    "/Users/ybv/code/ybv-projects/localgov.fyi_frontend/src/images/gal3.jpeg absPath of file": {
+      "id": "/Users/ybv/code/ybv-projects/localgov.fyi_frontend/src/images/gal3.jpeg absPath of file",
       "children": [
-        "/Users/jim/Documents/openly/localgov.fyi/src/images/gal3.jpeg absPath of file >> ImageSharp"
+        "/Users/ybv/code/ybv-projects/localgov.fyi_frontend/src/images/gal3.jpeg absPath of file >> ImageSharp"
       ],
       "parent": "___SOURCE___",
       "internal": {
@@ -2322,90 +2322,43 @@
         "owner": "gatsby-source-filesystem"
       },
       "sourceInstanceName": "img",
-      "absolutePath": "/Users/jim/Documents/openly/localgov.fyi/src/images/gal3.jpeg",
+      "absolutePath": "/Users/ybv/code/ybv-projects/localgov.fyi_frontend/src/images/gal3.jpeg",
       "relativePath": "gal3.jpeg",
       "extension": "jpeg",
       "size": 80109,
       "prettySize": "80.1 kB",
-      "modifiedTime": "2018-06-25T22:59:15.231Z",
-      "accessTime": "2018-06-25T23:13:01.159Z",
-      "changeTime": "2018-06-25T22:59:15.231Z",
-      "birthTime": "2018-06-25T22:59:15.230Z",
+      "modifiedTime": "2018-06-27T00:19:36.861Z",
+      "accessTime": "2018-06-27T00:19:49.470Z",
+      "changeTime": "2018-06-27T00:19:36.861Z",
+      "birthTime": "2018-06-27T00:19:36.859Z",
       "root": "/",
-      "dir": "/Users/jim/Documents/openly/localgov.fyi/src/images",
+      "dir": "/Users/ybv/code/ybv-projects/localgov.fyi_frontend/src/images",
       "base": "gal3.jpeg",
       "ext": ".jpeg",
       "name": "gal3",
       "relativeDirectory": "",
-      "dev": 16777220,
+      "dev": 16777221,
       "mode": 33188,
       "nlink": 1,
       "uid": 501,
       "gid": 20,
       "rdev": 0,
       "blksize": 4194304,
-      "ino": 8601807279,
+      "ino": 8597820051,
       "blocks": 160,
-      "atimeMs": 1529968381159.2039,
-      "mtimeMs": 1529967555230.5574,
-      "ctimeMs": 1529967555230.5574,
-      "birthtimeMs": 1529967555229.8442,
-      "atime": "2018-06-25T23:13:01.159Z",
-      "mtime": "2018-06-25T22:59:15.231Z",
-      "ctime": "2018-06-25T22:59:15.231Z",
-      "birthtime": "2018-06-25T22:59:15.230Z"
+      "atimeMs": 1530058789469.763,
+      "mtimeMs": 1530058776860.8794,
+      "ctimeMs": 1530058776860.8794,
+      "birthtimeMs": 1530058776859.0571,
+      "atime": "2018-06-27T00:19:49.470Z",
+      "mtime": "2018-06-27T00:19:36.861Z",
+      "ctime": "2018-06-27T00:19:36.861Z",
+      "birthtime": "2018-06-27T00:19:36.859Z"
     },
-    "/Users/jim/Documents/openly/localgov.fyi/src/images/gal4.jpeg absPath of file": {
-      "id": "/Users/jim/Documents/openly/localgov.fyi/src/images/gal4.jpeg absPath of file",
+    "/Users/ybv/code/ybv-projects/localgov.fyi_frontend/src/images/gal2.jpeg absPath of file": {
+      "id": "/Users/ybv/code/ybv-projects/localgov.fyi_frontend/src/images/gal2.jpeg absPath of file",
       "children": [
-        "/Users/jim/Documents/openly/localgov.fyi/src/images/gal4.jpeg absPath of file >> ImageSharp"
-      ],
-      "parent": "___SOURCE___",
-      "internal": {
-        "contentDigest": "e461e17f3a4d89b348426c0a9b450da6",
-        "mediaType": "image/jpeg",
-        "type": "File",
-        "description": "File \"src/images/gal4.jpeg\"",
-        "owner": "gatsby-source-filesystem"
-      },
-      "sourceInstanceName": "img",
-      "absolutePath": "/Users/jim/Documents/openly/localgov.fyi/src/images/gal4.jpeg",
-      "relativePath": "gal4.jpeg",
-      "extension": "jpeg",
-      "size": 107334,
-      "prettySize": "107 kB",
-      "modifiedTime": "2018-06-25T22:59:15.235Z",
-      "accessTime": "2018-06-25T23:13:01.159Z",
-      "changeTime": "2018-06-25T22:59:15.235Z",
-      "birthTime": "2018-06-25T22:59:15.231Z",
-      "root": "/",
-      "dir": "/Users/jim/Documents/openly/localgov.fyi/src/images",
-      "base": "gal4.jpeg",
-      "ext": ".jpeg",
-      "name": "gal4",
-      "relativeDirectory": "",
-      "dev": 16777220,
-      "mode": 33188,
-      "nlink": 1,
-      "uid": 501,
-      "gid": 20,
-      "rdev": 0,
-      "blksize": 4194304,
-      "ino": 8601807280,
-      "blocks": 216,
-      "atimeMs": 1529968381159.2446,
-      "mtimeMs": 1529967555235.3962,
-      "ctimeMs": 1529967555235.3962,
-      "birthtimeMs": 1529967555230.7148,
-      "atime": "2018-06-25T23:13:01.159Z",
-      "mtime": "2018-06-25T22:59:15.235Z",
-      "ctime": "2018-06-25T22:59:15.235Z",
-      "birthtime": "2018-06-25T22:59:15.231Z"
-    },
-    "/Users/jim/Documents/openly/localgov.fyi/src/images/gal2.jpeg absPath of file": {
-      "id": "/Users/jim/Documents/openly/localgov.fyi/src/images/gal2.jpeg absPath of file",
-      "children": [
-        "/Users/jim/Documents/openly/localgov.fyi/src/images/gal2.jpeg absPath of file >> ImageSharp"
+        "/Users/ybv/code/ybv-projects/localgov.fyi_frontend/src/images/gal2.jpeg absPath of file >> ImageSharp"
       ],
       "parent": "___SOURCE___",
       "internal": {
@@ -2416,73 +2369,120 @@
         "owner": "gatsby-source-filesystem"
       },
       "sourceInstanceName": "img",
-      "absolutePath": "/Users/jim/Documents/openly/localgov.fyi/src/images/gal2.jpeg",
+      "absolutePath": "/Users/ybv/code/ybv-projects/localgov.fyi_frontend/src/images/gal2.jpeg",
       "relativePath": "gal2.jpeg",
       "extension": "jpeg",
       "size": 128346,
       "prettySize": "128 kB",
-      "modifiedTime": "2018-06-25T22:59:15.229Z",
-      "accessTime": "2018-06-25T23:10:29.096Z",
-      "changeTime": "2018-06-25T22:59:15.229Z",
-      "birthTime": "2018-06-25T22:59:15.226Z",
+      "modifiedTime": "2018-06-27T00:19:36.859Z",
+      "accessTime": "2018-06-27T00:19:49.469Z",
+      "changeTime": "2018-06-27T00:19:36.859Z",
+      "birthTime": "2018-06-27T00:19:36.856Z",
       "root": "/",
-      "dir": "/Users/jim/Documents/openly/localgov.fyi/src/images",
+      "dir": "/Users/ybv/code/ybv-projects/localgov.fyi_frontend/src/images",
       "base": "gal2.jpeg",
       "ext": ".jpeg",
       "name": "gal2",
       "relativeDirectory": "",
-      "dev": 16777220,
+      "dev": 16777221,
       "mode": 33188,
       "nlink": 1,
       "uid": 501,
       "gid": 20,
       "rdev": 0,
       "blksize": 4194304,
-      "ino": 8601807278,
+      "ino": 8597820050,
       "blocks": 256,
-      "atimeMs": 1529968229096.3857,
-      "mtimeMs": 1529967555229.4724,
-      "ctimeMs": 1529967555229.4724,
-      "birthtimeMs": 1529967555226.0984,
-      "atime": "2018-06-25T23:10:29.096Z",
-      "mtime": "2018-06-25T22:59:15.229Z",
-      "ctime": "2018-06-25T22:59:15.229Z",
-      "birthtime": "2018-06-25T22:59:15.226Z"
+      "atimeMs": 1530058789469.3262,
+      "mtimeMs": 1530058776858.863,
+      "ctimeMs": 1530058776858.863,
+      "birthtimeMs": 1530058776856.142,
+      "atime": "2018-06-27T00:19:49.469Z",
+      "mtime": "2018-06-27T00:19:36.859Z",
+      "ctime": "2018-06-27T00:19:36.859Z",
+      "birthtime": "2018-06-27T00:19:36.856Z"
     },
-    "/Users/jim/Documents/openly/localgov.fyi/src/images/gal3.jpeg absPath of file >> ImageSharp": {
-      "id": "/Users/jim/Documents/openly/localgov.fyi/src/images/gal3.jpeg absPath of file >> ImageSharp",
+    "/Users/ybv/code/ybv-projects/localgov.fyi_frontend/src/images/gal3.jpeg absPath of file >> ImageSharp": {
+      "id": "/Users/ybv/code/ybv-projects/localgov.fyi_frontend/src/images/gal3.jpeg absPath of file >> ImageSharp",
       "children": [],
-      "parent": "/Users/jim/Documents/openly/localgov.fyi/src/images/gal3.jpeg absPath of file",
+      "parent": "/Users/ybv/code/ybv-projects/localgov.fyi_frontend/src/images/gal3.jpeg absPath of file",
       "internal": {
         "contentDigest": "85f35908a0a9c5f918e16ecc486e4689",
         "type": "ImageSharp",
         "owner": "gatsby-transformer-sharp"
       }
     },
-    "/Users/jim/Documents/openly/localgov.fyi/src/images/gal4.jpeg absPath of file >> ImageSharp": {
-      "id": "/Users/jim/Documents/openly/localgov.fyi/src/images/gal4.jpeg absPath of file >> ImageSharp",
+    "/Users/ybv/code/ybv-projects/localgov.fyi_frontend/src/images/gal2.jpeg absPath of file >> ImageSharp": {
+      "id": "/Users/ybv/code/ybv-projects/localgov.fyi_frontend/src/images/gal2.jpeg absPath of file >> ImageSharp",
       "children": [],
-      "parent": "/Users/jim/Documents/openly/localgov.fyi/src/images/gal4.jpeg absPath of file",
-      "internal": {
-        "contentDigest": "e461e17f3a4d89b348426c0a9b450da6",
-        "type": "ImageSharp",
-        "owner": "gatsby-transformer-sharp"
-      }
-    },
-    "/Users/jim/Documents/openly/localgov.fyi/src/images/gal2.jpeg absPath of file >> ImageSharp": {
-      "id": "/Users/jim/Documents/openly/localgov.fyi/src/images/gal2.jpeg absPath of file >> ImageSharp",
-      "children": [],
-      "parent": "/Users/jim/Documents/openly/localgov.fyi/src/images/gal2.jpeg absPath of file",
+      "parent": "/Users/ybv/code/ybv-projects/localgov.fyi_frontend/src/images/gal2.jpeg absPath of file",
       "internal": {
         "contentDigest": "436dd2b704788b4b9f1109bef1a0e417",
         "type": "ImageSharp",
         "owner": "gatsby-transformer-sharp"
       }
     },
-    "/Users/jim/Documents/openly/localgov.fyi/src/images/trends.jpg absPath of file": {
-      "id": "/Users/jim/Documents/openly/localgov.fyi/src/images/trends.jpg absPath of file",
+    "/Users/ybv/code/ybv-projects/localgov.fyi_frontend/src/images/gal4.jpeg absPath of file": {
+      "id": "/Users/ybv/code/ybv-projects/localgov.fyi_frontend/src/images/gal4.jpeg absPath of file",
       "children": [
-        "/Users/jim/Documents/openly/localgov.fyi/src/images/trends.jpg absPath of file >> ImageSharp"
+        "/Users/ybv/code/ybv-projects/localgov.fyi_frontend/src/images/gal4.jpeg absPath of file >> ImageSharp"
+      ],
+      "parent": "___SOURCE___",
+      "internal": {
+        "contentDigest": "e461e17f3a4d89b348426c0a9b450da6",
+        "mediaType": "image/jpeg",
+        "type": "File",
+        "description": "File \"src/images/gal4.jpeg\"",
+        "owner": "gatsby-source-filesystem"
+      },
+      "sourceInstanceName": "img",
+      "absolutePath": "/Users/ybv/code/ybv-projects/localgov.fyi_frontend/src/images/gal4.jpeg",
+      "relativePath": "gal4.jpeg",
+      "extension": "jpeg",
+      "size": 107334,
+      "prettySize": "107 kB",
+      "modifiedTime": "2018-06-27T00:19:36.863Z",
+      "accessTime": "2018-06-27T00:19:49.470Z",
+      "changeTime": "2018-06-27T00:19:36.863Z",
+      "birthTime": "2018-06-27T00:19:36.861Z",
+      "root": "/",
+      "dir": "/Users/ybv/code/ybv-projects/localgov.fyi_frontend/src/images",
+      "base": "gal4.jpeg",
+      "ext": ".jpeg",
+      "name": "gal4",
+      "relativeDirectory": "",
+      "dev": 16777221,
+      "mode": 33188,
+      "nlink": 1,
+      "uid": 501,
+      "gid": 20,
+      "rdev": 0,
+      "blksize": 4194304,
+      "ino": 8597820052,
+      "blocks": 216,
+      "atimeMs": 1530058789470.0142,
+      "mtimeMs": 1530058776863.3638,
+      "ctimeMs": 1530058776863.3638,
+      "birthtimeMs": 1530058776861.124,
+      "atime": "2018-06-27T00:19:49.470Z",
+      "mtime": "2018-06-27T00:19:36.863Z",
+      "ctime": "2018-06-27T00:19:36.863Z",
+      "birthtime": "2018-06-27T00:19:36.861Z"
+    },
+    "/Users/ybv/code/ybv-projects/localgov.fyi_frontend/src/images/gal4.jpeg absPath of file >> ImageSharp": {
+      "id": "/Users/ybv/code/ybv-projects/localgov.fyi_frontend/src/images/gal4.jpeg absPath of file >> ImageSharp",
+      "children": [],
+      "parent": "/Users/ybv/code/ybv-projects/localgov.fyi_frontend/src/images/gal4.jpeg absPath of file",
+      "internal": {
+        "contentDigest": "e461e17f3a4d89b348426c0a9b450da6",
+        "type": "ImageSharp",
+        "owner": "gatsby-transformer-sharp"
+      }
+    },
+    "/Users/ybv/code/ybv-projects/localgov.fyi_frontend/src/images/trends.jpg absPath of file": {
+      "id": "/Users/ybv/code/ybv-projects/localgov.fyi_frontend/src/images/trends.jpg absPath of file",
+      "children": [
+        "/Users/ybv/code/ybv-projects/localgov.fyi_frontend/src/images/trends.jpg absPath of file >> ImageSharp"
       ],
       "parent": "___SOURCE___",
       "internal": {
@@ -2493,53 +2493,53 @@
         "owner": "gatsby-source-filesystem"
       },
       "sourceInstanceName": "img",
-      "absolutePath": "/Users/jim/Documents/openly/localgov.fyi/src/images/trends.jpg",
+      "absolutePath": "/Users/ybv/code/ybv-projects/localgov.fyi_frontend/src/images/trends.jpg",
       "relativePath": "trends.jpg",
       "extension": "jpg",
       "size": 370980,
       "prettySize": "371 kB",
-      "modifiedTime": "2018-06-25T22:59:15.249Z",
-      "accessTime": "2018-06-25T23:13:01.160Z",
-      "changeTime": "2018-06-25T22:59:15.249Z",
-      "birthTime": "2018-06-25T22:59:15.242Z",
+      "modifiedTime": "2018-06-27T00:19:36.879Z",
+      "accessTime": "2018-06-27T00:19:49.472Z",
+      "changeTime": "2018-06-27T00:19:36.879Z",
+      "birthTime": "2018-06-27T00:19:36.873Z",
       "root": "/",
-      "dir": "/Users/jim/Documents/openly/localgov.fyi/src/images",
+      "dir": "/Users/ybv/code/ybv-projects/localgov.fyi_frontend/src/images",
       "base": "trends.jpg",
       "ext": ".jpg",
       "name": "trends",
       "relativeDirectory": "",
-      "dev": 16777220,
+      "dev": 16777221,
       "mode": 33188,
       "nlink": 1,
       "uid": 501,
       "gid": 20,
       "rdev": 0,
       "blksize": 4194304,
-      "ino": 8601807282,
+      "ino": 8597820054,
       "blocks": 728,
-      "atimeMs": 1529968381159.5034,
-      "mtimeMs": 1529967555248.774,
-      "ctimeMs": 1529967555248.774,
-      "birthtimeMs": 1529967555242.1028,
-      "atime": "2018-06-25T23:13:01.160Z",
-      "mtime": "2018-06-25T22:59:15.249Z",
-      "ctime": "2018-06-25T22:59:15.249Z",
-      "birthtime": "2018-06-25T22:59:15.242Z"
+      "atimeMs": 1530058789471.5046,
+      "mtimeMs": 1530058776879.1316,
+      "ctimeMs": 1530058776879.1316,
+      "birthtimeMs": 1530058776873.017,
+      "atime": "2018-06-27T00:19:49.472Z",
+      "mtime": "2018-06-27T00:19:36.879Z",
+      "ctime": "2018-06-27T00:19:36.879Z",
+      "birthtime": "2018-06-27T00:19:36.873Z"
     },
-    "/Users/jim/Documents/openly/localgov.fyi/src/images/trends.jpg absPath of file >> ImageSharp": {
-      "id": "/Users/jim/Documents/openly/localgov.fyi/src/images/trends.jpg absPath of file >> ImageSharp",
+    "/Users/ybv/code/ybv-projects/localgov.fyi_frontend/src/images/trends.jpg absPath of file >> ImageSharp": {
+      "id": "/Users/ybv/code/ybv-projects/localgov.fyi_frontend/src/images/trends.jpg absPath of file >> ImageSharp",
       "children": [],
-      "parent": "/Users/jim/Documents/openly/localgov.fyi/src/images/trends.jpg absPath of file",
+      "parent": "/Users/ybv/code/ybv-projects/localgov.fyi_frontend/src/images/trends.jpg absPath of file",
       "internal": {
         "contentDigest": "f5aa522896a79dfd49c2e06e0e176411",
         "type": "ImageSharp",
         "owner": "gatsby-transformer-sharp"
       }
     },
-    "/Users/jim/Documents/openly/localgov.fyi/src/images/services.jpg absPath of file": {
-      "id": "/Users/jim/Documents/openly/localgov.fyi/src/images/services.jpg absPath of file",
+    "/Users/ybv/code/ybv-projects/localgov.fyi_frontend/src/images/services.jpg absPath of file": {
+      "id": "/Users/ybv/code/ybv-projects/localgov.fyi_frontend/src/images/services.jpg absPath of file",
       "children": [
-        "/Users/jim/Documents/openly/localgov.fyi/src/images/services.jpg absPath of file >> ImageSharp"
+        "/Users/ybv/code/ybv-projects/localgov.fyi_frontend/src/images/services.jpg absPath of file >> ImageSharp"
       ],
       "parent": "___SOURCE___",
       "internal": {
@@ -2550,97 +2550,97 @@
         "owner": "gatsby-source-filesystem"
       },
       "sourceInstanceName": "img",
-      "absolutePath": "/Users/jim/Documents/openly/localgov.fyi/src/images/services.jpg",
+      "absolutePath": "/Users/ybv/code/ybv-projects/localgov.fyi_frontend/src/images/services.jpg",
       "relativePath": "services.jpg",
       "extension": "jpg",
       "size": 409595,
       "prettySize": "410 kB",
-      "modifiedTime": "2018-06-25T22:59:15.242Z",
-      "accessTime": "2018-06-25T23:13:01.159Z",
-      "changeTime": "2018-06-25T22:59:15.242Z",
-      "birthTime": "2018-06-25T22:59:15.236Z",
+      "modifiedTime": "2018-06-27T00:19:36.873Z",
+      "accessTime": "2018-06-27T00:19:49.470Z",
+      "changeTime": "2018-06-27T00:19:36.873Z",
+      "birthTime": "2018-06-27T00:19:36.864Z",
       "root": "/",
-      "dir": "/Users/jim/Documents/openly/localgov.fyi/src/images",
+      "dir": "/Users/ybv/code/ybv-projects/localgov.fyi_frontend/src/images",
       "base": "services.jpg",
       "ext": ".jpg",
       "name": "services",
       "relativeDirectory": "",
-      "dev": 16777220,
+      "dev": 16777221,
       "mode": 33188,
       "nlink": 1,
       "uid": 501,
       "gid": 20,
       "rdev": 0,
       "blksize": 4194304,
-      "ino": 8601807281,
+      "ino": 8597820053,
       "blocks": 800,
-      "atimeMs": 1529968381159.3547,
-      "mtimeMs": 1529967555241.6318,
-      "ctimeMs": 1529967555241.6318,
-      "birthtimeMs": 1529967555235.688,
-      "atime": "2018-06-25T23:13:01.159Z",
-      "mtime": "2018-06-25T22:59:15.242Z",
-      "ctime": "2018-06-25T22:59:15.242Z",
-      "birthtime": "2018-06-25T22:59:15.236Z"
+      "atimeMs": 1530058789470.3552,
+      "mtimeMs": 1530058776872.6138,
+      "ctimeMs": 1530058776872.6138,
+      "birthtimeMs": 1530058776863.5647,
+      "atime": "2018-06-27T00:19:49.470Z",
+      "mtime": "2018-06-27T00:19:36.873Z",
+      "ctime": "2018-06-27T00:19:36.873Z",
+      "birthtime": "2018-06-27T00:19:36.864Z"
     },
-    "/Users/jim/Documents/openly/localgov.fyi/src/images/services.jpg absPath of file >> ImageSharp": {
-      "id": "/Users/jim/Documents/openly/localgov.fyi/src/images/services.jpg absPath of file >> ImageSharp",
+    "/Users/ybv/code/ybv-projects/localgov.fyi_frontend/src/images/services.jpg absPath of file >> ImageSharp": {
+      "id": "/Users/ybv/code/ybv-projects/localgov.fyi_frontend/src/images/services.jpg absPath of file >> ImageSharp",
       "children": [],
-      "parent": "/Users/jim/Documents/openly/localgov.fyi/src/images/services.jpg absPath of file",
+      "parent": "/Users/ybv/code/ybv-projects/localgov.fyi_frontend/src/images/services.jpg absPath of file",
       "internal": {
         "contentDigest": "d75c0ac3505877c1fe490cd1aefc4705",
         "type": "ImageSharp",
         "owner": "gatsby-transformer-sharp"
       }
     },
-    "/Users/jim/Documents/openly/localgov.fyi/tos absPath of file": {
-      "id": "/Users/jim/Documents/openly/localgov.fyi/tos absPath of file",
+    "/Users/ybv/code/ybv-projects/localgov.fyi_frontend/tos absPath of file": {
+      "id": "/Users/ybv/code/ybv-projects/localgov.fyi_frontend/tos absPath of file",
       "children": [],
       "parent": "___SOURCE___",
       "internal": {
-        "contentDigest": "b06e1dfdf3cae4d159eaaae79ddaff9a",
+        "contentDigest": "11126fe49197abaf6552ec5ba2598761",
         "type": "Directory",
         "description": "Directory \"tos\"",
         "owner": "gatsby-source-filesystem"
       },
       "sourceInstanceName": "tos",
-      "absolutePath": "/Users/jim/Documents/openly/localgov.fyi/tos",
+      "absolutePath": "/Users/ybv/code/ybv-projects/localgov.fyi_frontend/tos",
       "relativePath": "",
       "extension": "",
       "size": 96,
       "prettySize": "96 B",
-      "modifiedTime": "2018-06-25T21:26:49.324Z",
-      "accessTime": "2018-06-25T23:31:58.656Z",
-      "changeTime": "2018-06-25T21:26:49.324Z",
-      "birthTime": "2018-06-25T21:25:05.758Z",
+      "modifiedTime": "2018-06-27T00:19:36.886Z",
+      "accessTime": "2018-06-28T00:17:17.212Z",
+      "changeTime": "2018-06-27T00:19:36.886Z",
+      "birthTime": "2018-06-27T00:19:36.886Z",
       "root": "/",
-      "dir": "/Users/jim/Documents/openly/localgov.fyi",
+      "dir": "/Users/ybv/code/ybv-projects/localgov.fyi_frontend",
       "base": "tos",
       "ext": "",
       "name": "tos",
       "relativeDirectory": "..",
-      "dev": 16777220,
+      "dev": 16777221,
       "mode": 16877,
       "nlink": 3,
       "uid": 501,
       "gid": 20,
       "rdev": 0,
       "blksize": 4194304,
-      "ino": 8601787683,
+      "ino": 8597820060,
       "blocks": 0,
-      "atimeMs": 1529969518656.2312,
-      "mtimeMs": 1529962009323.6162,
-      "ctimeMs": 1529962009323.6162,
-      "birthtimeMs": 1529961905758.3887,
-      "atime": "2018-06-25T23:31:58.656Z",
-      "mtime": "2018-06-25T21:26:49.324Z",
-      "ctime": "2018-06-25T21:26:49.324Z",
-      "birthtime": "2018-06-25T21:25:05.758Z"
+      "atimeMs": 1530145037212.3752,
+      "mtimeMs": 1530058776886.3042,
+      "ctimeMs": 1530058776886.3042,
+      "birthtimeMs": 1530058776886.1882,
+      "atime": "2018-06-28T00:17:17.212Z",
+      "mtime": "2018-06-27T00:19:36.886Z",
+      "ctime": "2018-06-27T00:19:36.886Z",
+      "birthtime": "2018-06-27T00:19:36.886Z"
     },
-    "/Users/jim/Documents/openly/localgov.fyi/tos/terms.md absPath of file": {
-      "id": "/Users/jim/Documents/openly/localgov.fyi/tos/terms.md absPath of file",
+    "/Users/ybv/code/ybv-projects/localgov.fyi_frontend/tos/terms.md absPath of file": {
+      "id": "/Users/ybv/code/ybv-projects/localgov.fyi_frontend/tos/terms.md absPath of file",
       "children": [
-        "/Users/jim/Documents/openly/localgov.fyi/tos/terms.md absPath of file >>> MarkdownRemark"
+        "/Users/ybv/code/ybv-projects/localgov.fyi_frontend/tos/terms.md absPath of file >>> MarkdownRemark"
       ],
       "parent": "___SOURCE___",
       "internal": {
@@ -2651,64 +2651,64 @@
         "owner": "gatsby-source-filesystem"
       },
       "sourceInstanceName": "tos",
-      "absolutePath": "/Users/jim/Documents/openly/localgov.fyi/tos/terms.md",
+      "absolutePath": "/Users/ybv/code/ybv-projects/localgov.fyi_frontend/tos/terms.md",
       "relativePath": "terms.md",
       "extension": "md",
       "size": 24080,
       "prettySize": "24.1 kB",
-      "modifiedTime": "2018-06-25T21:20:41.704Z",
-      "accessTime": "2018-06-25T23:31:58.656Z",
-      "changeTime": "2018-06-25T21:26:49.324Z",
-      "birthTime": "2018-06-25T21:15:02.470Z",
+      "modifiedTime": "2018-06-27T00:19:36.887Z",
+      "accessTime": "2018-06-27T00:19:38.115Z",
+      "changeTime": "2018-06-27T00:19:36.887Z",
+      "birthTime": "2018-06-27T00:19:36.886Z",
       "root": "/",
-      "dir": "/Users/jim/Documents/openly/localgov.fyi/tos",
+      "dir": "/Users/ybv/code/ybv-projects/localgov.fyi_frontend/tos",
       "base": "terms.md",
       "ext": ".md",
       "name": "terms",
       "relativeDirectory": "",
-      "dev": 16777220,
+      "dev": 16777221,
       "mode": 33188,
       "nlink": 1,
       "uid": 501,
       "gid": 20,
       "rdev": 0,
       "blksize": 4194304,
-      "ino": 8601789991,
+      "ino": 8597820061,
       "blocks": 48,
-      "atimeMs": 1529969518656.3086,
-      "mtimeMs": 1529961641704.1023,
-      "ctimeMs": 1529962009324.3242,
-      "birthtimeMs": 1529961302469.5728,
-      "atime": "2018-06-25T23:31:58.656Z",
-      "mtime": "2018-06-25T21:20:41.704Z",
-      "ctime": "2018-06-25T21:26:49.324Z",
-      "birthtime": "2018-06-25T21:15:02.470Z"
+      "atimeMs": 1530058778115.3564,
+      "mtimeMs": 1530058776887.3513,
+      "ctimeMs": 1530058776887.3513,
+      "birthtimeMs": 1530058776886.286,
+      "atime": "2018-06-27T00:19:38.115Z",
+      "mtime": "2018-06-27T00:19:36.887Z",
+      "ctime": "2018-06-27T00:19:36.887Z",
+      "birthtime": "2018-06-27T00:19:36.886Z"
     },
-    "/Users/jim/Documents/openly/localgov.fyi/tos/terms.md absPath of file >>> MarkdownRemark": {
-      "id": "/Users/jim/Documents/openly/localgov.fyi/tos/terms.md absPath of file >>> MarkdownRemark",
+    "/Users/ybv/code/ybv-projects/localgov.fyi_frontend/tos/terms.md absPath of file >>> MarkdownRemark": {
+      "id": "/Users/ybv/code/ybv-projects/localgov.fyi_frontend/tos/terms.md absPath of file >>> MarkdownRemark",
       "children": [],
-      "parent": "/Users/jim/Documents/openly/localgov.fyi/tos/terms.md absPath of file",
+      "parent": "/Users/ybv/code/ybv-projects/localgov.fyi_frontend/tos/terms.md absPath of file",
       "internal": {
         "content": "**Website Terms of Use**\n\n**Version 1.0**\n\n**Last revised on: 25th June, 2018**\n\nThe website located at localgov.fyi (the \"**Site**\") is a copyrighted work belonging to Openly Technologies Inc. (“**Company**”, “**us**”, “**our**”, and “**we**”).  Certain features of the Site may be subject to additional guidelines, terms, or rules, which will be posted on the Site in connection with such features.  All such additional terms, guidelines, and rules are incorporated by reference into these Terms.\n\nTHESE TERMS OF USE (THESE \"**TERMS**\") SET FORTH THE LEGALLY BINDING TERMS AND CONDITIONS THAT GOVERN YOUR USE OF THE SITE.  BY ACCESSING OR USING THE SITE, YOU ARE ACCEPTING THESE TERMS (ON BEHALF OF YOURSELF OR THE ENTITY THAT YOU REPRESENT), AND YOU REPRESENT AND WARRANT THAT YOU HAVE THE RIGHT, AUTHORITY, AND CAPACITY TO ENTER INTO THESE TERMS (ON BEHALF OF YOURSELF OR THE ENTITY THAT YOU REPRESENT).  YOU MAY NOT ACCESS OR USE THE SITE OR ACCEPT THE TERMS IF YOU ARE NOT AT LEAST 18 YEARS OLD.  IF YOU DO NOT AGREE WITH ALL OF THE PROVISIONS OF THESE TERMS, DO NOT ACCESS AND/OR USE THE SITE.\n\nTHESE TERMS REQUIRE THE USE OF ARBITRATION (SECTION 8.2) ON AN INDIVIDUAL BASIS TO RESOLVE DISPUTES, RATHER THAN JURY TRIALS OR CLASS ACTIONS, AND ALSO LIMIT THE REMEDIES AVAILABLE TO YOU IN THE EVENT OF A DISPUTE.\n\n1. **Accounts **\n\n2. **Account Creation.  **In order to use certain features of the Site, you must register for an account (\"**Account**\") and provide certain information about yourself as prompted by the account registration form.  You represent and warrant that: (a) all required registration information you submit is truthful and accurate; (b) you will maintain the accuracy of such information. You may delete your Account at any time, for any reason, by following the instructions on the Site.  Company may suspend or terminate your Account in accordance with Section 7. \n\n3. **Account Responsibilities.**  You are responsible for maintaining the confidentiality of your Account login information and are fully responsible for all activities that occur under your Account.  You agree to immediately notify Company of any unauthorized use, or suspected unauthorized use of your Account or any other breach of security.  Company cannot and will not be liable for any loss or damage arising from your failure to comply with the above requirements.\n\n4. **Access to the Site **\n\n5. **License. ** Subject to these Terms, Company grants you a non-transferable, non-exclusive, revocable, limited license to use and access the Site solely for your own personal, noncommercial use.\n\n6. **Certain Restrictions.  **The rights granted to you in these Terms are subject to the following restrictions: (a) you shall not license, sell, rent, lease, transfer, assign, distribute, host, or otherwise commercially exploit the Site, whether in whole or in part, or any content displayed on the Site; (b) you shall not modify, make derivative works of, disassemble, reverse compile or reverse engineer any part of the Site; (c) you shall not access the Site in order to build a similar or competitive website, product, or service; and (d) except as expressly stated herein, no part of the Site may be copied, reproduced, distributed, republished, downloaded, displayed, posted or transmitted in any form or by any means.  Unless otherwise indicated, any future release, update, or other addition to functionality of the Site shall be subject to these Terms.  All copyright and other proprietary notices on the Site (or on any content displayed on the Site) must be retained on all copies thereof.\n\n7. **Modification.**  Company reserves the right, at any time, to modify, suspend, or discontinue the Site (in whole or in part) with or without notice to you.  You agree that Company will not be liable to you or to any third party for any modification, suspension, or discontinuation of the Site or any part thereof.\n\n8. **No Support or Maintenance.**  You acknowledge and agree that Company will have no obligation to provide you with any support or maintenance in connection with the Site.\n\n9. **Ownership.**You acknowledge that all the intellectual property rights, including copyrights, patents, trade marks, and trade secrets, in the Site and its content are owned by Company or Company’s suppliers.  Neither these Terms (nor your access to the Site) transfers to you or any third party any rights, title or interest in or to such intellectual property rights, except for the limited access rights expressly set forth in Section 2.1. Company and its suppliers reserve all rights not granted in these Terms.  There are no implied licenses granted under these Terms.\n\n10. **Indemnification.**You agree to indemnify and hold Company (and its officers, employees, and agents) harmless, including costs and attorneys’ fees, from any claim or demand made by any third party due to or arising out of (a) your use of the Site, (b) your violation of these Terms or (c) your violation of applicable laws or regulations.  Company reserves the right, at your expense, to assume the exclusive defense and control of any matter for which you are required to indemnify us, and you agree to cooperate with our defense of these claims.  You agree not to settle any matter without the prior written consent of Company.  Company will use reasonable efforts to notify you of any such claim, action or proceeding upon becoming aware of it.\n\n11. **Third-Party Links & Ads; Other Users**\n\n12. **Third-Party Links & Ads.**The Site may contain links to third-party websites and services, and/or display advertisements for third parties (collectively, \"**Third-Party Links & Ads**\").  Such Third-Party Links & Ads are not under the control of Company, and Company is not responsible for any Third-Party Links & Ads.  Company provides access to these Third-Party Links & Ads only as a convenience to you, and does not review, approve, monitor, endorse, warrant, or make any representations with respect to Third-Party Links & Ads.  You use all Third-Party Links & Ads at your own risk, and should apply a suitable level of caution and discretion in doing so. When you click on any of the Third-Party Links & Ads, the applicable third party’s terms and policies apply, including the third party’s privacy and data gathering practices.  You should make whatever investigation you feel necessary or appropriate before proceeding with any transaction in connection with such Third-Party Links & Ads.\n\n13. **Other Users.** Your interactions with other Site users are solely between you and such users.  You agree that Company will not be responsible for any loss or damage incurred as the result of any such interactions.  If there is a dispute between you and any Site user, we are under no obligation to become involved.\n\n14. **Release.** You hereby release and forever discharge the Company (and our officers, employees, agents, successors, and assigns) from, and hereby waive and relinquish, each and every past, present and future dispute, claim, controversy, demand, right, obligation, liability, action and cause of action of every kind and nature (including personal injuries, death, and property damage), that has arisen or arises directly or indirectly out of, or that relates directly or indirectly to, the Site (including any interactions with, or act or omission of, other Site users or any Third-Party Links & Ads).  IF YOU ARE A CALIFORNIA RESIDENT, YOU HEREBY WAIVE CALIFORNIA CIVIL CODE SECTION 1542 IN CONNECTION WITH THE FOREGOING, WHICH STATES: \"A GENERAL RELEASE DOES NOT EXTEND TO CLAIMS WHICH THE CREDITOR DOES NOT KNOW OR SUSPECT TO EXIST IN HIS OR HER FAVOR AT THE TIME OF EXECUTING THE RELEASE, WHICH IF KNOWN BY HIM OR HER MUST HAVE MATERIALLY AFFECTED HIS OR HER SETTLEMENT WITH THE DEBTOR.\"\n\n15. **Disclaimers**\n\nTHE SITE IS PROVIDED ON AN \"AS-IS\" AND “AS AVAILABLE” BASIS, AND COMPANY (AND OUR SUPPLIERS) EXPRESSLY DISCLAIM ANY AND ALL WARRANTIES AND CONDITIONS OF ANY KIND, WHETHER EXPRESS, IMPLIED, OR STATUTORY, INCLUDING ALL WARRANTIES OR CONDITIONS OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, TITLE, QUIET ENJOYMENT, ACCURACY, OR NON-INFRINGEMENT.  WE (AND OUR SUPPLIERS) MAKE NO WARRANTY THAT THE SITE WILL MEET YOUR REQUIREMENTS, WILL BE AVAILABLE ON AN UNINTERRUPTED, TIMELY, SECURE, OR ERROR-FREE BASIS, OR WILL BE ACCURATE, RELIABLE, FREE OF VIRUSES OR OTHER HARMFUL CODE, COMPLETE, LEGAL, OR SAFE.  IF APPLICABLE LAW REQUIRES ANY WARRANTIES WITH RESPECT TO THE SITE, ALL SUCH WARRANTIES ARE LIMITED IN DURATION TO NINETY (90) DAYS FROM THE DATE OF FIRST USE.\n\nSOME JURISDICTIONS DO NOT ALLOW THE EXCLUSION OF IMPLIED WARRANTIES, SO THE ABOVE EXCLUSION MAY NOT APPLY TO YOU.  SOME JURISDICTIONS DO NOT ALLOW LIMITATIONS ON HOW LONG AN IMPLIED WARRANTY LASTS, SO THE ABOVE LIMITATION MAY NOT APPLY TO YOU.  \n\n16. **Limitation on Liability**\n\nTO THE MAXIMUM EXTENT PERMITTED BY LAW, IN NO EVENT SHALL COMPANY (OR OUR SUPPLIERS) BE LIABLE TO YOU OR ANY THIRD PARTY FOR ANY LOST PROFITS, LOST DATA, COSTS OF PROCUREMENT OF SUBSTITUTE PRODUCTS, OR ANY INDIRECT, CONSEQUENTIAL, EXEMPLARY, INCIDENTAL, SPECIAL OR PUNITIVE DAMAGES ARISING FROM OR RELATING TO THESE TERMS OR YOUR USE OF, OR INABILITY TO USE, THE SITE, EVEN IF COMPANY HAS BEEN ADVISED OF THE POSSIBILITY OF SUCH DAMAGES.  ACCESS TO, AND USE OF, THE SITE IS AT YOUR OWN DISCRETION AND RISK, AND YOU WILL BE SOLELY RESPONSIBLE FOR ANY DAMAGE TO YOUR DEVICE OR COMPUTER SYSTEM, OR LOSS OF DATA RESULTING THEREFROM.  \n\nTO THE MAXIMUM EXTENT PERMITTED BY LAW, NOTWITHSTANDING ANYTHING TO THE CONTRARY CONTAINED HEREIN, OUR LIABILITY TO YOU FOR ANY DAMAGES ARISING FROM OR RELATED TO THIS AGREEMENT (FOR ANY CAUSE WHATSOEVER AND REGARDLESS OF THE FORM OF THE ACTION), WILL AT ALL TIMES BE LIMITED TO A MAXIMUM OF FIFTY US DOLLARS (U.S. $50). THE EXISTENCE OF MORE THAN ONE CLAIM WILL NOT ENLARGE THIS LIMIT.  YOU AGREE THAT OUR SUPPLIERS WILL HAVE NO LIABILITY OF ANY KIND ARISING FROM OR RELATING TO THIS AGREEMENT.\n\nSOME JURISDICTIONS DO NOT ALLOW THE LIMITATION OR EXCLUSION OF LIABILITY FOR INCIDENTAL OR CONSEQUENTIAL DAMAGES, SO THE ABOVE LIMITATION OR EXCLUSION MAY NOT APPLY TO YOU.   \n\n17. **Term and Termination.** Subject to this Section, these Terms will remain in full force and effect while you use the Site.  We may suspend or terminate your rights to use the Site (including your Account) at any time for any reason at our sole discretion, including for any use of the Site in violation of these Terms.  Upon termination of your rights under these Terms, your Account and right to access and use the Site will terminate immediately.   Company will not have any liability whatsoever to you for any termination of your rights under these Terms, including for termination of your Account.  Even after your rights under these Terms are terminated, the following provisions of these Terms will remain in effect: Sections 2.2 through 2.5 and Sections 3 through 8.\n\n\t\n\n18. **General**\n\n19. **Changes.**  These Terms are subject to occasional revision, and if we make any substantial changes, we may notify you by sending you an e-mail to the last e-mail address you provided to us (if any), and/or by prominently posting notice of the changes on our Site.  You are responsible for providing us with your most current e-mail address.  In the event that the last e-mail address that you have provided us is not valid, or for any reason is not capable of delivering to you the notice described above, our dispatch of the e-mail containing such notice will nonetheless constitute effective notice of the changes described in the notice.  Any changes to these Terms will be effective upon the earlier of thirty (30) calendar days following our dispatch of an e-mail notice to you (if applicable) or thirty (30) calendar days following our posting of notice of the changes on our Site.  These changes will be effective immediately for new users of our Site.  Continued use of our Site following notice of such changes shall indicate your acknowledgement of such changes and agreement to be bound by the terms and conditions of such changes.\n\n20. **Dispute Resolution.** **_Please read this Arbitration Agreement carefully.  It is part of your contract with Company and affects your rights.  It contains procedures for MANDATORY BINDING ARBITRATION AND A CLASS ACTION WAIVER._**\n\n21. *Applicability of Arbitration Agreement.*  All claims and disputes (excluding claims for injunctive or other equitable relief as set forth below) in connection with the Terms or the use of any product or service provided by the Company that cannot be resolved informally or in small claims court shall be resolved by binding arbitration on an individual basis under the terms of this Arbitration Agreement.  Unless otherwise agreed to, all arbitration proceedings shall be held in English.  This Arbitration Agreement applies to you and the Company, and to any subsidiaries, affiliates, agents, employees, predecessors in interest, successors, and assigns, as well as all authorized or unauthorized users or beneficiaries of services or goods provided under the Terms.\n\n22. *Notice Requirement and Informal Dispute Resolution*.  Before either party may seek arbitration, the party must first send to the other party a written Notice of Dispute (**\"Notice\"**) describing the nature and basis of the claim or dispute, and the requested relief.  A Notice to the Company should be sent to: 55 E 3rd Avenue, San Mateo, California 94401.  After the Notice is received, you and the Company may attempt to resolve the claim or dispute informally.  If you and the Company do not resolve the claim or dispute within thirty (30) days after the Notice is received, either party may begin an arbitration proceeding.  The amount of any settlement offer made by any party may not be disclosed to the arbitrator until after the arbitrator has determined the amount of the award, if any, to which either party is entitled.\n\n23. Arbitration Rules.  Arbitration shall be initiated through the American Arbitration Association (**\"AAA\"**), an established alternative dispute resolution provider (**“ADR Provider”**) that offers arbitration as set forth in this section.  If AAA is not available to arbitrate, the parties shall agree to select an alternative ADR Provider.  The rules of the ADR Provider shall govern all aspects of the arbitration, including but not limited to the method of initiating and/or demanding arbitration, except to the extent such rules are in conflict with the Terms.  The AAA Consumer Arbitration Rules (**“Arbitration Rules”**) governing the arbitration are available online at [www.adr.org](http://www.adr.org) or by calling the AAA at 1-800-778-7879.  The arbitration shall be conducted by a single, neutral arbitrator.  Any claims or disputes where the total amount of the award sought is less than Ten Thousand U.S. Dollars (US $10,000.00) may be resolved through binding non-appearance-based arbitration, at the option of the party seeking relief.  For claims or disputes where the total amount of the award sought is Ten Thousand U.S. Dollars (US $10,000.00) or more, the right to a hearing will be determined by the Arbitration Rules.  Any hearing will be held in a location within 100 miles of your residence, unless you reside outside of the United States, and unless the parties agree otherwise.  If you reside outside of the U.S., the arbitrator shall give the parties reasonable notice of the date, time and place of any oral hearings. Any judgment on the award rendered by the arbitrator may be entered in any court of competent jurisdiction.  If the arbitrator grants you an award that is greater than the last settlement offer that the Company made to you prior to the initiation of arbitration, the Company will pay you the greater of the award or $2,500.00.  Each party shall bear its own costs (including attorney’s fees) and disbursements arising out of the arbitration and shall pay an equal share of the fees and costs of the ADR Provider.\n\n24. *Additional Rules for Non-Appearance Based Arbitration*.  If non-appearance based arbitration is elected, the arbitration shall be conducted by telephone, online and/or based solely on written submissions; the specific manner shall be chosen by the party initiating the arbitration.  The arbitration shall not involve any personal appearance by the parties or witnesses unless otherwise agreed by the parties.\n\n25. *Time Limits.*  If you or the Company pursue arbitration, the arbitration action must be initiated and/or demanded within the statute of limitations (i.e., the legal deadline for filing a claim) and within any deadline imposed under the AAA Rules for the pertinent claim.\n\n26. *Authority of Arbitrator*.  If arbitration is initiated, the arbitrator will decide the rights and liabilities, if any, of you and the Company, and the dispute will not be consolidated with any other matters or joined with any other cases or parties.  The arbitrator shall have the authority to grant motions dispositive of all or part of any claim.  The arbitrator shall have the authority to award monetary damages, and to grant any non-monetary remedy or relief available to an individual under applicable law, the AAA Rules, and the Terms.  The arbitrator shall issue a written award and statement of decision describing the essential findings and conclusions on which the award is based, including the calculation of any damages awarded.  The arbitrator has the same authority to award relief on an individual basis that a judge in a court of law would have.  The award of the arbitrator is final and binding upon you and the Company.\n\n27. *Waiver of Jury Trial.*  THE PARTIES HEREBY WAIVE THEIR CONSTITUTIONAL AND STATUTORY RIGHTS TO GO TO COURT AND HAVE A TRIAL IN FRONT OF A JUDGE OR A JURY, instead electing that all claims and disputes shall be resolved by arbitration under this Arbitration Agreement.  Arbitration procedures are typically more limited, more efficient and less costly than rules applicable in a court and are subject to very limited review by a court.  In the event any litigation should arise between you and the Company in any state or federal court in a suit to vacate or enforce an arbitration award or otherwise, YOU AND THE COMPANY WAIVE ALL RIGHTS TO A JURY TRIAL, instead electing that the dispute be resolved by a judge.\n\n28. *Waiver of Class or Consolidated Actions*.  ALL CLAIMS AND DISPUTES WITHIN THE SCOPE OF THIS ARBITRATION AGREEMENT MUST BE ARBITRATED OR LITIGATED ON AN INDIVIDUAL BASIS AND NOT ON A CLASS BASIS, AND CLAIMS OF MORE THAN ONE CUSTOMER OR USER CANNOT BE ARBITRATED OR LITIGATED JOINTLY OR CONSOLIDATED WITH THOSE OF ANY OTHER CUSTOMER OR USER.  \n\n29. *Confidentiality*.  All aspects of the arbitration proceeding, including but not limited to the award of the arbitrator and compliance therewith, shall be strictly confidential.  The parties agree to maintain confidentiality unless otherwise required by law.  This paragraph shall not prevent a party from submitting to a court of law any information necessary to enforce this Agreement, to enforce an arbitration award, or to seek injunctive or equitable relief.\n\n30. *Severability*.  If any part or parts of this Arbitration Agreement are found under the law to be invalid or unenforceable by a court of competent jurisdiction, then such specific part or parts shall be of no force and effect and shall be severed and the remainder of the Agreement shall continue in full force and effect.\n\n31. *Right to Waive.*  Any or all of the rights and limitations set forth in this Arbitration Agreement may be waived by the party against whom the claim is asserted.  Such waiver shall not waive or affect any other portion of this Arbitration Agreement.\n\n32. *Survival of Agreement*.  This Arbitration Agreement will survive the termination of your relationship with Company.  \n\n33. *Small Claims Court.*  Notwithstanding the foregoing, either you or the Company may bring an individual action in small claims court.\n\n34. *Emergency Equitable Relief*.  Notwithstanding the foregoing, either party may seek emergency equitable relief before a state or federal court in order to maintain the status quo pending arbitration.  A request for interim measures shall not be deemed a waiver of any other rights or obligations under this Arbitration Agreement.\n\n35. *Claims Not Subject to Arbitration.* Notwithstanding the foregoing, claims of defamation, violation of the Computer Fraud and Abuse Act, and infringement or misappropriation of the other party’s patent, copyright, trademark or trade secrets shall not be subject to this Arbitration Agreement.\n\n36. *Courts.*  In any circumstances where the foregoing Arbitration Agreement permits the parties to litigate in court, the parties hereby agree to submit to the personal jurisdiction of the courts located within San Mateo County, California, for such purpose \n\n37. **Export.** The Site may be subject to U.S. export control laws and may be subject to export or import regulations in other countries. You agree not to export, re export, or transfer, directly or indirectly, any U.S. technical data acquired from Company, or any products utilizing such data, in violation of the United States export laws or regulations. \n\n38. **Disclosures.**  Company is located at the address in Section 8.8. If you are a California resident, you may report complaints to the Complaint Assistance Unit of the Division of Consumer Product of the California Department of Consumer Affairs by contacting them in writing at 400 R Street, Sacramento, CA 95814, or by telephone at (800) 952-5210.\n\n39. **Electronic Communications.**  The communications between you and Company use electronic means, whether you use the Site or send us emails, or whether Company posts notices on the Site or communicates with you via email. For contractual purposes, you (a) consent to receive communications from Company in an electronic form; and (b) agree that all terms and conditions, agreements, notices, disclosures, and other communications that Company provides to you electronically satisfy any legal requirement that such communications would satisfy if it were be in a hard copy writing. The foregoing does not affect your non-waivable rights.\n\n40. **Entire Terms.** These Terms constitute the entire agreement between you and us regarding the use of the Site. Our failure to exercise or enforce any right or provision of these Terms shall not operate as a waiver of such right or provision. The section titles in these Terms are for convenience only and have no legal or contractual effect. The word \"including\" means “including without limitation”.  If any provision of these Terms is, for any reason, held to be invalid or unenforceable, the other provisions of these Terms will be unimpaired and the invalid or unenforceable provision will be deemed modified so that it is valid and enforceable to the maximum extent permitted by law.  Your relationship to Company is that of an independent contractor, and neither party is an agent or partner of the other.  These Terms, and your rights and obligations herein, may not be assigned, subcontracted, delegated, or otherwise transferred by you without Company’s prior written consent, and any attempted assignment, subcontract, delegation, or transfer in violation of the foregoing will be null and void.  Company may freely assign these Terms.  The terms and conditions set forth in these Terms shall be binding upon assignees. \n\n41. **Copyright/Trademark Information**.  Copyright © 2018 Openly Technologies Inc. All rights reserved.  All trademarks, logos and service marks (\"**Marks**\") displayed on the Site are our property or the property of other third parties. You are not permitted to use these Marks without our prior written consent or the consent of such third party which may own the Marks.\n\n42. **Contact Information:**\n\nTeam Openly\n\n55 E 3rd Avenue\n\nSan Mateo, California 94401\n\nEmail: team@weopenly.com\n\n",
         "type": "MarkdownRemark",
-        "contentDigest": "3b60f4dee8bc8cef6dbd31a944decb02",
+        "contentDigest": "167b914f0dbea82ff71f5fa8968ac816",
         "owner": "gatsby-transformer-remark"
       },
       "frontmatter": {
         "title": "",
-        "_PARENT": "/Users/jim/Documents/openly/localgov.fyi/tos/terms.md absPath of file",
-        "parent": "/Users/jim/Documents/openly/localgov.fyi/tos/terms.md absPath of file"
+        "_PARENT": "/Users/ybv/code/ybv-projects/localgov.fyi_frontend/tos/terms.md absPath of file",
+        "parent": "/Users/ybv/code/ybv-projects/localgov.fyi_frontend/tos/terms.md absPath of file"
       },
       "excerpt": "",
       "rawMarkdownBody": "**Website Terms of Use**\n\n**Version 1.0**\n\n**Last revised on: 25th June, 2018**\n\nThe website located at localgov.fyi (the \"**Site**\") is a copyrighted work belonging to Openly Technologies Inc. (“**Company**”, “**us**”, “**our**”, and “**we**”).  Certain features of the Site may be subject to additional guidelines, terms, or rules, which will be posted on the Site in connection with such features.  All such additional terms, guidelines, and rules are incorporated by reference into these Terms.\n\nTHESE TERMS OF USE (THESE \"**TERMS**\") SET FORTH THE LEGALLY BINDING TERMS AND CONDITIONS THAT GOVERN YOUR USE OF THE SITE.  BY ACCESSING OR USING THE SITE, YOU ARE ACCEPTING THESE TERMS (ON BEHALF OF YOURSELF OR THE ENTITY THAT YOU REPRESENT), AND YOU REPRESENT AND WARRANT THAT YOU HAVE THE RIGHT, AUTHORITY, AND CAPACITY TO ENTER INTO THESE TERMS (ON BEHALF OF YOURSELF OR THE ENTITY THAT YOU REPRESENT).  YOU MAY NOT ACCESS OR USE THE SITE OR ACCEPT THE TERMS IF YOU ARE NOT AT LEAST 18 YEARS OLD.  IF YOU DO NOT AGREE WITH ALL OF THE PROVISIONS OF THESE TERMS, DO NOT ACCESS AND/OR USE THE SITE.\n\nTHESE TERMS REQUIRE THE USE OF ARBITRATION (SECTION 8.2) ON AN INDIVIDUAL BASIS TO RESOLVE DISPUTES, RATHER THAN JURY TRIALS OR CLASS ACTIONS, AND ALSO LIMIT THE REMEDIES AVAILABLE TO YOU IN THE EVENT OF A DISPUTE.\n\n1. **Accounts **\n\n2. **Account Creation.  **In order to use certain features of the Site, you must register for an account (\"**Account**\") and provide certain information about yourself as prompted by the account registration form.  You represent and warrant that: (a) all required registration information you submit is truthful and accurate; (b) you will maintain the accuracy of such information. You may delete your Account at any time, for any reason, by following the instructions on the Site.  Company may suspend or terminate your Account in accordance with Section 7. \n\n3. **Account Responsibilities.**  You are responsible for maintaining the confidentiality of your Account login information and are fully responsible for all activities that occur under your Account.  You agree to immediately notify Company of any unauthorized use, or suspected unauthorized use of your Account or any other breach of security.  Company cannot and will not be liable for any loss or damage arising from your failure to comply with the above requirements.\n\n4. **Access to the Site **\n\n5. **License. ** Subject to these Terms, Company grants you a non-transferable, non-exclusive, revocable, limited license to use and access the Site solely for your own personal, noncommercial use.\n\n6. **Certain Restrictions.  **The rights granted to you in these Terms are subject to the following restrictions: (a) you shall not license, sell, rent, lease, transfer, assign, distribute, host, or otherwise commercially exploit the Site, whether in whole or in part, or any content displayed on the Site; (b) you shall not modify, make derivative works of, disassemble, reverse compile or reverse engineer any part of the Site; (c) you shall not access the Site in order to build a similar or competitive website, product, or service; and (d) except as expressly stated herein, no part of the Site may be copied, reproduced, distributed, republished, downloaded, displayed, posted or transmitted in any form or by any means.  Unless otherwise indicated, any future release, update, or other addition to functionality of the Site shall be subject to these Terms.  All copyright and other proprietary notices on the Site (or on any content displayed on the Site) must be retained on all copies thereof.\n\n7. **Modification.**  Company reserves the right, at any time, to modify, suspend, or discontinue the Site (in whole or in part) with or without notice to you.  You agree that Company will not be liable to you or to any third party for any modification, suspension, or discontinuation of the Site or any part thereof.\n\n8. **No Support or Maintenance.**  You acknowledge and agree that Company will have no obligation to provide you with any support or maintenance in connection with the Site.\n\n9. **Ownership.**You acknowledge that all the intellectual property rights, including copyrights, patents, trade marks, and trade secrets, in the Site and its content are owned by Company or Company’s suppliers.  Neither these Terms (nor your access to the Site) transfers to you or any third party any rights, title or interest in or to such intellectual property rights, except for the limited access rights expressly set forth in Section 2.1. Company and its suppliers reserve all rights not granted in these Terms.  There are no implied licenses granted under these Terms.\n\n10. **Indemnification.**You agree to indemnify and hold Company (and its officers, employees, and agents) harmless, including costs and attorneys’ fees, from any claim or demand made by any third party due to or arising out of (a) your use of the Site, (b) your violation of these Terms or (c) your violation of applicable laws or regulations.  Company reserves the right, at your expense, to assume the exclusive defense and control of any matter for which you are required to indemnify us, and you agree to cooperate with our defense of these claims.  You agree not to settle any matter without the prior written consent of Company.  Company will use reasonable efforts to notify you of any such claim, action or proceeding upon becoming aware of it.\n\n11. **Third-Party Links & Ads; Other Users**\n\n12. **Third-Party Links & Ads.**The Site may contain links to third-party websites and services, and/or display advertisements for third parties (collectively, \"**Third-Party Links & Ads**\").  Such Third-Party Links & Ads are not under the control of Company, and Company is not responsible for any Third-Party Links & Ads.  Company provides access to these Third-Party Links & Ads only as a convenience to you, and does not review, approve, monitor, endorse, warrant, or make any representations with respect to Third-Party Links & Ads.  You use all Third-Party Links & Ads at your own risk, and should apply a suitable level of caution and discretion in doing so. When you click on any of the Third-Party Links & Ads, the applicable third party’s terms and policies apply, including the third party’s privacy and data gathering practices.  You should make whatever investigation you feel necessary or appropriate before proceeding with any transaction in connection with such Third-Party Links & Ads.\n\n13. **Other Users.** Your interactions with other Site users are solely between you and such users.  You agree that Company will not be responsible for any loss or damage incurred as the result of any such interactions.  If there is a dispute between you and any Site user, we are under no obligation to become involved.\n\n14. **Release.** You hereby release and forever discharge the Company (and our officers, employees, agents, successors, and assigns) from, and hereby waive and relinquish, each and every past, present and future dispute, claim, controversy, demand, right, obligation, liability, action and cause of action of every kind and nature (including personal injuries, death, and property damage), that has arisen or arises directly or indirectly out of, or that relates directly or indirectly to, the Site (including any interactions with, or act or omission of, other Site users or any Third-Party Links & Ads).  IF YOU ARE A CALIFORNIA RESIDENT, YOU HEREBY WAIVE CALIFORNIA CIVIL CODE SECTION 1542 IN CONNECTION WITH THE FOREGOING, WHICH STATES: \"A GENERAL RELEASE DOES NOT EXTEND TO CLAIMS WHICH THE CREDITOR DOES NOT KNOW OR SUSPECT TO EXIST IN HIS OR HER FAVOR AT THE TIME OF EXECUTING THE RELEASE, WHICH IF KNOWN BY HIM OR HER MUST HAVE MATERIALLY AFFECTED HIS OR HER SETTLEMENT WITH THE DEBTOR.\"\n\n15. **Disclaimers**\n\nTHE SITE IS PROVIDED ON AN \"AS-IS\" AND “AS AVAILABLE” BASIS, AND COMPANY (AND OUR SUPPLIERS) EXPRESSLY DISCLAIM ANY AND ALL WARRANTIES AND CONDITIONS OF ANY KIND, WHETHER EXPRESS, IMPLIED, OR STATUTORY, INCLUDING ALL WARRANTIES OR CONDITIONS OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, TITLE, QUIET ENJOYMENT, ACCURACY, OR NON-INFRINGEMENT.  WE (AND OUR SUPPLIERS) MAKE NO WARRANTY THAT THE SITE WILL MEET YOUR REQUIREMENTS, WILL BE AVAILABLE ON AN UNINTERRUPTED, TIMELY, SECURE, OR ERROR-FREE BASIS, OR WILL BE ACCURATE, RELIABLE, FREE OF VIRUSES OR OTHER HARMFUL CODE, COMPLETE, LEGAL, OR SAFE.  IF APPLICABLE LAW REQUIRES ANY WARRANTIES WITH RESPECT TO THE SITE, ALL SUCH WARRANTIES ARE LIMITED IN DURATION TO NINETY (90) DAYS FROM THE DATE OF FIRST USE.\n\nSOME JURISDICTIONS DO NOT ALLOW THE EXCLUSION OF IMPLIED WARRANTIES, SO THE ABOVE EXCLUSION MAY NOT APPLY TO YOU.  SOME JURISDICTIONS DO NOT ALLOW LIMITATIONS ON HOW LONG AN IMPLIED WARRANTY LASTS, SO THE ABOVE LIMITATION MAY NOT APPLY TO YOU.  \n\n16. **Limitation on Liability**\n\nTO THE MAXIMUM EXTENT PERMITTED BY LAW, IN NO EVENT SHALL COMPANY (OR OUR SUPPLIERS) BE LIABLE TO YOU OR ANY THIRD PARTY FOR ANY LOST PROFITS, LOST DATA, COSTS OF PROCUREMENT OF SUBSTITUTE PRODUCTS, OR ANY INDIRECT, CONSEQUENTIAL, EXEMPLARY, INCIDENTAL, SPECIAL OR PUNITIVE DAMAGES ARISING FROM OR RELATING TO THESE TERMS OR YOUR USE OF, OR INABILITY TO USE, THE SITE, EVEN IF COMPANY HAS BEEN ADVISED OF THE POSSIBILITY OF SUCH DAMAGES.  ACCESS TO, AND USE OF, THE SITE IS AT YOUR OWN DISCRETION AND RISK, AND YOU WILL BE SOLELY RESPONSIBLE FOR ANY DAMAGE TO YOUR DEVICE OR COMPUTER SYSTEM, OR LOSS OF DATA RESULTING THEREFROM.  \n\nTO THE MAXIMUM EXTENT PERMITTED BY LAW, NOTWITHSTANDING ANYTHING TO THE CONTRARY CONTAINED HEREIN, OUR LIABILITY TO YOU FOR ANY DAMAGES ARISING FROM OR RELATED TO THIS AGREEMENT (FOR ANY CAUSE WHATSOEVER AND REGARDLESS OF THE FORM OF THE ACTION), WILL AT ALL TIMES BE LIMITED TO A MAXIMUM OF FIFTY US DOLLARS (U.S. $50). THE EXISTENCE OF MORE THAN ONE CLAIM WILL NOT ENLARGE THIS LIMIT.  YOU AGREE THAT OUR SUPPLIERS WILL HAVE NO LIABILITY OF ANY KIND ARISING FROM OR RELATING TO THIS AGREEMENT.\n\nSOME JURISDICTIONS DO NOT ALLOW THE LIMITATION OR EXCLUSION OF LIABILITY FOR INCIDENTAL OR CONSEQUENTIAL DAMAGES, SO THE ABOVE LIMITATION OR EXCLUSION MAY NOT APPLY TO YOU.   \n\n17. **Term and Termination.** Subject to this Section, these Terms will remain in full force and effect while you use the Site.  We may suspend or terminate your rights to use the Site (including your Account) at any time for any reason at our sole discretion, including for any use of the Site in violation of these Terms.  Upon termination of your rights under these Terms, your Account and right to access and use the Site will terminate immediately.   Company will not have any liability whatsoever to you for any termination of your rights under these Terms, including for termination of your Account.  Even after your rights under these Terms are terminated, the following provisions of these Terms will remain in effect: Sections 2.2 through 2.5 and Sections 3 through 8.\n\n\t\n\n18. **General**\n\n19. **Changes.**  These Terms are subject to occasional revision, and if we make any substantial changes, we may notify you by sending you an e-mail to the last e-mail address you provided to us (if any), and/or by prominently posting notice of the changes on our Site.  You are responsible for providing us with your most current e-mail address.  In the event that the last e-mail address that you have provided us is not valid, or for any reason is not capable of delivering to you the notice described above, our dispatch of the e-mail containing such notice will nonetheless constitute effective notice of the changes described in the notice.  Any changes to these Terms will be effective upon the earlier of thirty (30) calendar days following our dispatch of an e-mail notice to you (if applicable) or thirty (30) calendar days following our posting of notice of the changes on our Site.  These changes will be effective immediately for new users of our Site.  Continued use of our Site following notice of such changes shall indicate your acknowledgement of such changes and agreement to be bound by the terms and conditions of such changes.\n\n20. **Dispute Resolution.** **_Please read this Arbitration Agreement carefully.  It is part of your contract with Company and affects your rights.  It contains procedures for MANDATORY BINDING ARBITRATION AND A CLASS ACTION WAIVER._**\n\n21. *Applicability of Arbitration Agreement.*  All claims and disputes (excluding claims for injunctive or other equitable relief as set forth below) in connection with the Terms or the use of any product or service provided by the Company that cannot be resolved informally or in small claims court shall be resolved by binding arbitration on an individual basis under the terms of this Arbitration Agreement.  Unless otherwise agreed to, all arbitration proceedings shall be held in English.  This Arbitration Agreement applies to you and the Company, and to any subsidiaries, affiliates, agents, employees, predecessors in interest, successors, and assigns, as well as all authorized or unauthorized users or beneficiaries of services or goods provided under the Terms.\n\n22. *Notice Requirement and Informal Dispute Resolution*.  Before either party may seek arbitration, the party must first send to the other party a written Notice of Dispute (**\"Notice\"**) describing the nature and basis of the claim or dispute, and the requested relief.  A Notice to the Company should be sent to: 55 E 3rd Avenue, San Mateo, California 94401.  After the Notice is received, you and the Company may attempt to resolve the claim or dispute informally.  If you and the Company do not resolve the claim or dispute within thirty (30) days after the Notice is received, either party may begin an arbitration proceeding.  The amount of any settlement offer made by any party may not be disclosed to the arbitrator until after the arbitrator has determined the amount of the award, if any, to which either party is entitled.\n\n23. Arbitration Rules.  Arbitration shall be initiated through the American Arbitration Association (**\"AAA\"**), an established alternative dispute resolution provider (**“ADR Provider”**) that offers arbitration as set forth in this section.  If AAA is not available to arbitrate, the parties shall agree to select an alternative ADR Provider.  The rules of the ADR Provider shall govern all aspects of the arbitration, including but not limited to the method of initiating and/or demanding arbitration, except to the extent such rules are in conflict with the Terms.  The AAA Consumer Arbitration Rules (**“Arbitration Rules”**) governing the arbitration are available online at [www.adr.org](http://www.adr.org) or by calling the AAA at 1-800-778-7879.  The arbitration shall be conducted by a single, neutral arbitrator.  Any claims or disputes where the total amount of the award sought is less than Ten Thousand U.S. Dollars (US $10,000.00) may be resolved through binding non-appearance-based arbitration, at the option of the party seeking relief.  For claims or disputes where the total amount of the award sought is Ten Thousand U.S. Dollars (US $10,000.00) or more, the right to a hearing will be determined by the Arbitration Rules.  Any hearing will be held in a location within 100 miles of your residence, unless you reside outside of the United States, and unless the parties agree otherwise.  If you reside outside of the U.S., the arbitrator shall give the parties reasonable notice of the date, time and place of any oral hearings. Any judgment on the award rendered by the arbitrator may be entered in any court of competent jurisdiction.  If the arbitrator grants you an award that is greater than the last settlement offer that the Company made to you prior to the initiation of arbitration, the Company will pay you the greater of the award or $2,500.00.  Each party shall bear its own costs (including attorney’s fees) and disbursements arising out of the arbitration and shall pay an equal share of the fees and costs of the ADR Provider.\n\n24. *Additional Rules for Non-Appearance Based Arbitration*.  If non-appearance based arbitration is elected, the arbitration shall be conducted by telephone, online and/or based solely on written submissions; the specific manner shall be chosen by the party initiating the arbitration.  The arbitration shall not involve any personal appearance by the parties or witnesses unless otherwise agreed by the parties.\n\n25. *Time Limits.*  If you or the Company pursue arbitration, the arbitration action must be initiated and/or demanded within the statute of limitations (i.e., the legal deadline for filing a claim) and within any deadline imposed under the AAA Rules for the pertinent claim.\n\n26. *Authority of Arbitrator*.  If arbitration is initiated, the arbitrator will decide the rights and liabilities, if any, of you and the Company, and the dispute will not be consolidated with any other matters or joined with any other cases or parties.  The arbitrator shall have the authority to grant motions dispositive of all or part of any claim.  The arbitrator shall have the authority to award monetary damages, and to grant any non-monetary remedy or relief available to an individual under applicable law, the AAA Rules, and the Terms.  The arbitrator shall issue a written award and statement of decision describing the essential findings and conclusions on which the award is based, including the calculation of any damages awarded.  The arbitrator has the same authority to award relief on an individual basis that a judge in a court of law would have.  The award of the arbitrator is final and binding upon you and the Company.\n\n27. *Waiver of Jury Trial.*  THE PARTIES HEREBY WAIVE THEIR CONSTITUTIONAL AND STATUTORY RIGHTS TO GO TO COURT AND HAVE A TRIAL IN FRONT OF A JUDGE OR A JURY, instead electing that all claims and disputes shall be resolved by arbitration under this Arbitration Agreement.  Arbitration procedures are typically more limited, more efficient and less costly than rules applicable in a court and are subject to very limited review by a court.  In the event any litigation should arise between you and the Company in any state or federal court in a suit to vacate or enforce an arbitration award or otherwise, YOU AND THE COMPANY WAIVE ALL RIGHTS TO A JURY TRIAL, instead electing that the dispute be resolved by a judge.\n\n28. *Waiver of Class or Consolidated Actions*.  ALL CLAIMS AND DISPUTES WITHIN THE SCOPE OF THIS ARBITRATION AGREEMENT MUST BE ARBITRATED OR LITIGATED ON AN INDIVIDUAL BASIS AND NOT ON A CLASS BASIS, AND CLAIMS OF MORE THAN ONE CUSTOMER OR USER CANNOT BE ARBITRATED OR LITIGATED JOINTLY OR CONSOLIDATED WITH THOSE OF ANY OTHER CUSTOMER OR USER.  \n\n29. *Confidentiality*.  All aspects of the arbitration proceeding, including but not limited to the award of the arbitrator and compliance therewith, shall be strictly confidential.  The parties agree to maintain confidentiality unless otherwise required by law.  This paragraph shall not prevent a party from submitting to a court of law any information necessary to enforce this Agreement, to enforce an arbitration award, or to seek injunctive or equitable relief.\n\n30. *Severability*.  If any part or parts of this Arbitration Agreement are found under the law to be invalid or unenforceable by a court of competent jurisdiction, then such specific part or parts shall be of no force and effect and shall be severed and the remainder of the Agreement shall continue in full force and effect.\n\n31. *Right to Waive.*  Any or all of the rights and limitations set forth in this Arbitration Agreement may be waived by the party against whom the claim is asserted.  Such waiver shall not waive or affect any other portion of this Arbitration Agreement.\n\n32. *Survival of Agreement*.  This Arbitration Agreement will survive the termination of your relationship with Company.  \n\n33. *Small Claims Court.*  Notwithstanding the foregoing, either you or the Company may bring an individual action in small claims court.\n\n34. *Emergency Equitable Relief*.  Notwithstanding the foregoing, either party may seek emergency equitable relief before a state or federal court in order to maintain the status quo pending arbitration.  A request for interim measures shall not be deemed a waiver of any other rights or obligations under this Arbitration Agreement.\n\n35. *Claims Not Subject to Arbitration.* Notwithstanding the foregoing, claims of defamation, violation of the Computer Fraud and Abuse Act, and infringement or misappropriation of the other party’s patent, copyright, trademark or trade secrets shall not be subject to this Arbitration Agreement.\n\n36. *Courts.*  In any circumstances where the foregoing Arbitration Agreement permits the parties to litigate in court, the parties hereby agree to submit to the personal jurisdiction of the courts located within San Mateo County, California, for such purpose \n\n37. **Export.** The Site may be subject to U.S. export control laws and may be subject to export or import regulations in other countries. You agree not to export, re export, or transfer, directly or indirectly, any U.S. technical data acquired from Company, or any products utilizing such data, in violation of the United States export laws or regulations. \n\n38. **Disclosures.**  Company is located at the address in Section 8.8. If you are a California resident, you may report complaints to the Complaint Assistance Unit of the Division of Consumer Product of the California Department of Consumer Affairs by contacting them in writing at 400 R Street, Sacramento, CA 95814, or by telephone at (800) 952-5210.\n\n39. **Electronic Communications.**  The communications between you and Company use electronic means, whether you use the Site or send us emails, or whether Company posts notices on the Site or communicates with you via email. For contractual purposes, you (a) consent to receive communications from Company in an electronic form; and (b) agree that all terms and conditions, agreements, notices, disclosures, and other communications that Company provides to you electronically satisfy any legal requirement that such communications would satisfy if it were be in a hard copy writing. The foregoing does not affect your non-waivable rights.\n\n40. **Entire Terms.** These Terms constitute the entire agreement between you and us regarding the use of the Site. Our failure to exercise or enforce any right or provision of these Terms shall not operate as a waiver of such right or provision. The section titles in these Terms are for convenience only and have no legal or contractual effect. The word \"including\" means “including without limitation”.  If any provision of these Terms is, for any reason, held to be invalid or unenforceable, the other provisions of these Terms will be unimpaired and the invalid or unenforceable provision will be deemed modified so that it is valid and enforceable to the maximum extent permitted by law.  Your relationship to Company is that of an independent contractor, and neither party is an agent or partner of the other.  These Terms, and your rights and obligations herein, may not be assigned, subcontracted, delegated, or otherwise transferred by you without Company’s prior written consent, and any attempted assignment, subcontract, delegation, or transfer in violation of the foregoing will be null and void.  Company may freely assign these Terms.  The terms and conditions set forth in these Terms shall be binding upon assignees. \n\n41. **Copyright/Trademark Information**.  Copyright © 2018 Openly Technologies Inc. All rights reserved.  All trademarks, logos and service marks (\"**Marks**\") displayed on the Site are our property or the property of other third parties. You are not permitted to use these Marks without our prior written consent or the consent of such third party which may own the Marks.\n\n42. **Contact Information:**\n\nTeam Openly\n\n55 E 3rd Avenue\n\nSan Mateo, California 94401\n\nEmail: team@weopenly.com\n\n",
-      "fileAbsolutePath": "/Users/jim/Documents/openly/localgov.fyi/tos/terms.md"
+      "fileAbsolutePath": "/Users/ybv/code/ybv-projects/localgov.fyi_frontend/tos/terms.md"
     },
     "SitePage /organization/98bb2db7-5227-47ed-b2f4-520304d57fe5": {
       "layout": "detailTemplate",
       "jsonName": "organization-98-bb-2-db-7-5227-47-ed-b-2-f-4-520304-d-57-fe-5.json",
       "internalComponentName": "ComponentOrganization98Bb2Db7522747EdB2F4520304D57Fe5",
       "path": "/organization/98bb2db7-5227-47ed-b2f4-520304d57fe5",
-      "component": "/Users/jim/Documents/openly/localgov.fyi/src/templates/organization-detail.js",
+      "component": "/Users/ybv/code/ybv-projects/localgov.fyi_frontend/src/templates/organization-detail.js",
       "componentChunkName": "component---src-templates-organization-detail-js",
       "context": {
         "data": {
@@ -3000,13 +3000,13 @@
       },
       "pluginCreator___NODE": "Plugin default-site-plugin",
       "pluginCreatorId": "Plugin default-site-plugin",
-      "componentPath": "/Users/jim/Documents/openly/localgov.fyi/src/templates/organization-detail.js",
+      "componentPath": "/Users/ybv/code/ybv-projects/localgov.fyi_frontend/src/templates/organization-detail.js",
       "id": "SitePage /organization/98bb2db7-5227-47ed-b2f4-520304d57fe5",
       "parent": "SOURCE",
       "children": [],
       "internal": {
         "type": "SitePage",
-        "contentDigest": "81157616d7611eebeadd9e554192f5fb",
+        "contentDigest": "87a3b165053428d47d5aace1a995dafa",
         "description": "Your site's \"gatsby-node.js\"",
         "owner": "internal-data-bridge"
       }
@@ -3016,7 +3016,7 @@
       "jsonName": "member-b-2-a-5127-e-4379-4445-92-c-7-548211583137.json",
       "internalComponentName": "ComponentMemberB2A5127E4379444592C7548211583137",
       "path": "/member/b2a5127e-4379-4445-92c7-548211583137",
-      "component": "/Users/jim/Documents/openly/localgov.fyi/src/templates/member-detail.js",
+      "component": "/Users/ybv/code/ybv-projects/localgov.fyi_frontend/src/templates/member-detail.js",
       "componentChunkName": "component---src-templates-member-detail-js",
       "context": {
         "data": {
@@ -3044,13 +3044,13 @@
       },
       "pluginCreator___NODE": "Plugin default-site-plugin",
       "pluginCreatorId": "Plugin default-site-plugin",
-      "componentPath": "/Users/jim/Documents/openly/localgov.fyi/src/templates/member-detail.js",
+      "componentPath": "/Users/ybv/code/ybv-projects/localgov.fyi_frontend/src/templates/member-detail.js",
       "id": "SitePage /member/b2a5127e-4379-4445-92c7-548211583137",
       "parent": "SOURCE",
       "children": [],
       "internal": {
         "type": "SitePage",
-        "contentDigest": "152b48af412606a87f332437fa19a4fc",
+        "contentDigest": "4582866cdbbe6347186d5d9e253868de",
         "description": "Your site's \"gatsby-node.js\"",
         "owner": "internal-data-bridge"
       }
@@ -3060,7 +3060,7 @@
       "jsonName": "member-d-964-b-4-bf-afce-4100-b-0-d-8-c-0-d-7-d-1-be-1-cc-7.json",
       "internalComponentName": "ComponentMemberD964B4BfAfce4100B0D8C0D7D1Be1Cc7",
       "path": "/member/d964b4bf-afce-4100-b0d8-c0d7d1be1cc7",
-      "component": "/Users/jim/Documents/openly/localgov.fyi/src/templates/member-detail.js",
+      "component": "/Users/ybv/code/ybv-projects/localgov.fyi_frontend/src/templates/member-detail.js",
       "componentChunkName": "component---src-templates-member-detail-js",
       "context": {
         "data": {
@@ -3088,13 +3088,13 @@
       },
       "pluginCreator___NODE": "Plugin default-site-plugin",
       "pluginCreatorId": "Plugin default-site-plugin",
-      "componentPath": "/Users/jim/Documents/openly/localgov.fyi/src/templates/member-detail.js",
+      "componentPath": "/Users/ybv/code/ybv-projects/localgov.fyi_frontend/src/templates/member-detail.js",
       "id": "SitePage /member/d964b4bf-afce-4100-b0d8-c0d7d1be1cc7",
       "parent": "SOURCE",
       "children": [],
       "internal": {
         "type": "SitePage",
-        "contentDigest": "cde206b881175cc5ce28265cbf918f81",
+        "contentDigest": "52142d388012f39f059519190707c2e7",
         "description": "Your site's \"gatsby-node.js\"",
         "owner": "internal-data-bridge"
       }
@@ -3104,7 +3104,7 @@
       "jsonName": "service-005179-e-3-0-adc-4-b-8-d-84-d-8-cfacfeca-7276.json",
       "internalComponentName": "ComponentService005179E30Adc4B8D84D8Cfacfeca7276",
       "path": "/service/005179e3-0adc-4b8d-84d8-cfacfeca7276",
-      "component": "/Users/jim/Documents/openly/localgov.fyi/src/templates/service-detail-2.js",
+      "component": "/Users/ybv/code/ybv-projects/localgov.fyi_frontend/src/templates/service-detail-2.js",
       "componentChunkName": "component---src-templates-service-detail-2-js",
       "context": {
         "data": {
@@ -3130,13 +3130,13 @@
       },
       "pluginCreator___NODE": "Plugin default-site-plugin",
       "pluginCreatorId": "Plugin default-site-plugin",
-      "componentPath": "/Users/jim/Documents/openly/localgov.fyi/src/templates/service-detail-2.js",
+      "componentPath": "/Users/ybv/code/ybv-projects/localgov.fyi_frontend/src/templates/service-detail-2.js",
       "id": "SitePage /service/005179e3-0adc-4b8d-84d8-cfacfeca7276",
       "parent": "SOURCE",
       "children": [],
       "internal": {
         "type": "SitePage",
-        "contentDigest": "5a4d3adf66d2187c3b5c8d30093e4519",
+        "contentDigest": "a245fc85c4a576a3a46e511c631c34dd",
         "description": "Your site's \"gatsby-node.js\"",
         "owner": "internal-data-bridge"
       }
@@ -3146,7 +3146,7 @@
       "jsonName": "service-573-cfa-95-ad-88-48-f-2-ab-14-dcd-0-fada-9-a-7-a.json",
       "internalComponentName": "ComponentService573Cfa95Ad8848F2Ab14Dcd0Fada9A7A",
       "path": "/service/573cfa95-ad88-48f2-ab14-dcd0fada9a7a",
-      "component": "/Users/jim/Documents/openly/localgov.fyi/src/templates/service-detail-2.js",
+      "component": "/Users/ybv/code/ybv-projects/localgov.fyi_frontend/src/templates/service-detail-2.js",
       "componentChunkName": "component---src-templates-service-detail-2-js",
       "context": {
         "data": {
@@ -3172,13 +3172,13 @@
       },
       "pluginCreator___NODE": "Plugin default-site-plugin",
       "pluginCreatorId": "Plugin default-site-plugin",
-      "componentPath": "/Users/jim/Documents/openly/localgov.fyi/src/templates/service-detail-2.js",
+      "componentPath": "/Users/ybv/code/ybv-projects/localgov.fyi_frontend/src/templates/service-detail-2.js",
       "id": "SitePage /service/573cfa95-ad88-48f2-ab14-dcd0fada9a7a",
       "parent": "SOURCE",
       "children": [],
       "internal": {
         "type": "SitePage",
-        "contentDigest": "3da0a213d733cc0b74eaaa8be71b445a",
+        "contentDigest": "0c7292965fa4e90aa84fe9d7aaf9d041",
         "description": "Your site's \"gatsby-node.js\"",
         "owner": "internal-data-bridge"
       }
@@ -3188,7 +3188,7 @@
       "jsonName": "service-ea-1-ae-014-e-98-e-4-a-8-b-ac-39-c-4-feee-37-c-226.json",
       "internalComponentName": "ComponentServiceEa1Ae014E98E4A8BAc39C4Feee37C226",
       "path": "/service/ea1ae014-e98e-4a8b-ac39-c4feee37c226",
-      "component": "/Users/jim/Documents/openly/localgov.fyi/src/templates/service-detail-2.js",
+      "component": "/Users/ybv/code/ybv-projects/localgov.fyi_frontend/src/templates/service-detail-2.js",
       "componentChunkName": "component---src-templates-service-detail-2-js",
       "context": {
         "data": {
@@ -3209,13 +3209,13 @@
       },
       "pluginCreator___NODE": "Plugin default-site-plugin",
       "pluginCreatorId": "Plugin default-site-plugin",
-      "componentPath": "/Users/jim/Documents/openly/localgov.fyi/src/templates/service-detail-2.js",
+      "componentPath": "/Users/ybv/code/ybv-projects/localgov.fyi_frontend/src/templates/service-detail-2.js",
       "id": "SitePage /service/ea1ae014-e98e-4a8b-ac39-c4feee37c226",
       "parent": "SOURCE",
       "children": [],
       "internal": {
         "type": "SitePage",
-        "contentDigest": "dc246ffb346bdf83ca18fb84f558400d",
+        "contentDigest": "64add497ca27fca7da87404ef7e16e59",
         "description": "Your site's \"gatsby-node.js\"",
         "owner": "internal-data-bridge"
       }
@@ -3225,7 +3225,7 @@
       "jsonName": "service-3287-f-2-a-1-bb-25-4-fef-92-cc-1873-fd-6-cb-05-e.json",
       "internalComponentName": "ComponentService3287F2A1Bb254Fef92Cc1873Fd6Cb05E",
       "path": "/service/3287f2a1-bb25-4fef-92cc-1873fd6cb05e",
-      "component": "/Users/jim/Documents/openly/localgov.fyi/src/templates/service-detail-2.js",
+      "component": "/Users/ybv/code/ybv-projects/localgov.fyi_frontend/src/templates/service-detail-2.js",
       "componentChunkName": "component---src-templates-service-detail-2-js",
       "context": {
         "data": {
@@ -3266,13 +3266,13 @@
       },
       "pluginCreator___NODE": "Plugin default-site-plugin",
       "pluginCreatorId": "Plugin default-site-plugin",
-      "componentPath": "/Users/jim/Documents/openly/localgov.fyi/src/templates/service-detail-2.js",
+      "componentPath": "/Users/ybv/code/ybv-projects/localgov.fyi_frontend/src/templates/service-detail-2.js",
       "id": "SitePage /service/3287f2a1-bb25-4fef-92cc-1873fd6cb05e",
       "parent": "SOURCE",
       "children": [],
       "internal": {
         "type": "SitePage",
-        "contentDigest": "59f1256319f241c89bcceade99357bb6",
+        "contentDigest": "ff8b00d92a375a81715f5d66bb60c52f",
         "description": "Your site's \"gatsby-node.js\"",
         "owner": "internal-data-bridge"
       }
@@ -3282,7 +3282,7 @@
       "jsonName": "service-fec-10164-9-fc-8-4-bb-5-85-bd-3-f-0919-debb-23.json",
       "internalComponentName": "ComponentServiceFec101649Fc84Bb585Bd3F0919Debb23",
       "path": "/service/fec10164-9fc8-4bb5-85bd-3f0919debb23",
-      "component": "/Users/jim/Documents/openly/localgov.fyi/src/templates/service-detail-2.js",
+      "component": "/Users/ybv/code/ybv-projects/localgov.fyi_frontend/src/templates/service-detail-2.js",
       "componentChunkName": "component---src-templates-service-detail-2-js",
       "context": {
         "data": {
@@ -3314,13 +3314,13 @@
       },
       "pluginCreator___NODE": "Plugin default-site-plugin",
       "pluginCreatorId": "Plugin default-site-plugin",
-      "componentPath": "/Users/jim/Documents/openly/localgov.fyi/src/templates/service-detail-2.js",
+      "componentPath": "/Users/ybv/code/ybv-projects/localgov.fyi_frontend/src/templates/service-detail-2.js",
       "id": "SitePage /service/fec10164-9fc8-4bb5-85bd-3f0919debb23",
       "parent": "SOURCE",
       "children": [],
       "internal": {
         "type": "SitePage",
-        "contentDigest": "c1a0463b2f13b07f29b982ea96f7d1f0",
+        "contentDigest": "6aeda6579fbe32a3a95308bd87eca684",
         "description": "Your site's \"gatsby-node.js\"",
         "owner": "internal-data-bridge"
       }
@@ -3330,7 +3330,7 @@
       "jsonName": "service-483-f-4140-f-84-b-483-e-b-533-daccb-6-aa-3116.json",
       "internalComponentName": "ComponentService483F4140F84B483EB533Daccb6Aa3116",
       "path": "/service/483f4140-f84b-483e-b533-daccb6aa3116",
-      "component": "/Users/jim/Documents/openly/localgov.fyi/src/templates/service-detail-2.js",
+      "component": "/Users/ybv/code/ybv-projects/localgov.fyi_frontend/src/templates/service-detail-2.js",
       "componentChunkName": "component---src-templates-service-detail-2-js",
       "context": {
         "data": {
@@ -3380,13 +3380,13 @@
       },
       "pluginCreator___NODE": "Plugin default-site-plugin",
       "pluginCreatorId": "Plugin default-site-plugin",
-      "componentPath": "/Users/jim/Documents/openly/localgov.fyi/src/templates/service-detail-2.js",
+      "componentPath": "/Users/ybv/code/ybv-projects/localgov.fyi_frontend/src/templates/service-detail-2.js",
       "id": "SitePage /service/483f4140-f84b-483e-b533-daccb6aa3116",
       "parent": "SOURCE",
       "children": [],
       "internal": {
         "type": "SitePage",
-        "contentDigest": "b71e35cf3791022b61b829826182df9a",
+        "contentDigest": "7d818caaef57950487b0549f4b2a9117",
         "description": "Your site's \"gatsby-node.js\"",
         "owner": "internal-data-bridge"
       }
@@ -3396,7 +3396,7 @@
       "jsonName": "service-f-504-f-05-a-4509-4-f-23-a-06-a-e-8-a-0-ef-166-bca.json",
       "internalComponentName": "ComponentServiceF504F05A45094F23A06AE8A0Ef166Bca",
       "path": "/service/f504f05a-4509-4f23-a06a-e8a0ef166bca",
-      "component": "/Users/jim/Documents/openly/localgov.fyi/src/templates/service-detail-2.js",
+      "component": "/Users/ybv/code/ybv-projects/localgov.fyi_frontend/src/templates/service-detail-2.js",
       "componentChunkName": "component---src-templates-service-detail-2-js",
       "context": {
         "data": {
@@ -3417,13 +3417,13 @@
       },
       "pluginCreator___NODE": "Plugin default-site-plugin",
       "pluginCreatorId": "Plugin default-site-plugin",
-      "componentPath": "/Users/jim/Documents/openly/localgov.fyi/src/templates/service-detail-2.js",
+      "componentPath": "/Users/ybv/code/ybv-projects/localgov.fyi_frontend/src/templates/service-detail-2.js",
       "id": "SitePage /service/f504f05a-4509-4f23-a06a-e8a0ef166bca",
       "parent": "SOURCE",
       "children": [],
       "internal": {
         "type": "SitePage",
-        "contentDigest": "3d9057b7c5ab90c341d29257770e19bb",
+        "contentDigest": "2b5b24e394eb70e4e3add34188ff69cf",
         "description": "Your site's \"gatsby-node.js\"",
         "owner": "internal-data-bridge"
       }
@@ -3433,7 +3433,7 @@
       "jsonName": "service-45-d-84-d-58-59-b-8-451-c-a-617-6711486-d-7-bfd.json",
       "internalComponentName": "ComponentService45D84D5859B8451CA6176711486D7Bfd",
       "path": "/service/45d84d58-59b8-451c-a617-6711486d7bfd",
-      "component": "/Users/jim/Documents/openly/localgov.fyi/src/templates/service-detail-2.js",
+      "component": "/Users/ybv/code/ybv-projects/localgov.fyi_frontend/src/templates/service-detail-2.js",
       "componentChunkName": "component---src-templates-service-detail-2-js",
       "context": {
         "data": {
@@ -3459,13 +3459,13 @@
       },
       "pluginCreator___NODE": "Plugin default-site-plugin",
       "pluginCreatorId": "Plugin default-site-plugin",
-      "componentPath": "/Users/jim/Documents/openly/localgov.fyi/src/templates/service-detail-2.js",
+      "componentPath": "/Users/ybv/code/ybv-projects/localgov.fyi_frontend/src/templates/service-detail-2.js",
       "id": "SitePage /service/45d84d58-59b8-451c-a617-6711486d7bfd",
       "parent": "SOURCE",
       "children": [],
       "internal": {
         "type": "SitePage",
-        "contentDigest": "410c9d0e8265a0ed868e896112e45637",
+        "contentDigest": "223374876e2da12348727bee4668ab41",
         "description": "Your site's \"gatsby-node.js\"",
         "owner": "internal-data-bridge"
       }
@@ -3475,7 +3475,7 @@
       "jsonName": "service-69877255-494-c-46-a-8-81-de-c-1-ae-44676-a-7-d.json",
       "internalComponentName": "ComponentService69877255494C46A881DeC1Ae44676A7D",
       "path": "/service/69877255-494c-46a8-81de-c1ae44676a7d",
-      "component": "/Users/jim/Documents/openly/localgov.fyi/src/templates/service-detail-2.js",
+      "component": "/Users/ybv/code/ybv-projects/localgov.fyi_frontend/src/templates/service-detail-2.js",
       "componentChunkName": "component---src-templates-service-detail-2-js",
       "context": {
         "data": {
@@ -3525,13 +3525,13 @@
       },
       "pluginCreator___NODE": "Plugin default-site-plugin",
       "pluginCreatorId": "Plugin default-site-plugin",
-      "componentPath": "/Users/jim/Documents/openly/localgov.fyi/src/templates/service-detail-2.js",
+      "componentPath": "/Users/ybv/code/ybv-projects/localgov.fyi_frontend/src/templates/service-detail-2.js",
       "id": "SitePage /service/69877255-494c-46a8-81de-c1ae44676a7d",
       "parent": "SOURCE",
       "children": [],
       "internal": {
         "type": "SitePage",
-        "contentDigest": "e0fdd394189bdc45577da401cc4b53c6",
+        "contentDigest": "57c1d78d37ae43aafa774aad8845d357",
         "description": "Your site's \"gatsby-node.js\"",
         "owner": "internal-data-bridge"
       }
@@ -3541,7 +3541,7 @@
       "jsonName": "service-09-c-1-d-988-5-e-46-4-c-60-a-920-44-db-04-b-6872-e.json",
       "internalComponentName": "ComponentService09C1D9885E464C60A92044Db04B6872E",
       "path": "/service/09c1d988-5e46-4c60-a920-44db04b6872e",
-      "component": "/Users/jim/Documents/openly/localgov.fyi/src/templates/service-detail-2.js",
+      "component": "/Users/ybv/code/ybv-projects/localgov.fyi_frontend/src/templates/service-detail-2.js",
       "componentChunkName": "component---src-templates-service-detail-2-js",
       "context": {
         "data": {
@@ -3575,13 +3575,13 @@
       },
       "pluginCreator___NODE": "Plugin default-site-plugin",
       "pluginCreatorId": "Plugin default-site-plugin",
-      "componentPath": "/Users/jim/Documents/openly/localgov.fyi/src/templates/service-detail-2.js",
+      "componentPath": "/Users/ybv/code/ybv-projects/localgov.fyi_frontend/src/templates/service-detail-2.js",
       "id": "SitePage /service/09c1d988-5e46-4c60-a920-44db04b6872e",
       "parent": "SOURCE",
       "children": [],
       "internal": {
         "type": "SitePage",
-        "contentDigest": "10f9327e4d5d60427dba1a8752c419f9",
+        "contentDigest": "2b6a7cd36a8d15d6bb4eee213c9c576f",
         "description": "Your site's \"gatsby-node.js\"",
         "owner": "internal-data-bridge"
       }
@@ -3591,7 +3591,7 @@
       "jsonName": "service-25-db-992-d-eb-6-f-494-c-ba-6-e-fe-29-ea-99-d-6-fd.json",
       "internalComponentName": "ComponentService25Db992DEb6F494CBa6EFe29Ea99D6Fd",
       "path": "/service/25db992d-eb6f-494c-ba6e-fe29ea99d6fd",
-      "component": "/Users/jim/Documents/openly/localgov.fyi/src/templates/service-detail-2.js",
+      "component": "/Users/ybv/code/ybv-projects/localgov.fyi_frontend/src/templates/service-detail-2.js",
       "componentChunkName": "component---src-templates-service-detail-2-js",
       "context": {
         "data": {
@@ -3626,140 +3626,140 @@
       },
       "pluginCreator___NODE": "Plugin default-site-plugin",
       "pluginCreatorId": "Plugin default-site-plugin",
-      "componentPath": "/Users/jim/Documents/openly/localgov.fyi/src/templates/service-detail-2.js",
+      "componentPath": "/Users/ybv/code/ybv-projects/localgov.fyi_frontend/src/templates/service-detail-2.js",
       "id": "SitePage /service/25db992d-eb6f-494c-ba6e-fe29ea99d6fd",
       "parent": "SOURCE",
       "children": [],
       "internal": {
         "type": "SitePage",
-        "contentDigest": "3492e107c9ab78a39f2ed173c2755467",
+        "contentDigest": "2883186e11a9400f4970640c2bcb11fb",
         "description": "Your site's \"gatsby-node.js\"",
         "owner": "internal-data-bridge"
       }
     },
     "SitePage /about/": {
-      "layout": null,
+      "layout": "index",
       "jsonName": "about.json",
       "internalComponentName": "ComponentAbout",
       "path": "/about/",
-      "component": "/Users/jim/Documents/openly/localgov.fyi/src/pages/about.js",
+      "component": "/Users/ybv/code/ybv-projects/localgov.fyi_frontend/src/pages/about.js",
       "componentChunkName": "component---src-pages-about-js",
       "context": {},
       "pluginCreator___NODE": "Plugin gatsby-plugin-page-creator",
       "pluginCreatorId": "Plugin gatsby-plugin-page-creator",
-      "componentPath": "/Users/jim/Documents/openly/localgov.fyi/src/pages/about.js",
+      "componentPath": "/Users/ybv/code/ybv-projects/localgov.fyi_frontend/src/pages/about.js",
       "id": "SitePage /about/",
       "parent": "SOURCE",
       "children": [],
       "internal": {
         "type": "SitePage",
-        "contentDigest": "ca000f3451b6125a4739641d7ba9b798",
+        "contentDigest": "dddcfe4323c846732ba45866b7206f0e",
         "description": "Plugin gatsby-plugin-page-creator",
         "owner": "internal-data-bridge"
       }
     },
     "SitePage /": {
-      "layout": null,
+      "layout": "index",
       "jsonName": "index.json",
       "internalComponentName": "ComponentIndex",
       "path": "/",
-      "component": "/Users/jim/Documents/openly/localgov.fyi/src/pages/index.js",
+      "component": "/Users/ybv/code/ybv-projects/localgov.fyi_frontend/src/pages/index.js",
       "componentChunkName": "component---src-pages-index-js",
       "context": {},
       "pluginCreator___NODE": "Plugin gatsby-plugin-page-creator",
       "pluginCreatorId": "Plugin gatsby-plugin-page-creator",
-      "componentPath": "/Users/jim/Documents/openly/localgov.fyi/src/pages/index.js",
+      "componentPath": "/Users/ybv/code/ybv-projects/localgov.fyi_frontend/src/pages/index.js",
       "id": "SitePage /",
       "parent": "SOURCE",
       "children": [],
       "internal": {
         "type": "SitePage",
-        "contentDigest": "d3e4a8766e316c5fc0516a3823358853",
+        "contentDigest": "bbe20b1ea5b2200aa067d9efe23f0134",
         "description": "Plugin gatsby-plugin-page-creator",
         "owner": "internal-data-bridge"
       }
     },
     "SitePage /privacy/": {
-      "layout": null,
+      "layout": "index",
       "jsonName": "privacy.json",
       "internalComponentName": "ComponentPrivacy",
       "path": "/privacy/",
-      "component": "/Users/jim/Documents/openly/localgov.fyi/src/pages/privacy.js",
+      "component": "/Users/ybv/code/ybv-projects/localgov.fyi_frontend/src/pages/privacy.js",
       "componentChunkName": "component---src-pages-privacy-js",
       "context": {},
       "pluginCreator___NODE": "Plugin gatsby-plugin-page-creator",
       "pluginCreatorId": "Plugin gatsby-plugin-page-creator",
-      "componentPath": "/Users/jim/Documents/openly/localgov.fyi/src/pages/privacy.js",
+      "componentPath": "/Users/ybv/code/ybv-projects/localgov.fyi_frontend/src/pages/privacy.js",
       "id": "SitePage /privacy/",
       "parent": "SOURCE",
       "children": [],
       "internal": {
         "type": "SitePage",
-        "contentDigest": "c038d07b803dd56f16161fe6e2d90911",
+        "contentDigest": "b6df0eaf05e89a5f4a5ed9b40b19eaf6",
         "description": "Plugin gatsby-plugin-page-creator",
         "owner": "internal-data-bridge"
       }
     },
     "SitePage /search/": {
-      "layout": null,
+      "layout": "index",
       "jsonName": "search.json",
       "internalComponentName": "ComponentSearch",
       "path": "/search/",
       "matchPath": "/search/:path",
-      "component": "/Users/jim/Documents/openly/localgov.fyi/src/pages/search/index.js",
+      "component": "/Users/ybv/code/ybv-projects/localgov.fyi_frontend/src/pages/search/index.js",
       "componentChunkName": "component---src-pages-search-index-js",
       "context": {},
       "pluginCreator___NODE": "Plugin gatsby-plugin-create-client-paths",
       "pluginCreatorId": "Plugin gatsby-plugin-create-client-paths",
-      "componentPath": "/Users/jim/Documents/openly/localgov.fyi/src/pages/search/index.js",
+      "componentPath": "/Users/ybv/code/ybv-projects/localgov.fyi_frontend/src/pages/search/index.js",
       "id": "SitePage /search/",
       "parent": "SOURCE",
       "children": [],
       "internal": {
         "type": "SitePage",
-        "contentDigest": "4bc06dd0ab9c1c54a48331b99264e086",
+        "contentDigest": "77523a8ee8433ad57dad833d5c0d2133",
         "description": "Plugin gatsby-plugin-create-client-paths",
         "owner": "internal-data-bridge"
       }
     },
     "SitePage /spotlight/": {
-      "layout": null,
+      "layout": "index",
       "jsonName": "spotlight.json",
       "internalComponentName": "ComponentSpotlight",
       "path": "/spotlight/",
-      "component": "/Users/jim/Documents/openly/localgov.fyi/src/pages/spotlight.js",
+      "component": "/Users/ybv/code/ybv-projects/localgov.fyi_frontend/src/pages/spotlight.js",
       "componentChunkName": "component---src-pages-spotlight-js",
       "context": {},
       "pluginCreator___NODE": "Plugin gatsby-plugin-page-creator",
       "pluginCreatorId": "Plugin gatsby-plugin-page-creator",
-      "componentPath": "/Users/jim/Documents/openly/localgov.fyi/src/pages/spotlight.js",
+      "componentPath": "/Users/ybv/code/ybv-projects/localgov.fyi_frontend/src/pages/spotlight.js",
       "id": "SitePage /spotlight/",
       "parent": "SOURCE",
       "children": [],
       "internal": {
         "type": "SitePage",
-        "contentDigest": "5a7fa716214f8dd52e579e3f08b1c898",
+        "contentDigest": "cfbe26f35272250b3843e3cf8b4b8d2b",
         "description": "Plugin gatsby-plugin-page-creator",
         "owner": "internal-data-bridge"
       }
     },
     "SitePage /terms/": {
-      "layout": null,
+      "layout": "index",
       "jsonName": "terms.json",
       "internalComponentName": "ComponentTerms",
       "path": "/terms/",
-      "component": "/Users/jim/Documents/openly/localgov.fyi/src/pages/terms.js",
+      "component": "/Users/ybv/code/ybv-projects/localgov.fyi_frontend/src/pages/terms.js",
       "componentChunkName": "component---src-pages-terms-js",
       "context": {},
       "pluginCreator___NODE": "Plugin gatsby-plugin-page-creator",
       "pluginCreatorId": "Plugin gatsby-plugin-page-creator",
-      "componentPath": "/Users/jim/Documents/openly/localgov.fyi/src/pages/terms.js",
+      "componentPath": "/Users/ybv/code/ybv-projects/localgov.fyi_frontend/src/pages/terms.js",
       "id": "SitePage /terms/",
       "parent": "SOURCE",
       "children": [],
       "internal": {
         "type": "SitePage",
-        "contentDigest": "b434abbc7334a520fbf9f3755ac0d5e0",
+        "contentDigest": "0fb2129830a4cd40c4e3480a910fa529",
         "description": "Plugin gatsby-plugin-page-creator",
         "owner": "internal-data-bridge"
       }
@@ -3803,6 +3803,39 @@
       ],
       "/Users/jim/Documents/openly/localgov.fyi/tos/terms.md absPath of file >>> MarkdownRemark": [
         "/terms/"
+      ],
+      "/Users/ybv/code/ybv-projects/localgov.fyi_frontend/tos/terms.md absPath of file >>> MarkdownRemark": [
+        "/terms/"
+      ],
+      "/Users/ybv/code/ybv-projects/localgov.fyi_frontend/src/images/gal1.jpeg absPath of file >> ImageSharp": [
+        "/spotlight/"
+      ],
+      "/Users/ybv/code/ybv-projects/localgov.fyi_frontend/src/images/gal1.jpeg absPath of file": [
+        "/spotlight/"
+      ],
+      "/Users/ybv/code/ybv-projects/localgov.fyi_frontend/src/images/services.jpg absPath of file >> ImageSharp": [
+        "/spotlight/"
+      ],
+      "/Users/ybv/code/ybv-projects/localgov.fyi_frontend/src/images/services.jpg absPath of file": [
+        "/spotlight/"
+      ],
+      "/Users/ybv/code/ybv-projects/localgov.fyi_frontend/src/images/gal3.jpeg absPath of file >> ImageSharp": [
+        "/spotlight/"
+      ],
+      "/Users/ybv/code/ybv-projects/localgov.fyi_frontend/src/images/gal3.jpeg absPath of file": [
+        "/spotlight/"
+      ],
+      "/Users/ybv/code/ybv-projects/localgov.fyi_frontend/src/images/gal4.jpeg absPath of file >> ImageSharp": [
+        "/spotlight/"
+      ],
+      "/Users/ybv/code/ybv-projects/localgov.fyi_frontend/src/images/gal4.jpeg absPath of file": [
+        "/spotlight/"
+      ],
+      "/Users/ybv/code/ybv-projects/localgov.fyi_frontend/src/images/trends.jpg absPath of file >> ImageSharp": [
+        "/spotlight/"
+      ],
+      "/Users/ybv/code/ybv-projects/localgov.fyi_frontend/src/images/trends.jpg absPath of file": [
+        "/spotlight/"
       ]
     },
     "connections": {

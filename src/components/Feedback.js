@@ -16,14 +16,14 @@ const styles = theme => ({
   },
   paper: {
     position: 'absolute',
-    top: -244,
+    top: -284,
     left: -230,
-    height: 266,
+    height: 280,
     width: 332,
     paddingLeft: theme.spacing.unit * 2,
     paddingRight: theme.spacing.unit * 2,
-    paddingTop: theme.spacing.unit,
-    paddingBottom: theme.spacing.unit,
+    paddingTop: theme.spacing.unit * 2,
+    marginBottom: theme.spacing.unit * 3,
     borderTop : `6px solid ${theme.palette.primary["500"]}`,
   },
   bootstrapInput: {
@@ -37,7 +37,8 @@ const styles = theme => ({
     transition: theme.transitions.create(['border-color', 'box-shadow'])
   },
   button: {
-    marginTop: theme.spacing.unit,
+    marginTop: theme.spacing.unit * 2,
+    marginBottom: theme.spacing.unit,
   },
   afterSubmit: {
     width: '100%',
@@ -139,7 +140,7 @@ class Feedback extends Component {
         <Typography onClick={this.handleClick}>Send feedback</Typography>
         {open && <Paper className={classes.paper}>
           {(!success && !failure && !submitting) && <Fragment>
-            <Typography variant="display1">
+            <Typography variant="title" component="h1">
               Share your feedback
             </Typography>
             <form
@@ -168,10 +169,10 @@ class Feedback extends Component {
                 />
               </label>
               <Typography variant="caption">*We won't send you spam</Typography>
-              <Button variant="outlined" type="submit" className={classes.button}>
+              <Button size="small" variant="outlined" type="submit" className={classes.button}>
                 Submit
               </Button>
-              <Button onClick={this.handleClose} className={classes.button}>Cancel</Button>
+              <Button size="small" onClick={this.handleClose} className={classes.button}>Cancel</Button>
             </form>
           </Fragment>}
           {submitting && <div className={classes.afterSubmit}>
@@ -182,13 +183,13 @@ class Feedback extends Component {
               <path fill="none" d="M0 0h24v24H0V0zm0 0h24v24H0V0z"/>
               <path d="M16.59 7.58L10 14.17l-3.59-3.58L5 12l5 5 8-8zM12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z"/>
             </SvgIcon>
-            <Typography>Thanks for your feedback!</Typography>
-            <Button onClick={this.handleClose} className={classes.button}>Close</Button>
+            <Typography variant="body1" component="h1">Thanks for your feedback!</Typography>
+            <Button size="small" variant="outlined" onClick={this.handleClose} className={classes.button}>Close</Button>
           </div>}
           {failure && <div className={classes.afterSubmit}>
             <MoodBad className={classes.icon}/>
-            <Typography>Something went wrong. Please try again.</Typography>
-            <Button onClick={this.handleReset} className={classes.button}>Back</Button>
+            <Typography variant="body1" >Something went wrong. Please try again.</Typography>
+            <Button size="small" variant="outlined" onClick={this.handleReset} className={classes.button}>Back</Button>
           </div>}
         </Paper>}
       </div>

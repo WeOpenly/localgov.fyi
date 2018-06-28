@@ -99,44 +99,51 @@
     },
     {
         "componentChunkName": "component---cache-dev-404-page-js",
-        "layout": null,
+        "layout": "layout---index",
+        "layoutComponentChunkName": "component---src-layouts-index-js",
         "jsonName": "dev-404-page.json",
         "path": "/dev-404-page/"
     },
     {
         "componentChunkName": "component---src-pages-about-js",
-        "layout": null,
+        "layout": "layout---index",
+        "layoutComponentChunkName": "component---src-layouts-index-js",
         "jsonName": "about.json",
         "path": "/about/"
     },
     {
         "componentChunkName": "component---src-pages-index-js",
-        "layout": null,
+        "layout": "layout---index",
+        "layoutComponentChunkName": "component---src-layouts-index-js",
         "jsonName": "index.json",
         "path": "/"
     },
     {
         "componentChunkName": "component---src-pages-privacy-js",
-        "layout": null,
+        "layout": "layout---index",
+        "layoutComponentChunkName": "component---src-layouts-index-js",
         "jsonName": "privacy.json",
         "path": "/privacy/"
     },
     {
         "componentChunkName": "component---src-pages-search-index-js",
-        "layout": null,
+        "layout": "layout---index",
+        "layoutComponentChunkName": "component---src-layouts-index-js",
         "jsonName": "search.json",
         "path": "/search/",
         "matchPath": "/search/:path"
     },
     {
         "componentChunkName": "component---src-pages-spotlight-js",
-        "layout": null,
+        "layout": "layout---index",
+        "layoutComponentChunkName": "component---src-layouts-index-js",
         "jsonName": "spotlight.json",
         "path": "/spotlight/"
     },
     {
         "componentChunkName": "component---src-pages-terms-js",
-        "layout": null,
+        "layout": "layout---index",
+        "layoutComponentChunkName": "component---src-layouts-index-js",
         "jsonName": "terms.json",
         "path": "/terms/"
     }

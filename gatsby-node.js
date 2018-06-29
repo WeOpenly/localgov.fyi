@@ -97,43 +97,43 @@ contact_details {
         })
       })
 
-      const memTemplate = path.resolve(`src/templates/member-detail.js`)
-      // We want to create a detailed page for each Instagram post. Since the scrapped
-      // Instagram data already includes an ID field, we just use that for each page's
-      // path.
-      _.each(result.data.allOrgsJson.edges, edge => {
+      // const memTemplate = path.resolve(`src/templates/member-detail.js`)
+      // // We want to create a detailed page for each Instagram post. Since the scrapped
+      // // Instagram data already includes an ID field, we just use that for each page's
+      // // path.
+      // _.each(result.data.allOrgsJson.edges, edge => {
 
-        _.each(edge.node.details.members, member => {
+      //   _.each(edge.node.details.members, member => {
 
-          // Gatsby uses Redux to manage its internal state. Plugins and sites can use
-          // functions like "createPage" to interact with Gatsby.
-          const related_members = edge
-            .node
-            .details
-            .members
-            .filter((mem) => mem.id !== member.id)
+      //     // Gatsby uses Redux to manage its internal state. Plugins and sites can use
+      //     // functions like "createPage" to interact with Gatsby.
+      //     const related_members = edge
+      //       .node
+      //       .details
+      //       .members
+      //       .filter((mem) => mem.id !== member.id)
 
-          createPage({
-            // Each page is required to have a `path` as well as a template component. The
-            // `context` is optional but is often necessary so the template can query data
-            // specific to each page.
-            path: `member/${member.id}`,
-            component: slash(memTemplate),
-             layout: "detailTemplate",
-            context: {
-              data: {
-                contact_details: member.contact_details,
-                id: member.id,
-                person_name: member.person_name,
-                person_image: member.person_image,
-                org_id: edge.node.details.id,
-                org_name: edge.node.details.name,
-                related_members: related_members
-              }
-            }
-          })
-        })
-      })
+      //     createPage({
+      //       // Each page is required to have a `path` as well as a template component. The
+      //       // `context` is optional but is often necessary so the template can query data
+      //       // specific to each page.
+      //       path: `member/${member.id}`,
+      //       component: slash(memTemplate),
+      //        layout: "detailTemplate",
+      //       context: {
+      //         data: {
+      //           contact_details: member.contact_details,
+      //           id: member.id,
+      //           person_name: member.person_name,
+      //           person_image: member.person_image,
+      //           org_id: edge.node.details.id,
+      //           org_name: edge.node.details.name,
+      //           related_members: related_members
+      //         }
+      //       }
+      //     })
+      //   })
+      // })
 
       const serTemplate = path.resolve(`src/templates/service-detail-2.js`)
       // We want to create a detailed page for each Instagram post. Since the scrapped

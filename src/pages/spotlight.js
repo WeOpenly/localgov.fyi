@@ -93,7 +93,7 @@ class Index extends React.Component {
 
     render() {
         const {classes, data} = this.props;
-        console.log(data);
+
 
         const {open} = this.state;
 

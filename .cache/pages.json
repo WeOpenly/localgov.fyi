@@ -7,20 +7,6 @@
         "path": "/organization/98bb2db7-5227-47ed-b2f4-520304d57fe5"
     },
     {
-        "componentChunkName": "component---src-templates-member-detail-js",
-        "layout": "layout---detailTemplate",
-        "layoutComponentChunkName": "component---src-layouts-detail-template-js",
-        "jsonName": "member-b-2-a-5127-e-4379-4445-92-c-7-548211583137.json",
-        "path": "/member/b2a5127e-4379-4445-92c7-548211583137"
-    },
-    {
-        "componentChunkName": "component---src-templates-member-detail-js",
-        "layout": "layout---detailTemplate",
-        "layoutComponentChunkName": "component---src-layouts-detail-template-js",
-        "jsonName": "member-d-964-b-4-bf-afce-4100-b-0-d-8-c-0-d-7-d-1-be-1-cc-7.json",
-        "path": "/member/d964b4bf-afce-4100-b0d8-c0d7d1be1cc7"
-    },
-    {
         "componentChunkName": "component---src-templates-service-detail-2-js",
         "layout": "layout---detailTemplate",
         "layoutComponentChunkName": "component---src-layouts-detail-template-js",
@@ -96,13 +82,6 @@
         "layoutComponentChunkName": "component---src-layouts-detail-template-js",
         "jsonName": "service-25-db-992-d-eb-6-f-494-c-ba-6-e-fe-29-ea-99-d-6-fd.json",
         "path": "/service/25db992d-eb6f-494c-ba6e-fe29ea99d6fd"
-    },
-    {
-        "componentChunkName": "component---cache-dev-404-page-js",
-        "layout": "layout---index",
-        "layoutComponentChunkName": "component---src-layouts-index-js",
-        "jsonName": "dev-404-page.json",
-        "path": "/dev-404-page/"
     },
     {
         "componentChunkName": "component---src-pages-about-js",

@@ -104,7 +104,7 @@ export const fetchSearchResults = async(dispatch, getState) => {
 
         fetch(`https://d3qlx9ss0mi45s.cloudfront.net/localgov.fyi/track.png?${payloadParams}`, {}).then((data) => { }).catch((err) => { })
     } catch (e) {
-        console.log(e)
+
         dispatch(recvSearchResultsFailure());
     }
 };

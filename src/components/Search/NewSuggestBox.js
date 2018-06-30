@@ -232,7 +232,12 @@ class NewSuggestBox extends Component {
                 <div>
                     <div>
                         <Typography align="left" variant="title">
-                            {suggestion.org_name}
+                            {suggestion.heading}
+                        </Typography>
+                    </div>
+                    <div>
+                        <Typography align="left" variant="caption">
+                            {suggestion.subheading}
                         </Typography>
                     </div>
                 </div>

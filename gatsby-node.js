@@ -54,16 +54,6 @@ allOrgsJson {
             url
             name
           }
-        },
-        members {
-          id,
-          person_name,
-          post_label,
-          person_image,
-contact_details {
-  contact_value,
-  contact_type
-},
         }
       }
     }
@@ -75,6 +65,7 @@ contact_details {
       if (result.errors) {
         reject(new Error(result.errors))
       }
+
       // Create image post pages.
       const orgTemplate = path.resolve(`src/templates/organization-detail.js`)
       // We want to create a detailed page for each Instagram post. Since the scrapped

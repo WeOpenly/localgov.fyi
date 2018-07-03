@@ -2,6 +2,7 @@ import React, { Fragment } from "react";
 import Grid from '@material-ui/core/Grid';
 import {withStyles} from '@material-ui/core/styles';
 import classNames from 'classnames';
+import { isMobileOnly } from 'react-device-detect';
 import Share from "../components/Share";
 import HeaderWithSearch from '../components/HeaderWithSearch';
 import Footer from '../components/Footer';
@@ -41,7 +42,7 @@ class Index extends React.Component {
   }
 
   render() {
-    const isMobile = (/Android|webOS|iPhone|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent));
+
     const {classes} = this.props;
     let isIndexOrSearch = false;
 

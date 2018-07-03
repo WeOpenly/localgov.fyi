@@ -121,7 +121,7 @@ class Index extends React.Component {
           <Grid item xs={1} sm={2} md={3} />
           <Grid item xs={10} sm={8} md={6}>
             <Typography align="left" variant="body2" component="p" className={classes.appSubHeaderText}>
-              Search for local government organizations, members, and services
+              Search for local government services
             </Typography>
           </Grid>
           <Grid item xs={1} sm={2} md={3} />

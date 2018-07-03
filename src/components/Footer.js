@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Link from 'gatsby-link';
+import { isMobileOnly } from 'react-device-detect';
 
 import { withStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
@@ -20,6 +21,11 @@ const styles = theme => ({
   copyright: {
     marginRight: theme.spacing.unit,
   },
+  copyrightMobile: {
+    display: 'flex',
+    justifyContent: 'flex-end',
+    marginRight: theme.spacing.unit,
+  },
   item: {
     display: 'flex',
     justifyContent: 'flex-end',
@@ -35,8 +41,10 @@ const styles = theme => ({
   },
 });
 
+
 class Footer extends Component {
   render() {
+    const isMobile = (/Android|webOS|iPhone|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent));
     const { classes } = this.props;
     return (
       <Grid container>
@@ -44,16 +52,11 @@ class Footer extends Component {
         <Grid item xs={11} md={10}>
           <footer className={classes.footer}>
             <Grid container className={classes.container}>
-              <Grid item md={6} className={classes.copyright}>
+              <Grid item xs={12} md={6} className={isMobile ? classes.copyrightMobile : classes.copyright}>
                 <Typography>Copyright © 2018 Openly Technologies, Inc.</Typography>
               </Grid>
               <Grid item xs={12} md={2} className={classes.item}>
                 <Feedback />
-              </Grid>
-              <Grid item xs={12} md={1} className={classes.item}>
-                <Link to="/about/" className={classes.link}>
-                  <Typography>About</Typography>
-                </Link>
               </Grid>
               <Grid item xs={12} md={1} className={classes.item}>
                 <Link to="/terms/" className={classes.link}>

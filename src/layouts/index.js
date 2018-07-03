@@ -8,15 +8,31 @@ import Footer from '../components/Footer';
 import withRoot from '../withRoot';
 
 const styles = theme => ({
-stickyFooterIndex : {
-    position: 'fixed',
-    bottom: 0,
-    width: '100%',
-    zIndex: 1
+  root: {
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'flex-start',
   },
-stickyFooter:{
-
-}
+  main: {
+    width: '100%',
+    minHeight: '100vh',
+    paddingBottom: 70,
+  },
+  mainMobile: {
+    width: '100%',
+    minHeight: '100vh',
+    paddingBottom: 158,
+  },
+  footer: {
+    width: '100%',
+    alignSelf: 'flex-end',
+    marginTop: -70,
+  },
+  footerMobile: {
+    width: '100%',
+    alignSelf: 'flex-end',
+    marginTop: -158,
+  },
 });
 
 class Index extends React.Component {
@@ -25,6 +41,7 @@ class Index extends React.Component {
   }
 
   render() {
+    const isMobile = (/Android|webOS|iPhone|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent));
     const {classes} = this.props;
     let isIndexOrSearch = false;
     console.log(this.props.location.pathname);
@@ -32,18 +49,18 @@ class Index extends React.Component {
       isIndexOrSearch = true;
     }
 
-    const footerClass = classNames({
-      'stickyFooterIndex': isIndexOrSearch,
-      'stickyFooter': !isIndexOrSearch
-    });
+    // const footerClass = classNames({
+    //   'stickyFooterIndex': isIndexOrSearch,
+    //   'stickyFooter': !isIndexOrSearch
+    // });
 
     return (
-      <div>
-            {this
-              .props
-              .children()}
-        <div className={classes[footerClass]}>
-            <Footer/>
+      <div className={classes.root}>
+        <div className={isMobile ? classes.mainMobile : classes.main}>
+          {this.props.children()}
+        </div>
+        <div className={isMobile ? classes.footerMobile : classes.footer}>
+          <Footer />
         </div>
       </div>
     );

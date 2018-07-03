@@ -12,14 +12,31 @@ const styles = theme => ({
     width: "100%",
     height: "100%",
     margin: 0,
-    padding: 0
+    padding: 0,
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'flex-start',
+  },
+  main: {
+    width: '100%',
+    minHeight: '100vh',
+    paddingBottom: 70,
+  },
+  mainMobile: {
+    width: '100%',
+    minHeight: '100vh',
+    paddingBottom: 158,
   },
   footer: {
-    position: 'fixed',
-    bottom: 0,
     width: '100%',
-    zIndex: 1
-  }
+    alignSelf: 'flex-end',
+    marginTop: -70,
+  },
+  footerMobile: {
+    width: '100%',
+    alignSelf: 'flex-end',
+    marginTop: -158,
+  },
 });
 
 class DetailTemplate extends React.Component {
@@ -28,20 +45,25 @@ class DetailTemplate extends React.Component {
   }
 
   render() {
+    const isMobile = (/Android|webOS|iPhone|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent));
     const { classes } = this.props;
 
     return (
       <div className={classes.root}>
-        <HeaderWithSearch />
-        <Grid container spacing={0}>
-          <Grid item xs={1} />
-          <Grid item xs={10}>
-            {this.props.children()}
+        <div className={isMobile ? classes.mainMobile : classes.main}>
+          <HeaderWithSearch />
+          <Grid container spacing={0}>
+            <Grid item xs={1} />
+            <Grid item xs={10}>
+              {this.props.children()}
+            </Grid>
+            <Grid item xs={1} />
           </Grid>
-          <Grid item xs={1} />
-        </Grid>
-        <Share />
+          <Share />
+        </div>
+        <div className={isMobile ? classes.footerMobile : classes.footer}>
           <Footer />
+        </div>
       </div>
     );
   }

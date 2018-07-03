@@ -347,7 +347,7 @@ class NewSuggestBox extends Component {
         const { input, searchSuggestions} = this.props.search;
         const {userCity} = this.props.search;
 
-        let placeholder = "";
+        let placeholder = "Type a location...";
 
         if (userCity) { placeholder = `Try '${userCity}'`; }
 

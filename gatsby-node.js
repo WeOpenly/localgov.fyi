@@ -65,8 +65,10 @@ allOrgsJson {
         reject(new Error(result.errors))
       }
 
-      if(!result.data){
+      if(result.data === undefined){
+        console.log(result.data, "rejecting page creation");
         reject(new Error());
+        return
       }
       
       // Create image post pages.

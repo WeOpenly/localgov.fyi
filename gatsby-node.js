@@ -64,6 +64,10 @@ allOrgsJson {
       if (result.errors) {
         reject(new Error(result.errors))
       }
+
+      if(!result.data){
+        reject(new Error());
+      }
       
       // Create image post pages.
       const orgTemplate = path.resolve(`src/templates/organization-detail.js`)

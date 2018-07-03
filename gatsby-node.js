@@ -59,13 +59,12 @@ allOrgsJson {
     }
   }
 }
-
-          }
+}
         `).then(result => {
       if (result.errors) {
         reject(new Error(result.errors))
       }
-
+      
       // Create image post pages.
       const orgTemplate = path.resolve(`src/templates/organization-detail.js`)
       // We want to create a detailed page for each Instagram post. Since the scrapped

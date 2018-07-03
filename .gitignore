@@ -3,6 +3,7 @@ node_modules
 public
 static
 .cache
+.cache/*
 .DS_Store
 
 # Logs

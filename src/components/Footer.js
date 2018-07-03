@@ -44,7 +44,6 @@ const styles = theme => ({
 
 class Footer extends Component {
   render() {
-    const isMobile = (/Android|webOS|iPhone|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent));
     const { classes } = this.props;
     return (
       <Grid container>
@@ -52,7 +51,7 @@ class Footer extends Component {
         <Grid item xs={11} md={10}>
           <footer className={classes.footer}>
             <Grid container className={classes.container}>
-              <Grid item xs={12} md={6} className={isMobile ? classes.copyrightMobile : classes.copyright}>
+              <Grid item xs={12} md={6} className={isMobileOnly ? classes.copyrightMobile : classes.copyright}>
                 <Typography>Copyright © 2018 Openly Technologies, Inc.</Typography>
               </Grid>
               <Grid item xs={12} md={2} className={classes.item}>

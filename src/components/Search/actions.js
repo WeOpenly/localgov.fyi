@@ -44,7 +44,7 @@ function recvSuggestionsFailed() {
     return {type: types.RECV_SEARCH_SUGGESTIONS_FAILED};
 }
 
-function setSearchSuggesitions(suggestions) {
+export function setSearchSuggesitions(suggestions) {
     return {type: types.RECV_SEARCH_SUGGESTIONS_SUCCESS, suggestions: suggestions.results};
 }
 

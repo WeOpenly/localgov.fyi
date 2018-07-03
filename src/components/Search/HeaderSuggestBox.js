@@ -24,7 +24,7 @@ import parse from "autosuggest-highlight/parse";
 import Autosuggest from "react-autosuggest";
 
 import withRoot from '../../withRoot';
-import {fetchSearchSuggestions, clearInput, updateInput, fetchSearchResults} from "./actions";
+import { fetchSearchSuggestions, clearInput, updateInput, setSearchSuggesitions, fetchSearchResults} from "./actions";
 
 const styles = theme => ({
     wrapper: {
@@ -179,6 +179,15 @@ class HeaderSuggestBox extends Component {
         );
     }
 
+    componentDidMount(){
+        const {dispatch} = this.props;
+        dispatch(clearInput());
+        const results = {
+            results: []
+        }
+        dispatch(setSearchSuggesitions(results));   
+    }
+
     getSectionSuggestions(section) {
         return section.suggestions;
     }
@@ -288,9 +297,8 @@ class HeaderSuggestBox extends Component {
     }
 
     handleChange(event, {newValue, method}) {
-
-
         const {dispatch} = this.props;
+        event.preventDefault();
         if (method === "type") {
             dispatch(updateInput(newValue))
         }
@@ -321,7 +329,7 @@ class HeaderSuggestBox extends Component {
         const {input, searchSuggestions} = this.props.search;
         const {userCity} = this.props.search;
 
-        let placeholder = null;
+        let placeholder = '';
 
         if (userCity) {
             placeholder = `Try '${userCity}'`;
@@ -350,6 +358,7 @@ class HeaderSuggestBox extends Component {
                     shouldRenderSuggestions={this.shouldRenderSuggestions}
                     inputProps={{
                     classes,
+                    autoFocus: false,
                     type: 'search',
                     placeholder: placeholder,
                     value: input,

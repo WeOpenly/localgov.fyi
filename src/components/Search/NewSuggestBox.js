@@ -25,7 +25,7 @@ import parse from "autosuggest-highlight/parse";
 import Autosuggest from "react-autosuggest";
 
 import withRoot from '../../withRoot';
-import { fetchAreaSearchSuggestions, clearInput, updateInput } from "./actions";
+import {fetchAreaSearchSuggestions, clearInput, updateInput, setSearchSuggesitions} from "./actions";
 
 const styles = theme => ({
 boldWrapper : {
@@ -195,6 +195,15 @@ class NewSuggestBox extends Component {
         this.shouldRenderSuggestions = this
             .shouldRenderSuggestions
             .bind(this);
+    }
+
+    componentDidMount() {
+        const { dispatch } = this.props;
+        dispatch(clearInput());
+        const results = {
+            results: []
+        }
+        dispatch(setSearchSuggesitions(results));
     }
 
     renderSectionTitle(section) {

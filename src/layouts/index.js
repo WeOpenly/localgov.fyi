@@ -57,10 +57,10 @@ class Index extends React.Component {
 
     return (
       <div className={classes.root}>
-        <div className={isMobile ? classes.mainMobile : classes.main}>
+        <div className={isMobileOnly ? classes.mainMobile : classes.main}>
           {this.props.children()}
         </div>
-        <div className={isMobile ? classes.footerMobile : classes.footer}>
+        <div className={isMobileOnly ? classes.footerMobile : classes.footer}>
           <Footer />
         </div>
       </div>

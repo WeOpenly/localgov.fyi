@@ -82,7 +82,9 @@ class Index extends React.Component {
     render() {
         const {classes, location, search} = this.props;
         const {pathname} = location;
-        const { isSemantic, searchResultsLoading, searchResultsLoadingFailed, input} = search;
+        const {isSemantic, searchResultsLoading, searchResults, searchResultsLoadingFailed, input} = search;
+
+        const noResults = !isSemantic && searchResults.length === 0;
        
         if (searchResultsLoading) {
             return (
@@ -92,7 +94,7 @@ class Index extends React.Component {
             );
         }
 
-        if (true){
+        if (noResults){
             return <div className={classes.root}>
                 <Helmet title={`Search for - ${input}`} />
                 <HeaderWithSearch />

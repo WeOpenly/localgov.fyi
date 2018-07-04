@@ -246,13 +246,13 @@ class SearchResults extends Component {
 
         return (
             <Grid container className={classes.searchResults} spacing={16}>
-                <Grid item xs={12} sm={8}>
+                <Grid item xs={12} sm={6}>
                     {intentComp}
                     {listComp}
                     {/* {(listComp.length > 0) ? ({listComp}) : null} */}
                 </Grid>
                 {detailComp && (
-                    <Grid xs={12} item sm={4}>
+                    <Grid xs={12} item sm={6}>
                             {detailComp}
                     </Grid>
                 )}

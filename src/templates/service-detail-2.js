@@ -7,10 +7,16 @@ import Typography from '@material-ui/core/Typography';
 import Helmet from "react-helmet";
 
 import List from '@material-ui/core/List';
-import ListItem from
-'@material-ui/core/ListItem';
-import ListItemText from
-'@material-ui/core/ListItemText';
+import ListItem from '@material-ui/core/ListItem';
+import ListItemText from '@material-ui/core/ListItemText';
+
+import InfoOutline from '@material-ui/icons/InfoOutline';
+import AttachMoney from '@material-ui/icons/AttachMoney';
+import AccessTime from '@material-ui/icons/AccessTime';
+import Assignment from '@material-ui/icons/Assignment';
+import PlaylistAddCheck from '@material-ui/icons/PlaylistAddCheck';
+import QuestionAnswer from '@material-ui/icons/QuestionAnswer';
+import PinDrop from '@material-ui/icons/PinDrop';
 
 import ContactDetails from '../components/ContactDetails';
 import AddressGoogleMap from '../components/AddressGoogleMap';
@@ -37,7 +43,14 @@ const styles = theme => ({
     },
     cardContent: {
         padding: 4
-    }
+    },
+    iconWrapper: {
+        paddingTop: theme.spacing.unit,
+        paddingLeft: theme.spacing.unit * 2,
+    },
+    icon: {
+        fontSize: 30,
+    },
 });
 
 const RawHTML = ({
@@ -202,7 +215,11 @@ class ServiceDetail extends React.Component {
                     <Grid item xs={12}>
                         <Paper className={classes.cards}>
                             <Grid container spacing={8}>
-                                <Grid item xs={2} sm={1}></Grid>
+                                <Grid item xs={2} sm={1}>
+                                    <div className={classes.iconWrapper}>
+                                        <InfoOutline className={classes.icon} />
+                                    </div>
+                                </Grid>
                                 <Grid item xs={10} sm={11}>
                                     <div className={classes.cardContent}>
                                         <Typography variant="subheading" gutterBottom>
@@ -219,7 +236,11 @@ class ServiceDetail extends React.Component {
                     {price && <Grid item xs={12}>
                         <Paper className={classes.cards}>
                             <Grid container spacing={8}>
-                                <Grid item xs={2} sm={1}></Grid>
+                                <Grid item xs={2} sm={1}>
+                                    <div className={classes.iconWrapper}>
+                                        <AttachMoney className={classes.icon} />
+                                    </div>
+                                </Grid>
                                 <Grid item xs={10} sm={11}>
                                     <div className={classes.cardContent}>
                                         <Typography variant="body2" gutterBottom>
@@ -233,7 +254,11 @@ class ServiceDetail extends React.Component {
                     {timingList && <Grid item xs={12}>
                         <Paper className={classes.cards}>
                             <Grid container spacing={8}>
-                                <Grid item xs={2} sm={1}></Grid>
+                                <Grid item xs={2} sm={1}>
+                                    <div className={classes.iconWrapper}>
+                                        <AccessTime className={classes.icon} />
+                                    </div>
+                                </Grid>
                                 <Grid item xs={10} sm={11}>
                                     <div className={classes.cardContent}>{timingList}</div>
                                 </Grid>
@@ -243,7 +268,11 @@ class ServiceDetail extends React.Component {
                     {formList && <Grid item xs={12}>
                         <Paper className={classes.cards}>
                             <Grid container spacing={8}>
-                                <Grid item xs={2} sm={1}></Grid>
+                                <Grid item xs={2} sm={1}>
+                                    <div className={classes.iconWrapper}>
+                                        <Assignment className={classes.icon} />
+                                    </div>
+                                </Grid>
                                 <Grid item xs={10} sm={11}>
                                     <div className={classes.cardContent}>{formList}</div>
                                 </Grid>
@@ -253,7 +282,11 @@ class ServiceDetail extends React.Component {
                     {steplist && <Grid item xs={12}>
                         <Paper className={classes.cards}>
                             <Grid container spacing={8}>
-                                <Grid item xs={2} sm={1}></Grid>
+                                <Grid item xs={2} sm={1}>
+                                    <div className={classes.iconWrapper}>
+                                        <PlaylistAddCheck className={classes.icon} />
+                                    </div>
+                                </Grid>
                                 <Grid item xs={10} sm={11}>
                                     <div className={classes.cardContent}>{steplist}</div>
                                 </Grid>
@@ -263,7 +296,11 @@ class ServiceDetail extends React.Component {
                     {qaList && <Grid item xs={12}>
                         <Paper className={classes.cards}>
                             <Grid container spacing={8}>
-                                <Grid item xs={2} sm={1}></Grid>
+                                <Grid item xs={2} sm={1}>
+                                    <div className={classes.iconWrapper}>
+                                        <QuestionAnswer className={classes.icon} />
+                                    </div>
+                                </Grid>
                                 <Grid item xs={10} sm={11}>
                                     <div className={classes.cardContent}>{qaList}</div>
                                 </Grid>
@@ -273,7 +310,11 @@ class ServiceDetail extends React.Component {
                     {locList && <Grid item xs={12}>
                         <Paper className={classes.cards}>
                             <Grid container spacing={8}>
-                                <Grid item xs={2} sm={1}></Grid>
+                                <Grid item xs={2} sm={1}>
+                                    <div className={classes.iconWrapper}>
+                                        <PinDrop className={classes.icon} />
+                                    </div>
+                                </Grid>
                                 <Grid item xs={10} sm={11}>
                                     <div className={classes.cardContent}>{locList}</div>
                                 </Grid>
@@ -282,10 +323,10 @@ class ServiceDetail extends React.Component {
                     </Grid>}
                 </Grid>
                 <Grid item xs={12} sm={12} md={6}>
+                    {service_del_links && <ServiceDeliveryLink serDelLinks={service_del_links}/>}
                     {contact_details && <ContactDetails info={contact_details}/>}
                     <img src={`https://d3qlx9ss0mi45s.cloudfront.net/localgov.fyi/track.png?${payloadParams}`} alt={"localgov-track"} /> 
                     <br/>
-                    {service_del_links && <ServiceDeliveryLink serDelLinks={service_del_links}/>}
                     {offeredInDetails}
                 </Grid>
             </Grid>

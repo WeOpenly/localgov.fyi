@@ -59,7 +59,6 @@ class DetailTemplate extends React.Component {
             </Grid>
             <Grid item xs={1} />
           </Grid>
-          <Share />
         </div>
         <div className={isMobileOnly ? classes.footerMobile : classes.footer}>
           <Footer />

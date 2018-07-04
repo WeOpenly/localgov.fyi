@@ -33,7 +33,7 @@ const styles = theme => ({
         marginTop: theme.spacing.unit * 2
     },
     cards: {
-        marginTop: theme.spacing.unit * 2,
+        marginBottom: theme.spacing.unit * 2,
         paddingTop: theme.spacing.unit,
         borderRadius: 3,
         boxShadow: `0 0 2px 1px ${theme.palette.primary["50"]}`

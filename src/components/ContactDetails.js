@@ -23,7 +23,7 @@ const styles = theme => ({
         borderBottom: `1px solid ${theme.palette.primary["300"]}`
     },
     contactInfoContainer: {
-        paddingBottom: 24,
+        // paddingBottom: 24,
         borderRadius: 5,
         boxShadow: `0 0 10px 5px ${theme.palette.primary["A200"]}`
     },
@@ -39,9 +39,12 @@ const styles = theme => ({
     gridItem: {
         margin: 4
     },
+    title: {
+        marginBottom: 13.6,
+    },
     mapGridItem: {
         width: "100%",
-        marginTop: "-8px"
+        // marginTop: "-8px"
     },
     detailsGridItem: {
         width: "100%"
@@ -161,12 +164,10 @@ class ContactDetails extends Component {
         });
 
         return <Grid container spacing={8}>
-            <Grid item xs={12} />
             <Grid item xs={12}>
-                <Typography variant="subheading" component="h4" gutterBottom>
+                <Typography variant="subheading" component="h4" gutterBottom className={classes.title}>
                     Contact Details
-          </Typography>
-                <br />
+                </Typography>
                 <Paper elevation={1} className={classes.contactInfoContainer}>
                     <Grid container justify="center" direction="column" alignItems="center">
                         <Grid item className={classes.mapGridItem}>

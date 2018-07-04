@@ -15,8 +15,9 @@ import MoodBad from '@material-ui/icons/MoodBad';
 import HeaderWithSearch from '../../components/HeaderWithSearch';
 import SearchResults from '../../components/SearchResults';
 import SemanticResults from '../../components/SemanticResults';
-
+import NoResults from '../../components/NoResults';
 import withRoot from '../../withRoot';
+
 
 import {updateInput, fetchSearchResults} from '../../components/Search/actions';
 
@@ -53,7 +54,10 @@ const styles = theme => ({
     link: {
         color: theme.palette.primary['500'],
         textDecoration: 'none',
-    }
+    },
+noresults:{
+    marginTop: theme.spacing.unit * 10,
+}
 });
 
 class Index extends React.Component {
@@ -78,15 +82,24 @@ class Index extends React.Component {
     render() {
         const {classes, location, search} = this.props;
         const {pathname} = location;
-        const {isSemantic, searchResultsLoading, searchResultsLoadingFailed, input} = search;
+        const { isSemantic, searchResultsLoading, searchResultsLoadingFailed, input} = search;
        
-
         if (searchResultsLoading) {
             return (
                 <div className={classes.wrapper}>
                     <Spinner name="ball-beat" color="blue"/>
                 </div>
             );
+        }
+
+        if (true){
+            return <div className={classes.root}>
+                <Helmet title={`Search for - ${input}`} />
+                <HeaderWithSearch />
+                <div className={classes.noresults}>
+                <NoResults searchQuery={input} />
+                </div>
+            </div>
         }
 
         if (searchResultsLoadingFailed) {

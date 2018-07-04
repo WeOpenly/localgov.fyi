@@ -6,7 +6,6 @@ import { withStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 
-import Feedback from './Feedback';
 import withRoot from '../withRoot';
 
 const styles = theme => ({
@@ -60,7 +59,6 @@ class Footer extends Component {
                   </Typography>
               </Grid>
               <Grid item xs={12} md={2} className={classes.item}>
-                <Feedback />
               </Grid>
               <Grid item xs={12} md={1} className={classes.item}>
                 <Link to="/terms/" className={classes.link}>

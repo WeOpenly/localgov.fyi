@@ -16,10 +16,11 @@ const styles = theme => ({
   },
   paper: {
     position: 'absolute',
-    top: -284,
+    top: 30,
     left: -230,
     height: 280,
     width: 332,
+    zIndex: 10,
     paddingLeft: theme.spacing.unit * 2,
     paddingRight: theme.spacing.unit * 2,
     paddingTop: theme.spacing.unit * 2,

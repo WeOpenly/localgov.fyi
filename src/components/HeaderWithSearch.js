@@ -1,6 +1,7 @@
-import React, {Component} from "react";
-import {withStyles} from '@material-ui/core/styles';
-import {navigateTo} from 'gatsby-link';
+import React, { Component } from "react";
+import { navigateTo } from 'gatsby-link';
+
+import { withStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
 import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper';
@@ -12,27 +13,35 @@ import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
 import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
+
 import Search from './Search/index';
+import Feedback from './Feedback';
 import withRoot from '../withRoot';
 
 const styles = theme => ({
   header: {
     background: theme.palette.common.white,
     color: theme.palette.primary['700'],
-    boxShadow: `0 0 10px 5px ${theme.palette.primary["A200"]}`
+    boxShadow: `0 0 10px 5px ${theme.palette.primary["A200"]}`,
   },
   flex: {
     flexGrow: 1,
-    justifyContent: 'space-between'
+    justifyContent: 'space-between',
   },
   title:{
-    paddingTop: theme.spacing.unit*2,
-    paddingLeft: theme.spacing.unit*2
+    paddingTop: theme.spacing.unit * 2,
+    paddingLeft: theme.spacing.unit * 2,
   },
   menuButton: {
     marginLeft: -12,
-    marginRight: 20
-  }
+    marginRight: 20,
+  },
+  right: {
+    display: 'flex',
+    justifyContent: 'flex-end',
+    alignItems: 'center',
+    paddingRight: theme.spacing.unit * 2,
+  },
 });
 
 class HeaderWithSearch extends Component {
@@ -50,7 +59,9 @@ class HeaderWithSearch extends Component {
           <Grid item xs={12} sm={6}>
             <Search inHeader={true}/>
           </Grid>
-          <Grid item sm={3}/>
+          <Grid item xs={12} md={3} className={classes.right}>
+            <Feedback />
+          </Grid>
         </Grid>
       </AppBar>
     );

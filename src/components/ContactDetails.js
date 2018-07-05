@@ -16,6 +16,9 @@ import ContactAddressMap from './ContactAddressMap';
 import withRoot from '../withRoot';
 
 const styles = theme => ({
+    root: {
+        marginBottom: theme.spacing.unit,
+    },
     linkIconContainer: {
         paddingLeft: 20
     },
@@ -40,6 +43,7 @@ const styles = theme => ({
         margin: 4
     },
     title: {
+        paddingTop: 4,
         marginBottom: 13.6,
     },
     mapGridItem: {
@@ -163,23 +167,25 @@ class ContactDetails extends Component {
             );
         });
 
-        return <Grid container spacing={8}>
-            <Grid item xs={12}>
-                <Typography variant="subheading" component="h4" gutterBottom className={classes.title}>
-                    Contact Details
-                </Typography>
-                <Paper elevation={1} className={classes.contactInfoContainer}>
-                    <Grid container justify="center" direction="column" alignItems="center">
-                        <Grid item className={classes.mapGridItem}>
-                            <ContactAddressMap contactAddress={contactAddressValue} />
+        return (
+            <Grid container spacing={8} className={classes.root}>
+                <Grid item xs={12}>
+                    <Typography variant="subheading" component="h4" gutterBottom className={classes.title}>
+                        Contact Details
+                    </Typography>
+                    <Paper elevation={1} className={classes.contactInfoContainer}>
+                        <Grid container justify="center" direction="column" alignItems="center">
+                            <Grid item className={classes.mapGridItem}>
+                                <ContactAddressMap contactAddress={contactAddressValue} />
+                            </Grid>
+                            <Grid item container className={classes.detailsGridContainerItem}>
+                                {contactDetailCards}
+                            </Grid>
                         </Grid>
-                        <Grid item container className={classes.detailsGridContainerItem}>
-                            {contactDetailCards}
-                        </Grid>
-                    </Grid>
-                </Paper>
+                    </Paper>
+                </Grid>
             </Grid>
-        </Grid>;
+        );
     }
 }
 

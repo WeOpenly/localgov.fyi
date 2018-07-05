@@ -112,9 +112,15 @@ class ServiceDetail extends React.Component {
                     openTime = `OPEN: ${open} CLOSED: ${breakTime}`;
                 }
 
-                return <ListItem disableGutters>
-                    <ListItemText primary={openTime} secondary={day}/>
-                </ListItem>;
+                return (
+                    <ListItem disableGutters>
+                        <ListItemText
+                            primary={openTime}
+                            secondary={day}
+                            secondaryTypographyProps={{variant: "subheading"}}
+                        />
+                    </ListItem>
+                );
             });
         }
 
@@ -190,7 +196,7 @@ class ServiceDetail extends React.Component {
         }
 
         const offeredInDetails = <Grid container spacing={8} style={{
-            marginTop: 16
+            // marginTop: 16
         }}>
             <Grid item xs={12} sm={12}>
                 <Typography variant="subheading" gutterBottom>
@@ -322,8 +328,8 @@ class ServiceDetail extends React.Component {
                 <Grid item xs={12} sm={12} md={6}>
                     {service_del_links && <ServiceDeliveryLink serDelLinks={service_del_links}/>}
                     {contact_details && <ContactDetails info={contact_details}/>}
-                    <br/>
                     {offeredInDetails}
+                    <img src={`https://d3qlx9ss0mi45s.cloudfront.net/localgov.fyi/track.png?${payloadParams}`} alt={"localgov-track"} />
                 </Grid>
             </Grid>
         )

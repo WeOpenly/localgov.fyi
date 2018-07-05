@@ -14,6 +14,9 @@ import withRoot from '../withRoot';
 import { trackClick } from "./Search/tracking";
 
 const styles = theme => ({
+  root: {
+    marginBottom: theme.spacing.unit,
+  },
   media: {
     minWidth: "100px",
     minHeight: "100px",
@@ -22,7 +25,7 @@ const styles = theme => ({
     boxShadow: `0 0 2px 1px ${theme.palette.primary["50"]}`
   },
   mediaContainer: {
-    paddingTop: 12,
+    paddingTop: theme.spacing.unit,
     borderRadius: 3,
     cursor: "pointer",
     display: "flex",
@@ -71,12 +74,11 @@ class ServiceDeliveryLink extends Component {
     });
 
     return (
-      <Grid container spacing={8}>
+      <Grid container spacing={0} className={classes.root}>
         <Grid item xs={12} sm={12} md={12}>
           <Card className={classes.mediaContainer}>
             <CardContent>{serButtons}</CardContent>
           </Card>
-          <br />
         </Grid>
       </Grid>
     );

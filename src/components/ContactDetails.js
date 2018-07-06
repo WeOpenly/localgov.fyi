@@ -43,7 +43,7 @@ const styles = theme => ({
         margin: 4
     },
     title: {
-        paddingTop: 4,
+        // paddingTop: 4,
         marginBottom: 13.6,
     },
     mapGridItem: {

@@ -66,7 +66,7 @@ const styles = theme => ({
         font: "inherit",
         paddingLeft: theme.spacing.unit,
         border: 1,
-        display: "block",
+        display: "flex",
         verticalAlign: "middle",
         whiteSpace: "normal",
         background: "inherit",
@@ -265,7 +265,7 @@ class HeaderSuggestBox extends Component {
             <div className={classes.wrapper}>
                 <Input
                     value={value}
-                    placeholder={inputProps.placeholder}
+                    placeholder={placeholder}
                     inputRef={ref}
                     className={classes.input}
                     inputProps={{
@@ -366,7 +366,6 @@ class HeaderSuggestBox extends Component {
                     inputProps={{
                     classes,
                     autoFocus: false,
-                    type: 'search',
                     placeholder: placeholder,
                     value: input,
                     onChange: this.handleChange,

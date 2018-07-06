@@ -92,7 +92,7 @@ input : {
     fontFamily : theme.typography.fontFamily,
     padding :theme.spacing.unit*2,
     border: 1,
-    display: "block",
+    display: "flex",
     verticalAlign: "middle",
     whiteSpace: "normal",
     background: "inherit",

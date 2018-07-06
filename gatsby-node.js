@@ -173,5 +173,5 @@ allOrgsJson {
 
 exports.modifyBabelrc = ({ babelrc }) => ({
   ...babelrc,
-  plugins: babelrc.plugins.concat(['transform-regenerator', 'dynamic-import-webpack']),
+  plugins: babelrc.plugins.concat(['transform-regenerator']),
 })

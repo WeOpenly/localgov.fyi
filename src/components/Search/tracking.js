@@ -1,5 +1,6 @@
+let Fingerprint2 = null;
 try {
-    import Fingerprint2 from 'fingerprintjs2';
+    Fingerprint2 = require('fingerprintjs2');
 } catch (e) {
     console.log(e)
 }
@@ -25,6 +26,9 @@ function getUrlParameter(name) {
 
 // page_view [layout type]
 export const trackView = (page_layout_type, viewing_entity_type, viewing_entity_id, viewing_entity_name)  => async (dispatch, getState) => {
+if (!Fingerprint2){
+    return
+}
     new Fingerprint2().get(function (result, components) {
         try {
             const source = getUrlParameter('src');
@@ -56,6 +60,9 @@ export const trackView = (page_layout_type, viewing_entity_type, viewing_entity_
 
 // input_type ['search']
 export const trackInput = (input_type, text) => async(dispatch, getState) => {
+    if (!Fingerprint2) {
+        return
+    }
     new Fingerprint2().get(function (result, components) {
         try {
             const source = getUrlParameter('src');
@@ -84,6 +91,9 @@ path : pathname,
 
 // clicked type [suggestion, card(page item), external]
 export const trackClick = (click_type, clicked_entity_type, clicked_entity_id, clicked_entity_name, pos_in_list=0) => async(dispatch, getState) => {
+    if (!Fingerprint2) {
+        return
+    }
     new Fingerprint2().get(function (result, components) {
         try {
             const source = getUrlParameter('src');

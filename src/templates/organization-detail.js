@@ -1,6 +1,8 @@
 import * as PropTypes from "prop-types"
 import React from "react"
 import Helmet from "react-helmet";
+import { connect } from "react-redux";
+
 import Grid from '@material-ui/core/Grid';
 import { withStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
@@ -9,8 +11,9 @@ import HorizontalListItem from '../components/HorizontalListItem';
 import HorizontalList from '../components/HorizontalList';
 // import MemberListItem from '../components/MemberListItem';
 import SearchResult from '../components/SearchResult';
-
 import withRoot from '../withRoot';
+
+import {trackView} from "../components/Search/tracking";
 
 const styles = theme => ({
   card: {
@@ -31,23 +34,16 @@ const styles = theme => ({
     boxShadow: '0px 0px 2px 1px lightGray',
   },
 });
-class OrganizationDetail extends React.Component {
 
+class OrganizationDetail extends React.Component {
+  componentDidMount() {
+    const { dispatch } = this.props;
+    const { id, name } = this.props.pathContext.data;
+    dispatch(trackView('entity_detail', 'organization', id, name));
+  }
 
   render() {
     const {id, services, members, contact_details, name} = this.props.pathContext.data;
-
-    const eventParams = {
-      event_type: 'overview_query',
-      type: 'organization',
-      org_id: id,
-    }
-
-    // fire & forget
-    const payloadParams = Object
-      .keys(eventParams)
-      .map(k => `${encodeURIComponent(k)}=${encodeURIComponent(eventParams[k])}`)
-      .join('&');
 
     let contactDetailComponent = null;
     let memberListComp = null;
@@ -73,7 +69,7 @@ class OrganizationDetail extends React.Component {
 
     if (services.length > 0) {
       const serCards = services.map((ser, index) => {
-        return <SearchResult key={ser.id} toLink={`/service/${ser.id}`} title={ser.service_name}/>;
+        return <SearchResult key={ser.id} resultType='service' id={ser.id} listIndex={index} toLink={`/service/${ser.id}`} title={ser.service_name}/>;
       });
 
       serviceListComp = <Grid container spacing={8}>
@@ -105,12 +101,19 @@ class OrganizationDetail extends React.Component {
           <Grid item xs={12} sm={12}>
             <br />
          {contactDetailComponent}
-            <img src={`https://d3qlx9ss0mi45s.cloudfront.net/localgov.fyi/track.png?${payloadParams}`} alt={"localgov-track"} /> 
           </Grid>
         </Grid>
       </Grid>
     )
   }
 }
-export default withRoot(withStyles(styles)(OrganizationDetail));
+
+const mapStateToProps = function (state, ownProps) {
+  return {
+    ...state,
+    ...ownProps
+  };
+};
+
+export default connect(mapStateToProps)(withRoot(withStyles(styles)(OrganizationDetail)));
 

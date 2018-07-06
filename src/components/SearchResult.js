@@ -1,13 +1,15 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import { navigateTo } from "gatsby-link";
-
+import { connect } from "react-redux";
 import { withStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
 import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
 import Typography from '@material-ui/core/Typography';
 import withRoot from '../withRoot';
+
+import { trackClick} from "./Search/tracking";
 
 const styles = theme => ({
   card: {
@@ -20,10 +22,17 @@ const styles = theme => ({
 class SearchResult extends Component {
     constructor(props) {
         super(props);
+        this.onClick = this.onClick.bind(this);
+    }
+
+    onClick(){
+        const { trackClick, resultType, id, toLink, title,  listIndex} = this.props;
+        trackClick('card_item', resultType, id, title, listIndex);
+        navigateTo(toLink);
     }
 
     render() {
-        const {classes, title, toLink} = this.props;
+        const {classes, title} = this.props;
         let key = title
         if (this.props.key) {
             key = this.props.key
@@ -35,7 +44,7 @@ class SearchResult extends Component {
         }
 
         return (
-            <Card className={classes.card} onClick={() => navigateTo(toLink)} >
+            <Card className={classes.card} onClick={this.onClick} >
                 <CardContent>
                     <Typography variant="body1" component="h1">
                         {title}
@@ -49,4 +58,23 @@ class SearchResult extends Component {
     }
 }
 
-export default withRoot(withStyles(styles)(SearchResult));
+const mapDispatchToProps = (dispatch) => {
+    return {
+        trackClick: (click_type, resultType, id, title, listIndex) => {
+            dispatch(trackClick(click_type, resultType, id, title, listIndex));
+        }
+    }
+}
+
+const mapStateToProps = function (state, ownProps) {
+    return {
+        ...ownProps
+    };
+};
+
+const ConnSearchResult = connect(
+    mapStateToProps,
+    mapDispatchToProps
+)(withRoot(withStyles(styles)(SearchResult)));
+
+export default ConnSearchResult;

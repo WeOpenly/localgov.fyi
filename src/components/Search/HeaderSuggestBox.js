@@ -24,7 +24,9 @@ import parse from "autosuggest-highlight/parse";
 import Autosuggest from "react-autosuggest";
 
 import withRoot from '../../withRoot';
-import { fetchSearchSuggestions, clearInput, updateInput, setSearchSuggesitions, fetchSearchResults} from "./actions";
+import {fetchSearchSuggestions, clearInput, updateInput, setSearchSuggesitions, fetchSearchResults} from "./actions";
+
+import { trackInput, trackClick} from './tracking';
 
 const styles = theme => ({
     wrapper: {
@@ -243,6 +245,7 @@ class HeaderSuggestBox extends Component {
 
         const uri = `/search/${input}`;
         const encodedUri = encodeURI(uri);
+        dispatch(trackInput('header_search_box', input));
         navigateTo(encodedUri);
     }
 
@@ -307,8 +310,12 @@ class HeaderSuggestBox extends Component {
     selectSuggestion(event, {suggestion, suggestionValue, suggestionIndex, sectionIndex, method}) {
         const {dispatch} = this.props;
         const {input} = this.props.search;
-        const {type, id} = suggestion;
+        const {type, id, head} = suggestion;
         event.preventDefault();
+
+        dispatch(trackInput('header_search_box', input));
+        dispatch(trackClick('select_suggestion', type, id, head, suggestionIndex));
+
         navigateTo(`/${type}/${id}`);
     }
 

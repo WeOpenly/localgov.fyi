@@ -1,6 +1,8 @@
 import React, {Fragment} from 'react';
 import PropTypes from 'prop-types';
 import Helmet from "react-helmet";
+import {connect} from "react-redux";
+
 import {navigateTo} from 'gatsby-link';
 import Button from '@material-ui/core/Button';
 import Grid from '@material-ui/core/Grid';
@@ -8,8 +10,9 @@ import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
 import { withStyles } from '@material-ui/core/styles';
 import withRoot from '../withRoot';
-
 import Search from '../components/Search/index';
+
+import { trackView } from "../components/Search/tracking";
 
 const styles = theme => ({
   "@global": {
@@ -91,6 +94,10 @@ landingSearch:{
 // all ways get from the url
 
 class Index extends React.Component {
+  componentDidMount(){
+    const {dispatch} = this.props;
+    dispatch(trackView('index', null, null, null));
+  }
 
   render() {
     const { classes } = this.props;
@@ -140,4 +147,11 @@ Index.propTypes = {
   classes: PropTypes.object.isRequired,
 };
 
-export default withRoot(withStyles(styles)(Index));
+const mapStateToProps = function (state, ownProps) {
+  return {
+    ...state,
+    ...ownProps
+  };
+};
+
+export default connect(mapStateToProps)(withRoot(withStyles(styles)(Index)));

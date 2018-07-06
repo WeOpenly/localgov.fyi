@@ -26,6 +26,8 @@ import Autosuggest from "react-autosuggest";
 
 import withRoot from '../../withRoot';
 import {fetchAreaSearchSuggestions, clearInput, updateInput, setSearchSuggesitions} from "./actions";
+import { trackInput, trackClick } from './tracking';
+
 
 const styles = theme => ({
 boldWrapper : {
@@ -268,6 +270,7 @@ class NewSuggestBox extends Component {
 
         const uri = `/search/${input}`;
         const encodedUri = encodeURI(uri);
+        dispatch(trackInput('index_search_box', input));
         navigateTo(encodedUri);
     }
 
@@ -335,8 +338,10 @@ class NewSuggestBox extends Component {
         event.preventDefault();
         const { dispatch } = this.props;
         const { input, userCountry } = this.props.search;
-        const {  id } = suggestion;
+        const { id, heading } = suggestion;
         navigateTo(`/organization/${id}`);
+        dispatch(trackInput('index_search_box', input));
+        dispatch(trackClick('select_suggestion', 'organization', id, heading, suggestionIndex));
     }
 
     onSubmit(evt) {

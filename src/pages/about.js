@@ -8,6 +8,8 @@ import Typography from '@material-ui/core/Typography';
 import {withStyles} from '@material-ui/core/styles';
 import withRoot from '../withRoot';
 
+import {trackView} from "../components/Search/tracking";
+
 const styles = theme => ({
   getInTouchEmail: {
     color: '#fff'
@@ -17,7 +19,12 @@ const styles = theme => ({
   }
 });
 
-class Index extends React.Component {
+class About extends React.Component {
+  componentDidMount() {
+    const { dispatch } = this.props;
+    dispatch(trackView('about', null, null, null));
+  }
+
   render() {
     const {classes} = this.props;
 
@@ -45,8 +52,8 @@ class Index extends React.Component {
   }
 }
 
-Index.propTypes = {
+About.propTypes = {
   classes: PropTypes.object.isRequired
 };
 
-export default withRoot(withStyles(styles)(Index));
+export default withRoot(withStyles(styles)(About));

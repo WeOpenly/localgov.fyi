@@ -1,5 +1,6 @@
 import * as PropTypes from "prop-types"
 import React from "react"
+import {connect} from "react-redux";
 import {withStyles} from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper';
@@ -25,6 +26,8 @@ import HorizontalList from '../components/HorizontalList';
 import SearchResult from '../components/SearchResult';
 import ServiceDeliveryLink from '../components/ServiceDeliveryLink';
 import withRoot from '../withRoot';
+
+import { trackView } from "../components/Search/tracking";
 
 const windowGlobal = typeof window !== 'undefined' && window;
 
@@ -69,6 +72,12 @@ class ServiceDetail extends React.Component {
         data: PropTypes.shape({postsJson: PropTypes.object.isRequired})
     }
 
+    componentDidMount() {
+        const { dispatch } = this.props;
+        const { id, name } = this.props.pathContext.data;
+        dispatch(trackView('entity_detail', 'service', id, name));
+    }
+
     render() {
         const {
             id,
@@ -89,18 +98,6 @@ class ServiceDetail extends React.Component {
         } = this.props.pathContext.data;
         const {classes} = this.props;
 
-        const eventParams = {
-            event_type: 'overview_query',
-            type: 'service',
-            org_id,
-            id
-        }
-
-        // fire & forget
-        const payloadParams = Object
-            .keys(eventParams)
-            .map(k => `${encodeURIComponent(k)}=${encodeURIComponent(eventParams[k])}`)
-            .join('&');
         const containerSize = 12;
         const space = 8;
 
@@ -201,7 +198,7 @@ class ServiceDetail extends React.Component {
                 </Typography>
             </Grid>
             <Grid item xs={12} sm={12}>
-                <SearchResult key={org_id} toLink={`/organization/${org_id}`} title={org_name}/>
+                <SearchResult key={org_id} id={org_id} listindex={0} resultType={'organization'} toLink={`/organization/${org_id}`} title={org_name}/>
             </Grid>
         </Grid>;
 
@@ -325,7 +322,6 @@ class ServiceDetail extends React.Component {
                 <Grid item xs={12} sm={12} md={6}>
                     {service_del_links && <ServiceDeliveryLink serDelLinks={service_del_links}/>}
                     {contact_details && <ContactDetails info={contact_details}/>}
-                    <img src={`https://d3qlx9ss0mi45s.cloudfront.net/localgov.fyi/track.png?${payloadParams}`} alt={"localgov-track"} /> 
                     <br/>
                     {offeredInDetails}
                 </Grid>
@@ -334,6 +330,12 @@ class ServiceDetail extends React.Component {
     }
 }
 
-const Detail = withRoot(withStyles(styles)(ServiceDetail));
+const mapStateToProps = function (state, ownProps) {
+    return {
+        ...state,
+        ...ownProps
+    };
+};
 
-export default Detail;
+export default connect(mapStateToProps)(withRoot(withStyles(styles)(ServiceDetail)));
+

@@ -18,7 +18,7 @@ import SemanticResults from '../../components/SemanticResults';
 import NoResults from '../../components/NoResults';
 import withRoot from '../../withRoot';
 
-
+import { trackView } from "../../components/Search/tracking";
 import {updateInput, fetchSearchResults} from '../../components/Search/actions';
 
 const styles = theme => ({
@@ -60,8 +60,7 @@ noresults:{
 }
 });
 
-class Index extends React.Component {
-
+class Search extends React.Component {
     componentDidMount() {
         const {dispatch, location } = this.props;
         const { pathname } = location;
@@ -77,6 +76,7 @@ class Index extends React.Component {
             dispatch(updateInput(searchText));
             dispatch(fetchSearchResults);
         }
+        dispatch(trackView('search', null, null, null));
     }
 
     render() {
@@ -136,7 +136,7 @@ class Index extends React.Component {
     }
 }
 
-Index.propTypes = {
+Search.propTypes = {
     classes: PropTypes.object.isRequired
 };
 
@@ -146,4 +146,4 @@ const mapStateToProps = function (state, ownProps) {
     };
 };
 
-export default connect(mapStateToProps)(withRoot(withStyles(styles)(Index)));
+export default connect(mapStateToProps)(withRoot(withStyles(styles)(Search)));

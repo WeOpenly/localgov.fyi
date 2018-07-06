@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
+import {connect} from "react-redux";
+
 import Button from '@material-ui/core/Button';
 import Card from '@material-ui/core/Card';
 import Grid from '@material-ui/core/Grid';
@@ -9,6 +11,8 @@ import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
 import Typography from '@material-ui/core/Typography';
 import withRoot from '../withRoot';
+import { trackClick } from "./Search/tracking";
+
 const styles = theme => ({
   media: {
     minWidth: "100px",
@@ -32,6 +36,14 @@ const styles = theme => ({
 class ServiceDeliveryLink extends Component {
   constructor(props) {
     super(props);
+    this.onClick = this.onClick.bind(this);
+  }
+
+  onClick(name, url, index) {
+    const { trackClick } = this.props;
+    const windowGlobal = typeof window !== 'undefined' && window
+    trackClick('external', 'service_delivery_link', url, name, index);
+    windowGlobal.open(url);
   }
 
   render() {
@@ -43,12 +55,12 @@ class ServiceDeliveryLink extends Component {
     if (serDelLinks.length === 0) {
       return null;
     }
-    const windowGlobal = typeof window !== 'undefined' && window
+    
     const serButtons = serDelLinks.map((link, idx) => {
       return (
         <Button
           key={link.link_name}
-          onClick={() => windowGlobal.open(link.url)}
+          onClick={() => this.onClick(link.link_name, link.url, idx)}
           variant="raised"
           color="primary"
           className={classes.button}
@@ -71,4 +83,24 @@ class ServiceDeliveryLink extends Component {
   }
 }
 
-export default withRoot(withStyles(styles)(ServiceDeliveryLink));
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    trackClick: (click_type, resultType, id, title, listIndex) => {
+      dispatch(trackClick(click_type, resultType, id, title, listIndex));
+    }
+  }
+}
+
+const mapStateToProps = function (state, ownProps) {
+  return {
+    ...ownProps
+  };
+};
+
+const ConnServiceDeliveryLink = connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(withRoot(withStyles(styles)(ServiceDeliveryLink)));
+
+export default ConnServiceDeliveryLink;

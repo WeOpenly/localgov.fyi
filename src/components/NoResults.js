@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import Link from 'gatsby-link';
-
+import {connect} from "react-redux";
 import {withStyles} from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
@@ -12,6 +12,8 @@ import Card from '@material-ui/core/Card';
 import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
 import withRoot from '../withRoot';
+
+import { trackView } from "./Search/tracking";
 
 const styles = theme => ({
     wrapper: {
@@ -100,10 +102,11 @@ class NoResults extends Component {
     }
 
     componentDidMount(){
-        const {searchQuery} = this.props;
+        const { searchQuery, trackView} = this.props;
         this.setState({
             searchQuery
         })
+        trackView();
     }
 
     handleSubmit(e) {
@@ -212,4 +215,23 @@ class NoResults extends Component {
     }
 }
 
-export default withRoot(withStyles(styles)(NoResults));
+const mapDispatchToProps = (dispatch) => {
+    return {
+        trackView: () => {
+            dispatch(trackView('no_search_results', null));
+        }
+    }
+}
+
+const mapStateToProps = function (state, ownProps) {
+    return {
+        ...ownProps
+    };
+};
+
+const ConnNoResults = connect(
+    mapStateToProps,
+    mapDispatchToProps
+)(withRoot(withStyles(styles)(NoResults)));
+
+export default ConnNoResults;

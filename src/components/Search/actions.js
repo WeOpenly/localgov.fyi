@@ -1,6 +1,7 @@
 import queryString from "query-string";
 import _ from "lodash";
 import 'regenerator-runtime/runtime';
+import Fingerprint2 from 'fingerprintjs2';
 import * as types from "./ActionTypes";
 import {GetApi} from "./api";
 
@@ -12,16 +13,13 @@ function requestAppMeta() {
     return {type: types.REQUEST_APP_META};
 }
 
-export function setMetaFromUrl(country, city=null){
+export function setMetaFromUrl(country, city = null) {
     const data = {
         userCountry: country,
         userCity: city
     }
 
-    return {
-        type: types.RECV_APP_META, 
-        data,
-    }
+    return {type: types.RECV_APP_META, data}
 }
 
 function recvAppMeta(data) {
@@ -43,7 +41,6 @@ function reqSearchSuggestions() {
 function recvSuggestionsFailed() {
     return {type: types.RECV_SEARCH_SUGGESTIONS_FAILED};
 }
-
 
 export function setSearchSuggesitions(suggestions) {
     return {type: types.RECV_SEARCH_SUGGESTIONS_SUCCESS, suggestions: suggestions.results};
@@ -103,7 +100,7 @@ export const fetchSearchResults = async(dispatch, getState) => {
             .map(k => `${encodeURIComponent(k)}=${encodeURIComponent(eventParams[k])}`)
             .join('&');
 
-        fetch(`https://d3qlx9ss0mi45s.cloudfront.net/localgov.fyi/track.png?${payloadParams}`, {}).then((data) => { }).catch((err) => { })
+        fetch(`https://d3qlx9ss0mi45s.cloudfront.net/localgov.fyi/track.png?${payloadParams}`, {}).then((data) => {}).catch((err) => {})
     } catch (e) {
 
         dispatch(recvSearchResultsFailure());
@@ -126,7 +123,6 @@ export const fetchMeta = async(dispatch, getState) => {
     }
 };
 
-
 export const fetchSearchSuggestions = async(dispatch, getState) => {
     const {input} = getState().search;
 
@@ -135,7 +131,6 @@ export const fetchSearchSuggestions = async(dispatch, getState) => {
     try {
         const data = await GetApi(null, `get_results?country=${country}&query=${input}&requester_city=''`);
         const searchResults = await data;
-
 
         if (searchResults.success) {
             dispatch(setSearchSuggesitions(searchResults));
@@ -147,9 +142,34 @@ export const fetchSearchSuggestions = async(dispatch, getState) => {
     }
 };
 
+export const trackSuggestionClick = (currentPage, text, index, clicked_entity_type, clicked_entity_id, clicked_entity_name) => async(dispatch, getState) => {
+        new Fingerprint2().get(function (result, components) {
+            try {
+                const eventParams = {
+                    e: 'suggestion_click',
+                    s: text,
+                    p: currentPage,
+                    i: index,
+                    c_e_t: clicked_entity_type,
+                    c_e_id: clicked_entity_id,
+                    c_e_n: clicked_entity_name,
+                    fp: result,
+                }
+                console.log(eventParams);
+                const payloadParams = Object
+                    .keys(eventParams)
+                    .map(k => `${encodeURIComponent(k)}=${encodeURIComponent(eventParams[k])}`)
+                    .join('&');
 
-export const fetchAreaSearchSuggestions = async (dispatch, getState) => {
-    const { input } = getState().search;
+                fetch(`https://d3qlx9ss0mi45s.cloudfront.net/localgov.fyi/track.png?${payloadParams}`, {}).then((data) => { }).catch((err) => { });
+            } catch (e) {
+               console.log(e);
+            }
+        });
+};
+
+export const fetchAreaSearchSuggestions = async(dispatch, getState) => {
+    const {input} = getState().search;
 
     dispatch(reqSearchSuggestions());
     const country = 'usa'

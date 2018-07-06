@@ -1,6 +1,6 @@
 import React, { Component, Fragment } from 'react';
 import Spinner from 'react-spinkit';
-
+import { connect } from "react-redux";
 import { withStyles } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
@@ -9,6 +9,7 @@ import SvgIcon from '@material-ui/core/SvgIcon';
 import MoodBad from '@material-ui/icons/MoodBad';
 
 import withRoot from '../withRoot';
+import {trackInput} from "./Search/tracking";
 
 const styles = theme => ({
   wrapper: {
@@ -92,6 +93,8 @@ class Feedback extends Component {
   }
 
   handleSubmit(e) {
+    const { trackFeedback} = this.props;
+    
     let currentLoc = '';
     if (window.location && window.location.pathname){
         currentLoc = window.location.pathname
@@ -118,6 +121,7 @@ class Feedback extends Component {
     }));
 
     e.preventDefault();
+    trackFeedback();
   }
 
   handleClose() {
@@ -204,4 +208,23 @@ class Feedback extends Component {
   }
 }
 
-export default withRoot(withStyles(styles)(Feedback));
+const mapDispatchToProps = (dispatch) => {
+  return {
+    trackFeedback: () => {
+      dispatch(trackInput('feedback_form', ''));
+    }
+  }
+}
+
+const mapStateToProps = function (state, ownProps) {
+  return {
+    ...ownProps
+  };
+};
+
+const ConnFeedback = connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(withRoot(withStyles(styles)(Feedback)));
+
+export default ConnFeedback;

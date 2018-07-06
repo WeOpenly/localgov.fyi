@@ -329,7 +329,6 @@ class ServiceDetail extends React.Component {
                     {service_del_links && <ServiceDeliveryLink serDelLinks={service_del_links}/>}
                     {contact_details && <ContactDetails info={contact_details}/>}
                     {offeredInDetails}
-                    <img src={`https://d3qlx9ss0mi45s.cloudfront.net/localgov.fyi/track.png?${payloadParams}`} alt={"localgov-track"} />
                 </Grid>
             </Grid>
         )

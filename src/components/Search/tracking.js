@@ -1,4 +1,9 @@
-import Fingerprint2 from 'fingerprintjs2';
+try {
+    import Fingerprint2 from 'fingerprintjs2';
+} catch (e) {
+    console.log(e)
+}
+
 
 // track user events
 // event types - seen , clicked

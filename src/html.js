@@ -1,4 +1,5 @@
 import React from "react"
+import {withPrefix} from 'gatsby-link'
 
 let stylesStr
 if (process.env.NODE_ENV === `production`) {
@@ -7,6 +8,7 @@ if (process.env.NODE_ENV === `production`) {
   } catch (e) {
   }
 }
+
 
 module.exports = class HTML extends React.Component {
   render() {
@@ -32,6 +34,7 @@ module.exports = class HTML extends React.Component {
           />
 
           <script defer src="https://maps.googleapis.com/maps/api/js?v=3.exp&key=AIzaSyC1d6ej2p77--6Wf8m6dzdrbvKhfBnb3Ks&libraries=places" type="text/javascript"></script>
+
           <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css" type="text/css" />
 
           <link href="https://fonts.googleapis.com/css?family=Nunito+Sans:300,600|Poppins:300,600" rel="stylesheet"/>

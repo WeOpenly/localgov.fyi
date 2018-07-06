@@ -1,9 +1,4 @@
 let Fingerprint2 = null;
-try {
-    Fingerprint2 = require('fingerprintjs2');
-} catch (e) {
-    console.log(e)
-}
 
 
 // track user events
@@ -12,6 +7,14 @@ try {
 // clicked type [suggestion, card(page item), external]
 
 const windowGlobal = typeof window !== 'undefined' && window
+
+if (windowGlobal){
+    try {
+        Fingerprint2 = require('fingerprintjs2');
+    } catch (e) {
+        console.log(e)
+    }
+}
 
 function getUrlParameter(name) {
     name = name

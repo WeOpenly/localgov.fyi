@@ -1,3 +1,3 @@
-/  /intro  302  Country=eu,ap
+/  /intro  302  Country=de
 
 http://localgov.netlify.com/* http://localgov.fyi/:splat 301!

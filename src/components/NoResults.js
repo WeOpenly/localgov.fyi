@@ -164,39 +164,39 @@ class NoResults extends Component {
     },
     {
         name: 'San Jose',
-        url : 'organization/d3c866ec-13f3-41da-b6dc-a74a83d36ea7'
+        url : '/organization/d3c866ec-13f3-41da-b6dc-a74a83d36ea7'
     },
     {
         name: 'San Mateo',
-url : 'organization/64398076-1dd4-4c06-bba0-f46bf893b2ae'
+url : '/organization/64398076-1dd4-4c06-bba0-f46bf893b2ae'
     },
     {
         name: 'Los Angles',
-        url : 'organization/206843c1-890c-435c-85d6-5e2350200c1e'
+        url : '/organization/206843c1-890c-435c-85d6-5e2350200c1e'
     },
     {
         name: 'Houston',
-url : 'organization/f212a1f8-d95e-4448-a6c7-659a4aa88934'
+url : '/organization/f212a1f8-d95e-4448-a6c7-659a4aa88934'
     },
     {
         name: 'New York',
-        url : 'organization/2c3e6f85-25ee-420d-a31b-25662e2e6a2e'
+        url : '/organization/2c3e6f85-25ee-420d-a31b-25662e2e6a2e'
     },
     {
         name: 'Philadelphia',
-    url : 'organization/c91151b6-d989-4163-ab1c-f8680ad6b9f5'
+    url : '/organization/c91151b6-d989-4163-ab1c-f8680ad6b9f5'
     },
     {
         name: 'Phoenix',
-    url : 'organization/b26c8d4f-74b9-4a80-9723-d696089aea99'
+    url : '/organization/b26c8d4f-74b9-4a80-9723-d696089aea99'
     },
     {
         name: 'San Diego',
-url : 'organization/1fcd5489-5736-432a-88c7-fb720b134044'
+url : '/organization/1fcd5489-5736-432a-88c7-fb720b134044'
     },
     {
         name: 'Seattle',
-url : 'organization/28d8e00d-ee9c-49d0-97d8-18c1bf3cc707'
+url : '/organization/28d8e00d-ee9c-49d0-97d8-18c1bf3cc707'
     }
 ]
     const shuffledArray = xah_randomize_array(otherPlaces);

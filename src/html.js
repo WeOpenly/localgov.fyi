@@ -35,11 +35,9 @@ module.exports = class HTML extends React.Component {
 
           <script defer src="https://maps.googleapis.com/maps/api/js?v=3.exp&key=AIzaSyC1d6ej2p77--6Wf8m6dzdrbvKhfBnb3Ks&libraries=places" type="text/javascript"></script>
 
-          <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css" type="text/css" />
-
           <link href={withPrefix('/css/fonts.css')} rel="stylesheet"/>
+          <link href={withPrefix('/css/ionicons.min.css')} rel="stylesheet" />
 
-          <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css" type="text/css" />
           {this.props.headComponents}
           {css}
         </head>

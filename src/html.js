@@ -16,15 +16,6 @@ if (process.env.NODE_ENV === `production`) {
   } catch (e) {}
 }
 
-let iconStyleCss
-if (process.env.NODE_ENV === `production`) {
-  try {
-    iconStyleCss = require(`!raw-loader!../static/css/ionicons.min.css`)
-  } catch (e) { }
-}
-
-
-
 module.exports = class HTML extends React.Component {
   render() {
     let css
@@ -47,16 +38,6 @@ module.exports = class HTML extends React.Component {
       )
     }
 
-    let iconcss
-    if (process.env.NODE_ENV === `production`) {
-      iconcss = (
-        <style
-          id="gatsby-inlined-css-icons"
-          dangerouslySetInnerHTML={{ __html: iconStyleCss }}
-        />
-      )
-    }
-
     return (
       <html {...this.props.htmlAttributes}>
         <head>
@@ -72,7 +53,6 @@ module.exports = class HTML extends React.Component {
           <script defer src="https://maps.googleapis.com/maps/api/js?v=3.exp&key=AIzaSyC1d6ej2p77--6Wf8m6dzdrbvKhfBnb3Ks&libraries=places" type="text/javascript"></script>
 
           {(process.env.NODE_ENV === `production`) ? <link href={withPrefix('/css/fonts.css')} rel="stylesheet"/>  : null}
-          {(process.env.NODE_ENV === `production`) ? <link href={withPrefix('/css/ionicons.min.css')} rel="stylesheet" /> : null}
 
           {this.props.headComponents}
           {css}

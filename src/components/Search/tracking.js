@@ -66,7 +66,7 @@ new Fingerprint2(fpOptions)
                 v_e_id: viewing_entity_id,
                 v_e_n: viewing_entity_name,
                 fp: result,
-                ua: ua,
+                ua,
                 ...extra,
             }
 

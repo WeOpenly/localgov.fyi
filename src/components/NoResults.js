@@ -95,6 +95,12 @@ const xah_randomize_array = ((arr) => {
     return arr;
 });
 
+const encode = (data) => {
+    return Object.keys(data)
+        .map(key => encodeURIComponent(key) + "=" + encodeURIComponent(data[key]))
+        .join("&");
+}
+
 
 class NoResults extends Component {
     constructor(props) {

@@ -1,7 +1,8 @@
-import React, {Component} from 'react';
-import Link from 'gatsby-link';
-import {connect} from "react-redux";
-import {withStyles} from '@material-ui/core/styles';
+import React, { Component } from 'react';
+import Link, { navigateTo } from 'gatsby-link';
+import { connect } from "react-redux";
+
+import { withStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
 import SentimentDissatisfied from '@material-ui/icons/SentimentDissatisfied';
@@ -141,14 +142,19 @@ class NoResults extends Component {
                 "Content-Type": "application/x-www-form-urlencoded"
             },
             body: encode({ "form-name": "no-results", "path": currentLoc, "searchQuery": this.state.searchQuery, "email": this.state.email})
-        }).then(() => this.setState({submitting: false, success: true})).catch(error => this.setState({submitting: false, failure: true}));
+        })
+        .then(() => {
+            this.setState({ submitting: false, success: true });
+            setTimeout(() => {navigateTo('/')}, 1000);
+        })
+        .catch(error => this.setState({submitting: false, failure: true}));
 
         e.preventDefault();
     }
 
 
     render() {
-        const { classes, searchQuery} = this.props;
+        const { classes, searchQuery } = this.props;
 
         const otherPlaces = [{
             name: 'Atlanta',
@@ -258,6 +264,8 @@ url : '/organization/28d8e00d-ee9c-49d0-97d8-18c1bf3cc707'
                             Notify me
                         </Button>
                     </form>
+                    {this.state.submitting && <Typography>Submitting...</Typography>}
+                    {this.state.success && <Typography>Thanks! Redirecting home...</Typography>}
                 </Grid>
                 <Grid item xs='auto' sm={4} />
                 <Grid item xs='auto' sm={4} />

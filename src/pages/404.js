@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Link from 'gatsby-link';
+import {connect} from "react-redux";
 
 import { withStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
@@ -9,7 +10,7 @@ import SentimentDissatisfied from '@material-ui/icons/SentimentDissatisfied';
 import Divider from '@material-ui/core/Divider';
 
 import withRoot from '../withRoot';
-
+import {trackView} from "../components/Search/tracking";
 
 const styles = theme => ({
     root: {
@@ -38,6 +39,13 @@ class NotFound extends Component {
     constructor(props) {
         super(props);
     }
+
+
+    componentDidMount() {
+        const { trackView } = this.props;
+        trackView();
+    }
+
 
     render() {
         const { classes } = this.props;
@@ -89,4 +97,20 @@ class NotFound extends Component {
     }
 }
 
-export default withRoot(withStyles(styles)(NotFound));
+const mapDispatchToProps = (dispatch) => {
+    return {
+        trackView: () => {
+            dispatch(trackView('no_page_found', null));
+        }
+    }
+}
+
+const mapStateToProps = function (state, ownProps) {
+    return {
+        ...ownProps
+    };
+};
+
+const ConnNotFound = connect(mapStateToProps, mapDispatchToProps)(withRoot(withStyles(styles)(NotFound)));
+
+export default ConnNotFound;

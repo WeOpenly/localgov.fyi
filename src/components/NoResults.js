@@ -250,9 +250,11 @@ url : '/organization/28d8e00d-ee9c-49d0-97d8-18c1bf3cc707'
                 <Grid item xs='auto' sm={4} />
                 <Grid item xs={12} sm={4} >
                     <form
-                        name="feedback"
+                        name="no-results"
                         onSubmit={this.handleSubmit}
                         data-netlify="true"
+                        netlify="true"
+                        netlify
                         data-netlify-honeypot="bot-field"
                     >
                         <label>

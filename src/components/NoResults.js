@@ -161,7 +161,7 @@ class NoResults extends Component {
 
     render() {
         const { classes, searchQuery } = this.props;
-
+console.log(searchQuery);
         const otherPlaces = [{
             name: 'Atlanta',
             url : '/organization/910e5bde-1b39-4990-b4af-6e374e3df06d'
@@ -235,7 +235,7 @@ url : '/organization/28d8e00d-ee9c-49d0-97d8-18c1bf3cc707'
                 <Grid item xs='auto' sm={4} />
                 <Grid item xs={12} sm={4} >
                 <Typography variant="title">
-                        {`We couldn't find any results for your query ${searchQuery}`} 
+                        {`We couldn't find any results for your query '${searchQuery}'`} 
                 </Typography>
                 </Grid>
                 <Grid item xs='auto' sm={4} />
@@ -243,7 +243,7 @@ url : '/organization/28d8e00d-ee9c-49d0-97d8-18c1bf3cc707'
                 <Grid item xs='auto' sm={4} />
                 <Grid item xs={12} sm={4} >
                 <Typography variant="caption">
-{`We are constantly adding more cities and we can drop you a note when results for ${searchQuery} are available`}
+{`We are constantly adding more cities and we can drop you a note when results for '${searchQuery}' are available`}
                 </Typography>
                 </Grid>
                 <Grid item xs='auto' sm={4} />

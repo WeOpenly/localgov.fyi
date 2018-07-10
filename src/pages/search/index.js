@@ -94,11 +94,20 @@ class Search extends React.Component {
         }
 
         if (noResults){
+            const { pathname } = location;
+
+            const pathNameFragments = pathname.split('/');
+
+            let searchText = null;
+            if (pathname.includes('search') && pathNameFragments.length > 1) {
+                searchText = pathNameFragments[2]
+            }
+            
             return <div className={classes.root}>
                 <Helmet title={`Search for - ${input}`} />
                 <HeaderWithSearch />
                 <div className={classes.noresults}>
-                <NoResults searchQuery={input} />
+                    <NoResults searchQuery={searchText} />
                 </div>
             </div>
         }

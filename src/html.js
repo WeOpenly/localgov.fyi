@@ -50,9 +50,12 @@ module.exports = class HTML extends React.Component {
             content="width=device-width, initial-scale=1, shrink-to-fit=no"
           />
 
+          {(process.env.NODE_ENV === `production`) ? <link href={withPrefix('/css/fonts.css')} rel="stylesheet"/>  : null}
+
           {this.props.headComponents}
           {css}
           {fontcss}
+
         </head>
         <body {...this.props.bodyAttributes}>
           {this.props.preBodyComponents}

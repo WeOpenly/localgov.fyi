@@ -37,7 +37,8 @@ module.exports = class HTML extends React.Component {
 
           <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css" type="text/css" />
 
-          <link href="https://fonts.googleapis.com/css?family=Nunito+Sans:300,600|Poppins:300,600" rel="stylesheet"/>
+          <link href={withPrefix('/css/fonts.css')} rel="stylesheet"/>
+
           <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css" type="text/css" />
           {this.props.headComponents}
           {css}

@@ -104,7 +104,7 @@ class Index extends React.Component {
 
     return (
       <Fragment>
-        <Helmet defaultTitle={`Localgov.fyi`} titleTemplate={`%s | Localgov.fyi`}>
+        <Helmet defaultTitle={`Localgov.fyi | Search for local government organizations, and services`} titleTemplate={`%s | Localgov.fyi`}>
           <meta name="og:type" content="website" />
           <meta name="og:site_name" content="Localgov.fyi" />
           <link

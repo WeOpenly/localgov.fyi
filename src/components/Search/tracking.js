@@ -66,7 +66,13 @@ new Fingerprint2(fpOptions)
                 v_e_id: viewing_entity_id,
                 v_e_n: viewing_entity_name,
                 fp: result,
-                ua,
+                browser_n: ua.browser.name,
+                browser_v: ua.browser.version,
+                device_m: ua.device.model,
+                device_t: ua.device.type,
+                device_v: ua.device.v,
+                os_n: ua.os.name,
+                os_v: ua.os.version,
                 ...extra,
             }
 
@@ -107,7 +113,13 @@ new Fingerprint2(fpOptions)
                 path : pathname,
                 psrc: source,
                 fp: result,
-                ua, 
+                browser_n: ua.browser.name,
+                browser_v: ua.browser.version,
+                device_m: ua.device.model,
+                device_t: ua.device.type,
+                device_v: ua.device.v,
+                os_n: ua.os.name,
+                os_v: ua.os.version,
             }
 
             const payloadParams = Object
@@ -151,7 +163,13 @@ new Fingerprint2(fpOptions)
                 c_e_id: clicked_entity_id,
                 c_e_n: clicked_entity_name,
                 fp: result,
-                ua,
+                browser_n: ua.browser.name,
+                browser_v: ua.browser.version,
+                device_m: ua.device.model,
+                device_t: ua.device.type,
+                device_v: ua.device.v,
+                os_n: ua.os.name,
+                os_v: ua.os.version,
             }
 
 

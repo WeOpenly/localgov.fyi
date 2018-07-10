@@ -49,8 +49,8 @@ class Footer extends Component {
     const { classes } = this.props;
     return (
       <Grid container>
-        <Grid item xs={0} md={1} />
-        <Grid item xs={11} md={10}>
+        <Grid item  md={1} />
+        <Grid item xs={12} md={10}>
           <footer className={classes.footer}>
             <Grid container className={classes.container}>
               <Grid item xs={12} md={6} className={isMobileOnly ? classes.copyrightMobile : classes.copyright}>
@@ -73,7 +73,7 @@ class Footer extends Component {
             </Grid>
           </footer>
         </Grid>
-        <Grid item xs={0} md={1} />
+        <Grid item  md={1} />
       </Grid>
     );
   }

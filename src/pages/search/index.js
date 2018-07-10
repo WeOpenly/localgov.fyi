@@ -6,9 +6,8 @@ import Helmet from "react-helmet";
 import {withStyles} from '@material-ui/core/styles';
 import Spinner from 'react-spinkit';
 
-import Button from '@material-ui/core/Button';
+
 import Grid from '@material-ui/core/Grid';
-import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
 import MoodBad from '@material-ui/icons/MoodBad';
 

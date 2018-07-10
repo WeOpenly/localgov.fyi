@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { withGoogleMap, GoogleMap, Marker } from "react-google-maps";
+import {withScriptjs, withGoogleMap, GoogleMap, Marker} from "react-google-maps";
 const windowGlobal = typeof window !== 'undefined' && window
 
 class AddressGoogleMap extends Component {
@@ -74,4 +74,10 @@ class AddressGoogleMap extends Component {
 }
 
 
-export default withGoogleMap(AddressGoogleMap)
+export default withScriptjs(withGoogleMap(AddressGoogleMap))
+// const mapComp = (
+//     <AGMP
+//     isMarkerShown
+//     googleMapURL="https://maps.googleapis.com/maps/api/js?v=3.exp&key=AIzaSyC1d6ej2p77--6Wf8m6dzdrbvKhfBnb3Ks&libraries=places"
+// />)
+// export default mapComp

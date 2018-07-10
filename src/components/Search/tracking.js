@@ -1,3 +1,5 @@
+import { UAParser } from "ua-parser-js";
+
 let Fingerprint2 = null;
 
 
@@ -7,8 +9,16 @@ let Fingerprint2 = null;
 // clicked type [suggestion, card(page item), external]
 
 const windowGlobal = typeof window !== 'undefined' && window
+const fpOptions = {
+    excludeWebGL: true,
+    excludeAudioFP: true,
+    excludeJsFonts: true,
+    excludeFlashFonts: true,
+    excludePlugins: true,
+    excludeWebGLVendorAndRenderer: true,
+}
 
-if (windowGlobal){
+if (windowGlobal && process.NODE_ENV === 'production'){
     try {
         Fingerprint2 = require('fingerprintjs2');
     } catch (e) {
@@ -27,15 +37,25 @@ function getUrlParameter(name) {
         : decodeURIComponent(results[1].replace(/\+/g, ' '));
 };
 
+
 // page_view [layout type]
-export const trackView = (page_layout_type, viewing_entity_type, viewing_entity_id, viewing_entity_name)  => async (dispatch, getState) => {
+export const trackView = (page_layout_type, viewing_entity_type, viewing_entity_id, viewing_entity_name, ...extra)  => async (dispatch, getState) => {
 if (!Fingerprint2){
     return
 }
-    new Fingerprint2().get(function (result, components) {
+new Fingerprint2(fpOptions)
+    .get(function (result, components) {
         try {
             const source = getUrlParameter('src');
             const {pathname} = windowGlobal.location;
+            let ua = {}
+
+            try{
+                ua = UAParser(components[0].value);
+            } catch (e) {
+                console.log(e)
+            }
+          
 
             const eventParams = {
                 e: 'page_view',
@@ -46,9 +66,10 @@ if (!Fingerprint2){
                 v_e_id: viewing_entity_id,
                 v_e_n: viewing_entity_name,
                 fp: result,
+                ua: ua,
+                ...extra,
             }
 
-            console.log(eventParams);
             const payloadParams = Object
                 .keys(eventParams)
                 .map(k => `${encodeURIComponent(k)}=${encodeURIComponent(eventParams[k])}`)
@@ -66,20 +87,29 @@ export const trackInput = (input_type, text) => async(dispatch, getState) => {
     if (!Fingerprint2) {
         return
     }
-    new Fingerprint2().get(function (result, components) {
+new Fingerprint2(fpOptions)
+    .get(function (result, components) {
         try {
             const source = getUrlParameter('src');
             const { pathname } = windowGlobal.location;
+            let ua = {}
+
+            try {
+                ua = UAParser(components[0].value);
+            } catch (e) {
+                console.log(e)
+            }
 
             const eventParams = {
                 e: 'input',
                 t: input_type,
                 s: text,
-path : pathname,
+                path : pathname,
                 psrc: source,
                 fp: result,
+                ua, 
             }
-            console.log(eventParams);
+
             const payloadParams = Object
                 .keys(eventParams)
                 .map(k => `${encodeURIComponent(k)}=${encodeURIComponent(eventParams[k])}`)
@@ -97,10 +127,19 @@ export const trackClick = (click_type, clicked_entity_type, clicked_entity_id, c
     if (!Fingerprint2) {
         return
     }
-    new Fingerprint2().get(function (result, components) {
+new Fingerprint2(fpOptions)
+    .get(function (result, components) {
         try {
+
             const source = getUrlParameter('src');
             const { pathname } = windowGlobal.location;
+            let ua = {}
+
+            try {
+                ua = UAParser(components[0].value);
+            } catch (e) {
+                console.log(e)
+            }
 
             const eventParams = {
                 e: 'click',
@@ -112,9 +151,10 @@ export const trackClick = (click_type, clicked_entity_type, clicked_entity_id, c
                 c_e_id: clicked_entity_id,
                 c_e_n: clicked_entity_name,
                 fp: result,
+                ua,
             }
 
-            console.log(eventParams);
+
             const payloadParams = Object
                 .keys(eventParams)
                 .map(k => `${encodeURIComponent(k)}=${encodeURIComponent(eventParams[k])}`)

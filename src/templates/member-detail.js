@@ -133,7 +133,6 @@ class MemberDetail extends React.Component {
                         {contact_details && <ContactDetails info={contact_details}/>}
                     </div>
                     <br/>
-                    <img src={`https://d3qlx9ss0mi45s.cloudfront.net/localgov.fyi/track.png?${payloadParams}`} alt={"localgov-track"} /> 
                 </Grid>
             </Grid>
         )

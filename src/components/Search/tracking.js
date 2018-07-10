@@ -18,7 +18,7 @@ const fpOptions = {
     excludeWebGLVendorAndRenderer: true,
 }
 
-if (windowGlobal && process.NODE_ENV === 'production'){
+if (windowGlobal){
     try {
         Fingerprint2 = require('fingerprintjs2');
     } catch (e) {

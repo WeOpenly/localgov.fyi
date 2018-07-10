@@ -87,19 +87,6 @@ export const fetchSearchResults = async(dispatch, getState) => {
             resLen = list_results.length;
             dispatch(recvSearchResults(res));
         }
-
-        const eventParams = {
-            event_type: 'search_query',
-            search_query: input,
-            semantic: isSemantic,
-            number_of_results: resLen
-        }
-        const payloadParams = Object
-            .keys(eventParams)
-            .map(k => `${encodeURIComponent(k)}=${encodeURIComponent(eventParams[k])}`)
-            .join('&');
-
-        fetch(`https://d3qlx9ss0mi45s.cloudfront.net/localgov.fyi/track.png?${payloadParams}`, {}).then((data) => {}).catch((err) => {})
     } catch (e) {
 
         dispatch(recvSearchResultsFailure());

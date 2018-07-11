@@ -252,8 +252,7 @@ url : '/organization/28d8e00d-ee9c-49d0-97d8-18c1bf3cc707'
                     <form
                         name="no-results"
                         onSubmit={this.handleSubmit}
-                        data-netlify="true"
-                        netlify="true"
+                        data-netlify={true}
                         netlify
                         data-netlify-honeypot="bot-field"
                     >
@@ -266,6 +265,14 @@ url : '/organization/28d8e00d-ee9c-49d0-97d8-18c1bf3cc707'
                                 onChange={this.handleChange}
                                 className={classes.bootstrapInput}
                             />
+                        </label>
+                        <label>
+                            <input
+                            name="searchQuery"
+                            type="input"
+                            value={`${searchQuery}`}
+                            hidden
+                        />
                         </label>
                         <br/>
                         <Button size="small" variant="outlined" type="submit" className={classes.button}>

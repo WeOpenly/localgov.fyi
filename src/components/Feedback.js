@@ -38,6 +38,18 @@ const styles = theme => ({
     width: '300px',
     transition: theme.transitions.create(['border-color', 'box-shadow'])
   },
+  bootstrapInputComment:{
+    borderRadius: 3,
+    // backgroundColor: theme.palette.primary['50'],
+    color: theme.palette.primary['200'],
+    border: '1px solid #ced4da',
+    padding: '10px 12px 12px 12px',
+    marginTop: theme.spacing.unit,
+    width: '300px',
+    height: '100px',
+    'wordBreak': 'break-word',
+    transition: theme.transitions.create(['border-color', 'box-shadow'])
+  },
   button: {
     marginTop: theme.spacing.unit * 2,
     marginBottom: theme.spacing.unit,
@@ -158,18 +170,18 @@ class Feedback extends Component {
             <form
               name="feedback"
               onSubmit={this.handleSubmit}
-              data-netlify="true"
+              data-netlify={true}
               data-netlify-honeypot="bot-field"
             >
               <label>
-                <textarea
+                <input
                   name="comment"
                   type="text"
                   placeholder="Your comments"
                   value={comment}
                   onChange={this.handleChange}
                   rows={4}
-                  className={classes.bootstrapInput}
+                  className={classes.bootstrapInputComment}
                 />
                 <input
                   name="email"

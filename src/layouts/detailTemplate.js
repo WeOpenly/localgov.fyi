@@ -25,7 +25,7 @@ const styles = theme => ({
   mainMobile: {
     width: '100%',
     minHeight: '100vh',
-    paddingBottom: 158,
+    paddingBottom: 114,
   },
   footer: {
     width: '100%',
@@ -35,7 +35,7 @@ const styles = theme => ({
   footerMobile: {
     width: '100%',
     alignSelf: 'flex-end',
-    marginTop: -158,
+    marginTop: -114,
   },
 });
 

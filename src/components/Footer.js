@@ -17,12 +17,12 @@ const styles = theme => ({
     display: 'flex',
     justifyContent: 'space-evenly',
   },
-  copyright: {
-    marginRight: theme.spacing.unit,
-  },
-  copyrightMobile: {
+  containerMobile: {
     display: 'flex',
-    justifyContent: 'flex-end',
+    flexDirection: 'column',
+    alignItems: 'center',
+  },
+  copyright: {
     marginRight: theme.spacing.unit,
   },
   item: {
@@ -52,11 +52,12 @@ class Footer extends Component {
         <Grid item  md={1} />
         <Grid item xs={12} md={10}>
           <footer className={classes.footer}>
-            <Grid container className={classes.container}>
-              <Grid item xs={12} md={6} className={isMobileOnly ? classes.copyrightMobile : classes.copyright}>
-                  <Typography>
-                    Made by <a href="https://weopenly.com" className={classes.a}>Openly</a>
-                  </Typography>
+            {!isMobileOnly
+            ? <Grid container className={classes.container}>
+              <Grid item xs={12} md={6} className={classes.copyright}>
+                <Typography>
+                  Made by <a href="https://weopenly.com" className={classes.a}>Openly</a>
+                </Typography>
               </Grid>
               <Grid item xs={12} md={2} className={classes.item}>
               </Grid>
@@ -71,6 +72,23 @@ class Footer extends Component {
                 </Link>
               </Grid>
             </Grid>
+            : <Grid container className={classes.containerMobile}>
+              <Grid item xs={12}>
+                <Link to="/terms/" className={classes.link}>
+                  <Typography>Terms</Typography>
+                </Link>
+              </Grid>
+              <Grid item xs={12}>
+                <Link to="/privacy/" className={classes.link}>
+                  <Typography>Privacy</Typography>
+                </Link>
+              </Grid>
+              <Grid item xs={12}>
+                <Typography>
+                  Crafted by <a href="https://weopenly.com" className={classes.a}>Openly</a>
+                </Typography>
+              </Grid>
+            </Grid>}
           </footer>
         </Grid>
         <Grid item  md={1} />

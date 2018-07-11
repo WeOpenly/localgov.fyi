@@ -109,6 +109,11 @@ class Search extends React.Component {
                 <div className={classes.noresults}>
                     <NoResults searchQuery={searchText} />
                 </div>
+                <form name="feedback" netlify netlify-honeypot="bot-field" hidden>
+                    <input type="text" name="path" />
+                    <input type="email" name="email" />
+                    <textarea name="feedbackComment"></textarea>
+                </form>
             </div>
         }
 
@@ -139,11 +144,6 @@ class Search extends React.Component {
                     </Grid>
                     <Grid item xs={1} md={1}/>
                 </Grid>
-                <form name="feedback-form" netlify netlify-honeypot="bot-field" hidden>
-                    <input type="text" name="path" />
-                    <input type="email" name="email" />
-                    <textarea name="feedbackComment"></textarea>
-                </form>
             </div>
         );
     }

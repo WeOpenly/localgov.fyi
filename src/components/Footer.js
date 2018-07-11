@@ -36,7 +36,7 @@ const styles = theme => ({
     marginRight: theme.spacing.unit,
   },
   link: {
-    textDecoration: 'none',
+    // textDecoration: 'none',
   },
   a: {
     color: 'rgba(30, 30, 50,0.87)',

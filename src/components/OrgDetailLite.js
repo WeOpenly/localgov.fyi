@@ -54,7 +54,7 @@ class OrgDetailLite extends Component {
                     {heading}
                 </Typography>
                 <Card className={classes.mediaContainer} onClick={() => navigateTo(`/organization/${org_id}`)}>
-                    <CardContent>
+                    <CardContent style={{display: 'flex', justifyContent: 'center'}}>
                         <AccountBalance className={classes.icon} />
                         <Typography align="center" variant="title">
                             {org_name}

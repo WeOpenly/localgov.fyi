@@ -35,6 +35,9 @@ const styles = theme => ({
     container: {
         marginTop: theme.spacing.unit * 2
     },
+    details: {
+        width: '100%',
+    },
     cards: {
         marginBottom: theme.spacing.unit * 2,
         paddingTop: theme.spacing.unit,
@@ -214,7 +217,7 @@ class ServiceDetail extends React.Component {
                     <title>{`${name} service offered in ${org_name} | Localgov.fyi`} </title>
                     <meta name="description" content={`Forms, Price, Timings and Local Government Service Contact Details for ${name} offered in ${org_name} | Localgov.fyi`}  />
                 </Helmet>
-                <Grid item md={6} sm={12}>
+                <Grid item md={6} sm={12} className={classes.details}>
                     <Grid item xs={12}>
                         <Paper className={classes.cards}>
                             <Grid container spacing={8}>

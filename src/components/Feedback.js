@@ -185,7 +185,7 @@ class Feedback extends Component {
               <p hidden>
                 <label>
                   Don’t fill this out:{" "}
-                  <input name="currentPath" value=""/>
+                  <input name="path" value=""/>
                 </label>
               </p>
               <label>

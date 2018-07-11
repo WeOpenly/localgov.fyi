@@ -163,7 +163,6 @@ const otherPlaces = [
     url : '/organization/28d8e00d-ee9c-49d0-97d8-18c1bf3cc707'
   }
 ];
-
 const xah_randomize_array = ((arr) => {
   /* [ Fisher-Yates shuffle. can be used on array-like object
   Modify array inplace.
@@ -180,6 +179,7 @@ const xah_randomize_array = ((arr) => {
   }
   return arr;
 });
+const shuffledArray = xah_randomize_array(otherPlaces);
 
 //  if search/ or otherwise, have box in the layout unless it is index.html
 // if index > do not have it in the layout
@@ -193,7 +193,6 @@ class Index extends React.Component {
 
   render() {
     const { classes } = this.props;
-    const shuffledArray = xah_randomize_array(otherPlaces);
     const otherLinks = shuffledArray.slice(0,3).map((item, idx) => {
       let link = 'linkLeft';
       if (idx === 1) link = 'linkCenter';

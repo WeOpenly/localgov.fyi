@@ -1,12 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import {connect} from "react-redux";
+import { connect } from "react-redux";
 import Link from 'gatsby-link';
 import Helmet from "react-helmet";
-import {withStyles} from '@material-ui/core/styles';
 import Spinner from 'react-spinkit';
+import { isMobileOnly } from 'react-device-detect';
 
-
+import { withStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 import MoodBad from '@material-ui/icons/MoodBad';
@@ -18,13 +18,20 @@ import NoResults from '../../components/NoResults';
 import withRoot from '../../withRoot';
 
 import { trackView } from "../../components/Search/tracking";
-import {updateInput, fetchSearchResults} from '../../components/Search/actions';
+import { updateInput, fetchSearchResults } from '../../components/Search/actions';
 
 const styles = theme => ({
     root: {
         width: "100%",
         height: "100%",
         margin: 0,
+        padding: 0,
+    },
+    rootMobile: {
+        width: 'auto',
+        height: '100%',
+        marginLeft: theme.spacing.unit * -2,
+        marginRight: theme.spacing.unit * -2,
         padding: 0,
     },
     flex: {
@@ -103,7 +110,7 @@ class Search extends React.Component {
                 searchText = pathNameFragments[2]
             }
             
-            return <div className={classes.root}>
+            return <div className={!isMobileOnly ? classes.root : classes.rootMobile}>
                 <Helmet title={`Search for - ${input}`} />
                 <HeaderWithSearch />
                 <div className={classes.noresults}>
@@ -133,7 +140,7 @@ class Search extends React.Component {
         }
 
         return (
-            <div className={classes.root}>
+            <div className={!isMobileOnly ? classes.root : classes.rootMobile}>
                 <Helmet title={`Search for - ${input}`} />
                 <HeaderWithSearch />
                 <Grid container spacing={0}>

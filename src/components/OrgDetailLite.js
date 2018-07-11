@@ -4,12 +4,12 @@ import {navigateTo} from 'gatsby-link';
 
 import {withStyles} from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
-import CardActions from '@material-ui/core/CardActions';
-import CardContent from '@material-ui/core/CardContent';
 
+import CardContent from '@material-ui/core/CardContent';
+import AccountBalance from '@material-ui/icons/AccountBalance';
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
-import Paper from '@material-ui/core/Paper';
+
 import ContactDetails from "./ContactDetails";
 
 import withRoot from '../withRoot';
@@ -31,7 +31,12 @@ const styles = theme => ({
         alignItems: "center",
         justifyContent: "center",
         boxShadow: `0 0 10px 5px ${theme.palette.primary["A200"]}`
-    }
+    },
+    icon: {
+        color: theme.palette.primary['100'],
+        fontSize: 64,
+        marginBottom: theme.spacing.unit * 2,
+    },
 });
 
 class OrgDetailLite extends Component {
@@ -50,6 +55,7 @@ class OrgDetailLite extends Component {
                 </Typography>
                 <Card className={classes.mediaContainer} onClick={() => navigateTo(`/organization/${org_id}`)}>
                     <CardContent>
+                        <AccountBalance className={classes.icon} />
                         <Typography align="center" variant="title">
                             {org_name}
                         </Typography>

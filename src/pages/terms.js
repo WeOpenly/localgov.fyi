@@ -39,6 +39,9 @@ const styles = theme => ({
     alignItems: 'center',
     paddingRight: theme.spacing.unit * 2,
   },
+  title: {
+    marginBottom: theme.spacing.unit * 6,
+  },
 });
 
 class Terms extends React.Component {
@@ -65,7 +68,7 @@ class Terms extends React.Component {
         <Grid container className={classes.container}>
           <Grid item md={1}/>
           <Grid item md={10}>
-            <Typography align="left" variant="headline">
+            <Typography align="left" variant="headline" className={classes.title}>
               Terms of Service
             </Typography>
           </Grid>

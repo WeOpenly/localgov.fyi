@@ -40,7 +40,7 @@ const styles = theme => ({
   },
   title: {
     marginTop: theme.spacing.unit * 3,
-    marginBottom: theme.spacing.unit * 3,
+    marginBottom: theme.spacing.unit * 6,
   },
   headline: {
     marginBottom: theme.spacing.unit * 3,

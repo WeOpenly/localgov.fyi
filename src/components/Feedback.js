@@ -111,6 +111,7 @@ class Feedback extends Component {
     if (window.location && window.location.pathname){
         currentLoc = window.location.pathname
     }
+    e.preventDefault();
 
     this.setState({ submitting: true });
     fetch("/", {
@@ -132,7 +133,6 @@ class Feedback extends Component {
       failure: true,
     }));
 
-    e.preventDefault();
     trackFeedback();
   }
 
@@ -159,6 +159,11 @@ class Feedback extends Component {
       failure,
     } = this.state;
     
+    let currentLoc = '';
+    if (window.location && window.location.pathname) {
+      currentLoc = window.location.pathname
+    }
+
     return (
       <div className={classes.wrapper}>
         <Typography onClick={this.handleClick} style={{cursor: 'pointer'}}> Send feedback</Typography>
@@ -167,17 +172,27 @@ class Feedback extends Component {
             <Typography variant="title" component="h1">
               Share your feedback
             </Typography>
-            <form name="contact" netlify netlify-honeypot="bot-field" hidden>
-              <input type="email" name="email" />
-              <textarea name="comment"></textarea>
-            </form>
             <form
               name="feedback"
+              method="post"
+              data-netlify="true"
+              data-netlify-honeypot="bot-field"
               onSubmit={this.handleSubmit}
-              data-netlify={true}
             >
+              <input type="hidden" name="form-name" value="feedback" />
+              <p hidden>
+                <label>
+                  Don’t fill this out:{" "}
+                  <input name="bot-field" onChange={this.handleChange} />
+                </label>
+              </p>
+              <p hidden>
+                <label>
+                  Don’t fill this out:{" "}
+                  <input name="currentPath" value={currentLoc}/>
+                </label>
+              </p>
               <label>
-                <input type="hidden" name="form-name" value="feedback" />  
                 <textarea
                   name="comment"
                   type="text"
@@ -187,6 +202,8 @@ class Feedback extends Component {
                   rows={4}
                   className={classes.bootstrapInput}
                 />
+              </label>
+              <label>
                 <input
                   name="email"
                   type="email"

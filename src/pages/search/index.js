@@ -110,6 +110,7 @@ class Search extends React.Component {
                     <NoResults searchQuery={searchText} />
                 </div>
                 <form name="feedback" netlify netlify-honeypot="bot-field" hidden>
+                    <input type="hidden" name="form-name" value="feedback" />
                     <input type="text" name="path" />
                     <input type="email" name="email" />
                     <textarea name="feedbackComment"></textarea>

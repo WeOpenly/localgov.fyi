@@ -84,7 +84,7 @@ class Feedback extends Component {
     this.state = {
       open: false,
       email: '',
-      comment: '',
+      feedbackComment: '',
       submitting: false,
       success: false,
       failure: false,
@@ -122,7 +122,7 @@ class Feedback extends Component {
       body: encode({
         "form-name": "feedback-form",
         "path": currentLoc,
-        "feedback-comment" : this.state.comment,
+        "feedbackComment": this.state.feedbackComment,
         "email": this.state.email,
       })
     }).then(() => this.setState({
@@ -152,7 +152,7 @@ class Feedback extends Component {
     const { classes } = this.props;
     const {
       open,
-      comment,
+      feedbackComment,
       email,
       submitting,
       success,
@@ -191,10 +191,10 @@ class Feedback extends Component {
               </p>
               <label>
                 <textarea
-                  name="feedback-comment"
+                  name="feedbackComment"
                   type="text"
                   placeholder="Your comments"
-                  value={comment}
+                  value={feedbackComment}
                   onChange={this.handleChange}
                   rows={4}
                   className={classes.bootstrapInput}

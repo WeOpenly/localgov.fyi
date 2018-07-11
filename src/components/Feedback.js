@@ -167,21 +167,25 @@ class Feedback extends Component {
             <Typography variant="title" component="h1">
               Share your feedback
             </Typography>
+            <form name="contact" netlify netlify-honeypot="bot-field" hidden>
+              <input type="email" name="email" />
+              <textarea name="comment"></textarea>
+            </form>
             <form
               name="feedback"
               onSubmit={this.handleSubmit}
               data-netlify={true}
-              data-netlify-honeypot="bot-field"
             >
               <label>
-                <input
+                <input type="hidden" name="form-name" value="feedback" />  
+                <textarea
                   name="comment"
                   type="text"
                   placeholder="Your comments"
                   value={comment}
                   onChange={this.handleChange}
                   rows={4}
-                  className={classes.bootstrapInputComment}
+                  className={classes.bootstrapInput}
                 />
                 <input
                   name="email"

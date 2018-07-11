@@ -253,12 +253,12 @@ url : '/organization/28d8e00d-ee9c-49d0-97d8-18c1bf3cc707'
                     <form
                         name="no-results"
                             method="post"
+                        action="/"
                         onSubmit={this.handleSubmit}
-                        data-netlify={true}
-                        netlify
+                        data-netlify="true"
                         data-netlify-honeypot="bot-field"
                     >
-                        <input type="hidden" name="form-name" value="feedback" />
+                        <input type="hidden" name="form-name" value="no-results" />
                         <p hidden>
                             <label>
                                 Don’t fill this out:{" "}

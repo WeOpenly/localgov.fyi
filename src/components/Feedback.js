@@ -171,6 +171,7 @@ class Feedback extends Component {
             <form
               name="feedback"
               method="post"
+              action="/"
               data-netlify="true"
               data-netlify-honeypot="bot-field"
               onSubmit={this.handleSubmit}

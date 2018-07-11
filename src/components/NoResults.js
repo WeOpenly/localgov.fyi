@@ -161,7 +161,7 @@ class NoResults extends Component {
 
     render() {
         const { classes, searchQuery } = this.props;
-console.log(searchQuery);
+
         const otherPlaces = [{
             name: 'Atlanta',
             url : '/organization/910e5bde-1b39-4990-b4af-6e374e3df06d'
@@ -249,7 +249,6 @@ url : '/organization/28d8e00d-ee9c-49d0-97d8-18c1bf3cc707'
                 <Grid item xs='auto' sm={4} />
                 <Grid item xs='auto' sm={4} />
                 <Grid item xs={12} sm={4} >
-            
                     <form
                         name="no-results"
                             method="post"
@@ -265,12 +264,6 @@ url : '/organization/28d8e00d-ee9c-49d0-97d8-18c1bf3cc707'
                                 <input name="bot-field" onChange={this.handleChange} />
                             </label>
                         </p>
-                        <p hidden>
-                            <label>
-                                Don’t fill this out:{" "}
-                                <input name="path" value="" />
-                            </label>
-                        </p>
                         <label>
                             <input
                                 name="email"
@@ -284,10 +277,18 @@ url : '/organization/28d8e00d-ee9c-49d0-97d8-18c1bf3cc707'
                         <label>
                             <input
                             name="search"
-                            type="input"
+                            type="text"
                             value={`${searchQuery}`}
                             hidden
                         />
+                        </label>
+                        <label>
+                            <input
+                                name="path"
+                                type="text"
+                                value=""
+                                hidden
+                            />
                         </label>
                         <br/>
                         <Button size="small" variant="outlined" type="submit" className={classes.button}>

@@ -120,9 +120,9 @@ class Feedback extends Component {
         "Content-Type": "application/x-www-form-urlencoded"
       },
       body: encode({
-        "form-name": "feedback",
+        "form-name": "feedback-form",
         "path": currentLoc,
-        "comment": this.state.comment,
+        "feedback-comment" : this.state.comment,
         "email": this.state.email,
       })
     }).then(() => this.setState({
@@ -169,14 +169,14 @@ class Feedback extends Component {
               Share your feedback
             </Typography>
             <form
-              name="feedback"
+              name="feedback-form"
               method="post"
               action="/"
               data-netlify="true"
               data-netlify-honeypot="bot-field"
               onSubmit={this.handleSubmit}
             >
-              <input type="hidden" name="form-name" value="feedback" />
+              <input type="hidden" name="form-name" value="feedback-form" />
               <p hidden>
                 <label>
                   Don’t fill this out:{" "}
@@ -191,7 +191,7 @@ class Feedback extends Component {
               </p>
               <label>
                 <textarea
-                  name="comment"
+                  name="feedback-comment"
                   type="text"
                   placeholder="Your comments"
                   value={comment}

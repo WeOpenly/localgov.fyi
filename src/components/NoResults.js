@@ -147,7 +147,7 @@ class NoResults extends Component {
             headers: {
                 "Content-Type": "application/x-www-form-urlencoded"
             },
-            body: encode({ "form-name": "no-results", "path": currentLoc, "searchQuery": this.state.searchQuery, "email": this.state.email})
+            body: encode({ "form-name": "no-results", "path": currentLoc, "search": this.state.searchQuery, "email": this.state.email})
         })
         .then(() => {
             this.setState({ submitting: false, success: true });
@@ -249,13 +249,28 @@ url : '/organization/28d8e00d-ee9c-49d0-97d8-18c1bf3cc707'
                 <Grid item xs='auto' sm={4} />
                 <Grid item xs='auto' sm={4} />
                 <Grid item xs={12} sm={4} >
+            
                     <form
                         name="no-results"
+                            method="post"
                         onSubmit={this.handleSubmit}
                         data-netlify={true}
                         netlify
                         data-netlify-honeypot="bot-field"
                     >
+                        <input type="hidden" name="form-name" value="feedback" />
+                        <p hidden>
+                            <label>
+                                Don’t fill this out:{" "}
+                                <input name="bot-field" onChange={this.handleChange} />
+                            </label>
+                        </p>
+                        <p hidden>
+                            <label>
+                                Don’t fill this out:{" "}
+                                <input name="path" value="" />
+                            </label>
+                        </p>
                         <label>
                             <input
                                 name="email"
@@ -268,7 +283,7 @@ url : '/organization/28d8e00d-ee9c-49d0-97d8-18c1bf3cc707'
                         </label>
                         <label>
                             <input
-                            name="searchQuery"
+                            name="search"
                             type="input"
                             value={`${searchQuery}`}
                             hidden

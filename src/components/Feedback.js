@@ -146,6 +146,7 @@ class Feedback extends Component {
       success,
       failure,
     } = this.state;
+    
     return (
       <div className={classes.wrapper}>
         <Typography onClick={this.handleClick} style={{cursor: 'pointer'}}> Send feedback</Typography>

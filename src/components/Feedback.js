@@ -159,10 +159,6 @@ class Feedback extends Component {
       failure,
     } = this.state;
     
-    let currentLoc = '';
-    if (window.location && window.location.pathname) {
-      currentLoc = window.location.pathname
-    }
 
     return (
       <div className={classes.wrapper}>
@@ -189,7 +185,7 @@ class Feedback extends Component {
               <p hidden>
                 <label>
                   Don’t fill this out:{" "}
-                  <input name="currentPath" value={currentLoc}/>
+                  <input name="currentPath" value=""/>
                 </label>
               </p>
               <label>

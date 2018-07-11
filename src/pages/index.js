@@ -1,17 +1,17 @@
-import React, {Fragment} from 'react';
+import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
+import { connect } from "react-redux";
+import Link, { navigateTo } from 'gatsby-link';
 import Helmet from "react-helmet";
-import {connect} from "react-redux";
 
-import {navigateTo} from 'gatsby-link';
-import Button from '@material-ui/core/Button';
-import Grid from '@material-ui/core/Grid';
-import Paper from '@material-ui/core/Paper';
-import Typography from '@material-ui/core/Typography';
 import { withStyles } from '@material-ui/core/styles';
+import Grid from '@material-ui/core/Grid';
+import Typography from '@material-ui/core/Typography';
+import Paper from '@material-ui/core/Paper';
+import Button from '@material-ui/core/Button';
+
 import withRoot from '../withRoot';
 import Search from '../components/Search/index';
-
 import { trackView } from "../components/Search/tracking";
 
 const styles = theme => ({
@@ -51,9 +51,9 @@ const styles = theme => ({
     justifyContent: "center",
     height : theme.spacing.unit * 8,
   },
-landingSearch:{
-    paddingTop: theme.spacing.unit * 16,
-},
+  landingSearch:{
+      paddingTop: theme.spacing.unit * 16,
+  },
   landingSearchHeader: {
     marginTop: theme.spacing.unit * 12,
     display: "flex",
@@ -87,6 +87,91 @@ landingSearch:{
     padding: theme.spacing.unit * 1,
     bottom: 0
   },
+  otherCitiesHeader: {
+    marginTop: theme.spacing.unit * 3,
+  },
+  linksWrapper: {
+    display: 'flex',
+    justifyContent: 'space-between',
+    marginTop: theme.spacing.unit,
+  },
+  linkLeft: {
+    textAlign: 'left',
+  },
+  linkCenter: {
+    textAlign: 'center',
+  },
+  linkRight: {
+    textAlign: 'right',
+  },
+});
+
+const otherPlaces = [
+  {
+    name: 'Atlanta',
+    url : '/organization/910e5bde-1b39-4990-b4af-6e374e3df06d'
+  },
+  {
+    name: 'San Francisco',
+    url : '/organization/49ab4440-1176-4791-a7cf-1e27a756488d'
+  },
+  {
+    name: 'Las Vegas',
+    url : '/organization/ff101ead-22ab-4f46-97d1-07abdcc8e9fa'
+  },
+  {
+    name: 'San Jose',
+    url : '/organization/d3c866ec-13f3-41da-b6dc-a74a83d36ea7'
+  },
+  {
+    name: 'San Mateo',
+    url : '/organization/64398076-1dd4-4c06-bba0-f46bf893b2ae'
+  },
+  {
+    name: 'Los Angles',
+    url : '/organization/206843c1-890c-435c-85d6-5e2350200c1e'
+  },
+  {
+    name: 'Houston',
+    url : '/organization/f212a1f8-d95e-4448-a6c7-659a4aa88934'
+  },
+  {
+    name: 'New York',
+    url : '/organization/2c3e6f85-25ee-420d-a31b-25662e2e6a2e'
+  },
+  {
+    name: 'Philadelphia',
+    url : '/organization/c91151b6-d989-4163-ab1c-f8680ad6b9f5'
+  },
+  {
+    name: 'Phoenix',
+    url : '/organization/b26c8d4f-74b9-4a80-9723-d696089aea99'
+  },
+  {
+    name: 'San Diego',
+    url : '/organization/1fcd5489-5736-432a-88c7-fb720b134044'
+  },
+  {
+    name: 'Seattle',
+    url : '/organization/28d8e00d-ee9c-49d0-97d8-18c1bf3cc707'
+  }
+];
+
+const xah_randomize_array = ((arr) => {
+  /* [ Fisher-Yates shuffle. can be used on array-like object
+  Modify array inplace.
+  http://xahlee.info/js/javascript_random_array.html
+  version 2017-09-18
+  ] */
+  let i = arr.length - 1;
+  let j;
+  while (i >= 1) {
+    // random element up to i, include i
+    j = Math.floor(Math.random() * (i + 1));
+    [arr[i], arr[j]] = [arr[j], arr[i]];
+    i--;
+  }
+  return arr;
 });
 
 //  if search/ or otherwise, have box in the layout unless it is index.html
@@ -101,6 +186,20 @@ class Index extends React.Component {
 
   render() {
     const { classes } = this.props;
+    const shuffledArray = xah_randomize_array(otherPlaces);
+    const otherLinks = shuffledArray.slice(0,3).map((item, idx) => {
+      let link = 'linkLeft';
+      if (idx === 1) link = 'linkCenter';
+      else if (idx === 2) link = 'linkRight';
+
+      return (
+        <Grid item xs={4}>
+          <Link to={item.url} className={classes[link]}>
+            <Typography variant="caption">{item.name}</Typography>
+          </Link>
+        </Grid>
+      );
+    });
 
     return (
       <Fragment>
@@ -137,6 +236,16 @@ class Index extends React.Component {
             <Search />
           </Grid>
           <Grid item xs={1} sm={2} md={3} />
+          <Grid item xs={1} md={3} />
+          <Grid item xs={10} md={6}>
+            <Typography variant="caption" component="h1" className={classes.otherCitiesHeader}>
+              Or try one of these cities:
+            </Typography>
+            <Grid container className={classes.linksWrapper}>
+              {otherLinks}
+            </Grid>
+          </Grid>
+          <Grid item xs={1} md={3} />
         </Grid>
       </Fragment>
     );

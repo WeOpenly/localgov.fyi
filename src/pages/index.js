@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { connect } from "react-redux";
 import Link, { navigateTo } from 'gatsby-link';
 import Helmet from "react-helmet";
+import { isMobileOnly } from 'react-device-detect';
 
 import { withStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
@@ -52,7 +53,13 @@ const styles = theme => ({
     height : theme.spacing.unit * 8,
   },
   landingSearch:{
-      paddingTop: theme.spacing.unit * 16,
+    paddingTop: theme.spacing.unit * 16,
+  },
+  landingSearchMobile:{
+    width:'auto',
+    marginLeft: theme.spacing.unit * -2,
+    marginRight: theme.spacing.unit * -2,
+    paddingTop: theme.spacing.unit * 16,
   },
   landingSearchHeader: {
     marginTop: theme.spacing.unit * 12,
@@ -213,7 +220,7 @@ class Index extends React.Component {
           <meta property="og:url" content={`https://localgov.fyi${this.props.location.pathname}`} />
           <html lang="en" />
         </Helmet>
-        <Grid container spacing={0} className={classes.landingSearch}>
+        <Grid container spacing={0} className={!isMobileOnly ? classes.landingSearch : classes.landingSearchMobile}>
           <Grid item xs={1} sm={2} md={3} />
           <Grid item xs={6} sm={6} md={5} className={classes.appNameHeader}>
             <Typography align="center" variant="display1" component="span" className={classes.appHeaderText}>

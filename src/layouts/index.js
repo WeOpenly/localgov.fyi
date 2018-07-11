@@ -22,6 +22,8 @@ const styles = theme => ({
   mainMobile: {
     width: '100%',
     minHeight: '100vh',
+    paddingLeft: theme.spacing.unit * 2,
+    paddingRight: theme.spacing.unit * 2,
     paddingBottom: 114,
   },
   footer: {

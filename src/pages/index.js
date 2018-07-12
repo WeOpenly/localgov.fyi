@@ -13,7 +13,7 @@ import Button from '@material-ui/core/Button';
 
 import withRoot from '../withRoot';
 import Search from '../components/Search/index';
-import { trackView } from "../components/Search/tracking";
+import { trackView, trackClick } from "../components/Search/tracking";
 
 const styles = theme => ({
   "@global": {
@@ -104,12 +104,18 @@ const styles = theme => ({
   },
   linkLeft: {
     textAlign: 'left',
+    cursor: 'pointer',
+    textDecoration: 'underline',
   },
   linkCenter: {
     textAlign: 'center',
+cursor : 'pointer',
+textDecoration : 'underline',
   },
   linkRight: {
     textAlign: 'right',
+cursor : 'pointer',
+textDecoration : 'underline',
   },
 });
 
@@ -186,10 +192,24 @@ const shuffledArray = xah_randomize_array(otherPlaces);
 // all ways get from the url
 
 class Index extends React.Component {
+  constructor(props) {
+    super(props);
+    this.clickSuggestion = this.clickSuggestion.bind(this);
+  }
+
+  clickSuggestion(url, name, index){
+    const {dispatch} = this.props;
+    console.log(url, name, index);
+    dispatch(trackClick('suggestion', 'top_cities', url, name, index));
+    navigateTo(url);
+  }
+
   componentDidMount(){
     const {dispatch} = this.props;
     dispatch(trackView('index', null, null, null));
   }
+
+
 
   render() {
     const { classes } = this.props;
@@ -200,9 +220,9 @@ class Index extends React.Component {
 
       return (
         <Grid item xs={4}>
-          <Link to={item.url} className={classes[link]}>
+          <a key={item.name} onClick={() => this.clickSuggestion(item.url, item.name, idx)} className={classes[link]}>
             <Typography variant="caption">{item.name}</Typography>
-          </Link>
+          </a>
         </Grid>
       );
     });

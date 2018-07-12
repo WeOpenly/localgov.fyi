@@ -211,11 +211,53 @@ class ServiceDetail extends React.Component {
             </Grid>
         </Grid>;
 
+
+        const serDel = service_del_links.map((link, idx) => {
+      return ({
+            "potentialAction": {
+                "@type": "ReserveAction",
+                "target": {
+                    "@type": "EntryPoint",
+                    "urlTemplate": `${link.url}`,
+                    "inLanguage": "en-US",
+                    "actionPlatform": [
+                        "http://schema.org/DesktopWebPlatform",
+                        "http://schema.org/IOSPlatform",
+                        "http://schema.org/AndroidPlatform"
+                    ]
+                },
+                "result": {
+                    "@type": "Reservation",
+                    "name": `${link.link_name}`
+                }
+            }
+      }
+      );
+    });
+
+        const jsonLd = {
+            "@context": "http://schema.org",
+            "@type": "GovernmentService",
+            "name": `${name}`,
+            "provider": {
+                "@context": "http://schema.org",
+                 "@type": "GovernmentOrganization",
+                "schema:name": `${org_name}`
+            },
+        }
+        if(serDel.length >0){
+            jsonLd['potentialAction'] = serDel[0]['potentialAction']
+        }
+        const jsonLdStr = `${jsonLd}`;
+ 
         return (
             <Grid container spacing={16} className={classes.container}>
                 <Helmet>
                     <title>{`${name} service offered in ${org_name} | Localgov.fyi`} </title>
                     <meta name="description" content={`Forms, Price, Timings and Local Government Service Contact Details for ${name} offered in ${org_name} | Localgov.fyi`}  />
+                    <script type="application/ld+json">
+                        {jsonLdStr}
+                    </script>
                 </Helmet>
                 <Grid item md={6} sm={12} className={classes.details}>
                     <Grid item xs={12}>

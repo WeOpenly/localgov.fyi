@@ -7,8 +7,7 @@ import Grid from '@material-ui/core/Grid';
 import { withStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
 import ContactDetails from '../components/ContactDetails';
-import HorizontalListItem from '../components/HorizontalListItem';
-import HorizontalList from '../components/HorizontalList';
+
 // import MemberListItem from '../components/MemberListItem';
 import SearchResult from '../components/SearchResult';
 import withRoot from '../withRoot';
@@ -53,6 +52,18 @@ class OrganizationDetail extends React.Component {
       contactDetailComponent = <ContactDetails info={contact_details}/>
     }
 
+    let contactSchema = {};
+
+
+      contact_details.forEach((detail) => {
+        let type = detail.contact_type;
+        if (type === 'ADDRESS') {
+          contactSchema['address'] = detail.contact_value;
+        } else if (type === 'PHONE') {
+          contactSchema['phone'] = detail.contact_value;
+        }
+      })
+
     // if (members.length > 0) {
     //   memberListComp = (
     //     <Grid container spacing={8}>
@@ -84,12 +95,25 @@ class OrganizationDetail extends React.Component {
         </Grid>
       </Grid>;
     }
+    const jsonLd = {
+      "@context": "http://schema.org",
+      "@type": "GovernmentOrganization",
+      "name": `${name}`,
+      ...contactSchema
+    }
+
+    const jsonLdStr = `${jsonLd}`
 
     return (
       <Grid container spacing={16}>
         <Helmet>
         <title>{`${name} info, contact details and services | Localgov.fyi`} </title>
           <meta name="description" content={`${name} info, contact details and services`} />
+  
+        <script type="application/ld+json">
+            {jsonLdStr}
+        </script>
+     
         </Helmet>
         <Grid container spacing={16} item xs={12} sm={12} md={6}>
           <Grid item xs={12} sm={12}>

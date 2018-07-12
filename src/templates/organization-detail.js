@@ -54,8 +54,11 @@ class OrganizationDetail extends React.Component {
 
     let contactSchema = {};
 
-
-      contact_details.forEach((detail) => {
+    let cd = []
+    if (contact_details){
+      cd = contact_details
+    }
+      cd.forEach((detail) => {
         let type = detail.contact_type;
         if (type === 'ADDRESS') {
           contactSchema['address'] = detail.contact_value;

@@ -22,8 +22,7 @@ const styles = theme => ({
         borderRadius: "50%",
         boxShadow: `0px 0px 10px 5px ${theme.palette.primary["A200"]}`
     },
-    mediaContainer: {
-        paddingTop: 24,
+    card: {
         borderRadius: 3,
         cursor: 'pointer',
         display: "flex",
@@ -32,10 +31,16 @@ const styles = theme => ({
         justifyContent: "center",
         boxShadow: `0 0 10px 5px ${theme.palette.primary["A200"]}`
     },
+    cardContent: {
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
+        paddingTop: theme.spacing.unit * 3,
+    },
     icon: {
         color: theme.palette.primary['100'],
         fontSize: 64,
-        marginBottom: theme.spacing.unit * 2,
+        marginRight: theme.spacing.unit,
     },
 });
 
@@ -53,8 +58,8 @@ class OrgDetailLite extends Component {
                 <Typography variant="subheading" gutterBottom>
                     {heading}
                 </Typography>
-                <Card className={classes.mediaContainer} onClick={() => navigateTo(`/organization/${org_id}`)}>
-                    <CardContent style={{display: 'flex', justifyContent: 'center'}}>
+                <Card className={classes.card} onClick={() => navigateTo(`/organization/${org_id}`)}>
+                    <CardContent className={classes.cardContent}>
                         <AccountBalance className={classes.icon} />
                         <Typography align="center" variant="title">
                             {org_name}

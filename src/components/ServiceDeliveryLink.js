@@ -25,15 +25,18 @@ const styles = theme => ({
     boxShadow: `0 0 2px 1px ${theme.palette.primary["50"]}`
   },
   mediaContainer: {
-    paddingTop: theme.spacing.unit,
+    paddingTop: theme.spacing.unit * 2,
     borderRadius: 3,
     cursor: "pointer",
     display: "flex",
     flexDirection: "column",
     alignItems: "center",
     justifyContent: "center",
-    boxShadow: `0 0 2px 1px ${theme.palette.primary["50"]}`
-  }
+    boxShadow: `0 0 2px 1px ${theme.palette.primary["50"]}`,
+  },
+  button: {
+    marginBottom: theme.spacing.unit,
+  },
 });
 
 class ServiceDeliveryLink extends Component {
@@ -61,15 +64,17 @@ class ServiceDeliveryLink extends Component {
     
     const serButtons = serDelLinks.map((link, idx) => {
       return (
-        <Button
-          key={link.link_name}
-          onClick={() => this.onClick(link.link_name, link.url, idx)}
-          variant="raised"
-          color="primary"
-          className={classes.button}
-        >
-          {link.link_name}
-        </Button>
+        <div>
+          <Button
+            key={link.link_name}
+            onClick={() => this.onClick(link.link_name, link.url, idx)}
+            variant="raised"
+            color="primary"
+            className={classes.button}
+          >
+            {link.link_name}
+          </Button>
+        </div>
       );
     });
 

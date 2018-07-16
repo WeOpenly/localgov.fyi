@@ -57,6 +57,10 @@ const styles = theme => ({
     icon: {
         fontSize: 30,
     },
+    formLink: {
+        textDecoration: 'underline',
+        textDecorationColor: '#0000EE',
+    },
 });
 
 const RawHTML = ({
@@ -153,11 +157,13 @@ class ServiceDetail extends React.Component {
                     <ListItemText
                         primary={name}
                         onClick={() => {
-                        if (url) {
-                            windowGlobal.open(url, "_blank");
-                        }
-                    }}
-                        secondary={price}/>
+                            if (url) {
+                                windowGlobal.open(url, "_blank");
+                            }
+                        }}
+                        secondary={price}
+                        className={classes.formLink}
+                    />
                 </ListItem>;
             });
         }
@@ -308,7 +314,7 @@ class ServiceDetail extends React.Component {
                                     </div>
                                 </Grid>
                                 <Grid item xs={10} sm={11}>
-                                    <div className={classes.cardContent}>{timingList}</div>
+                                    <div className={classes.cardContent} style={{ marginTop: -12 }}>{timingList}</div>
                                 </Grid>
                             </Grid>
                         </Paper>
@@ -322,7 +328,7 @@ class ServiceDetail extends React.Component {
                                     </div>
                                 </Grid>
                                 <Grid item xs={10} sm={11}>
-                                    <div className={classes.cardContent}>{formList}</div>
+                                    <div className={classes.cardContent} style={{ marginTop: -12 }}>{formList}</div>
                                 </Grid>
                             </Grid>
                         </Paper>
@@ -336,7 +342,7 @@ class ServiceDetail extends React.Component {
                                     </div>
                                 </Grid>
                                 <Grid item xs={10} sm={11}>
-                                    <div className={classes.cardContent}>{steplist}</div>
+                                    <div className={classes.cardContent} style={{ marginTop: -12 }}>{steplist}</div>
                                 </Grid>
                             </Grid>
                         </Paper>

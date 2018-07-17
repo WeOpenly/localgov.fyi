@@ -260,7 +260,14 @@ class ServiceDetail extends React.Component {
             <Grid container spacing={16} className={classes.container}>
                 <Helmet>
                     <title>{`${name} service offered in ${org_name} | Localgov.fyi`} </title>
+                    <link rel="canonical" href={`https://localgov.fyi/service/${id}/`} />
+
+                    <meta property="og:title" content={`${name} service offered in ${org_name} | Localgov.fyi`} />
+                    <meta property="og:url" content={`https://localgov.fyi/service/${id}/`} />
+
                     <meta name="description" content={`Forms, Price, Timings and Local Government Service Contact Details for ${name} offered in ${org_name} | Localgov.fyi`}  />
+
+                    <meta property="og:description" content={`Forms, Price, Timings and Local Government Service Contact Details for ${name} offered in ${org_name} | Localgov.fyi`}  />
                     <script type="application/ld+json">
                         {jsonLdStr}
                     </script>

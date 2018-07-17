@@ -44,6 +44,8 @@ module.exports = class HTML extends React.Component {
           <meta charSet="UTF-8"/>
 
           <meta name="google-site-verification" content= "uH1LpzdwISxquJSjjpqad8DL6vkOs_OVsdLLu8wNXSM" />
+          <meta name="msvalidate.01" content="D1BADF38847C730E9DC76BE0CCC4B42B" />
+        
 
           <meta property="og:site_name" content={`Localgov.fyi`} />
           <meta httpEquiv="x-ua-compatible" content="ie=edge" />

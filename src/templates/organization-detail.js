@@ -107,7 +107,8 @@ class OrganizationDetail extends React.Component {
       ...contactSchema
     }
 
-    const jsonLdStr = `${jsonLd}`
+
+    const jsonLdStr = JSON.stringify(jsonLd, null, 2);
 
     return (
       <Grid container spacing={16}>

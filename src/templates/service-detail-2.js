@@ -254,8 +254,10 @@ class ServiceDetail extends React.Component {
         if(serDel.length >0){
             jsonLd['potentialAction'] = serDel[0]['potentialAction']
         }
-        const jsonLdStr = `${jsonLd}`;
- 
+  
+
+        const jsonLdStr = JSON.stringify(jsonLd, null, 2);
+
         return (
             <Grid container spacing={16} className={classes.container}>
                 <Helmet>

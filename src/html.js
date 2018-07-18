@@ -62,7 +62,7 @@ module.exports = class HTML extends React.Component {
           <script type="application/ld+json">
                 {stringSearchLinksSchema}
           </script>
-
+          <meta name="description" content={`Localgov.fyi - Search for local government organizations, and services`} />
           <meta property="og:site_name" content={`Localgov.fyi`} />
           <meta property="twitter:card" name="twitter:card" content="summary_large_image" />
           <meta property="twitter:site" name="twitter:site" content="@weopenly" />

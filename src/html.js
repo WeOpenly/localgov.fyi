@@ -16,6 +16,12 @@ if (process.env.NODE_ENV === `production`) {
   } catch (e) {}
 }
 
+const JsonLd = ({ data }) =>
+  <script
+    type="application/ld+json"
+    dangerouslySetInnerHTML={{ __html: JSON.stringify(data) }}
+  />;
+
 module.exports = class HTML extends React.Component {
   render() {
     let css
@@ -41,14 +47,13 @@ module.exports = class HTML extends React.Component {
     const searchLinksSchema = {
       "@context": "http://schema.org",
       "@type": "WebSite",
-      "url": "https://localgov.fyi/",
-      "potentialAction": {
+      url: "https://localgov.fyi/",
+      potentialAction: {
         "@type": "SearchAction",
-        "target": "https://localgov.fyi/search/{search_term_string}",
+        target: "https://localgov.fyi/search/{search_term_string}",
         "query-input": "required name=search_term_string"
       }
     }
-    const stringSearchLinksSchema = JSON.stringify(searchLinksSchema, null, 2);
 
     return (
       <html {...this.props.htmlAttributes}>
@@ -59,9 +64,7 @@ module.exports = class HTML extends React.Component {
           <meta name="msvalidate.01" content="D1BADF38847C730E9DC76BE0CCC4B42B" />
           <meta name="yandex-verification" content="25711aadc401a373" />
 
-          <script type="application/ld+json">
-                {stringSearchLinksSchema}
-          </script>
+          <JsonLd data={searchLinksSchema} />
           <meta name="description" content={`Localgov.fyi - Search for local government organizations, and services`} />
           <meta property="og:site_name" content={`Localgov.fyi`} />
           <meta property="twitter:card" name="twitter:card" content="summary_large_image" />

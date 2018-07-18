@@ -34,6 +34,13 @@ const styles = theme => ({
   },
 });
 
+const JsonLd = ({ data }) =>
+  <script
+    type="application/ld+json"
+    dangerouslySetInnerHTML={{ __html: JSON.stringify(data) }}
+  />;
+
+
 class OrganizationDetail extends React.Component {
   componentDidMount() {
     const { dispatch } = this.props;
@@ -103,26 +110,22 @@ class OrganizationDetail extends React.Component {
       "@context": "http://schema.org",
       "@id" : `https://localgov.fyi/organization/${id}/`,
       "@type": "GovernmentOrganization",
-      "name": `${name}`,
+      name: `${name}`,
       ...contactSchema
     }
-
-
-    const jsonLdStr = JSON.stringify(jsonLd, null, 2);
 
     return (
       <Grid container spacing={16}>
         <Helmet>
         <title>{`${name} info, contact details and services | Localgov.fyi`} </title>
+
           <meta name="description" content={`${name} info, contact details and services`} />
           <meta property="og:title" content={`${name}`} />
           <meta property="og:url" content={`https://localgov.fyi/organization/${id}/`} />
           <meta property="og:description" content={`${name} info, contact details and services`} />
           <link rel="canonical" href={`https://localgov.fyi/organization/${id}/`}  />
-        <script type="application/ld+json">
-            {jsonLdStr}
-        </script>
-     
+        
+          <JsonLd data={jsonLd} />
         </Helmet>
         <Grid container spacing={16} item xs={12} sm={12} md={6}>
           <Grid item xs={12} sm={12}>

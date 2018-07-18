@@ -63,6 +63,13 @@ const styles = theme => ({
     },
 });
 
+const JsonLd = ({ data }) =>
+    <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(data) }}
+    />;
+
+
 const RawHTML = ({
     children,
     className = ""
@@ -256,8 +263,6 @@ class ServiceDetail extends React.Component {
         }
   
 
-        const jsonLdStr = JSON.stringify(jsonLd, null, 2);
-
         return (
             <Grid container spacing={16} className={classes.container}>
                 <Helmet>
@@ -270,9 +275,7 @@ class ServiceDetail extends React.Component {
                     <meta name="description" content={`Forms, Price, Timings and Local Government Service Contact Details for ${name} offered in ${org_name} | Localgov.fyi`}  />
 
                     <meta property="og:description" content={`Forms, Price, Timings and Local Government Service Contact Details for ${name} offered in ${org_name} | Localgov.fyi`}  />
-                    <script type="application/ld+json">
-                        {jsonLdStr}
-                    </script>
+                    <JsonLd data={jsonLd} />
                 </Helmet>
                 <Grid item md={6} sm={12} className={classes.details}>
                     <Grid item xs={12}>

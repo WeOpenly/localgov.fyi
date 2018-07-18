@@ -98,8 +98,10 @@ class OrganizationDetail extends React.Component {
         </Grid>
       </Grid>;
     }
+
     const jsonLd = {
       "@context": "http://schema.org",
+      "@id" : `https://localgov.fyi/organization/${id}/`,
       "@type": "GovernmentOrganization",
       "name": `${name}`,
       ...contactSchema

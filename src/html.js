@@ -37,6 +37,16 @@ module.exports = class HTML extends React.Component {
         />
       )
     }
+    const searchLinksSchema = {
+      "@context": "http://schema.org",
+      "@type": "WebSite",
+      "url": "https://localgov.fyi/",
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": "https://localgov.fyi/search/{search_term_string}",
+        "query-input": "required name=search_term_string"
+      }
+    }
 
     return (
       <html {...this.props.htmlAttributes}>
@@ -45,9 +55,15 @@ module.exports = class HTML extends React.Component {
 
           <meta name="google-site-verification" content= "uH1LpzdwISxquJSjjpqad8DL6vkOs_OVsdLLu8wNXSM" />
           <meta name="msvalidate.01" content="D1BADF38847C730E9DC76BE0CCC4B42B" />
-        
+          <meta name="yandex-verification" content="25711aadc401a373" />
+          
+          <script type="application/ld+json">
+                {searchLinksSchema}
+          </script>
 
           <meta property="og:site_name" content={`Localgov.fyi`} />
+          <meta property="twitter:card" name="twitter:card" content="summary_large_image" />
+          <meta property="twitter:site" name="twitter:site" content="@weopenly" >
           <meta httpEquiv="x-ua-compatible" content="ie=edge" />
           <meta
             name="viewport"

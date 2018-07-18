@@ -65,7 +65,7 @@ module.exports = class HTML extends React.Component {
 
           <meta property="og:site_name" content={`Localgov.fyi`} />
           <meta property="twitter:card" name="twitter:card" content="summary_large_image" />
-          <meta property="twitter:site" name="twitter:site" content="@weopenly" >
+          <meta property="twitter:site" name="twitter:site" content="@weopenly" />
           <meta httpEquiv="x-ua-compatible" content="ie=edge" />
           <meta
             name="viewport"

@@ -83,7 +83,7 @@ allOrgsJson {
           // Each page is required to have a `path` as well as a template component. The
           // `context` is optional but is often necessary so the template can query data
           // specific to each page.
-          path: `organization/${edge.node.details.id}`,
+          path: `organization/${edge.node.details.id}/`,
           layout : "detailTemplate",
           component: slash(orgTemplate),
           context: {
@@ -141,7 +141,7 @@ allOrgsJson {
           // functions like "createPage" to interact with Gatsby.
 
           createPage({
-            path: `service/${service.id}`,
+            path: `service/${service.id}/`,
             component: slash(serTemplate),
             layout : "detailTemplate",
             context: {

@@ -45,17 +45,7 @@ module.exports = {
     },
     `gatsby-transformer-remark`,
     {
-      resolve: `gatsby-plugin-sitemap`,
-      options: {
-        serialize: ({ site, allSitePage }) =>
-          allSitePage.edges.map(edge => {
-            return {
-              url: site.siteMetadata.siteUrl + edge.node.path + '/',
-              changefreq: `daily`,
-              priority: 0.7,
-            }
-          })
-      }
+      resolve: `gatsby-plugin-sitemap`
     },
 
     // This plugin transforms JSON file nodes.

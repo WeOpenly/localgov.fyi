@@ -178,14 +178,15 @@ class ServiceDetail extends React.Component {
         let qaList = null;
         if (allfaq.length > 0) {
             qaList = allfaq.map((qa, index) => {
+                const { answer, question } = qa;
                 const text = (
                     <RawHTML>
                         {answer}
                     </RawHTML>
                 );
-                const {answer, question} = qa;
+                
                 return <ListItem disableGutters>
-                    <ListItemText primary={question} secondary={answer}/>
+                    <ListItemText primary={question} secondary={text}/>
                 </ListItem>;
             });
         }

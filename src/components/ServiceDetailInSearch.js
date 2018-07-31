@@ -195,6 +195,8 @@ class ServiceDetailInSearch extends React.Component {
                     </Typography>
                     <br />
                     <AddressGoogleMap
+                        googleMapURL="https://maps.googleapis.com/maps/api/js?v=3.exp&key=AIzaSyC1d6ej2p77--6Wf8m6dzdrbvKhfBnb3Ks&libraries=places"
+                        loadingElement={<div style={{ height: "205px", width: "280px" }} />}
                         containerElement={< div style={{ height: "200px", width: "280px" }} />}
                         mapElement={< div style={{ height: "200px", width: "280px" }} />}
                         address={address.toLowerCase()} />
@@ -291,7 +293,7 @@ class ServiceDetailInSearch extends React.Component {
                             </Grid>
                         </Paper>
                     </Grid>
-                    {service_del_links && <ServiceDeliveryLink serDelLinks={service_del_links} />}
+                    {service_del_links && <ServiceDeliveryLink service_name={name} org_name={org_name}serDelLinks={service_del_links} />}
                     {contact_details && <ContactDetails info={contact_details} />}
                     {price && <Grid item xs={12}>
                         <Paper className={classes.cards}>

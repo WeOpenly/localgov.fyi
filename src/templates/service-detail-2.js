@@ -10,7 +10,9 @@ import Helmet from "react-helmet";
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
+import Button from '@material-ui/core/Button';
 
+import KeyboardArrowLeft from '@material-ui/icons/KeyboardArrowLeft';
 import InfoOutline from '@material-ui/icons/InfoOutline';
 import AttachMoney from '@material-ui/icons/AttachMoney';
 import AccessTime from '@material-ui/icons/AccessTime';
@@ -53,6 +55,9 @@ const styles = theme => ({
     iconWrapper: {
         paddingTop: theme.spacing.unit,
         paddingLeft: theme.spacing.unit * 2,
+    },
+    button: {
+        border: 'none'
     },
     icon: {
         fontSize: 30,
@@ -264,7 +269,8 @@ class ServiceDetail extends React.Component {
         if(serDel.length >0){
             jsonLd['potentialAction'] = serDel[0]['potentialAction']
         }
-  
+        
+        console.log(this.props.history);
 
         return (
             <Grid container spacing={16} className={classes.container}>
@@ -280,6 +286,12 @@ class ServiceDetail extends React.Component {
                     <meta property="og:description" content={`Forms, Price, Timings and Local Government Service Contact Details for ${name} offered in ${org_name} | Localgov.fyi`}  />
                     <JsonLd data={jsonLd} />
                 </Helmet>
+               {this.props.history.length > 2 ? (<Grid item sm={12} className={classes.details}>
+                    <Button variant="outlined" aria-label="goback" onClick={() => this.props.history.goBack()} className={classes.button}>
+                        <KeyboardArrowLeft />
+                        Back to results
+                    </Button>
+                </Grid>) : null }
                 <Grid item md={6} sm={12} className={classes.details}>
                     <Grid item xs={12}>
                         <Paper className={classes.cards}>

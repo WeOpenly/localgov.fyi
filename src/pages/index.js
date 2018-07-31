@@ -199,7 +199,6 @@ class Index extends React.Component {
 
   clickSuggestion(url, name, index){
     const {dispatch} = this.props;
-    console.log(url, name, index);
     dispatch(trackClick('suggestion', 'top_cities', url, name, index));
     navigateTo(url);
   }

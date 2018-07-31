@@ -138,7 +138,7 @@ class Search extends React.Component {
                 </div>
             );
         }
-
+        
         return (
             <div className={!isMobileOnly ? classes.root : classes.rootMobile}>
                 <Helmet title={`Search for - ${input}`} />

@@ -13,7 +13,7 @@ import Typography from '@material-ui/core/Typography';
 import OrgDetailLite from "./OrgDetailLite";
 import MemDetailLite from "./MemDetailLite";
 import SearchResult from "./SearchResult";
-import ServiceDetails from "../templates/service-detail-2";
+import ServiceDetailInSearch from "./ServiceDetailInSearch";
 
 const windowGlobal = typeof window !== 'undefined' && window
 const styles = theme => ({
@@ -49,7 +49,6 @@ class SearchResults extends Component {
     render() {
         const { search, classes } = this.props;
         const { semantic } = search;
-
         const { list_results, detail_result, intent, intent_string } = semantic;
         const { component } = detail_result;
 
@@ -238,7 +237,7 @@ class SearchResults extends Component {
                     const allSteps = service_steps || [];
                     const allSerDelLinks = service_del_links || [];
 
-                    comp = <ServiceDetails key={`${idx}-ser_details`} name={name} members={members} orgs={orgs} description={service_description} contact_details={contact_details} alllocations={alllocations} alltimings={alltimings} price={service_price} allfaq={allfaq} allForms={allForms} allSteps={allSteps} service_del_links={allSerDelLinks} wide />;
+                    comp = <ServiceDetailInSearch key={`${idx}-ser_details`} name={name} members={members} orgs={orgs} description={service_description} contact_details={contact_details} alllocations={alllocations} alltimings={alltimings} price={service_price} allfaq={allfaq} allForms={allForms} allSteps={allSteps} service_del_links={allSerDelLinks} wide />;
                 }
                 listComp.push(comp);
             }

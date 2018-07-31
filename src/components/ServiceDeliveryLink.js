@@ -1,21 +1,22 @@
-import React, { Component } from 'react';
+import React, {Component} from 'react';
 import PropTypes from 'prop-types';
-import { withStyles } from '@material-ui/core/styles';
+import {withStyles} from '@material-ui/core/styles';
 import {connect} from "react-redux";
 
 import Button from '@material-ui/core/Button';
 import Card from '@material-ui/core/Card';
 import Grid from '@material-ui/core/Grid';
+import Spinner from 'react-spinkit';
 
 import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
 import Typography from '@material-ui/core/Typography';
 import withRoot from '../withRoot';
-import { trackClick } from "./Search/tracking";
+import {trackClick} from "./Search/tracking";
 
 const styles = theme => ({
   root: {
-    marginBottom: theme.spacing.unit,
+    marginBottom: theme.spacing.unit
   },
   media: {
     minWidth: "100px",
@@ -32,28 +33,45 @@ const styles = theme => ({
     flexDirection: "column",
     alignItems: "center",
     justifyContent: "center",
-    boxShadow: `0 0 2px 1px ${theme.palette.primary["50"]}`,
+    boxShadow: `0 0 2px 1px ${theme.palette.primary["50"]}`
   },
   button: {
-    marginBottom: theme.spacing.unit,
-  },
+    marginBottom: theme.spacing.unit
+  }
 });
 
 class ServiceDeliveryLink extends Component {
   constructor(props) {
     super(props);
-    this.onClick = this.onClick.bind(this);
+    this.state = {
+      'redirectClicked': false
+    }
+    this.onClick = this
+      .onClick
+      .bind(this);
   }
 
   onClick(name, url, index) {
-    const { trackClick } = this.props;
+    const {trackClick} = this.props;
     const windowGlobal = typeof window !== 'undefined' && window
     trackClick('external', 'service_delivery_link', url, name, index);
-    windowGlobal.open(url);
+    this.setState({
+      'redirectClicked': true
+    }, () => {
+      setTimeout(() => {
+        windowGlobal.open(url);
+      }, 3000); 
+setTimeout(() => {
+  this.setState({
+    redirectClicked: false
+  })
+}, 5000);
+    })
+
   }
 
   render() {
-    const { classes, serDelLinks } = this.props;
+    const {classes, serDelLinks, org_name, service_name} = this.props;
     if (!serDelLinks) {
       return null;
     }
@@ -61,7 +79,7 @@ class ServiceDeliveryLink extends Component {
     if (serDelLinks.length === 0) {
       return null;
     }
-    
+
     const serButtons = serDelLinks.map((link, idx) => {
       return (
         <div>
@@ -70,9 +88,8 @@ class ServiceDeliveryLink extends Component {
             onClick={() => this.onClick(link.link_name, link.url, idx)}
             variant="raised"
             color="primary"
-            className={classes.button}
-          >
-            {link.link_name}
+            className={classes.button}>
+            {this.state.redirectClicked ? (<Spinner name="ball-beat" color="white" />)  : `${link.link_name}` }
           </Button>
         </div>
       );
@@ -83,13 +100,19 @@ class ServiceDeliveryLink extends Component {
         <Grid item xs={12} sm={12} md={12}>
           <Card className={classes.mediaContainer}>
             <CardContent>{serButtons}</CardContent>
+            {this.state.redirectClicked
+              ? (
+                <Typography variant="caption" gutterBottom>
+                  <i>Redirecting to </i> {org_name}'s {service_name} page </Typography>
+              )
+              : null
+            }
           </Card>
-        </Grid>
+          </Grid>
       </Grid>
     );
   }
 }
-
 
 const mapDispatchToProps = (dispatch) => {
   return {
@@ -105,9 +128,6 @@ const mapStateToProps = function (state, ownProps) {
   };
 };
 
-const ConnServiceDeliveryLink = connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(withRoot(withStyles(styles)(ServiceDeliveryLink)));
+const ConnServiceDeliveryLink = connect(mapStateToProps, mapDispatchToProps)(withRoot(withStyles(styles)(ServiceDeliveryLink)));
 
 export default ConnServiceDeliveryLink;

@@ -390,7 +390,7 @@ class ServiceDetail extends React.Component {
                     </Grid>}
                 </Grid>
                 <Grid item xs={12} sm={12} md={6}>
-                    {service_del_links && <ServiceDeliveryLink serDelLinks={service_del_links}/>}
+                    {service_del_links && <ServiceDeliveryLink service_name={name} org_name={org_name} serDelLinks={service_del_links}/>}
                     {contact_details && <ContactDetails info={contact_details}/>}
                     {offeredInDetails}
                 </Grid>

@@ -55,7 +55,8 @@ const styles = theme => ({
         paddingLeft: theme.spacing.unit * 2,
     },
     icon: {
-        fontSize: 30,
+        fontSize: 24,
+        color: theme.palette.primary["200"]
     },
     formLink: {
         textDecoration: 'underline',
@@ -77,7 +78,7 @@ const RawHTML = ({
         <div
             className={className}
             dangerouslySetInnerHTML={{
-                __html: children.replace(/\n/g, "<br />")
+                __html: children.replace(/\n/g, " ")
             }} />
     );
 

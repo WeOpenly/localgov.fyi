@@ -60,7 +60,8 @@ const styles = theme => ({
         border: 'none'
     },
     icon: {
-        fontSize: 30,
+        fontSize: 24,
+        color : theme.palette.primary["200"]
     },
     formLink: {
         textDecoration: 'underline',
@@ -82,7 +83,7 @@ const RawHTML = ({
     <div
         className={className}
         dangerouslySetInnerHTML={{
-        __html: children.replace(/\n/g, "<br />")
+        __html: children.replace(/\n/g, " ")
     }}/>
 );
 
@@ -301,7 +302,7 @@ class ServiceDetail extends React.Component {
                                         <InfoOutline className={classes.icon} />
                                     </div>
                                 </Grid>
-                                <Grid item xs={10} sm={11}>
+                                <Grid item xs={10} sm={10}>
                                     <div className={classes.cardContent}>
                                         <Typography variant="subheading" gutterBottom>
                                             {name}
@@ -354,7 +355,7 @@ class ServiceDetail extends React.Component {
                                         <Assignment className={classes.icon} />
                                     </div>
                                 </Grid>
-                                <Grid item xs={10} sm={11}>
+                                <Grid item xs={10} sm={10}>
                                     <div className={classes.cardContent} style={{ marginTop: -12 }}>{formList}</div>
                                 </Grid>
                             </Grid>
@@ -382,7 +383,7 @@ class ServiceDetail extends React.Component {
                                         <QuestionAnswer className={classes.icon} />
                                     </div>
                                 </Grid>
-                                <Grid item xs={10} sm={11}>
+                                <Grid item xs={10} sm={10}>
                                     <div className={classes.cardContent}>{qaList}</div>
                                 </Grid>
                             </Grid>

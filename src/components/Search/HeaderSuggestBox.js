@@ -336,7 +336,7 @@ class HeaderSuggestBox extends Component {
         const {input, searchSuggestions} = this.props.search;
         const {userCity} = this.props.search;
 
-        let placeholder = '';
+        let placeholder = `Look up a city or service`;
 
         if (userCity) {
             placeholder = `Try '${userCity}'`;

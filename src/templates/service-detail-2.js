@@ -271,7 +271,7 @@ class ServiceDetail extends React.Component {
             jsonLd['potentialAction'] = serDel[0]['potentialAction']
         }
         
-        console.log(this.props.history);
+
 
         return (
             <Grid container spacing={16} className={classes.container}>

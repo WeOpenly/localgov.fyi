@@ -2,7 +2,7 @@ import * as PropTypes from "prop-types"
 import React from "react"
 import Helmet from "react-helmet";
 import { connect } from "react-redux";
-
+import Link  from 'gatsby-link';
 import Grid from '@material-ui/core/Grid';
 import { withStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
@@ -50,10 +50,10 @@ class OrganizationDetail extends React.Component {
 
   render() {
     const {id, services, members, contact_details, name} = this.props.pathContext.data;
-
+    const {classes} = this.props;
     let contactDetailComponent = null;
     let memberListComp = null;
-    let serviceListComp = null;
+
 
     if (contact_details){
       contactDetailComponent = <ContactDetails info={contact_details}/>
@@ -87,23 +87,29 @@ class OrganizationDetail extends React.Component {
     //     </Grid>
     //   )
     // }
-
+    
+    let allServiceList = [];
     if (services.length > 0) {
-      const serCards = services.map((ser, index) => {
-        return <SearchResult key={ser.id} resultType='service' id={ser.id} listIndex={index} toLink={`/service/${ser.id}`} title={ser.service_name}/>;
+      services.map((servicesAtlevel, index) => {
+      const serCards = servicesAtlevel.services.map((ser, idx) => {
+        return <SearchResult key={ser.id} resultType='service' id={ser.id} listIndex={idx} toLink={`/service/${ser.id}`} title={ser.service_name} />;
+        });
+        const { name, id } = servicesAtlevel.org;
+        const serviceListComp = <Grid container spacing={8}>
+          <Grid item xs={12} sm={12}>
+          {(index ===0) ? (<Typography variant="subheading" component="h4" gutterBottom>
+              Services offered by {name}
+          </Typography>) : (<Typography variant="subheading" component="h4" gutterBottom>
+                Services offered by <Link to={`/organization/${id}/`} className={classes.link}> {name} </Link>
+            </Typography>) }
+          </Grid>
+          <Grid item xs={12} sm={12}>
+            {serCards}
+          </Grid>
+        </Grid>;
+        allServiceList.push(serviceListComp);
       });
 
-      serviceListComp = <Grid container spacing={8}>
-        <Grid item xs={12} sm={12}>
-          <Typography variant="subheading" component="h4" gutterBottom>
-              Services offered by {name}
-          </Typography>
-
-        </Grid>
-        <Grid item xs={12} sm={12}>
-          {serCards}
-        </Grid>
-      </Grid>;
     }
 
     const jsonLd = {
@@ -132,7 +138,7 @@ class OrganizationDetail extends React.Component {
         <Grid container spacing={16} item xs={12} sm={12} md={6}>
           <Grid item xs={12} sm={12}>
             <br />
-              {serviceListComp}
+            {allServiceList}
           </Grid>
         </Grid>
         <Grid container spacing={16} item xs={12} sm={12} md={6}>

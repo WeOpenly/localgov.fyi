@@ -20,39 +20,33 @@ exports.createPages = ({graphql, boundActionCreators}) => {
     // for accessing a list of nodes) gives us an easy way to query all Post nodes.
 
     resolve(graphql(`
-          {
+{
 allOrgsJson {
   edges {
     node {
-      id,
+      id
       details {
         id,
         name,
-        contact_details {contact_value, contact_type},
+        contact_details {
+          contact_value,
+          contact_type
+        },
         services {
-          id
-          contact_details {
-            contact_value,
-            contact_type
+          services {
+            id
+            contact_details {contact_value, contact_type}
+            service_name
+            service_timing {break, open, day}
+            service_description
+            service_faq {question answer}
+            service_del_links {url link_name}
+            service_forms {url name}
           }
-          service_name
-          service_timing {
-            break,
-            open,
-            day
-          }
-          service_description
-          service_faq { 
-            question
-            answer
-          }
-          service_del_links {
-            url
-            link_name
-          }
-          service_forms {
-            url
+          org {
+            id
             name
+            contact_details {contact_value, contact_type}
           }
         }
       }
@@ -66,6 +60,7 @@ allOrgsJson {
       }
 
       if(result.data === undefined){
+      
         console.log(result.data, "rejecting page creation");
         reject(new Error());
       }
@@ -136,32 +131,33 @@ allOrgsJson {
       // path.
       _.each(result.data.allOrgsJson.edges, edge => {
 
-        _.each(edge.node.details.services, service => {
+        _.each(edge.node.details.services, ser => {
           // Gatsby uses Redux to manage its internal state. Plugins and sites can use
           // functions like "createPage" to interact with Gatsby.
-
-          createPage({
-            path: `service/${service.id}/`,
-            component: slash(serTemplate),
-            layout : "detailTemplate",
-            context: {
-              data: {
-                id: service.id,
-                contact_details: service.contact_details,
-                name: service.service_name,
-                allForms: service.service_forms || [],
-                description: service.service_description,
-                price: service.price,
-                allSteps: [],
-                allMems: [],
-                alllocations: [],
-                alltimings : service.service_timing || [],
-                allfaq : service.service_faq || [],
-                service_del_links: service.service_del_links || [],
-                org_id: edge.node.details.id,
-                org_name: edge.node.details.name
+          _.each(ser.services, service => {
+            createPage({
+              path: `service/${service.id}/`,
+              component: slash(serTemplate),
+              layout: "detailTemplate",
+              context: {
+                data: {
+                  id: service.id,
+                  contact_details: service.contact_details,
+                  name: service.service_name,
+                  allForms: service.service_forms || [],
+                  description: service.service_description,
+                  price: service.price,
+                  allSteps: [],
+                  allMems: [],
+                  alllocations: [],
+                  alltimings: service.service_timing || [],
+                  allfaq: service.service_faq || [],
+                  service_del_links: service.service_del_links || [],
+                  org_id: ser.org.id,
+                  org_name: ser.org.name
+                }
               }
-            }
+            })
           });
         });
       });

@@ -91,7 +91,7 @@ class OrganizationDetail extends React.Component {
     let allServiceList = [];
     if (services.length > 0) {
       services.map((detailsAtLevel, index) => {
-      const servicesAtLevel = detailsAtLevel.services || {};
+      const servicesAtLevel = detailsAtLevel.services || [];
 
         const serCards = servicesAtLevel.map((ser, idx) => {
         return <SearchResult key={ser.id} resultType='service' id={ser.id} listIndex={idx} toLink={`/service/${ser.id}`} title={ser.service_name} />;

@@ -96,19 +96,26 @@ class OrganizationDetail extends React.Component {
         const serCards = servicesAtLevel.map((ser, idx) => {
         return <SearchResult key={ser.id} resultType='service' id={ser.id} listIndex={idx} toLink={`/service/${ser.id}`} title={ser.service_name} />;
         });
-const {name, id} = detailsAtLevel.org;
-        const serviceListComp = <Grid container spacing={8}>
+        
+      let name = null
+      let id = null
+      let serviceListComp = null;
+      if ('org' in detailsAtLevel){
+         name = detailsAtLevel.org.name;
+         id = detailsAtLevel.org.id;
+        serviceListComp = <Grid container spacing={8}>
           <Grid item xs={12} sm={12}>
-          {(index ===0) ? (<Typography variant="subheading" component="h4" gutterBottom>
+            {(index === 0) ? (<Typography variant="subheading" component="h4" gutterBottom>
               Services offered by {name}
-          </Typography>) : (<Typography variant="subheading" component="h4" gutterBottom>
-                Services offered by <Link to={`/organization/${id}/`} className={classes.link}> {name} </Link>
-            </Typography>) }
+            </Typography>) : (<Typography variant="subheading" component="h4" gutterBottom>
+              Services offered by <Link to={`/organization/${id}/`} className={classes.link}> {name} </Link>
+            </Typography>)}
           </Grid>
           <Grid item xs={12} sm={12}>
             {serCards}
           </Grid>
         </Grid>;
+      }
         allServiceList.push(serviceListComp);
       });
 

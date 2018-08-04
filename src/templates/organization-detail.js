@@ -100,6 +100,7 @@ class OrganizationDetail extends React.Component {
       let name = null
       let id = null
       let serviceListComp = null;
+      console.log(detailsAtLevel);
       if ('org' in detailsAtLevel){
          name = detailsAtLevel.org.name;
          id = detailsAtLevel.org.id;

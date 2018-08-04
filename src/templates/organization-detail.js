@@ -90,36 +90,41 @@ class OrganizationDetail extends React.Component {
     
     let allServiceList = [];
     if (services.length > 0) {
-      services.map((detailsAtLevel, index) => {
-      const servicesAtLevel = detailsAtLevel.services || [];
+      console.log(services);
 
-        const serCards = servicesAtLevel.map((ser, idx) => {
-        return <SearchResult key={ser.id} resultType='service' id={ser.id} listIndex={idx} toLink={`/service/${ser.id}`} title={ser.service_name} />;
-        });
-        
-      let name = null
-      let id = null
-      let serviceListComp = null;
-      console.log(detailsAtLevel);
-      if ('org' in detailsAtLevel){
-         name = detailsAtLevel.org.name;
-         id = detailsAtLevel.org.id;
+      services.map((detailsAtLevel, index) => {
+        let serviceListComp = null;
+        let serCards = null;
+        let orgTitle = null;
+        if ('services' in detailsAtLevel){
+          const servicesAtLevel = detailsAtLevel.services || [];
+
+           serCards = servicesAtLevel.map((ser, idx) => {
+            return <SearchResult key={ser.id} resultType='service' id={ser.id} listIndex={idx} toLink={`/service/${ser.id}`} title={ser.service_name} />;
+          });
+        }
+        if('org' in detailsAtLevel){
+          if (detailsAtLevel.org && 'name' in detailsAtLevel.org && 'id' in detailsAtLevel.org) {
+
+            const {name} = detailsAtLevel.org;
+            orgTitle = (<Typography variant="subheading" component="h4" gutterBottom>
+              Services offered by {name}
+            </Typography>) 
+          }
+        }
+         
         serviceListComp = <Grid container spacing={8}>
           <Grid item xs={12} sm={12}>
-            {(index === 0) ? (<Typography variant="subheading" component="h4" gutterBottom>
-              Services offered by {name}
-            </Typography>) : (<Typography variant="subheading" component="h4" gutterBottom>
-              Services offered by <Link to={`/organization/${id}/`} className={classes.link}> {name} </Link>
-            </Typography>)}
+            {orgTitle}
           </Grid>
           <Grid item xs={12} sm={12}>
             {serCards}
           </Grid>
         </Grid>;
-      }
-        allServiceList.push(serviceListComp);
+        if (serviceListComp){
+            allServiceList.push(serviceListComp)
+        }
       });
-
     }
 
     const jsonLd = {

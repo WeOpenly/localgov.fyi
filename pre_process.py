@@ -17,9 +17,9 @@ for root, dirs, files in os.walk(data_dir):
         
         full_path = '{d}{f}'.format(d=data_dir, f=filename)
         with open(full_path) as f:
-            time = os.path.getmtime(full_path)
-            if datetime.fromtimestamp(time).date() < datetime.today().date():
-                removable_files.append(full_path)
+            # time = os.path.getmtime(full_path)
+            # if datetime.fromtimestamp(time).date() < datetime.today().date():
+            #     removable_files.append(full_path)
             
             data = json.load(f)
             is_success = True if ('success' in data) and (data['success'] == True) else False

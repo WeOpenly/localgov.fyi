@@ -91,12 +91,12 @@ class OrganizationDetail extends React.Component {
     let allServiceList = [];
     if (services.length > 0) {
       services.map((detailsAtLevel, index) => {
-      const servicesAtLevel = detailsAtLevel.services || [];
+      const servicesAtLevel = detailsAtLevel.services || {};
 
-        const serCards = servicesAtLevel.services.map((ser, idx) => {
+        const serCards = servicesAtLevel.map((ser, idx) => {
         return <SearchResult key={ser.id} resultType='service' id={ser.id} listIndex={idx} toLink={`/service/${ser.id}`} title={ser.service_name} />;
         });
-        const { name, id } = servicesAtlevel.org;
+const {name, id} = detailsAtLevel.org;
         const serviceListComp = <Grid container spacing={8}>
           <Grid item xs={12} sm={12}>
           {(index ===0) ? (<Typography variant="subheading" component="h4" gutterBottom>

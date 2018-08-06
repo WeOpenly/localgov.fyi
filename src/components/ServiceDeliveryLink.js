@@ -58,9 +58,7 @@ class ServiceDeliveryLink extends Component {
     this.setState({
       'redirectClicked': true
     }, () => {
-      setTimeout(() => {
-        windowGlobal.open(url);
-      }, 3000); 
+      setTimeout(() => windowGlobal.open(url) , 1000); 
 setTimeout(() => {
   this.setState({
     redirectClicked: false

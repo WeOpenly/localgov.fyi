@@ -187,9 +187,9 @@ class ContactDetails extends Component {
                     </Typography>
                     <Paper elevation={1} className={classes.contactInfoContainer}>
                         <Grid container justify="center" direction="column" alignItems="center">
-                            <Grid item className={classes.mapGridItem}>
+                            {/* <Grid item className={classes.mapGridItem}>
                                 <ContactAddressMap contactAddress={contactAddressValue} />
-                            </Grid>
+                            </Grid> */}
                             <Grid item container className={classes.detailsGridContainerItem}>
                                 {contactDetailCards}
                             </Grid>

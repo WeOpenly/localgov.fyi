@@ -6,22 +6,22 @@ import { withStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
 import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
-import CardMedia form '@material-ui/core/CardMedia';
+import CardMedia from '@material-ui/core/CardMedia';
 import Typography from '@material-ui/core/Typography';
+import Button from '@material-ui/core/Button';
 import withRoot from '../withRoot';
 
 import { trackClick} from "./Search/tracking";
 
 const styles = theme => ({
   card: {
-    maxWidth: 345
+    maxWidth: 345,
     marginBottom: theme.spacing.unit,
     cursor: 'pointer',
     boxShadow: `0 0 1px 1px #EBE5FF`,
   },
   media: {
-    height: 0,
-    paddingTop: '56.25',
+    // height: 200,
   },
 });
 
@@ -40,8 +40,9 @@ class SearchResult extends Component {
 
     handleDeliveryClick() {
         const { trackClick, deliveryLink } = this.props;
+        const windowGlobal = typeof window !== 'undefined' && window;
         trackClick('external', 'service_delivery_link', deliveryLink.url, deliveryLink.link_name, 0);
-        navigateTo(deliveryLink.url);
+        windowGlobal.open(deliveryLink.url);
     }
 
     render() {

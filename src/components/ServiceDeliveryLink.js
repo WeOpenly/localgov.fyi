@@ -35,6 +35,11 @@ const styles = theme => ({
     justifyContent: "center",
     boxShadow: `0 0 2px 1px ${theme.palette.primary["50"]}`
   },
+  content: {
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+  },
   button: {
     marginBottom: theme.spacing.unit
   }
@@ -97,7 +102,7 @@ setTimeout(() => {
       <Grid container spacing={0} className={classes.root}>
         <Grid item xs={12} sm={12} md={12}>
           <Card className={classes.mediaContainer}>
-            <CardContent>{serButtons}</CardContent>
+            <CardContent className={classes.content}>{serButtons}</CardContent>
             {this.state.redirectClicked
               ? (
                 <Typography variant="caption" gutterBottom>

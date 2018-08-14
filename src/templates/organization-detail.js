@@ -90,7 +90,7 @@ class OrganizationDetail extends React.Component {
     
     let allServiceList = [];
     if (services.length > 0) {
-      console.log(services);
+      // console.log('_services', services);
 
       services.map((detailsAtLevel, index) => {
         let serviceListComp = null;
@@ -100,6 +100,7 @@ class OrganizationDetail extends React.Component {
           const servicesAtLevel = detailsAtLevel.services || [];
 
            serCards = servicesAtLevel.map((ser, idx) => {
+            const deliveryLink = ser.service_del_links && ser.service_del_links[0] ? ser.service_del_links[0] : null;
             return (
               <SearchResult
                 key={ser.id}
@@ -109,7 +110,7 @@ class OrganizationDetail extends React.Component {
                 toLink={`/service/${ser.id}`}
                 title={ser.service_name}
                 description={ser.description}
-                deliveryLink={ser.delivery_links[0]}
+                deliveryLink={deliveryLink}
               />
             );
           });

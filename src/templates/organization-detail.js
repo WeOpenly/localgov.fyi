@@ -1,18 +1,18 @@
-import * as PropTypes from "prop-types"
 import React from "react"
-import Helmet from "react-helmet";
+import * as PropTypes from "prop-types"
 import { connect } from "react-redux";
 import Link  from 'gatsby-link';
-import Grid from '@material-ui/core/Grid';
-import { withStyles } from '@material-ui/core/styles';
-import Typography from '@material-ui/core/Typography';
-import ContactDetails from '../components/ContactDetails';
+import Helmet from "react-helmet";
 
+import { withStyles } from '@material-ui/core/styles';
+import Grid from '@material-ui/core/Grid';
+import Typography from '@material-ui/core/Typography';
+
+import withRoot from '../withRoot';
+import OrgHeader from '../components/OrgHeader';
 // import MemberListItem from '../components/MemberListItem';
 import SearchResult from '../components/SearchResult';
-import withRoot from '../withRoot';
-
-import {trackView} from "../components/Search/tracking";
+import { trackView } from "../components/Search/tracking";
 
 const styles = theme => ({
   card: {
@@ -49,14 +49,14 @@ class OrganizationDetail extends React.Component {
   }
 
   render() {
-    const {id, services, members, contact_details, name} = this.props.pathContext.data;
-    const {classes} = this.props;
+    const { id, services, members, contact_details, name } = this.props.pathContext.data;
+    const { classes } = this.props;
     let contactDetailComponent = null;
     let memberListComp = null;
 
 
     if (contact_details){
-      contactDetailComponent = <ContactDetails info={contact_details}/>
+      contactDetailComponent = <OrgHeader name={name} info={contact_details}/>;
     }
 
     let contactSchema = {};
@@ -102,16 +102,18 @@ class OrganizationDetail extends React.Component {
            serCards = servicesAtLevel.map((ser, idx) => {
             const deliveryLink = ser.service_del_links && ser.service_del_links[0] ? ser.service_del_links[0] : null;
             return (
-              <SearchResult
-                key={ser.id}
-                resultType='service'
-                id={ser.id}
-                listIndex={idx}
-                toLink={`/service/${ser.id}`}
-                title={ser.service_name}
-                description={ser.description}
-                deliveryLink={deliveryLink}
-              />
+              <Grid item xs={12} md={4}>
+                <SearchResult
+                  key={ser.id}
+                  resultType='service'
+                  id={ser.id}
+                  listIndex={idx}
+                  toLink={`/service/${ser.id}`}
+                  title={ser.service_name}
+                  description={ser.service_description}
+                  deliveryLink={deliveryLink}
+                />
+              </Grid>
             );
           });
         }
@@ -129,7 +131,7 @@ class OrganizationDetail extends React.Component {
           <Grid item xs={12} sm={12}>
             {orgTitle}
           </Grid>
-          <Grid item xs={12} sm={12}>
+          <Grid item container spacing={16} xs={12} sm={12}>
             {serCards}
           </Grid>
         </Grid>;
@@ -150,32 +152,31 @@ class OrganizationDetail extends React.Component {
     return (
       <Grid container spacing={16}>
         <Helmet>
-        <title>{`${name} info, contact details and services | Localgov.fyi`} </title>
-
-< meta name = "description" content = {
-            `${name} info, county / city hall contact details, utilities, and services`
-} />
+          <title>{`${name} info, contact details and services | Localgov.fyi`}</title>
+          <meta
+            name="description"
+            content={`${name} info, county / city hall contact details, utilities, and services`}
+          />
           <meta property="og:title" content={`${name}`} />
           <meta property="og:url" content={`https://localgov.fyi/organization/${id}/`} />
           <meta property="og:description" content={`${name} info, contact details and services`} />
-          <link rel="canonical" href={`https://localgov.fyi/organization/${id}/`}  />
-        
+          <link rel="canonical" href={`https://localgov.fyi/organization/${id}/`} />
           <JsonLd data={jsonLd} />
         </Helmet>
-        <Grid container spacing={16} item xs={12} sm={12} md={6}>
-          <Grid item xs={12} sm={12}>
+        <Grid container spacing={16} item xs={12} md={12}>
+          <Grid item xs={12}>
+            <br />
+            {contactDetailComponent}
+          </Grid>
+        </Grid>
+        <Grid container spacing={16} item xs={12} md={12}>
+          <Grid item xs={12}>
             <br />
             {allServiceList}
           </Grid>
         </Grid>
-        <Grid container spacing={16} item xs={12} sm={12} md={6}>
-          <Grid item xs={12} sm={12}>
-            <br />
-         {contactDetailComponent}
-          </Grid>
-        </Grid>
       </Grid>
-    )
+    );
   }
 }
 

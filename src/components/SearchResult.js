@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import { navigateTo } from "gatsby-link";
 import { connect } from "react-redux";
@@ -15,15 +15,32 @@ import { trackClick} from "./Search/tracking";
 
 const styles = theme => ({
   card: {
-    maxWidth: 345,
-    marginBottom: theme.spacing.unit,
+    display: 'flex',
+    flexDirection: 'column',
+    justifyContent: 'space-between',
+    height: 200,
     cursor: 'pointer',
     boxShadow: `0 0 1px 1px #EBE5FF`,
   },
   media: {
-    // height: 200,
+    height: 200,
+  },
+  cardContent: {
+    height: 125,
+    overflowY: 'scroll',
+  },
+  cardActions: {
+    display: 'flex',
+    justifyContent: 'flex-end',
   },
 });
+
+const RawHTML = ({ children, className = "" }) => (
+    <div
+        className={className}
+        dangerouslySetInnerHTML={{ __html: children.replace(/\n/g, " ") }}
+    />
+);
 
 class SearchResult extends Component {
     constructor(props) {
@@ -59,26 +76,30 @@ class SearchResult extends Component {
 
         return (
             <Card className={classes.card}>
-                <CardMedia
-                    image="https://via.placeholder.com/345x345"
-                    className={classes.media}
-                />
-                <CardContent>
-                    <Typography variant="body1" component="h1">
-                        {title}
-                    </Typography>
-                    <Typography variant="caption">
-                        {subtitle}
-                    </Typography>
-                </CardContent>
-                <CardActions>
-                    {(deliveryLink && deliveryLink.link_name) && <Button size="small" color="primary" onClick={this.handleDeliveryClick}>
-                        {deliveryLink.link_name}
-                    </Button>}
-                    <Button size="small" color="primary" onClick={this.handleClick}>
-                        More details
-                    </Button>
-                </CardActions>
+                <Fragment>
+                    {/*<CardMedia
+                        image="https://via.placeholder.com/345x345"
+                        className={classes.media}
+                    />*/}
+                    <CardContent className={classes.cardContent}>
+                        <Typography variant="body1" component="h1">
+                            {title}
+                        </Typography>
+                        <Typography variant="caption">
+                            <RawHTML>{subtitle}</RawHTML>
+                        </Typography>
+                    </CardContent>
+                </Fragment>
+                <Fragment>
+                    <CardActions className={classes.cardActions}>
+                        <Button size="small" color="primary" onClick={this.handleClick}>
+                            More details
+                        </Button>
+                        {(deliveryLink && deliveryLink.link_name) && <Button size="small" color="primary" onClick={this.handleDeliveryClick}>
+                            {deliveryLink.link_name}
+                        </Button>}
+                    </CardActions>
+                </Fragment>
             </Card>
         );
     }

@@ -50,7 +50,7 @@
         "react-modal": "^1.7.6",
         "react-redux": "^5.0.7",
         "react-responsive-carousel": "^3.1.41",
-        "react-share": "^2.2.0",
+        "react-share": "^2.3.0",
         "react-simple-animate": "^1.9.0",
         "react-slick": "^0.23.1",
         "react-spinkit": "^3.0.0",

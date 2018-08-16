@@ -78,21 +78,21 @@ const OrgHeader = ({classes, name, info}) => {
     if (contactType.toLowerCase() === 'phone') {
       value = (<a href={`tel:${value}`} target="_blank">
         <Typography variant="body1" className={classes.buttonContent}>
-          {icons[contactType]}{value}
+          {icons[contactType]}
         </Typography>
       </a>);
     }
     else if (contactType.toLowerCase() === 'address') {
       value = (<a href={`http://maps.google.com/?q=${value}`} target="_blank">
         <Typography variant="body1" className={classes.buttonContent}>
-          {icons[contactType]}{value}
+          {icons[contactType]}
         </Typography>
       </a>);
     }
     else if (contactType.toLowerCase() === 'email') {
       value = (<a href={`mailto:${value}`} target="_blank">
         <Typography variant="body1" className={classes.buttonContent}>
-          {icons[contactType]}{value}
+          {icons[contactType]}
         </Typography>
       </a>);
     }
@@ -114,7 +114,7 @@ const OrgHeader = ({classes, name, info}) => {
   return (
     <Card>
       <CardContent>
-        <Typography variant="title">{name}</Typography>
+        <Typography variant="display1">{name}</Typography>
       </CardContent>
       <CardActions>
         {contactDetailButtons}

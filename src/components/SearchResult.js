@@ -31,7 +31,8 @@ const styles = theme => ({
     justifyContent: 'space-between',
     height: 200,
     // cursor: 'pointer',
-    boxShadow: `0 0 1px 1px #EBE5FF`,
+    boxShadow: '0 0 0 0',
+    border: `1px solid ${theme.palette.primary['50']}`,
   },
   media: {
     height: 200,

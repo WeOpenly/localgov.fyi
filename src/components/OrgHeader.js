@@ -19,6 +19,10 @@ import Share from '@material-ui/icons/Share';
 import withRoot from '../withRoot';
 
 const styles = theme => ({
+  card: {
+    boxShadow: '0 0 0 0',
+    border: `1px solid ${theme.palette.primary['50']}`,
+  },
   cardTop: {
     display: 'flex',
     justifyContent: 'space-between',
@@ -170,7 +174,7 @@ class OrgHeader extends Component {
     });
 
     return (
-      <Card>
+      <Card className={classes.card}>
         <CardContent>
           <div className={classes.cardTop}>
             <Typography variant="display1">{name}</Typography>

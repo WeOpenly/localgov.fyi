@@ -44,7 +44,8 @@ const styles = theme => ({
         marginBottom: theme.spacing.unit * 2,
         paddingTop: theme.spacing.unit,
         borderRadius: 3,
-        boxShadow: `0 0 2px 1px ${theme.palette.primary["50"]}`
+        boxShadow: `0 0 0 0`,
+        border: `1px solid ${theme.palette.primary['50']}`,
     },
     serviceItemIcon: {
         padding: 8

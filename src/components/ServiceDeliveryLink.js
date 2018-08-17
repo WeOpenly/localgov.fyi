@@ -33,7 +33,8 @@ const styles = theme => ({
     flexDirection: "column",
     alignItems: "center",
     justifyContent: "center",
-    boxShadow: `0 0 2px 1px ${theme.palette.primary["50"]}`
+    boxShadow: `0 0 0 0`,
+    border: `1px solid ${theme.palette.primary['50']}`,
   },
   content: {
     display: 'flex',

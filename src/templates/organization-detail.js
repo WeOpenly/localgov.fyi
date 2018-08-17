@@ -15,6 +15,9 @@ import SearchResult from '../components/SearchResult';
 import { trackView } from "../components/Search/tracking";
 
 const styles = theme => ({
+  serviceListComponent: {
+    marginBottom: theme.spacing.unit * 2,
+  },
   card: {
     display: 'flex',
     flexDirection: 'column',
@@ -127,14 +130,16 @@ class OrganizationDetail extends React.Component {
           }
         }
          
-        serviceListComp = <Grid container spacing={8}>
-          <Grid item xs={12} sm={12}>
-            {orgTitle}
+        serviceListComp = (
+          <Grid container spacing={8} className={classes.serviceListComponent}>
+            <Grid item xs={12} sm={12}>
+              {orgTitle}
+            </Grid>
+            <Grid item container spacing={16} xs={12} sm={12}>
+              {serCards}
+            </Grid>
           </Grid>
-          <Grid item container spacing={16} xs={12} sm={12}>
-            {serCards}
-          </Grid>
-        </Grid>;
+        );
         if (serviceListComp){
             allServiceList.push(serviceListComp)
         }

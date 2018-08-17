@@ -22,7 +22,8 @@ const styles = theme => ({
   header: {
     background: theme.palette.common.white,
     color: theme.palette.primary['700'],
-    boxShadow: `0 0 10px 5px ${theme.palette.primary["A200"]}`,
+    boxShadow: `0 0 0 0 ${theme.palette.common.white}`,
+    borderBottom: `1px solid ${theme.palette.primary['50']}`
   },
   flex: {
     flexGrow: 1,

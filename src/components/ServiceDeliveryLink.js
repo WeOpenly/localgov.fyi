@@ -1,18 +1,14 @@
-import React, {Component} from 'react';
+import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
-import {withStyles} from '@material-ui/core/styles';
-import {connect} from "react-redux";
+import { connect } from "react-redux";
 
+import { withStyles } from '@material-ui/core/styles';
+import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
-import Card from '@material-ui/core/Card';
-import Grid from '@material-ui/core/Grid';
 import Spinner from 'react-spinkit';
 
-import CardActions from '@material-ui/core/CardActions';
-import CardContent from '@material-ui/core/CardContent';
-import Typography from '@material-ui/core/Typography';
 import withRoot from '../withRoot';
-import {trackClick} from "./Search/tracking";
+import { trackClick } from "./Search/tracking";
 
 const styles = theme => ({
   root: {
@@ -33,7 +29,8 @@ const styles = theme => ({
     flexDirection: "column",
     alignItems: "center",
     justifyContent: "center",
-    boxShadow: `0 0 2px 1px ${theme.palette.primary["50"]}`
+    boxShadow: `0 0 0 0`,
+    border: `1px solid ${theme.palette.primary['50']}`,
   },
   content: {
     display: 'flex',
@@ -85,34 +82,28 @@ setTimeout(() => {
 
     const serButtons = serDelLinks.map((link, idx) => {
       return (
-        <div>
-          <Button
-            key={link.link_name}
-            onClick={() => this.onClick(link.link_name, link.url, idx)}
-            variant="raised"
-            color="primary"
-            className={classes.button}>
-            {this.state.redirectClicked ? (<Spinner name="ball-beat" color="white" />)  : `${link.link_name}` }
-          </Button>
-        </div>
+        <Button
+          key={link.link_name}
+          onClick={() => this.onClick(link.link_name, link.url, idx)}
+          variant="raised"
+          color="primary"
+          className={classes.button}>
+          {this.state.redirectClicked ? (<Spinner name="ball-beat" color="white" />)  : `${link.link_name}` }
+        </Button>
       );
     });
 
     return (
-      <Grid container spacing={0} className={classes.root}>
-        <Grid item xs={12} sm={12} md={12}>
-          <Card className={classes.mediaContainer}>
-            <CardContent className={classes.content}>{serButtons}</CardContent>
-            {this.state.redirectClicked
-              ? (
-                <Typography variant="caption" gutterBottom>
-                  <i>Redirecting to </i> {org_name}'s {service_name} page </Typography>
-              )
-              : null
-            }
-          </Card>
-          </Grid>
-      </Grid>
+      <Fragment>
+        {serButtons}
+        {this.state.redirectClicked
+          ? (
+            <Typography variant="caption" gutterBottom>
+              <i>Redirecting to </i> {org_name}'s {service_name} page
+            </Typography>
+          )
+          : null}
+      </Fragment>
     );
   }
 }

@@ -21,6 +21,7 @@ import PlaylistAddCheck from '@material-ui/icons/PlaylistAddCheck';
 import QuestionAnswer from '@material-ui/icons/QuestionAnswer';
 import PinDrop from '@material-ui/icons/PinDrop';
 
+import ServiceHeader from '../components/ServiceHeader';
 import ContactDetails from '../components/ContactDetails';
 import AddressGoogleMap from '../components/AddressGoogleMap';
 import HorizontalList from '../components/HorizontalList';
@@ -236,7 +237,7 @@ class ServiceDetail extends React.Component {
 
 
         const serDel = service_del_links.map((link, idx) => {
-      return ({
+        return ({
             "potentialAction": {
                 "@type": "ReserveAction",
                 "target": {
@@ -254,8 +255,7 @@ class ServiceDetail extends React.Component {
                     "name": `${link.link_name}`
                 }
             }
-      }
-      );
+        });
     });
 
         const jsonLd = {
@@ -294,7 +294,10 @@ class ServiceDetail extends React.Component {
                         Back to results
                     </Button>
                 </Grid>) : null }
-                <Grid item md={6} sm={12} className={classes.details}>
+                <Grid item xs={12}>
+                    <ServiceHeader name={name} offeredIn={org_name} info={contact_details} serDelLinks={service_del_links}/>
+                </Grid>
+                <Grid item xs={12} md={8} className={classes.details}>
                     <Grid item xs={12}>
                         <Paper className={classes.cards}>
                             <Grid container spacing={8}>
@@ -306,7 +309,7 @@ class ServiceDetail extends React.Component {
                                 <Grid item xs={10} sm={10}>
                                     <div className={classes.cardContent}>
                                         <Typography variant="subheading" gutterBottom>
-                                            {name}
+                                            Description
                                         </Typography>
                                         <Typography variant="body1" gutterBottom>
                                             <RawHTML>{description}</RawHTML>
@@ -405,10 +408,7 @@ class ServiceDetail extends React.Component {
                         </Paper>
                     </Grid>}
                 </Grid>
-                <Grid item xs={12} sm={12} md={6}>
-                    {service_del_links && <ServiceDeliveryLink service_name={name} org_name={org_name} serDelLinks={service_del_links}/>}
-                    {contact_details && <ContactDetails info={contact_details}/>}
-                    {offeredInDetails}
+                <Grid item xs={12} sm={12} md={4}>
                 </Grid>
             </Grid>
         )

@@ -105,9 +105,8 @@ class OrganizationDetail extends React.Component {
            serCards = servicesAtLevel.map((ser, idx) => {
             const deliveryLink = ser.service_del_links && ser.service_del_links[0] ? ser.service_del_links[0] : null;
             return (
-              <Grid item xs={12} md={4}>
+              <Grid item xs={12} md={4} key={ser.id}>
                 <SearchResult
-                  key={ser.id}
                   resultType='service'
                   id={ser.id}
                   listIndex={idx}
@@ -131,7 +130,7 @@ class OrganizationDetail extends React.Component {
         }
          
         serviceListComp = (
-          <Grid container spacing={8} className={classes.serviceListComponent}>
+          <Grid container spacing={8} className={classes.serviceListComponent} key={detailsAtLevel.org.id}>
             <Grid item xs={12} sm={12}>
               {orgTitle}
             </Grid>

@@ -130,7 +130,7 @@ class OrganizationDetail extends React.Component {
         }
          
         serviceListComp = (
-          <Grid container spacing={8} className={classes.serviceListComponent} key={detailsAtLevel.org.id}>
+          <Grid container spacing={8} className={classes.serviceListComponent} key={detailsAtLevel.org ? detailsAtLevel.org.id : index}>
             <Grid item xs={12} sm={12}>
               {orgTitle}
             </Grid>

@@ -17,6 +17,7 @@ import IconButton from '@material-ui/core/IconButton';
 import SvgIcon from '@material-ui/core/SvgIcon';
 import Share from '@material-ui/icons/Share';
 import withRoot from '../withRoot';
+import ServiceDeliveryLink from './ServiceDeliveryLink';
 
 const styles = theme => ({
   card: {
@@ -27,6 +28,13 @@ const styles = theme => ({
     display: 'flex',
     justifyContent: 'space-between',
     marginRight: -theme.spacing.unit,
+  },
+  title: {
+    display: 'flex',
+  },
+  in: {
+    color: 'lightGray',
+    marginLeft: 8,
   },
   iconButton: {
     marginTop: -theme.spacing.unit,
@@ -47,7 +55,7 @@ const styles = theme => ({
   },
 });
 
-class OrgHeader extends Component {
+class ServiceHeader extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -72,11 +80,12 @@ class OrgHeader extends Component {
   }
 
   render() {
-    const { classes, name, info } = this.props;
+    const { classes, name, offeredIn, info, serDelLinks } = this.props;
     const { anchorEl, copied } = this.state;
     const windowGlobal = typeof window !== 'undefined' && window;
     const windowLocation = windowGlobal.location ? windowGlobal.location : {};
     const shareLink = windowLocation.href;
+    const inOrg = 'in ' + offeredIn;
 
     // if (!info) return null;
     // if (!info.length > 0) return null;
@@ -85,7 +94,7 @@ class OrgHeader extends Component {
     let contactAddressValue = null;
     if (contactAddress) contactAddressValue = contactAddress.contact_value || null;
 
-    const sortedInfo = []
+    const sortedInfo = [];
     const sortInfo = (info) => {
       info.forEach((detail) => {
         let type = detail.contact_type;
@@ -177,7 +186,10 @@ class OrgHeader extends Component {
       <Card className={classes.card}>
         <CardContent>
           <div className={classes.cardTop}>
-            <Typography variant="display1">{name}</Typography>
+            <div className={classes.title}>
+              <Typography variant="display1">{name}&#32;</Typography>
+              <Typography variant="display1" className={classes.in}>{inOrg}</Typography>
+            </div>
             <IconButton onClick={this.handleShareClick} className={classes.iconButton}>
               <Share/>
             </IconButton>
@@ -208,6 +220,7 @@ class OrgHeader extends Component {
               </MenuItem>
             </Menu>
           </div>
+          <ServiceDeliveryLink serDelLinks={serDelLinks} />
         </CardContent>
         <CardActions>
           {contactDetailButtons}
@@ -217,4 +230,4 @@ class OrgHeader extends Component {
   }
 }
 
-export default withRoot(withStyles(styles)(OrgHeader));
+export default withRoot(withStyles(styles)(ServiceHeader));

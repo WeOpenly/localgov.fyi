@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { navigateTo } from 'gatsby-link';
 import { CopyToClipboard } from 'react-copy-to-clipboard';
 import {
   FacebookShareButton,
@@ -7,6 +8,7 @@ import {
 
 import { withStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
+import Grid from '@material-ui/core/Grid';
 import Card from '@material-ui/core/Card';
 import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
@@ -26,15 +28,16 @@ const styles = theme => ({
   cardTop: {
     display: 'flex',
     justifyContent: 'space-between',
+    alignItems: 'flex-start',
     marginRight: -theme.spacing.unit,
     marginBottom: theme.spacing.unit * 2,
   },
   title: {
-    display: 'flex',
+    // display: 'flex',
   },
   in: {
-    color: 'lightGray',
-    marginLeft: 8,
+    color: 'gray',
+    cursor: 'pointer',
   },
   menuButton: {
     marginTop: -theme.spacing.unit,
@@ -69,6 +72,7 @@ class ServiceHeader extends Component {
     this.handleShareClick = this.handleShareClick.bind(this);
     this.handleClose = this.handleClose.bind(this);
     this.handleCopy = this.handleCopy.bind(this);
+    this.handleOrgClick = this.handleOrgClick.bind(this);
   }
 
   handleShareClick(event) {
@@ -83,13 +87,17 @@ class ServiceHeader extends Component {
     this.setState({ copied: true });
   }
 
+  handleOrgClick() {
+    const { orgID } = this.props;
+    navigateTo(`/organization/${orgID}`);
+  }
+
   render() {
     const { classes, name, offeredIn, info, serDelLinks } = this.props;
     const { anchorEl, copied } = this.state;
     const windowGlobal = typeof window !== 'undefined' && window;
     const windowLocation = windowGlobal.location ? windowGlobal.location : {};
     const shareLink = windowLocation.href;
-    const inOrg = 'in ' + offeredIn;
 
     // if (!info) return null;
     // if (!info.length > 0) return null;
@@ -191,8 +199,8 @@ class ServiceHeader extends Component {
         <CardContent>
           <div className={classes.cardTop}>
             <div className={classes.title}>
-              <Typography variant="display1">{name}&#32;</Typography>
-              <Typography variant="display1" className={classes.in}>{inOrg}</Typography>
+              <Typography variant="display1">{name}</Typography>
+              <Typography variant="subheading" onClick={this.handleOrgClick} className={classes.in}>{offeredIn}</Typography>
             </div>
             <Button onClick={this.handleShareClick} className={classes.menuButton}>
               Share
@@ -220,7 +228,12 @@ class ServiceHeader extends Component {
               </MenuItem>
             </Menu>
           </div>
-          <ServiceDeliveryLink serDelLinks={serDelLinks} />
+          <Grid container>
+            <Grid item xs={0} md={8}/>
+            <Grid item xs={12} md={4}>
+              <ServiceDeliveryLink serDelLinks={serDelLinks} />
+            </Grid>
+          </Grid>
         </CardContent>
         <CardActions>
           {contactDetailButtons}

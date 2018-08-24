@@ -15,6 +15,7 @@ import MenuItem from '@material-ui/core/MenuItem';
 import Button from '@material-ui/core/Button';
 import IconButton from '@material-ui/core/IconButton';
 import SvgIcon from '@material-ui/core/SvgIcon';
+import MoreVert from '@material-ui/icons/MoreVert';
 import withRoot from '../withRoot';
 
 const styles = theme => ({
@@ -28,8 +29,8 @@ const styles = theme => ({
     marginRight: -theme.spacing.unit,
   },
   menuButton: {
-    marginTop: -theme.spacing.unit,
-    marginRight: theme.spacing.unit * -1.5,
+    marginTop: theme.spacing.unit * -2,
+    marginRight: theme.spacing.unit * -2,
   },
   menuItem: {
     display: 'flex',
@@ -181,9 +182,9 @@ class OrgHeader extends Component {
         <CardContent>
           <div className={classes.cardTop}>
             <Typography variant="display1">{name}</Typography>
-            <Button onClick={this.handleShareClick} className={classes.menuButton}>
-              Share
-            </Button>
+            <IconButton onClick={this.handleShareClick} className={classes.menuButton}>
+              <MoreVert />
+            </IconButton>
             <Menu
               id="simple-menu"
               anchorEl={anchorEl}

@@ -13,6 +13,7 @@ const styles = theme => ({
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'flex-start',
+    background: theme.palette.common.white,
   },
   main: {
     width: '100%',

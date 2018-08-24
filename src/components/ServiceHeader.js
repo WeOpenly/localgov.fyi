@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { navigateTo } from 'gatsby-link';
+import { isMobileOnly } from 'react-device-detect';
 import { CopyToClipboard } from 'react-copy-to-clipboard';
 import {
   FacebookShareButton,
@@ -17,6 +18,7 @@ import MenuItem from '@material-ui/core/MenuItem';
 import Button from '@material-ui/core/Button';
 import IconButton from '@material-ui/core/IconButton';
 import SvgIcon from '@material-ui/core/SvgIcon';
+import MoreVert from '@material-ui/icons/MoreVert';
 import withRoot from '../withRoot';
 import ServiceDeliveryLink from './ServiceDeliveryLink';
 
@@ -24,6 +26,11 @@ const styles = theme => ({
   card: {
     boxShadow: '0 0 0 0',
     border: `1px solid ${theme.palette.primary['50']}`,
+  },
+  main: {
+    marginRight: theme.spacing.unit,
+  },
+  mainMobile: {
   },
   cardTop: {
     display: 'flex',
@@ -40,8 +47,8 @@ const styles = theme => ({
     cursor: 'pointer',
   },
   menuButton: {
-    marginTop: -theme.spacing.unit,
-    marginRight: theme.spacing.unit * -1.5,
+    marginTop: theme.spacing.unit * -2,
+    // marginRight: theme.spacing.unit * -2,
   },
   menuItem: {
     display: 'flex',
@@ -52,6 +59,10 @@ const styles = theme => ({
     justifyContent: 'center',
     alignItems: 'center',
   },
+  cardActions: {
+    marginLeft: theme.spacing.unit * -2,
+    marginBottom: theme.spacing.unit * -3,
+  },
   buttonContent: {
     display: 'flex',
     alignItems: 'center',
@@ -59,6 +70,24 @@ const styles = theme => ({
   contactButton: {
     marginLeft: -2,
     marginRight: -2,
+  },
+  deliveryLinkWrapper: {
+    display: 'flex',
+    flexDirection: 'column',
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginTop: theme.spacing.unit,
+    marginRight: -theme.spacing.unit,
+    borderLeft: '1px solid #e4e4e4',
+  },
+  deliveryLinkWrapperMobile: {
+    display: 'flex',
+    flexDirection: 'column',
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginTop: theme.spacing.unit,
+    // marginRight: -theme.spacing.unit,
+    // borderLeft: '1px solid #e4e4e4',
   },
 });
 
@@ -197,47 +226,48 @@ class ServiceHeader extends Component {
     return (
       <Card className={classes.card}>
         <CardContent>
-          <div className={classes.cardTop}>
-            <div className={classes.title}>
-              <Typography variant="display1">{name}</Typography>
-              <Typography variant="subheading" onClick={this.handleOrgClick} className={classes.in}>{offeredIn}</Typography>
-            </div>
-            <Button onClick={this.handleShareClick} className={classes.menuButton}>
-              Share
-            </Button>
-            <Menu
-              id="simple-menu"
-              anchorEl={anchorEl}
-              open={Boolean(anchorEl)}
-              onClose={this.handleClose}
-            >
-              <MenuItem className={classes.menuItem}>
-                <CopyToClipboard text={shareLink} onCopy={this.handleCopy}>
-                  <Typography>{copied ? 'Copied!' : 'Copy URL'}</Typography>
-                </CopyToClipboard>
-              </MenuItem>
-              <MenuItem onClick={this.handleClose} className={classes.menuItem}>
-                <FacebookShareButton url={shareLink} className={classes.shareButton}>
-                  <Typography>Facebook</Typography>
-                </FacebookShareButton>
-              </MenuItem>
-              <MenuItem onClick={this.handleClose} className={classes.menuItem}>
-                <TwitterShareButton url={shareLink} className={classes.shareButton}>
-                  <Typography>Twitter</Typography>
-                </TwitterShareButton>
-              </MenuItem>
-            </Menu>
-          </div>
-          <Grid container>
-            <Grid item xs={0} md={8}/>
-            <Grid item xs={12} md={4}>
+          <Grid container spacing={16}>
+            <Grid item xs={12} md={8} className={!isMobileOnly ? classes.main : classes.mainMobile}>
+              <div className={classes.cardTop}>
+                <div className={classes.title}>
+                  <Typography variant="display1">{name}</Typography>
+                  <Typography variant="subheading" onClick={this.handleOrgClick} className={classes.in}>{offeredIn}</Typography>
+                </div>
+                <IconButton onClick={this.handleShareClick} className={classes.menuButton}>
+                  <MoreVert />
+                </IconButton>
+                <Menu
+                  id="simple-menu"
+                  anchorEl={anchorEl}
+                  open={Boolean(anchorEl)}
+                  onClose={this.handleClose}
+                >
+                  <MenuItem className={classes.menuItem}>
+                    <CopyToClipboard text={shareLink} onCopy={this.handleCopy}>
+                      <Typography>{copied ? 'Copied!' : 'Copy URL'}</Typography>
+                    </CopyToClipboard>
+                  </MenuItem>
+                  <MenuItem onClick={this.handleClose} className={classes.menuItem}>
+                    <FacebookShareButton url={shareLink} className={classes.shareButton}>
+                      <Typography>Facebook</Typography>
+                    </FacebookShareButton>
+                  </MenuItem>
+                  <MenuItem onClick={this.handleClose} className={classes.menuItem}>
+                    <TwitterShareButton url={shareLink} className={classes.shareButton}>
+                      <Typography>Twitter</Typography>
+                    </TwitterShareButton>
+                  </MenuItem>
+                </Menu>
+              </div>
+              <CardActions className={classes.cardActions}>
+                {contactDetailButtons}
+              </CardActions>
+            </Grid>
+            <Grid item xs={12} md={4} className={!isMobileOnly ? classes.deliveryLinkWrapper : classes.deliveryLinkWrapperMobile}>
               <ServiceDeliveryLink serDelLinks={serDelLinks} />
             </Grid>
           </Grid>
         </CardContent>
-        <CardActions>
-          {contactDetailButtons}
-        </CardActions>
       </Card>
     );
   }

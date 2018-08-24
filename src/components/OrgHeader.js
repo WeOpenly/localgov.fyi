@@ -16,6 +16,7 @@ import MenuItem from '@material-ui/core/MenuItem';
 import Button from '@material-ui/core/Button';
 import IconButton from '@material-ui/core/IconButton';
 import SvgIcon from '@material-ui/core/SvgIcon';
+import MoreVert from '@material-ui/icons/MoreVert';
 import withRoot from '../withRoot';
 
 const styles = theme => ({
@@ -28,8 +29,8 @@ const styles = theme => ({
     justifyContent: 'space-between',
   },
   menuButton: {
-    marginTop: -theme.spacing.unit,
-    marginRight: theme.spacing.unit * -1.5,
+    marginTop: theme.spacing.unit * -2,
+    marginRight: theme.spacing.unit * -2,
   },
 logoName : {
     display : 'flex',
@@ -185,41 +186,39 @@ class OrgHeader extends Component {
         <CardContent>
           <div className={classes.cardTop}>
             <div className={classes.logoName}>
-            {logoSizes ? (<Img
-              title={`logo${name}`}
-              alt={`logo of ${name}`}
-              style={{width: '100px'}}
-              sizes={logoSizes}
-            />) : null}
-            <Typography variant="display1">{name}</Typography>
+              {logoSizes ? (<Img
+                title={`logo${name}`}
+                alt={`logo of ${name}`}
+                style={{width: '100px'}}
+                sizes={logoSizes}
+              />) : null}
+              <Typography variant="display1">{name}</Typography>
+              <IconButton onClick={this.handleShareClick} className={classes.menuButton}>
+                <MoreVert />
+              </IconButton>
+              <Menu
+                id="simple-menu"
+                anchorEl={anchorEl}
+                open={Boolean(anchorEl)}
+                onClose={this.handleClose}
+              >
+                <MenuItem className={classes.menuItem}>
+                  <CopyToClipboard text={shareLink} onCopy={this.handleCopy}>
+                    <Typography>{copied ? 'Copied!' : 'Copy URL'}</Typography>
+                  </CopyToClipboard>
+                </MenuItem>
+                <MenuItem onClick={this.handleClose} className={classes.menuItem}>
+                  <FacebookShareButton url={shareLink} className={classes.shareButton}>
+                    <Typography>Facebook</Typography>
+                  </FacebookShareButton>
+                </MenuItem>
+                <MenuItem onClick={this.handleClose} className={classes.menuItem}>
+                  <TwitterShareButton url={shareLink} className={classes.shareButton}>
+                    <Typography>Twitter</Typography>
+                  </TwitterShareButton>
+                </MenuItem>
+              </Menu>
             </div>
-            <div className={classes.shareButton}>
-            <Button onClick={this.handleShareClick} className={classes.menuButton}>
-              Share
-            </Button>
-            </div>
-            <Menu
-              id="simple-menu"
-              anchorEl={anchorEl}
-              open={Boolean(anchorEl)}
-              onClose={this.handleClose}
-            >
-              <MenuItem className={classes.menuItem}>
-                <CopyToClipboard text={shareLink} onCopy={this.handleCopy}>
-                  <Typography>{copied ? 'Copied!' : 'Copy URL'}</Typography>
-                </CopyToClipboard>
-              </MenuItem>
-              <MenuItem onClick={this.handleClose} className={classes.menuItem}>
-                <FacebookShareButton url={shareLink} className={classes.shareButton}>
-                  <Typography>Facebook</Typography>
-                </FacebookShareButton>
-              </MenuItem>
-              <MenuItem onClick={this.handleClose} className={classes.menuItem}>
-                <TwitterShareButton url={shareLink} className={classes.shareButton}>
-                  <Typography>Twitter</Typography>
-                </TwitterShareButton>
-              </MenuItem>
-            </Menu>
           </div>
         </CardContent>
         <CardActions>

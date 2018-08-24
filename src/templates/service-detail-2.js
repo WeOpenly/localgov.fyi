@@ -1,11 +1,13 @@
-import * as PropTypes from "prop-types"
 import React from "react"
-import {connect} from "react-redux";
-import {withStyles} from '@material-ui/core/styles';
+import * as PropTypes from "prop-types"
+import { connect } from "react-redux";
+import Helmet from "react-helmet";
+import { isMobileOnly } from 'react-device-detect';
+
+import { withStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
-import Helmet from "react-helmet";
 
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
@@ -59,7 +61,8 @@ const styles = theme => ({
         padding: 8
     },
     cardContent: {
-        padding: 4
+        marginLeft: theme.spacing.unit * 3,
+        padding: theme.spacing.unit / 2,
     },
     dividerWrapper: {
         paddingLeft: theme.spacing.unit * 3,
@@ -80,6 +83,11 @@ const styles = theme => ({
     formLink: {
         textDecoration: 'underline',
         textDecorationColor: '#0000EE',
+    },
+    otherServicesDividerWrapper: {
+        marginBottom: theme.spacing.unit,
+        paddingLeft: theme.spacing.unit * 3,
+        paddingRight: theme.spacing.unit * 3,
     },
 });
 
@@ -300,7 +308,7 @@ class ServiceDetail extends React.Component {
                     <meta property="og:description" content={`Forms, Price, Timings and Local Government Service Contact Details for ${name} offered in ${org_name} | Localgov.fyi`}  />
                     <JsonLd data={jsonLd} />
                 </Helmet>
-                {this.props.history.length > 2 ? (
+                {this.props.history.length > 2 && !isMobileOnly ? (
                     <IconButton variant="outlined" aria-label="goback" onClick={() => this.props.history.goBack()} className={classes.button}>
                         <KeyboardBackspace />
                     </IconButton>
@@ -319,12 +327,12 @@ class ServiceDetail extends React.Component {
                     <Grid item xs={12}>
                         <Paper className={classes.cards}>
                             <Grid container spacing={8}>
-                                <Grid item xs={2} sm={1}>
+                                {/*<Grid item xs={2} sm={1}>
                                     <div className={classes.iconWrapper}>
                                         <InfoOutline className={classes.icon} />
                                     </div>
-                                </Grid>
-                                <Grid item xs={10} sm={10}>
+                                </Grid>*/}
+                                <Grid item xs={10} sm={11}>
                                     <div className={classes.cardContent}>
                                         <Typography variant="subheading" gutterBottom>
                                             About this service
@@ -341,11 +349,11 @@ class ServiceDetail extends React.Component {
                         <div className={classes.dividerWrapper}><Divider /></div>
                         <Paper className={classes.cards}>
                             <Grid container spacing={8}>
-                                <Grid item xs={2} sm={1}>
+                                {/*<Grid item xs={2} sm={1}>
                                     <div className={classes.iconWrapper}>
                                         <AttachMoney className={classes.icon} />
                                     </div>
-                                </Grid>
+                                </Grid>*/}
                                 <Grid item xs={10} sm={11}>
                                     <div className={classes.cardContent}>
                                         <Typography variant="body2" gutterBottom>
@@ -360,11 +368,11 @@ class ServiceDetail extends React.Component {
                         <div className={classes.dividerWrapper}><Divider /></div>
                         <Paper className={classes.cards}>
                             <Grid container spacing={8}>
-                                <Grid item xs={2} sm={1}>
+                                {/*<Grid item xs={2} sm={1}>
                                     <div className={classes.iconWrapper}>
                                         <AccessTime className={classes.icon} />
                                     </div>
-                                </Grid>
+                                </Grid>*/}
                                 <Grid item xs={10} sm={11}>
                                     <div className={classes.cardContent} style={{ marginTop: -12 }}>{timingList}</div>
                                 </Grid>
@@ -375,12 +383,12 @@ class ServiceDetail extends React.Component {
                         <div className={classes.dividerWrapper}><Divider /></div>
                         <Paper className={classes.cards}>
                             <Grid container spacing={8}>
-                                <Grid item xs={2} sm={1}>
+                                {/*<Grid item xs={2} sm={1}>
                                     <div className={classes.iconWrapper}>
                                         <Assignment className={classes.icon} />
                                     </div>
-                                </Grid>
-                                <Grid item xs={10} sm={10}>
+                                </Grid>*/}
+                                <Grid item xs={10} sm={11}>
                                     <div className={classes.cardContent} style={{ marginTop: -12 }}>{formList}</div>
                                 </Grid>
                             </Grid>
@@ -390,11 +398,11 @@ class ServiceDetail extends React.Component {
                         <div className={classes.dividerWrapper}><Divider /></div>
                         <Paper className={classes.cards}>
                             <Grid container spacing={8}>
-                                <Grid item xs={2} sm={1}>
+                                {/*<Grid item xs={2} sm={1}>
                                     <div className={classes.iconWrapper}>
                                         <PlaylistAddCheck className={classes.icon} />
                                     </div>
-                                </Grid>
+                                </Grid>*/}
                                 <Grid item xs={10} sm={11}>
                                     <div className={classes.cardContent} style={{ marginTop: -12 }}>{steplist}</div>
                                 </Grid>
@@ -405,12 +413,12 @@ class ServiceDetail extends React.Component {
                         <div className={classes.dividerWrapper}><Divider /></div>
                         <Paper className={classes.cards}>
                             <Grid container spacing={8}>
-                                <Grid item xs={2} sm={1}>
+                                {/*<Grid item xs={2} sm={1}>
                                     <div className={classes.iconWrapper}>
                                         <QuestionAnswer className={classes.icon} />
                                     </div>
-                                </Grid>
-                                <Grid item xs={10} sm={10}>
+                                </Grid>*/}
+                                <Grid item xs={10} sm={11}>
                                     <div className={classes.cardContent}>{qaList}</div>
                                 </Grid>
                             </Grid>
@@ -420,11 +428,11 @@ class ServiceDetail extends React.Component {
                         <div className={classes.dividerWrapper}><Divider /></div>
                         <Paper className={classes.cards}>
                             <Grid container spacing={8}>
-                                <Grid item xs={2} sm={1}>
+                                {/*<Grid item xs={2} sm={1}>
                                     <div className={classes.iconWrapper}>
                                         <PinDrop className={classes.icon} />
                                     </div>
-                                </Grid>
+                                </Grid>*/}
                                 <Grid item xs={10} sm={11}>
                                     <div className={classes.cardContent}>{locList}</div>
                                 </Grid>
@@ -434,32 +442,40 @@ class ServiceDetail extends React.Component {
                     </Paper>
                 </Grid>
                 <Grid item xs={12} sm={12} md={4}>
-                    <OtherServices services={[
-                        {
-                            name: 'Apply for a Marriage Certificate',
-                            id: '123',
-                            deliveryLink: {
-                                name: 'Apply Now',
-                                url: '',
+                    {isMobileOnly && <div className={classes.otherServicesDividerWrapper}><Divider /></div>}
+                    <OtherServices
+                        services={[
+                            {
+                                name: 'Apply for a Marriage Certificate',
+                                id: '123',
+                                description: 'Marriage certificates are used for many reasons such as a spouse being added onto health benefits.',
+                                deliveryLink: {
+                                    name: 'Apply Now',
+                                    url: '',
+                                },
                             },
-                        },
-                        {
-                            name: 'Apply for a Pet License',
-                            id: '456',
-                            deliveryLink: {
-                                name: 'Apply Now',
-                                url: '',
+                            {
+                                name: 'Apply for a Pet License',
+                                id: '456',
+                                description: 'Using this service, residents in San Mateo County can apply for a pet license online.',
+                                deliveryLink: {
+                                    name: 'Apply Now',
+                                    url: '',
+                                },
                             },
-                        },
-                        {
-                            name: 'Pay for a Traffic Citation',
-                            id: '789',
-                            deliveryLink: {
-                                name: 'Pay Now',
-                                url: '',
+                            {
+                                name: 'Pay for a Traffic Citation',
+                                id: '789',
+                                description: '',
+                                deliveryLink: {
+                                    name: 'Pay Now',
+                                    url: '',
+                                },
                             },
-                        },
-                    ]} />
+                        ]}
+                        orgID={org_id}
+                        orgName={org_name}
+                    />
                 </Grid>
             </Grid>
         )

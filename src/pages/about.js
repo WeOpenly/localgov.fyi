@@ -31,14 +31,27 @@ const styles = theme => ({
     paddingLeft: theme.spacing.unit * 2,
   },
   section1: {
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
     height: '100vh',
-    paddingTop: theme.spacing.unit * 20,
+    marginLeft: theme.spacing.unit * -2,
+    marginRight: theme.spacing.unit * -2,
+    // paddingTop: theme.spacing.unit * 20,
+    paddingLeft: theme.spacing.unit * 2,
+    paddingRight: theme.spacing.unit * 2,
+    backgroundColor: theme.palette.primary['500'],
+  },
+  headline: {
+    fontSize: '3.5rem',
+    lineHeight: '4.5rem',
+    color: theme.palette.common.white,
   },
   section2: {
     height: '100vh',
     marginLeft: theme.spacing.unit * -2,
     marginRight: theme.spacing.unit * -2,
-    paddingTop: theme.spacing.unit * 20,
+    paddingTop: theme.spacing.unit * 30,
     paddingLeft: theme.spacing.unit * 2,
     paddingRight: theme.spacing.unit * 2,
     background: '#fafafa',
@@ -52,8 +65,8 @@ const styles = theme => ({
   },
   section3: {
     height: '100vh',
-    marginBottom: -119,
-    paddingTop: theme.spacing.unit * 20,
+    marginBottom: -151,
+    paddingTop: theme.spacing.unit * 30,
   },
   section3Content: {
     display: 'flex',
@@ -63,9 +76,20 @@ const styles = theme => ({
   section3Text: {
     width: 400,
   },
+  subheading: {
+    color: theme.palette.primary['500'],
+  },
   bodyText: {
     marginTop: theme.spacing.unit * 2,
+    lineHeight: '1.75rem',
   },
+  mailTo: {
+    color: theme.palette.primary['500'],
+    textDecoration: 'none',
+    '&:hover': {
+      textDecoration: 'underline',
+    },
+  }
 });
 
 class About extends React.Component {
@@ -98,23 +122,23 @@ class About extends React.Component {
             <Grid item md={1} />
             <Grid item md={10}>
               <Typography
-                variant="display3"
+                variant="display1"
                 align="center"
-                className={[classes.headlineAbove, classes.white]}
+                className={classes.headline}
               >
                 We are on a mission
               </Typography>
               <Typography
-                variant="display3"
+                variant="display1"
                 align="center"
-                className={[classes.headlineBetween, classes.white]}
+                className={classes.headline}
               >
                 to make every government
               </Typography>
               <Typography
-                variant="display3"
+                variant="display1"
                 align="center"
-                className={[classes.headlineBelow, classes.white]}
+                className={classes.headline}
                 gutterBottom
               >
                 service accessible online.
@@ -130,10 +154,10 @@ class About extends React.Component {
               <Search className={classes.searchIcon}/>
             </Grid>
             <Grid item md={5}>
-              <Typography variant="display2">
+              <Typography variant="display2" className={classes.subheading}>
                 Find your government services instantly.
               </Typography>
-              <Typography variant="body2" className={classes.bodyText}>
+              <Typography variant="subheading" className={classes.bodyText}>
                 Be it individuals or businesses, we are making sense of all the government services out there and serving them on a silver platter for all.
               </Typography>
             </Grid>
@@ -145,14 +169,14 @@ class About extends React.Component {
             <Grid item md={1} />
             <Grid item md={10} className={classes.section3Content}>
               <div className={classes.section3Text}>
-                <Typography variant="display2">
+                <Typography variant="display2" className={classes.subheading}>
                   We are at the beginning of a long journey.
                 </Typography>
-                <Typography variant="body2" className={classes.bodyText}>
+                <Typography variant="subheading" className={classes.bodyText}>
                   We are a small team with a big vision to make government services delightful. We are adding more services and locations everday.
                 </Typography>
-                <Typography variant="body2" className={classes.bodyText}>
-                  If you haven't found anything you are looking for and want us to add them, drop us a line here.
+                <Typography variant="subheading" className={classes.bodyText}>
+                  If you haven't found anything you are looking for and want us to add them, drop us a line {<a href="mailto:team@weopenly.com" className={classes.mailTo}>here.</a>}
                 </Typography>
               </div>
             </Grid>

@@ -45,10 +45,12 @@ const styles = theme => ({
   },
   cardTitle: {
     fontWeight: 600,
+    cursor: 'pointer',
   },
   caption: {
     height: 80,
     overflowY: 'scroll',
+    cursor: 'pointer',
   },
   cardActions: {
     display: 'flex',
@@ -144,7 +146,7 @@ class SearchResult extends Component {
                     />*/}
                     <CardContent>
                         <div className={classes.cardTop}>
-                            <Typography variant="body1" component="h1" className={classes.cardTitle}>
+                            <Typography variant="body1" component="h1" className={classes.cardTitle} onClick={this.handleClick}>
                                 {title}
                             </Typography>
                             <IconButton onClick={this.handleMoreVertClick} className={classes.iconButton}>
@@ -158,7 +160,7 @@ class SearchResult extends Component {
                             >
                                 <MenuItem className={classes.menuItem}>
                                     <CopyToClipboard text={shareLink} onCopy={this.handleCopy}>
-                                        <Typography>{copied ? 'Copied!' : 'Copy URL'}</Typography>
+                                        <Typography>{copied ? 'Copied!' : 'Copy link'}</Typography>
                                     </CopyToClipboard>
                                 </MenuItem>
                                 <MenuItem onClick={this.handleClose} className={classes.menuItem}>
@@ -173,7 +175,7 @@ class SearchResult extends Component {
                                 </MenuItem>
                             </Menu>
                         </div>
-                        <Typography variant="caption" className={classes.caption}>
+                        <Typography variant="caption" className={classes.caption} onClick={this.handleClick}>
                             <RawHTML>{subtitle}</RawHTML>
                         </Typography>
                     </CardContent>
@@ -183,9 +185,6 @@ class SearchResult extends Component {
                 </div>
                 <Fragment>
                     <CardActions className={classes.cardActions}>
-                        <Button size="small" color="primary" onClick={this.handleClick}>
-                            More details
-                        </Button>
                         {(deliveryLink && deliveryLink.link_name) && <Button size="small" color="primary" onClick={this.handleDeliveryClick}>
                             {deliveryLink.link_name}
                         </Button>}

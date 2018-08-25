@@ -29,8 +29,8 @@ const styles = theme => ({
     marginRight: -theme.spacing.unit,
   },
   menuButton: {
-    marginTop: theme.spacing.unit * -2,
-    marginRight: theme.spacing.unit * -2,
+    marginTop: theme.spacing.unit * -1,
+    marginRight: theme.spacing.unit * -1,
   },
   menuItem: {
     display: 'flex',
@@ -182,9 +182,9 @@ class OrgHeader extends Component {
         <CardContent>
           <div className={classes.cardTop}>
             <Typography variant="display1">{name}</Typography>
-            <IconButton onClick={this.handleShareClick} className={classes.menuButton}>
-              <MoreVert />
-            </IconButton>
+            <Button variant="raised" color="primary" onClick={this.handleShareClick} className={classes.menuButton}>
+              Share
+            </Button>
             <Menu
               id="simple-menu"
               anchorEl={anchorEl}
@@ -193,7 +193,7 @@ class OrgHeader extends Component {
             >
               <MenuItem className={classes.menuItem}>
                 <CopyToClipboard text={shareLink} onCopy={this.handleCopy}>
-                  <Typography>{copied ? 'Copied!' : 'Copy URL'}</Typography>
+                  <Typography>{copied ? 'Copied!' : 'Copy link'}</Typography>
                 </CopyToClipboard>
               </MenuItem>
               <MenuItem onClick={this.handleClose} className={classes.menuItem}>

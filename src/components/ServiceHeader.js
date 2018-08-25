@@ -28,7 +28,7 @@ const styles = theme => ({
     border: `1px solid ${theme.palette.primary['50']}`,
   },
   main: {
-    marginRight: theme.spacing.unit,
+    // marginRight: theme.spacing.unit,
   },
   mainMobile: {
   },
@@ -47,8 +47,8 @@ const styles = theme => ({
     cursor: 'pointer',
   },
   menuButton: {
-    marginTop: theme.spacing.unit * -2,
-    // marginRight: theme.spacing.unit * -2,
+    marginTop: theme.spacing.unit * -1,
+    marginRight: theme.spacing.unit * -1,
   },
   menuItem: {
     display: 'flex',
@@ -77,8 +77,8 @@ const styles = theme => ({
     justifyContent: 'center',
     alignItems: 'center',
     marginTop: theme.spacing.unit,
-    marginRight: -theme.spacing.unit,
-    borderLeft: '1px solid #e4e4e4',
+    // marginRight: -theme.spacing.unit,
+    // borderLeft: '1px solid #e4e4e4',
   },
   deliveryLinkWrapperMobile: {
     display: 'flex',
@@ -224,18 +224,18 @@ class ServiceHeader extends Component {
     });
 
     return (
-      <Card className={classes.card}>
-        <CardContent>
-          <Grid container spacing={16}>
-            <Grid item xs={12} md={8} className={!isMobileOnly ? classes.main : classes.mainMobile}>
+      <Grid container spacing={16}>
+        <Grid item xs={12} md={8} className={!isMobileOnly ? classes.main : classes.mainMobile}>
+          <Card className={classes.card}>
+            <CardContent>
               <div className={classes.cardTop}>
                 <div className={classes.title}>
                   <Typography variant="display1">{name}</Typography>
                   <Typography variant="subheading" onClick={this.handleOrgClick} className={classes.in}>{offeredIn}</Typography>
                 </div>
-                <IconButton onClick={this.handleShareClick} className={classes.menuButton}>
-                  <MoreVert />
-                </IconButton>
+                <Button variant="outlined" color="primary" onClick={this.handleShareClick} className={classes.menuButton}>
+                  Share
+                </Button>
                 <Menu
                   id="simple-menu"
                   anchorEl={anchorEl}
@@ -244,7 +244,7 @@ class ServiceHeader extends Component {
                 >
                   <MenuItem className={classes.menuItem}>
                     <CopyToClipboard text={shareLink} onCopy={this.handleCopy}>
-                      <Typography>{copied ? 'Copied!' : 'Copy URL'}</Typography>
+                      <Typography>{copied ? 'Copied!' : 'Copy link'}</Typography>
                     </CopyToClipboard>
                   </MenuItem>
                   <MenuItem onClick={this.handleClose} className={classes.menuItem}>
@@ -262,13 +262,13 @@ class ServiceHeader extends Component {
               <CardActions className={classes.cardActions}>
                 {contactDetailButtons}
               </CardActions>
-            </Grid>
-            <Grid item xs={12} md={4} className={!isMobileOnly ? classes.deliveryLinkWrapper : classes.deliveryLinkWrapperMobile}>
-              <ServiceDeliveryLink serDelLinks={serDelLinks} />
-            </Grid>
-          </Grid>
-        </CardContent>
-      </Card>
+            </CardContent>
+          </Card>
+        </Grid>
+        <Grid item xs={12} md={4} className={!isMobileOnly ? classes.deliveryLinkWrapper : classes.deliveryLinkWrapperMobile}>
+          <ServiceDeliveryLink serDelLinks={serDelLinks} />
+        </Grid>
+      </Grid>
     );
   }
 }

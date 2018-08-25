@@ -11,7 +11,7 @@ import withRoot from '../withRoot';
 
 const styles = theme => ({
   footerWrapper: {
-    marginTop: theme.spacing.unit * 4,
+    marginTop: theme.spacing.unit * 8,
   },
   dividerWrapper: {
   },

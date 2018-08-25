@@ -29,10 +29,10 @@ const styles = theme => ({
     justifyContent: 'space-between',
   },
   menuButton: {
-    marginTop: theme.spacing.unit * -2,
-    marginRight: theme.spacing.unit * -2,
+    marginTop: theme.spacing.unit * -1,
+    marginRight: theme.spacing.unit * -1,
   },
-logoName : {
+  logoName : {
     display : 'flex',
   },
   menuItem: {
@@ -193,9 +193,9 @@ class OrgHeader extends Component {
                 sizes={logoSizes}
               />) : null}
               <Typography variant="display1">{name}</Typography>
-              <IconButton onClick={this.handleShareClick} className={classes.menuButton}>
-                <MoreVert />
-              </IconButton>
+              <Button variant="raised" color="primary" onClick={this.handleShareClick} className={classes.menuButton}>
+                Share
+              </Button>
               <Menu
                 id="simple-menu"
                 anchorEl={anchorEl}

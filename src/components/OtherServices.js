@@ -33,8 +33,15 @@ const styles = theme => ({
     justifyContent: 'center',
     width: '100%',
   },
-  seeAll: {
-    color: theme.palette.common.black,
+  link: {
+    color: theme.palette.primary['500'],
+    textDecoration: 'none',
+    '&:hover': {
+      textDecoration: 'underline',
+    },
+  },
+  linkText: {
+    color: theme.palette.primary['500'],
   },
 });
 
@@ -60,8 +67,8 @@ const OtherServices = ({ classes, services, orgID, orgName }) => {
         </Card>
       ))}
       <div className={classes.linkWrapper}>
-        <Link to={`/organization/${orgID}`}>
-          <Typography variant="caption" className={classes.seeAll}>See all services from {orgName}</Typography>
+        <Link to={`/organization/${orgID}`} className={classes.link}>
+          <Typography variant="caption" className={classes.linkText}>See all services from {orgName}</Typography>
         </Link>
       </div>
     </Fragment>

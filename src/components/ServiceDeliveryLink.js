@@ -46,10 +46,14 @@ const styles = theme => ({
     marginBottom: theme.spacing.unit,
   },
   paper: {
-    paddingLeft: theme.spacing.unit * 2,
-    paddingRight: theme.spacing.unit * 2,
+    paddingLeft: theme.spacing.unit,
+    paddingRight: theme.spacing.unit,
     paddingTop: theme.spacing.unit * 2,
-    borderTop : `6px solid ${theme.palette.primary["500"]}`,
+    // borderTop : `6px solid ${theme.palette.primary["500"]}`,
+    backgroundColor: theme.palette.primary['500'],
+  },
+  title: {
+    color: theme.palette.common.white,
   },
   form: {
     width: 300,
@@ -77,6 +81,12 @@ const styles = theme => ({
   dialogButton: {
     marginTop: theme.spacing.unit * 2,
     marginBottom: theme.spacing.unit,
+    backgroundColor: theme.palette.common.white,
+  },
+  dialogButton2: {
+    marginTop: theme.spacing.unit * 2,
+    marginBottom: theme.spacing.unit,
+    color: theme.palette.common.white,
   },
   afterSubmit: {
     width: '100%',
@@ -93,6 +103,9 @@ const styles = theme => ({
     color: theme.palette.primary['500'],
     fontSize: 32,
     marginBottom: theme.spacing.unit * 2,
+  },
+  bodyText: {
+    color: theme.palette.common.white,
   },
 });
 
@@ -229,7 +242,7 @@ class ServiceDeliveryLink extends Component {
         >
           <Paper className={classes.paper}>
             {(!success && !failure && !submitting) && <Fragment>
-              <Typography variant="title" component="h1">
+              <Typography variant="title" component="h1" className={classes.title}>
                 How are we doing?
               </Typography>
               <form
@@ -275,11 +288,10 @@ class ServiceDeliveryLink extends Component {
                     className={classes.bootstrapInput}
                   />
                 </label>
-                <Typography variant="caption">*We won't send you spam</Typography>
-                <Button size="small" variant="outlined" type="submit" className={classes.dialogButton}>
+                <Button size="small" variant="raised" type="submit" className={classes.dialogButton}>
                   Submit
                 </Button>
-                <Button size="small" onClick={this.handleClose} className={classes.dialogButton}>Cancel</Button>
+                <Button size="small" onClick={this.handleClose} className={classes.dialogButton2}>Cancel</Button>
               </form>
             </Fragment>}
             {submitting && <div className={classes.afterSubmit}>
@@ -290,13 +302,13 @@ class ServiceDeliveryLink extends Component {
                 <path fill="none" d="M0 0h24v24H0V0zm0 0h24v24H0V0z"/>
                 <path d="M16.59 7.58L10 14.17l-3.59-3.58L5 12l5 5 8-8zM12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z"/>
               </SvgIcon>
-              <Typography variant="body1" component="h1">Thanks for your feedback!</Typography>
-              <Button size="small" variant="outlined" onClick={this.handleClose} className={classes.dialogButton}>Close</Button>
+              <Typography variant="body1" className={classes.bodyText}>Thanks for your feedback!</Typography>
+              <Button size="small" onClick={this.handleClose} className={classes.dialogButton}>Close</Button>
             </div>}
             {failure && <div className={classes.afterSubmit}>
               <MoodBad className={classes.icon}/>
-              <Typography variant="body1" >Something went wrong. Please try again.</Typography>
-              <Button size="small" variant="outlined" onClick={this.handleReset} className={classes.dialogButton}>Back</Button>
+              <Typography variant="body1" className={classes.bodyText}>Something went wrong. Please try again.</Typography>
+              <Button size="small" onClick={this.handleReset} className={classes.dialogButton}>Back</Button>
             </div>}
           </Paper>
         </Dialog>

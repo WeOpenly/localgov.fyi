@@ -242,7 +242,7 @@ class ServiceDeliveryLink extends Component {
         >
           <Paper className={classes.paper}>
             {(!success && !failure && !submitting) && <Fragment>
-              <Typography variant="title" component="h1" className={classes.title}>
+              <Typography variant="display1" component="h1" className={classes.title}>
                 How are we doing?
               </Typography>
               <form

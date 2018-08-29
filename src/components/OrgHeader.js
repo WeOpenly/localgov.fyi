@@ -11,6 +11,7 @@ import Typography from '@material-ui/core/Typography';
 import Card from '@material-ui/core/Card';
 import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
+import Avatar from '@material-ui/core/Avatar';
 import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
 import Button from '@material-ui/core/Button';
@@ -21,8 +22,17 @@ import withRoot from '../withRoot';
 
 const styles = theme => ({
   card: {
+    display: 'flex',
     boxShadow: '0 0 0 0',
     border: `1px solid ${theme.palette.primary['50']}`,
+  },
+  avatar: {
+    width: 100,
+    height: 100,
+    margin: theme.spacing.unit * 2,
+  },
+  wrapper: {
+    width: '100%',
   },
   cardTop: {
     display: 'flex',
@@ -204,7 +214,7 @@ class OrgHeader extends Component {
               >
                 <MenuItem className={classes.menuItem}>
                   <CopyToClipboard text={shareLink} onCopy={this.handleCopy}>
-                    <Typography>{copied ? 'Copied!' : 'Copy URL'}</Typography>
+                    <Typography>{copied ? 'Copied!' : 'Copy link'}</Typography>
                   </CopyToClipboard>
                 </MenuItem>
                 <MenuItem onClick={this.handleClose} className={classes.menuItem}>

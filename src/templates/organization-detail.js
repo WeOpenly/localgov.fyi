@@ -57,9 +57,8 @@ class OrganizationDetail extends React.Component {
     let contactDetailComponent = null;
     let memberListComp = null;
 
-
     if (contact_details){
-      contactDetailComponent = <OrgHeader name={name} info={contact_details}/>;
+      contactDetailComponent = <OrgHeader name={name} info={contact_details} logo={'https://www.cityofsanmateo.org/ImageRepository/Document?documentID=58791'} />;
     }
 
     let contactSchema = {};

@@ -10,6 +10,7 @@ import Typography from '@material-ui/core/Typography';
 import Card from '@material-ui/core/Card';
 import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
+import Avatar from '@material-ui/core/Avatar';
 import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
 import Button from '@material-ui/core/Button';
@@ -20,8 +21,17 @@ import withRoot from '../withRoot';
 
 const styles = theme => ({
   card: {
+    display: 'flex',
     boxShadow: '0 0 0 0',
     border: `1px solid ${theme.palette.primary['50']}`,
+  },
+  avatar: {
+    width: 100,
+    height: 100,
+    margin: theme.spacing.unit * 2,
+  },
+  wrapper: {
+    width: '100%',
   },
   cardTop: {
     display: 'flex',
@@ -76,7 +86,7 @@ class OrgHeader extends Component {
   }
 
   render() {
-    const { classes, name, info } = this.props;
+    const { classes, name, info, logo } = this.props;
     const { anchorEl, copied } = this.state;
     const windowGlobal = typeof window !== 'undefined' && window;
     const windowLocation = windowGlobal.location ? windowGlobal.location : {};
@@ -179,39 +189,42 @@ class OrgHeader extends Component {
 
     return (
       <Card className={classes.card}>
-        <CardContent>
-          <div className={classes.cardTop}>
-            <Typography variant="display1">{name}</Typography>
-            <Button variant="raised" color="primary" onClick={this.handleShareClick} className={classes.menuButton}>
-              Share
-            </Button>
-            <Menu
-              id="simple-menu"
-              anchorEl={anchorEl}
-              open={Boolean(anchorEl)}
-              onClose={this.handleClose}
-            >
-              <MenuItem className={classes.menuItem}>
-                <CopyToClipboard text={shareLink} onCopy={this.handleCopy}>
-                  <Typography>{copied ? 'Copied!' : 'Copy link'}</Typography>
-                </CopyToClipboard>
-              </MenuItem>
-              <MenuItem onClick={this.handleClose} className={classes.menuItem}>
-                <FacebookShareButton url={shareLink} className={classes.shareButton}>
-                  <Typography>Facebook</Typography>
-                </FacebookShareButton>
-              </MenuItem>
-              <MenuItem onClick={this.handleClose} className={classes.menuItem}>
-                <TwitterShareButton url={shareLink} className={classes.shareButton}>
-                  <Typography>Twitter</Typography>
-                </TwitterShareButton>
-              </MenuItem>
-            </Menu>
-          </div>
-        </CardContent>
-        <CardActions>
-          {contactDetailButtons}
-        </CardActions>
+        <Avatar src={logo} className={classes.avatar} />
+        <div className={classes.wrapper}>
+          <CardContent>
+            <div className={classes.cardTop}>
+              <Typography variant="display1">{name}</Typography>
+              <Button variant="raised" color="primary" onClick={this.handleShareClick} className={classes.menuButton}>
+                Share
+              </Button>
+              <Menu
+                id="simple-menu"
+                anchorEl={anchorEl}
+                open={Boolean(anchorEl)}
+                onClose={this.handleClose}
+              >
+                <MenuItem className={classes.menuItem}>
+                  <CopyToClipboard text={shareLink} onCopy={this.handleCopy}>
+                    <Typography>{copied ? 'Copied!' : 'Copy link'}</Typography>
+                  </CopyToClipboard>
+                </MenuItem>
+                <MenuItem onClick={this.handleClose} className={classes.menuItem}>
+                  <FacebookShareButton url={shareLink} className={classes.shareButton}>
+                    <Typography>Facebook</Typography>
+                  </FacebookShareButton>
+                </MenuItem>
+                <MenuItem onClick={this.handleClose} className={classes.menuItem}>
+                  <TwitterShareButton url={shareLink} className={classes.shareButton}>
+                    <Typography>Twitter</Typography>
+                  </TwitterShareButton>
+                </MenuItem>
+              </Menu>
+            </div>
+          </CardContent>
+          <CardActions>
+            {contactDetailButtons}
+          </CardActions>
+        </div>
       </Card>
     );
   }

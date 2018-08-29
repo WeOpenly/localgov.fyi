@@ -64,9 +64,8 @@ class OrganizationDetail extends React.Component {
     let contactDetailComponent = null;
     let memberListComp = null;
 
-
     if (contact_details){
-      contactDetailComponent = <OrgHeader logoSizes={orgLogoSvg} name={name} info={contact_details}/>;
+      contactDetailComponent = <OrgHeader name={name} info={contact_details} logoSizes={orgLogoSvg} />;
     }
 
     let contactSchema = {};

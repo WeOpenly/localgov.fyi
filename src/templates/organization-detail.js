@@ -15,25 +15,14 @@ import SearchResult from '../components/SearchResult';
 import { trackView } from "../components/Search/tracking";
 
 const styles = theme => ({
+  orgTitle: {
+    marginBottom: theme.spacing.unit,
+  },
+  titleCaption: {
+    marginTop: -theme.spacing.unit,
+  },
   serviceListComponent: {
     marginBottom: theme.spacing.unit * 2,
-  },
-  card: {
-    display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'center',
-    height: '98%',
-    margin: 2,
-  },
-  cardMedia: {
-    width: 80,
-    height: 80,
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-    borderRadius: "50%",
-    margin: theme.spacing.unit * 2,
-    boxShadow: '0px 0px 2px 1px lightGray',
   },
 });
 
@@ -64,8 +53,16 @@ class OrganizationDetail extends React.Component {
     let contactDetailComponent = null;
     let memberListComp = null;
 
-    if (contact_details){
-      contactDetailComponent = <OrgHeader name={name} info={contact_details} logoSizes={orgLogoSvg} />;
+    const parent = services[services.length - 1].org.name || '';
+    if (contact_details) {
+      contactDetailComponent = (
+        <OrgHeader
+          name={name}
+          parent={parent}
+          info={contact_details}
+          logoSizes={orgLogoSvg}
+        />
+      );
     }
 
     let contactSchema = {};
@@ -130,9 +127,19 @@ class OrganizationDetail extends React.Component {
           if (detailsAtLevel.org && 'name' in detailsAtLevel.org && 'id' in detailsAtLevel.org) {
 
             const {name} = detailsAtLevel.org;
-            orgTitle = (<Typography variant="subheading" component="h4" gutterBottom>
-              Services offered by {name}
-            </Typography>) 
+            orgTitle = (
+              <div className={classes.orgTitle}>
+                <Typography variant="subheading" component="h4">
+                  Services offered by {name}
+                </Typography>
+                {index > 0 && <Typography
+                  variant="body2"
+                  className={classes.titleCaption}
+                >
+                  More services available in this locality
+                </Typography>}
+              </div>
+            );
           }
         }
          

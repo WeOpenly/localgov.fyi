@@ -38,7 +38,11 @@ const styles = theme => ({
     justifyContent: 'space-between',
     marginRight: -theme.spacing.unit,
   },
+  parent: {
+    color: 'gray',
+  },
   menuButton: {
+    maxHeight: 36,
     marginTop: theme.spacing.unit * -1,
     marginRight: theme.spacing.unit * -1,
   },
@@ -86,7 +90,13 @@ class OrgHeader extends Component {
   }
 
   render() {
-    const { classes, name, info, logo } = this.props;
+    const {
+      classes,
+      name,
+      parent,
+      info,
+      logo,
+    } = this.props;
     const { anchorEl, copied } = this.state;
     const windowGlobal = typeof window !== 'undefined' && window;
     const windowLocation = windowGlobal.location ? windowGlobal.location : {};
@@ -193,7 +203,10 @@ class OrgHeader extends Component {
         <div className={classes.wrapper}>
           <CardContent>
             <div className={classes.cardTop}>
-              <Typography variant="display1">{name}</Typography>
+              <div>
+                <Typography variant="display1">{name}</Typography>
+                <Typography variant="subheading" className={classes.parent}>{parent}</Typography>
+              </div>
               <Button variant="raised" color="primary" onClick={this.handleShareClick} className={classes.menuButton}>
                 Share
               </Button>

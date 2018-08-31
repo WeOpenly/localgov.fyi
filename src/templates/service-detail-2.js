@@ -136,7 +136,8 @@ class ServiceDetail extends React.Component {
             allMems,
             org_id,
             org_name,
-            service_del_links
+            service_del_links,
+            otherServices,
         } = this.props.pathContext.data;
         const {classes} = this.props;
 
@@ -444,35 +445,7 @@ class ServiceDetail extends React.Component {
                 <Grid item xs={12} sm={12} md={4}>
                     {isMobileOnly && <div className={classes.otherServicesDividerWrapper}><Divider /></div>}
                     <OtherServices
-                        services={[
-                            {
-                                name: 'Apply for a Marriage Certificate',
-                                id: '123',
-                                description: 'Marriage certificates are used for many reasons such as a spouse being added onto health benefits.',
-                                deliveryLink: {
-                                    name: 'Apply Now',
-                                    url: '',
-                                },
-                            },
-                            {
-                                name: 'Apply for a Pet License',
-                                id: '456',
-                                description: 'Using this service, residents in San Mateo County can apply for a pet license online.',
-                                deliveryLink: {
-                                    name: 'Apply Now',
-                                    url: '',
-                                },
-                            },
-                            {
-                                name: 'Pay for a Traffic Citation',
-                                id: '789',
-                                description: '',
-                                deliveryLink: {
-                                    name: 'Pay Now',
-                                    url: '',
-                                },
-                            },
-                        ]}
+                        services={otherServices.slice(0, 3)}
                         orgID={org_id}
                         orgName={org_name}
                     />

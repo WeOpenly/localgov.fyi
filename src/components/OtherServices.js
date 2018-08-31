@@ -56,14 +56,14 @@ const OtherServices = ({ classes, services, orgID, orgName }) => {
           <Link to={`/service/${service.id}`} className={classes.serviceLink}>
             <CardContent>
                 <Typography>
-                  {service.name}
+                  {service.service_name}
                 </Typography>
-              <Typography variant="caption">{service.description}</Typography>
+              <Typography variant="caption">{service.service_description}</Typography>
             </CardContent>
           </Link>
-          <CardActions className={classes.cardActions}>
-            <Button color="primary">{service.deliveryLink.name}</Button>
-          </CardActions>
+          {!!service.service_del_links.length && <CardActions className={classes.cardActions}>
+            <Button color="primary">{service.service_del_links[0].link_name}</Button>
+          </CardActions>}
         </Card>
       ))}
       <div className={classes.linkWrapper}>

@@ -189,7 +189,8 @@ allLogos: allFile (filter : {
                   allfaq: service.service_faq || [],
                   service_del_links: service.service_del_links || [],
                   org_id: ser.org.id,
-                  org_name: ser.org.name
+                  org_name: ser.org.name,
+                  otherServices: ser.services.filter(otherService => otherService.id !== service.id),
                 }
               }
             })

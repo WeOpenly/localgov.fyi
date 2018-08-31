@@ -10,6 +10,7 @@ import Typography from '@material-ui/core/Typography';
 
 import withRoot from '../withRoot';
 import OrgHeader from '../components/OrgHeader';
+import ChipFilter from '../components/ChipFilter';
 // import MemberListItem from '../components/MemberListItem';
 import SearchResult from '../components/SearchResult';
 import { trackView } from "../components/Search/tracking";
@@ -34,6 +35,18 @@ const JsonLd = ({ data }) =>
 
 
 class OrganizationDetail extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      selectedFilter: '',
+    };
+    this.changeFilter = this.changeFilter.bind(this);
+  }
+
+  changeFilter(filter) {
+    this.setState({ selectedFilter: filter });
+  }
+
   componentDidMount() {
     const { dispatch } = this.props;
     const { id, name } = this.props.pathContext.data;
@@ -96,9 +109,12 @@ class OrganizationDetail extends React.Component {
         let serCards = null;
         let orgTitle = null;
         if ('services' in detailsAtLevel){
-          const servicesAtLevel = detailsAtLevel.services || [];
-
-           serCards = servicesAtLevel.map((ser, idx) => {
+          let servicesAtLevel = detailsAtLevel.services || [];
+          servicesAtLevel = servicesAtLevel.filter(service => {
+            const deliveryLink = service.service_del_links && service.service_del_links[0] ? service.service_del_links[0] : null;
+            return deliveryLink && deliveryLink.link_name.toLowerCase().includes(this.state.selectedFilter.toLowerCase());
+          });
+          serCards = servicesAtLevel.map((ser, idx) => {
             const deliveryLink = ser.service_del_links && ser.service_del_links[0] ? ser.service_del_links[0] : null;
             return (
               <Grid item xs={12} md={4} key={ser.id}>
@@ -180,6 +196,12 @@ class OrganizationDetail extends React.Component {
           </Grid>
         </Grid>
         <Grid container spacing={16} item xs={12} md={12}>
+          <Grid item xs={12}>
+            <ChipFilter
+              tags={['Apply', 'Pay', 'Register', 'Renew', 'Request', 'Reserve']}
+              changeFilter={this.changeFilter}
+            />
+          </Grid>
           <Grid item xs={12}>
             <br />
             {allServiceList}

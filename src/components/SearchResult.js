@@ -48,9 +48,10 @@ const styles = theme => ({
     cursor: 'pointer',
   },
   caption: {
-    height: 80,
-    overflowY: 'scroll',
+    height: 72,
+    overflowY: 'hidden',
     cursor: 'pointer',
+    color: 'rgba(30, 30, 50, 0.75)'
   },
   cardActions: {
     display: 'flex',
@@ -126,7 +127,7 @@ class SearchResult extends Component {
         const { anchorEl, copied } = this.state;
         const windowGlobal = typeof window !== 'undefined' && window;
         const windowLocation = windowGlobal.location ? windowGlobal.location : {};
-        const shareLink = windowLocation.origin + toLink;
+        const shareLink = windowLocation.origin + toLink + '/';
         let key = title
         if (this.props.key) {
             key = this.props.key
@@ -158,11 +159,11 @@ class SearchResult extends Component {
                                 open={Boolean(anchorEl)}
                                 onClose={this.handleClose}
                             >
-                                <MenuItem className={classes.menuItem}>
-                                    <CopyToClipboard text={shareLink} onCopy={this.handleCopy}>
+                                <CopyToClipboard text={shareLink} onCopy={this.handleCopy}>
+                                    <MenuItem className={classes.menuItem}>
                                         <Typography>{copied ? 'Copied!' : 'Copy link'}</Typography>
-                                    </CopyToClipboard>
-                                </MenuItem>
+                                    </MenuItem>
+                                </CopyToClipboard>
                                 <MenuItem onClick={this.handleClose} className={classes.menuItem}>
                                     <FacebookShareButton url={shareLink} className={classes.shareButton}>
                                         <Typography>Facebook</Typography>

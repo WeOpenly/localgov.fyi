@@ -36,8 +36,8 @@ const styles = theme => ({
     display: 'flex',
     justifyContent: 'space-between',
     alignItems: 'flex-start',
-    marginRight: -theme.spacing.unit,
-    marginBottom: theme.spacing.unit * 2,
+    marginRights: -theme.spacing.unit,
+    // marginBottom: theme.spacing.unit * 2,
   },
   title: {
     // display: 'flex',
@@ -126,7 +126,7 @@ class ServiceHeader extends Component {
     const { anchorEl, copied } = this.state;
     const windowGlobal = typeof window !== 'undefined' && window;
     const windowLocation = windowGlobal.location ? windowGlobal.location : {};
-    const shareLink = windowLocation.href;
+    const shareLink = windowLocation.href + '/';
 
     // if (!info) return null;
     // if (!info.length > 0) return null;
@@ -242,11 +242,11 @@ class ServiceHeader extends Component {
                   open={Boolean(anchorEl)}
                   onClose={this.handleClose}
                 >
-                  <MenuItem className={classes.menuItem}>
-                    <CopyToClipboard text={shareLink} onCopy={this.handleCopy}>
+                  <CopyToClipboard text={shareLink} onCopy={this.handleCopy}>
+                    <MenuItem className={classes.menuItem}>
                       <Typography>{copied ? 'Copied!' : 'Copy link'}</Typography>
-                    </CopyToClipboard>
-                  </MenuItem>
+                    </MenuItem>
+                  </CopyToClipboard>
                   <MenuItem onClick={this.handleClose} className={classes.menuItem}>
                     <FacebookShareButton url={shareLink} className={classes.shareButton}>
                       <Typography>Facebook</Typography>

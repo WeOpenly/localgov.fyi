@@ -21,6 +21,17 @@ const styles = theme => ({
     boxShadow: '0 0 0 0',
     border: `1px solid ${theme.palette.primary['50']}`,
   },
+  cardContent: {
+    marginBottom: theme.spacing.unit * -2,
+  },
+  cardTitle: {
+    fontWeight: 600,
+  },
+  caption: {
+    height: 40,
+    overflowY: 'hidden',
+    color: 'rgba(30, 30, 50, 0.75)'
+  },
   serviceLink: {
     textDecoration: 'none',
   },
@@ -54,11 +65,13 @@ const OtherServices = ({ classes, services, orgID, orgName }) => {
       {services.map(service => (
         <Card key={service.id} className={classes.card}>
           <Link to={`/service/${service.id}`} className={classes.serviceLink}>
-            <CardContent>
-                <Typography>
-                  {service.service_name}
-                </Typography>
-              <Typography variant="caption">{service.service_description}</Typography>
+            <CardContent className={classes.cardContent}>
+              <Typography variant="body1" className={classes.cardTitle}>
+                {service.service_name}
+              </Typography>
+              <Typography variant="caption" className={classes.caption}>
+                {service.service_description}
+              </Typography>
             </CardContent>
           </Link>
           {!!service.service_del_links.length && <CardActions className={classes.cardActions}>

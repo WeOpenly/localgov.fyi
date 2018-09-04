@@ -37,6 +37,8 @@ const styles = theme => ({
   cardTop: {
     display: 'flex',
     justifyContent: 'space-between',
+    marginRight: -theme.spacing.unit,
+    marginBottom: theme.spacing.unit * -2,
   },
   parent: {
     color: 'gray',
@@ -104,7 +106,7 @@ class OrgHeader extends Component {
 
     const windowGlobal = typeof window !== 'undefined' && window;
     const windowLocation = windowGlobal.location ? windowGlobal.location : {};
-    const shareLink = windowLocation.href;
+    const shareLink = windowLocation.href + '/';
 
     // if (!info) return null;
     // if (!info.length > 0) return null;
@@ -225,11 +227,11 @@ class OrgHeader extends Component {
                 open={Boolean(anchorEl)}
                 onClose={this.handleClose}
               >
-                <MenuItem className={classes.menuItem}>
-                  <CopyToClipboard text={shareLink} onCopy={this.handleCopy}>
+                <CopyToClipboard text={shareLink} onCopy={this.handleCopy}>
+                  <MenuItem className={classes.menuItem}>
                     <Typography>{copied ? 'Copied!' : 'Copy link'}</Typography>
-                  </CopyToClipboard>
-                </MenuItem>
+                  </MenuItem>
+                </CopyToClipboard>
                 <MenuItem onClick={this.handleClose} className={classes.menuItem}>
                   <FacebookShareButton url={shareLink} className={classes.shareButton}>
                     <Typography>Facebook</Typography>

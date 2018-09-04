@@ -167,9 +167,9 @@ class ServiceDetail extends React.Component {
             });
         }
 
-        let steplist = null;
+        let stepList = null;
         if (allSteps.length > 0) {
-            steplist = allSteps.map((step, index) => {
+            stepList = allSteps.map((step, index) => {
                 const {description} = step;
                 const text = (
                     <RawHTML>
@@ -294,7 +294,7 @@ class ServiceDetail extends React.Component {
         }
         
 
-
+        const someDetails = description || price || timingList || formList || stepList || qaList || locList;
         return (
             <Grid container spacing={16} className={classes.container}>
                 <Helmet>
@@ -324,123 +324,123 @@ class ServiceDetail extends React.Component {
                     />
                 </Grid>
                 <Grid item xs={12} md={8} className={classes.details}>
-                    <Paper className={classes.cardWrapper}>
-                    <Grid item xs={12}>
-                        <Paper className={classes.cards}>
-                            <Grid container spacing={8}>
-                                {/*<Grid item xs={2} sm={1}>
-                                    <div className={classes.iconWrapper}>
-                                        <InfoOutline className={classes.icon} />
-                                    </div>
-                                </Grid>*/}
-                                <Grid item xs={10} sm={11}>
-                                    <div className={classes.cardContent}>
-                                        <Typography variant="subheading" gutterBottom>
-                                            About this service
-                                        </Typography>
-                                        <Typography variant="body1" gutterBottom>
-                                            <RawHTML>{description}</RawHTML>
-                                        </Typography>
-                                    </div>
+                    {someDetails && <Paper className={classes.cardWrapper}>
+                        <Grid item xs={12}>
+                            <Paper className={classes.cards}>
+                                <Grid container spacing={8}>
+                                    {/*<Grid item xs={2} sm={1}>
+                                        <div className={classes.iconWrapper}>
+                                            <InfoOutline className={classes.icon} />
+                                        </div>
+                                    </Grid>*/}
+                                    <Grid item xs={10} sm={11}>
+                                        <div className={classes.cardContent}>
+                                            <Typography variant="subheading" gutterBottom>
+                                                About this service
+                                            </Typography>
+                                            <Typography variant="body1" gutterBottom>
+                                                <RawHTML>{description}</RawHTML>
+                                            </Typography>
+                                        </div>
+                                    </Grid>
                                 </Grid>
-                            </Grid>
-                        </Paper>
-                    </Grid>
-                    {price && <Grid item xs={12}>
-                        <div className={classes.dividerWrapper}><Divider /></div>
-                        <Paper className={classes.cards}>
-                            <Grid container spacing={8}>
-                                {/*<Grid item xs={2} sm={1}>
-                                    <div className={classes.iconWrapper}>
-                                        <AttachMoney className={classes.icon} />
-                                    </div>
-                                </Grid>*/}
-                                <Grid item xs={10} sm={11}>
-                                    <div className={classes.cardContent}>
-                                        <Typography variant="body2" gutterBottom>
-                                            {price}
-                                        </Typography>
-                                    </div>
+                            </Paper>
+                        </Grid>
+                        {price && <Grid item xs={12}>
+                            <div className={classes.dividerWrapper}><Divider /></div>
+                            <Paper className={classes.cards}>
+                                <Grid container spacing={8}>
+                                    {/*<Grid item xs={2} sm={1}>
+                                        <div className={classes.iconWrapper}>
+                                            <AttachMoney className={classes.icon} />
+                                        </div>
+                                    </Grid>*/}
+                                    <Grid item xs={10} sm={11}>
+                                        <div className={classes.cardContent}>
+                                            <Typography variant="body2" gutterBottom>
+                                                {price}
+                                            </Typography>
+                                        </div>
+                                    </Grid>
                                 </Grid>
-                            </Grid>
-                        </Paper>
-                    </Grid>}
-                    {timingList && <Grid item xs={12}>
-                        <div className={classes.dividerWrapper}><Divider /></div>
-                        <Paper className={classes.cards}>
-                            <Grid container spacing={8}>
-                                {/*<Grid item xs={2} sm={1}>
-                                    <div className={classes.iconWrapper}>
-                                        <AccessTime className={classes.icon} />
-                                    </div>
-                                </Grid>*/}
-                                <Grid item xs={10} sm={11}>
-                                    <div className={classes.cardContent} style={{ marginTop: -12 }}>{timingList}</div>
+                            </Paper>
+                        </Grid>}
+                        {timingList && <Grid item xs={12}>
+                            <div className={classes.dividerWrapper}><Divider /></div>
+                            <Paper className={classes.cards}>
+                                <Grid container spacing={8}>
+                                    {/*<Grid item xs={2} sm={1}>
+                                        <div className={classes.iconWrapper}>
+                                            <AccessTime className={classes.icon} />
+                                        </div>
+                                    </Grid>*/}
+                                    <Grid item xs={10} sm={11}>
+                                        <div className={classes.cardContent} style={{ marginTop: -12 }}>{timingList}</div>
+                                    </Grid>
                                 </Grid>
-                            </Grid>
-                        </Paper>
-                    </Grid>}
-                    {formList && <Grid item xs={12}>
-                        <div className={classes.dividerWrapper}><Divider /></div>
-                        <Paper className={classes.cards}>
-                            <Grid container spacing={8}>
-                                {/*<Grid item xs={2} sm={1}>
-                                    <div className={classes.iconWrapper}>
-                                        <Assignment className={classes.icon} />
-                                    </div>
-                                </Grid>*/}
-                                <Grid item xs={10} sm={11}>
-                                    <div className={classes.cardContent} style={{ marginTop: -12 }}>{formList}</div>
+                            </Paper>
+                        </Grid>}
+                        {formList && <Grid item xs={12}>
+                            <div className={classes.dividerWrapper}><Divider /></div>
+                            <Paper className={classes.cards}>
+                                <Grid container spacing={8}>
+                                    {/*<Grid item xs={2} sm={1}>
+                                        <div className={classes.iconWrapper}>
+                                            <Assignment className={classes.icon} />
+                                        </div>
+                                    </Grid>*/}
+                                    <Grid item xs={10} sm={11}>
+                                        <div className={classes.cardContent} style={{ marginTop: -12 }}>{formList}</div>
+                                    </Grid>
                                 </Grid>
-                            </Grid>
-                        </Paper>
-                    </Grid>}
-                    {steplist && <Grid item xs={12}>
-                        <div className={classes.dividerWrapper}><Divider /></div>
-                        <Paper className={classes.cards}>
-                            <Grid container spacing={8}>
-                                {/*<Grid item xs={2} sm={1}>
-                                    <div className={classes.iconWrapper}>
-                                        <PlaylistAddCheck className={classes.icon} />
-                                    </div>
-                                </Grid>*/}
-                                <Grid item xs={10} sm={11}>
-                                    <div className={classes.cardContent} style={{ marginTop: -12 }}>{steplist}</div>
+                            </Paper>
+                        </Grid>}
+                        {stepList && <Grid item xs={12}>
+                            <div className={classes.dividerWrapper}><Divider /></div>
+                            <Paper className={classes.cards}>
+                                <Grid container spacing={8}>
+                                    {/*<Grid item xs={2} sm={1}>
+                                        <div className={classes.iconWrapper}>
+                                            <PlaylistAddCheck className={classes.icon} />
+                                        </div>
+                                    </Grid>*/}
+                                    <Grid item xs={10} sm={11}>
+                                        <div className={classes.cardContent} style={{ marginTop: -12 }}>{stepList}</div>
+                                    </Grid>
                                 </Grid>
-                            </Grid>
-                        </Paper>
-                    </Grid>}
-                    {qaList && <Grid item xs={12}>
-                        <div className={classes.dividerWrapper}><Divider /></div>
-                        <Paper className={classes.cards}>
-                            <Grid container spacing={8}>
-                                {/*<Grid item xs={2} sm={1}>
-                                    <div className={classes.iconWrapper}>
-                                        <QuestionAnswer className={classes.icon} />
-                                    </div>
-                                </Grid>*/}
-                                <Grid item xs={10} sm={11}>
-                                    <div className={classes.cardContent}>{qaList}</div>
+                            </Paper>
+                        </Grid>}
+                        {qaList && <Grid item xs={12}>
+                            <div className={classes.dividerWrapper}><Divider /></div>
+                            <Paper className={classes.cards}>
+                                <Grid container spacing={8}>
+                                    {/*<Grid item xs={2} sm={1}>
+                                        <div className={classes.iconWrapper}>
+                                            <QuestionAnswer className={classes.icon} />
+                                        </div>
+                                    </Grid>*/}
+                                    <Grid item xs={10} sm={11}>
+                                        <div className={classes.cardContent}>{qaList}</div>
+                                    </Grid>
                                 </Grid>
-                            </Grid>
-                        </Paper>
-                    </Grid>}
-                    {locList && <Grid item xs={12}>
-                        <div className={classes.dividerWrapper}><Divider /></div>
-                        <Paper className={classes.cards}>
-                            <Grid container spacing={8}>
-                                {/*<Grid item xs={2} sm={1}>
-                                    <div className={classes.iconWrapper}>
-                                        <PinDrop className={classes.icon} />
-                                    </div>
-                                </Grid>*/}
-                                <Grid item xs={10} sm={11}>
-                                    <div className={classes.cardContent}>{locList}</div>
+                            </Paper>
+                        </Grid>}
+                        {locList && <Grid item xs={12}>
+                            <div className={classes.dividerWrapper}><Divider /></div>
+                            <Paper className={classes.cards}>
+                                <Grid container spacing={8}>
+                                    {/*<Grid item xs={2} sm={1}>
+                                        <div className={classes.iconWrapper}>
+                                            <PinDrop className={classes.icon} />
+                                        </div>
+                                    </Grid>*/}
+                                    <Grid item xs={10} sm={11}>
+                                        <div className={classes.cardContent}>{locList}</div>
+                                    </Grid>
                                 </Grid>
-                            </Grid>
-                        </Paper>
-                    </Grid>}
-                    </Paper>
+                            </Paper>
+                        </Grid>}
+                    </Paper>}
                 </Grid>
                 <Grid item xs={12} sm={12} md={4}>
                     {isMobileOnly && <div className={classes.otherServicesDividerWrapper}><Divider /></div>}

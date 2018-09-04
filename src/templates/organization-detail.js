@@ -19,11 +19,18 @@ const styles = theme => ({
   orgTitle: {
     marginBottom: theme.spacing.unit,
   },
-  titleCaption: {
+  orgSubheading: {
     marginTop: -theme.spacing.unit,
   },
   serviceListComponent: {
     marginBottom: theme.spacing.unit * 2,
+  },
+  servicesContainer: {
+    marginTop: theme.spacing.unit * 3,
+  },
+  filters: {
+    display: 'flex',
+    justifyContent: 'flex-end',
   },
 });
 
@@ -134,18 +141,31 @@ class OrganizationDetail extends React.Component {
         if('org' in detailsAtLevel){
           if (detailsAtLevel.org && 'name' in detailsAtLevel.org && 'id' in detailsAtLevel.org) {
 
-            const {name} = detailsAtLevel.org;
+            const { name: orgName } = detailsAtLevel.org;
+            const orgHeading = (
+              <Typography variant="subheading" component="h4">
+                Services offered by {orgName}
+              </Typography>
+            );
+
+            let orgSubheading = (
+              <Typography variant="body2" className={classes.orgSubheading}>
+                More services available in this locality
+              </Typography>
+            );
+            if (orgName.toLowerCase().includes('county')) {
+              orgSubheading = (<Typography variant="body2" className={classes.orgSubheading}>
+                Find services from the County agencies in which {name} is located in.
+              </Typography>);
+            } else if (orgName.toLowerCase().includes('state')) {
+              orgSubheading = (<Typography variant="body2" className={classes.orgSubheading}>
+                Find services provided by the State agencies for all its residents.
+              </Typography>);
+            }
             orgTitle = (
               <div className={classes.orgTitle}>
-                <Typography variant="subheading" component="h4">
-                  Services offered by {name}
-                </Typography>
-                {index > 0 && <Typography
-                  variant="body2"
-                  className={classes.titleCaption}
-                >
-                  More services available in this locality
-                </Typography>}
+                {orgHeading}
+                {index > 0 && orgSubheading}
               </div>
             );
           }
@@ -153,15 +173,17 @@ class OrganizationDetail extends React.Component {
          
         serviceListComp = (
           <Grid container spacing={8} className={classes.serviceListComponent} key={detailsAtLevel.org ? detailsAtLevel.org.id : index}>
-            <Grid item xs={12} sm={12}>
+            {index > 0 && <Grid item xs={12}>
               {orgTitle}
-            </Grid>
-            <Grid item container spacing={16} xs={12} sm={12}>
-              {serCards}
+            </Grid>}
+            <Grid item xs={12}>
+              <Grid container spacing={16}>
+                {serCards}
+              </Grid>
             </Grid>
           </Grid>
         );
-        if (serviceListComp){
+        if (serviceListComp && serCards.length){
             allServiceList.push(serviceListComp)
         }
       });
@@ -195,16 +217,20 @@ class OrganizationDetail extends React.Component {
             {contactDetailComponent}
           </Grid>
         </Grid>
-        <Grid container spacing={16} item xs={12} md={12}>
-          <Grid item xs={12}>
+        <Grid container spacing={16} item xs={12} md={12} className={classes.servicesContainer}>
+          <Grid item xs={12} md={6}>
+            <Typography variant="subheading" component="h4">
+              What would you like to get done?
+            </Typography>
+          </Grid>
+          <Grid item xs={12} md={6} className={classes.filters}>
             <ChipFilter
-              tags={['Apply', 'Pay', 'Register', 'Renew', 'Request', 'Reserve']}
+              tags={['Apply', 'Pay', 'Register', 'Renew', 'Report']}
               changeFilter={this.changeFilter}
             />
           </Grid>
           <Grid item xs={12}>
-            <br />
-            {allServiceList}
+            {allServiceList.length ? allServiceList : <Typography variant="body1">No services found.</Typography>}
           </Grid>
         </Grid>
       </Grid>

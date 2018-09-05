@@ -13,23 +13,34 @@ const styles = theme => ({
 class ChipFilter extends Component {
   constructor(props) {
     super(props);
+    this.state = {
+      selectedTag: '',
+    };
+    this.handleClick = this.handleClick.bind(this);
+  }
+
+  handleClick(tag) {
+    this.props.changeFilter(tag);
+    this.setState({ selectedTag: tag });
   }
 
   render() {
-    const { classes, tags, changeFilter } = this.props;
+    const { classes, tags } = this.props;
     return (
       <div>
         <Chip
           label="All"
-          onClick={() => changeFilter('')}
+          onClick={() => this.handleClick('')}
           className={classes.chip}
+          color={this.state.selectedTag === '' ? 'primary' : 'default'}
         />
         {tags.map(tag => (
           <Chip
             key={tag}
             label={tag}
-            onClick={() => changeFilter(tag)}
+            onClick={() => this.handleClick(tag)}
             className={classes.chip}
+            color={this.state.selectedTag === tag ? 'primary' : 'default'}
           />
         ))}
       </div>

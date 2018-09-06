@@ -11,7 +11,7 @@ import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
 
-import InfoOutline from '@material-ui/icons/InfoOutline';
+import Info from '@material-ui/icons/Info';
 import AttachMoney from '@material-ui/icons/AttachMoney';
 import AccessTime from '@material-ui/icons/AccessTime';
 import Assignment from '@material-ui/icons/Assignment';
@@ -278,7 +278,7 @@ class ServiceDetailInSearch extends React.Component {
                             <Grid container spacing={8}>
                                 <Grid item xs={2} sm={1}>
                                     <div className={classes.iconWrapper}>
-                                        <InfoOutline className={classes.icon} />
+                                        <Info className={classes.icon} />
                                     </div>
                                 </Grid>
                                 <Grid item xs={10} sm={11}>

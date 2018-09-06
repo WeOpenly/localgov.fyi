@@ -16,7 +16,7 @@ import Divider from '@material-ui/core/Divider';
 import IconButton from '@material-ui/core/IconButton';
 
 import KeyboardBackspace from '@material-ui/icons/KeyboardBackspace';
-import InfoOutline from '@material-ui/icons/InfoOutline';
+// import InfoOutline from '@material-ui/icons/InfoOutline';
 import AttachMoney from '@material-ui/icons/AttachMoney';
 import AccessTime from '@material-ui/icons/AccessTime';
 import Assignment from '@material-ui/icons/Assignment';

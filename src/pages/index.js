@@ -10,9 +10,11 @@ import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 import Paper from '@material-ui/core/Paper';
 import Button from '@material-ui/core/Button';
+import Divider from '@material-ui/core/Divider';
 
 import withRoot from '../withRoot';
 import Search from '../components/Search/index';
+import ServiceGrid from '../components/ServiceGrid';
 import { trackView, trackClick } from "../components/Search/tracking";
 
 const styles = theme => ({
@@ -95,27 +97,29 @@ const styles = theme => ({
     bottom: 0
   },
   otherCitiesHeader: {
-    marginTop: theme.spacing.unit * 3,
+    display: 'flex',
+    justifyContent: 'center',
+    marginTop: theme.spacing.unit * 10,
   },
   linksWrapper: {
     display: 'flex',
     justifyContent: 'space-between',
-    marginTop: theme.spacing.unit,
+    marginBottom: theme.spacing.unit / 2,
   },
   linkLeft: {
     textAlign: 'left',
     cursor: 'pointer',
-    textDecoration: 'underline',
   },
   linkCenter: {
     textAlign: 'center',
-cursor : 'pointer',
-textDecoration : 'underline',
+    cursor : 'pointer',
   },
   linkRight: {
     textAlign: 'right',
-cursor : 'pointer',
-textDecoration : 'underline',
+    cursor : 'pointer',
+  },
+  dividerWrapper: {
+    marginBottom: theme.spacing.unit * 5,
   },
 });
 
@@ -239,8 +243,8 @@ class Index extends React.Component {
           <html lang="en" />
         </Helmet>
         <Grid container spacing={0} className={!isMobileOnly ? classes.landingSearch : classes.landingSearchMobile}>
-          <Grid item xs={1} sm={2} md={3} />
-          <Grid item xs={6} sm={6} md={5} className={classes.appNameHeader}>
+          <Grid item xs={1} sm={2} md={2} />
+          <Grid item xs={6} sm={6} md={7} className={classes.appNameHeader}>
             <Typography align="center" variant="display1" component="span" className={classes.appHeaderText}>
               Localgov.fyi
             </Typography>
@@ -248,29 +252,35 @@ class Index extends React.Component {
           </Grid>
           <Grid item xs={4} sm={2} md={1} className={classes.langSelectHeader}>
           </Grid>
-          <Grid item xs={1} sm={2} md={3} />
-          <Grid item xs={1} sm={2} md={3} />
-          <Grid item xs={10} sm={8} md={6}>
+          <Grid item xs={1} sm={2} md={2} />
+          <Grid item xs={1} sm={2} md={2} />
+          <Grid item xs={10} sm={8} md={8}>
             <Typography align="left" variant="body2" component="p" className={classes.appSubHeaderText}>
               Search for local government services
             </Typography>
           </Grid>
-          <Grid item xs={1} sm={2} md={3} />
-          <Grid item xs={1} sm={2} md={3} />
-          <Grid item xs={10} sm={10} md={6} className={classes.searchBoxContainer}>
+          <Grid item xs={1} sm={2} md={2} />
+          <Grid item xs={1} sm={2} md={2} />
+          <Grid item xs={10} sm={10} md={8} className={classes.searchBoxContainer}>
             <Search />
           </Grid>
-          <Grid item xs={1} sm={2} md={3} />
+          <Grid item xs={1} sm={2} md={2} />
           <Grid item xs={1} md={3} />
           <Grid item xs={10} md={6}>
-            <Typography variant="caption" component="h1" className={classes.otherCitiesHeader}>
-              Or try one of these cities:
+            <Typography variant="subheading" component="h1" className={classes.otherCitiesHeader}>
+              Localgov San Francisco
             </Typography>
             <Grid container className={classes.linksWrapper}>
               {otherLinks}
             </Grid>
           </Grid>
           <Grid item xs={1} md={3} />
+          <Grid item xs={1} md={2} />
+          <Grid item xs={10} md={8} className={classes.dividerWrapper}>
+            <Divider />
+          </Grid>
+          <Grid item xs={1} md={2} />
+          <ServiceGrid />
         </Grid>
       </Fragment>
     );

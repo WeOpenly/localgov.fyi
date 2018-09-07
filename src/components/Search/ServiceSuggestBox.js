@@ -22,22 +22,20 @@ import CloseIcon from '@material-ui/icons/Close';
 
 import withRoot from '../../withRoot';
 import {
-  fetchAreaSearchSuggestions,
-  clearInput,
-  updateInput,
-  setSearchSuggesitions,
-  selectOrganization,
+  fetchServiceSearchSuggestions,
+  clearServiceInput,
+  updateServiceInput,
+  setServiceSuggestions,
 } from "./actions";
 import { trackInput, trackClick } from './tracking';
 
 
 const styles = theme => ({
   wrapper : {
-    display: 'flex',
-    position: 'relative',
-    borderLeft: '1px solid #fafafa',
-    background: theme.palette.common.white,
     fontFamily: theme.typography.fontFamily,
+    position: "relative",
+    background: theme.palette.common.white,
+    display: "flex",
   },
   search : {
     width: theme.spacing.unit * 8,
@@ -107,7 +105,7 @@ const styles = theme => ({
   },
 });
 
-class NewSuggestBox extends Component {
+class ServiceSuggestBox extends Component {
   constructor(props) {
     super(props);
     this.renderInput = this.renderInput.bind(this);
@@ -128,12 +126,11 @@ class NewSuggestBox extends Component {
 
   componentDidMount() {
     const { dispatch } = this.props;
-    dispatch(selectOrganization(null));
-    dispatch(clearInput());
+    dispatch(clearServiceInput());
     const results = {
       results: []
     }
-    dispatch(setSearchSuggesitions(results));
+    dispatch(setServiceSuggestions(results));
   }
 
   renderSectionTitle(section) {
@@ -152,7 +149,7 @@ class NewSuggestBox extends Component {
   }
 
   getSuggestionValue(suggestion) {
-    return suggestion.org_name;
+    return suggestion;
   }
 
   renderSuggestionsContainer(options) {
@@ -171,12 +168,12 @@ class NewSuggestBox extends Component {
         <div>
           <div>
             <Typography align="left" variant="title">
-              {suggestion.heading}
+              {suggestion.head}
             </Typography>
           </div>
           <div>
             <Typography align="left" variant="caption">
-              {suggestion.subheading}
+              {suggestion.subhead}
             </Typography>
           </div>
         </div>
@@ -186,19 +183,19 @@ class NewSuggestBox extends Component {
 
   clearInput() {
     const { dispatch } = this.props;
-    dispatch(clearInput());
+    dispatch(clearServiceInput());
   }
 
   issueFreeSearch() {
     const { search, dispatch } = this.props;
-    const { input } = this.props.search;
-    if (!input || input.length < 3) {
+    const { serviceInput } = this.props.search;
+    if (!serviceInput || serviceInput.length < 3) {
       return null;
     }
 
-    const uri = `/search/${input}`;
+    const uri = `/search/${serviceInput}`;
     const encodedUri = encodeURI(uri);
-    dispatch(trackInput('index_search_box', input));
+    dispatch(trackInput('index_search_box', serviceInput));
     navigateTo(encodedUri);
   }
 
@@ -212,7 +209,7 @@ class NewSuggestBox extends Component {
       ...other
     } = inputProps;
     const { classes, search, bold } = this.props;
-    const { searchSuggestionsLoading, input } = search;
+    const { serviceSuggestionsLoading, serviceInput } = search;
 
     return (
       <div className={classes.wrapper}>
@@ -226,15 +223,13 @@ class NewSuggestBox extends Component {
             ...other
           }} />
         <div className={classes.search}>
-          {searchSuggestionsLoading
+          {serviceSuggestionsLoading
             ? <CircularProgress size={24} color="primary" />
-            : input
+            : serviceInput
               ? <IconButton aria-label="Clear" onClick={this.clearInput}>
                 <CloseIcon />
               </IconButton>
-              : <IconButton onClick={this.issueFreeSearch} aria-label="Search">
-                <SearchIcon />
-              </IconButton>}
+              : null}
         </div>
       </div>
     );
@@ -243,31 +238,30 @@ class NewSuggestBox extends Component {
   handleSuggestionsFetchRequested({ value }) {
     const { dispatch } = this.props;
     if (value && value.length > 1) {
-      dispatch(fetchAreaSearchSuggestions);
+      dispatch(fetchServiceSearchSuggestions);
     }
   }
 
   handleSuggestionsClearRequested() {
     const { dispatch } = this.props;
-    dispatch(clearInput());
+    dispatch(clearServiceInput());
   }
 
   handleChange(event, { newValue, method }) {
     const { dispatch } = this.props;
     if (method === "type" ){
-      dispatch(updateInput(newValue))
+      dispatch(updateServiceInput(newValue))
     }
   }
 
   selectSuggestion(event, { suggestion, suggestionValue, suggestionIndex, sectionIndex, method }) {
     event.preventDefault();
     const { dispatch } = this.props;
-    const { input, userCountry } = this.props.search;
+    const { serviceInput, userCountry } = this.props.search;
     const { id, heading } = suggestion;
-    dispatch(selectOrganization(suggestion));
-    // dispatch(updateInput(heading));
-    dispatch(trackInput('index_search_box', input));
-    dispatch(trackClick('select_suggestion', 'organization', id, heading, suggestionIndex));
+    navigateTo(`/service/${id}`);
+    dispatch(trackInput('index_search_box', serviceInput));
+    dispatch(trackClick('select_suggestion', 'service', id, heading, suggestionIndex));
   }
 
   onSubmit(evt) {
@@ -283,11 +277,8 @@ class NewSuggestBox extends Component {
 
   render() {
     const { classes } = this.props;
-    const { input, searchSuggestions } = this.props.search;
-    const { userCity, selectedOrganization } = this.props.search;
-    const value = selectedOrganization ? selectedOrganization.heading : input;
-    let placeholder = "Where?";
-    if (userCity) placeholder = `Try '${userCity}'`;
+    const { serviceInput, serviceSuggestions } = this.props.search;
+    const placeholder = "What would you like to get done?";
 
     return (
       <form onSubmit={this.onSubmit} className={classes.container}>
@@ -302,7 +293,7 @@ class NewSuggestBox extends Component {
           }}
           highlightFirstSuggestion
           renderInputComponent={this.renderInput}
-          suggestions={searchSuggestions}
+          suggestions={serviceSuggestions}
           onSuggestionsFetchRequested={this.handleSuggestionsFetchRequested}
           onSuggestionsClearRequested={this.handleSuggestionsClearRequested}
           renderSuggestionsContainer={this.renderSuggestionsContainer}
@@ -314,7 +305,7 @@ class NewSuggestBox extends Component {
             autoFocus: true,
             classes,
             placeholder: placeholder,
-            value: value,
+            value: serviceInput,
             onChange: this.handleChange,
             onKeyDown: () => {},
             onBlur: (event) => { event.preventDefault() },
@@ -332,4 +323,4 @@ const mapStateToProps = function (state, ownProps) {
   };
 };
 
-export default connect(mapStateToProps)(withRoot(withStyles(styles)(NewSuggestBox)));
+export default connect(mapStateToProps)(withRoot(withStyles(styles)(ServiceSuggestBox)));

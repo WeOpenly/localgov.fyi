@@ -3,78 +3,101 @@ import PropTypes from 'prop-types';
 import { navigateTo } from 'gatsby-link';
 import { connect } from "react-redux";
 import Helmet from "react-helmet";
-
 import Spinner from 'react-spinkit';
+
+import { withStyles } from '@material-ui/core/styles';
+import { fade } from "@material-ui/core/styles/colorManipulator";
 import Button from '@material-ui/core/Button';
 import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
-import {withStyles} from '@material-ui/core/styles';
 
+import ServiceSuggestBox from './ServiceSuggestBox';
 import NewSuggestBox from './NewSuggestBox';
 import HeaderSuggestBox from './HeaderSuggestBox';
 import withRoot from '../../withRoot';
 
-import {fetchMeta, setMetaFromUrl,  toggleSearchResultLayout} from "./actions";
+import { fetchMeta, setMetaFromUrl,  toggleSearchResultLayout } from "./actions";
 
 const windowGlobal = typeof window !== 'undefined' && window
 
 const styles = theme => ({
-    gridList: {
-        flexWrap: 'nowrap',
-        transform: 'translateZ(0)'
+  combinedSearch: {
+    display: 'flex',
+    width: '100%',
+    fontFamily: theme.typography.fontFamily,
+    position: "relative",
+    boxShadow: `0 0 10px 5px ${theme.palette.primary["50"]}`,
+    background: theme.palette.common.white,
+    borderRadius: 4,
+    "&:hover": {
+      background: fade(theme.palette.common.white, 0.25),
+      boxShadow: `0 0 3px 1px ${theme.palette.primary["100"]}`
+    },
+    "&input": {
+      transition: theme.transitions.create("width"),
+      width: "100%"
+    },
+    "&form": {
+      transition: theme.transitions.create("width"),
+      width: "100%"
     }
+  },
 });
 
 class Search extends React.Component {
-    constructor(props) {
-        super(props);
-    }
+  constructor(props) {
+    super(props);
+  }
 
-    componentDidMount() {
-        const {dispatch} = this.props;
-        const { pathname } = windowGlobal.location;
+  componentDidMount() {
+    const { dispatch } = this.props;
+    const { pathname } = windowGlobal.location;
  
-        if (pathname === '/') {
-            // dispatch(fetchMeta);
-            // if (pathNameFragments[2] === 'search') {
-            //     dispatch(setMetaFromUrl(pathNameFragments[1]));
-            // } else { //overview
-            //     dispatch(setMetaFromUrl(pathNameFragments[1]));
-            // }
-        } 
+    if (pathname === '/') {
+      // dispatch(fetchMeta);
+      // if (pathNameFragments[2] === 'search') {
+      //     dispatch(setMetaFromUrl(pathNameFragments[1]));
+      // } else { //overview
+      //     dispatch(setMetaFromUrl(pathNameFragments[1]));
+      // }
+    }
+  }
+
+  render() {
+    const { classes, inHeader } = this.props;
+    const { metaLoadingFailed, metaLoading, searchSuggestionsLoading } = this.props.search;
+
+    if (metaLoading) {
+      return (<Grid container spacing={0}>
+        <Grid item xs={12} align="center">
+          <Spinner name="ball-beat" color="blue" />
+        </Grid>
+      </Grid>);
     }
 
-    render() {
-        const { classes, inHeader} = this.props;
-        
-        const {metaLoadingFailed, metaLoading, searchSuggestionsLoading} = this.props.search;
-
-        if (metaLoading){
-            return (<Grid container spacing={0}>
-                <Grid item xs={12} align="center">
-                    <Spinner name="ball-beat" color="blue" />
-                </Grid>
-            </Grid>);
-        }
-
-        if (inHeader) {
-            return (<HeaderSuggestBox />);
-        }
-
-        return (<NewSuggestBox />);
+    if (inHeader) {
+      return (<HeaderSuggestBox />);
     }
+
+    return (
+      <div className={classes.combinedSearch}>
+        <ServiceSuggestBox />
+        <NewSuggestBox />
+      </div>
+    );
+  }
 }
 
 Search.propTypes = {
-    classes: PropTypes.object.isRequired
+  classes: PropTypes.object.isRequired
 };
 
 const mapStateToProps = function (state, ownProps) {
-    return {
-        ...state,
-        ...ownProps
-    };
+  return {
+    ...state,
+    ...ownProps
+  };
 };
 
 export default connect(mapStateToProps)(withRoot(withStyles(styles)(Search)));

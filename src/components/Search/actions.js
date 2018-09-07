@@ -5,144 +5,192 @@ import * as types from "./ActionTypes";
 import {GetApi} from "./api";
 
 export function toggleSearchResultLayout() {
-    return {type: types.TOGGLE_SEARCH_RESULTS_LAYOUT}
+  return { type: types.TOGGLE_SEARCH_RESULTS_LAYOUT };
 }
 
 function requestAppMeta() {
-    return {type: types.REQUEST_APP_META};
+  return { type: types.REQUEST_APP_META };
 }
 
 export function setMetaFromUrl(country, city = null) {
-    const data = {
-        userCountry: country,
-        userCity: city
-    }
+  const data = {
+    userCountry: country,
+    userCity: city
+  };
 
-    return {type: types.RECV_APP_META, data}
+  return { type: types.RECV_APP_META, data };
 }
 
 function recvAppMeta(data) {
-    return {type: types.RECV_APP_META, data};
+  return { type: types.RECV_APP_META, data };
 }
 
 function recvMetaFailed() {
-    return {type: types.RECV_APP_META_FAILED};
+  return { type: types.RECV_APP_META_FAILED };
 }
 
 export function updateInput(input) {
-    return {type: types.UPDATE_INPUT, input};
+  return { type: types.UPDATE_INPUT, input };
+}
+
+export function updateServiceInput(input) {
+  return { type: types.UPDATE_SERVICE_INPUT, input };
 }
 
 function reqSearchSuggestions() {
-    return {type: types.REQUEST_SEARCH_SUGGESTIONS};
+  return { type: types.REQUEST_SEARCH_SUGGESTIONS };
 }
 
 function recvSuggestionsFailed() {
-    return {type: types.RECV_SEARCH_SUGGESTIONS_FAILED};
+  return { type: types.RECV_SEARCH_SUGGESTIONS_FAILED };
 }
 
 export function setSearchSuggesitions(suggestions) {
-    return {type: types.RECV_SEARCH_SUGGESTIONS_SUCCESS, suggestions: suggestions.results};
+  return { type: types.RECV_SEARCH_SUGGESTIONS_SUCCESS, suggestions: suggestions.results };
+}
+
+function reqServiceSuggestions() {
+  return { type: types.REQUEST_SERVICE_SUGGESTIONS };
+}
+
+function recvServiceSuggestionsFailed() {
+  return { type: types.RECV_SERVICE_SUGGESTIONS_FAILED };
+}
+
+export function setServiceSuggestions(suggestions) {
+  return {
+    type: types.RECV_SERVICE_SUGGESTIONS_SUCCESS,
+    suggestions: suggestions.results[0]
+      ? suggestions.results[0].suggestions
+      : suggestions.results
+  };
 }
 
 function requestSearchResults() {
-    return {type: types.REQUEST_SEARCH_RESULTS};
+  return { type: types.REQUEST_SEARCH_RESULTS };
 }
 
 function recvSearchResults(res) {
-    return {type: types.RECV_SEARCH_RESULTS_SUCCESS, res};
+  return { type: types.RECV_SEARCH_RESULTS_SUCCESS, res };
 }
 
 function recvSemanticResults(results) {
-    return {type: types.RECV_SEMANTIC_SEARCH_RESULTS, results}
+  return { type: types.RECV_SEMANTIC_SEARCH_RESULTS, results };
 }
 
 function recvSearchResultsFailure() {
-    return {type: types.RECV_SEARCH_RESULTS_FAILED};
+  return { type: types.RECV_SEARCH_RESULTS_FAILED };
 }
 
 export function clearInput() {
-    return {type: types.UPDATE_INPUT, input: ''};
+  return { type: types.UPDATE_INPUT, input: '' };
+}
+
+export function clearServiceInput() {
+  return { type: types.UPDATE_SERVICE_INPUT, input: '' };
+}
+
+export function selectOrganization(organization) {
+  return { type: types.SELECT_ORGANIZATION, organization };
 }
 
 export const fetchSearchResults = async(dispatch, getState) => {
-    const {input} = getState().search;
-    dispatch(requestSearchResults());
+  const { input } = getState().search;
+  dispatch(requestSearchResults());
 
-    try {
-        const data = await GetApi(null, `semantic_results?country=usa&query=${input}&requester_city=''`);
-        const results = await data;
+  try {
+    const data = await GetApi(null, `semantic_results?country=usa&query=${input}&requester_city=''`);
+    const results = await data;
 
-        let isSemantic = false;
-        let resLen = 0;
+    let isSemantic = false;
+    let resLen = 0;
 
-        if (results && "semantic_available" in results && results["semantic_available"] === true) {
-            isSemantic = true;
-            dispatch(recvSemanticResults(results));
-        } else {
-            const {list_results} = results;
-            const res = {
-                'results': list_results
-            }
-            resLen = list_results.length;
-            dispatch(recvSearchResults(res));
-        }
-    } catch (e) {
-
-        dispatch(recvSearchResultsFailure());
+    if (results && "semantic_available" in results && results["semantic_available"] === true) {
+      isSemantic = true;
+      dispatch(recvSemanticResults(results));
+    } else {
+      const { list_results } = results;
+      const res = {
+        'results': list_results
+      };
+      resLen = list_results.length;
+      dispatch(recvSearchResults(res));
     }
+  } catch (e) {
+
+    dispatch(recvSearchResultsFailure());
+  }
 };
 
 export const fetchMeta = async(dispatch, getState) => {
-    dispatch(requestAppMeta());
+  dispatch(requestAppMeta());
 
-    try {
-        const data = await GetApi(null, 'meta');
-        const appMeta = await data;
-        dispatch(recvAppMeta(appMeta));
+  try {
+    const data = await GetApi(null, 'meta');
+    const appMeta = await data;
+    dispatch(recvAppMeta(appMeta));
 
-        if (!appMeta.success) {
-            dispatch(recvMetaFailed())
-        }
-    } catch (e) {
-        dispatch(recvMetaFailed());
+    if (!appMeta.success) {
+      dispatch(recvMetaFailed())
     }
+  } catch (e) {
+    dispatch(recvMetaFailed());
+  }
 };
 
 export const fetchSearchSuggestions = async(dispatch, getState) => {
-    const {input} = getState().search;
+  const { input } = getState().search;
 
-    dispatch(reqSearchSuggestions());
-    const country = 'usa'
-    try {
-        const data = await GetApi(null, `get_results?country=${country}&query=${input}&requester_city=''`);
-        const searchResults = await data;
+  dispatch(reqSearchSuggestions());
+  const country = 'usa'
+  try {
+    const data = await GetApi(null, `get_results?country=${country}&query=${input}&requester_city=''`);
+    const searchResults = await data;
 
-        if (searchResults.success) {
-            dispatch(setSearchSuggesitions(searchResults));
-        } else {
-            dispatch(recvSuggestionsFailed());
-        }
-    } catch (e) {
-        dispatch(recvSuggestionsFailed());
+    if (searchResults.success) {
+      dispatch(setSearchSuggesitions(searchResults));
+    } else {
+      dispatch(recvSuggestionsFailed());
     }
+  } catch (e) {
+    dispatch(recvSuggestionsFailed());
+  }
 };
 
 export const fetchAreaSearchSuggestions = async(dispatch, getState) => {
-    const {input} = getState().search;
+  const {input} = getState().search;
 
-    dispatch(reqSearchSuggestions());
-    const country = 'usa'
-    try {
-        const data = await GetApi(null, `area_suggestions?country=${country}&query=${input}`);
-        const searchResults = await data;
+  dispatch(reqSearchSuggestions());
+  const country = 'usa'
+  try {
+    const data = await GetApi(null, `area_suggestions?country=${country}&query=${input}`);
+    const searchResults = await data;
 
-        if (searchResults.success) {
-            dispatch(setSearchSuggesitions(searchResults));
-        } else {
-            dispatch(recvSuggestionsFailed());
-        }
-    } catch (e) {
-        dispatch(recvSuggestionsFailed());
+    if (searchResults.success) {
+      dispatch(setSearchSuggesitions(searchResults));
+    } else {
+      dispatch(recvSuggestionsFailed());
     }
+  } catch (e) {
+    dispatch(recvSuggestionsFailed());
+  }
 };
+
+export const fetchServiceSearchSuggestions = async(dispatch, getState) => {
+  const { serviceInput, selectedOrganization } = getState().search;
+  const country = 'usa';
+  let searchResults;
+
+  dispatch(reqServiceSuggestions());
+  try {
+    searchResults = await GetApi(null, `get_results?country=${country}&query=${serviceInput}&in_org=${selectedOrganization.id}`);
+
+    if (searchResults.success) {
+      dispatch(setServiceSuggestions(searchResults));
+    } else {
+      dispatch(recvServiceSuggestionsFailed());
+    }
+  } catch (error) {
+    dispatch(recvServiceSuggestionsFailed());
+  }
+}

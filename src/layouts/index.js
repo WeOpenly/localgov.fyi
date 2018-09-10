@@ -17,12 +17,12 @@ const styles = theme => ({
   },
   main: {
     width: '100%',
-    minHeight: '100vh',
+    // minHeight: '100vh',
     paddingBottom: 70,
   },
   mainMobile: {
     width: '100%',
-    minHeight: '100vh',
+    // minHeight: '100vh',
     paddingLeft: theme.spacing.unit * 2,
     paddingRight: theme.spacing.unit * 2,
     paddingBottom: 114,
@@ -30,12 +30,12 @@ const styles = theme => ({
   footer: {
     width: '100%',
     alignSelf: 'flex-end',
-    marginTop: -70,
+    // marginTop: 70,
   },
   footerMobile: {
     width: '100%',
     alignSelf: 'flex-end',
-    marginTop: -114,
+    // marginTop: -114,
   },
 });
 

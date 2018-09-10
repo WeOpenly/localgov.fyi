@@ -194,3 +194,34 @@ export const fetchServiceSearchSuggestions = async(dispatch, getState) => {
     dispatch(recvServiceSuggestionsFailed());
   }
 }
+
+function allFromOrganizationRequest() {
+  return { type: types.ALL_FROM_ORG_REQUEST };
+}
+
+function allFromOrganizationSuccess(services) {
+  return { type: types.ALL_FROM_ORG_SUCCESS, services };
+}
+
+function allFromOrganizationFailure() {
+  return { type: types.ALL_FROM_ORG_FAILURE };
+}
+
+export const fetchAllFromOrganization = async(dispatch, getState) => {
+  const organization = '49ab4440-1176-4791-a7cf-1e27a756488d';
+  const country = 'usa';
+  let services;
+
+  dispatch(allFromOrganizationRequest());
+  try {
+    services = await GetApi(null, `get_results?country=${country}&in_org=${organization}&list_all=true`);
+
+    if (services.success) {
+      dispatch(allFromOrganizationSuccess(services));
+    } else {
+      dispatch(allFromOrganizationFailure());
+    }
+  } catch (error) {
+    dispatch(allFromOrganizationFailure());
+  }
+}

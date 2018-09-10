@@ -54,7 +54,17 @@ const styles = theme => ({
   linkText: {
     color: theme.palette.primary['500'],
   },
+  raw: {
+    marginTop: -13.920,
+  },
 });
+
+const RawHTML = ({ children, classes }) => (
+  <div
+    className={classes.raw}
+    dangerouslySetInnerHTML={{ __html: children.replace(/\n/g, " ") }}
+  />
+);
 
 const OtherServices = ({ classes, services, orgID, orgName }) => {
   return (
@@ -70,7 +80,7 @@ const OtherServices = ({ classes, services, orgID, orgName }) => {
                 {service.service_name}
               </Typography>
               <Typography variant="caption" className={classes.caption}>
-                {service.service_description}
+                <RawHTML classes={classes}>{service.service_description}</RawHTML>
               </Typography>
             </CardContent>
           </Link>

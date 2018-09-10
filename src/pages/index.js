@@ -15,6 +15,7 @@ import Divider from '@material-ui/core/Divider';
 import withRoot from '../withRoot';
 import Search from '../components/Search/index';
 import ServiceGrid from '../components/ServiceGrid';
+import { fetchAllFromOrganization } from '../components/Search/actions';
 import { trackView, trackClick } from "../components/Search/tracking";
 
 const styles = theme => ({
@@ -52,7 +53,8 @@ const styles = theme => ({
     display: "flex",
     alignItems: "center",
     justifyContent: "center",
-    height : theme.spacing.unit * 8,
+    height: theme.spacing.unit * 8,
+    marginBottom: theme.spacing.unit * 30,
   },
   landingSearch:{
     paddingTop: theme.spacing.unit * 16,
@@ -120,6 +122,9 @@ const styles = theme => ({
   },
   dividerWrapper: {
     marginBottom: theme.spacing.unit * 5,
+  },
+  gridWrapper: {
+    marginBottom: theme.spacing.unit * 20,
   },
 });
 
@@ -202,21 +207,20 @@ class Index extends React.Component {
     this.clickSuggestion = this.clickSuggestion.bind(this);
   }
 
+  componentDidMount(){
+    const { dispatch } = this.props;
+    dispatch(fetchAllFromOrganization);
+    dispatch(trackView('index', null, null, null));
+  }
+
   clickSuggestion(url, name, index){
-    const {dispatch} = this.props;
+    const { dispatch } = this.props;
     dispatch(trackClick('suggestion', 'top_cities', url, name, index));
     navigateTo(url);
   }
 
-  componentDidMount(){
-    const {dispatch} = this.props;
-    dispatch(trackView('index', null, null, null));
-  }
-
-
-
   render() {
-    const { classes } = this.props;
+    const { classes, search } = this.props;
     const otherLinks = shuffledArray.slice(0,3).map((item, idx) => {
       let link = 'linkLeft';
       if (idx === 1) link = 'linkCenter';
@@ -230,6 +234,33 @@ class Index extends React.Component {
         </Grid>
       );
     });
+    const dummyServices = [
+      {
+        "head": "Pay Business Tax",
+        "subhead": "San Francisco-City & County",
+        "id": "77d0d9e3-5cc4-4688-99f9-b5497710b889",
+        "type": "service"
+      },
+      {
+        "head": "Register a New Business",
+        "subhead": "San Francisco-City & County",
+        "id": "8fad0dd5-4bb5-4822-830b-17942ffdce1f",
+        "type": "service"
+      },
+      {
+        "head": "Apply for a Marriage License",
+        "subhead": "San Francisco-City & County",
+        "id": "9683b5ae-d7be-465a-ab22-51e0e0af3261",
+        "type": "service"
+      },
+      {
+        "head": "Submit a Public Records Request",
+        "subhead": "San Francisco-City & County",
+        "id": "7e07effe-e036-4b67-b239-0d980b5a2f06",
+        "type": "service"
+      },
+    ];
+    const servicesFromOrg = search.allFromOrg.length >= 8 ? search.allFromOrg.slice(0, 8) : search.allFromOrg.slice(0, 4);
 
     return (
       <Fragment>
@@ -281,8 +312,10 @@ class Index extends React.Component {
             <Divider />
           </Grid>
           <Grid item xs={1} md={2} />
-          <ServiceGrid />
         </Grid>
+        <div className={classes.gridWrapper}>
+          <ServiceGrid services={dummyServices} />
+        </div>
       </Fragment>
     );
   }

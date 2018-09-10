@@ -19,7 +19,10 @@ const initialState = {
   serviceSuggestionsLoadingFailed: false,
   searchResults: [],
   searchResultsLoading: false,
-  searchResultsLoadingFailed: false
+  searchResultsLoadingFailed: false,
+  allFromOrg: [],
+  allLoading: false,
+  allFailed: false,
 };
 
 export function search(state = initialState, action) {
@@ -122,7 +125,25 @@ export function search(state = initialState, action) {
         ...state,
         searchResultsLoading: false,
         searchResultsLoadingFailed: true
-      }
+      };
+    case types.ALL_FROM_ORG_REQUEST:
+      return {
+        ...state,
+        allLoading: true,
+      };
+    case types.ALL_FROM_ORG_FAILURE:
+      return {
+        ...state,
+        allLoading: false,
+        allFailed: true,
+      };
+    case types.ALL_FROM_ORG_SUCCESS:
+      return {
+        ...state,
+        allLoading: false,
+        allFailed: false,
+        allFromOrg: action.services,
+      };
     case types.SELECT_ORGANIZATION:
       return {
         ...state,

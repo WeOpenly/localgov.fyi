@@ -49,7 +49,8 @@ class SearchResults extends Component {
     const { search, classes } = this.props;
     const { semantic } = search;
     const { list_results, detail_result, intent, intent_string } = semantic;
-    const { component } = detail_result;
+    let component;
+    if (detail_result) component = detail_result.component;
 
     let organization = null;
     let intentComp = null;

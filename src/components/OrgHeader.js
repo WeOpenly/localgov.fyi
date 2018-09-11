@@ -16,12 +16,17 @@ import MenuItem from '@material-ui/core/MenuItem';
 import Button from '@material-ui/core/Button';
 import IconButton from '@material-ui/core/IconButton';
 import SvgIcon from '@material-ui/core/SvgIcon';
+import CheckCircle from '@material-ui/icons/CheckCircle';
+import Help from '@material-ui/icons/Help';
 import MoreVert from '@material-ui/icons/MoreVert';
+
 import withRoot from '../withRoot';
+import UnclaimedHover from './UnclaimedHover';
 
 const styles = theme => ({
   card: {
     display: 'flex',
+    overflow: 'visible',
     boxShadow: '0 0 0 0',
     border: `1px solid ${theme.palette.primary['50']}`,
   },
@@ -38,6 +43,19 @@ const styles = theme => ({
     justifyContent: 'space-between',
     marginRight: -theme.spacing.unit,
     marginBottom: theme.spacing.unit * -2,
+  },
+  title: {
+    display: 'flex',
+  },
+  claimed: {
+    display: 'flex',
+    alignItems: 'center',
+    position: 'relative',
+    marginLeft: theme.spacing.unit,
+  },
+  claimedIcon: {
+    fontSize: 18,
+    marginRight: theme.spacing.unit / 2,
   },
   parent: {
     color: 'gray',
@@ -72,10 +90,13 @@ class OrgHeader extends Component {
     this.state = {
       anchorEl: null,
       copied: false,
+      hover: false,
     };
     this.handleShareClick = this.handleShareClick.bind(this);
     this.handleClose = this.handleClose.bind(this);
     this.handleCopy = this.handleCopy.bind(this);
+    this.handleMouseEnter = this.handleMouseEnter.bind(this);
+    this.handleMouseLeave = this.handleMouseLeave.bind(this);
   }
 
   handleShareClick(event) {
@@ -90,6 +111,14 @@ class OrgHeader extends Component {
     this.setState({ copied: true });
   }
 
+  handleMouseEnter() {
+    this.setState({ hover: true });
+  }
+
+  handleMouseLeave() {
+    this.setState({ hover: false });
+  }
+
   render() {
     const {
       classes,
@@ -97,12 +126,28 @@ class OrgHeader extends Component {
       parent,
       info,
       logo,
+      claimed,
       displayShare = true,
     } = this.props;
     const { anchorEl, copied } = this.state;
     const windowGlobal = typeof window !== 'undefined' && window;
     const windowLocation = windowGlobal.location ? windowGlobal.location : {};
     const shareLink = windowLocation.href + '/';
+
+    const claimedComponent = claimed
+      ? (
+        <div className={classes.claimed}>
+          <CheckCircle color="primary" className={classes.claimedIcon} />
+          <Typography variant="caption" color="textPrimary">Claimed</Typography>
+        </div>
+      )
+      : (
+        <div className={classes.claimed} onMouseEnter={this.handleMouseEnter} onMouseLeave={this.handleMouseLeave}>
+          <Help color="disabled" className={classes.claimedIcon} />
+          <Typography variant="caption" color="primary">Unclaimed</Typography>
+          {this.state.hover && <UnclaimedHover />}
+        </div>
+      );
 
     let contactAddress;
     if (info) contactAddress = info.find((detail) => detail.contact_type === 'ADDRESS');
@@ -204,7 +249,10 @@ class OrgHeader extends Component {
           <CardContent>
             <div className={classes.cardTop}>
               <div>
-                <Typography variant="display1">{name}</Typography>
+                <div className={classes.title}>
+                  <Typography variant="display1">{name}</Typography>
+                  {claimedComponent}
+                </div>
                 <Typography variant="subheading" className={classes.parent}>{parent}</Typography>
               </div>
               {displayShare && <Button variant="raised" color="primary" onClick={this.handleShareClick} className={classes.menuButton}>

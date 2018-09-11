@@ -97,16 +97,15 @@ class OrgHeader extends Component {
       parent,
       info,
       logo,
+      displayShare = true,
     } = this.props;
     const { anchorEl, copied } = this.state;
     const windowGlobal = typeof window !== 'undefined' && window;
     const windowLocation = windowGlobal.location ? windowGlobal.location : {};
     const shareLink = windowLocation.href + '/';
 
-    // if (!info) return null;
-    // if (!info.length > 0) return null;
-
-    const contactAddress = info.find((detail) => detail.contact_type === 'ADDRESS');
+    let contactAddress;
+    if (info) contactAddress = info.find((detail) => detail.contact_type === 'ADDRESS');
     let contactAddressValue = null;
     if (contactAddress) contactAddressValue = contactAddress.contact_value || null;
 
@@ -127,7 +126,7 @@ class OrgHeader extends Component {
         }
       })
     }
-    sortInfo(info);
+    if (info) sortInfo(info);
 
     const contactDetailButtons = sortedInfo.map((cd, idx, arr) => {
       const icons = {
@@ -208,9 +207,9 @@ class OrgHeader extends Component {
                 <Typography variant="display1">{name}</Typography>
                 <Typography variant="subheading" className={classes.parent}>{parent}</Typography>
               </div>
-              <Button variant="raised" color="primary" onClick={this.handleShareClick} className={classes.menuButton}>
+              {displayShare && <Button variant="raised" color="primary" onClick={this.handleShareClick} className={classes.menuButton}>
                 Share
-              </Button>
+              </Button>}
               <Menu
                 id="simple-menu"
                 anchorEl={anchorEl}

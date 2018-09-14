@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Link from 'gatsby-link';
 import { CopyToClipboard } from 'react-copy-to-clipboard';
 import {
   FacebookShareButton,
@@ -47,6 +48,9 @@ const styles = theme => ({
   },
   title: {
     display: 'flex',
+  },
+  link: {
+    textDecoration: 'none',
   },
   claimed: {
     display: 'flex',
@@ -126,6 +130,7 @@ class OrgHeader extends Component {
   render() {
     const {
       classes,
+      id,
       name,
       parent,
       info,
@@ -260,7 +265,11 @@ class OrgHeader extends Component {
               />) : null}
               <div>
                 <div className={classes.title}>
-                  <Typography variant="display1">{name}</Typography>
+                  {id
+                    ? <Link to={`/organization/${id}/`} className={classes.link}>
+                        <Typography variant="display1">{name}</Typography>
+                      </Link>
+                    : <Typography variant="display1">{name}</Typography>}
                   {claimedComponent}
                 </div>
                 <Typography variant="subheading" className={classes.parent}>{parent}</Typography>

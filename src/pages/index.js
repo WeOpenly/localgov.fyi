@@ -98,15 +98,33 @@ const styles = theme => ({
     padding: theme.spacing.unit * 1,
     bottom: 0
   },
+  section2: {
+    marginLeft: theme.spacing.unit * -2,
+    marginRight: theme.spacing.unit * -2,
+    paddingBottom: theme.spacing.unit * 20,
+    backgroundColor: '#fafafa',
+  },
+  section2Mobile: {
+    width:'auto',
+    marginLeft: theme.spacing.unit * -2,
+    marginRight: theme.spacing.unit * -2,
+  },
   otherCitiesHeader: {
     display: 'flex',
     justifyContent: 'center',
     marginTop: theme.spacing.unit * 10,
+    marginBottom: theme.spacing.unit * 2,
   },
   linksWrapper: {
     display: 'flex',
     justifyContent: 'space-between',
     marginBottom: theme.spacing.unit / 2,
+  },
+  otherLinks: {
+    fontWeight: 600,
+    '&:hover': {
+      textDecoration: 'underline',
+    },
   },
   linkLeft: {
     textAlign: 'left',
@@ -121,6 +139,7 @@ const styles = theme => ({
     cursor : 'pointer',
   },
   dividerWrapper: {
+    marginTop: theme.spacing.unit * .5,
     marginBottom: theme.spacing.unit * 5,
   },
   gridWrapper: {
@@ -228,7 +247,13 @@ class Index extends React.Component {
       return (
         <Grid item xs={4}>
           <a key={item.name} onClick={() => this.clickSuggestion(item.url, item.name, idx)} className={classes[link]}>
-            <Typography variant="caption">{item.name}</Typography>
+            <Typography
+              variant="caption"
+              color="textPrimary"
+              className={classes.otherLinks}
+            >
+              {item.name}
+            </Typography>
           </a>
         </Grid>
       );
@@ -296,24 +321,28 @@ class Index extends React.Component {
             <Search />
           </Grid>
           <Grid item xs={1} sm={2} md={2} />
-          <Grid item xs={1} md={3} />
-          <Grid item xs={10} md={6}>
-            <Typography variant="subheading" component="h1" className={classes.otherCitiesHeader}>
-              Localgov San Francisco
-            </Typography>
-            <Grid container className={classes.linksWrapper}>
-              {otherLinks}
-            </Grid>
-          </Grid>
-          <Grid item xs={1} md={3} />
-          <Grid item xs={1} md={2} />
-          <Grid item xs={10} md={8} className={classes.dividerWrapper}>
-            <Divider />
-          </Grid>
-          <Grid item xs={1} md={2} />
         </Grid>
-        <div className={classes.gridWrapper}>
-          <ServiceGrid services={dummyServices} />
+        <div className={classes.section2}>
+          <Grid container className={classes.section2Mobile}>
+            <Grid item xs={1} md={3} />
+            <Grid item xs={10} md={6}>
+              <Typography variant="headline" color="primary" component="h1" className={classes.otherCitiesHeader}>
+                Localgov San Francisco
+              </Typography>
+              <Grid container className={classes.linksWrapper}>
+                {otherLinks}
+              </Grid>
+            </Grid>
+            <Grid item xs={1} md={3} />
+            <Grid item xs={1} md={2} />
+            <Grid item xs={10} md={8} className={classes.dividerWrapper}>
+              <Divider />
+            </Grid>
+            <Grid item xs={1} md={2} />
+          </Grid>
+          <div className={classes.gridWrapper}>
+            <ServiceGrid services={dummyServices} />
+          </div>
         </div>
       </Fragment>
     );

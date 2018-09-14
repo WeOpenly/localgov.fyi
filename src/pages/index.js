@@ -54,6 +54,7 @@ const styles = theme => ({
     alignItems: "center",
     justifyContent: "center",
     height: theme.spacing.unit * 8,
+    width: '100%',
     marginBottom: theme.spacing.unit * 30,
   },
   landingSearch:{

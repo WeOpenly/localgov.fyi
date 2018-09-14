@@ -1,5 +1,6 @@
 import React from 'react';
 import Link from 'gatsby-link';
+import { isMobileOnly } from 'react-device-detect';
 
 import { withStyles } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
@@ -10,6 +11,14 @@ const styles = theme => ({
     position: 'absolute',
     top: 28,
     left: 24,
+    zIndex: 10,
+    width: 300,
+    padding: theme.spacing.unit,
+  },
+  rootMobile: {
+    position: 'absolute',
+    top: 28,
+    left: -200,
     zIndex: 10,
     width: 300,
     padding: theme.spacing.unit,
@@ -28,7 +37,7 @@ const styles = theme => ({
 
 const UnclaimedHover = ({ classes }) => {
   return (
-    <Paper className={classes.root}>
+    <Paper className={isMobileOnly ? classes.rootMobile : classes.root}>
       <Typography variant="caption" color="textPrimary" className={[classes.heading, classes.bold]}>
         This government agency has not claimed their profile.
       </Typography>

@@ -1,9 +1,10 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 import { navigateTo } from 'gatsby-link';
 import { connect } from "react-redux";
 import Helmet from "react-helmet";
 import Spinner from 'react-spinkit';
+import { isMobileOnly } from 'react-device-detect';
 
 import { withStyles } from '@material-ui/core/styles';
 import { fade } from "@material-ui/core/styles/colorManipulator";
@@ -43,6 +44,19 @@ const styles = theme => ({
       width: "100%"
     }
   },
+  mobile: {
+    width: '100%'
+  },
+  serviceSuggestWrapper: {
+    border: '1px solid lightGray',
+    borderRadius: 4,
+    marginTop: theme.spacing.unit * 6,
+    marginBottom: theme.spacing.unit * 2,
+  },
+  newSuggestWrapper: {
+    border: '1px solid lightGray',
+    borderRadius: 4,
+  }
 });
 
 class Search extends React.Component {
@@ -81,10 +95,22 @@ class Search extends React.Component {
     }
 
     return (
-      <div className={classes.combinedSearch}>
-        <ServiceSuggestBox />
-        <NewSuggestBox />
-      </div>
+      <Fragment>
+        {!isMobileOnly
+          ? <div className={classes.combinedSearch}>
+              <ServiceSuggestBox />
+              <NewSuggestBox />
+            </div>
+          : <div className={classes.mobile}>
+              <div className={classes.serviceSuggestWrapper}>
+                <ServiceSuggestBox />
+              </div>
+              <div className={classes.newSuggestWrapper}>
+                <NewSuggestBox />
+              </div>
+            </div>
+        }
+      </Fragment>
     );
   }
 }

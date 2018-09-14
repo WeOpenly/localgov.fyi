@@ -61,7 +61,7 @@ const styles = theme => ({
     paddingTop: theme.spacing.unit * 16,
   },
   landingSearchMobile:{
-    width:'auto',
+    maxWidth:'100%',
     marginLeft: theme.spacing.unit * -2,
     marginRight: theme.spacing.unit * -2,
     paddingTop: theme.spacing.unit * 16,
@@ -106,9 +106,7 @@ const styles = theme => ({
     backgroundColor: '#fafafa',
   },
   section2Mobile: {
-    width:'auto',
-    marginLeft: theme.spacing.unit * -2,
-    marginRight: theme.spacing.unit * -2,
+    width:'100%',
   },
   otherCitiesHeader: {
     display: 'flex',
@@ -144,7 +142,10 @@ const styles = theme => ({
     marginBottom: theme.spacing.unit * 5,
   },
   gridWrapper: {
+    width: '100%',
     marginBottom: theme.spacing.unit * 20,
+    paddingLeft: theme.spacing.unit * 2,
+    paddingRight: theme.spacing.unit * 2,
   },
 });
 

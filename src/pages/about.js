@@ -43,8 +43,8 @@ const styles = theme => ({
     backgroundColor: theme.palette.primary['500'],
   },
   headline: {
-    fontSize: '3.5rem',
-    lineHeight: '4.5rem',
+    fontSize: '2.75rem',
+    lineHeight: '3.5rem',
     color: theme.palette.common.white,
   },
   section2: {
@@ -58,10 +58,12 @@ const styles = theme => ({
   },
   section2Left: {
     display: 'flex',
-    justifyContent: 'center',
+    justifyContent: 'flex-end',
   },
   searchIcon: {
     fontSize: 128,
+    marginTop: -theme.spacing.unit,
+    marginRight: theme.spacing.unit * 4,
   },
   section3: {
     height: '100vh',
@@ -81,6 +83,7 @@ const styles = theme => ({
   },
   bodyText: {
     marginTop: theme.spacing.unit * 2,
+    fontWeight: 400,
     lineHeight: '1.75rem',
   },
   mailTo: {
@@ -153,7 +156,7 @@ class About extends React.Component {
             <Grid item md={5} className={classes.section2Left}>
               <Search className={classes.searchIcon}/>
             </Grid>
-            <Grid item md={5}>
+            <Grid item md={4}>
               <Typography variant="display2" className={classes.subheading}>
                 Find your government services instantly.
               </Typography>
@@ -161,7 +164,7 @@ class About extends React.Component {
                 Be it individuals or businesses, we are making sense of all the government services out there and serving them on a silver platter for all.
               </Typography>
             </Grid>
-            <Grid item md={1} />
+            <Grid item md={2} />
           </Grid>
         </div>
         <div className={classes.section3}>

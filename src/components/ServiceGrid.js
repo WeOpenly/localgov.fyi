@@ -28,9 +28,10 @@ const styles = theme => ({
   },
   cardContent: {
     display: 'flex',
-    'flexDirection': 'column',
-    justifyContent: 'center',
+    flexDirection: 'column',
+    justifyContent: 'space-between',
     alignItems: 'center',
+    height: '100%',
   },
   icon: {
     color: theme.palette.primary['500'],
@@ -59,7 +60,9 @@ const ServiceGrid = ({ classes, services }) => {
                     {service.head.split(' ').map(word => {
                       return icons[word];
                     })[0] || <AccountBalance className={classes.icon} />}
-                    <Typography variant="body1">{service.head}</Typography>
+                    <Typography variant="caption" color="textPrimary" noWrap>
+                      {service.head}
+                    </Typography>
                   </CardContent>
                 </Card>
               </Link>

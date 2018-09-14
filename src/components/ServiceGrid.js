@@ -52,7 +52,7 @@ const ServiceGrid = ({ classes, services }) => {
       {services.map((service, index) => {
         return (
           <Fragment>
-            {(index === 0 || index === 4) && <Grid item xs={false} md={2} />}
+            {!isMobileOnly && (index === 0 || index === 4) && <Grid item md={2} />}
             <Grid item xs={6} md={2}>
               <Link to={`/service/${service.id}/`} className={classes.link}>
                 <Card className={classes.card}>
@@ -67,7 +67,7 @@ const ServiceGrid = ({ classes, services }) => {
                 </Card>
               </Link>
             </Grid>
-            {(index === 3 || index === 7) && <Grid item xs={false} md={2} />}
+            {!isMobileOnly && (index === 3 || index === 7) && <Grid item md={2} />}
           </Fragment>
         );
       })}

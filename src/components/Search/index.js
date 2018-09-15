@@ -28,12 +28,12 @@ const styles = theme => ({
     width: '100%',
     fontFamily: theme.typography.fontFamily,
     position: "relative",
-    boxShadow: `0 0 10px 5px ${theme.palette.primary["50"]}`,
-    background: theme.palette.common.white,
+    background: fade(theme.palette.common.white, 0.25),
+    // boxShadow: `0 0 3px 1px ${theme.palette.primary["100"]}`,
     borderRadius: 4,
     "&:hover": {
-      background: fade(theme.palette.common.white, 0.25),
-      boxShadow: `0 0 3px 1px ${theme.palette.primary["100"]}`
+      background: theme.palette.common.white,
+      boxShadow: `0 0 10px 3px ${theme.palette.primary["50"]}`,
     },
     "&input": {
       transition: theme.transitions.create("width"),

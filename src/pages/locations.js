@@ -2,34 +2,31 @@ import React, { Component, Fragment } from 'react';
 import Link from 'gatsby-link';
 
 import { withStyles } from '@material-ui/core/styles';
-
-import withRoot from '../withRoot';
 import AppBar from '@material-ui/core/AppBar';
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
+import Divider from '@material-ui/core/Divider';
+
+import withRoot from '../withRoot';
+import HeaderWithSearch from '../components/HeaderWithSearch';
 
 const styles = theme => ({
-  header: {
-    display: 'flex',
-    flexDirection: 'row',
-    alignItems: 'center',
-    background: theme.palette.common.white,
-    color: theme.palette.primary['700'],
-    boxShadow: `0 0 0 0 ${theme.palette.common.white}`,
-    borderBottom: `1px solid ${theme.palette.primary['50']}`
-  },
-  link: {
-    textDecoration: 'none',
+  titleWrapper: {
+    textAlign: 'center',
+    paddingTop: theme.spacing.unit * 6,
+    marginBottom: theme.spacing.unit * 2,
   },
   title:{
-    padding: theme.spacing.unit * 2,
+    marginBottom: theme.spacing.unit * 2,
   },
   wrapper: {
-    height: 600,
-    paddingTop: theme.spacing.unit * 12,
+    height: 500,
   },
   section: {
     marginBottom: theme.spacing.unit,
+  },
+  link: {
+    textDecoration: 'none',
   },
   heading: {
     fontWeight: 600,
@@ -311,14 +308,14 @@ class Locations extends Component {
     const { classes } = this.props;
     return (
       <Fragment>
-        <AppBar className={classes.header}>
-          <Link to="/" className={classes.link}>
-            <Typography variant="display1" color="inherit" className={classes.title}>
-              Localgov.fyi
-            </Typography>
-          </Link>
-        </AppBar>
+        <HeaderWithSearch />
         <Grid container>
+          <Grid item md={2} />
+          <Grid item md={8} className={classes.titleWrapper}>
+            <Typography variant="display1" color="textPrimary" className={classes.title}>More places on Localgov</Typography>
+            <Divider />
+          </Grid>
+          <Grid item md={2} />
           <Grid item md={2} />
           <Grid item md={8} container direction="column" className={classes.wrapper}>
             {locations.map(state => (

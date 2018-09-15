@@ -60,11 +60,6 @@ const styles = theme => ({
     padding: theme.spacing.unit * 2,
     zIndex: 2,
   },
-  floatingButton: {
-    position: "fixed",
-    bottom: theme.spacing.unit * 2,
-    right: theme.spacing.unit * 2
-  },
   searchBoxContainer: {
     display: "flex",
     alignItems: "center",
@@ -114,27 +109,22 @@ const styles = theme => ({
     marginBottom: theme.spacing.unit * 1,
     flexWrap: 'wrap',
   },
-  root: {
-    margin: 0,
-    padding: 0,
-    display: 'flex',
-    flexDirection: 'column',
-    justifyContent: 'space-around',
-  },
-  appFooter: {
-    width: "100%",
-    textAlign: "fixed",
-    position: "absolute",
-    padding: theme.spacing.unit * 1,
-    bottom: 0
-  },
   section2: {
+    backgroundColor: '#fafafa',
+    paddingBottom: theme.spacing.unit * 10,
+  },
+  popularServicesHeader: {
+    display: 'flex',
+    justifyContent: 'center',
+    marginTop: theme.spacing.unit * 10,
+    marginBottom: theme.spacing.unit * 3,
+  },
+  section3: {
     marginLeft: theme.spacing.unit * -2,
     marginRight: theme.spacing.unit * -2,
     paddingBottom: theme.spacing.unit * 20,
-    backgroundColor: '#fafafa',
   },
-  section2Mobile: {
+  section3Mobile: {
     width:'100%',
   },
   otherCitiesHeader: {
@@ -170,7 +160,12 @@ const styles = theme => ({
     marginTop: theme.spacing.unit * .5,
     marginBottom: theme.spacing.unit * 5,
   },
-  gridWrapper: {
+  gridWrapper1: {
+    width: '100%',
+    paddingLeft: theme.spacing.unit * 2,
+    paddingRight: theme.spacing.unit * 2,
+  },
+  gridWrapper2: {
     width: '100%',
     marginBottom: theme.spacing.unit * 20,
     paddingLeft: theme.spacing.unit * 2,
@@ -290,30 +285,56 @@ class Index extends React.Component {
         </Grid>
       );
     });
+    const popularServices = [
+      {
+        head: 'Voter Registration',
+        subhead: 'State of California',
+        id: '3c35fb58-1538-43ea-b657-e954f6dbd877',
+        type: 'service'
+      },
+      {
+        head: 'Food Stamps',
+        subhead: 'State of California',
+        id: 'd7052b49-3c72-4369-9af5-c56dc259b055',
+        type: 'service'
+      },
+      {
+        head: 'Vehicle Registration Renewal',
+        subhead: 'State of California',
+        id: '1df3a37a-bce7-42ca-9e69-d04b707fed8c',
+        type: 'service'
+      },
+      {
+        head: 'Renew Drivers License',
+        subhead: 'State of California',
+        id: '9e1c294c-195f-40ce-adaf-ceb49a648508',
+        type: 'service'
+      },
+    ];
     const dummyServices = [
       {
-        "head": "Pay Business Tax",
-        "subhead": "San Francisco-City & County",
-        "id": "77d0d9e3-5cc4-4688-99f9-b5497710b889",
-        "type": "service"
+        head: 'Pay Business Tax',
+        subhead: 'San Francisco-City & County',
+        id: '77d0d9e3-5cc4-4688-99f9-b5497710b889',
+        type: 'service'
       },
       {
-        "head": "Register a New Business",
-        "subhead": "San Francisco-City & County",
-        "id": "8fad0dd5-4bb5-4822-830b-17942ffdce1f",
-        "type": "service"
+        head: 'Register a New Business',
+        subhead: 'San Francisco-City & County',
+        id: '8fad0dd5-4bb5-4822-830b-17942ffdce1f',
+        type: 'service'
       },
       {
-        "head": "Apply for a Marriage License",
-        "subhead": "San Francisco-City & County",
-        "id": "9683b5ae-d7be-465a-ab22-51e0e0af3261",
-        "type": "service"
+        head: 'Apply for a Marriage License',
+        subhead: 'San Francisco-City & County',
+        id: '9683b5ae-d7be-465a-ab22-51e0e0af3261',
+        type: 'service'
       },
       {
-        "head": "Submit a Public Records Request",
-        "subhead": "San Francisco-City & County",
-        "id": "7e07effe-e036-4b67-b239-0d980b5a2f06",
-        "type": "service"
+        head: 'Submit a Public Records Request',
+        subhead: 'San Francisco-City & County',
+        id: '7e07effe-e036-4b67-b239-0d980b5a2f06',
+        type: 'service'
       },
     ];
     const servicesFromOrg = search.allFromOrg.length >= 8 ? search.allFromOrg.slice(0, 8) : search.allFromOrg.slice(0, 4);
@@ -372,7 +393,21 @@ class Index extends React.Component {
           </Grid>
         </div>
         <div className={classes.section2}>
-          <Grid container className={classes.section2Mobile}>
+          <Grid container className={classes.section3Mobile}>
+            <Grid item xs={1} md={3} />
+            <Grid item xs={10} md={6}>
+              <Typography variant="display1" color="primary" component="h1" className={classes.popularServicesHeader}>
+                Find the most sought out services
+              </Typography>
+            </Grid>
+            <Grid item xs={1} md={3} />
+          </Grid>
+          <div className={classes.gridWrapper1}>
+            <ServiceGrid services={popularServices} />
+          </div>
+        </div>
+        <div className={classes.section3}>
+          <Grid container className={classes.section3Mobile}>
             <Grid item xs={1} md={3} />
             <Grid item xs={10} md={6}>
               <Typography variant="display1" color="primary" component="h1" className={classes.otherCitiesHeader}>
@@ -389,7 +424,7 @@ class Index extends React.Component {
             </Grid>
             <Grid item xs={1} md={2} />
           </Grid>
-          <div className={classes.gridWrapper}>
+          <div className={classes.gridWrapper2}>
             <ServiceGrid services={dummyServices} />
           </div>
         </div>

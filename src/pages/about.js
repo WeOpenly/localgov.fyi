@@ -13,6 +13,7 @@ import Button from '@material-ui/core/Button';
 import Search from '@material-ui/icons/Search';
 
 import withRoot from '../withRoot';
+import HeaderWithSearch from '../components/HeaderWithSearch';
 import { trackView } from "../components/Search/tracking";
 
 const styles = theme => ({
@@ -56,9 +57,11 @@ const styles = theme => ({
     paddingRight: theme.spacing.unit * 2,
     background: '#fafafa',
   },
-  section2Left: {
+  section2Center: {
     display: 'flex',
-    justifyContent: 'flex-end',
+    justifyContent: 'center',
+    paddingLeft: theme.spacing.unit * 8,
+    paddingRight: theme.spacing.unit * 8,
   },
   searchIcon: {
     fontSize: 128,
@@ -113,13 +116,7 @@ class About extends React.Component {
             name="description"
             content={`Openly, organizing world's governance information`} />
         </Helmet>
-        <AppBar className={classes.header}>
-          <Link to="/" className={classes.link}>
-            <Typography variant="display1" color="inherit" component="h1" className={classes.title}>
-              Localgov.fyi
-            </Typography>
-          </Link>
-        </AppBar>
+        <HeaderWithSearch />
         <div className={classes.section1}>
           <Grid container>
             <Grid item md={1} />
@@ -152,19 +149,19 @@ class About extends React.Component {
         </div>
         <div className={classes.section2}>
           <Grid container>
-            <Grid item md={1} />
-            <Grid item md={5} className={classes.section2Left}>
+            <Grid item md={3} />
+            <Grid item md={6} className={classes.section2Center}>
               <Search className={classes.searchIcon}/>
+              <div>
+                <Typography variant="display2" className={classes.subheading}>
+                  Find your government services instantly.
+                </Typography>
+                <Typography variant="subheading" className={classes.bodyText}>
+                  Be it individuals or businesses, we are making sense of all the government services out there and serving them on a silver platter for all.
+                </Typography>
+              </div>
             </Grid>
-            <Grid item md={4}>
-              <Typography variant="display2" className={classes.subheading}>
-                Find your government services instantly.
-              </Typography>
-              <Typography variant="subheading" className={classes.bodyText}>
-                Be it individuals or businesses, we are making sense of all the government services out there and serving them on a silver platter for all.
-              </Typography>
-            </Grid>
-            <Grid item md={2} />
+            <Grid item md={3} />
           </Grid>
         </div>
         <div className={classes.section3}>

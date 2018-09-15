@@ -47,6 +47,10 @@ const styles = theme => ({
     alignItems: "center",
     justifyContent: "center"
   },
+  searchButton: {
+    height: '100%',
+    borderRadius: 0,
+  },
   input : {
     fontFamily : theme.typography.fontFamily,
     padding :theme.spacing.unit*2,
@@ -232,9 +236,15 @@ class NewSuggestBox extends Component {
               ? <IconButton aria-label="Clear" onClick={this.clearInput}>
                 <CloseIcon />
               </IconButton>
-              : <IconButton onClick={this.issueFreeSearch} aria-label="Search">
+              : <Button
+                  variant="contained"
+                  color="primary"
+                  onClick={this.issueFreeSearch}
+                  aria-label="Search"
+                  className={classes.searchButton}
+                >
                 <SearchIcon />
-              </IconButton>}
+              </Button>}
         </div>
       </div>
     );
@@ -286,7 +296,7 @@ class NewSuggestBox extends Component {
     const { input, searchSuggestions } = this.props.search;
     const { userCity, selectedOrganization } = this.props.search;
     const value = selectedOrganization ? selectedOrganization.heading : input;
-    let placeholder = "Where?";
+    let placeholder = "Location";
     if (userCity) placeholder = `Try '${userCity}'`;
 
     return (

@@ -2,10 +2,12 @@ import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from "react-redux";
 import Link, { navigateTo } from 'gatsby-link';
+import Img from 'gatsby-image';
 import Helmet from "react-helmet";
 import { isMobileOnly } from 'react-device-detect';
 
 import { withStyles } from '@material-ui/core/styles';
+import AppBar from '@material-ui/core/AppBar';
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 import Paper from '@material-ui/core/Paper';
@@ -44,6 +46,20 @@ const styles = theme => ({
       height: "100%",
     }
   },
+  header: {
+    display: 'flex',
+    flexDirection: 'row',
+    alignItems: 'center',
+    position: 'static',
+    background: theme.palette.common.white,
+    color: theme.palette.primary['700'],
+    boxShadow: `0 0 0 0 ${theme.palette.common.white}`,
+    borderBottom: `1px solid ${theme.palette.primary['50']}`,
+  },
+  title:{
+    padding: theme.spacing.unit * 2,
+    zIndex: 2,
+  },
   floatingButton: {
     position: "fixed",
     bottom: theme.spacing.unit * 2,
@@ -55,9 +71,13 @@ const styles = theme => ({
     justifyContent: "center",
     height: theme.spacing.unit * 8,
     width: '100%',
-    marginBottom: theme.spacing.unit * 30,
+  },
+  searchWrapper: {
+    height: '85vh',
+    marginTop: -62,
   },
   landingSearch:{
+    zIndex: 2,
     paddingTop: theme.spacing.unit * 16,
   },
   landingSearchMobile:{
@@ -74,16 +94,25 @@ const styles = theme => ({
     color: theme.palette.primary["700"]
   },
   appHeaderText: {
-    color: theme.palette.primary["900"]
+    color: theme.palette.primary["900"],
+  },
+  appSubHeaderTextWrapper: {
+    display: 'flex',
+    justifyContent: 'center',
+    zIndex: 2,
+    marginTop: theme.spacing.unit * 10,
+    marginBottom: theme.spacing.unit * 2,
   },
   appSubHeaderText: {
-    marginBottom: theme.spacing.unit * 3
+    color: theme.palette.common.white,
+    marginBottom: theme.spacing.unit * 3,
   },
   appNameHeader: {
-    display: "flex",
+    display: 'flex',
+    justifyContent: 'center',
     marginTop: theme.spacing.unit * 4,
     marginBottom: theme.spacing.unit * 1,
-    flexWrap: "wrap"
+    flexWrap: 'wrap',
   },
   root: {
     margin: 0,
@@ -171,7 +200,7 @@ const otherPlaces = [
     url : '/organization/64398076-1dd4-4c06-bba0-f46bf893b2ae'
   },
   {
-    name: 'Los Angles',
+    name: 'Los Angeles',
     url : '/organization/206843c1-890c-435c-85d6-5e2350200c1e'
   },
   {
@@ -301,35 +330,52 @@ class Index extends React.Component {
           <meta property="og:url" content={`https://localgov.fyi${this.props.location.pathname}`} />
           <html lang="en" />
         </Helmet>
-        <Grid container spacing={0} className={!isMobileOnly ? classes.landingSearch : classes.landingSearchMobile}>
-          <Grid item xs={1} sm={2} md={2} />
-          <Grid item xs={6} sm={6} md={7} className={classes.appNameHeader}>
-            <Typography align="center" variant="display1" component="span" className={classes.appHeaderText}>
-              Localgov.fyi
-            </Typography>
-            &nbsp;
+        <AppBar className={classes.header}>
+          <Typography variant="display1" color="inherit" className={classes.title}>
+            Localgov.fyi
+          </Typography>
+        </AppBar>
+        <div className={classes.searchWrapper}>
+          <Img
+            title="United States Capitol"
+            alt="Photo by Andy Feliciotti (@someguy) on Unsplash"
+            sizes={this.props.data.capitol.sizes}
+            style={{
+              position: 'absolute',
+              left: 0,
+              top: 0,
+              width: '100vw',
+              height: '85vh',
+              filter: 'brightness(50%)',
+            }}
+          />
+          <Grid container spacing={0} className={!isMobileOnly ? classes.landingSearch : classes.landingSearchMobile}>
+            {/*<Grid item xs={1} sm={2} md={2} />
+            <Grid item xs={6} sm={6} md={8} className={classes.appNameHeader}>
+              <Typography variant="display1" component="span" className={classes.appHeaderText}>
+                Localgov.fyi
+              </Typography>
+            </Grid>
+            <Grid item xs={1} sm={2} md={2} />*/}
+            <Grid item xs={1} sm={2} md={2} />
+            <Grid item xs={10} sm={8} md={8} className={classes.appSubHeaderTextWrapper}>
+              <Typography variant="display1" component="span" className={classes.appSubHeaderText}>
+                All your government services in a single place
+              </Typography>
+            </Grid>
+            <Grid item xs={1} sm={2} md={2} />
+            <Grid item xs={1} sm={2} md={2} />
+            <Grid item xs={10} sm={10} md={8} className={classes.searchBoxContainer}>
+              <Search />
+            </Grid>
+            <Grid item xs={1} sm={2} md={2} />
           </Grid>
-          <Grid item xs={4} sm={2} md={1} className={classes.langSelectHeader}>
-          </Grid>
-          <Grid item xs={1} sm={2} md={2} />
-          <Grid item xs={1} sm={2} md={2} />
-          <Grid item xs={10} sm={8} md={8}>
-            <Typography align="left" variant="body2" component="p" className={classes.appSubHeaderText}>
-              Search for local government services
-            </Typography>
-          </Grid>
-          <Grid item xs={1} sm={2} md={2} />
-          <Grid item xs={1} sm={2} md={2} />
-          <Grid item xs={10} sm={10} md={8} className={classes.searchBoxContainer}>
-            <Search />
-          </Grid>
-          <Grid item xs={1} sm={2} md={2} />
-        </Grid>
+        </div>
         <div className={classes.section2}>
           <Grid container className={classes.section2Mobile}>
             <Grid item xs={1} md={3} />
             <Grid item xs={10} md={6}>
-              <Typography variant="headline" color="primary" component="h1" className={classes.otherCitiesHeader}>
+              <Typography variant="display1" color="primary" component="h1" className={classes.otherCitiesHeader}>
                 Localgov San Francisco
               </Typography>
               <Grid container className={classes.linksWrapper}>
@@ -355,6 +401,16 @@ class Index extends React.Component {
 Index.propTypes = {
   classes: PropTypes.object.isRequired,
 };
+
+export const query = graphql`
+  query indexImageQuery {
+    capitol: imageSharp(id: { regex: "/capitol/"}) {
+      sizes(quality: 100) {
+        ...GatsbyImageSharpSizes
+      }
+    }
+  }
+`;
 
 const mapStateToProps = function (state, ownProps) {
   return {

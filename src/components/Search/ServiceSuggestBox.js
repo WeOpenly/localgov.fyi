@@ -278,7 +278,7 @@ class ServiceSuggestBox extends Component {
   render() {
     const { classes } = this.props;
     const { serviceInput, serviceSuggestions } = this.props.search;
-    const placeholder = "What would you like to get done?";
+    const placeholder = "Search for Parking Tickets, Permits, Licenses…";
 
     return (
       <form onSubmit={this.onSubmit} className={classes.container}>

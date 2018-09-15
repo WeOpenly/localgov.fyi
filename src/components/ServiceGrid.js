@@ -16,6 +16,9 @@ import Report from '@material-ui/icons/Report';
 import Home from '@material-ui/icons/Home';
 import Folder from '@material-ui/icons/Folder';
 import HowToVote from '@material-ui/icons/HowToVote';
+import ShoppingCart from '@material-ui/icons/ShoppingCart';
+import DirectionsCar from '@material-ui/icons/DirectionsCar';
+import Autorenew from '@material-ui/icons/Autorenew';
 
 import withRoot from '../withRoot';
 
@@ -46,6 +49,10 @@ const ServiceGrid = ({ classes, services }) => {
     Recreational: <Rowing className={classes.icon} />,
     Register: <HowToVote className={classes.icon} />,
     Report: <Report className={classes.icon} />,
+    Voter: <HowToVote className={classes.icon} />,
+    Food: <ShoppingCart className={classes.icon} />,
+    Vehicle: <DirectionsCar className={classes.icon} />,
+    Renew: <Autorenew className={classes.icon} />,
   };
   return (
     <Grid container spacing={16}>

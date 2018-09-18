@@ -8,6 +8,7 @@ import Card from '@material-ui/core/Card';
 // import CardMedia from '@material-ui/core/CardMedia';
 import CardContent from '@material-ui/core/CardContent';
 import Typography from '@material-ui/core/Typography';
+import MoreHoriz from '@material-ui/icons/MoreHoriz';
 import AccountBalance from '@material-ui/icons/AccountBalance';
 import AttachMoney from '@material-ui/icons/AttachMoney';
 import Rowing from '@material-ui/icons/Rowing';
@@ -42,7 +43,7 @@ const styles = theme => ({
   },
 });
 
-const ServiceGrid = ({ classes, services }) => {
+const ServiceGrid = ({ classes, city, services }) => {
   const icons = {
     Apply: <Assignment className={classes.icon} />,
     Pay: <AttachMoney className={classes.icon} />,
@@ -54,9 +55,13 @@ const ServiceGrid = ({ classes, services }) => {
     Vehicle: <DirectionsCar className={classes.icon} />,
     Renew: <Autorenew className={classes.icon} />,
   };
+  let trimmedServices = services;
+  if (city && services.length > 7) trimmedServices = services.slice(0, 7);
+  else if (city && services.length > 3) trimmedServices = services.slice(0, 3);
+
   return (
     <Grid container spacing={16}>
-      {services.map((service, index) => {
+      {trimmedServices.map((service, index) => {
         return (
           <Fragment>
             {!isMobileOnly && (index === 0 || index === 4) && <Grid item md={2} />}
@@ -74,7 +79,24 @@ const ServiceGrid = ({ classes, services }) => {
                 </Card>
               </Link>
             </Grid>
-            {!isMobileOnly && (index === 3 || index === 7) && <Grid item md={2} />}
+            {(city && index === trimmedServices.length - 1) &&
+              <Fragment>
+                <Grid item xs={6} md={2}>
+                  <Link to={`/organization/${city.id}/`} className={classes.link}>
+                    <Card className={classes.card}>
+                      <CardContent className={classes.cardContent}>
+                        <MoreHoriz className={classes.icon} />
+                        <Typography variant="caption" color="textPrimary" noWrap>
+                          More Services
+                        </Typography>
+                      </CardContent>
+                    </Card>
+                  </Link>
+                </Grid>
+                <Grid item md={2} />
+              </Fragment>
+            }
+            {!isMobileOnly && (index === 3) && <Grid item md={2} />}
           </Fragment>
         );
       })}

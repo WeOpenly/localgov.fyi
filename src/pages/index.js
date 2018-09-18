@@ -57,6 +57,8 @@ const styles = theme => ({
     borderBottom: `1px solid ${theme.palette.primary['50']}`,
   },
   title:{
+    color: theme.palette.common.white,
+    textShadow: '1px 1px 1px black',
     padding: theme.spacing.unit * 2,
     zIndex: 2,
   },
@@ -335,6 +337,30 @@ class Index extends React.Component {
         id: '7e07effe-e036-4b67-b239-0d980b5a2f06',
         type: 'service'
       },
+      // {
+      //   head: 'Pay Business Tax',
+      //   subhead: 'San Francisco-City & County',
+      //   id: '77d0d9e3-5cc4-4688-99f9-b5497710b889',
+      //   type: 'service'
+      // },
+      // {
+      //   head: 'Register a New Business',
+      //   subhead: 'San Francisco-City & County',
+      //   id: '8fad0dd5-4bb5-4822-830b-17942ffdce1f',
+      //   type: 'service'
+      // },
+      // {
+      //   head: 'Apply for a Marriage License',
+      //   subhead: 'San Francisco-City & County',
+      //   id: '9683b5ae-d7be-465a-ab22-51e0e0af3261',
+      //   type: 'service'
+      // },
+      // {
+      //   head: 'Submit a Public Records Request',
+      //   subhead: 'San Francisco-City & County',
+      //   id: '7e07effe-e036-4b67-b239-0d980b5a2f06',
+      //   type: 'service'
+      // },
     ];
     const servicesFromOrg = search.allFromOrg.length >= 8 ? search.allFromOrg.slice(0, 8) : search.allFromOrg.slice(0, 4);
 
@@ -351,7 +377,7 @@ class Index extends React.Component {
           <html lang="en" />
         </Helmet>
         <AppBar className={classes.header}>
-          <Typography variant="display1" color="inherit" className={classes.title}>
+          <Typography variant="display1" className={classes.title}>
             Localgov.fyi
           </Typography>
         </AppBar>
@@ -424,7 +450,7 @@ class Index extends React.Component {
             <Grid item xs={1} md={2} />
           </Grid>
           <div className={classes.gridWrapper2}>
-            <ServiceGrid services={dummyServices} />
+            <ServiceGrid city={{ id: '49ab4440-1176-4791-a7cf-1e27a756488d' }} services={dummyServices} />
           </div>
         </div>
       </Fragment>

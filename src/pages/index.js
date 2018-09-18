@@ -173,6 +173,11 @@ const styles = theme => ({
     paddingLeft: theme.spacing.unit * 2,
     paddingRight: theme.spacing.unit * 2,
   },
+  locationsLink: {
+    display: 'flex',
+    justifyContent: 'center',
+    textDecorationColor: theme.palette.primary['500'],
+  },
 });
 
 const otherPlaces = [
@@ -453,6 +458,19 @@ class Index extends React.Component {
           <div className={classes.gridWrapper2}>
             <ServiceGrid city={{ id: '49ab4440-1176-4791-a7cf-1e27a756488d' }} services={dummyServices} />
           </div>
+        </div>
+        <div className={classes.section4}>
+          <Grid container>
+            <Grid item xs={1} md={3} />
+            <Grid item xs={10} md={6}>
+              <Link to="/locations/" className={classes.locationsLink}>
+                <Typography variant="display1" color="primary" component="h1">
+                  Discover more locations on LocalGov
+                </Typography>
+              </Link>
+            </Grid>
+            <Grid item xs={1} md={3} />
+          </Grid>
         </div>
       </Fragment>
     );

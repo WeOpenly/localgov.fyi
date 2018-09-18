@@ -14,9 +14,11 @@ import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
 import Input from "@material-ui/core/Input";
 import MenuItem from '@material-ui/core/MenuItem';
+import ListItemIcon from '@material-ui/core/ListItemIcon';
 import CircularProgress from '@material-ui/core/CircularProgress';
 import Button from '@material-ui/core/Button';
 import IconButton from '@material-ui/core/IconButton';
+import AttachMoney from '@material-ui/icons/AttachMoney';
 import SearchIcon from '@material-ui/icons/Search';
 import CloseIcon from '@material-ui/icons/Close';
 
@@ -165,6 +167,9 @@ class ServiceSuggestBox extends Component {
   renderSuggestion(suggestion, { query, isHighlighted }) {
     return (
       <MenuItem selected={isHighlighted} component="div">
+        <ListItemIcon>
+          <AttachMoney />
+        </ListItemIcon>
         <div>
           <div>
             <Typography align="left" variant="title">

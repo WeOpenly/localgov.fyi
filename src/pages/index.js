@@ -343,30 +343,30 @@ class Index extends React.Component {
         id: '7e07effe-e036-4b67-b239-0d980b5a2f06',
         type: 'service'
       },
-      // {
-      //   head: 'Pay Business Tax',
-      //   subhead: 'San Francisco-City & County',
-      //   id: '77d0d9e3-5cc4-4688-99f9-b5497710b889',
-      //   type: 'service'
-      // },
-      // {
-      //   head: 'Register a New Business',
-      //   subhead: 'San Francisco-City & County',
-      //   id: '8fad0dd5-4bb5-4822-830b-17942ffdce1f',
-      //   type: 'service'
-      // },
-      // {
-      //   head: 'Apply for a Marriage License',
-      //   subhead: 'San Francisco-City & County',
-      //   id: '9683b5ae-d7be-465a-ab22-51e0e0af3261',
-      //   type: 'service'
-      // },
-      // {
-      //   head: 'Submit a Public Records Request',
-      //   subhead: 'San Francisco-City & County',
-      //   id: '7e07effe-e036-4b67-b239-0d980b5a2f06',
-      //   type: 'service'
-      // },
+      {
+        head: 'Renew Residential Parking Permit',
+        subhead: 'San Francisco-City & County',
+        id: 'f75f316a-cdf6-40f3-8fa3-6a51f3e4b3f1',
+        type: 'service'
+      },
+      {
+        head: 'Pay Water Bill',
+        subhead: 'San Francisco-City & County',
+        id: '1fd2b0a9-fcdc-429d-89b1-a8de6751df1e',
+        type: 'service'
+      },
+      {
+        head: 'Purchase Parking Meter Cards',
+        subhead: 'San Francisco-City & County',
+        id: '5f685fe6-690b-405d-8b6b-42ea1510da12',
+        type: 'service'
+      },
+      {
+        head: 'Pay for Traffic Citation',
+        subhead: 'San Francisco-City & County',
+        id: '4914912e-5d89-4d0e-be21-fc8faeba9488',
+        type: 'service'
+      },
     ];
     const servicesFromOrg = search.allFromOrg.length >= 8 ? search.allFromOrg.slice(0, 8) : search.allFromOrg.slice(0, 4);
 

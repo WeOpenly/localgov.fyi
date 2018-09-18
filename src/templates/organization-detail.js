@@ -73,7 +73,8 @@ class OrganizationDetail extends React.Component {
     let contactDetailComponent = null;
     let memberListComp = null;
 
-    const parent = services.length && services[services.length - 1].org && services[services.length - 1].org.name || '';
+    let parent = services.length && services[services.length - 1].org && services[services.length - 1].org.name || '';
+    parent = parent === name ? '' : parent;
     if (contact_details){
       contactDetailComponent = (
         <OrgHeader

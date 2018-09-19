@@ -62,15 +62,6 @@ const styles = theme => ({
     justifyContent: 'center',
     alignItems: 'center',
   },
-  signIn: {
-    display: 'flex',
-    justifyContent: 'center',
-    marginTop: theme.spacing.unit * 4,
-  },
-  signInLink: {
-    textDecoration: 'none',
-    marginLeft: theme.spacing.unit,
-  },
   link: {
     // cursor: 'pointer',
     textDecoration: 'none',
@@ -97,18 +88,10 @@ const validate = values => {
   return errors;
 }
 
-class Signup extends Component {
+class SignIn extends Component {
   constructor(props) {
     super(props);
-    this.handleClick = this.handleClick.bind(this);
     this.renderTextField = this.renderTextField.bind(this);
-  }
-
-  handleClick() {
-    // const { dispatch } = this.props;
-    // dispatch({
-    //   type: 'ENT_LIST_PAGE'
-    // });
   }
 
   renderTextField({
@@ -157,75 +140,38 @@ class Signup extends Component {
         <Grid container>
           <Grid item xs={12} className={classes.formWrapper}>
             <Typography variant="display1" className={classes.heading}>
-              Get Started with your LocalGov Page
+              Sign in to access your dashboard
             </Typography>
-            {false
-              ? <div className={classes.success}>
-                  <Typography>
-                    Registration successful. Please check your inbox for the verification email.
-                  </Typography>
-                  <Typography className={classes.link} color="primary" onClick={this.handleClick}>Go home</Typography>
-                </div>
-              : <form onSubmit={handleSubmit} className={classes.form}>
-                  <div className={classes.wrapperWrapper}>
-                    <div className={classes.fieldWrapper}>
-                      <Field
-                        name="firstName"
-                        component={this.renderTextField}
-                        type="text"
-                        label="First Name"
-                        fullWidth
-                      />
-                    </div>
-                    <div className={classes.fieldWrapper}>
-                      <Field
-                        name="lastName"
-                        component={this.renderTextField}
-                        type="text"
-                        label="Last Name"
-                        fullWidth
-                      />
-                    </div>
-                  </div>
-                  <div className={classes.fieldWrapper}>
-                    <Field
-                      name="email"
-                      component={this.renderTextField}
-                      type="email"
-                      label="Email"
-                      fullWidth
-                    />
-                  </div>
-                  <div className={classes.fieldWrapper}>
-                    <Field
-                      name="agency"
-                      component={this.renderTextField}
-                      type="text"
-                      label="Agency Name"
-                      fullWidth
-                    />
-                  </div>
-                  {error && <Typography color="error">{error}</Typography>}
-                  <Button
-                    variant="raised"
-                    color="primary"
-                    disabled={pristine || invalid || submitting}
-                    className={classes.button}
-                    onClick={() => dispatch(submit('Signup'))}
-                  >
-                    Create Account
-                  </Button>
-                </form>}
-            <div className={classes.signIn}>
-              <Typography variant="body1">
-                Already have an account?
-              </Typography>
-              <Link to="/signin/" className={classes.signInLink}>
-                <Typography variant="body1" color="primary">
-                  Sign in
-                </Typography>
-              </Link>
-            </div>
+            <form onSubmit={handleSubmit} className={classes.form}>
+              <div className={classes.fieldWrapper}>
+                <Field
+                  name="email"
+                  component={this.renderTextField}
+                  type="email"
+                  label="Email"
+                  fullWidth
+                />
+              </div>
+              <div className={classes.fieldWrapper}>
+                <Field
+                  name="password"
+                  component={this.renderTextField}
+                  type="password"
+                  label="Password"
+                  fullWidth
+                />
+              </div>
+              {error && <Typography color="error">{error}</Typography>}
+              <Button
+                variant="raised"
+                color="primary"
+                disabled={pristine || invalid || submitting}
+                className={classes.button}
+                onClick={() => dispatch(submit('SignIn'))}
+              >
+                Sign In
+              </Button>
+            </form>
           </Grid>
         </Grid>
       </Fragment>
@@ -233,16 +179,16 @@ class Signup extends Component {
   }
 }
 
-Signup = reduxForm({
-  form: 'Signup',
+SignIn = reduxForm({
+  form: 'SignIn',
   validate,
   onSubmit: ()=>{}, // update after creating thunk
-})(Signup);
+})(SignIn);
 
-Signup = connect(
+SignIn = connect(
   state => ({
     authentication: state.authentication,
   })
-)(Signup);
+)(SignIn);
 
-export default withRoot(withStyles(styles)(Signup));
+export default withRoot(withStyles(styles)(SignIn));

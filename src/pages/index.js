@@ -180,6 +180,84 @@ const styles = theme => ({
   },
 });
 
+const popularServices = [
+  {
+    head: 'Voter Registration',
+    subhead: 'State of California',
+    id: '3c35fb58-1538-43ea-b657-e954f6dbd877',
+    type: 'service'
+  },
+  {
+    head: 'Food Stamps',
+    subhead: 'State of California',
+    id: 'd7052b49-3c72-4369-9af5-c56dc259b055',
+    type: 'service'
+  },
+  {
+    head: 'Vehicle Registration Renewal',
+    subhead: 'State of California',
+    id: '1df3a37a-bce7-42ca-9e69-d04b707fed8c',
+    type: 'service'
+  },
+  {
+    head: 'Renew Drivers License',
+    subhead: 'State of California',
+    id: '9e1c294c-195f-40ce-adaf-ceb49a648508',
+    type: 'service'
+  },
+];
+
+const dummyServices = [
+  {
+    head: 'Pay Business Tax',
+    subhead: 'San Francisco-City & County',
+    id: '77d0d9e3-5cc4-4688-99f9-b5497710b889',
+    type: 'service'
+  },
+  {
+    head: 'Register a New Business',
+    subhead: 'San Francisco-City & County',
+    id: '8fad0dd5-4bb5-4822-830b-17942ffdce1f',
+    type: 'service'
+  },
+  {
+    head: 'Apply for a Marriage License',
+    subhead: 'San Francisco-City & County',
+    id: '9683b5ae-d7be-465a-ab22-51e0e0af3261',
+    type: 'service'
+  },
+  {
+    head: 'Submit a Public Records Request',
+    subhead: 'San Francisco-City & County',
+    id: '7e07effe-e036-4b67-b239-0d980b5a2f06',
+    type: 'service'
+  },
+  {
+    head: 'Renew Residential Parking Permit',
+    subhead: 'San Francisco-City & County',
+    id: 'f75f316a-cdf6-40f3-8fa3-6a51f3e4b3f1',
+    type: 'service'
+  },
+  {
+    head: 'Pay Water Bill',
+    subhead: 'San Francisco-City & County',
+    id: '1fd2b0a9-fcdc-429d-89b1-a8de6751df1e',
+    type: 'service'
+  },
+  {
+    head: 'Purchase Parking Meter Cards',
+    subhead: 'San Francisco-City & County',
+    id: '5f685fe6-690b-405d-8b6b-42ea1510da12',
+    type: 'service'
+  },
+  {
+    head: 'Pay for Traffic Citation',
+    subhead: 'San Francisco-City & County',
+    id: '4914912e-5d89-4d0e-be21-fc8faeba9488',
+    type: 'service'
+  },
+];
+
 const otherPlaces = [
   {
     name: 'Atlanta',
@@ -256,13 +334,71 @@ const shuffledArray = xah_randomize_array(otherPlaces);
 class Index extends React.Component {
   constructor(props) {
     super(props);
+    this.state = {
+      backgroundImage: null,
+    };
     this.clickSuggestion = this.clickSuggestion.bind(this);
   }
 
   componentDidMount(){
+    const backgroundImages = [
+      <Img
+        title="United States Capitol"
+        alt="Photo by Andy Feliciotti (@someguy) on Unsplash"
+        sizes={this.props.data.capitol.sizes}
+        style={{
+          position: 'absolute',
+          left: 0,
+          top: 0,
+          width: '100vw',
+          height: '85vh',
+          filter: 'brightness(50%)',
+        }}
+      />,
+      <Img
+        title="Philadelphia City Hall"
+        alt="Photo by BruceEmmerling on Pixabay"
+        sizes={this.props.data.philadelphia.sizes}
+        style={{
+          position: 'absolute',
+          left: 0,
+          top: 0,
+          width: '100vw',
+          height: '85vh',
+          filter: 'brightness(60%)',
+        }}
+      />,
+      <Img
+        title="Los Angeles City Hall"
+        alt="Photo from Pixabay"
+        sizes={this.props.data.losAngeles.sizes}
+        style={{
+          position: 'absolute',
+          left: 0,
+          top: 0,
+          width: '100vw',
+          height: '85vh',
+          filter: 'brightness(70%)',
+        }}
+      />,
+      <Img
+        title="San Francisco City Hall"
+        alt="Photo by Hoona9091 on Pixabay"
+        sizes={this.props.data.sanFrancisco.sizes}
+        style={{
+          position: 'absolute',
+          left: 0,
+          top: 0,
+          width: '100vw',
+          height: '85vh',
+          filter: 'brightness(60%)',
+        }}
+      />,
+    ];
     const { dispatch } = this.props;
     dispatch(fetchAllFromOrganization);
     dispatch(trackView('index', null, null, null));
+    this.setState({ backgroundImage: backgroundImages[Math.floor(Math.random() * backgroundImages.length)] });
   }
 
   clickSuggestion(url, name, index){
@@ -292,82 +428,6 @@ class Index extends React.Component {
         </Grid>
       );
     });
-    const popularServices = [
-      {
-        head: 'Voter Registration',
-        subhead: 'State of California',
-        id: '3c35fb58-1538-43ea-b657-e954f6dbd877',
-        type: 'service'
-      },
-      {
-        head: 'Food Stamps',
-        subhead: 'State of California',
-        id: 'd7052b49-3c72-4369-9af5-c56dc259b055',
-        type: 'service'
-      },
-      {
-        head: 'Vehicle Registration Renewal',
-        subhead: 'State of California',
-        id: '1df3a37a-bce7-42ca-9e69-d04b707fed8c',
-        type: 'service'
-      },
-      {
-        head: 'Renew Drivers License',
-        subhead: 'State of California',
-        id: '9e1c294c-195f-40ce-adaf-ceb49a648508',
-        type: 'service'
-      },
-    ];
-    const dummyServices = [
-      {
-        head: 'Pay Business Tax',
-        subhead: 'San Francisco-City & County',
-        id: '77d0d9e3-5cc4-4688-99f9-b5497710b889',
-        type: 'service'
-      },
-      {
-        head: 'Register a New Business',
-        subhead: 'San Francisco-City & County',
-        id: '8fad0dd5-4bb5-4822-830b-17942ffdce1f',
-        type: 'service'
-      },
-      {
-        head: 'Apply for a Marriage License',
-        subhead: 'San Francisco-City & County',
-        id: '9683b5ae-d7be-465a-ab22-51e0e0af3261',
-        type: 'service'
-      },
-      {
-        head: 'Submit a Public Records Request',
-        subhead: 'San Francisco-City & County',
-        id: '7e07effe-e036-4b67-b239-0d980b5a2f06',
-        type: 'service'
-      },
-      {
-        head: 'Renew Residential Parking Permit',
-        subhead: 'San Francisco-City & County',
-        id: 'f75f316a-cdf6-40f3-8fa3-6a51f3e4b3f1',
-        type: 'service'
-      },
-      {
-        head: 'Pay Water Bill',
-        subhead: 'San Francisco-City & County',
-        id: '1fd2b0a9-fcdc-429d-89b1-a8de6751df1e',
-        type: 'service'
-      },
-      {
-        head: 'Purchase Parking Meter Cards',
-        subhead: 'San Francisco-City & County',
-        id: '5f685fe6-690b-405d-8b6b-42ea1510da12',
-        type: 'service'
-      },
-      {
-        head: 'Pay for Traffic Citation',
-        subhead: 'San Francisco-City & County',
-        id: '4914912e-5d89-4d0e-be21-fc8faeba9488',
-        type: 'service'
-      },
-    ];
     const servicesFromOrg = search.allFromOrg.length >= 8 ? search.allFromOrg.slice(0, 8) : search.allFromOrg.slice(0, 4);
 
     return (
@@ -388,19 +448,7 @@ class Index extends React.Component {
           </Typography>
         </AppBar>
         <div className={classes.searchWrapper}>
-          <Img
-            title="United States Capitol"
-            alt="Photo by Andy Feliciotti (@someguy) on Unsplash"
-            sizes={this.props.data.capitol.sizes}
-            style={{
-              position: 'absolute',
-              left: 0,
-              top: 0,
-              width: '100vw',
-              height: '85vh',
-              filter: 'brightness(50%)',
-            }}
-          />
+          {this.state.backgroundImage}
           <Grid container spacing={0} className={!isMobileOnly ? classes.landingSearch : classes.landingSearchMobile}>
             {/*<Grid item xs={1} sm={2} md={2} />
             <Grid item xs={6} sm={6} md={8} className={classes.appNameHeader}>
@@ -484,6 +532,21 @@ Index.propTypes = {
 export const query = graphql`
   query indexImageQuery {
     capitol: imageSharp(id: { regex: "/capitol/"}) {
+      sizes(quality: 100) {
+        ...GatsbyImageSharpSizes
+      }
+    }
+    philadelphia: imageSharp(id: { regex: "/philadelphia/"}) {
+      sizes(quality: 100) {
+        ...GatsbyImageSharpSizes
+      }
+    }
+    losAngeles: imageSharp(id: { regex: "/losAngeles/"}) {
+      sizes(quality: 100) {
+        ...GatsbyImageSharpSizes
+      }
+    }
+    sanFrancisco: imageSharp(id: { regex: "/sanFrancisco/"}) {
       sizes(quality: 100) {
         ...GatsbyImageSharpSizes
       }

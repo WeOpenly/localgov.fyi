@@ -62,11 +62,11 @@ const styles = theme => ({
     margin: 0, // Reset for Safari
     color: theme.palette.dark,
     width: "100%",
-    "&:focus": {
-      outline: 0,
-      background: fade(theme.palette.common.white, 0.25),
-      boxShadow: `0 0 3px 1px ${theme.palette.primary["100"]}`
-    },
+    // "&:focus": {
+    //   outline: 0,
+    //   background: fade(theme.palette.common.white, 0.25),
+    //   boxShadow: `0 0 3px 1px ${theme.palette.primary["100"]}`
+    // },
     "&:before": {
       display: "none"
     },

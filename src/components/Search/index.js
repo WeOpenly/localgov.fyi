@@ -35,14 +35,14 @@ const styles = theme => ({
       background: theme.palette.common.white,
       boxShadow: `0 0 10px 3px ${theme.palette.primary["50"]}`,
     },
-    "&input": {
-      transition: theme.transitions.create("width"),
-      width: "100%"
-    },
-    "&form": {
-      transition: theme.transitions.create("width"),
-      width: "100%"
-    }
+    // "&input": {
+    //   transition: theme.transitions.create("width"),
+    //   width: "100%"
+    // },
+    // "&form": {
+    //   transition: theme.transitions.create("width"),
+    //   width: "100%"
+    // }
   },
   mobile: {
     width: '100%'

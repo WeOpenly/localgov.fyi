@@ -1,0 +1,5 @@
+#!/bin/sh
+echo $(date '+%Y %b %d %H:%M') > /home/ec2-user/fetch_s3_and_build.log
+cd /home/ec2-user/localgov.fyi/ && /usr/bin/git add --all && /usr/bin/git stash && /usr/bin/git pull origin master && rm  /home/ec2-user/localgov.fyi/data/orgs/*.json && /usr/bin/aws s3 sync s3://openly-org-overview-api  /home/ec2-user/localgov.fyi/data/orgs --delete > /home/ec2-user/fetch_s3_and_build.log 2>&1 && cd /home/ec2-user/localgov.fyi/ && /usr/bin/python pre_process.py  && cd /home/ec2-user/localgov.fyi/ && node --max-old-space-size=12384 ./node_modules/.bin/gatsby build --prefix-paths >> /home/ec2-user/fetch_s3_and_build.log 2>&1 && cd /home/ec2-user/localgov.fyi/public/ && node --max-old-space-size=12384 /usr/bin/netlify deploy >> /home/ec2-user/fetch_s3_and_build.log 2>&1
+echo "finished" >> /home/ec2-user/fetch_s3_and_build.log
+echo $(date '+%Y %b %d %H:%M') >> /home/ec2-user/fetch_s3_and_build.log

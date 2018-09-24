@@ -4,6 +4,7 @@ import {
   FacebookShareButton,
   TwitterShareButton,
 } from 'react-share';
+import Img from "gatsby-image";
 
 import { withStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
@@ -25,11 +26,13 @@ const styles = theme => ({
   cardTop: {
     display: 'flex',
     justifyContent: 'space-between',
-    marginRight: -theme.spacing.unit,
   },
   menuButton: {
     marginTop: -theme.spacing.unit,
     marginRight: theme.spacing.unit * -1.5,
+  },
+logoName : {
+    display : 'flex',
   },
   menuItem: {
     display: 'flex',
@@ -75,8 +78,9 @@ class OrgHeader extends Component {
   }
 
   render() {
-    const { classes, name, info } = this.props;
+    const {classes, name, info, logoSizes} = this.props;
     const { anchorEl, copied } = this.state;
+
     const windowGlobal = typeof window !== 'undefined' && window;
     const windowLocation = windowGlobal.location ? windowGlobal.location : {};
     const shareLink = windowLocation.href;
@@ -180,10 +184,20 @@ class OrgHeader extends Component {
       <Card className={classes.card}>
         <CardContent>
           <div className={classes.cardTop}>
+            <div className={classes.logoName}>
+            {logoSizes ? (<Img
+              title={`logo${name}`}
+              alt={`logo of ${name}`}
+              style={{width: '100px'}}
+              sizes={logoSizes}
+            />) : null}
             <Typography variant="display1">{name}</Typography>
+            </div>
+            <div className={classes.shareButton}>
             <Button onClick={this.handleShareClick} className={classes.menuButton}>
               Share
             </Button>
+            </div>
             <Menu
               id="simple-menu"
               anchorEl={anchorEl}

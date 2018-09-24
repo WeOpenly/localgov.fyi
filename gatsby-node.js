@@ -53,6 +53,31 @@ allOrgsJson {
     }
   }
 }
+allLogos: allFile (filter : {
+  sourceInstanceName: {
+    eq: "logos"
+  }
+}) {
+  edges {
+    node {
+      name
+      childImageSharp {
+        sizes {
+          base64
+          tracedSVG
+          aspectRatio
+          src
+          srcSet
+          srcWebp
+          srcSetWebp
+          sizes
+          originalImg
+          originalName
+        }
+      }
+    }
+  }
+}
 }
         `).then(result => {
       if (result.errors) {
@@ -70,6 +95,15 @@ allOrgsJson {
       // We want to create a detailed page for each Instagram post. Since the scrapped
       // Instagram data already includes an ID field, we just use that for each page's
       // path.
+      const orgLogoMap = {}
+      _.each(result.data.allLogos.edges, edge => {
+        if(edge.node.name.endsWith("_org_logo")){
+          orgLogoMap[edge.node.name] = edge.node.childImageSharp
+        }
+      });
+
+      console.log(orgLogoMap);
+
       _.each(result.data.allOrgsJson.edges, edge => {
 
         // Gatsby uses Redux to manage its internal state. Plugins and sites can use
@@ -82,7 +116,8 @@ allOrgsJson {
           layout : "detailTemplate",
           component: slash(orgTemplate),
           context: {
-            data: edge.node.details
+            data: edge.node.details,
+            logoSizes : orgLogoMap[`${edge.node.details.id}_org_logo`]
           }
         })
       })

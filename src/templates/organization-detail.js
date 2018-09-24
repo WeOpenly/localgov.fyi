@@ -52,14 +52,21 @@ class OrganizationDetail extends React.Component {
   }
 
   render() {
-    const { id, services, members, contact_details, name } = this.props.pathContext.data;
+    const { id, services, members, contact_details, name  } = this.props.pathContext.data;
+    const {logoSizes} = this.props.pathContext;
+    
+    let orgLogoSvg = null
+    if (logoSizes && logoSizes.sizes){
+      orgLogoSvg = logoSizes.sizes
+    }
+
     const { classes } = this.props;
     let contactDetailComponent = null;
     let memberListComp = null;
 
 
     if (contact_details){
-      contactDetailComponent = <OrgHeader name={name} info={contact_details}/>;
+      contactDetailComponent = <OrgHeader logoSizes={orgLogoSvg} name={name} info={contact_details}/>;
     }
 
     let contactSchema = {};
@@ -119,6 +126,7 @@ class OrganizationDetail extends React.Component {
             );
           });
         }
+
         if('org' in detailsAtLevel){
           if (detailsAtLevel.org && 'name' in detailsAtLevel.org && 'id' in detailsAtLevel.org) {
 

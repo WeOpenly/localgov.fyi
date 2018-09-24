@@ -1,5 +1,6 @@
 import React, { Component, Fragment } from 'react';
 import Link from 'gatsby-link';
+import { isMobileOnly } from 'react-device-detect';
 
 import { withStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
@@ -21,6 +22,9 @@ const styles = theme => ({
   },
   wrapper: {
     height: 500,
+  },
+  wrapperMobile: {
+    height: 1000,
   },
   section: {
     marginBottom: theme.spacing.unit,
@@ -317,7 +321,7 @@ class Locations extends Component {
           </Grid>
           <Grid item md={2} />
           <Grid item md={2} />
-          <Grid item md={8} container direction="column" className={classes.wrapper}>
+          <Grid item md={8} container direction="column" className={isMobileOnly ? classes.wrapperMobile : classes.wrapper}>
             {locations.map(state => (
               <Grid item className={classes.section}>
                 <Link to={`/organization/${state.id}/`} className={classes.link}>

@@ -43,6 +43,8 @@ const styles = theme => ({
     // justifyContent: 'center',
     alignItems: 'center',
     width: 400,
+    paddingLeft: theme.spacing.unit,
+    paddingRight: theme.spacing.unit,
   },
   wrapperWrapper: {
     display: 'flex',

@@ -29,7 +29,8 @@ const styles = theme => ({
     contactInfoContainer: {
         // paddingBottom: 24,
         borderRadius: 5,
-        boxShadow: `0 0 10px 5px ${theme.palette.primary["A200"]}`
+        boxShadow: `0 0 0 0`,
+        border: `1px solid ${theme.palette.primary['50']}`,
     },
     contactIcon: {
         fontSize: 16

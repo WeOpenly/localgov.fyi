@@ -10,9 +10,10 @@ import Helmet from "react-helmet";
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
-import Button from '@material-ui/core/Button';
+import Divider from '@material-ui/core/Divider';
+import IconButton from '@material-ui/core/IconButton';
 
-import KeyboardArrowLeft from '@material-ui/icons/KeyboardArrowLeft';
+import KeyboardBackspace from '@material-ui/icons/KeyboardBackspace';
 import InfoOutline from '@material-ui/icons/InfoOutline';
 import AttachMoney from '@material-ui/icons/AttachMoney';
 import AccessTime from '@material-ui/icons/AccessTime';
@@ -21,12 +22,14 @@ import PlaylistAddCheck from '@material-ui/icons/PlaylistAddCheck';
 import QuestionAnswer from '@material-ui/icons/QuestionAnswer';
 import PinDrop from '@material-ui/icons/PinDrop';
 
+import ServiceHeader from '../components/ServiceHeader';
 import ContactDetails from '../components/ContactDetails';
 import AddressGoogleMap from '../components/AddressGoogleMap';
 import HorizontalList from '../components/HorizontalList';
 // import MemberListItem from '../components/MemberListItem';
 import SearchResult from '../components/SearchResult';
 import ServiceDeliveryLink from '../components/ServiceDeliveryLink';
+import OtherServices from '../components/OtherServices';
 import withRoot from '../withRoot';
 
 import { trackView } from "../components/Search/tracking";
@@ -40,11 +43,17 @@ const styles = theme => ({
     details: {
         width: '100%',
     },
+    cardWrapper: {
+        borderRadius: 3,
+        boxShadow: `0 0 0 0`,
+        border: `1px solid ${theme.palette.primary['50']}`,
+    },
     cards: {
         marginBottom: theme.spacing.unit * 2,
         paddingTop: theme.spacing.unit,
         borderRadius: 3,
-        boxShadow: `0 0 2px 1px ${theme.palette.primary["50"]}`
+        boxShadow: `0 0 0 0`,
+        // border: `1px solid ${theme.palette.primary['50']}`,
     },
     serviceItemIcon: {
         padding: 8
@@ -52,12 +61,17 @@ const styles = theme => ({
     cardContent: {
         padding: 4
     },
+    dividerWrapper: {
+        paddingLeft: theme.spacing.unit * 3,
+        paddingRight: theme.spacing.unit * 3,
+    },
     iconWrapper: {
         paddingTop: theme.spacing.unit,
         paddingLeft: theme.spacing.unit * 2,
     },
     button: {
-        border: 'none'
+        border: 'none',
+        marginLeft: theme.spacing.unit * -6,
     },
     icon: {
         fontSize: 24,
@@ -235,7 +249,7 @@ class ServiceDetail extends React.Component {
 
 
         const serDel = service_del_links.map((link, idx) => {
-      return ({
+        return ({
             "potentialAction": {
                 "@type": "ReserveAction",
                 "target": {
@@ -253,8 +267,7 @@ class ServiceDetail extends React.Component {
                     "name": `${link.link_name}`
                 }
             }
-      }
-      );
+        });
     });
 
         const jsonLd = {
@@ -287,13 +300,22 @@ class ServiceDetail extends React.Component {
                     <meta property="og:description" content={`Forms, Price, Timings and Local Government Service Contact Details for ${name} offered in ${org_name} | Localgov.fyi`}  />
                     <JsonLd data={jsonLd} />
                 </Helmet>
-               {this.props.history.length > 2 ? (<Grid item sm={12} className={classes.details}>
-                    <Button variant="outlined" aria-label="goback" onClick={() => this.props.history.goBack()} className={classes.button}>
-                        <KeyboardArrowLeft />
-                        Back to results
-                    </Button>
-                </Grid>) : null }
-                <Grid item md={6} sm={12} className={classes.details}>
+                {this.props.history.length > 2 ? (
+                    <IconButton variant="outlined" aria-label="goback" onClick={() => this.props.history.goBack()} className={classes.button}>
+                        <KeyboardBackspace />
+                    </IconButton>
+                ) : null }
+                <Grid item xs={12}>
+                    <ServiceHeader
+                        name={name}
+                        offeredIn={org_name}
+                        orgID={org_id}
+                        info={contact_details}
+                        serDelLinks={service_del_links}
+                    />
+                </Grid>
+                <Grid item xs={12} md={8} className={classes.details}>
+                    <Paper className={classes.cardWrapper}>
                     <Grid item xs={12}>
                         <Paper className={classes.cards}>
                             <Grid container spacing={8}>
@@ -305,7 +327,7 @@ class ServiceDetail extends React.Component {
                                 <Grid item xs={10} sm={10}>
                                     <div className={classes.cardContent}>
                                         <Typography variant="subheading" gutterBottom>
-                                            {name}
+                                            About this service
                                         </Typography>
                                         <Typography variant="body1" gutterBottom>
                                             <RawHTML>{description}</RawHTML>
@@ -316,6 +338,7 @@ class ServiceDetail extends React.Component {
                         </Paper>
                     </Grid>
                     {price && <Grid item xs={12}>
+                        <div className={classes.dividerWrapper}><Divider /></div>
                         <Paper className={classes.cards}>
                             <Grid container spacing={8}>
                                 <Grid item xs={2} sm={1}>
@@ -334,6 +357,7 @@ class ServiceDetail extends React.Component {
                         </Paper>
                     </Grid>}
                     {timingList && <Grid item xs={12}>
+                        <div className={classes.dividerWrapper}><Divider /></div>
                         <Paper className={classes.cards}>
                             <Grid container spacing={8}>
                                 <Grid item xs={2} sm={1}>
@@ -348,6 +372,7 @@ class ServiceDetail extends React.Component {
                         </Paper>
                     </Grid>}
                     {formList && <Grid item xs={12}>
+                        <div className={classes.dividerWrapper}><Divider /></div>
                         <Paper className={classes.cards}>
                             <Grid container spacing={8}>
                                 <Grid item xs={2} sm={1}>
@@ -362,6 +387,7 @@ class ServiceDetail extends React.Component {
                         </Paper>
                     </Grid>}
                     {steplist && <Grid item xs={12}>
+                        <div className={classes.dividerWrapper}><Divider /></div>
                         <Paper className={classes.cards}>
                             <Grid container spacing={8}>
                                 <Grid item xs={2} sm={1}>
@@ -376,6 +402,7 @@ class ServiceDetail extends React.Component {
                         </Paper>
                     </Grid>}
                     {qaList && <Grid item xs={12}>
+                        <div className={classes.dividerWrapper}><Divider /></div>
                         <Paper className={classes.cards}>
                             <Grid container spacing={8}>
                                 <Grid item xs={2} sm={1}>
@@ -390,6 +417,7 @@ class ServiceDetail extends React.Component {
                         </Paper>
                     </Grid>}
                     {locList && <Grid item xs={12}>
+                        <div className={classes.dividerWrapper}><Divider /></div>
                         <Paper className={classes.cards}>
                             <Grid container spacing={8}>
                                 <Grid item xs={2} sm={1}>
@@ -403,11 +431,35 @@ class ServiceDetail extends React.Component {
                             </Grid>
                         </Paper>
                     </Grid>}
+                    </Paper>
                 </Grid>
-                <Grid item xs={12} sm={12} md={6}>
-                    {service_del_links && <ServiceDeliveryLink service_name={name} org_name={org_name} serDelLinks={service_del_links}/>}
-                    {contact_details && <ContactDetails info={contact_details}/>}
-                    {offeredInDetails}
+                <Grid item xs={12} sm={12} md={4}>
+                    <OtherServices services={[
+                        {
+                            name: 'Apply for a Marriage Certificate',
+                            id: '123',
+                            deliveryLink: {
+                                name: 'Apply Now',
+                                url: '',
+                            },
+                        },
+                        {
+                            name: 'Apply for a Pet License',
+                            id: '456',
+                            deliveryLink: {
+                                name: 'Apply Now',
+                                url: '',
+                            },
+                        },
+                        {
+                            name: 'Pay for a Traffic Citation',
+                            id: '789',
+                            deliveryLink: {
+                                name: 'Pay Now',
+                                url: '',
+                            },
+                        },
+                    ]} />
                 </Grid>
             </Grid>
         )

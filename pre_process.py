@@ -9,6 +9,8 @@ data_dir = "{d}/data/orgs/".format(d=dir_path)
 
 removable_files = []
 no_cd_files = []
+has_logo_url = []
+logo_s3_bucket = ''
 
 for root, dirs, files in os.walk(data_dir):
     for filename in files:

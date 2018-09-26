@@ -1,16 +1,22 @@
 import os
 import json
+import urllib
 from datetime import datetime
 
 from os.path import isfile, join
 
 dir_path = os.path.dirname(os.path.realpath(__file__))
 data_dir = "{d}/data/orgs/".format(d=dir_path)
-
+logo_dir = "{d}/data/logos/".format(d=dir_path)
 removable_files = []
 no_cd_files = []
-has_logo_url = []
-logo_s3_bucket = ''
+downloaded_orgs = []
+
+
+# loop through all orgs
+# if file is modified in last 20 mins 
+# download the logo with a new name (<id> _org_log)
+
 
 for root, dirs, files in os.walk(data_dir):
     for filename in files:
@@ -30,14 +36,23 @@ for root, dirs, files in os.walk(data_dir):
                 continue
             
             details = data['details']
+            org_id = details.get('id')
+
             has_services = True if len(details.get('services', [])) > 0 else False
             has_cd = True if len(details.get('contact_details', [])) > 0 else False
+            org_logo = details.get('logo_url')
+
+            if org_logo:
+                file_name, file_ext = os.path.splitext(org_logo)
+                org_logo_filename = u"{l}{id}_org_logo{e}".format(l=logo_dir, id=org_id, e=file_ext)
+                urllib.urlretrieve(org_logo, org_logo_filename)
 
             if has_services and not has_cd:
                 no_cd_files.append(full_path)
             
             if not all([has_services, has_cd]):
                 removable_files.append(full_path)
+            
 
 fncd = open("no_cd.txt", "w")
 fncd.write(str(no_cd_files))

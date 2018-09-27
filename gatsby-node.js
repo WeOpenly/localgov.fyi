@@ -96,13 +96,17 @@ allLogos: allFile (filter : {
       // Instagram data already includes an ID field, we just use that for each page's
       // path.
       const orgLogoMap = {}
+      const serviceLogoMap = {}
       _.each(result.data.allLogos.edges, edge => {
         if(edge.node.name.endsWith("_org_logo")){
           orgLogoMap[edge.node.name] = edge.node.childImageSharp
         }
+        if (edge.node.name.endsWith("_service_logo")) {
+          serviceLogoMap[edge.node.name] = edge.node.childImageSharp
+        }
       });
 
-      console.log(orgLogoMap);
+
 
       _.each(result.data.allOrgsJson.edges, edge => {
 
@@ -191,6 +195,7 @@ allLogos: allFile (filter : {
                   org_id: ser.org.id,
                   org_name: ser.org.name,
                   otherServices: ser.services.filter(otherService => otherService.id !== service.id),
+                  logoSizes: orgLogoMap[`${edge.node.details.id}_service_logo`]
                 }
               }
             })

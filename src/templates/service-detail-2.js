@@ -140,6 +140,12 @@ class ServiceDetail extends React.Component {
             otherServices,
         } = this.props.pathContext.data;
         const {classes} = this.props;
+        const { logoSizes } = this.props.pathContext;
+        
+        let serLogoSvg = null
+        if (logoSizes && logoSizes.sizes) {
+            serLogoSvg = logoSizes.sizes
+        }
 
         const containerSize = 12;
         const space = 8;
@@ -321,6 +327,7 @@ class ServiceDetail extends React.Component {
                         orgID={org_id}
                         info={contact_details}
                         serDelLinks={service_del_links}
+                        logoSizes={serLogoSvg}
                     />
                 </Grid>
                 <Grid item xs={12} md={8} className={classes.details}>

@@ -75,6 +75,7 @@ class OrganizationDetail extends React.Component {
 
     let parent = services.length && services[services.length - 1].org && services[services.length - 1].org.name || '';
     parent = parent === name ? '' : parent;
+    
     if (contact_details){
       contactDetailComponent = (
         <OrgHeader
@@ -123,6 +124,7 @@ class OrganizationDetail extends React.Component {
         let serviceListComp = null;
         let serCards = null;
         let orgTitle = null;
+
         if ('services' in detailsAtLevel){
           let servicesAtLevel = detailsAtLevel.services || [];
           servicesAtLevel = servicesAtLevel.filter(service => {

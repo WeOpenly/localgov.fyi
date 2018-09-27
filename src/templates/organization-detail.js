@@ -1,36 +1,29 @@
-import * as PropTypes from "prop-types"
 import React from "react"
-import Helmet from "react-helmet";
+import * as PropTypes from "prop-types"
 import { connect } from "react-redux";
 import Link  from 'gatsby-link';
-import Grid from '@material-ui/core/Grid';
-import { withStyles } from '@material-ui/core/styles';
-import Typography from '@material-ui/core/Typography';
-import ContactDetails from '../components/ContactDetails';
+import Helmet from "react-helmet";
 
+import { withStyles } from '@material-ui/core/styles';
+import Grid from '@material-ui/core/Grid';
+import Typography from '@material-ui/core/Typography';
+
+import withRoot from '../withRoot';
+import OrgHeader from '../components/OrgHeader';
+import ChipFilter from '../components/ChipFilter';
 // import MemberListItem from '../components/MemberListItem';
 import SearchResult from '../components/SearchResult';
-import withRoot from '../withRoot';
-
-import {trackView} from "../components/Search/tracking";
+import { trackView } from "../components/Search/tracking";
 
 const styles = theme => ({
-  card: {
-    display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'center',
-    height: '98%',
-    margin: 2,
+  orgTitle: {
+    marginBottom: theme.spacing.unit,
   },
-  cardMedia: {
-    width: 80,
-    height: 80,
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-    borderRadius: "50%",
-    margin: theme.spacing.unit * 2,
-    boxShadow: '0px 0px 2px 1px lightGray',
+  titleCaption: {
+    marginTop: -theme.spacing.unit,
+  },
+  serviceListComponent: {
+    marginBottom: theme.spacing.unit * 2,
   },
 });
 
@@ -42,6 +35,18 @@ const JsonLd = ({ data }) =>
 
 
 class OrganizationDetail extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      selectedFilter: '',
+    };
+    this.changeFilter = this.changeFilter.bind(this);
+  }
+
+  changeFilter(filter) {
+    this.setState({ selectedFilter: filter });
+  }
+
   componentDidMount() {
     const { dispatch } = this.props;
     const { id, name } = this.props.pathContext.data;
@@ -49,14 +54,21 @@ class OrganizationDetail extends React.Component {
   }
 
   render() {
-    const {id, services, members, contact_details, name} = this.props.pathContext.data;
-    const {classes} = this.props;
+    const { id, services, members, contact_details, name } = this.props.pathContext.data;
+    const { classes } = this.props;
     let contactDetailComponent = null;
     let memberListComp = null;
 
-
+    const parent = services.length && services[services.length - 1].org && services[services.length - 1].org.name || '';
     if (contact_details){
-      contactDetailComponent = <ContactDetails info={contact_details}/>
+      contactDetailComponent = (
+        <OrgHeader
+          name={name}
+          parent={parent}
+          info={contact_details}
+          logo={'https://www.cityofsanmateo.org/ImageRepository/Document?documentID=58791'}
+        />
+      );
     }
 
     let contactSchema = {};
@@ -90,27 +102,32 @@ class OrganizationDetail extends React.Component {
     
     let allServiceList = [];
     if (services.length > 0) {
-      console.log(services);
+      // console.log('_services', services);
 
       services.map((detailsAtLevel, index) => {
         let serviceListComp = null;
         let serCards = null;
         let orgTitle = null;
         if ('services' in detailsAtLevel){
-          const servicesAtLevel = detailsAtLevel.services || [];
-
-           serCards = servicesAtLevel.map((ser, idx) => {
+          let servicesAtLevel = detailsAtLevel.services || [];
+          servicesAtLevel = servicesAtLevel.filter(service => {
+            const deliveryLink = service.service_del_links && service.service_del_links[0] ? service.service_del_links[0] : null;
+            return deliveryLink && deliveryLink.link_name.toLowerCase().includes(this.state.selectedFilter.toLowerCase());
+          });
+          serCards = servicesAtLevel.map((ser, idx) => {
+            const deliveryLink = ser.service_del_links && ser.service_del_links[0] ? ser.service_del_links[0] : null;
             return (
-              <SearchResult
-                key={ser.id}
-                resultType='service'
-                id={ser.id}
-                listIndex={idx}
-                toLink={`/service/${ser.id}`}
-                title={ser.service_name}
-                description={ser.description}
-                deliveryLink={ser.delivery_links[0]}
-              />
+              <Grid item xs={12} md={4} key={ser.id}>
+                <SearchResult
+                  resultType='service'
+                  id={ser.id}
+                  listIndex={idx}
+                  toLink={`/service/${ser.id}`}
+                  title={ser.service_name}
+                  description={ser.service_description}
+                  deliveryLink={deliveryLink}
+                />
+              </Grid>
             );
           });
         }
@@ -118,20 +135,32 @@ class OrganizationDetail extends React.Component {
           if (detailsAtLevel.org && 'name' in detailsAtLevel.org && 'id' in detailsAtLevel.org) {
 
             const {name} = detailsAtLevel.org;
-            orgTitle = (<Typography variant="subheading" component="h4" gutterBottom>
-              Services offered by {name}
-            </Typography>) 
+            orgTitle = (
+              <div className={classes.orgTitle}>
+                <Typography variant="subheading" component="h4">
+                  Services offered by {name}
+                </Typography>
+                {index > 0 && <Typography
+                  variant="body2"
+                  className={classes.titleCaption}
+                >
+                  More services available in this locality
+                </Typography>}
+              </div>
+            );
           }
         }
          
-        serviceListComp = <Grid container spacing={8}>
-          <Grid item xs={12} sm={12}>
-            {orgTitle}
+        serviceListComp = (
+          <Grid container spacing={8} className={classes.serviceListComponent} key={detailsAtLevel.org ? detailsAtLevel.org.id : index}>
+            <Grid item xs={12} sm={12}>
+              {orgTitle}
+            </Grid>
+            <Grid item container spacing={16} xs={12} sm={12}>
+              {serCards}
+            </Grid>
           </Grid>
-          <Grid item xs={12} sm={12}>
-            {serCards}
-          </Grid>
-        </Grid>;
+        );
         if (serviceListComp){
             allServiceList.push(serviceListComp)
         }
@@ -149,32 +178,37 @@ class OrganizationDetail extends React.Component {
     return (
       <Grid container spacing={16}>
         <Helmet>
-        <title>{`${name} info, contact details and services | Localgov.fyi`} </title>
-
-< meta name = "description" content = {
-            `${name} info, county / city hall contact details, utilities, and services`
-} />
+          <title>{`${name} info, contact details and services | Localgov.fyi`}</title>
+          <meta
+            name="description"
+            content={`${name} info, county / city hall contact details, utilities, and services`}
+          />
           <meta property="og:title" content={`${name}`} />
           <meta property="og:url" content={`https://localgov.fyi/organization/${id}/`} />
           <meta property="og:description" content={`${name} info, contact details and services`} />
-          <link rel="canonical" href={`https://localgov.fyi/organization/${id}/`}  />
-        
+          <link rel="canonical" href={`https://localgov.fyi/organization/${id}/`} />
           <JsonLd data={jsonLd} />
         </Helmet>
-        <Grid container spacing={16} item xs={12} sm={12} md={6}>
-          <Grid item xs={12} sm={12}>
+        <Grid container spacing={16} item xs={12} md={12}>
+          <Grid item xs={12}>
+            <br />
+            {contactDetailComponent}
+          </Grid>
+        </Grid>
+        <Grid container spacing={16} item xs={12} md={12}>
+          <Grid item xs={12}>
+            <ChipFilter
+              tags={['Apply', 'Pay', 'Register', 'Renew', 'Request', 'Reserve']}
+              changeFilter={this.changeFilter}
+            />
+          </Grid>
+          <Grid item xs={12}>
             <br />
             {allServiceList}
           </Grid>
         </Grid>
-        <Grid container spacing={16} item xs={12} sm={12} md={6}>
-          <Grid item xs={12} sm={12}>
-            <br />
-         {contactDetailComponent}
-          </Grid>
-        </Grid>
       </Grid>
-    )
+    );
   }
 }
 

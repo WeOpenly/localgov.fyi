@@ -138,14 +138,15 @@ class ServiceDetail extends React.Component {
             org_name,
             service_del_links,
             otherServices,
+            logoSizes
         } = this.props.pathContext.data;
         const {classes} = this.props;
-        const { logoSizes } = this.props.pathContext;
         
         let serLogoSvg = null
         if (logoSizes && logoSizes.sizes) {
             serLogoSvg = logoSizes.sizes
         }
+
 
         const containerSize = 12;
         const space = 8;

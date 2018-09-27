@@ -101,7 +101,7 @@ allLogos: allFile (filter : {
         if(edge.node.name.endsWith("_org_logo")){
           orgLogoMap[edge.node.name] = edge.node.childImageSharp
         }
-        if (edge.node.name.endsWith("_service_logo")) {
+        if (edge.node.name.endsWith("_ser_logo")) {
           serviceLogoMap[edge.node.name] = edge.node.childImageSharp
         }
       });
@@ -164,6 +164,8 @@ allLogos: allFile (filter : {
       //   })
       // })
 
+      console.log(serviceLogoMap);
+
       const serTemplate = path.resolve(`src/templates/service-detail-2.js`)
       // We want to create a detailed page for each Instagram post. Since the scrapped
       // Instagram data already includes an ID field, we just use that for each page's
@@ -195,7 +197,7 @@ allLogos: allFile (filter : {
                   org_id: ser.org.id,
                   org_name: ser.org.name,
                   otherServices: ser.services.filter(otherService => otherService.id !== service.id),
-                  logoSizes: orgLogoMap[`${edge.node.details.id}_service_logo`]
+                  logoSizes : serviceLogoMap[`${service.id}_ser_logo`]
                 }
               }
             })

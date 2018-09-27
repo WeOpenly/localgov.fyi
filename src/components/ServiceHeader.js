@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { navigateTo } from 'gatsby-link';
+import Img from "gatsby-image";
 import { isMobileOnly } from 'react-device-detect';
 import { CopyToClipboard } from 'react-copy-to-clipboard';
 import {
@@ -238,7 +239,7 @@ class ServiceHeader extends Component {
                     style={{ width: '100px' }}
                     sizes={logoSizes}
                   />) : null}
-                  <div>
+                  </div>
                 <div className={classes.title}>
                   <Typography variant="display1">{name}</Typography>
                   <Typography variant="subheading" onClick={this.handleOrgClick} className={classes.in}>{offeredIn}</Typography>

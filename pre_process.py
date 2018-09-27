@@ -48,10 +48,13 @@ for root, dirs, files in os.walk(data_dir):
                 urllib.urlretrieve(org_logo, org_logo_filename)
 
             for service in details.get('services', []):
-                services_in_detail = service.get('services')
+                services_in_detail = service.get('services', [])
                 for service_detail in services_in_detail:
                     ser_id = service_detail.get('id')
                     service_logo = service_detail.get('logo_url')
+                    if not service_logo:
+                        continue
+                    print(service_logo)
                     file_name, file_ext = os.path.splitext(service_logo)
                     ser_log_filename = u"{l}{id}_ser_logo{e}".format(
                         l=logo_dir, id=ser_id, e=file_ext)

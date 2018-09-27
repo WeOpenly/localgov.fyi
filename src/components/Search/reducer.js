@@ -5,6 +5,9 @@ const initialState = {
   metaLoaingFailed: false,
   userCountry: null,
   userCity: null,
+  locationLoading: false,
+  location: {},
+  locationError: null,
   input: '',
   serviceInput: '',
   semantic: {},
@@ -50,6 +53,27 @@ export function search(state = initialState, action) {
         ...state,
         metaLoading: false,
         metaLoaingFailed: true
+      };
+    case types.LOCATION_REQUEST:
+      return {
+        ...state,
+        locationLoading: true,
+      };
+    case types.LOCATION_SUCCESS:
+      return {
+        ...state,
+        locationLoading: false,
+        location: action.data.details,
+        selectedOrganization: {
+          ...action.data.details.org,
+          heading: action.data.details.org.name,
+        },
+      };
+    case types.LOCATION_FAILURE:
+      return {
+        ...state,
+        locationLoading: false,
+        locationError: action.error,
       };
     case types.UPDATE_INPUT:
       return {

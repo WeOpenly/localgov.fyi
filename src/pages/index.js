@@ -13,11 +13,12 @@ import Typography from '@material-ui/core/Typography';
 import Paper from '@material-ui/core/Paper';
 import Button from '@material-ui/core/Button';
 import Divider from '@material-ui/core/Divider';
+import CircularProgress from '@material-ui/core/CircularProgress';
 
 import withRoot from '../withRoot';
 import Search from '../components/Search/index';
 import ServiceGrid from '../components/ServiceGrid';
-import { fetchAllFromOrganization } from '../components/Search/actions';
+import { getLocation, fetchAllFromOrganization } from '../components/Search/actions';
 import { trackView, trackClick } from "../components/Search/tracking";
 
 const styles = theme => ({
@@ -178,29 +179,33 @@ const styles = theme => ({
     justifyContent: 'center',
     textDecorationColor: theme.palette.primary['500'],
   },
+  progressWrapper: {
+    display: 'flex',
+    justifyContent: 'center',
+  },
 });
 
 const popularServices = [
   {
-    head: 'Voter Registration',
+    service_name: 'Voter Registration',
     subhead: 'State of California',
     id: '3c35fb58-1538-43ea-b657-e954f6dbd877',
     type: 'service'
   },
   {
-    head: 'Food Stamps',
+    service_name: 'Food Stamps',
     subhead: 'State of California',
     id: 'd7052b49-3c72-4369-9af5-c56dc259b055',
     type: 'service'
   },
   {
-    head: 'Vehicle Registration Renewal',
+    service_name: 'Vehicle Registration Renewal',
     subhead: 'State of California',
     id: '1df3a37a-bce7-42ca-9e69-d04b707fed8c',
     type: 'service'
   },
   {
-    head: 'Renew Drivers License',
+    service_name: 'Renew Drivers License',
     subhead: 'State of California',
     id: '9e1c294c-195f-40ce-adaf-ceb49a648508',
     type: 'service'
@@ -209,49 +214,49 @@ const popularServices = [
 
 const dummyServices = [
   {
-    head: 'Pay Business Tax',
+    service_name: 'Pay Business Tax',
     subhead: 'San Francisco-City & County',
     id: '77d0d9e3-5cc4-4688-99f9-b5497710b889',
     type: 'service'
   },
   {
-    head: 'Register a New Business',
+    service_name: 'Register a New Business',
     subhead: 'San Francisco-City & County',
     id: '8fad0dd5-4bb5-4822-830b-17942ffdce1f',
     type: 'service'
   },
   {
-    head: 'Apply for a Marriage License',
+    service_name: 'Apply for a Marriage License',
     subhead: 'San Francisco-City & County',
     id: '9683b5ae-d7be-465a-ab22-51e0e0af3261',
     type: 'service'
   },
   {
-    head: 'Submit a Public Records Request',
+    service_name: 'Submit a Public Records Request',
     subhead: 'San Francisco-City & County',
     id: '7e07effe-e036-4b67-b239-0d980b5a2f06',
     type: 'service'
   },
   {
-    head: 'Renew Residential Parking Permit',
+    service_name: 'Renew Residential Parking Permit',
     subhead: 'San Francisco-City & County',
     id: 'f75f316a-cdf6-40f3-8fa3-6a51f3e4b3f1',
     type: 'service'
   },
   {
-    head: 'Pay Water Bill',
+    service_name: 'Pay Water Bill',
     subhead: 'San Francisco-City & County',
     id: '1fd2b0a9-fcdc-429d-89b1-a8de6751df1e',
     type: 'service'
   },
   {
-    head: 'Purchase Parking Meter Cards',
+    service_name: 'Purchase Parking Meter Cards',
     subhead: 'San Francisco-City & County',
     id: '5f685fe6-690b-405d-8b6b-42ea1510da12',
     type: 'service'
   },
   {
-    head: 'Pay for Traffic Citation',
+    service_name: 'Pay for Traffic Citation',
     subhead: 'San Francisco-City & County',
     id: '4914912e-5d89-4d0e-be21-fc8faeba9488',
     type: 'service'
@@ -340,7 +345,7 @@ class Index extends React.Component {
     this.clickSuggestion = this.clickSuggestion.bind(this);
   }
 
-  componentDidMount(){
+  componentDidMount() {
     const backgroundImages = [
       <Img
         title="United States Capitol"
@@ -396,6 +401,7 @@ class Index extends React.Component {
       />,
     ];
     const { dispatch } = this.props;
+    dispatch(getLocation);
     dispatch(fetchAllFromOrganization);
     dispatch(trackView('index', null, null, null));
     this.setState({ backgroundImage: backgroundImages[Math.floor(Math.random() * backgroundImages.length)] });
@@ -409,6 +415,7 @@ class Index extends React.Component {
 
   render() {
     const { classes, search } = this.props;
+    const { org, services, state_org } = search.location;
     const otherLinks = shuffledArray.slice(0,3).map((item, idx) => {
       let link = 'linkLeft';
       if (idx === 1) link = 'linkCenter';
@@ -482,7 +489,10 @@ class Index extends React.Component {
             <Grid item xs={1} md={3} />
           </Grid>
           <div className={classes.gridWrapper1}>
-            <ServiceGrid services={popularServices} />
+            {search.locationLoading
+              ? <div className={classes.progressWrapper}><CircularProgress /></div>
+              : <ServiceGrid services={state_org ? state_org.services : popularServices} />
+            }
           </div>
         </div>
         <div className={classes.section3}>
@@ -490,7 +500,7 @@ class Index extends React.Component {
             <Grid item xs={1} md={3} />
             <Grid item xs={10} md={6}>
               <Typography variant="display1" color="primary" component="h1" className={classes.otherCitiesHeader}>
-                Localgov San Francisco
+                {org ? org.name : null}
               </Typography>
               <Grid container className={classes.linksWrapper}>
                 {otherLinks}
@@ -504,7 +514,10 @@ class Index extends React.Component {
             <Grid item xs={1} md={2} />
           </Grid>
           <div className={classes.gridWrapper2}>
-            <ServiceGrid city={{ id: '49ab4440-1176-4791-a7cf-1e27a756488d' }} services={dummyServices} />
+            {search.locationLoading
+              ? <div className={classes.progressWrapper}><CircularProgress /></div>
+              : <ServiceGrid city={org ? org : null} services={services ? services : dummyServices} />
+            }
           </div>
         </div>
         <div className={classes.section4}>

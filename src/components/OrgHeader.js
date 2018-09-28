@@ -267,15 +267,17 @@ class OrgHeader extends Component {
       <Fragment>
       {!isMobileOnly
         ? <Card className={classes.card}>
-            <CardContent>
-              <div className={classes.cardTop}>
-                <div className={classes.logoName}>
-                  {logoSizes ? (<Img
-                    title={`logo${name}`}
-                    alt={`logo of ${name}`}
-                    style={{width: '100px'}}
-                    sizes={logoSizes}
-                  />) : null}
+            {logoSizes && <Avatar className={classes.avatar}>
+              <Img
+                title={`logo${name}`}
+                alt={`logo of ${name}`}
+                style={{width: '100px'}}
+                sizes={logoSizes}
+              />
+            </Avatar>}
+            <div className={classes.wrapper}>
+              <CardContent>
+                <div className={classes.cardTop}>
                   <div>
                     <div className={classes.title}>
                       {id
@@ -313,21 +315,23 @@ class OrgHeader extends Component {
                     </MenuItem>
                   </Menu>
                 </div>
-              </div>
-            </CardContent>
-            <CardActions>
-              {contactDetailButtons}
-            </CardActions>
+              </CardContent>
+              <CardActions>
+                {contactDetailButtons}
+              </CardActions>
+            </div>
           </Card>
         : <Card className={classes.card}>
             <Grid container>
               <Grid item xs={12} className={classes.mobileTop}>
-                {logoSizes ? (<Img
-                  title={`logo${name}`}
-                  alt={`logo of ${name}`}
-                  style={{width: '100px'}}
-                  sizes={logoSizes}
-                />) : null}
+                {logoSizes && <Avatar className={classes.avatar}>
+                  <Img
+                    title={`logo${name}`}
+                    alt={`logo of ${name}`}
+                    style={{width: '100px'}}
+                    sizes={logoSizes}
+                  />
+                </Avatar>}
                 {displayShare && <IconButton variant="raised" color="primary" onClick={this.handleShareClick}>
                   <MoreVert />
                 </IconButton>}

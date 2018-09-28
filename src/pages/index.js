@@ -18,7 +18,7 @@ import CircularProgress from '@material-ui/core/CircularProgress';
 import withRoot from '../withRoot';
 import Search from '../components/Search/index';
 import ServiceGrid from '../components/ServiceGrid';
-import { getLocation, fetchAllFromOrganization } from '../components/Search/actions';
+import { getLocation } from '../components/Search/actions';
 import { trackView, trackClick } from "../components/Search/tracking";
 
 const styles = theme => ({
@@ -402,7 +402,6 @@ class Index extends React.Component {
     ];
     const { dispatch } = this.props;
     dispatch(getLocation);
-    dispatch(fetchAllFromOrganization);
     dispatch(trackView('index', null, null, null));
     this.setState({ backgroundImage: backgroundImages[Math.floor(Math.random() * backgroundImages.length)] });
   }
@@ -473,7 +472,10 @@ class Index extends React.Component {
             <Grid item xs={1} sm={2} md={2} />
             <Grid item xs={1} sm={2} md={2} />
             <Grid item xs={10} sm={10} md={8} className={classes.searchBoxContainer}>
-              <Search />
+              {search.locationLoading
+                ? <div className={classes.progressWrapper}><CircularProgress /></div>
+                : <Search />
+              }
             </Grid>
             <Grid item xs={1} sm={2} md={2} />
           </Grid>

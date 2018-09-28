@@ -55,6 +55,11 @@ const styles = theme => ({
   title: {
     color: theme.palette.common.white,
   },
+  satisfiedDialog: {
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+  },
   form: {
     width: 300,
   },
@@ -121,6 +126,8 @@ class ServiceDeliveryLink extends Component {
     this.state = {
       redirectClicked: false,
       feedbackOpen: false,
+      showSatisfied: true,
+      satisfied: null,
       email: '',
       feedbackComment: '',
       submitting: false,
@@ -128,6 +135,8 @@ class ServiceDeliveryLink extends Component {
       failure: false,
     };
     this.handleClick = this.handleClick.bind(this);
+    this.handleGood = this.handleGood.bind(this);
+    this.handleBad = this.handleBad.bind(this);
     this.handleClose = this.handleClose.bind(this);
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -145,6 +154,47 @@ class ServiceDeliveryLink extends Component {
       setTimeout(() => {
         this.setState({ redirectClicked: false, feedbackOpen: true, })
       }, 2000);
+    });
+  }
+
+  handleGood() {
+    const { trackFeedback} = this.props;
+    let currentLoc = '';
+    if (window.location && window.location.pathname) {
+      currentLoc = window.location.pathname
+    }
+    this.setState({
+      feedbackOpen: false,
+      showSatisfied: false,
+      satisfied: true,
+      submitting: true,
+    });
+
+    fetch("/", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/x-www-form-urlencoded"
+      },
+      body: encode({
+        "form-name": "feedback",
+        "path": currentLoc,
+        "satisfied": this.state.satisfied,
+      })
+    }).then(() => this.setState({
+      submitting: false,
+      success: true,
+    })).catch(error => this.setState({
+      submitting: false,
+      failure: true,
+    }));
+
+    trackFeedback();
+  }
+
+  handleBad() {
+    this.setState({
+      showSatisfied: false,
+      satisfied: false,
     });
   }
 
@@ -173,6 +223,7 @@ class ServiceDeliveryLink extends Component {
       body: encode({
         "form-name": "feedback",
         "path": currentLoc,
+        "satisfied": this.state.satisfied,
         "feedbackComment": this.state.feedbackComment,
         "email": this.state.email,
       })
@@ -199,6 +250,7 @@ class ServiceDeliveryLink extends Component {
     const {classes, serDelLinks, org_name, service_name} = this.props;
     const {
       feedbackOpen,
+      showSatisfied,
       feedbackComment,
       email,
       submitting,
@@ -241,7 +293,28 @@ class ServiceDeliveryLink extends Component {
           onClose={this.handleClose}
         >
           <Paper className={classes.paper}>
-            {(!success && !failure && !submitting) && <Fragment>
+            {showSatisfied && <div className={classes.satisfiedDialog}>
+              <Typography variant="display1" component="h1" className={classes.title}>
+                How was your experience with Localgov?
+              </Typography>
+              <Button
+                onClick={this.handleGood}
+                variant="raised"
+                type="submit"
+                className={classes.dialogButton}
+              >
+                Good so far!
+              </Button>
+              <Button
+                onClick={this.handleBad}
+                variant="raised"
+                type="submit"
+                className={classes.dialogButton}
+              >
+                It could have been better.
+              </Button>
+            </div>}
+            {(!showSatisfied && !success && !failure && !submitting) && <Fragment>
               <Typography variant="display1" component="h1" className={classes.title}>
                 How are we doing?
               </Typography>

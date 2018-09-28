@@ -132,7 +132,6 @@ class NewSuggestBox extends Component {
 
   componentDidMount() {
     const { dispatch } = this.props;
-    dispatch(selectOrganization(null));
     dispatch(clearInput());
     const results = {
       results: []

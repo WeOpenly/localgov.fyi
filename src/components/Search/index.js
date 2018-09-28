@@ -33,7 +33,7 @@ const styles = theme => ({
     borderRadius: 4,
     "&:hover": {
       background: theme.palette.common.white,
-      boxShadow: `0 0 10px 3px ${theme.palette.primary["50"]}`,
+      boxShadow: `0 0 10px 2px lightGray`,
     },
     // "&input": {
     //   transition: theme.transitions.create("width"),

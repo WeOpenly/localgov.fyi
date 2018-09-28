@@ -18,7 +18,7 @@ import NewSuggestBox from './NewSuggestBox';
 import HeaderSuggestBox from './HeaderSuggestBox';
 import withRoot from '../../withRoot';
 
-import { fetchMeta, setMetaFromUrl,  toggleSearchResultLayout } from "./actions";
+// import { fetchMeta, setMetaFromUrl,  toggleSearchResultLayout } from "./actions";
 
 const windowGlobal = typeof window !== 'undefined' && window
 
@@ -28,13 +28,10 @@ const styles = theme => ({
     width: '100%',
     fontFamily: theme.typography.fontFamily,
     position: "relative",
+    boxShadow : `0 0 6px 2px #36454f`,
     background: fade(theme.palette.common.white, 0.25),
     // boxShadow: `0 0 3px 1px ${theme.palette.primary["100"]}`,
     borderRadius: 4,
-    "&:hover": {
-      background: theme.palette.common.white,
-      boxShadow: `0 0 10px 2px lightGray`,
-    },
     // "&input": {
     //   transition: theme.transitions.create("width"),
     //   width: "100%"

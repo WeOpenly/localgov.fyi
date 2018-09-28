@@ -513,6 +513,7 @@ function recvSearchResultsFailure() {
 }
 
 export function clearInput() {
+  console.log("clearning");
   return { type: types.UPDATE_INPUT, input: '' };
 }
 

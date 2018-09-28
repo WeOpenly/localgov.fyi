@@ -90,11 +90,11 @@ const styles = theme => ({
   suggestionsContainerOpen : {
     position: "absolute",
     padding: theme.spacing.unit * 1,
-    marginTop : theme.spacing.unit,
-    boxShadow: `0 0 2px 4px ${theme.palette.primary["A200"]}`,
+    marginTop: `4px`,
+    boxShadow: `0 0 1px 1px #36454f`,
     background: "#fff",
-    borderRadius: 4,
-    border: `1px solid #${theme.palette.primary["A200"]}`,
+    borderRadius: 1,
+    border: `1px solid #36454f`,
     paddingBottom: theme.spacing.unit * 3,
     zIndex: 200,
     left: 0,
@@ -115,6 +115,7 @@ class NewSuggestBox extends Component {
   constructor(props) {
     super(props);
     this.renderInput = this.renderInput.bind(this);
+    this.handleBlur = this.handleBlur.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
     this.handleChange = this.handleChange.bind(this);
     this.handleSuggestionsClearRequested = this.handleSuggestionsClearRequested.bind(this);
@@ -130,14 +131,6 @@ class NewSuggestBox extends Component {
     this.shouldRenderSuggestions = this.shouldRenderSuggestions.bind(this);
   }
 
-  componentDidMount() {
-    const { dispatch } = this.props;
-    dispatch(clearInput());
-    const results = {
-      results: []
-    }
-    dispatch(setSearchSuggesitions(results));
-  }
 
   renderSectionTitle(section) {
     const { classes } = this.props;
@@ -168,6 +161,12 @@ class NewSuggestBox extends Component {
     );
   }
 
+  handleBlur(event, { highlightedSuggestion}){
+    event.preventDefault();
+    event.stopPropagation();
+    console.log(highlightedSuggestion);
+  }
+
   renderSuggestion(suggestion, { query, isHighlighted }) {
     return (
       <MenuItem selected={isHighlighted} component="div">
@@ -189,6 +188,7 @@ class NewSuggestBox extends Component {
 
   clearInput() {
     const { dispatch } = this.props;
+    console.log("calling clear");
     dispatch(clearInput());
   }
 
@@ -231,10 +231,6 @@ class NewSuggestBox extends Component {
         <div className={classes.search}>
           {searchSuggestionsLoading
             ? <CircularProgress size={24} color="primary" />
-            : input
-              ? <IconButton aria-label="Clear" onClick={this.clearInput}>
-                <CloseIcon />
-              </IconButton>
               : <Button
                   variant="contained"
                   color="primary"
@@ -263,6 +259,7 @@ class NewSuggestBox extends Component {
 
   handleChange(event, { newValue, method }) {
     const { dispatch } = this.props;
+
     if (method === "type" ){
       dispatch(updateInput(newValue))
     }
@@ -270,11 +267,13 @@ class NewSuggestBox extends Component {
 
   selectSuggestion(event, { suggestion, suggestionValue, suggestionIndex, sectionIndex, method }) {
     event.preventDefault();
+    event.stopPropagation();
     const { dispatch } = this.props;
     const { input, userCountry } = this.props.search;
     const { id, heading } = suggestion;
     dispatch(selectOrganization(suggestion));
-    // dispatch(updateInput(heading));
+    dispatch(updateInput(heading));
+    console.log("selectSuggestion");
     dispatch(trackInput('index_search_box', input));
     dispatch(trackClick('select_suggestion', 'organization', id, heading, suggestionIndex));
   }
@@ -293,8 +292,10 @@ class NewSuggestBox extends Component {
   render() {
     const { classes } = this.props;
     const { input, searchSuggestions } = this.props.search;
-    const { userCity, selectedOrganization } = this.props.search;
-    const value = selectedOrganization ? selectedOrganization.heading : input;
+    const { userCity } = this.props.search;
+    const value =  input;
+
+
     let placeholder = "Location";
     if (userCity) placeholder = `Try '${userCity}'`;
 
@@ -313,20 +314,20 @@ class NewSuggestBox extends Component {
           renderInputComponent={this.renderInput}
           suggestions={searchSuggestions}
           onSuggestionsFetchRequested={this.handleSuggestionsFetchRequested}
-          onSuggestionsClearRequested={this.handleSuggestionsClearRequested}
+          onSuggestionsClearRequested={() => {}}
           renderSuggestionsContainer={this.renderSuggestionsContainer}
           getSuggestionValue={this.getSuggestionValue}
           renderSuggestion={this.renderSuggestion}
           onSuggestionSelected={this.selectSuggestion}
           shouldRenderSuggestions={this.shouldRenderSuggestions}
           inputProps={{
-            autoFocus: true,
+            autoFocus: false,
+            type : 'search',
             classes,
             placeholder: placeholder,
             value: value,
             onChange: this.handleChange,
-            onKeyDown: () => {},
-            onBlur: (event) => { event.preventDefault() },
+            onBlur: this.handleBlur,
           }}
         />
       </form>

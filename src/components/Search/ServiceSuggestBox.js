@@ -86,11 +86,11 @@ const styles = theme => ({
   suggestionsContainerOpen : {
     position: "absolute",
     padding: theme.spacing.unit * 1,
-    marginTop : theme.spacing.unit,
-    boxShadow: `0 0 2px 4px ${theme.palette.primary["A200"]}`,
+    marginTop : `4px`,
+    boxShadow : `0 0 1px 1px #36454f`,
     background: "#fff",
-    borderRadius: 4,
-    border: `1px solid #${theme.palette.primary["A200"]}`,
+    borderRadius: 1,
+    border : `1px solid #36454f`,
     paddingBottom: theme.spacing.unit * 3,
     zIndex: 200,
     left: 0,
@@ -167,9 +167,6 @@ class ServiceSuggestBox extends Component {
   renderSuggestion(suggestion, { query, isHighlighted }) {
     return (
       <MenuItem selected={isHighlighted} component="div">
-        <ListItemIcon>
-          <AttachMoney />
-        </ListItemIcon>
         <div>
           <div>
             <Typography align="left" variant="title">
@@ -193,8 +190,15 @@ class ServiceSuggestBox extends Component {
 
   issueFreeSearch() {
     const { search, dispatch } = this.props;
-    const { serviceInput } = this.props.search;
+    const {serviceInput, selectedOrganization} = search;
+
     if (!serviceInput || serviceInput.length < 3) {
+      if (selectedOrganization){
+        const {id} = selectedOrganization;
+        const uri = `/organization/${id}`;
+        const encodedUri = encodeURI(uri);
+        navigateTo(encodedUri);
+      }
       return null;
     }
 

@@ -1,10 +1,6 @@
 import * as types from "./ActionTypes";
 
 const initialState = {
-  metaLoading: false,
-  metaLoaingFailed: false,
-  userCountry: null,
-  userCity: null,
   locationLoading: false,
   location: {},
   locationError: null,
@@ -30,30 +26,6 @@ const initialState = {
 
 export function search(state = initialState, action) {
   switch (action.type) {
-    case types.TOGGLE_SEARCH_RESULTS_LAYOUT:
-      return {
-        ...state,
-        showSearchResultsLayout: action.showSearchResultsLayout
-      }
-    case types.REQUEST_APP_META:
-      return {
-        ...state,
-        metaLoading: true,
-        metaLoaingFailed: false
-      };
-    case types.RECV_APP_META:
-      return {
-        ...state,
-        metaLoading: false,
-        userCountry: action.data.user_country,
-        userCity: action.data.city
-      };
-    case types.RECV_APP_META_FAILED:
-      return {
-        ...state,
-        metaLoading: false,
-        metaLoaingFailed: true
-      };
     case types.LOCATION_REQUEST:
       return {
         ...state,
@@ -64,6 +36,7 @@ export function search(state = initialState, action) {
         ...state,
         locationLoading: false,
         location: action.data.details,
+        input : action.data.details.org.name,
         selectedOrganization: {
           ...action.data.details.org,
           heading: action.data.details.org.name,

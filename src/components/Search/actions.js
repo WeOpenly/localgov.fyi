@@ -452,8 +452,9 @@ export const getLocation = async (dispatch, getState) => {
   let responseBody;
   dispatch(locationRequest());
   try {
-    // responseBody = await GetApi();
-    setTimeout(() => dispatch(locationSuccess(sampleData)), 2000);
+    const data = await GetApi(null, `auto_locate`);
+    const results = await data;
+    dispatch(locationSuccess(results));
   } catch (error) {
     dispatch(locationFailure(error));
   }
@@ -513,7 +514,6 @@ function recvSearchResultsFailure() {
 }
 
 export function clearInput() {
-  console.log("clearning");
   return { type: types.UPDATE_INPUT, input: '' };
 }
 

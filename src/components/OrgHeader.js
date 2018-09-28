@@ -287,7 +287,9 @@ class OrgHeader extends Component {
                         : <Typography variant="display1">{name}</Typography>}
                       {claimedComponent}
                     </div>
-                    <Typography variant="subheading" className={classes.parent}>{parent}</Typography>
+                    <Link to={`/organization/${parent.id}/`} className={classes.link}>
+                      <Typography variant="subheading" className={classes.parent}>{parent.name}</Typography>
+                    </Link>
                   </div>
                   {displayShare && <Button variant="raised" color="primary" onClick={this.handleShareClick} className={classes.menuButton}>
                     Share

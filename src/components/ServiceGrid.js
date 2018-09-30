@@ -55,10 +55,11 @@ const ServiceGrid = ({ classes, city, services }) => {
     Vehicle: <DirectionsCar className={classes.icon} />,
     Renew: <Autorenew className={classes.icon} />,
   };
+
   let trimmedServices = services;
   if (city && services.length > 7) trimmedServices = services.slice(0, 7);
   else if (city && services.length > 3) trimmedServices = services.slice(0, 3);
-
+  console.log(trimmedServices);
   return (
     <Grid container spacing={16}>
       {trimmedServices.map((service, index) => {

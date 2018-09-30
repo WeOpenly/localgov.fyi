@@ -85,7 +85,6 @@ allLogos: allFile (filter : {
       }
 
       if(result.data === undefined){
-      
         console.log(result.data, "rejecting page creation");
         reject(new Error());
       }
@@ -164,7 +163,6 @@ allLogos: allFile (filter : {
       //   })
       // })
 
-      console.log(serviceLogoMap);
 
       const serTemplate = path.resolve(`src/templates/service-detail-2.js`)
       // We want to create a detailed page for each Instagram post. Since the scrapped

@@ -21,7 +21,7 @@ const styles = theme => ({
     marginBottom: theme.spacing.unit * 2,
   },
   wrapper: {
-    height: 500,
+    height: 4000,
   },
   wrapperMobile: {
     height: 1000,
@@ -321,21 +321,21 @@ class Locations extends Component {
           </Grid>
           <Grid item md={2} />
           <Grid item md={2} />
-          <Grid item md={8} container direction="column" className={isMobileOnly ? classes.wrapperMobile : classes.wrapper}>
-            {locations.map(state => (
+          <Grid item md={8} container direction="column" align="center" className={isMobileOnly ? classes.wrapperMobile : classes.wrapper}>
+            {this.props.data.orgs.edges.map(loc => (
               <Grid item className={classes.section}>
-                <Link to={`/organization/${state.id}/`} className={classes.link}>
+                <Link to={`/organization/${loc.node.details.id}/`} className={classes.link}>
                   <Typography variant="body1" color="textPrimary" className={classes.heading}>
-                    {state.name}
+                    {loc.node.details.name}
                   </Typography>
                 </Link>
-                {state.children.map(city => (
+                {/* {state.children.map(city => (
                   <Link to={`/organization/${city.id}/`} className={classes.link}>
                     <Typography variant="body1" color="primary">
                       {city.name}
                     </Typography>
                   </Link>
-                ))}
+                ))} */}
               </Grid>
             ))}
           </Grid>
@@ -345,5 +345,21 @@ class Locations extends Component {
     );
   }
 }
+
+export const query = graphql `
+query orgsQuery  {
+orgs : allOrgsJson (sort : {
+  fields: details___name
+}) {
+    edges {
+      node {
+        id
+        details {id name}
+      }
+    }
+  }
+}
+`;
+
 
 export default withRoot(withStyles(styles)(Locations));

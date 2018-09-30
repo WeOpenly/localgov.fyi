@@ -454,6 +454,7 @@ export const getLocation = async (dispatch, getState) => {
   try {
     const data = await GetApi(null, `auto_locate`);
     const results = await data;
+    console.log(results);
     dispatch(locationSuccess(results));
   } catch (error) {
     dispatch(locationFailure(error));

@@ -310,6 +310,7 @@ class Locations extends Component {
 
   render() {
     const { classes } = this.props;
+
     return (
       <Fragment>
         <HeaderWithSearch />
@@ -348,9 +349,7 @@ class Locations extends Component {
 
 export const query = graphql `
 query orgsQuery  {
-orgs : allOrgsJson (sort : {
-  fields: details___name
-}) {
+orgs : allOrgsJson  {
     edges {
       node {
         id

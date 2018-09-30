@@ -9,6 +9,9 @@ import Dialog from '@material-ui/core/Dialog';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import Paper from '@material-ui/core/Paper';
 import SvgIcon from '@material-ui/core/SvgIcon';
+import Mood from '@material-ui/icons/Mood';
+import SentimentDissatisfied from '@material-ui/icons/SentimentDissatisfied';
+
 import MoodBad from '@material-ui/icons/MoodBad';
 import Spinner from 'react-spinkit';
 
@@ -37,6 +40,9 @@ const styles = theme => ({
     boxShadow: `0 0 0 0`,
     border: `1px solid ${theme.palette.primary['50']}`,
   },
+  feedbackIcon: {
+    margin: theme.spacing.unit,
+  },
   content: {
     display: 'flex',
     flexDirection: 'column',
@@ -50,18 +56,21 @@ const styles = theme => ({
     paddingRight: theme.spacing.unit,
     paddingTop: theme.spacing.unit * 2,
     // borderTop : `6px solid ${theme.palette.primary["500"]}`,
-    backgroundColor: theme.palette.primary['500'],
+    backgroundColor : theme.palette.primary['400'],
   },
   title: {
     color: theme.palette.common.white,
+    paddingBottom: theme.spacing.unit * 2,
   },
   satisfiedDialog: {
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
+    justifyContent: 'center',
+    margin: theme.spacing.unit * 4,
   },
   form: {
-    width: 300,
+    width: '350px',
   },
   bootstrapInput: {
     borderRadius: 3,
@@ -85,17 +94,16 @@ const styles = theme => ({
   },
   dialogButton: {
     marginTop: theme.spacing.unit * 2,
-    marginBottom: theme.spacing.unit,
-    backgroundColor: theme.palette.common.white,
+    marginBottom: theme.spacing.unit* 2,
+    backgroundColor: 'white',
+    color: theme.palette.primary['700'],
   },
   dialogButton2: {
     marginTop: theme.spacing.unit * 2,
-    marginBottom: theme.spacing.unit,
-    color: theme.palette.common.white,
+    marginBottom: theme.spacing.unit * 2,
   },
   afterSubmit: {
-    width: '100%',
-    height: '100%',
+    margin: theme.spacing.unit * 6,
     display: 'flex',
     flexDirection: 'column',
     justifyContent: 'center',
@@ -108,6 +116,11 @@ const styles = theme => ({
     color: theme.palette.primary['500'],
     fontSize: 32,
     marginBottom: theme.spacing.unit * 2,
+  },
+  successIcon:{
+    color: theme.palette.primary['100'],
+    fontSize: 56,
+    margin: theme.spacing.unit *2,
   },
   bodyText: {
     color: theme.palette.common.white,
@@ -289,34 +302,38 @@ class ServiceDeliveryLink extends Component {
           )
           : null}
         <Dialog
-          open={feedbackOpen}
+          open={true}
           onClose={this.handleClose}
         >
           <Paper className={classes.paper}>
             {showSatisfied && <div className={classes.satisfiedDialog}>
-              <Typography variant="display1" component="h1" className={classes.title}>
+              <Typography variant="headline" component="h2" className={classes.title}>
                 How was your experience with Localgov?
               </Typography>
               <Button
                 onClick={this.handleGood}
-                variant="raised"
+                variant="extendedFab"
+                color="primary"
                 type="submit"
                 className={classes.dialogButton}
               >
+                <Mood className={classes.feedbackIcon}/> 
                 Good so far!
               </Button>
               <Button
                 onClick={this.handleBad}
-                variant="raised"
+                variant="extendedFab"
+                color="primary"
                 type="submit"
                 className={classes.dialogButton}
               >
-                It could have been better.
+                <SentimentDissatisfied className={classes.feedbackIcon}/> It could have been better.
               </Button>
             </div>}
             {(!showSatisfied && !success && !failure && !submitting) && <Fragment>
-              <Typography variant="display1" component="h1" className={classes.title}>
-                How are we doing?
+              <div className={classes.satisfiedDialog}>
+              <Typography variant="headline" component="h2" className={classes.title}>
+                  Let us know how we can improve
               </Typography>
               <form
                 name="feedback"
@@ -366,16 +383,17 @@ class ServiceDeliveryLink extends Component {
                 </Button>
                 <Button size="small" onClick={this.handleClose} className={classes.dialogButton2}>Cancel</Button>
               </form>
+              </div>
             </Fragment>}
             {submitting && <div className={classes.afterSubmit}>
               <Spinner className={classes.spinner}/>
             </div>}
             {success && <div className={classes.afterSubmit}>
-              <SvgIcon className={classes.icon}>
+              <SvgIcon className={classes.successIcon}>
                 <path fill="none" d="M0 0h24v24H0V0zm0 0h24v24H0V0z"/>
                 <path d="M16.59 7.58L10 14.17l-3.59-3.58L5 12l5 5 8-8zM12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z"/>
               </SvgIcon>
-              <Typography variant="body1" className={classes.bodyText}>Thanks for your feedback!</Typography>
+              <Typography variant="headline" className={classes.bodyText}>Thanks for your feedback!</Typography>
               <Button size="small" onClick={this.handleClose} className={classes.dialogButton}>Close</Button>
             </div>}
             {failure && <div className={classes.afterSubmit}>

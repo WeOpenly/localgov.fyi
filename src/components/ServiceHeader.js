@@ -232,21 +232,17 @@ class ServiceHeader extends Component {
           <Card className={classes.card}>
             <CardContent>
               <div className={classes.cardTop}>
-                <div className={classes.logoName}>
-                  {logoSizes ? (<Img
-                    title={`logo${name}`}
-                    alt={`logo of ${name}`}
-                    style={{ width: '100px' }}
-                    sizes={logoSizes}
-                  />) : null}
-                  </div>
+            
+             
                 <div className={classes.title}>
                   <Typography variant="display1">{name}</Typography>
                   <Typography variant="subheading" onClick={this.handleOrgClick} className={classes.in}>{offeredIn}</Typography>
                 </div>
-                <Button variant="outlined" color="primary" onClick={this.handleShareClick} className={classes.menuButton}>
-                  Share
-                </Button>
+                <div>
+                    <Button variant="outlined" color="primary" onClick={this.handleShareClick} className={classes.menuButton}>
+                                  Share
+                                </Button>
+                </div>
                 <Menu
                   id="simple-menu"
                   anchorEl={anchorEl}

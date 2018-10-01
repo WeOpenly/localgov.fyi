@@ -34,7 +34,9 @@ export function getCookie(name) {
 
 // const BACKEND = 'http://127.0.0.1:8090/dashboard/api';
 // console.log(BACKEND);
-let BACKEND = 'https://api.weopenly.com'
+// let BACKEND = 'https://api.weopenly.com'
+
+let BACKEND = 'http://localhost:8090'
 
 export function GetApi(lang = undefined, endPoint, headers = {}) {
 

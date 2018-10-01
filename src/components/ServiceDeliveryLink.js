@@ -78,7 +78,7 @@ const styles = theme => ({
     border: '1px solid #ced4da',
     padding: '10px 12px 12px 12px',
     marginTop: theme.spacing.unit,
-    width: '300px',
+    width: '100%',
     transition: theme.transitions.create(['border-color', 'box-shadow'])
   },
   bootstrapInputComment:{
@@ -87,7 +87,7 @@ const styles = theme => ({
     border: '1px solid #ced4da',
     padding: '10px 12px 12px 12px',
     marginTop: theme.spacing.unit,
-    width: '300px',
+    width: '100%',
     height: '100px',
     'wordBreak': 'break-word',
     transition: theme.transitions.create(['border-color', 'box-shadow'])
@@ -302,7 +302,7 @@ class ServiceDeliveryLink extends Component {
           )
           : null}
         <Dialog
-          open={true}
+          open={feedbackOpen}
           onClose={this.handleClose}
         >
           <Paper className={classes.paper}>
@@ -365,7 +365,7 @@ class ServiceDeliveryLink extends Component {
                     value={feedbackComment}
                     onChange={this.handleChange}
                     rows={4}
-                    className={classes.bootstrapInput}
+                      className={classes.bootstrapInputComment}
                   />
                 </label>
                 <label>

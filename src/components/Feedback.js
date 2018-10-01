@@ -35,7 +35,7 @@ const styles = theme => ({
     border: '1px solid #ced4da',
     padding: '10px 12px 12px 12px',
     marginTop: theme.spacing.unit,
-    width: '300px',
+    width: '100%',
     transition: theme.transitions.create(['border-color', 'box-shadow'])
   },
   bootstrapInputComment:{
@@ -45,7 +45,7 @@ const styles = theme => ({
     border: '1px solid #ced4da',
     padding: '10px 12px 12px 12px',
     marginTop: theme.spacing.unit,
-    width: '300px',
+    width: '100%',
     height: '100px',
     'wordBreak': 'break-word',
     transition: theme.transitions.create(['border-color', 'box-shadow'])

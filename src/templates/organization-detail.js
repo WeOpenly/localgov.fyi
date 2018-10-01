@@ -75,7 +75,7 @@ class OrganizationDetail extends React.Component {
     let parent = services.length && services[services.length - 1].org || '';
     parent = parent.name === name ? {} : parent;
 
-    if (contact_details){
+
       contactDetailComponent = (
         <OrgHeader
           name={name}
@@ -84,7 +84,7 @@ class OrganizationDetail extends React.Component {
           logoSizes={orgLogoSvg}
         />
       );
-    }
+
 
     let contactSchema = {};
 

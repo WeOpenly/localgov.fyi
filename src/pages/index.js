@@ -434,7 +434,11 @@ class Index extends React.Component {
         </Grid>
       );
     });
+
     const servicesFromOrg = search.allFromOrg.length >= 8 ? search.allFromOrg.slice(0, 8) : search.allFromOrg.slice(0, 4);
+    const stateServices = state_org ? state_org.services : popularServices;
+
+    const stateServicesConcat = stateServices.slice(0, 4);
 
     return (
       <Fragment>
@@ -493,7 +497,7 @@ class Index extends React.Component {
           <div className={classes.gridWrapper1}>
             {search.locationLoading
               ? <div className={classes.progressWrapper}><CircularProgress /></div>
-              : <ServiceGrid services={state_org ? state_org.services : popularServices} />
+: <ServiceGrid services={stateServicesConcat}/>
             }
           </div>
         </div>

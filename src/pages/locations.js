@@ -20,18 +20,27 @@ const styles = theme => ({
   title:{
     marginBottom: theme.spacing.unit * 2,
   },
-  wrapper: {
-    height: 4000,
-  },
-  wrapperMobile: {
-    height: 1000,
-  },
   section: {
     marginBottom: theme.spacing.unit,
   },
   link: {
-    textDecoration: 'none',
+    padding: theme.spacing.unit,
   },
+locGrid:{
+  display : 'flex',
+  alignItems : 'center',
+  justifyContent : 'center',
+  alignContent: 'center',
+  flexDirection : 'row',
+  flexWrap : 'wrap',
+},
+gridItemLocation:{
+  display : 'flex',
+  alignItems : 'center',
+  justifyContent : 'center',
+    width: 250,
+    height: 45,
+},
   heading: {
     fontWeight: 600,
   },
@@ -40,6 +49,7 @@ const styles = theme => ({
     marginTop: theme.spacing.unit * 2,
     marginLeft: theme.spacing.unit * 2,
   },
+  
 });
 
 const locations = [
@@ -322,23 +332,18 @@ class Locations extends Component {
           </Grid>
           <Grid item md={2} />
           <Grid item md={2} />
-          <Grid item md={8} container direction="column" align="center" className={isMobileOnly ? classes.wrapperMobile : classes.wrapper}>
+          <Grid item md={8} align="center" >
+            <div className={classes.locGrid} > 
             {this.props.data.orgs.edges.map(loc => (
-              <Grid item className={classes.section}>
+              <div className={classes.gridItemLocation}>
                 <Link to={`/organization/${loc.node.details.id}/`} className={classes.link}>
                   <Typography variant="body1" color="textPrimary" className={classes.heading}>
                     {loc.node.details.name}
                   </Typography>
                 </Link>
-                {/* {state.children.map(city => (
-                  <Link to={`/organization/${city.id}/`} className={classes.link}>
-                    <Typography variant="body1" color="primary">
-                      {city.name}
-                    </Typography>
-                  </Link>
-                ))} */}
-              </Grid>
+                </div>
             ))}
+            </div>
           </Grid>
           <Grid item md={2} />
         </Grid>
@@ -349,7 +354,7 @@ class Locations extends Component {
 
 export const query = graphql `
 query orgsQuery  {
-orgs : allOrgsJson  {
+orgs : allOrgsJson{
     edges {
       node {
         id

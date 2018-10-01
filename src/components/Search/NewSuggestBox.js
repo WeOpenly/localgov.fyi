@@ -53,7 +53,7 @@ const styles = theme => ({
   },
   input : {
     fontFamily : theme.typography.fontFamily,
-    padding :theme.spacing.unit*2,
+    padding :'14px',
     border: 1,
     display: "flex",
     verticalAlign: "middle",
@@ -83,9 +83,10 @@ const styles = theme => ({
     lineHeight: "2.75em",
     color: "rgba(30, 30, 50,0.54)"
   },
-  container : {
+  container :{
     flexGrow: 1,
     position: "relative",
+    margin: 0,
   },
   suggestionsContainerOpen : {
     position: "absolute",

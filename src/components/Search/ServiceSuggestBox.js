@@ -49,7 +49,7 @@ const styles = theme => ({
   },
   input : {
     fontFamily : theme.typography.fontFamily,
-    padding :theme.spacing.unit*2,
+padding : '14px',
     border: 1,
     display: "flex",
     verticalAlign: "middle",

@@ -97,6 +97,7 @@ const styles = theme => ({
     marginBottom: theme.spacing.unit* 2,
     backgroundColor: 'white',
     color: theme.palette.primary['700'],
+    textTransform : 'lowercase',
   },
   dialogButton2: {
     marginTop: theme.spacing.unit * 2,

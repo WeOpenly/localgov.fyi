@@ -46,7 +46,7 @@ for root, dirs, files in os.walk(data_dir):
                 file_name, file_ext = os.path.splitext(org_logo)
                 org_logo_filename = u"{l}{id}_org_logo{e}".format(l=logo_dir, id=org_id, e=file_ext)
                 if not os.path.exists(org_logo_filename):
-                    with open(org_logo_filename, 'w'):
+                    with open(org_logo_filename, 'w+'):
                         pass
                 urllib.urlretrieve(org_logo, org_logo_filename)
 
@@ -63,7 +63,7 @@ for root, dirs, files in os.walk(data_dir):
                         l=logo_dir, id=ser_id, e=file_ext)
                     
                     if not os.path.exists(ser_log_filename):
-                        with open(ser_log_filename, 'w'):
+                        with open(ser_log_filename, 'w+'):
                             pass
                     urllib.urlretrieve(service_logo, ser_log_filename)
 

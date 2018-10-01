@@ -57,6 +57,9 @@ const styles = theme => ({
     boxShadow: `0 0 0 0 ${theme.palette.common.white}`,
     borderBottom: `1px solid ${theme.palette.primary['50']}`,
   },
+otherLinksDivider : {
+  margin : theme.spacing.unit * 2,
+},
   title:{
     color: theme.palette.common.white,
     textShadow: '1px 1px 1px black',
@@ -125,7 +128,6 @@ const styles = theme => ({
   section3: {
     marginLeft: theme.spacing.unit * -2,
     marginRight: theme.spacing.unit * -2,
-    paddingBottom: theme.spacing.unit * 20,
   },
   section3Mobile: {
     width:'100%',
@@ -140,6 +142,7 @@ const styles = theme => ({
     display: 'flex',
     justifyContent: 'space-between',
     marginBottom: theme.spacing.unit / 2,
+    marginTop : theme.spacing.unit * 4,
   },
   otherLinks: {
     fontWeight: 600,
@@ -170,7 +173,7 @@ const styles = theme => ({
   },
   gridWrapper2: {
     width: '100%',
-    marginBottom: theme.spacing.unit * 20,
+    marginBottom: theme.spacing.unit * 10,
     paddingLeft: theme.spacing.unit * 2,
     paddingRight: theme.spacing.unit * 2,
   },
@@ -421,10 +424,10 @@ class Index extends React.Component {
       else if (idx === 2) link = 'linkRight';
 
       return (
-        <Grid item xs={4}>
-          <a key={item.name} onClick={() => this.clickSuggestion(item.url, item.name, idx)} className={classes[link]}>
+        <Grid item xs={2}>
+          <a key={item.name} onClick={() => this.clickSuggestion(item.url, item.name, idx)} >
             <Typography
-              variant="caption"
+              variant="body1"
               color="textPrimary"
               className={classes.otherLinks}
             >
@@ -434,7 +437,15 @@ class Index extends React.Component {
         </Grid>
       );
     });
-
+otherLinks.push((
+  <Grid item xs={2}>
+    <Link to="/locations/" className={classes.locationsLink}>
+      <Typography variant="body1" color="primary" >
+        Discover more 
+      </Typography>
+    </Link>
+  </Grid>
+))
     const servicesFromOrg = search.allFromOrg.length >= 8 ? search.allFromOrg.slice(0, 8) : search.allFromOrg.slice(0, 4);
     const stateServices = state_org ? state_org.services : popularServices;
 
@@ -505,40 +516,32 @@ class Index extends React.Component {
           <Grid container className={classes.section3Mobile}>
             <Grid item xs={1} md={3} />
             <Grid item xs={10} md={6}>
-              <Typography variant="display1" color="primary" component="h1" className={classes.otherCitiesHeader}>
-                {org ? org.name : null}
+              <Typography variant="display1" color="primary" component="h1" className={classes.popularServicesHeader}>
+               Localgov {org ? org.name : null}
               </Typography>
-              <Grid container className={classes.linksWrapper}>
-                {otherLinks}
-              </Grid>
             </Grid>
             <Grid item xs={1} md={3} />
-            <Grid item xs={1} md={2} />
-            <Grid item xs={10} md={8} className={classes.dividerWrapper}>
-              <Divider />
-            </Grid>
-            <Grid item xs={1} md={2} />
           </Grid>
           <div className={classes.gridWrapper2}>
             {search.locationLoading
               ? <div className={classes.progressWrapper}><CircularProgress /></div>
               : <ServiceGrid city={org ? org : null} services={services ? services : dummyServices} />
             }
-          </div>
+          </div>   
+           <Grid container className={classes.otherLinksDivider}>
+                <Grid item xs={2} />
+                <Grid item xs={8}>
+                  <Divider/>
+                  </Grid>
+                   <Grid item xs={2} />
+             </Grid>
+                <Grid container align="center" className={classes.otherLinks}>
+                     <Grid item xs={2} />
+                  {otherLinks}
+                    <Grid item xs={2} />
+                </Grid>
         </div>
-        <div className={classes.section4}>
-          <Grid container>
-            <Grid item xs={1} md={3} />
-            <Grid item xs={10} md={6}>
-              <Link to="/locations/" className={classes.locationsLink}>
-                <Typography variant="display1" color="primary" component="h1">
-                  Discover more locations on LocalGov
-                </Typography>
-              </Link>
-            </Grid>
-            <Grid item xs={1} md={3} />
-          </Grid>
-        </div>
+      
       </Fragment>
     );
   }

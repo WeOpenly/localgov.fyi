@@ -28,18 +28,28 @@ const styles = theme => ({
     textDecoration: 'none',
   },
   card: {
-    height: 148,
+    height: '100%',
+    paddingBottom: theme.spacing.unit*2,
+      '&:hover' : {
+        boxShadow: `0 2px 2px ${theme.palette.primary['200']}`,
+    },
   },
   cardContent: {
     display: 'flex',
     flexDirection: 'column',
+    textAlign: 'center',
     justifyContent: 'space-between',
     alignItems: 'center',
     height: '100%',
   },
   icon: {
-    color: theme.palette.primary['500'],
-    fontSize: 64,
+    color: theme.palette.primary['700'],
+    fontSize: 48,
+    minHeight: 50,
+    '&:hover' : {
+        color: theme.palette.primary['900'],
+    },
+    margin: theme.spacing.unit * 2,
   },
 });
 
@@ -73,7 +83,7 @@ const ServiceGrid = ({ classes, city, services }) => {
                     {service.service_name.split(' ').map(word => {
                       return icons[word];
                     })[0] || <AccountBalance className={classes.icon} />}
-                    <Typography variant="caption" color="textPrimary" noWrap>
+                    <Typography variant="body1" color="textPrimary">
                       {service.service_name}
                     </Typography>
                   </CardContent>
@@ -82,12 +92,12 @@ const ServiceGrid = ({ classes, city, services }) => {
             </Grid>
             {(city && index === trimmedServices.length - 1) &&
               <Fragment>
-                <Grid item xs={6} md={2}>
+                <Grid item xs={6} align="center" md={2}>
                   <Link to={`/organization/${city.id}/`} className={classes.link}>
                     <Card className={classes.card}>
                       <CardContent className={classes.cardContent}>
                         <MoreHoriz className={classes.icon} />
-                        <Typography variant="caption" color="textPrimary" noWrap>
+                        <Typography variant="body1" color="textPrimary" noWrap>
                           More Services
                         </Typography>
                       </CardContent>

@@ -45,8 +45,7 @@ const styles = theme => ({
   },
   listItem: {
     display: 'flex',
-    marginTop: theme.spacing.unit * 2,
-    marginLeft: theme.spacing.unit * 2,
+    margin: theme.spacing.unit *2,
   },
   icon: {
     marginRight: theme.spacing.unit,

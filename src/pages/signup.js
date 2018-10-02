@@ -179,15 +179,6 @@ class Signup extends Component {
                         fullWidth
                       />
                     </div>
-                    <div className={classes.fieldWrapper}>
-                      <Field
-                        name="lastName"
-                        component={this.renderTextField}
-                        type="text"
-                        label="Last Name"
-                        fullWidth
-                      />
-                    </div>
                   </div>
                   <div className={classes.fieldWrapper}>
                     <Field
@@ -215,19 +206,9 @@ class Signup extends Component {
                     className={classes.button}
                     onClick={() => dispatch(submit('Signup'))}
                   >
-                    Create Account
+                    Request to claim
                   </Button>
                 </form>}
-            <div className={classes.signIn}>
-              <Typography variant="body1">
-                Already have an account?
-              </Typography>
-              <Link to="/signin/" className={classes.signInLink}>
-                <Typography variant="body1" color="primary">
-                  Sign in
-                </Typography>
-              </Link>
-            </div>
           </Grid>
         </Grid>
       </Fragment>

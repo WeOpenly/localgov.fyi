@@ -9,7 +9,7 @@ import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 
 import Search from '../components/Search';
-import Feedback from '../components/Feedback';
+// import Feedback from '../components/Feedback';
 import withRoot from '../withRoot';
 
 const styles = theme => ({
@@ -66,7 +66,7 @@ class Privacy extends React.Component {
               <Search inHeader={true}/>
             </Grid>
             <Grid item xs={12} md={3} className={classes.right}>
-              <Feedback />
+              {/* <Feedback /> */}
             </Grid>
           </Grid>
         </AppBar>

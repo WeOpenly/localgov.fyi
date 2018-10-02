@@ -1,4 +1,5 @@
 import React, { Component, Fragment } from 'react';
+import {connect} from "react-redux";
 import Link from 'gatsby-link';
 import { CopyToClipboard } from 'react-copy-to-clipboard';
 import {
@@ -26,6 +27,8 @@ import MoreVert from '@material-ui/icons/MoreVert';
 
 import withRoot from '../withRoot';
 import UnclaimedHover from './UnclaimedHover';
+
+import {trackClick} from "./Search/tracking";
 
 const styles = theme => ({
   card: {
@@ -111,10 +114,12 @@ class OrgHeader extends Component {
     this.handleCopy = this.handleCopy.bind(this);
     this.handleMouseEnter = this.handleMouseEnter.bind(this);
     this.handleMouseLeave = this.handleMouseLeave.bind(this);
+    this.trackClickSocialIcon = this.trackClickSocialIcon.bind(this);
   }
 
   handleShareClick(event) {
     this.setState({ anchorEl: event.currentTarget });
+    this.props.trackClick('external', 'share', '', '', 0);
   }
 
   handleClose() {
@@ -125,12 +130,17 @@ class OrgHeader extends Component {
     this.setState({ copied: true });
   }
 
-  handleMouseEnter() {
+  handleMouseEnter(orgId, orgName) {
     this.setState({ hover: true });
+    this.props.trackClick('claim', 'org_page', orgId, orgName, 0);
   }
 
   handleMouseLeave() {
     this.setState({ hover: false });
+  }
+
+  trackClickSocialIcon(type, url) {
+    this.props.trackClick('external', 'social_icon', type, url, 0);
   }
 
   render() {
@@ -162,7 +172,7 @@ class OrgHeader extends Component {
           className={classes.claimed}
           onMouseEnter={this.handleMouseEnter}
           onMouseLeave={this.handleMouseLeave}
-          onClick={this.handleMouseEnter}
+          onClick={() => this.handleMouseEnter(id, name) }
         >
           <Help color="disabled" className={classes.claimedIcon} />
           <Typography variant="caption" color="primary">Unclaimed</Typography>
@@ -257,7 +267,7 @@ class OrgHeader extends Component {
       }
 
       return (
-        <IconButton key={cd.contact_value} className={classes.contactButton}>
+        <IconButton key={cd.contact_value} onClick={() => this.trackClickSocialIcon(contactType, cd.contact_value)} className={classes.contactButton}>
           {value}
         </IconButton>
       );
@@ -390,4 +400,20 @@ class OrgHeader extends Component {
   }
 }
 
-export default withRoot(withStyles(styles)(OrgHeader));
+const mapDispatchToProps = (dispatch) => {
+  return {
+    trackClick: (click_type, resultType, id, title, listIndex) => {
+      dispatch(trackClick(click_type, resultType, id, title, listIndex));
+    }
+  }
+}
+
+const mapStateToProps = function (state, ownProps) {
+  return {
+    ...ownProps
+  };
+};
+
+const ConnOrgHeader = connect(mapStateToProps, mapDispatchToProps)(withRoot(withStyles(styles)(OrgHeader)));
+
+export default ConnOrgHeader;

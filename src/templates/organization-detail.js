@@ -51,8 +51,12 @@ class OrganizationDetail extends React.Component {
   }
 
   changeFilter(filter) {
+    const {dispatch} = this.props;
     this.setState({ selectedFilter: filter });
+    dispatch(trackClick('tag_filter', 'service', filter,  filter,  0));
   }
+
+
 
   componentDidMount() {
     const { dispatch } = this.props;

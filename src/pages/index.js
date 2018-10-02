@@ -145,7 +145,7 @@ otherLinksDivider : {
     marginTop : theme.spacing.unit * 4,
   },
   otherLinks: {
-    fontWeight: 600,
+    cursor : 'pointer',
     '&:hover': {
       textDecoration: 'underline',
     },
@@ -346,6 +346,8 @@ class Index extends React.Component {
       backgroundImage: null,
     };
     this.clickSuggestion = this.clickSuggestion.bind(this);
+    this.clickDiscoverMore = this.clickDiscoverMore.bind(this);
+    this.clickGridItem = this.clickGridItem.bind(this);
   }
 
   componentDidMount() {
@@ -411,17 +413,28 @@ class Index extends React.Component {
 
   clickSuggestion(url, name, index){
     const { dispatch } = this.props;
-    dispatch(trackClick('suggestion', 'top_cities', url, name, index));
+    dispatch(trackClick('index_grid', 'top_cities', url, name, index));
     navigateTo(url);
+  }
+
+  clickGridItem(type, id, name, index, url){
+    const {dispatch} = this.props;
+
+    dispatch(trackClick('index_grid', type, id, name, index));
+    navigateTo(url);
+  }
+
+  clickDiscoverMore(){
+    const {dispatch} = this.props;
+    dispatch(trackClick('index_grid', 'top_cities', 'locations', 'more'));
+    navigateTo('/locations/');
   }
 
   render() {
     const { classes, search } = this.props;
     const { org, services, state_org } = search.location;
     const otherLinks = shuffledArray.slice(0,3).map((item, idx) => {
-      let link = 'linkLeft';
-      if (idx === 1) link = 'linkCenter';
-      else if (idx === 2) link = 'linkRight';
+
 
       return (
         <Grid item xs={2}>
@@ -429,6 +442,7 @@ class Index extends React.Component {
             <Typography
               variant="body1"
               color="textPrimary"
+              key={item.name}
               className={classes.otherLinks}
             >
               {item.name}
@@ -437,13 +451,14 @@ class Index extends React.Component {
         </Grid>
       );
     });
+
 otherLinks.push((
   <Grid item xs={2}>
-    <Link to="/locations/" className={classes.locationsLink}>
+    <a onClick={() =>  this.clickDiscoverMore()} className={classes.locationsLink}>
       <Typography variant="body1" color="primary" >
         Discover more 
       </Typography>
-    </Link>
+    </a>
   </Grid>
 ))
     const servicesFromOrg = search.allFromOrg.length >= 8 ? search.allFromOrg.slice(0, 8) : search.allFromOrg.slice(0, 4);
@@ -451,6 +466,7 @@ otherLinks.push((
 
     const stateServicesConcat = stateServices.slice(0, 4);
 
+    
     return (
       <Fragment>
         <Helmet defaultTitle={`Localgov.fyi | Search for local government organizations, and services`} titleTemplate={`%s | Localgov.fyi`}>
@@ -471,13 +487,6 @@ otherLinks.push((
         <div className={classes.searchWrapper}>
           {this.state.backgroundImage}
           <Grid container spacing={0} className={!isMobileOnly ? classes.landingSearch : classes.landingSearchMobile}>
-            {/*<Grid item xs={1} sm={2} md={2} />
-            <Grid item xs={6} sm={6} md={8} className={classes.appNameHeader}>
-              <Typography variant="display1" component="span" className={classes.appHeaderText}>
-                Localgov.fyi
-              </Typography>
-            </Grid>
-            <Grid item xs={1} sm={2} md={2} />*/}
             <Grid item xs={1} sm={2} md={2} />
             <Grid item xs={10} sm={8} md={8} className={classes.appSubHeaderTextWrapper}>
               <Typography variant="display1" component="span" className={classes.appSubHeaderText}>
@@ -508,7 +517,7 @@ otherLinks.push((
           <div className={classes.gridWrapper1}>
             {search.locationLoading
               ? <div className={classes.progressWrapper}><CircularProgress /></div>
-: <ServiceGrid services={stateServicesConcat}/>
+: <ServiceGrid clickGridItem={this.clickGridItem} type='pop_services' services={stateServicesConcat}/>
             }
           </div>
         </div>
@@ -525,7 +534,7 @@ otherLinks.push((
           <div className={classes.gridWrapper2}>
             {search.locationLoading
               ? <div className={classes.progressWrapper}><CircularProgress /></div>
-              : <ServiceGrid city={org ? org : null} services={services ? services : dummyServices} />
+              : <ServiceGrid clickGridItem={this.clickGridItem} type='auto_loc_org_services' city={org ? org : null} services={services ? services : dummyServices} />
             }
           </div>   
            <Grid container className={classes.otherLinksDivider}>
@@ -576,6 +585,9 @@ export const query = graphql`
   }
 `;
 
+
+
+
 const mapStateToProps = function (state, ownProps) {
   return {
     ...state,
@@ -583,4 +595,6 @@ const mapStateToProps = function (state, ownProps) {
   };
 };
 
-export default connect(mapStateToProps)(withRoot(withStyles(styles)(Index)));
+const ConnIndex = connect(mapStateToProps)(withRoot(withStyles(styles)(Index)));
+
+export default ConnIndex;

@@ -1,5 +1,5 @@
 import React, { Fragment } from 'react';
-import Link from 'gatsby-link';
+import Link, { navigateTo } from 'gatsby-link';
 import { isMobileOnly } from 'react-device-detect';
 
 import { withStyles } from '@material-ui/core/styles';
@@ -26,6 +26,7 @@ import withRoot from '../withRoot';
 const styles = theme => ({
   link: {
     textDecoration: 'none',
+    cursor: 'pointer',
   },
   card: {
     height: '100%',
@@ -53,7 +54,7 @@ const styles = theme => ({
   },
 });
 
-const ServiceGrid = ({ classes, city, services }) => {
+const ServiceGrid = ({classes, city, services, type, clickGridItem}) => {
   const icons = {
     Apply: <Assignment className={classes.icon} />,
     Pay: <AttachMoney className={classes.icon} />,
@@ -69,7 +70,8 @@ const ServiceGrid = ({ classes, city, services }) => {
   let trimmedServices = services;
   if (city && services.length > 7) trimmedServices = services.slice(0, 7);
   else if (city && services.length > 3) trimmedServices = services.slice(0, 3);
-  console.log(trimmedServices);
+  
+
   return (
     <Grid container spacing={16}>
       {trimmedServices.map((service, index) => {
@@ -77,7 +79,10 @@ const ServiceGrid = ({ classes, city, services }) => {
           <Fragment>
             {!isMobileOnly && (index === 0 || index === 4) && <Grid item md={2} />}
             <Grid item xs={6} md={2}>
-              <Link to={`/service/${service.id}/`} className={classes.link}>
+
+            <a onClick = {() => {
+              clickGridItem(type, service.id, service.service_name, index, `/service/${service.id}/`);
+            }} className={classes.link}>
                 <Card className={classes.card}>
                   <CardContent className={classes.cardContent}>
                     {service.service_name.split(' ').map(word => {
@@ -88,12 +93,15 @@ const ServiceGrid = ({ classes, city, services }) => {
                     </Typography>
                   </CardContent>
                 </Card>
-              </Link>
+              </a>
             </Grid>
             {(city && index === trimmedServices.length - 1) &&
               <Fragment>
                 <Grid item xs={6} align="center" md={2}>
-                  <Link to={`/organization/${city.id}/`} className={classes.link}>
+                  <a onClick = {() => {
+                      clickGridItem(type, 'more', '', index, `/organization/${city.id}/`);
+                 
+            }}   className={classes.link}>
                     <Card className={classes.card}>
                       <CardContent className={classes.cardContent}>
                         <MoreHoriz className={classes.icon} />
@@ -102,7 +110,7 @@ const ServiceGrid = ({ classes, city, services }) => {
                         </Typography>
                       </CardContent>
                     </Card>
-                  </Link>
+                  </a>
                 </Grid>
                 <Grid item md={2} />
               </Fragment>

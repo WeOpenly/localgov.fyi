@@ -1,7 +1,7 @@
 import React, { Fragment } from 'react';
 import Link, { navigateTo } from 'gatsby-link';
 import { isMobileOnly } from 'react-device-detect';
-
+import {connect} from "react-redux";
 import { withStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 import Card from '@material-ui/core/Card';
@@ -88,7 +88,7 @@ const ServiceGrid = ({classes, city, services, type, clickGridItem}) => {
                     {service.service_name.split(' ').map(word => {
                       return icons[word];
                     })[0] || <AccountBalance className={classes.icon} />}
-                    <Typography variant="body1" color="textPrimary">
+                    <Typography variant="body1" color="primary">
                       {service.service_name}
                     </Typography>
                   </CardContent>
@@ -105,7 +105,7 @@ const ServiceGrid = ({classes, city, services, type, clickGridItem}) => {
                     <Card className={classes.card}>
                       <CardContent className={classes.cardContent}>
                         <MoreHoriz className={classes.icon} />
-                        <Typography variant="body1" color="textPrimary" noWrap>
+                        <Typography variant="body1" color="primary" noWrap>
                           More Services
                         </Typography>
                       </CardContent>
@@ -123,4 +123,20 @@ const ServiceGrid = ({classes, city, services, type, clickGridItem}) => {
   );
 };
 
-export default withRoot(withStyles(styles)(ServiceGrid));
+const mapDispatchToProps = (dispatch) => {
+  return {
+    trackClick: (click_type, resultType, id, title, listIndex) => {
+      dispatch(trackClick(click_type, resultType, id, title, listIndex));
+    }
+  }
+}
+
+const mapStateToProps = function (state, ownProps) {
+  return {
+    ...ownProps
+  };
+};
+
+const ConnServiceGrid = connect(mapStateToProps, mapDispatchToProps)(withRoot(withStyles(styles)(ServiceGrid)));
+
+export default ConnServiceGrid;

@@ -12,6 +12,8 @@ import Search from '../components/Search';
 // import Feedback from '../components/Feedback';
 import withRoot from '../withRoot';
 
+import {trackClick} from "../components/Search/tracking";
+
 const styles = theme => ({
   container: {
   },

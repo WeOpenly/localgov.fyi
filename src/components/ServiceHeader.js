@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import {connect} from "react-redux";
 import { navigateTo } from 'gatsby-link';
 import Img from "gatsby-image";
 import { isMobileOnly } from 'react-device-detect';
@@ -22,6 +23,8 @@ import SvgIcon from '@material-ui/core/SvgIcon';
 import MoreVert from '@material-ui/icons/MoreVert';
 import withRoot from '../withRoot';
 import ServiceDeliveryLink from './ServiceDeliveryLink';
+
+import {trackClick} from "./Search/tracking";
 
 const styles = theme => ({
   card: {
@@ -105,10 +108,12 @@ class ServiceHeader extends Component {
     this.handleClose = this.handleClose.bind(this);
     this.handleCopy = this.handleCopy.bind(this);
     this.handleOrgClick = this.handleOrgClick.bind(this);
+    this.trackClickSocialIcon = this.trackClickSocialIcon.bind(this);
   }
 
   handleShareClick(event) {
     this.setState({ anchorEl: event.currentTarget });
+    this.props.trackClick('external', 'share', '', '', 0);
   }
 
   handleClose() {
@@ -122,6 +127,10 @@ class ServiceHeader extends Component {
   handleOrgClick() {
     const { orgID } = this.props;
     navigateTo(`/organization/${orgID}`);
+  }
+
+  trackClickSocialIcon(type, url) {
+    this.props.trackClick('external', 'social_icon', type, url, 0);
   }
 
   render() {
@@ -220,7 +229,7 @@ class ServiceHeader extends Component {
       }
 
       return (
-        <IconButton key={cd.contact_value} className={classes.contactButton}>
+        <IconButton nClick={() => this.trackClickSocialIcon(contactType, cd.contact_value)} key={cd.contact_value} className={classes.contactButton}>
           {value}
         </IconButton>
       );
@@ -233,7 +242,6 @@ class ServiceHeader extends Component {
             <CardContent>
               <div className={classes.cardTop}>
             
-             
                 <div className={classes.title}>
                   <Typography variant="display1">{name}</Typography>
                   <Typography variant="subheading" onClick={this.handleOrgClick} className={classes.in}>{offeredIn}</Typography>
@@ -280,4 +288,20 @@ class ServiceHeader extends Component {
   }
 }
 
-export default withRoot(withStyles(styles)(ServiceHeader));
+const mapDispatchToProps = (dispatch) => {
+  return {
+    trackClick: (click_type, resultType, id, title, listIndex) => {
+      dispatch(trackClick(click_type, resultType, id, title, listIndex));
+    }
+  }
+}
+
+const mapStateToProps = function (state, ownProps) {
+  return {
+    ...ownProps
+  };
+};
+
+const ConnSerHeader = connect(mapStateToProps, mapDispatchToProps)(withRoot(withStyles(styles)(ServiceHeader)));
+
+export default ConnSerHeader;

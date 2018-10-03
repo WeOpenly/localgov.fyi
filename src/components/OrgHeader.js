@@ -164,7 +164,7 @@ class OrgHeader extends Component {
       ? (
         <div className={classes.claimed}>
           <CheckCircle color="primary" className={classes.claimedIcon} />
-          <Typography variant="caption" color="textPrimary">Claimed</Typography>
+          <Typography variant="caption" color="primary">Claimed</Typography>
         </div>
       )
       : (
@@ -301,7 +301,7 @@ class OrgHeader extends Component {
                       <Typography variant="subheading" className={classes.parent}>{parent.name}</Typography>
                     </Link>
                   </div>
-                  {displayShare && <Button variant="raised" color="primary" onClick={this.handleShareClick} className={classes.menuButton}>
+                  {displayShare && <Button variant="outlined" color="primary" onClick={this.handleShareClick} className={classes.menuButton}>
                     Share
                   </Button>}
                   <Menu
@@ -344,7 +344,7 @@ class OrgHeader extends Component {
                     sizes={logoSizes}
                   />
                 </Avatar>}
-                {displayShare && <IconButton variant="raised" color="primary" onClick={this.handleShareClick}>
+                {displayShare && <IconButton variant="outlined" color="primary" onClick={this.handleShareClick}>
                   <MoreVert />
                 </IconButton>}
                 <Menu

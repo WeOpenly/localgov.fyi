@@ -1,6 +1,6 @@
 import React, { Component, Fragment } from 'react';
 import Link from 'gatsby-link';
-
+import {connect} from "react-redux";
 import { withStyles } from '@material-ui/core/styles';
 
 import withRoot from '../withRoot';
@@ -11,6 +11,7 @@ import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
 import Button from '@material-ui/core/Button';
 import Done from '@material-ui/icons/Done';
+import {trackView, trackClick} from "../components/Search/tracking";
 
 const styles = theme => ({
   header: {
@@ -66,10 +67,10 @@ const styles = theme => ({
 class Claim extends Component {
   constructor(props) {
     super(props);
-    this.handleClick = this.handleClick.bind(this);
   }
 
-  handleClick() {
+  componentDidMount() {
+    this.props.trackView();
   }
 
   render() {
@@ -82,7 +83,7 @@ class Claim extends Component {
               Localgov.fyi
             </Typography>
           </Link>
-          <Typography variant="body1" color="textPrimary">
+          <Typography variant="body1" color="primary">
             for Government Agencies
           </Typography>
         </AppBar>
@@ -129,4 +130,21 @@ class Claim extends Component {
   }
 }
 
-export default withRoot(withStyles(styles)(Claim));
+const mapDispatchToProps = (dispatch) => {
+  return {
+    trackView: (click_type, resultType, id, title, listIndex) => {
+      dispatch(trackView('claim', null, null, null));
+    }
+  }
+}
+
+const mapStateToProps = function (state, ownProps) {
+  return {
+    ...ownProps
+  };
+};
+
+const ConnClaim = connect(mapStateToProps, mapDispatchToProps)(withRoot(withStyles(styles)(Claim)));
+
+export default ConnClaim;
+

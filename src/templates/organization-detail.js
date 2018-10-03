@@ -13,7 +13,7 @@ import OrgHeader from '../components/OrgHeader';
 import ChipFilter from '../components/ChipFilter';
 // import MemberListItem from '../components/MemberListItem';
 import SearchResult from '../components/SearchResult';
-import { trackView } from "../components/Search/tracking";
+import { trackView, trackClick } from "../components/Search/tracking";
 
 const styles = theme => ({
   orgTitle: {
@@ -197,6 +197,7 @@ class OrganizationDetail extends React.Component {
             </Grid>
           </Grid>
         );
+
         if (serviceListComp && serCards.length){
             allServiceList.push(serviceListComp)
         }

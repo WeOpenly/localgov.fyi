@@ -29,33 +29,27 @@ const styles = theme => ({
   card: {
     display: 'flex',
     flexDirection: 'column',
-    justifyContent: 'space-between',
-    height: 200,
+    justifyContent: 'baseline',
+    height: theme.spacing.unit * 18,
+    margin: theme.spacing.unit,
     // cursor: 'pointer',
     boxShadow: '0 0 0 0',
     border: `1px solid ${theme.palette.primary['50']}`,
-  },
-  media: {
-    height: 200,
   },
   cardTop: {
     display: 'flex',
     justifyContent: 'space-between',
     marginRight: -theme.spacing.unit,
   },
-  cardTitle: {
-    fontWeight: 600,
-    cursor: 'pointer',
-  },
   caption: {
-    height: 72,
     overflowY: 'hidden',
     cursor: 'pointer',
-    color: 'rgba(30, 30, 50, 0.75)'
+    height : theme.spacing.unit * 6,
   },
   cardActions: {
     display: 'flex',
     justifyContent: 'flex-end',
+    padding:0,
   },
   iconButton: {
     marginTop: theme.spacing.unit * -2,
@@ -70,15 +64,27 @@ const styles = theme => ({
     justifyContent: 'center',
     alignItems: 'center',
   },
+cardContent:{
+    paddingBottom: 0,
+    height : theme.spacing.unit * 13,
+},
   dividerWrapper: {
-    paddingLeft: theme.spacing.unit * 3,
-    paddingRight: theme.spacing.unit * 3,
+    paddingLeft: theme.spacing.unit * 4,
+    paddingRight: theme.spacing.unit * 4,
   },
+  "raw":{
+
+     '& $p':{
+padding : 0,
+margin: 0,
+    }
+  }
 });
 
 const RawHTML = ({ children, className = "" }) => (
     <div
         className={className}
+        style={{padding:0, margin: 0}}
         dangerouslySetInnerHTML={{ __html: children.replace(/\n/g, " ") }}
     />
 );
@@ -135,19 +141,15 @@ class SearchResult extends Component {
 
         let subtitle = '';
         if (description){
-            subtitle = description;
+            subtitle = (description.length > 80) ? description.substr(0, 79) + '&hellip;' : description;
         }
-
+        
         return (
             <Card className={classes.card}>
-                <Fragment>
-                    {/*<CardMedia
-                        image="https://via.placeholder.com/345x345"
-                        className={classes.media}
-                    />*/}
-                    <CardContent>
+
+                    <CardContent className={classes.cardContent}>
                         <div className={classes.cardTop}>
-                            <Typography variant="body1" component="h1" className={classes.cardTitle} onClick={this.handleClick}>
+                            <Typography variant="body2" component="h1"  className={classes.cardTitle} onClick={this.handleClick}>
                                 {title}
                             </Typography>
                             <IconButton onClick={this.handleMoreVertClick} className={classes.iconButton}>
@@ -177,20 +179,16 @@ class SearchResult extends Component {
                             </Menu>
                         </div>
                         <Typography variant="caption" className={classes.caption} onClick={this.handleClick}>
-                            <RawHTML>{subtitle}</RawHTML>
+                            <RawHTML className={classes.raw}>{subtitle}</RawHTML>
+                            
                         </Typography>
                     </CardContent>
-                </Fragment>
-                <div className={classes.dividerWrapper}>
-                    <Divider />
-                </div>
-                <Fragment>
+
                     <CardActions className={classes.cardActions}>
                         {(deliveryLink && deliveryLink.link_name) && <Button size="small" color="primary" onClick={this.handleDeliveryClick}>
                             {deliveryLink.link_name}
                         </Button>}
                     </CardActions>
-                </Fragment>
             </Card>
         );
     }

@@ -38,6 +38,7 @@ const styles = theme => ({
       overflowY: "scroll",
       overflowX: "hidden"
     },
+
     "body>div": {
       display: "block",
       height: "100%",
@@ -45,7 +46,7 @@ const styles = theme => ({
     "body>div>div": {
       display: "block",
       height: "100%",
-    }
+    },
   },
   header: {
     display: 'flex',
@@ -441,7 +442,7 @@ class Index extends React.Component {
           <a key={item.name} onClick={() => this.clickSuggestion(item.url, item.name, idx)} >
             <Typography
               variant="body1"
-              color="textPrimary"
+              color="primary"
               key={item.name}
               className={classes.otherLinks}
             >

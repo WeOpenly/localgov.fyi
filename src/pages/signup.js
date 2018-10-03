@@ -152,7 +152,7 @@ class Signup extends Component {
               Localgov.fyi
             </Typography>
           </Link>
-          <Typography variant="body1" color="textPrimary">
+          <Typography variant="body1" color="primary">
             for Government Agencies
           </Typography>
         </AppBar>

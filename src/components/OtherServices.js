@@ -1,12 +1,14 @@
 import React, { Fragment } from 'react';
 import Link from 'gatsby-link';
-
+import {connect} from "react-redux";
 import { withStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
 import CardActions from '@material-ui/core/CardActions';
 import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
+
+import SearchResult from './SearchResult';
 
 import withRoot from '../withRoot';
 
@@ -40,6 +42,7 @@ const styles = theme => ({
     justifyContent: 'flex-end',
   },
   linkWrapper: {
+    marginTop: theme.spacing.unit *1,
     display: 'flex',
     justifyContent: 'center',
     width: '100%',
@@ -55,7 +58,8 @@ const styles = theme => ({
     color: theme.palette.primary['500'],
   },
   raw: {
-    marginTop: -13.920,
+    overflow: 'hidden',
+    'textOverflow': 'ellipsis',
   },
 });
 
@@ -72,22 +76,16 @@ const OtherServices = ({ classes, services, orgID, orgName }) => {
       <div className={classes.headerWrapper}>
         <Typography variant="subheading">Additional services</Typography>
       </div>
-      {services.map(service => (
-        <Card key={service.id} className={classes.card}>
-          <Link to={`/service/${service.id}`} className={classes.serviceLink}>
-            <CardContent className={classes.cardContent}>
-              <Typography variant="body1" className={classes.cardTitle}>
-                {service.service_name}
-              </Typography>
-              <Typography variant="caption" className={classes.caption}>
-                <RawHTML classes={classes}>{service.service_description}</RawHTML>
-              </Typography>
-            </CardContent>
-          </Link>
-          {!!service.service_del_links.length && <CardActions className={classes.cardActions}>
-            <Button color="primary">{service.service_del_links[0].link_name}</Button>
-          </CardActions>}
-        </Card>
+      {services.map( (service, idx) => (
+          <SearchResult
+                  resultType='service'
+                  id={service.id}
+                  listIndex={idx}
+                  toLink={`/service/${service.id}`}
+                  title={service.service_name}
+                  description={service.service_description}
+                  deliveryLink={service.service_del_links && service.service_del_links[0] ? service.service_del_links[0] : null}
+                />
       ))}
       <div className={classes.linkWrapper}>
         <Link to={`/organization/${orgID}`} className={classes.link}>
@@ -98,4 +96,20 @@ const OtherServices = ({ classes, services, orgID, orgName }) => {
   );
 };
 
-export default withRoot(withStyles(styles)(OtherServices));
+const mapDispatchToProps = (dispatch) => {
+  return {
+    trackClick: (click_type, resultType, id, title, listIndex) => {
+      dispatch(trackClick(click_type, resultType, id, title, listIndex));
+    }
+  }
+}
+
+const mapStateToProps = function (state, ownProps) {
+  return {
+    ...ownProps
+  };
+};
+
+const ConnOtherServices = connect(mapStateToProps, mapDispatchToProps)(withRoot(withStyles(styles)(OtherServices)));
+
+export default ConnOtherServices;

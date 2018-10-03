@@ -19,7 +19,7 @@ import withRoot from '../withRoot';
 import Search from '../components/Search/index';
 import ServiceGrid from '../components/ServiceGrid';
 import { getLocation } from '../components/Search/actions';
-import { trackView, trackClick } from "../components/Search/tracking";
+import {trackView, trackClick} from "../components/Search/tracking";
 
 const styles = theme => ({
   "@global": {
@@ -509,7 +509,7 @@ otherLinks.push((
           <Grid container className={classes.section3Mobile}>
             <Grid item xs={1} md={3} />
             <Grid item xs={10} md={6}>
-              <Typography variant="display1" color="primary" component="h1" className={classes.popularServicesHeader}>
+              <Typography variant="display1" component="h1" className={classes.popularServicesHeader}>
                 Find the most sought out services
               </Typography>
             </Grid>
@@ -526,7 +526,7 @@ otherLinks.push((
           <Grid container className={classes.section3Mobile}>
             <Grid item xs={1} md={3} />
             <Grid item xs={10} md={6}>
-              <Typography variant="display1" color="primary" component="h1" className={classes.popularServicesHeader}>
+              <Typography variant="display1"  component="h1" className={classes.popularServicesHeader}>
                Localgov {org ? org.name : null}
               </Typography>
             </Grid>

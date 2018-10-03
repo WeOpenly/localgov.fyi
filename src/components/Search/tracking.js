@@ -88,7 +88,7 @@ new Fingerprint2(fpOptions)
     });
 };
 
-// input_type ['search']
+// input_type ['search'], ['auto_locate]
 export const trackInput = (input_type, text) => async(dispatch, getState) => {
     if (!Fingerprint2) {
         return

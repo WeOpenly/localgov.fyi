@@ -87,10 +87,9 @@ padding : '14px',
     position: "absolute",
     padding: theme.spacing.unit * 1,
     marginTop : `4px`,
-    boxShadow : `0 0 1px 1px #36454f`,
-    background: "#fff",
-    borderRadius: 1,
-    border : `1px solid #36454f`,
+    borderRadius : 1,
+    border : `3px`,
+    borderColor : 'rgba(0, 0, 0, 0.5)', 
     paddingBottom: theme.spacing.unit * 3,
     zIndex: 200,
     left: 0,
@@ -204,7 +203,7 @@ class ServiceSuggestBox extends Component {
 
     const uri = `/search/${serviceInput}`;
     const encodedUri = encodeURI(uri);
-    dispatch(trackInput('index_search_box', serviceInput));
+    dispatch(trackInput('index_service_search_box', serviceInput));
     navigateTo(encodedUri);
   }
 
@@ -269,7 +268,7 @@ class ServiceSuggestBox extends Component {
     const { serviceInput, userCountry } = this.props.search;
     const { id, heading } = suggestion;
     navigateTo(`/service/${id}`);
-    dispatch(trackInput('index_search_box', serviceInput));
+    dispatch(trackInput('index_service_search_box', serviceInput));
     dispatch(trackClick('select_suggestion', 'service', id, heading, suggestionIndex));
   }
 

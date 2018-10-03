@@ -124,7 +124,7 @@ otherLinksDivider : {
     display: 'flex',
     justifyContent: 'center',
     marginTop: theme.spacing.unit * 10,
-    marginBottom: theme.spacing.unit * 3,
+    marginBottom: theme.spacing.unit * 5,
   },
   section3: {
     marginLeft: theme.spacing.unit * -2,

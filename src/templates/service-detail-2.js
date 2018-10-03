@@ -9,28 +9,15 @@ import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
 
-import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
 import Divider from '@material-ui/core/Divider';
 import IconButton from '@material-ui/core/IconButton';
 
 import KeyboardBackspace from '@material-ui/icons/KeyboardBackspace';
-// import InfoOutline from '@material-ui/icons/InfoOutline';
-import AttachMoney from '@material-ui/icons/AttachMoney';
-import AccessTime from '@material-ui/icons/AccessTime';
-import Assignment from '@material-ui/icons/Assignment';
-import PlaylistAddCheck from '@material-ui/icons/PlaylistAddCheck';
-import QuestionAnswer from '@material-ui/icons/QuestionAnswer';
-import PinDrop from '@material-ui/icons/PinDrop';
 
 import ServiceHeader from '../components/ServiceHeader';
-import ContactDetails from '../components/ContactDetails';
 import AddressGoogleMap from '../components/AddressGoogleMap';
-import HorizontalList from '../components/HorizontalList';
-// import MemberListItem from '../components/MemberListItem';
-import SearchResult from '../components/SearchResult';
-import ServiceDeliveryLink from '../components/ServiceDeliveryLink';
 import OtherServices from '../components/OtherServices';
 import withRoot from '../withRoot';
 
@@ -249,20 +236,6 @@ class ServiceDetail extends React.Component {
                 </div>;
             });
         }
-
-        const offeredInDetails = <Grid container spacing={8} style={{
-            // marginTop: 16
-        }}>
-            <Grid item xs={12} sm={12}>
-                <Typography variant="subheading" gutterBottom>
-                    Offered in
-                </Typography>
-            </Grid>
-            <Grid item xs={12} sm={12}>
-                <SearchResult key={org_id} id={org_id} listindex={0} resultType={'organization'} toLink={`/organization/${org_id}`} title={org_name}/>
-            </Grid>
-        </Grid>;
-
 
         const serDel = service_del_links.map((link, idx) => {
         return ({

@@ -14,6 +14,7 @@ import Typography from '@material-ui/core/Typography';
 import OrgHeader from './OrgHeader';
 import MemDetailLite from "./MemDetailLite";
 import SearchResult from "./SearchResult";
+import ServiceCard from './ServiceCard';
 // import ServiceDetailInSearch from "./ServiceDetailInSearch";
 
 const windowGlobal = typeof window !== 'undefined' && window
@@ -245,7 +246,7 @@ class SearchResults extends Component {
           const deliveryLink = service_del_links && service_del_links[0] ? service_del_links[0] : null;
 
           comp = (
-            <SearchResult
+            <ServiceCard
               key={`${idx}-ser_details`}
               id={id}
               toLink={`/service/${id}`}

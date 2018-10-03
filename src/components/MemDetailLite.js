@@ -12,7 +12,6 @@ import Typography from '@material-ui/core/Typography';
 import Paper from '@material-ui/core/Paper';
 
 import ContactDetails from "./ContactDetails";
-import SearchResult from "./SearchResult";
 
 const styles = theme => ({
     media: {

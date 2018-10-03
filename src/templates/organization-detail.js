@@ -12,7 +12,7 @@ import withRoot from '../withRoot';
 import OrgHeader from '../components/OrgHeader';
 import ChipFilter from '../components/ChipFilter';
 // import MemberListItem from '../components/MemberListItem';
-import SearchResult from '../components/SearchResult';
+import ServiceCard from '../components/ServiceCard';
 import { trackView, trackClick } from "../components/Search/tracking";
 
 const styles = theme => ({
@@ -138,7 +138,7 @@ class OrganizationDetail extends React.Component {
             const deliveryLink = ser.service_del_links && ser.service_del_links[0] ? ser.service_del_links[0] : null;
             return (
               <Grid item xs={12} md={4} key={ser.id}>
-                <SearchResult
+                <ServiceCard
                   resultType='service'
                   id={ser.id}
                   listIndex={idx}

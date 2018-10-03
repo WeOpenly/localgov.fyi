@@ -7,6 +7,8 @@ import withRoot from '../withRoot';
 const styles = theme => ({
   chip: {
     marginRight: theme.spacing.unit,
+    background: '#fff',
+    border: `1px solid ${theme.palette.primary['200']}`
   },
 });
 
@@ -32,6 +34,7 @@ class ChipFilter extends Component {
           label="All"
           onClick={() => this.handleClick('')}
           className={classes.chip}
+          variant="outlined"
           color={this.state.selectedTag === '' ? 'primary' : 'default'}
         />
         {tags.map(tag => (
@@ -40,6 +43,7 @@ class ChipFilter extends Component {
             label={tag}
             onClick={() => this.handleClick(tag)}
             className={classes.chip}
+            variant="outlined"
             color={this.state.selectedTag === tag ? 'primary' : 'default'}
           />
         ))}

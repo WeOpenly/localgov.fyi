@@ -16,11 +16,12 @@ import {trackView, trackClick} from "../components/Search/tracking";
 const styles = theme => ({
   titleWrapper: {
     textAlign: 'center',
-    paddingTop: theme.spacing.unit * 6,
-    marginBottom: theme.spacing.unit * 2,
+    padding: theme.spacing.unit *4,
+    margin: theme.spacing.unit *2,
   },
-  title:{
-    marginBottom: theme.spacing.unit * 2,
+  subtitle:{
+    marginTop: theme.spacing.unit,
+    marginBottom: theme.spacing.unit * 4,
   },
   section: {
     marginBottom: theme.spacing.unit,
@@ -40,8 +41,8 @@ gridItemLocation:{
   display : 'flex',
   alignItems : 'center',
   justifyContent : 'center',
-    width: 250,
-    height: 45,
+  width: 250,
+  height: 45,
 },
   heading: {
     fontWeight: 600,
@@ -72,24 +73,30 @@ class Locations extends Component {
 
   render() {
     const { classes } = this.props;
+    const locLen = this.props.data.orgs.edges.length;
 
     return (
       <Fragment>
         <HeaderWithSearch />
-        <Grid container>
-          <Grid item md={2} />
-          <Grid item md={8} className={classes.titleWrapper}>
-            <Typography variant="display1" color="primary" className={classes.title}>More places on Localgov</Typography>
-            <Divider />
+        <Grid container className={classes.titleWrapper}>
+          <Grid item xs={2} />
+          <Grid item xs={8} align="center" >
+            <Typography variant="display1" className={classes.title}>{`Currently serving ${locLen} governments`}</Typography>
+             <Typography variant="caption" className={classes.subtitle}>.. and adding more every day</Typography>
+          <Divider />
           </Grid>
-          <Grid item md={2} />
+          <Grid item xs={2} />
+          </Grid>
+          
+      <Grid container >
           <Grid item md={2} />
           <Grid item md={8} align="center" >
+
             <div className={classes.locGrid} > 
             {this.props.data.orgs.edges.map((loc, idx) => (
               <div className={classes.gridItemLocation}>
                 <a style={{textDecoration: 'underline', cursor: 'pointer'}} onClick={() => this.handleOrgClick(loc.node.details.id, loc.node.details.name, idx, `/organization/${loc.node.details.id}/`) } className={classes.link}>
-                  <Typography variant="body1" color="primary" className={classes.heading}>
+                  <Typography variant="body2"  className={classes.heading}>
                     {loc.node.details.name}
                   </Typography>
                 </a>

@@ -30,9 +30,11 @@ const styles = theme => ({
   },
   card: {
     height: '100%',
+    border: `1px solid ${theme.palette.primary['100']}`,
+    boxShadow : `0 1px 1px ${theme.palette.primary['50']}`,
     paddingBottom: theme.spacing.unit*2,
       '&:hover' : {
-        boxShadow: `0 2px 2px ${theme.palette.primary['200']}`,
+        boxShadow: `0 2px 2px ${theme.palette.primary['100']}`,
     },
   },
   cardContent: {
@@ -44,11 +46,11 @@ const styles = theme => ({
     height: '100%',
   },
   icon: {
-    color: theme.palette.primary['700'],
+    color: theme.palette.primary['600'],
     fontSize: 48,
-    minHeight: 50,
+    minHeight: 40,
     '&:hover' : {
-        color: theme.palette.primary['900'],
+        color: theme.palette.primary['400'],
     },
     margin: theme.spacing.unit * 2,
   },
@@ -88,7 +90,7 @@ const ServiceGrid = ({classes, city, services, type, clickGridItem}) => {
                     {service.service_name.split(' ').map(word => {
                       return icons[word];
                     })[0] || <AccountBalance className={classes.icon} />}
-                    <Typography variant="body1" color="primary">
+                    <Typography variant="body2" >
                       {service.service_name}
                     </Typography>
                   </CardContent>
@@ -105,7 +107,7 @@ const ServiceGrid = ({classes, city, services, type, clickGridItem}) => {
                     <Card className={classes.card}>
                       <CardContent className={classes.cardContent}>
                         <MoreHoriz className={classes.icon} />
-                        <Typography variant="body1" color="primary" noWrap>
+                        <Typography variant="body2"  noWrap>
                           More Services
                         </Typography>
                       </CardContent>

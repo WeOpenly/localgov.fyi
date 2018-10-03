@@ -8,15 +8,16 @@ import CardActions from '@material-ui/core/CardActions';
 import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
 
-import SearchResult from './SearchResult';
+import ServiceCard from './ServiceCard';
 
 import withRoot from '../withRoot';
 
 const styles = theme => ({
   headerWrapper: {
     display: 'flex',
-    justifyContent: 'center',
-    marginBottom: theme.spacing.unit,
+    justifyContent: 'left',
+    marginBottom: theme.spacing.unit * 2,
+    marginLeft: theme.spacing.unit
   },
   card: {
     marginBottom: theme.spacing.unit * 2,
@@ -42,9 +43,9 @@ const styles = theme => ({
     justifyContent: 'flex-end',
   },
   linkWrapper: {
-    marginTop: theme.spacing.unit *1,
+    margin: theme.spacing.unit *2,
     display: 'flex',
-    justifyContent: 'center',
+    justifyContent: 'left',
     width: '100%',
   },
   link: {
@@ -77,7 +78,7 @@ const OtherServices = ({ classes, services, orgID, orgName }) => {
         <Typography variant="subheading">Additional services</Typography>
       </div>
       {services.map( (service, idx) => (
-          <SearchResult
+          <ServiceCard
                   resultType='service'
                   id={service.id}
                   listIndex={idx}

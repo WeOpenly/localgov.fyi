@@ -28,9 +28,8 @@ const styles = theme => ({
     width: '100%',
     fontFamily: theme.typography.fontFamily,
     position: "relative",
-    border: '3px',
     borderRadius : 1,
-    border : `6px solid rgba(30, 30, 50,0.34)`,
+    border : `8px solid rgba(30, 30, 50,0.25)`,
     background: fade(theme.palette.common.white, 0.25),
     // boxShadow: `0 0 3px 1px ${theme.palette.primary["100"]}`,
     // "&input": {

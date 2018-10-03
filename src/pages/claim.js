@@ -18,6 +18,7 @@ const styles = theme => ({
     display: 'flex',
     flexDirection: 'row',
     alignItems: 'center',
+    justifyContent: 'center',
     background: theme.palette.common.white,
     color: theme.palette.primary['700'],
     boxShadow: `0 0 0 0 ${theme.palette.common.white}`,
@@ -33,16 +34,20 @@ const styles = theme => ({
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
-    height: '100vh',
     paddingTop: theme.spacing.unit * 12,
+    margin: theme.spacing.unit * 2,
   },
   heading: {
-    marginBottom: theme.spacing.unit * 3,
+    marginBottom: theme.spacing.unit * 5,
   },
   card: {
     height: 'auto',
-    boxShadow: '0 0 0 0',
-    border: `1px solid ${theme.palette.primary['50']}`,
+boxShadow : '0 0 0 0',
+paddingTop : theme.spacing.unit * 2,
+paddingLeft : theme.spacing.unit * 2,
+paddingRight : theme.spacing.unit * 2,
+paddingBottom : theme.spacing.unit * 3,
+border : `1px solid ${theme.palette.primary['200']}`,
   },
   listItem: {
     display: 'flex',
@@ -61,17 +66,18 @@ const styles = theme => ({
   },
   button: {
     width: '100%',
+    background : `${theme.palette.primary['500']}`,
   },
+gov:{
+  padding: theme.spacing.unit*2
+}
 });
 
 class Claim extends Component {
   constructor(props) {
-    super(props);
+      super(props);
   }
 
-  componentDidMount() {
-    this.props.trackView();
-  }
 
   render() {
     const { classes } = this.props;
@@ -83,8 +89,11 @@ class Claim extends Component {
               Localgov.fyi
             </Typography>
           </Link>
-          <Typography variant="body1" color="primary">
-            for Government Agencies
+          <Typography variant="headline" color="primary">
+           |
+          </Typography>
+          <Typography variant="headline" className={classes.gov} color="primary">
+           Government Agencies
           </Typography>
         </AppBar>
         <div className={classes.wrapper}>
@@ -119,7 +128,7 @@ class Claim extends Component {
               </div>
             </CardContent>
             <CardActions className={classes.cardActions}>
-              <Link to="/signup" className={[classes.link, classes.buttonWrapper]}>
+              <Link to="/claim-request" className={[classes.link, classes.buttonWrapper]}>
                 <Button variant="raised" color="primary" className={classes.button}>Claim my agency page</Button>
               </Link>
             </CardActions>

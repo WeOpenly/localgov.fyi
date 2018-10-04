@@ -43,7 +43,7 @@ module.exports = class HTML extends React.Component {
         />
       )
     }
-
+    
     const searchLinksSchema = {
       "@context": "http://schema.org",
       "@type": "WebSite",
@@ -55,6 +55,7 @@ module.exports = class HTML extends React.Component {
       }
     }
 
+
     return (
       <html {...this.props.htmlAttributes}>
         <head>
@@ -63,7 +64,7 @@ module.exports = class HTML extends React.Component {
           <meta name="google-site-verification" content= "uH1LpzdwISxquJSjjpqad8DL6vkOs_OVsdLLu8wNXSM" />
           <meta name="msvalidate.01" content="D1BADF38847C730E9DC76BE0CCC4B42B" />
           <meta name="yandex-verification" content="25711aadc401a373" />
-
+        
           <JsonLd data={searchLinksSchema} />
           <meta name="description" content={`Localgov.fyi - Search for local government organizations, and services`} />
           <meta property="og:site_name" content={`Localgov.fyi`} />

@@ -40,7 +40,7 @@ const styles = theme => ({
     fontFamily: theme.typography.fontFamily,
   },
   search : {
-    width: theme.spacing.unit * 11,
+    width: theme.spacing.unit * 8,
     color: theme.palette.primary["200"],
     height: theme.spacing.unit * 8,
     display: "flex",

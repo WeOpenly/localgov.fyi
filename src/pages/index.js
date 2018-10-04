@@ -343,15 +343,9 @@ const shuffledArray = xah_randomize_array(otherPlaces);
 class Index extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {
-      backgroundImage: null,
-    };
     this.clickSuggestion = this.clickSuggestion.bind(this);
     this.clickDiscoverMore = this.clickDiscoverMore.bind(this);
     this.clickGridItem = this.clickGridItem.bind(this);
-  }
-
-  componentDidMount() {
     const backgroundImages = [
       <Img
         title="United States Capitol"
@@ -406,10 +400,15 @@ class Index extends React.Component {
         }}
       />,
     ];
+   this.bg = backgroundImages[Math.floor(Math.random() * backgroundImages.length)]
+  }
+
+  componentDidMount() {
     const { dispatch } = this.props;
-    dispatch(getLocation);
-    dispatch(trackView('index', null, null, null));
-    this.setState({ backgroundImage: backgroundImages[Math.floor(Math.random() * backgroundImages.length)] });
+    if (this.props.location.pathname === '/'){
+        dispatch(getLocation);
+        dispatch(trackView('index', null, null, null));
+    }
   }
 
   clickSuggestion(url, name, index){
@@ -468,6 +467,7 @@ otherLinks.push((
     const stateServicesConcat = stateServices.slice(0, 4);
 
     
+
     return (
       <Fragment>
         <Helmet defaultTitle={`Localgov.fyi | Search for local government organizations, and services`} titleTemplate={`%s | Localgov.fyi`}>
@@ -486,7 +486,7 @@ otherLinks.push((
           </Typography>
         </AppBar>
         <div className={classes.searchWrapper}>
-          {this.state.backgroundImage}
+          {this.bg}
           <Grid container spacing={0} className={!isMobileOnly ? classes.landingSearch : classes.landingSearchMobile}>
             <Grid item xs={1} sm={2} md={2} />
             <Grid item xs={10} sm={8} md={8} className={classes.appSubHeaderTextWrapper}>

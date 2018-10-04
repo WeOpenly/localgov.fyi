@@ -2,7 +2,7 @@ const path = require(`path`)
 
 module.exports = {
   siteMetadata: {
-    title: `Search for local government organizations, members, and services`,
+    title: `Search for local government organizations, and services`,
     siteUrl: `https://localgov.fyi`
   },
   plugins: [

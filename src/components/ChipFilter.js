@@ -8,6 +8,7 @@ const styles = theme => ({
   chip: {
     marginRight: theme.spacing.unit,
     background: '#fff',
+    color: theme.palette.primary['700'],
     border: `1px solid ${theme.palette.primary['200']}`
   },
 });

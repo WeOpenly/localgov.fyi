@@ -13,7 +13,7 @@ const styles = theme => ({
     left: 24,
     zIndex: 10,
     width: 300,
-    padding: theme.spacing.unit,
+    padding: theme.spacing.unit * 2,
   },
   rootMobile: {
     position: 'absolute',
@@ -21,7 +21,7 @@ const styles = theme => ({
     left: -200,
     zIndex: 10,
     width: 300,
-    padding: theme.spacing.unit,
+    padding: theme.spacing.unit * 2,
   },
   heading: {
     marginBottom: theme.spacing.unit,
@@ -30,18 +30,15 @@ const styles = theme => ({
     color: theme.palette.primary['500'],
     textDecoration: 'none',
   },
-  bold: {
-    fontWeight: 600,
-  },
 });
 
 const UnclaimedHover = ({ classes }) => {
   return (
     <Paper className={isMobileOnly ? classes.rootMobile : classes.root}>
-      <Typography variant="caption" color="primary" className={[classes.heading, classes.bold]}>
+      <Typography variant="body1" color="default" className={[classes.heading, classes.bold]}>
         This government agency has not claimed their profile.
       </Typography>
-      <Typography variant="caption" color="primary">
+      <Typography variant="caption" color="default">
         <Link to="/claim/" className={classes.link}>Claim this page</Link> <span className={classes.bold}>for free</span> to manage services, post updates, respond to queries, and engage with your local community.
       </Typography>
     </Paper>

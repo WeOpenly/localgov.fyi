@@ -1,7 +1,7 @@
 import * as types from "./ActionTypes";
 
 const initialState = {
-  locationLoading: false,
+  locationLoading: true,
   location: {},
   locationError: null,
   input: '',
@@ -29,7 +29,7 @@ export function search(state = initialState, action) {
     case types.LOCATION_REQUEST:
       return {
         ...state,
-        locationLoading: true,
+        locationLoading: false,
       };
     case types.LOCATION_SUCCESS:
       return {

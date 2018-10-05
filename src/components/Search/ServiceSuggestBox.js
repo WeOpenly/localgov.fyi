@@ -167,17 +167,10 @@ class ServiceSuggestBox extends Component {
     return (
       <MenuItem selected={isHighlighted} component="div">
         <div>
-          <div>
-            <Typography align="left" variant="title">
+            <Typography align="left" variant="body2">
               {suggestion.head}
             </Typography>
           </div>
-          <div>
-            <Typography align="left" variant="caption">
-              {suggestion.subhead}
-            </Typography>
-          </div>
-        </div>
       </MenuItem>
     );
   }
@@ -299,7 +292,6 @@ class ServiceSuggestBox extends Component {
             suggestionsList: classes.suggestionsList,
             suggestion: classes.suggestion
           }}
-          highlightFirstSuggestion
           renderInputComponent={this.renderInput}
           suggestions={serviceSuggestions}
           onSuggestionsFetchRequested={this.handleSuggestionsFetchRequested}

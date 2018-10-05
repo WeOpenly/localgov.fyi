@@ -9,7 +9,21 @@ const styles = theme => ({
     marginRight: theme.spacing.unit,
     background: '#fff',
     color: theme.palette.primary['700'],
-    border: `1px solid ${theme.palette.primary['200']}`
+    border: `1px solid ${theme.palette.primary['200']}`,
+    '&:hover': {
+      color: '#fff',
+      background: theme.palette.primary['700'],
+    },
+  },
+   chipSelected: {
+    marginRight: theme.spacing.unit,
+    color : '#fff',
+    background : theme.palette.primary['700'], 
+    border: `1px solid ${theme.palette.primary['200']}`,
+    '&:hover': {
+      background: '#fff',
+      color: theme.palette.primary['700'],
+    },
   },
 });
 
@@ -29,23 +43,24 @@ class ChipFilter extends Component {
 
   render() {
     const { classes, tags } = this.props;
+
     return (
       <div>
         <Chip
           label="All"
           onClick={() => this.handleClick('')}
-          className={classes.chip}
+ 
           variant="outlined"
-          color={this.state.selectedTag === '' ? 'primary' : 'default'}
+          className={this.state.selectedTag === '' ? classes.chipSelected : classes.chip}
         />
         {tags.map(tag => (
           <Chip
             key={tag}
             label={tag}
             onClick={() => this.handleClick(tag)}
-            className={classes.chip}
+ 
             variant="outlined"
-            color={this.state.selectedTag === tag ? 'primary' : 'default'}
+            className={this.state.selectedTag === tag ? classes.chipSelected : classes.chip}
           />
         ))}
       </div>

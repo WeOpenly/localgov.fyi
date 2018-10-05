@@ -213,7 +213,7 @@ class HeaderSuggestBox extends Component {
             <MenuItem selected={isHighlighted} component="div">
                 <div>
                     <div>
-                        <Typography align="left" variant="title">
+                        <Typography align="left" variant="body2">
                             {suggestion.head}
                         </Typography>
                     </div>

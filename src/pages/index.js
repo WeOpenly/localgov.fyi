@@ -455,7 +455,7 @@ class Index extends React.Component {
 otherLinks.push((
   <Grid item xs={2}>
     <a onClick={() =>  this.clickDiscoverMore()} className={classes.locationsLink}>
-      <Typography variant="body1" color="primary" >
+      <Typography variant="body1" color="primary" className={classes.otherLinks} >
         Discover more 
       </Typography>
     </a>
@@ -545,7 +545,7 @@ otherLinks.push((
                   </Grid>
                    <Grid item xs={2} />
              </Grid>
-                <Grid container align="center" className={classes.otherLinks}>
+                <Grid container align="center">
                      <Grid item xs={2} />
                   {otherLinks}
                     <Grid item xs={2} />

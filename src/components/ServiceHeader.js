@@ -149,6 +149,7 @@ class ServiceHeader extends Component {
 
   render() {
     const { classes, name, offeredIn, info, serDelLinks, logoSizes } = this.props;
+
     const { anchorEl, copied } = this.state;
     const windowGlobal = typeof window !== 'undefined' && window;
     const windowLocation = windowGlobal.location ? windowGlobal.location : {};
@@ -157,7 +158,7 @@ class ServiceHeader extends Component {
     // if (!info) return null;
     // if (!info.length > 0) return null;
 
-      let contactAddress;
+    let contactAddress;
     if (info) contactAddress = info.find((detail) => detail.contact_type === 'ADDRESS');
     let contactAddressValue = null;
     if (contactAddress) contactAddressValue = contactAddress.contact_value || null;
@@ -297,7 +298,7 @@ class ServiceHeader extends Component {
           </Card>
         </Grid>
         <Grid item xs={12} md={4} className={!isMobileOnly ? classes.deliveryLinkWrapper : classes.deliveryLinkWrapperMobile}>
-          <ServiceDeliveryLink serDelLinks={serDelLinks} />
+          <ServiceDeliveryLink  service_name={name} org_name={offeredIn} serDelLinks={serDelLinks} />
         </Grid>
       </Grid>
     );

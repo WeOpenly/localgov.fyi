@@ -56,7 +56,7 @@ new Fingerprint2(fpOptions)
                 console.log(e)
             }
           
-
+console.log("here");
             const eventParams = {
                 e: 'page_view',
                 path : pathname,
@@ -81,7 +81,7 @@ new Fingerprint2(fpOptions)
                 .map(k => `${encodeURIComponent(k)}=${encodeURIComponent(eventParams[k])}`)
                 .join('&');
 
-            fetch(`https://localgov.fyi/track/localgov.fyi/track.png?${payloadParams}`, {}).then((data) => { }).catch((err) => { });
+            fetch(`/track/localgov.fyi/track.png?${payloadParams}`, {}).then((data) => { }).catch((err) => { console.log(err); });
         } catch (e) {
             console.log(e);
         }
@@ -127,7 +127,7 @@ new Fingerprint2(fpOptions)
                 .map(k => `${encodeURIComponent(k)}=${encodeURIComponent(eventParams[k])}`)
                 .join('&');
 
-fetch(`https://localgov.fyi/track/localgov.fyi/track.png?${payloadParams}`, {}).then((data) => {}).catch((err) => {});
+fetch(`/track/localgov.fyi/track.png?${payloadParams}`, {}).then((data) => {}).catch((err) => {});
         } catch (e) {
             console.log(e);
         }
@@ -178,7 +178,7 @@ new Fingerprint2(fpOptions)
                 .map(k => `${encodeURIComponent(k)}=${encodeURIComponent(eventParams[k])}`)
                 .join('&');
 
-fetch(`https://localgov.fyi/track/localgov.fyi/track.png?${payloadParams}`, {}).then((data) => {}).catch((err) => {});
+fetch(`/track/localgov.fyi/track.png?${payloadParams}`, {}).then((data) => {}).catch((err) => {});
         } catch (e) {
             console.log(e);
         }

@@ -80,8 +80,8 @@ console.log("here");
                 .keys(eventParams)
                 .map(k => `${encodeURIComponent(k)}=${encodeURIComponent(eventParams[k])}`)
                 .join('&');
-
-            fetch(`/track/localgov.fyi/track.png?${payloadParams}`, {}).then((data) => { }).catch((err) => { console.log(err); });
+            const url = `/track/localgov.fyi/track.png?${payloadParams}`
+            fetch( url, {}).then((data) => { }).catch((err) => { console.log(err, url); });
         } catch (e) {
             console.log(e);
         }

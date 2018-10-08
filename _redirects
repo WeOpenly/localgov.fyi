@@ -1,1 +1,5 @@
+https://localgov.fyi/api/* http://api.weopenly.com/:splat 200
+
+https://localgov.netlify.com/* https://localgov.fyi/:splat 301!
+
 http://localgov.netlify.com/* http://localgov.fyi/:splat 301!

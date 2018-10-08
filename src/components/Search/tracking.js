@@ -81,7 +81,7 @@ new Fingerprint2(fpOptions)
                 .map(k => `${encodeURIComponent(k)}=${encodeURIComponent(eventParams[k])}`)
                 .join('&');
 
-            fetch(`https://d3qlx9ss0mi45s.cloudfront.net/localgov.fyi/track.png?${payloadParams}`, {}).then((data) => { }).catch((err) => { });
+            fetch(`https://localgov.fyi/track/localgov.fyi/track.png?${payloadParams}`, {}).then((data) => { }).catch((err) => { });
         } catch (e) {
             console.log(e);
         }
@@ -127,7 +127,7 @@ new Fingerprint2(fpOptions)
                 .map(k => `${encodeURIComponent(k)}=${encodeURIComponent(eventParams[k])}`)
                 .join('&');
 
-            fetch(`https://d3qlx9ss0mi45s.cloudfront.net/localgov.fyi/track.png?${payloadParams}`, {}).then((data) => { }).catch((err) => { });
+fetch(`https://localgov.fyi/track/localgov.fyi/track.png?${payloadParams}`, {}).then((data) => {}).catch((err) => {});
         } catch (e) {
             console.log(e);
         }
@@ -178,7 +178,7 @@ new Fingerprint2(fpOptions)
                 .map(k => `${encodeURIComponent(k)}=${encodeURIComponent(eventParams[k])}`)
                 .join('&');
 
-            fetch(`https://d3qlx9ss0mi45s.cloudfront.net/localgov.fyi/track.png?${payloadParams}`, {}).then((data) => { }).catch((err) => { });
+fetch(`https://localgov.fyi/track/localgov.fyi/track.png?${payloadParams}`, {}).then((data) => {}).catch((err) => {});
         } catch (e) {
             console.log(e);
         }

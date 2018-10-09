@@ -4,6 +4,7 @@ let Fingerprint2 = null;
 
 // track user events event types - seen , clicked seen type [pageview] clicked
 // type [suggestion, card(page item), external]
+const isProd = process.env.NODE_ENV !== `production`
 
 const windowGlobal = typeof window !== 'undefined' && window
 const fpOptions = {
@@ -75,7 +76,12 @@ export const trackView = (page_layout_type, viewing_entity_type, viewing_entity_
                     .keys(eventParams)
                     .map(k => `${encodeURIComponent(k)}=${encodeURIComponent(eventParams[k])}`)
                     .join('&');
-                const url = `https://localgov.fyi/track/track.png?${payloadParams}`;
+                if 
+                const url = `/track/track.png?${payloadParams}`;
+
+                if (!isProd){
+                    return;
+                }
 
                 fetch(url, {}).then((data) => {}).catch((err) => {
                     console.log(err, url);
@@ -125,7 +131,11 @@ export const trackInput = (input_type, text) => async(dispatch, getState) => {
                     .map(k => `${encodeURIComponent(k)}=${encodeURIComponent(eventParams[k])}`)
                     .join('&');
 
-                fetch(`/track/track.png?${payloadParams}`, {}).then((data) => {}).catch((err) => {});
+                if (!isProd) {
+                    return;
+                }
+
+                fetch(`/track.png?${payloadParams}`, {}).then((data) => {}).catch((err) => {});
             } catch (e) {
                 console.log(e);
             }
@@ -174,6 +184,10 @@ export const trackClick = (click_type, clicked_entity_type, clicked_entity_id, c
                     .keys(eventParams)
                     .map(k => `${encodeURIComponent(k)}=${encodeURIComponent(eventParams[k])}`)
                     .join('&');
+                
+                if (!isProd) {
+                    return;
+                }
 
                 fetch(`/track/track.png?${payloadParams}`, {}).then((data) => {}).catch((err) => {});
             } catch (e) {

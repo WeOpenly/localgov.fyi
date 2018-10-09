@@ -127,6 +127,10 @@ export function selectOrganization(organization) {
   return { type: types.SELECT_ORGANIZATION, organization };
 }
 
+export function toggleNotifyDialog(toggle){
+  return {type: types.TOGGLE_NOTIFY_DIALOG, toggle}
+}
+
 export const fetchSearchResults = async(dispatch, getState) => {
   const { input } = getState().search;
   dispatch(requestSearchResults());

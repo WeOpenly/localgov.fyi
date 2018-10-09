@@ -100,6 +100,10 @@ const styles = theme => ({
     // marginRight: -theme.spacing.unit,
     // borderLeft: '1px solid #e4e4e4',
   },
+  serviceActions:{
+    display: 'flex',
+    flexDirection: 'column'
+  },
   deliveryLinkWrapperMobile: {
     display: 'flex',
     flexDirection: 'column',
@@ -252,54 +256,65 @@ class ServiceHeader extends Component {
     });
 
 
+
     return (
-      <Grid container spacing={16}>
-        <Grid item xs={12} md={8} className={!isMobileOnly ? classes.main : classes.mainMobile}>
-          <Card className={classes.card}>
-            <CardContent>
+      <Grid container spacing={16} className={!isMobileOnly ? classes.main : classes.mainMobile}>
+        <Grid item xs={12} md={8}>
+          
+
               <div className={classes.cardTop}>
-            
                 <div className={classes.title}>
                   <Typography variant="display1">{name}</Typography>
                   <Typography variant="subheading" onClick={this.handleOrgClick} className={classes.in}>{offeredIn}</Typography>
                 </div>
+              </div>
+
+              <div className={classes.cardActions}>
+                {contactDetailButtons}
+              </div>
+ 
+        </Grid>
+        <Grid item xs={12} md={4}>
+              <div className={classes.serviceActions}>
                 <div>
-                    <Button variant="outlined" color="primary" onClick={this.handleShareClick} className={classes.menuButton}>
-                                  Share
+  <Button variant="outlined" color="primary" onClick={this.handleShareClick} className={classes.menuButton}>
+                  Share
                                 </Button>
                 </div>
-                <Menu
-                  id="simple-menu"
-                  anchorEl={anchorEl}
-                  open={Boolean(anchorEl)}
-                  onClose={this.handleClose}
-                >
-                  <CopyToClipboard text={shareLink} onCopy={this.handleCopy}>
-                    <MenuItem className={classes.menuItem}>
-                      <Typography>{copied ? 'Copied!' : 'Copy link'}</Typography>
-                    </MenuItem>
-                  </CopyToClipboard>
-                  <MenuItem onClick={this.handleClose} className={classes.menuItem}>
-                    <FacebookShareButton url={shareLink} className={classes.shareButton}>
-                      <Typography>Facebook</Typography>
-                    </FacebookShareButton>
-                  </MenuItem>
-                  <MenuItem onClick={this.handleClose} className={classes.menuItem}>
-                    <TwitterShareButton url={shareLink} className={classes.shareButton}>
-                      <Typography>Twitter</Typography>
-                    </TwitterShareButton>
-                  </MenuItem>
-                </Menu>
+              <div>
+              <ServiceDeliveryLink service_name={name} org_name={offeredIn} serDelLinks={serDelLinks} />
+              <Button variant="outlined" color="primary" onClick={this.handleShareClick} className={classes.menuButton}>
+                Notify Me
+                                </Button>
               </div>
-              <CardActions className={classes.cardActions}>
-                {contactDetailButtons}
-              </CardActions>
-            </CardContent>
-          </Card>
+  
+                  
+              </div>
+              <Menu
+                id="simple-menu"
+                anchorEl={anchorEl}
+                open={Boolean(anchorEl)}
+                onClose={this.handleClose}
+              >
+                <CopyToClipboard text={shareLink} onCopy={this.handleCopy}>
+                  <MenuItem className={classes.menuItem}>
+                    <Typography>{copied ? 'Copied!' : 'Copy link'}</Typography>
+                  </MenuItem>
+                </CopyToClipboard>
+                <MenuItem onClick={this.handleClose} className={classes.menuItem}>
+                  <FacebookShareButton url={shareLink} className={classes.shareButton}>
+                    <Typography>Facebook</Typography>
+                  </FacebookShareButton>
+                </MenuItem>
+                <MenuItem onClick={this.handleClose} className={classes.menuItem}>
+                  <TwitterShareButton url={shareLink} className={classes.shareButton}>
+                    <Typography>Twitter</Typography>
+                  </TwitterShareButton>
+                </MenuItem>
+              </Menu>
+
         </Grid>
-        <Grid item xs={12} md={4} className={!isMobileOnly ? classes.deliveryLinkWrapper : classes.deliveryLinkWrapperMobile}>
-          <ServiceDeliveryLink  service_name={name} org_name={offeredIn} serDelLinks={serDelLinks} />
-        </Grid>
+        
       </Grid>
     );
   }

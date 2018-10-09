@@ -1,6 +1,7 @@
 import * as types from "./ActionTypes";
 
 const initialState = {
+  showNotifyDialog: false,
   locationLoading: true,
   location: {},
   locationError: null,
@@ -26,6 +27,11 @@ const initialState = {
 
 export function search(state = initialState, action) {
   switch (action.type) {
+    case types.TOGGLE_NOTIFY_DIALOG:
+      return {
+        ...state,
+        showNotifyDialog: action.data.toggle,
+      }
     case types.LOCATION_REQUEST:
       return {
         ...state,

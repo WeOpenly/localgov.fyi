@@ -125,9 +125,12 @@ class ServiceDetail extends React.Component {
             org_name,
             service_del_links,
             otherServices,
-            logoSizes
+            logoSizes,
         } = this.props.pathContext.data;
-        const {classes} = this.props;
+
+        const { showNotifyDialog } = this.props.search;
+
+        const { classes, } = this.props;
         
         let serLogoSvg = null
         if (logoSizes && logoSizes.sizes) {
@@ -309,11 +312,6 @@ class ServiceDetail extends React.Component {
                         <Grid item xs={12}>
                             <Paper className={classes.cards}>
                                 <Grid container spacing={8}>
-                                    {/*<Grid item xs={2} sm={1}>
-                                        <div className={classes.iconWrapper}>
-                                            <InfoOutline className={classes.icon} />
-                                        </div>
-                                    </Grid>*/}
                                     <Grid item xs={10} sm={11}>
                                         <div className={classes.cardContent}>
                                             <Typography variant="subheading" gutterBottom>

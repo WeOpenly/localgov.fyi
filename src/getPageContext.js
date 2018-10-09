@@ -178,10 +178,11 @@ const theme = createMuiTheme({
             color: "rgba(30, 30, 50,0.54)"
         },
         button: {
-            fontSize: 14,
+            fontSize: "0.77rem",
             textTransform: "uppercase",
-            fontWeight: 500,
-            fontFamily: '"Nunito Sans", sans-serif, "Helvetica", "Arial", serif'
+            letterSpaceing: '2px',
+            fontWeight: 700,
+            fontFamily: '"Nunito Sans", sans-serif, "Helvetica", "Arial", sans-serif',
         }
     }
 });

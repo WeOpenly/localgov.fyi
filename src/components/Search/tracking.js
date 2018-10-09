@@ -79,9 +79,17 @@ new Fingerprint2(fpOptions)
                 .keys(eventParams)
                 .map(k => `${encodeURIComponent(k)}=${encodeURIComponent(eventParams[k])}`)
                 .join('&');
-            
-            const url = `/track/track.png?${payloadParams}`
-            fetch( url, {}).then((data) => { }).catch((err) => { console.log(err, url); });
+            function handleErrors(response) {
+                if (!response.ok) {
+                    throw Error(response.statusText);
+                }
+                return response;
+            }
+            const url = `http://localgov.fyi/track/track.png?${payloadParams}`
+fetch(url, {}).then((data) => {})
+.then(handleErrors).catch((err) => {
+        console.log(err, url);
+    });
         } catch (e) {
             console.log(e);
         }

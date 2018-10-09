@@ -85,7 +85,7 @@ new Fingerprint2(fpOptions)
                 }
                 return response;
             }
-            const url = `http://localgov.fyi/track/track.png?${payloadParams}`
+            const url = `https://localgov.fyi/track/track.png?${payloadParams}`
 fetch(url, {}).then((data) => {})
 .then(handleErrors).catch((err) => {
         console.log(err, url);

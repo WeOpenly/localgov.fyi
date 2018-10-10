@@ -23,23 +23,29 @@ import SvgIcon from '@material-ui/core/SvgIcon';
 import MoreVert from '@material-ui/icons/MoreVert';
 import withRoot from '../withRoot';
 import ServiceDeliveryLink from './ServiceDeliveryLink';
+import ServiceNotifyDialog from './ServiceNotifyDialog';
 
 import {trackClick} from "./Search/tracking";
-
+import {toggleNotifyDialog} from './Search/actions';
 
 const styles = theme => ({
-  card: {
-    boxShadow: '0 0 0 0',
-    paddingTop: theme.spacing.unit *2 ,
-    paddingLeft: theme.spacing.unit *2,
-    paddingRight: theme.spacing.unit *2,
-    paddingBottom : theme.spacing.unit * 3,
-    border: `1px solid ${theme.palette.primary['100']}`,
-  },
   main: {
     // marginRight: theme.spacing.unit,
+    boxShadow: '0 0 0 0',
+    paddingTop: theme.spacing.unit * 2,
+    paddingLeft: theme.spacing.unit * 2,
+    paddingRight: theme.spacing.unit * 2,
+    paddingBottom: theme.spacing.unit * 2,
+    margin: '1px',
+    border: `1px solid ${theme.palette.primary['100']}`,
   },
   mainMobile: {
+    boxShadow: '0 0 0 0',
+    paddingTop: theme.spacing.unit * 2,
+    paddingLeft: theme.spacing.unit * 2,
+    paddingRight: theme.spacing.unit * 2,
+    paddingBottom: theme.spacing.unit * 2,
+    border: `1px solid ${theme.palette.primary['100']}`,
   },
   cardTop: {
     display: 'flex',
@@ -57,6 +63,7 @@ const styles = theme => ({
     color: 'gray',
     cursor: 'pointer',
   },
+
   menuButton: {
     marginTop: theme.spacing.unit * -1,
     marginRight: theme.spacing.unit * -1,
@@ -72,8 +79,6 @@ const styles = theme => ({
   },
   cardActions: {
  
-    marginLeft: theme.spacing.unit * -2,
-    marginBottom: theme.spacing.unit * -3,
   },
   buttonContent: {
     display: 'flex',
@@ -84,12 +89,24 @@ const styles = theme => ({
     width: theme.spacing.unit *2,
     height: theme.spacing.unit *2
   },
+notifyButton:{
+  marginLeft: theme.spacing.unit,
+},
   svgIcon : {
     width: 18,
     color: theme.palette.primary['400']
   },
   contactIcons : {
     marginLeft: theme.spacing.unit
+  },
+  serviceNotify:{
+    display: 'flex',
+    justifyContent: 'space-between'
+  },
+  serviceShare: {
+    marginBottom: theme.spacing.unit*2,
+    marginTop: theme.spacing.unit,
+    marginRight: theme.spacing.unit,
   },
   deliveryLinkWrapper: {
     display: 'flex',
@@ -102,7 +119,8 @@ const styles = theme => ({
   },
   serviceActions:{
     display: 'flex',
-    flexDirection: 'column'
+    flexDirection: 'column',
+    alignItems : 'flex-end',
   },
   deliveryLinkWrapperMobile: {
     display: 'flex',
@@ -127,6 +145,11 @@ class ServiceHeader extends Component {
     this.handleCopy = this.handleCopy.bind(this);
     this.handleOrgClick = this.handleOrgClick.bind(this);
     this.trackClickSocialIcon = this.trackClickSocialIcon.bind(this);
+    this.handleNotifyClick = this.handleNotifyClick.bind(this);
+  }
+
+  handleNotifyClick(){
+    this.props.openNotifyDialog(true);
   }
 
   handleShareClick(event) {
@@ -259,6 +282,7 @@ class ServiceHeader extends Component {
 
     return (
       <Grid container spacing={16} className={!isMobileOnly ? classes.main : classes.mainMobile}>
+        <ServiceNotifyDialog ser_name={name} org_id={this.props.orgID}/>
         <Grid item xs={12} md={8}>
           
 
@@ -276,19 +300,21 @@ class ServiceHeader extends Component {
         </Grid>
         <Grid item xs={12} md={4}>
               <div className={classes.serviceActions}>
-                <div>
+                <div className={classes.serviceShare}>
   <Button variant="outlined" color="primary" onClick={this.handleShareClick} className={classes.menuButton}>
                   Share
                                 </Button>
                 </div>
-              <div>
-              <ServiceDeliveryLink service_name={name} org_name={offeredIn} serDelLinks={serDelLinks} />
-              <Button variant="outlined" color="primary" onClick={this.handleShareClick} className={classes.menuButton}>
-                Notify Me
-                                </Button>
+              <div className={classes.serviceNotify}>
+              <div className={classes.serDelLink}>
+                <ServiceDeliveryLink service_name={name} org_name={offeredIn} serDelLinks={serDelLinks} />
               </div>
-  
-                  
+              <div className={classes.serDelLink}>
+                <Button variant="outlined" color="primary" onClick={this.handleNotifyClick} className={classes.notifyButton}>
+                  Notify Me
+                </Button>
+              </div>
+              </div>    
               </div>
               <Menu
                 id="simple-menu"
@@ -324,6 +350,9 @@ const mapDispatchToProps = (dispatch) => {
   return {
     trackClick: (click_type, resultType, id, title, listIndex) => {
       dispatch(trackClick(click_type, resultType, id, title, listIndex));
+    },
+    openNotifyDialog: () => {
+      dispatch(toggleNotifyDialog(true));
     }
   }
 }

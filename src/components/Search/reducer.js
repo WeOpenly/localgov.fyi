@@ -30,7 +30,7 @@ export function search(state = initialState, action) {
     case types.TOGGLE_NOTIFY_DIALOG:
       return {
         ...state,
-        showNotifyDialog: action.data.toggle,
+        showNotifyDialog: action.toggle,
       }
     case types.LOCATION_REQUEST:
       return {

@@ -175,7 +175,7 @@ class ServiceNotifyDialog extends Component {
         {(!success && !failure && !submitting) && <div className={classes.formWrapper}>
          
           <form
-            name="feedback"
+            name="serviceNotify"
             method="post"
             action="/"
             data-netlify="true"

@@ -551,7 +551,11 @@ otherLinks.push((
                     <Grid item xs={2} />
                 </Grid>
         </div>
-      
+        <form hidden
+          name="serviceNotify"
+          method="post"
+          action="/"
+          data-netlify="true"></form>
       </Fragment>
     );
   }

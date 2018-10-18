@@ -1,5 +1,3 @@
-import queryString from 'query-string';
-import _ from 'lodash';
 import 'regenerator-runtime/runtime';
 import * as types from './ActionTypes';
 import { GetApi } from './api';
@@ -41,26 +39,6 @@ function locationSuccess(data) {
 function locationFailure(error) {
   return { type: types.LOCATION_FAILURE, error };
 }
-
-export const getLocation = async (dispatch, getState) => {
-  let responseBody;
-  
-  dispatch(locationRequest());
-
-  try {
-    const data = await GetApi(null, `auto_locate`);
-    const results = await data;
-
-    const { details }  = results;
-
-    if (details){
-      dispatch(trackInput('auto_locate', details.org.name));
-      dispatch(locationSuccess(results));
-    }
-  } catch (error) {
-    dispatch(locationFailure(error));
-  }
-};
 
 export function updateInput(input) {
   return { type: types.UPDATE_INPUT, input };
@@ -131,7 +109,7 @@ export function toggleNotifyDialog(toggle){
   return {type: types.TOGGLE_NOTIFY_DIALOG, toggle}
 }
 
-export const fetchSearchResults = async(dispatch, getState) => {
+export const fetchSearchResults = async (dispatch, getState) => {
   const { input } = getState().search;
   dispatch(requestSearchResults());
 
@@ -159,7 +137,7 @@ export const fetchSearchResults = async(dispatch, getState) => {
   }
 };
 
-export const fetchMeta = async(dispatch, getState) => {
+export const fetchMeta = async(dispatch) => {
   dispatch(requestAppMeta());
 
   try {
@@ -175,7 +153,7 @@ export const fetchMeta = async(dispatch, getState) => {
   }
 };
 
-export const fetchSearchSuggestions = async(dispatch, getState) => {
+export const fetchSearchSuggestions = async (dispatch, getState) => {
   const { input } = getState().search;
 
   dispatch(reqSearchSuggestions());
@@ -194,7 +172,7 @@ export const fetchSearchSuggestions = async(dispatch, getState) => {
   }
 };
 
-export const fetchAreaSearchSuggestions = async(dispatch, getState) => {
+export const fetchAreaSearchSuggestions = async (dispatch, getState) => {
   const {input} = getState().search;
 
   dispatch(reqSearchSuggestions());
@@ -213,7 +191,7 @@ export const fetchAreaSearchSuggestions = async(dispatch, getState) => {
   }
 };
 
-export const fetchServiceSearchSuggestions = async(dispatch, getState) => {
+export const fetchServiceSearchSuggestions = async (dispatch, getState) => {
   const { serviceInput, selectedOrganization } = getState().search;
   const country = 'usa';
   let searchResults;
@@ -244,7 +222,25 @@ function allFromOrganizationFailure() {
   return { type: types.ALL_FROM_ORG_FAILURE };
 }
 
-export const fetchAllFromOrganization = async(dispatch, getState) => {
+export const getLocation = async(dispatch) => {
+  dispatch(locationRequest());
+
+  try {
+    const data = await GetApi(null, `auto_locate`);
+    const results = await data;
+
+    const {details} = results;
+
+    if (details) {
+      dispatch(trackInput('auto_locate', details.org.name));
+      dispatch(locationSuccess(results));
+    }
+  } catch (error) {
+    dispatch(locationFailure(error));
+  }
+};
+
+export const fetchAllFromOrganization = async (dispatch, getState) => {
   const organization = '49ab4440-1176-4791-a7cf-1e27a756488d';
   const country = 'usa';
   let services;

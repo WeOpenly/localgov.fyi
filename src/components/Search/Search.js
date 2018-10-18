@@ -18,9 +18,9 @@ import NewSuggestBox from './NewSuggestBox';
 import HeaderSuggestBox from './HeaderSuggestBox';
 import withRoot from '../../withRoot';
 
-// import { fetchMeta, setMetaFromUrl,  toggleSearchResultLayout } from "./actions";
 
-const windowGlobal = typeof window !== 'undefined' && window
+
+const windowGlobal = typeof window !== 'undefined' ? window : null
 
 const styles = theme => ({
   combinedSearch: {

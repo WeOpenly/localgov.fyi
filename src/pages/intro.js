@@ -1,3 +1,6 @@
+/*global encode b:true*/
+/*eslint no-undef: "error"*/
+
 import React, { Component } from 'react';
 import Link from 'gatsby-link';
 

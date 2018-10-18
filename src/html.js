@@ -22,7 +22,7 @@ const JsonLd = ({ data }) =>
     dangerouslySetInnerHTML={{ __html: JSON.stringify(data) }}
   />;
 
-module.exports = class HTML extends React.Component {
+export default class HTML extends React.Component {
   render() {
     let css
     if (process.env.NODE_ENV === `production`) {

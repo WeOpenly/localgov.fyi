@@ -1,19 +1,19 @@
 import 'babel-polyfill';
 
 import React from 'react'
-import {Router} from 'react-router-dom'
 import {Provider} from 'react-redux'
 
 import reduxCreateStore from './src/state/createStore';
 
-exports.replaceRouterComponent = ({ history }) => {
+export const wrapRootElement = ({ element }) => {
   const store = reduxCreateStore();
 
-  const ConnectedRouterWrapper = ({ children }) => (
+  const ConnectedRouterWrapper = (
     <Provider store={store}>
-      <Router history={history}>{children}</Router>
+      {element}
     </Provider>
   )
 
   return ConnectedRouterWrapper
 }
+

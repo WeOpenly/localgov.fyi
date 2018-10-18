@@ -13,7 +13,7 @@ import Divider from '@material-ui/core/Divider';
 
 import withRoot from '../withRoot';
 import {trackInput} from "./Search/tracking";
-import { toggleNotifyDialog } from './Search/actions';
+import { toggleNotifyDialog } from './Search/actions.js';
 
 
 const styles = theme => ({

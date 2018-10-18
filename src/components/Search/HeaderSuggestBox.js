@@ -24,9 +24,9 @@ import parse from "autosuggest-highlight/parse";
 import Autosuggest from "react-autosuggest";
 
 import withRoot from '../../withRoot';
-import {fetchSearchSuggestions, clearInput, updateInput, setSearchSuggesitions, fetchSearchResults} from "./actions";
+import {fetchSearchSuggestions, clearInput, updateInput, setSearchSuggesitions, fetchSearchResults} from "./actions.js";
 
-import { trackInput, trackClick} from './tracking';
+import { trackInput, trackClick} from './tracking.js';
 
 const styles = theme => ({
     wrapper: {

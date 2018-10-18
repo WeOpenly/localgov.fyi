@@ -2,9 +2,9 @@ import React from "react";
 import Grid from '@material-ui/core/Grid';
 import { withStyles } from '@material-ui/core/styles';
 import {isMobileOnly} from 'react-device-detect';
-import Share from "../components/Share";
-import HeaderWithSearch from '../components/HeaderWithSearch';
-import Footer from '../components/Footer';
+import Share from "./Share";
+import HeaderWithSearch from './HeaderWithSearch';
+import Footer from './Footer';
 import withRoot from '../withRoot';
 
 const styles = theme => ({
@@ -56,7 +56,7 @@ class DetailTemplate extends React.Component {
           <Grid container spacing={0}>
             <Grid item xs={1} />
             <Grid item xs={10}>
-              {this.props.children()}
+              {this.props.children}
             </Grid>
             <Grid item xs={1} />
           </Grid>

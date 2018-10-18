@@ -101,7 +101,7 @@ class SignIn extends Component {
     label,
     type,
     meta: { touched, error },
-    ...custom,
+    ...custom
   }) {
     return (
       <TextField

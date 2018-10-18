@@ -9,6 +9,7 @@ import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
 
 import ServiceCard from './ServiceCard';
+import {trackClick} from "./Search/tracking";
 
 import withRoot from '../withRoot';
 

@@ -1,3 +1,5 @@
+/*global event*/
+/*eslint no-restricted-globals: ["error", "event"]*/
 import {UAParser} from "ua-parser-js";
 
 let Fingerprint2 = null;

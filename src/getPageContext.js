@@ -9,7 +9,7 @@ import {createMuiTheme, createGenerateClassName} from '@material-ui/core/styles'
 const theme = createMuiTheme({
     palette: {
         primary: {
-            "50": "#f0f3ff",
+            "50": "#f9fafc",
             "100": "#EBE5FF",
             "200": "#AB93FF",
             "300": "#8968FF",

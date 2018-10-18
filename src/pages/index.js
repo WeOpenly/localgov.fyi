@@ -5,7 +5,7 @@ import Link, { navigateTo } from 'gatsby-link';
 import Img from 'gatsby-image';
 import Helmet from "react-helmet";
 import { isMobileOnly } from 'react-device-detect';
-
+import { graphql} from "gatsby"
 import { withStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import Grid from '@material-ui/core/Grid';
@@ -14,9 +14,10 @@ import Paper from '@material-ui/core/Paper';
 import Button from '@material-ui/core/Button';
 import Divider from '@material-ui/core/Divider';
 import CircularProgress from '@material-ui/core/CircularProgress';
+import Layout from "../components/layout";
 
 import withRoot from '../withRoot';
-import Search from '../components/Search/index';
+import Search from '../components/Search/Search';
 import ServiceGrid from '../components/ServiceGrid';
 import { getLocation } from '../components/Search/actions';
 import {trackView, trackClick} from "../components/Search/tracking";
@@ -346,11 +347,12 @@ class Index extends React.Component {
     this.clickSuggestion = this.clickSuggestion.bind(this);
     this.clickDiscoverMore = this.clickDiscoverMore.bind(this);
     this.clickGridItem = this.clickGridItem.bind(this);
+    console.log(this.props.data);
     const backgroundImages = [
       <Img
         title="United States Capitol"
         alt="Photo by Andy Feliciotti (@someguy) on Unsplash"
-        sizes={this.props.data.capitol.sizes}
+        sizes={this.props.data.capitol.childImageSharp.fluid}
         style={{
           position: 'absolute',
           left: 0,
@@ -363,7 +365,7 @@ class Index extends React.Component {
       <Img
         title="Philadelphia City Hall"
         alt="Photo by BruceEmmerling on Pixabay"
-        sizes={this.props.data.philadelphia.sizes}
+        sizes={this.props.data.philadelphia.childImageSharp.fluid}
         style={{
           position: 'absolute',
           left: 0,
@@ -376,7 +378,7 @@ class Index extends React.Component {
       <Img
         title="Los Angeles City Hall"
         alt="Photo from Pixabay"
-        sizes={this.props.data.losAngeles.sizes}
+        sizes={this.props.data.losAngeles.childImageSharp.fluid}
         style={{
           position: 'absolute',
           left: 0,
@@ -389,7 +391,7 @@ class Index extends React.Component {
       <Img
         title="San Francisco City Hall"
         alt="Photo by Hoona9091 on Pixabay"
-        sizes={this.props.data.sanFrancisco.sizes}
+        sizes={this.props.data.sanFrancisco.childImageSharp.fluid}
         style={{
           position: 'absolute',
           left: 0,
@@ -469,6 +471,7 @@ otherLinks.push((
     
 
     return (
+      <Layout location={this.props.location} >
       <Fragment>
         <Helmet defaultTitle={`Localgov.fyi | Search for local government organizations, and services`} titleTemplate={`%s | Localgov.fyi`}>
           <meta name="og:type" content="website" />
@@ -594,6 +597,7 @@ otherLinks.push((
           </p>
           </form>
       </Fragment>
+      </Layout>
     );
   }
 }
@@ -604,25 +608,33 @@ Index.propTypes = {
 
 export const query = graphql`
   query indexImageQuery {
-    capitol: imageSharp(id: { regex: "/capitol/"}) {
-      sizes(quality: 100) {
-        ...GatsbyImageSharpSizes
+    capitol: file(relativePath: { regex: "/capitol/"}) {
+        childImageSharp {
+      fluid(maxWidth: 1000) {
+        ...GatsbyImageSharpFluid
       }
     }
-    philadelphia: imageSharp(id: { regex: "/philadelphia/"}) {
-      sizes(quality: 100) {
-        ...GatsbyImageSharpSizes
+    }
+    philadelphia: file(relativePath: { regex: "/philadelphia/"}) {
+      childImageSharp {
+      fluid(maxWidth: 1000) {
+        ...GatsbyImageSharpFluid
       }
     }
-    losAngeles: imageSharp(id: { regex: "/losAngeles/"}) {
-      sizes(quality: 100) {
-        ...GatsbyImageSharpSizes
+    }
+    losAngeles: file(relativePath: { regex: "/losAngeles/"}) {
+      childImageSharp {
+      fluid(maxWidth: 1000) {
+        ...GatsbyImageSharpFluid
       }
     }
-    sanFrancisco: imageSharp(id: { regex: "/sanFrancisco/"}) {
-      sizes(quality: 100) {
-        ...GatsbyImageSharpSizes
+    }
+    sanFrancisco: file(relativePath: { regex: "/sanFrancisco/"}) {
+      childImageSharp {
+      fluid(maxWidth: 1000) {
+        ...GatsbyImageSharpFluid
       }
+    }
     }
   }
 `;

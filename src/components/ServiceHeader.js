@@ -26,7 +26,7 @@ import ServiceDeliveryLink from './ServiceDeliveryLink';
 import ServiceNotifyDialog from './ServiceNotifyDialog';
 
 import {trackClick} from "./Search/tracking";
-import {toggleNotifyDialog} from './Search/actions';
+import {toggleNotifyDialog} from './Search/actions.js';
 
 const styles = theme => ({
   main: {

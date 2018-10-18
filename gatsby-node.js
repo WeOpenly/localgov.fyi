@@ -7,8 +7,8 @@ const slash = require(`slash`)
 // Implement the Gatsby API “createPages”. This is called after the Gatsby
 // bootstrap is finished so you have access to any information necessary to
 // programmatically create pages.
-exports.createPages = ({graphql, boundActionCreators}) => {
-  const {createPage} = boundActionCreators
+exports.createPages = ({graphql, actions}) => {
+  const {createPage} = actions
 
   return new Promise((resolve, reject) => {
     // The “graphql” function allows us to run arbitrary queries against this
@@ -208,7 +208,8 @@ allLogos: allFile (filter : {
   })
 }
 
-exports.modifyBabelrc = ({ babelrc }) => ({
-  ...babelrc,
-  plugins: babelrc.plugins.concat(['transform-regenerator']),
-})
+// exports.onCreateBabelConfig = ({ actions}) => {
+//   actions.setBabelPlugin({
+//     name: `@babel/plugin-transform-regenerator`,
+//   })
+// }

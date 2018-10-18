@@ -1,7 +1,6 @@
 import React from "react"
-import * as PropTypes from "prop-types"
 import { connect } from "react-redux";
-import Link  from 'gatsby-link';
+
 import Helmet from "react-helmet";
 
 import { withStyles } from '@material-ui/core/styles';
@@ -11,6 +10,7 @@ import Typography from '@material-ui/core/Typography';
 import withRoot from '../withRoot';
 import OrgHeader from '../components/OrgHeader';
 import ChipFilter from '../components/ChipFilter';
+import DetailTemplate from '../components/detailTemplate';
 // import MemberListItem from '../components/MemberListItem';
 import ServiceCard from '../components/ServiceCard';
 import { trackView, trackClick } from "../components/Search/tracking";
@@ -60,13 +60,13 @@ class OrganizationDetail extends React.Component {
 
   componentDidMount() {
     const { dispatch } = this.props;
-    const { id, name } = this.props.pathContext.data;
+const {id, name} = this.props.pageContext.data;
     dispatch(trackView('entity_detail', 'organization', id, name));
   }
 
   render() {
-    const { id, services, members, contact_details, name  } = this.props.pathContext.data;
-    const {logoSizes} = this.props.pathContext;
+    const { id, services, contact_details, name } = this.props.pageContext.data;
+    const { logoSizes } = this.props.pageContext;
     
     let orgLogoSvg = null
     if (logoSizes && logoSizes.sizes){
@@ -75,9 +75,12 @@ class OrganizationDetail extends React.Component {
 
     const { classes } = this.props;
     let contactDetailComponent = null;
-    let memberListComp = null;
-    let parent = services.length && services[services.length - 1].org || '';
-    parent = parent.name === name ? {} : parent;
+    let parent ='';
+    if (services.length && services[services.length - 1].org){
+        parent = services.length && services[services.length - 1].org;
+      parent = parent.name === name ? {} : parent;
+    }
+
 
 
       contactDetailComponent = (
@@ -105,23 +108,10 @@ class OrganizationDetail extends React.Component {
         }
       })
 
-    // if (members.length > 0) {
-    //   memberListComp = (
-    //     <Grid container spacing={8}>
-    //           <Typography variant="subheading" component="h4" gutterBottom>
-    //                 Contact Details
-    //       </Typography>
-    //       <Grid item xs={12} sm={12}>
-    //         <br/>
-    //         <HorizontalList list={members} component={MemberListItem}/>
-    //       </Grid>
-    //     </Grid>
-    //   )
-    // }
+
     
     let allServiceList = [];
     if (services.length > 0) {
-      // console.log('_services', services);
 
       services.map((detailsAtLevel, index) => {
         let serviceListComp = null;
@@ -201,6 +191,7 @@ class OrganizationDetail extends React.Component {
         if (serviceListComp && serCards.length){
             allServiceList.push(serviceListComp)
         }
+        return null;
       });
     }
 
@@ -213,6 +204,7 @@ class OrganizationDetail extends React.Component {
     }
 
     return (
+      <DetailTemplate>
       <Grid container spacing={16}>
         <Helmet>
           <title>{`${name} info, contact details and services | Localgov.fyi`}</title>
@@ -249,6 +241,7 @@ class OrganizationDetail extends React.Component {
           </Grid>
         </Grid>
       </Grid>
+        </DetailTemplate>
     );
   }
 }

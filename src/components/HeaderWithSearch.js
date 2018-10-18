@@ -14,7 +14,7 @@ import CardContent from '@material-ui/core/CardContent';
 import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
 
-import Search from './Search/index';
+import Search from './Search/Search';
 // import Feedback from './Feedback';
 import withRoot from '../withRoot';
 

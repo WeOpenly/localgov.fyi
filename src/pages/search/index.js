@@ -18,7 +18,7 @@ import NoResults from '../../components/NoResults';
 import withRoot from '../../withRoot';
 
 import { trackView } from "../../components/Search/tracking";
-import { updateInput, fetchSearchResults } from '../../components/Search/actions';
+import { updateInput, fetchSearchResults } from '../../components/Search/actions.js';
 
 const styles = theme => ({
     root: {

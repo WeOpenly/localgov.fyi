@@ -16,6 +16,7 @@ import IconButton from '@material-ui/core/IconButton';
 
 import KeyboardBackspace from '@material-ui/icons/KeyboardBackspace';
 
+import DetailTemplate from '../components/detailTemplate';
 import ServiceHeader from '../components/ServiceHeader';
 import AddressGoogleMap from '../components/AddressGoogleMap';
 import OtherServices from '../components/OtherServices';
@@ -103,7 +104,7 @@ class ServiceDetail extends React.Component {
 
     componentDidMount() {
         const { dispatch } = this.props;
-        const { id, name } = this.props.pathContext.data;
+        const { id, name } = this.props.pageContext.data;
         dispatch(trackView('entity_detail', 'service', id, name));
     }
 
@@ -119,27 +120,19 @@ class ServiceDetail extends React.Component {
             alllocations,
             alltimings,
             allfaq,
-            allOrgs,
-            allMems,
             org_id,
             org_name,
             service_del_links,
             otherServices,
             logoSizes,
-        } = this.props.pathContext.data;
+        } = this.props.pageContext.data;
 
-        const { showNotifyDialog } = this.props.search;
-
-        const { classes, } = this.props;
+        const { classes } = this.props;
         
         let serLogoSvg = null
         if (logoSizes && logoSizes.sizes) {
             serLogoSvg = logoSizes.sizes
         }
-
-
-        const containerSize = 12;
-        const space = 8;
 
         let timingList = null;
         if (alltimings.length > 0) {
@@ -279,6 +272,9 @@ class ServiceDetail extends React.Component {
 
         const someDetails = description || price || timingList || formList || stepList || qaList || locList;
         return (
+            <DetailTemplate>
+
+         
             <Grid container spacing={16} className={classes.container}>
                 <Helmet>
                     <title>{`${name} service offered in ${org_name} | Localgov.fyi`} </title>
@@ -292,8 +288,8 @@ class ServiceDetail extends React.Component {
                     <meta property="og:description" content={`Forms, Price, Timings and Local Government Service Contact Details for ${name} offered in ${org_name} | Localgov.fyi`}  />
                     <JsonLd data={jsonLd} />
                 </Helmet>
-                {this.props.history.length > 2 && !isMobileOnly ? (
-                    <IconButton variant="outlined" aria-label="goback" onClick={() => this.props.history.goBack()} className={classes.button}>
+                    {(windowGlobal && window.history.length > 2)  && !isMobileOnly ? (
+                        <IconButton variant="outlined" aria-label="goback" onClick={() => window.history.back()} className={classes.button}>
                         <KeyboardBackspace />
                     </IconButton>
                 ) : null }
@@ -430,6 +426,7 @@ class ServiceDetail extends React.Component {
                     />
                 </Grid>
             </Grid>
+            </DetailTemplate>
         )
     }
 }

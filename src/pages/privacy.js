@@ -8,11 +8,10 @@ import AppBar from '@material-ui/core/AppBar';
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 
-import Search from '../components/Search';
+import Search from '../components/Search/Search';
 // import Feedback from '../components/Feedback';
 import withRoot from '../withRoot';
 
-import {trackClick} from "../components/Search/tracking";
 
 const styles = theme => ({
   container: {

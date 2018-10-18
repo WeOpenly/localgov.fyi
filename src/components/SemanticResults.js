@@ -7,8 +7,10 @@ import Button from '@material-ui/core/Button';
 import Card from '@material-ui/core/Card';
 import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper';
-
+import ListItem from '@material-ui/core/ListItem';
+import ListItemText from '@material-ui/core/ListItemText';
 import Typography from '@material-ui/core/Typography';
+import Icon from '@material-ui/core/Icon';
 
 // import OrgDetailLite from "./OrgDetailLite";
 import OrgHeader from './OrgHeader';

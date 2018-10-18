@@ -32,9 +32,9 @@ export function getCookie(name) {
 }
 
 
-// const BACKEND = 'http://127.0.0.1:8090/dashboard/api';
+const BACKEND = 'http://127.0.0.1:8090/dashboard/api';
 // console.log(BACKEND);
-let BACKEND = '/api'
+// let BACKEND = '/api'
 
 export function GetApi(lang = undefined, endPoint, headers = {}) {
 

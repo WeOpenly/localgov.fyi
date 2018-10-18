@@ -24,12 +24,14 @@ import MoreVert from '@material-ui/icons/MoreVert';
 import withRoot from '../withRoot';
 import ServiceDeliveryLink from './ServiceDeliveryLink';
 import ServiceNotifyDialog from './ServiceNotifyDialog';
+import SaveButton from '../components/Profile/SaveButton';
 
-import {trackClick} from "./Search/tracking";
-import {toggleNotifyDialog} from './Search/actions';
+import {trackClick} from "./common/tracking";
+import {toggleNotifyDialog} from './Search/actions.js';
+import {isLoggedIn} from './Account/Auth';
 
 const styles = theme => ({
-  main: {
+  service_header_main: {
     // marginRight: theme.spacing.unit,
     boxShadow: '0 0 0 0',
     paddingTop: theme.spacing.unit * 2,
@@ -39,7 +41,7 @@ const styles = theme => ({
     margin: '1px',
     border: `1px solid ${theme.palette.primary['100']}`,
   },
-  mainMobile: {
+service_header_mainMobile : {
     boxShadow: '0 0 0 0',
     paddingTop: theme.spacing.unit * 2,
     paddingLeft: theme.spacing.unit * 2,
@@ -47,68 +49,68 @@ const styles = theme => ({
     paddingBottom: theme.spacing.unit * 2,
     border: `1px solid ${theme.palette.primary['100']}`,
   },
-  cardTop: {
+service_header_cardTop : {
     display: 'flex',
     justifyContent: 'space-between',
     marginRight: -theme.spacing.unit,
     marginBottom: theme.spacing.unit * -2,
   },
-  logoName: {
+service_header_logoName : {
     display: 'flex',
   },
-  title: {
+service_header_title : {
     // display: 'flex',
   },
-  in: {
+service_header_in : {
     color: 'gray',
     cursor: 'pointer',
   },
 
-  menuButton: {
+service_header_menuButton : {
     marginTop: theme.spacing.unit * -1,
     marginRight: theme.spacing.unit * -1,
   },
-  menuItem: {
+service_header_menuItem : {
     display: 'flex',
     justifyContent: 'center',
   },
-  shareButton: {
+service_header_shareButton : {
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
   },
-  cardActions: {
+service_header_cardActions : {
  
   },
-  buttonContent: {
+service_header_buttonContent : {
     display: 'flex',
     alignItems: 'center',
   },
-  contactButton : {
+service_header_contactButton : {
     marginTop : theme.spacing.unit * 2,
     width: theme.spacing.unit *2,
     height: theme.spacing.unit *2
   },
-notifyButton:{
+service_header_notifyButton : {
   marginLeft: theme.spacing.unit,
 },
-  svgIcon : {
+service_header_svgIcon : {
     width: 18,
     color: theme.palette.primary['400']
   },
-  contactIcons : {
+service_header_contactIcons : {
     marginLeft: theme.spacing.unit
   },
-  serviceNotify:{
+service_header_serviceNotify : {
     display: 'flex',
     justifyContent: 'space-between'
   },
-  serviceShare: {
+service_header_serviceShare : {
     marginBottom: theme.spacing.unit*2,
     marginTop: theme.spacing.unit,
     marginRight: theme.spacing.unit,
   },
-  deliveryLinkWrapper: {
+service_header_deliveryLinkWrapper : {
     display: 'flex',
     flexDirection: 'column',
     justifyContent: 'center',
@@ -117,12 +119,16 @@ notifyButton:{
     // marginRight: -theme.spacing.unit,
     // borderLeft: '1px solid #e4e4e4',
   },
-  serviceActions:{
+  svgIcon:{
+ width: 18,
+    color: theme.palette.primary['400']
+  },
+service_header_serviceActions : {
     display: 'flex',
     flexDirection: 'column',
     alignItems : 'flex-end',
   },
-  deliveryLinkWrapperMobile: {
+service_header_deliveryLinkWrapperMobile : {
     display: 'flex',
     flexDirection: 'column',
     justifyContent: 'center',
@@ -175,7 +181,7 @@ class ServiceHeader extends Component {
   }
 
   render() {
-    const { classes, name, offeredIn, info, serDelLinks, logoSizes } = this.props;
+    const { classes, name, offeredIn, info, serDelLinks, id, logoSizes } = this.props;
 
     const { anchorEl, copied } = this.state;
     const windowGlobal = typeof window !== 'undefined' && window;
@@ -244,75 +250,76 @@ class ServiceHeader extends Component {
       const contactType = cd.contact_type.toLowerCase();
       if (contactType.toLowerCase() === 'phone') {
         value = (<a href={`tel:${value}`} target="_blank">
-          <Typography variant="caption" className={classes.buttonContent}>
+          <Typography variant="caption" className={classes.service_header_buttonContent}>
             {icons[contactType]}
           </Typography>
         </a>);
       }
       else if (contactType.toLowerCase() === 'address') {
         value = (<a href={`http://maps.google.com/?q=${value}`} target="_blank">
-          <Typography variant="caption" className={classes.buttonContent}>
+          <Typography variant="caption" className={classes.service_header_buttonContent}>
             {icons[contactType]}
           </Typography>
         </a>);
       }
       else if (contactType.toLowerCase() === 'email') {
         value = (<a href={`mailto:${value}`} target="_blank">
-          <Typography variant="caption" className={classes.buttonContent}>
+          <Typography variant="caption" className={classes.service_header_buttonContent}>
             {icons[contactType]}
           </Typography>
         </a>);
       }
       else {
         value = (<a href={`${value}`} target="_blank">
-          <Typography variant="caption"  className={classes.buttonContent}>
+          <Typography variant="caption"  className={classes.service_header_buttonContent}>
             {icons[contactType]}
           </Typography>
         </a>);
       }
 
       return (
-        <IconButton key={cd.contact_value} onClick={() => this.trackClickSocialIcon(contactType, cd.contact_value)} className={classes.contactButton}>
+        <IconButton key={cd.contact_value} onClick={() => this.trackClickSocialIcon(contactType, cd.contact_value)} className={classes.service_header_contactButton}>
           {value}
         </IconButton>
       );
     });
 
-
+    const actionButton = isLoggedIn() ? (<SaveButton service={id}/>) : (<Button variant="outlined" color="primary" onClick={this.handleNotifyClick} className={classes.service_header_notifyButton}>
+                  Notify Me
+                </Button>)
 
     return (
-      <Grid container spacing={16} className={!isMobileOnly ? classes.main : classes.mainMobile}>
+      <Grid container spacing={16} className={!isMobileOnly ? classes.service_header_main : classes.service_header_mainMobile}>
         <ServiceNotifyDialog ser_name={name} org_id={this.props.orgID}/>
         <Grid item xs={12} md={8}>
           
 
-              <div className={classes.cardTop}>
-                <div className={classes.title}>
+              <div className={classes.service_header_cardTop}>
+                <div className={classes.service_header_title}>
                   <Typography variant="display1">{name}</Typography>
-                  <Typography variant="subheading" onClick={this.handleOrgClick} className={classes.in}>{offeredIn}</Typography>
+                  <Typography variant="subheading" onClick={this.handleOrgClick} 
+                  className={classes.service_header_in}>{offeredIn}</Typography>
                 </div>
               </div>
 
-              <div className={classes.cardActions}>
+              <div className={classes.service_header_cardActions}>
                 {contactDetailButtons}
               </div>
  
         </Grid>
         <Grid item xs={12} md={4}>
-              <div className={classes.serviceActions}>
-                <div className={classes.serviceShare}>
-  <Button variant="outlined" color="primary" onClick={this.handleShareClick} className={classes.menuButton}>
+              <div className={classes.service_header_serviceActions}>
+                <div className={classes.service_header_serviceShare}>
+  <Button variant="outlined" color="primary" onClick={this.handleShareClick} className={classes.service_header_menuButton}>
                   Share
                                 </Button>
                 </div>
-              <div className={classes.serviceNotify}>
-              <div className={classes.serDelLink}>
+              <div className={classes.service_header_serviceNotify}>
+              <div className={classes.service_header_serDelLink}>
                 <ServiceDeliveryLink service_name={name} org_name={offeredIn} serDelLinks={serDelLinks} />
               </div>
-              <div className={classes.serDelLink}>
-                <Button variant="outlined" color="primary" onClick={this.handleNotifyClick} className={classes.notifyButton}>
-                  Notify Me
-                </Button>
+              <div className={classes.service_header_serDelLink}>
+                  {actionButton}
               </div>
               </div>    
               </div>
@@ -323,17 +330,17 @@ class ServiceHeader extends Component {
                 onClose={this.handleClose}
               >
                 <CopyToClipboard text={shareLink} onCopy={this.handleCopy}>
-                  <MenuItem className={classes.menuItem}>
+                  <MenuItem className={classes.service_header_menuItem}>
                     <Typography>{copied ? 'Copied!' : 'Copy link'}</Typography>
                   </MenuItem>
                 </CopyToClipboard>
-                <MenuItem onClick={this.handleClose} className={classes.menuItem}>
-                  <FacebookShareButton url={shareLink} className={classes.shareButton}>
+                <MenuItem onClick={this.handleClose} className={classes.service_header_menuItem}>
+                  <FacebookShareButton url={shareLink} className={classes.service_header_shareButton}>
                     <Typography>Facebook</Typography>
                   </FacebookShareButton>
                 </MenuItem>
-                <MenuItem onClick={this.handleClose} className={classes.menuItem}>
-                  <TwitterShareButton url={shareLink} className={classes.shareButton}>
+                <MenuItem onClick={this.handleClose} className={classes.service_header_menuItem}>
+                  <TwitterShareButton url={shareLink} className={classes.service_header_shareButton}>
                     <Typography>Twitter</Typography>
                   </TwitterShareButton>
                 </MenuItem>
@@ -363,6 +370,6 @@ const mapStateToProps = function (state, ownProps) {
   };
 };
 
-const ConnSerHeader = connect(mapStateToProps, mapDispatchToProps)(withRoot(withStyles(styles)(ServiceHeader)));
+const ConnSerHeader = connect(mapStateToProps, mapDispatchToProps)(withStyles(styles)(ServiceHeader));
 
 export default ConnSerHeader;

@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import PropTypes from 'prop-types';
 
 import { connect } from "react-redux";
 import _ from "lodash";
@@ -7,39 +6,30 @@ import Spinner from 'react-spinkit';
 
 import { withStyles } from '@material-ui/core/styles';
 
-import Button from '@material-ui/core/Button';
 import Grid from '@material-ui/core/Grid';
-import Paper from '@material-ui/core/Paper';
-import Typography from '@material-ui/core/Typography';
-import AppBar from '@material-ui/core/AppBar';
-import Toolbar from '@material-ui/core/Toolbar';
 
-import IconButton from '@material-ui/core/IconButton';
-import MenuIcon from '@material-ui/icons/Menu';
-
-import Search from './Search/index';
 import SearchResult from "./SearchResult";
 
 import withRoot from '../withRoot';
 
 const styles = theme => ({
-    root: {
+    search_res_root: {
         flexGrow: 1,
         display: "flex",
         alignItems: "center",
         justifyContent: "center"
     },
-    searchResults: {
+search_res_searchResults : {
         paddingTop: theme.spacing.unit * 3
     },
-    errorMsgContainer: {
+search_res_errorMsgContainer : {
         flexGrow: 1,
         display: "flex",
         alignItems: "center",
         justifyContent: "center"
     },
-    errorText: {},
-    errorStateIcon: {
+search_res_errorText : {},
+search_res_errorStateIcon : {
         fontSize: 64
     }
 });

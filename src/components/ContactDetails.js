@@ -17,51 +17,51 @@ import ContactAddressMap from './ContactAddressMap';
 import withRoot from '../withRoot';
 
 const styles = theme => ({
-    root: {
+    cd_root: {
         marginBottom: theme.spacing.unit,
     },
-    linkIconContainer: {
+    cd_linkIconContainer: {
         paddingLeft: 20
     },
-    contactListItem: {
+    cd_contactListItem: {
         borderBottom: `1px solid ${theme.palette.primary["300"]}`
     },
-    contactInfoContainer: {
+    cd_contactInfoContainer: {
         // paddingBottom: 24,
         borderRadius: 5,
         boxShadow: `0 0 0 0`,
         border: `1px solid ${theme.palette.primary['50']}`,
     },
-    contactIcon: {
+    cd_contactIcon: {
         fontSize: 16
     },
-    contactType: {
+    cd_contactType: {
         paddingTop: 2
     },
-    contactDetailValue: {
+    cd_contactDetailValue: {
         paddingLeft: 20
     },
-    gridItem: {
+    cd_gridItem: {
         margin: 4
     },
-    title: {
+    cd_title: {
         // paddingTop: 4,
         marginBottom: 13.6,
     },
-    mapGridItem: {
+    cd_mapGridItem: {
         width: "100%",
         // marginTop: "-8px"
     },
-    detailsGridItem: {
+    cd_detailsGridItem: {
         width: "100%"
     },
-    detailsBorderBottom: {
+    cd_detailsBorderBottom: {
         borderBottom: "1px solid lightGray"
     },
-    linkGridItemValue: {
+    cd_linkGridItemValue: {
         wordBreak: "break-all"
     },
-    detailsGridContainerItem: {
+    cd_detailsGridContainerItem: {
         width: "100%"
     }
 });
@@ -158,17 +158,17 @@ class ContactDetails extends Component {
             }
             else {
                 value = (<a href={`${value}`} target="_blank">
-                    <Typography variant="body1" className={classes.linkGridItemValue}>
+                    <Typography variant="body1" className={classes.cd_linkGridItemValue}>
                         {value}
                     </Typography>
                 </a>);
             }
 
             return (
-                <Grid key={contactType} item className={`${classes.detailsGridItem} ${idx < arr.length - 1 ? classes.detailsBorderBottom : ''}`}>
-                    <Grid  container spacing={16} className={classes.gridItem}>
+                <Grid key={contactType} item className={`${classes.cd_detailsGridItem} ${idx < arr.length - 1 ? classes.cd_detailsBorderBottom : ''}`}>
+                    <Grid  container spacing={16} className={classes.cd_gridItem}>
                         <Grid item xs={2}>
-                            <div className={classes.linkIconContainer}>
+                            <div className={classes.cd_linkIconContainer}>
                                 {icons[contactType]}
                             </div>
                         </Grid>
@@ -181,17 +181,17 @@ class ContactDetails extends Component {
         });
 
         return (
-            <Grid container spacing={8} className={classes.root}>
+            <Grid container spacing={8} className={classes.cd_root}>
                 <Grid item xs={12}>
-                    <Typography variant="subheading" component="h4" gutterBottom className={classes.title}>
+                    <Typography variant="subheading" component="h4" gutterBottom className={classes.cd_title}>
                         Contact Details
                     </Typography>
-                    <Paper elevation={1} className={classes.contactInfoContainer}>
+                    <Paper elevation={1} className={classes.cd_contactInfoContainer}>
                         <Grid container justify="center" direction="column" alignItems="center">
                             {/* <Grid item className={classes.mapGridItem}>
                                 <ContactAddressMap contactAddress={contactAddressValue} />
                             </Grid> */}
-                            <Grid item container className={classes.detailsGridContainerItem}>
+                            <Grid item container className={classes.cd_detailsGridContainerItem}>
                                 {contactDetailCards}
                             </Grid>
                         </Grid>
@@ -203,4 +203,4 @@ class ContactDetails extends Component {
 }
 
 
-export default withRoot(withStyles(styles)(ContactDetails));
+export default withStyles(styles)(ContactDetails);

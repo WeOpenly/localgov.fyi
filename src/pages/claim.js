@@ -11,7 +11,7 @@ import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
 import Button from '@material-ui/core/Button';
 import Done from '@material-ui/icons/Done';
-import {trackView, trackClick} from "../components/Search/tracking";
+import {trackView, trackClick} from "../components/common/tracking";
 
 const styles = theme => ({
   header: {
@@ -129,7 +129,7 @@ class Claim extends Component {
             </CardContent>
             <CardActions className={classes.cardActions}>
               <Link to="/claim-request" className={[classes.link, classes.buttonWrapper]}>
-                <Button variant="raised" color="primary" className={classes.button}>Claim my agency page</Button>
+                <Button variant="contained" color="primary" className={classes.button}>Claim my agency page</Button>
               </Link>
             </CardActions>
           </Card>

@@ -16,14 +16,13 @@ import Typography from '@material-ui/core/Typography';
 import ServiceSuggestBox from './ServiceSuggestBox';
 import NewSuggestBox from './NewSuggestBox';
 import HeaderSuggestBox from './HeaderSuggestBox';
-import withRoot from '../../withRoot';
 
-// import { fetchMeta, setMetaFromUrl,  toggleSearchResultLayout } from "./actions";
 
-const windowGlobal = typeof window !== 'undefined' && window
+
+const windowGlobal = typeof window !== 'undefined' ? window : null
 
 const styles = theme => ({
-  combinedSearch: {
+  search_combinedSearch: {
     display: 'flex',
     width: '100%',
     fontFamily: theme.typography.fontFamily,
@@ -41,16 +40,16 @@ const styles = theme => ({
     //   width: "100%"
     // }
   },
-  mobile: {
+search_mobile : {
     width: '100%'
   },
-  serviceSuggestWrapper: {
+search_serviceSuggestWrapper : {
     border: '1px solid lightGray',
     borderRadius: 4,
     marginTop: theme.spacing.unit * 6,
     marginBottom: theme.spacing.unit * 2,
   },
-  newSuggestWrapper: {
+search_newSuggestWrapper : {
     border: '1px solid lightGray',
     borderRadius: 4,
   }
@@ -78,7 +77,8 @@ class Search extends React.Component {
   render() {
     const { classes, inHeader } = this.props;
     const { metaLoadingFailed, metaLoading, searchSuggestionsLoading } = this.props.search;
-
+   
+      
     if (metaLoading) {
       return (<Grid container spacing={0}>
         <Grid item xs={12} align="center">
@@ -94,15 +94,15 @@ class Search extends React.Component {
     return (
       <Fragment>
         {!isMobileOnly
-          ? <div className={classes.combinedSearch}>
+          ? <div className={classes.search_combinedSearch}>
               <ServiceSuggestBox />
               <NewSuggestBox />
             </div>
-          : <div className={classes.mobile}>
-              <div className={classes.serviceSuggestWrapper}>
+          : <div className={classes.search_mobile}>
+              <div className={classes.search_serviceSuggestWrapper}>
                 <ServiceSuggestBox />
               </div>
-              <div className={classes.newSuggestWrapper}>
+              <div className={classes.search_newSuggestWrapper}>
                 <NewSuggestBox />
               </div>
             </div>
@@ -123,4 +123,4 @@ const mapStateToProps = function (state, ownProps) {
   };
 };
 
-export default connect(mapStateToProps)(withRoot(withStyles(styles)(Search)));
+export default connect(mapStateToProps)(withStyles(styles)(Search));

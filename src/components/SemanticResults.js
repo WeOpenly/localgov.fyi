@@ -7,8 +7,10 @@ import Button from '@material-ui/core/Button';
 import Card from '@material-ui/core/Card';
 import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper';
-
+import ListItem from '@material-ui/core/ListItem';
+import ListItemText from '@material-ui/core/ListItemText';
 import Typography from '@material-ui/core/Typography';
+import Icon from '@material-ui/core/Icon';
 
 // import OrgDetailLite from "./OrgDetailLite";
 import OrgHeader from './OrgHeader';
@@ -19,24 +21,24 @@ import ServiceCard from './ServiceCard';
 
 const windowGlobal = typeof window !== 'undefined' && window
 const styles = theme => ({
-  root: {
+  semantic_res_root: {
     flexGrow: 1,
     display: "flex",
     alignItems: "center",
     justifyContent: "center"
   },
-  searchResults: {},
-  elevated: {
+semantic_res_searchResults : {},
+semantic_res_elevated : {
     boxShadow: `0 0 3px 1px ${theme.palette.primary["200"]}`
   },
-  errorMsgContainer: {
+semantic_res_errorMsgContainer : {
     flexGrow: 1,
     display: "flex",
     alignItems: "center",
     justifyContent: "center"
   },
-  errorText: {},
-  errorStateIcon: {
+semantic_res_errorText : {},
+semantic_res_errorStateIcon : {
     fontSize: 64
   }
 });
@@ -124,11 +126,11 @@ class SearchResults extends Component {
             });
           }
           comp = (
-            <Paper key={`${idx}-ser_faq`} className={classes.elevated}>
+            <Paper key={`${idx}-ser_faq`} className={classes.semantic_res_elevated}>
               <Grid container spacing={8}>
                 <Grid item xs={2} sm={1}>
                   <Icon
-                    className={classes.serviceItemIcon}
+                    className={classes.semantic_res_serviceItemIcon}
                     color="accent"
                     style={{ fontSize: 30 }}
                   >
@@ -163,7 +165,7 @@ class SearchResults extends Component {
             });
           }
           comp = (
-            <Paper key={`${idx}-ser_form`} className={classes.elevated}>
+            <Paper key={`${idx}-ser_form`} className={classes.semantic_res_elevated}>
               <Grid container spacing={8}>
                 <Grid item xs={2} sm={1}>
                 </Grid>
@@ -179,7 +181,7 @@ class SearchResults extends Component {
             price = result.results;
           }
           comp = (
-            <Paper key={`${idx}-ser_price`} className={classes.elevated}>
+            <Paper key={`${idx}-ser_price`} className={classes.semantic_res_elevated}>
               <Grid container spacing={8}>
                 <Grid item xs={2} sm={1}>
                 </Grid>
@@ -210,7 +212,7 @@ class SearchResults extends Component {
             });
           }
           comp = (
-            <Paper key={`${idx}-ser_time`} className={classes.elevated}>
+            <Paper key={`${idx}-ser_time`} className={classes.semantic_res_elevated}>
               <Grid container spacing={8}>
                 <Grid item xs={2} sm={1}>
                 </Grid>
@@ -261,13 +263,13 @@ class SearchResults extends Component {
     });
 
     return (
-      <Grid container className={classes.searchResults} spacing={16}>
+      <Grid container className={classes.semantic_res_searchResults} spacing={16}>
         {organization && (
-          <Grid item xs={12}>
+          <Grid className='semres_grid_item' item xs={12}>
             {organization}
           </Grid>
         )}
-        <Grid item xs={12}>
+        <Grid className='semres_grid_item' item xs={12}>
           {intentComp}
           {listComp}
           {/* {(listComp.length > 0) ? ({listComp}) : null} */}

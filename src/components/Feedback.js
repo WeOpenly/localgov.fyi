@@ -12,10 +12,10 @@ import withRoot from '../withRoot';
 import {trackInput} from "./Search/tracking";
 
 const styles = theme => ({
-  wrapper: {
+  feedback_wrapper: {
     position: 'relative',
   },
-  paper: {
+feedback_paper : {
     position: 'absolute',
     top: 30,
     left: -230,
@@ -28,7 +28,7 @@ const styles = theme => ({
     marginBottom: theme.spacing.unit * 3,
     borderTop : `6px solid ${theme.palette.primary["500"]}`,
   },
-  bootstrapInput: {
+feedback_bootstrapInput : {
     borderRadius: 3,
     // backgroundColor: theme.palette.primary['50'],
     color: theme.palette.primary['200'],
@@ -38,7 +38,7 @@ const styles = theme => ({
     width: '100%',
     transition: theme.transitions.create(['border-color', 'box-shadow'])
   },
-  bootstrapInputComment:{
+feedback_bootstrapInputComment : {
     borderRadius: 3,
     // backgroundColor: theme.palette.primary['50'],
     color: theme.palette.primary['200'],
@@ -50,11 +50,11 @@ const styles = theme => ({
     'wordBreak': 'break-word',
     transition: theme.transitions.create(['border-color', 'box-shadow'])
   },
-  button: {
+feedback_button : {
     marginTop: theme.spacing.unit * 2,
     marginBottom: theme.spacing.unit,
   },
-  afterSubmit: {
+feedback_afterSubmit : {
     width: '100%',
     height: '100%',
     display: 'flex',
@@ -62,10 +62,10 @@ const styles = theme => ({
     justifyContent: 'center',
     alignItems: 'center',
   },
-  spinner: {
+feedback_spinner : {
     color: theme.palette.primary['500'],
   },
-  icon: {
+feedback_icon : {
     color: theme.palette.primary['500'],
     fontSize: 32,
     marginBottom: theme.spacing.unit * 2,
@@ -161,9 +161,9 @@ class Feedback extends Component {
     
 
     return (
-      <div className={classes.wrapper}>
+      <div className={classes.feedback_wrapper}>
         <Typography onClick={this.handleClick} style={{cursor: 'pointer'}}> Send feedback</Typography>
-        {open && <Paper className={classes.paper}>
+        {open && <Paper className={classes.feedback_paper}>
           {(!success && !failure && !submitting) && <Fragment>
             <Typography variant="title" component="h1">
               Share your feedback
@@ -197,7 +197,7 @@ class Feedback extends Component {
                   value={feedbackComment}
                   onChange={this.handleChange}
                   rows={4}
-                  className={classes.bootstrapInput}
+                  className={classes.feedback_bootstrapInput}
                 />
               </label>
               <label>
@@ -207,31 +207,31 @@ class Feedback extends Component {
                   placeholder="your@email.com"
                   value={email}
                   onChange={this.handleChange}
-                  className={classes.bootstrapInput}
+                  className={classes.feedback_bootstrapInput}
                 />
               </label>
               <Typography variant="caption">*We won't send you spam</Typography>
-              <Button size="small" variant="outlined" type="submit" className={classes.button}>
+              <Button size="small" variant="outlined" type="submit" className={classes.feedback_button}>
                 Submit
               </Button>
-              <Button size="small" onClick={this.handleClose} className={classes.button}>Cancel</Button>
+              <Button size="small" onClick={this.handleClose} className={classes.feedback_button}>Cancel</Button>
             </form>
           </Fragment>}
-          {submitting && <div className={classes.afterSubmit}>
-            <Spinner className={classes.spinner}/>
+          {submitting && <div className={classes.feedback_afterSubmit}>
+            <Spinner className={classes.feedback_spinner}/>
           </div>}
-          {success && <div className={classes.afterSubmit}>
-            <SvgIcon className={classes.icon}>
+          {success && <div className={classes.feedback_afterSubmit}>
+            <SvgIcon className={classes.feedback_icon}>
               <path fill="none" d="M0 0h24v24H0V0zm0 0h24v24H0V0z"/>
               <path d="M16.59 7.58L10 14.17l-3.59-3.58L5 12l5 5 8-8zM12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z"/>
             </SvgIcon>
             <Typography variant="body1" component="h1">Thanks for your feedback!</Typography>
-            <Button size="small" variant="outlined" onClick={this.handleClose} className={classes.button}>Close</Button>
+            <Button size="small" variant="outlined" onClick={this.handleClose} className={classes.feedback_button}>Close</Button>
           </div>}
-          {failure && <div className={classes.afterSubmit}>
-            <MoodBad className={classes.icon}/>
+          {failure && <div className={classes.feedback_afterSubmit}>
+            <MoodBad className={classes.feedback_icon}/>
             <Typography variant="body1" >Something went wrong. Please try again.</Typography>
-            <Button size="small" variant="outlined" onClick={this.handleReset} className={classes.button}>Back</Button>
+            <Button size="small" variant="outlined" onClick={this.handleReset} className={classes.feedback_button}>Back</Button>
           </div>}
         </Paper>}
       </div>
@@ -256,6 +256,6 @@ const mapStateToProps = function (state, ownProps) {
 const ConnFeedback = connect(
   mapStateToProps,
   mapDispatchToProps
-)(withRoot(withStyles(styles)(Feedback)));
+)(withStyles(styles)(Feedback));
 
 export default ConnFeedback;

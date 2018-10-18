@@ -24,12 +24,12 @@ import parse from "autosuggest-highlight/parse";
 import Autosuggest from "react-autosuggest";
 
 import withRoot from '../../withRoot';
-import {fetchSearchSuggestions, clearInput, updateInput, setSearchSuggesitions, fetchSearchResults} from "./actions";
+import {fetchSearchSuggestions, clearInput, updateInput, setSearchSuggesitions, fetchSearchResults} from "./actions.js";
 
-import { trackInput, trackClick} from './tracking';
+import { trackInput, trackClick} from '../common/tracking';
 
 const styles = theme => ({
-    wrapper: {
+    header_suggest_wrapper: {
         fontFamily: theme.typography.fontFamily,
         display: "flex",
         alignItems: "center",
@@ -54,7 +54,7 @@ const styles = theme => ({
             width: "100%"
         }
     },
-    search: {
+    header_suggest_search: {
         width: theme.spacing.unit * 8,
         color: theme.palette.primary["200"],
         height: theme.spacing.unit * 6,
@@ -62,7 +62,7 @@ const styles = theme => ({
         alignItems: "center",
         justifyContent: "center"
     },
-    input: {
+    header_suggest_input: {
         font: "inherit",
         paddingLeft: theme.spacing.unit,
         border: 1,
@@ -83,7 +83,7 @@ const styles = theme => ({
             display: "none"
         }
     },
-    sectionTitle: {
+    header_suggest_sectionTitle: {
         marginLeft: theme.spacing.unit * 1.5,
         marginTop: theme.spacing.unit,
         textTransform: "capitalize",
@@ -92,11 +92,11 @@ const styles = theme => ({
         lineHeight: "2.75em",
         color: "rgba(30, 30, 50,0.54)"
     },
-    container: {
+    header_suggest_container: {
         flexGrow: 1,
         position: "relative"
     },
-    suggestionsContainerOpen: {
+    header_suggest_suggestionsContainerOpen: {
         position: "absolute",
         padding: theme.spacing.unit * 1,
         marginTop: 0,
@@ -110,10 +110,10 @@ const styles = theme => ({
         overflow: 'hidden',
         overflowX: 'hidden'
     },
-    suggestion: {
+    header_suggest_suggestion: {
         display: "block"
     },
-    suggestionsList: {
+    header_suggest_suggestionsList: {
         margin: 0,
         padding: 0,
         listStyleType: "none"
@@ -174,7 +174,7 @@ class HeaderSuggestBox extends Component {
         const {classes} = this.props;
         return (
             <div>
-                <Typography align="left" variant="title" className={classes.sectionTitle}>
+                <Typography align="left" variant="title" className={classes.header_suggest_sectionTitle}>
                     {section.title}
                 </Typography>
             </div>
@@ -262,17 +262,17 @@ class HeaderSuggestBox extends Component {
         const {searchSuggestionsLoading, input} = search;
 
         return (
-            <div className={classes.wrapper}>
+            <div className={classes.header_suggest_wrapper}>
                 <Input
                     value={value}
                     placeholder={placeholder}
                     inputRef={ref}
-                    className={classes.input}
+                    className={classes.header_suggest_input}
                     inputProps={{
                     "aria-label": "Description",
                     ...other
                 }}/>
-                <div className={classes.search}>
+                <div className={classes.header_suggest_search}>
                     {searchSuggestionsLoading
                         ? <CircularProgress size={24} color="inherit"/>
                         : input
@@ -343,13 +343,13 @@ class HeaderSuggestBox extends Component {
         }
 
         return (
-            <form onSubmit={this.onSubmit} className={classes.container}>
+            <form onSubmit={this.onSubmit} className={classes.header_suggest_container}>
                 <Autosuggest
                     theme={{
-                    container: classes.container,
+                    container: classes.header_suggest_container,
                     suggestionsContainerOpen: classes.suggestionsContainerOpen,
-                    suggestionsList: classes.suggestionsList,
-                    suggestion: classes.suggestion
+                    suggestionsList: classes.header_suggest_suggestionsList,
+                    suggestion: classes.header_suggest_suggestion
                 }}
                     renderInputComponent={this.renderInput}
                     suggestions={searchSuggestions}
@@ -385,4 +385,4 @@ const mapStateToProps = function (state, ownProps) {
     };
 };
 
-export default connect(mapStateToProps)(withRoot(withStyles(styles)(HeaderSuggestBox)));
+export default connect(mapStateToProps)(withStyles(styles)(HeaderSuggestBox));

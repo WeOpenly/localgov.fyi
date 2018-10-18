@@ -5,7 +5,7 @@ import GridListTile from '@material-ui/core/GridListTile';
 import withRoot from '../withRoot';
 
 const styles = theme => ({
-    gridListTile: {
+    ho_gridListTile: {
         width: 225,
         height: 250,
         cursor: 'pointer',
@@ -15,10 +15,10 @@ const styles = theme => ({
 
 const HorizontalListItem = ({item, classes}) => {
     return (
-        <GridListTile className={classes.gridListTile}>
+        <GridListTile className={classes.ho_gridListTile}>
             {item}
         </GridListTile>
     );
 };
 
-export default withRoot(withStyles(styles)(HorizontalListItem));
+export default withStyles(styles)(HorizontalListItem);

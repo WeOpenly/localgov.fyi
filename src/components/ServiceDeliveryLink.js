@@ -16,20 +16,20 @@ import MoodBad from '@material-ui/icons/MoodBad';
 import Spinner from 'react-spinkit';
 
 import withRoot from '../withRoot';
-import { trackClick, trackInput } from "./Search/tracking";
+import { trackClick, trackInput } from "./common/tracking";
 
 const styles = theme => ({
-  root: {
+  ser_del_link_root: {
     marginBottom: theme.spacing.unit
   },
-  media: {
+ser_del_link_media : {
     minWidth: "100px",
     minHeight: "100px",
     backgroundPosition: "center",
     borderRadius: "50%",
     boxShadow: `0 0 2px 1px ${theme.palette.primary["50"]}`
   },
-  mediaContainer: {
+ser_del_link_mediaContainer : {
     paddingTop: theme.spacing.unit * 2,
     borderRadius: 3,
     cursor: "pointer",
@@ -40,39 +40,39 @@ const styles = theme => ({
     boxShadow: `0 0 0 0`,
     border: `1px solid ${theme.palette.primary['50']}`,
   },
-  feedbackIcon: {
+ser_del_link_feedbackIcon : {
     margin: theme.spacing.unit,
   },
-  content: {
+ser_del_link_content : {
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
   },
-  button: {
+ser_del_link_button : {
     marginBottom: theme.spacing.unit,
   },
-  paper: {
+ser_del_link_paper : {
     paddingLeft: theme.spacing.unit,
     paddingRight: theme.spacing.unit,
     paddingTop: theme.spacing.unit * 2,
     // borderTop : `6px solid ${theme.palette.primary["500"]}`,
     backgroundColor : theme.palette.primary['400'],
   },
-  title: {
+ser_del_link_title : {
     color: theme.palette.common.white,
     paddingBottom: theme.spacing.unit * 2,
   },
-  satisfiedDialog: {
+ser_del_link_satisfiedDialog : {
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
     justifyContent: 'center',
     margin: theme.spacing.unit * 4,
   },
-  form: {
+ser_del_link_form : {
     width: '350px',
   },
-  bootstrapInput: {
+ser_del_link_bootstrapInput : {
     borderRadius: 3,
     color: theme.palette.primary['200'],
     border: '1px solid #ced4da',
@@ -81,7 +81,7 @@ const styles = theme => ({
     width: '100%',
     transition: theme.transitions.create(['border-color', 'box-shadow'])
   },
-  bootstrapInputComment:{
+ser_del_link_bootstrapInputComment : {
     borderRadius: 3,
     color: theme.palette.primary['200'],
     border: '1px solid #ced4da',
@@ -92,40 +92,43 @@ const styles = theme => ({
     'wordBreak': 'break-word',
     transition: theme.transitions.create(['border-color', 'box-shadow'])
   },
-  dialogButton: {
+ser_del_link_dialogButton : {
     marginTop: theme.spacing.unit * 2,
     marginBottom: theme.spacing.unit* 2,
     backgroundColor: 'white',
     color: theme.palette.primary['700'],
     textTransform : 'lowercase',
   },
-  dialogButton2: {
+ser_del_link_dialogButton2 : {
     marginTop: theme.spacing.unit * 2,
     marginBottom: theme.spacing.unit * 2,
   },
-  afterSubmit: {
+ser_del_link_afterSubmit : {
     margin: theme.spacing.unit * 6,
     display: 'flex',
     flexDirection: 'column',
     justifyContent: 'center',
     alignItems: 'center',
   },
-  spinner: {
+ser_del_link_spinner : {
     color: theme.palette.primary['500'],
   },
-  icon: {
+ser_del_link_icon : {
     color: theme.palette.primary['500'],
     fontSize: 32,
     marginBottom: theme.spacing.unit * 2,
   },
-  successIcon:{
+ser_del_link_successIcon : {
     color: theme.palette.primary['100'],
     fontSize: 56,
     margin: theme.spacing.unit *2,
   },
-  bodyText: {
+ser_del_link_bodyText : {
     color: theme.palette.common.white,
   },
+ser_del_redir:{
+
+},
 });
 
 const encode = (data) => {
@@ -284,9 +287,9 @@ class ServiceDeliveryLink extends Component {
         <Button
           key={link.link_name}
           onClick={() => this.handleClick(link.link_name, link.url, idx)}
-          variant="raised"
+          variant="contained"
           color="primary"
-          className={classes.button}>
+          className={classes.ser_del_link_button}>
           {this.state.redirectClicked ? (<Spinner name="ball-beat" color="white" />)  : `${link.link_name}` }
         </Button>
       );
@@ -297,7 +300,7 @@ class ServiceDeliveryLink extends Component {
         {serButtons}
         {this.state.redirectClicked
           ? (
-            <Typography variant="caption" gutterBottom>
+            <Typography variant="caption" className='ser_del_redir' gutterBottom>
               <i>Redirecting to </i> {org_name}'s {service_name} page
             </Typography>
           )
@@ -306,9 +309,9 @@ class ServiceDeliveryLink extends Component {
           open={feedbackOpen}
           onClose={this.handleClose}
         >
-          <Paper className={classes.paper}>
-            {showSatisfied && <div className={classes.satisfiedDialog}>
-              <Typography variant="headline" component="h2" className={classes.title}>
+          <Paper className={classes.ser_del_link_paper}>
+            {showSatisfied && <div className={classes.ser_del_link_satisfiedDialog}>
+              <Typography variant="headline" component="h2" className={classes.ser_del_link_title}>
                 How was your experience with Localgov?
               </Typography>
               <Button
@@ -316,9 +319,9 @@ class ServiceDeliveryLink extends Component {
                 variant="extendedFab"
                 color="primary"
                 type="submit"
-                className={classes.dialogButton}
+                className={classes.ser_del_link_dialogButton}
               >
-                <Mood className={classes.feedbackIcon}/> 
+                <Mood className={classes.ser_del_link_feedbackIcon}/> 
                 Good so far!
               </Button>
               <Button
@@ -326,14 +329,14 @@ class ServiceDeliveryLink extends Component {
                 variant="extendedFab"
                 color="primary"
                 type="submit"
-                className={classes.dialogButton}
+                className={classes.ser_del_link_dialogButton}
               >
-                <SentimentDissatisfied className={classes.feedbackIcon}/> It could have been better.
+                <SentimentDissatisfied className={classes.ser_del_link_feedbackIcon}/> It could have been better.
               </Button>
             </div>}
             {(!showSatisfied && !success && !failure && !submitting) && <Fragment>
-              <div className={classes.satisfiedDialog}>
-              <Typography variant="headline" component="h2" className={classes.title}>
+              <div className={classes.ser_del_link_satisfiedDialog}>
+              <Typography variant="headline" component="h2" className={classes.ser_del_link_title}>
                   Let us know how we can improve
               </Typography>
               <form
@@ -343,7 +346,7 @@ class ServiceDeliveryLink extends Component {
                 data-netlify="true"
                 data-netlify-honeypot="bot-field"
                 onSubmit={this.handleSubmit}
-                className={classes.form}
+                className={classes.ser_del_link_form}
               >
                 <input type="hidden" name="form-name" value="feedback" />
                 <p hidden>
@@ -366,7 +369,7 @@ class ServiceDeliveryLink extends Component {
                     value={feedbackComment}
                     onChange={this.handleChange}
                     rows={4}
-                      className={classes.bootstrapInputComment}
+                      className={classes.ser_del_link_bootstrapInputComment}
                   />
                 </label>
                 <label>
@@ -376,31 +379,31 @@ class ServiceDeliveryLink extends Component {
                     placeholder="your@email.com"
                     value={email}
                     onChange={this.handleChange}
-                    className={classes.bootstrapInput}
+                    className={classes.ser_del_link_bootstrapInput}
                   />
                 </label>
-                <Button size="small" variant="raised" type="submit" className={classes.dialogButton}>
+                <Button size="small" variant="contained" type="submit" className={classes.ser_del_link_dialogButton}>
                   Submit
                 </Button>
-                <Button size="small" onClick={this.handleClose} className={classes.dialogButton2}>Cancel</Button>
+                <Button size="small" onClick={this.handleClose} className={classes.ser_del_link_dialogButton2}>Cancel</Button>
               </form>
               </div>
             </Fragment>}
-            {submitting && <div className={classes.afterSubmit}>
-              <Spinner className={classes.spinner}/>
+            {submitting && <div className={classes.ser_del_link_afterSubmit}>
+              <Spinner className={classes.ser_del_link_spinner}/>
             </div>}
-            {success && <div className={classes.afterSubmit}>
-              <SvgIcon className={classes.successIcon}>
+            {success && <div className={classes.ser_del_link_afterSubmit}>
+              <SvgIcon className={classes.ser_del_link_successIcon}>
                 <path fill="none" d="M0 0h24v24H0V0zm0 0h24v24H0V0z"/>
                 <path d="M16.59 7.58L10 14.17l-3.59-3.58L5 12l5 5 8-8zM12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z"/>
               </SvgIcon>
-              <Typography variant="headline" className={classes.bodyText}>Thanks for your feedback!</Typography>
-              <Button size="small" onClick={this.handleClose} className={classes.dialogButton}>Close</Button>
+              <Typography variant="headline" className={classes.ser_del_link_bodyText}>Thanks for your feedback!</Typography>
+              <Button size="small" onClick={this.handleClose} className={classes.ser_del_link_dialogButton}>Close</Button>
             </div>}
-            {failure && <div className={classes.afterSubmit}>
-              <MoodBad className={classes.icon}/>
-              <Typography variant="body1" className={classes.bodyText}>Something went wrong. Please try again.</Typography>
-              <Button size="small" onClick={this.handleReset} className={classes.dialogButton}>Back</Button>
+            {failure && <div className={classes.ser_del_link_afterSubmit}>
+              <MoodBad className={classes.ser_del_link_icon}/>
+              <Typography variant="body1" className={classes.ser_del_link_bodyText}>Something went wrong. Please try again.</Typography>
+              <Button size="small" onClick={this.handleReset} className={classes.ser_del_link_dialogButton}>Back</Button>
             </div>}
           </Paper>
         </Dialog>
@@ -426,6 +429,6 @@ const mapStateToProps = function (state, ownProps) {
   };
 };
 
-const ConnServiceDeliveryLink = connect(mapStateToProps, mapDispatchToProps)(withRoot(withStyles(styles)(ServiceDeliveryLink)));
+const ConnServiceDeliveryLink = connect(mapStateToProps, mapDispatchToProps)(withStyles(styles)(ServiceDeliveryLink));
 
 export default ConnServiceDeliveryLink;

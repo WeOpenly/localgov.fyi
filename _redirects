@@ -1,4 +1,7 @@
-https://localgov.fyi/api/* http://yusuf.localgov.fyi/:splat 200
+
+https://localgov.fyi/api/yusuf/* http://yusuf.localgov.fyi/:splat 200
+
+https://localgov.fyi/api/dsp/* http://dsp.localgov.fyi/:splat 200
 
 https://localgov.fyi/track/* http://track.localgov.fyi/localgov.fyi/:splat 200
 

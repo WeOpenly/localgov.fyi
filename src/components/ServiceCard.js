@@ -21,16 +21,19 @@ import IconButton from '@material-ui/core/IconButton';
 import SvgIcon from '@material-ui/core/SvgIcon';
 import Divider from '@material-ui/core/Divider';
 import MoreVert from '@material-ui/icons/MoreVert';
+import SaveButton from '../components/Profile/SaveButton';
+import {isLoggedIn} from './Account/Auth';
+
 import withRoot from '../withRoot';
 
-import { trackClick} from "./Search/tracking";
+import { trackClick} from "./common/tracking";
 
 const styles = theme => ({
-  card: {
+  service_card_card: {
     display: 'flex',
     flexDirection: 'column',
     justifyContent: 'baseline',
-    height: theme.spacing.unit * 18,
+    height: theme.spacing.unit * 19,
     margin: theme.spacing.unit,
     border : `1px solid ${theme.palette.primary['100']}`,
     boxShadow : `0 1px 1px ${theme.palette.primary['50']}`,
@@ -38,43 +41,43 @@ const styles = theme => ({
         boxShadow: `0 1px 1px ${theme.palette.primary['100']}`
     },
   },
-  cardTop: {
+service_card_cardTop : {
     display: 'flex',
     justifyContent: 'space-between',
     marginRight: -theme.spacing.unit,
   },
-  caption: {
+service_card_caption : {
     overflowY: 'hidden',
     cursor: 'pointer',
     height : theme.spacing.unit * 6,
   },
-  cardActions: {
+service_card_cardActions : {
     display: 'flex',
     justifyContent: 'flex-end',
     padding:0,
   },
-  iconButton: {
+service_card_iconButton : {
     marginTop: theme.spacing.unit * -2,
     marginRight: theme.spacing.unit * -2,
   },
-  menuItem: {
+service_card_menuItem : {
     display: 'flex',
     justifyContent: 'center',
   },
-  shareButton: {
+service_card_shareButton : {
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
   },
-cardContent:{
+service_card_cardContent : {
     paddingBottom: 0,
     height : theme.spacing.unit * 13,
 },
-  dividerWrapper: {
+service_card_dividerWrapper : {
     paddingLeft: theme.spacing.unit * 4,
     paddingRight: theme.spacing.unit * 4,
   },
-  "raw":{
+  "service_card_raw":{
 
      '& $p':{
 padding : 0,
@@ -97,6 +100,8 @@ class SearchResult extends Component {
         this.state = {
             anchorEl: null,
             copied: false,
+                loggedin: false,
+    logincheckloading: true
         };
         this.handleClick = this.handleClick.bind(this);
         this.handleDeliveryClick = this.handleDeliveryClick.bind(this);
@@ -104,6 +109,17 @@ class SearchResult extends Component {
         this.handleClose = this.handleClose.bind(this);
         this.handleCopy = this.handleCopy.bind(this);
     }
+      componentDidMount(){
+    const loggedin = isLoggedIn();
+    this.setState({
+      logincheckloading: false,
+    });
+    if (loggedin){
+      this.setState({
+        loggedin: true,
+      })
+    }
+  }
 
     handleClick() {
         const { trackClick, resultType, id, toLink, title,  listIndex} = this.props;
@@ -131,8 +147,9 @@ class SearchResult extends Component {
     }
 
     render() {
-        const { classes, title, description, deliveryLink, toLink } = this.props;
+        const { classes, title, description, deliveryLink, toLink, id } = this.props;
         const { anchorEl, copied } = this.state;
+        console.log(this.state);
         const windowGlobal = typeof window !== 'undefined' && window;
         const windowLocation = windowGlobal.location ? windowGlobal.location : {};
         const shareLink = windowLocation.origin + toLink + '/';
@@ -147,14 +164,14 @@ class SearchResult extends Component {
         }
         
         return (
-            <Card className={classes.card}>
+            <Card className={classes.service_card_card}>
 
-                    <CardContent className={classes.cardContent}>
-                        <div className={classes.cardTop}>
-                            <Typography variant="body2" component="h1"  className={classes.cardTitle} onClick={this.handleClick}>
+                    <CardContent className={classes.service_card_cardContent}>
+                        <div className={classes.service_card_cardTop}>
+                            <Typography variant="body2" component="h1"  className={classes.service_card_cardTitle} onClick={this.handleClick}>
                                 {title}
                             </Typography>
-                            <IconButton onClick={this.handleMoreVertClick} className={classes.iconButton}>
+                            <IconButton onClick={this.handleMoreVertClick} className={classes.service_card_iconButton}>
                                 <MoreVert/>
                             </IconButton>
                             <Menu
@@ -164,32 +181,34 @@ class SearchResult extends Component {
                                 onClose={this.handleClose}
                             >
                                 <CopyToClipboard text={shareLink} onCopy={this.handleCopy}>
-                                    <MenuItem className={classes.menuItem}>
+                                    <MenuItem className={classes.service_card_menuItem}>
                                         <Typography>{copied ? 'Copied!' : 'Copy link'}</Typography>
                                     </MenuItem>
                                 </CopyToClipboard>
-                                <MenuItem onClick={this.handleClose} className={classes.menuItem}>
-                                    <FacebookShareButton url={shareLink} className={classes.shareButton}>
+                                <MenuItem onClick={this.handleClose} className={classes.service_card_menuItem}>
+                                    <FacebookShareButton url={shareLink} className={classes.service_card_shareButton}>
                                         <Typography>Facebook</Typography>
                                     </FacebookShareButton>
                                 </MenuItem>
-                                <MenuItem onClick={this.handleClose} className={classes.menuItem}>
-                                    <TwitterShareButton url={shareLink} className={classes.shareButton}>
+                                <MenuItem onClick={this.handleClose} className={classes.service_card_menuItem}>
+                                    <TwitterShareButton url={shareLink} className={classes.service_card_shareButton}>
                                         <Typography>Twitter</Typography>
                                     </TwitterShareButton>
                                 </MenuItem>
                             </Menu>
                         </div>
-                        <Typography variant="caption" className={classes.caption} onClick={this.handleClick}>
-                            <RawHTML className={classes.raw}>{subtitle}</RawHTML>
+                        <Typography variant="caption" className={classes.service_card_caption} onClick={this.handleClick}>
+                            <RawHTML className={classes.service_card_raw}>{subtitle}</RawHTML>
                             
                         </Typography>
                     </CardContent>
 
-                    <CardActions className={classes.cardActions}>
+                    <CardActions className={classes.service_card_cardActions}>
                         {(deliveryLink && deliveryLink.link_name) && <Button size="small" color="primary" onClick={this.handleDeliveryClick}>
                             {deliveryLink.link_name}
                         </Button>}
+                        {this.state.logincheckloading ? null : ''} 
+                        {(!this.state.logincheckloading && this.state.loggedin) ?(<SaveButton icon={true} service={id}/>) : null}
                     </CardActions>
             </Card>
         );
@@ -213,6 +232,6 @@ const mapStateToProps = function (state, ownProps) {
 const ConnSearchResult = connect(
     mapStateToProps,
     mapDispatchToProps
-)(withRoot(withStyles(styles)(SearchResult)));
+)(withStyles(styles)(SearchResult));
 
 export default ConnSearchResult;

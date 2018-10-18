@@ -1,13 +1,15 @@
 import React from "react"
 import * as PropTypes from "prop-types"
-import { connect } from "react-redux";
+import {connect} from "react-redux";
 import Helmet from "react-helmet";
-import { isMobileOnly } from 'react-device-detect';
+import {isMobileOnly} from 'react-device-detect';
+import Link from 'gatsby-link';
 
-import { withStyles } from '@material-ui/core/styles';
+import {withStyles} from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
+import Spinner from 'react-spinkit';
 
 import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
@@ -16,95 +18,156 @@ import IconButton from '@material-ui/core/IconButton';
 
 import KeyboardBackspace from '@material-ui/icons/KeyboardBackspace';
 
+import DetailTemplate from '../components/detailTemplate';
 import ServiceHeader from '../components/ServiceHeader';
 import AddressGoogleMap from '../components/AddressGoogleMap';
-import OtherServices from '../components/OtherServices';
-import withRoot from '../withRoot';
 
-import { trackView } from "../components/Search/tracking";
+import ServiceCard from '../components/ServiceCard';
+import withRoot from '../withRoot';
+import {isLoggedIn} from '../components/Account/Auth';
+
+import {trackView} from "../components/common/tracking";
 
 const windowGlobal = typeof window !== 'undefined' && window;
 
 const styles = theme => ({
-    container: {
+    ser_detail_container: {
         marginTop: theme.spacing.unit * 2
     },
-    details: {
-        width: '100%',
+    ser_detail_details: {
+        width: '100%'
     },
-    cardWrapper: {
+    ser_detail_cardWrapper: {
         borderRadius: 3,
         boxShadow: `0 0 0 0`,
-        border: `1px solid ${theme.palette.primary['50']}`,
+        border: `1px solid ${theme.palette.primary['50']}`
     },
-    cards: {
+    ser_detail_cards: {
         marginBottom: theme.spacing.unit * 2,
         paddingTop: theme.spacing.unit,
         borderRadius: 3,
         boxShadow: `0 0 0 0`,
         // border: `1px solid ${theme.palette.primary['50']}`,
     },
-    serviceItemIcon: {
+    ser_detail_serviceItemIcon: {
         padding: 8
     },
-    cardContent: {
+    ser_detail_cardContent: {
         marginLeft: theme.spacing.unit * 3,
-        padding: theme.spacing.unit / 2,
+        padding: theme.spacing.unit / 2
     },
-    dividerWrapper: {
+    ser_detail_dividerWrapper: {
         paddingLeft: theme.spacing.unit * 3,
-        paddingRight: theme.spacing.unit * 3,
+        paddingRight: theme.spacing.unit * 3
     },
-    iconWrapper: {
+    ser_detail_iconWrapper: {
         paddingTop: theme.spacing.unit,
-        paddingLeft: theme.spacing.unit * 2,
+        paddingLeft: theme.spacing.unit * 2
     },
-    button: {
+    ser_detail_button: {
         border: 'none',
-        marginLeft: theme.spacing.unit * -6,
+        marginLeft: theme.spacing.unit * -6
     },
-    icon: {
+    ser_detail_icon: {
         fontSize: 24,
-        color : theme.palette.primary["200"]
+        color: theme.palette.primary["200"]
     },
-    formLink: {
+    ser_detail_formLink: {
         textDecoration: 'underline',
-        textDecorationColor: '#0000EE',
+        textDecorationColor: '#0000EE'
     },
-    otherServicesDividerWrapper: {
+    ser_detail_otherServicesDividerWrapper: {
         marginBottom: theme.spacing.unit,
         paddingLeft: theme.spacing.unit * 3,
-        paddingRight: theme.spacing.unit * 3,
+        paddingRight: theme.spacing.unit * 3
     },
+    other_ser_headerWrapper: {
+        display: 'flex',
+        justifyContent: 'left',
+        marginBottom: theme.spacing.unit * 2,
+        marginLeft: theme.spacing.unit
+    },
+    other_ser_card: {
+        marginBottom: theme.spacing.unit * 2,
+        boxShadow: '0 0 0 0',
+        border: `1px solid ${theme.palette.primary['50']}`
+    },
+    other_ser_cardContent: {
+        marginBottom: theme.spacing.unit * -2
+    },
+    other_ser_cardTitle: {
+        fontWeight: 600
+    },
+    other_ser_caption: {
+        height: 40,
+        overflowY: 'hidden',
+        color: 'rgba(30, 30, 50, 0.75)'
+    },
+    other_ser_serviceLink: {
+        textDecoration: 'none'
+    },
+    other_ser_cardActions: {
+        display: 'flex',
+        justifyContent: 'flex-end'
+    },
+    other_ser_linkWrapper: {
+        margin: theme.spacing.unit *2,
+        display: 'flex',
+        justifyContent: 'left',
+        width: '100%'
+    },
+    other_ser_link: {
+        color: theme.palette.primary['500'],
+        textDecoration: 'none',
+        '&:hover': {
+            textDecoration: 'underline'
+        }
+    },
+    other_ser_linkText: {
+        color: theme.palette.primary['500']
+    },
+    other_ser_raw: {
+        overflow: 'hidden',
+        'textOverflow': 'ellipsis'
+    },
+ser_detail_loading_spinner:{
+
+}
 });
 
-const JsonLd = ({ data }) =>
-    <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(data) }}
-    />;
-
+const JsonLd = ({data}) => <script
+    type="application/ld+json"
+    dangerouslySetInnerHTML={{
+    __html: JSON.stringify(data)
+}}/>;
 
 const RawHTML = ({
     children,
     className = ""
-}) => (
-    <div
-        className={className}
-        dangerouslySetInnerHTML={{
-        __html: children.replace(/\n/g, " ")
-    }}/>
-);
+}) => (<div
+    className={className}
+    dangerouslySetInnerHTML={{
+    __html: children.replace(/\n/g, " ")
+}}/>);
 
 class ServiceDetail extends React.Component {
     static propTypes = {
         data: PropTypes.shape({postsJson: PropTypes.object.isRequired})
     }
+    state = {
+        loggedin: false,
+        logincheckloading: true
+    }
 
     componentDidMount() {
-        const { dispatch } = this.props;
-        const { id, name } = this.props.pathContext.data;
+        const {dispatch} = this.props;
+        const {id, name} = this.props.pageContext.data;
         dispatch(trackView('entity_detail', 'service', id, name));
+        const loggedin = isLoggedIn();
+        this.setState({logincheckloading: false});
+        if (loggedin) {
+            this.setState({loggedin: true})
+        }
     }
 
     render() {
@@ -119,27 +182,19 @@ class ServiceDetail extends React.Component {
             alllocations,
             alltimings,
             allfaq,
-            allOrgs,
-            allMems,
             org_id,
             org_name,
             service_del_links,
             otherServices,
-            logoSizes,
-        } = this.props.pathContext.data;
+            logoSizes
+        } = this.props.pageContext.data;
 
-        const { showNotifyDialog } = this.props.search;
+        const {classes} = this.props;
 
-        const { classes, } = this.props;
-        
         let serLogoSvg = null
         if (logoSizes && logoSizes.sizes) {
             serLogoSvg = logoSizes.sizes
         }
-
-
-        const containerSize = 12;
-        const space = 8;
 
         let timingList = null;
         if (alltimings.length > 0) {
@@ -157,8 +212,9 @@ class ServiceDetail extends React.Component {
                         <ListItemText
                             primary={openTime}
                             secondary={day}
-                            secondaryTypographyProps={{variant: "subheading"}}
-                        />
+                            secondaryTypographyProps={{
+                            variant: "subheading"
+                        }}/>
                     </ListItem>
                 );
             });
@@ -190,13 +246,12 @@ class ServiceDetail extends React.Component {
                     <ListItemText
                         primary={name}
                         onClick={() => {
-                            if (url) {
-                                windowGlobal.open(url, "_blank");
-                            }
-                        }}
+                        if (url) {
+                            windowGlobal.open(url, "_blank");
+                        }
+                    }}
                         secondary={price}
-                        className={classes.formLink}
-                    />
+                        className={classes.ser_detail_formLink}/>
                 </ListItem>;
             });
         }
@@ -204,13 +259,13 @@ class ServiceDetail extends React.Component {
         let qaList = null;
         if (allfaq.length > 0) {
             qaList = allfaq.map((qa, index) => {
-                const { answer, question } = qa;
+                const {answer, question} = qa;
                 const text = (
                     <RawHTML>
                         {answer}
                     </RawHTML>
                 );
-                
+
                 return <ListItem disableGutters>
                     <ListItemText primary={question} secondary={text}/>
                 </ListItem>;
@@ -231,7 +286,7 @@ class ServiceDetail extends React.Component {
                     <br/>
                     <AddressGoogleMap
                         googleMapURL="https://maps.googleapis.com/maps/api/js?v=3.exp&key=AIzaSyC1d6ej2p77--6Wf8m6dzdrbvKhfBnb3Ks&libraries=places"
-                        loadingElement={<div style={{ height: "205px", width: "280px" }} />}
+                        loadingElement={< div style = {{ height: "205px", width: "280px" }}/>}
                         containerElement={< div style = {{ height: "200px", width: "280px" }}/>}
                         mapElement={< div style = {{ height: "200px", width: "280px" }}/>}
                         address={address.toLowerCase()}/>
@@ -241,26 +296,36 @@ class ServiceDetail extends React.Component {
         }
 
         const serDel = service_del_links.map((link, idx) => {
-        return ({
-            "potentialAction": {
-                "@type": "ReserveAction",
-                "target": {
-                    "@type": "EntryPoint",
-                    "urlTemplate": `${link.url}`,
-                    "inLanguage": "en-US",
-                    "actionPlatform": [
-                        "http://schema.org/DesktopWebPlatform",
-                        "http://schema.org/IOSPlatform",
-                        "http://schema.org/AndroidPlatform"
-                    ]
-                },
-                "result": {
-                    "@type": "Reservation",
-                    "name": `${link.link_name}`
+            return ({
+                "potentialAction": {
+                    "@type": "ReserveAction",
+                    "target": {
+                        "@type": "EntryPoint",
+                        "urlTemplate": `${link.url}`,
+                        "inLanguage": "en-US",
+                        "actionPlatform": ["http://schema.org/DesktopWebPlatform", "http://schema.org/IOSPlatform", "http://schema.org/AndroidPlatform"]
+                    },
+                    "result": {
+                        "@type": "Reservation",
+                        "name": `${link.link_name}`
+                    }
                 }
-            }
+            });
         });
-    });
+
+        const otherSersComp = otherServices
+            .slice(0, 3)
+            .map((service, idx) => <ServiceCard
+                key={`service-card-other-${service.id}`}
+                resultType='service'
+                id={service.id}
+                listIndex={`${service.id}-${idx}`}
+                toLink={`/service/${service.id}`}
+                title={service.service_name}
+                description={service.service_description}
+                deliveryLink={service.service_del_links && service.service_del_links[0]
+                ? service.service_del_links[0]
+                : null}/>);
 
         const jsonLd = {
             "@context": "http://schema.org",
@@ -268,168 +333,201 @@ class ServiceDetail extends React.Component {
             "name": `${name}`,
             "provider": {
                 "@context": "http://schema.org",
-                 "@type": "GovernmentOrganization",
+                "@type": "GovernmentOrganization",
                 "schema:name": `${org_name}`
-            },
+            }
         }
-        if(serDel.length >0){
+        if (serDel.length > 0) {
             jsonLd['potentialAction'] = serDel[0]['potentialAction']
         }
-        
 
         const someDetails = description || price || timingList || formList || stepList || qaList || locList;
         return (
-            <Grid container spacing={16} className={classes.container}>
-                <Helmet>
-                    <title>{`${name} service offered in ${org_name} | Localgov.fyi`} </title>
-                    <link rel="canonical" href={`https://localgov.fyi/service/${id}/`} />
+            <DetailTemplate location={this.props.location}>
 
-                    <meta property="og:title" content={`${name} service offered in ${org_name} | Localgov.fyi`} />
-                    <meta property="og:url" content={`https://localgov.fyi/service/${id}/`} />
+                <Grid container spacing={16} className={classes.ser_detail_container}>
+                    <Helmet>
+                        <title>{`${name} service offered in ${org_name} | Localgov.fyi`}
+                        </title>
+                        <link rel="canonical" href={`https://localgov.fyi/service/${id}/`}/>
 
-                    <meta name="description" content={`Forms, Price, Timings and Local Government Service Contact Details for ${name} offered in ${org_name} | Localgov.fyi`}  />
+                        <meta
+                            property="og:title"
+                            content={`${name} service offered in ${org_name} | Localgov.fyi`}/>
+                        <meta property="og:url" content={`https://localgov.fyi/service/${id}/`}/>
 
-                    <meta property="og:description" content={`Forms, Price, Timings and Local Government Service Contact Details for ${name} offered in ${org_name} | Localgov.fyi`}  />
-                    <JsonLd data={jsonLd} />
-                </Helmet>
-                {this.props.history.length > 2 && !isMobileOnly ? (
-                    <IconButton variant="outlined" aria-label="goback" onClick={() => this.props.history.goBack()} className={classes.button}>
-                        <KeyboardBackspace />
-                    </IconButton>
-                ) : null }
-                <Grid item xs={12}>
-                    <ServiceHeader
-                        name={name}
-                        offeredIn={org_name}
-                        orgID={org_id}
-                        info={contact_details}
-                        serDelLinks={service_del_links}
-                        logoSizes={serLogoSvg}
-                    />
-                </Grid>
-                <Grid item xs={12} md={8} className={classes.details}>
-                    {someDetails && <Paper className={classes.cardWrapper}>
-                        <Grid item xs={12}>
-                            <Paper className={classes.cards}>
-                                <Grid container spacing={8}>
-                                    <Grid item xs={10} sm={11}>
-                                        <div className={classes.cardContent}>
-                                            <Typography variant="subheading" gutterBottom>
-                                                About this service
-                                            </Typography>
-                                            <Typography variant="body1" gutterBottom>
-                                                <RawHTML>{description}</RawHTML>
-                                            </Typography>
-                                        </div>
+                        <meta
+                            name="description"
+                            content={`Forms, Price, Timings and Local Government Service Contact Details for ${name} offered in ${org_name} | Localgov.fyi`}/>
+
+                        <meta
+                            property="og:description"
+                            content={`Forms, Price, Timings and Local Government Service Contact Details for ${name} offered in ${org_name} | Localgov.fyi`}/>
+                        <JsonLd data={jsonLd}/>
+                    </Helmet>
+                    {(windowGlobal && window.history.length > 2) && !isMobileOnly
+                        ? (
+                            <IconButton
+                                variant="outlined"
+                                aria-label="goback"
+                                onClick={() => window.history.back()}
+                                className={classes.ser_detail_button}>
+                                <KeyboardBackspace/>
+                            </IconButton>
+                        )
+                        : null}
+                    <Grid item xs={12}>
+                        <ServiceHeader
+                            name={name}
+                            id={id}
+                            offeredIn={org_name}
+                            orgID={org_id}
+                            info={contact_details}
+                            serDelLinks={service_del_links}
+                            logoSizes={serLogoSvg}/>
+                    </Grid>
+                    <Grid item xs={12} md={8} className={classes.ser_detail_details}>
+                        {someDetails && <Paper className={classes.ser_detail_cardWrapper}>
+                            <Grid item xs={12}>
+                                <Paper className={classes.ser_detail_cards}>
+                                    <Grid container spacing={8}>
+                                        <Grid item xs={10} sm={11}>
+                                            <div className={classes.ser_detail_cardContent}>
+                                                <Typography variant="subheading" gutterBottom>
+                                                    About this service
+                                                </Typography>
+                                                <Typography variant="body1" gutterBottom>
+                                                    <RawHTML>{description}</RawHTML>
+                                                </Typography>
+                                            </div>
+                                        </Grid>
                                     </Grid>
-                                </Grid>
-                            </Paper>
-                        </Grid>
-                        {price && <Grid item xs={12}>
-                            <div className={classes.dividerWrapper}><Divider /></div>
-                            <Paper className={classes.cards}>
-                                <Grid container spacing={8}>
-                                    {/*<Grid item xs={2} sm={1}>
+                                </Paper>
+                            </Grid>
+                            {price && <Grid item xs={12}>
+                                <div className={classes.ser_detail_dividerWrapper}><Divider/></div>
+                                <Paper className={classes.ser_detail_cards}>
+                                    <Grid container spacing={8}>
+                                        {/*<Grid item xs={2} sm={1}>
                                         <div className={classes.iconWrapper}>
                                             <AttachMoney className={classes.icon} />
                                         </div>
                                     </Grid>*/}
-                                    <Grid item xs={10} sm={11}>
-                                        <div className={classes.cardContent}>
-                                            <Typography variant="body2" gutterBottom>
-                                                {price}
-                                            </Typography>
-                                        </div>
+                                        <Grid item xs={10} sm={11}>
+                                            <div className={classes.ser_detail_cardContent}>
+                                                <Typography variant="body2" gutterBottom>
+                                                    {price}
+                                                </Typography>
+                                            </div>
+                                        </Grid>
                                     </Grid>
-                                </Grid>
-                            </Paper>
-                        </Grid>}
-                        {timingList && <Grid item xs={12}>
-                            <div className={classes.dividerWrapper}><Divider /></div>
-                            <Paper className={classes.cards}>
-                                <Grid container spacing={8}>
-                                    {/*<Grid item xs={2} sm={1}>
+                                </Paper>
+                            </Grid>}
+                            {timingList && <Grid item xs={12}>
+                                <div className={classes.ser_detail_dividerWrapper}><Divider/></div>
+                                <Paper className={classes.ser_detail_cards}>
+                                    <Grid container spacing={8}>
+                                        {/*<Grid item xs={2} sm={1}>
                                         <div className={classes.iconWrapper}>
                                             <AccessTime className={classes.icon} />
                                         </div>
                                     </Grid>*/}
-                                    <Grid item xs={10} sm={11}>
-                                        <div className={classes.cardContent} style={{ marginTop: -12 }}>{timingList}</div>
+                                        <Grid item xs={10} sm={11}>
+                                            <div
+                                                className={classes.ser_detail_cardContent}
+                                                style={{
+                                                marginTop: -12
+                                            }}>{timingList}</div>
+                                        </Grid>
                                     </Grid>
-                                </Grid>
-                            </Paper>
-                        </Grid>}
-                        {formList && <Grid item xs={12}>
-                            <div className={classes.dividerWrapper}><Divider /></div>
-                            <Paper className={classes.cards}>
-                                <Grid container spacing={8}>
-                                    {/*<Grid item xs={2} sm={1}>
+                                </Paper>
+                            </Grid>}
+                            {formList && <Grid item xs={12}>
+                                <div className={classes.ser_detail_dividerWrapper}><Divider/></div>
+                                <Paper className={classes.ser_detail_cards}>
+                                    <Grid container spacing={8}>
+                                        {/*<Grid item xs={2} sm={1}>
                                         <div className={classes.iconWrapper}>
                                             <Assignment className={classes.icon} />
                                         </div>
                                     </Grid>*/}
-                                    <Grid item xs={10} sm={11}>
-                                        <div className={classes.cardContent} style={{ marginTop: -12 }}>{formList}</div>
+                                        <Grid item xs={10} sm={11}>
+                                            <div
+                                                className={classes.ser_detail_cardContent}
+                                                style={{
+                                                marginTop: -12
+                                            }}>{formList}</div>
+                                        </Grid>
                                     </Grid>
-                                </Grid>
-                            </Paper>
-                        </Grid>}
-                        {stepList && <Grid item xs={12}>
-                            <div className={classes.dividerWrapper}><Divider /></div>
-                            <Paper className={classes.cards}>
-                                <Grid container spacing={8}>
-                                    {/*<Grid item xs={2} sm={1}>
+                                </Paper>
+                            </Grid>}
+                            {stepList && <Grid item xs={12}>
+                                <div className={classes.ser_detail_dividerWrapper}><Divider/></div>
+                                <Paper className={classes.ser_detail_cards}>
+                                    <Grid container spacing={8}>
+                                        {/*<Grid item xs={2} sm={1}>
                                         <div className={classes.iconWrapper}>
                                             <PlaylistAddCheck className={classes.icon} />
                                         </div>
                                     </Grid>*/}
-                                    <Grid item xs={10} sm={11}>
-                                        <div className={classes.cardContent} style={{ marginTop: -12 }}>{stepList}</div>
+                                        <Grid item xs={10} sm={11}>
+                                            <div
+                                                className={classes.ser_detail_cardContent}
+                                                style={{
+                                                marginTop: -12
+                                            }}>{stepList}</div>
+                                        </Grid>
                                     </Grid>
-                                </Grid>
-                            </Paper>
-                        </Grid>}
-                        {qaList && <Grid item xs={12}>
-                            <div className={classes.dividerWrapper}><Divider /></div>
-                            <Paper className={classes.cards}>
-                                <Grid container spacing={8}>
-                                    {/*<Grid item xs={2} sm={1}>
+                                </Paper>
+                            </Grid>}
+                            {qaList && <Grid item xs={12}>
+                                <div className={classes.ser_detail_dividerWrapper}><Divider/></div>
+                                <Paper className={classes.ser_detail_cards}>
+                                    <Grid container spacing={8}>
+                                        {/*<Grid item xs={2} sm={1}>
                                         <div className={classes.iconWrapper}>
                                             <QuestionAnswer className={classes.icon} />
                                         </div>
                                     </Grid>*/}
-                                    <Grid item xs={10} sm={11}>
-                                        <div className={classes.cardContent}>{qaList}</div>
+                                        <Grid item xs={10} sm={11}>
+                                            <div className={classes.ser_detail_cardContent}>{qaList}</div>
+                                        </Grid>
                                     </Grid>
-                                </Grid>
-                            </Paper>
-                        </Grid>}
-                        {locList && <Grid item xs={12}>
-                            <div className={classes.dividerWrapper}><Divider /></div>
-                            <Paper className={classes.cards}>
-                                <Grid container spacing={8}>
-                                    {/*<Grid item xs={2} sm={1}>
+                                </Paper>
+                            </Grid>}
+                            {locList && <Grid item xs={12}>
+                                <div className={classes.ser_detail_dividerWrapper}><Divider/></div>
+                                <Paper className={classes.ser_detail_cards}>
+                                    <Grid container spacing={8}>
+                                        {/*<Grid item xs={2} sm={1}>
                                         <div className={classes.iconWrapper}>
                                             <PinDrop className={classes.icon} />
                                         </div>
                                     </Grid>*/}
-                                    <Grid item xs={10} sm={11}>
-                                        <div className={classes.cardContent}>{locList}</div>
+                                        <Grid item xs={10} sm={11}>
+                                            <div className={classes.ser_detail_cardContent}>{locList}</div>
+                                        </Grid>
                                     </Grid>
-                                </Grid>
-                            </Paper>
-                        </Grid>}
-                    </Paper>}
+                                </Paper>
+                            </Grid>}
+                        </Paper>}
+                    </Grid>
+                    <Grid item xs={12} sm={12} md={4}>
+                        {isMobileOnly && <div className={classes.ser_detail_otherServicesDividerWrapper}><Divider/></div>}
+                        <div className={classes.other_ser_headerWrapper}>
+                            <Typography variant="subheading">Additional services</Typography>
+                        </div>
+                        {this.state.logincheckloading ? (<Spinner className={classes.ser_detail_loading_spinner} name="ball-beat" color="blue"/>) : (<div>
+                            {otherSersComp}
+                        </div>)}
+                        <div className={classes.other_ser_linkWrapper}>
+                            <Link to={`/organization/${org_id}`} className={classes.other_ser_link}>
+                                <Typography variant="caption" className={classes.other_ser_linkText}>See all services from {org_name}</Typography>
+                            </Link>
+                        </div>
+                    </Grid>
                 </Grid>
-                <Grid item xs={12} sm={12} md={4}>
-                    {isMobileOnly && <div className={classes.otherServicesDividerWrapper}><Divider /></div>}
-                    <OtherServices
-                        services={otherServices.slice(0, 3)}
-                        orgID={org_id}
-                        orgName={org_name}
-                    />
-                </Grid>
-            </Grid>
+            </DetailTemplate>
         )
     }
 }
@@ -442,4 +540,3 @@ const mapStateToProps = function (state, ownProps) {
 };
 
 export default connect(mapStateToProps)(withRoot(withStyles(styles)(ServiceDetail)));
-

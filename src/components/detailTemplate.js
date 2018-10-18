@@ -2,13 +2,13 @@ import React from "react";
 import Grid from '@material-ui/core/Grid';
 import { withStyles } from '@material-ui/core/styles';
 import {isMobileOnly} from 'react-device-detect';
-import Share from "../components/Share";
-import HeaderWithSearch from '../components/HeaderWithSearch';
-import Footer from '../components/Footer';
+import Share from "./Share";
+import HeaderWithSearch from './HeaderWithSearch';
+import Footer from './Footer';
 import withRoot from '../withRoot';
 
 const styles = theme => ({
-  root: {
+  default_template_root: {
     width: "100%",
     height: "100%",
     margin: 0,
@@ -18,22 +18,22 @@ const styles = theme => ({
     alignItems: 'flex-start',
     background: theme.palette.common.white,
   },
-  main: {
+  default_template_main: {
     width: '100%',
     minHeight: '100vh',
     paddingBottom: 70,
   },
-  mainMobile: {
+default_template_mainMobile : {
     width: '100%',
     minHeight: '100vh',
     paddingBottom: 114,
   },
-  footer: {
+default_template_footer : {
     width: '100%',
     alignSelf: 'flex-end',
     marginTop: -70,
   },
-  footerMobile: {
+default_template_footerMobile : {
     width: '100%',
     alignSelf: 'flex-end',
     marginTop: -114,
@@ -50,23 +50,23 @@ class DetailTemplate extends React.Component {
     const { classes } = this.props;
 
     return (
-      <div className={classes.root}>
-        <div className={isMobileOnly ? classes.mainMobile : classes.main}>
-          <HeaderWithSearch />
+      <div className={classes.default_template_root}>
+        <div className={isMobileOnly ? classes.default_template_mainMobile : classes.default_template_main}>
+          <HeaderWithSearch location={this.props.location} />
           <Grid container spacing={0}>
             <Grid item xs={1} />
             <Grid item xs={10}>
-              {this.props.children()}
+              {this.props.children}
             </Grid>
             <Grid item xs={1} />
           </Grid>
         </div>
-        <div className={isMobileOnly ? classes.footerMobile : classes.footer}>
-          <Footer />
+        <div className={isMobileOnly ? classes.default_template_footerMobile : classes.default_template_footer}>
+          <Footer page={this.props.location.pathname} />
         </div>
       </div>
     );
   }
 }
 
-export default withRoot(withStyles(styles)(DetailTemplate));
+export default withStyles(styles)(DetailTemplate);

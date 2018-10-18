@@ -29,17 +29,17 @@ import {
   updateServiceInput,
   setServiceSuggestions,
 } from "./actions";
-import { trackInput, trackClick } from './tracking';
+import { trackInput, trackClick } from '../common/tracking';
 
 
 const styles = theme => ({
-  wrapper : {
+  search_suggestbox_wrapper : {
     fontFamily: theme.typography.fontFamily,
     position: "relative",
     background: theme.palette.common.white,
     display: "flex",
   },
-  search : {
+  search_suggestbox_search : {
     width: theme.spacing.unit * 8,
     color: theme.palette.primary["200"],
     height: theme.spacing.unit * 8,
@@ -47,7 +47,7 @@ const styles = theme => ({
     alignItems: "center",
     justifyContent: "center"
   },
-  input : {
+search_suggestbox_input : {
     fontFamily : theme.typography.fontFamily,
 padding : '14px',
     border: 1,
@@ -70,7 +70,7 @@ padding : '14px',
       display: "none"
     }
   },
-  sectionTitle : {
+search_suggestbox_sectionTitle : {
     marginLeft: theme.spacing.unit * 1.5,
     marginTop: theme.spacing.unit,
     textTransform: "capitalize",
@@ -79,11 +79,11 @@ padding : '14px',
     lineHeight: "2.75em",
     color: "rgba(30, 30, 50,0.54)"
   },
-  container : {
+search_suggestbox_container : {
     flexGrow: 1,
     position: "relative",
   },
-  suggestionsContainerOpen : {
+search_suggestbox_suggestionsContainerOpen : {
     position: "absolute",
     padding: theme.spacing.unit * 1,
     marginTop : `4px`,
@@ -96,10 +96,10 @@ padding : '14px',
     right: 0,
     overflow: "scroll"
   },
-  suggestion : {
+search_suggestbox_suggestion : {
     display: "block"
   },
-  suggestionsList : {
+search_suggestbox_suggestionsList : {
     margin: 0,
     padding: 0,
     listStyleType: "none"
@@ -138,7 +138,7 @@ class ServiceSuggestBox extends Component {
     const { classes } = this.props;
     return (
       <div>
-        <Typography align="left" variant="title" className={classes.sectionTitle}>
+        <Typography align="left" variant="title" className={classes.search_suggestbox_sectionTitle}>
           {section.title}
         </Typography>
       </div>
@@ -213,17 +213,17 @@ class ServiceSuggestBox extends Component {
     const { serviceSuggestionsLoading, serviceInput } = search;
 
     return (
-      <div className={classes.wrapper}>
+      <div className={classes.search_suggestbox_wrapper}>
         <Input
           value={value}
           placeholder={inputProps.placeholder}
           inputRef={ref}
-          className={classes.input}
+          className={classes.search_suggestbox_input}
           inputProps={{
             "aria-label": "Description",
             ...other
           }} />
-        <div className={classes.search}>
+        <div className={classes.search_suggestbox_search}>
           {serviceSuggestionsLoading
             ? <CircularProgress size={24} color="primary" />
             : serviceInput
@@ -282,15 +282,15 @@ class ServiceSuggestBox extends Component {
     const placeholder = "Search for Parking Tickets, Permits, Licenses…";
 
     return (
-      <form onSubmit={this.onSubmit} className={classes.container}>
+      <form onSubmit={this.onSubmit} className={classes.search_suggestbox_container}>
         {/* renderSectionTitle={this.renderSectionTitle}
         getSectionSuggestions={this.getSectionSuggestions} */}
         <Autosuggest
           theme={{
-            container: classes.container,
-            suggestionsContainerOpen: classes.suggestionsContainerOpen,
-            suggestionsList: classes.suggestionsList,
-            suggestion: classes.suggestion
+            container: classes.search_suggestbox_container,
+suggestionsContainerOpen : classes.search_suggestbox_suggestionsContainerOpen,
+suggestionsList : classes.search_suggestbox_suggestionsList,
+suggestion : classes.search_suggestbox_suggestion
           }}
           renderInputComponent={this.renderInput}
           suggestions={serviceSuggestions}
@@ -323,4 +323,4 @@ const mapStateToProps = function (state, ownProps) {
   };
 };
 
-export default connect(mapStateToProps)(withRoot(withStyles(styles)(ServiceSuggestBox)));
+export default connect(mapStateToProps)(withStyles(styles)(ServiceSuggestBox));

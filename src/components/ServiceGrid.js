@@ -20,15 +20,15 @@ import Folder from '@material-ui/icons/Folder';
 import ShoppingCart from '@material-ui/icons/ShoppingCart';
 import DirectionsCar from '@material-ui/icons/DirectionsCar';
 import Autorenew from '@material-ui/icons/Autorenew';
-
+import {trackClick} from "./common/tracking";
 import withRoot from '../withRoot';
 
 const styles = theme => ({
-  link: {
+  service_grid_link: {
     textDecoration: 'none',
     cursor: 'pointer',
   },
-  card: {
+service_grid_card : {
     height: '100%',
     border: `1px solid ${theme.palette.primary['100']}`,
     boxShadow : `0 1px 1px ${theme.palette.primary['50']}`,
@@ -37,7 +37,7 @@ const styles = theme => ({
         boxShadow: `0 2px 2px ${theme.palette.primary['100']}`,
     },
   },
-  cardContent: {
+service_grid_cardContent : {
     display: 'flex',
     flexDirection: 'column',
     textAlign: 'center',
@@ -45,7 +45,7 @@ const styles = theme => ({
     alignItems: 'center',
     height: '100%',
   },
-  icon: {
+service_grid_icon : {
     color: theme.palette.primary['600'],
     fontSize: 48,
     minHeight: 40,
@@ -58,15 +58,15 @@ const styles = theme => ({
 
 const ServiceGrid = ({classes, city, services, type, clickGridItem}) => {
   const icons = {
-    Apply: <Assignment className={classes.icon} />,
-    Pay: <AttachMoney className={classes.icon} />,
-    Recreational: <Rowing className={classes.icon} />,
-    Register: <Autorenew className={classes.icon} />,
-    Report: <Report className={classes.icon} />,
-    Voter : <Autorenew className={classes.icon}/>,
-    Food: <ShoppingCart className={classes.icon} />,
-    Vehicle: <DirectionsCar className={classes.icon} />,
-    Renew: <Autorenew className={classes.icon} />,
+    Apply: <Assignment className={classes.service_grid_icon} />,
+    Pay: <AttachMoney className={classes.service_grid_icon} />,
+    Recreational: <Rowing className={classes.service_grid_icon} />,
+    Register: <Autorenew className={classes.service_grid_icon} />,
+    Report: <Report className={classes.service_grid_icon} />,
+    Voter : <Autorenew className={classes.service_grid_icon}/>,
+    Food: <ShoppingCart className={classes.service_grid_icon} />,
+Vehicle : <DirectionsCar className={classes.service_grid_icon}/>,
+    Renew: <Autorenew className={classes.service_grid_icon} />,
   };
 
   let trimmedServices = services;
@@ -84,12 +84,12 @@ const ServiceGrid = ({classes, city, services, type, clickGridItem}) => {
 
             <a onClick = {() => {
               clickGridItem(type, service.id, service.service_name, index, `/service/${service.id}/`);
-            }} className={classes.link}>
-                <Card className={classes.card}>
-                  <CardContent className={classes.cardContent}>
+            }} className={classes.service_grid_link}>
+                <Card className={classes.service_grid_card}>
+                  <CardContent className={classes.service_grid_cardContent}>
                     {service.service_name.split(' ').map(word => {
                       return icons[word];
-                    })[0] || <AccountBalance className={classes.icon} />}
+                    })[0] || <AccountBalance className={classes.service_grid_icon} />}
                     <Typography variant="body2" >
                       {service.service_name}
                     </Typography>
@@ -103,11 +103,11 @@ const ServiceGrid = ({classes, city, services, type, clickGridItem}) => {
                   <a onClick = {() => {
                       clickGridItem(type, 'more', '', index, `/organization/${city.id}/`);
                  
-            }}   className={classes.link}>
-                    <Card className={classes.card}>
-                      <CardContent className={classes.cardContent}>
-                        <MoreHoriz className={classes.icon} />
-                        <Typography variant="body2"  noWrap>
+            }}   className={classes.service_grid_link}>
+                    <Card className={classes.service_grid_card}>
+                      <CardContent className={classes.service_grid_cardContent}>
+                        <MoreHoriz className={classes.service_grid_icon} />
+                        <Typography variant="body2" noWrap>
                           More Services
                         </Typography>
                       </CardContent>
@@ -139,6 +139,6 @@ const mapStateToProps = function (state, ownProps) {
   };
 };
 
-const ConnServiceGrid = connect(mapStateToProps, mapDispatchToProps)(withRoot(withStyles(styles)(ServiceGrid)));
+const ConnServiceGrid = connect(mapStateToProps, mapDispatchToProps)(withStyles(styles)(ServiceGrid));
 
 export default ConnServiceGrid;

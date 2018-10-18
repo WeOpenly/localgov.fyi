@@ -17,34 +17,34 @@ import SemanticResults from '../../components/SemanticResults';
 import NoResults from '../../components/NoResults';
 import withRoot from '../../withRoot';
 
-import { trackView } from "../../components/Search/tracking";
-import { updateInput, fetchSearchResults } from '../../components/Search/actions';
+import { trackView } from "../../components/common/tracking";
+import { updateInput, fetchSearchResults } from '../../components/Search/actions.js';
 
 const styles = theme => ({
-    root: {
+    search_root: {
         width: "100%",
         height: "100%",
         margin: 0,
         padding: 0,
     },
-    rootMobile: {
+    search_rootMobile: {
         width: 'auto',
         height: '100%',
         marginLeft: theme.spacing.unit * -2,
         marginRight: theme.spacing.unit * -2,
         padding: 0,
     },
-    flex: {
+    search_flex: {
         flex: 1
     },
-    menuButton: {
+search_menuButton : {
         marginLeft: -12,
         marginRight: 20,
     },
-    searchResults: {
+search_searchResults : {
         paddingTop: theme.spacing.unit * 3,
     },
-    wrapper: {
+search_wrapper : {
         width: '100%',
         height: 500,
         display: 'flex',
@@ -52,16 +52,16 @@ const styles = theme => ({
         justifyContent: 'center',
         alignItems: 'center',
     },
-    icon: {
+search_icon : {
         fontSize: 48,
         color: theme.palette.primary['500'],
         marginBottom: theme.spacing.unit * 2,
     },
-    link: {
+search_link : {
         color: theme.palette.primary['500'],
         textDecoration: 'none',
     },
-noresults:{
+search_noresults : {
     marginTop: theme.spacing.unit * 10,
 }
 });
@@ -94,7 +94,7 @@ class Search extends React.Component {
        
         if (searchResultsLoading) {
             return (
-                <div className={classes.wrapper}>
+                <div className={classes.search_wrapper}>
                     <Spinner name="ball-beat" color="blue"/>
                 </div>
             );
@@ -110,10 +110,10 @@ class Search extends React.Component {
                 searchText = pathNameFragments[2]
             }
             
-            return <div className={!isMobileOnly ? classes.root : classes.rootMobile}>
+            return <div className={!isMobileOnly ? classes.search_root : classes.search_rootMobile}>
                 <Helmet title={`Search for - ${input}`} />
                 <HeaderWithSearch />
-                <div className={classes.noresults}>
+                <div className={classes.search_noresults}>
                     <NoResults searchQuery={searchText} />
                 </div>
                 <form name="feedback" data-netlify="true" netlify-honeypot="bot-field" hidden>
@@ -127,30 +127,30 @@ class Search extends React.Component {
 
         if (searchResultsLoadingFailed) {
             return (
-                <div className={classes.wrapper}>
-                    <MoodBad className={classes.icon}/>
+                <div className={classes.search_wrapper}>
+                    <MoodBad className={classes.search_icon}/>
                     <Typography variant="title">
                         Something went wrong.
                     </Typography>
                     <Typography variant="subheading">
-                        Please <Link to="/" className={classes.link}>try another search.</Link>
+                        Please <Link to="/" className={classes.search_link}>try another search.</Link>
                     </Typography>
                 </div>
             );
         }
         
         return (
-            <div className={!isMobileOnly ? classes.root : classes.rootMobile}>
+            <div className={!isMobileOnly ? classes.search_search_root : classes.search_search_rootMobile}>
                 <Helmet title={`Search for - ${input}`} />
                 <HeaderWithSearch />
-                <Grid container spacing={0}>
-                    <Grid item xs={1} md={1}/>
-                    <Grid className={classes.searchResults} item xs={10} md={10}>
+                <Grid className='search_grid' container spacing={0}>
+                    <Grid className='search_grid_item' item xs={1} md={1}/>
+                    <Grid className='search_grid_item' className={classes.search_searchResults} item xs={10} md={10}>
                         {isSemantic
                             ? (<SemanticResults/>)
                             : (<SearchResults/>)}
                     </Grid>
-                    <Grid item xs={1} md={1}/>
+                    <Grid className='search_grid_item' item xs={1} md={1}/>
                 </Grid>
             </div>
         );

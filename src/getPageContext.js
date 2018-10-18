@@ -9,7 +9,7 @@ import {createMuiTheme, createGenerateClassName} from '@material-ui/core/styles'
 const theme = createMuiTheme({
     palette: {
         primary: {
-            "50": "#f0f3ff",
+            "50": "#f9fafc",
             "100": "#EBE5FF",
             "200": "#AB93FF",
             "300": "#8968FF",
@@ -28,21 +28,20 @@ const theme = createMuiTheme({
             contrastDefaultColor: "light"
         }, // Purple and green play nicely together.
         secondary: {
-            "50": "#FFFAEC",
-            "100": "#FFF2CF",
-            "200": "#FFEAAF",
-            "300": "#FEE28F",
-            "400": "#FEDB77",
-            "500": "#FED55F",
-            "600": "#FED057",
-            "700": "#FECA4D",
-            "800": "#FEC443",
-            "900": "#FDBA32",
-            A100: "#FFFFFF",
-            A200: "#FFFFFF",
-            A400: "#FFF3DB",
-            A700: "#FFEAC2",
-            A900: "#C8A42D",
+             "50": "#fce4ec",
+            "100": "#ffc6ef",
+            "200": "#ffc6ef",
+            "300": "#ffc6ef",
+            "400": "#ffc6ef",
+            "500": "#d782d9",
+            "600": "#d782d9",
+            "700": "#d782d9",
+            "800": "#d782d9",
+            "900": "#d782d9",
+            A100: "#ffc6ef",
+            A200: "#da92f3",
+            A400: "#da92f3",
+            A700: "#b076f3",
             contrastDefaultColor: "light"
         },
         error: {
@@ -187,6 +186,7 @@ const theme = createMuiTheme({
     }
 });
 
+
 function createPageContext() {
     return {
         theme,
@@ -200,6 +200,7 @@ function createPageContext() {
 }
 
 export default function getPageContext() {
+    const r = Math.random().toString(36).substring(7);
     // Make sure to create a new context for every server-side request so that data
     // isn't shared between connections (which would be bad).
     if (!process.browser) {

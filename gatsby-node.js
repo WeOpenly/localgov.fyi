@@ -7,8 +7,8 @@ const slash = require(`slash`)
 // Implement the Gatsby API “createPages”. This is called after the Gatsby
 // bootstrap is finished so you have access to any information necessary to
 // programmatically create pages.
-exports.createPages = ({graphql, boundActionCreators}) => {
-  const {createPage} = boundActionCreators
+exports.createPages = ({graphql, actions}) => {
+  const {createPage} = actions
 
   return new Promise((resolve, reject) => {
     // The “graphql” function allows us to run arbitrary queries against this
@@ -116,7 +116,6 @@ allLogos: allFile (filter : {
           // `context` is optional but is often necessary so the template can query data
           // specific to each page.
           path: `organization/${edge.node.details.id}/`,
-          layout : "detailTemplate",
           component: slash(orgTemplate),
           context: {
             data: edge.node.details,
@@ -177,7 +176,6 @@ allLogos: allFile (filter : {
             createPage({
               path: `service/${service.id}/`,
               component: slash(serTemplate),
-              layout: "detailTemplate",
               context: {
                 data: {
                   id: service.id,
@@ -208,7 +206,8 @@ allLogos: allFile (filter : {
   })
 }
 
-exports.modifyBabelrc = ({ babelrc }) => ({
-  ...babelrc,
-  plugins: babelrc.plugins.concat(['transform-regenerator']),
-})
+// exports.onCreateBabelConfig = ({ actions}) => {
+//   actions.setBabelPlugin({
+//     name: `@babel/plugin-transform-regenerator`,
+//   })
+// }

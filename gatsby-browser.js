@@ -1,19 +1,29 @@
 import 'babel-polyfill';
 
 import React from 'react'
-import {Router} from 'react-router-dom'
 import {Provider} from 'react-redux'
+import Auth, {isLoggedIn} from './src/components/Account/Auth';
 
 import reduxCreateStore from './src/state/createStore';
 
-exports.replaceRouterComponent = ({ history }) => {
+const auth = new Auth();
+
+
+export const wrapRootElement = ({ element }) => {
   const store = reduxCreateStore();
 
-  const ConnectedRouterWrapper = ({ children }) => (
+  const ConnectedRouterWrapper = (
     <Provider store={store}>
-      <Router history={history}>{children}</Router>
+      {element}
     </Provider>
   )
 
   return ConnectedRouterWrapper
+}
+
+
+export const onRouteUpdate = (state, page, pages) => {
+  if (!isLoggedIn){
+    auth.logout();
+  }
 }

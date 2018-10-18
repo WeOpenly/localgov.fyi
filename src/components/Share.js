@@ -124,4 +124,4 @@ Share.propTypes = {
     classes: PropTypes.object.isRequired
 };
 
-export default withRoot(withStyles(styles)(Share));
+export default withStyles(styles)(Share);

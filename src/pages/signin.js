@@ -101,7 +101,7 @@ class SignIn extends Component {
     label,
     type,
     meta: { touched, error },
-    ...custom,
+    ...custom
   }) {
     return (
       <TextField
@@ -165,7 +165,7 @@ class SignIn extends Component {
               </div>
               {error && <Typography color="error">{error}</Typography>}
               <Button
-                variant="raised"
+                variant="contained"
                 color="primary"
                 disabled={pristine || invalid || submitting}
                 className={classes.button}

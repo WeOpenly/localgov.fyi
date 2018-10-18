@@ -15,14 +15,14 @@ import ContactDetails from "./ContactDetails";
 import withRoot from '../withRoot';
 
 const styles = theme => ({
-    media: {
+    org_detail_lite_media: {
         minWidth: "100px",
         minHeight: "100px",
         backgroundPosition: "center",
         borderRadius: "50%",
         boxShadow: `0px 0px 10px 5px ${theme.palette.primary["A200"]}`
     },
-    card: {
+org_detail_lite_card : {
         borderRadius: 3,
         cursor: 'pointer',
         display: "flex",
@@ -31,13 +31,13 @@ const styles = theme => ({
         justifyContent: "center",
         boxShadow: `0 0 10px 5px ${theme.palette.primary["A200"]}`
     },
-    cardContent: {
+org_detail_lite_cardContent : {
         display: 'flex',
         justifyContent: 'center',
         alignItems: 'center',
         paddingTop: theme.spacing.unit * 3,
     },
-    icon: {
+org_detail_lite_icon : {
         color: theme.palette.primary['100'],
         fontSize: 64,
         marginRight: theme.spacing.unit,
@@ -58,9 +58,9 @@ class OrgDetailLite extends Component {
                 <Typography variant="subheading" gutterBottom>
                     {heading}
                 </Typography>
-                <Card className={classes.card} onClick={() => navigateTo(`/organization/${org_id}`)}>
-                    <CardContent className={classes.cardContent}>
-                        <AccountBalance className={classes.icon} />
+                <Card className={classes.org_detail_lite_card} onClick={() => navigateTo(`/organization/${org_id}`)}>
+                    <CardContent className={classes.org_detail_lite_cardContent}>
+                        <AccountBalance className={classes.org_detail_lite_icon} />
                         <Typography align="center" variant="title">
                             {org_name}
                         </Typography>

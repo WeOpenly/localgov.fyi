@@ -14,21 +14,21 @@ import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
 import withRoot from '../withRoot';
 
-import { trackView } from "./Search/tracking";
+import { trackView } from "./common/tracking";
 
 const styles = theme => ({
-  wrapper: {
+  no_res_wrapper: {
     position: 'relative',
   },
-  icon: {
+no_res_icon : {
     fontSize: 48,
     color: theme.palette.primary['500'],
     marginBottom: theme.spacing.unit * 2,
   },
-  title: {
+no_res_title : {
     fontWeight: 600,
   },
-  paper: {
+no_res_paper : {
     position: 'absolute',
     top: -284,
     left: -230,
@@ -40,7 +40,7 @@ const styles = theme => ({
     marginBottom: theme.spacing.unit * 3,
     borderTop: `6px solid ${theme.palette.primary["500"]}`,
   },
-  bootstrapInput: {
+no_res_bootstrapInput : {
     borderRadius: 3,
     // backgroundColor: theme.palette.primary['50'],
     color: theme.palette.primary['200'],
@@ -50,11 +50,11 @@ const styles = theme => ({
     width: '300px',
     transition: theme.transitions.create(['border-color', 'box-shadow'])
   },
-  button: {
+no_res_button : {
     marginTop: theme.spacing.unit * 2,
     marginBottom: theme.spacing.unit,
   },
-  afterSubmit: {
+no_res_afterSubmit : {
     width: '100%',
     height: '100%',
     display: 'flex',
@@ -62,23 +62,23 @@ const styles = theme => ({
     justifyContent: 'center',
     alignItems: 'center',
   },
-  spinner: {
+no_res_spinner : {
     color: theme.palette.primary['500'],
   },
-  icon: {
+no_res_icon : {
     color: theme.palette.primary['100'],
     fontSize: 64,
     marginBottom: theme.spacing.unit * 2,
   },
-  divider: {
+no_res_divider : {
     marginRight: theme.spacing.unit * 4,
     marginLeft: theme.spacing.unit * 4,
     marginBottom: theme.spacing.unit * 3,
   },
-  otherCitiesHeader: {
+no_res_otherCitiesHeader : {
     marginBottom: theme.spacing.unit * 1,
   },
-  link: {
+no_res_link : {
     textDecoration: 'none',
   },
 });
@@ -221,7 +221,7 @@ class NoResults extends Component {
     const otherLinks = shuffledArray.slice(0,3).map((item, idx) => {
       return (
         <Grid item xs={3}>
-          <Link to={item.url} className={classes.link}>
+          <Link to={item.url} className={classes.no_res_link}>
             <Typography variant="caption" color="primary">{item.name}</Typography>
           </Link>
         </Grid>
@@ -232,14 +232,14 @@ class NoResults extends Component {
       <Grid container spacing={16} align="center" >
         <Grid item xs='auto' sm={4} />
         <Grid item xs={12} sm={4} >
-          <SentimentDissatisfied className={classes.icon} />
+          <SentimentDissatisfied className={classes.no_res_icon} />
         </Grid>
         <Grid item xs='auto' sm={4} />
 
 
         <Grid item xs='auto' sm={4} />
         <Grid item xs={12} sm={4} >
-        <Typography variant="title" className={classes.title}>
+        <Typography variant="title" className={classes.no_res_title}>
             {`We couldn't find any results for your query '${searchQuery}'`}
         </Typography>
         </Grid>
@@ -276,7 +276,7 @@ class NoResults extends Component {
                 placeholder="your@email.com"
                 value={this.state.email}
                 onChange={this.handleChange}
-                className={classes.bootstrapInput}
+                className={classes.no_res_bootstrapInput}
               />
             </label>
             <label>
@@ -296,7 +296,7 @@ class NoResults extends Component {
               />
             </label>
             <br/>
-            <Button size="small" variant="outlined" type="submit" className={classes.button}>
+            <Button size="small" variant="outlined" type="submit" className={classes.no_res_button}>
               Notify me
             </Button>
           </form>
@@ -306,14 +306,14 @@ class NoResults extends Component {
         <Grid item xs='auto' sm={4} />
         <Grid item xs='auto' sm={4} />
         <Grid item xs={12} sm={4} >
-          <Divider className={classes.divider}/>
-          <Typography variant="caption" component="h1" className={classes.otherCitiesHeader}>
+          <Divider className={classes.no_res_divider}/>
+          <Typography variant="caption" component="h1" className={classes.no_res_otherCitiesHeader}>
             {`Here are some other cities you can checkout`}
           </Typography>
           <Grid container spacing={8}>
             {otherLinks}
             <Grid item xs={3}>
-              <Link to="/locations/" className={classes.link}>
+              <Link to="/locations/" className={classes.no_res_link}>
                 <Typography variant="caption" color="primary">More cities</Typography>
               </Link>
             </Grid>
@@ -342,6 +342,6 @@ const mapStateToProps = function (state, ownProps) {
 const ConnNoResults = connect(
   mapStateToProps,
   mapDispatchToProps
-)(withRoot(withStyles(styles)(NoResults)));
+)(withStyles(styles)(NoResults));
 
 export default ConnNoResults;

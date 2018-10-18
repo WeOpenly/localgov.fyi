@@ -1,5 +1,11 @@
 const path = require(`path`)
+let activeEnv = process.env.ACTIVE_ENV || process.env.NODE_ENV || 'development'
 
+require("dotenv").config({
+path : `.env.${activeEnv}`,
+})
+
+console.log(activeEnv)
 module.exports = {
   siteMetadata: {
     title: `Search for local government organizations, and services`,
@@ -19,7 +25,7 @@ module.exports = {
      * recursively reads in files and adds them to the data
      * tree.
      */
-    `gatsby-plugin-react-next`,
+    // `gatsby-plugin-react-next`,
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
     {
@@ -51,10 +57,7 @@ module.exports = {
       },
     },
     `gatsby-transformer-remark`,
-    {
-      resolve: `gatsby-plugin-sitemap`
-    },
-
+    `gatsby-plugin-sitemap`,
     // This plugin transforms JSON file nodes.
     `gatsby-transformer-json`,
     // This plugin sets up the popular css-in-js library Glamor. It handles adding a
@@ -76,7 +79,7 @@ module.exports = {
     {
       resolve: `gatsby-plugin-create-client-paths`,
       options: {
-        prefixes : [`/search/*`]
+        prefixes : [`/search/*`, `/app/*`]
       }
     },
     {

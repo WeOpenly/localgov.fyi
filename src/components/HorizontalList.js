@@ -5,7 +5,7 @@ import HorizontalListItem from './HorizontalListItem';
 import withRoot from '../withRoot';
 
 const styles = theme => ({
-    gridList: {
+    ho_l_gridList: {
         flexWrap: 'nowrap',
         transform: 'translateZ(0)'
     }
@@ -13,10 +13,10 @@ const styles = theme => ({
 
 const HorizontalList = ({list, component: ComponentToRender, classes}) => {
     return (
-        <GridList className={classes.gridList}>
+        <GridList className={classes.ho_l_gridList}>
             {list.map((item, index) => (<ComponentToRender key={index} item={item}/>))}
         </GridList>
     );
 };
 
-export default withRoot(withStyles(styles)(HorizontalList));
+export default withStyles(styles)(HorizontalList);

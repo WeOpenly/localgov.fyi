@@ -9,30 +9,30 @@ import Footer from '../components/Footer';
 import withRoot from '../withRoot';
 
 const styles = theme => ({
-  root: {
+  layout_root: {
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'flex-start',
     background: theme.palette.common.white,
   },
-  main: {
+  layout_main: {
     width: '100%',
     // minHeight: '100vh',
     paddingBottom: 70,
   },
-  mainMobile: {
+  layout_mainMobile: {
     width: '100%',
     // minHeight: '100vh',
     paddingLeft: theme.spacing.unit * 2,
     paddingRight: theme.spacing.unit * 2,
     paddingBottom: 114,
   },
-  footer: {
+  layout_footer: {
     width: '100%',
     alignSelf: 'flex-end',
     // marginTop: 70,
   },
-  footerMobile: {
+  layout_footerMobile: {
     width: '100%',
     alignSelf: 'flex-end',
     // marginTop: -114,
@@ -59,16 +59,16 @@ class Index extends React.Component {
     // });
 
     return (
-      <div className={classes.root}>
-        <div className={isMobileOnly ? classes.mainMobile : classes.main}>
-          {this.props.children()}
+      <div className={classes.layout_root}>
+        <div className={isMobileOnly ? classes.layout_mainMobile : classes.layout_main}>
+          {this.props.children}
         </div>
-        <div className={isMobileOnly ? classes.footerMobile : classes.footer}>
-          <Footer />
+        <div className={isMobileOnly ? classes.layout_footerMobile : classes.layout_footer}>
+          <Footer page={this.props.location.pathname} />
         </div>
       </div>
     );
   }
 }
 
-export default withRoot(withStyles(styles)(Index));
+export default withStyles(styles)(Index);

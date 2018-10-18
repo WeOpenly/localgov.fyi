@@ -12,7 +12,7 @@ import SvgIcon from '@material-ui/core/SvgIcon';
 import MoodBad from '@material-ui/icons/MoodBad';
 
 import withRoot from '../withRoot';
-import {trackInput} from "../components/Search/tracking";
+import {trackInput} from "../components/common/tracking";
 
 const styles = theme => ({
   wrapper: {

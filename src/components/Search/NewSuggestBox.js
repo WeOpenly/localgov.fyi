@@ -28,18 +28,18 @@ import {
   setSearchSuggesitions,
   selectOrganization,
 } from "./actions";
-import { trackInput, trackClick } from './tracking';
+import { trackInput, trackClick } from '../common/tracking';
 
 
 const styles = theme => ({
-  wrapper : {
+  new_suggest_wrapper : {
     display: 'flex',
     position: 'relative',
     borderLeft: '1px solid #fafafa',
     background: theme.palette.common.white,
     fontFamily: theme.typography.fontFamily,
   },
-  search : {
+new_suggest_search : {
     width: theme.spacing.unit * 8,
     color: theme.palette.primary["200"],
     height: theme.spacing.unit * 8,
@@ -47,11 +47,11 @@ const styles = theme => ({
     alignItems: "center",
     justifyContent: "center"
   },
-  searchButton: {
+new_suggest_searchButton : {
     height: '100%',
     borderRadius: 0,
   },
-  input : {
+new_suggest_input : {
     fontFamily : theme.typography.fontFamily,
     padding :'14px',
     border: 1,
@@ -74,7 +74,7 @@ const styles = theme => ({
       display: "none"
     }
   },
-  sectionTitle : {
+  new_suggest_sectionTitle : {
     marginLeft: theme.spacing.unit * 1.5,
     marginTop: theme.spacing.unit,
     textTransform: "capitalize",
@@ -83,12 +83,12 @@ const styles = theme => ({
     lineHeight: "2.75em",
     color: "rgba(30, 30, 50,0.54)"
   },
-  container :{
+  new_suggest_container :{
     flexGrow: 1,
     position: "relative",
     margin: 0,
   },
-  suggestionsContainerOpen : {
+new_suggest_suggestionsContainerOpen : {
     position: "absolute",
     padding: theme.spacing.unit * 1,
     marginTop: `4px`,
@@ -102,10 +102,10 @@ const styles = theme => ({
     right: 0,
     overflow: "scroll"
   },
-  suggestion : {
+new_suggest_suggestion : {
     display: "block"
   },
-  suggestionsList : {
+new_suggest_suggestionsList : {
     margin: 0,
     padding: 0,
     listStyleType: "none"
@@ -137,7 +137,7 @@ class NewSuggestBox extends Component {
     const { classes } = this.props;
     return (
       <div>
-        <Typography align="left" variant="title" className={classes.sectionTitle}>
+        <Typography align="left" variant="title" className={classes.new_suggest_sectionTitle}>
           {section.title}
         </Typography>
       </div>
@@ -219,17 +219,17 @@ class NewSuggestBox extends Component {
     const { searchSuggestionsLoading, input } = search;
 
     return (
-      <div className={classes.wrapper}>
+      <div className={classes.new_suggest_wrapper}>
         <Input
           value={value}
           placeholder={inputProps.placeholder}
           inputRef={ref}
-          className={classes.input}
+          className={classes.new_suggest_input}
           inputProps={{
             "aria-label": "Description",
             ...other
           }} />
-        <div className={classes.search}>
+        <div className={classes.new_suggest_search}>
           {searchSuggestionsLoading
             ? <CircularProgress size={24} color="primary" />
               : <Button
@@ -237,7 +237,7 @@ class NewSuggestBox extends Component {
                   color="primary"
                   onClick={this.issueFreeSearch}
                   aria-label="Search"
-                  className={classes.searchButton}
+                  className={classes.new_suggest_searchButton}
                 >
                 <SearchIcon />
               </Button>}
@@ -301,15 +301,15 @@ class NewSuggestBox extends Component {
     if (userCity) placeholder = `Try '${userCity}'`;
 
     return (
-      <form onSubmit={this.onSubmit} className={classes.container}>
+      <form onSubmit={this.onSubmit} className={classes.new_suggest_container}>
         {/* renderSectionTitle={this.renderSectionTitle}
         getSectionSuggestions={this.getSectionSuggestions} */}
         <Autosuggest
           theme={{
-            container: classes.container,
-            suggestionsContainerOpen: classes.suggestionsContainerOpen,
-            suggestionsList: classes.suggestionsList,
-            suggestion: classes.suggestion
+            container: classes.new_suggest_container,
+            suggestionsContainerOpen: classes.new_suggest_suggestionsContainerOpen,
+            suggestionsList: classes.new_suggest_suggestionsList,
+            suggestion: classes.new_suggest_suggestion
           }}
           highlightFirstSuggestion
           renderInputComponent={this.renderInput}
@@ -343,4 +343,4 @@ const mapStateToProps = function (state, ownProps) {
   };
 };
 
-export default connect(mapStateToProps)(withRoot(withStyles(styles)(NewSuggestBox)));
+export default connect(mapStateToProps)(withStyles(styles)(NewSuggestBox));

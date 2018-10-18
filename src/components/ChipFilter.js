@@ -5,7 +5,7 @@ import Chip from '@material-ui/core/Chip';
 import withRoot from '../withRoot';
 
 const styles = theme => ({
-  chip: {
+  cf_chip: {
     marginRight: theme.spacing.unit,
     background: '#fff',
     color: theme.palette.primary['700'],
@@ -15,7 +15,7 @@ const styles = theme => ({
       background: theme.palette.primary['700'],
     },
   },
-   chipSelected: {
+cf_chipSelected : {
     marginRight: theme.spacing.unit,
     color : '#fff',
     background : theme.palette.primary['700'], 
@@ -51,7 +51,7 @@ class ChipFilter extends Component {
           onClick={() => this.handleClick('')}
  
           variant="outlined"
-          className={this.state.selectedTag === '' ? classes.chipSelected : classes.chip}
+          className={this.state.selectedTag === '' ? classes.cf_chipSelected : classes.cf_chip}
         />
         {tags.map(tag => (
           <Chip
@@ -60,7 +60,7 @@ class ChipFilter extends Component {
             onClick={() => this.handleClick(tag)}
  
             variant="outlined"
-            className={this.state.selectedTag === tag ? classes.chipSelected : classes.chip}
+            className={this.state.selectedTag === tag ? classes.cf_chipSelected : classes.cf_chip}
           />
         ))}
       </div>
@@ -68,4 +68,4 @@ class ChipFilter extends Component {
   }
 }
 
-export default withRoot(withStyles(styles)(ChipFilter));
+export default withStyles(styles)(ChipFilter);

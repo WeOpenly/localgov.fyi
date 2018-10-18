@@ -1,12 +1,14 @@
-import React, { Fragment } from 'react';
+import React, {Fragment} from 'react';
 import PropTypes from 'prop-types';
-import { connect } from "react-redux";
-import Link, { navigateTo } from 'gatsby-link';
+import {connect} from "react-redux";
+import ContentLoader from "react-content-loader"
+import Toolbar from '@material-ui/core/Toolbar';
+import {navigate} from '@reach/router';
 import Img from 'gatsby-image';
 import Helmet from "react-helmet";
-import { isMobileOnly } from 'react-device-detect';
-
-import { withStyles } from '@material-ui/core/styles';
+import {isMobileOnly} from 'react-device-detect';
+import {graphql} from "gatsby"
+import {withStyles} from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
@@ -15,11 +17,27 @@ import Button from '@material-ui/core/Button';
 import Divider from '@material-ui/core/Divider';
 import CircularProgress from '@material-ui/core/CircularProgress';
 
+import IconButton from '@material-ui/core/IconButton';
+import MenuIcon from '@material-ui/icons/Menu';
+import AccountCircle from '@material-ui/icons/AccountCircle';
+import Switch from '@material-ui/core/Switch';
+import FormControlLabel from '@material-ui/core/FormControlLabel';
+import FormGroup from '@material-ui/core/FormGroup';
+import MenuItem from '@material-ui/core/MenuItem';
+import Menu from '@material-ui/core/Menu';
+
 import withRoot from '../withRoot';
-import Search from '../components/Search/index';
+import LoginRegisterDialog from '../components/Account/LoginRegisterDialog';
+import RegisterDialog from '../components/Account/RegisterDialog';
+import Layout from "../components/layout";
+import Search from '../components/Search/Search';
 import ServiceGrid from '../components/ServiceGrid';
-import { getLocation } from '../components/Search/actions';
-import {trackView, trackClick} from "../components/Search/tracking";
+import {getLocation} from '../components/Search/actions';
+import HeaderAccountMenu from '../components/HeaderAccountMenu';
+
+import {logOut, toggleLogin} from '../components/Account/actions';
+import {trackView, trackClick} from "../components/common/tracking";
+import {isLoggedIn} from '../components/Account/Auth';
 
 const styles = theme => ({
   "@global": {
@@ -38,155 +56,169 @@ const styles = theme => ({
       overflowY: "scroll",
       overflowX: "hidden"
     },
-
     "body>div": {
       display: "block",
-      height: "100%",
+      height: "100%"
     },
     "body>div>div": {
       display: "block",
-      height: "100%",
-    },
+      height: "100%"
+    }
   },
-  header: {
+  index_login: {
+    zIndex: '2000'
+  },
+index_header : {
     display: 'flex',
     flexDirection: 'row',
-    alignItems: 'center',
+    alignItems: 'space-between',
     position: 'static',
     background: theme.palette.common.white,
     color: theme.palette.primary['700'],
     boxShadow: `0 0 0 0 ${theme.palette.common.white}`,
-    borderBottom: `1px solid ${theme.palette.primary['50']}`,
+    borderBottom: `1px solid ${theme.palette.primary['50']}`
   },
-otherLinksDivider : {
-  margin : theme.spacing.unit * 2,
-},
-  title:{
+index_otherLinksDivider : {
+    margin: theme.spacing.unit * 2
+  },
+index_title : {
     color: theme.palette.common.white,
     textShadow: '1px 1px 1px black',
     padding: theme.spacing.unit * 2,
-    zIndex: 2,
+    zIndex: 2
   },
-  searchBoxContainer: {
+index_searchBoxContainer : {
     display: "flex",
     alignItems: "center",
     justifyContent: "center",
     height: theme.spacing.unit * 8,
-    width: '100%',
+    width: '100%'
   },
-  searchWrapper: {
+index_searchWrapper : {
     height: '85vh',
-    marginTop: -62,
+    marginTop: -62
   },
-  landingSearch:{
+index_landingSearch : {
     zIndex: 2,
-    paddingTop: theme.spacing.unit * 16,
+    paddingTop: theme.spacing.unit * 16
   },
-  landingSearchMobile:{
-    maxWidth:'100%',
+index_landingSearchMobile : {
+    maxWidth: '100%',
     marginLeft: theme.spacing.unit * -2,
     marginRight: theme.spacing.unit * -2,
-    paddingTop: theme.spacing.unit * 16,
+    paddingTop: theme.spacing.unit * 16
   },
-  landingSearchHeader: {
+index_landingSearchHeader : {
     marginTop: theme.spacing.unit * 12,
     display: "flex",
     alignItems: "end",
     justifyContent: "left",
     color: theme.palette.primary["700"]
   },
-  appHeaderText: {
-    color: theme.palette.primary["900"],
+index_appHeaderText : {
+    color: theme.palette.primary["900"]
   },
-  appSubHeaderTextWrapper: {
+index_appSubHeaderTextWrapper : {
     display: 'flex',
     justifyContent: 'center',
     zIndex: 2,
     marginTop: theme.spacing.unit * 10,
-    marginBottom: theme.spacing.unit * 2,
+    marginBottom: theme.spacing.unit * 2
   },
-  appSubHeaderText: {
+index_appSubHeaderText : {
     color: theme.palette.common.white,
-    marginBottom: theme.spacing.unit * 3,
+    marginBottom: theme.spacing.unit * 3
   },
-  appNameHeader: {
+index_appNameHeader : {
     display: 'flex',
     justifyContent: 'center',
     marginTop: theme.spacing.unit * 4,
     marginBottom: theme.spacing.unit * 1,
-    flexWrap: 'wrap',
+    flexWrap: 'wrap'
   },
-  section2: {
+index_section2 : {
     backgroundColor: '#fafafa',
-    paddingBottom: theme.spacing.unit * 10,
+    paddingBottom: theme.spacing.unit * 10
   },
-  popularServicesHeader: {
+index_popularServicesHeader : {
     display: 'flex',
     justifyContent: 'center',
     marginTop: theme.spacing.unit * 10,
-    marginBottom: theme.spacing.unit * 5,
+    marginBottom: theme.spacing.unit * 5
   },
-  section3: {
+index_section3 : {
     marginLeft: theme.spacing.unit * -2,
-    marginRight: theme.spacing.unit * -2,
+    marginRight: theme.spacing.unit * -2
   },
-  section3Mobile: {
-    width:'100%',
+index_section3Mobile : {
+    width: '100%'
   },
-  otherCitiesHeader: {
+index_otherCitiesHeader : {
     display: 'flex',
     justifyContent: 'center',
     marginTop: theme.spacing.unit * 10,
-    marginBottom: theme.spacing.unit * 2,
+    marginBottom: theme.spacing.unit * 2
   },
-  linksWrapper: {
+index_linksWrapper : {
     display: 'flex',
     justifyContent: 'space-between',
     marginBottom: theme.spacing.unit / 2,
-    marginTop : theme.spacing.unit * 4,
+    marginTop: theme.spacing.unit * 4
   },
-  otherLinks: {
-    cursor : 'pointer',
-    '&:hover': {
-      textDecoration: 'underline',
-    },
-  },
-  linkLeft: {
-    textAlign: 'left',
+index_otherLinks : {
     cursor: 'pointer',
+    '&:hover': {
+      textDecoration: 'underline'
+    }
   },
-  linkCenter: {
+index_linkLeft : {
+    textAlign: 'left',
+    cursor: 'pointer'
+  },
+index_linkCenter : {
     textAlign: 'center',
-    cursor : 'pointer',
+    cursor: 'pointer'
   },
-  linkRight: {
+index_linkRight : {
     textAlign: 'right',
-    cursor : 'pointer',
+    cursor: 'pointer'
   },
-  dividerWrapper: {
+index_dividerWrapper : {
     marginTop: theme.spacing.unit * .5,
-    marginBottom: theme.spacing.unit * 5,
+    marginBottom: theme.spacing.unit * 5
   },
-  gridWrapper1: {
+index_gridWrapper1 : {
     width: '100%',
     paddingLeft: theme.spacing.unit * 2,
-    paddingRight: theme.spacing.unit * 2,
+    paddingRight: theme.spacing.unit * 2
   },
-  gridWrapper2: {
+index_gridWrapper2 : {
     width: '100%',
     marginBottom: theme.spacing.unit * 10,
     paddingLeft: theme.spacing.unit * 2,
-    paddingRight: theme.spacing.unit * 2,
+    paddingRight: theme.spacing.unit * 2
   },
-  locationsLink: {
+index_locationsLink : {
     display: 'flex',
     justifyContent: 'center',
-    textDecorationColor: theme.palette.primary['500'],
+    textDecorationColor: theme.palette.primary['500']
   },
-  progressWrapper: {
+index_progressWrapper : {
     display: 'flex',
-    justifyContent: 'center',
+    justifyContent: 'center'
   },
+index_toolbar : {
+    width: '100%',
+    display: 'flex',
+    zIndex: 200,
+    justifyContent: 'space-between'
+  },
+index_grid:{
+
+},
+index_grid_item:{
+
+}
 });
 
 const popularServices = [
@@ -195,25 +227,22 @@ const popularServices = [
     subhead: 'State of California',
     id: '3c35fb58-1538-43ea-b657-e954f6dbd877',
     type: 'service'
-  },
-  {
+  }, {
     service_name: 'Food Stamps',
     subhead: 'State of California',
     id: 'd7052b49-3c72-4369-9af5-c56dc259b055',
     type: 'service'
-  },
-  {
+  }, {
     service_name: 'Vehicle Registration Renewal',
     subhead: 'State of California',
     id: '1df3a37a-bce7-42ca-9e69-d04b707fed8c',
     type: 'service'
-  },
-  {
+  }, {
     service_name: 'Renew Drivers License',
     subhead: 'State of California',
     id: '9e1c294c-195f-40ce-adaf-ceb49a648508',
     type: 'service'
-  },
+  }
 ];
 
 const dummyServices = [
@@ -222,99 +251,81 @@ const dummyServices = [
     subhead: 'San Francisco-City & County',
     id: '77d0d9e3-5cc4-4688-99f9-b5497710b889',
     type: 'service'
-  },
-  {
+  }, {
     service_name: 'Register a New Business',
     subhead: 'San Francisco-City & County',
     id: '8fad0dd5-4bb5-4822-830b-17942ffdce1f',
     type: 'service'
-  },
-  {
+  }, {
     service_name: 'Apply for a Marriage License',
     subhead: 'San Francisco-City & County',
     id: '9683b5ae-d7be-465a-ab22-51e0e0af3261',
     type: 'service'
-  },
-  {
+  }, {
     service_name: 'Submit a Public Records Request',
     subhead: 'San Francisco-City & County',
     id: '7e07effe-e036-4b67-b239-0d980b5a2f06',
     type: 'service'
-  },
-  {
+  }, {
     service_name: 'Renew Residential Parking Permit',
     subhead: 'San Francisco-City & County',
     id: 'f75f316a-cdf6-40f3-8fa3-6a51f3e4b3f1',
     type: 'service'
-  },
-  {
+  }, {
     service_name: 'Pay Water Bill',
     subhead: 'San Francisco-City & County',
     id: '1fd2b0a9-fcdc-429d-89b1-a8de6751df1e',
     type: 'service'
-  },
-  {
+  }, {
     service_name: 'Purchase Parking Meter Cards',
     subhead: 'San Francisco-City & County',
     id: '5f685fe6-690b-405d-8b6b-42ea1510da12',
     type: 'service'
-  },
-  {
+  }, {
     service_name: 'Pay for Traffic Citation',
     subhead: 'San Francisco-City & County',
     id: '4914912e-5d89-4d0e-be21-fc8faeba9488',
     type: 'service'
-  },
+  }
 ];
 
 const otherPlaces = [
   {
     name: 'Atlanta',
-    url : '/organization/910e5bde-1b39-4990-b4af-6e374e3df06d'
-  },
-  {
+    url: '/organization/910e5bde-1b39-4990-b4af-6e374e3df06d'
+  }, {
     name: 'San Francisco',
-    url : '/organization/49ab4440-1176-4791-a7cf-1e27a756488d'
-  },
-  {
+    url: '/organization/49ab4440-1176-4791-a7cf-1e27a756488d'
+  }, {
     name: 'Las Vegas',
-    url : '/organization/ff101ead-22ab-4f46-97d1-07abdcc8e9fa'
-  },
-  {
+    url: '/organization/ff101ead-22ab-4f46-97d1-07abdcc8e9fa'
+  }, {
     name: 'San Jose',
-    url : '/organization/d3c866ec-13f3-41da-b6dc-a74a83d36ea7'
-  },
-  {
+    url: '/organization/d3c866ec-13f3-41da-b6dc-a74a83d36ea7'
+  }, {
     name: 'San Mateo',
-    url : '/organization/64398076-1dd4-4c06-bba0-f46bf893b2ae'
-  },
-  {
+    url: '/organization/64398076-1dd4-4c06-bba0-f46bf893b2ae'
+  }, {
     name: 'Los Angeles',
-    url : '/organization/206843c1-890c-435c-85d6-5e2350200c1e'
-  },
-  {
+    url: '/organization/206843c1-890c-435c-85d6-5e2350200c1e'
+  }, {
     name: 'Houston',
-    url : '/organization/f212a1f8-d95e-4448-a6c7-659a4aa88934'
-  },
-  {
+    url: '/organization/f212a1f8-d95e-4448-a6c7-659a4aa88934'
+  }, {
     name: 'New York',
-    url : '/organization/2c3e6f85-25ee-420d-a31b-25662e2e6a2e'
-  },
-  {
+    url: '/organization/2c3e6f85-25ee-420d-a31b-25662e2e6a2e'
+  }, {
     name: 'Philadelphia',
-    url : '/organization/c91151b6-d989-4163-ab1c-f8680ad6b9f5'
-  },
-  {
+    url: '/organization/c91151b6-d989-4163-ab1c-f8680ad6b9f5'
+  }, {
     name: 'Phoenix',
-    url : '/organization/b26c8d4f-74b9-4a80-9723-d696089aea99'
-  },
-  {
+    url: '/organization/b26c8d4f-74b9-4a80-9723-d696089aea99'
+  }, {
     name: 'San Diego',
-    url : '/organization/1fcd5489-5736-432a-88c7-fb720b134044'
-  },
-  {
+    url: '/organization/1fcd5489-5736-432a-88c7-fb720b134044'
+  }, {
     name: 'Seattle',
-    url : '/organization/28d8e00d-ee9c-49d0-97d8-18c1bf3cc707'
+    url: '/organization/28d8e00d-ee9c-49d0-97d8-18c1bf3cc707'
   }
 ];
 
@@ -336,22 +347,39 @@ const xah_randomize_array = ((arr) => {
 });
 const shuffledArray = xah_randomize_array(otherPlaces);
 
-//  if search/ or otherwise, have box in the layout unless it is index.html
-// if index > do not have it in the layout
-// all ways get from the url
+//  if search/ or otherwise, have box in the layout unless it is index.html if
+// index > do not have it in the layout all ways get from the url
 
+const SuggestBoxLoader = props => (
+  <ContentLoader
+    height={160}
+    width={800}
+    speed={5}
+    primaryColor="#f3f3f3"
+    secondaryColor="#e0d9ff"
+    {...props}>
+    <rect x="99.4" y="93.83" rx="0" ry="0" width="0" height="0"/>
+    <rect x="13.4" y="17.83" rx="0" ry="0" width="424" height="43"/>
+  </ContentLoader>
+)
 class Index extends React.Component {
   constructor(props) {
     super(props);
-    this.clickSuggestion = this.clickSuggestion.bind(this);
-    this.clickDiscoverMore = this.clickDiscoverMore.bind(this);
-    this.clickGridItem = this.clickGridItem.bind(this);
-    const backgroundImages = [
-      <Img
-        title="United States Capitol"
-        alt="Photo by Andy Feliciotti (@someguy) on Unsplash"
-        sizes={this.props.data.capitol.sizes}
-        style={{
+    this.clickSuggestion = this
+      .clickSuggestion
+      .bind(this);
+    this.clickDiscoverMore = this
+      .clickDiscoverMore
+      .bind(this);
+    this.clickGridItem = this
+      .clickGridItem
+      .bind(this);
+
+
+    const backgroundImages = [ < Img title = "United States Capitol" alt = "Photo by Andy Feliciotti (@someguy) on Unsplash" sizes = {
+        this.props.data.capitol.childImageSharp.fluid
+      }
+      backgroundColor = "#0000ca" style = {{
           position: 'absolute',
           left: 0,
           top: 0,
@@ -363,7 +391,8 @@ class Index extends React.Component {
       <Img
         title="Philadelphia City Hall"
         alt="Photo by BruceEmmerling on Pixabay"
-        sizes={this.props.data.philadelphia.sizes}
+        backgroundColor="#0000ca"
+        sizes={this.props.data.philadelphia.childImageSharp.fluid}
         style={{
           position: 'absolute',
           left: 0,
@@ -372,12 +401,10 @@ class Index extends React.Component {
           height: '85vh',
           filter: 'brightness(60%)',
         }}
-      />,
-      <Img
-        title="Los Angeles City Hall"
-        alt="Photo from Pixabay"
-        sizes={this.props.data.losAngeles.sizes}
-        style={{
+      />, <Img title = "Los Angeles City Hall" alt = "Photo from Pixabay" backgroundColor = "#0000ca" sizes = {
+        this.props.data.losAngeles.childImageSharp.fluid
+      }
+      style = {{
           position: 'absolute',
           left: 0,
           top: 0,
@@ -389,7 +416,8 @@ class Index extends React.Component {
       <Img
         title="San Francisco City Hall"
         alt="Photo by Hoona9091 on Pixabay"
-        sizes={this.props.data.sanFrancisco.sizes}
+        backgroundColor="#0000ca"
+        sizes={this.props.data.sanFrancisco.childImageSharp.fluid}
         style={{
           position: 'absolute',
           left: 0,
@@ -398,237 +426,288 @@ class Index extends React.Component {
           height: '85vh',
           filter: 'brightness(60%)',
         }}
-      />,
+      />
     ];
-   this.bg = backgroundImages[Math.floor(Math.random() * backgroundImages.length)]
+    this.bg = backgroundImages[Math.floor(Math.random() * backgroundImages.length)]
   }
 
+
+
+
   componentDidMount() {
-    const { dispatch } = this.props;
-    if (this.props.location.pathname === '/'){
-        dispatch(getLocation);
-        dispatch(trackView('index', null, null, null));
+    const {dispatch} = this.props;
+
+    if (this.props.location.pathname === '/') {
+      dispatch(getLocation);
+      dispatch(trackView('index', null, null, null));
+
     }
   }
 
-  clickSuggestion(url, name, index){
-    const { dispatch } = this.props;
+  clickSuggestion(url, name, index) {
+    const {dispatch} = this.props;
     dispatch(trackClick('index_grid', 'top_cities', url, name, index));
-    navigateTo(url);
+    navigate(url);
   }
 
-  clickGridItem(type, id, name, index, url){
+  clickGridItem(type, id, name, index, url) {
     const {dispatch} = this.props;
 
     dispatch(trackClick('index_grid', type, id, name, index));
-    navigateTo(url);
+    navigate(url);
   }
 
-  clickDiscoverMore(){
+  clickDiscoverMore() {
     const {dispatch} = this.props;
     dispatch(trackClick('index_grid', 'top_cities', 'locations', 'more'));
-    navigateTo('/locations/');
+    navigate('/locations/');
   }
 
   render() {
-    const { classes, search } = this.props;
-    const { org, services, state_org } = search.location;
-    const otherLinks = shuffledArray.slice(0,3).map((item, idx) => {
+const {classes, search, account, dispatch} = this.props;
+    const {org, services, state_org} = search;
+    const {showLogin, showRegister} = account;
 
+    const otherLinks = shuffledArray
+      .slice(0, 3)
+      .map((item, idx) => {
 
-      return (
-        <Grid item xs={2}>
-          <a key={item.name} onClick={() => this.clickSuggestion(item.url, item.name, idx)} >
-            <Typography
-              variant="body1"
-              color="primary"
+        return (
+          <Grid className='index_grid_item' item xs={2}>
+            <a
               key={item.name}
-              className={classes.otherLinks}
-            >
-              {item.name}
-            </Typography>
-          </a>
-        </Grid>
-      );
-    });
+              onClick={() => this.clickSuggestion(item.url, item.name, idx)}>
+              <Typography
+                variant="body1"
+                color="primary"
+                key={item.name}
+                className={classes.index_otherLinks}>
+                {item.name}
+              </Typography>
+            </a>
+          </Grid>
+        );
+      });
 
-otherLinks.push((
-  <Grid item xs={2}>
-    <a onClick={() =>  this.clickDiscoverMore()} className={classes.locationsLink}>
-      <Typography variant="body1" color="primary" className={classes.otherLinks} >
-        Discover more 
-      </Typography>
-    </a>
-  </Grid>
-))
-    const servicesFromOrg = search.allFromOrg.length >= 8 ? search.allFromOrg.slice(0, 8) : search.allFromOrg.slice(0, 4);
-    const stateServices = state_org ? state_org.services : popularServices;
+    otherLinks.push((
+      <Grid className='index_grid_item' item xs={2}>
+        <a onClick={() => this.clickDiscoverMore()} className={classes.index_locationsLink}>
+          <Typography variant="body1" color="primary" className={classes.index_otherLinks}>
+            Discover more
+          </Typography>
+        </a>
+      </Grid>
+    ))
+    const servicesFromOrg = search.allFromOrg.length >= 8
+      ? search
+        .allFromOrg
+        .slice(0, 8)
+      : search
+        .allFromOrg
+        .slice(0, 4);
+    const stateServices = state_org
+      ? state_org.services
+      : popularServices;
 
     const stateServicesConcat = stateServices.slice(0, 4);
 
-    
-
     return (
-      <Fragment>
-        <Helmet defaultTitle={`Localgov.fyi | Search for local government organizations, and services`} titleTemplate={`%s | Localgov.fyi`}>
-          <meta name="og:type" content="website" />
-          <meta name="og:site_name" content="Localgov.fyi" />
-          <link
-            rel="canonical"
-            href={`https://localgov.fyi${this.props.location.pathname}`}
-          />
-          <meta property="og:url" content={`https://localgov.fyi${this.props.location.pathname}`} />
-          <html lang="en" />
-        </Helmet>
-        <AppBar className={classes.header}>
-          <Typography variant="display1" className={classes.title}>
-            Localgov.fyi
-          </Typography>
-        </AppBar>
-        <div className={classes.searchWrapper}>
-          {this.bg}
-          <Grid container spacing={0} className={!isMobileOnly ? classes.landingSearch : classes.landingSearchMobile}>
-            <Grid item xs={1} sm={2} md={2} />
-            <Grid item xs={10} sm={8} md={8} className={classes.appSubHeaderTextWrapper}>
-              <Typography variant="display1" component="span" className={classes.appSubHeaderText}>
-                All your government services in a single place
+      <Layout location={this.props.location}>
+        <Fragment>
+          <Helmet
+            defaultTitle={`Localgov.fyi | Search for local government organizations, and services`}
+            titleTemplate={`%s | Localgov.fyi`}>
+            <meta name="og:type" content="website"/>
+            <meta name="og:site_name" content="Localgov.fyi"/>
+            <link
+              rel="canonical"
+              href={`https://localgov.fyi${this.props.location.pathname}`}/>
+            <meta
+              property="og:url"
+              content={`https://localgov.fyi${this.props.location.pathname}`}/>
+            <html lang="en"/>
+          </Helmet>
+          <AppBar className={classes.index_header}>
+            <Toolbar className={classes.index_toolbar}>
+              <Typography variant="display1" className={classes.index_title}>
+                Localgov.fyi
               </Typography>
+              <HeaderAccountMenu location={this.props.location} />
+            </Toolbar>
+          </AppBar>
+          <LoginRegisterDialog location={this.props.location}/>
+          <RegisterDialog location={this.props.location}/>
+          <div className={classes.index_searchWrapper}>
+            {this.bg}
+            <Grid
+              container
+              spacing={0}
+              className={!isMobileOnly
+              ? classes.index_landingSearch
+              : classes.index_landingSearchMobile}>
+              <Grid className='index_grid_item' item xs={1} sm={2} md={2} />
+              <Grid  item xs={10} sm={8} md={8} className={classes.index_appSubHeaderTextWrapper}>
+                <Typography
+                  variant="display1"
+                  component="span"
+                  className={classes.index_appSubHeaderText}>
+                  All your government services in a single place
+                </Typography>
+              </Grid>
+              <Grid className='index_grid_item' item xs={1} sm={2} md={2}/>
+              <Grid className='index_grid_item' item xs={1} sm={2} md={2}/>
+              <Grid className='index_grid_item' item xs={10} sm={10} md={8} className={classes.index_searchBoxContainer}>
+                {search.locationLoading
+                  ? (<SuggestBoxLoader/>)
+                  : <Search/>}
+              </Grid>
+              <Grid item xs={1} sm={2} md={2}/>
             </Grid>
-            <Grid item xs={1} sm={2} md={2} />
-            <Grid item xs={1} sm={2} md={2} />
-            <Grid item xs={10} sm={10} md={8} className={classes.searchBoxContainer}>
-              {search.locationLoading
-                ? <div className={classes.progressWrapper}><CircularProgress /></div>
-                : <Search />
-              }
-            </Grid>
-            <Grid item xs={1} sm={2} md={2} />
-          </Grid>
-        </div>
-        <div className={classes.section2}>
-          <Grid container className={classes.section3Mobile}>
-            <Grid item xs={1} md={3} />
-            <Grid item xs={10} md={6}>
-              <Typography variant="display1" component="h1" className={classes.popularServicesHeader}>
-                Find the most sought out services
-              </Typography>
-            </Grid>
-            <Grid item xs={1} md={3} />
-          </Grid>
-          <div className={classes.gridWrapper1}>
-            {search.locationLoading
-              ? <div className={classes.progressWrapper}><CircularProgress /></div>
-: <ServiceGrid clickGridItem={this.clickGridItem} type='pop_services' services={stateServicesConcat}/>
-            }
           </div>
-        </div>
-        <div className={classes.section3}>
-          <Grid container className={classes.section3Mobile}>
-            <Grid item xs={1} md={3} />
-            <Grid item xs={10} md={6}>
-              <Typography variant="display1"  component="h1" className={classes.popularServicesHeader}>
-               Localgov {org ? org.name : null}
-              </Typography>
+          <div className={classes.index_section2}>
+            <Grid className='index_grid' container className={classes.index_section3Mobile}>
+              <Grid className='index_grid_item' item xs={1} md={3}/>
+              <Grid className='index_grid_item' item xs={10} md={6}>
+                <Typography
+                  variant="display1"
+                  component="h1"
+                  className={classes.index_popularServicesHeader}>
+                  Find the most sought out services
+                </Typography>
+              </Grid>
+              <Grid item xs={1} md={3}/>
             </Grid>
-            <Grid item xs={1} md={3} />
-          </Grid>
-          <div className={classes.gridWrapper2}>
-            {search.locationLoading
-              ? <div className={classes.progressWrapper}><CircularProgress /></div>
-              : <ServiceGrid clickGridItem={this.clickGridItem} type='auto_loc_org_services' city={org ? org : null} services={services ? services : dummyServices} />
-            }
-          </div>   
-           <Grid container className={classes.otherLinksDivider}>
-                <Grid item xs={2} />
-                <Grid item xs={8}>
-                  <Divider/>
-                  </Grid>
-                   <Grid item xs={2} />
-             </Grid>
-                <Grid container align="center">
-                     <Grid item xs={2} />
-                  {otherLinks}
-                    <Grid item xs={2} />
-                </Grid>
-        </div>
-        <form hidden
-          name="serviceNotify"
-          method="post"
-          action="/"
-          data-netlify="true">
-          <p hidden>
-            <label>
-              Don’t fill this out:{" "}
-              <input name="bot-field" onChange={this.handleChange} />
-            </label>
-          </p>
-          <p hidden>
-            <label>
-              Don’t fill this out:{" "}
-              <input name="path" type="text" value="" />
-            </label>
-          </p>
-          <p hidden>
-            <label>
-              Don’t fill this out:{" "}
-              <input name="org_id" type="text" value="" />
-            </label>
-          </p>
-          <p hidden>
-            <label>
-              Don’t fill this out:{" "}
-              <input name="ser_name" type="text" value="" />
-            </label>
-          </p>
-          <p hidden>
-            <label>
-              Don’t fill this out:{" "}
-              <input name="phone" type="tel" value="" />
-            </label>
-          </p>
-          <p hidden>
-            <label>
-              Don’t fill this out:{" "}
-              <input name="email" type="email" value="" />
-            </label>
-          </p>
+            <div className={classes.index_gridWrapper1}>
+              {search.locationLoading
+                ? <div className={classes.index_progressWrapper}><CircularProgress/></div>
+                : <ServiceGrid
+                  clickGridItem={this.clickGridItem}
+                  type='pop_services'
+                  services={stateServicesConcat}/>
+}
+            </div>
+          </div>
+          <div className={classes.index_section3}>
+            <Grid className='index_grid' container className={classes.index_section3Mobile}>
+              <Grid className='index_grid_item' item xs={1} md={3}/>
+              <Grid className='index_grid_item' item xs={10} md={6}>
+                <Typography
+                  variant="display1"
+                  component="h1"
+                  className={classes.index_popularServicesHeader}>
+                  Localgov {org
+                    ? org.name
+                    : null}
+                </Typography>
+              </Grid>
+              <Grid item xs={1} md={3}/>
+            </Grid>
+            <div className={classes.index_gridWrapper2}>
+              {search.locationLoading
+                ? <div className={classes.index_progressWrapper}><CircularProgress/></div>
+                : <ServiceGrid
+                  clickGridItem={this.clickGridItem}
+                  type='auto_loc_org_services'
+                  city={org
+                  ? org
+                  : null}
+                  services={services
+                  ? services
+                  : dummyServices}/>
+}
+            </div>
+            <Grid className='index_grid' container className={classes.index_otherLinksDivider}>
+              <Grid className='index_grid_item' item xs={2}/>
+              <Grid className='index_grid_item' item xs={8}>
+                <Divider/>
+              </Grid>
+              <Grid className='index_grid_item' item xs={2}/>
+            </Grid>
+            <Grid className='index_grid' container align="center">
+              <Grid className='index_grid_item' item xs={2}/> {otherLinks}
+              <Grid className='index_grid_item' item xs={2}/>
+            </Grid>
+          </div>
+          <form hidden name="serviceNotify" method="post" action="/" data-netlify="true">
+            <p hidden>
+              <label>
+                Don’t fill this out:{" "}
+                <input name="bot-field" onChange={this.handleChange}/>
+              </label>
+            </p>
+            <p hidden>
+              <label>
+                Don’t fill this out:{" "}
+                <input name="path" type="text" value=""/>
+              </label>
+            </p>
+            <p hidden>
+              <label>
+                Don’t fill this out:{" "}
+                <input name="org_id" type="text" value=""/>
+              </label>
+            </p>
+            <p hidden>
+              <label>
+                Don’t fill this out:{" "}
+                <input name="ser_name" type="text" value=""/>
+              </label>
+            </p>
+            <p hidden>
+              <label>
+                Don’t fill this out:{" "}
+                <input name="phone" type="tel" value=""/>
+              </label>
+            </p>
+            <p hidden>
+              <label>
+                Don’t fill this out:{" "}
+                <input name="email" type="email" value=""/>
+              </label>
+            </p>
           </form>
-      </Fragment>
+        </Fragment>
+      </Layout>
     );
   }
 }
 
 Index.propTypes = {
-  classes: PropTypes.object.isRequired,
+  classes: PropTypes.object.isRequired
 };
 
-export const query = graphql`
+export const query = graphql `
   query indexImageQuery {
-    capitol: imageSharp(id: { regex: "/capitol/"}) {
-      sizes(quality: 100) {
-        ...GatsbyImageSharpSizes
+    capitol: file(relativePath: { regex: "/capitol/"}) {
+        childImageSharp {
+      fluid(maxWidth: 1000) {
+...GatsbyImageSharpFluid_withWebp_tracedSVG
       }
     }
-    philadelphia: imageSharp(id: { regex: "/philadelphia/"}) {
-      sizes(quality: 100) {
-        ...GatsbyImageSharpSizes
+    }
+    philadelphia: file(relativePath: { regex: "/philadelphia/"}) {
+      childImageSharp {
+      fluid(maxWidth: 1000) {
+...GatsbyImageSharpFluid_withWebp_tracedSVG
       }
     }
-    losAngeles: imageSharp(id: { regex: "/losAngeles/"}) {
-      sizes(quality: 100) {
-        ...GatsbyImageSharpSizes
+    }
+    losAngeles: file(relativePath: { regex: "/losAngeles/"}) {
+      childImageSharp {
+      fluid(maxWidth: 1000) {
+...GatsbyImageSharpFluid_withWebp_tracedSVG
       }
     }
-    sanFrancisco: imageSharp(id: { regex: "/sanFrancisco/"}) {
-      sizes(quality: 100) {
-        ...GatsbyImageSharpSizes
+    }
+    sanFrancisco: file(relativePath: { regex: "/sanFrancisco/"}) {
+      childImageSharp {
+      fluid(maxWidth: 1000) {
+...GatsbyImageSharpFluid_withWebp_tracedSVG
       }
+    }
     }
   }
 `;
-
-
-
 
 const mapStateToProps = function (state, ownProps) {
   return {
@@ -637,6 +716,6 @@ const mapStateToProps = function (state, ownProps) {
   };
 };
 
-const ConnIndex = connect(mapStateToProps)(withRoot(withStyles(styles)(Index)));
+const ConnIndex = connect(mapStateToProps)(withRoot(withStyles(styles, {name: 'index-styles'})(Index)));
 
 export default ConnIndex;

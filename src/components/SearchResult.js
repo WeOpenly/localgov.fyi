@@ -10,7 +10,7 @@ import Typography from '@material-ui/core/Typography';
 import withRoot from '../withRoot';
 
 const styles = theme => ({
-  card: {
+  search_result_card: {
     marginBottom: theme.spacing.unit,
     cursor: 'pointer',
     boxShadow: `0 0 1px 1px #EBE5FF`,
@@ -35,7 +35,7 @@ class SearchResult extends Component {
         }
 
         return (
-            <Card className={classes.card} onClick={() => navigateTo(toLink)} >
+            <Card className={classes.search_result_card} onClick={() => navigateTo(toLink)} >
                 <CardContent>
                     <Typography variant="body1" component="h1">
                         {title}
@@ -49,4 +49,4 @@ class SearchResult extends Component {
     }
 }
 
-export default withRoot(withStyles(styles)(SearchResult));
+export default withStyles(styles)(SearchResult);

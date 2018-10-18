@@ -1,14 +1,15 @@
 import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
-import { navigateTo } from 'gatsby-link';
+import { navigate } from '@reach/router';
 import { isMobileOnly } from 'react-device-detect';
 
 import { withStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
+import { graphql } from "gatsby"
 
-import Search from '../components/Search';
+import Search from '../components/Search/Search';
 // import Feedback from '../components/Feedback';
 import withRoot from '../withRoot';
 
@@ -52,7 +53,7 @@ class Terms extends React.Component {
       <Fragment>
         <AppBar position="static" className={!isMobileOnly ? classes.header : classes.headerMobile}>
           <Grid container spacing={0}>
-            <Grid item xs={12} sm={3} style={{'cursor': 'pointer'}} onClick={() => navigateTo('/') }>
+            <Grid item xs={12} sm={3} style={{'cursor': 'pointer'}} onClick={() => navigate('/') }>
               <Typography variant="display1" color="inherit" component="h1" className={classes.logo}>
                 Localgov.fyi
               </Typography>
@@ -93,7 +94,7 @@ Terms.propTypes = {
 
 export const pageQuery = graphql`
  query tosQuery {
-    tos: markdownRemark(id: { regex: "/terms/"}) {
+    tos: markdownRemark(id: { regex: "terms/"}) {
       html
     }
   }

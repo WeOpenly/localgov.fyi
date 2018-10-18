@@ -32,33 +32,33 @@ import { trackView } from "../components/Search/tracking";
 const windowGlobal = typeof window !== 'undefined' && window;
 
 const styles = theme => ({
-    container: {
+    ser_detail_search_container: {
         marginTop: theme.spacing.unit * 2
     },
-    details: {
+ser_detail_search_details : {
         width: '100%',
     },
-    cards: {
+ser_detail_search_cards : {
         marginBottom: theme.spacing.unit * 2,
         paddingTop: theme.spacing.unit,
         borderRadius: 3,
         boxShadow: `0 0 2px 1px ${theme.palette.primary["50"]}`
     },
-    serviceItemIcon: {
+ser_detail_search_serviceItemIcon : {
         padding: 8
     },
-    cardContent: {
+ser_detail_search_cardContent : {
         padding: 4
     },
-    iconWrapper: {
+ser_detail_search_iconWrapper : {
         paddingTop: theme.spacing.unit,
         paddingLeft: theme.spacing.unit * 2,
     },
-    icon: {
+ser_detail_search_icon : {
         fontSize: 24,
         color: theme.palette.primary["200"]
     },
-    formLink: {
+ser_detail_search_formLink : {
         textDecoration: 'underline',
         textDecorationColor: '#0000EE',
     },
@@ -161,7 +161,7 @@ class ServiceDetailInSearch extends React.Component {
                             }
                         }}
                         secondary={price}
-                        className={classes.formLink}
+                        className={classes.ser_detail_search_formLink}
                     />
                 </ListItem>;
             });
@@ -259,7 +259,7 @@ class ServiceDetailInSearch extends React.Component {
 
 
         return (
-            <Grid container spacing={16} className={classes.container}>
+            <Grid container spacing={16} className={classes.ser_detail_search_container}>
                 <Helmet>
                     <title>{`${name} service offered in ${org_name} | Localgov.fyi`} </title>
                     <link rel="canonical" href={`https://localgov.fyi/service/${id}/`} />
@@ -272,17 +272,17 @@ class ServiceDetailInSearch extends React.Component {
                     <meta property="og:description" content={`Forms, Price, Timings and Local Government Service Contact Details for ${name} offered in ${org_name} | Localgov.fyi`} />
                     <JsonLd data={jsonLd} />
                 </Helmet>
-                <Grid item md={12} sm={12} className={classes.details}>
+                <Grid item md={12} sm={12} className={classes.ser_detail_search_details}>
                     <Grid item xs={12}>
-                        <Paper className={classes.cards}>
+                        <Paper className={classes.ser_detail_search_cards}>
                             <Grid container spacing={8}>
                                 <Grid item xs={2} sm={1}>
-                                    <div className={classes.iconWrapper}>
-                                        <Info className={classes.icon} />
+                                    <div className={classes.ser_detail_search_iconWrapper}>
+                                        <Info className={classes.ser_detail_search_icon} />
                                     </div>
                                 </Grid>
                                 <Grid item xs={10} sm={11}>
-                                    <div className={classes.cardContent}>
+                                    <div className={classes.ser_detail_search_cardContent}>
                                         <Typography variant="subheading" gutterBottom>
                                             {name}
                                         </Typography>
@@ -297,15 +297,15 @@ class ServiceDetailInSearch extends React.Component {
                     {service_del_links && <ServiceDeliveryLink service_name={name} org_name={org_name}serDelLinks={service_del_links} />}
                     {contact_details && <ContactDetails info={contact_details} />}
                     {price && <Grid item xs={12}>
-                        <Paper className={classes.cards}>
+                        <Paper className={classes.ser_detail_search_cards}>
                             <Grid container spacing={8}>
                                 <Grid item xs={2} sm={1}>
-                                    <div className={classes.iconWrapper}>
-                                        <AttachMoney className={classes.icon} />
+                                    <div className={classes.ser_detail_search_iconWrapper}>
+                                        <AttachMoney className={classes.ser_detail_search_icon} />
                                     </div>
                                 </Grid>
                                 <Grid item xs={10} sm={11}>
-                                    <div className={classes.cardContent}>
+                                    <div className={classes.ser_detail_search_cardContent}>
                                         <Typography variant="body2" gutterBottom>
                                             {price}
                                         </Typography>
@@ -315,25 +315,25 @@ class ServiceDetailInSearch extends React.Component {
                         </Paper>
                     </Grid>}
                     {timingList && <Grid item xs={12}>
-                        <Paper className={classes.cards}>
+                        <Paper className={classes.ser_detail_search_cards}>
                             <Grid container spacing={8}>
                                 <Grid item xs={2} sm={1}>
-                                    <div className={classes.iconWrapper}>
-                                        <AccessTime className={classes.icon} />
+                                    <div className={classes.ser_detail_search_iconWrapper}>
+                                        <AccessTime className={classes.ser_detail_search_icon} />
                                     </div>
                                 </Grid>
                                 <Grid item xs={10} sm={11}>
-                                    <div className={classes.cardContent} style={{ marginTop: -12 }}>{timingList}</div>
+                                    <div className={classes.ser_detail_search_cardContent} style={{ marginTop: -12 }}>{timingList}</div>
                                 </Grid>
                             </Grid>
                         </Paper>
                     </Grid>}
                     {formList && <Grid item xs={12}>
-                        <Paper className={classes.cards}>
+                        <Paper className={classes.ser_detail_search_cards}>
                             <Grid container spacing={8}>
                                 <Grid item xs={2} sm={1}>
-                                    <div className={classes.iconWrapper}>
-                                        <Assignment className={classes.icon} />
+                                    <div className={classes.ser_detail_search_iconWrapper}>
+                                        <Assignment className={classes.ser_detail_search_icon} />
                                     </div>
                                 </Grid>
                                 <Grid item xs={10} sm={11}>
@@ -343,43 +343,43 @@ class ServiceDetailInSearch extends React.Component {
                         </Paper>
                     </Grid>}
                     {steplist && <Grid item xs={12}>
-                        <Paper className={classes.cards}>
+                        <Paper className={classes.ser_detail_search_cards}>
                             <Grid container spacing={8}>
                                 <Grid item xs={2} sm={1}>
-                                    <div className={classes.iconWrapper}>
-                                        <PlaylistAddCheck className={classes.icon} />
+                                    <div className={classes.ser_detail_search_iconWrapper}>
+                                        <PlaylistAddCheck className={classes.ser_detail_search_icon} />
                                     </div>
                                 </Grid>
                                 <Grid item xs={10} sm={11}>
-                                    <div className={classes.cardContent} style={{ marginTop: -12 }}>{steplist}</div>
+                                    <div className={classes.ser_detail_search_cardContent} style={{ marginTop: -12 }}>{steplist}</div>
                                 </Grid>
                             </Grid>
                         </Paper>
                     </Grid>}
                     {qaList && <Grid item xs={12}>
-                        <Paper className={classes.cards}>
+                        <Paper className={classes.ser_detail_search_cards}>
                             <Grid container spacing={8}>
                                 <Grid item xs={2} sm={1}>
-                                    <div className={classes.iconWrapper}>
-                                        <QuestionAnswer className={classes.icon} />
+                                    <div className={classes.ser_detail_search_iconWrapper}>
+                                        <QuestionAnswer className={classes.ser_detail_search_icon} />
                                     </div>
                                 </Grid>
                                 <Grid item xs={10} sm={11}>
-                                    <div className={classes.cardContent}>{qaList}</div>
+                                    <div className={classes.ser_detail_search_cardContent}>{qaList}</div>
                                 </Grid>
                             </Grid>
                         </Paper>
                     </Grid>}
                     {locList && <Grid item xs={12}>
-                        <Paper className={classes.cards}>
+                        <Paper className={classes.ser_detail_search_cards}>
                             <Grid container spacing={8}>
                                 <Grid item xs={2} sm={1}>
-                                    <div className={classes.iconWrapper}>
-                                        <PinDrop className={classes.icon} />
+                                    <div className={classes.ser_detail_search_iconWrapper}>
+                                        <PinDrop className={classes.ser_detail_search_icon} />
                                     </div>
                                 </Grid>
                                 <Grid item xs={10} sm={11}>
-                                    <div className={classes.cardContent}>{locList}</div>
+                                    <div className={classes.ser_detail_search_cardContent}>{locList}</div>
                                 </Grid>
                             </Grid>
                         </Paper>
@@ -397,5 +397,5 @@ const mapStateToProps = function (state, ownProps) {
     };
 };
 
-export default connect(mapStateToProps)(withRoot(withStyles(styles)(ServiceDetailInSearch)));
+export default connect(mapStateToProps)(withStyles(styles)(ServiceDetailInSearch));
 

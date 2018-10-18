@@ -12,12 +12,12 @@ import Dialog from '@material-ui/core/Dialog';
 import Divider from '@material-ui/core/Divider';
 
 import withRoot from '../withRoot';
-import {trackInput} from "./Search/tracking";
+import {trackInput} from "./common/tracking";
 import { toggleNotifyDialog } from './Search/actions';
 
 
 const styles = theme => ({
-  bootstrapInput: {
+service_notify_dialog_bootstrapInput : {
     borderRadius: 3,
     // backgroundColor: theme.palette.primary['50'],
     color: theme.palette.primary['200'],
@@ -27,7 +27,7 @@ const styles = theme => ({
     width: '100%',
     transition: theme.transitions.create(['border-color', 'box-shadow'])
   },
-  bootstrapInputComment:{
+service_notify_dialog_bootstrapInputComment : {
     borderRadius: 3,
     // backgroundColor: theme.palette.primary['50'],
     color: theme.palette.primary['200'],
@@ -39,29 +39,29 @@ const styles = theme => ({
     'wordBreak': 'break-word',
     transition: theme.transitions.create(['border-color', 'box-shadow'])
   },
-buttonContainer : {
+service_notify_dialog_buttonContainer : {
     marginTop: theme.spacing.unit * 4,
     marginBottom: theme.spacing.unit,
     display: 'flex',
     justifyContent: 'center',
   },
-  afterSubmit: {
+service_notify_dialog_afterSubmit : {
     display: 'flex',
     flexDirection: 'column',
     justifyContent: 'center',
     alignItems: 'center',
     margin: theme.spacing.unit* 4,
   },
-formWrapper:{
+service_notify_dialog_formWrapper : {
   marginTop: theme.spacing.unit * 2,
   marginLeft: theme.spacing.unit * 4,
 marginRight: theme.spacing.unit * 4,
   marginBottom: theme.spacing.unit * 5,
 },
-  spinner: {
+service_notify_dialog_spinner : {
     color: theme.palette.primary['500'],
   },
-  sepDiv:{
+service_notify_dialog_sepDiv : {
     textAlign: 'center',
     paddingTop: theme.spacing.unit*2,
     paddingBottom: theme.spacing.unit*2,
@@ -69,10 +69,10 @@ marginRight: theme.spacing.unit * 4,
   sepSpan:{
     
   },
-  feedbackText:{
+service_notify_dialog_feedbackText : {
     margin: theme.spacing.unit*2,
   },
-  icon: {
+service_notify_dialog_icon : {
     color: theme.palette.primary['500'],
     fontSize: 32,
     marginBottom: theme.spacing.unit,
@@ -214,10 +214,10 @@ class ServiceNotifyDialog extends Component {
                 placeholder="your phone number"
                 value={phone}
                 onChange={this.handleChange}
-                className={classes.bootstrapInput}
+                className={classes.service_notify_dialog_bootstrapInput}
               />
             </label>
-            <div className={classes.sepDiv}><span className={classes.sepSpan}
+            <div className={classes.service_notify_dialog_sepDiv}><span className={classes.service_notify_dialog_sepSpan}
             >
               <Typography variant="caption" component="h1">
 OR
@@ -229,34 +229,34 @@ OR
                 placeholder="your@email.com"
                 value={email}
                 onChange={this.handleChange}
-                className={classes.bootstrapInput}
+                className={classes.service_notify_dialog_bootstrapInput}
               />
             </label>
-            <div className={classes.buttonContainer}> 
-              <Button size="small" variant="outlined" type="submit" className={classes.button}>
+            <div className={classes.service_notify_dialog_buttonContainer}> 
+              <Button size="small" variant="outlined" type="submit" className={classes.service_notify_dialog_button}>
                 Notify me
               </Button>
-              <Button size="small" onClick={this.handleClose} className={classes.button}>Cancel</Button>
+              <Button size="small" onClick={this.handleClose} className={classes.service_notify_dialog_button}>Cancel</Button>
             </div>
          
           </form>
         </div>}
-        {submitting && <div className={classes.afterSubmit}>
-          <Spinner className={classes.spinner} />
+        {submitting && <div className={classes.service_notify_dialog_afterSubmit}>
+          <Spinner className={classes.service_notify_dialog_spinner} />
         </div>}
-        {success && <div className={classes.afterSubmit}>
-          <SvgIcon className={classes.icon}>
+        {success && <div className={classes.service_notify_dialog_afterSubmit}>
+          <SvgIcon className={classes.service_notify_dialog_icon}>
             <path fill="none" d="M0 0h24v24H0V0zm0 0h24v24H0V0z" />
             <path d="M16.59 7.58L10 14.17l-3.59-3.58L5 12l5 5 8-8zM12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z" />
           </SvgIcon>
-          <Typography className={classes.feedbackText} variant="body1" component="h1">Thank you, we will notify you!</Typography>
-          <Button size="small" variant="outlined" onClick={this.handleClose} className={classes.button}>Close</Button>
+          <Typography className={classes.service_notify_dialog_feedbackText} variant="body1" component="h1">Thank you, we will notify you!</Typography>
+          <Button size="small" variant="outlined" onClick={this.handleClose} className={classes.service_notify_dialog_button}>Close</Button>
         </div>}
-        {failure && <div className={classes.afterSubmit}>
-          <MoodBad className={classes.icon} />
-          <Typography className={classes.feedbackText} variant="body1" >Something went wrong. Please try again.</Typography>
+        {failure && <div className={classes.service_notify_dialog_afterSubmit}>
+          <MoodBad className={classes.service_notify_dialog_icon} />
+          <Typography className={classes.service_notify_dialog_feedbackText} variant="body1" >Something went wrong. Please try again.</Typography>
           <br/>
-          <Button size="small" variant="outlined" onClick={this.handleReset} className={classes.button}>Back</Button>
+          <Button size="small" variant="outlined" onClick={this.handleReset} className={classes.service_notify_dialog_button}>Back</Button>
         </div>}
     </Dialog>
     );
@@ -284,6 +284,6 @@ const mapStateToProps = function (state, ownProps) {
 const ConnServiceNotifyDialog = connect(
   mapStateToProps,
   mapDispatchToProps
-)(withRoot(withStyles(styles)(ServiceNotifyDialog)));
+)(withStyles(styles)(ServiceNotifyDialog));
 
 export default ConnServiceNotifyDialog;

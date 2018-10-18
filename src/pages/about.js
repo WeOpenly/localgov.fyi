@@ -14,7 +14,7 @@ import Search from '@material-ui/icons/Search';
 
 import withRoot from '../withRoot';
 import HeaderWithSearch from '../components/HeaderWithSearch';
-import { trackView } from "../components/Search/tracking";
+import { trackView } from "../components/common/tracking";
 
 const styles = theme => ({
   header: {

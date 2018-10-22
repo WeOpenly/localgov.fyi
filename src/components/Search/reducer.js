@@ -35,7 +35,7 @@ export function search(state = initialState, action) {
     case types.LOCATION_REQUEST:
       return {
         ...state,
-        locationLoading: false,
+        locationLoading: true,
       };
     case types.LOCATION_SUCCESS:
       return {

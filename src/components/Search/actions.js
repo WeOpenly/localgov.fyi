@@ -11,6 +11,7 @@ function requestAppMeta() {
   return { type: types.REQUEST_APP_META };
 }
 
+
 export function setMetaFromUrl(country, city = null) {
   const data = {
     userCountry: country,

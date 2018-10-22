@@ -40,6 +40,7 @@
         "prop-types": "^15.5.8",
         "react": "^16.5.2",
         "react-autosuggest": "^9.4.2",
+        "react-content-loader": "^3.2.0",
         "react-copy-to-clipboard": "^5.0.1",
         "react-device-detect": "^1.6.1",
         "react-dom": "^16.5.2",

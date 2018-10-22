@@ -1,7 +1,9 @@
 import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from "react-redux";
-import Link, { navigateTo } from 'gatsby-link';
+import ContentLoader from "react-content-loader"
+import queryString from 'query-string'
+import {navigate} from '@reach/router';
 import Img from 'gatsby-image';
 import Helmet from "react-helmet";
 import { isMobileOnly } from 'react-device-detect';
@@ -21,6 +23,7 @@ import Search from '../components/Search/Search';
 import ServiceGrid from '../components/ServiceGrid';
 import { getLocation } from '../components/Search/actions';
 import {trackView, trackClick} from "../components/Search/tracking";
+import {toggleRegister, toggleLogin} from '../components/Account/account';
 
 const styles = theme => ({
   "@global": {
@@ -341,18 +344,32 @@ const shuffledArray = xah_randomize_array(otherPlaces);
 // if index > do not have it in the layout
 // all ways get from the url
 
+const SuggestBoxLoader = props => (
+  <ContentLoader
+    height={160}
+    width={800}
+    speed={5}
+    primaryColor="#f3f3f3"
+    secondaryColor="#e0d9ff"
+    {...props}
+  >
+    <rect x="99.4" y="93.83" rx="0" ry="0" width="0" height="0" />
+    <rect x="13.4" y="17.83" rx="0" ry="0" width="424" height="43" />
+  </ContentLoader>
+)
 class Index extends React.Component {
   constructor(props) {
     super(props);
     this.clickSuggestion = this.clickSuggestion.bind(this);
     this.clickDiscoverMore = this.clickDiscoverMore.bind(this);
     this.clickGridItem = this.clickGridItem.bind(this);
-    console.log(this.props.data);
+
     const backgroundImages = [
       <Img
         title="United States Capitol"
         alt="Photo by Andy Feliciotti (@someguy) on Unsplash"
         sizes={this.props.data.capitol.childImageSharp.fluid}
+        backgroundColor="#0000ca"
         style={{
           position: 'absolute',
           left: 0,
@@ -365,6 +382,7 @@ class Index extends React.Component {
       <Img
         title="Philadelphia City Hall"
         alt="Photo by BruceEmmerling on Pixabay"
+        backgroundColor="#0000ca"
         sizes={this.props.data.philadelphia.childImageSharp.fluid}
         style={{
           position: 'absolute',
@@ -378,6 +396,7 @@ class Index extends React.Component {
       <Img
         title="Los Angeles City Hall"
         alt="Photo from Pixabay"
+        backgroundColor="#0000ca"
         sizes={this.props.data.losAngeles.childImageSharp.fluid}
         style={{
           position: 'absolute',
@@ -391,6 +410,7 @@ class Index extends React.Component {
       <Img
         title="San Francisco City Hall"
         alt="Photo by Hoona9091 on Pixabay"
+        backgroundColor="#0000ca"
         sizes={this.props.data.sanFrancisco.childImageSharp.fluid}
         style={{
           position: 'absolute',
@@ -407,34 +427,47 @@ class Index extends React.Component {
 
   componentDidMount() {
     const { dispatch } = this.props;
+    const values = queryString.parse(this.props.location.search);
+
+    if (values){
+      if (values.register){
+        dispatch(toggleRegister(true));
+      } else if(values.login){
+        dispatch(toggleLogin(true));
+      }
+    }
+
     if (this.props.location.pathname === '/'){
         dispatch(getLocation);
         dispatch(trackView('index', null, null, null));
+        
     }
   }
 
   clickSuggestion(url, name, index){
     const { dispatch } = this.props;
     dispatch(trackClick('index_grid', 'top_cities', url, name, index));
-    navigateTo(url);
+    navigate(url);
   }
 
   clickGridItem(type, id, name, index, url){
     const {dispatch} = this.props;
 
     dispatch(trackClick('index_grid', type, id, name, index));
-    navigateTo(url);
+    navigate(url);
   }
 
   clickDiscoverMore(){
     const {dispatch} = this.props;
     dispatch(trackClick('index_grid', 'top_cities', 'locations', 'more'));
-    navigateTo('/locations/');
+    navigate('/locations/');
   }
 
   render() {
-    const { classes, search } = this.props;
+    const { classes, search, account } = this.props;
     const { org, services, state_org } = search.location;
+    const {showLogin, showRegister} = account;
+    
     const otherLinks = shuffledArray.slice(0,3).map((item, idx) => {
 
 
@@ -468,8 +501,7 @@ otherLinks.push((
 
     const stateServicesConcat = stateServices.slice(0, 4);
 
-    
-
+  
     return (
       <Layout location={this.props.location} >
       <Fragment>
@@ -501,7 +533,7 @@ otherLinks.push((
             <Grid item xs={1} sm={2} md={2} />
             <Grid item xs={10} sm={10} md={8} className={classes.searchBoxContainer}>
               {search.locationLoading
-                ? <div className={classes.progressWrapper}><CircularProgress /></div>
+                  ? (<SuggestBoxLoader />)
                 : <Search />
               }
             </Grid>
@@ -611,28 +643,28 @@ export const query = graphql`
     capitol: file(relativePath: { regex: "/capitol/"}) {
         childImageSharp {
       fluid(maxWidth: 1000) {
-        ...GatsbyImageSharpFluid
+...GatsbyImageSharpFluid_withWebp_tracedSVG
       }
     }
     }
     philadelphia: file(relativePath: { regex: "/philadelphia/"}) {
       childImageSharp {
       fluid(maxWidth: 1000) {
-        ...GatsbyImageSharpFluid
+...GatsbyImageSharpFluid_withWebp_tracedSVG
       }
     }
     }
     losAngeles: file(relativePath: { regex: "/losAngeles/"}) {
       childImageSharp {
       fluid(maxWidth: 1000) {
-        ...GatsbyImageSharpFluid
+...GatsbyImageSharpFluid_withWebp_tracedSVG
       }
     }
     }
     sanFrancisco: file(relativePath: { regex: "/sanFrancisco/"}) {
       childImageSharp {
       fluid(maxWidth: 1000) {
-        ...GatsbyImageSharpFluid
+...GatsbyImageSharpFluid_withWebp_tracedSVG
       }
     }
     }

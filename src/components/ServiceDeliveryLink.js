@@ -16,7 +16,7 @@ import MoodBad from '@material-ui/icons/MoodBad';
 import Spinner from 'react-spinkit';
 
 import withRoot from '../withRoot';
-import { trackClick, trackInput } from "./Search/tracking";
+import { trackClick, trackInput } from "./common/tracking";
 
 const styles = theme => ({
   root: {

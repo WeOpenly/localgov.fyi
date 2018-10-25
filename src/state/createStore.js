@@ -1,7 +1,6 @@
-import { createStore, applyMiddleware, compose} from 'redux'
+import { createStore, applyMiddleware, compose, combineReducers} from 'redux'
 import logger from 'redux-logger'
 import thunk from 'redux-thunk'
-import {reducer as formReducer} from 'redux-form';
 
 import rootReducer from './reducers'
 
@@ -26,13 +25,8 @@ const composedEnhancers = compose(
     applyMiddleware(...middleware),
 )
 
-const composedReducer = combineReducers({
-    rootReducer,
-    form: formReducer
-})
-
 const reduxCreateStore = () => createStore(
-    composedReducer,
+    rootReducer,
     initialState,
     composedEnhancers
 )

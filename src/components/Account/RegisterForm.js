@@ -1,9 +1,11 @@
 import React from 'react'
 import {Field, reduxForm} from 'redux-form'
+import queryString from 'query-string'
 import TextField from '@material-ui/core/TextField'
 import Checkbox from '@material-ui/core/Checkbox'
+import Button from '@material-ui/core/Button';
+import {handleRegisterRequest} from './actions';
 
-import {loginReqest} from "./account";
 
 const validate = values => {
     const errors = {}
@@ -35,8 +37,6 @@ const renderTextField = ({
     style={{
     margin: 8
 }}
-    placeholder="Placeholder"
-    helperText="Full width!"
     fullWidth
     margin="normal"
     variant="outlined"
@@ -69,7 +69,8 @@ const renderCheckbox = ({input, label}) => (<Checkbox
     onCheck={input.onChange}/>)
 
 const MaterialUiForm = props => {
-    const {handleSubmit, pristine, reset, submitting} = props
+    const {handleSubmit,  pristine, reset, submitting, error} = props
+  
     return (
         <form onSubmit={handleSubmit}>
             <div>
@@ -80,15 +81,26 @@ const MaterialUiForm = props => {
                     label="Email Address"/>
             </div>
             <div>
-                <Field name="agree_terms" component={renderCheckbox} label="Agree terms"/>
+                <Field
+                    name="password"
+                    type="password"
+                    component={renderTextField}
+                    label="Password"/>
             </div>
             <div>
-                <button type="submit" disabled={pristine || submitting}>
+                <Button type="submit" variant="contained" disabled={pristine || submitting}>
                     Submit
-                </button>
-                <button type="button" disabled={pristine || submitting} onClick={reset}>
+                </Button>
+                <Button
+                    type="button"
+                    variant="outlined"
+                    disabled={pristine || submitting}
+                    onClick={reset}>
                     Clear Values
-                </button>
+                </Button>
+            </div>
+            <div>
+                {error ? error : ''}
             </div>
         </form>
     )
@@ -96,6 +108,5 @@ const MaterialUiForm = props => {
 
 export default reduxForm({
     form: 'RegisterForm', // a unique identifier for this form
-    validate,
-    loginReqest
+    validate
 })(MaterialUiForm)

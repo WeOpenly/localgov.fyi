@@ -13,7 +13,7 @@ import ChipFilter from '../components/ChipFilter';
 import DetailTemplate from '../components/detailTemplate';
 // import MemberListItem from '../components/MemberListItem';
 import ServiceCard from '../components/ServiceCard';
-import { trackView, trackClick } from "../components/Search/tracking";
+import { trackView, trackClick } from "../components/common/tracking";
 
 const styles = theme => ({
   orgTitle: {

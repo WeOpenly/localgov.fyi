@@ -28,7 +28,7 @@ import {
   setSearchSuggesitions,
   selectOrganization,
 } from "./actions";
-import { trackInput, trackClick } from './tracking';
+import { trackInput, trackClick } from '../common/tracking';
 
 
 const styles = theme => ({

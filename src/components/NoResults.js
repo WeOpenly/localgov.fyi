@@ -14,7 +14,7 @@ import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
 import withRoot from '../withRoot';
 
-import { trackView } from "./Search/tracking";
+import { trackView } from "./common/tracking";
 
 const styles = theme => ({
   wrapper: {

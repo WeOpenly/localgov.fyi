@@ -89,7 +89,7 @@ export const trackView = (page_layout_type, viewing_entity_type, viewing_entity_
                     console.log(err, url);
                 });
             } catch (e) {
-                console.log(e);
+              
             }
         });
 };
@@ -139,7 +139,7 @@ export const trackInput = (input_type, text) => async(dispatch, getState) => {
 
                 fetch(`/track.png?${payloadParams}`, {}).then((data) => {}).catch((err) => {});
             } catch (e) {
-                console.log(e);
+             
             }
         });
 };
@@ -193,7 +193,7 @@ export const trackClick = (click_type, clicked_entity_type, clicked_entity_id, c
 
                 fetch(`/track/track.png?${payloadParams}`, {}).then((data) => {}).catch((err) => {});
             } catch (e) {
-                console.log(e);
+            
             }
         });
 };

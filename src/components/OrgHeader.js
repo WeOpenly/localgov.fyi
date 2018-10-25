@@ -28,7 +28,7 @@ import MoreVert from '@material-ui/icons/MoreVert';
 import withRoot from '../withRoot';
 import UnclaimedHover from './UnclaimedHover';
 
-import {trackClick} from "./Search/tracking";
+import {trackClick} from "./common/tracking";
 
 const styles = theme => ({
   card: {

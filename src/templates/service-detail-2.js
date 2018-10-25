@@ -22,7 +22,7 @@ import AddressGoogleMap from '../components/AddressGoogleMap';
 import OtherServices from '../components/OtherServices';
 import withRoot from '../withRoot';
 
-import { trackView } from "../components/Search/tracking";
+import { trackView } from "../components/common/tracking";
 
 const windowGlobal = typeof window !== 'undefined' && window;
 

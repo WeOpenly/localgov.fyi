@@ -9,7 +9,7 @@ import Button from '@material-ui/core/Button';
 import Divider from '@material-ui/core/Divider';
 
 import withRoot from '../withRoot';
-import {trackView} from "../components/Search/tracking";
+import {trackView} from "../components/common/tracking";
 
 const styles = theme => ({
     root: {

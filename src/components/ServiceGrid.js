@@ -20,7 +20,7 @@ import Folder from '@material-ui/icons/Folder';
 import ShoppingCart from '@material-ui/icons/ShoppingCart';
 import DirectionsCar from '@material-ui/icons/DirectionsCar';
 import Autorenew from '@material-ui/icons/Autorenew';
-import {trackClick} from "./Search/tracking";
+import {trackClick} from "./common/tracking";
 import withRoot from '../withRoot';
 
 const styles = theme => ({

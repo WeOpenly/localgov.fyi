@@ -11,7 +11,7 @@ import { graphql } from "gatsby";
 import withRoot from '../withRoot';
 import HeaderWithSearch from '../components/HeaderWithSearch';
 
-import {trackView, trackClick} from "../components/Search/tracking";
+import {trackView, trackClick} from "../components/common/tracking";
 
 const styles = theme => ({
   titleWrapper: {

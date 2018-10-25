@@ -12,8 +12,8 @@ import Dialog from '@material-ui/core/Dialog';
 import Divider from '@material-ui/core/Divider';
 
 import withRoot from '../withRoot';
-import {trackInput} from "./Search/tracking";
-import { toggleNotifyDialog } from './Search/actions.js';
+import {trackInput} from "./common/tracking";
+import { toggleNotifyDialog } from './Search/actions';
 
 
 const styles = theme => ({

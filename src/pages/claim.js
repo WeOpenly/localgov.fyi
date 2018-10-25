@@ -11,7 +11,7 @@ import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
 import Button from '@material-ui/core/Button';
 import Done from '@material-ui/icons/Done';
-import {trackView, trackClick} from "../components/Search/tracking";
+import {trackView, trackClick} from "../components/common/tracking";
 
 const styles = theme => ({
   header: {

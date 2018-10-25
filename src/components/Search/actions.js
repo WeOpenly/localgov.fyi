@@ -1,7 +1,7 @@
 import 'regenerator-runtime/runtime';
 import * as types from './ActionTypes';
-import { GetApi } from './api';
-import {trackInput} from './tracking';
+import { GetApi } from '../common/api';
+import {trackInput} from '../common/tracking';
 
 export function toggleSearchResultLayout() {
   return { type: types.TOGGLE_SEARCH_RESULTS_LAYOUT };
@@ -10,7 +10,6 @@ export function toggleSearchResultLayout() {
 function requestAppMeta() {
   return { type: types.REQUEST_APP_META };
 }
-
 
 export function setMetaFromUrl(country, city = null) {
   const data = {

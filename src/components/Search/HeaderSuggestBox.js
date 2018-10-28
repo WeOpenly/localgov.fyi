@@ -385,4 +385,4 @@ const mapStateToProps = function (state, ownProps) {
     };
 };
 
-export default connect(mapStateToProps)(withRoot(withStyles(styles)(HeaderSuggestBox)));
+export default connect(mapStateToProps)(withStyles(styles)(HeaderSuggestBox));

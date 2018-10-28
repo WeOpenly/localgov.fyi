@@ -9,7 +9,6 @@ auth0 = new auth0.WebAuth({
     responseType: 'token id_token',
     audience: AUTH_CONFIG.audience,
     auto_login: false,
-    parse_hash: false,
 });
 
     constructor() {
@@ -67,7 +66,7 @@ export function isLoggedIn() {
     if (isBrowser && !window.localStorage.getItem('expires_at')) {
         return false;
     }
-    
+
     if (isBrowser){
         let expiresAt = JSON.parse(window.localStorage.getItem('expires_at'));
         return new Date().getTime() < expiresAt;

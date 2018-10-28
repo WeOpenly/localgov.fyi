@@ -8,6 +8,7 @@ import reduxCreateStore from './src/state/createStore';
 
 const auth = new Auth();
 
+
 export const wrapRootElement = ({ element }) => {
   const store = reduxCreateStore();
 

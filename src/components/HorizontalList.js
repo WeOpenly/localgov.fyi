@@ -19,4 +19,4 @@ const HorizontalList = ({list, component: ComponentToRender, classes}) => {
     );
 };
 
-export default withRoot(withStyles(styles)(HorizontalList));
+export default withStyles(styles)(HorizontalList);

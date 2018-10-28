@@ -21,4 +21,4 @@ const HorizontalListItem = ({item, classes}) => {
     );
 };
 
-export default withRoot(withStyles(styles)(HorizontalListItem));
+export default withStyles(styles)(HorizontalListItem);

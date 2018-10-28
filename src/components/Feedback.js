@@ -256,6 +256,6 @@ const mapStateToProps = function (state, ownProps) {
 const ConnFeedback = connect(
   mapStateToProps,
   mapDispatchToProps
-)(withRoot(withStyles(styles)(Feedback)));
+)(withStyles(styles)(Feedback));
 
 export default ConnFeedback;

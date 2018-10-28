@@ -128,4 +128,4 @@ class Footer extends Component {
   }
 }
 
-export default withRoot(withStyles(styles)(Footer));
+export default withStyles(styles)(Footer);

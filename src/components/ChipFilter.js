@@ -68,4 +68,4 @@ class ChipFilter extends Component {
   }
 }
 
-export default withRoot(withStyles(styles)(ChipFilter));
+export default withStyles(styles)(ChipFilter);

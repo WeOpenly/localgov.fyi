@@ -49,4 +49,4 @@ class SearchResult extends Component {
     }
 }
 
-export default withRoot(withStyles(styles)(SearchResult));
+export default withStyles(styles)(SearchResult);

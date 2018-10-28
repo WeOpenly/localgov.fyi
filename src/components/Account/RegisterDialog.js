@@ -114,4 +114,4 @@ const mapStateToProps = function (state, ownProps) {
     };
 };
 
-export default connect(mapStateToProps)(withRoot(withStyles(styles)(RegisterDialog)));
+export default connect(mapStateToProps)(withStyles(styles)(RegisterDialog));

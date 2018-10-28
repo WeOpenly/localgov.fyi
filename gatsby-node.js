@@ -116,7 +116,6 @@ allLogos: allFile (filter : {
           // `context` is optional but is often necessary so the template can query data
           // specific to each page.
           path: `organization/${edge.node.details.id}/`,
-          layout : "detailTemplate",
           component: slash(orgTemplate),
           context: {
             data: edge.node.details,
@@ -177,7 +176,6 @@ allLogos: allFile (filter : {
             createPage({
               path: `service/${service.id}/`,
               component: slash(serTemplate),
-              layout: "detailTemplate",
               context: {
                 data: {
                   id: service.id,

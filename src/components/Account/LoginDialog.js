@@ -110,4 +110,4 @@ const mapStateToProps = function (state, ownProps) {
     };
 };
 
-export default connect(mapStateToProps)(withRoot(withStyles(styles)(LoginDialog)));
+export default connect(mapStateToProps)(withStyles(styles)(LoginDialog));

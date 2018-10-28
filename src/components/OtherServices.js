@@ -112,6 +112,6 @@ const mapStateToProps = function (state, ownProps) {
   };
 };
 
-const ConnOtherServices = connect(mapStateToProps, mapDispatchToProps)(withRoot(withStyles(styles)(OtherServices)));
+const ConnOtherServices = connect(mapStateToProps, mapDispatchToProps)(withStyles(styles)(OtherServices));
 
 export default ConnOtherServices;

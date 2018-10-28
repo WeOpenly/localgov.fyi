@@ -272,7 +272,7 @@ class ServiceDetail extends React.Component {
 
         const someDetails = description || price || timingList || formList || stepList || qaList || locList;
         return (
-            <DetailTemplate>
+            <DetailTemplate location={this.props.location}>
 
          
             <Grid container spacing={16} className={classes.container}>

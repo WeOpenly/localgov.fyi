@@ -16,7 +16,6 @@ import Typography from '@material-ui/core/Typography';
 import ServiceSuggestBox from './ServiceSuggestBox';
 import NewSuggestBox from './NewSuggestBox';
 import HeaderSuggestBox from './HeaderSuggestBox';
-import withRoot from '../../withRoot';
 
 
 
@@ -78,7 +77,8 @@ class Search extends React.Component {
   render() {
     const { classes, inHeader } = this.props;
     const { metaLoadingFailed, metaLoading, searchSuggestionsLoading } = this.props.search;
-
+   
+      
     if (metaLoading) {
       return (<Grid container spacing={0}>
         <Grid item xs={12} align="center">
@@ -123,4 +123,4 @@ const mapStateToProps = function (state, ownProps) {
   };
 };
 
-export default connect(mapStateToProps)(withRoot(withStyles(styles)(Search)));
+export default connect(mapStateToProps)(withStyles(styles)(Search));

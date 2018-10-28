@@ -204,7 +204,7 @@ const {id, name} = this.props.pageContext.data;
     }
 
     return (
-      <DetailTemplate>
+      <DetailTemplate location={this.props.location}>
       <Grid container spacing={16}>
         <Helmet>
           <title>{`${name} info, contact details and services | Localgov.fyi`}</title>
@@ -254,4 +254,3 @@ const mapStateToProps = function (state, ownProps) {
 };
 
 export default connect(mapStateToProps)(withRoot(withStyles(styles)(OrganizationDetail)));
-

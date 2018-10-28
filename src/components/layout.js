@@ -71,4 +71,4 @@ class Index extends React.Component {
   }
 }
 
-export default withRoot(withStyles(styles)(Index));
+export default withStyles(styles)(Index);

@@ -426,6 +426,6 @@ const mapStateToProps = function (state, ownProps) {
   };
 };
 
-const ConnServiceDeliveryLink = connect(mapStateToProps, mapDispatchToProps)(withRoot(withStyles(styles)(ServiceDeliveryLink)));
+const ConnServiceDeliveryLink = connect(mapStateToProps, mapDispatchToProps)(withStyles(styles)(ServiceDeliveryLink));
 
 export default ConnServiceDeliveryLink;

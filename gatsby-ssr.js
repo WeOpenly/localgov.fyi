@@ -14,13 +14,13 @@ export const replaceRenderer = ({bodyComponent, replaceBodyHTMLString, setHeadCo
     const pageContext = getPageContext();
 
     const ConnectedBody = () => (
-        <Provider store={store}>
+            <Provider store={store}>
             <JssProvider
                 registry={pageContext.sheetsRegistry}
                 generateClassName={pageContext.generateClassName}>
                 {React.cloneElement(bodyComponent, { pageContext })}
             </JssProvider>
-        </Provider>
+            </Provider>
     );
 
     const bodyHTML = renderToString(<ConnectedBody/>);

@@ -323,4 +323,4 @@ const mapStateToProps = function (state, ownProps) {
   };
 };
 
-export default connect(mapStateToProps)(withRoot(withStyles(styles)(ServiceSuggestBox)));
+export default connect(mapStateToProps)(withStyles(styles)(ServiceSuggestBox));

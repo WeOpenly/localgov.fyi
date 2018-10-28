@@ -363,6 +363,6 @@ const mapStateToProps = function (state, ownProps) {
   };
 };
 
-const ConnSerHeader = connect(mapStateToProps, mapDispatchToProps)(withRoot(withStyles(styles)(ServiceHeader)));
+const ConnSerHeader = connect(mapStateToProps, mapDispatchToProps)(withStyles(styles)(ServiceHeader));
 
 export default ConnSerHeader;

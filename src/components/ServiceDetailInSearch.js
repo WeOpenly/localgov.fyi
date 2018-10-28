@@ -397,5 +397,5 @@ const mapStateToProps = function (state, ownProps) {
     };
 };
 
-export default connect(mapStateToProps)(withRoot(withStyles(styles)(ServiceDetailInSearch)));
+export default connect(mapStateToProps)(withStyles(styles)(ServiceDetailInSearch));
 

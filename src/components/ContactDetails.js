@@ -203,4 +203,4 @@ class ContactDetails extends Component {
 }
 
 
-export default withRoot(withStyles(styles)(ContactDetails));
+export default withStyles(styles)(ContactDetails);

@@ -139,6 +139,6 @@ const mapStateToProps = function (state, ownProps) {
   };
 };
 
-const ConnServiceGrid = connect(mapStateToProps, mapDispatchToProps)(withRoot(withStyles(styles)(ServiceGrid)));
+const ConnServiceGrid = connect(mapStateToProps, mapDispatchToProps)(withStyles(styles)(ServiceGrid));
 
 export default ConnServiceGrid;

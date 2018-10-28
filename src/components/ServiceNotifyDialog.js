@@ -284,6 +284,6 @@ const mapStateToProps = function (state, ownProps) {
 const ConnServiceNotifyDialog = connect(
   mapStateToProps,
   mapDispatchToProps
-)(withRoot(withStyles(styles)(ServiceNotifyDialog)));
+)(withStyles(styles)(ServiceNotifyDialog));
 
 export default ConnServiceNotifyDialog;

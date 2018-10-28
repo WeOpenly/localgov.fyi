@@ -342,6 +342,6 @@ const mapStateToProps = function (state, ownProps) {
 const ConnNoResults = connect(
   mapStateToProps,
   mapDispatchToProps
-)(withRoot(withStyles(styles)(NoResults)));
+)(withStyles(styles)(NoResults));
 
 export default ConnNoResults;

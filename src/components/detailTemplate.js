@@ -52,7 +52,7 @@ class DetailTemplate extends React.Component {
     return (
       <div className={classes.root}>
         <div className={isMobileOnly ? classes.mainMobile : classes.main}>
-          <HeaderWithSearch />
+          <HeaderWithSearch location={this.props.location} />
           <Grid container spacing={0}>
             <Grid item xs={1} />
             <Grid item xs={10}>
@@ -69,4 +69,4 @@ class DetailTemplate extends React.Component {
   }
 }
 
-export default withRoot(withStyles(styles)(DetailTemplate));
+export default withStyles(styles)(DetailTemplate);

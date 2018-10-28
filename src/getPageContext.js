@@ -187,6 +187,7 @@ const theme = createMuiTheme({
     }
 });
 
+
 function createPageContext() {
     return {
         theme,
@@ -200,6 +201,7 @@ function createPageContext() {
 }
 
 export default function getPageContext() {
+    const r = Math.random().toString(36).substring(7);
     // Make sure to create a new context for every server-side request so that data
     // isn't shared between connections (which would be bad).
     if (!process.browser) {

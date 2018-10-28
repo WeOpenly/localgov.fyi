@@ -404,7 +404,7 @@ this.handleMenu = this.handleMenu.bind(this);
           height: '85vh',
           filter: 'brightness(60%)',
         }}
-      / >, < Img title = "Los Angeles City Hall" alt = "Photo from Pixabay" backgroundColor = "#0000ca" sizes = {
+      />, <Img title = "Los Angeles City Hall" alt = "Photo from Pixabay" backgroundColor = "#0000ca" sizes = {
         this.props.data.losAngeles.childImageSharp.fluid
       }
       style = {{
@@ -429,7 +429,7 @@ this.handleMenu = this.handleMenu.bind(this);
           height: '85vh',
           filter: 'brightness(60%)',
         }}
-      / >
+      />
     ];
     this.bg = backgroundImages[Math.floor(Math.random() * backgroundImages.length)]
   }
@@ -552,7 +552,7 @@ const {classes, search, account, dispatch} = this.props;
               horizontal: 'right'
             }}
               open={open}
-              onClose={() => {}}>
+              onClose={this.handleClose}>
               <MenuItem onClick={() => navigate('/app/profile')}>Profile</MenuItem>
               <MenuItem onClick={() => this.logout()}>Logout</MenuItem>
             </Menu>

@@ -213,6 +213,6 @@ const mapStateToProps = function (state, ownProps) {
 const ConnSearchResult = connect(
     mapStateToProps,
     mapDispatchToProps
-)(withRoot(withStyles(styles)(SearchResult)));
+)(withStyles(styles)(SearchResult));
 
 export default ConnSearchResult;

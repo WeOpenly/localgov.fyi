@@ -5,5 +5,3 @@ export const AUTH_CONFIG = {
     audience : `${process.env.AUTH0_AUDIENCE}`,
     dbConnectionName : 'Username-Password-Authentication',
 }
-
-console.log(AUTH_CONFIG);

@@ -79,7 +79,7 @@ export const trackView = (page_layout_type, viewing_entity_type, viewing_entity_
                     .map(k => `${encodeURIComponent(k)}=${encodeURIComponent(eventParams[k])}`)
                     .join('&');
   
-                const url = `/track/track.png?${payloadParams}`;
+                const url = `/track.png?${payloadParams}`;
 
                 if (!isProd){
                     return;

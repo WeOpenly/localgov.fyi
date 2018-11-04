@@ -91,7 +91,7 @@ export function DspApi(endPoint, method = "GET", headers = null, data = null) {
             ...callParams.headers,
             "Accept": "application/json",
             "Content-Type": "application/json",
-            "Access-Control-Allow-Origin": "true",
+            "Access-Control-Allow-Origin": true,
         }
     }
 

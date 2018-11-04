@@ -79,8 +79,9 @@ const DSP_BACKEND = `${process.env.DSP_BACKEND}`
 export function DspApi(endPoint, method = "GET", headers = null, data = null) {
 
     let callParams = {
-        // credentials: "include",
+        credentials: "include",
         method: method,
+    
         headers: authHeader()
     };
 
@@ -89,7 +90,8 @@ export function DspApi(endPoint, method = "GET", headers = null, data = null) {
         headers: {
             ...callParams.headers,
             "Accept": "application/json",
-            "Content-Type": "application/json"
+            "Content-Type": "application/json",
+            "Access-Control-Allow-Origin": "*",
         }
     }
 

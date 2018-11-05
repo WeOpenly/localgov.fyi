@@ -464,8 +464,8 @@ class Index extends React.Component {
   }
 
   render() {
-    const {classes, search, account, dispatch} = this.props;
-    const {org, services, state_org} = search;
+    const {classes, search, account} = this.props;
+    const {org, services, state_org} = search.location;
     const {showLogin, showRegister} = account;
 
     const otherLinks = shuffledArray
@@ -498,6 +498,7 @@ class Index extends React.Component {
         </a>
       </Grid>
     ))
+
     const servicesFromOrg = search.allFromOrg.length >= 8
       ? search
         .allFromOrg
@@ -601,8 +602,8 @@ class Index extends React.Component {
             </Grid>
             <div className={classes.index_gridWrapper2}>
               {search.locationLoading
-                ? <div className={classes.index_progressWrapper}><CircularProgress/></div>
-                : <ServiceGrid
+                ? (<div className={classes.index_progressWrapper}><CircularProgress/></div>)
+                : (<ServiceGrid
                   clickGridItem={this.clickGridItem}
                   type='auto_loc_org_services'
                   city={org
@@ -610,7 +611,7 @@ class Index extends React.Component {
                   : null}
                   services={services
                   ? services
-                  : dummyServices}/>
+                  : dummyServices}/>)
 }
             </div>
             <Grid className='index_grid' container className={classes.index_otherLinksDivider}>

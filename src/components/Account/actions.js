@@ -107,7 +107,7 @@ export const handleAuthentication = () => {
     }
 }
 
-const setEmailVertificationRequired = () => {
+export const setEmailVertificationRequired = () => {
     return {type: types.REGISTER_VERIFICATION_REQUESTED}
 }
 

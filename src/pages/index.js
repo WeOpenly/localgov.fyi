@@ -28,7 +28,7 @@ import Menu from '@material-ui/core/Menu';
 
 import withRoot from '../withRoot';
 import LoginRegisterDialog from '../components/Account/LoginRegisterDialog';
-import RegisterDialog from '../components/Account/RegisterDialog';
+
 import Layout from "../components/layout";
 import Search from '../components/Search/Search';
 import ServiceGrid from '../components/ServiceGrid';
@@ -464,7 +464,7 @@ class Index extends React.Component {
   }
 
   render() {
-const {classes, search, account, dispatch} = this.props;
+    const {classes, search, account, dispatch} = this.props;
     const {org, services, state_org} = search;
     const {showLogin, showRegister} = account;
 
@@ -536,7 +536,6 @@ const {classes, search, account, dispatch} = this.props;
             </Toolbar>
           </AppBar>
           <LoginRegisterDialog location={this.props.location}/>
-          <RegisterDialog location={this.props.location}/>
           <div className={classes.index_searchWrapper}>
             {this.bg}
             <Grid
@@ -591,14 +590,14 @@ const {classes, search, account, dispatch} = this.props;
             <Grid className='index_grid' container className={classes.index_section3Mobile}>
               <Grid className='index_grid_item' item xs={1} md={3}/>
               <Grid className='index_grid_item' item xs={10} md={6}>
-                <Typography
+                    {search.locationLoading ? '' : (<Typography
                   variant="display1"
                   component="h1"
                   className={classes.index_popularServicesHeader}>
                   Localgov {org
                     ? org.name
                     : null}
-                </Typography>
+                </Typography>)}
               </Grid>
               <Grid item xs={1} md={3}/>
             </Grid>

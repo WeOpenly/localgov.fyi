@@ -69,7 +69,7 @@ const renderCheckbox = ({input, label}) => (<Checkbox
 
 const MaterialUiForm = props => {
     const {handleSubmit,  pristine, reset, submitting, error} = props
-  
+
     return (
             <Fragment>
         <Typography variant="headline" color="primary">
@@ -91,7 +91,7 @@ const MaterialUiForm = props => {
                     label="Password"/>
             </div>
             <div>
-                <Button style={{marginRight: '8px'}} variant="contained" color="primary" disabled={pristine || submitting}>
+                <Button style={{marginRight: '8px'}} variant="contained" color="primary" type="submit" disabled={pristine || submitting}>
                     Submit
                 </Button>
                 <Button
@@ -102,8 +102,8 @@ const MaterialUiForm = props => {
                     Clear Values
                 </Button>
             </div>
-            <div  style={{marginRight: '8px', textAlign: 'center'}} >
-                    <Typography variant="caption">
+            <div  style={{marginRight: '8px', marginTop: '8px', textAlign: 'center'}} >
+                    <Typography variant="caption" color="error">
                         {error ? error : ''}
                   </Typography>
             </div>

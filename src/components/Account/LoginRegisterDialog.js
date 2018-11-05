@@ -19,7 +19,7 @@ import Typography from '@material-ui/core/Typography';
 import LoginForm from './LoginForm';
 import RegisterForm from './RegisterForm';
 import Button from '@material-ui/core/Button';
-import {toggleAccountForm, handleLoginRequest, handleRegisterRequest} from './actions';
+import {toggleAccountForm, handleLoginRequest, handleRegisterRequest, setEmailVertificationRequired} from './actions';
 
 
 const windowGlobal = typeof window !== 'undefined'
@@ -81,7 +81,8 @@ class LoginRegisterDialog extends React.Component {
     }
 
     handleRegisterRequest(values){
-        return handleRegisterRequest(values)
+        const {dispatch} = this.props;
+        return handleRegisterRequest(values).then(() => dispatch(setEmailVertificationRequired()) )
     }
 
     componentDidMount() {
@@ -98,7 +99,7 @@ class LoginRegisterDialog extends React.Component {
     render() {
         const {classes, account} = this.props;
         const {showAccountForm, registerEmailVerificationRequired} = account;
-
+    
         const registerFormContents = registerEmailVerificationRequired ? (<div>
                     We've sent you an email, verify to finish creating account
                   </div>) : 

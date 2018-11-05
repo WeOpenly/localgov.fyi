@@ -90,8 +90,8 @@ const MaterialUiForm = props => {
                     Clear Values
                 </Button>
             </div>
-             <div  style={{marginRight: '8px', textAlign: 'center'}} >
-                    <Typography variant="caption">
+             <div  style={{marginRight: '8px', marginTop: '8px',  textAlign: 'center'}} >
+                <Typography variant="caption" color="error" >
                         {error ? error : ''}
                   </Typography>
             </div>

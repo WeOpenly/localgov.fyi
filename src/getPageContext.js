@@ -44,23 +44,6 @@ const theme = createMuiTheme({
             A700: "#b076f3",
             contrastDefaultColor: "light"
         },
-        error: {
-            "50": "#fce4ec",
-            "100": "#ffc6ef",
-            "200": "#ffc6ef",
-            "300": "#ffc6ef",
-            "400": "#ffc6ef",
-            "500": "#d782d9",
-            "600": "#d782d9",
-            "700": "#d782d9",
-            "800": "#d782d9",
-            "900": "#d782d9",
-            A100: "#ffc6ef",
-            A200: "#da92f3",
-            A400: "#da92f3",
-            A700: "#b076f3",
-            contrastDefaultColor: "dark"
-        },
         shadows: [
             "none", "1px 1px 1px 1px rgba(30, 30, 50,0.2),1px 1px 1px 1px rgba(30, 30, 50,0.14),1px 1" +
             "px 1px 1px rgba(30, 30, 50,0.12)",

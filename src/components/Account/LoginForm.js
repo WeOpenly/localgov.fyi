@@ -84,7 +84,7 @@ const MaterialUiForm = props => {
             </div>
             <div>
                 <Button type="submit" style={{marginRight: '8px'}} variant="contained" color="primary" disabled={pristine || submitting}>
-                    Submit
+                    Login
                 </Button>
                 <Button type="button"  variant="outlined" disabled={pristine || submitting} onClick={reset}>
                     Clear Values

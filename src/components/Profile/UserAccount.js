@@ -3,29 +3,29 @@ import PropTypes from 'prop-types';
 import {withStyles} from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
+import Divider from '@material-ui/core/Divider';
 
 const styles = theme => ({
     profile_user_account_root: {
-        paddingTop: theme.spacing.unit * 2,
-        paddingBottom: theme.spacing.unit * 2
+        padding: theme.spacing.unit * 2,
+    },
+    profile_name:{
+           padding: theme.spacing.unit,
     }
 });
 
 class UserAccount extends React.Component {
     render(){
-        const {classes} = this.props;
-
+        const {classes, user} = this.props;
+     
         return (
-            <div>
                 <Paper className={classes.profile_user_account_root} elevation={1}>
-                    <Typography variant="h5" component="h3">
-                        Edit your account details
+                    <Typography variant="subheading" className={classes.profile_namw}>
+                        {user.email}
                     </Typography>
-                    <Typography component="p">
-                        Paper can be used to build surface or other elements for your application.
-                    </Typography>
+                    <Divider />
+                    {user.email_verified ? (<Typography variant="body1" >Your email is verified  </Typography>) : (<Typography variant="body1">Your email is not verified yet!</Typography>)}   
                 </Paper>
-            </div>
         );
     }
 }

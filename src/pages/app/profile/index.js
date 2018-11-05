@@ -85,7 +85,7 @@ class Profile extends React.Component {
             navigate('/?login=true')
         }
 
-        let activeSectionComponent = (<UserAccount active={activeSection}/>)
+        let activeSectionComponent = (<UserAccount user={user} active={activeSection}/>)
         if (activeSection === 'organizations') {
             activeSectionComponent = (<FaveOrgs orgs={orgsFullDetails} active={activeSection}/>)
         } else if (activeSection === 'services') {

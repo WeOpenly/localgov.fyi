@@ -125,7 +125,7 @@ class LoginRegisterDialog extends React.Component {
                             className={classes.account_form_registerinstead}
                             component="a"
                             onClick={() => this.toggleRegister(true)}>
-                            Register instead
+                            Sign up instead
                         </Button>
                       </div>
                  )

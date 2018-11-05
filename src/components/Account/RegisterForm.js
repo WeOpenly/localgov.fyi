@@ -92,7 +92,7 @@ const MaterialUiForm = props => {
             </div>
             <div>
                 <Button style={{marginRight: '8px'}} variant="contained" color="primary" type="submit" disabled={pristine || submitting}>
-                    Submit
+                    Sign up
                 </Button>
                 <Button
                     type="button"

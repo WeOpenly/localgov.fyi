@@ -590,13 +590,11 @@ class Index extends React.Component {
             <Grid className='index_grid' container className={classes.index_section3Mobile}>
               <Grid className='index_grid_item' item xs={1} md={3}/>
               <Grid className='index_grid_item' item xs={10} md={6}>
-                    {search.locationLoading ? '' : (<Typography
+                    {search.locationLoading ? null : (<Typography
                   variant="display1"
                   component="h1"
                   className={classes.index_popularServicesHeader}>
-                  Localgov {org
-                    ? org.name
-                    : null}
+                  Localgov {org.name}
                 </Typography>)}
               </Grid>
               <Grid item xs={1} md={3}/>

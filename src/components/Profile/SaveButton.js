@@ -1,6 +1,7 @@
 import React, {Fragment} from 'react';
 import PropTypes from 'prop-types';
-import {navigateTo} from 'gatsby-link';
+import {navigate} from '@reach/router';
+
 import {connect} from "react-redux";
 import Helmet from "react-helmet";
 import Spinner from 'react-spinkit';

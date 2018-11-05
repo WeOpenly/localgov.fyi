@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
-import { navigateTo } from "gatsby-link";
+import {navigate} from '@reach/router';
 
 import { withStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
@@ -35,7 +35,7 @@ class SearchResult extends Component {
         }
 
         return (
-            <Card className={classes.search_result_card} onClick={() => navigateTo(toLink)} >
+            <Card className={classes.search_result_card} onClick={() => navigate(toLink)} >
                 <CardContent>
                     <Typography variant="body1" component="h1">
                         {title}

@@ -87,7 +87,7 @@ export function saveItem(organization=null, service=null){
         dispatch(saveRequest());
 
         const allValues = { organization: organization, service: service };
-        console.log(organization, service);
+
         try {
             await DspApi(`/dashboard/api/user/saved_items/save`, "POST", null, allValues);
             dispatch(saveSuccess());

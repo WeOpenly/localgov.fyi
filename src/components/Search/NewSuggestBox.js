@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from "react-redux";
-import { navigateTo } from 'gatsby-link';
+import {navigate} from '@reach/router';
 import Autosuggest from "react-autosuggest";
 import match from "autosuggest-highlight/match";
 import parse from "autosuggest-highlight/parse";
@@ -165,7 +165,7 @@ class NewSuggestBox extends Component {
   handleBlur(event, { highlightedSuggestion}){
     event.preventDefault();
     event.stopPropagation();
-    console.log(highlightedSuggestion);
+
   }
 
   renderSuggestion(suggestion, { query, isHighlighted }) {
@@ -189,7 +189,7 @@ class NewSuggestBox extends Component {
 
   clearInput() {
     const { dispatch } = this.props;
-    console.log("calling clear");
+
     dispatch(clearInput());
   }
 
@@ -203,7 +203,7 @@ class NewSuggestBox extends Component {
     const uri = `/search/${input}`;
     const encodedUri = encodeURI(uri);
     dispatch(trackInput('index_search_box', input));
-    navigateTo(encodedUri);
+    navigate(encodedUri);
   }
 
   renderInput(inputProps) {
@@ -274,7 +274,6 @@ class NewSuggestBox extends Component {
     const { id, heading } = suggestion;
     dispatch(selectOrganization(suggestion));
     dispatch(updateInput(heading));
-    console.log("selectSuggestion");
     dispatch(trackInput('index_search_box', input));
     dispatch(trackClick('select_suggestion', 'organization', id, heading, suggestionIndex));
   }

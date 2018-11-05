@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
-import Link, { navigateTo } from 'gatsby-link';
+import Link from 'gatsby-link';
+import {navigate} from '@reach/router';
+
 import { connect } from "react-redux";
 
 import { withStyles } from '@material-ui/core/styles';
@@ -157,7 +159,7 @@ class NoResults extends Component {
     })
     .then(() => {
       this.setState({ submitting: false, success: true });
-      setTimeout(() => {navigateTo('/')}, 1000);
+      setTimeout(() => {navigate('/')}, 1000);
     })
     .catch(error => this.setState({submitting: false, failure: true}));
 

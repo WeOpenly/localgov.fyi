@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from "react-redux";
-import { navigateTo } from 'gatsby-link';
+import {navigate} from '@reach/router';
 import Autosuggest from "react-autosuggest";
 import match from "autosuggest-highlight/match";
 import parse from "autosuggest-highlight/parse";
@@ -189,7 +189,7 @@ class ServiceSuggestBox extends Component {
         const {id} = selectedOrganization;
         const uri = `/organization/${id}`;
         const encodedUri = encodeURI(uri);
-        navigateTo(encodedUri);
+        navigate(encodedUri);
       }
       return null;
     }
@@ -197,7 +197,7 @@ class ServiceSuggestBox extends Component {
     const uri = `/search/${serviceInput}`;
     const encodedUri = encodeURI(uri);
     dispatch(trackInput('index_service_search_box', serviceInput));
-    navigateTo(encodedUri);
+    navigate(encodedUri);
   }
 
   renderInput(inputProps) {
@@ -260,7 +260,7 @@ class ServiceSuggestBox extends Component {
     const { dispatch } = this.props;
     const { serviceInput, userCountry } = this.props.search;
     const { id, heading } = suggestion;
-    navigateTo(`/service/${id}`);
+    navigate(`/service/${id}`);
     dispatch(trackInput('index_service_search_box', serviceInput));
     dispatch(trackClick('select_suggestion', 'service', id, heading, suggestionIndex));
   }

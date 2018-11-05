@@ -152,7 +152,6 @@ class ClainReq extends Component {
 
 
   handleChange(e) {
-    console.log("here");
     this.setState({
       [e.target.name]: e.target.value
     });

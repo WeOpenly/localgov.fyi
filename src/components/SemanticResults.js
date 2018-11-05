@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { navigateTo } from 'gatsby-link';
+import {navigate} from '@reach/router';
 
 import { withStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';

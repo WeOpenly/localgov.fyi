@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {navigateTo} from "gatsby-link";
+import {navigate} from '@reach/router';
 
 import { withStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';

@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import {connect} from "react-redux";
-import {navigateTo} from 'gatsby-link';
+import {navigate} from '@reach/router';
 
 import {withStyles} from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
@@ -233,7 +233,7 @@ class HeaderSuggestBox extends Component {
         dispatch(clearInput());
         const uri = `/search/`;
         const encodedUri = encodeURI(uri);
-        navigateTo(encodedUri);
+        navigate(encodedUri);
     }
 
     issueFreeSearch() {
@@ -246,7 +246,7 @@ class HeaderSuggestBox extends Component {
         const uri = `/search/${input}`;
         const encodedUri = encodeURI(uri);
         dispatch(trackInput('header_search_box', input));
-        navigateTo(encodedUri);
+        navigate(encodedUri);
     }
 
     renderInput(inputProps) {
@@ -316,7 +316,7 @@ class HeaderSuggestBox extends Component {
         dispatch(trackInput('header_search_box', input));
         dispatch(trackClick('select_suggestion', type, id, head, suggestionIndex));
 
-        navigateTo(`/${type}/${id}`);
+        navigate(`/${type}/${id}`);
     }
 
     onSubmit(evt) {

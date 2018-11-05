@@ -1,6 +1,7 @@
 import React, {Component} from "react";
 
-import {navigateTo} from 'gatsby-link';
+
+import {navigate} from '@reach/router';
 
 import {withStyles} from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
@@ -58,7 +59,8 @@ class OrgDetailLite extends Component {
                 <Typography variant="subheading" gutterBottom>
                     {heading}
                 </Typography>
-                <Card className={classes.org_detail_lite_card} onClick={() => navigateTo(`/organization/${org_id}`)}>
+                <Card className={classes.org_detail_lite_card} onClick={() => import {navigate} from '@reach/router';
+(`/organization/${org_id}`)}>
                     <CardContent className={classes.org_detail_lite_cardContent}>
                         <AccountBalance className={classes.org_detail_lite_icon} />
                         <Typography align="center" variant="title">

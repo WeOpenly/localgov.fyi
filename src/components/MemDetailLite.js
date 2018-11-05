@@ -1,6 +1,6 @@
 import React, {Component} from "react";
 
-import {navigateTo} from 'gatsby-link';
+
 import {withStyles} from '@material-ui/core/styles';
 
 import Card from '@material-ui/core/Card';

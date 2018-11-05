@@ -1,5 +1,7 @@
 import React, { Fragment } from 'react';
-import Link, { navigateTo } from 'gatsby-link';
+import Link from 'gatsby-link';
+import {navigate} from '@reach/router';
+
 import { isMobileOnly } from 'react-device-detect';
 import {connect} from "react-redux";
 import { withStyles } from '@material-ui/core/styles';

@@ -1,6 +1,7 @@
 import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
-import { navigateTo } from 'gatsby-link';
+import {navigate} from '@reach/router';
+
 import { connect } from 'react-redux';
 import { CopyToClipboard } from 'react-copy-to-clipboard';
 import {
@@ -124,7 +125,7 @@ class SearchResult extends Component {
     handleClick() {
         const { trackClick, resultType, id, toLink, title,  listIndex} = this.props;
         trackClick('card_item', resultType, id, title, listIndex);
-        navigateTo(toLink);
+        navigate(toLink);
     }
 
     handleDeliveryClick() {
@@ -149,7 +150,6 @@ class SearchResult extends Component {
     render() {
         const { classes, title, description, deliveryLink, toLink, id } = this.props;
         const { anchorEl, copied } = this.state;
-        console.log(this.state);
         const windowGlobal = typeof window !== 'undefined' && window;
         const windowLocation = windowGlobal.location ? windowGlobal.location : {};
         const shareLink = windowLocation.origin + toLink + '/';

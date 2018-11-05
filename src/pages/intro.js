@@ -68,7 +68,6 @@ class Intro extends Component {
     })
     .then(() => {
       this.setState({ submitting: false, success: true });
-      // setTimeout(() => {navigateTo('/')}, 1000);
     })
     .catch(error => this.setState({submitting: false, failure: true}));
 

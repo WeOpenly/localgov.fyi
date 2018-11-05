@@ -1,6 +1,7 @@
 import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
-import { navigateTo } from 'gatsby-link';
+
+import {navigate} from '@reach/router';
 import { isMobileOnly } from 'react-device-detect';
 
 import { withStyles } from '@material-ui/core/styles';
@@ -58,7 +59,7 @@ class Privacy extends React.Component {
       <Fragment>
         <AppBar position="static" className={!isMobileOnly ? classes.header : classes.headerMobile}>
           <Grid container spacing={0}>
-            <Grid item xs={12} sm={3} style={{'cursor': 'pointer'}} onClick={() => navigateTo('/') }>
+            <Grid item xs={12} sm={3} style={{'cursor': 'pointer'}} onClick={() => navigate('/') }>
               <Typography variant="display1" color="inherit" component="h1" className={classes.logo}>
                 Localgov.fyi
               </Typography>

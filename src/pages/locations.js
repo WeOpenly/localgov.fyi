@@ -1,5 +1,6 @@
 import React, {Component, Fragment} from 'react';
-import Link, {navigateTo} from 'gatsby-link';
+import Link from 'gatsby-link';
+import {navigate} from '@reach/router';
 import {isMobileOnly} from 'react-device-detect';
 import {connect} from "react-redux";
 import {withStyles} from '@material-ui/core/styles';
@@ -66,7 +67,7 @@ class Locations extends Component {
     this
       .props
       .trackClick('locations', 'list', id, name, index);
-    navigateTo(url);
+      navigate(url);
   }
 
   componentDidMount() {

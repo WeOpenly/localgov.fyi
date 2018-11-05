@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import {connect} from "react-redux";
-import { navigateTo } from 'gatsby-link';
+import {navigate} from '@reach/router';
+
 import Img from "gatsby-image";
 import { isMobileOnly } from 'react-device-detect';
 import { CopyToClipboard } from 'react-copy-to-clipboard';
@@ -173,7 +174,7 @@ class ServiceHeader extends Component {
 
   handleOrgClick() {
     const { orgID } = this.props;
-    navigateTo(`/organization/${orgID}`);
+    navigate(`/organization/${orgID}`);
   }
 
   trackClickSocialIcon(type, url) {

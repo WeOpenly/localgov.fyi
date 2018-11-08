@@ -212,6 +212,8 @@ const {id, name} = this.props.pageContext.data;
             name="description"
             content={`${name} info, county / city hall contact details, utilities, and services`}
           />
+          <meta name="keywords"
+              content={`${name} online, info , services,  local, utilities `}/>
           <meta property="og:title" content={`${name}`} />
           <meta property="og:url" content={`https://localgov.fyi/organization/${id}/`} />
           <meta property="og:description" content={`${name} info, contact details and services`} />

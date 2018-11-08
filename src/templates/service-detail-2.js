@@ -359,7 +359,9 @@ class ServiceDetail extends React.Component {
                         <meta
                             name="description"
                             content={`Forms, Price, Timings and Local Government Service Contact Details for ${name} offered in ${org_name} | Localgov.fyi`}/>
-
+                        <meta
+                            name="keywords"
+                            content={`${name} online , ${org_name} , localgov `}/>
                         <meta
                             property="og:description"
                             content={`Forms, Price, Timings and Local Government Service Contact Details for ${name} offered in ${org_name} | Localgov.fyi`}/>

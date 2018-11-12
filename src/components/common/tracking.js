@@ -79,7 +79,7 @@ export const trackView = (page_layout_type, viewing_entity_type, viewing_entity_
                     .map(k => `${encodeURIComponent(k)}=${encodeURIComponent(eventParams[k])}`)
                     .join('&');
   
-                const url = `/track/track.png?${payloadParams}`;
+                const url = `https://localgov.fyi/track/track.png?${payloadParams}`;
 
                 if (!isProd){
                     return;
@@ -137,7 +137,7 @@ export const trackInput = (input_type, text) => async(dispatch, getState) => {
                     return;
                 }
 
-                fetch(`/track/track.png?${payloadParams}`, {}).then((data) => {}).catch((err) => {});
+            fetch(`https://localgov.fyi/track/track.png?${payloadParams}`, {}).then((data) => {}).catch((err) => {});
             } catch (e) {
              
             }
@@ -191,7 +191,7 @@ export const trackClick = (click_type, clicked_entity_type, clicked_entity_id, c
                     return;
                 }
 
-                fetch(`/track/track.png?${payloadParams}`, {}).then((data) => {}).catch((err) => {});
+                fetch(`https://localgov.fyi/track/track.png?${payloadParams}`, {}).then((data) => {}).catch((err) => {});
             } catch (e) {
             
             }

@@ -26,10 +26,12 @@ import withRoot from '../withRoot';
 import ServiceDeliveryLink from './ServiceDeliveryLink';
 import ServiceNotifyDialog from './ServiceNotifyDialog';
 import SaveButton from '../components/Profile/SaveButton';
+import ServiceFlowDialog from './Delivery/ServiceFlowDialog';
 
 import {trackClick} from "./common/tracking";
 import {toggleNotifyDialog} from './Search/actions.js';
 import {isLoggedIn} from './Account/Auth';
+import {toggleDeliveryDialog} from './Delivery/actions';
 
 const styles = theme => ({
   service_header_main: {
@@ -153,10 +155,15 @@ class ServiceHeader extends Component {
     this.handleOrgClick = this.handleOrgClick.bind(this);
     this.trackClickSocialIcon = this.trackClickSocialIcon.bind(this);
     this.handleNotifyClick = this.handleNotifyClick.bind(this);
+    this.toggleServiceFlow = this.toggleServiceFlow.bind(this);
   }
 
   handleNotifyClick(){
     this.props.openNotifyDialog(true);
+  }
+
+  toggleServiceFlow(){
+    this.props.openServiceFlowDialog();
   }
 
   handleShareClick(event) {
@@ -285,16 +292,19 @@ class ServiceHeader extends Component {
       );
     });
 
+
     const actionButton = isLoggedIn() ? (<SaveButton service={id}/>) : (<Button variant="outlined" color="primary" onClick={this.handleNotifyClick} className={classes.service_header_notifyButton}>
                   Notify Me
                 </Button>)
 
+    const serviceFlowButton = isLoggedIn() ? (<Button variant="outlined" color="primary" onClick={this.toggleServiceFlow} className={classes.service_header_notifyButton}>Get</Button>) : null;
+              
     return (
       <Grid container spacing={16} className={!isMobileOnly ? classes.service_header_main : classes.service_header_mainMobile}>
         <ServiceNotifyDialog ser_name={name} org_id={this.props.orgID}/>
-        <Grid item xs={12} md={8}>
-          
+        <ServiceFlowDialog service_id={this.props.id} />
 
+        <Grid item xs={12} md={8}>
               <div className={classes.service_header_cardTop}>
                 <div className={classes.service_header_title}>
                   <Typography variant="display1">{name}</Typography>
@@ -321,6 +331,9 @@ class ServiceHeader extends Component {
               </div>
               <div className={classes.service_header_serDelLink}>
                   {actionButton}
+              </div>
+              <div className={classes.service_header_serDelLink}>
+                  {serviceFlowButton}
               </div>
               </div>    
               </div>
@@ -361,6 +374,9 @@ const mapDispatchToProps = (dispatch) => {
     },
     openNotifyDialog: () => {
       dispatch(toggleNotifyDialog(true));
+    },
+    openServiceFlowDialog: () => {
+      dispatch(toggleDeliveryDialog(true));
     }
   }
 }

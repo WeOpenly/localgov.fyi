@@ -1,11 +1,12 @@
 const path = require(`path`)
-let activeEnv = process.env.ACTIVE_ENV || process.env.NODE_ENV || 'development'
+let activeEnv = process.env.ACTIVE_ENV || process.env.NODE_ENV || 'staging'
 
-require("dotenv").config({
-path : `.env.${activeEnv}`,
-})
+const pt = __dirname + `/.env.${activeEnv}`
 
-console.log(activeEnv)
+require('dotenv').config({
+  path : pt
+});
+
 module.exports = {
   siteMetadata: {
     title: `Search for local government organizations, and services`,

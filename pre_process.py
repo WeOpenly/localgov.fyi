@@ -18,12 +18,15 @@ downloaded_orgs = []
 # download the logo with a new name (<id> _org_log)
 
 
+
+
 for root, dirs, files in os.walk(data_dir):
     for filename in files:
         if not filename.endswith(".json"):
             continue
         
         full_path = '{d}{f}'.format(d=data_dir, f=filename)
+        rewrite = False
         with open(full_path) as f:
             # time = os.path.getmtime(full_path)
             # if datetime.fromtimestamp(time).date() < datetime.today().date():
@@ -50,29 +53,44 @@ for root, dirs, files in os.walk(data_dir):
                         pass
                 urllib.urlretrieve(org_logo, org_logo_filename)
 
+            
             for service in details.get('services', []):
                 services_in_detail = service.get('services', [])
                 for service_detail in services_in_detail:
                     ser_id = service_detail.get('id')
                     service_logo = service_detail.get('logo_url')
+                    service_detail['service_flow_steps'] = []
+                    rewrite = True
+                    # if service_detail.get('service_flow_steps'):
+                    #     service_detail.update({
+                    #         'service_flow_steps': []
+                    #     })
+                    #     rewrite = True
+                    
                     if not service_logo:
                         continue
 
-                    file_name, file_ext = os.path.splitext(service_logo)
-                    ser_log_filename = u"{l}{id}_ser_logo{e}".format(
-                        l=logo_dir, id=ser_id, e=file_ext)
+                    # file_name, file_ext = os.path.splitext(service_logo)
+                    # ser_log_filename = u"{l}{id}_ser_logo{e}".format(
+                    #     l=logo_dir, id=ser_id, e=file_ext)
                     
-                    if not os.path.exists(ser_log_filename):
-                        with open(ser_log_filename, 'w+'):
-                            pass
-                    urllib.urlretrieve(service_logo, ser_log_filename)
+                    # if not os.path.exists(ser_log_filename):
+                    #     with open(ser_log_filename, 'w+'):
+                    #         pass
+                    # urllib.urlretrieve(service_logo, ser_log_filename)
 
             if has_services and not has_cd:
                 no_cd_files.append(full_path)
             
             if not all([has_services, has_cd]):
                 removable_files.append(full_path)
-            
+        
+        print rewrite
+        if rewrite:
+            with open(full_path, 'w') as the_file:
+                the_file.write(json.dumps(data))
+
+
 
 fncd = open("no_cd.txt", "w")
 fncd.write(str(no_cd_files))

@@ -95,6 +95,7 @@ export const handleLoginRequest = (values) => {
 export const handleAuthentication = () => {
     return async(dispatch, getState) => {
         auth.auth0.parseHash((err, authResult) => {
+                console.log(err);
                 if (authResult && authResult.accessToken && authResult.idToken) {
                     auth.setSession(authResult);
                     dispatch(loginSuccess());

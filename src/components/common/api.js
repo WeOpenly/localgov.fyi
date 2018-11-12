@@ -37,7 +37,7 @@ export function getCookie(name) {
 
 // const BACKEND = 'http://127.0.0.1:8090/dashboard/api';
 // console.log(BACKEND);
-const YUSUF_BACKEND = `${process.env.SEARCH_BACKEND}/api`
+const YUSUF_BACKEND = `https://yusuf.localgov.fyi/api`
 
 export function YusufApi(lang = undefined, endPoint, headers = {}) {
 
@@ -47,7 +47,7 @@ export function YusufApi(lang = undefined, endPoint, headers = {}) {
 
     let headersForGet = {
         credentials: 'include',
-        'Access-Control-Allow-Origin': '*',
+        'Access-Control-Allow-Origin': true,
     }
 
     if (headers) {
@@ -75,14 +75,14 @@ export function authHeader() {
 }
 
 
-const DSP_BACKEND = `${process.env.DSP_BACKEND}`
+// const DSP_BACKEND = `${process.env.DSP_BACKEND}`
+const DSP_BACKEND = 'https://dsp.localgov.fyi'
 
 export function DspApi(endPoint, method = "GET", headers = null, data = null) {
 
     let callParams = {
         credentials: "include",
         method: method,
-    
         headers: authHeader()
     };
 
@@ -92,7 +92,6 @@ export function DspApi(endPoint, method = "GET", headers = null, data = null) {
             ...callParams.headers,
             "Accept": "application/json",
             "Content-Type": "application/json",
-            "Access-Control-Allow-Origin": true,
         }
     }
 
@@ -149,6 +148,8 @@ export function DspApi(endPoint, method = "GET", headers = null, data = null) {
             };
         }
     }
+
+    console.log(callParams);
 
     return fetch(`${DSP_BACKEND}${endPoint}`, callParams)
         .then(checkStatus)

@@ -190,6 +190,7 @@ allLogos: allFile (filter : {
                   alltimings: service.service_timing || [],
                   allfaq: service.service_faq || [],
                   service_del_links: service.service_del_links || [],
+                  service_flow_steps: service.service_flow_steps || [],
                   org_id: ser.org.id,
                   org_name: ser.org.name,
                   otherServices: ser.services.filter(otherService => otherService.id !== service.id),

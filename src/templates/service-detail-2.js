@@ -154,6 +154,7 @@ class ServiceDetail extends React.Component {
     static propTypes = {
         data: PropTypes.shape({postsJson: PropTypes.object.isRequired})
     }
+
     state = {
         loggedin: false,
         logincheckloading: true
@@ -185,12 +186,13 @@ class ServiceDetail extends React.Component {
             org_id,
             org_name,
             service_del_links,
+            service_flow_steps,
             otherServices,
             logoSizes
         } = this.props.pageContext.data;
 
         const {classes} = this.props;
-
+console.log(service_flow_steps);
         let serLogoSvg = null
         if (logoSizes && logoSizes.sizes) {
             serLogoSvg = logoSizes.sizes

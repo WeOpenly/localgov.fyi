@@ -85,11 +85,14 @@ export const trackView = (page_layout_type, viewing_entity_type, viewing_entity_
                     return;
                 }
 
-                fetch(url, {}).then((data) => {}).catch((err) => {
-                    console.log(err, url);
+                fetch(url, {headers: {
+                    "Access-Control-Allow-Origin" : true
+                }
+           }).then((data) => {console.log(data)}).catch((err) => {
+                    console.log("here", err, url);
                 });
             } catch (e) {
-              
+            console.log("here2", e)
             }
         });
 };

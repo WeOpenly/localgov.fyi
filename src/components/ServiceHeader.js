@@ -297,7 +297,7 @@ class ServiceHeader extends Component {
                   Notify Me
                 </Button>)
 
-    const serviceFlowButton = isLoggedIn() ? (<Button variant="outlined" color="primary" onClick={this.toggleServiceFlow} className={classes.service_header_notifyButton}>Get</Button>) : null;
+    const serviceFlowButton =  (<Button variant="outlined" color="primary" onClick={this.toggleServiceFlow} className={classes.service_header_notifyButton}>Get</Button>);
               
     return (
       <Grid container spacing={16} className={!isMobileOnly ? classes.service_header_main : classes.service_header_mainMobile}>

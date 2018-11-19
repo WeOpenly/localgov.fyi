@@ -7,6 +7,8 @@ import Spinner from 'react-spinkit';
 import {isMobileOnly} from 'react-device-detect';
 import {navigate} from '@reach/router';
 
+import TextField from '@material-ui/core/TextField';
+
 import Dialog from '@material-ui/core/Dialog';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import DialogContent from '@material-ui/core/DialogContent';
@@ -18,7 +20,7 @@ import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
-import {toggleDeliveryDialog} from './actions';
+import {fetchStepDetails} from './actions';
 
 const windowGlobal = typeof window !== 'undefined'
     ? window
@@ -30,72 +32,133 @@ const styles = theme => ({
     },
     account_form_loginEmbed: {},
     account_form_registerinstead: {
-        marginTop: theme.*4,
+        marginTop: theme.spacing.unit *4,
         display: 'flex'
+    },
+    form:{
+        margin: theme.spacing.unit *4,
+    },
+    formButtonContainer:{
+        margin: theme.spacing.unit *4,
+        display: 'flex',
+        justifyContent: 'center'
     }
 });
 
-class ServiceFlowDialog extends React.Component {
+
+const  CustomFieldTemplate = (props) => {
+    const {
+        id,
+        classNames,
+        label,
+        help,
+        required,
+        description,
+        errors,
+        children
+    } = props;
+
+    let textLabel = label;
+    if (required){
+        textLabel = textLabel + '*';
+    }
+    console.log(props);
+    return (
+        <TextField
+        className={classNames}
+        InputLabelProps={{
+            htmlFor: `${id}`
+        }}
+        InputProps={{
+            'aria-label': 'description'
+        }}
+        required={required}
+        error={errors ? true: false}
+        helperText={errors ? errors: help}
+        label={textLabel}
+        variant="outlined"
+        id={id}
+      >
+       {description}
+      {children}
+      {errors}
+      </TextField>
+    );
+}
+
+class FormStepDetails extends React.Component {
     constructor(props) {
         super(props);
-        this.closeServiceFlowForm = this
-            .closeServiceFlowForm
-            .bind(this);
     }
 
-    closeServiceFlowForm() {
-        const {dispatch} = this.props;
-        dispatch(toggleDeliveryDialog(false));
-    }
-
-    componentDidMount() {
-        const {dispatch, service_id} = this.props;
-        //  this should check for current state for logged in users
-        dispatch(ferchServiceBpFlowSummary(service_id));
+    componentWillMount() {
+        const {dispatch, id} = this.props;
+        console.log("here");
+        dispatch(fetchStepDetails(id));
     }
 
     render() {
         const {classes, delivery} = this.props;
-        const {showDeliveryDialog} = delivery;
-        let trimmed = null;
-        // if (currentUserStepDetails && currentUserStepDetails.field_schema) {
-        // trimmed = currentUserStepDetails.field_schema.trim()     trimmed =
-        // JSON.parse(trimmed)         }
+        const {stepDetailsLoading, stepDetails, stepDetailsLoadingFailed} = delivery;
+        console.log(delivery, 'FormStepDetails');
 
-        const formData = (!flowStepsLoading && !currentUserStepLoading && flowSteps && trimmed)
-            ? (
-                <Fragment>
-                    <Typography variant="headline" color="primary">
-                        hello
-                    </Typography>
-                    <Form
-                        schema={trimmed}
-                        onChange={() => console.log("changed")}
-                        onSubmit={() => console.log("submitted")}
-                        onError={() => console.log("errors")}/>
+        if (stepDetailsLoading) {
+            return (<Spinner name="ball-beat" color="blue"/>);
+        }
 
-                </Fragment>
-            )
-            : null
+        if (stepDetailsLoadingFailed) {
+            return 'Something went wrong!'
+        }
+
+        if (!stepDetails){
+            return null;
+        }
+
+        let trimmedFS = null;
+        let trimmedUs = null;
+        let trimmedFD = null;
+        const {step_details} = stepDetails;
+        console.log(step_details);
+        if (step_details && step_details.field_schema) {
+            trimmedFS = step_details.field_schema.trim(); 
+            trimmedFS = JSON.parse(trimmedFS);         
+        }
+
+        if (step_details && step_details.ui_schema) {
+            trimmedUs = step_details.ui_schema.trim(); 
+            trimmedUs = JSON.parse(trimmedUs);         
+        }
+
+        if (step_details && step_details.form_data) {
+            trimmedFD = step_details.form_data.trim(); 
+            trimmedFD = JSON.parse(trimmedFD);         
+        }
+
         return (
-            <Dialog
-                open={showDeliveryDialog}
-                className={classes.account_dialog_dialog}
-                onClose={this.closeServiceFlowForm}
-                aria-labelledby="login-dialog-title"
-                aria-describedby="login-dialog-description">
-                <DialogContent >
-                    {(flowStepsLoading || currentUserStepLoading)
-                        ? (<Spinner className={classes.saveButtonspinner} name="ball-beat" color="blue"/>)
-                        : null}
-                    {formData}
-                </DialogContent>
-            </Dialog>
+             <Form
+                schema={trimmedFS}
+                uiSchema={trimmedUs}
+                formData={trimmedFD}
+                className={classes.form}
+                onChange={() => console.log("changed")}
+                onSubmit={() => console.log("submitted")}
+                onError={() => console.log("errors")}>
+                <div className={classes.formButtonContainer}>
+                     <Button
+                    type="submit"
+                    variant="outlined"
+                    color="primary"
+                    className={classes.button}>
+                    Next
+                </Button>
+                </div>
+                
+            </Form>
         );
     }
 }
 
-ServiceFlowDialog.propTypes = {
+FormStepDetails.propTypes = {
     classes: PropTypes.object.isRequired
 };
 
@@ -106,4 +169,4 @@ const mapStateToProps = function (state, ownProps) {
     };
 };
 
-export default connect(mapStateToProps)(withStyles(styles)(ServiceFlowDialog));
+export default connect(mapStateToProps)(withStyles(styles)(FormStepDetails));

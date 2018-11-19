@@ -19,9 +19,6 @@ const windowGlobal = typeof window !== 'undefined'
     : null
 
 const styles = theme => ({
-    account_dialog_dialog: {
-        height: '460px'
-    },
     account_form_loginEmbed: {},
     account_form_registerinstead: {
         marginTop: theme.spacing*4,
@@ -43,7 +40,7 @@ class ServiceFlowDialog extends React.Component {
     render() {
         const {classes,  delivery, service_name } = this.props;
         const {showDeliveryDialog, serviceFlow} = delivery;
-        
+
         let flowExists = true;
         if(Object.keys(serviceFlow).length === 0){
             flowExists = false;
@@ -52,7 +49,7 @@ class ServiceFlowDialog extends React.Component {
         let dialogContent = null;
         
         if(flowExists){
-            dialogContent = (<StepDetails />);
+            dialogContent = (<StepDetailFactory serviceName={service_name}  />);
         } else {
             dialogContent  = (<FlowSummary serviceName={service_name} />)
         }
@@ -60,6 +57,7 @@ class ServiceFlowDialog extends React.Component {
         return (
             <Dialog 
                 open={showDeliveryDialog}
+                scroll='body'
                 className={classes.account_dialog_dialog}
                 onClose={this.closeServiceFlowForm}
                 aria-labelledby="login-dialog-title"

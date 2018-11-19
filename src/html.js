@@ -1,9 +1,10 @@
-import React from "react"
+import React, {Fragment} from "react"
 
 import PropTypes from "prop-types"
 
-// let stylesStr if (process.env.NODE_ENV === `production`) {   try {
-// stylesStr = require(`!raw-loader!../public/styles.css`)   } catch (e) {   } }
+
+
+
 // let fontStyleCss if (process.env.NODE_ENV === `production`) {   try {
 // fontStyleCss = require(`!raw-loader!../static/css/fonts.css`)   } catch (e)
 // {} }
@@ -17,7 +18,9 @@ const JsonLd = ({data}) => <script
 // export default class HTML extends React.Component {   render() {     let css
 //    if (process.env.NODE_ENV === `production`) {       css = (         <style
 //          id="gatsby-inlined-css"           dangerouslySetInnerHTML={{ __html:
-// stylesStr }}         />       )     }     let fontcss     if
+// stylesStr }}         />       )     }    
+
+// let fontcss     if
 // (process.env.NODE_ENV === `production`) {       fontcss = (         <style
 //        id="gatsby-inlined-css-fonts"           dangerouslySetInnerHTML={{
 // __html: fontStyleCss }}         />       )     }
@@ -82,7 +85,11 @@ export default class HTML extends React.Component {
           <meta
             name="viewport"
             content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
-          <link href={'/css/fonts.css'} rel="stylesheet"/> {this.props.headComponents}
+          <link href={'/css/fonts.css'} rel="stylesheet"/> 
+          <link href={'/css/bootstrap-theme.min.css'} rel="stylesheet"/> 
+          <link href={'/css/bootstrap.min.css'} rel="stylesheet"/> 
+          <script src={'/js/bootstrap.min.js'} />
+          {this.props.headComponents}
           {/* {css} */}
         </head>
         <body {...this.props.bodyAttributes}>

@@ -31,7 +31,7 @@ export function ferchServiceBpFlowSummary(serviceId) {
 
         try {
             // const steps = await DspApi(`/dashboard/api/ser/flow_summary/?service_id=${serviceId}`, "GET", null, null);
-            flowSummary = [{
+            const flowSummary = [{
                 'step_name': 'Fill form details',
                 'step_description': 'Fill in required details about your ultility bill that help us find your details'
             },
@@ -77,11 +77,12 @@ export function createServiceFlow(serviceId) {
             // const steps = await
             // DspApi(`/dashboard/api/ser/flow_summary/?service_id=${serviceId}`, "GET",
             // null, null);
-            flowDetails = {
+            const flowDetails = {
                 flowId: 1,
                 steps: [{
                     'id': 1,
                     'step_name': 'Fill form details',
+                    'step_type': 'form',
                     'step_description': 'Fill in required details about your ultility bill that help us find your details',
                     'ready': true,
                     'active': true,
@@ -89,6 +90,7 @@ export function createServiceFlow(serviceId) {
                 }, {
                     'id': 2,
                     'step_name': 'Find out your outstanding bill',
+                    'step_type': 'callapi_consent',
                     'step_description': 'We do the hard work of finding your account details and outstanding bill',
                     'ready': false,
                     'active': true,
@@ -96,16 +98,26 @@ export function createServiceFlow(serviceId) {
                 }, {
                     'id': 3,
                     'step_name': 'Pay your bill',
+                    'step_type': 'payment',
                     'step_description': 'Pay your outstanding bill with one click',
                     'ready': false,
                     'active': true,
                     'complete': false,
-                }]
+                }],
+                currentStep: {
+                    'id': 1,
+                    'step_name': 'Fill form details',
+                    'step_type': 'callapi_consent',
+                    'step_description': 'Fill in required details about your ultility bill that help us find your details',
+                    'ready': true,
+                    'active': false,
+                    'complete': true
+                }
             }
                
             if (windowGlobal) {
                 windowGlobal.setTimeout(() => {
-                    dispatch(successCreateServiceFlow(flowSummary));
+                    dispatch(successCreateServiceFlow(flowDetails));
                 }, 1000);
             }
         } catch (e) {
@@ -135,11 +147,12 @@ export function updateServiceFlow(flowId) {
             // const steps = await
             // DspApi(`/dashboard/api/ser/flow_summary/?service_id=${serviceId}`, "GET",
             // null, null);
-            flowDetails = {
+            const flowDetails = {
                 flowId: 1,
                 steps: [
                     {
                         'id': 1,
+                        'step_type' : 'form',
                         'step_name': 'Fill form details',
                         'step_description': 'Fill in required details about your ultility bill that help us find your details',
                         'ready': true,
@@ -147,6 +160,7 @@ export function updateServiceFlow(flowId) {
                         'complete': true
                     }, {
                         'id': 2,
+                        'step_type': 'callapi_consent',
                         'step_name': 'Find out your outstanding bill',
                         'step_description': 'We do the hard work of finding your account details and outstanding bill',
                         'ready': false,
@@ -154,6 +168,7 @@ export function updateServiceFlow(flowId) {
                         'complete': false
                     }, {
                         'id': 3,
+                        'step_type': 'payment',
                         'step_name': 'Pay your bill',
                         'step_description': 'Pay your outstanding bill with one click',
                         'ready': false,
@@ -162,18 +177,19 @@ export function updateServiceFlow(flowId) {
                     }
                 ],
                 currentStep: {
-                     'id': 2,
-                        'step_name': 'Fill form details',
-                        'step_description': 'Fill in required details about your ultility bill that help us find your details',
-                        'ready': true,
-                        'active': false,
-                        'complete': true
+                    'id': 2,
+                    'step_type': 'callapi_consent',
+                    'step_name': 'Find out your outstanding bill',
+                    'step_description': 'We do the hard work of finding your account details and outstanding bill',
+                    'ready': false,
+                    'active': true,
+                    'complete': false
                 }
             }
 
             if (windowGlobal) {
                 windowGlobal.setTimeout(() => {
-                    dispatch(successRefreshServiceFlow(flowSummary));
+                    dispatch(successRefreshServiceFlow(flowDetails));
                     // const stepId = 2 CALCULCATE THIS
                     // dispatch(setCurrentStep(2));
                 }, 1000);
@@ -192,8 +208,8 @@ function requestStepDetails(stepId) {
     return {type: types.REQUEST_STEP_DETAILS, stepId}
 }
 
-function recvStepDetails(currentStep) {
-    return {type: types.SUCCESS_RECV_STEP_DETAILS, currentStep}
+function recvStepDetails(stepDetails) {
+    return {type: types.SUCCESS_RECV_STEP_DETAILS, stepDetails}
 }
 
 function failedRecvStepDetails() {
@@ -213,34 +229,10 @@ export function fetchStepDetails(stepId) {
                     'step_description': 'Fill in required details about your ultility bill that help us find your details',
                     'step_type': 'form',
                     'step_details': {
-                        'field_schema' : {
-                            "title": "Pay Utility bill",
-                            "description": "Make a one time payment for your utility bills",
-                            "type": "object",
-                            "required": [
-                                "accountNumber", "zipcode"
-                            ],
-                            "properties": {
-                                "accountNumber": {
-                                    "type": "string",
-                                    "title": "SPU or SCL account number:"
-                                },
-                                "zipcode": {
-                                    "type": "integer",
-                                    "title": "Mailing address zip code"
-                                }
-                            }
-                        },
-                        'ui_schema': {
-                            "accountNumber": {
-                                "ui:autofocus": true,
-                                "ui:emptyValue": "",
-                                "ui:description": "Enter account number exactly as it appears on the bill."
-                            },
-                            "zipcode": {
-                                "ui:emptyValue": "98101"
-                            }
-                        }
+                        'field_schema' : "{\n  \"type\": \"object\",\n  \"required\": [\n    \"firstName\"\n  ],\n  \"properties\": {\n    \"firstName\": {\n      \"type\": \"string\",\n      \"title\": \"First name\"\n    }\n  }\n}",
+                        'ui_schema': 
+                          "{\n  \"firstName\": {\n    \"ui:autofocus\": true,\n    \"ui:emptyValue\": \"\"\n  }\n}", 
+                        "form_data": null
                     }
                 }
             

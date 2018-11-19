@@ -27,18 +27,18 @@ export function delivery(state = initialState, action) {
                 ...state,
                 showDeliveryDialog: action.toggle
             };
-        case types.REQUEST_SERVICE_FLOW_SUMMARY:
+        case types.REQUEST_SERVICE_FLOW_BLUE_PRINT_SUMMARY:
             return {
                 ...state,
                 flowSummaryLoading: true,
             }
-        case types.SUCCESS_RECV_FLOW_SUMMARY:
+        case types.SUCCESS_RECV_FLOW_BLUE_PRINT_SUMMARY:
             return {
                 ...state,
                 flowSummaryLoading: false,
                 flowSummary: action.flowSummary
             }
-        case types.FAILED_RECV_FLOW_SUMMARY:
+        case types.FAILED_RECV_FLOW_BLUE_PRINT_SUMMARY:
             return {
                 ...state,
                 flowSummaryLoading: false,
@@ -52,6 +52,7 @@ export function delivery(state = initialState, action) {
         case types.SUCCESS_CREATE_SERVICE_FLOW:
             return {
                 ...state,
+                serviceFlow: action.flowDetails,
                 requestFlowCreate: false,
                 successFlowCreate: true
             }
@@ -87,7 +88,7 @@ export function delivery(state = initialState, action) {
             return {
                 ...state,
                 stepDetailsLoading: false,
-                stepDetails: action.currentStep
+                stepDetails: action.stepDetails
             }
         case types.FAILED_RECV_STEP_DETAILS:
             return {

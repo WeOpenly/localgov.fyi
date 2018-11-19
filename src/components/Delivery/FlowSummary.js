@@ -31,18 +31,29 @@ const styles = theme => ({
     },
     account_form_loginEmbed: {},
     account_form_registerinstead: {
-        marginTop: theme.*4,
+        marginTop: theme.spacing.unit *4,
         display: 'flex'
+    },
+    summaryTitle: {
+        display: 'flex',
+        justifyContent: 'center'
+    },
+    summaryActions: {
+        display: 'flex',
+        margin: theme.spacing.unit *4,
+        justifyContent: 'center'
     }
 });
 
 class FlowSummary extends React.Component {
     constructor(props) {
         super(props);
-        this.handleCreateFlow = this.handleCreateFlow.bind(this)
+        this.handleCreateFlow = this
+            .handleCreateFlow
+            .bind(this)
     }
 
-    handleCreateFlow(){
+    handleCreateFlow() {
         const {dispatch, service_id} = this.props;
         dispatch(createServiceFlow(service_id));
     }
@@ -52,49 +63,56 @@ class FlowSummary extends React.Component {
         dispatch(ferchServiceBpFlowSummary(service_id));
     }
 
-
     render() {
-        const {classes, service_name, delivery} = this.props;
+        const {classes, serviceName, delivery} = this.props;
         const {flowSummaryLoading, flowSummary, flowSummaryLoadingFailed} = delivery;
         let content = null;
         let actions = null;
-        
-        if (flowSummaryLoading){
-            return  (<Spinner name="ball-beat" color="blue"/>);
-        }   
 
-        if (flowSummaryLoadingFailed){
-            content = 'Something went wrong!'
-        } else {
-            const summaryList = flowSummary.map((flowItem, idx) => {
-                return (<ListItem dense>
-                            <ListItemText primary={flowItem.step_name} secondary={flowItem.step_description} />
-                    </ListItem>)
-            });
-
-
-            content = (<List>
-                {summaryList}
-                </List>)
-            actions = (<Button onClick={this.handleCreateFlow} variant="outlined" color="primary">
-              Let's get started
-            </Button>);
+        if (flowSummaryLoading) {
+            return (<Spinner name="ball-beat" color="blue"/>);
         }
 
-        
+        if (flowSummaryLoadingFailed) {
+            return 'Something went wrong!'
+        }
+        const summaryList = flowSummary.map((flowItem, idx) => {
+            return (
+                <ListItem dense>
+                    <ListItemText
+                        primary={flowItem.step_name}
+                        secondary={flowItem.step_description}/>
+                </ListItem>
+            )
+        });
 
-    return (
-        <Fragment>
-        <DialogTitle id="alert-dialog-title">{service_name}</DialogTitle>
-          <DialogContent>
-            <DialogContentText id="alert-dialog-description">
-                {content}
-            </DialogContentText>
-          </DialogContent>
-          {actions ? (<DialogActions>
-            {actions}
-          </DialogActions>) : null}
-        </Fragment>
+        content = (
+            <List>
+                {summaryList}
+            </List>
+        )
+        actions = (
+            <Button onClick={this.handleCreateFlow} variant="outlined" color="primary">
+                Let's get started
+            </Button>
+        );
+
+        return (
+            <Fragment>
+                <DialogTitle className={classes.summaryTitle} id="alert-dialog-title">{serviceName}</DialogTitle>
+                <DialogContent>
+                    <DialogContentText id="alert-dialog-description">
+                        {content}
+                    </DialogContentText>
+                </DialogContent>
+                {actions
+                    ? (
+                        <DialogActions className={classes.summaryActions}>
+                            {actions}
+                        </DialogActions>
+                    )
+                    : null}
+            </Fragment>
         );
     }
 }

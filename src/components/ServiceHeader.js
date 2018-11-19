@@ -302,7 +302,7 @@ class ServiceHeader extends Component {
     return (
       <Grid container spacing={16} className={!isMobileOnly ? classes.service_header_main : classes.service_header_mainMobile}>
         <ServiceNotifyDialog ser_name={name} org_id={this.props.orgID}/>
-        <ServiceFlowDialog service_id={this.props.id} />
+        <ServiceFlowDialog service_name={name} service_id={this.props.id} />
 
         <Grid item xs={12} md={8}>
               <div className={classes.service_header_cardTop}>

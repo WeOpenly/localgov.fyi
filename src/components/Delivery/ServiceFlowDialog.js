@@ -2,25 +2,17 @@
 import React, {Fragment} from 'react';
 import PropTypes from 'prop-types';
 import {connect} from "react-redux";
-import Form from "react-jsonschema-form";
-
-
-import Spinner from 'react-spinkit';
-import {isMobileOnly} from 'react-device-detect';
-import {navigate} from '@reach/router';
+import queryString from 'query-string';
 
 import Dialog from '@material-ui/core/Dialog';
-import DialogTitle from '@material-ui/core/DialogTitle';
-import DialogContent from '@material-ui/core/DialogContent';
-import queryString from 'query-string'
-import {withStyles} from '@material-ui/core/styles';
-import Divider from '@material-ui/core/Divider';
 
-import Grid from '@material-ui/core/Grid';
-import Paper from '@material-ui/core/Paper';
-import Typography from '@material-ui/core/Typography';
-import Button from '@material-ui/core/Button';
-import {toggleDeliveryDialog, fetchFlowSteps} from './actions';
+import {withStyles} from '@material-ui/core/styles';
+
+import {toggleDeliveryDialog} from './actions';
+
+import StepDetailFactory from './StepDetailFactory';
+import FlowSummary from './FlowSummary';
+
 
 const windowGlobal = typeof window !== 'undefined'
     ? window
@@ -48,47 +40,30 @@ class ServiceFlowDialog extends React.Component {
         dispatch(toggleDeliveryDialog(false));
     }
    
-componentDidMount() {
-const {dispatch, service_id} = this.props;
-console.log(service_id, "serflowdialog");
-dispatch(fetchFlowSteps(service_id));
-    }
-
     render() {
-        const {classes,  delivery } = this.props;
-        const {showDeliveryDialog, flowSteps, currentUserStepDetails, flowStepsLoading, currentUserStepLoading} = delivery;
-        let trimmed = null;
-if (currentUserStepDetails && currentUserStepDetails.field_schema) {
-        trimmed = currentUserStepDetails.field_schema.trim()
-    trimmed = JSON.parse(trimmed)
-    
-        }
+        const {classes,  delivery, service_name } = this.props;
+        const {showDeliveryDialog, serviceFlow} = delivery;
         
-const formData = (!flowStepsLoading && !currentUserStepLoading && flowSteps && trimmed)
-    ? (
-        <Fragment>
-            <Typography variant="headline" color="primary">
-             hello
-                </Typography>
-                    <Form 
-                        schema={trimmed}
-                    
-                        onChange={() =>console.log("changed")}
-                        onSubmit={() => console.log("submitted")}
-                        onError={() => console.log("errors")} />
-                    
-                    </Fragment>) : null
+        let flowExists = true;
+        if(Object.keys(serviceFlow).length === 0){
+            flowExists = false;
+        }
+
+        let dialogContent = null;
+        
+        if(flowExists){
+            dialogContent = (<StepDetails />);
+        } else {
+            dialogContent  = (<FlowSummary serviceName={service_name} />)
+        }
+
         return (
-            <Dialog
+            <Dialog 
                 open={showDeliveryDialog}
                 className={classes.account_dialog_dialog}
                 onClose={this.closeServiceFlowForm}
                 aria-labelledby="login-dialog-title"
-                aria-describedby="login-dialog-description">
-                <DialogContent >
-                    {(flowStepsLoading || currentUserStepLoading) ? (<Spinner className={classes.saveButtonspinner} name="ball-beat" color="blue"/>) : null}
-                    {formData}
-                </DialogContent>
+                aria-describedby="login-dialog-description">                    {dialogContent}
             </Dialog>
         );
     }

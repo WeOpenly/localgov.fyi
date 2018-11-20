@@ -88,7 +88,7 @@ export default class HTML extends React.Component {
           <link href={'/css/fonts.css'} rel="stylesheet"/> 
           <link href={'/css/bootstrap-theme.min.css'} rel="stylesheet"/> 
           <link href={'/css/bootstrap.min.css'} rel="stylesheet"/> 
-          <script src={'/js/bootstrap.min.js'} />
+         
           {this.props.headComponents}
           {/* {css} */}
         </head>

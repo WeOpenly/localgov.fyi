@@ -20,7 +20,7 @@ import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
-import {fetchStepDetails} from './actions';
+import {fetchStepDetails, submitStepDetails} from './actions';
 
 const windowGlobal = typeof window !== 'undefined'
     ? window
@@ -89,17 +89,27 @@ const  CustomFieldTemplate = (props) => {
 class FormStepDetails extends React.Component {
     constructor(props) {
         super(props);
+        this.submitForm = this.submitForm.bind(this);
+    }
+
+    submitForm(formData){
+        const {delivery} = this.props;
+        const {stepDetails} = delivery;
+        const {step_details} = stepDetails;
+        const {id, step_type} = step_details;
+        this.props.handleNext(step_type, id, formData);
     }
 
     componentWillMount() {
         const {dispatch, id} = this.props;
-        console.log("here");
         dispatch(fetchStepDetails(id));
     }
 
     render() {
         const {classes, delivery} = this.props;
         const {stepDetailsLoading, stepDetails, stepDetailsLoadingFailed} = delivery;
+
+        const {step_details} = stepDetails;
         console.log(delivery, 'FormStepDetails');
 
         if (stepDetailsLoading) {
@@ -110,15 +120,14 @@ class FormStepDetails extends React.Component {
             return 'Something went wrong!'
         }
 
-        if (!stepDetails){
+        if (!stepDetails || !step_details){
             return null;
         }
 
         let trimmedFS = null;
         let trimmedUs = null;
         let trimmedFD = null;
-        const {step_details} = stepDetails;
-        console.log(step_details);
+        
         if (step_details && step_details.field_schema) {
             trimmedFS = step_details.field_schema.trim(); 
             trimmedFS = JSON.parse(trimmedFS);         
@@ -141,7 +150,7 @@ class FormStepDetails extends React.Component {
                 formData={trimmedFD}
                 className={classes.form}
                 onChange={() => console.log("changed")}
-                onSubmit={() => console.log("submitted")}
+                onSubmit={this.submitForm}
                 onError={() => console.log("errors")}>
                 <div className={classes.formButtonContainer}>
                      <Button

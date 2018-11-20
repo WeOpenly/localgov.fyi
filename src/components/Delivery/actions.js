@@ -222,8 +222,10 @@ export function fetchStepDetails(stepId) {
 
         try {
             // const step_details = await DspApi(`/dashboard/api/ser/flow_form/${stepId}/`, "GET", null, null);
+            let stepDetails = null;
 
-            const stepDetails = {
+            if (stepId === 1){
+                stepDetails = {
                     'id': 1,
                     'step_name': 'Fill form details',
                     'step_description': 'Fill in required details about your ultility bill that help us find your details',
@@ -235,6 +237,19 @@ export function fetchStepDetails(stepId) {
                         "form_data": null
                     }
                 }
+            }
+            else{
+                stepDetails = {
+                    'id': 2,
+                   'step_name': 'Find out your outstanding bill',
+                    'step_description': 'We do the hard work of finding your account details and outstanding bill',
+                    'step_type': 'callapi_consent',
+                    'step_details': {
+                        "amount_to_pay" : "$200.00",
+                        "consent_recorded": false
+                    }
+                }
+            } 
             
             if (windowGlobal) {
                 windowGlobal.setTimeout(() => {
@@ -260,7 +275,7 @@ function stepSubmitFailed() {
     return {type: types.FAILED_STEP_DETAILS_SUBMIT}
 }
 
-export function submitStepDetails(stepId, stepDetailsToSubmit) {
+export function submitStepDetails(step_type, step_id, stepDetailsToSubmit, flowId) {
     return async(dispatch, getState) => {
         dispatch(stepSubmitStart());
 
@@ -269,6 +284,7 @@ export function submitStepDetails(stepId, stepDetailsToSubmit) {
             if (windowGlobal) {
                 windowGlobal.setTimeout(() => {
                     dispatch(stepSubmitSuccess());
+                    dispatch(updateServiceFlow(flowId));
                 }, 1000);
             }
         } catch (e) {

@@ -22,6 +22,10 @@ import ListItemText from '@material-ui/core/ListItemText';
 import Divider from '@material-ui/core/Divider';
 import FormStepDetails from './FormStepDetails';
 import PaymentStepDetails from './PaymentStepDetails';
+import CallApiStepDetails from './CallApiStepDetails';
+
+import {submitStepDetails} from './actions';
+
 
 const styles = theme => ({
     fave_orgs_root: {
@@ -45,45 +49,43 @@ class StepDetailFactory extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            activeStep: 0,
+            userActiveStep: 0,
             completed: {}
         };
-        this.handleNext = this
-            .handleNext
-            .bind(this);
-        this.handleBack = this
-            .handleBack
-            .bind(this);
+        this.getActiveStep = this.getActiveStep.bind(this);
+
         this.handleStep = this
             .handleStep
             .bind(this);
-        this.handleComplete = this
-            .handleComplete
-            .bind(this);
-        this.handleReset = this
-            .handleReset
-            .bind(this);
-        this.completedSteps = this
-            .completedSteps
-            .bind(this);
-        this.isLastStep = this
-            .isLastStep
-            .bind(this);
-        this.allStepsCompleted = this
-            .allStepsCompleted
-            .bind(this);
+        this.handleNext = this.handleNext.bind(this);
         this.getStepContent = this
             .getStepContent
             .bind(this);
     }
 
+    getActiveStep(){
+        const {serviceFlow} = this.props.delivery;
+        console.log('getActiveStep', serviceFlow);
+
+        const {currentStep, steps} = serviceFlow;
+        const {id} = currentStep;
+        let activeStepIndex = 0;
+
+        steps.forEach((step, index) => {
+            if(id === step.id){
+                activeStepIndex = index 
+            }
+        });
+        console.log(activeStepIndex);
+        return activeStepIndex;
+    }
+
     getStepContent(step) {
         switch (step.step_type) {
             case 'form':
-                return (<FormStepDetails id={step.id}/>)
+                return (<FormStepDetails id={step.id} handleNext={this.handleNext} />)
             case 'callapi_consent':
-                // return (<CallApiStepDetails id={step.id}/>);
-                return 'hello';
+                return (<CallApiStepDetails id={step.id} handleNext={this.handleNext}/>);
             case 'payment':
                 // return (<PaymentStepDetails id={step.id}/>)
                 return 'ola';
@@ -92,68 +94,23 @@ class StepDetailFactory extends React.Component {
         }
     }
 
-    handleNext() {
-        const {serviceFlow} = this.props.delivery;
-        const {steps} = serviceFlow;
-        let activeStep;
-
-        if (this.isLastStep() && !this.allStepsCompleted()) {
-            // It's the last step, but not all steps have been completed, find the first
-            // step that has been completed
-            activeStep = steps.findIndex((step, i) => !(i in this.state.completed));
-        } else {
-            activeStep = this.state.activeStep + 1;
-        }
-        this.setState({activeStep});
-    }
-
-    handleBack() {
-        this.setState(state => ({
-            activeStep: state.activeStep - 1
-        }));
+    handleNext(step_type, step_id, stepDetailsToSubmit) {
+        const {dispatch, delivery} = this.props;
+        const {serviceFlow} = delivery;
+        const {flowId} = serviceFlow;
+        dispatch(submitStepDetails(step_type, step_id, stepDetailsToSubmit, flowId));
     }
 
     handleStep(step) {
-        this.setState({activeStep: step});
+        this.setState({userActiveStep: step});
+        
     }
 
-    handleComplete() {
-        const {completed} = this.state;
-        completed[this.state.activeStep] = true;
-        this.setState({completed});
-        this.handleNext();
-    };
-
-    handleReset() {
-        this.setState({activeStep: 0, completed: {}});
-    };
-
-    completedSteps() {
-        return Object
-            .keys(this.state.completed)
-            .length;
-    }
-
-    isLastStep() {
-        const {serviceFlow} = this.props.delivery;
-        const {steps} = serviceFlow;
-
-        return this.state.activeStep === steps.length - 1;
-    }
-
-    allStepsCompleted() {
-        const {serviceFlow} = this.props.delivery;
-        const {steps} = serviceFlow;
-
-        return this.completedSteps() === steps.length;
-    }
 
     render() {
         const {classes, serviceName, delivery} = this.props;
         const {serviceFlowLoading, serviceFlow, serviceFlowLoadingFailed} = delivery;
-        console.log(serviceFlow, serviceFlowLoading, serviceFlowLoadingFailed);
-        const {activeStep} = this.state;
-
+        
         let content = null;
 
         if (serviceFlowLoading) {
@@ -164,6 +121,11 @@ class StepDetailFactory extends React.Component {
             return 'Something went wrong!';
         }
 
+        if (!serviceFlow){
+            return null
+        }
+
+        const activeStep = this.getActiveStep();
         const {steps} = serviceFlow;
         const stepCount = steps.length;
 
@@ -185,25 +147,25 @@ class StepDetailFactory extends React.Component {
 
         const activeStepDetails = steps[activeStep];
 
-        const stepContent = this.getStepContent(activeStepDetails)
+        const stepContent = this.getStepContent(activeStepDetails, serviceFlow.flowId);
 
-        const stepActions = (
-            <DialogActions className={classes.summaryActions}>
-                <Button
-                    disabled={activeStep === 0}
-                    onClick={this.handleBack}
-                    className={classes.button}>
-                    Back
-                </Button>
-                <Button
-                    variant="outlined"
-                    color="primary"
-                    onClick={this.handleNext}
-                    className={classes.button}>
-                    Next
-                </Button>
-            </DialogActions>
-        )
+        // const stepActions = (
+        //     <DialogActions className={classes.summaryActions}>
+        //         <Button
+        //             disabled={activeStep === 0}
+        //             onClick={this.handleBack}
+        //             className={classes.button}>
+        //             Back
+        //         </Button>
+        //         <Button
+        //             variant="outlined"
+        //             color="primary"
+        //             onClick={this.handleNext}
+        //             className={classes.button}>
+        //             Next
+        //         </Button>
+        //     </DialogActions>
+        // )
 
         return (
             <Fragment>

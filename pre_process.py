@@ -61,6 +61,13 @@ for root, dirs, files in os.walk(data_dir):
                     service_logo = service_detail.get('logo_url')
                     service_detail['service_flow_steps'] = []
                     rewrite = True
+                    
+                    if not service_detail.get('delivery_enabled', False):
+                        service_detail.update({
+                            'delivery_enabled': False
+                        })
+                        rewrite = True
+
                     # if service_detail.get('service_flow_steps'):
                     #     service_detail.update({
                     #         'service_flow_steps': []

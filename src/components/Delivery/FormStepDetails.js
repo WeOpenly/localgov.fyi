@@ -93,16 +93,12 @@ class FormStepDetails extends React.Component {
     }
 
     submitForm(formData){
-        const {delivery} = this.props;
-        const {stepDetails} = delivery;
-        const {step_details} = stepDetails;
-        const {id, step_type} = step_details;
-        this.props.handleNext(step_type, id, formData);
+        this.props.handleNext('user_details_submit', { formData: formData.formData } );
     }
 
     componentWillMount() {
-        const {dispatch, id} = this.props;
-        dispatch(fetchStepDetails(id));
+        const {dispatch, flowId} = this.props;
+        dispatch(fetchStepDetails(flowId, 'user_details_submit'));
     }
 
     render() {

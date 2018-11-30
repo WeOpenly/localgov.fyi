@@ -189,7 +189,7 @@ class ServiceHeader extends Component {
   }
 
   render() {
-    const { classes, name, offeredIn, info, serDelLinks, id, logoSizes } = this.props;
+    const { classes, name, offeredIn, info, serDelLinks, id, logoSizes, service_delivery_enabled } = this.props;
 
     const { anchorEl, copied } = this.state;
     const windowGlobal = typeof window !== 'undefined' && window;
@@ -297,7 +297,7 @@ class ServiceHeader extends Component {
                   Notify Me
                 </Button>)
 
-    const serviceFlowButton =  (<Button variant="outlined" color="primary" onClick={this.toggleServiceFlow} className={classes.service_header_notifyButton}>Get</Button>);
+    const serviceFlowButton = service_delivery_enabled ? (<Button variant="outlined" color="primary" onClick={this.toggleServiceFlow} className={classes.service_header_notifyButton}>Get</Button>) : null;
               
     return (
       <Grid container spacing={16} className={!isMobileOnly ? classes.service_header_main : classes.service_header_mainMobile}>

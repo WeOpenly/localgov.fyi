@@ -65,28 +65,28 @@ class StepDetailFactory extends React.Component {
 
     getActiveStep(){
         const {serviceFlow} = this.props.delivery;
-        console.log('getActiveStep', serviceFlow);
 
-        const {currentStep, steps} = serviceFlow;
-        const {id} = currentStep;
+        const {all_available_transitions, available_transitions_from_current_state} = serviceFlow;
+        const nextPossibleStep = available_transitions_from_current_state[0];
+        const { type } = nextPossibleStep;
         let activeStepIndex = 0;
 
-        steps.forEach((step, index) => {
-            if(id === step.id){
-                activeStepIndex = index 
+        all_available_transitions.forEach((step, index) => {
+            if (type === step.type){
+                activeStepIndex = step.index 
             }
         });
         console.log(activeStepIndex);
         return activeStepIndex;
     }
 
-    getStepContent(step) {
-        switch (step.step_type) {
-            case 'form':
-                return (<FormStepDetails id={step.id} handleNext={this.handleNext} />)
-            case 'callapi_consent':
-                return (<CallApiStepDetails id={step.id} handleNext={this.handleNext}/>);
-            case 'payment':
+    getStepContent(step, flow_id) {
+        switch (step.type) {
+            case 'user_details_submit':
+                return (<FormStepDetails flowId={flow_id}  handleNext={this.handleNext} />)
+            case 'user_amount_to_pay_consent':
+                return (<CallApiStepDetails flowId={flow_id} handleNext={this.handleNext}/>);
+            case 'user_payment_authorize':
                 // return (<PaymentStepDetails id={step.id}/>)
                 return 'ola';
             default:
@@ -94,11 +94,11 @@ class StepDetailFactory extends React.Component {
         }
     }
 
-    handleNext(step_type, step_id, stepDetailsToSubmit) {
+    handleNext(step_type, stepDetailsToSubmit) {
         const {dispatch, delivery} = this.props;
         const {serviceFlow} = delivery;
-        const {flowId} = serviceFlow;
-        dispatch(submitStepDetails(step_type, step_id, stepDetailsToSubmit, flowId));
+        const {flow_id} = serviceFlow;
+        dispatch(submitStepDetails(flow_id, step_type, stepDetailsToSubmit));
     }
 
     handleStep(step) {
@@ -126,18 +126,18 @@ class StepDetailFactory extends React.Component {
         }
 
         const activeStep = this.getActiveStep();
-        const {steps} = serviceFlow;
-        const stepCount = steps.length;
+        const { all_available_transitions} = serviceFlow;
+        const stepCount = all_available_transitions.length;
 
         const stepper = (
             <Stepper nonLinear alternativeLabel activeStep={activeStep}>
-                {steps.map((step, index) => {
+                {all_available_transitions.map((step, index) => {
                     return (
                         <Step key={step.id}>
                             <StepButton
                                 onClick={() => this.handleStep(index)}
                                 completed={this.state.completed[index]}>
-                                {step.step_name}
+                                {step.name}
                             </StepButton>
                         </Step>
                     );
@@ -145,9 +145,9 @@ class StepDetailFactory extends React.Component {
             </Stepper>
         )
 
-        const activeStepDetails = steps[activeStep];
+        const activeStepDetails = all_available_transitions[activeStep];
 
-        const stepContent = this.getStepContent(activeStepDetails, serviceFlow.flowId);
+        const stepContent = this.getStepContent(activeStepDetails, serviceFlow.flow_id);
 
         // const stepActions = (
         //     <DialogActions className={classes.summaryActions}>

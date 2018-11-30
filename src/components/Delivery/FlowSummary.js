@@ -54,8 +54,8 @@ class FlowSummary extends React.Component {
     }
 
     handleCreateFlow() {
-        const {dispatch, service_id} = this.props;
-        dispatch(createServiceFlow(service_id));
+        const { dispatch, serviceId} = this.props;
+        dispatch(createServiceFlow(serviceId));
     }
 
     componentDidMount() {
@@ -76,15 +76,18 @@ class FlowSummary extends React.Component {
         if (flowSummaryLoadingFailed) {
             return 'Something went wrong!'
         }
-        const summaryList = flowSummary.map((flowItem, idx) => {
-            return (
+
+        let summaryList = []
+        for (const [key, value] of Object.entries(flowSummary)) {
+   
+            summaryList.push(
                 <ListItem dense>
                     <ListItemText
-                        primary={flowItem.step_name}
-                        secondary={flowItem.step_description}/>
+                        primary={value.step_name}
+                        secondary={value.step_description} />
                 </ListItem>
             )
-        });
+        }
 
         content = (
             <List>

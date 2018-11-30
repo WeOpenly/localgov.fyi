@@ -19,10 +19,8 @@ const windowGlobal = typeof window !== 'undefined'
     : null
 
 const styles = theme => ({
-    account_form_loginEmbed: {},
-    account_form_registerinstead: {
-        marginTop: theme.spacing*4,
-        display: 'flex'
+    service_flow_dialog: {
+     
     }
 });
 
@@ -38,7 +36,7 @@ class ServiceFlowDialog extends React.Component {
     }
    
     render() {
-        const {classes,  delivery, service_name } = this.props;
+        const {classes,  delivery, service_name, service_id } = this.props;
         const {showDeliveryDialog, serviceFlow} = delivery;
 
         let flowExists = true;
@@ -51,14 +49,14 @@ class ServiceFlowDialog extends React.Component {
         if(flowExists){
             dialogContent = (<StepDetailFactory serviceName={service_name}  />);
         } else {
-            dialogContent  = (<FlowSummary serviceName={service_name} />)
+            dialogContent = (<FlowSummary serviceId={service_id} serviceName={service_name} />)
         }
 
         return (
             <Dialog 
                 open={showDeliveryDialog}
                 scroll='body'
-                className={classes.account_dialog_dialog}
+                className={classes.service_flow_dialog}
                 onClose={this.closeServiceFlowForm}
                 aria-labelledby="login-dialog-title"
                 aria-describedby="login-dialog-description">                    {dialogContent}

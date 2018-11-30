@@ -37,6 +37,7 @@ allOrgsJson {
             id
             contact_details {contact_value, contact_type}
             service_name
+            delivery_enabled
             service_timing {break, open, day}
             service_description
             service_faq {question answer}
@@ -180,6 +181,7 @@ allLogos: allFile (filter : {
                 data: {
                   id: service.id,
                   contact_details: service.contact_details,
+                  service_delivery_enabled : service.delivery_enabled,
                   name: service.service_name,
                   allForms: service.service_forms || [],
                   description: service.service_description,

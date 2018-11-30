@@ -30,25 +30,11 @@ export function ferchServiceBpFlowSummary(serviceId) {
         dispatch(requestServiceFlowBpSummary());
 
         try {
-            // const steps = await DspApi(`/dashboard/api/ser/flow_summary/?service_id=${serviceId}`, "GET", null, null);
-            const flowSummary = [{
-                'step_name': 'Fill form details',
-                'step_description': 'Fill in required details about your ultility bill that help us find your details'
-            },
-            {
-                'step_name': 'Find out your outstanding bill',
-                'step_description': 'We do the hard work of finding your account details and outstanding bill'
-            },
-            {
-                'step_name': 'Pay your bill',
-                'step_description': 'Pay your outstanding bill with one click'
+            const steps = await DspApi(`/serve/service_request_flow/api/summary/`, "GET", null, null);
+            if (steps && steps.success){
+                dispatch(recvServiceFlowBpSummary(steps.steps));
             }
-        ]
-            if(windowGlobal){
-                windowGlobal. setTimeout(() => {
-                    dispatch(recvServiceFlowBpSummary(flowSummary));
-                }, 1000);
-            } 
+            
         } catch (e) {
             dispatch(failedRecvServiceFlowBpSummary());
         }
@@ -74,51 +60,14 @@ export function createServiceFlow(serviceId) {
         dispatch(requestCreateServiceFlow());
 
         try {
-            // const steps = await
-            // DspApi(`/dashboard/api/ser/flow_summary/?service_id=${serviceId}`, "GET",
-            // null, null);
-            const flowDetails = {
-                flowId: 1,
-                steps: [{
-                    'id': 1,
-                    'step_name': 'Fill form details',
-                    'step_type': 'form',
-                    'step_description': 'Fill in required details about your ultility bill that help us find your details',
-                    'ready': true,
-                    'active': true,
-                    'complete': false,
-                }, {
-                    'id': 2,
-                    'step_name': 'Find out your outstanding bill',
-                    'step_type': 'callapi_consent',
-                    'step_description': 'We do the hard work of finding your account details and outstanding bill',
-                    'ready': false,
-                    'active': true,
-                    'complete': false,
-                }, {
-                    'id': 3,
-                    'step_name': 'Pay your bill',
-                    'step_type': 'payment',
-                    'step_description': 'Pay your outstanding bill with one click',
-                    'ready': false,
-                    'active': true,
-                    'complete': false,
-                }],
-                currentStep: {
-                    'id': 1,
-                    'step_name': 'Fill form details',
-                    'step_type': 'callapi_consent',
-                    'step_description': 'Fill in required details about your ultility bill that help us find your details',
-                    'ready': true,
-                    'active': false,
-                    'complete': true
-                }
-            }
+
+            const allValues = { service_id: serviceId };
+            console.log(allValues);
+
+            const createdFlow = await DspApi(`/serve/service_request_flow/api/create/`, "PUT", null, allValues);
                
-            if (windowGlobal) {
-                windowGlobal.setTimeout(() => {
-                    dispatch(successCreateServiceFlow(flowDetails));
-                }, 1000);
+            if (createdFlow && createdFlow.success) {
+                dispatch(successCreateServiceFlow(createdFlow));
             }
         } catch (e) {
             dispatch(failedCreateServiceFlow());
@@ -139,66 +88,66 @@ function failedRefreshServiceFlow() {
 }
 
 
-export function updateServiceFlow(flowId) {
-    return async(dispatch, getState) => {
-        dispatch(requestRefreshServiceFlow());
+// export function updateServiceFlow(flowId) {
+//     return async(dispatch, getState) => {
+//         dispatch(requestRefreshServiceFlow());
 
-        try {
-            // const steps = await
-            // DspApi(`/dashboard/api/ser/flow_summary/?service_id=${serviceId}`, "GET",
-            // null, null);
-            const flowDetails = {
-                flowId: 1,
-                steps: [
-                    {
-                        'id': 1,
-                        'step_type' : 'form',
-                        'step_name': 'Fill form details',
-                        'step_description': 'Fill in required details about your ultility bill that help us find your details',
-                        'ready': true,
-                        'active': false,
-                        'complete': true
-                    }, {
-                        'id': 2,
-                        'step_type': 'callapi_consent',
-                        'step_name': 'Find out your outstanding bill',
-                        'step_description': 'We do the hard work of finding your account details and outstanding bill',
-                        'ready': false,
-                        'active': true,
-                        'complete': false
-                    }, {
-                        'id': 3,
-                        'step_type': 'payment',
-                        'step_name': 'Pay your bill',
-                        'step_description': 'Pay your outstanding bill with one click',
-                        'ready': false,
-                        'active': true,
-                        'complete': false
-                    }
-                ],
-                currentStep: {
-                    'id': 2,
-                    'step_type': 'callapi_consent',
-                    'step_name': 'Find out your outstanding bill',
-                    'step_description': 'We do the hard work of finding your account details and outstanding bill',
-                    'ready': false,
-                    'active': true,
-                    'complete': false
-                }
-            }
+//         try {
+//             // const steps = await
+//             // DspApi(`/dashboard/api/ser/flow_summary/?service_id=${serviceId}`, "GET",
+//             // null, null);
+//             const flowDetails = {
+//                 flowId: 1,
+//                 steps: [
+//                     {
+//                         'id': 1,
+//                         'step_type' : 'form',
+//                         'step_name': 'Fill form details',
+//                         'step_description': 'Fill in required details about your ultility bill that help us find your details',
+//                         'ready': true,
+//                         'active': false,
+//                         'complete': true
+//                     }, {
+//                         'id': 2,
+//                         'step_type': 'callapi_consent',
+//                         'step_name': 'Find out your outstanding bill',
+//                         'step_description': 'We do the hard work of finding your account details and outstanding bill',
+//                         'ready': false,
+//                         'active': true,
+//                         'complete': false
+//                     }, {
+//                         'id': 3,
+//                         'step_type': 'payment',
+//                         'step_name': 'Pay your bill',
+//                         'step_description': 'Pay your outstanding bill with one click',
+//                         'ready': false,
+//                         'active': true,
+//                         'complete': false
+//                     }
+//                 ],
+//                 currentStep: {
+//                     'id': 2,
+//                     'step_type': 'callapi_consent',
+//                     'step_name': 'Find out your outstanding bill',
+//                     'step_description': 'We do the hard work of finding your account details and outstanding bill',
+//                     'ready': false,
+//                     'active': true,
+//                     'complete': false
+//                 }
+//             }
 
-            if (windowGlobal) {
-                windowGlobal.setTimeout(() => {
-                    dispatch(successRefreshServiceFlow(flowDetails));
-                    // const stepId = 2 CALCULCATE THIS
-                    // dispatch(setCurrentStep(2));
-                }, 1000);
-            }
-        } catch (e) {
-            dispatch(failedRefreshServiceFlow());
-        }
-    }
-}
+//             if (windowGlobal) {
+//                 windowGlobal.setTimeout(() => {
+//                     dispatch(successRefreshServiceFlow(flowDetails));
+//                     // const stepId = 2 CALCULCATE THIS
+//                     // dispatch(setCurrentStep(2));
+//                 }, 1000);
+//             }
+//         } catch (e) {
+//             dispatch(failedRefreshServiceFlow());
+//         }
+//     }
+// }
 
 
 
@@ -216,45 +165,15 @@ function failedRecvStepDetails() {
     return {type: types.FAILED_RECV_STEP_DETAILS}
 }
 
-export function fetchStepDetails(stepId) {
+export function fetchStepDetails(flowId, action) {
     return async(dispatch, getState) => {
         dispatch(requestStepDetails());
 
         try {
-            // const step_details = await DspApi(`/dashboard/api/ser/flow_form/${stepId}/`, "GET", null, null);
-            let stepDetails = null;
-
-            if (stepId === 1){
-                stepDetails = {
-                    'id': 1,
-                    'step_name': 'Fill form details',
-                    'step_description': 'Fill in required details about your ultility bill that help us find your details',
-                    'step_type': 'form',
-                    'step_details': {
-                        'field_schema' : "{\n  \"type\": \"object\",\n  \"required\": [\n    \"firstName\"\n  ],\n  \"properties\": {\n    \"firstName\": {\n      \"type\": \"string\",\n      \"title\": \"First name\"\n    }\n  }\n}",
-                        'ui_schema': 
-                          "{\n  \"firstName\": {\n    \"ui:autofocus\": true,\n    \"ui:emptyValue\": \"\"\n  }\n}", 
-                        "form_data": null
-                    }
-                }
-            }
-            else{
-                stepDetails = {
-                    'id': 2,
-                   'step_name': 'Find out your outstanding bill',
-                    'step_description': 'We do the hard work of finding your account details and outstanding bill',
-                    'step_type': 'callapi_consent',
-                    'step_details': {
-                        "amount_to_pay" : "$200.00",
-                        "consent_recorded": false
-                    }
-                }
-            } 
-            
-            if (windowGlobal) {
-                windowGlobal.setTimeout(() => {
-                    dispatch(recvStepDetails(stepDetails));
-                }, 1000);
+            const step_details = await DspApi(`/serve/service_request_flow/api/detail/${flowId}/${action}/`, "GET", null, null);
+      
+            if(step_details){
+                dispatch(recvStepDetails(step_details));
             }
       
         } catch (e) {
@@ -275,17 +194,16 @@ function stepSubmitFailed() {
     return {type: types.FAILED_STEP_DETAILS_SUBMIT}
 }
 
-export function submitStepDetails(step_type, step_id, stepDetailsToSubmit, flowId) {
+export function submitStepDetails(flowId, action, stepDetailsToSubmit) {
     return async(dispatch, getState) => {
         dispatch(stepSubmitStart());
 
-        try {//user step
-            // const step_details = await DspApi(`/dashboard/api/ser/flow`, "POST", null, null);
-            if (windowGlobal) {
-                windowGlobal.setTimeout(() => {
-                    dispatch(stepSubmitSuccess());
-                    dispatch(updateServiceFlow(flowId));
-                }, 1000);
+        try {
+
+            const step_details = await DspApi(`/serve/service_request_flow/api/detail/${flowId}/${action}/`, "POST", null, stepDetailsToSubmit);
+            if (step_details){
+                dispatch(stepSubmitSuccess());
+                dispatch(successRefreshServiceFlow(step_details));
             }
         } catch (e) {
             dispatch(stepSubmitFailed());

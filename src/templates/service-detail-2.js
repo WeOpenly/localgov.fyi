@@ -175,6 +175,7 @@ class ServiceDetail extends React.Component {
         const {
             id,
             name,
+            service_delivery_enabled,
             allForms,
             allSteps,
             description,
@@ -192,7 +193,7 @@ class ServiceDetail extends React.Component {
         } = this.props.pageContext.data;
 
         const {classes} = this.props;
-console.log(service_flow_steps);
+
         let serLogoSvg = null
         if (logoSizes && logoSizes.sizes) {
             serLogoSvg = logoSizes.sizes
@@ -384,6 +385,7 @@ console.log(service_flow_steps);
                     <Grid item xs={12}>
                         <ServiceHeader
                             name={name}
+                            service_delivery_enabled={service_delivery_enabled}
                             id={id}
                             offeredIn={org_name}
                             orgID={org_id}

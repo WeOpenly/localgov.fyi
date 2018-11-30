@@ -75,8 +75,8 @@ export function authHeader() {
 }
 
 
-// const DSP_BACKEND = `${process.env.DSP_BACKEND}`
-const DSP_BACKEND = 'https://dsp.localgov.fyi'
+const DSP_BACKEND = `${process.env.DSP_BACKEND}`
+// const DSP_BACKEND = 'https://dsp.localgov.fyi'
 
 export function DspApi(endPoint, method = "GET", headers = null, data = null) {
 

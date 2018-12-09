@@ -157,11 +157,14 @@ class ServiceDetail extends React.Component {
 
     state = {
         loggedin: false,
-        logincheckloading: true
+        logincheckloading: true,
+        notifyInterval: null,
     }
 
     componentDidMount() {
         const {dispatch} = this.props;
+        const { search} = this.props;
+        const { showNotifyDialog} = search;
         const {id, name} = this.props.pageContext.data;
         dispatch(trackView('entity_detail', 'service', id, name));
         const loggedin = isLoggedIn();
@@ -170,11 +173,19 @@ class ServiceDetail extends React.Component {
             this.setState({loggedin: true})
         }
         // if (name.includes('Pay Property') || name.includes('Pay Utility')){
-            if (windowGlobal){
-                windowGlobal.setInterval(() => dispatch(toggleNotifyDialog(true)), 5000);
-            }
+        if (windowGlobal && !this.state.notifyInterval){
+            const notifyInterval = windowGlobal.setTimeout(() => dispatch(toggleNotifyDialog(true)), 5000);
+            this.setState({ notifyInterval});
+        }
         // }
         
+    }
+
+    componentWillUnmount(){
+        if (this.state.notifyInterval && windowGlobal){
+            const notifyInterval = this.state.notifyInterval;
+            windowGlobal.clearTimeout(notifyInterval);
+        }
     }
 
     render() {

@@ -192,9 +192,9 @@ class ServiceNotifyDialog extends Component {
           <Typography style={{paddingBottom: 16}} variant="subheading" align='center' component="h1">
             Get notified from LocalGov
           </Typography>
-          
+
             <div className={classes.listItem}>
-            <AlarmOn className={classes.service_notify_icon} /><Typography variant="body1">When you're next due to </Typography> <b className={classes.service_notify_service_name}>{ser_name} </b>
+            <AlarmOn className={classes.service_notify_icon} /><Typography variant="body1" component="span">When you're next due to </Typography> <span className={classes.service_notify_service_name}>{ser_name} </span>
             </div>
             <div className={classes.listItem}>
             <List className={classes.service_notify_icon} /><Typography variant="body1">If there are any additional updates about this service</Typography>

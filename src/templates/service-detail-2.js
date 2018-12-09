@@ -354,7 +354,7 @@ class ServiceDetail extends React.Component {
                         <title>{`${name} service offered in ${org_name} | Localgov.fyi`}
                         </title>
                         <link rel="canonical" href={`https://localgov.fyi/service/${id}/`}/>
-
+                        <script key='gatsby-plugin-stripe' src="https://js.stripe.com/v3/" async/>
                         <meta
                             property="og:title"
                             content={`${name} service offered in ${org_name} | Localgov.fyi`}/>

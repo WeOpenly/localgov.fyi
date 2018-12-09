@@ -63,7 +63,7 @@ const styles = theme => ({
     "body>div>div": {
       display: "block",
       height: "100%"
-    }
+    },
   },
   index_login: {
     zIndex: '2000'

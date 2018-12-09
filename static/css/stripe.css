@@ -1,0 +1,12 @@
+.StripeElement {
+    padding: 16;
+    outline: 0;
+    border-color: '#AB93FF';
+    box-shadow: '0 0 2 0.2rem #8968FF';
+}
+
+.StripeElement--focus {
+    outline: 0;
+    border-color: '#8968FF';
+    box-shadow: '0 0 2 0.2rem #8968FF';
+}

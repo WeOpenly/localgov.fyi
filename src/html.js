@@ -4,7 +4,6 @@ import PropTypes from "prop-types"
 
 
 
-
 // let fontStyleCss if (process.env.NODE_ENV === `production`) {   try {
 // fontStyleCss = require(`!raw-loader!../static/css/fonts.css`)   } catch (e)
 // {} }
@@ -15,10 +14,11 @@ const JsonLd = ({data}) => <script
   __html: JSON.stringify(data)
 }}/>;
 
-// export default class HTML extends React.Component {   render() {     let css
-//    if (process.env.NODE_ENV === `production`) {       css = (         <style
-//          id="gatsby-inlined-css"           dangerouslySetInnerHTML={{ __html:
-// stylesStr }}         />       )     }    
+// export default class HTML extends React.Component {  
+//    render() {     
+      
+//     } 
+
 
 // let fontcss     if
 // (process.env.NODE_ENV === `production`) {       fontcss = (         <style
@@ -86,11 +86,15 @@ export default class HTML extends React.Component {
             name="viewport"
             content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
           <link href={'/css/fonts.css'} rel="stylesheet"/> 
+          <link href={'/css/stripe.css'} rel="stylesheet" /> 
           <link href={'/css/bootstrap-theme.min.css'} rel="stylesheet"/> 
           <link href={'/css/bootstrap.min.css'} rel="stylesheet"/> 
          
           {this.props.headComponents}
           {/* {css} */}
+          <style> 
+            
+          </style>
         </head>
         <body {...this.props.bodyAttributes}>
           {this.props.preBodyComponents}

@@ -10,6 +10,10 @@ import MoodBad from '@material-ui/icons/MoodBad';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import Dialog from '@material-ui/core/Dialog';
 import Divider from '@material-ui/core/Divider';
+import Done from '@material-ui/icons/Done';
+import AlarmOn from '@material-ui/icons/AlarmOn';
+import List from '@material-ui/icons/List';
+import AutoRenew from '@material-ui/icons/AutoRenew';
 
 import withRoot from '../withRoot';
 import {trackInput} from "./common/tracking";
@@ -23,9 +27,13 @@ service_notify_dialog_bootstrapInput : {
     color: theme.palette.primary['200'],
     border: '1px solid #ced4da',
     padding: '10px 12px 12px 12px',
-    marginTop: theme.spacing.unit,
+    marginTop: theme.spacing.unit *3,
     width: '100%',
     transition: theme.transitions.create(['border-color', 'box-shadow'])
+  },
+  listItem: {
+    display: 'flex',
+    margin: theme.spacing.unit * 2,
   },
 service_notify_dialog_bootstrapInputComment : {
     borderRadius: 3,
@@ -33,12 +41,16 @@ service_notify_dialog_bootstrapInputComment : {
     color: theme.palette.primary['200'],
     border: '1px solid #ced4da',
     padding: '10px 12px 12px 12px',
-    marginTop: theme.spacing.unit,
+    marginTop: theme.spacing.unit*2,
     width: '100%',
     height: '100px',
     'wordBreak': 'break-word',
     transition: theme.transitions.create(['border-color', 'box-shadow'])
   },
+service_notify_dialog_title:{
+  width: '420px',
+  textAlign: 'center'
+},
 service_notify_dialog_buttonContainer : {
     marginTop: theme.spacing.unit * 4,
     marginBottom: theme.spacing.unit,
@@ -61,6 +73,15 @@ marginRight: theme.spacing.unit * 4,
 service_notify_dialog_spinner : {
     color: theme.palette.primary['500'],
   },
+service_notify_service_name:{
+  paddingLeft: 4,
+  paddingRight: 4,
+  textTransform: 'lowercase',
+  fontWeight: 400,
+},
+service_notify_icon:{
+  marginRight: theme.spacing.unit *2,
+},
 service_notify_dialog_sepDiv : {
     textAlign: 'center',
     paddingTop: theme.spacing.unit*2,
@@ -90,7 +111,6 @@ class ServiceNotifyDialog extends Component {
     super(props);
     this.state = {
       email: '',
-      phone: '',
       submitting: false,
       success: false,
       failure: false,
@@ -125,7 +145,6 @@ class ServiceNotifyDialog extends Component {
         "path": currentLoc,
         "ser_name":  this.props.ser_name,
         "org_id": this.props.org_id,
-        "phone": this.state.phone,
         "email": this.state.email,
       })
     }).then(() => this.setState({
@@ -156,7 +175,6 @@ class ServiceNotifyDialog extends Component {
     const {showNotifyDialog} = this.props.search;
 
     const {
-      phone,
       email,
       submitting,
       success,
@@ -164,16 +182,26 @@ class ServiceNotifyDialog extends Component {
     } = this.state;
     
     return (
-      <Dialog open={showNotifyDialog} onClose = {this.handleClose} aria-labelledby = "service-notify-dialog-title"> 
-        {(!success && !failure && !submitting) &&  (<DialogTitle id="service-notify-dialog-title">
+      <Dialog open={showNotifyDialog} className={classes.service_notify_dialog_dialog} onClose = {this.handleClose} aria-labelledby="service-notify-dialog-title"> 
+        {(!success && !failure && !submitting) && (<DialogTitle id="service-notify-dialog-title" className={classes.service_notify_dialog_title} >
         
-         <Typography variant="display2" component="h1">
-           Get notfied about {ser_name}
-          </Typography>
+       
       </DialogTitle>)}
 
-        {(!success && !failure && !submitting) && <div className={classes.formWrapper}>
-         
+        {(!success && !failure && !submitting) && <div className={classes.service_notify_dialog_formWrapper}>
+          <Typography style={{paddingBottom: 16}} variant="subheading" align='center' component="h1">
+            Get notified from LocalGov
+          </Typography>
+          
+            <div className={classes.listItem}>
+            <AlarmOn className={classes.service_notify_icon} /><Typography variant="body1">When you're next due to </Typography> <b className={classes.service_notify_service_name}>{ser_name} </b>
+            </div>
+            <div className={classes.listItem}>
+            <List className={classes.service_notify_icon} /><Typography variant="body1">If there are any additional updates about this service</Typography>
+            </div>
+            <div className={classes.listItem}>
+            <AutoRenew className={classes.service_notify_icon} /><Typography variant="body1">When similar services are added to localgov.fyi </Typography>
+            </div>
           <form
             name="serviceNotify"
             method="post"
@@ -209,21 +237,7 @@ class ServiceNotifyDialog extends Component {
             </p>
             <label>
               <input
-                name="phone"
-                type="tel"
-                placeholder="your phone number"
-                value={phone}
-                onChange={this.handleChange}
-                className={classes.service_notify_dialog_bootstrapInput}
-              />
-            </label>
-            <div className={classes.service_notify_dialog_sepDiv}><span className={classes.service_notify_dialog_sepSpan}
-            >
-              <Typography variant="caption" component="h1">
-OR
-              </Typography></span></div>
-            <label>
-              <input
+                required
                 name="email"
                 type="email"
                 placeholder="your@email.com"
@@ -232,11 +246,16 @@ OR
                 className={classes.service_notify_dialog_bootstrapInput}
               />
             </label>
+
+            <Typography align="center" style={{'paddingTop': 
+            8}} variant="caption">We promise to not spam you!</Typography>
             <div className={classes.service_notify_dialog_buttonContainer}> 
+
               <Button size="small" variant="outlined" type="submit" className={classes.service_notify_dialog_button}>
-                Notify me
+                Keep me updated
               </Button>
               <Button size="small" onClick={this.handleClose} className={classes.service_notify_dialog_button}>Cancel</Button>
+
             </div>
          
           </form>

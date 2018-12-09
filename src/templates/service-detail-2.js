@@ -27,7 +27,7 @@ import withRoot from '../withRoot';
 import {isLoggedIn} from '../components/Account/Auth';
 
 import {trackView} from "../components/common/tracking";
-
+import { toggleNotifyDialog } from '../components/Search/actions.js';
 const windowGlobal = typeof window !== 'undefined' && window;
 
 const styles = theme => ({
@@ -169,6 +169,12 @@ class ServiceDetail extends React.Component {
         if (loggedin) {
             this.setState({loggedin: true})
         }
+        // if (name.includes('Pay Property') || name.includes('Pay Utility')){
+            if (windowGlobal){
+                windowGlobal.setInterval(() => dispatch(toggleNotifyDialog(true)), 5000);
+            }
+        // }
+        
     }
 
     render() {

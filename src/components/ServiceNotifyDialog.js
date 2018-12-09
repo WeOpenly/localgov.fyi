@@ -13,7 +13,7 @@ import Divider from '@material-ui/core/Divider';
 import Done from '@material-ui/icons/Done';
 import AlarmOn from '@material-ui/icons/AlarmOn';
 import List from '@material-ui/icons/List';
-import AutoRenew from '@material-ui/icons/AutoRenew';
+import AutoRenew from '@material-ui/icons/Autorenew';
 
 import withRoot from '../withRoot';
 import {trackInput} from "./common/tracking";

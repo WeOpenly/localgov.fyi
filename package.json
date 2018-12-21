@@ -33,6 +33,7 @@
         "gatsby-transformer-sharp": "^2.1.5",
         "jss": "^9.8.7",
         "lodash": "^4.17.11",
+        "mixpanel-browser": "^2.25.0",
         "mkdirp": "^0.5.1",
         "mousetrap": "^1.6.0",
         "npm": "^6.4.1",

@@ -84,6 +84,10 @@ export const trackView = (page_layout_type, viewing_entity_type, viewing_entity_
                 if (!isProd){
                     return;
                 }
+                if (windowGlobal && windowGlobal.mixpanel){
+                    windowGlobal.identify(result);
+                    windowGlobal.track(`page_view_${page_layout_type}`, eventParams);
+                }
 
                 fetch(url, {headers: {
                     "Access-Control-Allow-Origin" : true
@@ -140,6 +144,10 @@ export const trackInput = (input_type, text) => async(dispatch, getState) => {
                     return;
                 }
 
+                if (windowGlobal && windowGlobal.mixpanel) {
+                    windowGlobal.identify(result);
+                    windowGlobal.track(`input_${input_type}`, eventParams);
+                }
             fetch(`https://localgov.fyi/track/track.png?${payloadParams}`, {}).then((data) => {}).catch((err) => {});
             } catch (e) {
              
@@ -192,6 +200,11 @@ export const trackClick = (click_type, clicked_entity_type, clicked_entity_id, c
                 
                 if (!isProd) {
                     return;
+                }
+
+                if (windowGlobal && windowGlobal.mixpanel) {
+                    windowGlobal.identify(result);
+                    windowGlobal.track(`click_${click_type}`, eventParams);
                 }
 
                 fetch(`https://localgov.fyi/track/track.png?${payloadParams}`, {}).then((data) => {}).catch((err) => {});

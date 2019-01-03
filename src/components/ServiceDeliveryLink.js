@@ -195,7 +195,7 @@ class ServiceDeliveryLink extends Component {
       body: encode({
         "form-name": "serviceDeliveryFeedback",
         "path": currentLoc,
-        "satisfied": this.state.satisfied,
+        "satisfied": true,
       })
     }).then(() => this.setState({
       submitting: false,

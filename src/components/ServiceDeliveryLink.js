@@ -193,7 +193,7 @@ class ServiceDeliveryLink extends Component {
         "Content-Type": "application/x-www-form-urlencoded"
       },
       body: encode({
-        "form-name": "feedback",
+        "form-name": "serviceDeliveryFeedback",
         "path": currentLoc,
         "satisfied": this.state.satisfied,
       })
@@ -348,7 +348,7 @@ class ServiceDeliveryLink extends Component {
                 onSubmit={this.handleSubmit}
                 className={classes.ser_del_link_form}
               >
-                <input type="hidden" name="form-name" value="feedback" />
+                  <input type="hidden" name="form-name" value="serviceDeliveryFeedback" />
                 <p hidden>
                   <label>
                     Don’t fill this out:{" "}

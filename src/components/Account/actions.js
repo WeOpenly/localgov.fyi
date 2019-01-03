@@ -6,6 +6,7 @@ import {navigate} from '@reach/router';
 
 import {YusufApi} from '../common/api';
 import Auth from './Auth';
+const windowGlobal = typeof window !== 'undefined' && window
 
 const auth = new Auth();
 
@@ -129,6 +130,9 @@ export function handleRegisterRequest(values) {
                 }
                 if (res) {
                     resolve(res);
+                    if (windowGlobal && windowGlobal.mixpanel) {
+                        windowGlobal.mixpanel.alias(email);
+                    }
                 }
             });
     });

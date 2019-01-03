@@ -37,7 +37,7 @@ export function getCookie(name) {
 
 // const BACKEND = 'http://127.0.0.1:8090/dashboard/api';
 // console.log(BACKEND);
-const YUSUF_BACKEND = `https://localgov.fyi/api/yusuf`
+const YUSUF_BACKEND = `${process.env.SEARCH_BACKEND}`
 
 export function YusufApi(lang = undefined, endPoint, headers = {}) {
 

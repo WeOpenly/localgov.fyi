@@ -238,7 +238,7 @@ class ServiceDeliveryLink extends Component {
         "Content-Type": "application/x-www-form-urlencoded"
       },
       body: encode({
-        "form-name": "feedback",
+        "form-name": "serviceDeliveryFeedback",
         "path": currentLoc,
         "satisfied": this.state.satisfied,
         "feedbackComment": this.state.feedbackComment,
@@ -340,7 +340,7 @@ class ServiceDeliveryLink extends Component {
                   Let us know how we can improve
               </Typography>
               <form
-                name="feedback"
+                name="serviceDeliveryFeedback"
                 method="post"
                 action="/"
                 data-netlify="true"
@@ -363,6 +363,7 @@ class ServiceDeliveryLink extends Component {
                 </p>
                 <label>
                   <textarea
+                    required={!this.state.satisfied}
                     name="feedbackComment"
                     type="text"
                     placeholder="Your comments"
@@ -374,6 +375,7 @@ class ServiceDeliveryLink extends Component {
                 </label>
                 <label>
                   <input
+                    required
                     name="email"
                     type="email"
                     placeholder="your@email.com"

@@ -664,6 +664,38 @@ class Index extends React.Component {
               </label>
             </p>
           </form>
+          <form hidden name="serviceDeliveryFeedback" method="post" action="/" data-netlify="true">
+            <p hidden>
+              <label>
+                Don’t fill this out:{" "}
+                <input name="bot-field" onChange={this.handleChange} />
+              </label>
+            </p>
+            <p hidden>
+              <label>
+                Don’t fill this out:{" "}
+                <input name="path" type="text" value="" />
+              </label>
+            </p>
+            <p hidden>
+              <label>
+                Don’t fill this out:{" "}
+                <input name="satisfied" type="text" value="" />
+              </label>
+            </p>
+            <p hidden>
+              <label>
+                Don’t fill this out:{" "}
+                <input name="feedbackComment" type="text" value="" />
+              </label>
+            </p>
+            <p hidden>
+              <label>
+                Don’t fill this out:{" "}
+                <input name="email" type="email" value="" />
+              </label>
+            </p>
+          </form>
         </Fragment>
       </Layout>
     );

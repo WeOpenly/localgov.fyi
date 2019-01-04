@@ -1,6 +1,8 @@
 import React, {Fragment} from 'react';
 import PropTypes from 'prop-types';
 import {connect} from "react-redux";
+
+import Spinner from 'react-spinkit';
 import ContentLoader from "react-content-loader"
 import Toolbar from '@material-ui/core/Toolbar';
 import {navigate} from '@reach/router';
@@ -351,17 +353,48 @@ const shuffledArray = xah_randomize_array(otherPlaces);
 // index > do not have it in the layout all ways get from the url
 
 const SuggestBoxLoader = props => (
+  <Spinner name="ball-beat" color="white" />
+)
+
+const FamounsLoading = props =>(
   <ContentLoader
-    height={160}
-    width={800}
+    height={100}
+    width={380}
     speed={5}
     primaryColor="#f3f3f3"
-    secondaryColor="#e0d9ff"
-    {...props}>
-    <rect x="99.4" y="93.83" rx="0" ry="0" width="0" height="0"/>
-    <rect x="13.4" y="17.83" rx="0" ry="0" width="424" height="43"/>
+    secondaryColor="#ecebeb"
+    {...props}
+  >
+    <rect x="71.87" y="27.83" rx="0" ry="0" width="0" height="0" />
+    <rect x="50.4" y="1.83" rx="0" ry="0" width="53.1" height="52.12" />
+    <rect x="77.4" y="56.83" rx="0" ry="0" width="0" height="0" />
+    <rect x="85.4" y="41.83" rx="0" ry="0" width="0" height="0" />
+    <rect x="117.4" y="1.83" rx="0" ry="0" width="53.1" height="52.12" />
+    <rect x="182.4" y="1.83" rx="0" ry="0" width="53.1" height="52.12" />
+    <rect x="247.4" y="1.83" rx="0" ry="0" width="53.1" height="52.12" />
   </ContentLoader>
 )
+
+const LocationServicesLoader = props => (
+  <ContentLoader
+    height={100}
+    width={380}
+    speed={5}
+    primaryColor="#f3f3f3"
+    secondaryColor="#ecebeb"
+    {...props}
+  >
+    <rect x="71.87" y="27.83" rx="0" ry="0" width="0" height="0" />
+    <rect x="51.4" y="27.83" rx="0" ry="0" width="53.1" height="52.12" />
+    <rect x="77.4" y="56.83" rx="0" ry="0" width="0" height="0" />
+    <rect x="85.4" y="41.83" rx="0" ry="0" width="0" height="0" />
+    <rect x="115.4" y="27.83" rx="0" ry="0" width="53.1" height="52.12" />
+    <rect x="182.4" y="27.83" rx="0" ry="0" width="53.1" height="52.12" />
+    <rect x="247.4" y="27.83" rx="0" ry="0" width="53.1" height="52.12" />
+    <rect x="120.77" y="12.58" rx="0" ry="0" width="108" height="8" />
+  </ContentLoader>
+)
+
 class Index extends React.Component {
   constructor(props) {
     super(props);
@@ -579,7 +612,7 @@ class Index extends React.Component {
             </Grid>
             <div className={classes.index_gridWrapper1}>
               {search.locationLoading
-                ? <div className={classes.index_progressWrapper}><CircularProgress/></div>
+                ? (<FamounsLoading />)
                 : <ServiceGrid
                   clickGridItem={this.clickGridItem}
                   type='pop_services'
@@ -602,7 +635,9 @@ class Index extends React.Component {
             </Grid>
             <div className={classes.index_gridWrapper2}>
               {search.locationLoading
-                ? (<div className={classes.index_progressWrapper}><CircularProgress/></div>)
+? (
+    <div className={classes.index_progressWrapper}><LocationServicesLoader/></div>
+  )
                 : (<ServiceGrid
                   clickGridItem={this.clickGridItem}
                   type='auto_loc_org_services'

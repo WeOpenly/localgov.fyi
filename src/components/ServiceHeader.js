@@ -181,7 +181,7 @@ class ServiceHeader extends Component {
 
   handleOrgClick() {
     const { orgID } = this.props;
-    navigate(`/organization/${orgID}`);
+    navigate(`/organization/${orgID}/`);
   }
 
   trackClickSocialIcon(type, url) {

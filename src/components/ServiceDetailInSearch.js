@@ -215,7 +215,7 @@ class ServiceDetailInSearch extends React.Component {
                 </Typography>
             </Grid>
             <Grid item xs={12} sm={12}>
-                <SearchResult key={org_id} id={org_id} listindex={0} resultType={'organization'} toLink={`/organization/${org_id}`} title={org_name} />
+                <SearchResult key={org_id} id={org_id} listindex={0} resultType={'organization'} toLink={`/organization/${org_id}/`} title={org_name} />
             </Grid>
         </Grid>;
 

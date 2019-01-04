@@ -325,6 +325,7 @@ class HeaderSuggestBox extends Component {
     }
 
     shouldRenderSuggestions(value) {
+        return true;
         if (value) 
             return true;
         return false;

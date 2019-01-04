@@ -251,7 +251,7 @@ class SearchResults extends Component {
             <ServiceCard
               key={`${idx}-ser_details`}
               id={id}
-              toLink={`/service/${id}`}
+              toLink={`/service/${id}/`}
               title={name}
               description={service_description}
               deliveryLink={deliveryLink}

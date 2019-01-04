@@ -75,7 +75,7 @@ class OtherServices extends React.Component {
           resultType='service'
           id={service.id}
           listIndex={`${service.id}-${idx}`}
-          toLink={`/service/${service.id}`}
+          toLink={`/service/${service.id}/`}
           title={service.service_name}
           description={service.service_description}
           deliveryLink={service.service_del_links && service.service_del_links[0]
@@ -91,7 +91,7 @@ class OtherServices extends React.Component {
       {sers}
       </div>
       <div className={classes.other_ser_linkWrapper}>
-        <Link to={`/organization/${orgID}`} className={classes.other_ser_link}>
+        <Link to={`/organization/${orgID}/`} className={classes.other_ser_link}>
           <Typography variant="caption" className={classes.other_ser_linkText}>See all services from {orgName}</Typography>
         </Link>
       </div>

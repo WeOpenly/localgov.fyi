@@ -60,7 +60,7 @@ class OrgDetailLite extends Component {
                     {heading}
                 </Typography>
                 <Card className={classes.org_detail_lite_card} onClick={() => import {navigate} from '@reach/router';
-(`/organization/${org_id}`)}>
+(`/organization/${org_id}/`)}>
                     <CardContent className={classes.org_detail_lite_cardContent}>
                         <AccountBalance className={classes.org_detail_lite_icon} />
                         <Typography align="center" variant="title">

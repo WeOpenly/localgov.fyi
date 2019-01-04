@@ -187,7 +187,7 @@ class ServiceSuggestBox extends Component {
     if (!serviceInput || serviceInput.length < 3) {
       if (selectedOrganization){
         const {id} = selectedOrganization;
-        const uri = `/organization/${id}`;
+        const uri = `/organization/${id}/`;
         const encodedUri = encodeURI(uri);
         navigate(encodedUri);
       }
@@ -261,7 +261,7 @@ class ServiceSuggestBox extends Component {
     const { dispatch } = this.props;
     const { serviceInput, userCountry } = this.props.search;
     const { id, heading } = suggestion;
-    navigate(`/service/${id}`);
+    navigate(`/service/${id}/`);
     dispatch(trackInput('index_service_search_box', serviceInput));
     dispatch(trackClick('select_suggestion', 'service', id, heading, suggestionIndex));
   }

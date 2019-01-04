@@ -245,11 +245,12 @@ class ServiceSuggestBox extends Component {
 
   handleSuggestionsClearRequested() {
     const { dispatch } = this.props;
-    dispatch(clearServiceInput());
+    // dispatch(clearServiceInput());
   }
 
   handleChange(event, { newValue, method }) {
     const { dispatch } = this.props;
+
     if (method === "type" ){
       dispatch(updateServiceInput(newValue))
     }
@@ -303,12 +304,12 @@ suggestion : classes.search_suggestbox_suggestion
           shouldRenderSuggestions={this.shouldRenderSuggestions}
           inputProps={{
             autoFocus: true,
+            type: 'search',
             classes,
             placeholder: placeholder,
             value: serviceInput,
             onChange: this.handleChange,
-            onKeyDown: () => {},
-            onBlur: (event) => { event.preventDefault() },
+            onBlur: (event) => { event.preventDefault(); event.stopPropagation(); },
           }}
         />
       </form>

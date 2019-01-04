@@ -710,28 +710,44 @@ export const query = graphql `
   query indexImageQuery {
     capitol: file(relativePath: { regex: "/capitol/"}) {
         childImageSharp {
-      fluid(maxWidth: 1000) {
+fluid(maxWidth : 1000, duotone : {
+highlight : "#4F23FF",
+  shadow: "#000000",
+opacity : 80
+}) {
 ...GatsbyImageSharpFluid_withWebp_tracedSVG
       }
     }
     }
     philadelphia: file(relativePath: { regex: "/philadelphia/"}) {
       childImageSharp {
-      fluid(maxWidth: 1000) {
+fluid(maxWidth : 1000, duotone : {
+highlight : "#4F23FF",
+  shadow: "#000000",
+opacity : 80
+}) {
 ...GatsbyImageSharpFluid_withWebp_tracedSVG
       }
     }
     }
     losAngeles: file(relativePath: { regex: "/losAngeles/"}) {
       childImageSharp {
-      fluid(maxWidth: 1000) {
+fluid(maxWidth : 1000, duotone : {
+highlight : "#4F23FF",
+shadow : "#000000",
+opacity : 80
+}) {
 ...GatsbyImageSharpFluid_withWebp_tracedSVG
       }
     }
     }
     sanFrancisco: file(relativePath: { regex: "/sanFrancisco/"}) {
       childImageSharp {
-      fluid(maxWidth: 1000) {
+fluid(maxWidth : 1000, duotone : {
+highlight : "#4F23FF",
+shadow : "#000000",
+opacity : 80
+}) {
 ...GatsbyImageSharpFluid_withWebp_tracedSVG
       }
     }

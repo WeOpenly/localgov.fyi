@@ -39,6 +39,14 @@ const styles = theme => ({
     background: theme.palette.common.white,
     fontFamily: theme.typography.fontFamily,
   },
+new_suggest_progress_wrapper:{
+  width: theme.spacing.unit * 8,
+  background: theme.palette.primary["500"],
+  height: theme.spacing.unit * 8,
+  display: "flex",
+  alignItems: "center",
+  justifyContent: "center"
+},
 new_suggest_search : {
     width: theme.spacing.unit * 8,
     color: theme.palette.primary["200"],
@@ -194,10 +202,42 @@ class NewSuggestBox extends Component {
   }
 
   issueFreeSearch() {
+    // https://github.com/ybv/openly/issues/451
     const { search, dispatch } = this.props;
-    const { input } = this.props.search;
+    
+    const { input, location } = this.props.search;
     if (!input || input.length < 3) {
       return null;
+    }
+
+    if (input !== location.org.name){
+      const { serviceInput } = search;
+      if (serviceInput) {
+
+        const orgServiceTexturi = `/search/${serviceInput} ${input}`;
+        const orgServiceTextencodedUri = encodeURI(orgServiceTexturi);
+        dispatch(trackInput('index_search_box', `${serviceInput} ${input}`));
+        navigate(orgServiceTextencodedUri);
+        return;
+      }
+    }
+
+    if (location && location.org){
+      const {serviceInput} = search;
+      if (serviceInput && serviceInput.length > 2){
+        const serviceTexturi = `/search/${serviceInput}`;
+        const serviceTextencodedUri = encodeURI(serviceTexturi);
+        dispatch(trackInput('index_search_box', serviceInput));
+        navigate(serviceTextencodedUri);
+        return;
+      }
+
+      const {id} = location.org;
+      const orgIdUri = `/organization/${id}`;
+      const encodedOrgIdUri = encodeURI(orgIdUri);
+      dispatch(trackInput('index_search_box', input));
+      navigate(encodedOrgIdUri);
+      return;
     }
 
     const uri = `/search/${input}`;
@@ -231,7 +271,9 @@ class NewSuggestBox extends Component {
           }} />
         <div className={classes.new_suggest_search}>
           {searchSuggestionsLoading
-            ? <CircularProgress size={24} color="primary" />
+? (
+    <div className={classes.new_suggest_progress_wrapper}><CircularProgress size={24} color="#fff" thickness="4.6"/>
+            </div>)
               : <Button
                   variant="contained"
                   color="primary"
@@ -255,7 +297,7 @@ class NewSuggestBox extends Component {
 
   handleSuggestionsClearRequested() {
     const { dispatch } = this.props;
-    dispatch(clearInput());
+    // dispatch(clearInput());
   }
 
   handleChange(event, { newValue, method }) {
@@ -310,7 +352,6 @@ class NewSuggestBox extends Component {
             suggestionsList: classes.new_suggest_suggestionsList,
             suggestion: classes.new_suggest_suggestion
           }}
-          highlightFirstSuggestion
           renderInputComponent={this.renderInput}
           suggestions={searchSuggestions}
           onSuggestionsFetchRequested={this.handleSuggestionsFetchRequested}

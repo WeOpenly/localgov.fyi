@@ -163,6 +163,10 @@ gloss_searchContainer: {
     position: 'absolute',
     top: '280px',
 },
+    gloss_countContainer:{
+        position: 'absolute',
+        top: '360px',
+    },
     locGridContainer_mob:{
         position: 'absolute',
         top: '380px',
@@ -215,7 +219,7 @@ class ServiceGlossary extends React.Component {
 
   render() {
     const {classes} = this.props;
-    const {orgs, service_name, service_name_slug} = this.props.pageContext.data;
+      const { orgs, service_name, service_name_slug, service_glossary_description} = this.props.pageContext.data;
     const {search} = this.props.location;
     let searchForLoc = null;
     let allOrgs = orgs;
@@ -235,7 +239,7 @@ class ServiceGlossary extends React.Component {
         distance: 5,
         maxPatternLength: 32,
         minMatchCharLength: 1,
-        keys: ['org_name']
+        keys: ['organization.org_name']
     }
 
     if (searchForLoc){
@@ -245,7 +249,8 @@ class ServiceGlossary extends React.Component {
    
 
       const locs = allOrgs.map((org, idx) => {
-            let strippedName = org.org_name.replace("-", " ")
+            const organization = org.organization;
+            let strippedName = organization.org_name.replace("-", " ")
             strippedName = strippedName.replace("Independent", " ")
        
             return (
@@ -256,7 +261,7 @@ class ServiceGlossary extends React.Component {
                               cursor: 'pointer',
                             backgroundImage: 'linear-gradient(180deg, rgba(0,0,0,0),rgba(0,0,0,0) 81%, #222222 81.1%, rgb(69, 29, 255) 86%,rgba(0,0,0,0) 85.1%,rgba(0,0,0,0))'
                           }}
-                          onClick={() => this.handleOrgClick(org.id, org.org_name, idx, `/organization/${org.id}/`)}
+                        onClick={() => this.handleOrgClick(organization.id, organization.org_name, idx, `/service/${org.id}/`)}
                         className={classes.ser_gloss_link}>
                         <Typography variant="subheading" className={classes.ser_gloss_heading}>
                               {strippedName}
@@ -310,7 +315,7 @@ const searchInput =  (<InputBase
                 <Grid item sm={2} />
                 <Grid item sm={8} className={isMobile ? classes.ser_gloss_servicename_text_mob : classes.ser_gloss_servicename_text} align={isMobile ? 'left': 'center'}>
                     <Typography style={{ color: "#fff", fontSize:'2rem' }} variant="display1"> {service_name} </Typography>
-                    <Typography style={{ color: "#fff", margin: '16px' }} variant="caption"> {searchForLoc ? (`Showing ${allOrgs.length} matching results`) : (`Currently offered in ${allOrgs.length} locations`) }</Typography>
+                    {service_glossary_description ? (<Typography style={{ color: "#fff", margin: '16px' }} variant="caption">{service_glossary_description} </Typography>) : ''}
                 </Grid>
                 <Grid item sm={2} />
             </Grid>
@@ -328,6 +333,13 @@ const searchInput =  (<InputBase
                 </Grid>
  
             <LoginRegisterDialog location={this.props.location} />
+            <Grid container className={classes.gloss_countContainer}>
+                <Grid item sm={2} />
+                <Grid item sm={8} align="center">
+                    <Typography style={{ color: "#0a0a0a", margin: '16px' }} variant="caption"> {searchForLoc ? (`Showing ${allOrgs.length} matching results`) : (`Currently offered in ${allOrgs.length} locations`)}</Typography>
+                </Grid>
+                <Grid item sm={2} />
+            </Grid>
             <Grid container className={isMobile ? classes.locGridContainer_mob: classes.locGridContainer}>
           <Grid item sm={2} />
 

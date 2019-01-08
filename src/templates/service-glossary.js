@@ -285,7 +285,7 @@ const searchInput =  (<InputBase
             <script key='gatsby-plugin-stripe' src="https://js.stripe.com/v3/" async />
             <meta
                 property="og:title"
-                content={`${service_name}| Localgov.fyi`} />
+                content={`${service_name} | Localgov.fyi`} />
             <meta property="og:url" content={`https://localgov.fyi/service/${service_name_slug}/`} />
 
             <meta

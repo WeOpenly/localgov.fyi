@@ -54,6 +54,25 @@ allOrgsJson {
     }
   }
 }
+allSerGlossaryItems: allFile(filter : {
+    sourceInstanceName: {
+      eq: "service_glossary"
+    }
+  }) {
+    edges {
+      node {
+        childServiceGlossaryJson {
+          orgs {
+            org_name
+            id
+          }
+          service_name
+          service_name_slug
+        }
+        name
+      }
+    }
+  }
 allLogos: allFile (filter : {
   sourceInstanceName: {
     eq: "logos"
@@ -106,6 +125,22 @@ allLogos: allFile (filter : {
         }
       });
 
+      const serGlossaryTemplate = path.resolve(`src/templates/service-glossary.js`)
+      _.each(result.data.allSerGlossaryItems.edges, edge => {
+        // Gatsby uses Redux to manage its internal state. Plugins and sites can use
+        // functions like "createPage" to interact with Gatsby.
+        console.log(edge);
+        createPage({
+          // Each page is required to have a `path` as well as a template component. The
+          // `context` is optional but is often necessary so the template can query data
+          // specific to each page.
+          path: `services/${edge.node.name}/`,
+          component: slash(serGlossaryTemplate),
+          context: {
+            data: edge.node.childServiceGlossaryJson
+          }
+        })
+    })
 
 
       _.each(result.data.allOrgsJson.edges, edge => {

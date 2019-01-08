@@ -1,6 +1,7 @@
 import os
 import json
 import urllib
+import urllib2
 from datetime import datetime
 
 from os.path import isfile, join
@@ -8,6 +9,8 @@ from os.path import isfile, join
 dir_path = os.path.dirname(os.path.realpath(__file__))
 data_dir = "{d}/data/orgs/".format(d=dir_path)
 logo_dir = "{d}/data/logos/".format(d=dir_path)
+service_glossary_dir = "{d}/data/service_glossary/".format(d=dir_path)
+
 removable_files = []
 no_cd_files = []
 downloaded_orgs = []
@@ -16,8 +19,6 @@ downloaded_orgs = []
 # loop through all orgs
 # if file is modified in last 20 mins 
 # download the logo with a new name (<id> _org_log)
-
-
 
 
 for root, dirs, files in os.walk(data_dir):
@@ -109,6 +110,18 @@ for rem in removable_files:
         os.remove(rem)
     except:
         pass
-            
-        
+
+def get_service_glossary_items():
+    res = urllib2.urlopen('https://dsp.weopenly.com/arthur/service_glossary_overview?token=811')
+    sg_items = json.load(res)
+    if sg_items and 'success' in sg_items:
+        items = sg_items.get('details')
+        for item in items:
+            serice_glossary_item_slug = item.get('service_name_slug')
+            ser_glossary_item_file_name = u"{d}{n}.json".format(d=service_glossary_dir, n=serice_glossary_item_slug)
+            if not os.path.exists(ser_glossary_item_file_name):
+                with open(ser_glossary_item_file_name, 'w+') as file_to_write:
+                    json.dump(item, file_to_write)
+    
+get_service_glossary_items()
 

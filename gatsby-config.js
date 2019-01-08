@@ -36,6 +36,13 @@ module.exports = {
         path: path.join(__dirname, `data/orgs`)
       }
     },
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        name: `service_glossary`,
+        path: path.join(__dirname, `data/service_glossary`)
+      }
+    },
      {
       resolve: `gatsby-source-filesystem`,
       options: {

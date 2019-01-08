@@ -44,8 +44,6 @@ const styles = theme => ({
         body: {
             margin: 0,
             padding: 0,
-            height: "100vh",
-            width: "100%",
             overflowWrap: "break-word",
             overflowY: "scroll",
             overflowX: "hidden"
@@ -140,7 +138,7 @@ ser_gloss_servicename_mob:{
     position: 'absolute',
     width: '130%',
     color: theme.palette.primary['50'],
-    background: `linear-gradient(45deg, ${theme.palette.primary["600"]} 20%, ${theme.palette.primary["A900"]} 80%)`,
+    background: `linear-gradient(45deg, ${theme.palette.primary["700"]} 20%, ${theme.palette.primary["A900"]} 80%)`,
     },
 ser_gloss_servicename:{
     height: 350,
@@ -150,7 +148,7 @@ ser_gloss_servicename:{
     width: '110%',
     color: theme.palette.primary['50'],
     transform: 'rotate(-2deg)',
-    background: `linear-gradient(45deg, ${theme.palette.primary["600"]} 20%, ${theme.palette.primary["A900"]} 80%)`,
+    background: `linear-gradient(45deg, ${theme.palette.primary["700"]} 20%, ${theme.palette.primary["A900"]} 80%)`,
 },
 ser_gloss_servicename_text:{
     height: 100,

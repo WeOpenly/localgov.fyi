@@ -2,6 +2,7 @@ import 'regenerator-runtime/runtime';
 import * as types from './ActionTypes';
 import {YusufApi} from '../common/api';
 import {trackInput} from '../common/tracking';
+const windowGlobal = typeof window !== 'undefined' && window
 
 export function toggleSearchResultLayout() {
   return { type: types.TOGGLE_SEARCH_RESULTS_LAYOUT };
@@ -224,9 +225,14 @@ function allFromOrganizationFailure() {
 
 export const getLocation = async(dispatch) => {
   dispatch(locationRequest());
+  let t0 = null;
+  let t1 = null;
 
   try {
-const data = await YusufApi(null, `auto_locate`);
+    if(windowGlobal && windowGlobal.performance){
+      t0 = Math.round(performance.now());
+    }
+    const data = await YusufApi(null, `auto_locate`);
     const results = await data;
 
     const {details} = results;
@@ -234,6 +240,10 @@ const data = await YusufApi(null, `auto_locate`);
     if (details) {
       dispatch(trackInput('auto_locate', details.org.name));
       dispatch(locationSuccess(results));
+    }
+    if (windowGlobal && windowGlobal.performance && windowGlobal.ga) {
+      t1 = Math.round(performance.now());
+      windowGlobal.ga('send', 'timing', 'Auto Locate Api', 'response', t1 - t0);
     }
   } catch (error) {
     dispatch(locationFailure(error));

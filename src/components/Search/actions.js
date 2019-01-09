@@ -2,6 +2,8 @@ import 'regenerator-runtime/runtime';
 import * as types from './ActionTypes';
 import {YusufApi} from '../common/api';
 import {trackInput} from '../common/tracking';
+import queryString from 'querystring';
+
 const windowGlobal = typeof window !== 'undefined' && window
 
 export function toggleSearchResultLayout() {
@@ -111,11 +113,23 @@ export function toggleNotifyDialog(toggle){
 }
 
 export const fetchSearchResults = async (dispatch, getState) => {
-  const { input } = getState().search;
+  const { input, selectedOrganization } = getState().search;
+
+  let org_id = null;
+
+  if (selectedOrganization) {
+    org_id = selectedOrganization.id
+  }
+
   dispatch(requestSearchResults());
 
   try {
-const data = await YusufApi(null, `semantic_results?country=usa&query=${input}&requester_city=''`);
+    let url = `semantic_results?country=usa&query=${input}&requester_city=''`;
+    if(org_id){
+      url = `semantic_results?country=usa&query=${input}&org_id=${org_id}`;
+    }
+
+    const data = await YusufApi(null, url);
     const results = await data;
 
     let isSemantic = false;

@@ -184,16 +184,23 @@ class ServiceSuggestBox extends Component {
     const { search, dispatch } = this.props;
     const {serviceInput, selectedOrganization} = search;
 
-    if (!serviceInput || serviceInput.length < 3) {
-      if (selectedOrganization){
-        const {id} = selectedOrganization;
+    if (selectedOrganization) {
+      if (!serviceInput || serviceInput.length < 3) {
+        const { id } = selectedOrganization;
         const uri = `/organization/${id}/`;
+        const encodedUri = encodeURI(uri);
+        navigate(encodedUri);
+      }
+      else {
+        const { id } = selectedOrganization;
+        const uri = `/search/?q=${serviceInput}&org_id=${id}`;
         const encodedUri = encodeURI(uri);
         navigate(encodedUri);
       }
       return null;
     }
-
+   
+  
     const uri = `/search/?q=${serviceInput}`;
     const encodedUri = encodeURI(uri);
     dispatch(trackInput('index_service_search_box', serviceInput));

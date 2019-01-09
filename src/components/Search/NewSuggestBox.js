@@ -214,7 +214,7 @@ class NewSuggestBox extends Component {
       const { serviceInput } = search;
       if (serviceInput) {
 
-        const orgServiceTexturi = `/search/?q=${serviceInput}&org=${input}`;
+        const orgServiceTexturi = `/search/?q=${serviceInput}${input}`;
         const orgServiceTextencodedUri = encodeURI(orgServiceTexturi);
         dispatch(trackInput('index_search_box', `${serviceInput} ${input}`));
         navigate(orgServiceTextencodedUri);
@@ -225,7 +225,7 @@ class NewSuggestBox extends Component {
     if (location && location.org){
       const {serviceInput} = search;
       if (serviceInput && serviceInput.length > 2){
-        const serviceTexturi = `/search/?q=${serviceInput}`;
+        const serviceTexturi = `/search/?q=${serviceInput}&org_id=${location.org.id}`;
         const serviceTextencodedUri = encodeURI(serviceTexturi);
         dispatch(trackInput('index_search_box', serviceInput));
         navigate(serviceTextencodedUri);

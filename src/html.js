@@ -31,7 +31,7 @@ const searchLinksSchema = {
   "url": "https://localgov.fyi/",
   "potentialAction": {
     "@type": "SearchAction",
-    "target": "https://localgov.fyi/search/{search_term_string}",
+    "target": "https://localgov.fyi/search/?q={search_term_string}",
     "query-input": "required name=search_term_string"
   }
 }

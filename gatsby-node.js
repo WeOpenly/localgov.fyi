@@ -71,6 +71,7 @@ allSerGlossaryItems: allFile(filter : {
           }
           service_name
           service_name_slug
+          service_glossary_description
         }
         name
       }

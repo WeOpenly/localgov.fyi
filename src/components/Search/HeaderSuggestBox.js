@@ -243,7 +243,7 @@ class HeaderSuggestBox extends Component {
             return null;
         }
 
-        const uri = `/search/${input}`;
+        const uri = `/search/?q=${input}`;
         const encodedUri = encodeURI(uri);
         dispatch(trackInput('header_search_box', input));
         navigate(encodedUri);

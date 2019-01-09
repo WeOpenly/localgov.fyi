@@ -5,11 +5,16 @@ import Headroom from 'react-headroom';
 import Paper from '@material-ui/core/Paper';
 import InputBase from '@material-ui/core/InputBase';
 import Divider from '@material-ui/core/Divider';
+import Truncate from 'react-truncate';
 
 import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
 import {SpringGrid} from 'react-stonecutter';
-
+import Dialog from '@material-ui/core/Dialog';
+import DialogActions from '@material-ui/core/DialogActions';
+import DialogContent from '@material-ui/core/DialogContent';
+import DialogContentText from '@material-ui/core/DialogContentText';
+import DialogTitle from '@material-ui/core/DialogTitle';
 import SearchIcon from '@material-ui/icons/Search';
 import DirectionsIcon from '@material-ui/icons/Directions';
 import queryString from 'query-string'
@@ -151,12 +156,13 @@ ser_gloss_servicename:{
     background: `linear-gradient(45deg, ${theme.palette.primary["700"]} 20%, ${theme.palette.primary["A900"]} 80%)`,
 },
 ser_gloss_servicename_text:{
-    height: 100,
+    height: 120,
     marginLeft: '-1%',
     transform: 'rotate(2deg)',
 },
     ser_gloss_servicename_text_mob:{
-        height: 100,
+        height: 160,
+        width: 300,
         marginLeft: theme.spacing.unit*3,
     },
 gloss_searchContainer: {
@@ -185,15 +191,35 @@ locGridContainer: {
 }
 });
 
+
+const RawHTML = ({
+    children,
+    className = ""
+}) => (<div
+    className={className}
+    dangerouslySetInnerHTML={{
+        __html: children.replace(/\n/g, " ")
+    }} />);
+
 class ServiceGlossary extends React.Component {
     constructor(props) {
         super(props);
+        this.state = {
+            openDescDialog: false,
+        }
         this.handleOrgClick = this
             .handleOrgClick
             .bind(this);
+        this.toggleDescDialog = this.toggleDescDialog.bind(this);
         this.onSearchChange = this.onSearchChange.bind(this);
     }
     
+    toggleDescDialog(){
+        this.setState({
+            openDescDialog: !this.state.openDescDialog
+        })
+    }
+
     onSearchChange(ev){
         ev.preventDefault();
         const value = ev.target.value;
@@ -223,7 +249,12 @@ class ServiceGlossary extends React.Component {
     const {search} = this.props.location;
     let searchForLoc = null;
     let allOrgs = orgs;
-    
+    const service_glossary_description_text = (
+          <RawHTML>
+              {service_glossary_description}
+          </RawHTML>
+      );
+      
     if(search){
         const values = queryString.parse(this.props.location.search);
         if (values && values.search) {
@@ -276,6 +307,25 @@ const searchInput =  (<InputBase
         className={classes.input}
         placeholder="Search Locations"/>)
   
+      const descDialog = (<Dialog
+          onClose={this.toggleDescDialog}
+          aria-labelledby="customized-dialog-title"
+          open={this.state.openDescDialog}
+      >
+          <DialogTitle id="customized-dialog-title" onClose={this.toggleDescDialog}>
+              {service_name}
+          </DialogTitle>
+          <DialogContent>
+              <Typography gutterBottom>
+                  {service_glossary_description_text}
+            </Typography>   
+          </DialogContent>
+          <DialogActions>
+              <Button onClick={this.toggleDescDialog} color="outlined">
+                  Close
+            </Button>
+          </DialogActions>
+          </Dialog>)
     return (
       <Fragment>
         <Helmet>
@@ -299,6 +349,7 @@ const searchInput =  (<InputBase
             content={`Forms, Price, Timings and Local Government Service Contact Details for ${service_name} | Localgov.fyi`} />
         
         </Helmet>
+            {descDialog}
             <Grid container className={isMobile ? classes.ser_gloss_servicename_mob : classes.ser_gloss_servicename}>
                 <Grid item sm={1} sm="auto" />
                 <Grid item sm={10} align="center" className={isMobile ? classes.ser_gloss_nav_items_mob: classes.ser_gloss_nav_items}>
@@ -315,7 +366,29 @@ const searchInput =  (<InputBase
                 <Grid item sm={2} />
                 <Grid item sm={8} className={isMobile ? classes.ser_gloss_servicename_text_mob : classes.ser_gloss_servicename_text} align={isMobile ? 'left': 'center'}>
                     <Typography style={{ color: "#fff", fontSize:'2rem' }} variant="display1"> {service_name} </Typography>
-                    {service_glossary_description ? (<Typography style={{ color: "#fff", margin: '16px' }} variant="caption">{service_glossary_description} </Typography>) : ''}
+{
+    service_glossary_description
+        ? (
+            <Typography
+                style={isMobileOnly ? {
+                color: "#fff",
+                marginTop: '16px',
+                paddingLeft: '0px',
+                paddingRight: '0px'
+            } :{
+                color: "#fff",
+                marginTop: '16px',
+                paddingLeft: '156px',
+                paddingRight: '156px'
+            }}
+                variant="body2">
+                        <Truncate
+                            lines={isMobileOnly? 2 : 1}
+                            ellipsis={(<span> ...<a style={{ fontSize:'12px', color: "#fff"}} href='#' onClick={this.toggleDescDialog}> {'(read more)'} </a></span>)}
+                            onTruncate={() => {}}
+                        >
+                            {service_glossary_description_text}
+                        </Truncate> </Typography>) : ''}
                 </Grid>
                 <Grid item sm={2} />
             </Grid>

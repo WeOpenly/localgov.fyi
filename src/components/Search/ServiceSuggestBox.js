@@ -194,7 +194,7 @@ class ServiceSuggestBox extends Component {
       return null;
     }
 
-    const uri = `/search/${serviceInput}`;
+    const uri = `/search/?q=${serviceInput}`;
     const encodedUri = encodeURI(uri);
     dispatch(trackInput('index_service_search_box', serviceInput));
     navigate(encodedUri);

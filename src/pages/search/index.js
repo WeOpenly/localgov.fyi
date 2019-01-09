@@ -5,6 +5,7 @@ import Link from 'gatsby-link';
 import Helmet from "react-helmet";
 import Spinner from 'react-spinkit';
 import { isMobileOnly } from 'react-device-detect';
+import queryString from 'query-string'
 
 import { withStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
@@ -69,15 +70,16 @@ search_noresults : {
 class Search extends React.Component {
     componentDidMount() {
         const {dispatch, location } = this.props;
-        const { pathname } = location;
- 
-        const pathNameFragments = pathname.split('/');
-
+        const { search } = this.props.location;
         let searchText = null;
-        if (pathname.includes('search') && pathNameFragments.length > 1) {
-            searchText = pathNameFragments[2]
-        }
 
+        if (search) {
+            const values = queryString.parse(this.props.location.search);
+            if (values && values.q) {
+                searchText = values.q;
+            }
+        }
+    
         if (searchText) {
             dispatch(updateInput(searchText));
             dispatch(fetchSearchResults);
@@ -87,7 +89,7 @@ class Search extends React.Component {
 
     render() {
         const {classes, location, search} = this.props;
-        const {pathname} = location;
+
         const {isSemantic, searchResultsLoading, searchResults, searchResultsLoadingFailed, input} = search;
 
         const noResults = !isSemantic && searchResults.length === 0;
@@ -101,13 +103,14 @@ class Search extends React.Component {
         }
 
         if (noResults){
-            const { pathname } = location;
-
-            const pathNameFragments = pathname.split('/');
-
+            const { search } = this.props.location;
             let searchText = null;
-            if (pathname.includes('search') && pathNameFragments.length > 1) {
-                searchText = pathNameFragments[2]
+
+            if (search) {
+                const values = queryString.parse(this.props.location.search);
+                if (values && values.q) {
+                    searchText = values.q;
+                }
             }
             
             return <div className={!isMobileOnly ? classes.search_root : classes.search_rootMobile}>

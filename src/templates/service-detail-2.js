@@ -350,11 +350,13 @@ class ServiceDetail extends React.Component {
         const jsonLd = {
             "@context": "http://schema.org",
             "@type": "GovernmentService",
+            "@id": `https://localgov.fyi/service/${id}/`,
             "name": `${name}`,
-            "provider": {
+            "operator": {
                 "@context": "http://schema.org",
+                "@id": `https://localgov.fyi/organization/${org_id}/`,
                 "@type": "GovernmentOrganization",
-                "schema:name": `${org_name}`
+                "name": `${org_name}`
             }
         }
         
@@ -363,6 +365,7 @@ class ServiceDetail extends React.Component {
         }
 
         const someDetails = description || price || timingList || formList || stepList || qaList || locList;
+
         return (
             <DetailTemplate location={this.props.location}>
 
@@ -370,6 +373,7 @@ class ServiceDetail extends React.Component {
                     <Helmet>
                         <title>{`${name} service offered in ${org_name} | Localgov.fyi`}
                         </title>
+                        <script type="application/ld+json">{`${JSON.stringify(jsonLd)}`}</script>
                         <link rel="canonical" href={`https://localgov.fyi/service/${id}/`}/>
                         <script key='gatsby-plugin-stripe' src="https://js.stripe.com/v3/" async/>
                         <meta
@@ -386,7 +390,7 @@ class ServiceDetail extends React.Component {
                         <meta
                             property="og:description"
                             content={`Forms, Price, Timings and Local Government Service Contact Details for ${name} offered in ${org_name} | Localgov.fyi`}/>
-                        <JsonLd data={jsonLd}/>
+                     
                     </Helmet>
                     {(windowGlobal && window.history.length > 2) && !isMobileOnly
                         ? (

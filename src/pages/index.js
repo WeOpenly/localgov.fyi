@@ -247,6 +247,22 @@ const popularServices = [
   }
 ];
 
+const JsonLd = ({ data }) => <script
+  type="application/ld+json"
+  dangerouslySetInnerHTML={{
+    __html: JSON.stringify(data)
+  }} />;
+
+const searchLinksSchema = {
+  "@context": "http://schema.org",
+  "@type": "WebSite",
+  "url": "https://localgov.fyi/",
+  "potentialAction": {
+    "@type": "SearchAction",
+    "target": "https://localgov.fyi/search/?q={search_term_string}",
+    "query-input": "required name=search_term_string"
+  }
+}
 const dummyServices = [
   {
     service_name: 'Pay Business Tax',
@@ -551,6 +567,7 @@ class Index extends React.Component {
           <Helmet
             defaultTitle={`Localgov.fyi | Search for local government organizations, and services`}
             titleTemplate={`%s | Localgov.fyi`}>
+            <JsonLd data={searchLinksSchema} />
             <meta name="og:type" content="website"/>
             <meta name="og:site_name" content="Localgov.fyi"/>
             <link
@@ -560,6 +577,7 @@ class Index extends React.Component {
               property="og:url"
               content={`https://localgov.fyi${this.props.location.pathname}`}/>
             <html lang="en"/>
+         
           </Helmet>
           <AppBar className={classes.index_header}>
             <Toolbar className={classes.index_toolbar}>

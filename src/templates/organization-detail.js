@@ -96,11 +96,13 @@ const {id, name} = this.props.pageContext.data;
     let contactSchema = {};
 
     let cd = []
+    let sameAs = []
     if (contact_details){
       cd = contact_details
     }
       cd.forEach((detail) => {
         let type = detail.contact_type;
+        sameAs.push(detail.contact_value);
         if (type === 'ADDRESS') {
           contactSchema['address'] = detail.contact_value;
         } else if (type === 'PHONE') {
@@ -195,11 +197,13 @@ const {id, name} = this.props.pageContext.data;
       });
     }
 
+
     const jsonLd = {
       "@context": "http://schema.org",
       "@id" : `https://localgov.fyi/organization/${id}/`,
-      "@type": "GovernmentOrganization",
+      "@type": "Organization",
       name: `${name}`,
+      sameAs: sameAs,
       ...contactSchema
     }
 
@@ -207,6 +211,7 @@ const {id, name} = this.props.pageContext.data;
       <DetailTemplate location={this.props.location}>
       <Grid container spacing={16}>
         <Helmet>
+            <script type="application/ld+json">{`${JSON.stringify(jsonLd)}`}</script>
           <title>{`${name} info, contact details and services | Localgov.fyi`}</title>
           <meta
             name="description"
@@ -218,7 +223,7 @@ const {id, name} = this.props.pageContext.data;
           <meta property="og:url" content={`https://localgov.fyi/organization/${id}/`} />
           <meta property="og:description" content={`${name} info, contact details and services`} />
           <link rel="canonical" href={`https://localgov.fyi/organization/${id}/`} />
-          <JsonLd data={jsonLd} />
+        
         </Helmet>
         <Grid container spacing={16} item xs={12} md={12}>
           <Grid item xs={12}>

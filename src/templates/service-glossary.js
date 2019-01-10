@@ -36,7 +36,7 @@ import Search from '@material-ui/icons/Search';
 import withRoot from '../withRoot';
 import HeaderAccountMenu from '../components/HeaderAccountMenu';
 import LoginRegisterDialog from '../components/Account/LoginRegisterDialog';
-import { trackView, trackClick } from "../components/common/tracking";
+import {trackView, trackClick, trackInput} from "../components/common/tracking";
 
 const styles = theme => ({
     "@global": {
@@ -223,7 +223,9 @@ class ServiceGlossary extends React.Component {
     onSearchChange(ev){
         ev.preventDefault();
         const value = ev.target.value;
-  
+        if (value && value.length >1){
+            this.props.trackFeedback(value);
+        }
         navigate(`?search=${value}`)
         // if(value === ''){
         //     console.log('here');
@@ -449,7 +451,10 @@ const mapDispatchToProps = (dispatch) => {
         },
         trackClick: (click_type, resultType, id, title, listIndex) => {
             dispatch(trackClick(click_type, resultType, id, title, listIndex));
-        }
+        },
+        trackFeedback: (input) => {
+            dispatch(trackInput('service_glossary_search', input));
+        },
     }
 }
 

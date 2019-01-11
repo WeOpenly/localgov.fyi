@@ -32,6 +32,7 @@ import Button from '@material-ui/core/Button';
 import Search from '@material-ui/icons/Search';
 
 import withRoot from '../withRoot';
+import StateSuggest from '../components/StateSuggest';
 import HeaderAccountMenu from '../components/HeaderAccountMenu';
 import LoginRegisterDialog from '../components/Account/LoginRegisterDialog';
 import {trackView, trackClick, trackInput} from "../components/common/tracking";
@@ -73,10 +74,11 @@ const styles = theme => ({
         display: 'flex',
         alignItems: 'center',
         width: '100%',
+        marginRight: 24,
         boxShadow: `0 0 1px 0 #d4d4d4`,
     },
     input: {
-        marginLeft: 12,
+        marginLeft: 16,
         flex: 1
     },
     iconButton: {
@@ -331,7 +333,16 @@ class ServiceGlossary extends React.Component {
             const stateFuse = new Fuse(allOrgs, stateOptions)
             allOrgs = stateFuse.search(this.state.stateName);
         }
-        
+
+        const allStatesSet = new Set();
+        allOrgs.map((org, idx) => {
+            allStatesSet.add(org.area.hierarchy[org.area.hierarchy.length-1].area_name) 
+        })
+
+        let allStates = [];
+        allStatesSet.forEach((org) => {
+            allStates.push({'label': org})
+        })
 
         const locs = allOrgs.map((org, idx) => {
             const organization = org.organization;
@@ -501,13 +512,20 @@ class ServiceGlossary extends React.Component {
                     <Grid item sm={1}/>
                     <Grid item sm={10}>
                         <Paper className={classes.filterContainer}  elevation={3}>
-                                    <Grid item sm={5} align="left">
+                            
+                                    <Grid item sm={12} md={5} align="left">
                         <Paper className={classes.root} elevation={1}>
                             {searchInput}
                             <IconButton className={classes.iconButton} aria-label="Search">
                                 <SearchIcon/>
                             </IconButton>
                         </Paper>
+                    </Grid>
+                    
+                    <Grid item sm={12} md={5} styling={{position: 'relative'}} align="left">
+                  
+                            <StateSuggest allStates={allStates} />
+              
                     </Grid>
 
                         </Paper>
@@ -518,7 +536,7 @@ class ServiceGlossary extends React.Component {
 
                 <LoginRegisterDialog location={this.props.location}/>
                 <Grid container className={classes.gloss_countContainer}>
-                    <Grid item sm={2}/>
+                    <Grid item sm={1}/>
                     <Grid item sm={8} align="left">
                         <Typography
                             style={{
@@ -530,7 +548,7 @@ class ServiceGlossary extends React.Component {
                                 ? (`Showing ${allOrgs.length} matching results`)
                                 : (`Currently offered in ${allOrgs.length} locations`)}</Typography>
                     </Grid>
-                    <Grid item sm={2}/>
+                    <Grid item sm={3}/>
                 </Grid>
                 <Grid
                     container
@@ -550,7 +568,7 @@ class ServiceGlossary extends React.Component {
                             component="div"
                             columns={isMobileOnly
                             ? 1
-                            : 5}
+                            : 4}
                             columnWidth={230}
                             gutterWidth={5}
                             gutterHeight={5}

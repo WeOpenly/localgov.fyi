@@ -373,7 +373,7 @@ class ServiceGlossary extends React.Component {
         }
 
         const allStatesSet = new Set();
-        allOrgs.map((org, idx) => {
+        this.state.orgs.map((org, idx) => {
             allStatesSet.add(org.area.hierarchy[org.area.hierarchy.length-1].area_name) 
         })
 
@@ -601,7 +601,7 @@ class ServiceGlossary extends React.Component {
                     className={isMobile
                     ? classes.locGridContainer_mob
                     : classes.locGridContainer}>
-                    <Grid item sm={1}/>
+                    <Grid item sm={1} />
 
                     <Grid
                         item
@@ -612,7 +612,7 @@ class ServiceGlossary extends React.Component {
                         : classes.ser_gloass_locGrid}>
                         <SpringGrid
                             component="div"
-                            columns={isMobileOnly
+                            columns={isMobile
                             ? 1
                             : 4}
                             columnWidth={280}

@@ -82,6 +82,7 @@ export default class HTML extends React.Component {
             content="summary_large_image"/>
           <meta property="twitter:site" name="twitter:site" content="@weopenly"/>
           <meta httpEquiv="x-ua-compatible" content="ie=edge"/>
+          
           <meta
             name="viewport"
             content="width=device-width, initial-scale=1, shrink-to-fit=no"/>

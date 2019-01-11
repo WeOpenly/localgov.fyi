@@ -30,7 +30,7 @@ import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
 import Search from '@material-ui/icons/Search';
-
+import Footer from '../components/Footer';
 import withRoot from '../withRoot';
 import StateSuggest from '../components/StateSuggest';
 import HeaderAccountMenu from '../components/HeaderAccountMenu';
@@ -43,23 +43,26 @@ const styles = theme => ({
             background: theme.palette.common.white,
             WebkitFontSmoothing: "antialiased", // Antialiasing.
             MozOsxFontSmoothing: "grayscale", // Antialiasing.
-            height: "100%"
+            height: "100%",
+            overflow: 'hidden'
         },
         body: {
             margin: 0,
             padding: 0,
+            width: '100%',
+            height: '100%',
             overflowWrap: "break-word",
             overflowY: "scroll",
             overflowX: "hidden"
         },
-        "body>div": {
-            display: "block",
-            height: "100%"
+            "body>div": {
+        display: "block",
+        height: "100%"
         },
-        "body>div>div": {
-            display: "block",
-            height: "100%"
-        }
+    "body>div>div": {
+        display: "block",
+        height: "100%"
+        },
     },
     filterContainer:{
         width: '100%',
@@ -68,6 +71,14 @@ const styles = theme => ({
         alignItems: 'center',
         boxShadow: `0 5px 10px 0 #f1f1f1`,
         borderRadius: '5px'
+    },
+    locationPaper:{
+        padding: theme.spacing.unit*5,
+        display: 'flex',
+        alignItems: 'center',
+        width: '100%',
+        margin: theme.spacing.unit,
+        boxShadow: `0 0 1px 0 #d4d4d4`,
     },
     root: {
         padding: '4px 8px',
@@ -118,11 +129,14 @@ const styles = theme => ({
         paddingTop: theme.spacing.unit
     },
     ser_gloss_gridItemLocation: {
+        padding: theme.spacing.unit*2,
         display: 'flex',
-        alignItems: 'left',
+        alignItems: 'center',
+        margin: theme.spacing.unit,
+        boxShadow: `0 1px 2px 0 ${theme.palette.primary['100']}`,
         justifyContent: 'left',
-        width: 250,
-        height: 56
+        width: 256,
+        height: 88
     },
     ser_gloss_heading: {
         fontWeight: 600
@@ -147,41 +161,47 @@ const styles = theme => ({
     },
     ser_gloss_servicename_mob: {
         color: theme.palette.primary['50'],
-
+        height: 280,
         background: `linear-gradient(45deg, ${theme.palette.primary["700"]} 20%, ${theme.palette.primary["A900"]} 80%)`
     },
     ser_gloss_servicename: {
         color: '#fff',
-        paddingBottom : theme.spacing.unit * 12,
+        paddingBottom : theme.spacing.unit * 4,
         background: `linear-gradient(45deg, ${theme.palette.primary["700"]} 30%, ${theme.palette.primary["A900"]} 70%)`
     },
     ser_gloss_servicename_text: {
-        height: 120,
+        height: 240,
         paddingTop : theme.spacing.unit * 4,
     },
     ser_gloss_servicename_text_mob: {
-        height: 160,
+        height: 80,
         width: 300,
+        paddingTop : theme.spacing.unit * 1,
         marginLeft: theme.spacing.unit *3
     },
     gloss_searchContainer: {
-        position: 'absolute',
         marginTop: '-24px',
     },
+    gloss_searchContainer_mob:{
+        marginTop: '0px'
+    },
     gloss_countContainer: {
-        marginTop: theme.spacing.unit *12,
+        marginTop: theme.spacing.unit *4,
     },
     locGridContainer_mob: {
         display: 'flex',
-        alignItems: 'left',
+        alignItems: 'center',
         justifyContent: 'left',
-        paddingTop: theme.spacing.unit
+        margin: theme.spacing.unit
     },
     locGridContainer: {
         display: 'flex',
         alignItems: 'left',
         justifyContent: 'left',
-        paddingTop: theme.spacing.unit * 4
+        marginTop: theme.spacing.unit * 4
+    },
+    gloss_footer:{
+       marginTop: theme.spacing.unit * 4
     }
 });
 
@@ -216,13 +236,12 @@ class ServiceGlossary extends React.Component {
         this.setStateFilter = this
             .setStateFilter
             .bind(this);
+        this.clearStateName = this.clearStateName.bind(this);
     }
 
     static getDerivedStateFromProps(nextProps, prevState) {
-
-
         const values = queryString.parse(nextProps.location.search);
-        console.log(values);
+
         if (!values) {
             return null
         }
@@ -246,16 +265,36 @@ class ServiceGlossary extends React.Component {
         return null;
     }
 
+    clearStateName(){
+        const {location} = this.props;
+        const searchValues = queryString.parse(location.search);
+
+        let uri = `?stateName=`;
+        if (searchValues.searchText){
+            uri =`?searchText=${searchValues.searchText}`;
+        }
+        const encodedStateUri = encodeURI(uri);
+        navigate(encodedStateUri);
+    }
+
     toggleDescDialog() {
         this.setState({
             openDescDialog: !this.state.openDescDialog
         })
     }
 
-    setStateFilter(ev) {
-        ev.preventDefault();
-        const value = 'Cali';
-        const uri = `?stateName=${value}`;
+    setStateFilter(stateSuggestion) {
+        const {label} = stateSuggestion;
+        const {location} = this.props;
+        const searchValues = queryString.parse(location.search);
+
+        this.props.trackFeedback(label);
+        console.log(label,"here2")
+        let uri = `?stateName=${label}`;
+
+        if (searchValues.searchText){
+            uri =`?searchText=${searchValues.searchText}&stateName=${label}`;
+        }
         const encodedStateUri = encodeURI(uri);
         navigate(encodedStateUri);
     }
@@ -277,7 +316,6 @@ class ServiceGlossary extends React.Component {
         }
 
         const encodedSearchUri = encodeURI(uri);
-        console.log(encodedSearchUri)
         navigate(encodedSearchUri);
     }
 
@@ -315,7 +353,7 @@ class ServiceGlossary extends React.Component {
 
         const stateOptions = {
             shouldSort: true,
-            tokenize: true,
+            tokenize: false,
             threshold: 0,
             location: 0,
             distance: 5,
@@ -339,6 +377,8 @@ class ServiceGlossary extends React.Component {
             allStatesSet.add(org.area.hierarchy[org.area.hierarchy.length-1].area_name) 
         })
 
+        allOrgs.sort((a, b) => a.organization.org_name.localeCompare(b.organization.org_name));
+
         let allStates = [];
         allStatesSet.forEach((org) => {
             allStates.push({'label': org})
@@ -348,21 +388,27 @@ class ServiceGlossary extends React.Component {
             const organization = org.organization;
             let strippedName = organization.org_name.replace("-", " ")
             strippedName = strippedName.replace("Independent", " ")
+            const state = org.area.hierarchy[org.area.hierarchy.length-1].area_name;
 
             return (
-                <div key={`${org.id}-${idx}`} className={classes.ser_gloss_gridItemLocation}>
-                    <a
-                        style={{
-                        textDecoration: 'none',
-                        cursor: 'pointer',
-                        backgroundImage: 'linear-gradient(180deg, rgba(0,0,0,0),rgba(0,0,0,0) 81%, #222222 81.1%, rgb(69, 29, 255) 86%,rgba(0,0,0,0) 85.1%,rgba(0,0,0,0))'
-                    }}
+                <div key={`${org.id}-${idx}`} >
+                         <Paper  className={classes.ser_gloss_gridItemLocation}  elevation={1}>
+                               <a
+                                style={{
+                               
+                                cursor: 'pointer'
+                            }}
                         onClick={() => this.handleOrgClick(organization.id, organization.org_name, idx, `/service/${org.id}/`)}
                         className={classes.ser_gloss_link}>
                         <Typography variant="subheading" className={classes.ser_gloss_heading}>
                             {strippedName}
                         </Typography>
+                         <Typography variant="caption" className={classes.ser_gloss_state_name}>
+                            {state}
+                        </Typography>
                     </a>
+                        </Paper>
+                  
                 </div>
             )
         })
@@ -472,8 +518,8 @@ class ServiceGlossary extends React.Component {
                                     ? {
                                         color: "#fff",
                                         marginTop: '24px',
-                                        paddingLeft: '0px',
-                                        paddingRight: '0px'
+                                        paddingLeft: '16px',
+                                        paddingRight: '16px'
                                     }
                                     : {
                                         color: "#fff",
@@ -484,8 +530,8 @@ class ServiceGlossary extends React.Component {
                                     variant="body2">
                                     <Truncate
                                         lines={isMobileOnly
-                                        ? 4
-                                        : 5}
+                                        ? 2
+                                        : 6}
                                         ellipsis={(
                                         <span>
                                             ... <a
@@ -508,26 +554,26 @@ class ServiceGlossary extends React.Component {
                     </Grid>
                     <Grid item sm={2}/>
                 </Grid>
-                <Grid container className={classes.gloss_searchContainer}>
+                <Grid container className={isMobileOnly ? classes.gloss_searchContainer_mob : classes.gloss_searchContainer}>
                     <Grid item sm={1}/>
                     <Grid item sm={10}>
                         <Paper className={classes.filterContainer}  elevation={3}>
-                            
-                                    <Grid item sm={12} md={5} align="left">
-                        <Paper className={classes.root} elevation={1}>
-                            {searchInput}
-                            <IconButton className={classes.iconButton} aria-label="Search">
-                                <SearchIcon/>
-                            </IconButton>
-                        </Paper>
-                    </Grid>
+                               <Grid container>
+                            <Grid item sm={12} md={5} align="left">
+                                <Paper className={classes.root} elevation={1}>
+                                    {searchInput}
+                                    <IconButton className={classes.iconButton} aria-label="Search">
+                                        <SearchIcon/>
+                                    </IconButton>
+                                </Paper>
+                            </Grid>
                     
-                    <Grid item sm={12} md={5} styling={{position: 'relative'}} align="left">
-                  
-                            <StateSuggest allStates={allStates} />
-              
-                    </Grid>
-
+                        <Grid item sm={12} md={5}  align="left">
+                            <div style={{position: 'relative'}}>
+                            <StateSuggest clearStateName={this.clearStateName} selected={this.state.stateName} allStates={allStates} onSelectSuggestion={this.setStateFilter} />    
+                            </div>
+                        </Grid>
+                            </Grid>
                         </Paper>
                     </Grid>
         
@@ -537,18 +583,18 @@ class ServiceGlossary extends React.Component {
                 <LoginRegisterDialog location={this.props.location}/>
                 <Grid container className={classes.gloss_countContainer}>
                     <Grid item sm={1}/>
-                    <Grid item sm={8} align="left">
+                    <Grid item sm={8} align={isMobileOnly ? "center" :"left"}>
                         <Typography
                             style={{
                             color: "#0a0a0a",
-                            margin: '16px'
+                            paddingLeft: '8px'
                         }}
                             variant="caption">
                             {this.state.searchText
-                                ? (`Showing ${allOrgs.length} matching results`)
-                                : (`Currently offered in ${allOrgs.length} locations`)}</Typography>
+                                ? (`Showing ${allOrgs.length} results matching ${this.state.searchText}`)
+                                : (`Currently offered in ${allOrgs.length} locations`)}  {this.state.stateName ? (` in the state of ${this.state.stateName}`) : ''}</Typography>
                     </Grid>
-                    <Grid item sm={3}/>
+                    <Grid item sm="auto"/>
                 </Grid>
                 <Grid
                     container
@@ -569,10 +615,10 @@ class ServiceGlossary extends React.Component {
                             columns={isMobileOnly
                             ? 1
                             : 4}
-                            columnWidth={230}
+                            columnWidth={280}
                             gutterWidth={5}
                             gutterHeight={5}
-                            itemHeight={60}
+                            itemHeight={104}
                             springConfig={{
                             stiffness: 60,
                             damping: 10
@@ -582,6 +628,9 @@ class ServiceGlossary extends React.Component {
                     </Grid>
                     <Grid item sm={3}/>
                 </Grid>
+                <div className={classes.gloss_footer}>
+                    <Footer page={this.props.location.pathname} />
+                </div>
             </Fragment>
         );
     }

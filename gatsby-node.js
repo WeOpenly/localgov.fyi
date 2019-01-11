@@ -58,7 +58,7 @@ allSerGlossaryItems: allFile(filter : {
     sourceInstanceName: {
       eq: "service_glossary"
     }
-  }) {
+  } ) {
     edges {
       node {
         childServiceGlossaryJson {

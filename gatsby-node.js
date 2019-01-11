@@ -67,6 +67,14 @@ allSerGlossaryItems: allFile(filter : {
               org_name
               id
             }
+            area{
+              hierarchy {
+                area_classification
+                area_id
+                area_name
+                area_classsification_level_number
+              }
+            }
             id
           }
           service_name

@@ -247,18 +247,18 @@ class ServiceGlossary extends React.Component {
         }
         
         if ((values.searchText !== prevState.searchText) && (values.stateName !== prevState.stateName)){
-            console.log("1")
+   
             return {stateName: values.stateName, searchText: values.searchText}
         }
         
         
         if (values.searchText !== prevState.searchText) {
-            console.log("2")
+   
             return {searchText: values.searchText, stateName: prevState.stateName}
         }
 
         if (values.stateName !== prevState.stateName) {
-            console.log("3")
+ 
             return {stateName: values.stateName, searchText: prevState.searchText}
         }
 
@@ -289,7 +289,7 @@ class ServiceGlossary extends React.Component {
         const searchValues = queryString.parse(location.search);
 
         this.props.trackFeedback(label);
-        console.log(label,"here2")
+
         let uri = `?stateName=${label}`;
 
         if (searchValues.searchText){

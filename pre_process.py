@@ -10,7 +10,7 @@ dir_path = os.path.dirname(os.path.realpath(__file__))
 data_dir = "{d}/data/orgs/".format(d=dir_path)
 logo_dir = "{d}/data/logos/".format(d=dir_path)
 service_glossary_dir = "{d}/data/service_glossary/".format(d=dir_path)
-all_dir = "{d}/data/all/".format(d=dir_path)
+all_dir = "{d}/data/all_locations/".format(d=dir_path)
 
 removable_files = []
 no_cd_files = []

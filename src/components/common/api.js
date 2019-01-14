@@ -38,12 +38,22 @@ export function getCookie(name) {
 // const BACKEND = 'http://127.0.0.1:8090/dashboard/api';
 // console.log(BACKEND);
 const YUSUF_BACKEND = `${process.env.SEARCH_BACKEND}`
-
+let controller;
+let signal;
 export function YusufApi(lang = undefined, endPoint, headers = {}) {
 
     // if (lang){
     //     BACKEND = `${BACKEND}/${lang}`;
     // }
+    if ("AbortController" in window) {
+        controller = new AbortController;
+        signal = controller.signal;
+    }
+
+    if (controller !== undefined) {
+        // Cancel the previous request
+        setTimeout(() => controller.abort(), 3000);
+    }
 
     let headersForGet = {
         credentials: 'include',
@@ -57,9 +67,10 @@ export function YusufApi(lang = undefined, endPoint, headers = {}) {
         }
     }
 
-    return fetch(`${YUSUF_BACKEND}/${endPoint}`, headers).then(checkStatus)
-        .then(parseJSON)
-        .then((data) => data)
+    return fetch(`${YUSUF_BACKEND}/${endPoint}`, {signal},
+    headers).then(checkStatus)
+            .then(parseJSON)
+            .then((data) => data)
 }
 
 

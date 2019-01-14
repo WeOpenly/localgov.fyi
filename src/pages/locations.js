@@ -83,6 +83,7 @@ class Locations extends Component {
     const locLen = this.props.data.orgs.details.length;
 
     let stateGroupMap = {};
+    
     this.props.data.orgs.details.map((loc, idx) => {
       const {org_name, id, area} = loc['_source']
       const {hierarchy} = area;
@@ -108,12 +109,15 @@ class Locations extends Component {
         
       }
     });
-    
-
+    let sortedStateGroup = [];
+    for (const [state, orgs] of Object.entries(stateGroupMap)) {
+      sortedStateGroup.push({state: state, orgs: orgs});
+    }
+    sortedStateGroup.sort((a, b) => a.state.localeCompare(b.state))
     
     let locComponents = []
-    for (const [state, orgs] of Object.entries(stateGroupMap)) {
-        orgs.sort((a, b) => a.org_name.localeCompare(b.org_name));
+    for (const sortedState of sortedStateGroup) {
+        const {state, orgs} = sortedState;
         const orgComps = orgs.map((org, idx) => {
           const {org_name, id} = org;
           

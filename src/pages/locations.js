@@ -3,6 +3,8 @@ import Link from 'gatsby-link';
 import {navigate} from '@reach/router';
 import {isMobileOnly} from 'react-device-detect';
 import {connect} from "react-redux";
+import Masonry from 'react-masonry-component';
+
 import {withStyles} from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import Grid from '@material-ui/core/Grid';
@@ -27,31 +29,31 @@ const styles = theme => ({
   section: {
     marginBottom: theme.spacing.unit
   },
+  masonryGrid:{
+    display: 'flex',
+    marginLeft: '-10px',
+    width:'auto'
+  },
+  masonryGridColumn :{
+    paddingLeft: '30px',
+    backgroundClip: 'padding-box'
+  },
+gridBlockTitle:{
+  paddingTop: theme.spacing.unit*2,
+},
   link: {
     padding: theme.spacing.unit
   },
-  locGrid: {
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-    alignContent: 'center',
-    flexDirection: 'row',
-    flexWrap: 'wrap'
-  },
-  gridItemLocation: {
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-    width: 250,
-    height: 45
-  },
+gridBlockItem:{
+  width: 200,
+},
   heading: {
     fontWeight: 600
   },
   listItem: {
     display: 'flex',
-    marginTop: theme.spacing.unit * 2,
-    marginLeft: theme.spacing.unit * 2
+    marginTop: theme.spacing.unit ,
+    marginLeft: theme.spacing.unit
   }
 });
 
@@ -78,41 +80,87 @@ class Locations extends Component {
 
   render() {
     const {classes} = this.props;
-    const locLen = this.props.data.orgs.edges.length;
-    const locs = this
-      .props
-      .data
-      .orgs
-      .edges
-      .map((loc, idx) => {
-        const name = loc.node.details.name;
-        let strippedName = name.replace("Independent City of ", "")
-        strippedName = strippedName.replace("City & County of ", "")
-        strippedName = strippedName.replace("City and County of ", "")
-        strippedName = strippedName.replace("City Council of ", "")
-        strippedName = strippedName.replace("Metro Government of ", "")
-        strippedName = strippedName.replace("Metropolitan Government of ", "")
-        strippedName = strippedName.replace("City of ", "")
-        strippedName = strippedName.replace("Borough of ", "")
-        strippedName = strippedName.replace("County of ", "")
-        strippedName = strippedName.replace("Town of ", "")
+    const locLen = this.props.data.orgs.details.length;
 
-        return (
-          <div className={classes.gridItemLocation}>
-            <a
-              style={{
-              textDecoration: 'underline',
-              cursor: 'pointer'
-            }}
-              onClick={() => this.handleOrgClick(loc.node.details.id, loc.node.details.name, idx, `/organization/${loc.node.details.id}/`)}
-              className={classes.link}>
-              <Typography variant="body2" className={classes.heading}>
-                {strippedName}
-              </Typography>
-            </a>
+    let stateGroupMap = {};
+    this.props.data.orgs.details.map((loc, idx) => {
+      const {org_name, id, area} = loc['_source']
+      const {hierarchy} = area;
+
+      for (const hie of hierarchy){
+    
+      const {area_name, area_classification, area_classsification_level_number} = hie;
+ 
+        if (area_classsification_level_number === 1 && hierarchy.length > 1){
+       
+
+          if (stateGroupMap[area_name]){
+
+            const vals = stateGroupMap[area_name];
+            vals.push({org_name: org_name, id: id})
+            stateGroupMap[area_name] = vals;
+          }
+          else{
+   
+            stateGroupMap[area_name] = [{org_name: org_name, id: id}]
+          }    
+        }
+        
+      }
+    });
+    
+
+    
+    let locComponents = []
+    for (const [state, orgs] of Object.entries(stateGroupMap)) {
+        orgs.sort((a, b) => a.org_name.localeCompare(b.org_name));
+        const orgComps = orgs.map((org, idx) => {
+          const {org_name, id} = org;
+          
+          let strippedName = org_name.replace("Independent City of ", "")
+          strippedName = strippedName.replace("City & County of ", "")
+          strippedName = strippedName.replace("City and County of ", "")
+          strippedName = strippedName.replace("City Council of ", "")
+          strippedName = strippedName.replace("Metro Government of ", "")
+          strippedName = strippedName.replace("Metropolitan Government of ", "")
+          strippedName = strippedName.replace("City of ", "")
+          strippedName = strippedName.replace("Borough of ", "")
+          strippedName = strippedName.replace("County of ", "")
+          strippedName = strippedName.replace("Town of ", "")
+
+          return (
+            <div key={`${id}-${idx}`} className={classes.gridBlockListItem}>
+              <a
+                style={{
+                textDecoration: 'underline',
+                cursor: 'pointer'
+              }}
+                onClick={() => this.handleOrgClick(id, org_name, idx, `/organization/${id}/`)}
+                className={classes.link}>
+                <Typography variant="body1">
+                  {strippedName}
+                </Typography>
+              </a>
+            </div>
+          )
+        });
+
+        const stateComp = (<div key={`${state}-container`} className={classes.gridBlockItem}>
+          <div className={classes.gridBlockTitle}>
+
+                <Typography id={`${state}`}  variant="subheading" className={classes.heading}>
+                  <a href={`#${state}`}>
+                    {state}
+                  </a>
+                </Typography>
           </div>
-        )
-      })
+              <div className={classes.gridBlockBody}>
+              {orgComps}
+              </div>
+            </div>);
+        locComponents.push(stateComp);
+    }
+
     return (
       <Fragment>
         <HeaderWithSearch/>
@@ -129,9 +177,11 @@ class Locations extends Component {
         <Grid container>
           <Grid item md={2}/>
           <Grid item md={8} align="center">
-            <div className={classes.locGrid}>
-              {locs}
-            </div>
+            <Masonry
+            >
+                {locComponents}
+            </Masonry>
+     
           </Grid>
           <Grid item md={2}/>
         </Grid>
@@ -140,13 +190,16 @@ class Locations extends Component {
   }
 }
 
+
+
 export const query = graphql `
-query orgsQuery  {
-orgs : allOrgsJson{
-    edges {
-      node {
-        id
-        details {id name}
+query orgsQuery {
+  orgs : allLocationsJson {
+    details {
+      _source {
+        org_name id area {
+          hierarchy {area_name area_classification area_classsification_level_number}
+        }
       }
     }
   }

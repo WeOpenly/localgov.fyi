@@ -455,8 +455,8 @@ class ServiceGlossary extends React.Component {
 
                     <meta
                         name="description"
-                        content={`Forms, Price, Timings and Local Government Service Contact Details for ${service_name} | Localgov.fyi`}/>
-                    <meta name="keywords" content={`${service_name}, localgov `}/>
+                        content={`Forms, Price, Timings and Contact Details for ${service_name} | Localgov.fyi`}/>
+                    <meta name="keywords" content={`${service_name},  ${service_name} online, Local Government Service Onine, my ${service_name}, ${service_name} near me, How do you ${service_name}, can you ${service_name} onine`}/>
                     <meta
                         property="og:description"
                         content={`Forms, Price, Timings and Local Government Service Contact Details for ${service_name} | Localgov.fyi`}/>

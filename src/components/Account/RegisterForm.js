@@ -5,6 +5,7 @@ import TextField from '@material-ui/core/TextField'
 import Checkbox from '@material-ui/core/Checkbox'
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
+import Link from 'gatsby-link';
 
 import {handleRegisterRequest} from './actions';
 
@@ -105,6 +106,15 @@ const MaterialUiForm = props => {
             <div  style={{marginRight: '8px', marginTop: '8px', textAlign: 'center'}} >
                     <Typography variant="caption" color="error">
                         {error ? error : ''}
+                  </Typography>
+            </div>
+              <div  style={{marginRight: '8px', marginTop: '16px',  textAlign: 'left'}} >
+                <Typography variant="caption" color="default" >
+                By creating an account, you agree to our <Link to = "/terms/" >
+                  <span>Terms of Service</span>
+                </Link> and   <Link to="/privacy/" >
+                 <span>Privacy Policy </span>
+                </Link>
                   </Typography>
             </div>
         </form>

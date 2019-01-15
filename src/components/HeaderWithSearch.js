@@ -30,7 +30,8 @@ const styles = theme => ({
   h_w_s_header: {
     background: theme.palette.common.white,
     color: theme.palette.primary['700'],
-    boxShadow: `0 0 0 0 ${theme.palette.common.white}`,
+    padding: theme.spacing.unit,
+    boxShadow: `0 3px 8px 0 #f1f1f1`,
     borderBottom: `1px solid ${theme.palette.primary['50']}`
   },
 h_w_s_flex : {

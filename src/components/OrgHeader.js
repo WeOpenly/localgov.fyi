@@ -97,19 +97,21 @@ org_header_shareButton : {
   },
 org_header_buttonContent : {
     display: 'flex',
-    alignItems: 'center'
+    alignItems: 'center',
+    color: theme.palette.primary['400']
   },
 org_header_contactButton : {
-    width: theme.spacing.unit *2,
-    height: theme.spacing.unit *2,
-    padding: theme.spacing.unit,
+  padding: 8,
+  margin: 0,
+  fontSize: '0.5rem',
+  color : theme.palette.primary['400']
   },
 org_header_svgIcon : {
-    width: 18,
+    width: 8,
     color: theme.palette.primary['400']
   },
 org_header_contactIcons : {
-    marginLeft: theme.spacing.unit
+   margin: 0
   },
   org_header_grid:{
 
@@ -283,7 +285,7 @@ class OrgHeader extends Component {
       if (contactType.toLowerCase() === 'phone') {
         value = (
           <a href={`tel:${value}`} target="_blank">
-            <Typography variant="caption" className={classes.org_header_buttonContent}>
+            <Typography className={classes.org_header_buttonContent}>
               {icons[contactType]}
             </Typography>
           </a>
@@ -291,7 +293,7 @@ class OrgHeader extends Component {
       } else if (contactType.toLowerCase() === 'address') {
         value = (
           <a href={`http://maps.google.com/?q=${value}`} target="_blank">
-            <Typography variant="caption" className={classes.org_header_buttonContent}>
+            <Typography className={classes.org_header_buttonContent}>
               {icons[contactType]}
             </Typography>
           </a>
@@ -299,7 +301,7 @@ class OrgHeader extends Component {
       } else if (contactType.toLowerCase() === 'email') {
         value = (
           <a href={`mailto:${value}`} target="_blank">
-            <Typography variant="caption" className={classes.org_header_buttonContent}>
+            <Typography  className={classes.org_header_buttonContent}>
               {icons[contactType]}
             </Typography>
           </a>
@@ -307,7 +309,7 @@ class OrgHeader extends Component {
       } else {
         value = (
           <a href={`${value}`} target="_blank">
-            <Typography variant="caption" className={classes.org_header_buttonContent}>
+            <Typography className={classes.org_header_buttonContent}>
               {icons[contactType]}
             </Typography>
           </a>

@@ -40,7 +40,6 @@ import {trackView, trackClick, trackInput} from "../components/common/tracking";
 const styles = theme => ({
     "@global": {
         html: {
-            background: theme.palette.common.white,
             WebkitFontSmoothing: "antialiased", // Antialiasing.
             MozOsxFontSmoothing: "grayscale", // Antialiasing.
             height: "100%",

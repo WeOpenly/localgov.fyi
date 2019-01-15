@@ -28,7 +28,7 @@ const windowGlobal = typeof window !== 'undefined'
 
 const styles = theme => ({
 account_dialog_dialog:{
-    height: '460px'
+    height: '480px'
 },
 account_form_loginEmbed:{
 

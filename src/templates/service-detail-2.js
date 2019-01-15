@@ -21,7 +21,7 @@ import KeyboardBackspace from '@material-ui/icons/KeyboardBackspace';
 import DetailTemplate from '../components/detailTemplate';
 import ServiceHeader from '../components/ServiceHeader';
 import AddressGoogleMap from '../components/AddressGoogleMap';
-
+import Footer from '../components/Footer';
 import ServiceCard from '../components/ServiceCard';
 import withRoot from '../withRoot';
 import {isLoggedIn} from '../components/Account/Auth';
@@ -31,6 +31,32 @@ import { toggleNotifyDialog } from '../components/Search/actions.js';
 const windowGlobal = typeof window !== 'undefined' && window;
 
 const styles = theme => ({
+    "@global": {
+        html: {
+            background: theme.palette.common.white,
+            WebkitFontSmoothing: "antialiased", // Antialiasing.
+            MozOsxFontSmoothing: "grayscale", // Antialiasing.
+            height: "100%",
+            overflow: 'hidden'
+        },
+        body: {
+            margin: 0,
+            padding: 0,
+            width: '100%',
+            height: '100%',
+            overflowWrap: "break-word",
+            overflowY: "scroll",
+            overflowX: "hidden"
+        },
+            "body>div": {
+        display: "block",
+        height: "100%"
+        },
+    "body>div>div": {
+        display: "block",
+        height: "100%"
+        },
+    },
     ser_detail_container: {
         marginTop: theme.spacing.unit * 2
     },
@@ -132,6 +158,9 @@ const styles = theme => ({
     },
 ser_detail_loading_spinner:{
 
+},
+service_detail_footer : {
+    marginTop: theme.spacing.unit * 4
 }
 });
 
@@ -174,7 +203,7 @@ class ServiceDetail extends React.Component {
         }
         // if (name.includes('Pay Property') || name.includes('Pay Utility')){
         if (windowGlobal && !this.state.notifyInterval){
-            const notifyInterval = windowGlobal.setTimeout(() => dispatch(toggleNotifyDialog(true)), 5000);
+            const notifyInterval = windowGlobal.setTimeout(() => dispatch(toggleNotifyDialog(true)), 6000);
             this.setState({ notifyInterval});
         }
         // }
@@ -541,7 +570,7 @@ class ServiceDetail extends React.Component {
                         </Paper>}
                     </Grid>
                     <Grid item xs={12} sm={12} md={4}>
-                        {isMobileOnly && <div className={classes.ser_detail_otherServicesDividerWrapper}><Divider/></div>}
+                
                         <div className={classes.other_ser_headerWrapper}>
                             <Typography variant="subheading">Additional services</Typography>
                         </div>
@@ -555,6 +584,9 @@ class ServiceDetail extends React.Component {
                         </div>
                     </Grid>
                 </Grid>
+                   <div className={classes.service_detail_footer}>
+                        <Footer page={this.props.location.pathname} />
+                    </div>
             </DetailTemplate>
         )
     }

@@ -16,7 +16,6 @@ const styles = theme => ({
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'flex-start',
-    background: theme.palette.common.white,
   },
   default_template_main: {
     width: '100%',
@@ -60,9 +59,6 @@ class DetailTemplate extends React.Component {
             </Grid>
             <Grid item xs={1} />
           </Grid>
-        </div>
-        <div className={isMobileOnly ? classes.default_template_footerMobile : classes.default_template_footer}>
-          <Footer page={this.props.location.pathname} />
         </div>
       </div>
     );

@@ -37,6 +37,7 @@ const styles = theme => ({
   service_header_main: {
     // marginRight: theme.spacing.unit,
     boxShadow: '0 0 0 0',
+    background: '#fff',
     paddingTop: theme.spacing.unit * 2,
     paddingLeft: theme.spacing.unit * 2,
     paddingRight: theme.spacing.unit * 2,
@@ -46,6 +47,7 @@ const styles = theme => ({
   },
 service_header_mainMobile : {
     boxShadow: '0 0 0 0',
+        background: '#fff',
     paddingTop: theme.spacing.unit * 2,
     paddingLeft: theme.spacing.unit * 2,
     paddingRight: theme.spacing.unit * 2,
@@ -91,8 +93,6 @@ service_header_buttonContent : {
   },
 service_header_contactButton : {
     marginTop : theme.spacing.unit * 2,
-    width: theme.spacing.unit *2,
-    height: theme.spacing.unit *2
   },
 service_header_notifyButton : {
   marginLeft: theme.spacing.unit,

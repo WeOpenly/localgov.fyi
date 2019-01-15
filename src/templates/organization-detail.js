@@ -11,27 +11,56 @@ import withRoot from '../withRoot';
 import OrgHeader from '../components/OrgHeader';
 import ChipFilter from '../components/ChipFilter';
 import DetailTemplate from '../components/detailTemplate';
+import Footer from '../components/Footer';
 // import MemberListItem from '../components/MemberListItem';
 import ServiceCard from '../components/ServiceCard';
 import { trackView, trackClick } from "../components/common/tracking";
 
 const styles = theme => ({
+  "@global": {
+        html: {
+            WebkitFontSmoothing: "antialiased", // Antialiasing.
+            MozOsxFontSmoothing: "grayscale", // Antialiasing.
+            height: "100%",
+            overflow: 'hidden'
+        },
+        body: {
+            margin: 0,
+            padding: 0,
+            width: '100%',
+            height: '100%',
+            overflowWrap: "break-word",
+            overflowY: "scroll",
+            overflowX: "hidden"
+        },
+            "body>div": {
+        display: "block",
+        height: "100%"
+        },
+    "body>div>div": {
+        display: "block",
+        height: "100%"
+        },
+    },
   orgTitle: {
     marginBottom: theme.spacing.unit,
   },
   orgSubheading: {
     marginTop: -theme.spacing.unit,
   },
-  serviceListComponent: {
+  org_detail_serviceListComponent : {
     marginBottom: theme.spacing.unit * 2,
   },
-  servicesContainer: {
+  org_detail_servicesContainer: {
     marginTop: theme.spacing.unit * 3,
   },
   filters: {
     display: 'flex',
     justifyContent: 'flex-end',
   },
+     org_detail_footer:{
+       marginTop: theme.spacing.unit * 4
+    }
 });
 
 const JsonLd = ({ data }) =>
@@ -178,7 +207,7 @@ const {id, name} = this.props.pageContext.data;
         }
          
         serviceListComp = (
-          <Grid container spacing={8} className={classes.serviceListComponent} key={detailsAtLevel.org ? detailsAtLevel.org.id : index}>
+          <Grid container spacing={8} className={classes.org_detail_serviceListComponent} key={detailsAtLevel.org ? detailsAtLevel.org.id : index}>
             {index > 0 && <Grid item xs={12}>
               {orgTitle}
             </Grid>}
@@ -231,7 +260,7 @@ const {id, name} = this.props.pageContext.data;
             {contactDetailComponent}
           </Grid>
         </Grid>
-        <Grid container spacing={16} item xs={12} md={12} className={classes.servicesContainer}>
+        <Grid container spacing={16} item xs={12} md={12} className={classes.org_detail_servicesContainer}>
           <Grid item xs={12} md={6}>
             <Typography variant="subheading" component="h4">
               What would you like to get done?
@@ -248,6 +277,9 @@ const {id, name} = this.props.pageContext.data;
           </Grid>
         </Grid>
       </Grid>
+        <div className={classes.org_detail_footer}>
+            <Footer page={this.props.location.pathname} />
+        </div>
         </DetailTemplate>
     );
   }

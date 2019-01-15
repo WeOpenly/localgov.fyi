@@ -44,7 +44,6 @@ import {isLoggedIn} from '../components/Account/Auth';
 const styles = theme => ({
   "@global": {
     html: {
-      background: theme.palette.common.white,
       WebkitFontSmoothing: "antialiased", // Antialiasing.
       MozOsxFontSmoothing: "grayscale", // Antialiasing.
       height: "100%"

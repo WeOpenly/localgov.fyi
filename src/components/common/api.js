@@ -1,5 +1,5 @@
 import fetch from 'isomorphic-fetch'
-
+const windowGlobal = typeof window !== 'undefined' && window
 
 export function checkStatus(response) {
 
@@ -11,6 +11,7 @@ export function checkStatus(response) {
         throw error
     }
 }
+
 
 export function parseJSON(response) {
     if (response.status === 200 || response.status === 201) 
@@ -67,8 +68,9 @@ export function YusufApi(lang = undefined, endPoint, headers = {}) {
         }
     }
 
+
     return fetch(`${YUSUF_BACKEND}/${endPoint}`, {signal},
-    headers).then(checkStatus)
+                headers).then(checkStatus)
             .then(parseJSON)
             .then((data) => data)
 }
@@ -160,10 +162,8 @@ export function DspApi(endPoint, method = "GET", headers = null, data = null) {
         }
     }
 
-    console.log(callParams);
 
-    return fetch(`${DSP_BACKEND}${endPoint}`, callParams)
-        .then(checkStatus)
+    return fetch(`${DSP_BACKEND}${endPoint}`, callParams).then(checkStatus)
         .then(parseJSON)
         .then(resp => resp);
 }

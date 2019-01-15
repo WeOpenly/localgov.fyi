@@ -243,9 +243,6 @@ export const getLocation = async(dispatch) => {
   let t1 = null;
 
   try {
-    if(windowGlobal && windowGlobal.performance){
-      t0 = Math.round(performance.now());
-    }
     const data = await YusufApi(null, `auto_locate`);
     const results = await data;
 
@@ -255,10 +252,7 @@ export const getLocation = async(dispatch) => {
       dispatch(trackInput('auto_locate', details.org.name));
       dispatch(locationSuccess(results));
     }
-    if (windowGlobal && windowGlobal.performance && windowGlobal.ga) {
-      t1 = Math.round(performance.now());
-      windowGlobal.ga('send', 'timing', 'Auto Locate Api', 'response', t1 - t0);
-    }
+
   } catch (error) {
     dispatch(locationFailure(error));
 const placeHolder = {

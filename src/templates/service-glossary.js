@@ -1,4 +1,4 @@
-import React, {Fragment} from 'react';
+import React, {Component, Fragment} from 'react';
 import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
 import Headroom from 'react-headroom';
@@ -213,14 +213,15 @@ const RawHTML = ({
     __html: children.replace(/\n/g, " ")
 }}/>);
 
-class ServiceGlossary extends React.Component {
+class ServiceGlossary extends Component {
     constructor(props) {
         super(props);
         this.state = {
             openDescDialog: false,
             orgs: this.props.pageContext.data.orgs,
             stateName: null,
-            searchText: null
+            searchText: null,
+            isMobile: false,
         }
 
         this.handleOrgClick = this
@@ -238,27 +239,29 @@ class ServiceGlossary extends React.Component {
         this.clearStateName = this.clearStateName.bind(this);
     }
 
+
+
     static getDerivedStateFromProps(nextProps, prevState) {
         const values = queryString.parse(nextProps.location.search);
 
         if (!values) {
             return null
         }
-        
+ 
         if ((values.searchText !== prevState.searchText) && (values.stateName !== prevState.stateName)){
    
-            return {stateName: values.stateName, searchText: values.searchText}
+            return {stateName: values.stateName, searchText: values.searchText, isMobile: isMobileOnly}
         }
         
         
         if (values.searchText !== prevState.searchText) {
    
-            return {searchText: values.searchText, stateName: prevState.stateName}
+            return {searchText: values.searchText, stateName: prevState.stateName, isMobile: isMobileOnly}
         }
 
         if (values.stateName !== prevState.stateName) {
  
-            return {stateName: values.stateName, searchText: prevState.searchText}
+            return {stateName: values.stateName, searchText: prevState.searchText, isMobile: isMobileOnly}
         }
 
         return null;
@@ -330,6 +333,7 @@ class ServiceGlossary extends React.Component {
     render() {
         const {classes} = this.props;
         const {service_name, service_name_slug, service_glossary_description} = this.props.pageContext.data;
+        console.log('ismob', this.state.isMobile);
 
         let allOrgs = this.state.orgs;
 
@@ -464,7 +468,7 @@ class ServiceGlossary extends React.Component {
                 {descDialog}
                 <Grid
                     container
-                    className={isMobile
+                    className={this.state.isMobile
                     ? classes.ser_gloss_servicename_mob
                     : classes.ser_gloss_servicename}>
                     <Grid item sm={1}/>
@@ -472,7 +476,7 @@ class ServiceGlossary extends React.Component {
                         item
                         sm={10}
                         align="center"
-                        className={isMobile
+                        className={this.state.isMobile
                         ? classes.ser_gloss_nav_items_mob
                         : classes.ser_gloss_nav_items}>
 
@@ -493,7 +497,7 @@ class ServiceGlossary extends React.Component {
                     <Grid
                         item
                         sm={5}
-                        className={isMobile
+                        className={this.state.isMobile
                         ? classes.ser_gloss_servicename_text_mob
                         : classes.ser_gloss_servicename_text}
                         align={
@@ -513,7 +517,7 @@ class ServiceGlossary extends React.Component {
                              {service_glossary_description
                             ? (
                                 <Typography
-                                    style={isMobileOnly
+                                    style={this.state.isMobile
                                     ? {
                                         color: "#fff",
                                         marginTop: '24px',
@@ -528,7 +532,7 @@ class ServiceGlossary extends React.Component {
                                     }}
                                     variant="body2">
                                     <Truncate
-                                        lines={isMobileOnly
+                                        lines={this.state.isMobile
                                         ? 2
                                         : 6}
                                         ellipsis={(
@@ -553,7 +557,7 @@ class ServiceGlossary extends React.Component {
                     </Grid>
                     <Grid item sm={2}/>
                 </Grid>
-                <Grid container className={isMobileOnly ? classes.gloss_searchContainer_mob : classes.gloss_searchContainer}>
+                <Grid container className={this.state.isMobile ? classes.gloss_searchContainer_mob : classes.gloss_searchContainer}>
                     <Grid item sm={1}/>
                     <Grid item sm={10}>
                         <Paper className={classes.filterContainer}  elevation={3}>
@@ -582,7 +586,7 @@ class ServiceGlossary extends React.Component {
                 <LoginRegisterDialog location={this.props.location}/>
                 <Grid container className={classes.gloss_countContainer}>
                     <Grid item sm={1}/>
-                    <Grid item sm={8} align={isMobileOnly ? "center" :"left"}>
+                    <Grid item sm={8} align={this.state.isMobile ? "center" :"left"}>
                         <Typography
                             style={{
                             color: "#0a0a0a",
@@ -597,24 +601,24 @@ class ServiceGlossary extends React.Component {
                 </Grid>
                 <Grid
                     container
-                    className={isMobile
+                    className={this.state.isMobile
                     ? classes.locGridContainer_mob
                     : classes.locGridContainer}>
                     <Grid item sm={1} />
 
                     <Grid
                         item
-                        sm={8}
+                        sm={10}
                         align="left"
-                        className={isMobile
+                        className={this.state.isMobile
                         ? classes.ser_gloass_locGrid_mob
                         : classes.ser_gloass_locGrid}>
                         <SpringGrid
                             component="div"
-                            columns={isMobile
+                            columns={this.state.isMobile
                             ? 1
-                            : 4}
-                            columnWidth={280}
+                            : 3}
+                            columnWidth={320}
                             gutterWidth={5}
                             gutterHeight={5}
                             itemHeight={104}
@@ -625,7 +629,7 @@ class ServiceGlossary extends React.Component {
                             {locs}
                         </SpringGrid>
                     </Grid>
-                    <Grid item sm={3}/>
+               
                 </Grid>
                 <div className={classes.gloss_footer}>
                     <Footer page={this.props.location.pathname} />

@@ -124,7 +124,7 @@ class LoginIn extends Component {
       <Fragment>
         <Grid container className={classes.login_accountContainer} spacing={0}>
           <Grid item xs={8}>
-            <Grid container className={classes.login_accountLeft_mob}>
+            <Grid container className={classes.login_accountLeft}>
                 <div className={classes.login_accountText}>
                                 {/* <div className={classes.login_accountTextHeader}>
                                     <Typography variant="display1" className={classes.login_accountTextHeadline}>

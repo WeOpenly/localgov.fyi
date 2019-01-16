@@ -12,6 +12,8 @@ import Typography from '@material-ui/core/Typography';
 import RegisterForm from '../components/Account/RegisterForm';
 import {toggleAccountForm, handleLoginRequest, handleRegisterRequest, setEmailVertificationRequired} from '../components/Account/actions';
 import withRoot from '../withRoot';
+
+const windowGlobal = typeof window !== 'undefined' && window
 // import { register } from '../../actions/authentication';
 
 const styles = theme => ({
@@ -91,7 +93,14 @@ color : '#f1f1f1',
 class Login extends Component {
     constructor(props) {
         super(props);
+        this.state ={
+            isMobileOnly: false
+        }
+    }
 
+    componentDidMount(){
+        if(windowGlobal)
+            this.state.isMobileOnly = isMobileOnly;
     }
 
     handleLoginRequest = (values) => {
@@ -194,7 +203,7 @@ class Login extends Component {
                 </Grid>
             </Fragment>);
         
-        return (isMobileOnly ? mobileLogin : noMobileLogin)
+        return (this.state.isMobileOnly ? mobileLogin : noMobileLogin)
     }
 }
 

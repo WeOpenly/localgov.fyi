@@ -69,13 +69,14 @@ const renderCheckbox = ({input, label}) => (<Checkbox
     onCheck={input.onChange}/>)
 
 const MaterialUiForm = props => {
-    const {handleSubmit,  pristine, reset, submitting, error} = props
+const {handleSubmit, titleComponent, pristine, reset, submitting, error} = props
 
     return (
             <Fragment>
-        <Typography variant="headline" color="primary">
-            Create your localgov.fyi account
-        </Typography>
+      {titleComponent ? titleComponent : (   <Typography variant="headline" color="primary">
+            Login to your localgov.fyi account
+        </Typography>)}
+     
         <form onSubmit={handleSubmit}>
             <div>
                 <Field
@@ -92,11 +93,12 @@ const MaterialUiForm = props => {
                     label="Password"/>
             </div>
             <div>
-                <Button style={{marginRight: '8px'}} variant="contained" color="primary" type="submit" disabled={pristine || submitting}>
+                <Button style={{marginRight: '8px',  marginTop: '8px', }} variant="contained" color="primary" type="submit" disabled={pristine || submitting}>
                     Sign up
                 </Button>
                 <Button
                     type="button"
+                    style={{ marginTop: '8px'}}
                     variant="outlined"
                     disabled={pristine || submitting}
                     onClick={reset}>
@@ -108,9 +110,9 @@ const MaterialUiForm = props => {
                         {error ? error : ''}
                   </Typography>
             </div>
-              <div  style={{marginRight: '8px', marginTop: '16px',  textAlign: 'left'}} >
+              <div  style={{marginRight: '8px', marginTop: '24px',  textAlign: 'left'}} >
                 <Typography variant="caption" color="default" >
-                By creating an account, you agree to our <Link to = "/terms/" >
+                       By creating an account you agree to our <Link to="/terms/">
                   <span>Terms of Service</span>
                 </Link> and   <Link to="/privacy/" >
                  <span>Privacy Policy </span>

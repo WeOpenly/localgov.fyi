@@ -69,12 +69,13 @@ const renderCheckbox = ({input, label}) => (<Checkbox
 
 
 const MaterialUiForm = props => {
-    const {handleSubmit, pristine, reset, submitting, error} = props
+    const {handleSubmit, titleComponent, pristine, reset, submitting, error} = props
     return (
         <Fragment>
-        <Typography variant="headline" color="primary">
+        {titleComponent ? titleComponent : (   <Typography variant="headline" color="primary">
             Login to your localgov.fyi account
-        </Typography>
+        </Typography>)}
+     
         <form onSubmit={handleSubmit}>
             <div>
                 <Field name="email" type="email" component={renderTextField} label="Email Address"/>
@@ -83,10 +84,10 @@ const MaterialUiForm = props => {
                 <Field name="password" type="password" component={renderTextField} label="Password"/>
             </div>
             <div>
-                <Button type="submit" style={{marginRight: '8px'}} variant="contained" color="primary" disabled={pristine || submitting}>
+                <Button type="submit" style={{marginRight: '8px',  marginTop: '8px', }} variant="contained" color="primary" disabled={pristine || submitting}>
                     Login
                 </Button>
-                <Button type="button"  variant="outlined" disabled={pristine || submitting} onClick={reset}>
+                <Button type="button" style={{ marginTop: '8px'}} variant="outlined" disabled={pristine || submitting} onClick={reset}>
                     Clear Values
                 </Button>
             </div>
@@ -95,7 +96,7 @@ const MaterialUiForm = props => {
                         {error ? error : ''}
                   </Typography>
             </div>
-              <div  style={{marginRight: '8px', marginTop: '16px',  textAlign: 'left'}} >
+              <div  style={{marginRight: '8px', marginTop: '24px',  textAlign: 'left'}} >
                 <Typography variant="caption" color="default" >
                        By logging in, you agree to our <Link to="/terms/">
                   <span>Terms of Service</span>

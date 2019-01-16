@@ -122,14 +122,14 @@ const theme = createMuiTheme({
             fontWeight: 700,
             fontFamily: '"Nunito Sans", sans-serif, "Helvetica", "Arial", sans-serif',
             lineHeight: "1.35417em",
-            color: "rgba(30, 30, 50,0.54)"
+            color: "rgba(30, 30, 50,0.84)"
         },
         title: {
             fontSize: "1.3125rem",
             fontWeight: 300,
             fontFamily: '"Nunito Sans", sans-serif, "Helvetica", "Arial", sans-serif',
             lineHeight: "1.16667em",
-            color: "rgba(30, 30, 50,0.54)"
+            color: "rgba(30, 30, 50,0.84)"
         },
         subheading: {
             fontSize: "1.125rem",

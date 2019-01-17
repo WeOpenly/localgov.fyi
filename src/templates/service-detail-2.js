@@ -202,11 +202,11 @@ class ServiceDetail extends React.Component {
             this.setState({loggedin: true})
         }
         // if (name.includes('Pay Property') || name.includes('Pay Utility')){
-        if (windowGlobal && !this.state.notifyInterval){
-            const notifyInterval = windowGlobal.setTimeout(() => dispatch(toggleNotifyDialog(true)), 6000);
-            this.setState({ notifyInterval});
-        }
+        // if (windowGlobal && !this.state.notifyInterval){
+        //     const notifyInterval = windowGlobal.setTimeout(() => dispatch(toggleNotifyDialog(true)), 6000);
+        //     this.setState({ notifyInterval});
         // }
+        // // }
         
     }
 

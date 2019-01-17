@@ -289,6 +289,7 @@ class ServiceDeliveryLink extends Component {
           onClick={() => this.handleClick(link.link_name, link.url, idx)}
           variant="contained"
           color="primary"
+          size="large"
           className={classes.ser_del_link_button}>
           {this.state.redirectClicked ? (<Spinner name="ball-beat" color="white" />)  : `${link.link_name}` }
         </Button>

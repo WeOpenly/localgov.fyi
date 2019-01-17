@@ -19,7 +19,9 @@ import CardContent from '@material-ui/core/CardContent';
 import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
 import Button from '@material-ui/core/Button';
+import NotificationImportant from '@material-ui/icons/NotificationImportant'
 import IconButton from '@material-ui/core/IconButton';
+import Share from '@material-ui/icons/Share';
 import SvgIcon from '@material-ui/core/SvgIcon';
 import MoreVert from '@material-ui/icons/MoreVert';
 import withRoot from '../withRoot';
@@ -37,38 +39,35 @@ const styles = theme => ({
   service_header_main: {
     // marginRight: theme.spacing.unit,
     boxShadow: '0 0 0 0',
-    background: '#fff',
     paddingTop: theme.spacing.unit * 2,
     paddingLeft: theme.spacing.unit * 2,
     paddingRight: theme.spacing.unit * 2,
     paddingBottom: theme.spacing.unit * 2,
     margin: '1px',
-    border: `1px solid ${theme.palette.primary['100']}`,
   },
 service_header_mainMobile : {
     boxShadow: '0 0 0 0',
-        background: '#fff',
     paddingTop: theme.spacing.unit * 2,
     paddingLeft: theme.spacing.unit * 2,
     paddingRight: theme.spacing.unit * 2,
     paddingBottom: theme.spacing.unit * 2,
-    border: `1px solid ${theme.palette.primary['100']}`,
   },
 service_header_cardTop : {
     display: 'flex',
     justifyContent: 'space-between',
-    marginRight: -theme.spacing.unit,
-    marginBottom: theme.spacing.unit * -2,
+    paddingTop: theme.spacing.unit,
+    paddingBottom: theme.spacing.unit,
+    flexWrap: 'wrap'
   },
 service_header_logoName : {
     display: 'flex',
   },
 service_header_title : {
-    // display: 'flex',
+    flexGrow: 1,
   },
-service_header_in : {
-    color: 'gray',
+  service_header_in : {
     cursor: 'pointer',
+    color: theme.palette.primary['400'],
   },
 
 service_header_menuButton : {
@@ -89,7 +88,7 @@ service_header_cardActions : {
   },
 service_header_buttonContent : {
     display: 'flex',
-    alignItems: 'center',
+    alignItems: 'space-between',
   },
 service_header_contactButton : {
     marginTop : theme.spacing.unit * 2,
@@ -97,21 +96,22 @@ service_header_contactButton : {
 service_header_notifyButton : {
   marginLeft: theme.spacing.unit,
 },
+service_header_serDelLink:{
+  display: 'flex',
+  alignSelf: 'center',
+},
 service_header_svgIcon : {
     width: 18,
     color: theme.palette.primary['400']
   },
 service_header_contactIcons : {
-    marginLeft: theme.spacing.unit
+    marginTop: theme.spacing.unit
   },
 service_header_serviceNotify : {
-    display: 'flex',
-    justifyContent: 'space-between'
   },
 service_header_serviceShare : {
     marginBottom: theme.spacing.unit*2,
     marginTop: theme.spacing.unit,
-    marginRight: theme.spacing.unit,
   },
 service_header_deliveryLinkWrapper : {
     display: 'flex',
@@ -123,13 +123,14 @@ service_header_deliveryLinkWrapper : {
     // borderLeft: '1px solid #e4e4e4',
   },
   svgIcon:{
- width: 18,
+    fontSize: theme.spacing.unit *2,
+    marginRight: 8, 
     color: theme.palette.primary['400']
   },
 service_header_serviceActions : {
     display: 'flex',
-    flexDirection: 'column',
-    alignItems : 'flex-end',
+    justifyContent: 'center',
+    padding: theme.spacing.unit*2
   },
 service_header_deliveryLinkWrapperMobile : {
     display: 'flex',
@@ -257,47 +258,54 @@ class ServiceHeader extends Component {
 
       const contactType = cd.contact_type.toLowerCase();
       if (contactType.toLowerCase() === 'phone') {
-        value = (<a href={`tel:${value}`} target="_blank">
-          <Typography variant="caption" className={classes.service_header_buttonContent}>
-            {icons[contactType]}
+        value = (
+          <Typography variant="caption"style={{display: 'flex'}} >
+            <a href={`tel:${value}`}  className={classes.service_header_buttonContent}  onClick={() => this.trackClickSocialIcon(contactType, cd.contact_value)} target="_blank">
+            {icons[contactType]} {value}
+               </a>
           </Typography>
-        </a>);
+     );
       }
       else if (contactType.toLowerCase() === 'address') {
-        value = (<a href={`http://maps.google.com/?q=${value}`} target="_blank">
-          <Typography variant="caption" className={classes.service_header_buttonContent}>
-            {icons[contactType]}
+        value = (
+          <Typography variant="caption">
+            <a href={`http://maps.google.com/?q=${value}`}  className={classes.service_header_buttonContent} onClick={() => this.trackClickSocialIcon(contactType, cd.contact_value)} target="_blank">
+            {icons[contactType]} {value}
+            </a>
           </Typography>
-        </a>);
+        );
       }
       else if (contactType.toLowerCase() === 'email') {
-        value = (<a href={`mailto:${value}`} target="_blank">
-          <Typography variant="caption" className={classes.service_header_buttonContent}>
-            {icons[contactType]}
+        value = (
+          <Typography variant="caption" style={{display: 'flex'}}>
+            <a href={`mailto:${value}`}  className={classes.service_header_buttonContent} onClick={() => this.trackClickSocialIcon(contactType, cd.contact_value)} target="_blank">
+            {icons[contactType]} {value}
+             </a>
           </Typography>
-        </a>);
+       );
       }
       else {
-        value = (<a href={`${value}`} target="_blank">
-          <Typography variant="caption"  className={classes.service_header_buttonContent}>
-            {icons[contactType]}
-          </Typography>
-        </a>);
+        value = (<Typography variant="caption" style={{display: 'flex'}}>
+            <a href={`${value}`}  className={classes.service_header_buttonContent} onClick={() => this.trackClickSocialIcon(contactType, cd.contact_value)} target="_blank">
+            {icons[contactType]} {value}
+          </a>
+          </Typography>)
+     
       }
 
-      return (
-        <IconButton key={cd.contact_value} onClick={() => this.trackClickSocialIcon(contactType, cd.contact_value)} className={classes.service_header_contactButton}>
-          {value}
-        </IconButton>
-      );
+      return <div className={classes.service_header_contactIcons}>{value} </div>;
     });
 
 
-    const actionButton = isLoggedIn() ? (<SaveButton service={id}/>) : (<Button variant="outlined" color="primary" onClick={this.handleNotifyClick} className={classes.service_header_notifyButton}>
-                  Notify Me
-                </Button>)
+    const actionButton = isLoggedIn() ? (<SaveButton service={id}/>) : (<IconButton color="secondary" className={classes.button} color="primary" onClick={this.handleNotifyClick}  aria-label="Ge Notified">
+       <NotificationImportant />
+      </IconButton>)
 
-    const serviceFlowButton = service_delivery_enabled ? (<Button variant="outlined" color="primary" onClick={this.toggleServiceFlow} className={classes.service_header_notifyButton}>Get</Button>) : null;
+      const shareButton = (<IconButton color="secondary" className={classes.service_header_menuButton} color="primary" onClick={this.handleShareClick}  aria-label="share">
+      <Share />
+      </IconButton>)
+
+    const serviceFlowButton = service_delivery_enabled ? (<Button size="small" variant="outlined" color="primary" onClick={this.handleShareClick} className={classes.service_header_notifyButton}>Get</Button>) : null;
     
 
     return (
@@ -305,13 +313,16 @@ class ServiceHeader extends Component {
         <ServiceNotifyDialog ser_name={name} org_id={this.props.orgID}/>
         <ServiceFlowDialog service_name={name} service_id={this.props.id} />
 
-        <Grid item xs={12} md={8}>
+        <Grid item xs={12} md={10}>
               <div className={classes.service_header_cardTop}>
                 <div className={classes.service_header_title}>
                   <Typography variant="display1">{name}</Typography>
                   <Typography variant="subheading" onClick={this.handleOrgClick} 
-                  className={classes.service_header_in}>{offeredIn}</Typography>
+                 >Offered by  <span  className={classes.service_header_in}> {offeredIn} </span></Typography>
                 </div>
+                    <div className={classes.service_header_serDelLink}>
+                <ServiceDeliveryLink service_name={name} org_name={offeredIn} serDelLinks={serDelLinks} />
+              </div>
               </div>
 
               <div className={classes.service_header_cardActions}>
@@ -319,17 +330,12 @@ class ServiceHeader extends Component {
               </div>
  
         </Grid>
-        <Grid item xs={12} md={4}>
+        <Grid item xs={12} md={2}>
               <div className={classes.service_header_serviceActions}>
                 <div className={classes.service_header_serviceShare}>
-  <Button variant="outlined" color="primary" onClick={this.handleShareClick} className={classes.service_header_menuButton}>
-                  Share
-                                </Button>
+                  {shareButton}
                 </div>
               <div className={classes.service_header_serviceNotify}>
-              <div className={classes.service_header_serDelLink}>
-                <ServiceDeliveryLink service_name={name} org_name={offeredIn} serDelLinks={serDelLinks} />
-              </div>
               <div className={classes.service_header_serDelLink}>
                   {actionButton}
               </div>

@@ -35,12 +35,14 @@ const styles = theme => ({
         alignItems: "center",
         justifyContent: "space-between",
         margin: theme.spacing.unit,
-        boxShadow: `0 0 2px 4px ${theme.palette.primary["A200"]}`,
+         border : `1px solid ${theme.palette.primary['100']}`,
+    boxShadow : `0 1px 1px ${theme.palette.primary['50']}`,
+    '&:hover' : {
+        boxShadow: `0 1px 1px ${theme.palette.primary['100']}`,
+          background: fade(theme.palette.common.white, 0.25)
+    },
         background: theme.palette.primary["A200"],
         borderRadius: 3,
-        "&:hover": {
-            background: fade(theme.palette.common.white, 0.25)
-        },
         "& $input": {
             transition: theme
                 .transitions
@@ -57,7 +59,7 @@ const styles = theme => ({
     header_suggest_search: {
         width: theme.spacing.unit * 8,
         color: theme.palette.primary["200"],
-        height: theme.spacing.unit * 6,
+        height: '36px',
         display: "flex",
         alignItems: "center",
         justifyContent: "center"
@@ -100,9 +102,13 @@ const styles = theme => ({
         position: "absolute",
         padding: theme.spacing.unit * 1,
         marginTop: 0,
-        boxShadow: `0 0 2px 4px ${theme.palette.primary["A200"]}`,
+           border : `1px solid ${theme.palette.primary['100']}`,
+    boxShadow : `0 1px 1px ${theme.palette.primary['50']}`,
+    '&:hover' : {
+        boxShadow: `0 1px 1px ${theme.palette.primary['100']}`
+    },
         background: theme.palette.common.white,
-        borderRadius: 4,
+        borderRadius: 2,
         paddingBottom: theme.spacing.unit * 3,
         zIndex: 2000,
         left: 0,

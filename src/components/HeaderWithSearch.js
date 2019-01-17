@@ -39,7 +39,7 @@ h_w_s_flex : {
     justifyContent: 'space-between'
   },
 h_w_s_title : {
-    paddingTop: theme.spacing.unit * 2,
+    paddingTop: theme.spacing.unit + 2,
     paddingLeft: theme.spacing.unit * 2
   },
 h_w_s_menuButton : {
@@ -81,7 +81,7 @@ class HeaderWithSearch extends Component {
           }}
             onClick={() => navigate('/')}>
             <Typography
-              variant="display1"
+              variant="display2"
               color="inherit"
               component="h1"
               className={classes.h_w_s_title}>

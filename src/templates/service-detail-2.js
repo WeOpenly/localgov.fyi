@@ -17,7 +17,7 @@ import Divider from '@material-ui/core/Divider';
 import IconButton from '@material-ui/core/IconButton';
 
 import KeyboardBackspace from '@material-ui/icons/KeyboardBackspace';
-
+import ServiceDetail from '../components/ServiceDetail';
 import DetailTemplate from '../components/detailTemplate';
 import ServiceHeader from '../components/ServiceHeader';
 import AddressGoogleMap from '../components/AddressGoogleMap';
@@ -179,7 +179,7 @@ const RawHTML = ({
     __html: children.replace(/\n/g, " ")
 }}/>);
 
-class ServiceDetail extends React.Component {
+class ServiceDetailTemplate extends React.Component {
     static propTypes = {
         data: PropTypes.shape({postsJson: PropTypes.object.isRequired})
     }
@@ -316,7 +316,7 @@ class ServiceDetail extends React.Component {
                 );
 
                 return <ListItem disableGutters>
-                    <ListItemText primary={question} secondary={text}/>
+                    <ListItemText primary={question} secondary={<Typography color="textPrimary">{text}</Typography> }/>
                 </ListItem>;
             });
         }
@@ -443,133 +443,10 @@ class ServiceDetail extends React.Component {
                             serDelLinks={service_del_links}
                             logoSizes={serLogoSvg}/>
                     </Grid>
-                    <Grid item xs={12} md={8} className={classes.ser_detail_details}>
-                        {someDetails && <Paper className={classes.ser_detail_cardWrapper}>
-                            <Grid item xs={12}>
-                                <Paper className={classes.ser_detail_cards}>
-                                    <Grid container spacing={8}>
-                                        <Grid item xs={10} sm={11}>
-                                            <div className={classes.ser_detail_cardContent}>
-                                                <Typography variant="subheading" gutterBottom>
-                                                    About this service
-                                                </Typography>
-                                                <Typography variant="body1" gutterBottom>
-                                                    <RawHTML>{description}</RawHTML>
-                                                </Typography>
-                                            </div>
-                                        </Grid>
-                                    </Grid>
-                                </Paper>
-                            </Grid>
-                            {price && <Grid item xs={12}>
-                                <div className={classes.ser_detail_dividerWrapper}><Divider/></div>
-                                <Paper className={classes.ser_detail_cards}>
-                                    <Grid container spacing={8}>
-                                        {/*<Grid item xs={2} sm={1}>
-                                        <div className={classes.iconWrapper}>
-                                            <AttachMoney className={classes.icon} />
-                                        </div>
-                                    </Grid>*/}
-                                        <Grid item xs={10} sm={11}>
-                                            <div className={classes.ser_detail_cardContent}>
-                                                <Typography variant="body2" gutterBottom>
-                                                    {price}
-                                                </Typography>
-                                            </div>
-                                        </Grid>
-                                    </Grid>
-                                </Paper>
-                            </Grid>}
-                            {timingList && <Grid item xs={12}>
-                                <div className={classes.ser_detail_dividerWrapper}><Divider/></div>
-                                <Paper className={classes.ser_detail_cards}>
-                                    <Grid container spacing={8}>
-                                        {/*<Grid item xs={2} sm={1}>
-                                        <div className={classes.iconWrapper}>
-                                            <AccessTime className={classes.icon} />
-                                        </div>
-                                    </Grid>*/}
-                                        <Grid item xs={10} sm={11}>
-                                            <div
-                                                className={classes.ser_detail_cardContent}
-                                                style={{
-                                                marginTop: -12
-                                            }}>{timingList}</div>
-                                        </Grid>
-                                    </Grid>
-                                </Paper>
-                            </Grid>}
-                            {formList && <Grid item xs={12}>
-                                <div className={classes.ser_detail_dividerWrapper}><Divider/></div>
-                                <Paper className={classes.ser_detail_cards}>
-                                    <Grid container spacing={8}>
-                                        {/*<Grid item xs={2} sm={1}>
-                                        <div className={classes.iconWrapper}>
-                                            <Assignment className={classes.icon} />
-                                        </div>
-                                    </Grid>*/}
-                                        <Grid item xs={10} sm={11}>
-                                            <div
-                                                className={classes.ser_detail_cardContent}
-                                                style={{
-                                                marginTop: -12
-                                            }}>{formList}</div>
-                                        </Grid>
-                                    </Grid>
-                                </Paper>
-                            </Grid>}
-                            {stepList && <Grid item xs={12}>
-                                <div className={classes.ser_detail_dividerWrapper}><Divider/></div>
-                                <Paper className={classes.ser_detail_cards}>
-                                    <Grid container spacing={8}>
-                                        {/*<Grid item xs={2} sm={1}>
-                                        <div className={classes.iconWrapper}>
-                                            <PlaylistAddCheck className={classes.icon} />
-                                        </div>
-                                    </Grid>*/}
-                                        <Grid item xs={10} sm={11}>
-                                            <div
-                                                className={classes.ser_detail_cardContent}
-                                                style={{
-                                                marginTop: -12
-                                            }}>{stepList}</div>
-                                        </Grid>
-                                    </Grid>
-                                </Paper>
-                            </Grid>}
-                            {qaList && <Grid item xs={12}>
-                                <div className={classes.ser_detail_dividerWrapper}><Divider/></div>
-                                <Paper className={classes.ser_detail_cards}>
-                                    <Grid container spacing={8}>
-                                        {/*<Grid item xs={2} sm={1}>
-                                        <div className={classes.iconWrapper}>
-                                            <QuestionAnswer className={classes.icon} />
-                                        </div>
-                                    </Grid>*/}
-                                        <Grid item xs={10} sm={11}>
-                                            <div className={classes.ser_detail_cardContent}>{qaList}</div>
-                                        </Grid>
-                                    </Grid>
-                                </Paper>
-                            </Grid>}
-                            {locList && <Grid item xs={12}>
-                                <div className={classes.ser_detail_dividerWrapper}><Divider/></div>
-                                <Paper className={classes.ser_detail_cards}>
-                                    <Grid container spacing={8}>
-                                        {/*<Grid item xs={2} sm={1}>
-                                        <div className={classes.iconWrapper}>
-                                            <PinDrop className={classes.icon} />
-                                        </div>
-                                    </Grid>*/}
-                                        <Grid item xs={10} sm={11}>
-                                            <div className={classes.ser_detail_cardContent}>{locList}</div>
-                                        </Grid>
-                                    </Grid>
-                                </Paper>
-                            </Grid>}
-                        </Paper>}
-                    </Grid>
-                    <Grid item xs={12} sm={12} md={4}>
+                    {someDetails && (<Grid item xs={12} md={8} className={classes.ser_detail_details}>
+                    <ServiceDetail description={description} price={price} timingList={timingList} formList={formList} qaList={qaList} stepList={stepList} locList={locList}/>
+                    </Grid>)}
+                    <Grid item xs={12} sm={12} md={someDetails ? 4 : 12}>
                 
                         <div className={classes.other_ser_headerWrapper}>
                             <Typography variant="subheading">Additional services</Typography>
@@ -599,4 +476,4 @@ const mapStateToProps = function (state, ownProps) {
     };
 };
 
-export default connect(mapStateToProps)(withRoot(withStyles(styles)(ServiceDetail)));
+export default connect(mapStateToProps)(withRoot(withStyles(styles)(ServiceDetailTemplate)));

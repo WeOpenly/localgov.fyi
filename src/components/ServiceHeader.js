@@ -332,17 +332,18 @@ class ServiceHeader extends Component {
         </Grid>
         <Grid item xs={12} md={2}>
               <div className={classes.service_header_serviceActions}>
-                <div className={classes.service_header_serviceShare}>
+               
+                <div className={classes.service_header_serviceNotify}>
+                <div className={classes.service_header_serDelLink}>
+                    {actionButton}
+                </div>
+                <div className={classes.service_header_serDelLink}>
+                    {serviceFlowButton}
+                </div>
+                </div>    
+ <div className={classes.service_header_serviceShare}>
                   {shareButton}
                 </div>
-              <div className={classes.service_header_serviceNotify}>
-              <div className={classes.service_header_serDelLink}>
-                  {actionButton}
-              </div>
-              <div className={classes.service_header_serDelLink}>
-                  {serviceFlowButton}
-              </div>
-              </div>    
               </div>
               <Menu
                 id="simple-menu"

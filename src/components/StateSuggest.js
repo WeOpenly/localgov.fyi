@@ -154,7 +154,7 @@ const styles = theme => ({
         display: 'flex',
         alignItems: 'center',
         width: '100%',
-        boxShadow: `0 0 1px 0 #d4d4d4`,
+boxShadow : `0 0 1px 0 ${theme.palette.primary['300']}`,
     },
 gloss_state_suggest_root_mob : {
     padding: '4px 8px',
@@ -162,7 +162,7 @@ gloss_state_suggest_root_mob : {
     display: 'flex',
     alignItems: 'center',
     width: '100%',
-    boxShadow: `0 0 1px 0 #d4d4d4`
+    boxShadow : `0 0 1px 0 ${theme.palette.primary['300']}`,
 },
     input: {
         marginLeft: 12,

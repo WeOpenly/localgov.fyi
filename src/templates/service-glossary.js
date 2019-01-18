@@ -84,8 +84,8 @@ const styles = theme => ({
         display: 'flex',
         alignItems: 'center',
         width: '100%',
-        marginRight: 24,
-        boxShadow: `0 0 1px 0 #d4d4d4`,
+
+        boxShadow : `0 0 1px 0 ${theme.palette.primary['300']}`,
     },
     input: {
         marginLeft: 16,
@@ -563,8 +563,9 @@ class ServiceGlossary extends Component {
                     <Grid item sm={1}/>
                     <Grid item sm={10}>
                         <Paper className={classes.filterContainer}  elevation={3}>
-                               <Grid container>
-                            <Grid item sm={12} md={5} align="left">
+                               <Grid container spacing={24} align="center">
+                         
+                           <Grid item sm={12} md={6}> 
                                 <Paper className={classes.root} elevation={1}>
                                     {searchInput}
                                     <IconButton className={classes.iconButton} aria-label="Search">
@@ -572,8 +573,8 @@ class ServiceGlossary extends Component {
                                     </IconButton>
                                 </Paper>
                             </Grid>
-                    
-                        <Grid item sm={12} md={5}  align="left">
+                                              <Grid item  md={1}/> 
+                        <Grid item sm={12} md={4} >
                             <div style={{position: 'relative'}}>
                             <StateSuggest clearStateName={this.clearStateName} selected={this.state.stateName} allStates={allStates} onSelectSuggestion={this.setStateFilter} />    
                             </div>

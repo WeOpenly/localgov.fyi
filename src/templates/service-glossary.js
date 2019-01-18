@@ -117,13 +117,15 @@ const styles = theme => ({
     ser_gloss_locGrid: {
         display: 'flex',
         alignItems: 'left',
+        flexWrap: 'wrap',
         justifyContent: 'left',
         alignContent: 'left',
         paddingTop: theme.spacing.unit *4,
     },
-    ser_gloass_locGrid_mob: {
+    ser_gloss_locGrid_mob: {
         display: 'flex',
-        justifyContent: 'left',
+        flexWrap: 'wrap',
+        justifyContent: 'center',
         alignItems: 'left',
         paddingTop: theme.spacing.unit
     },
@@ -459,7 +461,7 @@ class ServiceGlossary extends Component {
                     <meta
                         name="description"
                         content={`Forms, Price, Timings and Contact Details for ${service_name} | Localgov.fyi`}/>
-                    <meta name="keywords" content={`${service_name},  ${service_name} online, Local Government Service Onine, my ${service_name}, ${service_name} near me, How do you ${service_name}, can you ${service_name} onine`}/>
+                    <meta name="keywords" content={`${service_name},  ${service_name} online, Local Government Service Onine, my ${service_name}, ${service_name} near me, How do you ${service_name}, can you ${service_name} onine, ${service_glossary_description}`}/>
                     <meta
                         property="og:description"
                         content={`Forms, Price, Timings and Local Government Service Contact Details for ${service_name} | Localgov.fyi`}/>
@@ -611,23 +613,11 @@ class ServiceGlossary extends Component {
                         sm={10}
                         align="left"
                         className={this.state.isMobile
-                        ? classes.ser_gloass_locGrid_mob
-                        : classes.ser_gloass_locGrid}>
-                        <SpringGrid
-                            component="div"
-                            columns={this.state.isMobile
-                            ? 1
-                            : 3}
-                            columnWidth={320}
-                            gutterWidth={5}
-                            gutterHeight={5}
-                            itemHeight={104}
-                            springConfig={{
-                            stiffness: 60,
-                            damping: 10
-                        }}>
+                        ? classes.ser_gloss_locGrid_mob
+                        : classes.ser_gloss_locGrid}>
+                            
                             {locs}
-                        </SpringGrid>
+                        
                     </Grid>
                
                 </Grid>

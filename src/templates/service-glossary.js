@@ -8,28 +8,31 @@ import Divider from '@material-ui/core/Divider';
 import Truncate from 'react-truncate';
 
 import IconButton from '@material-ui/core/IconButton';
-import MenuIcon from '@material-ui/icons/Menu';
-import {SpringGrid} from 'react-stonecutter';
+
 import Dialog from '@material-ui/core/Dialog';
 import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
-import DialogContentText from '@material-ui/core/DialogContentText';
+
 import DialogTitle from '@material-ui/core/DialogTitle';
 import SearchIcon from '@material-ui/icons/Search';
-import DirectionsIcon from '@material-ui/icons/Directions';
+
 import queryString from 'query-string'
 import Fuse from 'fuse.js';
 import {navigate} from '@reach/router';
 import Link from 'gatsby-link';
 import Helmet from "react-helmet";
 import {isMobileOnly, isTablet, isMobile} from 'react-device-detect';
-import Toolbar from '@material-ui/core/Toolbar';
+
 import {withStyles} from '@material-ui/core/styles';
-import AppBar from '@material-ui/core/AppBar';
+
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
 import Search from '@material-ui/icons/Search';
+import List from '@material-ui/core/List';
+import ListItem from '@material-ui/core/ListItem';
+import ListItemText from '@material-ui/core/ListItemText';
+
 import Footer from '../components/Footer';
 import withRoot from '../withRoot';
 import StateSuggest from '../components/StateSuggest';
@@ -64,8 +67,8 @@ const styles = theme => ({
         },
     },
     filterContainer:{
-        width: '100%',
-        padding: '16px 24px',
+        padding: '16px 16px',
+        margin: theme.spacing.unit,
         display: 'flex',
         alignItems: 'center',
         boxShadow: `0 5px 10px 0 #f1f1f1`,
@@ -79,12 +82,11 @@ const styles = theme => ({
         margin: theme.spacing.unit,
         boxShadow: `0 0 1px 0 #d4d4d4`,
     },
-    root: {
+    gloss_loc_search_root: {
         padding: '4px 8px',
         display: 'flex',
-        alignItems: 'center',
+        justifyContent: 'center',
         width: '100%',
-
         boxShadow : `0 0 1px 0 ${theme.palette.primary['300']}`,
     },
     input: {
@@ -116,28 +118,24 @@ const styles = theme => ({
     },
     ser_gloss_locGrid: {
         display: 'flex',
-        alignItems: 'left',
-        flexWrap: 'wrap',
-        justifyContent: 'left',
-        alignContent: 'left',
-        paddingTop: theme.spacing.unit *4,
-    },
-    ser_gloss_locGrid_mob: {
-        display: 'flex',
         flexWrap: 'wrap',
         justifyContent: 'center',
-        alignItems: 'left',
-        paddingTop: theme.spacing.unit
+        padding: theme.spacing.unit *4,
     },
     ser_gloss_gridItemLocation: {
         padding: theme.spacing.unit*2,
         display: 'flex',
         alignItems: 'center',
-        margin: theme.spacing.unit,
+        margin: theme.spacing.unit * 2,
         boxShadow: `0 1px 2px 0 ${theme.palette.primary['100']}`,
         justifyContent: 'left',
-        width: 256,
+        width: 320,
         height: 88
+    },
+    ser_gloss_locGrid_list:{
+           width: '100%',
+            margin: theme.spacing.unit *2,
+            backgroundColor: theme.palette.background.paper,
     },
     ser_gloss_heading: {
         fontWeight: 600
@@ -150,56 +148,28 @@ const styles = theme => ({
     ser_gloss_nav_items: {
         display: 'flex',
         justifyContent: 'space-between',
-        paddingTop: theme.spacing.unit * 2,
-        paddingBottom: theme.spacing.unit * 4,
+        padding: theme.spacing.unit * 2,
+ 
     },
-    ser_gloss_nav_items_mob: {
-        display: 'flex',
-        alignItems: 'flex-start',
-        justifyContent: 'space-between',
-        paddingTop: theme.spacing.unit * 3,
-        marginLeft: theme.spacing.unit * 3
-    },
-    ser_gloss_servicename_mob: {
-        color: theme.palette.primary['50'],
-        height: 280,
-        background: `linear-gradient(45deg, ${theme.palette.primary["700"]} 20%, ${theme.palette.primary["A900"]} 80%)`
-    },
-    ser_gloss_servicename: {
+    ser_gloss_serviceheading: {
         color: '#fff',
-        paddingBottom : theme.spacing.unit * 4,
+        paddingBottom : theme.spacing.unit * 7,
         background: `linear-gradient(45deg, ${theme.palette.primary["700"]} 30%, ${theme.palette.primary["A900"]} 70%)`
     },
     ser_gloss_servicename_text: {
-        height: 240,
-        paddingTop : theme.spacing.unit * 4,
+        padding: `${theme.spacing.unit * 2}px 0 ${theme.spacing.unit * 2}px ${theme.spacing.unit*2}px`
     },
-    ser_gloss_servicename_text_mob: {
-        height: 80,
-        width: 300,
-        paddingTop : theme.spacing.unit * 1,
-        marginLeft: theme.spacing.unit *3
+    ser_gloss_servicename_description:{
+            padding: `${theme.spacing.unit * 2}px 0 ${theme.spacing.unit * 2}px ${theme.spacing.unit*2}px`
     },
     gloss_searchContainer: {
-        marginTop: '-24px',
+        marginTop: '-40px',
     },
     gloss_searchContainer_mob:{
         marginTop: '0px'
     },
     gloss_countContainer: {
-        marginTop: theme.spacing.unit *4,
-    },
-    locGridContainer_mob: {
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'left',
-        margin: theme.spacing.unit
-    },
-    locGridContainer: {
-        display: 'flex',
-        alignItems: 'left',
-        justifyContent: 'left',
-        marginTop: theme.spacing.unit * 4
+        marginTop: theme.spacing.unit *2,
     },
     gloss_footer:{
        marginTop: theme.spacing.unit * 4
@@ -335,7 +305,7 @@ class ServiceGlossary extends Component {
     render() {
         const {classes} = this.props;
         const {service_name, service_name_slug, service_glossary_description} = this.props.pageContext.data;
-        console.log('ismob', this.state.isMobile);
+      
 
         let allOrgs = this.state.orgs;
 
@@ -418,6 +388,27 @@ class ServiceGlossary extends Component {
             )
         })
 
+        const mobileLocs = allOrgs.map((org, idx) => {
+            const organization = org.organization;
+            let strippedName = organization.org_name.replace("-", " ")
+            strippedName = strippedName.replace("Independent", " ")
+            const state = org.area.hierarchy[org.area.hierarchy.length-1].area_name;
+
+            return (
+                    <ListItem key={`${org.id}-${idx}`}  onClick={() => this.handleOrgClick(organization.id, organization.org_name, idx, `/service/${org.id}/`)} >
+                           <ListItemText style={{marginLeft:0}} 
+          primary={strippedName}
+          secondary={
+
+              <Typography component="span"  color="textPrimary">
+                 {state}
+              </Typography>
+             
+          }
+        />
+      </ListItem>                 
+            )
+        })
         const searchInput = (<InputBase
             onChange={this.onSearchChange}
             className={classes.input}
@@ -470,17 +461,13 @@ class ServiceGlossary extends Component {
                 {descDialog}
                 <Grid
                     container
-                    className={this.state.isMobile
-                    ? classes.ser_gloss_servicename_mob
-                    : classes.ser_gloss_servicename}>
+                    className={classes.ser_gloss_serviceheading}>
                     <Grid item sm={1}/>
                     <Grid
                         item
                         sm={10}
                         align="center"
-                        className={this.state.isMobile
-                        ? classes.ser_gloss_nav_items_mob
-                        : classes.ser_gloss_nav_items}>
+                        className={classes.ser_gloss_nav_items}>
 
                         <Link to="/" className={classes.link}>
                             <Typography
@@ -496,47 +483,36 @@ class ServiceGlossary extends Component {
                     </Grid>
                     <Grid item sm={1}/>
                     <Grid item sm={1}/>
-                    <Grid
-                        item
-                        sm={5}
-                        className={this.state.isMobile
-                        ? classes.ser_gloss_servicename_text_mob
-                        : classes.ser_gloss_servicename_text}
-                        align={
-                         'left'
-                        }>
-                        <Typography
-                            style={{
-                            color: "#fff",
-                            fontSize: '2rem'
-                        }}
-                            variant="display1">
-                            {service_name}
-                        </Typography>
-                   
-                    </Grid>
-                    <Grid item sm={5}>
+                        <Grid
+                            item
+                            sm={10}
+                            className={classes.ser_gloss_servicename_text}
+                            align={
+                            'left'
+                            }>
+                            <Typography
+                                style={{
+                                color: "#fff",
+                                fontSize: '2rem'
+                            }}
+                                variant="display1">
+                                {service_name}
+                            </Typography>
+                    
+                        </Grid>
+                          <Grid item sm={1}/>
+                            <Grid item sm={1}/>
+                    <Grid item sm={10} className={classes.ser_gloss_servicename_description}>
                              {service_glossary_description
                             ? (
                                 <Typography
-                                    style={this.state.isMobile
-                                    ? {
-                                        color: "#fff",
-                                        marginTop: '24px',
-                                        paddingLeft: '16px',
-                                        paddingRight: '16px'
-                                    }
-                                    : {
-                                        color: "#fff",
-                                        marginTop: '32px',
-                                        paddingLeft: '0px',
-                                        paddingRight: '0px'
-                                    }}
+                                    style={{
+                                color: "#fff",
+            
+                            }}
                                     variant="body2">
                                     <Truncate
-                                        lines={this.state.isMobile
-                                        ? 2
-                                        : 6}
+                                        lines={4}
                                         ellipsis={(
                                         <span>
                                             ... <a
@@ -559,21 +535,21 @@ class ServiceGlossary extends Component {
                     </Grid>
                     <Grid item sm={2}/>
                 </Grid>
-                <Grid container className={this.state.isMobile ? classes.gloss_searchContainer_mob : classes.gloss_searchContainer}>
+                <Grid container className={classes.gloss_searchContainer}>
                     <Grid item sm={1}/>
                     <Grid item sm={10}>
                         <Paper className={classes.filterContainer}  elevation={3}>
-                               <Grid container spacing={24} align="center">
+                               <Grid container spacing={8} align="center">
                          
-                           <Grid item sm={12} md={6}> 
-                                <Paper className={classes.root} elevation={1}>
+                           <Grid item sm={12} md={7}> 
+                                <Paper className={classes.gloss_loc_search_root} elevation={1}>
                                     {searchInput}
                                     <IconButton className={classes.iconButton} aria-label="Search">
                                         <SearchIcon/>
                                     </IconButton>
                                 </Paper>
                             </Grid>
-                                              <Grid item  md={1}/> 
+                                         
                         <Grid item sm={12} md={4} >
                             <div style={{position: 'relative'}}>
                             <StateSuggest clearStateName={this.clearStateName} selected={this.state.stateName} allStates={allStates} onSelectSuggestion={this.setStateFilter} />    
@@ -589,11 +565,11 @@ class ServiceGlossary extends Component {
                 <LoginRegisterDialog location={this.props.location}/>
                 <Grid container className={classes.gloss_countContainer}>
                     <Grid item sm={1}/>
-                    <Grid item sm={8} align={this.state.isMobile ? "center" :"left"}>
+                    <Grid item sm={8}>
                         <Typography
                             style={{
                             color: "#0a0a0a",
-                            paddingLeft: '8px'
+                            paddingLeft: '16px'
                         }}
                             variant="caption">
                             {this.state.searchText
@@ -604,22 +580,26 @@ class ServiceGlossary extends Component {
                 </Grid>
                 <Grid
                     container
-                    className={this.state.isMobile
-                    ? classes.locGridContainer_mob
-                    : classes.locGridContainer}>
-                    <Grid item sm={1} />
-
-                    <Grid
+                    className={classes.locGridContainer}>
+                   {this.state.isMobile ? (<Grid
                         item
-                        sm={10}
+                        sm={12}
+                        align="center"
+                        >
+                            <List className={classes.ser_gloss_locGrid_list}>
+                            {mobileLocs}
+                            </List>
+                    </Grid>) : (<Grid
+                        item
+                        sm={12}
                         align="left"
-                        className={this.state.isMobile
-                        ? classes.ser_gloss_locGrid_mob
-                        : classes.ser_gloss_locGrid}>
+                        className={classes.ser_gloss_locGrid}>
                             
                             {locs}
                         
-                    </Grid>
+                    </Grid>) } 
+                      
+                    
                
                 </Grid>
                 <div className={classes.gloss_footer}>

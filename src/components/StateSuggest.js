@@ -150,9 +150,8 @@ function getSuggestionValue(suggestion) {
 const styles = theme => ({
   gloss_state_suggest_root: {
         padding: '4px 8px',
-        marginLeft: 24,
-        display: 'flex',
-        alignItems: 'center',
+       display: 'flex',
+        justifyContent: 'center',
         width: '100%',
 boxShadow : `0 0 1px 0 ${theme.palette.primary['300']}`,
     },
@@ -241,7 +240,7 @@ class IntegrationAutosuggest extends React.Component {
     } = inputProps;
 
 
-    return ( <Paper className={isMobileOnly ? classes.gloss_state_suggest_root_mob: classes.gloss_state_suggest_root} elevation={1}><InputBase
+    return ( <Paper className={classes.gloss_state_suggest_root} elevation={1}><InputBase
             className={classes.input}
             placeholder="Search states"
             {...other}/>                  <IconButton className={classes.iconButton} aria-label="Search">

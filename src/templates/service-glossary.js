@@ -411,6 +411,7 @@ class ServiceGlossary extends Component {
         })
         const searchInput = (<InputBase
             onChange={this.onSearchChange}
+            defaultValue={this.state.searchText}
             className={classes.input}
             placeholder="Search Locations"/>)
 

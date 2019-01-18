@@ -284,8 +284,7 @@ class IntegrationAutosuggest extends React.Component {
                 )}/>
 
             </Fragment>
-                
-             
+            
         );
     }
 }

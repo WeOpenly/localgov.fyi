@@ -36,6 +36,13 @@ module.exports = {
         path: path.join(__dirname, `data/orgs`)
       }
     },
+     {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        name: `all_locations`,
+        path: path.join(__dirname, `data/all_locations`)
+      }
+    },
     {
       resolve: `gatsby-source-filesystem`,
       options: {

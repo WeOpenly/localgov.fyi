@@ -355,7 +355,8 @@ class ServiceGlossary extends Component {
         allOrgs.sort((a, b) => a.organization.org_name.localeCompare(b.organization.org_name));
 
         let allStates = [];
-        allStatesSet.forEach((org) => {
+        const sortedAllStates = Array.from(allStatesSet).sort()
+        sortedAllStates.forEach((org) => {
             allStates.push({'label': org})
         })
 
@@ -513,7 +514,7 @@ class ServiceGlossary extends Component {
                             }}
                                     variant="body2">
                                     <Truncate
-                                        lines={4}
+                                        lines={3}
                                         ellipsis={(
                                         <span>
                                             ... <a

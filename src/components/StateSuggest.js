@@ -13,7 +13,7 @@ import Popper from '@material-ui/core/Popper';
 import {isMobileOnly, isTablet, isMobile} from 'react-device-detect';
 import {withStyles} from '@material-ui/core/styles';
 import InputBase from '@material-ui/core/InputBase';
-import { throws } from 'assert';
+import {throws} from 'assert';
 
 const suggestions = [
     {
@@ -87,8 +87,6 @@ const suggestions = [
     }
 ];
 
-
-
 function renderSuggestion(suggestion, {query, isHighlighted}) {
     const matches = match(suggestion.label, query);
     const parts = parse(suggestion.label, matches);
@@ -148,27 +146,27 @@ function getSuggestionValue(suggestion) {
 }
 
 const styles = theme => ({
-  gloss_state_suggest_root: {
+    gloss_state_suggest_root: {
         padding: '4px 8px',
-       display: 'flex',
+        display: 'flex',
         justifyContent: 'center',
         width: '100%',
-boxShadow : `0 0 1px 0 ${theme.palette.primary['300']}`,
+        boxShadow: `0 0 1px 0 ${theme.palette.primary['300']}`
     },
-gloss_state_suggest_root_mob : {
-    padding: '4px 8px',
-    marginTop: theme.spacing.unit *2,
-    display: 'flex',
-    alignItems: 'center',
-    width: '100%',
-    boxShadow : `0 0 1px 0 ${theme.palette.primary['300']}`,
-},
+    gloss_state_suggest_root_mob: {
+        padding: '4px 8px',
+        marginTop: theme.spacing.unit *2,
+        display: 'flex',
+        alignItems: 'center',
+        width: '100%',
+        boxShadow: `0 0 1px 0 ${theme.palette.primary['300']}`
+    },
     input: {
         marginLeft: 12,
         padding: 8,
         flex: 1
     },
-     iconButton: {
+    iconButton: {
         padding: 12
     },
     divider: {
@@ -180,9 +178,11 @@ gloss_state_suggest_root_mob : {
         position: 'absolute',
         zIndex: 100,
         width: 320,
-        left: 24,
+        left: 8,
         top: 56,
-         boxShadow: `0 0 1px 0 #d4d4d4`,
+        border: `1px solid ${theme.palette.primary['100']}`,
+         borderRadius: '2px',
+       boxShadow: `0 5px 10px 0 #f1f1f1`,
     },
     suggestion: {
         display: 'block'
@@ -190,6 +190,8 @@ gloss_state_suggest_root_mob : {
     suggestionsList: {
         margin: 0,
         padding: 0,
+        height: theme.spacing.unit * 25,
+        overflowY: 'scroll',
         listStyleType: 'none'
     },
     divider: {
@@ -201,59 +203,82 @@ class IntegrationAutosuggest extends React.Component {
     state = {
         single: '',
         popper: '',
-        suggestions: []
+        filteredSuggestions: [],
+        suggestions: [],
+        shouldRenderSuggestions: false
     };
-    componentDidMount = () =>{
-        if (this.props.selected){
-            this.setState({
-                single: this.props.selected
-            })
-        }
+
+    componentDidMount = () => {
+        if (this.props.selected) 
+            this.setState({single: this.props.selected})
+        if (this.props.allStates) 
+            this.setState({suggestions: this.props.allStates})
     }
+
     handleSuggestionsFetchRequested = ({value}) => {
-        this.setState({suggestions: getSuggestions(value, this.props.allStates)});
+    
+        this.setState({
+            filteredSuggestions: getSuggestions(value, this.props.allStates)
+        });
     };
 
     handleSuggestionsClearRequested = () => {
-        this.setState({suggestions: []});
+        this.setState({shouldRenderSuggestions: false});
     };
 
     selectSuggestion = (event, {suggestion, suggestionValue, suggestionIndex, sectionIndex, method}) => {
         event.preventDefault();
         this.props.onSelectSuggestion(suggestion);
+        this.setState({shouldRenderSuggestions: false}, () => console.log("selectSuggestion done"));
     }
 
     handleChange = name => (event, {newValue}) => {
         this.setState({[name]: newValue});
-        if(newValue === ''){
+        if (newValue === '') {
             this.props.clearStateName();
         }
-        
+
     };
-    
+
+    toggleAllSuggestions = () => {
+        this.setState({
+            shouldRenderSuggestions: !this.state.shouldRenderSuggestions
+        })
+    }
+
     renderInputComponent = (inputProps) => {
-    const {
-        classes,
-        inputRef = () => {},
-        ref,
-        ...other
-    } = inputProps;
+        const {
+            classes,
+            inputRef = () => {},
+            ref,
+            ...other
+        } = inputProps;
 
+        return (
+            <Paper className={classes.gloss_state_suggest_root} elevation={1}><InputBase
+                className={classes.input}
+                placeholder="Search states"
+                {...other}
+                inputRef={node => {
+                ref(node);
+                inputRef(node);
+            }}/>
+                <IconButton
+                    onClick={this.toggleAllSuggestions}
+                    className={classes.iconButton}
+                    aria-label="Search">
+                    <FilterList/>
+                </IconButton>
+            </Paper>
+        )
 
-    return ( <Paper className={classes.gloss_state_suggest_root} elevation={1}><InputBase
-            className={classes.input}
-            placeholder="Search states"
-            {...other}/>                  <IconButton className={classes.iconButton} aria-label="Search">
-                                <FilterList/>
-                            </IconButton></Paper>)
-
-}
+    }
     render() {
         const {classes} = this.props;
-
         const autosuggestProps = {
-            renderInputComponent : this.renderInputComponent,
-            suggestions: this.state.suggestions,
+            renderInputComponent: this.renderInputComponent,
+            suggestions: this.state.single ? this.state.filteredSuggestions: this.state.suggestions,
+            alwaysRenderSuggestions: this.state.shouldRenderSuggestions,
             onSuggestionsFetchRequested: this.handleSuggestionsFetchRequested,
             onSuggestionsClearRequested: this.handleSuggestionsClearRequested,
             onSuggestionSelected: this.selectSuggestion,
@@ -269,7 +294,10 @@ class IntegrationAutosuggest extends React.Component {
                     classes,
                     placeholder: 'Filter by state',
                     value: this.state.single,
-                    onChange: this.handleChange('single')
+                    onChange: this.handleChange('single'),
+                    inputRef: node => {
+                        this.popperNode = node;
+                    }
                 }}
                     theme={{
                     container: classes.container,
@@ -284,7 +312,7 @@ class IntegrationAutosuggest extends React.Component {
                 )}/>
 
             </Fragment>
-            
+
         );
     }
 }

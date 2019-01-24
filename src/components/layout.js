@@ -2,6 +2,7 @@ import React, { Fragment } from "react";
 import Grid from '@material-ui/core/Grid';
 import {withStyles} from '@material-ui/core/styles';
 import classNames from 'classnames';
+import {graphql} from "gatsby"
 import { isMobileOnly } from 'react-device-detect';
 import Share from "../components/Share";
 import HeaderWithSearch from '../components/HeaderWithSearch';
@@ -17,15 +18,11 @@ const styles = theme => ({
   },
   layout_main: {
     width: '100%',
-    // minHeight: '100vh',
-    paddingBottom: 70,
+    paddingBottom: theme.spacing.unit*7,
   },
   layout_mainMobile: {
     width: '100%',
     // minHeight: '100vh',
-    paddingLeft: theme.spacing.unit * 2,
-    paddingRight: theme.spacing.unit * 2,
-    paddingBottom: 114,
   },
   layout_footer: {
     width: '100%',

@@ -36,6 +36,10 @@ h_a_m_profileHeading : {
   cursor: 'none',
   margin: theme.spacing.unit,
 },
+h_a_m_login_button:{
+  display : 'flex',
+  alignSelf : 'start',
+}
 });
 
 class HeaderAccountMenu extends Component {
@@ -141,6 +145,7 @@ class HeaderAccountMenu extends Component {
       : (
         <Button
         variant="outlined"
+        className={classes.h_a_m_login_button}
           onClick={() => this.props.openLogin()}
           color="inherit">Login</Button>
       ));

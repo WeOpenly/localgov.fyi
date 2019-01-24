@@ -1,6 +1,8 @@
 import React, {Component, Fragment} from 'react';
 import Link from 'gatsby-link';
 import {navigate} from '@reach/router';
+
+
 import {isMobileOnly} from 'react-device-detect';
 import {connect} from "react-redux";
 import Masonry from 'react-masonry-component';

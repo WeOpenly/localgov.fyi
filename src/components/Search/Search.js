@@ -29,8 +29,8 @@ const styles = theme => ({
     fontFamily: theme.typography.fontFamily,
     position: "relative",
     borderRadius : 1,
-    border : `8px solid rgba(30, 30, 50,0.25)`,
-    background: fade(theme.palette.common.white, 0.25),
+    border : `8px solid rgba(220, 220, 220,0.15)`,
+    background: fade(theme.palette.common.white, 0.15),
     // boxShadow: `0 0 3px 1px ${theme.palette.primary["100"]}`,
     // "&input": {
     //   transition: theme.transitions.create("width"),

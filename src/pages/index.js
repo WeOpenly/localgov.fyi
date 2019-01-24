@@ -2,44 +2,29 @@ import React, {Fragment} from 'react';
 import PropTypes from 'prop-types';
 import {connect} from "react-redux";
 
-import Spinner from 'react-spinkit';
 import ContentLoader from "react-content-loader"
-import Toolbar from '@material-ui/core/Toolbar';
+
 import {navigate} from '@reach/router';
-import Img from 'gatsby-image';
 import Helmet from "react-helmet";
 import {isMobileOnly} from 'react-device-detect';
-import {graphql} from "gatsby"
+
 import {withStyles} from '@material-ui/core/styles';
-import AppBar from '@material-ui/core/AppBar';
+
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
-import Paper from '@material-ui/core/Paper';
-import Button from '@material-ui/core/Button';
-import Divider from '@material-ui/core/Divider';
-import CircularProgress from '@material-ui/core/CircularProgress';
 
-import IconButton from '@material-ui/core/IconButton';
-import MenuIcon from '@material-ui/icons/Menu';
-import AccountCircle from '@material-ui/icons/AccountCircle';
-import Switch from '@material-ui/core/Switch';
-import FormControlLabel from '@material-ui/core/FormControlLabel';
-import FormGroup from '@material-ui/core/FormGroup';
-import MenuItem from '@material-ui/core/MenuItem';
-import Menu from '@material-ui/core/Menu';
+import Divider from '@material-ui/core/Divider';
 
 import withRoot from '../withRoot';
 import LoginRegisterDialog from '../components/Account/LoginRegisterDialog';
 
 import Layout from "../components/layout";
-import Search from '../components/Search/Search';
-import ServiceGrid from '../components/ServiceGrid';
-import {getLocation} from '../components/Search/actions';
-import HeaderAccountMenu from '../components/HeaderAccountMenu';
 
-import {logOut, toggleLogin} from '../components/Account/actions';
+import ServiceGrid from '../components/ServiceGrid';
+import IndexHero from '../components/IndexHero';
+
+
 import {trackView, trackClick} from "../components/common/tracking";
-import {isLoggedIn} from '../components/Account/Auth';
 
 const styles = theme => ({
   "@global": {
@@ -51,7 +36,7 @@ const styles = theme => ({
     body: {
       margin: 0,
       padding: 0,
-      height: "100vh",
+      height: "100%",
       width: "100%",
       overflowWrap: "break-word",
       overflowY: "scroll",
@@ -69,74 +54,7 @@ const styles = theme => ({
   index_login: {
     zIndex: '2000'
   },
-index_header : {
-    display: 'flex',
-    flexDirection: 'row',
-    alignItems: 'space-between',
-    position: 'static',
-    background: theme.palette.common.white,
-    color: theme.palette.primary['700'],
-    boxShadow: `0 0 0 0 ${theme.palette.common.white}`,
-    borderBottom: `1px solid ${theme.palette.primary['50']}`
-  },
-index_otherLinksDivider : {
-    margin: theme.spacing.unit * 2
-  },
-index_title : {
-    color: theme.palette.common.white,
-    textShadow: '1px 1px 1px black',
-    padding: theme.spacing.unit * 2,
-    zIndex: 2
-  },
-index_searchBoxContainer : {
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "center",
-    height: theme.spacing.unit * 8,
-    width: '100%'
-  },
-index_searchWrapper : {
-    height: '85vh',
-    marginTop: -62
-  },
-index_landingSearch : {
-    zIndex: 2,
-    paddingTop: theme.spacing.unit * 16
-  },
-index_landingSearchMobile : {
-    maxWidth: '100%',
-    marginLeft: theme.spacing.unit * -2,
-    marginRight: theme.spacing.unit * -2,
-    paddingTop: theme.spacing.unit * 16
-  },
-index_landingSearchHeader : {
-    marginTop: theme.spacing.unit * 12,
-    display: "flex",
-    alignItems: "end",
-    justifyContent: "left",
-    color: theme.palette.primary["700"]
-  },
-index_appHeaderText : {
-    color: theme.palette.primary["900"]
-  },
-index_appSubHeaderTextWrapper : {
-    display: 'flex',
-    justifyContent: 'center',
-    zIndex: 2,
-    marginTop: theme.spacing.unit * 10,
-    marginBottom: theme.spacing.unit * 2
-  },
-index_appSubHeaderText : {
-    color: theme.palette.common.white,
-    marginBottom: theme.spacing.unit * 3
-  },
-index_appNameHeader : {
-    display: 'flex',
-    justifyContent: 'center',
-    marginTop: theme.spacing.unit * 4,
-    marginBottom: theme.spacing.unit * 1,
-    flexWrap: 'wrap'
-  },
+
 index_section2 : {
     backgroundColor: '#fafafa',
     paddingBottom: theme.spacing.unit * 10
@@ -367,9 +285,7 @@ const shuffledArray = xah_randomize_array(otherPlaces);
 //  if search/ or otherwise, have box in the layout unless it is index.html if
 // index > do not have it in the layout all ways get from the url
 
-const SuggestBoxLoader = props => (
-  <Spinner name="ball-beat" color="white" />
-)
+
 
 const FamounsLoading = props =>(
   <ContentLoader
@@ -423,60 +339,6 @@ class Index extends React.Component {
       .clickGridItem
       .bind(this);
 
-
-    const backgroundImages = [ < Img title = "United States Capitol" alt = "Photo by Andy Feliciotti (@someguy) on Unsplash" sizes = {
-        this.props.data.capitol.childImageSharp.fluid
-      }
-      backgroundColor = "#0000ca" style = {{
-          position: 'absolute',
-          left: 0,
-          top: 0,
-          width: '100vw',
-          height: '85vh',
-          filter: 'brightness(50%)',
-        }}
-      />,
-      <Img
-        title="Philadelphia City Hall"
-        alt="Photo by BruceEmmerling on Pixabay"
-        backgroundColor="#0000ca"
-        sizes={this.props.data.philadelphia.childImageSharp.fluid}
-        style={{
-          position: 'absolute',
-          left: 0,
-          top: 0,
-          width: '100vw',
-          height: '85vh',
-          filter: 'brightness(60%)',
-        }}
-      />, <Img title = "Los Angeles City Hall" alt = "Photo from Pixabay" backgroundColor = "#0000ca" sizes = {
-        this.props.data.losAngeles.childImageSharp.fluid
-      }
-      style = {{
-          position: 'absolute',
-          left: 0,
-          top: 0,
-          width: '100vw',
-          height: '85vh',
-          filter: 'brightness(70%)',
-        }}
-      />,
-      <Img
-        title="San Francisco City Hall"
-        alt="Photo by Hoona9091 on Pixabay"
-        backgroundColor="#0000ca"
-        sizes={this.props.data.sanFrancisco.childImageSharp.fluid}
-        style={{
-          position: 'absolute',
-          left: 0,
-          top: 0,
-          width: '100vw',
-          height: '85vh',
-          filter: 'brightness(60%)',
-        }}
-      />
-    ];
-    this.bg = backgroundImages[Math.floor(Math.random() * backgroundImages.length)]
   }
 
 
@@ -486,10 +348,9 @@ class Index extends React.Component {
     const {dispatch} = this.props;
 
     if (this.props.location.pathname === '/') {
-      dispatch(getLocation);
       dispatch(trackView('index', null, null, null));
-
     }
+
   }
 
   clickSuggestion(url, name, index) {
@@ -559,126 +420,7 @@ class Index extends React.Component {
       : popularServices;
 
     const stateServicesConcat = stateServices.slice(0, 4);
-
-    return (
-      <Layout location={this.props.location}>
-        <Fragment>
-          <Helmet
-            defaultTitle={`Localgov.fyi | Search for local government organizations, and services`}
-            titleTemplate={`%s | Localgov.fyi`}>
-            <JsonLd data={searchLinksSchema} />
-            <meta name="og:type" content="website"/>
-            <meta name="og:site_name" content="Localgov.fyi"/>
-            <link
-              rel="canonical"
-              href={`https://localgov.fyi${this.props.location.pathname}`}/>
-            <meta
-              property="og:url"
-              content={`https://localgov.fyi${this.props.location.pathname}`}/>
-            <html lang="en"/>
-         
-          </Helmet>
-          <AppBar className={classes.index_header}>
-            <Toolbar className={classes.index_toolbar}>
-              <Typography variant="display1" className={classes.index_title}>
-                Localgov.fyi
-              </Typography>
-              <HeaderAccountMenu location={this.props.location} />
-            </Toolbar>
-          </AppBar>
-          <LoginRegisterDialog location={this.props.location}/>
-          <div className={classes.index_searchWrapper}>
-            {this.bg}
-            <Grid
-              container
-              spacing={0}
-              className={!isMobileOnly
-              ? classes.index_landingSearch
-              : classes.index_landingSearchMobile}>
-              <Grid className='index_grid_item' item xs={1} sm={2} md={2} />
-              <Grid  item xs={10} sm={8} md={8} className={classes.index_appSubHeaderTextWrapper}>
-                <Typography
-                  variant="display1"
-                  component="span"
-                  className={classes.index_appSubHeaderText}>
-                  All your government services in a single place
-                </Typography>
-              </Grid>
-              <Grid className='index_grid_item' item xs={1} sm={2} md={2}/>
-              <Grid className='index_grid_item' item xs={1} sm={2} md={2}/>
-              <Grid className='index_grid_item' item xs={10} sm={10} md={8} className={classes.index_searchBoxContainer}>
-                {search.locationLoading
-                  ? (<SuggestBoxLoader/>)
-                  : <Search/>}
-              </Grid>
-              <Grid item xs={1} sm={2} md={2}/>
-            </Grid>
-          </div>
-          <div className={classes.index_section2}>
-            <Grid className='index_grid' container className={classes.index_section3Mobile}>
-              <Grid className='index_grid_item' item xs={1} md={3}/>
-              <Grid className='index_grid_item' item xs={10} md={6}>
-                <Typography
-                  variant="display1"
-                  component="h1"
-                  className={classes.index_popularServicesHeader}>
-                  Find the most sought out services
-                </Typography>
-              </Grid>
-              <Grid item xs={1} md={3}/>
-            </Grid>
-            <div className={classes.index_gridWrapper1}>
-              {search.locationLoading
-                ? (<FamounsLoading />)
-                : <ServiceGrid
-                  clickGridItem={this.clickGridItem}
-                  type='pop_services'
-                  services={stateServicesConcat}/>
-}
-            </div>
-          </div>
-          <div className={classes.index_section3}>
-            <Grid className='index_grid' container className={classes.index_section3Mobile}>
-              <Grid className='index_grid_item' item xs={1} md={3}/>
-              <Grid className='index_grid_item' item xs={10} md={6}>
-                    {search.locationLoading ? null : (<Typography
-                  variant="display1"
-                  component="h1"
-                  className={classes.index_popularServicesHeader}>
-                  Localgov {org ? org.name : ''}
-                </Typography>)}
-              </Grid>
-              <Grid item xs={1} md={3}/>
-            </Grid>
-            <div className={classes.index_gridWrapper2}>
-              {search.locationLoading
-? (
-    <div className={classes.index_progressWrapper}><LocationServicesLoader/></div>
-  )
-                : (<ServiceGrid
-                  clickGridItem={this.clickGridItem}
-                  type='auto_loc_org_services'
-                  city={org
-                  ? org
-                  : null}
-                  services={services
-                  ? services
-                  : dummyServices}/>)
-}
-            </div>
-            <Grid className='index_grid' container className={classes.index_otherLinksDivider}>
-              <Grid className='index_grid_item' item xs={2}/>
-              <Grid className='index_grid_item' item xs={8}>
-                <Divider/>
-              </Grid>
-              <Grid className='index_grid_item' item xs={2}/>
-            </Grid>
-            <Grid className='index_grid' container align="center">
-              <Grid className='index_grid_item' item xs={2}/> {otherLinks}
-              <Grid className='index_grid_item' item xs={2}/>
-            </Grid>
-          </div>
-          <form hidden name="serviceNotify" method="post" action="/" data-netlify="true">
+    const serviceNotifyForm = (<form hidden name="serviceNotify" method="post" action="/" data-netlify="true">
             <p hidden>
               <label>
                 Don’t fill this out:{" "}
@@ -715,8 +457,8 @@ class Index extends React.Component {
                 <input name="email" type="email" value=""/>
               </label>
             </p>
-          </form>
-          <form hidden name="serviceDeliveryFeedback" method="post" action="/" data-netlify="true">
+          </form>);
+          const serviceDeliveryFeedbackForm = ( <form hidden name="serviceDeliveryFeedback" method="post" action="/" data-netlify="true">
             <p hidden>
               <label>
                 Don’t fill this out:{" "}
@@ -747,7 +489,102 @@ class Index extends React.Component {
                 <input name="email" type="email" value="" />
               </label>
             </p>
-          </form>
+          </form>);
+
+    const autoLocatedOrgServices = (<Fragment><Grid className='index_grid' container className={classes.index_section3Mobile}>
+              <Grid className='index_grid_item' item xs={1} md={3}/>
+              <Grid className='index_grid_item' item xs={10} md={6}>
+                    {search.locationLoading ? null : (<Typography
+                  variant="display1"
+                  component="h1"
+                  className={classes.index_popularServicesHeader}>
+                  Localgov {org ? org.name : ''}
+                </Typography>)}
+              </Grid>
+              <Grid item xs={1} md={3}/>
+            </Grid><div className={classes.index_gridWrapper2}>
+              {search.locationLoading
+                ? (<div className={classes.index_progressWrapper}><LocationServicesLoader/></div>)
+                : (<ServiceGrid
+                  clickGridItem={this.clickGridItem}
+                  type='auto_loc_org_services'
+                  city={org
+                  ? org
+                  : null}
+                  services={services
+                  ? services
+                  : dummyServices}/>) }
+            </div></Fragment>);
+
+    const popServices = (<Fragment><Grid className='index_grid' container className={classes.index_section3Mobile}>
+              <Grid className='index_grid_item' item xs={1} md={3}/>
+              <Grid className='index_grid_item' item xs={10} md={6}>
+                <Typography
+                  variant="display1"
+                  component="h1"
+                  className={classes.index_popularServicesHeader}>
+                  Find the most sought out services
+                </Typography>
+              </Grid>
+              <Grid item xs={1} md={3}/>
+            </Grid>
+            <div className={classes.index_gridWrapper1}>
+              {search.locationLoading
+                ? (<FamounsLoading />)
+                : <ServiceGrid
+                  clickGridItem={this.clickGridItem}
+                  type='pop_services'
+                  services={stateServicesConcat}/>
+              }
+            </div></Fragment>)
+    const otherLinksComp = (
+      <Fragment>
+        <Grid
+        className='index_grid'
+        container
+        className={classes.index_otherLinksDivider}>
+                  <Grid className='index_grid_item' item xs={2}/>
+                  <Grid className='index_grid_item' item xs={8}>
+                    <Divider/>
+                  </Grid>
+                  <Grid className='index_grid_item' item xs={2}/>
+                </Grid>
+                <Grid className='index_grid' container align="center">
+                  <Grid className='index_grid_item' item xs={2}/> {otherLinks}
+                  <Grid className='index_grid_item' item xs={2}/>
+                </Grid>
+                </Fragment>
+      )
+    return (
+      <Layout location={this.props.location}>
+        <Fragment>
+          <Helmet
+            defaultTitle={`Localgov.fyi | Search for local government organizations, and services`}
+            titleTemplate={`%s | Localgov.fyi`}>
+            <JsonLd data={searchLinksSchema} />
+            <meta name="og:type" content="website"/>
+            <meta name="og:site_name" content="Localgov.fyi"/>
+            <link
+              rel="canonical"
+              href={`https://localgov.fyi${this.props.location.pathname}`}/>
+            <meta
+              property="og:url"
+              content={`https://localgov.fyi${this.props.location.pathname}`}/>
+            <html lang="en"/>
+          </Helmet>
+          <LoginRegisterDialog location={this.props.location}/>
+          <div className={classes.index_searchWrapper}> 
+              <IndexHero location={this.props.location} />
+          </div>
+          <div className={classes.index_section2}>
+                {popServices}
+          </div>
+          <div className={classes.index_section3}>
+            {autoLocatedOrgServices}
+            {otherLinksComp}
+          </div>
+          {serviceNotifyForm}
+          {serviceDeliveryFeedbackForm}
         </Fragment>
       </Layout>
     );
@@ -758,54 +595,6 @@ Index.propTypes = {
   classes: PropTypes.object.isRequired
 };
 
-export const query = graphql `
-  query indexImageQuery {
-    capitol: file(relativePath: { regex: "/capitol/"}) {
-        childImageSharp {
-fluid(maxWidth : 1000, duotone : {
-highlight : "#4F23FF",
-  shadow: "#000000",
-opacity : 80
-}) {
-...GatsbyImageSharpFluid_withWebp_tracedSVG
-      }
-    }
-    }
-    philadelphia: file(relativePath: { regex: "/philadelphia/"}) {
-      childImageSharp {
-fluid(maxWidth : 1000, duotone : {
-highlight : "#4F23FF",
-  shadow: "#000000",
-opacity : 80
-}) {
-...GatsbyImageSharpFluid_withWebp_tracedSVG
-      }
-    }
-    }
-    losAngeles: file(relativePath: { regex: "/losAngeles/"}) {
-      childImageSharp {
-fluid(maxWidth : 1000, duotone : {
-highlight : "#4F23FF",
-shadow : "#000000",
-opacity : 80
-}) {
-...GatsbyImageSharpFluid_withWebp_tracedSVG
-      }
-    }
-    }
-    sanFrancisco: file(relativePath: { regex: "/sanFrancisco/"}) {
-      childImageSharp {
-fluid(maxWidth : 1000, duotone : {
-highlight : "#4F23FF",
-shadow : "#000000",
-opacity : 80
-}) {
-...GatsbyImageSharpFluid_withWebp_tracedSVG
-      }
-    }
-    }
-  }
-`;
 
 const mapStateToProps = function (state, ownProps) {
   return {

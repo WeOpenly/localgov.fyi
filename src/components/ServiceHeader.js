@@ -54,26 +54,33 @@ service_header_mainMobile : {
   },
 service_header_cardTop : {
     display: 'flex',
-    justifyContent: 'space-between',
+    justifyContent: 'left',
     paddingTop: theme.spacing.unit,
     paddingBottom: theme.spacing.unit,
     flexWrap: 'wrap'
   },
-service_header_logoName : {
+  service_header_cardTop_mob:{
+    display: 'flex',
+    justifyContent: 'center',
+    textAlign: 'center',
+    paddingTop: theme.spacing.unit,
+    paddingBottom: theme.spacing.unit,
+    flexWrap: 'wrap'
+  },
+  service_header_logoName : {
     display: 'flex',
   },
-service_header_title : {
-    flexGrow: 1,
+  service_header_title : {
+    marginRight: theme.spacing.unit * 5,
+  },
+  service_header_title_mob : {
+      marginBottom: theme.spacing.unit *3
   },
   service_header_in : {
     cursor: 'pointer',
     color: theme.palette.primary['400'],
   },
 
-service_header_menuButton : {
-    marginTop: theme.spacing.unit * -1,
-    marginRight: theme.spacing.unit * -1,
-  },
 service_header_menuItem : {
     display: 'flex',
     justifyContent: 'center',
@@ -100,6 +107,9 @@ service_header_serDelLink:{
   display: 'flex',
   alignSelf: 'center',
 },
+service_header_menuButtonIcon:{
+  marginRight: theme.spacing.unit
+},
 service_header_svgIcon : {
     width: 18,
     color: theme.palette.primary['400']
@@ -110,8 +120,6 @@ service_header_contactIcons : {
 service_header_serviceNotify : {
   },
 service_header_serviceShare : {
-    marginBottom: theme.spacing.unit*2,
-    marginTop: theme.spacing.unit,
   },
 service_header_deliveryLinkWrapper : {
     display: 'flex',
@@ -149,6 +157,7 @@ class ServiceHeader extends Component {
     this.state = {
       anchorEl: null,
       copied: false,
+      isMobileOnly: false,
     };
     this.handleShareClick = this.handleShareClick.bind(this);
     this.handleClose = this.handleClose.bind(this);
@@ -157,6 +166,12 @@ class ServiceHeader extends Component {
     this.trackClickSocialIcon = this.trackClickSocialIcon.bind(this);
     this.handleNotifyClick = this.handleNotifyClick.bind(this);
     this.toggleServiceFlow = this.toggleServiceFlow.bind(this);
+  }
+  
+  componentDidMount(){
+    this.setState({
+      isMobileOnly: isMobileOnly
+    })
   }
 
   handleNotifyClick(){
@@ -297,25 +312,25 @@ class ServiceHeader extends Component {
     });
 
 
-    const actionButton = isLoggedIn() ? (<SaveButton service={id}/>) : (<IconButton color="secondary" className={classes.button} color="primary" onClick={this.handleNotifyClick}  aria-label="Ge Notified">
-       <NotificationImportant />
-      </IconButton>)
+    const actionButton = isLoggedIn() ? (<SaveButton service={id}/>) : (<Button color="primary" size="small" className={classes.service_header_menuButton} onClick={this.handleNotifyClick}  aria-label="Ge Notified">
+       <NotificationImportant className={classes.service_header_menuButtonIcon} fontSize="small"/> Notify 
+      </Button>)
 
-      const shareButton = (<IconButton color="secondary" className={classes.service_header_menuButton} color="primary" onClick={this.handleShareClick}  aria-label="share">
-      <Share />
-      </IconButton>)
+      const shareButton = (<Button color="primary" size="small"  className={classes.service_header_menuButton}  onClick={this.handleShareClick}  aria-label="share">
+      <Share className={classes.service_header_menuButtonIcon}  fontSize="small"/> Share
+      </Button>)
 
     const serviceFlowButton = service_delivery_enabled ? (<Button size="small" variant="outlined" color="primary" onClick={this.handleShareClick} className={classes.service_header_notifyButton}>Get</Button>) : null;
     
 
     return (
-      <Grid container spacing={16} className={!isMobileOnly ? classes.service_header_main : classes.service_header_mainMobile}>
+      <Grid container spacing={16} className={!this.state.isMobileOnly ? classes.service_header_main : classes.service_header_mainMobile}>
         <ServiceNotifyDialog ser_name={name} org_id={this.props.orgID}/>
         <ServiceFlowDialog service_name={name} service_id={this.props.id} />
 
         <Grid item xs={12} md={10}>
-              <div className={classes.service_header_cardTop}>
-                <div className={classes.service_header_title}>
+              <div className={!this.state.isMobileOnly ? classes.service_header_cardTop : classes.service_header_cardTop_mob}>
+                <div className={!this.state.isMobileOnly ?  classes.service_header_title: classes.service_header_title_mob}>
                   <Typography variant="display1">{name}</Typography>
                   <Typography variant="subheading" onClick={this.handleOrgClick} 
                  >Offered by  <span  className={classes.service_header_in}> {offeredIn} </span></Typography>

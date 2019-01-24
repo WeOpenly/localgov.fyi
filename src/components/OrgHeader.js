@@ -32,7 +32,7 @@ import {trackClick} from './common/tracking';
 const styles = theme => ({
 org_header_main : {
   // marginRight: theme.spacing.unit,
-  boxShadow: '0 0 0 0',
+  borderBottom: '1px solid #d4d4d4',
   paddingTop: theme.spacing.unit * 2,
   paddingLeft: theme.spacing.unit * 2,
   paddingRight: theme.spacing.unit * 2,
@@ -40,11 +40,13 @@ org_header_main : {
   margin: '1px'
 },
 org_header_mainMobile : {
-  boxShadow: '0 0 0 0',
-  paddingTop: theme.spacing.unit * 2,
+  justifyContent : 'center',
+  textAlign: 'center',
+  borderBottom: '1px solid #d4d4d4',
+    paddingTop: theme.spacing.unit * 2,
   paddingLeft: theme.spacing.unit * 2,
   paddingRight: theme.spacing.unit * 2,
-  paddingBottom: theme.spacing.unit * 2
+  paddingBottom: theme.spacing.unit * 2,
 },
 org_header_cardTop : {
   display: 'flex',
@@ -58,6 +60,9 @@ org_header_logoName : {
 },
 org_header_title : {
   flexGrow: 1,
+},
+org_header_menuButtonIcon:{
+  marginRight: theme.spacing.unit
 },
 org_header_in : {
   cursor: 'pointer',
@@ -121,7 +126,8 @@ class OrgHeader extends Component {
     this.state = {
       anchorEl: null,
       copied: false,
-      hover: false
+      hover: false,
+      isMobileOnly: false,
     };
     this.handleShareClick = this
       .handleShareClick
@@ -141,6 +147,12 @@ class OrgHeader extends Component {
     this.trackClickSocialIcon = this
       .trackClickSocialIcon
       .bind(this);
+  }
+
+  componentDidMount(){
+    this.setState({
+      isMobileOnly: isMobileOnly,
+    });
   }
 
   handleShareClick(event) {
@@ -360,14 +372,16 @@ class OrgHeader extends Component {
       return <div className={classes.org_header_contactIcons}>{value}
       </div>;
     });
-      const shareButton = (<IconButton color="secondary" className={classes.org_header_menuButton} color="primary" onClick={this.handleShareClick}  aria-label="share">
-      <Share />
-      </IconButton>)
+
+   const shareButton = (<Button color="primary" size="small"  className={classes.org_header_menuButton}  onClick={this.handleShareClick}  aria-label="share">
+      <Share className={classes.org_header_menuButtonIcon}  fontSize="small"/> Share
+      </Button>)
+
     return (
       <Grid
         container
         spacing={16}
-        className={!isMobileOnly
+        className={!this.state.isMobileOnly
         ? classes.org_header_main
         : classes.org_header_mainMobile}>
         <Grid item xs={12} md={11}>

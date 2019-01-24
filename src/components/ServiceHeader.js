@@ -320,7 +320,7 @@ class ServiceHeader extends Component {
       <Share className={classes.service_header_menuButtonIcon}  fontSize="small"/> Share
       </Button>)
 
-    const serviceFlowButton = service_delivery_enabled ? (<Button size="small" variant="outlined" color="primary" onClick={this.handleShareClick} className={classes.service_header_notifyButton}>Get</Button>) : null;
+    const serviceFlowButton = service_delivery_enabled ? (<Button size="small" variant="outlined" color="primary" onClick={this.toggleServiceFlow} className={classes.service_header_notifyButton}>Get</Button>) : null;
     
 
     return (

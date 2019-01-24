@@ -423,6 +423,8 @@ class ServiceDetailTemplate extends React.Component {
                             <IconButton
                                 variant="outlined"
                                 aria-label="goback"
+                                disableRipple
+                                disableFocusRipple
                                 onClick={() => window.history.back()}
                                 className={classes.ser_detail_button}>
                                 <KeyboardBackspace/>

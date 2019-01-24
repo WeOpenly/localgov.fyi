@@ -56,6 +56,7 @@ ser_del_link_paper : {
     paddingRight: theme.spacing.unit,
     paddingTop: theme.spacing.unit * 2,
     // borderTop : `6px solid ${theme.palette.primary["500"]}`,
+    backgroundImage: `linear-gradient(to left bottom, #6f47ff, #5d38f2, #4829e4, #3017d7)`,
     backgroundColor : theme.palette.primary['400'],
   },
 ser_del_link_title : {
@@ -97,7 +98,10 @@ ser_del_link_dialogButton : {
     marginBottom: theme.spacing.unit* 2,
     backgroundColor: 'white',
     color: theme.palette.primary['700'],
-    textTransform : 'lowercase',
+    textTransform : 'capitalize',
+    '&:hover':{
+      color: 'white',
+    }
   },
 ser_del_link_dialogButton2 : {
     marginTop: theme.spacing.unit * 2,
@@ -209,10 +213,30 @@ class ServiceDeliveryLink extends Component {
   }
 
   handleBad() {
+     let currentLoc = '';
+    if (window.location && window.location.pathname) {
+      currentLoc = window.location.pathname
+    }
     this.setState({
       showSatisfied: false,
       satisfied: false,
-    });
+    }, () => fetch("/", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/x-www-form-urlencoded"
+      },
+      body: encode({
+        "form-name": "serviceDeliveryFeedback",
+        "path": currentLoc,
+        "satisfied": false,
+      })
+    }).then(() => this.setState({
+      submitting: this.state.submitting,
+      success: this.state.success,
+    })).catch(error => this.setState({
+      submitting: this.state.submitting,
+      failure: this.state.success,
+    })));
   }
 
   handleClose() {

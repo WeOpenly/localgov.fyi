@@ -53,7 +53,7 @@ const styles = theme => ({
         flexDirection: 'column'
     },
     index_hero_search_box: {
-        minHeight: 120,
+        minHeight: 128,
         paddingBottom: theme.spacing.unit * 4,
         paddingTop: theme.spacing.unit * 2
     },
@@ -73,10 +73,14 @@ const styles = theme => ({
     },
 index_hero_ser_templates:{
     paddingBottom: theme.spacing.unit * 3
+},
+index_hero_ser_spinner:{
+    display: 'flex',
+    justifyContent: 'center',
 }
 });
 
-const SuggestBoxLoader = props => (<Spinner name="ball-beat" color="white"/>);
+const SuggestBoxLoader = props => (<div style={{display:'flex', justifyContent: 'center'}}><Spinner name="ball-beat" color="white"/></div>);
 
 const xah_randomize_array = ((arr) => {
     /* [ Fisher-Yates shuffle. can be used on array-like object
@@ -95,8 +99,25 @@ const xah_randomize_array = ((arr) => {
     return arr;
 });
 
-const SerTemplateCards = (data) => {
-    let shuffledArray = data.data.allFile.edges;
+const SerTemplateCards = () => {
+    const sers = [{
+        name: 'Pay Property taxes',
+        link: 'pay-property-taxes/'
+    },
+    {
+        name: 'Pay Parking Citation',
+        link: 'pay-parking-citation/'
+    },
+    {
+        name: 'Renew Business License',
+        link: 'renew-business-license/'
+    },
+    {
+        name: 'Pay Utility Bill',
+        link: 'pay-utility-bill/'
+    },
+]
+    
     return (
         <div
             style={{
@@ -104,7 +125,7 @@ const SerTemplateCards = (data) => {
             justifyContent: 'center',
             flexWrap: 'wrap'
         }}>
-            {shuffledArray.map((item, idx) => {
+            {sers.map((item, idx) => {
                 return (
                     <Button
                         variant="text"
@@ -116,8 +137,8 @@ const SerTemplateCards = (data) => {
                         textAlign: 'center',
                         textTransform: 'capitalize'
                     }}
-                        to={`services/${item.node.name}`} component={Link} >
-                        {item.node.childServiceGlossaryJson.service_name}
+                        to={`services/${item.link}`} component={Link} >
+                        {item.name}
                     </Button>
                 )
             })}
@@ -125,13 +146,13 @@ const SerTemplateCards = (data) => {
     )
 }
 
-const serTemp = (
-    <StaticQuery
-        query={graphql ` query allSerGlossaryItems{ allFile(filter : { sourceInstanceName: { eq: "service_glossary" } }, limit: 6 ) { edges { node { childServiceGlossaryJson {service_name} name } } } }`}
-        render={data => {
-        return <SerTemplateCards data={data}/>;
-    }}/>
-)
+// const serTemp = (
+//     <StaticQuery
+//         query={graphql ` query allSerGlossaryItems{ allFile(filter : { sourceInstanceName: { eq: "service_glossary" } }, limit: 6 ) { edges { node { childServiceGlossaryJson {service_name} name } } } }`}
+//         render={data => {
+//         return <SerTemplateCards data={data}/>;
+//     }}/>
+// )
 
 class IndexHero extends Component {
     constructor(props) {
@@ -201,7 +222,7 @@ class IndexHero extends Component {
     fontSize="small"/>
 Trending </Button>
                             </div>
-                            {serTemp}
+                            <SerTemplateCards />
                         </div>
                     </Grid>
                     <Grid item xs={1} sm={1} md={2}/>

@@ -38,7 +38,7 @@ h_a_m_profileHeading : {
 },
 h_a_m_login_button:{
   display : 'flex',
-  alignSelf : 'start',
+  alignSelf : 'center',
 }
 });
 

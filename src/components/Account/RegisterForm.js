@@ -74,7 +74,7 @@ const {handleSubmit, titleComponent, pristine, reset, submitting, error} = props
     return (
             <Fragment>
       {titleComponent ? titleComponent : (   <Typography variant="headline" color="primary">
-            Login to your localgov.fyi account
+            Create your localgov.fyi account
         </Typography>)}
      
         <form onSubmit={handleSubmit}>

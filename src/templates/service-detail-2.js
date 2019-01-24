@@ -89,6 +89,9 @@ const styles = theme => ({
     },
     ser_detail_button: {
         border: 'none',
+        '&:hover':{
+            background: 'none'
+        },
         marginLeft: theme.spacing.unit * -6
     },
     ser_detail_icon: {
@@ -421,7 +424,7 @@ class ServiceDetailTemplate extends React.Component {
                     {(windowGlobal && window.history.length > 2) && !isMobileOnly
                         ? (
                             <IconButton
-                                variant="outlined"
+                                variant=""
                                 aria-label="goback"
                                 disableRipple
                                 disableFocusRipple

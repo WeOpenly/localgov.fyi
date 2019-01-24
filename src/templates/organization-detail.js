@@ -37,10 +37,6 @@ const styles = theme => ({
         display: "block",
         height: "100%"
         },
-    "body>div>div": {
-        display: "block",
-        height: "100%"
-        },
     },
   orgTitle: {
     marginBottom: theme.spacing.unit,

@@ -52,10 +52,7 @@ const styles = theme => ({
         display: "block",
         height: "100%"
         },
-    "body>div>div": {
-        display: "block",
-        height: "100%"
-        },
+ 
     },
     ser_detail_container: {
         marginTop: theme.spacing.unit * 2

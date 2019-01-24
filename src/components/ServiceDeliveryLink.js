@@ -307,6 +307,9 @@ class ServiceDeliveryLink extends Component {
           )
           : null}
         <Dialog
+          fullWidth={false}
+          maxWidth='sm'
+          scroll="body"
           open={feedbackOpen}
           onClose={this.handleClose}
         >

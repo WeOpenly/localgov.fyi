@@ -39,7 +39,7 @@ if (windowGlobal) {
 
 // eg ['no_results_found', {search_method: 'search page'}]
 // ['no_results_found', {search_method: 'glossary page'}]
-export const trackEvent = (event_type, ...extra) => async(dispatch, getState) => {
+export const trackEvent = (event_type, event_props) => async(dispatch, getState) => {
     if (!Fingerprint2) {
         return
     }
@@ -53,7 +53,7 @@ export const trackEvent = (event_type, ...extra) => async(dispatch, getState) =>
                         .identify(result);
                     windowGlobal
                         .mixpanel
-                        .track(`event_${event_type}`, extra);
+                        .track(`event_${event_type}`, event_props);
                 }
 
             } catch (e) {}

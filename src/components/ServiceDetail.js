@@ -14,6 +14,7 @@ import InfoOutlined from '@material-ui/icons/InfoOutlined'
 import AccessTimeOutlined from '@material-ui/icons/AccessTimeOutlined'
 import FolderOpenOutlined from '@material-ui/icons/FolderOpenOutlined'
 import HelpOutline from '@material-ui/icons/HelpOutline'
+import PriorityHigh from '@material-ui/icons/PriorityHigh';
 import List from '@material-ui/icons/List'
 
 import { withStyles } from '@material-ui/core/styles';
@@ -59,6 +60,17 @@ ser_detail_tab_tabRoot : {
     },
 ser_detail_cardContent : {
     padding: theme.spacing.unit *4
+},
+ser_detail_dummyfaq:{
+    display: 'flex',
+    height: 300,
+    justifyContent: 'center',
+    alignItems: 'center'
+},
+ser_detail_dummyfaq_details:{
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center'
 }
 });
 
@@ -123,6 +135,20 @@ class ServiceDetail extends Component {
                    {qaList}
                 </div>
             </Fragment>)
+        }else{
+                tabContent.push(<Fragment>
+                <div className={classes.ser_detail_dummyfaq}>
+                    <div className={classes.ser_detail_dummyfaq_details}>
+                          <PriorityHigh size="small" />
+                       <Typography variant="body1" gutterBottom>
+                          
+                        Looks like we don't have any FAQs yet!
+                    </Typography>
+                        </div>
+                   
+                  
+                </div>
+            </Fragment>)
         }
         if(stepList){
             tabContent.push(<Fragment>
@@ -173,9 +199,9 @@ tabs.push(
         icon={< FolderOpenOutlined />}/>
 )
         }
-        if(qaList){
-            tabs.push(<Tab      classes={{ root: classes.ser_detail_tab_tabRoot, selected: classes.ser_detail_tab_tabSelected }} label="FAQs" icon={<HelpOutline />} />)
-        }
+        //  push this regardless
+        tabs.push(<Tab  classes={{ root: classes.ser_detail_tab_tabRoot, selected: classes.ser_detail_tab_tabSelected }} label="FAQs" icon={<HelpOutline />} />)
+        
         if(stepList){
             tabs.push(<Tab      classes={{ root: classes.ser_detail_tab_tabRoot, selected: classes.ser_detail_tab_tabSelected }} label="Checklist" icon={<List />} />)
         }

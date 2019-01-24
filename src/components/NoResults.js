@@ -15,8 +15,8 @@ import Card from '@material-ui/core/Card';
 import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
 import withRoot from '../withRoot';
-
-import { trackView } from "./common/tracking";
+import {NO_SEARCH_RESULTS} from './common/tracking_events';
+import { trackEvent } from "./common/tracking";
 
 const styles = theme => ({
   no_res_wrapper: {
@@ -136,11 +136,11 @@ class NoResults extends Component {
   }
 
   componentDidMount(){
-    const { searchQuery, trackView} = this.props;
+    const { searchQuery, trackEvent} = this.props;
     this.setState({
       searchQuery
     })
-    trackView();
+    trackEvent(NO_SEARCH_RESULTS, {search_query: searchQuery})
   }
 
   handleSubmit(e) {
@@ -329,8 +329,8 @@ class NoResults extends Component {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    trackView: () => {
-      dispatch(trackView('no_search_results', null));
+    trackEvent: (ev, data) => {
+      dispatch(trackEvent(ev, data));
     }
   }
 }

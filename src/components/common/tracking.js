@@ -26,18 +26,40 @@ if (windowGlobal) {
     }
 }
 
-function getUrlParameter(name) {
-    name = name
-        .replace(/[\[]/, '\\[')
-        .replace(/[\]]/, '\\]');
-    var regex = new RegExp('[\\?&]' + name + '=([^&#]*)');
-    var results = regex.exec(location.search);
-    return results === null
-        ? ''
-        : decodeURIComponent(results[1].replace(/\+/g, ' '));
+// function getUrlParameter(name) {
+//     name = name
+//         .replace(/[\[]/, '\\[')
+//         .replace(/[\]]/, '\\]');
+//     var regex = new RegExp('[\\?&]' + name + '=([^&#]*)');
+//     var results = regex.exec(location.search);
+//     return results === null
+//         ? ''
+//         : decodeURIComponent(results[1].replace(/\+/g, ' '));
+// };
+
+// eg ['no_results_found', {search_method: 'search page'}]
+// ['no_results_found', {search_method: 'glossary page'}]
+export const trackEvent = (event_type, ...extra) => async(dispatch, getState) => {
+    if (!Fingerprint2) {
+        return
+    }
+    new Fingerprint2(fpOptions)
+        .get(function (result, components) {
+            try {
+
+                if (windowGlobal && windowGlobal.mixpanel) {
+                    windowGlobal
+                        .mixpanel
+                        .identify(result);
+                    windowGlobal
+                        .mixpanel
+                        .track(`event_${event_type}`, extra);
+                }
+
+            } catch (e) {}
+        });
 };
 
-// page_view [layout type]
 export const trackView = (page_layout_type, viewing_entity_type, viewing_entity_id, viewing_entity_name, ...extra) => async(dispatch, getState) => {
     if (!Fingerprint2) {
         return
@@ -45,59 +67,26 @@ export const trackView = (page_layout_type, viewing_entity_type, viewing_entity_
     new Fingerprint2(fpOptions)
         .get(function (result, components) {
             try {
-                const source = getUrlParameter('src');
-                const {pathname} = windowGlobal.location;
-                let ua = {}
-
-                try {
-                    ua = UAParser(components[0].value);
-                } catch (e) {
-                    console.log(e)
-                }
-
+       
                 const eventParams = {
-                    e: 'page_view',
-                    path: pathname,
-                    t: page_layout_type,
-                    psrc: source,
                     v_e_t: viewing_entity_type,
                     v_e_id: viewing_entity_id,
                     v_e_n: viewing_entity_name,
-                    fp: result,
-                    browser_n: ua.browser.name,
-                    browser_v: ua.browser.version,
-                    device_m: ua.device.model,
-                    device_t: ua.device.type,
-                    device_v: ua.device.v,
-                    os_n: ua.os.name,
-                    os_v: ua.os.version,
                     ...extra
                 }
 
-                const payloadParams = Object
-                    .keys(eventParams)
-                    .map(k => `${encodeURIComponent(k)}=${encodeURIComponent(eventParams[k])}`)
-                    .join('&');
-  
-                const url = `https://localgov.fyi/track/track.png?${payloadParams}`;
+    
 
-                if (!isProd){
-                    return;
-                }
-                if (windowGlobal && windowGlobal.mixpanel){
-                    windowGlobal.mixpanel.identify(result);
-                    windowGlobal.mixpanel.track(`page_view_${page_layout_type}`, eventParams);
+                if (windowGlobal && windowGlobal.mixpanel) {
+                    windowGlobal
+                        .mixpanel
+                        .identify(result);
+                    windowGlobal
+                        .mixpanel
+                        .track(`page_view_${page_layout_type}`, eventParams);
                 }
 
-                fetch(url, {headers: {
-                    "Access-Control-Allow-Origin" : true
-                }
-           }).then((data) => {console.log(data)}).catch((err) => {
-                    console.log("here", err, url);
-                });
-            } catch (e) {
-            console.log("here2", e)
-            }
+            } catch (e) {}
         });
 };
 
@@ -109,46 +98,16 @@ export const trackInput = (input_type, text) => async(dispatch, getState) => {
     new Fingerprint2(fpOptions)
         .get(function (result, components) {
             try {
-                const source = getUrlParameter('src');
-                const {pathname} = windowGlobal.location;
-                let ua = {}
-
-                try {
-                    ua = UAParser(components[0].value);
-                } catch (e) {
-                    console.log(e)
-                }
 
                 const eventParams = {
-                    e: 'input',
-                    t: input_type,
                     s: text,
-                    path: pathname,
-                    psrc: source,
-                    fp: result,
-                    browser_n: ua.browser.name,
-                    browser_v: ua.browser.version,
-                    device_m: ua.device.model,
-                    device_t: ua.device.type,
-                    device_v: ua.device.v,
-                    os_n: ua.os.name,
-                    os_v: ua.os.version
-                }
-
-                const payloadParams = Object
-                    .keys(eventParams)
-                    .map(k => `${encodeURIComponent(k)}=${encodeURIComponent(eventParams[k])}`)
-                    .join('&');
-
-                if (!isProd) {
-                    return;
                 }
 
                 if (windowGlobal && windowGlobal.mixpanel) {
                     windowGlobal.mixpanel.identify(result);
                     windowGlobal.mixpanel.track(`input_${input_type}`, eventParams);
                 }
-            fetch(`https://localgov.fyi/track/track.png?${payloadParams}`, {}).then((data) => {}).catch((err) => {});
+          
             } catch (e) {
              
             }
@@ -164,50 +123,20 @@ export const trackClick = (click_type, clicked_entity_type, clicked_entity_id, c
         .get(function (result, components) {
             try {
 
-                const source = getUrlParameter('src');
-                const {pathname} = windowGlobal.location;
-                let ua = {}
-
-                try {
-                    ua = UAParser(components[0].value);
-                } catch (e) {
-                    console.log(e)
-                }
-
                 const eventParams = {
-                    e: 'click',
-                    t: click_type,
-                    path: pathname,
-                    psrc: source,
                     pos_in_list: pos_in_list,
                     c_e_t: clicked_entity_type,
                     c_e_id: clicked_entity_id,
                     c_e_n: clicked_entity_name,
-                    fp: result,
-                    browser_n: ua.browser.name,
-                    browser_v: ua.browser.version,
-                    device_m: ua.device.model,
-                    device_t: ua.device.type,
-                    device_v: ua.device.v,
-                    os_n: ua.os.name,
-                    os_v: ua.os.version
                 }
 
-                const payloadParams = Object
-                    .keys(eventParams)
-                    .map(k => `${encodeURIComponent(k)}=${encodeURIComponent(eventParams[k])}`)
-                    .join('&');
-                
-                if (!isProd) {
-                    return;
-                }
 
                 if (windowGlobal && windowGlobal.mixpanel) {
                     windowGlobal.mixpanel.identify(result);
                     windowGlobal.mixpanel.track(`click_${click_type}`, eventParams);
                 }
 
-                fetch(`https://localgov.fyi/track/track.png?${payloadParams}`, {}).then((data) => {}).catch((err) => {});
+            
             } catch (e) {
             
             }

@@ -48,7 +48,8 @@ import withRoot from '../withRoot';
 import StateSuggest from '../components/StateSuggest';
 import HeaderAccountMenu from '../components/HeaderAccountMenu';
 import LoginRegisterDialog from '../components/Account/LoginRegisterDialog';
-import {trackView, trackClick, trackInput} from "../components/common/tracking";
+import {NO_SEARCH_RESULTS} from '../components/common/tracking_events';
+import {trackView, trackClick, trackInput, trackEvent} from "../components/common/tracking";
 
 const styles = theme => ({
     "@global": {
@@ -245,16 +246,22 @@ class ServiceGlossary extends Component {
             .bind(this);
     }
 
+    trackNoresults = () => {
+        this.props.trackEvent(NO_SEARCH_RESULTS, {
+        search_text: this.state.searchText,
+        state_name :this.state.stateName
+        })
+    }
+
     handleShareClick = (event) => {
         this.setState({anchorEl: event.currentTarget});
-        this
-            .props
-            .trackClick('external', 'share', '', '', 0);
+        this.props.trackClick('external', 'share', '', '', 0);
     }
 
     handleClose = () => {
         this.setState({anchorEl: null, copied: false});
     }
+
     static getDerivedStateFromProps(nextProps, prevState) {
         const values = queryString.parse(nextProps.location.search);
 
@@ -402,11 +409,12 @@ class ServiceGlossary extends Component {
             allOrgs = stateFuse.search(this.state.stateName);
         }
 
+        if (allOrgs.length === 0){
+            this.trackNoresults()
+        }
+
         const allStatesSet = new Set();
-        this
-            .state
-            .orgs
-            .map((org, idx) => {
+        this.state.orgs.map((org, idx) => {
                 allStatesSet.add(org.area.hierarchy[org.area.hierarchy.length - 1].area_name)
             })
 
@@ -467,9 +475,9 @@ class ServiceGlossary extends Component {
                         marginLeft: 0
                     }}
                         primary={strippedName}
-                        secondary={< Typography component = "span" color = "textPrimary" > {
+                        secondary={<Typography component = "span" color = "textPrimary"> {
                         state
-                    } < /Typography>}/>
+                    } </Typography>}/>
                 </ListItem>
             )
         });
@@ -731,6 +739,9 @@ const mapDispatchToProps = (dispatch) => {
         },
         trackFeedback: (input) => {
             dispatch(trackInput('service_glossary_search', input));
+        },
+        trackEvent: (evName, data) => {
+            dispatch(trackEvent(evName, data));
         }
     }
 }

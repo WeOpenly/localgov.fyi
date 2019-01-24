@@ -229,7 +229,7 @@ class IntegrationAutosuggest extends React.Component {
     selectSuggestion = (event, {suggestion, suggestionValue, suggestionIndex, sectionIndex, method}) => {
         event.preventDefault();
         this.props.onSelectSuggestion(suggestion);
-        this.setState({shouldRenderSuggestions: false}, () => console.log("selectSuggestion done"));
+        this.setState({shouldRenderSuggestions: false});
     }
 
     handleChange = name => (event, {newValue}) => {

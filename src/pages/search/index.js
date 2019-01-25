@@ -20,6 +20,7 @@ import withRoot from '../../withRoot';
 
 import { trackView } from "../../components/common/tracking";
 import { updateInput, fetchSearchResults } from '../../components/Search/actions.js';
+import {decode, encode} from 'universal-base64';
 
 const styles = theme => ({
     search_root: {

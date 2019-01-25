@@ -75,7 +75,8 @@
         "request": "^2.88.0",
         "serve": "^10.0.2",
         "slug": "^0.9.2",
-        "ua-parser-js": "^0.7.18"
+        "ua-parser-js": "^0.7.18",
+        "universal-base64": "^2.0.1"
     },
     "keywords": [
         "gatsby"

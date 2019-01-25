@@ -17,6 +17,8 @@ import Spinner from 'react-spinkit';
 
 import withRoot from '../withRoot';
 import { trackClick, trackInput } from "./common/tracking";
+import {navigate, redirectTo} from '@reach/router';
+import {encode} from 'universal-base64';
 
 const styles = theme => ({
   ser_del_link_root: {
@@ -135,7 +137,7 @@ ser_del_redir:{
 },
 });
 
-const encode = (data) => {
+const encodeBody = (data) => {
   return Object.keys(data)
     .map(key => encodeURIComponent(key) + "=" + encodeURIComponent(data[key]))
     .join("&");
@@ -164,18 +166,10 @@ class ServiceDeliveryLink extends Component {
     this.handleReset = this.handleReset.bind(this);
   }
 
-  handleClick(name, url, index) {
-    const {trackClick} = this.props;
-    const windowGlobal = typeof window !== 'undefined' && window
-    trackClick('external', 'service_delivery_link', url, name, index);
-    this.setState({
-      redirectClicked: true,
-    }, () => {
-      setTimeout(() => windowGlobal.open(url) , 1000); 
-      setTimeout(() => {
+  handleClick(){
+    setTimeout(() => {
         this.setState({ redirectClicked: false, feedbackOpen: true, })
-      }, 2000);
-    });
+    }, 100);
   }
 
   handleGood() {
@@ -184,6 +178,7 @@ class ServiceDeliveryLink extends Component {
     if (window.location && window.location.pathname) {
       currentLoc = window.location.pathname
     }
+
     this.setState({
       feedbackOpen: false,
       showSatisfied: false,
@@ -196,7 +191,7 @@ class ServiceDeliveryLink extends Component {
       headers: {
         "Content-Type": "application/x-www-form-urlencoded"
       },
-      body: encode({
+      body: encodeBody({
         "form-name": "serviceDeliveryFeedback",
         "path": currentLoc,
         "satisfied": true,
@@ -225,7 +220,7 @@ class ServiceDeliveryLink extends Component {
       headers: {
         "Content-Type": "application/x-www-form-urlencoded"
       },
-      body: encode({
+body : encodeBody({
         "form-name": "serviceDeliveryFeedback",
         "path": currentLoc,
         "satisfied": false,
@@ -261,7 +256,7 @@ class ServiceDeliveryLink extends Component {
       headers: {
         "Content-Type": "application/x-www-form-urlencoded"
       },
-      body: encode({
+      body: encodeBody({
         "form-name": "serviceDeliveryFeedback",
         "path": currentLoc,
         "satisfied": this.state.satisfied,
@@ -307,10 +302,19 @@ class ServiceDeliveryLink extends Component {
     }
 
     const serButtons = serDelLinks.map((link, idx) => {
+          const data = {
+      's': service_name,
+      'o': org_name,
+      'u': link.url,
+    }
+    const encodedData = encode(JSON.stringify(data))
+    const redir = `/deep_link/?data=${encodedData}`
       return (
         <Button
           key={link.link_name}
-          onClick={() => this.handleClick(link.link_name, link.url, idx)}
+          href={redir}
+          onClick={this.handleClick}
+          target="_blank"
           variant="contained"
           color="primary"
           size="large"

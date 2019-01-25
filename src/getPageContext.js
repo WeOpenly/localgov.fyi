@@ -160,9 +160,9 @@ const theme = createMuiTheme({
             color: "rgba(30, 30, 50,0.54)"
         },
         button: {
-            fontSize: "0.77rem",
+            fontSize: "0.82rem",
             textTransform: "uppercase",
-            letterSpaceing: '2px',
+            letterSpaceing: '4px',
             fontWeight: 700,
             fontFamily: '"Nunito Sans", sans-serif, "Helvetica", "Arial", sans-serif',
         }

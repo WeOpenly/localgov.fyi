@@ -1,4 +1,4 @@
-import React, {Component} from "react";
+import React, {Component, Fragment} from "react";
 import {connect} from "react-redux";
 import {navigate} from '@reach/router';
 import Typography from '@material-ui/core/Typography';
@@ -39,6 +39,14 @@ h_a_m_profileHeading : {
 h_a_m_login_button:{
   display : 'flex',
   alignSelf : 'center',
+  fontWeight: '600'
+},
+h_a_m_signup_button:{
+  border: '1px solid #fff',
+
+},
+h_a_m_loging_signup_container:{
+  display: 'flex',
 }
 });
 
@@ -143,11 +151,20 @@ class HeaderAccountMenu extends Component {
         </div>
       )
       : (
-        <Button
-        variant="outlined"
-        className={classes.h_a_m_login_button}
-          onClick={() => this.props.openLogin()}
-          color="inherit">Login</Button>
+        <div className={classes.h_a_m_loging_signup_container}>
+          <Button
+                variant="text"
+                className={classes.h_a_m_login_button}
+                  onClick={() => this.props.openLogin()}
+                  color="inherit">Login</Button>
+      
+            <Button
+            variant="outlined"
+            href="/signup"
+            className={classes.h_a_m_signup_button}
+              color="inherit">SignUp</Button>
+      
+        </div>
       ));
   }
 }

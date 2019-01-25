@@ -72,13 +72,16 @@ const styles = theme => ({
   login_loginFormContainer: {
     alignSelf: 'center'
   },
+  login_accountTextHeader:{
+    marginBottom: theme.spacing.unit*3
+  },
   login_loginFormContainer_mob: {
     textAlign: 'center',
     padding: theme.spacing.unit*2
   },
   login_accountTextHeadline: {
     color: '#fff',
-    paddingBottom: theme.spacing.unit * 2
+    fontSize: 40,
   },
   login_accountBenefits: {
     paddingTop: theme.spacing.unit*2,
@@ -136,11 +139,15 @@ class SignUp extends Component {
           <Grid item xs={8}>
             <Grid container className={classes.login_accountLeft}>
               <div className={classes.login_accountText}>
-                {/* <div className={classes.login_accountTextHeader}>
-                                    <Typography variant="display1" className={classes.login_accountTextHeadline}>
-                                        Localgov.fyi
-                                    </Typography>
-                                </div> */}
+                <div className={classes.login_accountTextHeader}>
+                              
+                    <Button size="small" href="/" variant="disabled" style={{textTransform:'capitalize'}}  disableFocusRipple disableRipple disableTouchRipple
+                                      >
+                      <Typography variant="display2" className={classes.login_accountTextHeadline}>Localgov.fyi    </Typography>
+                    </Button>
+                                   
+                                
+                  </div>
                 <div className={classes.login_accountBenefits}>
                   <Typography variant="display1" className={classes.login_benefit_head}>
                     Find all your gov services
@@ -173,7 +180,7 @@ class SignUp extends Component {
       <Fragment>
         <Grid container className={classes.login_accountContainer} spacing={0}>
           <Grid item xs={12} className={classes.login_accountLeft_mob} align="center">
-
+            <Button size="small" href="/" variant="disabled" style={{textTransform:'capitalize'}}  disableFocusRipple disableRipple disableTouchRipple >
             <Typography
               variant="display1"
               style={{
@@ -182,6 +189,7 @@ class SignUp extends Component {
             }}>
               Localgov.fyi
             </Typography>
+              </Button>
 
             <Typography
               variant="headline"

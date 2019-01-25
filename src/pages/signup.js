@@ -58,7 +58,7 @@ const styles = theme => ({
         backgroundImage: `linear-gradient(to left bottom, #6f47ff, #5d38f2, #4829e4, #3017d7, #0000ca)`
     },
     login_accountText: {
-        alignSelf: 'center'
+        alignSelf: 'center',
     },
     login_loginFormContainer: {
         alignSelf: 'center'
@@ -73,8 +73,12 @@ const styles = theme => ({
     },
     login_accountTextHeadline:{
         color: '#fff',
-        paddingBottom: theme.spacing.unit * 2,
+         fontSize: 40,
     },
+      login_accountTextHeader:{
+marginBottom : theme.spacing.unit * 3
+  },
+ 
     login_accountBenefits:{
         paddingTop: theme.spacing.unit*2,
         paddingBottom: theme.spacing.unit*2,
@@ -136,11 +140,13 @@ class Login extends Component {
                     <Grid item xs={8}>
                         <Grid container className={classes.login_accountLeft}>
                             <div className={classes.login_accountText}>
-                                {/* <div className={classes.login_accountTextHeader}>
-                                    <Typography variant="display1" className={classes.login_accountTextHeadline}>
-                                        Localgov.fyi
-                                    </Typography>
-                                </div> */}
+                                    <div className={classes.login_accountTextHeader}>
+                               <Button size="small" href="/" variant="disabled" style={{textTransform:'capitalize'}}  disableFocusRipple disableRipple disableTouchRipple
+                                      >
+                      <Typography variant="display2" className={classes.login_accountTextHeadline}>Localgov.fyi    </Typography>
+                    </Button>
+                                   
+                                </div>
                                 <div className={classes.login_accountBenefits}>
                                     <Typography variant="display1" className={classes.login_benefit_head}>
                                         Find all your gov services
@@ -173,11 +179,12 @@ class Login extends Component {
         const mobileLogin = (<Fragment>
                 <Grid container className={classes.login_accountContainer} spacing={8}>
                     <Grid item xs={12} className={classes.login_accountLeft_mob}align="center">
-            
+                <Button size="small" href="/" variant="disabled" style={{textTransform:'capitalize'}}  disableFocusRipple disableRipple disableTouchRipple
+                                      >
                               <Typography variant="display1" style={{padding: 48, color:'#fff'}}>
                                     Localgov.fyi
                                 </Typography>
-                         
+                         </Button>
                 
                                 <Typography variant="headline" style={{color:'#fff'}} >
                                     Find all your gov services

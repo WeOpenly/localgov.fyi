@@ -1,6 +1,6 @@
 import fetch from 'isomorphic-fetch'
 
-
+const windowGlobal = typeof window !== 'undefined' && window
 export function checkStatus(response) {
 
     if (response.status >= 200 && response.status < 300) {

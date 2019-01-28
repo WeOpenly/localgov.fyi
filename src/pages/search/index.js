@@ -6,7 +6,7 @@ import Helmet from "react-helmet";
 import Spinner from 'react-spinkit';
 import { isMobileOnly } from 'react-device-detect';
 import queryString from 'query-string'
-
+import TextLoop from "react-text-loop";
 import { withStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
@@ -20,7 +20,6 @@ import withRoot from '../../withRoot';
 
 import { trackView } from "../../components/common/tracking";
 import { updateInput, fetchSearchResults } from '../../components/Search/actions.js';
-import {decode, encode} from 'universal-base64';
 
 const styles = theme => ({
     search_root: {
@@ -83,9 +82,31 @@ class Search extends React.Component {
     
         if (searchText) {
             dispatch(updateInput(searchText));
-            dispatch(fetchSearchResults);
+            dispatch(fetchSearchResults(search));
         }
         dispatch(trackView('search', null, null, null));
+    }
+
+    componentWillReceiveProps(newProps){
+        const {dispatch, location} = this.props;
+        const { search, searchResultsLoading } = this.props.location;
+        if (search && newProps.location.search && newProps.location.search !== search && !searchResultsLoading){
+            let searchText = null;
+
+            const values = queryString.parse(newProps.location.search);
+            if (values && values.q) {
+                searchText = values.q;
+            }
+   
+
+            if (searchText && searchText.length > 4) {
+                dispatch(updateInput(searchText));
+                dispatch(fetchSearchResults(newProps.location.search));
+                dispatch(trackView('search', null, null, null));
+            }
+           
+        }
+       
     }
 
     render() {
@@ -94,16 +115,36 @@ class Search extends React.Component {
         const {isSemantic, searchResultsLoading, searchResults, searchResultsLoadingFailed, input} = search;
 
         const noResults = !isSemantic && searchResults.length === 0;
-       
+
+        console.log(noResults, "noresults", searchResultsLoading, "searchresultsloading", searchResultsLoadingFailed, "searchResultsLoadingFailed")
+
         if (searchResultsLoading) {
-            return (
-                <div className={classes.search_wrapper}>
-                    <Spinner name="ball-beat" color="blue"/>
+            const { search } = this.props.location;
+            let searchText = null;
+
+            if (search) {
+                const values = queryString.parse(this.props.location.search);
+                if (values && values.q) {
+                    searchText = values.q;
+                }
+            }
+
+            return (<div className={!isMobileOnly ? classes.search_root : classes.search_rootMobile}>
+                <Helmet title={`Loading results for Search term - ${input}`} />
+                <HeaderWithSearch />
+                <div className={classes.search_noresults}>
+                    <div className={classes.search_wrapper}>
+                        <Spinner name="ball-beat" color="blue" />
+                        <Typography variant="subheading" style={{ paddingBottom: 16 }} gutterBottom>
+                            <TextLoop interval={2500} children={[`Understanding your search for ${searchText}`, "Searching our directory", `Loading results for search term ${searchText}`]}/>
+                        
+                        </Typography>
+                    </div>
                 </div>
-            );
+            </div>)
         }
 
-        if (noResults){
+        if (!searchResultsLoading && noResults){
             const { search } = this.props.location;
             let searchText = null;
 

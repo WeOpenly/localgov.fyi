@@ -205,40 +205,43 @@ class NewSuggestBox extends Component {
     // https://github.com/ybv/openly/issues/451
     const { search, dispatch } = this.props;
     
-    const { input, location } = this.props.search;
+    const { input, selectedOrganization } = this.props.search;
     if (!input || input.length < 3) {
       return null;
     }
-
-    if (input !== location.org.name){
-      const { serviceInput } = search;
-      if (serviceInput) {
-
-        const orgServiceTexturi = `/search/?q=${serviceInput}${input}`;
-        const orgServiceTextencodedUri = encodeURI(orgServiceTexturi);
-        dispatch(trackInput('index_search_box', `${serviceInput} ${input}`));
-        navigate(orgServiceTextencodedUri);
-        return;
-      }
-    }
-
-    if (location && location.org){
+ 
+    
+    if (selectedOrganization && selectedOrganization.id) {
       const {serviceInput} = search;
+      if (input !== selectedOrganization.name) {
+        const { serviceInput } = search;
+        if (serviceInput) {
+
+          const orgServiceTexturi = `/search/?q=${serviceInput}${input}`;
+          const orgServiceTextencodedUri = encodeURI(orgServiceTexturi);
+          dispatch(trackInput('index_search_box', `${serviceInput} ${input}`));
+          navigate(orgServiceTextencodedUri);
+          return;
+        }
+      }
+      
       if (serviceInput && serviceInput.length > 2){
-        const serviceTexturi = `/search/?q=${serviceInput}&org_id=${location.org.id}`;
+        const serviceTexturi = `/search/?q=${serviceInput}&org_id=${selectedOrganization.id}`;
         const serviceTextencodedUri = encodeURI(serviceTexturi);
         dispatch(trackInput('index_search_box', serviceInput));
         navigate(serviceTextencodedUri);
         return;
       }
 
-      const {id} = location.org;
+      const { id } = selectedOrganization;
       const orgIdUri = `/organization/${id}/`;
       const encodedOrgIdUri = encodeURI(orgIdUri);
       dispatch(trackInput('index_search_box', input));
       navigate(encodedOrgIdUri);
       return;
     }
+
+
 
     const uri = `/search/?q=${input}`;
     const encodedUri = encodeURI(uri);
@@ -297,6 +300,7 @@ class NewSuggestBox extends Component {
 
   handleSuggestionsClearRequested() {
     const { dispatch } = this.props;
+    dispatch(selectOrganization(null));
     // dispatch(clearInput());
   }
 
@@ -304,6 +308,7 @@ class NewSuggestBox extends Component {
     const { dispatch } = this.props;
 
     if (method === "type" ){
+      dispatch(selectOrganization(null));
       dispatch(updateInput(newValue))
     }
   }

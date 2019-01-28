@@ -332,9 +332,6 @@ class HeaderSuggestBox extends Component {
 
     shouldRenderSuggestions(value) {
         return true;
-        if (value) 
-            return true;
-        return false;
     }
 
     render() {
@@ -354,7 +351,7 @@ class HeaderSuggestBox extends Component {
                 <Autosuggest
                     theme={{
                     container: classes.header_suggest_container,
-                    suggestionsContainerOpen: classes.suggestionsContainerOpen,
+                    suggestionsContainerOpen: classes.header_suggest_suggestionsContainerOpen,
                     suggestionsList: classes.header_suggest_suggestionsList,
                     suggestion: classes.header_suggest_suggestion
                 }}

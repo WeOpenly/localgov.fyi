@@ -65,6 +65,7 @@
         "react-stonecutter": "^0.3.9",
         "react-stripe-elements": "^2.0.1",
         "react-structured-data": "0.0.9",
+        "react-text-loop": "^2.0.1",
         "react-truncate": "^2.4.0",
         "react-truncate-markup": "^3.0.0",
         "react-typography": "^0.16.13",

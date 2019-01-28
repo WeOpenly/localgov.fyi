@@ -112,59 +112,62 @@ export function toggleNotifyDialog(toggle){
   return {type: types.TOGGLE_NOTIFY_DIALOG, toggle}
 }
 
-export const fetchSearchResults = async (dispatch, getState) => {
-  const { input, selectedOrganization } = getState().search;
+export function fetchSearchResults(locationSearch) {
+  return async (dispatch, getState) => {
+    const { input } = getState().search;
 
-  let org_id = null;
-
-  if (selectedOrganization) {
-    org_id = selectedOrganization.id
-  }
-
-  dispatch(requestSearchResults());
-
-  try {
-    let url = `semantic_results?country=usa&query=${input}&requester_city=''`;
-    if(org_id){
-      url = `semantic_results?country=usa&query=${input}&org_id=${org_id}`;
+    let org_id = null; 
+    if (locationSearch) {
+      const values = queryString.parse(locationSearch);
+      if (values && values.org_id) {
+        org_id = values.org_id;
+      }
     }
 
-    const data = await YusufApi(null, url);
-    const results = await data;
+    dispatch(requestSearchResults());
 
-    let isSemantic = false;
-    let resLen = 0;
+    try {
+      let url = `semantic_results?country=usa&query=${input}&requester_city=''`;
+      if(org_id){
+        url = `semantic_results?country=usa&query=${input}&org_id=${org_id}`;
+      }
 
-    if (results && "semantic_available" in results && results["semantic_available"] === true) {
-      isSemantic = true;
-      dispatch(recvSemanticResults(results));
-    } else {
-      const { list_results } = results;
-      const res = {
-        'results': list_results
-      };
-      resLen = list_results.length;
-      dispatch(recvSearchResults(res));
+      const data = await YusufApi(null, url);
+      const results = await data;
+
+      let isSemantic = false;
+      let resLen = 0;
+
+      if (results && "semantic_available" in results && results["semantic_available"] === true) {
+        isSemantic = true;
+        dispatch(recvSemanticResults(results));
+      } else {
+        const { list_results } = results;
+        const res = {
+          'results': list_results
+        };
+        resLen = list_results.length;
+        dispatch(recvSearchResults(res));
+      }
+    } catch (e) {
+
+      dispatch(recvSearchResultsFailure());
     }
-  } catch (e) {
+  }};
 
-    dispatch(recvSearchResultsFailure());
-  }
-};
+  export const fetchMeta = async(dispatch) => {
+    dispatch(requestAppMeta());
 
-export const fetchMeta = async(dispatch) => {
-  dispatch(requestAppMeta());
+    try {
+  const data = await YusufApi(null, 'meta');
+      const appMeta = await data;
+      dispatch(recvAppMeta(appMeta));
 
-  try {
-const data = await YusufApi(null, 'meta');
-    const appMeta = await data;
-    dispatch(recvAppMeta(appMeta));
-
-    if (!appMeta.success) {
-      dispatch(recvMetaFailed())
-    }
-  } catch (e) {
-    dispatch(recvMetaFailed());
+      if (!appMeta.success) {
+        dispatch(recvMetaFailed())
+      }
+    } catch (e) {
+      dispatch(recvMetaFailed());
   }
 };
 

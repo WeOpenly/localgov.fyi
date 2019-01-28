@@ -74,7 +74,6 @@ class SearchResults extends Component {
           id={detail_result.org_id}
           name={detail_result.org_name}
           info={detail_result.contact_details}
-          logo={'https://www.cityofsanmateo.org/ImageRepository/Document?documentID=58791'}
           displayShare={false}
         />
       );

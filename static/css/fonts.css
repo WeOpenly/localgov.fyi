@@ -2,6 +2,7 @@
 
 @font-face {
     font-family: 'Nunito Sans';
+    font-display: optional;
     font-style: normal;
     font-weight: 300;
     src: url('/fonts/nunito-sans-v3-latin-300.eot');
@@ -19,6 +20,7 @@
 
 @font-face {
     font-family: 'Nunito Sans';
+    font-display: optional;
     font-style: normal;
     font-weight: 600;
     src: url('../fonts/nunito-sans-v3-latin-600.eot');
@@ -36,6 +38,7 @@
 
 @font-face {
     font-family: 'Poppins';
+    font-display: optional;
     font-style: normal;
     font-weight: 300;
     src: url('/fonts/poppins-v5-latin-300.eot');

@@ -75,13 +75,36 @@ module.exports = {
     {
       resolve: `gatsby-plugin-sitemap`,
       options: {
+          query: `
+          {
+            site {
+              siteMetadata {
+                siteUrl
+              }
+            }
+            allSitePage(filter : {
+              path: {
+               nin : ["/404/","/dev-404-page/","/app/", "/app/profile/",  "/app/auth/callback/", "/app/auth/", "/deep_link/"],
+        
+              }
+            }) {
+              edges {
+                
+                node {
+
+                  path
+
+                }
+              }
+            }
+        }`,
         serialize: ({ site, allSitePage }) =>
           allSitePage.edges.map(edge => {
-            return {
-              url: site.siteMetadata.siteUrl + edge.node.path,
-              changefreq: `weekly`,
-              priority: 0.7,
-            }
+              return {
+                url: site.siteMetadata.siteUrl + edge.node.path,
+                changefreq: `weekly`,
+                priority: 0.9,
+              }
           })
       }
     },
@@ -136,7 +159,14 @@ module.exports = {
         }
       }
     },
-    `gatsby-plugin-robots-txt`,
+    {
+      resolve: `gatsby-plugin-robots-txt`,
+      options: {
+        host: 'https://localgov.fyi',
+        sitemap: 'https://localgov.fyi/sitemap.xml',
+        policy: [{ userAgent: '*', disallow: [`/app/*`, `/deep_link/*`] }]
+      }
+    },
     `gatsby-plugin-react-helmet`,
     `gatsby-plugin-netlify`,
     // This plugin generates a service worker and AppShell html file so the site

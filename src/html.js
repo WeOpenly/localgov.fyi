@@ -4,9 +4,10 @@ import PropTypes from "prop-types"
 
 
 
-// let fontStyleCss if (process.env.NODE_ENV === `production`) {   try {
-// fontStyleCss = require(`!raw-loader!../static/css/fonts.css`)   } catch (e)
-// {} }
+let fontStyleCss;
+if (process.env.NODE_ENV === `production`) {   try {
+fontStyleCss = require(`!raw-loader!../static/css/fonts.css`)   } catch (e)
+{} }
 
 const JsonLd = ({data}) => <script
   type="application/ld+json"
@@ -14,16 +15,14 @@ const JsonLd = ({data}) => <script
   __html: JSON.stringify(data)
 }}/>;
 
-// export default class HTML extends React.Component {  
-//    render() {     
-      
-//     } 
 
 
-// let fontcss     if
-// (process.env.NODE_ENV === `production`) {       fontcss = (         <style
-//        id="gatsby-inlined-css-fonts"           dangerouslySetInnerHTML={{
-// __html: fontStyleCss }}         />       )     }
+
+let fontcss     
+if  (process.env.NODE_ENV === `production`) {      
+   fontcss = (<style id="gatsby-inlined-css-fonts" dangerouslySetInnerHTML={{
+__html: fontStyleCss }} />)
+}
 
 const searchLinksSchema = {
   "@context": "http://schema.org",
@@ -86,13 +85,12 @@ export default class HTML extends React.Component {
           <meta
             name="viewport"
             content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
-          <link href={'/css/fonts.css'} rel="stylesheet"/> 
-          <link href={'/css/stripe.css'} rel="stylesheet" /> 
-          <link href={'/css/bootstrap-theme.min.css'} rel="stylesheet"/> 
-          <link href={'/css/bootstrap.min.css'} rel="stylesheet"/> 
+          {/* <link href={'/css/fonts.css'} rel="stylesheet"/>  */}
+
          
           {this.props.headComponents}
-          {/* {css} */}
+          {fontcss}
+ 
           <style> 
             
           </style>
@@ -105,6 +103,7 @@ export default class HTML extends React.Component {
             dangerouslySetInnerHTML={{
             __html: this.props.body
           }}/> {this.props.postBodyComponents}
+          <link href={'/css/stripe.css'} rel="stylesheet" /> 
         </body>
       </html>
     )

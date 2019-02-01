@@ -118,16 +118,17 @@ export function toggleFeedbackDialog(toggle) {
 
 export function slowToggleNotifyDilog(){
   return async (dispatch, getState) => {
-      setTimeout(function () {
-
+    if (windowGlobal){
+      windowGlobal.setTimeout(function () {
         const { showFeedbackDialog } = getState().search;
-   
+
         if (showFeedbackDialog) {
           return
         } else {
           dispatch(toggleNotifyDialog(true))
         }
-      }, 4000);
+      }, 8000);
+    }
   }
 }
 

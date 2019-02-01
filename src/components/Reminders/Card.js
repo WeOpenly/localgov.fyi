@@ -2,7 +2,7 @@ import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
 
 
-
+import SvgIcon from '@material-ui/core/SvgIcon';
 import { connect } from 'react-redux';
 import { isMobileOnly } from 'react-device-detect';
 import Dialog from '@material-ui/core/Dialog';
@@ -43,9 +43,14 @@ reminders_card_container:{
     reminders_card_content:{
         padding: `0 ${theme.spacing.unit * 2}px ${theme.spacing.unit * 2}px ${theme.spacing.unit * 2}px`
     },
+reminders_card_thanks_icon:{
+    marginBottom: theme.spacing.unit *2,
+},
     reminders_card_thanks:{
         display: 'flex',
         padding: theme.spacing.unit * 3,
+        flexDirection: 'column',
+        alignItems: 'center',
     },
     reminders_card_greeting:{
         display: 'flex',
@@ -130,9 +135,8 @@ class Card extends Component {
         this.setState({
             isMob: isMobileOnly
         })
+        
         const { dispatch} = this.props;
- 
-       
 
         if (windowGlobal && windowGlobal.localStorage) {
             const remSubDone = localStorage.getItem(`rem_sub_${this.props.service_id}`);
@@ -163,7 +167,11 @@ class Card extends Component {
                             <Cancel style={{cursor: 'pointer'}} onClick={this.closeDialog} color='disabled'/>
                         </div>
                         <div className={classes.reminders_card_content}>
-                        {showGreeting ? (<div className={classes.reminders_card_thanks}>
+                            {showGreeting ? (<div className={classes.reminders_card_thanks}>
+                            <SvgIcon className={classes.reminders_card_thanks_icon}>
+                                <path fill="none" d="M0 0h24v24H0V0zm0 0h24v24H0V0z" />
+                                <path d="M16.59 7.58L10 14.17l-3.59-3.58L5 12l5 5 8-8zM12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z" />
+                            </SvgIcon>
                             <Typography variant="heading">
                                 {thanks_msg ? thanks_msg : "Thank you, we will notify you soon!"}
                             </Typography>

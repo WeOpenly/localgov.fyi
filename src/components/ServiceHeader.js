@@ -110,6 +110,9 @@ service_header_serDelLink:{
 service_header_menuButtonIcon:{
   marginRight: theme.spacing.unit
 },
+  service_header_menuButtonNotify:{
+    width: '152px'
+  },
 service_header_svgIcon : {
     width: 18,
     color: theme.palette.primary['400']
@@ -312,8 +315,8 @@ class ServiceHeader extends Component {
     });
 
 
-    const actionButton = isLoggedIn() ? (<SaveButton service={id}/>) : (<Button color="primary" size="small" className={classes.service_header_menuButton} onClick={this.handleNotifyClick}  aria-label="Ge Notified">
-       <NotificationImportant className={classes.service_header_menuButtonIcon} fontSize="small"/> Notify 
+    const actionButton = isLoggedIn() ? (<SaveButton service={id}/>) : (<Button color="primary" size="medium" className={classes.service_header_menuButtonNotify} onClick={this.handleNotifyClick}  aria-label="Ge Notified">
+       <NotificationImportant className={classes.service_header_menuButtonIcon} fontSize="small"/> Get notified 
       </Button>)
 
       const shareButton = (<Button color="primary" size="small"  className={classes.service_header_menuButton}  onClick={this.handleShareClick}  aria-label="share">

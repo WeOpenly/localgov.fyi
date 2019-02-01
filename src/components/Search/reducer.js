@@ -2,6 +2,7 @@ import * as types from "./ActionTypes";
 
 const initialState = {
   showNotifyDialog: false,
+  showFeedbackDialog: false,
   locationLoading: true,
   location: {},
   locationError: null,
@@ -31,7 +32,12 @@ export function search(state = initialState, action) {
       return {
         ...state,
         showNotifyDialog: action.toggle,
-      }
+      };
+    case types.TOGGLE_FEEDBACK_DIALOG:
+      return {
+        ...state,
+        showFeedbackDialog: action.toggle,
+      };
     case types.LOCATION_REQUEST:
       return {
         ...state,

@@ -13,7 +13,7 @@ export function checkStatus(response) {
 }
 
 export function parseJSON(response) {
-    if (response.status === 200 || response.status === 201) 
+    if (response.status === 200 || response.status === 201 || response.status === 302)
         return response.json()
     return response
 }
@@ -48,6 +48,7 @@ export function YusufApi(lang = undefined, endPoint, headers = {}) {
     let headersForGet = {
         credentials: 'include',
         'Access-Control-Allow-Origin': true,
+        redirect: 'follow'
     }
 
     if (headers) {

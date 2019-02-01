@@ -90,7 +90,7 @@ export default class HTML extends React.Component {
          
           {this.props.headComponents}
  
-   
+
         </head>
         <body {...this.props.bodyAttributes}>
           {this.props.preBodyComponents}
@@ -101,10 +101,9 @@ export default class HTML extends React.Component {
             __html: this.props.body
           }}/> {this.props.postBodyComponents}
           <link href={'/css/stripe.css'} rel="stylesheet" /> 
-        </body>
-        <style>
           {fontcss}
-        </style>
+        </body>
+          
       </html>
     )
   }

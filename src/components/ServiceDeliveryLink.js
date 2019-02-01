@@ -16,7 +16,8 @@ import MoodBad from '@material-ui/icons/MoodBad';
 import Spinner from 'react-spinkit';
 
 import withRoot from '../withRoot';
-import { trackClick, trackInput } from "./common/tracking";
+import { trackClick, trackInput,  } from "./common/tracking";
+import { toggleFeedbackDialog, toggleNotifyDialog } from './Search/actions';
 import {navigate, redirectTo} from '@reach/router';
 import {encode} from 'universal-base64';
 
@@ -167,8 +168,11 @@ class ServiceDeliveryLink extends Component {
   }
 
   handleClick(){
+    const {tglFeedbackDialog} = this.props;
+
     setTimeout(() => {
-        this.setState({ redirectClicked: false, feedbackOpen: true, })
+        this.setState({ redirectClicked: false });
+    tglFeedbackDialog(true);
     }, 100);
   }
 
@@ -178,13 +182,15 @@ class ServiceDeliveryLink extends Component {
     if (window.location && window.location.pathname) {
       currentLoc = window.location.pathname
     }
+    
 
+    
     this.setState({
-      feedbackOpen: false,
       showSatisfied: false,
       satisfied: true,
       submitting: true,
     });
+    trackFeedback();
 
     fetch("/", {
       method: "POST",
@@ -202,9 +208,12 @@ class ServiceDeliveryLink extends Component {
     })).catch(error => this.setState({
       submitting: false,
       failure: true,
+    }).then(() => {
+
     }));
 
-    trackFeedback();
+
+   
   }
 
   handleBad() {
@@ -220,7 +229,7 @@ class ServiceDeliveryLink extends Component {
       headers: {
         "Content-Type": "application/x-www-form-urlencoded"
       },
-body : encodeBody({
+      body : encodeBody({
         "form-name": "serviceDeliveryFeedback",
         "path": currentLoc,
         "satisfied": false,
@@ -235,7 +244,8 @@ body : encodeBody({
   }
 
   handleClose() {
-    this.setState({ feedbackOpen: false });
+    this.props.tglNotifyDialog(true);
+    this.props.tglFeedbackDialog(false)
   }
 
   handleChange(e) {
@@ -269,8 +279,8 @@ body : encodeBody({
     })).catch(error => this.setState({
       submitting: false,
       failure: true,
-    }));
-
+    })).then(() => {
+    });
     trackFeedback();
   }
 
@@ -283,7 +293,7 @@ body : encodeBody({
   }
 
   render() {
-    const {classes, serDelLinks, org_name, service_name} = this.props;
+    const { showFeedbackDialog, classes, serDelLinks, org_name, service_name} = this.props;
     const {
       feedbackOpen,
       showSatisfied,
@@ -293,6 +303,7 @@ body : encodeBody({
       success,
       failure,
     } = this.state;
+
     if (!serDelLinks) {
       return null;
     }
@@ -324,6 +335,114 @@ body : encodeBody({
       );
     });
 
+    const dialog = (<Dialog
+      fullWidth={false}
+      maxWidth='sm'
+      scroll="body"
+      aria-labelledby="ser-notify-form-dialog-title"
+      open={showFeedbackDialog}
+      onClose={this.handleClose}
+    >
+      <Paper className={classes.ser_del_link_paper}>
+        {showSatisfied && <div className={classes.ser_del_link_satisfiedDialog}>
+          <Typography  id="ser-notify-form-dialog-title" variant="headline" component="h2" className={classes.ser_del_link_title}>
+            How was your experience with Localgov?
+              </Typography>
+          <Button
+            onClick={this.handleGood}
+            variant="extendedFab"
+            color="primary"
+            type="submit"
+            className={classes.ser_del_link_dialogButton}
+          >
+            <Mood className={classes.ser_del_link_feedbackIcon} />
+            Good so far!
+              </Button>
+          <Button
+            onClick={this.handleBad}
+            variant="extendedFab"
+            color="primary"
+            type="submit"
+            className={classes.ser_del_link_dialogButton}
+          >
+            <SentimentDissatisfied className={classes.ser_del_link_feedbackIcon} /> It could have been better.
+              </Button>
+        </div>}
+        {(!showSatisfied && !success && !failure && !submitting) && <Fragment>
+          <div className={classes.ser_del_link_satisfiedDialog}>
+            <Typography variant="headline" component="h2" className={classes.ser_del_link_title}>
+              Let us know how we can improve
+              </Typography>
+            <form
+              name="serviceDeliveryFeedback"
+              method="post"
+              action="/"
+              data-netlify="true"
+              data-netlify-honeypot="bot-field"
+              onSubmit={this.handleSubmit}
+              className={classes.ser_del_link_form}
+            >
+              <input type="hidden" name="form-name" value="serviceDeliveryFeedback" />
+              <p hidden>
+                <label>
+                  Don’t fill this out:{" "}
+                  <input name="bot-field" onChange={this.handleChange} />
+                </label>
+              </p>
+              <p hidden>
+                <label>
+                  Don’t fill this out:{" "}
+                  <input name="path" type="text" value="" />
+                </label>
+              </p>
+              <label>
+                <textarea
+                  required={!this.state.satisfied}
+                  name="feedbackComment"
+                  type="text"
+                  placeholder="Your comments"
+                  value={feedbackComment}
+                  onChange={this.handleChange}
+                  rows={4}
+                  className={classes.ser_del_link_bootstrapInputComment}
+                />
+              </label>
+              <label>
+                <input
+                  required
+                  name="email"
+                  type="email"
+                  placeholder="your@email.com"
+                  value={email}
+                  onChange={this.handleChange}
+                  className={classes.ser_del_link_bootstrapInput}
+                />
+              </label>
+              <Button size="small" variant="contained" type="submit" className={classes.ser_del_link_dialogButton}>
+                Submit
+                </Button>
+              <Button size="small" onClick={this.handleClose} className={classes.ser_del_link_dialogButton2}>Cancel</Button>
+            </form>
+          </div>
+        </Fragment>}
+        {submitting && <div className={classes.ser_del_link_afterSubmit}>
+          <Spinner className={classes.ser_del_link_spinner} />
+        </div>}
+        {success && <div className={classes.ser_del_link_afterSubmit}>
+          <SvgIcon className={classes.ser_del_link_successIcon}>
+            <path fill="none" d="M0 0h24v24H0V0zm0 0h24v24H0V0z" />
+            <path d="M16.59 7.58L10 14.17l-3.59-3.58L5 12l5 5 8-8zM12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z" />
+          </SvgIcon>
+          <Typography variant="headline" className={classes.ser_del_link_bodyText}>Thanks for your feedback!</Typography>
+          <Button size="small" onClick={this.handleClose} className={classes.ser_del_link_dialogButton}>Close</Button>
+        </div>}
+        {failure && <div className={classes.ser_del_link_afterSubmit}>
+          <MoodBad className={classes.ser_del_link_icon} />
+          <Typography variant="body1" className={classes.ser_del_link_bodyText}>Something went wrong. Please try again.</Typography>
+          <Button size="small" onClick={this.handleReset} className={classes.ser_del_link_dialogButton}>Back</Button>
+        </div>}
+      </Paper>
+    </Dialog>)
     return (
       <Fragment>
         {serButtons}
@@ -334,113 +453,7 @@ body : encodeBody({
             </Typography>
           )
           : null}
-        <Dialog
-          fullWidth={false}
-          maxWidth='sm'
-          scroll="body"
-          open={feedbackOpen}
-          onClose={this.handleClose}
-        >
-          <Paper className={classes.ser_del_link_paper}>
-            {showSatisfied && <div className={classes.ser_del_link_satisfiedDialog}>
-              <Typography variant="headline" component="h2" className={classes.ser_del_link_title}>
-                How was your experience with Localgov?
-              </Typography>
-              <Button
-                onClick={this.handleGood}
-                variant="extendedFab"
-                color="primary"
-                type="submit"
-                className={classes.ser_del_link_dialogButton}
-              >
-                <Mood className={classes.ser_del_link_feedbackIcon}/> 
-                Good so far!
-              </Button>
-              <Button
-                onClick={this.handleBad}
-                variant="extendedFab"
-                color="primary"
-                type="submit"
-                className={classes.ser_del_link_dialogButton}
-              >
-                <SentimentDissatisfied className={classes.ser_del_link_feedbackIcon}/> It could have been better.
-              </Button>
-            </div>}
-            {(!showSatisfied && !success && !failure && !submitting) && <Fragment>
-              <div className={classes.ser_del_link_satisfiedDialog}>
-              <Typography variant="headline" component="h2" className={classes.ser_del_link_title}>
-                  Let us know how we can improve
-              </Typography>
-              <form
-                name="serviceDeliveryFeedback"
-                method="post"
-                action="/"
-                data-netlify="true"
-                data-netlify-honeypot="bot-field"
-                onSubmit={this.handleSubmit}
-                className={classes.ser_del_link_form}
-              >
-                  <input type="hidden" name="form-name" value="serviceDeliveryFeedback" />
-                <p hidden>
-                  <label>
-                    Don’t fill this out:{" "}
-                    <input name="bot-field" onChange={this.handleChange} />
-                  </label>
-                </p>
-                <p hidden>
-                  <label>
-                    Don’t fill this out:{" "}
-                    <input name="path" type="text" value=""/>
-                  </label>
-                </p>
-                <label>
-                  <textarea
-                    required={!this.state.satisfied}
-                    name="feedbackComment"
-                    type="text"
-                    placeholder="Your comments"
-                    value={feedbackComment}
-                    onChange={this.handleChange}
-                    rows={4}
-                      className={classes.ser_del_link_bootstrapInputComment}
-                  />
-                </label>
-                <label>
-                  <input
-                    required
-                    name="email"
-                    type="email"
-                    placeholder="your@email.com"
-                    value={email}
-                    onChange={this.handleChange}
-                    className={classes.ser_del_link_bootstrapInput}
-                  />
-                </label>
-                <Button size="small" variant="contained" type="submit" className={classes.ser_del_link_dialogButton}>
-                  Submit
-                </Button>
-                <Button size="small" onClick={this.handleClose} className={classes.ser_del_link_dialogButton2}>Cancel</Button>
-              </form>
-              </div>
-            </Fragment>}
-            {submitting && <div className={classes.ser_del_link_afterSubmit}>
-              <Spinner className={classes.ser_del_link_spinner}/>
-            </div>}
-            {success && <div className={classes.ser_del_link_afterSubmit}>
-              <SvgIcon className={classes.ser_del_link_successIcon}>
-                <path fill="none" d="M0 0h24v24H0V0zm0 0h24v24H0V0z"/>
-                <path d="M16.59 7.58L10 14.17l-3.59-3.58L5 12l5 5 8-8zM12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z"/>
-              </SvgIcon>
-              <Typography variant="headline" className={classes.ser_del_link_bodyText}>Thanks for your feedback!</Typography>
-              <Button size="small" onClick={this.handleClose} className={classes.ser_del_link_dialogButton}>Close</Button>
-            </div>}
-            {failure && <div className={classes.ser_del_link_afterSubmit}>
-              <MoodBad className={classes.ser_del_link_icon}/>
-              <Typography variant="body1" className={classes.ser_del_link_bodyText}>Something went wrong. Please try again.</Typography>
-              <Button size="small" onClick={this.handleReset} className={classes.ser_del_link_dialogButton}>Back</Button>
-            </div>}
-          </Paper>
-        </Dialog>
+        {dialog}
       </Fragment>
     );
   }
@@ -454,11 +467,18 @@ const mapDispatchToProps = (dispatch) => {
     trackFeedback: () => {
       dispatch(trackInput('feedback_form', ''));
     },
+    tglFeedbackDialog: (toggle) => {
+      dispatch(toggleFeedbackDialog(toggle));
+    },
+    tglNotifyDialog: (toggle) => {
+      dispatch(toggleNotifyDialog(toggle));
+    }
   }
 }
 
 const mapStateToProps = function (state, ownProps) {
   return {
+    showFeedbackDialog : state.search.showFeedbackDialog,
     ...ownProps
   };
 };

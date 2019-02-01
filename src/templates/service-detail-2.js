@@ -1,4 +1,4 @@
-import React from "react"
+import React, { Fragment } from "react"
 import * as PropTypes from "prop-types"
 import {connect} from "react-redux";
 import Helmet from "react-helmet";
@@ -28,6 +28,9 @@ import {isLoggedIn} from '../components/Account/Auth';
 
 import {trackView} from "../components/common/tracking";
 import { toggleNotifyDialog } from '../components/Search/actions.js';
+import RawForm from '../components/Reminders/RawForm.js';
+import SerRemCard from '../components/Reminders/Card.js';
+
 const windowGlobal = typeof window !== 'undefined' && window;
 
 const styles = theme => ({
@@ -164,6 +167,23 @@ service_detail_footer : {
 }
 });
 
+
+const genericFSchema = {
+  "type": "object",
+    "title": "Get notified from us about this service",
+"description" : "Get notified from us about this service",
+  "required": [
+    "email",
+  ],
+  "properties": {
+    "email": {
+      "type": "string",
+      "title": "Email"
+    }
+  }
+}
+
+
 const JsonLd = ({data}) => <script
     type="application/ld+json"
     dangerouslySetInnerHTML={{
@@ -234,12 +254,47 @@ class ServiceDetailTemplate extends React.Component {
             org_name,
             service_del_links,
             service_flow_steps,
+            service_reminder_bp_json,
             otherServices,
             logoSizes
         } = this.props.pageContext.data;
 
         const {classes} = this.props;
+        
+        let serRemFormRaw = null;
+        if (service_reminder_bp_json){
+            const { field_schema} = service_reminder_bp_json;
+            serRemFormRaw = <RawForm field_schema={field_schema} id={service_reminder_bp_json.id} service_id={id} org_id={org_id}/>
+        }
+        else{
+            serRemFormRaw = <RawForm field_schema={JSON.stringify(genericFSchema)} id="generic_ser_rem_form" service_id={id} org_id={org_id} />
+        }
 
+        let serRemFormCard = null;
+        if (service_reminder_bp_json) {
+            const { field_schema, ui_schema, thanks_msg, greeting_msg} = service_reminder_bp_json;
+            serRemFormCard = <SerRemCard
+            key={id}
+    field_schema={field_schema}
+    greeting_msg={greeting_msg}
+    thanks_msg={thanks_msg}
+    ui_schema={ui_schema}
+    ser_rem_form_id={service_reminder_bp_json.id}
+    service_id={id}
+    org_id={org_id}/>
+        }
+        else {
+            serRemFormCard = <SerRemCard
+                key = "generic_ser_rem_form"
+                field_schema={JSON.stringify(genericFSchema)}
+                greeting_msg={null}
+                thanks_msg={null}
+                ui_schema={null}
+                ser_rem_form_id="generic_ser_rem_form"
+                service_id={id}
+                org_id={org_id} />
+        }
+ 
         let serLogoSvg = null
         if (logoSizes && logoSizes.sizes) {
             serLogoSvg = logoSizes.sizes
@@ -445,11 +500,16 @@ class ServiceDetailTemplate extends React.Component {
                             serDelLinks={service_del_links}
                             logoSizes={serLogoSvg}/>
                     </Grid>
-                    {someDetails && (<Grid item xs={12} md={8} className={classes.ser_detail_details}>
-                    <ServiceDetail description={description} price={price} timingList={timingList} formList={formList} qaList={qaList} stepList={stepList} locList={locList}/>
-                    </Grid>)}
+                 
+                    {someDetails && (
+                        <Grid item xs={12} md={8} className={classes.ser_detail_details}>
+                            {serRemFormCard}
+                            <ServiceDetail description={description} price={price} timingList={timingList} formList={formList} qaList={qaList} stepList={stepList} locList={locList} />
+                        </Grid>)}
                     <Grid item xs={12} sm={12} md={someDetails ? 4 : 12}>
-                
+                        {!someDetails && <Grid item xs={12} className={classes.ser_detail_details}>
+                            {serRemFormCard}
+                        </Grid>}
                         <div className={classes.other_ser_headerWrapper}>
                             <Typography variant="subheading">Additional services</Typography>
                         </div>
@@ -465,7 +525,9 @@ class ServiceDetailTemplate extends React.Component {
                 </Grid>
                    <div className={classes.service_detail_footer}>
                         <Footer page={this.props.location.pathname} />
+                    {serRemFormRaw}
                     </div>
+          
             </DetailTemplate>
         )
     }

@@ -155,7 +155,7 @@ class HeaderAccountMenu extends Component {
           <Button
                 variant="text"
                 className={classes.h_a_m_login_button}
-                  onClick={() => this.props.openLogin()}
+                            href="/login"
                   color="inherit">Login</Button>
       
             <Button

@@ -112,6 +112,25 @@ export function toggleNotifyDialog(toggle){
   return {type: types.TOGGLE_NOTIFY_DIALOG, toggle}
 }
 
+export function toggleFeedbackDialog(toggle) {
+  return { type: types.TOGGLE_FEEDBACK_DIALOG, toggle }
+}
+
+export function slowToggleNotifyDilog(){
+  return async (dispatch, getState) => {
+      setTimeout(function () {
+
+        const { showFeedbackDialog } = getState().search;
+   
+        if (showFeedbackDialog) {
+          return
+        } else {
+          dispatch(toggleNotifyDialog(true))
+        }
+      }, 4000);
+  }
+}
+
 export function fetchSearchResults(locationSearch) {
   return async (dispatch, getState) => {
     const { input } = getState().search;
@@ -153,7 +172,8 @@ export function fetchSearchResults(locationSearch) {
 
       dispatch(recvSearchResultsFailure());
     }
-  }};
+  }
+};
 
   export const fetchMeta = async(dispatch) => {
     dispatch(requestAppMeta());

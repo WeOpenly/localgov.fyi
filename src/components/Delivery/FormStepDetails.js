@@ -106,7 +106,7 @@ class FormStepDetails extends React.Component {
         const {stepDetailsLoading, stepDetails, stepDetailsLoadingFailed} = delivery;
 
         const {step_details} = stepDetails;
-        console.log(delivery, 'FormStepDetails');
+
 
         if (stepDetailsLoading) {
             return (<Spinner name="ball-beat" color="blue"/>);

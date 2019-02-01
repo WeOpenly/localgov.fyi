@@ -43,6 +43,7 @@ allOrgsJson {
             service_faq {question answer}
             service_del_links {url link_name}
             service_forms {url name}
+            service_reminder_bp_json {id greeting_msg thanks_msg, field_schema, ui_schema}
           }
           org {
             id
@@ -220,6 +221,8 @@ allLogos: allFile (filter : {
           // Gatsby uses Redux to manage its internal state. Plugins and sites can use
           // functions like "createPage" to interact with Gatsby.
           _.each(ser.services, service => {
+            const {service_reminder_bp_json} = service;
+            const ser_rem_has_data = service_reminder_bp_json  && 'field_schema' in service_reminder_bp_json && service_reminder_bp_json['field_schema'] !== null
             createPage({
               path: `service/${service.id}/`,
               component: slash(serTemplate),
@@ -237,6 +240,7 @@ allLogos: allFile (filter : {
                   alllocations: [],
                   alltimings: service.service_timing || [],
                   allfaq: service.service_faq || [],
+                  service_reminder_bp_json: ser_rem_has_data ? service_reminder_bp_json : null,
                   service_del_links: service.service_del_links || [],
                   service_flow_steps: service.service_flow_steps || [],
                   org_id: ser.org.id,

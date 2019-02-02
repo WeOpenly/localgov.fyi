@@ -559,11 +559,14 @@ class Index extends React.Component {
       <Layout location={this.props.location}>
         <Fragment>
           <Helmet
-            defaultTitle={`Localgov.fyi | Search for local government organizations, and services`}
+defaultTitle = {
+  `Localgov.fyi: Find All your Government Services in a Single Place`
+}
             titleTemplate={`%s | Localgov.fyi`}>
             <JsonLd data={searchLinksSchema} />
             <meta name="og:type" content="website"/>
-            <meta name="og:site_name" content="Localgov.fyi"/>
+            <meta property="og:site_name" content={`Localgov for your information`}/>
+
             <link
               rel="canonical"
               href={`https://localgov.fyi${this.props.location.pathname}`}/>

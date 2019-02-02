@@ -71,10 +71,13 @@ export default class HTML extends React.Component {
           <meta name="yandex-verification" content="25711aadc401a373"/>
 
           <JsonLd data={searchLinksSchema}/>
+          
           <meta
             name="description"
-            content={`Localgov.fyi - Search for local government organizations, and services`}/>
-          <meta property="og:site_name" content={`Localgov.fyi`}/>
+            content={`Search and get notfied when you're due for all local government services like payments of utility bill, property tax, parking citation, and renewing business licence in a single place`}/>
+
+          <meta property="og:site_name" content={`Localgov for your information`}/>
+
           <meta
             property="twitter:card"
             name="twitter:card"

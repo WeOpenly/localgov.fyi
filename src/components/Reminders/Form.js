@@ -227,6 +227,7 @@ class SerRemForm extends Component {
         let trimmedUs = null;
 
         if (field_schema) {
+            console.log(field_schema);
             trimmedFS = field_schema.trim();
             trimmedFS = JSON.parse(trimmedFS);
         }

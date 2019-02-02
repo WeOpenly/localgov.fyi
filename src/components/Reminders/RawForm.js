@@ -23,6 +23,7 @@ class RawForm extends React.Component {
         let trimmedFS = null;
 
         if (field_schema) {
+            console.log(field_schema);
             trimmedFS = field_schema.trim();
             trimmedFS = JSON.parse(trimmedFS);
         }

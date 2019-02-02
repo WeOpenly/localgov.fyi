@@ -25,7 +25,12 @@ class RawForm extends React.Component {
         if (field_schema) {
             console.log(id);
             trimmedFS = field_schema.trim();
-            trimmedFS = JSON.parse(trimmedFS);
+            try{
+                trimmedFS = JSON.parse(trimmedFS);
+            }
+            catch(err){
+                console.log(err);
+            }
         }
         
         let fieldHints = []

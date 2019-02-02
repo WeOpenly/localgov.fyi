@@ -30,6 +30,7 @@ class RawForm extends React.Component {
             }
             catch(err){
                 console.log(err);
+                return null;
             }
         }
         

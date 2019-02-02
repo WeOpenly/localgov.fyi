@@ -35,14 +35,20 @@ class RawForm extends React.Component {
         }
         
         let fieldHints = []
+        if (!trimmedFS){
+            return null;
+        }
 
-        Object.keys(trimmedFS.properties).forEach((key) => {
-        fieldHints.push({
-                        "name": key,
-                        "title": key,
-                        "type": "text" 
-                    })
-        })
+        if(trimmedFS){
+            Object.keys(trimmedFS.properties).forEach((key) => {
+                fieldHints.push({
+                    "name": key,
+                    "title": key,
+                    "type": "text"
+                })
+            })
+        }
+        
 
  
         return (<form name={id} method="post" netlify-honeypot="bot-field" hidden data-netlify={true} >

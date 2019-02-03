@@ -232,6 +232,7 @@ class SerRemForm extends Component {
                 trimmedFS = JSON.parse(trimmedFS);
             }
             catch (err) {
+                console.log(err, trimmedFS);
                 return null;
             }
         }

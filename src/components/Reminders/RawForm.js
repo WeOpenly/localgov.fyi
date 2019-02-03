@@ -23,13 +23,11 @@ class RawForm extends React.Component {
         let trimmedFS = null;
 
         if (field_schema) {
-            console.log(id);
             trimmedFS = field_schema.trim();
             try{
                 trimmedFS = JSON.parse(trimmedFS);
             }
             catch(err){
-                console.log(err);
                 return null;
             }
         }
@@ -49,8 +47,6 @@ class RawForm extends React.Component {
             })
         }
         
-
- 
         return (<form name={id} method="post" netlify-honeypot="bot-field" hidden data-netlify={true} >
             {fieldHints.map((field) => (
                 <p hidden>

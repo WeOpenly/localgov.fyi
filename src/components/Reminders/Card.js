@@ -155,7 +155,31 @@ class Card extends Component {
         const { classes, greeting_msg, thanks_msg, field_schema, ui_schema, ser_rem_form_id, org_id, service_id ,showNotifyDialog} = this.props;
 
         const {showGreeting} = this.state;
-        
+
+        if (!field_schema) {
+            return null;
+        }
+
+        let trimmedFS = null;
+        let trimmedUs = null;
+
+        if (field_schema) {
+            console.log(field_schema);
+            trimmedFS = field_schema.trim();
+            try {
+                trimmedFS = JSON.parse(trimmedFS);
+            }
+            catch (err) {
+                console.log(err, ser_rem_form_id, service_id, trimmedFS);
+                return null;
+            }
+        }
+
+
+        if (!trimmedFS) {
+            return null;
+        }
+
 
         return (!this.state.isMob ? (<PoseGroup> 
             {showNotifyDialog && [
@@ -181,7 +205,7 @@ class Card extends Component {
                                 </Typography>
                             </div>)}
                             {showGreeting ? null : (<div className={classes.reminders_card_form}>
-                            <SerRemForm submittedCb={this.submissionDoneCb} field_schema={field_schema} thanks_msg={thanks_msg} ui_schema={ui_schema} id={ser_rem_form_id} service_id={service_id} org_id={org_id} />
+                            <SerRemForm submittedCb={this.submissionDoneCb} field_schema={trimmedFS} thanks_msg={thanks_msg} ui_schema={null} id={ser_rem_form_id} service_id={service_id} org_id={org_id} />
                             </div>)}
                         </div>
                 </div></Modal>]}
@@ -198,7 +222,7 @@ class Card extends Component {
                         </Typography>
                     </div>)}
                     {showGreeting ? null : (<div className={classes.reminders_card_form}>
-                        <SerRemForm submittedCb={this.submissionDoneCb} field_schema={field_schema} thanks_msg={thanks_msg} ui_schema={ui_schema} id={ser_rem_form_id} service_id={service_id} org_id={org_id} />
+                        <SerRemForm submittedCb={this.submissionDoneCb} field_schema={trimmedFS} thanks_msg={thanks_msg} ui_schema={null} id={ser_rem_form_id} service_id={service_id} org_id={org_id} />
                     </div>)}
                 </div>
             </div>)

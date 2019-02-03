@@ -149,7 +149,8 @@ class matTextWidget extends Component{
 
 
 const widgets = {
-    TextWidget : matTextWidget
+    TextWidget : matTextWidget,
+    EmailWidget: matTextWidget,
 };
 
 class SerRemForm extends Component {
@@ -219,36 +220,10 @@ class SerRemForm extends Component {
             failure,
         } = this.state;
 
-        if (!field_schema) {
-            return null;
-        }
-
-        let trimmedFS = null;
-        let trimmedUs = null;
-
-        if (field_schema) {
-            trimmedFS = field_schema.trim();
-            try {
-                trimmedFS = JSON.parse(trimmedFS);
-            }
-            catch (err) {
-                console.log(err, trimmedFS);
-                return null;
-            }
-        }
-
-        if (!trimmedFS) {
-            return null;
-        }
-
-        if (ui_schema) {
-            trimmedUs = ui_schema.trim();
-            // trimmedUs = JSON.parse(trimmedUs);
-        }
-        
+    
         return (
             <div  className={classes.reminder_card_form_container}>
-                <Form idPrefix={id} name={id} schema={trimmedFS} 
+                <Form idPrefix={id} name={id} schema={field_schema} 
                     onChange={() => {}}
                     onSubmit={this.handleSubmit}
                     widgets={widgets}

@@ -120,21 +120,23 @@ export const trackInput = (input_type, text, extra) => async(dispatch, getState)
 };
 
 // clicked type [suggestion, card(page item), external]
-export const trackClick = (click_type, clicked_entity_type, clicked_entity_id, clicked_entity_name, pos_in_list = 0) => async(dispatch, getState) => {
+export const trackClick = (click_type, clicked_entity_type, clicked_entity_id, clicked_entity_name, pos_in_list = 0, extra) => async(dispatch, getState) => {
     if (!Fingerprint2) {
         return
     }
     new Fingerprint2(fpOptions)
         .get(function (result, components) {
             try {
-
+            
                 const eventParams = {
                     pos_in_list: pos_in_list,
                     c_e_t: clicked_entity_type,
                     c_e_id: clicked_entity_id,
                     c_e_n: clicked_entity_name,
+                    ...extra,
                 }
 
+    
 
                 if (windowGlobal && windowGlobal.mixpanel) {
                     windowGlobal.mixpanel.identify(result);

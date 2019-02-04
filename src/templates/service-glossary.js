@@ -245,7 +245,14 @@ class ServiceGlossary extends Component {
         this.clearStateName = this
             .clearStateName
             .bind(this);
+        this.handleCopy = this.handleCopy.bind(this);
     }
+
+     handleCopy() {
+        const {trackClick} = this.props;
+        this.setState({copied: true});
+        trackClick('social_share', 'copy', '', '', 0);
+    } 
 
     trackNoresults = () => {
         this.props.trackEvent(NO_SEARCH_RESULTS, {
@@ -256,11 +263,14 @@ class ServiceGlossary extends Component {
 
     handleShareClick = (event) => {
         this.setState({anchorEl: event.currentTarget});
-        this.props.trackClick('external', 'share', '', '', 0);
+        // this.props.trackClick('external', 'share', '', '', 0);
     }
 
-    handleClose = () => {
+    handleClose = (type) => {
         this.setState({anchorEl: null, copied: false});
+        const {trackClick} = this.props;
+        if(type)
+            trackClick('social_share', type, '', '', 0);
     }
 
     static getDerivedStateFromProps(nextProps, prevState) {
@@ -601,12 +611,12 @@ class ServiceGlossary extends Component {
                                             : 'Copy link'}</Typography>
                                 </MenuItem>
                             </CopyToClipboard>
-                            <MenuItem onClick={this.handleClose} className={classes.ser_gloss_menu_item}>
+                            <MenuItem onClick={() => this.handleClose('facebook')} className={classes.ser_gloss_menu_item}>
                                 <FacebookShareButton url={shareLink} className={classes.ser_gloss_sharebutton}>
                                     <Typography>Facebook</Typography>
                                 </FacebookShareButton>
                             </MenuItem>
-                            <MenuItem onClick={this.handleClose} className={classes.ser_gloss_menu_item}>
+                            <MenuItem onClick={() => this.handleClose('twitter')} className={classes.ser_gloss_menu_item}>
                                 <TwitterShareButton url={shareLink} className={classes.ser_gloss_sharebutton}>
                                     <Typography>Twitter</Typography>
                                 </TwitterShareButton>

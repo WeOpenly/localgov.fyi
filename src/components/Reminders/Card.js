@@ -12,7 +12,7 @@ import Cancel from '@material-ui/icons/Cancel';
 import Typography from '@material-ui/core/Typography';
 import SerRemForm from './Form';
 import posed, {PoseGroup} from 'react-pose';
-import { trackClick } from "../common/tracking";
+import { trackClick, trackEvent } from "../common/tracking";
 import { toggleNotifyDialog, slowToggleNotifyDilog } from '../Search/actions';
 
 const windowGlobal = typeof window !== 'undefined' && window
@@ -119,12 +119,15 @@ class Card extends Component {
     }
 
     submissionDoneCb(){
+        const {dispatch, ser_rem_form_id, service_id} = this.props;
+
         this.setState({
             showGreeting: true,
         })
         if (windowGlobal && windowGlobal.localStorage){
             localStorage.setItem(`rem_sub_${this.props.service_id}`, true)
         }
+        dispatch(trackEvent('service_reminder_submission', {form_id: ser_rem_form_id, service_id: service_id }))
     }
 
     closeDialog(){

@@ -6,6 +6,7 @@ import queryString from 'querystring';
 
 const windowGlobal = typeof window !== 'undefined' && window
 
+
 export function toggleSearchResultLayout() {
   return { type: types.TOGGLE_SEARCH_RESULTS_LAYOUT };
 }
@@ -109,6 +110,10 @@ export function selectOrganization(organization) {
 }
 
 export function toggleNotifyDialog(toggle){
+  if (toggle === false && windowGlobal){
+    windowGlobal.clearTimeout(windowGlobal.notifyDialogTimeoutId);
+  }
+
   return {type: types.TOGGLE_NOTIFY_DIALOG, toggle}
 }
 
@@ -119,7 +124,7 @@ export function toggleFeedbackDialog(toggle) {
 export function slowToggleNotifyDilog(){
   return async (dispatch, getState) => {
     if (windowGlobal){
-      windowGlobal.setTimeout(function () {
+      windowGlobal.notifyDialogTimeoutId = windowGlobal.setTimeout(function () {
         const { showFeedbackDialog } = getState().search;
 
         if (showFeedbackDialog) {

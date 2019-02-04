@@ -145,14 +145,19 @@ const {id, name} = this.props.pageContext.data;
         let serCards = null;
         let orgTitle = null;
 
+
         if ('services' in detailsAtLevel){
           let servicesAtLevel = detailsAtLevel.services || [];
           servicesAtLevel = servicesAtLevel.filter(service => {
             const deliveryLink = service.service_del_links && service.service_del_links[0] ? service.service_del_links[0] : null;
-            return deliveryLink && deliveryLink.link_name.toLowerCase().includes(this.state.selectedFilter.toLowerCase());
+            if(this.state.selectedFilter){
+               return deliveryLink && deliveryLink.link_name.toLowerCase().includes(this.state.selectedFilter.toLowerCase());
+            }
+            return service
           });
           serCards = servicesAtLevel.map((ser, idx) => {
             const deliveryLink = ser.service_del_links && ser.service_del_links[0] ? ser.service_del_links[0] : null;
+            console.log(ser);
             return (
               <Grid item xs={12} md={4} key={ser.id}>
                 <ServiceCard
@@ -231,7 +236,7 @@ const {id, name} = this.props.pageContext.data;
       sameAs: sameAs,
       ...contactSchema
     }
-
+    console.log(allServiceList)
     return (
       <DetailTemplate location={this.props.location}>
       <Grid container spacing={16}>

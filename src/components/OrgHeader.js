@@ -157,24 +157,26 @@ class OrgHeader extends Component {
 
   handleShareClick(event) {
     this.setState({anchorEl: event.currentTarget});
-    this
-      .props
-      .trackClick('external', 'share', '', '', 0);
+    // this.props.trackClick('external', 'share', '', '', 0);
   }
 
-  handleClose() {
+  handleClose(type) {
     this.setState({anchorEl: null, copied: false});
+
+    const {trackClick} = this.props;
+    if(type)
+      trackClick('social_share', type, '', '', 0);
   }
 
   handleCopy() {
+    const {trackClick} = this.props;
     this.setState({copied: true});
+    trackClick('social_share', 'copy', '', '', 0);
   }
 
   handleMouseEnter(orgId, orgName) {
     this.setState({hover: true});
-    this
-      .props
-      .trackClick('claim', 'org_page', orgId, orgName, 0);
+    this.props.trackClick('claim', 'org_page', orgId, orgName, 0);
   }
 
   handleMouseLeave() {
@@ -182,9 +184,7 @@ class OrgHeader extends Component {
   }
 
   trackClickSocialIcon(type, url) {
-    this
-      .props
-      .trackClick('external', 'social_icon', type, url, 0);
+    this.props.trackClick('external', 'social_icon', type, url, 0);
   }
 
   render() {
@@ -400,6 +400,7 @@ class OrgHeader extends Component {
             <div className={classes.org_header_title}>
             
               <Typography variant="display1">{name}</Typography>
+              {parent ? (<Typography variant="subheading"> <span  className={classes.service_header_in}> {parent.name} </span></Typography>) : null}
                 <div className={classes.org_header_cardActions}>
             {contactDetailButtons}
           </div>
@@ -420,7 +421,7 @@ class OrgHeader extends Component {
             id="simple-menu"
             anchorEl={anchorEl}
             open={Boolean(anchorEl)}
-            onClose={this.handleClose}>
+            onClose={() => this.handleClose()}>
             <CopyToClipboard text={shareLink} onCopy={this.handleCopy}>
               <MenuItem className={classes.org_header_menuItem}>
                 <Typography>{copied
@@ -429,7 +430,7 @@ class OrgHeader extends Component {
               </MenuItem>
             </CopyToClipboard>
             <MenuItem
-              onClick={this.handleClose}
+              onClick={() => this.handleClose('facebook')}
               className={classes.org_header_menuItem}>
               <FacebookShareButton
                 url={shareLink}
@@ -438,7 +439,7 @@ class OrgHeader extends Component {
               </FacebookShareButton>
             </MenuItem>
             <MenuItem
-              onClick={this.handleClose}
+              onClick={() => this.handleClose('twitter')}
               className={classes.org_header_menuItem}>
               <TwitterShareButton
                 url={shareLink}

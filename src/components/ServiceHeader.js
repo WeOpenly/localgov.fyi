@@ -187,15 +187,19 @@ class ServiceHeader extends Component {
 
   handleShareClick(event) {
     this.setState({ anchorEl: event.currentTarget });
-    this.props.trackClick('external', 'share', '', '', 0);
   }
 
-  handleClose() {
+  handleClose(type) {
+    const {trackClick} = this.props;
     this.setState({ anchorEl: null, copied: false });
+    if(type)
+      trackClick('social_share', type, '', '', 0);
   }
 
   handleCopy() {
+     const {trackClick} = this.props;
     this.setState({ copied: true });
+    trackClick('social_share', 'copy', '', '', 0);
   }
 
   handleOrgClick() {
@@ -367,19 +371,19 @@ class ServiceHeader extends Component {
                 id="simple-menu"
                 anchorEl={anchorEl}
                 open={Boolean(anchorEl)}
-                onClose={this.handleClose}
+                onClose={() => this.handleClose()}
               >
                 <CopyToClipboard text={shareLink} onCopy={this.handleCopy}>
                   <MenuItem className={classes.service_header_menuItem}>
                     <Typography>{copied ? 'Copied!' : 'Copy link'}</Typography>
                   </MenuItem>
                 </CopyToClipboard>
-                <MenuItem onClick={this.handleClose} className={classes.service_header_menuItem}>
+                <MenuItem onClick={() => this.handleClose('facebook')} className={classes.service_header_menuItem}>
                   <FacebookShareButton url={shareLink} className={classes.service_header_shareButton}>
                     <Typography>Facebook</Typography>
                   </FacebookShareButton>
                 </MenuItem>
-                <MenuItem onClick={this.handleClose} className={classes.service_header_menuItem}>
+                <MenuItem onClick={() => this.handleClose('twitter')} className={classes.service_header_menuItem}>
                   <TwitterShareButton url={shareLink} className={classes.service_header_shareButton}>
                     <Typography>Twitter</Typography>
                   </TwitterShareButton>
@@ -395,8 +399,8 @@ class ServiceHeader extends Component {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    trackClick: (click_type, resultType, id, title, listIndex) => {
-      dispatch(trackClick(click_type, resultType, id, title, listIndex));
+    trackClick: (click_type, resultType, id, title, listIndex, extra) => {
+      dispatch(trackClick(click_type, resultType, id, title, listIndex, extra));
     },
     openNotifyDialog: () => {
       dispatch(toggleNotifyDialog(true));

@@ -189,14 +189,12 @@ class ServiceDeliveryLink extends Component {
     }
     
 
-    
     this.setState({
       showSatisfied: false,
       satisfied: true,
       submitting: true,
     });
-    trackFeedback();
-
+  
     fetch("/", {
       method: "POST",
       headers: {
@@ -217,11 +215,11 @@ class ServiceDeliveryLink extends Component {
 
     }));
 
-
-   
+    trackFeedback({satisfied: true, feedbackComment: this.state.feedbackComment});
   }
 
   handleBad() {
+    const {trackFeedback} = this.props;
      let currentLoc = '';
     if (window.location && window.location.pathname) {
       currentLoc = window.location.pathname
@@ -246,6 +244,7 @@ class ServiceDeliveryLink extends Component {
       submitting: this.state.submitting,
       failure: this.state.success,
     })));
+    trackFeedback({satisfied:false, feedbackComment: this.state.feedbackComment});
   }
 
   handleClose() {
@@ -286,7 +285,11 @@ class ServiceDeliveryLink extends Component {
       failure: true,
     })).then(() => {
     });
-    trackFeedback();
+    
+    trackFeedback({
+      satisfied: this.state.satisfied,
+      feedbackComment: this.state.feedbackComment
+    });
   }
 
   handleReset() {
@@ -472,8 +475,8 @@ const mapDispatchToProps = (dispatch) => {
     trackClick: (click_type, resultType, id, title, listIndex) => {
       dispatch(trackClick(click_type, resultType, id, title, listIndex));
     },
-    trackFeedback: () => {
-      dispatch(trackInput('feedback_form', ''));
+    trackFeedback: (data) => {
+      dispatch(trackInput('feedback_form', '', data));
     },
     tglFeedbackDialog: (toggle) => {
       dispatch(toggleFeedbackDialog(toggle));

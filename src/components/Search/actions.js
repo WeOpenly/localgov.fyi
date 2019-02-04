@@ -127,7 +127,7 @@ export function slowToggleNotifyDilog(){
         } else {
           dispatch(toggleNotifyDialog(true))
         }
-      }, 8000);
+      }, 10000);
     }
   }
 }

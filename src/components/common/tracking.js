@@ -93,7 +93,7 @@ export const trackView = (page_layout_type, viewing_entity_type, viewing_entity_
 };
 
 // input_type ['search'], ['auto_locate]
-export const trackInput = (input_type, text) => async(dispatch, getState) => {
+export const trackInput = (input_type, text, extra) => async(dispatch, getState) => {
     if (!Fingerprint2) {
         return
     }
@@ -103,7 +103,9 @@ export const trackInput = (input_type, text) => async(dispatch, getState) => {
 
                 const eventParams = {
                     s: text,
+                    ...extra,
                 }
+
 
                 if (windowGlobal && windowGlobal.mixpanel) {
                     windowGlobal.mixpanel.identify(result);

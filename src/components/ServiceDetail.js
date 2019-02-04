@@ -100,7 +100,7 @@ class ServiceDetail extends Component {
     componentDidMount(){
         const { classes, description, price, timingList, formList, qaList, stepList, locList } = this.props;
         let tabContent = []
-        console.log(stepList, "steplist")
+
         if(description){
             tabContent.push(<Fragment>
                 <div className={classes.ser_detail_cardContent}>

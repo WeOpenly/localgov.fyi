@@ -136,12 +136,12 @@ class Card extends Component {
             isMob: isMobileOnly
         })
         
-        const { dispatch} = this.props;
+        const { dispatch, showNotifyDialog} = this.props;
 
         if (windowGlobal && windowGlobal.localStorage) {
             const remSubDone = localStorage.getItem(`rem_sub_${this.props.service_id}`);
 
-            if (!remSubDone){
+            if (!remSubDone && !showNotifyDialog){
                 dispatch(slowToggleNotifyDilog());
             }
         }

@@ -69,7 +69,12 @@ for root, dirs, files in os.walk(data_dir):
                             'delivery_enabled': False
                         })
                         rewrite = True
-
+                    
+                    if not service_detail.get('service_steps'):
+                        service_detail.update({
+                            'service_steps': []
+                        })
+                        rewrite = True
                     # if service_detail.get('service_flow_steps'):
                     #     service_detail.update({
                     #         'service_flow_steps': []

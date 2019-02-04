@@ -40,6 +40,10 @@ allOrgsJson {
             delivery_enabled
             service_timing {break, open, day}
             service_description
+            service_steps {
+              step_number
+              description
+            }
             service_faq {question answer}
             service_del_links {url link_name}
             service_forms {url name}
@@ -129,7 +133,10 @@ allLogos: allFile (filter : {
       // path.
       const orgLogoMap = {}
       const serviceLogoMap = {}
-      _.each(result.data.allLogos.edges, edge => {
+
+
+      if (result.data && result.data.allLogos){
+          _.each(result.data.allLogos.edges, edge => {
         if(edge.node.name.endsWith("_org_logo")){
           orgLogoMap[edge.node.name] = edge.node.childImageSharp
         }
@@ -138,6 +145,8 @@ allLogos: allFile (filter : {
         }
       });
 
+      }
+    
       const serGlossaryTemplate = path.resolve(`src/templates/service-glossary.js`)
       _.each(result.data.allSerGlossaryItems.edges, edge => {
         // Gatsby uses Redux to manage its internal state. Plugins and sites can use
@@ -235,7 +244,7 @@ allLogos: allFile (filter : {
                   allForms: service.service_forms || [],
                   description: service.service_description,
                   price: service.price,
-                  allSteps: [],
+                  allSteps: service.service_steps || [],
                   allMems: [],
                   alllocations: [],
                   alltimings: service.service_timing || [],

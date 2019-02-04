@@ -164,7 +164,6 @@ class Card extends Component {
         let trimmedUs = null;
 
         if (field_schema) {
-            console.log(field_schema);
             trimmedFS = field_schema.trim();
             try {
                 trimmedFS = JSON.parse(trimmedFS);

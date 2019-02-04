@@ -157,6 +157,7 @@ const styles = theme => ({
     },
     ser_gloss_nav_items: {
         display: 'flex',
+        width: '100%',
         justifyContent: 'space-between',
         padding: theme.spacing.unit * 2
     },
@@ -551,10 +552,12 @@ class ServiceGlossary extends Component {
                     <Grid item sm={1}/>
                     <Grid item sm={10} align="center" className={classes.ser_gloss_nav_items}>
 
-                        <Link to="/" className={classes.link}>
+                        <Link to="/" style={{      textDecoration: 'none',
+                                cursor: 'pointer'}}>
                             <Typography
                                 style={{
-                                color: "#fff"
+                                color: "#fff",
+                                paddingTop: 8
                             }}
                                 variant="display2">
                                 Localgov.fyi

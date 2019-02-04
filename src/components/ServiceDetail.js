@@ -4,6 +4,8 @@ import {navigate} from '@reach/router';
 
 import { connect } from 'react-redux';
 import { CopyToClipboard } from 'react-copy-to-clipboard';
+import {Info} from 'react-feather';
+
 import {
     FacebookShareButton,
     TwitterShareButton,
@@ -98,6 +100,7 @@ class ServiceDetail extends Component {
     componentDidMount(){
         const { classes, description, price, timingList, formList, qaList, stepList, locList } = this.props;
         let tabContent = []
+        console.log(stepList, "steplist")
         if(description){
             tabContent.push(<Fragment>
                 <div className={classes.ser_detail_cardContent}>
@@ -115,20 +118,7 @@ class ServiceDetail extends Component {
                 </div>
             </Fragment>)
         }
-        if(timingList){
-            tabContent.push(<Fragment>
-                <div className={classes.ser_detail_cardContent}>
-                   {timingList}
-                </div>
-            </Fragment>)
-        }
-        if(formList){
-            tabContent.push(<Fragment>
-                <div className={classes.ser_detail_cardContent}>
-                   {formList}
-                </div>
-            </Fragment>)
-        }
+        
         if(qaList){
             tabContent.push(<Fragment>
                 <div className={classes.ser_detail_cardContent}>
@@ -157,6 +147,22 @@ class ServiceDetail extends Component {
                 </div>
             </Fragment>)
         }
+
+        if(formList){
+            tabContent.push(<Fragment>
+                <div className={classes.ser_detail_cardContent}>
+                   {formList}
+                </div>
+            </Fragment>)
+        }
+       
+        if(timingList){
+            tabContent.push(<Fragment>
+                <div className={classes.ser_detail_cardContent}>
+                   {timingList}
+                </div>
+            </Fragment>)
+        }
         this.setState({
             tabContent
         })
@@ -167,38 +173,17 @@ class ServiceDetail extends Component {
         const { classes, description, price, timingList, formList, qaList, stepList, locList } = this.props;
         let tabs = []
         if (description){
-tabs.push(
-    <Tab
-        classes={{
-        root: classes.ser_detail_tab_tabRoot,
-        selected: classes.ser_detail_tab_tabSelected
-    }}
-        label="Details"
-        icon={< InfoOutlined />}/>
-)
+            tabs.push(
+                <Tab
+                    classes={{
+                    root: classes.ser_detail_tab_tabRoot,
+                    selected: classes.ser_detail_tab_tabSelected
+                }}
+                    label="Details"
+                    icon={<InfoOutlined />}/>
+            )
         }
-        if (timingList){
-tabs.push(
-    <Tab
-        classes={{
-        root: classes.ser_detail_tab_tabRoot,
-selected : classes.ser_detail_tab_tabSelected
-    }}
-        label="Timings"
-        icon={< AccessTimeOutlined />}/>
-)
-        }
-        if(formList){
-tabs.push(
-    <Tab
-        classes={{
-        root: classes.ser_detail_tab_tabRoot,
-        selected: classes.ser_detail_tab_tabSelected
-    }}
-        label="Forms"
-        icon={< FolderOpenOutlined />}/>
-)
-        }
+    
         //  push this regardless
         tabs.push(<Tab  classes={{ root: classes.ser_detail_tab_tabRoot, selected: classes.ser_detail_tab_tabSelected }} label="FAQs" icon={<HelpOutline />} />)
         
@@ -207,6 +192,28 @@ tabs.push(
         }
 
 
+        if (formList) {
+            tabs.push(
+                <Tab
+                    classes={{
+                    root: classes.ser_detail_tab_tabRoot,
+                    selected: classes.ser_detail_tab_tabSelected
+                }}
+                    label="Forms"
+                    icon={<FolderOpenOutlined />}/>
+            )
+        }
+        if (timingList) {
+            tabs.push(
+                <Tab
+                    classes={{
+                    root: classes.ser_detail_tab_tabRoot,
+                    selected: classes.ser_detail_tab_tabSelected
+                }}
+                    label="Timings"
+                    icon={< AccessTimeOutlined />}/>
+            )
+        }
          return (<Paper className={classes.ser_detail_cardWrapper} elevation={2}>
                             <Tabs
             value={this.state.currentTab}

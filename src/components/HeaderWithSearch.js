@@ -20,6 +20,7 @@ import LoginRegisterDialog from './Account/LoginRegisterDialog';
 import AccountCircle from '@material-ui/icons/AccountCircle';
 import MenuItem from '@material-ui/core/MenuItem';
 import Menu from '@material-ui/core/Menu';
+import {isMobileOnly} from 'react-device-detect';
 import HeaderAccountMenu from './HeaderAccountMenu';
 
 import Search from './Search/Search';
@@ -58,11 +59,23 @@ h_w_s_right : {
   heaer_search_grid_item: {
 
   },
+header_search_grid_container:{
+
+},
 });
 
 class HeaderWithSearch extends Component {
   constructor(props) {
     super(props);
+    this.state = {
+      isMobile: false
+    }
+  }
+
+  componentDidMount(){
+    this.setState({
+      isMobile: isMobileOnly
+    })
   }
 
   render() {
@@ -70,7 +83,31 @@ class HeaderWithSearch extends Component {
 
     return (
       <AppBar position="static" className={classes.h_w_s_header}>
-        <Grid className='heaer_search_grid' container spacing={0}>
+        {this.state.isMobile ? (<Grid className={classes.header_search_grid_container} container spacing={0}>
+          <Grid
+            className='heaer_search_grid_item' 
+            item
+            xs={10}
+            style={{
+            'cursor': 'pointer'
+          }}
+            onClick={() => navigate('/')}>
+            <Typography
+              variant="display2"
+              color="inherit"
+              component="h1"
+              className={classes.h_w_s_title}>
+              Localgov.fyi
+            </Typography>
+          </Grid>
+            <Grid className='heaer_search_grid' item xs={2} className={classes.h_w_s_right}>
+              <HeaderAccountMenu location={this.props.location} />
+          </Grid>
+          <Grid className='heaer_search_grid' item xs={12} sm={6}>
+            <Search inHeader={true}/>
+          </Grid>
+        
+        </Grid>) : (<Grid className={classes.header_search_grid_container} container spacing={0}>
           <Grid
             className='heaer_search_grid_item' 
             item
@@ -94,7 +131,7 @@ class HeaderWithSearch extends Component {
           <Grid className='heaer_search_grid' item xs={12} md={3} className={classes.h_w_s_right}>
               <HeaderAccountMenu location={this.props.location} />
           </Grid>
-        </Grid>
+        </Grid>)}
          <LoginRegisterDialog location={this.props.location}/>
       </AppBar>
     );

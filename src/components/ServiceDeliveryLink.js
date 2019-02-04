@@ -11,7 +11,7 @@ import Paper from '@material-ui/core/Paper';
 import SvgIcon from '@material-ui/core/SvgIcon';
 import Mood from '@material-ui/icons/Mood';
 import SentimentDissatisfied from '@material-ui/icons/SentimentDissatisfied';
-
+import Cancel from '@material-ui/icons/Cancel';
 import MoodBad from '@material-ui/icons/MoodBad';
 import Spinner from 'react-spinkit';
 
@@ -136,6 +136,11 @@ ser_del_link_bodyText : {
 ser_del_redir:{
 
 },
+ser_del_link_close:{
+  position: 'absolute',
+  top: '8px',
+  right: '8px'
+}
 });
 
 const encodeBody = (data) => {
@@ -345,6 +350,9 @@ class ServiceDeliveryLink extends Component {
     >
       <Paper className={classes.ser_del_link_paper}>
         {showSatisfied && <div className={classes.ser_del_link_satisfiedDialog}>
+          <div className={classes.ser_del_link_close}>
+             <Cancel style={{cursor: 'pointer'}} onClick={this.handleClose} color='disabled'/>
+          </div>
           <Typography  id="ser-notify-form-dialog-title" variant="headline" component="h2" className={classes.ser_del_link_title}>
             How was your experience with Localgov?
               </Typography>

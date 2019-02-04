@@ -164,6 +164,9 @@ ser_detail_loading_spinner:{
 },
 service_detail_footer : {
     marginTop: theme.spacing.unit * 4
+},
+serviceDetailStepNumber:{
+    marginRight: theme.spacing.unit *2
 }
 });
 
@@ -334,10 +337,13 @@ class ServiceDetailTemplate extends React.Component {
                     </RawHTML>
                 );
                 return <ListItem disableGutters>
-                    <Typography type="caption" gutterBottom>
+                    <Typography type="caption" className={classes.serviceDetailStepNumber} gutterBottom>
                         {index + 1}
                     </Typography>
-                    <ListItemText primary={text}/>
+                     <Typography type="body1" className={classes.serviceDetailStepText}  gutterBottom>
+                       {text}
+                    </Typography>
+                  
                 </ListItem>;
             });
         }
@@ -370,9 +376,12 @@ class ServiceDetailTemplate extends React.Component {
                     </RawHTML>
                 );
 
-                return <ListItem disableGutters>
-                    <ListItemText primary={question} secondary={<Typography color="textPrimary">{text}</Typography> }/>
-                </ListItem>;
+                return <Fragment>
+                    <ListItem disableGutters>
+                    <ListItemText primary={<Typography variant='subheading'>{question}</Typography>} secondary=     {<Typography color="textPrimary">{text}</Typography> }/>
+                    </ListItem>
+                      {(index !== allfaq.length-1) ? <Divider style={{margin: '8px'}} /> : null}
+                </Fragment>;
             });
         }
 
@@ -455,25 +464,24 @@ class ServiceDetailTemplate extends React.Component {
 
                 <Grid container spacing={16} className={classes.ser_detail_container}>
                     <Helmet>
-                        <title>{`${name} service offered in ${org_name} | Localgov.fyi`}
+                        <title>{`${name} | ${org_name} | Localgov.fyi`}
                         </title>
                         <script type="application/ld+json">{`${JSON.stringify(jsonLd)}`}</script>
                         <link rel="canonical" href={`https://localgov.fyi/service/${id}/`}/>
-                        <script key='gatsby-plugin-stripe' src="https://js.stripe.com/v3/" async/>
                         <meta
                             property="og:title"
-                            content={`${name} service offered in ${org_name} | Localgov.fyi`}/>
+                            content={`${name} | ${org_name} | Localgov.fyi`}/>
                         <meta property="og:url" content={`https://localgov.fyi/service/${id}/`}/>
 
                         <meta
                             name="description"
-                            content={`Forms, Price, Timings and Local Government Service Contact Details for ${name} offered in ${org_name} | Localgov.fyi`}/>
+                            content={`Forms, Price, Checklist, FAQS, Timings and Local Government Service Contact Details for ${name} offered in ${org_name} | Localgov.fyi`}/>
                         <meta
                             name="keywords"
                             content={`${name} online , ${org_name} , localgov `}/>
                         <meta
                             property="og:description"
-                            content={`Forms, Price, Timings and Local Government Service Contact Details for ${name} offered in ${org_name} | Localgov.fyi`}/>
+                            content={`Forms, Price, Checklist, FAQS, Timings and Local Government Service Contact Details for ${name} offered in ${org_name} | Localgov.fyi`}/>
                      
                     </Helmet>
                     {(windowGlobal && window.history.length > 2) && !isMobileOnly

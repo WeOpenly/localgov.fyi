@@ -27,7 +27,6 @@ async function listAllKeys(params) {
 
   if (data.IsTruncated) {
     params.ContinuationToken = data.NextContinuationToken;
-    console.log("get further list...");
     return await listAllKeys(params);
   }
   return

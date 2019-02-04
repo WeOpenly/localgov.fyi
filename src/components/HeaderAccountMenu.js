@@ -14,6 +14,8 @@ import MenuItem from '@material-ui/core/MenuItem';
 import Menu from '@material-ui/core/Menu';
 import ListItem from '@material-ui/core/ListItem';
 import Spinner from 'react-spinkit';
+import MoreIcon from '@material-ui/icons/MoreVert';
+import { isMobileOnly } from "react-device-detect";
 
 const windowGlobal = typeof window !== 'undefined' && window
 
@@ -69,6 +71,7 @@ class HeaderAccountMenu extends Component {
       anchorEl: null, 
       loggedin: false,
       logincheckloading: true,
+      isMobile: false,
     }
 
   }
@@ -77,7 +80,9 @@ class HeaderAccountMenu extends Component {
     const loggedin = isLoggedIn();
     this.setState({
       logincheckloading: false,
+      isMobile: isMobileOnly,
     });
+
     if (loggedin){
       this.setState({
         loggedin: true,
@@ -111,6 +116,40 @@ class HeaderAccountMenu extends Component {
     if (this.state.logincheckloading) {
       return (<Spinner className='account_menu_spinner' name="ball-beat" color="blue"/> )
     }
+
+    const mobNotLoggeInMenu = (<div className={classes.h_a_m_login}>
+          <IconButton
+            aria-owns={open
+            ? 'menu-appbar'
+            : null}
+            aria-haspopup="true"
+            onClick={this.handleMenu}
+            color="inherit">
+            <MoreIcon />
+          </IconButton>
+          <Menu
+            className={classes.h_a_m_headerMenu}
+            id="menu-appbar"
+            anchorEl={anchorEl}
+            anchorOrigin={{
+            vertical: 'top',
+            horizontal: 'left'
+          }}
+            transformOrigin={{
+            vertical: 'top',
+            horizontal: 'right'
+          }}
+            open={open}
+            onClose={this.handleClose}>
+            <MenuItem onClick={() => navigate('/login/')}>  <Typography variant="body1" className={classes.h_a_m_title}>
+              Log In
+              </Typography></MenuItem>
+            <MenuItem onClick={() => navigate('/signup/')}><Typography variant="body1" className={classes.h_a_m_title}>
+             Sign Up
+              </Typography></MenuItem>
+          </Menu>
+        </div>)
+
 
     return (this.state.loggedin
       ? (
@@ -150,7 +189,7 @@ class HeaderAccountMenu extends Component {
           </Menu>
         </div>
       )
-      : (
+      : ( this.state.isMobile ? mobNotLoggeInMenu : (
         <div className={classes.h_a_m_loging_signup_container}>
           <Button
                 variant="text"
@@ -164,8 +203,8 @@ class HeaderAccountMenu extends Component {
             className={classes.h_a_m_signup_button}
               color="inherit">SignUp</Button>
       
-        </div>
-      ));
+        </div>) )
+      );
   }
 }
 

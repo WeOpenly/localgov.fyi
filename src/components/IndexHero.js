@@ -34,7 +34,11 @@ const styles = theme => ({
         justifyContent: 'space-between'
     },
     index_hero_title: {
-        color: '#fff'
+        color: '#fff',
+    },
+    index_hero_title_mob:{
+        color: '#fff',
+         paddingTop: theme.spacing.unit,
     },
     index_hero_search_desc: {
         color: '#fff',
@@ -175,7 +179,6 @@ class IndexHero extends Component {
 
     render() {
         const {data, classes, search} = this.props;
-        console.log(data, "data");
 
         return (
             <Fragment>
@@ -187,10 +190,10 @@ class IndexHero extends Component {
                     : classes.index_landingSearchMobile}>
 
                     <Grid item xs={12} className={classes.index_hero_header}>
-                        <Typography variant="display1" className={classes.index_hero_title}>
+                     <Typography variant="display1" className={this.state.isMobileOnly ? classes.index_hero_title_mob : classes.index_hero_title}>
                             Localgov.fyi
-                        </Typography>
-                        <HeaderAccountMenu location={this.props.location}/>
+                    </Typography>
+                    <HeaderAccountMenu location={this.props.location}/>
                     </Grid>
 
                     <Grid item xs={1} sm={1} md={2}/>

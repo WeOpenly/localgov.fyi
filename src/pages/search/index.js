@@ -116,7 +116,6 @@ class Search extends React.Component {
 
         const noResults = !isSemantic && searchResults.length === 0;
 
-        console.log(noResults, "noresults", searchResultsLoading, "searchresultsloading", searchResultsLoadingFailed, "searchResultsLoadingFailed")
 
         if (searchResultsLoading) {
             const { search } = this.props.location;

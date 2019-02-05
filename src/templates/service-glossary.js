@@ -43,6 +43,8 @@ import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
 
+import SvgTax from '../svgIcons/tax';
+import RelatedServiceTemplates from '../components/RelatedServiceTemplates';
 import Footer from '../components/Footer';
 import withRoot from '../withRoot';
 import StateSuggest from '../components/StateSuggest';
@@ -83,6 +85,9 @@ const styles = theme => ({
         alignItems: 'center',
         boxShadow: `0 5px 10px 0 #f1f1f1`,
         borderRadius: '5px'
+    },
+    locGridContainer:{
+        width: '100%',
     },
     locationPaper: {
         padding: theme.spacing.unit *5,
@@ -133,14 +138,16 @@ const styles = theme => ({
         padding: theme.spacing.unit *4
     },
     ser_gloss_gridItemLocation: {
+        cursor: 'pointer',
         padding: theme.spacing.unit*2,
         display: 'flex',
+        flexWrap: 'wrap',
         alignItems: 'center',
         margin: theme.spacing.unit * 2,
         boxShadow: `0 1px 2px 0 ${theme.palette.primary['100']}`,
         justifyContent: 'left',
         width: 320,
-        height: 88
+        height: 104
     },
     ser_gloss_locGrid_list: {
         width: '100%',
@@ -448,24 +455,17 @@ class ServiceGlossary extends Component {
             const state = org.area.hierarchy[org.area.hierarchy.length - 1].area_name;
 
             return (
-                <div key={`${org.id}-${idx}`}>
-                    <Paper className={classes.ser_gloss_gridItemLocation} elevation={1}>
-                        <a
-                            style={{
-                            cursor: 'pointer'
-                        }}
-                            onClick={() => this.handleOrgClick(organization.id, organization.org_name, idx, `/service/${org.id}/`)}
-                            className={classes.ser_gloss_link}>
-                            <Typography variant="subheading" className={classes.ser_gloss_heading}>
-                                {strippedName}
-                            </Typography>
-                            <Typography variant="caption" className={classes.ser_gloss_state_name}>
+                    <Paper  onClick={() => this.handleOrgClick(organization.id, organization.org_name, idx, `/service/${org.id}/`)} key={`${org.id}-${idx}-locaitemdesk`} className={classes.ser_gloss_gridItemLocation} elevation={1}>
+                            <div style={{width: '100%'}}>
+                                <Typography key={`${org.id}-${idx}-locaitemdesktitle`}  variant="subheading" component="h2" className={classes.ser_gloss_heading}>
+                                    {strippedName}
+                                </Typography>
+                            </div>
+                            <Typography key={`${org.id}-${idx}-locaitemdesksub`}   variant="caption" className={classes.ser_gloss_state_name}>
                                 {state}
                             </Typography>
-                        </a>
+                    
                     </Paper>
-
-                </div>
             )
         })
 
@@ -478,18 +478,24 @@ class ServiceGlossary extends Component {
             const state = org.area.hierarchy[org.area.hierarchy.length - 1].area_name;
 
             return (
-                <ListItem
-                    key={`${org.id}-${idx}`}
+                <div
+                style={{ width: '100%',
+        padding: '8px',
+        margin: '8px',
+        background: '#fff',
+        borderBottom: '1px solid #d4d4d4'}}
+                    key={`${org.id}-${idx}-locitem`}
                     onClick={() => this.handleOrgClick(organization.id, organization.org_name, idx, `/service/${org.id}/`)}>
-                    <ListItemText
-                        style={{
-                        marginLeft: 0
-                    }}
-                        primary={strippedName}
-                        secondary={<Typography component = "span" color = "textPrimary"> {
-                        state
-                    } </Typography>}/>
-                </ListItem>
+                      <div style={{width: '100%'}}>
+                         <Typography key={`${org.id}-${idx}-locaitemmobtitle`}   variant="subheading" className={classes.ser_gloss_heading}>
+                                {strippedName}
+                            </Typography>
+                    </div>
+                            <Typography  key={`${org.id}-${idx}-locaitemmobsub`} variant="caption" className={classes.ser_gloss_state_name}>
+                                {state}
+                            </Typography>
+                 
+                </div>
             )
         });
 
@@ -715,22 +721,31 @@ class ServiceGlossary extends Component {
                 <Grid container className={classes.locGridContainer}>
                     {this.state.isMobile
                         ? (
-                            <Grid item sm={12} align="center">
-                                <List className={classes.ser_gloss_locGrid_list}>
+                            <Grid item xs={12} align="center">
                                     {mobileLocs}
-                                </List>
                             </Grid>
                         )
                         : (
-                            <Grid item sm={12} align="left" className={classes.ser_gloss_locGrid}>
-
+                            <Grid item xs={12} align="left" className={classes.ser_gloss_locGrid}>
                                 {locs}
-
                             </Grid>
                         )}
-
+                </Grid>
+                <Grid container className={classes.relatedServiceContainer}>
+                      <Grid item xs={1} />
+                        <Grid item xs={10} >
+                      <Typography
+                            style={{
+                            color: "#0a0a0a",
+                            padding: "16px 0 32px 0"
+                        }} variant="headline" component="h3">
+                           More Services</Typography>
+                           </Grid>
+                            <Grid item xs={1}/>
+                        <RelatedServiceTemplates currentNameSlug={service_name_slug} />
                 </Grid>
                 <div className={classes.gloss_footer}>
+             
                     <Footer page={this.props.location.pathname}/>
                 </div>
             </Fragment>

@@ -58,27 +58,18 @@ const styles = theme => ({
         html: {
             WebkitFontSmoothing: "antialiased", // Antialiasing.
             MozOsxFontSmoothing: "grayscale", // Antialiasing.
-            height: "100%",
-            overflow: 'hidden'
         },
         body: {
+            height: "100%",
+            overflow: 'hidden',
             margin: 0,
             padding: 0,
-            width: '100%',
-            height: '100%',
             overflowWrap: "break-word",
             overflowY: "scroll",
             overflowX: "hidden"
-        },
-        "body>div": {
-            display: "block",
-            height: "100%"
-        },
-        "body>div>div": {
-            display: "block"
         }
     },
-    filterContainer: {
+    ser_gloss_filterContainer: {
         padding: '16px 16px',
         margin: theme.spacing.unit,
         display: 'flex',
@@ -86,10 +77,10 @@ const styles = theme => ({
         boxShadow: `0 5px 10px 0 #f1f1f1`,
         borderRadius: '5px'
     },
-    locGridContainer:{
+    ser_gloss_locGridContainer:{
         width: '100%',
     },
-    locationPaper: {
+    ser_gloss_locationPaper: {
         padding: theme.spacing.unit *5,
         display: 'flex',
         alignItems: 'center',
@@ -97,21 +88,21 @@ const styles = theme => ({
         margin: theme.spacing.unit,
         boxShadow: `0 0 1px 0 #d4d4d4`
     },
-    gloss_loc_search_root: {
+    ser_gloss_loc_search_root: {
         padding: '4px 8px',
         display: 'flex',
         justifyContent: 'center',
         width: '100%',
         boxShadow: `0 0 1px 0 ${theme.palette.primary['300']}`
     },
-    input: {
+    ser_gloss_input: {
         marginLeft: 16,
         flex: 1
     },
-    iconButton: {
+    ser_gloss_iconButton: {
         padding: 12
     },
-    divider: {
+    ser_gloss_divider: {
         width: 1,
         height: 32,
         margin: 4
@@ -189,19 +180,19 @@ const styles = theme => ({
         height: 136,
         padding: `${theme.spacing.unit * 2}px 0 ${theme.spacing.unit * 2}px ${theme.spacing.unit*2}px`
     },
-    gloss_searchContainer: {
+    ser_gloss_searchContainer: {
         marginTop: '-40px'
     },
-    gloss_searchContainer_mob: {
+    ser_gloss_searchContainer_mob: {
         marginTop: '0px'
     },
-    gloss_countContainer: {
+    ser_gloss_countContainer: {
         marginTop: theme.spacing.unit *2
     },
-    gloss_footer: {
+    ser_gloss_footer: {
         marginTop: theme.spacing.unit * 4
     },
-    ser_gloss_service_actions: {
+    ser_gloss_service_actions : {
         display: 'flex',
         justifyContent: 'center',
         alignItems: 'center'
@@ -273,13 +264,17 @@ class ServiceGlossary extends Component {
         // this.props.trackClick('external', 'share', '', '', 0);
     }
 
+    componentDidMount(){
+        this.setState({isMobile: isMobileOnly})
+    }
+
     handleClose = (type) => {
         this.setState({anchorEl: null, copied: false});
         const {trackClick} = this.props;
         if(type)
             trackClick('social_share', type, '', '', 0);
     }
-
+    
     static getDerivedStateFromProps(nextProps, prevState) {
         const values = queryString.parse(nextProps.location.search);
 
@@ -502,7 +497,7 @@ class ServiceGlossary extends Component {
         const searchInput = (<InputBase
             onChange={this.onSearchChange}
             defaultValue={this.state.searchText}
-            className={classes.input}
+            className={classes.ser_gloss_input}
             placeholder="Search Locations"/>)
 
         const descDialog = (
@@ -665,16 +660,16 @@ class ServiceGlossary extends Component {
                     </Grid>
                     <Grid item sm={2}/>
                 </Grid>
-                <Grid container className={classes.gloss_searchContainer}>
+                <Grid container className={classes.ser_gloss_searchContainer}>
                     <Grid item sm={1}/>
                     <Grid item sm={10}>
-                        <Paper className={classes.filterContainer} elevation={3}>
+                        <Paper className={classes.ser_gloss_filterContainer} elevation={3}>
                             <Grid container spacing={8} align="center">
 
                                 <Grid item sm={12} md={7}>
-                                    <Paper className={classes.gloss_loc_search_root} elevation={1}>
+                                    <Paper className={classes.ser_gloss_loc_search_root} elevation={1}>
                                         {searchInput}
-                                        <IconButton className={classes.iconButton} aria-label="Search">
+                                        <IconButton className={classes.ser_gloss_iconButton} aria-label="Search">
                                             <SearchIcon/>
                                         </IconButton>
                                     </Paper>
@@ -700,7 +695,7 @@ class ServiceGlossary extends Component {
                 </Grid>
 
                 <LoginRegisterDialog location={this.props.location}/>
-                <Grid container className={classes.gloss_countContainer}>
+                <Grid container className={classes.ser_gloss_countContainer}>
                     <Grid item sm={1}/>
                     <Grid item sm={8}>
                         <Typography
@@ -718,7 +713,7 @@ class ServiceGlossary extends Component {
                     </Grid>
                     <Grid item sm="auto"/>
                 </Grid>
-                <Grid container className={classes.locGridContainer}>
+                <Grid container className={classes.ser_gloss_locGridContainer}>
                     {this.state.isMobile
                         ? (
                             <Grid item xs={12} align="center">
@@ -731,7 +726,7 @@ class ServiceGlossary extends Component {
                             </Grid>
                         )}
                 </Grid>
-                <Grid container className={classes.relatedServiceContainer}>
+                <Grid container className={classes.ser_gloss_relatedServiceContainer}>
                       <Grid item xs={1} />
                         <Grid item xs={10} >
                       <Typography
@@ -744,7 +739,7 @@ class ServiceGlossary extends Component {
                             <Grid item xs={1}/>
                         <RelatedServiceTemplates currentNameSlug={service_name_slug} />
                 </Grid>
-                <div className={classes.gloss_footer}>
+                <div className={classes.ser_gloss_footer}>
              
                     <Footer page={this.props.location.pathname}/>
                 </div>

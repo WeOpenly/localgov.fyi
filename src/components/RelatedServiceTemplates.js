@@ -3,6 +3,7 @@ import {connect} from "react-redux";
 import Spinner from 'react-spinkit';
 import {isMobileOnly} from 'react-device-detect';
 import {StaticQuery, graphql, Link} from "gatsby";
+import {navigate} from '@reach/router';
 
 import Button from '@material-ui/core/Button';
 import {withStyles} from '@material-ui/core/styles';
@@ -66,7 +67,11 @@ const SerTemplateCards = (props) => {
         }, {
             name: 'Pay Utility Bill',
             link: 'pay-utility-bill/'
-        }
+        }, 
+          {
+            name: 'Pay Water Bill',
+            link: 'pay-water-bill/'
+        },
     ]
 
     if(props.currentNameSlug)

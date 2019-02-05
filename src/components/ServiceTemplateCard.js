@@ -18,7 +18,7 @@ import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
 import ListItemAvatar from '@material-ui/core/ListItemAvatar';
 import Grid from '@material-ui/core/Grid';
-import { navigate } from "gatsby";
+import { navigate } from "@reach/router";
 
 const styles = theme => ({
 ser_template_card:{
@@ -78,7 +78,7 @@ class ServiceTemplateCard extends Component {
 
         if (this.state.isMob){
             return (
-            <ListItem  onClick={() => navigate(`services/${slug}`)} style={{background: '#fff', margin: '8px', padding: '24px', cursor: 'pointer'}} alignItems="flex-start">
+            <ListItem  onClick={() => navigate(`/services/${slug}`, true)} style={{background: '#fff', margin: '8px', padding: '24px', cursor: 'pointer'}} alignItems="flex-start">
                 <ListItemAvatar>
                     {mobIcon}
                 </ListItemAvatar>
@@ -86,7 +86,7 @@ class ServiceTemplateCard extends Component {
             </ListItem>
             )
         } else {
-            return (<Card className={classes.ser_template_card} onClick={() => navigate(`services/${slug}`)}>
+            return (<Card className={classes.ser_template_card} onClick={() => navigate(`/services/${slug}`, { replace: true })}>
                         <div className={classes.ser_template_card_img}>
                                 {icon}
                         </div>

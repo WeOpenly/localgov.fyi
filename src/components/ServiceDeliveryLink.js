@@ -143,6 +143,8 @@ ser_del_link_close:{
 }
 });
 
+const windowGlobal = typeof window !== 'undefined' && window
+
 const encodeBody = (data) => {
   return Object.keys(data)
     .map(key => encodeURIComponent(key) + "=" + encodeURIComponent(data[key]))
@@ -248,7 +250,15 @@ class ServiceDeliveryLink extends Component {
   }
 
   handleClose() {
-    this.props.tglNotifyDialog(true);
+    const {id} = this.props;
+    
+    if (windowGlobal && windowGlobal.localStorage){
+      const remClosedone = localStorage.getItem(`rem_close_${id}`);
+      if (!remClosedone){
+        this.props.tglNotifyDialog(true);
+      } 
+    }
+
     this.props.tglFeedbackDialog(false)
   }
 

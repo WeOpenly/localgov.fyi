@@ -132,6 +132,9 @@ class Card extends Component {
 
     closeDialog(){
         this.props.dispatch(toggleNotifyDialog(false));
+        if (windowGlobal && windowGlobal.localStorage){
+            localStorage.setItem(`rem_close_${this.props.service_id}`, true)
+        }
     }
 
     componentDidMount(){
@@ -143,8 +146,8 @@ class Card extends Component {
 
         if (windowGlobal && windowGlobal.localStorage) {
             const remSubDone = localStorage.getItem(`rem_sub_${this.props.service_id}`);
-
-            if (!remSubDone && !showNotifyDialog){
+            const remClosedone = localStorage.getItem(`rem_close_${this.props.service_id}`);
+            if (!(remClosedone || remSubDone) && !showNotifyDialog){
                 dispatch(slowToggleNotifyDilog());
             }
         }

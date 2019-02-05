@@ -343,7 +343,7 @@ class ServiceHeader extends Component {
                  >Offered by  <span  className={classes.service_header_in}> {offeredIn} </span></Typography>
                 </div>
                     <div className={classes.service_header_serDelLink}>
-                <ServiceDeliveryLink service_name={name} org_name={offeredIn} serDelLinks={serDelLinks} />
+                <ServiceDeliveryLink id={id} service_name={name} org_name={offeredIn} serDelLinks={serDelLinks} />
               </div>
               </div>
 

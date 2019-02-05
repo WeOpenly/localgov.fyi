@@ -157,7 +157,7 @@ const {id, name} = this.props.pageContext.data;
           });
           serCards = servicesAtLevel.map((ser, idx) => {
             const deliveryLink = ser.service_del_links && ser.service_del_links[0] ? ser.service_del_links[0] : null;
-            console.log(ser);
+            
             return (
               <Grid item xs={12} md={4} key={ser.id}>
                 <ServiceCard

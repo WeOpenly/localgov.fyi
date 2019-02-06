@@ -51,6 +51,7 @@ import StateSuggest from '../components/StateSuggest';
 import HeaderAccountMenu from '../components/HeaderAccountMenu';
 import LoginRegisterDialog from '../components/Account/LoginRegisterDialog';
 import {NO_SEARCH_RESULTS} from '../components/common/tracking_events';
+import RawForm from '../components/Reminders/RawForm';
 import {trackView, trackClick, trackInput, trackEvent} from "../components/common/tracking";
 
 const styles = theme => ({
@@ -214,6 +215,33 @@ const RawHTML = ({
     dangerouslySetInnerHTML={{
     __html: children.replace(/\n/g, " ")
 }}/>);
+
+const genericFSchema = {
+    "type": "object",
+    "required": ["email"],
+    "properties": {
+        "locations": {
+            "type": "string",
+            "title": "Location(s)"
+        },
+        "services": {
+            "type": "string",
+            "title": "Services(s)"
+        },
+        "email": {
+            "type": "email",
+            "title": "Email"
+        },
+        "name": {
+            "type": 'string',
+            "title": "Name"
+        },
+        "path": {
+            "type": 'string',
+            "title": "path"
+        }
+    }
+}
 
 class ServiceGlossary extends Component {
     constructor(props) {
@@ -383,6 +411,8 @@ class ServiceGlossary extends Component {
         const shareLink = windowLocation.href;
 
         let allOrgs = this.state.orgs;
+
+        const userLocReqFormRaw = <RawForm field_schema={JSON.stringify(genericFSchema)} id="user_request_missing_loc_ser" />
 
         const service_glossary_description_text = (
             <RawHTML>
@@ -559,6 +589,7 @@ class ServiceGlossary extends Component {
 
                 </Helmet>
                 {descDialog}
+                {userLocReqFormRaw}
                 <Grid container className={classes.ser_gloss_serviceheading}>
                     <Grid item sm={1}/>
                     <Grid item sm={10} align="center" className={classes.ser_gloss_nav_items}>

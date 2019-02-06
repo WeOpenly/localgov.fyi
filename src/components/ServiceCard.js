@@ -165,7 +165,6 @@ class SearchResult extends Component {
         
         return (
             <Card className={classes.service_card_card}>
-
                     <CardContent className={classes.service_card_cardContent}>
                         <div className={classes.service_card_cardTop}>
                             <Typography variant="body2" component="h1"  className={classes.service_card_cardTitle} onClick={this.handleClick}>

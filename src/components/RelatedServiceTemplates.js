@@ -10,7 +10,7 @@ import {withStyles} from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
 import Grid from '@material-ui/core/Grid';
 import IconButton from '@material-ui/core/IconButton';
-
+import ConnLocationCard from './UserRequests/LocationCard';
 import ServiceTemplateCard from './ServiceTemplateCard';
 import {fade} from "@material-ui/core/styles/colorManipulator";
 
@@ -73,14 +73,15 @@ const SerTemplateCards = (props) => {
             link: 'pay-water-bill/'
         },
     ]
-
+    
     if(props.currentNameSlug)
         sers = sers.filter((ser) => ser.link.indexOf(props.currentNameSlug) === -1)
 
     return (
        <Fragment>
-
             {sers.map((item, idx) => {
+                if (idx === sers.length-1)
+                    return (<ConnLocationCard />)
                 return (
                     <ServiceTemplateCard key={item.name} name={item.name} slug={item.link}/>
                 )

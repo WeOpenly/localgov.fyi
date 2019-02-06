@@ -73,7 +73,7 @@ const MaterialUiForm = props => {
     return (
         <Fragment>
         {titleComponent ? titleComponent : (   <Typography variant="headline" color="primary">
-            Login to your localgov.fyi account
+            Login to your evergov account
         </Typography>)}
      
         <form onSubmit={handleSubmit}>

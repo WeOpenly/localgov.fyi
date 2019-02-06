@@ -143,7 +143,7 @@ class SignUp extends Component {
                               
                     <Button size="small" href="/" variant="disabled" style={{textTransform:'capitalize'}}  disableFocusRipple disableRipple disableTouchRipple
                                       >
-                      <Typography variant="display2" className={classes.login_accountTextHeadline}>Localgov.fyi    </Typography>
+                      <Typography variant="display2" className={classes.login_accountTextHeadline}>evergov    </Typography>
                     </Button>
                                    
                                 
@@ -187,7 +187,7 @@ class SignUp extends Component {
               padding: 48,
               color: '#fff'
             }}>
-              Localgov.fyi
+              evergov
             </Typography>
               </Button>
 

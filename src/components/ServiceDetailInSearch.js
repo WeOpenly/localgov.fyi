@@ -261,15 +261,15 @@ class ServiceDetailInSearch extends React.Component {
         return (
             <Grid container spacing={16} className={classes.ser_detail_search_container}>
                 <Helmet>
-                    <title>{`${name} service offered in ${org_name} | Localgov.fyi`} </title>
-                    <link rel="canonical" href={`https://localgov.fyi/service/${id}/`} />
+                    <title>{`${name} service offered in ${org_name} | evergov`} </title>
+                    <link rel="canonical" href={`https://evergov.com/service/${id}/`} />
 
-                    <meta property="og:title" content={`${name} service offered in ${org_name} | Localgov.fyi`} />
-                    <meta property="og:url" content={`https://localgov.fyi/service/${id}/`} />
+                    <meta property="og:title" content={`${name} service offered in ${org_name} | evergov`} />
+                    <meta property="og:url" content={`https://evergov.com/service/${id}/`} />
 
-                    <meta name="description" content={`Forms, Price, Timings and Local Government Service Contact Details for ${name} offered in ${org_name} | Localgov.fyi`} />
+                    <meta name="description" content={`Forms, Price, Timings and Local Government Service Contact Details for ${name} offered in ${org_name} | evergov`} />
 
-                    <meta property="og:description" content={`Forms, Price, Timings and Local Government Service Contact Details for ${name} offered in ${org_name} | Localgov.fyi`} />
+                    <meta property="og:description" content={`Forms, Price, Timings and Local Government Service Contact Details for ${name} offered in ${org_name} | evergov`} />
                     <JsonLd data={jsonLd} />
                 </Helmet>
                 <Grid item md={12} sm={12} className={classes.ser_detail_search_details}>

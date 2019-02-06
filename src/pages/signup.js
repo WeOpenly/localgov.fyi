@@ -143,7 +143,7 @@ class Login extends Component {
                                     <div className={classes.login_accountTextHeader}>
                                <Button size="small" href="/" variant="disabled" style={{textTransform:'capitalize'}}  disableFocusRipple disableRipple disableTouchRipple
                                       >
-                      <Typography variant="display2" className={classes.login_accountTextHeadline}>Localgov.fyi    </Typography>
+                      <Typography variant="display2" className={classes.login_accountTextHeadline}> Evergov</Typography>
                     </Button>
                                    
                                 </div>
@@ -182,7 +182,7 @@ class Login extends Component {
                 <Button size="small" href="/" variant="disabled" style={{textTransform:'capitalize'}}  disableFocusRipple disableRipple disableTouchRipple
                                       >
                               <Typography variant="display1" style={{padding: 48, color:'#fff'}}>
-                                    Localgov.fyi
+                                    evergov
                                 </Typography>
                          </Button>
                 

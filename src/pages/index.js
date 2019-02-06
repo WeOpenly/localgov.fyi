@@ -173,10 +173,10 @@ const JsonLd = ({ data }) => <script
 const searchLinksSchema = {
   "@context": "http://schema.org",
   "@type": "WebSite",
-  "url": "https://localgov.fyi/",
+  "url": "https://evergov.com/",
   "potentialAction": {
     "@type": "SearchAction",
-    "target": "https://localgov.fyi/search/?q={search_term_string}",
+    "target": "https://evergov.com/search/?q={search_term_string}",
     "query-input": "required name=search_term_string"
   }
 }
@@ -559,20 +559,18 @@ class Index extends React.Component {
       <Layout location={this.props.location}>
         <Fragment>
           <Helmet
-defaultTitle = {
-  `Localgov.fyi: Find All your Government Services in a Single Place`
-}
-            titleTemplate={`%s | Localgov.fyi`}>
+          defaultTitle = {`evergov: Find All Government Services in a Single Place`}
+            titleTemplate={`%s | evergov`}>
             <JsonLd data={searchLinksSchema} />
             <meta name="og:type" content="website"/>
-            <meta property="og:site_name" content={`Localgov for your information`}/>
+            <meta property="og:site_name" content={`Find All Government Services in a Single Place`}/>
 
             <link
               rel="canonical"
-              href={`https://localgov.fyi${this.props.location.pathname}`}/>
+              href={`https://evergov.com${this.props.location.pathname}`}/>
             <meta
               property="og:url"
-              content={`https://localgov.fyi${this.props.location.pathname}`}/>
+              content={`https://evergov.com${this.props.location.pathname}`}/>
             <html lang="en"/>
           </Helmet>
           <LoginRegisterDialog location={this.props.location}/>

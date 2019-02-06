@@ -202,7 +202,7 @@ class ClainReq extends Component {
         <AppBar className={classes.header}>
           <Link to="/" className={classes.link}>
             <Typography variant="display1" color="inherit" className={classes.title}>
-              Localgov.fyi
+              evergov
             </Typography>
           </Link>
           <Typography variant="headline" color="primary">
@@ -292,7 +292,7 @@ class ClainReq extends Component {
               <Typography variant="title" component="h1">Thanks, we will reach out to you soon</Typography>
             <Link to="/" className={classes.link}>
             <Typography variant="caption" color="inherit" className={classes.title}>
-              Back to Localgov.fyi
+              Back to evergov
             </Typography>
           </Link>
             </div>

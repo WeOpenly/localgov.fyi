@@ -55,7 +55,7 @@ class Terms extends React.Component {
           <Grid container spacing={0}>
             <Grid item xs={12} sm={3} style={{'cursor': 'pointer'}} onClick={() => navigate('/') }>
               <Typography variant="display1" color="inherit" component="h1" className={classes.logo}>
-                Localgov.fyi
+                evergov
               </Typography>
             </Grid>
             <Grid item xs={12} sm={6}>

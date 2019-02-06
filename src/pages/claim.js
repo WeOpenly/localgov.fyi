@@ -86,7 +86,7 @@ class Claim extends Component {
         <AppBar className={classes.header}>
           <Link to="/" className={classes.link}>
             <Typography variant="display1" color="inherit" className={classes.title}>
-              Localgov.fyi
+              evergov
             </Typography>
           </Link>
           <Typography variant="headline" color="primary">

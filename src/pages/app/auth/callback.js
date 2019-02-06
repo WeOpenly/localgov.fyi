@@ -44,7 +44,7 @@ class AppAuth extends Component {
         return (
             <div className={classes.app_callback_wrapper}>
                 <Typography variant="display1" className={classes.heading}>
-                    Localgov.fyi
+                    evergov
                 </Typography>
                 <Card className={classes.app_callback_card}>
                     <CardContent>

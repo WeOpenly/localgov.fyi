@@ -230,7 +230,7 @@ const {id, name} = this.props.pageContext.data;
 
     const jsonLd = {
       "@context": "http://schema.org",
-      "@id" : `https://localgov.fyi/organization/${id}/`,
+      "@id" : `https://evergov.com/organization/${id}/`,
       "@type": "Organization",
       name: `${name}`,
       sameAs: sameAs,
@@ -242,7 +242,7 @@ const {id, name} = this.props.pageContext.data;
       <Grid container spacing={16}>
         <Helmet>
             <script type="application/ld+json">{`${JSON.stringify(jsonLd)}`}</script>
-          <title>{`${name} info, contact details and services | Localgov.fyi`}</title>
+          <title>{`${name} info, contact details and services | Evergov`}</title>
           <meta
             name="description"
             content={`${name} info, county / city hall contact details, utilities, and services`}
@@ -250,9 +250,9 @@ const {id, name} = this.props.pageContext.data;
           <meta name="keywords"
               content={`${name} online, info , local government services`}/>
           <meta property="og:title" content={`${name}`} />
-          <meta property="og:url" content={`https://localgov.fyi/organization/${id}/`} />
+          <meta property="og:url" content={`https://evergov.com/organization/${id}/`} />
           <meta property="og:description" content={`${name} info, contact details and services`} />
-          <link rel="canonical" href={`https://localgov.fyi/organization/${id}/`} />
+          <link rel="canonical" href={`https://evergov.com/organization/${id}/`} />
         
         </Helmet>
         <Grid container spacing={16} item xs={12} md={12}>

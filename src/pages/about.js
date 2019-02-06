@@ -110,7 +110,7 @@ class About extends React.Component {
     return (
       <Fragment>
         <Helmet>
-          <title>{`Openly | Localgov.fyi`}
+          <title>{`Openly | evergov`}
           </title>
           <meta
             name="description"

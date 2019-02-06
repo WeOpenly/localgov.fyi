@@ -10,7 +10,7 @@ require('dotenv').config({
 module.exports = {
   siteMetadata: {
     title: `Search for local government organizations, and services`,
-    siteUrl: `https://localgov.fyi`
+    siteUrl: `https://evergov.com`
   },
   plugins: [
     /*
@@ -162,8 +162,8 @@ module.exports = {
     {
       resolve: `gatsby-plugin-robots-txt`,
       options: {
-        host: 'https://localgov.fyi',
-        sitemap: 'https://localgov.fyi/sitemap.xml',
+        host: 'https://evergov.com',
+        sitemap: 'https://evergov.com/sitemap.xml',
         policy: [{ userAgent: '*', disallow: [`/app/*`, `/deep_link/*`] }]
       }
     },

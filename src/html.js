@@ -27,10 +27,10 @@ __html: fontStyleCss }} />)
 const searchLinksSchema = {
   "@context": "http://schema.org",
   "@type": "WebSite",
-  "url": "https://localgov.fyi/",
+  "url": "https://evergov.com/",
   "potentialAction": {
     "@type": "SearchAction",
-    "target": "https://localgov.fyi/search/?q={search_term_string}",
+    "target": "https://evergov.com/search/?q={search_term_string}",
     "query-input": "required name=search_term_string"
   }
 }
@@ -41,9 +41,9 @@ const searchLinksSchema = {
 // name="msvalidate.01" content="D1BADF38847C730E9DC76BE0CCC4B42B" />
 // <meta name="yandex-verification" content="25711aadc401a373" />
 // <JsonLd data={searchLinksSchema} />           <meta name="description"
-// content={`Localgov.fyi - Search for local government organizations, and
+// content={`evergov.com - Search for local government organizations, and
 // services`} />           <meta property="og:site_name"
-// content={`Localgov.fyi`} />           <meta property="twitter:card"
+// content={`evergov.com`} />           <meta property="twitter:card"
 // name="twitter:card" content="summary_large_image" />           <meta
 // property="twitter:site" name="twitter:site" content="@weopenly" />
 // <meta httpEquiv="x-ua-compatible" content="ie=edge" />           <meta

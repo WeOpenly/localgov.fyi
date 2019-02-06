@@ -97,7 +97,7 @@ return (
                 className={!isMobileOnly
                 ? classes.app_profile_root
                 : classes.app_profile_rootMobile}>
-                <Helmet title={`Localgov.fyi profile ${user.email}`}/>
+                <Helmet title={`evergov profile ${user.email}`}/>
                 <HeaderWithSearch location={this.props.location}/>
                 <Grid container spacing={0} className={classes.app_profile_container}>
                     <Grid item xs={1} md={1}/>

@@ -566,26 +566,26 @@ class ServiceGlossary extends Component {
         return (
             <Fragment>
                 <Helmet>
-                    <title>{`Localgov.fyi | ${service_name}`}</title>
+                    <title>{`${service_name} | Evergov`}</title>
 
                     <link
                         rel="canonical"
-                        href={`https://localgov.fyi/services/${service_name_slug}/`}/>
+                        href={`https://evergov.com/services/${service_name_slug}/`}/>
 
-                    <meta property="og:title" content={`${service_name} | Localgov.fyi`}/>
+                    <meta property="og:title" content={`${service_name} | Evergov`}/>
                     <meta
                         property="og:url"
-                        content={`https://localgov.fyi/service/${service_name_slug}/`}/>
+                        content={`https://evergov.com/service/${service_name_slug}/`}/>
 
                     <meta
                         name="description"
-                        content={`Forms, Price, Timings and Contact Details for ${service_name} | Localgov.fyi`}/>
+                        content={`Forms, Price, Timings and Contact Details for ${service_name} | Evergov`}/>
                     <meta
                         name="keywords"
                         content={`${service_name}, ${service_name} online, Local Government Service Onine, my ${service_name}, ${service_name} near me, How do you ${service_name}, can you ${service_name} onine, ${service_glossary_description}`}/>
                     <meta
                         property="og:description"
-                        content={`Forms, Price, Timings and Local Government Service Contact Details for ${service_name} | Localgov.fyi`}/>
+                        content={`Forms, Price, Timings and Local Government Service Contact Details for ${service_name} | Evergov`}/>
 
                 </Helmet>
                 {descDialog}
@@ -602,7 +602,7 @@ class ServiceGlossary extends Component {
                                 paddingTop: 8
                             }}
                                 variant="display2">
-                                Localgov.fyi
+                                evergov
                             </Typography>
                         </Link>
 

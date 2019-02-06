@@ -74,7 +74,7 @@ const {handleSubmit, titleComponent, pristine, reset, submitting, error} = props
     return (
             <Fragment>
       {titleComponent ? titleComponent : (   <Typography variant="headline" color="primary">
-            Create your localgov.fyi account
+            Create your evergov account
         </Typography>)}
      
         <form onSubmit={handleSubmit}>

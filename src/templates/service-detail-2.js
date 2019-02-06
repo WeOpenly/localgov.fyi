@@ -443,11 +443,11 @@ class ServiceDetailTemplate extends React.Component {
         const jsonLd = {
             "@context": "http://schema.org",
             "@type": "GovernmentService",
-            "@id": `https://localgov.fyi/service/${id}/`,
+            "@id": `https://evergov.com/service/${id}/`,
             "name": `${name}`,
             "operator": {
                 "@context": "http://schema.org",
-                "@id": `https://localgov.fyi/organization/${org_id}/`,
+                "@id": `https://evergov.com/organization/${org_id}/`,
                 "@type": "GovernmentOrganization",
                 "name": `${org_name}`
             }
@@ -464,24 +464,24 @@ class ServiceDetailTemplate extends React.Component {
 
                 <Grid container spacing={16} className={classes.ser_detail_container}>
                     <Helmet>
-                        <title>{`${name} | ${org_name} | Localgov.fyi`}
+                        <title>{`${name} | ${org_name} | Evergov`}
                         </title>
                         <script type="application/ld+json">{`${JSON.stringify(jsonLd)}`}</script>
-                        <link rel="canonical" href={`https://localgov.fyi/service/${id}/`}/>
+                        <link rel="canonical" href={`https://evergov.com/service/${id}/`}/>
                         <meta
                             property="og:title"
-                            content={`${name} | ${org_name} | Localgov.fyi`}/>
-                        <meta property="og:url" content={`https://localgov.fyi/service/${id}/`}/>
+                            content={`${name} | ${org_name} | Evergov`}/>
+                        <meta property="og:url" content={`https://evergov.com/service/${id}/`}/>
 
                         <meta
                             name="description"
-                            content={`Forms, Price, Checklist, FAQS, Timings and Local Government Service Contact Details for ${name} offered in ${org_name} | Localgov.fyi`}/>
+                            content={`Forms, Price, Checklist, FAQS, Timings and Local Government Service Contact Details for ${name} offered in ${org_name} | Evergov`}/>
                         <meta
                             name="keywords"
                             content={`${name} online , ${org_name} , localgov `}/>
                         <meta
                             property="og:description"
-                            content={`Forms, Price, Checklist, FAQS, Timings and Local Government Service Contact Details for ${name} offered in ${org_name} | Localgov.fyi`}/>
+                            content={`Forms, Price, Checklist, FAQS, Timings and Local Government Service Contact Details for ${name} offered in ${org_name} | Evergov`}/>
                      
                     </Helmet>
                     {(windowGlobal && window.history.length > 2) && !isMobileOnly

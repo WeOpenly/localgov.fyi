@@ -191,7 +191,7 @@ class IndexHero extends Component {
 
                     <Grid item xs={12} className={classes.index_hero_header}>
                      <Typography variant="display1" className={this.state.isMobileOnly ? classes.index_hero_title_mob : classes.index_hero_title}>
-                            Localgov.fyi
+                            evergov
                     </Typography>
                     <HeaderAccountMenu location={this.props.location}/>
                     </Grid>

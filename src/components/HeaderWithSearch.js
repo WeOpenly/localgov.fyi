@@ -97,7 +97,7 @@ class HeaderWithSearch extends Component {
               color="inherit"
               component="h1"
               className={classes.h_w_s_title}>
-              Localgov.fyi
+              evergov
             </Typography>
           </Grid>
             <Grid className='heaer_search_grid' item xs={2} className={classes.h_w_s_right}>
@@ -122,7 +122,7 @@ class HeaderWithSearch extends Component {
               color="inherit"
               component="h1"
               className={classes.h_w_s_title}>
-              Localgov.fyi
+              evergov
             </Typography>
           </Grid>
           <Grid className='heaer_search_grid' item xs={12} sm={6}>

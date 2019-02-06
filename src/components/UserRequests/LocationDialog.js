@@ -36,7 +36,7 @@ const encode = (data) => {
 
 const styles = theme => ({
     user_requests_dialog_dialog: {
-        
+        maxHeight: '560px',
     },
 user_requests_thanks_icon : {
     marginBottom: theme.spacing.unit *2

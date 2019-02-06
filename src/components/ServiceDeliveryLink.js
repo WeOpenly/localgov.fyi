@@ -356,6 +356,7 @@ class ServiceDeliveryLink extends Component {
     const dialog = (<Dialog
       fullWidth={false}
       maxWidth='sm'
+      style={{ maxHeight: '480px'}}
       scroll="body"
       aria-labelledby="ser-notify-form-dialog-title"
       open={showFeedbackDialog}

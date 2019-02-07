@@ -64,19 +64,16 @@ export default class HTML extends React.Component {
         <head>
           <meta charSet="utf-8"/>
       
-          <meta
-            name="google-site-verification"
-            content="uH1LpzdwISxquJSjjpqad8DL6vkOs_OVsdLLu8wNXSM"/>
+          <meta name="google-site-verification" content="p3v6COYIhh8GXmPp7G12ZTegImSx88kJ8mmc-AAOPoc" />
           <meta name="msvalidate.01" content="D1BADF38847C730E9DC76BE0CCC4B42B"/>
-          <meta name="yandex-verification" content="25711aadc401a373"/>
 
           <JsonLd data={searchLinksSchema}/>
           
           <meta
             name="description"
-            content={`Search and get notfied when you're due for all local government services like payments of utility bill, property tax, parking citation, and renewing business licence in a single place`}/>
+            content={`Search and get notfied when you're due for local government services like payments of utility bill, property tax, parking citation, & renewing business licence`}/>
 
-          <meta property="og:site_name" content={`Localgov for your information`}/>
+          <meta property="og:site_name" content={`Evergov: all your gov services in a single place`}/>
 
           <meta
             property="twitter:card"

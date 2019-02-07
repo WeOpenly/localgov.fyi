@@ -559,7 +559,7 @@ class Index extends React.Component {
       <Layout location={this.props.location}>
         <Fragment>
           <Helmet
-          defaultTitle = {`evergov: Find All Government Services in a Single Place`}
+          defaultTitle = {`Evergov: Find All Government Services in a Single Place`}
             titleTemplate={`%s | evergov`}>
             <JsonLd data={searchLinksSchema} />
             <meta name="og:type" content="website"/>

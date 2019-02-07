@@ -65,7 +65,7 @@ export default class HTML extends React.Component {
           <meta charSet="utf-8"/>
       
           <meta name="google-site-verification" content="p3v6COYIhh8GXmPp7G12ZTegImSx88kJ8mmc-AAOPoc" />
-          <meta name="msvalidate.01" content="D1BADF38847C730E9DC76BE0CCC4B42B"/>
+          <meta name="msvalidate.01" content="D1BADF38847C730E9DC76BE0CCC4B42B" />
 
           <JsonLd data={searchLinksSchema}/>
           

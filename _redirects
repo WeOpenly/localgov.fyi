@@ -1,10 +1,2 @@
-
-/api/yusuf/* http://yusuf-alb.eu-central-1.elasticbeanstalk.com/:splat 200!
-
-/api/dsp/* https://dsp.weopenly.com/:splat 200!
-
-https://localgov.fyi/track/* http://track.localgov.fyi/localgov.fyi/:splat 200
-
-https://localgov.netlify.com/* https://localgov.fyi/:splat 301!
-
-http://localgov.netlify.com/* http://localgov.fyi/:splat 301!
+/   https://evergov.com/   301!
+/*  https://evergov.com/:splat  301! 

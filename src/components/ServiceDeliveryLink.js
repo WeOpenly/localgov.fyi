@@ -368,7 +368,7 @@ class ServiceDeliveryLink extends Component {
              <Cancel style={{cursor: 'pointer'}} onClick={this.handleClose} color='disabled'/>
           </div>
           <Typography  id="ser-notify-form-dialog-title" variant="headline" component="h2" className={classes.ser_del_link_title}>
-            How was your experience with Localgov?
+            How was your experience with evergov?
               </Typography>
           <Button
             onClick={this.handleGood}

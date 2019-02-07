@@ -98,7 +98,7 @@ class Claim extends Component {
         </AppBar>
         <div className={classes.wrapper}>
           <Typography variant="display1" className={classes.heading}>
-            Claim your LocalGov Page
+            Claim your evergov Page
           </Typography>
           <Card className={classes.card}>
             <CardContent>

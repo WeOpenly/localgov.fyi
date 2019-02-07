@@ -9,7 +9,7 @@ require('dotenv').config({
 
 module.exports = {
   siteMetadata: {
-    title: `Search for local government organizations, and services`,
+    title: `Evergov: Search for local government organizations, and services`,
     siteUrl: `https://evergov.com`
   },
   plugins: [
@@ -118,8 +118,8 @@ module.exports = {
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
-        name: `Local Gov`,
-        short_name: `localgov`,
+        name: ` evergov`,
+        short_name: `Evergov`,
         start_url: `/`,
         background_color: `#f7f7f7`,
         theme_color : `#0000ca`,

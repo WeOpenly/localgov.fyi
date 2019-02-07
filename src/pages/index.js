@@ -498,7 +498,7 @@ class Index extends React.Component {
                   variant="display1"
                   component="h1"
                   className={classes.index_popularServicesHeader}>
-                  Localgov {org ? org.name : ''}
+                  evergov {org ? org.name : ''}
                 </Typography>)}
               </Grid>
               <Grid item xs={1} md={3}/>

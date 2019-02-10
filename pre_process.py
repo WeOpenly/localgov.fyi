@@ -117,6 +117,12 @@ for rem in removable_files:
     except:
         pass
 
+def get_orgs():
+    pass
+
+def get_images():
+    pass
+
 def get_service_glossary_items():
     res = urllib2.urlopen('https://dsp.weopenly.com/arthur/service_glossary_overview?token=811')
     sg_items = json.load(res)

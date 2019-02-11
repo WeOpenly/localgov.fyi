@@ -105,7 +105,7 @@ class CallApiStepDetails extends React.Component {
 
     render() {
         const {classes, delivery} = this.props;
-        const {stepDetailsLoading, stepDetails, stepDetailsLoadingFailed} = delivery;
+        const { stepDetailsLoading, stepDetails, stepDetailsLoadingFailed, stepDetailsfailedReason} = delivery;
 
         const {step_details} = stepDetails;
 
@@ -113,8 +113,16 @@ class CallApiStepDetails extends React.Component {
             return (<Spinner name="ball-beat" color="blue"/>);
         }
 
-        if (stepDetailsLoadingFailed) {
-            return 'Something went wrong!'
+        if (stepDetailsLoadingFailed && !stepDetailsfailedReason) {
+            return (<Grid container spacing={16} align="center" >
+                    Sorry, Something went wrong!
+                </Grid>)
+        }
+
+        if (stepDetailsLoadingFailed && stepDetailsfailedReason) {
+            return (<Grid container spacing={16} align="center" >
+                {stepDetailsfailedReason}
+                </Grid>)
         }
 
         if (!stepDetails || !step_details) {
@@ -122,7 +130,7 @@ class CallApiStepDetails extends React.Component {
         }
 
         const {amount_to_pay} = step_details;
-
+        
         return (
             <Grid container spacing={16} align="center" >
                 <Grid item xs='auto' sm={2} />

@@ -101,6 +101,7 @@ service_header_contactButton : {
     marginTop : theme.spacing.unit * 2,
   },
 service_header_notifyButton : {
+  padding: theme.spacing.unit,
   marginLeft: theme.spacing.unit,
 },
 service_header_serDelLink:{
@@ -327,7 +328,7 @@ class ServiceHeader extends Component {
       <Share className={classes.service_header_menuButtonIcon}  fontSize="small"/> Share
       </Button>)
 
-    const serviceFlowButton = service_delivery_enabled ? (<Button size="small" variant="outlined" color="primary" onClick={this.toggleServiceFlow} className={classes.service_header_notifyButton}>Get</Button>) : null;
+    const serviceFlowButton = service_delivery_enabled ? (<Button size="small" variant="outlined" color="primary" onClick={this.toggleServiceFlow} className={classes.service_header_notifyButton}>Pay with evergov</Button>) : null;
     
 
     return (

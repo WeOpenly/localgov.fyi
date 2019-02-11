@@ -161,8 +161,8 @@ function recvStepDetails(stepDetails) {
     return {type: types.SUCCESS_RECV_STEP_DETAILS, stepDetails}
 }
 
-function failedRecvStepDetails() {
-    return {type: types.FAILED_RECV_STEP_DETAILS}
+function failedRecvStepDetails(reason) {
+    return {type: types.FAILED_RECV_STEP_DETAILS, reason}
 }
 
 export function fetchStepDetails(flowId, action) {
@@ -171,7 +171,12 @@ export function fetchStepDetails(flowId, action) {
 
         try {
             const step_details = await DspApi(`/serve/service_request_flow/api/detail/${flowId}/${action}/`, "GET", null, null);
-      
+
+            if(step_details.success===false){
+                dispatch(failedRecvStepDetails(step_details.failed_reason));
+                return
+            }
+
             if(step_details){
                 dispatch(recvStepDetails(step_details));
             }

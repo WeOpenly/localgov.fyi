@@ -14,6 +14,7 @@ const initialState = {
     stepDetailsLoading: false,
     stepDetails: {},
     stepDetailsLoadingFailed: false,
+    stepDetailsfailedReason: '',
     requestStepDetailsSubmit: false,
     successStepDetailsSubmit: false,
     failedStepDetailsSubmit: false,
@@ -95,6 +96,7 @@ export function delivery(state = initialState, action) {
                 ...state,
                 stepDetailsLoading: false,
                 stepDetailsLoadingFailed: true,
+                stepDetailsfailedReason: action.reason,
             }
         case types.REQUEST_STEP_DETAILS_SUBMIT:
             return {

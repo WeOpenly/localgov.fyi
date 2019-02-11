@@ -30,13 +30,16 @@ const styles = theme => ({
     account_dialog_dialog: {
         height: '460px'
     },
+    delivery_form_button_container:{
+        marginTop: theme.spacing.unit * 2
+    },
     account_form_loginEmbed: {},
     account_form_registerinstead: {
         marginTop: theme.spacing.unit *4,
         display: 'flex'
     },
     form:{
-        margin: theme.spacing.unit *4,
+        margin: theme.spacing.unit *2,
     },
     formButtonContainer:{
         margin: theme.spacing.unit *4,
@@ -46,45 +49,67 @@ const styles = theme => ({
 });
 
 
-const  CustomFieldTemplate = (props) => {
-    const {
-        id,
-        classNames,
-        label,
-        help,
-        required,
-        description,
-        errors,
-        children
-    } = props;
-
-    let textLabel = label;
-    if (required){
-        textLabel = textLabel + '*';
-    }
-    console.log(props);
+function ObjectFieldTemplate(props) {
     return (
-        <TextField
-        className={classNames}
-        InputLabelProps={{
-            htmlFor: `${id}`
-        }}
-        InputProps={{
-            'aria-label': 'description'
-        }}
-        required={required}
-        error={errors ? true: false}
-        helperText={errors ? errors: help}
-        label={textLabel}
-        variant="outlined"
-        id={id}
-      >
-       {description}
-      {children}
-      {errors}
-      </TextField>
+        <div>
+            {props.properties.map(element => <div className="property-wrapper">{element.content}</div>)}
+        </div>
     );
 }
+
+function CustomFieldTemplate(props) {
+    const { id, classNames, label, help, required, description, errors, children } = props;
+
+    return (
+        <div className={classNames}>
+            {description}
+            {children}
+            <Typography variant="caption" color="error">
+                {errors}
+            </Typography>
+
+            {help}
+        </div>
+    );
+}
+
+function ErrorListTemplate(props) {
+    const { errors } = props;
+    return (
+        <ul style={{ display: 'none' }}>
+            {errors.map(error => (
+                <li key={error.stack}>
+                    {error.stack}
+                </li>
+            ))}
+        </ul>
+    );
+}
+
+class matTextWidget extends React.Component {
+    render() {
+        const { label, value, required, title, name } = this.props;
+        return (<TextField
+            id={`outlined-${title}`}
+            label={label}
+            value={value}
+            required={required}
+            placeholder={title}
+            onChange={(event) => this.props.onChange(event.target.value)}
+            margin="dense"
+            fullWidth
+            variant="outlined"
+        />)
+    }
+}
+
+
+const widgets = {
+    TextWidget: matTextWidget,
+    EmailWidget: matTextWidget,
+};
+
+
 
 class FormStepDetails extends React.Component {
     constructor(props) {
@@ -121,7 +146,6 @@ class FormStepDetails extends React.Component {
         }
 
         let trimmedFS = null;
-        let trimmedUs = null;
         let trimmedFD = null;
         
         if (step_details && step_details.field_schema) {
@@ -133,25 +157,26 @@ class FormStepDetails extends React.Component {
             trimmedFD = step_details.form_data.trim(); 
             trimmedFD = JSON.parse(trimmedFD);         
         }
-
+    
         return (
-             <Form
-                schema={trimmedFS}
+            <Form schema={trimmedFS}
                 formData={trimmedFD}
                 className={classes.form}
-                onChange={() => console.log("changed")}
                 onSubmit={this.submitForm}
-                onError={() => console.log("errors")}>
-                <div className={classes.formButtonContainer}>
-                     <Button
-                    type="submit"
-                    variant="outlined"
-                    color="primary"
-                    className={classes.button}>
-                    Next
+                widgets={widgets}
+                ObjectFieldTemplate={ObjectFieldTemplate}
+                FieldTemplate={CustomFieldTemplate}
+                ErrorList={ErrorListTemplate}
+                onError={() => { }} >
+                <div className={classes.delivery_form_button_container}>
+                    <Button
+                        type="submit"
+                        variant="outlined"
+                        color="primary"
+                        className={classes.button}>
+                        Next
                 </Button>
                 </div>
-                
             </Form>
         );
     }

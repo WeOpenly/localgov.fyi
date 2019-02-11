@@ -129,11 +129,6 @@ class FormStepDetails extends React.Component {
             trimmedFS = JSON.parse(trimmedFS);         
         }
 
-        if (step_details && step_details.ui_schema) {
-            trimmedUs = step_details.ui_schema.trim(); 
-            trimmedUs = JSON.parse(trimmedUs);         
-        }
-
         if (step_details && step_details.form_data) {
             trimmedFD = step_details.form_data.trim(); 
             trimmedFD = JSON.parse(trimmedFD);         
@@ -142,7 +137,6 @@ class FormStepDetails extends React.Component {
         return (
              <Form
                 schema={trimmedFS}
-                uiSchema={trimmedUs}
                 formData={trimmedFD}
                 className={classes.form}
                 onChange={() => console.log("changed")}

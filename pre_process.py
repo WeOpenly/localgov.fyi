@@ -258,7 +258,12 @@ http://evergov.netlify.com/* https://evergov.com/:splat 301!
 
 
 write_standard_redirects()
+print("redirects done")
 get_orgs()
+print("orgs done")
 get_services()
+print("services done")
 get_service_glossary_items()
+print("service glossary pages done")
 get_all_locations()
+print("all locations done")

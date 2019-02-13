@@ -233,8 +233,8 @@ class NewSuggestBox extends Component {
         return;
       }
 
-      const { id } = selectedOrganization;
-      const orgIdUri = `/organization/${id}/`;
+      const { id, url_slug } = selectedOrganization;
+      const orgIdUri = `/organization/${url_slug}/`;
       const encodedOrgIdUri = encodeURI(orgIdUri);
       dispatch(trackInput('index_search_box', input));
       navigate(encodedOrgIdUri);

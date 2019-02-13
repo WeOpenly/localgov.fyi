@@ -39,10 +39,11 @@ const styles = theme => ({
         },
     },
   orgTitle: {
-    marginBottom: theme.spacing.unit,
+    marginTop: theme.spacing.unit *3,
+    marginBottom: theme.spacing.unit *3,
   },
   orgSubheading: {
-    marginTop: -theme.spacing.unit,
+    marginBottom: theme.spacing.unit,
   },
   org_detail_serviceListComponent : {
     marginBottom: theme.spacing.unit * 2,
@@ -90,7 +91,12 @@ const {id, name} = this.props.pageContext.data;
   }
 
   render() {
-    const { id, services, contact_details, name } = this.props.pageContext.data;
+    const { id, hierarchial_service_details, contact_details, org_name, url_slug, area} = this.props.pageContext.data;
+    const name = org_name;
+    const services = hierarchial_service_details;
+    const { hierarchy } = area;
+    console.log(hierarchy);
+
     const { logoSizes } = this.props.pageContext;
     
     let orgLogoSvg = null
@@ -100,18 +106,17 @@ const {id, name} = this.props.pageContext.data;
 
     const { classes } = this.props;
     let contactDetailComponent = null;
-    let parent ='';
-    if (services.length && services[services.length - 1].org){
-        parent = services.length && services[services.length - 1].org;
-      parent = parent.name === name ? {} : parent;
-    }
+    let state ='';
 
+    if (hierarchy.length > 1 && hierarchy[hierarchy.length - 1].area_name) {
+        state = `State of ${hierarchy[hierarchy.length - 1].area_name}`
+    }
 
 
       contactDetailComponent = (
         <OrgHeader
           name={name}
-          parent={parent}
+          parent={state}
           info={contact_details}
           logoSizes={orgLogoSvg}
         />
@@ -145,7 +150,7 @@ const {id, name} = this.props.pageContext.data;
         let serCards = null;
         let orgTitle = null;
 
-
+        console.log(detailsAtLevel, "detailsatlevel")
         if ('services' in detailsAtLevel){
           let servicesAtLevel = detailsAtLevel.services || [];
           servicesAtLevel = servicesAtLevel.filter(service => {
@@ -164,7 +169,7 @@ const {id, name} = this.props.pageContext.data;
                   resultType='service'
                   id={ser.id}
                   listIndex={idx}
-                  toLink={`/service/${ser.id}/`}
+                  toLink={`/service/${ser.url_slug}/`}
                   title={ser.service_name}
                   description={ser.service_description}
                   deliveryLink={deliveryLink}
@@ -175,27 +180,27 @@ const {id, name} = this.props.pageContext.data;
         }
 
         if('org' in detailsAtLevel){
-          if (detailsAtLevel.org && 'name' in detailsAtLevel.org && 'id' in detailsAtLevel.org) {
+          if (detailsAtLevel.org && 'name' in detailsAtLevel.org) {
 
             const { name: orgName } = detailsAtLevel.org;
             const orgHeading = (
-              <Typography variant="subheading" component="h4">
+              <Typography variant="title" component="h4">
                 Services offered by {orgName}
               </Typography>
             );
 
             let orgSubheading = (
-              <Typography variant="body2" className={classes.orgSubheading}>
-                More services available in this locality
+              <Typography variant="subheading" className={classes.orgSubheading}>
+                More services available here
               </Typography>
             );
             if (orgName.toLowerCase().includes('county')) {
-              orgSubheading = (<Typography variant="body2" className={classes.orgSubheading}>
-                Find services from the County agencies in which {name} is located in.
+              orgSubheading = (<Typography variant="subheading" className={classes.orgSubheading}>
+                Find services from the County agencies of {orgName}
               </Typography>);
             } else if (orgName.toLowerCase().includes('state')) {
               orgSubheading = (<Typography variant="body2" className={classes.orgSubheading}>
-                Find services provided by the State agencies for all its residents.
+                Find services provided by the State agencies for all its residents
               </Typography>);
             }
             orgTitle = (
@@ -230,7 +235,7 @@ const {id, name} = this.props.pageContext.data;
 
     const jsonLd = {
       "@context": "http://schema.org",
-      "@id" : `https://evergov.com/organization/${id}/`,
+      "@id": `https://evergov.com/organization/${url_slug}/`,
       "@type": "Organization",
       name: `${name}`,
       sameAs: sameAs,
@@ -241,7 +246,7 @@ const {id, name} = this.props.pageContext.data;
       <DetailTemplate location={this.props.location}>
       <Grid container spacing={16}>
         <Helmet>
-            <script type="application/ld+json">{`${JSON.stringify(jsonLd)}`}</script>
+          <script type="application/ld+json">{`${JSON.stringify(jsonLd)}`}</script>
           <title>{`${name} info, contact details and services | Evergov`}</title>
           <meta
             name="description"
@@ -250,9 +255,9 @@ const {id, name} = this.props.pageContext.data;
           <meta name="keywords"
               content={`${name} online, info , local government services`}/>
           <meta property="og:title" content={`${name}`} />
-          <meta property="og:url" content={`https://evergov.com/organization/${id}/`} />
+            <meta property="og:url" content={`https://evergov.com/organization/${url_slug}/`} />
           <meta property="og:description" content={`${name} info, contact details and services`} />
-          <link rel="canonical" href={`https://evergov.com/organization/${id}/`} />
+            <link rel="canonical" href={`https://evergov.com/organization/${url_slug}/`} />
         
         </Helmet>
         <Grid container spacing={16} item xs={12} md={12}>

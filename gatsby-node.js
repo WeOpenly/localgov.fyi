@@ -21,76 +21,107 @@ exports.createPages = ({graphql, actions}) => {
 
     resolve(graphql(`
 {
-allOrgsJson {
-  edges {
-    node {
-      id
-      details {
-        id,
-        name,
-        contact_details {
-          contact_value,
-          contact_type
-        },
-        services {
-          services {
-            id
-            contact_details {contact_value, contact_type}
-            service_name
-            delivery_enabled
-            service_timing {break, open, day}
-            service_description
-            service_steps {
-              step_number
-              description
-            }
-            service_faq {question answer}
-            service_del_links {url link_name}
-            service_forms {url name}
-            service_reminder_bp_json {id greeting_msg thanks_msg, field_schema, ui_schema}
+  allServiceGlossaryJson {
+    edges {
+      node {
+        id service_name service_name_slug service_glossary_description
+        orgs {
+          organization {org_name id}
+          area {
+            hierarchy {area_classification area_id area_name area_classsification_level_number}
           }
-          org {
-            id
-            name
-            contact_details {contact_value, contact_type}
+          id
+          url_slug
+        }
+      }
+    }
+  }
+  allOrgsJson {
+    edges {
+      node {
+        id org_name 
+        area {
+          hierarchy {area_name area_classification}
+        }
+        url_slug
+        logo_url 
+        contact_details {
+          contact_type
+          contact_value
+        }
+        hierarchial_service_details {
+          org {name}
+          services {
+            service_name service_del_links {
+              link_name
+              url
+            }
+            service_description url_slug
           }
         }
+      }
+    }
+  }
+allSersJson {
+  edges {
+    node {
+      service {
+        id url_slug logo_url delivery_enabled service_name 
+        service_faq {
+          answer question
+        }
+        service_forms {
+          url price name
+        }
+        service_price service_steps {
+          step_number description
+        }
+        contact_details {
+          contact_type
+          contact_value
+        }
+        service_timing {
+          break open day
+        }
+        service_location {
+          id
+        }
+        service_del_links {
+          url link_name
+        }
+        service_description 
+        service_reminder_bp_json {
+          id
+        }
+      }
+      additional_sers {
+        url_slug
+        service_name service_price 
+        service_faq {
+          answer question
+        }
+        service_forms {url price name}
+        service_steps {step_number description}
+        service_timing {break open day}
+        service_location {id}
+        service_del_links {url link_name}
+        service_description 
+        service_reminder_bp_json {
+          id
+        }
+      }
+      org_details {
+        org_name 
+        contact_details {
+          contact_type contact_value
+        }
+        id 
+        url_slug
       }
     }
   }
 }
-allSerGlossaryItems: allFile(filter : {
-    sourceInstanceName: {
-      eq: "service_glossary"
-    }
-  } ) {
-    edges {
-      node {
-        childServiceGlossaryJson {
-          orgs {
-            organization {
-              org_name
-              id
-            }
-            area{
-              hierarchy {
-                area_classification
-                area_id
-                area_name
-                area_classsification_level_number
-              }
-            }
-            id
-          }
-          service_name
-          service_name_slug
-          service_glossary_description
-        }
-        name
-      }
-    }
-  }
-allLogos: allFile (filter : {
+allLogos : allFile(filter : {
   sourceInstanceName: {
     eq: "logos"
   }
@@ -99,24 +130,13 @@ allLogos: allFile (filter : {
     node {
       name
       childImageSharp {
-        sizes {
-          base64
-          tracedSVG
-          aspectRatio
-          src
-          srcSet
-          srcWebp
-          srcSetWebp
-          sizes
-          originalImg
-          originalName
-        }
+        fluid {base64 tracedSVG aspectRatio src srcSet srcWebp srcSetWebp sizes originalImg originalName}
       }
     }
   }
 }
 }
-        `).then(result => {
+    `).then(result => {
       if (result.errors) {
         reject(new Error(result.errors))
       }
@@ -126,118 +146,76 @@ allLogos: allFile (filter : {
         reject(new Error());
       }
       
-      // Create image post pages.
-      const orgTemplate = path.resolve(`src/templates/organization-detail.js`)
-      // We want to create a detailed page for each Instagram post. Since the scrapped
-      // Instagram data already includes an ID field, we just use that for each page's
-      // path.
+     
       const orgLogoMap = {}
       const serviceLogoMap = {}
 
+    
+
+      // logos 
 
       if (result.data && result.data.allLogos){
           _.each(result.data.allLogos.edges, edge => {
-        if(edge.node.name.endsWith("_org_logo")){
-          orgLogoMap[edge.node.name] = edge.node.childImageSharp
-        }
-        if (edge.node.name.endsWith("_ser_logo")) {
-          serviceLogoMap[edge.node.name] = edge.node.childImageSharp
-        }
-      });
-
+            if(edge.node.name.endsWith("_org_logo")){
+              orgLogoMap[edge.node.name] = edge.node.childImageSharp
+            }
+            if (edge.node.name.endsWith("_ser_logo")) {
+              serviceLogoMap[edge.node.name] = edge.node.childImageSharp
+            }
+          });
       }
-    
+   
+      
+  // service glossary page
+
+
       const serGlossaryTemplate = path.resolve(`src/templates/service-glossary.js`)
-      _.each(result.data.allSerGlossaryItems.edges, edge => {
-        // Gatsby uses Redux to manage its internal state. Plugins and sites can use
-        // functions like "createPage" to interact with Gatsby.
+      _.each(result.data.allServiceGlossaryJson.edges, edge => {
         createPage({
-          // Each page is required to have a `path` as well as a template component. The
-          // `context` is optional but is often necessary so the template can query data
-          // specific to each page.
-          path: `services/${edge.node.name}/`,
+          path: `services/${edge.node.service_name_slug}/`,
           component: slash(serGlossaryTemplate),
           context: {
-            data: edge.node.childServiceGlossaryJson
+            data: edge.node
           }
         })
     })
 
 
-      _.each(result.data.allOrgsJson.edges, edge => {
+    // org pages
 
-        // Gatsby uses Redux to manage its internal state. Plugins and sites can use
-        // functions like "createPage" to interact with Gatsby.
+
+      const orgTemplate = path.resolve(`src/templates/organization-detail.js`)
+      _.each(result.data.allOrgsJson.edges, edge => {
         createPage({
-          // Each page is required to have a `path` as well as a template component. The
-          // `context` is optional but is often necessary so the template can query data
-          // specific to each page.
-          path: `organization/${edge.node.details.id}/`,
+          path : `organization/${edge.node.url_slug}/`,
           component: slash(orgTemplate),
           context: {
-            data: edge.node.details,
-            logoSizes : orgLogoMap[`${edge.node.details.id}_org_logo`]
+            data: edge.node,
+            logoSizes : orgLogoMap[`${edge.node.id}_org_logo`]
           }
         })
       })
 
-      // const memTemplate = path.resolve(`src/templates/member-detail.js`)
-      // // We want to create a detailed page for each Instagram post. Since the scrapped
-      // // Instagram data already includes an ID field, we just use that for each page's
-      // // path.
-      // _.each(result.data.allOrgsJson.edges, edge => {
-
-      //   _.each(edge.node.details.members, member => {
-
-      //     // Gatsby uses Redux to manage its internal state. Plugins and sites can use
-      //     // functions like "createPage" to interact with Gatsby.
-      //     const related_members = edge
-      //       .node
-      //       .details
-      //       .members
-      //       .filter((mem) => mem.id !== member.id)
-
-      //     createPage({
-      //       // Each page is required to have a `path` as well as a template component. The
-      //       // `context` is optional but is often necessary so the template can query data
-      //       // specific to each page.
-      //       path: `member/${member.id}`,
-      //       component: slash(memTemplate),
-      //        layout: "detailTemplate",
-      //       context: {
-      //         data: {
-      //           contact_details: member.contact_details,
-      //           id: member.id,
-      //           person_name: member.person_name,
-      //           person_image: member.person_image,
-      //           org_id: edge.node.details.id,
-      //           org_name: edge.node.details.name,
-      //           related_members: related_members
-      //         }
-      //       }
-      //     })
-      //   })
-      // })
 
 
+    // service page
+
+    
       const serTemplate = path.resolve(`src/templates/service-detail-2.js`)
-      // We want to create a detailed page for each Instagram post. Since the scrapped
-      // Instagram data already includes an ID field, we just use that for each page's
-      // path.
-      _.each(result.data.allOrgsJson.edges, edge => {
-
-        _.each(edge.node.details.services, ser => {
-          // Gatsby uses Redux to manage its internal state. Plugins and sites can use
-          // functions like "createPage" to interact with Gatsby.
-          _.each(ser.services, service => {
-            const {service_reminder_bp_json} = service;
-            const ser_rem_has_data = service_reminder_bp_json  && 'field_schema' in service_reminder_bp_json && service_reminder_bp_json['field_schema'] !== null
+  
+      _.each(result.data.allSersJson.edges, edge => {
+          const {node} = edge;
+          const {service_reminder_bp_json} = node;
+          const ser_rem_has_data = service_reminder_bp_json  && 'field_schema' in service_reminder_bp_json && service_reminder_bp_json['field_schema'] !== null
+          const {service, org_details, additional_sers} = node;
+        
             createPage({
-              path: `service/${service.id}/`,
+              path: `service/${service.url_slug}/`,
               component: slash(serTemplate),
               context: {
                 data: {
                   id: service.id,
+                  url_slug: service.url_slug,
                   contact_details: service.contact_details,
                   service_delivery_enabled : service.delivery_enabled,
                   name: service.service_name,
@@ -251,16 +229,14 @@ allLogos: allFile (filter : {
                   allfaq: service.service_faq || [],
                   service_reminder_bp_json: ser_rem_has_data ? service_reminder_bp_json : null,
                   service_del_links: service.service_del_links || [],
-                  service_flow_steps: service.service_flow_steps || [],
-                  org_id: ser.org.id,
-                  org_name: ser.org.name,
-                  otherServices: ser.services.filter(otherService => otherService.id !== service.id),
+                  org_id: org_details.id,
+                  org_slug: org_details.url_slug,
+                  org_name: org_details.org_name,
+                  otherServices: additional_sers,
                   logoSizes : serviceLogoMap[`${service.id}_ser_logo`]
                 }
               }
             })
-          });
-        });
       });
 
       return

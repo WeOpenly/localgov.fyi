@@ -243,6 +243,7 @@ class ServiceDetailTemplate extends React.Component {
     render() {
         const {
             id,
+            url_slug,
             name,
             service_delivery_enabled,
             allForms,
@@ -254,9 +255,9 @@ class ServiceDetailTemplate extends React.Component {
             alltimings,
             allfaq,
             org_id,
+            org_slug,
             org_name,
             service_del_links,
-            service_flow_steps,
             service_reminder_bp_json,
             otherServices,
             logoSizes
@@ -278,13 +279,13 @@ class ServiceDetailTemplate extends React.Component {
             const { field_schema, ui_schema, thanks_msg, greeting_msg} = service_reminder_bp_json;
             serRemFormCard = <SerRemCard
             key={id}
-    field_schema={field_schema}
-    greeting_msg={greeting_msg}
-    thanks_msg={thanks_msg}
-    ui_schema={ui_schema}
-    ser_rem_form_id={service_reminder_bp_json.id}
-    service_id={id}
-    org_id={org_id}/>
+            field_schema={field_schema}
+            greeting_msg={greeting_msg}
+            thanks_msg={thanks_msg}
+            ui_schema={ui_schema}
+            ser_rem_form_id={service_reminder_bp_json.id}
+            service_id={id}
+            org_id={org_id}/>
         }
         else {
             serRemFormCard = <SerRemCard
@@ -433,7 +434,7 @@ class ServiceDetailTemplate extends React.Component {
                 resultType='service'
                 id={service.id}
                 listIndex={`${service.id}-${idx}`}
-                toLink={`/service/${service.id}/`}
+                toLink={`/service/${service.url_slug}/`}
                 title={service.service_name}
                 description={service.service_description}
                 deliveryLink={service.service_del_links && service.service_del_links[0]
@@ -443,11 +444,11 @@ class ServiceDetailTemplate extends React.Component {
         const jsonLd = {
             "@context": "http://schema.org",
             "@type": "GovernmentService",
-            "@id": `https://evergov.com/service/${id}/`,
+            "@id": `https://evergov.com/service/${url_slug}/`,
             "name": `${name}`,
             "operator": {
                 "@context": "http://schema.org",
-                "@id": `https://evergov.com/organization/${org_id}/`,
+                "@id": `https://evergov.com/organization/${org_slug}/`,
                 "@type": "GovernmentOrganization",
                 "name": `${org_name}`
             }
@@ -505,6 +506,7 @@ class ServiceDetailTemplate extends React.Component {
                             id={id}
                             offeredIn={org_name}
                             orgID={org_id}
+                            orgSlug={org_slug}
                             info={contact_details}
                             serDelLinks={service_del_links}
                             logoSizes={serLogoSvg}/>
@@ -526,7 +528,7 @@ class ServiceDetailTemplate extends React.Component {
                             {otherSersComp}
                         </div>)}
                         <div className={classes.other_ser_linkWrapper}>
-                            <Link to={`/organization/${org_id}/`} className={classes.other_ser_link}>
+                            <Link to={`/organization/${org_slug}/`} className={classes.other_ser_link}>
                                 <Typography variant="caption" className={classes.other_ser_linkText}>See all services from {org_name}</Typography>
                             </Link>
                         </div>

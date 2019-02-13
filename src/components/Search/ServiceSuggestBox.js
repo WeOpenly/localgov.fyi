@@ -186,8 +186,8 @@ class ServiceSuggestBox extends Component {
 
     if (selectedOrganization) {
       if (!serviceInput || serviceInput.length < 3) {
-        const { id } = selectedOrganization;
-        const uri = `/organization/${id}/`;
+        const { id, url_slug } = selectedOrganization;
+        const uri = `/organization/${url_slug}/`;
         const encodedUri = encodeURI(uri);
         navigate(encodedUri);
       }

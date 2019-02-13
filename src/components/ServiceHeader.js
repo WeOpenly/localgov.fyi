@@ -204,8 +204,8 @@ class ServiceHeader extends Component {
   }
 
   handleOrgClick() {
-    const { orgID } = this.props;
-    navigate(`/organization/${orgID}/`);
+    const { orgSlug } = this.props;
+    navigate(`/organization/${orgSlug}/`);
   }
 
   trackClickSocialIcon(type, url) {
@@ -213,7 +213,7 @@ class ServiceHeader extends Component {
   }
 
   render() {
-    const { classes, name, offeredIn, info, serDelLinks, id, logoSizes, service_delivery_enabled } = this.props;
+    const { classes, name, offeredIn, info, serDelLinks, id, logoSizes, service_delivery_enabled, orgSlug } = this.props;
 
     const { anchorEl, copied } = this.state;
     const windowGlobal = typeof window !== 'undefined' && window;

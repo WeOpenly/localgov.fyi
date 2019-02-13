@@ -316,13 +316,13 @@ class HeaderSuggestBox extends Component {
     selectSuggestion(event, {suggestion, suggestionValue, suggestionIndex, sectionIndex, method}) {
         const {dispatch} = this.props;
         const {input} = this.props.search;
-        const {type, id, head} = suggestion;
+        const {type, id, url_slug, head} = suggestion;
         event.preventDefault();
 
         dispatch(trackInput('header_search_box', input));
         dispatch(trackClick('select_suggestion', type, id, head, suggestionIndex));
 
-        navigate(`/${type}/${id}`);
+        navigate(`/${type}/${url_slug}/`);
     }
 
     onSubmit(evt) {

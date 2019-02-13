@@ -472,6 +472,7 @@ class ServiceGlossary extends Component {
         })
 
         const locs = allOrgs.map((org, idx) => {
+            console.log(org);
             const organization = org.organization;
             let strippedName = organization
                 .org_name
@@ -480,7 +481,7 @@ class ServiceGlossary extends Component {
             const state = org.area.hierarchy[org.area.hierarchy.length - 1].area_name;
 
             return (
-                    <Paper  onClick={() => this.handleOrgClick(organization.id, organization.org_name, idx, `/service/${org.id}/`)} key={`${org.id}-${idx}-locaitemdesk`} className={classes.ser_gloss_gridItemLocation} elevation={1}>
+                    <Paper  onClick={() => this.handleOrgClick(organization.id, organization.org_name, idx, `/service/${org.url_slug}/`)} key={`${org.id}-${idx}-locaitemdesk`} className={classes.ser_gloss_gridItemLocation} elevation={1}>
                             <div style={{width: '100%'}}>
                                 <Typography key={`${org.id}-${idx}-locaitemdesktitle`}  variant="subheading" component="h2" className={classes.ser_gloss_heading}>
                                     {strippedName}
@@ -495,6 +496,7 @@ class ServiceGlossary extends Component {
         })
 
         const mobileLocs = allOrgs.map((org, idx) => {
+            console.log(org);
             const organization = org.organization;
             let strippedName = organization
                 .org_name
@@ -510,7 +512,7 @@ class ServiceGlossary extends Component {
         background: '#fff',
         borderBottom: '1px solid #d4d4d4'}}
                     key={`${org.id}-${idx}-locitem`}
-                    onClick={() => this.handleOrgClick(organization.id, organization.org_name, idx, `/service/${org.id}/`)}>
+                    onClick={() => this.handleOrgClick(organization.id, organization.org_name, idx, `/service/${org.url_slug}/`)}>
                       <div style={{width: '100%'}}>
                          <Typography key={`${org.id}-${idx}-locaitemmobtitle`}   variant="subheading" className={classes.ser_gloss_heading}>
                                 {strippedName}

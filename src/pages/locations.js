@@ -87,7 +87,7 @@ class Locations extends Component {
     let stateGroupMap = {};
     
     this.props.data.orgs.details.map((loc, idx) => {
-      const {org_name, id, area} = loc['_source']
+      const { org_name, id, area, url_slug} = loc['_source']
       const {hierarchy} = area;
 
       for (const hie of hierarchy){
@@ -100,12 +100,12 @@ class Locations extends Component {
           if (stateGroupMap[area_name]){
 
             const vals = stateGroupMap[area_name];
-            vals.push({org_name: org_name, id: id})
+            vals.push({ org_name: org_name, id: id, url_slug: url_slug})
             stateGroupMap[area_name] = vals;
           }
           else{
    
-            stateGroupMap[area_name] = [{org_name: org_name, id: id}]
+            stateGroupMap[area_name] = [{ org_name: org_name, id: id, url_slug: url_slug}]
           }    
         }
         
@@ -121,7 +121,7 @@ class Locations extends Component {
     for (const sortedState of sortedStateGroup) {
         const {state, orgs} = sortedState;
         const orgComps = orgs.map((org, idx) => {
-          const {org_name, id} = org;
+          const { org_name, id, url_slug} = org;
           
           let strippedName = org_name.replace("Independent City of ", "")
           strippedName = strippedName.replace("City & County of ", "")
@@ -141,7 +141,7 @@ class Locations extends Component {
                 textDecoration: 'underline',
                 cursor: 'pointer'
               }}
-                onClick={() => this.handleOrgClick(id, org_name, idx, `/organization/${id}/`)}
+                onClick={() => this.handleOrgClick(id, org_name, idx, `/organization/${url_slug}/`)}
                 className={classes.link}>
                 <Typography variant="body1">
                   {strippedName}
@@ -203,9 +203,11 @@ query orgsQuery {
   orgs : allLocationsJson {
     details {
       _source {
-        org_name id area {
+        org_name id 
+        area {
           hierarchy {area_name area_classification area_classsification_level_number}
         }
+        url_slug
       }
     }
   }

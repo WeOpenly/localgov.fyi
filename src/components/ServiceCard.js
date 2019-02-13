@@ -47,6 +47,9 @@ service_card_cardTop : {
     justifyContent: 'space-between',
     marginRight: -theme.spacing.unit,
   },
+    service_card_cardTitle:{
+        cursor: 'pointer',
+    },
 service_card_caption : {
     overflowY: 'hidden',
     cursor: 'pointer',
@@ -125,6 +128,7 @@ class SearchResult extends Component {
     handleClick() {
         const { trackClick, resultType, id, toLink, title,  listIndex} = this.props;
         trackClick('card_item', resultType, id, title, listIndex);
+        console.log(toLink);
         navigate(toLink);
     }
 

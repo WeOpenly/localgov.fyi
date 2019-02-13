@@ -400,7 +400,7 @@ class OrgHeader extends Component {
             <div className={classes.org_header_title}>
             
               <Typography variant="display1">{name}</Typography>
-              {parent ? (<Typography variant="subheading"> <span  className={classes.service_header_in}> {parent.name} </span></Typography>) : null}
+              {parent ? (<Typography variant="subheading"> <span  className={classes.service_header_in}> {parent} </span></Typography>) : null}
                 <div className={classes.org_header_cardActions}>
             {contactDetailButtons}
           </div>

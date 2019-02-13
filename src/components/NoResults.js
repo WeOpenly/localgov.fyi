@@ -172,51 +172,31 @@ class NoResults extends Component {
     const otherPlaces = [
       {
         name: 'Atlanta',
-        url : '/organization/910e5bde-1b39-4990-b4af-6e374e3df06d/'
-      },
-      {
+        url: '/organization/usa/georgia-state/fulton-county/atlanta-city/ '
+      }, {
         name: 'San Francisco',
-        url : '/organization/49ab4440-1176-4791-a7cf-1e27a756488d/'
-      },
-      {
+        url: '/organization/usa/california-state/san-francisco-county/'
+      }, {
         name: 'Las Vegas',
-        url : '/organization/ff101ead-22ab-4f46-97d1-07abdcc8e9fa/'
-      },
-      {
+        url: '/organization/usa/nevada-state/clark-county/las-vegas-city/'
+      }, {
         name: 'San Jose',
-        url : '/organization/d3c866ec-13f3-41da-b6dc-a74a83d36ea7/'
-      },
-      {
-        name: 'San Mateo',
-        url : '/organization/64398076-1dd4-4c06-bba0-f46bf893b2ae/'
-      },
-      {
-        name: 'Los Angles',
-        url : '/organization/206843c1-890c-435c-85d6-5e2350200c1e/'
-      },
-      {
+        url: '/organization/usa/california-state/santa-clara-county/san-jose-city/'
+      }, {
+        name: 'Los Angeles',
+        url: '/organization/usa/california-state/los-angeles-county/los-angeles-city/'
+      }, {
         name: 'Houston',
-        url : '/organization/f212a1f8-d95e-4448-a6c7-659a4aa88934/'
-      },
-      {
+        url: '/organization/usa/texas-state/harris-county/houston-city/'
+      }, {
         name: 'New York',
-        url : '/organization/2c3e6f85-25ee-420d-a31b-25662e2e6a2e/'
-      },
-      {
+        url: '/organization/usa/new-york-state/bronx-county/new-york-city/'
+      }, {
         name: 'Philadelphia',
-        url : '/organization/c91151b6-d989-4163-ab1c-f8680ad6b9f5/'
-      },
-      {
-        name: 'Phoenix',
-        url : '/organization/b26c8d4f-74b9-4a80-9723-d696089aea99/'
-      },
-      {
-        name: 'San Diego',
-        url : '/organization/1fcd5489-5736-432a-88c7-fb720b134044/'
-      },
-      {
+        url: '/organization/usa/pennsylvania-state/philadelphia-county/'
+      }, {
         name: 'Seattle',
-        url : '/organization/28d8e00d-ee9c-49d0-97d8-18c1bf3cc707/'
+        url: '/organization/usa/washington-state/king-county/seattle-city/'
       }
     ];
     const shuffledArray = xah_randomize_array(otherPlaces);

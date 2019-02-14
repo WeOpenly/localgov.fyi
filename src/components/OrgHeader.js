@@ -194,11 +194,13 @@ class OrgHeader extends Component {
       name,
       parent,
       info,
-      logoSizes,
+      logoFluid,
       claimed,
       displayShare = true
     } = this.props;
     const {anchorEl, copied} = this.state;
+
+  
 
     const windowGlobal = typeof window !== 'undefined' && window;
     const windowLocation = windowGlobal.location
@@ -251,7 +253,7 @@ class OrgHeader extends Component {
     }
     if (info) 
       sortInfo(info);
-    
+    console.log("logoFluid", logoFluid)
     const contactDetailButtons = sortedInfo.map((cd, idx, arr) => {
       const icons = {
         phone: (
@@ -387,14 +389,12 @@ class OrgHeader extends Component {
         <Grid item xs={12} md={11}>
           <div className={classes.org_header_cardTop}>
             <div>
-                {logoSizes && <Avatar className={classes.org_header_avatar}>
+              {logoFluid && <Avatar className={classes.org_header_avatar}>
                   <Img
                     title={`logo${name}`}
                     alt={`logo of ${name}`}
-                    style={{
-                    width: '100px'
-                  }}
-                    sizes={logoSizes}/>
+                    style={{width: '100px'}}
+                    sizes={logoFluid}/>
           </Avatar>}
             </div>
             <div className={classes.org_header_title}>

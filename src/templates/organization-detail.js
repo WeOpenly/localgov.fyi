@@ -99,10 +99,13 @@ const {id, name} = this.props.pageContext.data;
 
     const { logoSizes } = this.props.pageContext;
     
+    console.log(logoSizes);
+
     let orgLogoSvg = null
-    if (logoSizes && logoSizes.sizes){
-      orgLogoSvg = logoSizes.sizes
+    if (logoSizes && logoSizes.fluid){
+      orgLogoSvg = logoSizes.fluid
     }
+
 
     const { classes } = this.props;
     let contactDetailComponent = null;
@@ -118,7 +121,7 @@ const {id, name} = this.props.pageContext.data;
           name={name}
           parent={state}
           info={contact_details}
-          logoSizes={orgLogoSvg}
+          logoFluid={orgLogoSvg}
         />
       );
 

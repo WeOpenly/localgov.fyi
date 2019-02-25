@@ -105,7 +105,13 @@ class Locations extends Component {
           }
           else{
    
-            stateGroupMap[area_name] = [{ org_name: org_name, id: id, url_slug: url_slug}]
+stateGroupMap[area_name] = [
+  {
+    org_name: org_name,
+    id: id,
+    url_slug: url_slug
+  }
+]
           }    
         }
         
@@ -169,7 +175,7 @@ class Locations extends Component {
 
     return (
       <Fragment>
-        <HeaderWithSearch/>
+        <HeaderWithSearch />
         <Grid container className={classes.titleWrapper}>
           <Grid item xs={2}/>
           <Grid item xs={8} align="center">

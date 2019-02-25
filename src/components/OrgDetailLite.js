@@ -54,7 +54,7 @@ class OrgDetailLite extends Component {
         const {classes} = this.props;
         const {org_name, org_id, contact_details, heading} = this.props.detail;
 
-        return <Grid container spacing={8}>
+        return (<Grid container spacing={8}>
             <Grid item xs={12} sm={12} md={12}>
                 <Typography variant="subheading" gutterBottom>
                     {heading}
@@ -69,7 +69,7 @@ class OrgDetailLite extends Component {
                 </Card>
                 <br/> {contact_details && <ContactDetails info={contact_details}/>}
             </Grid>
-        </Grid>;
+        </Grid>);
     }
 }
 

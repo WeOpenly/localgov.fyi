@@ -17,18 +17,22 @@ RUN \
 
 RUN npm install --global gatsby --no-optional gatsby@2.0.25
 RUN npm install netlify-cli -g
+ARG NETLIFY_AUTH_TOKEN
+ARG NETLIFY_SITE_ID
+
+ENV NETLIFY_AUTH_TOKEN=$NETLIFY_AUTH_TOKEN
+ENV NETLIFY_SITE_ID=$NETLIFY_SITE_ID
 
 WORKDIR /usr/src/app
 RUN mkdir -p data
-COPY ./package.json package.json
+COPY package.json package.json
 RUN npm install --save
 COPY . /usr/src/app
-RUN python ./pre_process.py
-RUN ACTIVE_ENV=production --max-old-space-size=12384 ./node_modules/.bin/gatsby build --prefix-paths
-WORKDIR /usr/src/app/public
-RUN mkdir -p ~/.netlify
-COPY ~/.netlify/config 
+RUN DSP_HOST='https://dsp.weopenly.com' python ./pre_process.py
+RUN ACTIVE_ENV=production node --max-old-space-size=12384 ./node_modules/.bin/gatsby build --prefix-paths
 
+WORKDIR /usr/src/app/public
+RUN neltify deploy
 
 
 

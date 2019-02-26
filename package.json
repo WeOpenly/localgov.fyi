@@ -97,7 +97,7 @@
         "gver": "gatsby --version",
         "build": "gatsby build",
         "deploy": "gatsby build --prefix-paths",
-        "prodDeploy": "ACTIVE_ENV=production node --max-old-space-size=8192 gatsby build --prefix-paths"
+        "prodDeploy": "ACTIVE_ENV=production node --max-old-space-size=8192 ./node_modules/.bin/gatsby build --prefix-paths"
     },
     "devDependencies": {
         "babel-plugin-dynamic-import-webpack": "^1.1.0",

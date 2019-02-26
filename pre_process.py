@@ -18,6 +18,7 @@ logo_dir = "{d}/data/logos/".format(d=dir_path)
 service_glossary_dir = "{d}/data/service_glossary/".format(d=dir_path)
 all_dir = "{d}/data/all_locations/".format(d=dir_path)
 
+print(all_dir)
 
 for directory in [org_data_dir, ser_data_dir, rewrite_dir, logo_dir, service_glossary_dir, all_dir]:
     

@@ -12,10 +12,16 @@ steps:
 - name: 'docker.io/library/python:2.7'
   args: ['python', 'localgov.fyi/pre_process.py']
   env: ['DSP_HOST=http://dsp.weopenly.com']
+- name: 'ubuntu'
+  dir: 'localgov.fyi/node_modules'
+  args: ['ls', '-la']
+- name: 'ubuntu'
+  dir: 'localgov.fyi/node_modules/.bin'
+  args: ['ls']
 - name: node:8
-  entrypoint: npm
   dir: 'localgov.fyi'
-  args: ['node', '/usr/local/bin/gatsby', 'build', '--prefix-paths']
+  entrypoint: node
+  args: ['./node_modules/.bin/gatsby', 'build', '--prefix-paths']
   env: ['ACTIVE_ENV=production']
 timeout: 3600s
 options:

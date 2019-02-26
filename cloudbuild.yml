@@ -1,24 +1,16 @@
 steps:
 - name: gcr.io/cloud-builders/git
   args: ['clone', 'https://github.com/WeOpenly/localgov.fyi.git']
-- name: 'ubuntu'
-  args: ['pwd']
-- name: 'gcr.io/cloud-builders/docker'
-  args: ['build', '-t', 'evergov:latest', 
-  '--build-arg', 'NETLIFY_AUTH_TOKEN=55a0ae68489c00e5821215c7eff57e70738e2fd0a2e038f8f4f11cf813becb11', '--build-arg', 'NETLIFY_SITE_ID=f2d5e3f5-f99b-40b6-87d5-6b66b6d570b4', '.']
-timeout: 3600s
-options:
- diskSizeGb: 100
-steps:
-- name: gcr.io/cloud-builders/git
-  args: ['clone', 'https://github.com/WeOpenly/localgov.fyi.git']
-- name: node:8.11.2
+- name: node:8
   entrypoint: npm
   args: ['install']
 - name: 'ubuntu'
   args: ['mkdir', 'data']
 - name: 'ubuntu'
-  args: ['python', 'prepocess']
+  args: ['python', './pre_pocess.py']
 - name: node:8.11.2
   entrypoint: npm
-  args: ['install']
+  args: ['run', 'prodDeploy']
+timeout: 3600s
+options:
+  diskSizeGb: 100

@@ -15,7 +15,8 @@ steps:
 - name: node:8
   entrypoint: npm
   dir: 'localgov.fyi'
-  args: ['run', 'prodDeploy']
+  args: ['node', '/usr/local/bin/gatsby', 'build', '--prefix-paths']
+  env: ['ACTIVE_ENV=production']
 timeout: 3600s
 options:
   diskSizeGb: 100

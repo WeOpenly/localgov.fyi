@@ -97,7 +97,7 @@
         "gver": "gatsby --version",
         "build": "gatsby build",
         "deploy": "gatsby build --prefix-paths",
-        "prodDeploy": "ACTIVE_ENV=production gatsby build --prefix-paths"
+        "prodDeploy": "ACTIVE_ENV=production /usr/local/bin/gatsby build --prefix-paths"
     },
     "devDependencies": {
         "babel-plugin-dynamic-import-webpack": "^1.1.0",

@@ -3,14 +3,18 @@ steps:
   args: ['clone', 'https://github.com/WeOpenly/localgov.fyi.git']
 - name: node:8
   entrypoint: npm
+  args: ['install', '-g', 'gatsby']
+- name: node:8
+  entrypoint: npm
   args: ['install']
 - name: 'ubuntu'
-  args: ['mkdir', 'data']
+  args: ['mkdir', '-p', 'data/orgs']
 - name: 'docker.io/library/python:2.7'
   args: ['python', 'localgov.fyi/pre_process.py']
   env: ['DSP_HOST=http://dsp.weopenly.com']
 - name: node:8
   entrypoint: npm
+  dir: 'localgov.fyi'
   args: ['run', 'prodDeploy']
 timeout: 3600s
 options:

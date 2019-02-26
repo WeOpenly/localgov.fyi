@@ -17,7 +17,7 @@
         "event-stream": "^4.0.1",
         "fingerprintjs2": "^1.8.5",
         "fuse.js": "^3.3.0",
-        "gatsby": "^2.0.31",
+        "gatsby": "^2.1.18",
         "gatsby-cli": "^2.4.9",
         "gatsby-image": "^2.0.17",
         "gatsby-link": "^2.0.5",
@@ -97,7 +97,7 @@
         "gver": "gatsby --version",
         "build": "gatsby build",
         "deploy": "gatsby build --prefix-paths",
-        "prodDeploy": "ACTIVE_ENV=production node --max-old-space-size=8192 ./node_modules/.bin/gatsby build --prefix-paths"
+        "prodDeploy": "ACTIVE_ENV=production node --max-old-space-size=8192 gatsby build --prefix-paths"
     },
     "devDependencies": {
         "babel-plugin-dynamic-import-webpack": "^1.1.0",

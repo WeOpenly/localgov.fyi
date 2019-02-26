@@ -6,9 +6,10 @@ steps:
   args: ['install']
 - name: 'ubuntu'
   args: ['mkdir', 'data']
-- name: 'ubuntu'
-  args: ['python', './pre_pocess.py']
-- name: node:8.11.2
+- name: 'docker.io/library/python:2.7'
+  args: ['python', 'localgov.fyi/pre_process.py']
+  env: ['DSP_HOST=http://dsp.weopenly.com']
+- name: node:8
   entrypoint: npm
   args: ['run', 'prodDeploy']
 timeout: 3600s

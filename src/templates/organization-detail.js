@@ -95,11 +95,11 @@ const {id, name} = this.props.pageContext.data;
     const name = org_name;
     const services = hierarchial_service_details;
     const { hierarchy } = area;
-    console.log(hierarchy);
+
 
     const { logoSizes } = this.props.pageContext;
     
-    console.log(logoSizes);
+
 
     let orgLogoSvg = null
     if (logoSizes && logoSizes.fluid){
@@ -153,7 +153,7 @@ const {id, name} = this.props.pageContext.data;
         let serCards = null;
         let orgTitle = null;
 
-        console.log(detailsAtLevel, "detailsatlevel")
+    
         if ('services' in detailsAtLevel){
           let servicesAtLevel = detailsAtLevel.services || [];
           servicesAtLevel = servicesAtLevel.filter(service => {

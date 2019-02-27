@@ -253,7 +253,7 @@ class OrgHeader extends Component {
     }
     if (info) 
       sortInfo(info);
-    console.log("logoFluid", logoFluid)
+
     const contactDetailButtons = sortedInfo.map((cd, idx, arr) => {
       const icons = {
         phone: (

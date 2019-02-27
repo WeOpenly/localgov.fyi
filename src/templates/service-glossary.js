@@ -472,7 +472,7 @@ class ServiceGlossary extends Component {
         })
 
         const locs = allOrgs.map((org, idx) => {
-            console.log(org);
+   
             const organization = org.organization;
             let strippedName = organization
                 .org_name
@@ -496,7 +496,7 @@ class ServiceGlossary extends Component {
         })
 
         const mobileLocs = allOrgs.map((org, idx) => {
-            console.log(org);
+    
             const organization = org.organization;
             let strippedName = organization
                 .org_name

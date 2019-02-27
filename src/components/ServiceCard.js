@@ -128,7 +128,7 @@ class SearchResult extends Component {
     handleClick() {
         const { trackClick, resultType, id, toLink, title,  listIndex} = this.props;
         trackClick('card_item', resultType, id, title, listIndex);
-        console.log(toLink);
+
         navigate(toLink);
     }
 

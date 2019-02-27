@@ -173,7 +173,7 @@ class SerRemForm extends Component {
 
     handleSubmit(data) {
         const { id, service_id, org_id, submittedCb } = this.props;
-        console.log("here");
+ 
 
         const {formData} = data;
         let currentLoc = '';

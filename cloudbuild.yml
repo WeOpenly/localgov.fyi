@@ -8,16 +8,14 @@ steps:
   dir: 'localgov.fyi'
   entrypoint: npm
   args: ['install', '--save']
-- name: node:8
+# - name: node:8
+#   dir: 'localgov.fyi'
+#   entrypoint: node
+#   args: ['./node_modules/.bin/gatsby', 'build', '--prefix-paths']
+#   env: ['ACTIVE_ENV=production']
+- name: ubuntu
   dir: 'localgov.fyi'
-  entrypoint: node
-  args: ['./node_modules/.bin/gatsby', 'build', '--prefix-paths']
-  env: ['ACTIVE_ENV=production']
-- name: node:8
-  dir: 'localgov.fyi'
-  entrypoint: node
-  args: ['./node_modules/.bin/gatsby', 'build', '--prefix-paths']
-  env: ['ACTIVE_ENV=production']
+  args: ['mkdir', 'public']
 - name: ubuntu
   dir: 'localgov.fyi'
   args: ['cp', '_redirects', 'public']

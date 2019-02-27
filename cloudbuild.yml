@@ -27,7 +27,7 @@ steps:
 - name: node:8
   entrypoint: node
   dir: 'localgov.fyi'
-  args: ['-r', 'dotenv/config', 'dotenv_config_path=./creds' './node_modules/.bin/netlify', 'deploy', '--dir=public']
+  args: ['-r', 'dotenv/config', './node_modules/.bin/netlify', 'deploy', '--dir=public', 'dotenv_config_path=./creds']
 timeout: 3600s
 options:
   diskSizeGb: 100

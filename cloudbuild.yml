@@ -26,7 +26,7 @@ steps:
   args: ['cp', 'gs://evergov-netlify-env/creds.sh', 'creds.sh']
 - name: ubuntu
   dir: 'localgov.fyi'
-  args: [ 'bash','-c', 'source', 'creds.sh', '&&', './node_modules/.bin/netlify', 'deploy', '--dir=public']
+  args: [ 'bash','-c', 'source', './creds.sh', '&&', './node_modules/.bin/netlify', 'deploy', '--dir=public']
 timeout: 3600s
 options:
   diskSizeGb: 100

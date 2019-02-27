@@ -14,6 +14,11 @@ steps:
   entrypoint: node
   args: ['./node_modules/.bin/gatsby', 'build', '--prefix-paths']
   env: ['ACTIVE_ENV=production']
+- name: node:8
+  dir: 'localgov.fyi'
+  entrypoint: node
+  args: ['./node_modules/.bin/gatsby', 'build', '--prefix-paths']
+  env: ['ACTIVE_ENV=production']
 timeout: 3600s
 options:
   diskSizeGb: 100

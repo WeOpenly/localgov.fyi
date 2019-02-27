@@ -1,7 +1,6 @@
 steps:
 - name: gcr.io/cloud-builders/git
   args: ['clone', 'https://github.com/WeOpenly/localgov.fyi.git']
-
 - name: 'docker.io/library/python:2.7'
   args: ['python', 'localgov.fyi/pre_process.py']
   env: ['DSP_HOST=http://dsp.weopenly.com']
@@ -19,6 +18,14 @@ steps:
   entrypoint: node
   args: ['./node_modules/.bin/gatsby', 'build', '--prefix-paths']
   env: ['ACTIVE_ENV=production']
+- name: ubuntu
+  dir: 'localgov.fyi'
+  args: ['cp, '_redirects', 'public/_redirects']
+- name: node:8
+  dir: 'localgov.fyi/public'
+  entrypoint: node
+  args: ['./node_modules/.bin/netlify', 'deploy']
+  env: ['NETLIFY_SITE_ID=f2d5e3f5-f99b-40b6-87d5-6b66b6d570b4', 'NETLIFY_AUTH_TOKEN=0327c05f2e7443f23098eda66fcb86971f2366ccd9e31a7c67824df68ad230ec']
 timeout: 3600s
 options:
   diskSizeGb: 100

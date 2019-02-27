@@ -201,8 +201,8 @@ def get_services():
                 json.dump(ser, f)
 
             service_logo = ser.get('service').get('logo_url')
-            if not service_logo:
-                continue
+            #if not service_logo:
+            continue
             
             file_name, file_ext = os.path.splitext(service_logo)
             ser_logo_filename = u"{l}{id}_ser_logo{e}".format(l=logo_dir, id=filename, e=file_ext)

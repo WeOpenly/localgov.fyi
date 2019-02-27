@@ -74,4 +74,3 @@ typings/
 # Serverless directories
 .serverless
 
-cloudbuild.yml

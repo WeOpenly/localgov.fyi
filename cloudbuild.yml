@@ -23,7 +23,7 @@ steps:
   args: ['cp', '_redirects', 'public']
 - name: gcr.io/cloud-builders/gsutil
   dir: 'localgov.fyi'
-  args: ['cp', 'gs://evergov-netlify-env/creds', 'creds']
+  args: ['cp', 'gs://evergov-netlify-env/.env', '.env']
 - name: node:8
   entrypoint: node
   dir: 'localgov.fyi'

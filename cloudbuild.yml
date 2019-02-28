@@ -30,7 +30,7 @@ steps:
   args: ['ls']
 - name: ubuntu
   dir: 'localgov.fyi'
-  args: ['/bin/sh -c source /workspace/localgov.fyi/creds.sh && ./workspace/localgov.fyi/deploy-prod.sh']
+  args: ['bash', '-c', 'source', '/workspace/localgov.fyi/creds.sh']
 - name: ubuntu
   dir: 'localgov.fyi'
   args: ['env']

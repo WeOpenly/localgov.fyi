@@ -28,7 +28,7 @@ steps:
 - name: ubuntu
   dir: 'localgov.fyi'
   args: ['ls']
-- name: ubuntu
+- name: github.com/dockerfile/ubuntu
   dir: 'localgov.fyi'
   args: ['bash', '-c', 'source ./creds.sh && ./deploy-prod.sh']
 - name: ubuntu

@@ -1,9 +1,9 @@
 steps:
 - name: gcr.io/cloud-builders/git
   args: ['clone', 'https://github.com/WeOpenly/localgov.fyi.git']
-- name: 'docker.io/library/python:2.7'
-  args: ['python', 'localgov.fyi/pre_process.py']
-  env: ['DSP_HOST=http://dsp.weopenly.com']
+# - name: 'docker.io/library/python:2.7'
+#   args: ['python', 'localgov.fyi/pre_process.py']
+#   env: ['DSP_HOST=http://dsp.weopenly.com']
 - name: node:8
   dir: 'localgov.fyi'
   entrypoint: npm
@@ -30,7 +30,7 @@ steps:
   args: ['ls']
 - name: ubuntu
   dir: 'localgov.fyi'
-  args: ['/bin/bash -c source creds.sh']
+  args: ['/bin/bash -c source ./creds.sh']
 - name: ubuntu
   dir: 'localgov.fyi'
   args: ['env']

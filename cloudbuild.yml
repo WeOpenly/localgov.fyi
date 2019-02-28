@@ -1,18 +1,18 @@
 steps:
 - name: gcr.io/cloud-builders/git
   args: ['clone', 'https://github.com/WeOpenly/localgov.fyi.git']
-# - name: 'docker.io/library/python:2.7'
-#   args: ['python', 'localgov.fyi/pre_process.py']
-#   env: ['DSP_HOST=http://dsp.weopenly.com']
+- name: 'docker.io/library/python:2.7'
+  args: ['python', 'localgov.fyi/pre_process.py']
+  env: ['DSP_HOST=http://dsp.weopenly.com']
 - name: node:8
   dir: 'localgov.fyi'
   entrypoint: npm
   args: ['install', '--save']
-# - name: node:8
-#   dir: 'localgov.fyi'
-#   entrypoint: node
-#   args: ['./node_modules/.bin/gatsby', 'build', '--prefix-paths']
-#   env: ['ACTIVE_ENV=production']
+- name: node:8
+  dir: 'localgov.fyi'
+  entrypoint: node
+  args: ['./node_modules/.bin/gatsby', 'build', '--prefix-paths']
+  env: ['ACTIVE_ENV=production']
 - name: ubuntu
   dir: 'localgov.fyi'
   args: ['mkdir', 'public']

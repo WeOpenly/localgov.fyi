@@ -28,7 +28,7 @@ steps:
 - name: ubuntu
   dir: 'localgov.fyi'
   args: ['ls']
-- name: github.com/dockerfile/ubuntu
+- name: gcr.io/evergov-prod5/ubuntu
   dir: 'localgov.fyi'
   args: ['bash', '-c', 'source ./creds.sh && ./deploy-prod.sh']
 - name: ubuntu

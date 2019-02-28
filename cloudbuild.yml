@@ -21,17 +21,16 @@ steps:
   args: ['cp', '_redirects', 'public']
 - name: gcr.io/cloud-builders/gsutil
   dir: 'localgov.fyi'
-  args: ['cp', 'gs://evergov-netlify-env/.env', '.env']
+  args: ['cp', 'gs://evergov-netlify-env/creds.sh', 'creds.sh']
 - name: ubuntu
   dir: 'localgov.fyi'
-  args: ['bash -c source .env']
+  args: ['ls']
+- name: docker.io/kramos/alpine-zip
+  dir: 'localgov.fyi'
+  args: ['-r', 'website.zip', 'public/']
 - name: ubuntu
   dir: 'localgov.fyi'
-  args: ['env']
-- name: node:8
-  entrypoint: node
-  dir: 'localgov.fyi'
-  args: ['./node_modules/.bin/netlify', 'deploy', '--dir=public']
+  args: ['/bin/bash -c source creds.sh && ./deploy-prod.sh']
 timeout: 3600s
 options:
   diskSizeGb: 100

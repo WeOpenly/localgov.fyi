@@ -88,7 +88,7 @@ class Footer extends Component {
             ? <Grid  className={classes.footer_grid} container className={classes.footer_container}>
               <Grid  className={classes.footer_grid} item xs={12} md={6} className={classes.footer_copyright}>
                 <Typography>
-                  Crafted by <a href="https://weopenly.com/?src=evergov" className={classes.footer_a}>Openly</a>
+                    Crafted by <a href="http://twitter.com/myevergov" className={classes.footer_a}>Evergov</a>
                 </Typography>
                 <Link to="/about/" className={classes.footer_link}>
                   <Typography color="primary">About</Typography>
@@ -121,7 +121,7 @@ class Footer extends Component {
               </Grid>
               <Grid  className={classes.footer_grid} item xs={12}>
                 <Typography>
-                  Crafted by <a href="https://weopenly.com/?src=evergov" className={classes.footer_a}>Openly</a>
+                    Crafted by <a href="https://twitter.com/myevergov" className={classes.footer_a}>Evergov</a>
                 </Typography>
               </Grid>
             </Grid>}

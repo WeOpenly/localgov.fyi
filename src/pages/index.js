@@ -25,6 +25,7 @@ import IndexHero from '../components/IndexHero';
 
 
 import {trackView, trackClick} from "../components/common/tracking";
+import { teal } from '@material-ui/core/colors';
 
 const styles = theme => ({
   "@global": {
@@ -135,8 +136,8 @@ index_toolbar : {
 index_grid:{
 
 },
-index_grid_item:{
-
+index_index_grid_item:{
+  marginTop: theme.spacing.unit * 4,
 }
 });
 
@@ -373,7 +374,7 @@ class Index extends React.Component {
       .map((item, idx) => {
 
         return (
-          <Grid className='index_grid_item' item xs={2}>
+          <Grid className={classes.index_index_grid_item} item xs={2}>
             <a
               key={item.name}
               onClick={() => this.clickSuggestion(item.url, item.name, idx)}>
@@ -390,7 +391,7 @@ class Index extends React.Component {
       });
 
     otherLinks.push((
-      <Grid className='index_grid_item' item xs={2}>
+      <Grid className={classes.index_index_grid_item} item xs={2}>
         <a onClick={() => this.clickDiscoverMore()} className={classes.index_locationsLink}>
           <Typography variant="body1" color="primary" className={classes.index_otherLinks}>
             Discover more
@@ -489,7 +490,7 @@ class Index extends React.Component {
                   variant="display1"
                   component="h1"
                   className={classes.index_popularServicesHeader}>
-                  evergov {org ? org.name : ''}
+                  Evergov {org ? org.name : ''}
                 </Typography>)}
               </Grid>
               <Grid item xs={1} md={3}/>

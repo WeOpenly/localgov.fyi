@@ -1,2 +1,1 @@
-echo ${NETLIFY_AUTH_TOKEN}
-curl -H "Content-Type: application/zip" -H "Authorization: Bearer ${NETLIFY_AUTH_TOKEN}" --data-binary "@website.zip" https://api.netlify.com/api/v1/sites/determined-kirch-9a3322.netlify.com/deploys
+curl -H "Content-Type: application/zip" -H "Authorization: Bearer ${NETLIFY_AUTH_TOKEN}" --data-binary "@website.zip" https://api.netlify.com/api/v1/sites/${NETLIFY_SITE}/deploys

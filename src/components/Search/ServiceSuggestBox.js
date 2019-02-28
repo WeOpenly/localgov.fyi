@@ -267,8 +267,8 @@ class ServiceSuggestBox extends Component {
     event.preventDefault();
     const { dispatch } = this.props;
     const { serviceInput, userCountry } = this.props.search;
-    const { id, heading } = suggestion;
-    navigate(`/service/${id}/`);
+    const { id, heading, url_slug } = suggestion;
+    navigate(`/service/${url_slug}/`);
     dispatch(trackInput('index_service_search_box', serviceInput));
     dispatch(trackClick('select_suggestion', 'service', id, heading, suggestionIndex));
   }

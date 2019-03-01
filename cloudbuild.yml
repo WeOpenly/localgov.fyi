@@ -3,7 +3,7 @@ steps:
   args: ['clone', 'https://github.com/WeOpenly/localgov.fyi.git']
 - name: 'docker.io/library/python:2.7'
   args: ['python', 'localgov.fyi/pre_process.py']
-  env: ['DSP_HOST=http://dsp.weopenly.com']
+  env: ['DSP_HOST=http://dsp-dot-evergov-prod5.appspot.com']
 - name: node:8
   dir: 'localgov.fyi'
   entrypoint: npm

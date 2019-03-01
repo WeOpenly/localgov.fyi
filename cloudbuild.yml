@@ -1,9 +1,12 @@
 steps:
 - name: gcr.io/cloud-builders/git
   args: ['clone', 'https://github.com/WeOpenly/localgov.fyi.git']
-- name: 'docker.io/library/python:2.7'
-  args: ['python', 'localgov.fyi/pre_process.py']
-  env: ['DSP_HOST=http://dsp-dot-evergov-prod5.appspot.com']
+- name: gcr.io/cloud-builders/gsutil
+  dir: 'localgov.fyi'
+  args: ['cp', 'gs://evergov-netlify-env/dsp-creds.sh', 'dsp-creds.sh']
+- name: 'docker.io/ybvkr/ubuntu-curl-python'
+  dir: 'localgov.fyi'
+  args: ['bash', '-c',  'source ./dsp-creds.sh && python ./pre_process.py']
 - name: node:8
   dir: 'localgov.fyi'
   entrypoint: npm

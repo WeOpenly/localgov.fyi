@@ -8,7 +8,8 @@ from datetime import datetime
 from os.path import isfile, join
 
 dir_path = os.path.dirname(os.path.realpath(__file__))
-host = os.getenv('DSP_HOST', 'http://127.0.0.1:8090')
+DSP_HOST = os.getenv('DSP_HOST', 'http://127.0.0.1:8090')
+YUSUF_HOST = os.getenv('YUSUF_HOST', 'http://127.0.0.1:8010')
 token = os.getenv('DSP_TOKEN', '811')
 
 org_data_dir = "{d}/data/orgs/".format(d=dir_path)
@@ -131,7 +132,7 @@ for directory in [org_data_dir, ser_data_dir, rewrite_dir, logo_dir, service_glo
 
 
 def get_orgs():
-    res = urllib2.urlopen('{h}/arthur/org_pages?token={t}'.format(h=host, t=token))
+    res = urllib2.urlopen('{h}/arthur/org_pages?token={t}'.format(h=DSP_HOST, t=token))
     response = json.load(res)
     org_rewrites_file = '{d}{o}.txt'.format(d=rewrite_dir, o='org_rewrites')
     
@@ -173,7 +174,7 @@ def get_orgs():
             
             
 def get_services():
-    res = urllib2.urlopen('{h}/arthur/ser_pages?token={t}'.format(h=host, t=token))
+    res = urllib2.urlopen('{h}/arthur/ser_pages?token={t}'.format(h=DSP_HOST, t=token))
     response = json.load(res)
 
     ser_rewrites_file = '{d}{o}.txt'.format(d=rewrite_dir, o='ser_rewrites')
@@ -218,7 +219,7 @@ def get_services():
 
 
 def get_service_glossary_items():
-    res = urllib2.urlopen('{h}/arthur/service_glossary_overview?token={t}'.format(h=host, t=token))
+    res = urllib2.urlopen('{h}/arthur/service_glossary_overview?token={t}'.format(h=DSP_HOST, t=token))
     sg_items = json.load(res)
     if sg_items and 'success' in sg_items:
         items = sg_items.get('details')
@@ -229,7 +230,7 @@ def get_service_glossary_items():
                 json.dump(item, file_to_write)
 
 def get_all_locations():
-    res = urllib2.urlopen('{h}/arthur/all_locations?token={t}'.format(h=host, t=token))
+    res = urllib2.urlopen('{h}/arthur/all_locations?token={t}'.format(h=DSP_HOST, t=token))
     orgs = json.load(res)
     all_orgs_file = u"{d}{n}.json".format(d=all_dir, n="orgs")
     items = orgs.get('details')
@@ -239,9 +240,9 @@ def get_all_locations():
             json.dump(orgs, file_to_write)
 
 def write_standard_redirects():
-    redirs = """/api/yusuf/* http://yusuf-alb.eu-central-1.elasticbeanstalk.com/:splat 200!
+    redirs = """/api/yusuf/* http://{y}/:splat 200!
 
-/api/dsp/* https://dsp.weopenly.com/:splat 200!
+/api/dsp/* https://{d}/:splat 200!
 
 https://evergov.netlify.com/* https://evergov.com/:splat 301!
 
@@ -253,7 +254,7 @@ http://evergov.netlify.com/* https://evergov.com/:splat 301!
 /deep_link/*  /deep_link/  200
 /search/*  /search/  200
 
-"""
+""".format(y=YUSUF_HOST, d=DSP_HOST)
     with open('_redirects', 'w+') as f:
         f.write(redirs)
 

@@ -3,7 +3,7 @@ steps:
   args: ['clone', 'https://github.com/WeOpenly/localgov.fyi.git']
 - name: gcr.io/cloud-builders/gsutil
   dir: 'localgov.fyi'
-  args: ['cp', 'gs://evergov-netlify-env/dsp-creds.sh', 'dsp-creds.sh']
+  args: ['cp', 'gs://$PROJECT_ID-netlify-env/dsp-creds.sh', 'dsp-creds.sh']
 - name: 'docker.io/ybvkr/ubuntu-curl-python'
   dir: 'localgov.fyi'
   args: ['bash', '-c',  'source ./dsp-creds.sh && python ./pre_process.py']
@@ -21,14 +21,14 @@ steps:
   args: ['cp', '_redirects', 'public']
 - name: gcr.io/cloud-builders/gsutil
   dir: 'localgov.fyi'
-  args: ['cp', 'gs://evergov-netlify-env/creds.sh', 'creds.sh']
+  args: ['cp', 'gs://$PROJECT_ID-netlify-env/creds.sh', 'creds.sh']
 - name: docker.io/kramos/alpine-zip
   dir: 'localgov.fyi'
   args: ['-r', 'website.zip', 'public/']
 - name: ubuntu
   dir: 'localgov.fyi'
   args: ['ls']
-- name: gcr.io/evergov-prod5/ubuntu
+- name: docker.io/ybvkr/ubuntu-curl-python
   dir: 'localgov.fyi'
   args: ['bash', '-c', 'source ./creds.sh && ./deploy-prod.sh']
 - name: ubuntu

@@ -15,7 +15,6 @@ steps:
   dir: 'localgov.fyi'
   entrypoint: node
   args: ['./node_modules/.bin/gatsby', 'build', '--prefix-paths']
-  env: ['ACTIVE_ENV=production']
 - name: ubuntu
   dir: 'localgov.fyi'
   args: ['cp', '_redirects', 'public']

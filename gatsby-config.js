@@ -1,5 +1,5 @@
 const path = require(`path`)
-let activeEnv = process.env.ACTIVE_ENV || process.env.NODE_ENV || 'staging'
+let activeEnv = process.env.ACTIVE_ENV || process.env.PROJECT_ID || 'evergov-dev3'
 
 const pt = __dirname + `/.env.${activeEnv}`
 

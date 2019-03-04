@@ -132,6 +132,7 @@ for directory in [org_data_dir, ser_data_dir, rewrite_dir, logo_dir, service_glo
 
 
 def get_orgs():
+    print(DSP_HOST,token)
     res = urllib2.urlopen('{h}/arthur/org_pages?token={t}'.format(h=DSP_HOST, t=token))
     response = json.load(res)
     org_rewrites_file = '{d}{o}.txt'.format(d=rewrite_dir, o='org_rewrites')
@@ -143,6 +144,9 @@ def get_orgs():
 
     if response and 'success' in response:
         orgs = response.get('orgs')
+        if not orgs:
+            return
+
         for org in orgs:
             filename = org.get('id')
             full_path = '{d}{f}.json'.format(d=org_data_dir, f=filename)

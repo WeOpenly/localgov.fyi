@@ -260,7 +260,7 @@ http://evergov.netlify.com/* https://evergov.com/:splat 301!
 /search/*  /search/  200
 
 """.format(y=YUSUF_HOST, d=DSP_HOST)
-    print(redis)
+    print(redirs)
     with open('_redirects', 'w+') as f:
         f.write(redirs)
 

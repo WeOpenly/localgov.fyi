@@ -191,7 +191,9 @@ const styles = theme => ({
         marginTop: theme.spacing.unit *2
     },
     ser_gloss_footer: {
-        marginTop: theme.spacing.unit * 4
+        borderTop: `1px solid #dcdcdc`,
+        paddingTop: theme.spacing.unit,
+        marginTop: theme.spacing.unit * 4,
     },
     ser_gloss_service_actions : {
         display: 'flex',
@@ -423,10 +425,11 @@ class ServiceGlossary extends Component {
         const searchOptions = {
             shouldSort: true,
             tokenize: true,
-            threshold: 0.1,
+            threshold: 0.4,
             location: 0,
             distance: 5,
             maxPatternLength: 32,
+            matchAllTokens: true,
             minMatchCharLength: 1,
             keys: ['organization.org_name']
         }

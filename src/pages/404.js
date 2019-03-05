@@ -7,12 +7,12 @@ import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
 import Divider from '@material-ui/core/Divider';
-
+import NotFoundIcon from '../svgIcons/NotFound';
 import withRoot from '../withRoot';
 import {trackView} from "../components/common/tracking";
 
 const styles = theme => ({
-    root: {
+    nf_root: {
         height: '80vh',
         display: 'flex',
         flexDirection: 'column',
@@ -49,13 +49,11 @@ class NotFound extends Component {
     render() {
         const { classes } = this.props;
         return (
-            <div className={classes.root}>
+            <div className={classes.nf_root}>
                 <Grid container spacing={16} align="center">
                     <Grid item xs='auto' sm={4} />
                     <Grid item xs={12} sm={4}>
-                        <Typography variant="display3">
-                            {`Oops!`} 
-                        </Typography>
+                        <NotFoundIcon style={{ fontSize: '168px' }}/>
                     </Grid>
                     <Grid item xs='auto' sm={4} />
 
@@ -72,7 +70,7 @@ class NotFound extends Component {
                         <Divider className={classes.divider} />
                         <Grid container spacing={8}>
                             <Grid item xs={6}>
-                                <Button variant="outlined" onClick={() => this.props.history.goBack()} className={classes.link}>
+                                <Button variant="outlined" onClick={() => window.history.back()} className={classes.link}>
                                     Go back
                                 </Button>
                             </Grid>

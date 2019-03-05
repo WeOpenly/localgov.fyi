@@ -25,13 +25,15 @@ const styles = theme => ({
     // minHeight: '100vh',
   },
   layout_footer: {
+    background: '#fafafa',
     width: '100%',
-    alignSelf: 'flex-end',
+    marginTop: theme.spacing.unit * 4,
     // marginTop: 70,
   },
   layout_footerMobile: {
     width: '100%',
-    alignSelf: 'flex-end',
+    background: '#fafafa',
+    marginTop: theme.spacing.unit * 2,
     // marginTop: -114,
   },
 });

@@ -56,7 +56,9 @@ const styles = theme => ({
     justifyContent: 'flex-end',
   },
      org_detail_footer:{
-       marginTop: theme.spacing.unit * 4
+       borderTop:`1px solid #dcdcdc`,
+       paddingTop: theme.spacing.unit,
+       marginTop: theme.spacing.unit *4,
     }
 });
 
@@ -286,9 +288,6 @@ const {id, name} = this.props.pageContext.data;
           </Grid>
         </Grid>
       </Grid>
-        <div className={classes.org_detail_footer}>
-            <Footer page={this.props.location.pathname} />
-        </div>
         </DetailTemplate>
     );
   }

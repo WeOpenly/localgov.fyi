@@ -123,6 +123,10 @@ index_locationsLink : {
     justifyContent: 'center',
     textDecorationColor: theme.palette.primary['500']
   },
+  otherLinksIndexGrid:{
+    display: 'flex',
+    flexWrap: 'wrap'
+  },
 index_progressWrapper : {
     display: 'flex',
     justifyContent: 'center'
@@ -137,6 +141,9 @@ index_grid:{
 
 },
 index_index_grid_item:{
+  dispalay: 'flex',
+  flexWrap: 'wrap',
+  padding: theme.spacing.unit,
   marginTop: theme.spacing.unit * 4,
 }
 });
@@ -532,7 +539,7 @@ class Index extends React.Component {
     const otherLinksComp = (
       <Fragment>
         <Grid
-        className='index_grid'
+
         container
         className={classes.index_otherLinksDivider}>
                   <Grid className='index_grid_item' item xs={2}/>
@@ -541,7 +548,7 @@ class Index extends React.Component {
                   </Grid>
                   <Grid className='index_grid_item' item xs={2}/>
                 </Grid>
-                <Grid className='index_grid' container align="center">
+                <Grid className={classes.otherLinksIndexGrid} container align="center">
                   <Grid className='index_grid_item' item xs={2}/> {otherLinks}
                   <Grid className='index_grid_item' item xs={2}/>
                 </Grid>

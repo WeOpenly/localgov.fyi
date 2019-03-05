@@ -163,7 +163,9 @@ ser_detail_loading_spinner:{
 
 },
 service_detail_footer : {
-    marginTop: theme.spacing.unit * 4
+       borderTop: `1px solid #dcdcdc`,
+    paddingTop: theme.spacing.unit,
+    marginTop: theme.spacing.unit * 4,
 },
 serviceDetailStepNumber:{
     marginRight: theme.spacing.unit *2
@@ -534,10 +536,10 @@ class ServiceDetailTemplate extends React.Component {
                         </div>
                     </Grid>
                 </Grid>
-                   <div className={classes.service_detail_footer}>
-                        <Footer page={this.props.location.pathname} />
+       
+                   
                     {serRemFormRaw}
-                    </div>
+          
           
             </DetailTemplate>
         )

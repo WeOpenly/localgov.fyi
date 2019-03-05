@@ -27,15 +27,12 @@ default_template_mainMobile : {
     minHeight: '100vh',
     paddingBottom: 114,
   },
-default_template_footer : {
+  detail_template_footer : {
+    borderTop: `1px solid #dcdcdc`,
     width: '100%',
-    alignSelf: 'flex-end',
-    marginTop: -70,
-  },
-default_template_footerMobile : {
-    width: '100%',
-    alignSelf: 'flex-end',
-    marginTop: -114,
+    paddingTop: theme.spacing.unit,
+    paddingBottom: theme.spacing.unit,
+  marginTop: theme.spacing.unit * 4,
   },
 });
 
@@ -59,6 +56,9 @@ class DetailTemplate extends React.Component {
             </Grid>
             <Grid item xs={1} />
           </Grid>
+        </div>
+        <div className={classes.detail_template_footer}>
+          <Footer page={this.props.location.pathname} />
         </div>
       </div>
     );

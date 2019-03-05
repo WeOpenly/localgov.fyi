@@ -158,3 +158,44 @@ export function DspApi(endPoint, method = "GET", headers = null, data = null) {
         .then(resp => resp);
 }
 
+
+const FETCH_TIMEOUT = 4000;
+let didTimeOut = false;
+
+export const fetchLocWithTO  = () => {
+new Promise(function (resolve, reject) {
+    const timeout = setTimeout(function () {
+        didTimeOut = true;
+        reject(new Error('Request timed out'));
+    }, FETCH_TIMEOUT);
+
+    fetch(`${YUSUF_BACKEND}/auto_locate`).then(function (response) {
+        // Clear the timeout as cleanup
+        clearTimeout(timeout);
+        if (!didTimeOut) {
+            console.log('fetch good! ', response);
+            resolve(response);
+            }
+        })
+        .catch(function (err) {
+            console.log('fetch failed! ', err);
+
+            // Rejection already happened with setTimeout
+            if (didTimeOut) 
+                return;
+            
+            // Reject with error
+            reject(err);
+        });
+})
+    .then(function () {
+        // Request success and no timeout
+        console.log('good promise, no timeout! ');
+    })
+    .catch(function (err) {
+        // Error: response error, request timeout or runtime error
+        console.log('promise error! ', err);
+    });
+
+}
+

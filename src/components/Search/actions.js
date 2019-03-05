@@ -1,6 +1,6 @@
 import 'regenerator-runtime/runtime';
 import * as types from './ActionTypes';
-import {YusufApi} from '../common/api';
+import {YusufApi, fetchLocWithTO} from '../common/api';
 import {trackInput} from '../common/tracking';
 import queryString from 'querystring';
 
@@ -266,16 +266,15 @@ function allFromOrganizationFailure() {
   return { type: types.ALL_FROM_ORG_FAILURE };
 }
 
+
 export const getLocation = async(dispatch) => {
   dispatch(locationRequest());
-  let t0 = null;
-  let t1 = null;
+  
 
   try {
-    if(windowGlobal && windowGlobal.performance){
-      t0 = Math.round(performance.now());
-    }
-    const data = await YusufApi(null, `auto_locate`);
+
+    // const data = await YusufApi(null, `auto_locate`);
+    const data = await fetchLocWithTO();
     const results = await data;
 
     const {details} = results;
@@ -284,10 +283,7 @@ export const getLocation = async(dispatch) => {
       dispatch(trackInput('auto_locate', details.org.name));
       dispatch(locationSuccess(results));
     }
-    if (windowGlobal && windowGlobal.performance && windowGlobal.ga) {
-      t1 = Math.round(performance.now());
-      windowGlobal.ga('send', 'timing', 'Auto Locate Api', 'response', t1 - t0);
-    }
+
   } catch (error) {
     dispatch(locationFailure(error));
 const placeHolder = {

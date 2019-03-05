@@ -245,9 +245,9 @@ def get_all_locations():
 
 def write_standard_redirects():
     print(DSP_HOST, YUSUF_HOST)
-    redirs = """/api/yusuf/* http://{y}/:splat 200!
+    redirs = """/api/yusuf/* {y}/:splat 200!
 
-/api/dsp/* https://{d}/:splat 200!
+/api/dsp/* {d}/:splat 200!
 
 https://evergov.netlify.com/* https://evergov.com/:splat 301!
 

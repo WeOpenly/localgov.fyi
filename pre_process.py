@@ -244,6 +244,7 @@ def get_all_locations():
             json.dump(orgs, file_to_write)
 
 def write_standard_redirects():
+    print(DSP_HOST, YUSUF_HOST)
     redirs = """/api/yusuf/* http://{y}/:splat 200!
 
 /api/dsp/* https://{d}/:splat 200!

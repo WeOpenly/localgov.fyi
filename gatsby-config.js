@@ -1,12 +1,16 @@
 const path = require(`path`)
-console.log(process.env)
-let activeEnv = process.env.ACTIVE_ENV || process.env.PROJECT_ID || 'evergov-dev3'
+let activeEnv = 'staging'
+
+if (process.env.PROJECT_ID && process.env.PROJECT_ID==='evergov-prod'){
+  activeEnv ='production'
+}
 
 const pt = __dirname + `/.env.${activeEnv}`
 
 require('dotenv').config({
   path : pt
 });
+
 
 module.exports = {
   siteMetadata: {

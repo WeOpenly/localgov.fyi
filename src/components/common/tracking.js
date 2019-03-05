@@ -6,7 +6,6 @@ let Fingerprint2 = null;
 
 // track user events event types - seen , clicked seen type [pageview] clicked
 // type [suggestion, card(page item), external]
-const isProd = process.env.NODE_ENV === `production`
 
 const windowGlobal = typeof window !== 'undefined' && window
 const fpOptions = {

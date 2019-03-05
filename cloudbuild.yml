@@ -7,33 +7,33 @@ steps:
 - name: 'docker.io/ybvkr/ubuntu-curl-python'
   dir: 'localgov.fyi'
   args: ['bash', '-c',  'source ./dsp-creds.sh && python ./pre_process.py']
-# - name: node:8
-#   dir: 'localgov.fyi'
-#   entrypoint: npm
-#   args: ['install', '--save']
-# - name: node:8
-#   dir: 'localgov.fyi'
-#   entrypoint: node
-#   args: ['./node_modules/.bin/gatsby', 'build', '--prefix-paths']
-#   env: ['PROJECT_ID=$PROJECT_ID']
-# - name: ubuntu
-#   dir: 'localgov.fyi'
-#   args: ['cp', '_redirects', 'public']
-# - name: gcr.io/cloud-builders/gsutil
-#   dir: 'localgov.fyi'
-#   args: ['cp', 'gs://$PROJECT_ID-netlify-env/creds.sh', 'creds.sh']
-# - name: docker.io/kramos/alpine-zip
-#   dir: 'localgov.fyi'
-#   args: ['-r', 'website.zip', 'public/']
-# - name: ubuntu
-#   dir: 'localgov.fyi'
-#   args: ['ls']
-# - name: docker.io/ybvkr/ubuntu-curl-python
-#   dir: 'localgov.fyi'
-#   args: ['bash', '-c', 'source ./creds.sh && ./deploy-prod.sh']
-# - name: ubuntu
-#   dir: 'localgov.fyi'
-#   args: ['env']
+- name: node:8
+  dir: 'localgov.fyi'
+  entrypoint: npm
+  args: ['install', '--save']
+- name: node:8
+  dir: 'localgov.fyi'
+  entrypoint: node
+  args: ['./node_modules/.bin/gatsby', 'build', '--prefix-paths']
+  env: ['PROJECT_ID=$PROJECT_ID']
+- name: ubuntu
+  dir: 'localgov.fyi'
+  args: ['cp', '_redirects', 'public']
+- name: gcr.io/cloud-builders/gsutil
+  dir: 'localgov.fyi'
+  args: ['cp', 'gs://$PROJECT_ID-netlify-env/creds.sh', 'creds.sh']
+- name: docker.io/kramos/alpine-zip
+  dir: 'localgov.fyi'
+  args: ['-r', 'website.zip', 'public/']
+- name: ubuntu
+  dir: 'localgov.fyi'
+  args: ['ls']
+- name: docker.io/ybvkr/ubuntu-curl-python
+  dir: 'localgov.fyi'
+  args: ['bash', '-c', 'source ./creds.sh && ./deploy-prod.sh']
+- name: ubuntu
+  dir: 'localgov.fyi'
+  args: ['env']
 timeout: 3600s
 options:
   diskSizeGb: 100

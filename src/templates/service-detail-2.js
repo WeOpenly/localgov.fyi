@@ -471,11 +471,11 @@ class ServiceDetailTemplate extends React.Component {
                         </title>
                         <script src="https://js.stripe.com/v3/"></script>
                         <script type="application/ld+json">{`${JSON.stringify(jsonLd)}`}</script>
-                        <link rel="canonical" href={`https://evergov.com/service/${id}/`}/>
+                        <link rel="canonical" href={`https://evergov.com/service/${url_slug}/`}/>
                         <meta
                             property="og:title"
                             content={`${name} | ${org_name} | Evergov`}/>
-                        <meta property="og:url" content={`https://evergov.com/service/${id}/`}/>
+                        <meta property="og:url" content={`https://evergov.com/service/${url_slug}/`}/>
 
                         <meta
                             name="description"

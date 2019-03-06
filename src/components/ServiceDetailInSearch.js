@@ -262,11 +262,9 @@ class ServiceDetailInSearch extends React.Component {
             <Grid container spacing={16} className={classes.ser_detail_search_container}>
                 <Helmet>
                     <title>{`${name} service offered in ${org_name} | evergov`} </title>
-                    <link rel="canonical" href={`https://evergov.com/service/${id}/`} />
-
+                
                     <meta property="og:title" content={`${name} service offered in ${org_name} | evergov`} />
-                    <meta property="og:url" content={`https://evergov.com/service/${id}/`} />
-
+                
                     <meta name="description" content={`Forms, Price, Timings and Local Government Service Contact Details for ${name} offered in ${org_name} | evergov`} />
 
                     <meta property="og:description" content={`Forms, Price, Timings and Local Government Service Contact Details for ${name} offered in ${org_name} | evergov`} />

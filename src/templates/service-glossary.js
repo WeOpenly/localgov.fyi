@@ -109,7 +109,7 @@ const styles = theme => ({
         margin: 4
     },
     ser_gloss_gridItemLocation_mob_focus:{
-        boxShadow: `0 0 2px 0 ${theme.palette.primary['600']}`
+        boxShadow: `0 0 3px 0px ${theme.palette.primary['600']}`
     },
     ser_gloss_gridItemLocation_focus: {
         cursor: 'pointer',
@@ -121,7 +121,7 @@ const styles = theme => ({
         justifyContent: 'left',
         width: 320,
         height: 104,
-        boxShadow: `0 0 2px 0 ${theme.palette.primary['700']}`
+        boxShadow: `0 0 4px 0px ${theme.palette.primary['600']}`
     },
     ser_gloss_titleWrapper: {
         textAlign: 'center',
@@ -776,7 +776,7 @@ class ServiceGlossary extends Component {
                                         textDecoration: 'underline',
                             textDecorationStyle: 'dotted',
                             textDecorationColor: '#dcdcdc'}}>{this.state.searchText}
-                            " </b></Typography>)
+                            </b>"</Typography>)
                                 : ''}
                             {this.state.stateName
                                 ?  (<Typography

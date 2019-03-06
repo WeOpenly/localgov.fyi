@@ -219,7 +219,7 @@ class IndexHero extends Component {
                             ? classes.index_hero_ser_templates
                             : classes.index_hero_ser_templates_mob}>
                             <div className={classes.index_her_ser_templates_header}>
-                            <Button size="small" variant="disabled" style={{         color: fade('#fff', 0.75), letterSpacing: '4px'}}  disableFocusRipple disableRipple disableTouchRipple
+                            <Button size="small" variant="disabled" style={{  cursor:'none',       color: fade('#fff', 0.75), letterSpacing: '4px'}}  disableFocusRipple disableRipple disableTouchRipple disabled
                             > <TrendingUp
                                 className={classes.index_her_ser_templates_header_icon}
                                 fontSize="small"/>

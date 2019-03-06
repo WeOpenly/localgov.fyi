@@ -477,12 +477,14 @@ class ServiceDetailTemplate extends React.Component {
                             content={`${name} | ${org_name} | Evergov`}/>
                         <meta property="og:url" content={`https://evergov.com/service/${url_slug}/`}/>
 
-                        <meta
+                       {description ? (<meta
                             name="description"
-                            content={`Forms, Price, Checklist, FAQS, Timings and Local Government Service Contact Details for ${name} offered in ${org_name} | Evergov`}/>
+                            content={description.substr(0,300)}/>) : (<meta
+                            name="description"
+                            content={`${name} online in ${org_name} seamlessly with Evergov. Be it property taxes, utility bills, tickets or permits and licenses, you can find them all on Evergov.`}/>) }
                         <meta
                             name="keywords"
-                            content={`${name} online , ${org_name} , localgov `}/>
+                            content={`${name} online , ${org_name} services `}/>
                         <meta
                             property="og:description"
                             content={`Forms, Price, Checklist, FAQS, Timings and Local Government Service Contact Details for ${name} offered in ${org_name} | Evergov`}/>
@@ -514,15 +516,12 @@ class ServiceDetailTemplate extends React.Component {
                             logoSizes={serLogoSvg}/>
                     </Grid>
                  
-                    {someDetails && (
-                        <Grid item xs={12} md={8} className={classes.ser_detail_details}>
-                            {serRemFormCard}
-                            <ServiceDetail description={description} price={price} timingList={timingList} formList={formList} qaList={qaList} stepList={stepList} locList={locList} />
-                        </Grid>)}
-                    <Grid item xs={12} sm={12} md={someDetails ? 4 : 12}>
-                        {!someDetails && <Grid item xs={12} className={classes.ser_detail_details}>
-                            {serRemFormCard}
-                        </Grid>}
+         
+                    <Grid item xs={12} md={8} className={classes.ser_detail_details}>
+                        {serRemFormCard}
+                        <ServiceDetail description={description} price={price} timingList={timingList} formList={formList} qaList={qaList} stepList={stepList} locList={locList} />
+                    </Grid>
+                    <Grid item xs={12} sm={12} md={4}>
                         <div className={classes.other_ser_headerWrapper}>
                             <Typography variant="subheading">Additional services</Typography>
                         </div>

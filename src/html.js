@@ -79,7 +79,7 @@ export default class HTML extends React.Component {
             property="twitter:card"
             name="twitter:card"
             content="summary_large_image"/>
-          <meta property="twitter:site" name="twitter:site" content="@weopenly"/>
+          <meta property="twitter:site" name="twitter:site" content="@myevergov"/>
           <meta httpEquiv="x-ua-compatible" content="ie=edge"/>
           
           <meta

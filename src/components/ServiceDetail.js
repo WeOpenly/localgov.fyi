@@ -117,6 +117,20 @@ class ServiceDetail extends Component {
                     </Typography>  </Fragment>)}
                 </div>
             </Fragment>)
+        }else{
+                tabContent.push(<Fragment>
+                <div className={classes.ser_detail_dummyfaq}>
+                    <div className={classes.ser_detail_dummyfaq_details}>
+                          <PriorityHigh size="small" />
+                       <Typography variant="body1" gutterBottom>
+                          
+                        Looks like we don't have any details yet!
+                    </Typography>
+                        </div>
+                   
+                  
+                </div>
+            </Fragment>)
         }
         
         if(qaList){
@@ -172,7 +186,7 @@ class ServiceDetail extends Component {
     render() {
         const { classes, description, price, timingList, formList, qaList, stepList, locList } = this.props;
         let tabs = []
-        if (description){
+   
             tabs.push(
                 <Tab
                     classes={{
@@ -182,7 +196,7 @@ class ServiceDetail extends Component {
                     label="Details"
                     icon={<InfoOutlined />}/>
             )
-        }
+
     
         //  push this regardless
         tabs.push(<Tab  classes={{ root: classes.ser_detail_tab_tabRoot, selected: classes.ser_detail_tab_tabSelected }} label="FAQs" icon={<HelpOutline />} />)
@@ -218,7 +232,6 @@ class ServiceDetail extends Component {
                             <Tabs
             value={this.state.currentTab}
             onChange={this.handleChange}
-             variant="scrollable"
             classes={{ root: classes.ser_detail_tab_tabsRoot, indicator: classes.ser_detail_tab_tabsIndicator }}
             indicatorColor="primary"
             textColor="primary"

@@ -108,6 +108,21 @@ const styles = theme => ({
         height: 32,
         margin: 4
     },
+    ser_gloss_gridItemLocation_mob_focus:{
+        boxShadow: `0 0 2px 0 ${theme.palette.primary['600']}`
+    },
+    ser_gloss_gridItemLocation_focus: {
+        cursor: 'pointer',
+        padding: theme.spacing.unit*2,
+        display: 'flex',
+        flexWrap: 'wrap',
+        alignItems: 'center',
+        margin: theme.spacing.unit * 2,
+        justifyContent: 'left',
+        width: 320,
+        height: 104,
+        boxShadow: `0 0 2px 0 ${theme.palette.primary['700']}`
+    },
     ser_gloss_titleWrapper: {
         textAlign: 'center',
         padding: theme.spacing.unit * 4,
@@ -136,7 +151,7 @@ const styles = theme => ({
         flexWrap: 'wrap',
         alignItems: 'center',
         margin: theme.spacing.unit * 2,
-        boxShadow: `0 1px 2px 0 ${theme.palette.primary['100']}`,
+        boxShadow: `0 0px 1px 0 ${theme.palette.primary['200']}`,
         justifyContent: 'left',
         width: 320,
         height: 104
@@ -195,10 +210,17 @@ const styles = theme => ({
         paddingTop: theme.spacing.unit,
         marginTop: theme.spacing.unit * 4,
     },
+    ser_gloss_relatedSerDivider:{
+        marginTop: theme.spacing.unit * 2,
+        borderTop: `1px solid #dcdcdc`,
+    },
     ser_gloss_service_actions : {
         display: 'flex',
         justifyContent: 'center',
         alignItems: 'center'
+    },
+    ser_gloss_state_name:{
+        color: '#4c4d55'
     },
     ser_gloss_menu_button: {
         color: fade('#fff', 0.75)
@@ -413,6 +435,8 @@ class ServiceGlossary extends Component {
         const shareLink = windowLocation.href;
 
         let allOrgs = this.state.orgs;
+        let shouldFocus = false;
+        shouldFocus = this.state.searchText || this.state.stateName;
 
         const userLocReqFormRaw = <RawForm field_schema={JSON.stringify(genericFSchema)} id="user_request_missing_loc_ser" />
 
@@ -484,7 +508,7 @@ class ServiceGlossary extends Component {
             const state = org.area.hierarchy[org.area.hierarchy.length - 1].area_name;
 
             return (
-                    <Paper  onClick={() => this.handleOrgClick(organization.id, organization.org_name, idx, `/service/${org.url_slug}/`)} key={`${org.id}-${idx}-locaitemdesk`} className={classes.ser_gloss_gridItemLocation} elevation={1}>
+                    <Paper  onClick={() => this.handleOrgClick(organization.id, organization.org_name, idx, `/service/${org.url_slug}/`)} key={`${org.id}-${idx}-locaitemdesk`} className={shouldFocus ? classes.ser_gloss_gridItemLocation_focus: classes.ser_gloss_gridItemLocation} elevation={1}>
                             <div style={{width: '100%'}}>
                                 <Typography key={`${org.id}-${idx}-locaitemdesktitle`}  variant="subheading" component="h2" className={classes.ser_gloss_heading}>
                                     {strippedName}
@@ -515,6 +539,7 @@ class ServiceGlossary extends Component {
         background: '#fff',
         borderBottom: '1px solid #d4d4d4'}}
                     key={`${org.id}-${idx}-locitem`}
+                    className={shouldFocus ? classes.ser_gloss_gridItemLocation_mob_focus: ''}
                     onClick={() => this.handleOrgClick(organization.id, organization.org_name, idx, `/service/${org.url_slug}/`)}>
                       <div style={{width: '100%'}}>
                          <Typography key={`${org.id}-${idx}-locaitemmobtitle`}   variant="subheading" className={classes.ser_gloss_heading}>
@@ -734,18 +759,37 @@ class ServiceGlossary extends Component {
                 <Grid container className={classes.ser_gloss_countContainer}>
                     <Grid item sm={1}/>
                     <Grid item sm={8}>
-                        <Typography
+                        {!shouldFocus && (<Typography
                             style={{
-                            color: "#0a0a0a",
+                     
+                      
                             paddingLeft: '16px'
                         }}
-                            variant="caption">
+                            variant="body1">Currently offered in {allOrgs.length} locations</Typography>)}
                             {this.state.searchText
-                                ? (`Showing ${allOrgs.length} results matching ${this.state.searchText}`)
-                                : (`Currently offered in ${allOrgs.length} locations`)}
+                                ?  (<Typography
+                            style={{
+                            paddingLeft: '16px'
+                        }}
+                            variant="body1">Showing {allOrgs.length} results matching "<b style={{     
+                                       color: "#0a0a0a",
+                                        textDecoration: 'underline',
+                            textDecorationStyle: 'dotted',
+                            textDecorationColor: '#dcdcdc'}}>{this.state.searchText}
+                            " </b></Typography>)
+                                : ''}
                             {this.state.stateName
-                                ? (` in the state of ${this.state.stateName}`)
-                                : ''}</Typography>
+                                ?  (<Typography
+                            style={{
+                            paddingLeft: '16px'
+                        }}
+                            variant="body1">Currently offered in {allOrgs.length} locations in the State of "<b style={{     
+                                       color: "#0a0a0a",
+                                        textDecoration: 'underline',
+                            textDecorationStyle: 'dotted',
+                            textDecorationColor: '#dcdcdc'}}>{this.state.stateName}
+                            " </b></Typography>) 
+                                : ''}
                     </Grid>
                     <Grid item sm="auto"/>
                 </Grid>
@@ -765,11 +809,14 @@ class ServiceGlossary extends Component {
                 <Grid container className={classes.ser_gloss_relatedServiceContainer}>
                       <Grid item xs={1} />
                         <Grid item xs={10} >
+                            <div className={classes.ser_gloss_relatedSerDivider}>
+
+                            </div>
                       <Typography
                             style={{
-                            color: "#0a0a0a",
-                            padding: "16px 0 32px 0"
-                        }} variant="headline" component="h3">
+                            
+                            padding: "32px 0 16px 0"
+                        }} variant="title" component="h5">
                            More Services</Typography>
                            </Grid>
                             <Grid item xs={1}/>

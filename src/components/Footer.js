@@ -98,21 +98,31 @@ class Footer extends Component {
                     <a href="https://twitter.com/myevergov" className={dark ? classes.footer_a_dark : classes.footer_a}>Twitter </a>
                   </Typography>
                   <Typography>
-                    <a href="https://evergov.zendesk.com/hc/en-us" className={dark ? classes.footer_a_dark : classes.footer_a}>Support</a>
+                    <a  href="https://evergov.zendesk.com/hc/en-us" className={dark ? classes.footer_a_dark : classes.footer_a}>Support</a>
                   </Typography>
-                  <Link to="/locations/" style={{'paddingTop': 2}} className={dark ? classes.footer_link_dark : classes.footer_linkMobile}>
+                   
+                  <Link to="/locations/" className={dark ? classes.footer_link_dark : classes.footer_linkMobile}>
+                  <Typography className={dark ? classes.footer_link_dark : classes.footer_link}>
                       All Locations
+                                 </Typography>
                   </Link>
+       
               </div>
               <div className={classes.footer_right_items}>
               <Link to="/about/" className={dark ? classes.footer_link_dark : classes.footer_link}>
+                    <Typography className={dark ? classes.footer_link_dark : classes.footer_link}>
                 About
+                 </Typography>
               </Link>
               <Link to="/terms/" className={dark ? classes.footer_link_dark : classes.footer_link}>
+                <Typography className={dark ? classes.footer_link_dark : classes.footer_link}>
                 Terms
+                 </Typography>
               </Link>
               <Link to="/privacy/" className={dark ? classes.footer_link_dark : classes.footer_link}>
+              <Typography className={dark ? classes.footer_link_dark : classes.footer_link}>
                 Privacy
+                </Typography>
               </Link>
               </div>
           </footer>

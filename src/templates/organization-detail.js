@@ -120,18 +120,21 @@ other_orgs_from_state
       otherOrgsFromState = (<div
             style={{
             display: 'flex',
-            marginTop: '32px',
+            marginTop: '24px',
+            marginBottom: '24px',
             justifyContent: 'space-between',
             flexWrap: 'wrap'
         }}>
             {other_orgs_from_state.map((item, idx) => {
                 return (
              
-                       <Typography variant="body2">
-                              <Link to={`/organization/${item.url_slug}`} >
+             
+                              <a href={`/organization/${item.url_slug}`} >
+                                        <Typography variant="body2" style={{fontSize: '1.1rem'}}>
                   {item.org_name}
-                      </Link>
-              </Typography>
+                      </Typography>
+                      </a>
+          
               
                 )
             })}

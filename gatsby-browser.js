@@ -25,12 +25,12 @@ export const wrapRootElement = ({ element }) => {
 export const shouldUpdateScroll = ({routerProps: {
     location
   }, getSavedScrollPosition}) => {
+
   return getSavedScrollPosition(location)
 }
 
 
 export const onRouteUpdate = (state, page, pages) => {
-
   if (typeof window !== `undefined`) {
     window.scrollTo(0, 0)
   }

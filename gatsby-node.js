@@ -49,6 +49,12 @@ exports.createPages = ({graphql, actions}) => {
           contact_type
           contact_value
         }
+        other_orgs_from_state {
+          org_name
+          url_slug
+          id
+        }
+        other_orgs_from_state_heading 
         hierarchial_service_details {
           org {name}
           services {
@@ -185,6 +191,7 @@ allLogos : allFile(filter : {
 
 
       const orgTemplate = path.resolve(`src/templates/organization-detail.js`)
+
       _.each(result.data.allOrgsJson.edges, edge => {
         createPage({
           path : `organization/${edge.node.url_slug}/`,

@@ -139,7 +139,7 @@ fontFamily : '-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen-Sans,Ubu
             color: "rgba(30, 30, 50, 0.68)"
         },
         body2: {
-            fontSize: "0.995rem",
+            fontSize: "0.999rem",
             fontWeight: 300,
 fontFamily : '"Nunito Sans", "Trebuchet MS", "Arial", sans-serif',
             lineHeight: "1.46429em",

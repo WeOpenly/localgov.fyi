@@ -1,6 +1,6 @@
-/api/yusuf/* http://http://127.0.0.1:8010/:splat 200!
+/api/yusuf/* http://127.0.0.1:8010/:splat 200!
 
-/api/dsp/* https://https://dsp-dot-evergov-prod.appspot.com/:splat 200!
+/api/dsp/* http://127.0.0.1:8090/:splat 200!
 
 https://evergov.netlify.com/* https://evergov.com/:splat 301!
 

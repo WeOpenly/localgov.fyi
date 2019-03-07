@@ -2,10 +2,13 @@ import React from "react"
 import { connect } from "react-redux";
 
 import Helmet from "react-helmet";
+import {Link} from 'gatsby';
 
 import { withStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
+import Button from '@material-ui/core/Button';
+import MiniOrgDetail from '../components/MiniOrgDetail';
 
 import withRoot from '../withRoot';
 import OrgHeader from '../components/OrgHeader';
@@ -93,7 +96,16 @@ const {id, name} = this.props.pageContext.data;
   }
 
   render() {
-    const { id, hierarchial_service_details, contact_details, org_name, url_slug, area} = this.props.pageContext.data;
+const {
+  id,
+  hierarchial_service_details,
+  contact_details,
+  org_name,
+  url_slug,
+  area,
+  other_orgs_from_state_heading,
+other_orgs_from_state
+} = this.props.pageContext.data;
     const name = org_name;
     const services = hierarchial_service_details;
     const { hierarchy } = area;
@@ -102,6 +114,29 @@ const {id, name} = this.props.pageContext.data;
     const { logoSizes } = this.props.pageContext;
     
 
+    let otherOrgsFromState = null;
+    if (other_orgs_from_state){
+      otherOrgsFromState = (<div
+            style={{
+            display: 'flex',
+            marginTop: '32px',
+            justifyContent: 'space-between',
+            flexWrap: 'wrap'
+        }}>
+            {other_orgs_from_state.map((item, idx) => {
+                return (
+             
+                       <Typography variant="body2">
+                              <Link to={`organization/${item.url_slug}`} >
+                  {item.org_name}
+                      </Link>
+              </Typography>
+              
+                )
+            })}
+        </div>)
+    }
+ 
 
     let orgLogoSvg = null
     if (logoSizes && logoSizes.fluid){
@@ -285,6 +320,17 @@ const {id, name} = this.props.pageContext.data;
           </Grid>
           <Grid item xs={12}>
             {allServiceList.length ? allServiceList : <Typography variant="body1">No services found.</Typography>}
+          </Grid>
+        </Grid>
+        <Grid container spacing={16} item xs={12} md={12} className={classes.org_detail_other_orgs_container}>
+          <Grid item xs={12} md={6}>
+            <Typography variant="title" component="h4">
+             {other_orgs_from_state_heading}
+            </Typography>
+          </Grid>
+        
+          <Grid item xs={12}>
+            {otherOrgsFromState}
           </Grid>
         </Grid>
       </Grid>

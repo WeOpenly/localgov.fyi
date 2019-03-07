@@ -22,7 +22,7 @@ import Layout from "../components/layout";
 
 import ServiceGrid from '../components/ServiceGrid';
 import IndexHero from '../components/IndexHero';
-
+import Footer from '../components/Footer';
 
 import {trackView, trackClick} from "../components/common/tracking";
 import { teal } from '@material-ui/core/colors';
@@ -548,7 +548,7 @@ class Index extends React.Component {
 
     const otherLinksComp = (<div style={{
        color: "#fff",
-       paddingBottom: '40px',
+       paddingBottom: '8px',
         backgroundImage: `linear-gradient(to right bottom, #6f47ff, #5d38f2, #4829e4, #3017d7, #0000ca)`
     }}>
         <Grid container className={classes.index_otherLinksDivider}>
@@ -571,10 +571,12 @@ class Index extends React.Component {
             </Grid>
               <Grid className='index_grid_item' item xs='auto' sm={1} md={2}/>
         </Grid>
+        <div className={this.state.isMobile ? classes.index_footer_mob : classes.index_footer}>
+          <Footer dark={true} page={this.props.location.pathname} />
+        </div>
       </div>)
 
     return (
-      <Layout location={this.props.location}>
         <Fragment>
           <Helmet
           defaultTitle = {`Evergov: Find All Government Services in a Single Place`}
@@ -605,7 +607,6 @@ class Index extends React.Component {
           {serviceNotifyForm}
           {serviceDeliveryFeedbackForm}
         </Fragment>
-      </Layout>
     );
   }
 }

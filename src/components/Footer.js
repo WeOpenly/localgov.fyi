@@ -26,7 +26,15 @@ footer_footer : {
     paddingTop: theme.spacing.unit *2,
     paddingBottom: theme.spacing.unit * 2,
   },
+footer_footer_dark:{
+      display: 'flex',
+    width: '100%',
+    flexWrap: 'wrap',
+    borderTop: `1px solid rgba(255, 255, 255, 0.2)`,
+    padding: theme.spacing.unit *2,
 
+    marginTop: theme.spacing.unit *7
+},
 footer_link : {
     textDecoration: 'none',
     '&:hover': {
@@ -57,6 +65,21 @@ footer_a : {
       textDecoration: 'underline',
     },
   },
+  footer_a_dark:{
+     padding: theme.spacing.unit,
+    color: '#fff',
+    textDecoration: 'none',
+    '&:hover': {
+      textDecoration: 'underline',
+    },
+  },
+footer_link_dark:{
+  textDecoration: 'none',
+  color: '#fff',
+    '&:hover': {
+      textDecoration: 'underline',
+    },
+},
   footer_grid: {
 
   },
@@ -66,30 +89,30 @@ footer_a : {
 class Footer extends Component {
   render() {
     const { classes } = this.props;
-    const { page } = this.props;
+    const { page, dark } = this.props;
     
     return (
-          <footer className={classes.footer_footer}>
+          <footer className={dark ? classes.footer_footer_dark : classes.footer_footer}>
               <div className={classes.footer_left_items}>
                   <Typography>
-                    <a href="https://twitter.com/myevergov" className={classes.footer_a}>Twitter </a>
+                    <a href="https://twitter.com/myevergov" className={dark ? classes.footer_a_dark : classes.footer_a}>Twitter </a>
                   </Typography>
                   <Typography>
-                    <a href="https://evergov.zendesk.com/hc/en-us" className={classes.footer_a}>Support</a>
+                    <a href="https://evergov.zendesk.com/hc/en-us" className={dark ? classes.footer_a_dark : classes.footer_a}>Support</a>
                   </Typography>
-                  <Link to="/locations/" className={classes.footer_linkMobile}>
-                    <Typography color="primary">All Locations</Typography>
+                  <Link to="/locations/" style={{'paddingTop': 2}} className={dark ? classes.footer_link_dark : classes.footer_linkMobile}>
+                      All Locations
                   </Link>
               </div>
               <div className={classes.footer_right_items}>
-              <Link to="/about/" className={classes.footer_link}>
-                <Typography color="primary">About</Typography>
+              <Link to="/about/" className={dark ? classes.footer_link_dark : classes.footer_link}>
+                About
               </Link>
-              <Link to="/terms/" className={classes.footer_link}>
-                <Typography color="primary">Terms</Typography>
+              <Link to="/terms/" className={dark ? classes.footer_link_dark : classes.footer_link}>
+                Terms
               </Link>
-              <Link to="/privacy/" className={classes.footer_link}>
-                <Typography color="primary">Privacy</Typography>
+              <Link to="/privacy/" className={dark ? classes.footer_link_dark : classes.footer_link}>
+                Privacy
               </Link>
               </div>
           </footer>

@@ -19,12 +19,11 @@ const styles = theme => ({
   },
   default_template_main: {
     width: '100%',
-    minHeight: '100vh',
-    paddingBottom: 70,
+        height: "100%",
   },
 default_template_mainMobile : {
     width: '100%',
-    minHeight: '100vh',
+height : "100%",
     paddingBottom: 114,
   },
   detail_template_footer : {
@@ -56,9 +55,6 @@ class DetailTemplate extends React.Component {
             </Grid>
             <Grid item xs={1} />
           </Grid>
-        </div>
-        <div className={classes.detail_template_footer}>
-          <Footer page={this.props.location.pathname} />
         </div>
       </div>
     );

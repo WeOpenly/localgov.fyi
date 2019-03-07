@@ -169,6 +169,12 @@ service_detail_footer : {
 },
 serviceDetailStepNumber:{
     marginRight: theme.spacing.unit *2
+},
+ser_detail_footer : {
+    width: '100%',
+    borderTop: `1px solid #dcdcdc`,
+    paddingTop: theme.spacing.unit,
+    marginTop: theme.spacing.unit *6
 }
 });
 
@@ -538,7 +544,9 @@ class ServiceDetailTemplate extends React.Component {
        
                    
                     {serRemFormRaw}
-          
+              <div className={classes.ser_detail_footer}>
+          <Footer page={this.props.location.pathname} />
+        </div>
           
             </DetailTemplate>
         )

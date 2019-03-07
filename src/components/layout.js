@@ -11,14 +11,12 @@ import withRoot from '../withRoot';
 
 const styles = theme => ({
   layout_root: {
-    display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'flex-start',
+    width: '100%',
+    height: '100%',
     background: theme.palette.common.white,
   },
   layout_main: {
     width: '100%',
-    paddingBottom: theme.spacing.unit*7,
   },
   layout_mainMobile: {
     width: '100%',
@@ -27,13 +25,11 @@ const styles = theme => ({
   layout_footer: {
     background: '#fafafa',
     width: '100%',
-    marginTop: theme.spacing.unit * 4,
     // marginTop: 70,
   },
   layout_footerMobile: {
     width: '100%',
     background: '#fafafa',
-    marginTop: theme.spacing.unit * 2,
     // marginTop: -114,
   },
 });

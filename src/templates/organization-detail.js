@@ -59,9 +59,10 @@ const styles = theme => ({
     justifyContent: 'flex-end',
   },
      org_detail_footer:{
+       width: '100%',
        borderTop:`1px solid #dcdcdc`,
        paddingTop: theme.spacing.unit,
-       marginTop: theme.spacing.unit *4,
+       marginTop: theme.spacing.unit *6,
     }
 });
 
@@ -127,7 +128,7 @@ other_orgs_from_state
                 return (
              
                        <Typography variant="body2">
-                              <Link to={`organization/${item.url_slug}`} >
+                              <Link to={`/organization/${item.url_slug}`} >
                   {item.org_name}
                       </Link>
               </Typography>
@@ -334,7 +335,11 @@ other_orgs_from_state
           </Grid>
         </Grid>
       </Grid>
+       <div className={classes.org_detail_footer}>
+          <Footer page={this.props.location.pathname} />
+        </div>
         </DetailTemplate>
+        
     );
   }
 }

@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import {connect} from "react-redux";
 
 import ContentLoader from "react-content-loader"
-
+import {Link} from 'gatsby';
 import {navigate} from '@reach/router';
 import Helmet from "react-helmet";
 import {isMobileOnly} from 'react-device-detect';
@@ -63,21 +63,20 @@ index_section2 : {
 index_popularServicesHeader : {
     display: 'flex',
     justifyContent: 'center',
-    marginTop: theme.spacing.unit * 10,
-    marginBottom: theme.spacing.unit * 5
+    marginTop: theme.spacing.unit * 6,
+    marginBottom: theme.spacing.unit * 6
   },
 index_section3 : {
-    marginLeft: theme.spacing.unit * -2,
-    marginRight: theme.spacing.unit * -2
+  backgroundColor : '#fff'
   },
 index_section3Mobile : {
     width: '100%'
   },
 index_otherCitiesHeader : {
+    color: '#fff',
     display: 'flex',
     justifyContent: 'center',
-    marginTop: theme.spacing.unit * 10,
-    marginBottom: theme.spacing.unit * 2
+    marginTop: theme.spacing.unit * 7,
   },
 index_linksWrapper : {
     display: 'flex',
@@ -145,6 +144,26 @@ index_index_grid_item:{
   flexWrap: 'wrap',
   padding: theme.spacing.unit,
   marginTop: theme.spacing.unit * 4,
+},
+index_otherLinksContainer:{
+  display: 'flex',
+  justifyContent: 'space-evenly',
+  flexWrap: 'wrap',
+padding : theme.spacing.unit,
+marginTop : theme.spacing.unit * 4,
+},
+index_otherLinkItem : {
+  width: '25%',
+  color: '#fff',
+  'flex-grow': 1,
+  padding: '16px',
+  fontSize: '1.25rem',
+},
+index_otherLinkItem_mob : {
+  width: '50%',
+color : '#fff',
+  'flex-grow': 1,
+  padding: '16px'
 }
 });
 
@@ -337,7 +356,9 @@ class Index extends React.Component {
     this.clickGridItem = this
       .clickGridItem
       .bind(this);
-
+    this.state = {
+      isMobile: false
+    }
   }
 
 
@@ -350,6 +371,9 @@ class Index extends React.Component {
       dispatch(trackView('index', null, null, null));
     }
 
+    this.setState({
+      isMobile: isMobileOnly
+    })
   }
 
   clickSuggestion(url, name, index) {
@@ -376,35 +400,20 @@ class Index extends React.Component {
     const {org, services, state_org} = search.location;
     const {showLogin, showRegister} = account;
 
-    const otherLinks = shuffledArray
-      .slice(0, 3)
-      .map((item, idx) => {
+    const otherLinks = shuffledArray.slice(0, 8).map((item, idx) => {
 
-        return (
-          <Grid className={classes.index_index_grid_item} item xs={2}>
-            <a
-              key={item.name}
-              onClick={() => this.clickSuggestion(item.url, item.name, idx)}>
-              <Typography
-                variant="body1"
-                color="primary"
-                key={item.name}
-                className={classes.index_otherLinks}>
-                {item.name}
-              </Typography>
-            </a>
-          </Grid>
-        );
+        return (<Typography variant="body1" className={this.state.isMobile ? classes.index_otherLinkItem_mob : classes.index_otherLinkItem}>
+                  <Link to={`${item.url}`} style={{color: '#fff'}} >
+                    {item.name}
+                  </Link>
+              </Typography>);
       });
 
-    otherLinks.push((
-      <Grid className={classes.index_index_grid_item} item xs={2}>
-        <a onClick={() => this.clickDiscoverMore()} className={classes.index_locationsLink}>
-          <Typography variant="body1" color="primary" className={classes.index_otherLinks}>
-            Discover more
-          </Typography>
-        </a>
-      </Grid>
+    otherLinks.push((<Typography variant="body2" style={{padding: '16px'}}>
+         <Link to={`locations`} style={{color: '#fff'}} >
+              More Locations
+          </Link>
+      </Typography>
     ))
 
     const servicesFromOrg = search.allFromOrg.length >= 8
@@ -494,8 +503,8 @@ class Index extends React.Component {
               <Grid className='index_grid_item' item xs={1} md={3}/>
               <Grid className='index_grid_item' item xs={10} md={6}>
                     {search.locationLoading ? null : (<Typography
-                  variant="display1"
-                  component="h1"
+                  variant="display2"
+                  component="h2"
                   className={classes.index_popularServicesHeader}>
                   Evergov {org ? org.name : ''}
                 </Typography>)}
@@ -519,8 +528,8 @@ class Index extends React.Component {
               <Grid className='index_grid_item' item xs={1} md={3}/>
               <Grid className='index_grid_item' item xs={10} md={6}>
                 <Typography
-                  variant="display1"
-                  component="h1"
+                  variant="display2"
+                  component="h2"
                   className={classes.index_popularServicesHeader}>
                   Find the most sought out services
                 </Typography>
@@ -536,24 +545,34 @@ class Index extends React.Component {
                   services={stateServicesConcat}/>
               }
             </div></Fragment>)
-    const otherLinksComp = (
-      <Fragment>
-        <Grid
 
-        container
-        className={classes.index_otherLinksDivider}>
-                  <Grid className='index_grid_item' item xs={2}/>
-                  <Grid className='index_grid_item' item xs={8}>
-                    <Divider/>
-                  </Grid>
-                  <Grid className='index_grid_item' item xs={2}/>
-                </Grid>
-                <Grid className={classes.otherLinksIndexGrid} container align="center">
-                  <Grid className='index_grid_item' item xs={2}/> {otherLinks}
-                  <Grid className='index_grid_item' item xs={2}/>
-                </Grid>
-                </Fragment>
-      )
+    const otherLinksComp = (<div style={{
+       color: "#fff",
+       paddingBottom: '40px',
+        backgroundImage: `linear-gradient(to right bottom, #6f47ff, #5d38f2, #4829e4, #3017d7, #0000ca)`
+    }}>
+        <Grid container className={classes.index_otherLinksDivider}>
+             <Grid className='index_grid_item' item xs={1} md={3}/>
+              <Grid className='index_grid_item' item xs={10} md={6}>
+                <Typography
+                  variant="display2"
+                  component="h2"
+                  className={classes.index_otherCitiesHeader}>
+                  Discover Evergov
+                </Typography>
+              </Grid>
+              <Grid item xs={1} md={3}/>
+        </Grid>
+        
+        <Grid className={classes.otherLinksIndexGrid} container align="center">
+            <Grid className='index_grid_item' item xs='auto' sm={1} md={2}/> 
+              <Grid className={classes.index_otherLinksContainer} item xs={12} md={8}>
+                {otherLinks}
+            </Grid>
+              <Grid className='index_grid_item' item xs='auto' sm={1} md={2}/>
+        </Grid>
+      </div>)
+
     return (
       <Layout location={this.props.location}>
         <Fragment>

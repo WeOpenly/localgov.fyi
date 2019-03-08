@@ -36,12 +36,14 @@ footer_footer_dark:{
     marginTop: theme.spacing.unit *7
 },
 footer_link : {
+  color: '#5627ff',
     textDecoration: 'none',
     '&:hover': {
       textDecoration: 'underline',
     },
   },
 footer_linkMobile : {
+color : '#5627ff',
     textDecoration: 'none',
     '&:hover': {
       textDecoration: 'underline',
@@ -58,6 +60,7 @@ footer_linkMobile : {
     justifyContent: 'space-evenly'
   },
 footer_a : {
+  color: '#5627ff',
     padding: theme.spacing.unit,
     color: theme.palette.primary['500'],
     textDecoration: 'none',
@@ -101,12 +104,11 @@ class Footer extends Component {
                     <a  href="https://evergov.zendesk.com/hc/en-us" className={dark ? classes.footer_a_dark : classes.footer_a}>Support</a>
                   </Typography>
                    
-                  <Link to="/locations/" className={dark ? classes.footer_link_dark : classes.footer_linkMobile}>
-                  <Typography className={dark ? classes.footer_link_dark : classes.footer_link}>
-                      All Locations
+
+            <Typography >
+              <a href="/locations/" className={dark ? classes.footer_a_dark : classes.footer_a}>All Locations</a>
                                  </Typography>
-                  </Link>
-       
+           
               </div>
               <div className={classes.footer_right_items}>
               <Link to="/about/" className={dark ? classes.footer_link_dark : classes.footer_link}>

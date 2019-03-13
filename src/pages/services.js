@@ -28,17 +28,27 @@ const styles = theme => ({
     },
     ser_list_container: {
         display: 'flex',
-        padding: theme.spacing.unit
+        padding: theme.spacing.unit,
+        '@media only screen and (max-width: 768px)': {
+            flexDirection: 'column'
+        }
     },
     ser_list_cat_item: {
         display: 'flex',
         width: theme.spacing.unit *20,
-        padding: theme.spacing.unit
+        padding: theme.spacing.unit,
+        '@media only screen and (max-width: 768px)': {
+            width: '33%'
+        }
     },
     ser_list_cat_list_container: {
         display: 'flex',
         flexDirection: 'column',
-        padding: theme.spacing.unit
+        padding: theme.spacing.unit,
+        '@media only screen and (max-width: 768px)': {
+            flexDirection: 'row',
+            flexWrap: 'wrap'
+        }
     },
     set_list_link_anchor: {
         textDecoration: 'none',
@@ -52,6 +62,12 @@ const styles = theme => ({
             height: '2px',
             width: '100%',
             background: `linear-gradient(bottom, #5627FF 0%, #5627FF 40%, transparent 100%)`
+        },
+        '@media only screen and (max-width: 768px)': {
+            '&:hover': {
+                color: '#fff',
+                background: theme.palette.primary['700']
+            }
         }
     },
     ser_list_service_card_container: {
@@ -180,17 +196,17 @@ class ServiceList extends Component {
             <Fragment>
                 <HeaderWithSearch/>
                 <Grid container>
-                    <Grid item xs="auto" sm={4}/>
-                    <Grid className={classes.ser_list_heading} item xs={4} align="center">
+                    <Grid item xs={1} sm={4}/>
+                    <Grid className={classes.ser_list_heading} item xs={10} sm={4} align="center">
                         <Typography variant="display1">
                             Services on Evergov
                         </Typography>
                     </Grid>
-                    <Grid item xs="auto" sm={4}/>
+                    <Grid item xs={1} sm={4}/>
                 </Grid>
                 <Grid container>
                     <Grid item xs="auto" sm={1}/>
-                    <Grid className={classes.ser_list_container} item xs={10} align="left">
+                    <Grid className={classes.ser_list_container} item xs={12} sm={10} align="left">
 
                         <div className={classes.ser_list_cat_list_container}>
                             {catComponents}

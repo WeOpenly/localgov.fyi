@@ -2,7 +2,6 @@ import React, {Component, Fragment} from 'react';
 import Link from 'gatsby-link';
 import {navigate} from '@reach/router';
 
-
 import {isMobileOnly} from 'react-device-detect';
 import {connect} from "react-redux";
 import Masonry from 'react-masonry-component';
@@ -12,7 +11,7 @@ import AppBar from '@material-ui/core/AppBar';
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 import Divider from '@material-ui/core/Divider';
-import { graphql } from "gatsby";
+import {graphql} from "gatsby";
 import withRoot from '../withRoot';
 import HeaderWithSearch from '../components/HeaderWithSearch';
 
@@ -31,30 +30,30 @@ const styles = theme => ({
   section: {
     marginBottom: theme.spacing.unit
   },
-  masonryGrid:{
+  masonryGrid: {
     display: 'flex',
     marginLeft: '-10px',
-    width:'auto'
+    width: 'auto'
   },
-  masonryGridColumn :{
+  masonryGridColumn: {
     paddingLeft: '30px',
     backgroundClip: 'padding-box'
   },
-gridBlockTitle:{
-  paddingTop: theme.spacing.unit*2,
-},
+  gridBlockTitle: {
+    paddingTop: theme.spacing.unit *2
+  },
   link: {
     padding: theme.spacing.unit
   },
-gridBlockItem:{
-  width: 200,
-},
+  gridBlockItem: {
+    width: 200
+  },
   heading: {
     fontWeight: 600
   },
   listItem: {
     display: 'flex',
-    marginTop: theme.spacing.unit ,
+    marginTop: theme.spacing.unit,
     marginLeft: theme.spacing.unit
   }
 });
@@ -71,7 +70,7 @@ class Locations extends Component {
     this
       .props
       .trackClick('locations', 'list', id, name, index);
-      navigate(url);
+    navigate(url);
   }
 
   componentDidMount() {
@@ -85,97 +84,103 @@ class Locations extends Component {
     const locLen = this.props.data.orgs.details.length;
 
     let stateGroupMap = {};
-    
-    this.props.data.orgs.details.map((loc, idx) => {
-      const { org_name, id, area, url_slug} = loc['_source']
-      const {hierarchy} = area;
 
-      for (const hie of hierarchy){
-    
-      const {area_name, area_classification, area_classsification_level_number} = hie;
- 
-        if (area_classsification_level_number === 1 && hierarchy.length > 1){
-       
+    this
+      .props
+      .data
+      .orgs
+      .details
+      .map((loc, idx) => {
+        const {org_name, id, area, url_slug} = loc['_source']
+        const {hierarchy} = area;
 
-          if (stateGroupMap[area_name]){
+        for (const hie of hierarchy) {
 
-            const vals = stateGroupMap[area_name];
-            vals.push({ org_name: org_name, id: id, url_slug: url_slug})
-            stateGroupMap[area_name] = vals;
+          const {area_name, area_classification, area_classsification_level_number} = hie;
+
+          if (area_classsification_level_number === 1 && hierarchy.length > 1) {
+
+            if (stateGroupMap[area_name]) {
+
+              const vals = stateGroupMap[area_name];
+              vals.push({org_name: org_name, id: id, url_slug: url_slug})
+              stateGroupMap[area_name] = vals;
+            } else {
+
+              stateGroupMap[area_name] = [
+                {
+                  org_name: org_name,
+                  id: id,
+                  url_slug: url_slug
+                }
+              ]
+            }
           }
-          else{
-   
-stateGroupMap[area_name] = [
-  {
-    org_name: org_name,
-    id: id,
-    url_slug: url_slug
-  }
-]
-          }    
+
         }
-        
-      }
-    });
+      });
     let sortedStateGroup = [];
-    for (const [state, orgs] of Object.entries(stateGroupMap)) {
+    for (const [state,
+      orgs]of Object.entries(stateGroupMap)) {
       sortedStateGroup.push({state: state, orgs: orgs});
     }
     sortedStateGroup.sort((a, b) => a.state.localeCompare(b.state))
-    
+
     let locComponents = []
     for (const sortedState of sortedStateGroup) {
-        const {state, orgs} = sortedState;
-        const orgComps = orgs.map((org, idx) => {
-          const { org_name, id, url_slug} = org;
-          
-          let strippedName = org_name.replace("Independent City of ", "")
-          strippedName = strippedName.replace("City & County of ", "")
-          strippedName = strippedName.replace("City and County of ", "")
-          strippedName = strippedName.replace("City Council of ", "")
-          strippedName = strippedName.replace("Metro Government of ", "")
-          strippedName = strippedName.replace("Metropolitan Government of ", "")
-          strippedName = strippedName.replace("City of ", "")
-          strippedName = strippedName.replace("Borough of ", "")
-          strippedName = strippedName.replace("County of ", "")
-          strippedName = strippedName.replace("Town of ", "")
+      const {state, orgs} = sortedState;
+      const orgComps = orgs.map((org, idx) => {
+        const {org_name, id, url_slug} = org;
 
-          return (
-            <div key={`${id}-${idx}`} className={classes.gridBlockListItem}>
-              <a
-                style={{
-                textDecoration: 'underline',
-                cursor: 'pointer'
-              }}
-                onClick={() => this.handleOrgClick(id, org_name, idx, `/organization/${url_slug}/`)}
-                className={classes.link}>
-                <Typography variant="body1">
-                  {strippedName}
-                </Typography>
-              </a>
-            </div>
-          )
-        });
+        let strippedName = org_name.replace("Independent City of ", "")
+        strippedName = strippedName.replace("City & County of ", "")
+        strippedName = strippedName.replace("City and County of ", "")
+        strippedName = strippedName.replace("City Council of ", "")
+        strippedName = strippedName.replace("Metro Government of ", "")
+        strippedName = strippedName.replace("Metropolitan Government of ", "")
+        strippedName = strippedName.replace("City of ", "")
+        strippedName = strippedName.replace("Borough of ", "")
+        strippedName = strippedName.replace("County of ", "")
+        strippedName = strippedName.replace("Town of ", "")
 
-        const stateComp = (<div key={`${state}-container`} className={classes.gridBlockItem}>
+        return (
+          <div key={`${id}-${idx}`} className={classes.gridBlockListItem}>
+            <a
+              style={{
+              textDecoration: 'underline',
+              cursor: 'pointer'
+            }}
+              onClick={() => this.handleOrgClick(id, org_name, idx, `/organization/${url_slug}/`)}
+              className={classes.link}>
+              <Typography variant="body1">
+                {strippedName}
+              </Typography>
+            </a>
+          </div>
+        )
+      });
+
+      const stateComp = (
+        <div key={`${state}-container`} className={classes.gridBlockItem}>
           <div className={classes.gridBlockTitle}>
 
-                <Typography id={`${state}`}  variant="subheading" className={classes.heading}>
-                  <a href={`#${state}`}>
-                    {state}
-                  </a>
-                </Typography>
+            <Typography id={`${state}`} variant="subheading" className={classes.heading}>
+              <a href={`#${state}`}>
+                {state}
+              </a>
+            </Typography>
           </div>
-              <div className={classes.gridBlockBody}>
-              {orgComps}
-              </div>
-            </div>);
-        locComponents.push(stateComp);
+          <div className={classes.gridBlockBody}>
+            {orgComps}
+          </div>
+        </div>
+      );
+      locComponents.push(stateComp);
     }
 
     return (
       <Fragment>
-        <HeaderWithSearch />
+        <HeaderWithSearch/>
         <Grid container className={classes.titleWrapper}>
           <Grid item xs={2}/>
           <Grid item xs={8} align="center">
@@ -189,11 +194,10 @@ stateGroupMap[area_name] = [
         <Grid container>
           <Grid item md={2}/>
           <Grid item md={8} align="center">
-            <Masonry
-            >
-                {locComponents}
+            <Masonry >
+              {locComponents}
             </Masonry>
-     
+
           </Grid>
           <Grid item md={2}/>
         </Grid>
@@ -201,8 +205,6 @@ stateGroupMap[area_name] = [
     );
   }
 }
-
-
 
 export const query = graphql `
 query orgsQuery {

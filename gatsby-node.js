@@ -147,33 +147,28 @@ allLogos : allFile(filter : {
         reject(new Error(result.errors))
       }
 
-      if(result.data === undefined){
+      if (result.data === undefined) {
         console.log(result.data, "rejecting page creation");
         reject(new Error());
       }
-      
-     
+
       const orgLogoMap = {}
       const serviceLogoMap = {}
 
-    
+      // logos
 
-      // logos 
-
-      if (result.data && result.data.allLogos){
-          _.each(result.data.allLogos.edges, edge => {
-            if(edge.node.name.endsWith("_org_logo")){
-              orgLogoMap[edge.node.name] = edge.node.childImageSharp
-            }
-            if (edge.node.name.endsWith("_ser_logo")) {
-              serviceLogoMap[edge.node.name] = edge.node.childImageSharp
-            }
-          });
+      if (result.data && result.data.allLogos) {
+        _.each(result.data.allLogos.edges, edge => {
+          if (edge.node.name.endsWith("_org_logo")) {
+            orgLogoMap[edge.node.name] = edge.node.childImageSharp
+          }
+          if (edge.node.name.endsWith("_ser_logo")) {
+            serviceLogoMap[edge.node.name] = edge.node.childImageSharp
+          }
+        });
       }
-   
-      
-  // service glossary page
 
+      // service glossary page
 
       const serGlossaryTemplate = path.resolve(`src/templates/service-glossary.js`)
       _.each(result.data.allServiceGlossaryJson.edges, edge => {
@@ -184,66 +179,63 @@ allLogos : allFile(filter : {
             data: edge.node
           }
         })
-    })
+      })
 
-
-    // org pages
-
+      // org pages
 
       const orgTemplate = path.resolve(`src/templates/organization-detail.js`)
 
       _.each(result.data.allOrgsJson.edges, edge => {
         createPage({
-          path : `organization/${edge.node.url_slug}/`,
+          path: `organization/${edge.node.url_slug}/`,
           component: slash(orgTemplate),
           context: {
             data: edge.node,
-            logoSizes : orgLogoMap[`${edge.node.id}_org_logo`]
+            logoSizes: orgLogoMap[`${edge.node.id}_org_logo`]
           }
         })
       })
 
+      // service page
 
-
-    // service page
-
-    
       const serTemplate = path.resolve(`src/templates/service-detail-2.js`)
-  
+
       _.each(result.data.allSersJson.edges, edge => {
-          const {node} = edge;
-          const {service_reminder_bp_json} = node;
-          const ser_rem_has_data = service_reminder_bp_json  && 'field_schema' in service_reminder_bp_json && service_reminder_bp_json['field_schema'] !== null
-          const {service, org_details, additional_sers} = node;
-        
-            createPage({
-              path: `service/${service.url_slug}/`,
-              component: slash(serTemplate),
-              context: {
-                data: {
-                  id: service.id,
-                  url_slug: service.url_slug,
-                  contact_details: service.contact_details,
-                  service_delivery_enabled : service.delivery_enabled,
-                  name: service.service_name,
-                  allForms: service.service_forms || [],
-                  description: service.service_description,
-                  price: service.price,
-                  allSteps: service.service_steps || [],
-                  allMems: [],
-                  alllocations: [],
-                  alltimings: service.service_timing || [],
-                  allfaq: service.service_faq || [],
-                  service_reminder_bp_json: ser_rem_has_data ? service_reminder_bp_json : null,
-                  service_del_links: service.service_del_links || [],
-                  org_id: org_details.id,
-                  org_slug: org_details.url_slug,
-                  org_name: org_details.org_name,
-                  otherServices: additional_sers,
-                  logoSizes : serviceLogoMap[`${service.id}_ser_logo`]
-                }
-              }
-            })
+        const {node} = edge;
+        const {service_reminder_bp_json} = node;
+        const ser_rem_has_data = service_reminder_bp_json && 'field_schema' in service_reminder_bp_json && service_reminder_bp_json['field_schema'] !== null
+        const {service, org_details, additional_sers} = node;
+
+        createPage({
+          path: `service/${service.url_slug}/`,
+          component: slash(serTemplate),
+          context: {
+            data: {
+              id: service.id,
+              url_slug: service.url_slug,
+              contact_details: service.contact_details,
+              service_delivery_enabled: service.delivery_enabled,
+              name: service.service_name,
+              allForms: service.service_forms || [],
+              description: service.service_description,
+              price: service.price,
+              allSteps: service.service_steps || [],
+              allMems: [],
+              alllocations: [],
+              alltimings: service.service_timing || [],
+              allfaq: service.service_faq || [],
+              service_reminder_bp_json: ser_rem_has_data
+                ? service_reminder_bp_json
+                : null,
+              service_del_links: service.service_del_links || [],
+              org_id: org_details.id,
+              org_slug: org_details.url_slug,
+              org_name: org_details.org_name,
+              otherServices: additional_sers,
+              logoSizes: serviceLogoMap[`${service.id}_ser_logo`]
+            }
+          }
+        })
       });
 
       return
@@ -251,8 +243,5 @@ allLogos : allFile(filter : {
   })
 }
 
-// exports.onCreateBabelConfig = ({ actions}) => {
-//   actions.setBabelPlugin({
-//     name: `@babel/plugin-transform-regenerator`,
-//   })
-// }
+// exports.onCreateBabelConfig = ({ actions}) => {   actions.setBabelPlugin({
+// name: `@babel/plugin-transform-regenerator`,   }) }

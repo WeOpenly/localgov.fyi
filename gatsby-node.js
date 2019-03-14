@@ -172,15 +172,13 @@ allLogos : allFile(filter : {
 
       const serGlossaryTemplate = path.resolve(`src/templates/service-glossary.js`)
       _.each(result.data.allServiceGlossaryJson.edges, edge => {
-        if (edge.node.org && edge.node.org.area) {
-          createPage({
-            path: `services/${edge.node.service_name_slug}/`,
-            component: slash(serGlossaryTemplate),
-            context: {
-              data: edge.node
-            }
-          })
-        }
+        createPage({
+          path: `services/${edge.node.service_name_slug}/`,
+          component: slash(serGlossaryTemplate),
+          context: {
+            data: edge.node
+          }
+        })
       })
 
       // org pages

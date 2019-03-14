@@ -1,10 +1,10 @@
 import React, {Component, Fragment} from 'react';
 import Link from 'gatsby-link';
 import {navigate} from '@reach/router';
-
+import {graphql} from "gatsby";
 import {isMobileOnly} from 'react-device-detect';
 import {connect} from "react-redux";
-
+import Helmet from "react-helmet";
 import {withStyles} from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import Grid from '@material-ui/core/Grid';
@@ -15,8 +15,9 @@ import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
 import Typography from '@material-ui/core/Typography';
 import Divider from '@material-ui/core/Divider';
-import {graphql} from "gatsby";
+
 import withRoot from '../withRoot';
+import Footer from '../components/Footer';
 import HeaderWithSearch from '../components/HeaderWithSearch';
 import ServiceTemplateCard from '../components/ServiceTemplateCard';
 import {trackView, trackClick} from "../components/common/tracking";
@@ -59,9 +60,9 @@ const styles = theme => ({
             position: 'absolute',
             bottom: '1px',
             left: 0,
-            height: '2px',
+            height: '3px',
             width: '100%',
-            background: `linear-gradient(bottom, #5627FF 0%, #5627FF 40%, transparent 100%)`
+            background: `linear-gradient(bottom, #AB93FF 0%, #5627FF 55%,transparent 60%, transparent 100%)`
         },
         '@media only screen and (max-width: 768px)': {
             '&:hover': {
@@ -74,6 +75,12 @@ const styles = theme => ({
         display: 'flex',
         flexWrap: 'wrap',
         padding: theme.spacing.unit
+    },
+    ser_list_footer: {
+        width: '100%',
+        borderTop: `1px solid #dcdcdc`,
+        paddingTop: theme.spacing.unit,
+        marginTop: theme.spacing.unit * 6
     }
 });
 
@@ -89,9 +96,9 @@ const LiteSerTemplate = (props) => {
             borderTop: `2px solid #AB93FF`,
             boxShadow: '0px 3px 5px 0px rgba(0,0,0,0.1),0px 1px 1px 0px rgba(0,0,0,0.07),0px 2px 6px 1px rgba(0,0,0,0.06)'
         }}
-            onClick={() => navigate(`/services/${props.slug}`, {replace: true})}>
+            onClick={() => navigate(`/services/${props.slug}`)}>
             <CardContent>
-                <Typography variant="bosy2" gutterBottom>
+                <Typography variant="body2" gutterBottom>
                     {props.name}
                 </Typography>
                 <Typography variant="caption">
@@ -166,7 +173,11 @@ class ServiceList extends Component {
                     style={{
                     display: 'flex',
                     flexDirection: 'column',
-                    margin: 16
+                    margin: 16,
+                    width: '100%',
+                    '@media only screen and (max-width: 768px)': {
+                        alignItems: 'center'
+                    }
                 }}
                     id={`${cat}`}>
                     <Typography variant="subheading">
@@ -185,15 +196,35 @@ class ServiceList extends Component {
             catComponents.push(
                 <div className={classes.ser_list_cat_item}>
                     <AnchorLink
-                        className={classes.set_list_link_anchor}
+                        style={{
+                        textDecoration: 'none'
+                    }}
                         offset='48'
-                        href={`#${cat}`}>{cat}</AnchorLink>
+                        href={`#${cat}`}>
+                        <Typography className={classes.set_list_link_anchor} variant="body1">{cat}
+                        </Typography>
+                    </AnchorLink>
                 </div>
             );
         }
 
         return (
             <Fragment>
+                <Helmet defaultTitle={`Services on Evergov`} titleTemplate={`%s | evergov`}>
+                    <meta name="og:type" content="website"/>
+                    <meta
+                        property="og:site_name"
+                        content={`Find All Government Services in a Single Place`}/>
+
+                    <link
+                        rel="canonical"
+                        href={`https://evergov.com${this.props.location.pathname}`}/>
+                    <meta
+                        property="og:url"
+                        content={`https://evergov.com${this.props.location.pathname}`}/>
+                    <html lang="en"/>
+
+                </Helmet>
                 <HeaderWithSearch/>
                 <Grid container>
                     <Grid item xs={1} sm={4}/>
@@ -218,6 +249,9 @@ class ServiceList extends Component {
                     </Grid>
                     <Grid item xs="auto" sm={1}/>
                 </Grid>
+                <div className={classes.ser_list_footer}>
+                    <Footer page={this.props.location.pathname}/>
+                </div>
             </Fragment>
         );
     }

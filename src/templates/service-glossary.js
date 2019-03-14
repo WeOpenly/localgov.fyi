@@ -113,7 +113,7 @@ const styles = theme => ({
     },
     ser_gloss_gridItemLocation_focus: {
         cursor: 'pointer',
-        padding: theme.spacing.*2,
+        padding: theme.spacing.unit *2,
         display: 'flex',
         flexWrap: 'wrap',
         alignItems: 'center',
@@ -146,7 +146,7 @@ const styles = theme => ({
     },
     ser_gloss_gridItemLocation: {
         cursor: 'pointer',
-        padding: theme.spacing.*2,
+        padding: theme.spacing.unit *2,
         display: 'flex',
         flexWrap: 'wrap',
         alignItems: 'center',
@@ -194,7 +194,7 @@ const styles = theme => ({
     },
     ser_gloss_servicename_description: {
         height: 136,
-        padding: `${theme.spacing.unit * 2}px 0 ${theme.spacing.unit * 2}px ${theme.spacing.*2}px`
+        padding: `${theme.spacing.unit * 2}px 0 ${theme.spacing.unit * 2}px ${theme.spacing.unit *2}px`
     },
     ser_gloss_searchContainer: {
         marginTop: '-40px'

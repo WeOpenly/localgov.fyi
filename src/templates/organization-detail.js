@@ -212,6 +212,7 @@ other_orgs_from_state
                 <ServiceCard
                   resultType='service'
                   id={ser.id}
+                  org_name={org_name}
                   listIndex={idx}
                   toLink={`/service/${ser.url_slug}/`}
                   title={ser.service_name}

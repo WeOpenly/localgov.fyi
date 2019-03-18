@@ -8,7 +8,7 @@ import {
     FacebookShareButton,
     TwitterShareButton,
 } from 'react-share';
-
+import { encode } from 'universal-base64';
 import { withStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
 import CardActions from '@material-ui/core/CardActions';
@@ -136,7 +136,6 @@ class SearchResult extends Component {
         const { trackClick, deliveryLink } = this.props;
         const windowGlobal = typeof window !== 'undefined' && window;
         trackClick('external', 'service_delivery_link', deliveryLink.url, deliveryLink.link_name, 0);
-        windowGlobal.open(deliveryLink.url);
     }
 
     handleMoreVertClick(event) {
@@ -152,11 +151,23 @@ class SearchResult extends Component {
     }
 
     render() {
-        const { classes, title, description, deliveryLink, toLink, id } = this.props;
+        const { classes, title, description, deliveryLink, toLink, id, org_name } = this.props;
         const { anchorEl, copied } = this.state;
         const windowGlobal = typeof window !== 'undefined' && window;
         const windowLocation = windowGlobal.location ? windowGlobal.location : {};
         const shareLink = windowLocation.origin + toLink + '/';
+        let redir = null;
+        if (deliveryLink && 'url' in deliveryLink){
+            const data = {
+                's': title,
+                'o': org_name,
+                'u': deliveryLink.url
+            }
+            const encodedData = encode(JSON.stringify(data))
+            redir = `/deep_link/?data=${encodedData}`
+        }
+
+        
         let key = title
         if (this.props.key) {
             key = this.props.key
@@ -207,7 +218,7 @@ class SearchResult extends Component {
                     </CardContent>
 
                     <CardActions className={classes.service_card_cardActions}>
-                        {(deliveryLink && deliveryLink.link_name) && <Button size="small" color="primary" onClick={this.handleDeliveryClick}>
+                    {(deliveryLink && deliveryLink.link_name) && <Button size="small" color="primary" href={redir}  target="_blank" onClick={this.handleDeliveryClick}>
                             {deliveryLink.link_name}
                         </Button>}
                         {this.state.logincheckloading ? null : ''} 

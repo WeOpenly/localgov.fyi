@@ -70,6 +70,7 @@
         "react-responsive-carousel": "^3.1.43",
         "react-share": "^2.3.1",
         "react-slick": "^0.23.2",
+        "react-social-sharing": "^3.0.1",
         "react-spinkit": "^3.0.0",
         "react-stonecutter": "^0.3.9",
         "react-stripe-elements": "^2.0.1",

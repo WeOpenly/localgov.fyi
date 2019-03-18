@@ -2,28 +2,10 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Button from '@material-ui/core/Button';
 import Dialog from '@material-ui/core/Dialog';
-import DialogTitle from '@material-ui/core/DialogTitle';
-import DialogContent from '@material-ui/core/DialogContent';
-import DialogContentText from '@material-ui/core/DialogContentText';
-import DialogActions from '@material-ui/core/DialogActions';
 import Typography from '@material-ui/core/Typography';
 import Grid from '@material-ui/core/Grid';
 import ShareIcon from '@material-ui/icons/Share';
 import {withStyles} from '@material-ui/core/styles';
-// import {
-//     ShareButtons,
-//     generateShareIcon,
-// } from 'react-share';
-
-// const FacebookIcon = generateShareIcon('facebook');
-// const TwitterIcon = generateShareIcon('twitter');
-
-// const {
-//     FacebookShareButton,
-//     TwitterShareButton,
-// } = ShareButtons;
-
-import withRoot from '../withRoot';
 
 const styles = theme => ({
     root: {
@@ -38,10 +20,9 @@ const styles = theme => ({
         right: theme.spacing.unit * 2,
         zIndex: 1
     },
-    dialogContainer:{
-        padding: theme.spacing.unit*2,
+    dialogContainer: {
+        padding: theme.spacing.unit *2
     }
-
 
 });
 
@@ -66,18 +47,20 @@ class Share extends React.Component {
             <div className={classes.root}>
                 <Dialog open={open} onClose={this.handleClose}>
                     <Grid container spacing={32} className={classes.dialogContainer}>
-                        <Grid item xs={12} align="center" >
+                        <Grid item xs={12} align="center">
                             <Typography variant="subheading" align="center" gutterBottom>
                                 COPY LINK TO SHARE
                             </Typography>
                         </Grid>
                         <Grid item xs={12} align="center">
                             <Typography variant="body2" component="code" align="center" gutterBottom>
-                                {windowGlobal ? windowGlobal.location.href : ''}
+                                {windowGlobal
+                                    ? windowGlobal.location.href
+                                    : ''}
                             </Typography>
                             <br/>
                         </Grid>
-                        <Grid item xs={12} align="center" >
+                        <Grid item xs={12} align="center">
                             <Grid container spacing={16}>
                                 <Grid item xs={5}/>
                                 <Grid item xs={1}>
@@ -95,11 +78,10 @@ class Share extends React.Component {
                             <Grid container>
                                 <Grid item xs={5}/>
                                 <Grid item xs={2}>
-                                    <Button onClick={this.handleClose} variant="contained"
-                                        aria-label="close" >
+                                    <Button onClick={this.handleClose} variant="contained" aria-label="close">
                                         Close
                                     </Button>
-                                  
+
                                 </Grid>
                                 <Grid item xs={5}/>
                             </Grid>

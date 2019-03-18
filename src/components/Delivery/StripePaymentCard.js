@@ -1,26 +1,25 @@
-
-import React, { Fragment } from 'react';
+import React, {Fragment} from 'react';
 import PropTypes from 'prop-types';
-import { connect } from "react-redux";
+import {connect} from "react-redux";
 import queryString from 'query-string';
 import Button from '@material-ui/core/Button';
 
-import { injectStripe } from 'react-stripe-elements';
-import { CardElement} from 'react-stripe-elements';
+import {injectStripe} from 'react-stripe-elements';
+import {CardElement} from 'react-stripe-elements';
 
-import { withStyles } from '@material-ui/core/styles';
+import {withStyles} from '@material-ui/core/styles';
 
 const windowGlobal = typeof window !== 'undefined'
     ? window
     : null
 
 const styles = theme => ({
-    service_flow_dialog: {
-
-    },
-    CardElement:{
-        marginTop: theme.spacing.unit*2,
-        marginBottom: theme.spacing.unit*2,
+    service_flow_dialog: {},
+    CardElement: {
+        marginTop: theme.spacing.unit *3,
+        marginBottom: theme.spacing.unit *4,
+        padding: theme.spacing.unit *2,
+        border: '1px solid #d4d4d4'
     }
 });
 
@@ -28,42 +27,53 @@ const createOptions = (fontSize, padding) => {
     return {
         style: {
             base: {
-                fontSize: 32,
+                fontSize: '18px',
                 color: '#3C17FF',
                 background: '#fefefe',
-                letterSpacing: '0.025em',
+                letterSpacing: '0.045em',
                 fontFamily: 'monospace',
                 '::placeholder': {
-                    color: '#3C17FF',
-                },
-                padding: 24,
+                    color: '#6F47FF'
+                }
             },
             invalid: {
-                color: '#9e2146',
-            },
-        },
+                color: '#9e2146'
+            }
+        }
     };
 };
 
 class StripePaymentCard extends React.Component {
     constructor(props) {
         super(props);
-        this.handleSubmit = this.handleSubmit.bind(this);
-        this.handleChange = this.handleChange.bind(this);
-        this.handleClick = this.handleClick.bind(this);
-        this.handleFocus = this.handleFocus.bind(this);
-        this.handleReady = this.handleReady.bind(this);
+        this.handleSubmit = this
+            .handleSubmit
+            .bind(this);
+        this.handleChange = this
+            .handleChange
+            .bind(this);
+        this.handleClick = this
+            .handleClick
+            .bind(this);
+        this.handleFocus = this
+            .handleFocus
+            .bind(this);
+        this.handleReady = this
+            .handleReady
+            .bind(this);
     }
 
-    handleSubmit(ev){
-        const { onSubmit} = this.props;
+    handleSubmit(ev) {
+        const {onSubmit} = this.props;
 
         ev.preventDefault();
         if (this.props.stripe) {
-            this.props.stripe
+            this
+                .props
+                .stripe
                 .createToken()
-                .then((payload) =>{
-                    if(payload && payload.token){
+                .then((payload) => {
+                    if (payload && payload.token) {
                         onSubmit(payload.token)
                     }
                 });
@@ -72,7 +82,7 @@ class StripePaymentCard extends React.Component {
         }
     }
 
-     handleChange = (change) => {
+    handleChange = (change) => {
         console.log('[change]', change);
     }
 
@@ -83,7 +93,7 @@ class StripePaymentCard extends React.Component {
     handleFocus = () => {
         console.log('[focus]');
     }
-    
+
     handleReady = () => {
         console.log('[ready]');
     }
@@ -96,19 +106,14 @@ class StripePaymentCard extends React.Component {
                 <label>
                     Card details
                     <CardElement
-                    className={classes.CardElement}
+                        className={classes.CardElement}
                         onBlur={this.handleBlur}
                         onChange={this.handleChange}
                         onFocus={this.handleFocus}
                         onReady={this.handleReady}
-                        {...createOptions(this.props.fontSize)}
-                    />
+                        {...createOptions(this.props.fontSize)}/>
                 </label>
-                <Button
-                    type="submit"
-                    variant="outlined"
-                    color="primary"
-                >
+                <Button type="submit" variant="outlined" color="primary">
                     Pay
                 </Button>
             </form>

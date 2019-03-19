@@ -23,7 +23,7 @@ const styles = theme => ({
     },
     share_box_title:{
         color: '#fff',
-        padding: theme.spacing.unit,
+        padding: theme.spacing.unit/2,
     },
     share_box_hero:{
         textAlign: 'center',
@@ -91,11 +91,11 @@ class ShareBox extends React.Component {
                     <Facebook style={{ boxShadow: '0px 3px 5px 0px rgba(0,0,0,0.1),0px 1px 1px 0px rgba(0,0,0,0.07),0px 2px 6px 1px rgba(0,0,0,0.06)'}} IconCircleSolid small link={linkToShare} message={fbShareMessage}/>
                     <CopyToClipboard onCopy={this.onLinkCopy} text={linkMsg}>
                        {this.state.copied ? (<Button size="small" variant="contained" className={classes.share_box_button}>
-                            <Tooltip title="Link Copied!" placement="right-start">
+                            <Tooltip style={{ maxHeight: '50px' }} title="Link Copied!" placement="right-start">
                                 <DoneAll style={{ fontSize: "26px" }} />
                             </Tooltip>
                         </Button>) : (<Button size="small" variant="contained" className={classes.share_box_button}>
-                                <Tooltip title="Copy Link To Share"  placement="right-start">
+                                <Tooltip style={{maxHeight: '50px'}} title="Copy Link To Share"  placement="right-start">
                                 <InsertLink style={{ fontSize: "26px" }} />
                             </Tooltip>
                         </Button>)}

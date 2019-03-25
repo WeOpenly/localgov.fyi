@@ -10,6 +10,8 @@ import DialogTitle from '@material-ui/core/DialogTitle';
 import Paper from '@material-ui/core/Paper';
 import SvgIcon from '@material-ui/core/SvgIcon';
 import Mood from '@material-ui/icons/Mood';
+import HighLightOutlined from '@material-ui/icons/HighLightOutlined';
+
 import SentimentDissatisfied from '@material-ui/icons/SentimentDissatisfied';
 import Cancel from '@material-ui/icons/Cancel';
 import MoodBad from '@material-ui/icons/MoodBad';
@@ -144,7 +146,19 @@ const styles = theme => ({
     position: 'absolute',
     top: '8px',
     right: '8px'
-  }
+  },
+ser_del_link_icymi:{
+  display: 'flex',
+  alignItems: 'center',
+  paddingTop: theme.spacing.unit,
+},
+  ser_del_link_icymi_icon:{
+    color: theme.palette.primary['100'],
+    margin: theme.spacing.unit,
+  },
+ser_del_link_icymi_text:{
+  color: theme.palette.primary['100']
+},
 });
 
 const windowGlobal = typeof window !== 'undefined' && window
@@ -381,6 +395,13 @@ class ServiceDeliveryLink extends Component {
               <SentimentDissatisfied className={classes.ser_del_link_feedbackIcon}/>
               It could have been better.
             </Button>
+            <div className={classes.ser_del_link_icymi}>
+              <HighLightOutlined style={{fontSize: '20px'}} className={classes.ser_del_link_icymi_icon} /> <Typography
+                variant="caption"
+                className={classes.ser_del_link_icymi_text}>
+                In case you missed it, the link opens in a new tab of your browser
+              </Typography>
+            </div>
           </div>}
           {(!showSatisfied && !success && !failure && !submitting) && <Fragment>
             <div className={classes.ser_del_link_satisfiedDialog}>

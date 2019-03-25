@@ -112,9 +112,7 @@ class ServiceNotifyDialog extends Component {
   }
 
 
-
-  render() {
- 
+  render() { 
     return null
   }
 }

@@ -10,7 +10,7 @@ import DialogTitle from '@material-ui/core/DialogTitle';
 import Paper from '@material-ui/core/Paper';
 import SvgIcon from '@material-ui/core/SvgIcon';
 import Mood from '@material-ui/icons/Mood';
-import HighLightOutlined from '@material-ui/icons/HighLightOutlined';
+import HighLightOutlined from '@material-ui/icons/HighlightOutlined';
 
 import SentimentDissatisfied from '@material-ui/icons/SentimentDissatisfied';
 import Cancel from '@material-ui/icons/Cancel';

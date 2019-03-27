@@ -146,11 +146,17 @@ class FormStepDetails extends React.Component {
         }
 
         let trimmedFS = null;
+        let trimmedUi = null;
         let trimmedFD = null;
         
         if (step_details && step_details.field_schema) {
             trimmedFS = step_details.field_schema.trim(); 
             trimmedFS = JSON.parse(trimmedFS);         
+        }
+
+        if (step_details && step_details.ui_schema) {
+            trimmedUi = step_details.ui_schema.trim();
+            trimmedUi = JSON.parse(trimmedUi);
         }
 
         if (step_details && step_details.form_data) {
@@ -161,6 +167,7 @@ class FormStepDetails extends React.Component {
         return (
             <Form schema={trimmedFS}
                 formData={trimmedFD}
+                uiSchema={trimmedUi}
                 className={classes.form}
                 onSubmit={this.submitForm}
                 widgets={widgets}

@@ -129,17 +129,23 @@ class CallApiStepDetails extends React.Component {
             return null;
         }
 
-        const {amount_to_pay} = step_details;
+        const {amount_to_pay, amount_to_pay_display, screenshot} = step_details;
         
         return (
             <Grid container spacing={16} align="center" >
                 <Grid item xs='auto' sm={2} />
                     <Grid item xs={12} sm={8} >
                     <Typography variant="headline" component="h1" className={classes.amount}>
-                        {amount_to_pay}
+                        {amount_to_pay_display}
                     </Typography>
                     </Grid> 
                 <Grid item xs='auto' sm={2} />
+                {screenshot ? (<Fragment>
+                <Grid item xs='auto' sm={1} />
+                    <Grid item xs={12} sm={10} >
+                        <img style={{ boxShadow: '0px 0px 4px 2px rgba(30, 30, 50,0.12)'}} src={`data:image/jpeg;base64,${screenshot}`} width="400px" />
+                    </Grid>
+                    <Grid item xs='auto' sm={1} /></Fragment>) : null}
                 <Grid item xs='auto' sm={2} />
                     <Grid item xs={12} sm={8} >
                         <Button

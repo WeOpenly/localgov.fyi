@@ -95,7 +95,10 @@ class CallApiStepDetails extends React.Component {
     }
 
     consentSubmit() {
-        this.props.handleNext('user_amount_to_pay_consent', {payment_amount_consented: true} );
+        const { stepDetails } = this.props.delivery;
+        const { step_details } = stepDetails;
+        const { amount_to_pay } = step_details;
+        this.props.handleNext('user_amount_to_pay_consent', { payment_amount_consented: true, payment_amount: amount_to_pay});
     }
 
     componentWillMount() {

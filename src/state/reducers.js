@@ -4,6 +4,7 @@ import {account} from '../components/Account/reducer';
 import {profile} from '../components/Profile/reducer';
 import {delivery} from '../components/Delivery/reducer';
 import {userRequests} from '../components/UserRequests/reducer';
+import {serTemplate} from '../components/ServiceTemplate/reducer';
 
 import {reducer as formReducer} from 'redux-form';
 
@@ -13,5 +14,6 @@ export default combineReducers({
     account,
     profile,
     delivery,
-    userRequests
+    userRequests,
+    serTemplate
 })

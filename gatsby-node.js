@@ -26,7 +26,7 @@ exports.createPages = ({graphql, actions}) => {
       node {
         id service_name service_name_slug service_glossary_description
         orgs {
-          organization {org_name id}
+          organization {org_name id logo_url}
           area {
             hierarchy {area_classification area_id area_name area_classsification_level_number}
           }
@@ -176,7 +176,7 @@ allLogos : allFile(filter : {
           path: `services/${edge.node.service_name_slug}/`,
           component: slash(serGlossaryTemplate),
           context: {
-            data: edge.node
+            data: edge.node,
           }
         })
       })

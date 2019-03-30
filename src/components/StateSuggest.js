@@ -15,77 +15,6 @@ import {withStyles} from '@material-ui/core/styles';
 import InputBase from '@material-ui/core/InputBase';
 import {throws} from 'assert';
 
-const suggestions = [
-    {
-        label: 'Afghanistan'
-    }, {
-        label: 'Aland Islands'
-    }, {
-        label: 'Albania'
-    }, {
-        label: 'Algeria'
-    }, {
-        label: 'American Samoa'
-    }, {
-        label: 'Andorra'
-    }, {
-        label: 'Angola'
-    }, {
-        label: 'Anguilla'
-    }, {
-        label: 'Antarctica'
-    }, {
-        label: 'Antigua and Barbuda'
-    }, {
-        label: 'Argentina'
-    }, {
-        label: 'Armenia'
-    }, {
-        label: 'Aruba'
-    }, {
-        label: 'Australia'
-    }, {
-        label: 'Austria'
-    }, {
-        label: 'Azerbaijan'
-    }, {
-        label: 'Bahamas'
-    }, {
-        label: 'Bahrain'
-    }, {
-        label: 'Bangladesh'
-    }, {
-        label: 'Barbados'
-    }, {
-        label: 'Belarus'
-    }, {
-        label: 'Belgium'
-    }, {
-        label: 'Belize'
-    }, {
-        label: 'Benin'
-    }, {
-        label: 'Bermuda'
-    }, {
-        label: 'Bhutan'
-    }, {
-        label: 'Bolivia, Plurinational State of'
-    }, {
-        label: 'Bonaire, Sint Eustatius and Saba'
-    }, {
-        label: 'Bosnia and Herzegovina'
-    }, {
-        label: 'Botswana'
-    }, {
-        label: 'Bouvet Island'
-    }, {
-        label: 'Brazil'
-    }, {
-        label: 'British Indian Ocean Territory'
-    }, {
-        label: 'Brunei Darussalam'
-    }
-];
 
 function renderSuggestion(suggestion, {query, isHighlighted}) {
     const matches = match(suggestion.label, query);
@@ -147,14 +76,13 @@ function getSuggestionValue(suggestion) {
 
 const styles = theme => ({
     gloss_state_suggest_root: {
-        padding: '4px 8px',
+        marginBottom: theme.spacing.unit * 2,
         display: 'flex',
         justifyContent: 'center',
-        width: '100%',
+        width: '280px',
         boxShadow: `0 0 1px 0 ${theme.palette.primary['300']}`
     },
     gloss_state_suggest_root_mob: {
-        padding: '4px 8px',
         marginTop: theme.spacing.unit *2,
         display: 'flex',
         alignItems: 'center',
@@ -163,11 +91,11 @@ const styles = theme => ({
     },
     input: {
         marginLeft: 12,
-        padding: 8,
         flex: 1
     },
     iconButton: {
-        padding: 12
+        padding: 6,
+        fontSize: '10px'
     },
     divider: {
         width: 1,
@@ -176,12 +104,12 @@ const styles = theme => ({
     },
     suggestionsContainerOpen: {
         position: 'absolute',
-        zIndex: 100,
-        width: 320,
-        left: 8,
-        top: 56,
+        zIndex: 210,
+        width: 270,
+        right: 8,
+        top: 40,
         border: `1px solid ${theme.palette.primary['100']}`,
-         borderRadius: '2px',
+        borderRadius: '2px',
        boxShadow: `0 5px 10px 0 #f1f1f1`,
     },
     suggestion: {
@@ -190,7 +118,7 @@ const styles = theme => ({
     suggestionsList: {
         margin: 0,
         padding: 0,
-        height: theme.spacing.unit * 25,
+        height: 'auto',
         overflowY: 'scroll',
         listStyleType: 'none'
     },
@@ -199,7 +127,7 @@ const styles = theme => ({
     }
 });
 
-class IntegrationAutosuggest extends React.Component {
+class StateSuggest extends React.Component {
     state = {
         single: '',
         popper: '',
@@ -275,6 +203,8 @@ class IntegrationAutosuggest extends React.Component {
     }
     render() {
         const {classes} = this.props;
+    
+
         const autosuggestProps = {
             renderInputComponent: this.renderInputComponent,
             suggestions: this.state.single ? this.state.filteredSuggestions: this.state.suggestions,
@@ -290,6 +220,7 @@ class IntegrationAutosuggest extends React.Component {
             <Fragment>
                 <Autosuggest
                     {...autosuggestProps}
+
                     inputProps={{
                     classes,
                     placeholder: 'Filter by state',
@@ -317,8 +248,8 @@ class IntegrationAutosuggest extends React.Component {
     }
 }
 
-IntegrationAutosuggest.propTypes = {
+StateSuggest.propTypes = {
     classes: PropTypes.object.isRequired
 };
 
-export default withStyles(styles)(IntegrationAutosuggest);
+export default withStyles(styles)(StateSuggest);

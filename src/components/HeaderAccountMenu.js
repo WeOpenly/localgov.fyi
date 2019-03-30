@@ -44,7 +44,6 @@ h_a_m_login_button:{
   fontWeight: '600'
 },
 h_a_m_signup_button:{
-  border: '1px solid #fff',
 
 },
 h_a_m_loging_signup_container:{
@@ -198,7 +197,7 @@ class HeaderAccountMenu extends Component {
                   color="inherit">Login</Button>
       
             <Button
-            variant="outlined"
+            variant="text"
             href="/signup"
             className={classes.h_a_m_signup_button}
               color="inherit">SignUp</Button>

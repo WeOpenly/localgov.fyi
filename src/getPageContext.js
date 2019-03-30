@@ -95,8 +95,7 @@ const theme = createMuiTheme({
         ]
     },
     typography: {
-        fontFamily: '-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen-Sans,Ubuntu,Cantarell,' +
-                '"Helvetica Neue", sans-serif',
+        fontFamily: '-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen-Sans,Ubuntu,Cantarell,"Helvetica Neue", sans-serif',
         fontSize: 14,
         fontWeightLight: 300,
         fontWeightRegular: 400,
@@ -104,7 +103,7 @@ const theme = createMuiTheme({
         display2: {
             fontSize: "1.75rem",
             fontWeight: 300,
-            fontFamily: '"Poppins", "Lucida Sans", "Arial", sans-serif',
+                fontFamily: '"Poppins", -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen-Sans,Ubuntu,Cantarell,"Helvetica Neue", sans-serif',
             lineHeight: "1.20588em",
             marginLeft: "-.04em",
             color: "rgba(30, 30, 50,0.54)"
@@ -112,50 +111,50 @@ const theme = createMuiTheme({
         display1: {
             fontSize: "1.6rem",
             fontWeight: 600,
-            fontFamily: '"Poppins", "Lucida Sans", "Arial", sans-serif',
+                fontFamily: '"Poppins", -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen-Sans,Ubuntu,Cantarell,"Helvetica Neue", sans-serif',
             lineHeight: "1.20588em",
             marginLeft: "-.04em",
-            color: "rgba(30, 30, 50,0.74)"
+            color: "rgba(30, 30, 50,0.94)"
         },
         headline: {
             fontSize: "1.5rem",
             fontWeight: 700,
-            fontFamily: '"Nunito Sans", "Trebuchet MS", "Arial", sans-serif',
+                fontFamily: '"Nunito Sans",  -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen-Sans,Ubuntu,Cantarell,"Helvetica Neue", sans-serif',
             lineHeight: "1.35417em",
             color: "rgba(30, 30, 50,0.84)"
         },
         title: {
             fontSize: "1.3125rem",
             fontWeight: 300,
-            fontFamily: '"Poppins", "Lucida Sans", "Arial", sans-serif',
+                fontFamily: '"Poppins",  -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen-Sans,Ubuntu,Cantarell,"Helvetica Neue", sans-serif',
             lineHeight: "1.16667em",
             color: "rgba(30, 30, 50,0.84)"
         },
         subheading: {
             fontSize: "1.125rem",
             fontWeight: 700,
-            fontFamily: '"Nunito Sans",  "Trebuchet MS", "Arial", sans-serif',
+                fontFamily: '"Nunito Sans",  -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen-Sans,Ubuntu,Cantarell,"Helvetica Neue", sans-serif',
             lineHeight: "2.0em",
             color: "rgba(30, 30, 50, 0.68)"
         },
         body2: {
             fontSize: "0.999rem",
             fontWeight: 300,
-            fontFamily: '"Nunito Sans", "Trebuchet MS", "Arial", sans-serif',
+                fontFamily: '"Nunito Sans",  -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen-Sans,Ubuntu,Cantarell,"Helvetica Neue", sans-serif',
             lineHeight: "1.46429em",
             color: "rgba(30, 30, 50,0.99)"
         },
         body1: {
             fontSize: "0.975rem",
             fontWeight: 300,
-            fontFamily: '"Nunito Sans",  "Trebuchet MS", "Arial", sans-serif',
+                fontFamily: '"Nunito Sans",  -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen-Sans,Ubuntu,Cantarell,"Helvetica Neue", sans-serif',
             lineHeight: "1.46429em",
             color: "rgba(30, 30, 50,0.87)"
         },
         caption: {
             fontSize: "0.87rem",
             fontWeight: 300,
-            fontFamily: '"Nunito Sans",  "Trebuchet MS", "Arial", sans-serif',
+                fontFamily: '"Nunito Sans",  -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen-Sans,Ubuntu,Cantarell,"Helvetica Neue", sans-serif',
             lineHeight: "1.375em",
             color: "rgba(30, 30, 50,0.54)"
         },
@@ -164,7 +163,7 @@ const theme = createMuiTheme({
             textTransform: "uppercase",
             letterSpaceing: '4px',
             fontWeight: 700,
-            fontFamily: '"Nunito Sans", "Trebuchet MS", "Arial", sans-serif'
+                fontFamily: '"Nunito Sans", -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen-Sans,Ubuntu,Cantarell,"Helvetica Neue", sans-serif',
         }
     }
 });

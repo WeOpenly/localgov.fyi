@@ -88,7 +88,7 @@ class FlowSummary extends React.Component {
                 </ListItem>
             )
         }
-
+        summaryList.reverse()
         content = (
             <List>
                 {summaryList}

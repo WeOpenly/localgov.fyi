@@ -59,7 +59,7 @@ function ObjectFieldTemplate(props) {
 
 function CustomFieldTemplate(props) {
     const { id, classNames, label, help, required, description, errors, children } = props;
-
+    console.log(props);
     return (
         <div className={classNames}>
             {description}
@@ -67,8 +67,9 @@ function CustomFieldTemplate(props) {
             <Typography variant="caption" color="error">
                 {errors}
             </Typography>
-
+            <Typography variant="caption" color="default">
             {help}
+            </Typography>
         </div>
     );
 }
@@ -88,13 +89,14 @@ function ErrorListTemplate(props) {
 
 class matTextWidget extends React.Component {
     render() {
-        const { label, value, required, title, name } = this.props;
+        const { label, value, required, title, name, disabled } = this.props;
         return (<TextField
             id={`outlined-${title}`}
             label={label}
             value={value}
             required={required}
             placeholder={title}
+            disabled={disabled}
             onChange={(event) => this.props.onChange(event.target.value)}
             margin="dense"
             fullWidth

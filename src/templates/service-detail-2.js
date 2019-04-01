@@ -287,6 +287,7 @@ class ServiceDetailTemplate extends React.Component {
             const { field_schema, ui_schema, thanks_msg, greeting_msg} = service_reminder_bp_json;
             serRemFormCard = <SerRemCard
             key={id}
+            service_delivery_enabled={service_delivery_enabled}
             field_schema={field_schema}
             greeting_msg={greeting_msg}
             thanks_msg={thanks_msg}
@@ -299,6 +300,7 @@ class ServiceDetailTemplate extends React.Component {
             serRemFormCard = <SerRemCard
                 key = "generic_ser_rem_form"
                 field_schema={JSON.stringify(genericFSchema)}
+                service_delivery_enabled={service_delivery_enabled}
                 greeting_msg={null}
                 thanks_msg={null}
                 ui_schema={null}
@@ -437,7 +439,7 @@ class ServiceDetailTemplate extends React.Component {
 
         const otherSersComp = otherServices
             .slice(0, 3)
-            .map((service, idx) => <ServiceCard
+            .map((service, idx) => <div style={{marginBottom: '24px'}}><ServiceCard
                 key={`service-card-other-${service.id}`}
                 resultType='service'
                 id={service.id}
@@ -447,7 +449,7 @@ class ServiceDetailTemplate extends React.Component {
                 description={service.service_description}
                 deliveryLink={service.service_del_links && service.service_del_links[0]
                 ? service.service_del_links[0]
-                : null}/>);
+                : null}/></div>);
 
         const jsonLd = {
             "@context": "http://schema.org",

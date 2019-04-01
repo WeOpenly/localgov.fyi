@@ -43,13 +43,16 @@ const styles = theme => ({
         justifyContent: 'center'
     },
     ser_gloss_search_paper_root: {
-        padding: '8px',
+        padding: '4px',
         margin: theme.spacing.unit,
         display: 'flex',
         alignItems: 'center',
-        boxShadow: `0 8px 16px 0 #dfdfdf, 0 1px 2px 0 #f6f6f6 inset`,
+        boxShadow: `0 2px 4px 0 #dfdfdf, 0 1px 2px 0 #f6f6f6 inset`,
         border: `1px solid ${theme.palette.primary['100']}`,
-        borderRadius: '24px'
+        borderRadius: '24px',
+        '&:hover': {
+            boxShadow: `0 4px 8px 0 #dfdfdf, 0 1px 2px 0 #f1f1f1 inset`,
+        },
     },
     ser_gloss_search_input: {
         flex: 1,

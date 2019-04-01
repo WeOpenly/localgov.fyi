@@ -37,6 +37,7 @@ const styles = theme => ({
 ser_gloss_others_row_header_container:{
     display: 'flex',
     justifyContent: 'space-between',
+     flexWrap: 'wrap',
     alignItems:"center",
     position: 'relative'
 },

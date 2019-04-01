@@ -142,12 +142,12 @@ class Card extends Component {
             isMob: isMobileOnly
         })
         
-        const { dispatch, showNotifyDialog} = this.props;
+        const { dispatch, showNotifyDialog, service_delivery_enabled} = this.props;
 
         if (windowGlobal && windowGlobal.localStorage) {
             const remSubDone = localStorage.getItem(`rem_sub_${this.props.service_id}`);
             const remClosedone = localStorage.getItem(`rem_close_${this.props.service_id}`);
-            if (!(remClosedone || remSubDone) && !showNotifyDialog){
+            if (!(remClosedone || remSubDone || service_delivery_enabled) && !showNotifyDialog){
                 dispatch(slowToggleNotifyDilog());
             }
         }
@@ -158,7 +158,7 @@ class Card extends Component {
     }
     
     render() {
-        const { classes, greeting_msg, thanks_msg, field_schema, ui_schema, ser_rem_form_id, org_id, service_id ,showNotifyDialog} = this.props;
+        const { classes, greeting_msg, thanks_msg, field_schema, ui_schema, ser_rem_form_id, org_id, service_id, showNotifyDialog} = this.props;
 
         const {showGreeting} = this.state;
 

@@ -299,6 +299,7 @@ class ServiceDetailTemplate extends React.Component {
         else {
             serRemFormCard = <SerRemCard
                 key = "generic_ser_rem_form"
+                service_delivery_enabled={service_delivery_enabled}
                 field_schema={JSON.stringify(genericFSchema)}
                 service_delivery_enabled={service_delivery_enabled}
                 greeting_msg={null}

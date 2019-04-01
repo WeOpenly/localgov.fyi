@@ -1,11 +1,11 @@
-import React, {Fragment} from 'react';
+import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
-import {connect} from "react-redux";
+import { connect } from "react-redux";
 import Form from "react-jsonschema-form";
 
 import Spinner from 'react-spinkit';
-import {isMobileOnly} from 'react-device-detect';
-import {navigate} from '@reach/router';
+import { isMobileOnly } from 'react-device-detect';
+import { navigate } from '@reach/router';
 
 import TextField from '@material-ui/core/TextField';
 
@@ -13,14 +13,14 @@ import Dialog from '@material-ui/core/Dialog';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import DialogContent from '@material-ui/core/DialogContent';
 import queryString from 'query-string'
-import {withStyles} from '@material-ui/core/styles';
+import { withStyles } from '@material-ui/core/styles';
 import Divider from '@material-ui/core/Divider';
 
 import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
-import {fetchStepDetails, submitStepDetails} from './actions';
+import { fetchStepDetails, submitStepDetails } from './actions';
 
 const windowGlobal = typeof window !== 'undefined'
     ? window
@@ -30,19 +30,19 @@ const styles = theme => ({
     account_dialog_dialog: {
         height: '460px'
     },
-    delivery_form_button_container:{
+    delivery_form_button_container: {
         marginTop: theme.spacing.unit * 2
     },
     account_form_loginEmbed: {},
     account_form_registerinstead: {
-        marginTop: theme.spacing.unit *4,
+        marginTop: theme.spacing.unit * 4,
         display: 'flex'
     },
-    form:{
-        margin: theme.spacing.unit *2,
+    form: {
+        margin: theme.spacing.unit * 2,
     },
-    formButtonContainer:{
-        margin: theme.spacing.unit *4,
+    formButtonContainer: {
+        margin: theme.spacing.unit * 4,
         display: 'flex',
         justifyContent: 'center'
     }
@@ -61,7 +61,7 @@ function CustomFieldTemplate(props) {
     const { id, classNames, label, help, required, description, errors, children } = props;
     console.log(props);
     return (
-        <div className={classNames}>
+        <div className={classNames} style={{paddingBottom:'16px'}}>
             {description}
             {children}
             <Typography variant="caption" color="error">
@@ -119,41 +119,41 @@ class FormStepDetails extends React.Component {
         this.submitForm = this.submitForm.bind(this);
     }
 
-    submitForm(formData){
-        this.props.handleNext('user_details_submit', { formData: formData.formData } );
+    submitForm(formData) {
+        this.props.handleNext('user_details_submit', { formData: formData.formData });
     }
 
     componentWillMount() {
-        const {dispatch, flowId} = this.props;
+        const { dispatch, flowId } = this.props;
         dispatch(fetchStepDetails(flowId, 'user_details_submit'));
     }
 
     render() {
-        const {classes, delivery} = this.props;
-        const {stepDetailsLoading, stepDetails, stepDetailsLoadingFailed} = delivery;
+        const { classes, delivery } = this.props;
+        const { stepDetailsLoading, stepDetails, stepDetailsLoadingFailed } = delivery;
 
-        const {step_details} = stepDetails;
+        const { step_details } = stepDetails;
 
 
         if (stepDetailsLoading) {
-            return (<Spinner name="ball-beat" color="blue"/>);
+            return (<Spinner name="ball-beat" color="blue" />);
         }
 
         if (stepDetailsLoadingFailed) {
             return 'Something went wrong!'
         }
 
-        if (!stepDetails || !step_details){
+        if (!stepDetails || !step_details) {
             return null;
         }
 
         let trimmedFS = null;
         let trimmedUi = null;
         let trimmedFD = null;
-        
+
         if (step_details && step_details.field_schema) {
-            trimmedFS = step_details.field_schema.trim(); 
-            trimmedFS = JSON.parse(trimmedFS);         
+            trimmedFS = step_details.field_schema.trim();
+            trimmedFS = JSON.parse(trimmedFS);
         }
 
         if (step_details && step_details.ui_schema) {
@@ -162,10 +162,10 @@ class FormStepDetails extends React.Component {
         }
 
         if (step_details && step_details.form_data) {
-            trimmedFD = step_details.form_data.trim(); 
-            trimmedFD = JSON.parse(trimmedFD);         
+            trimmedFD = step_details.form_data.trim();
+            trimmedFD = JSON.parse(trimmedFD);
         }
-    
+
         return (
             <Form schema={trimmedFS}
                 formData={trimmedFD}

@@ -37,9 +37,7 @@ const styles = theme => ({
     ser_gloss_service_mob_actions: {
         display: 'flex',
         width: '100%',
-        paddingTop: theme.spacing.unit,
-        justifyContent: 'center',
-        alignItems: 'center'
+        justifyContent: 'flex-end',
     },
     ser_gloss_servicename_text: {
         display: 'flex',
@@ -57,12 +55,11 @@ const styles = theme => ({
 
     },
     ser_gloss_servicename_text_mob: {
-        display: 'flex',
-        flexGrow: '1',
         width: '100%',
         paddingLeft: theme.spacing.unit,
-        paddingTop: theme.spacing.unit * 2,
+        paddingTop: theme.spacing.unit,
         flexWrap: 'wrap',
+        textAlign: 'center',
         justifyContent: 'center'
     },
     ser_gloss_servicename_description: {
@@ -113,7 +110,7 @@ class TemplateHero extends Component {
     handleCopy() {
         const { trackClick } = this.props;
         this.setState({ copied: true });
-        trackClick('social_share', 'copy', '', '', 0);
+   
     }
 
     toggleDescDialog() {
@@ -130,8 +127,6 @@ class TemplateHero extends Component {
     handleClose = (type) => {
         this.setState({ anchorEl: null, copied: false });
         const { trackClick } = this.props;
-        if (type)
-            trackClick('social_share', type, '', '', 0);
     }
 
     componentDidMount() {
@@ -205,6 +200,10 @@ class TemplateHero extends Component {
                            </Link>
 
                     </Typography>
+                {this.state.isMobile && (<div className={classes.ser_gloss_service_mob_actions}>
+                    {shareButton}
+                    {learnMoreButton}
+                </div>)}
                    <HeaderAccountMenu location={this.props.location} />
             </Grid>
             <Grid item sm={1} />
@@ -215,11 +214,14 @@ class TemplateHero extends Component {
                 className={!this.state.isMobile
                     ? classes.ser_gloss_servicename_text
                     : classes.ser_gloss_servicename_text_mob}
-                >   
+                >  
                 <Typography
-                    variant="display1">
+                    component="span"
+                    variant="title">
                     {service_name}
                 </Typography>
+ 
+                
                 {!this.state.isMobile ? (<div className={classes.ser_gloss_service_actions}>
                     {shareButton}
                 </div>) : null}
@@ -256,10 +258,7 @@ class TemplateHero extends Component {
             <Grid item sm={1} md={3} />
           
 
-            {this.state.isMobile ? (<Grid item sm={10} className={classes.ser_gloss_service_mob_actions}>
-                    {shareButton}
-                    {learnMoreButton}
-            </Grid>) : (<Grid item sm={10} md={6} className={classes.ser_gloss_servicename_description}><RawHTML>
+            {this.state.isMobile ? null : (<Grid item sm={10} md={6} className={classes.ser_gloss_servicename_description}><RawHTML>
                     {service_glossary_description}
                 </RawHTML> </Grid>)}
       

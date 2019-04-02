@@ -16,10 +16,17 @@ ser_gloss_suggested_row:{
     paddingLeft: theme.spacing.unit,
     marginTop: theme.spacing.unit *4,
 },
+    ser_gloss_suggested_row_mob:{
+        paddingLeft: theme.spacing.unit*2,
+        marginTop: theme.spacing.unit * 1,
+    },
     ser_gloss_suggested_row_heading:{
         paddingBottom: theme.spacing.unit*2,
         display: 'flex',
         flexWrap: 'wrap',
+    },
+    ser_gloss_suggested_row_heading_mob:{
+        fontSize: '16px'
     },
 ser_gloss_suggested_row_locs:{
     display: 'flex',
@@ -31,6 +38,9 @@ ser_gloss_suggested_row_locs:{
 class SuggestedRow extends Component {
     constructor(props) {
         super(props);
+        this.state = {
+            isMob: false,
+        }
     }
 
     componentDidMount() {
@@ -38,7 +48,7 @@ class SuggestedRow extends Component {
     }
 
     render() {
-const {header, results, handleOrgClick, classes} = this.props;
+    const {header, results, handleOrgClick, classes} = this.props;
 
         let serviceLocations = null;
 
@@ -51,10 +61,10 @@ const {header, results, handleOrgClick, classes} = this.props;
         return (
             <Grid container>
                 <Grid item sm={1} />
-                <Grid item sm={10} className={classes.ser_gloss_suggested_row}>
+                <Grid item sm={10} className={this.state.isMob ? classes.ser_gloss_suggested_row_mob :  classes.ser_gloss_suggested_row}>
                     <Typography
                         variant="title"
-                        className={classes.ser_gloss_suggested_row_heading}>
+                        className={this.state.isMob ? classes.ser_gloss_suggested_row_heading_mob : classes.ser_gloss_suggested_row_heading}>
                         {header}
                     </Typography>
                     <div className={classes.ser_gloss_suggested_row_locs}>

@@ -29,10 +29,14 @@ const styles = theme => ({
     ser_gloss_suggested_row_locs: {
         display: 'flex',
         flexWrap: 'wrap',
-        padding: theme.spacing.unit,
+        justifyContent: 'center',
     },
     suggest_loc_card: {
         display: 'flex'
+    },
+    ser_gloss_suggested_row_heading_mob: {
+        fontSize: '16px',
+        paddingBottom : theme.spacing.unit,
     },
 ser_gloss_others_row_header_container:{
     display: 'flex',
@@ -41,6 +45,13 @@ ser_gloss_others_row_header_container:{
     alignItems:"center",
     position: 'relative'
 },
+    ser_gloss_others_row_header_container_mob:{
+        display: 'flex',
+        justifyContent: 'center',
+        flexWrap: 'wrap',
+        alignItems: "center",
+        position: 'relative'
+    },
     suggest_loc_logo: {
         width: 56,
         height: 56,
@@ -140,10 +151,10 @@ class OtherLocations extends Component {
         return (<Grid container>
             <Grid item sm={1} />
             <Grid item sm={10} className={classes.ser_gloss_suggested_row}>
-                <div className={classes.ser_gloss_others_row_header_container}>
+                <div className={this.state.isMobile ? classes.ser_gloss_others_row_header_container_mob : classes.ser_gloss_others_row_header_container}>
                     <Typography
                         variant="title"
-                        className={classes.ser_gloss_suggested_row_heading}>
+                        className={this.state.isMobile ? classes.ser_gloss_suggested_row_heading_mob : classes.ser_gloss_suggested_row_heading}>
                         Other locations offering this service
                     </Typography>
                     <StateSuggest clearStateName={this.clearStateName}

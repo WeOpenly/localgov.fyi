@@ -49,19 +49,19 @@ const styles = theme => ({
         alignItems: 'center',
         boxShadow: `0 2px 4px 0 #dfdfdf, 0 1px 2px 0 #f6f6f6 inset`,
         border: `1px solid ${theme.palette.primary['100']}`,
-        borderRadius: '24px',
+        borderRadius: '8px',
         '&:hover': {
             boxShadow: `0 4px 8px 0 #dfdfdf, 0 1px 2px 0 #f1f1f1 inset`,
         },
     },
     ser_gloss_search_input: {
         flex: 1,
-        fontSize: "0.79rem",
+        fontSize: "16px",
         fontWeight: 500,
         fontFamily: '"Nunito Sans",  -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen-Sans,Ubuntu,Cantarell,"Helvetica Neue", sans-serif',
         lineHeight: "1.46429em",
         width: '100%',
-        color: "rgba(30, 30, 50,0.99)"
+        color: "rgba(30, 30, 50,0.99)",
     },
     ser_gloss_placesContainer:{
         display: 'flex',
@@ -124,24 +124,28 @@ class GoogAutoComplete extends React.Component {
 
     handleSelect = address => {
         const { serviceTemplateId, fetchGoogLoc} = this.props;
-        console.log(serviceTemplateId);
         geocodeByAddress(address)
             .then(results => getLatLng(results[0]))
             .then(latLng => fetchGoogLoc(serviceTemplateId, ...latLng))
             .catch(error => console.error('Error', error));
+        this.searchInput.blur();
     };
+
 
     render() {
         const {classes} = this.props;
         return (
             <Grid container>
-            <Grid item xs={1} sm={4}></Grid>
+            <Grid item xs="auto" md={4}></Grid>
 
-            <Grid item xs={1} sm={4} className={classes.ser_gloss_placesContainer}>
+            <Grid item xs={12} md={4} className={classes.ser_gloss_placesContainer}>
             <PlacesAutocomplete
                 value={this.state.address}
                 onChange={this.handleChange}
+                ref="placesAutocomplete"
                 onSelect={this.handleSelect}
+                debounce={50}
+                highlightFirstSuggestion
                 shouldFetchSuggestions={this.state.address.length > 1}
                 googleCallbackName="initMap"
             >
@@ -151,8 +155,13 @@ class GoogAutoComplete extends React.Component {
                             <IconButton className={classes.ser_gloss_search_iconButton} aria-label="Search">
                                         {loading ? (<CircularProgress size={24}  />) : (<SearchIcon color="primary" />)}
                             </IconButton>
-                            <InputBase    {...getInputProps({
+                                    <InputBase {...getInputProps({
                                 placeholder: 'Search locations',
+                                autoFocus: false,
+                                type: 'search',
+                                inputRef: node => {
+                                    this.searchInput = node;
+                                },
                                 className:  classes.ser_gloss_search_input,
                             })} />
                         </Paper>
@@ -186,7 +195,7 @@ class GoogAutoComplete extends React.Component {
                 )}
             </PlacesAutocomplete>
             </Grid>
-                <Grid item xs={1} sm={4}></Grid>
+                <Grid item xs="auto" md={4}></Grid>
             </Grid>
         );
     }

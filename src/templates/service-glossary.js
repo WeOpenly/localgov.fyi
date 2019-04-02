@@ -309,7 +309,7 @@ class ServiceGlossary extends Component {
             <Fragment>
                 <Helmet>
                     <title>{`${service_name} | Evergov`}</title>
-                        <script src = "https://maps.googleapis.com/maps/api/js?key=AIzaSyBr4RixcEvuxgGr9EwNeiHCqUITczxvvuc&callback=initMap&libraries=places" async defer > </script>
+                      
 
                     <link
                         rel="canonical"
@@ -339,7 +339,7 @@ class ServiceGlossary extends Component {
                     <Grid item xs={12}>
                       <TemplateHero service_name={service_name} trackClick={this.trackClick} service_glossary_description={service_glossary_description} />
                     </Grid>
-                    <Grid item sm={12}>
+                    <Grid item xs={12}>
                         <GoogAutoComplete serviceTemplateId={id}/>
                     </Grid>
                     <Grid item sm={12}>

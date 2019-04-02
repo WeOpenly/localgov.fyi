@@ -57,6 +57,7 @@ function failedFetchGoogleLoc() {
 
 export function fetchGoogLoc(serTemplateId, latlng) {
     return async(dispatch, getState) => {
+        dispatch(clearAll());
         dispatch(requestFetchGoogleLoc());
         const {lat, lng} = latlng;
         try {

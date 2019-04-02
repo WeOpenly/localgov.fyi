@@ -1,4 +1,5 @@
 import fetch from 'isomorphic-fetch'
+import fetchWithTimeOut from './fetchWithTimeout';
 
 const windowGlobal = typeof window !== 'undefined' && window
 export function checkStatus(response) {
@@ -58,9 +59,10 @@ export function YusufApi(lang = undefined, endPoint, headers = {}) {
         }
     }
 
-    return fetch(`${YUSUF_BACKEND}/${endPoint}`, headers).then(checkStatus)
+    return fetchWithTimeOut(`${YUSUF_BACKEND}/${endPoint}`, headers).then(checkStatus)
         .then(parseJSON)
         .then((data) => data)
+    
 }
 
 

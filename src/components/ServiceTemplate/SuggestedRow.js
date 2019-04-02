@@ -55,7 +55,7 @@ class SuggestedRow extends Component {
         serviceLocations = results.map((result, idx) => {
             const { organization, url_slug, area } = result['_source'];
  
-            return <LocationSerCard key={idx} idx={idx} organization={organization} ser_url_slug={url_slug} area={area}/>
+            return <LocationSerCard highlight key={idx} idx={idx} organization={organization} ser_url_slug={url_slug} area={area}/>
         });
 
         return (

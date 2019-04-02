@@ -4,6 +4,7 @@ import _ from "lodash";
 import Grid from '@material-ui/core/Grid';
 import { isMobileOnly } from 'react-device-detect';
 import SuggestedRow from './SuggestedRow';
+import LocationCard from '../UserRequests/LocationCard';
 import { withStyles } from '@material-ui/core/styles';
 import ContentLoader from "react-content-loader"
 
@@ -46,6 +47,10 @@ const styles = theme => ({
         paddingLeft: theme.spacing.unit,
         marginTop: theme.spacing.unit * 2,
     },
+ser_gloss_suggested_failed_row:{
+    display: 'flex',
+    justifyContent: 'center'
+}
 });
 
 class Suggested extends Component {
@@ -59,7 +64,7 @@ class Suggested extends Component {
 
     render() {        
         const { autoLocLoading, autoLocResults, autoLocFailed, handleOrgClick, classes} = this.props;
-        const { googLocLoading, googLocResults, googlLocFailed} = this.props;
+const {googLocLoading, googLocResults, googlLocFailed, noGoogSuggestsFound, searchText} = this.props;
    
         if (autoLocLoading || googLocLoading){
             return (<Grid container>
@@ -76,7 +81,7 @@ class Suggested extends Component {
             </Grid>)
         }
 
-        if (autoLocFailed || googlLocFailed){
+        if (autoLocFailed){
             return null;
         }
 
@@ -96,6 +101,16 @@ class Suggested extends Component {
                 const results = result.location_sers;
                 return (<SuggestedRow  key={`goog-loc-${result.header}-${idx}`} header={header} results={results} handleOrgClick={handleOrgClick} />)
             });
+        }
+
+        if ((noGoogSuggestsFound || googlLocFailed) && searchText){
+            return (<Grid container>
+                <Grid item xs="auto" />
+                <Grid item xs={12}  className={classes.ser_gloss_suggested_failed_row}>
+                    <LocationCard compact message={`Sorry, we couldn't find any results for '${searchText}'`} />
+                </Grid>
+                <Grid item xs="auto" />
+            </Grid>)
         }
 
         return locationCards

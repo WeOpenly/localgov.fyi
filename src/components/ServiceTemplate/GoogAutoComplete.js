@@ -17,9 +17,9 @@ import PlacesAutocomplete, {
 } from 'react-places-autocomplete';
 import Grid from '@material-ui/core/Grid';
 import {withStyles} from '@material-ui/core/styles';
-import {fetchGoogLoc} from './actions';
+import { fetchGoogLoc, updateSearchText} from './actions';
 
-import {trackClick, trackInput} from "../common/tracking";
+import { trackClick, trackInput} from "../common/tracking";
 
 const styles = theme => ({
     ser_template_card: {
@@ -43,15 +43,16 @@ const styles = theme => ({
         justifyContent: 'center'
     },
     ser_gloss_search_paper_root: {
-        padding: '4px',
-        margin: theme.spacing.unit,
+        padding: '6px',
+ 
         display: 'flex',
         alignItems: 'center',
-        boxShadow: `0 2px 4px 0 #dfdfdf, 0 1px 2px 0 #f6f6f6 inset`,
+        boxShadow: `0 1px 6px 0 #dfdfdf`,
         border: `1px solid ${theme.palette.primary['100']}`,
         borderRadius: '8px',
         '&:hover': {
-            boxShadow: `0 4px 8px 0 #dfdfdf, 0 1px 2px 0 #f1f1f1 inset`,
+            boxShadow: `0 4px 8px 0 #dfdfdf, 0 1px 16px 0 #fafafa inset`,
+            border: `1px solid ${theme.palette.primary['200']}`
         },
     },
     ser_gloss_search_input: {
@@ -115,11 +116,11 @@ const SuggestionContentLoader = props => (
 class GoogAutoComplete extends React.Component {
     constructor(props) {
         super(props);
-        this.state = { address: '' };
     }
 
     handleChange = address => {
-        this.setState({ address });
+
+        this.props.setSearchText(address)
     };
 
     handleSelect = address => {
@@ -128,25 +129,26 @@ class GoogAutoComplete extends React.Component {
             .then(results => getLatLng(results[0]))
             .then(latLng => fetchGoogLoc(serviceTemplateId, ...latLng))
             .catch(error => console.error('Error', error));
+        this.props.setSearchText(address)
         this.searchInput.blur();
     };
 
 
     render() {
-        const {classes} = this.props;
+        const {classes, searchText} = this.props;
         return (
             <Grid container>
             <Grid item xs="auto" md={4}></Grid>
 
             <Grid item xs={12} md={4} className={classes.ser_gloss_placesContainer}>
             <PlacesAutocomplete
-                value={this.state.address}
+                value={searchText}
                 onChange={this.handleChange}
                 ref="placesAutocomplete"
                 onSelect={this.handleSelect}
                 debounce={50}
                 highlightFirstSuggestion
-                shouldFetchSuggestions={this.state.address.length > 1}
+                shouldFetchSuggestions={(searchText && searchText.length > 1)}
                 googleCallbackName="initMap"
             >
                 {({ getInputProps, suggestions, getSuggestionItemProps, loading }) => (
@@ -208,7 +210,10 @@ const mapDispatchToProps = (dispatch) => {
         },
         fetchGoogLoc: (serviceTemplateId, lat, lng) => {
             dispatch(fetchGoogLoc(serviceTemplateId, lat, lng));
-        }
+        },
+        setSearchText: (addr) => {
+            dispatch(updateSearchText(addr));
+        },
     }
 }
 

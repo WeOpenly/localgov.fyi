@@ -40,14 +40,19 @@ export function fetchAutoLoc(serTemplateId) {
     }
 }
 
-
+export function updateSearchText(text){
+    return {
+        type: types.UPDATE_SEARCH_TEXT_FOR_GOOG,
+        text
+    }
+}
 
 function requestFetchGoogleLoc() {
     return { type: types.REQUEST_GOOG_SUGGESTED_LOCS}
 }
 
 function recvFetchGoogleLoc(suggestions) {
-return {type: types.SUCCESS_RECV_GOOG_SUGGESTED_LOCS, suggestions}
+    return {type: types.SUCCESS_RECV_GOOG_SUGGESTED_LOCS, suggestions}
 }
 
 function failedFetchGoogleLoc() {

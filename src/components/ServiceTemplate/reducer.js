@@ -1,11 +1,13 @@
 import * as types from "./ActionTypes";
 
 const initialState = {
+    searchText: null,
     autoLocLoading: false,
     autoLocResults: [],
     autoLocFailed: false,
     googLocLoading: false,
     googLocResults: [],
+    noGoogSuggestsFound: false,
     googlLocFailed: false,
     googLat: null,
     googLng: null
@@ -13,6 +15,11 @@ const initialState = {
 
 export function serTemplate(state = initialState, action) {
     switch (action.type) {
+        case types.UPDATE_SEARCH_TEXT_FOR_GOOG:
+            return {
+                ...state,
+                searchText: action.text
+            };
         case types.REQUEST_AUTO_SUGGESTED_LOCS:
             return {
                 ...state,
@@ -40,6 +47,7 @@ export function serTemplate(state = initialState, action) {
         case types.SUCCESS_RECV_GOOG_SUGGESTED_LOCS:
             return {
                 ...state,
+                noGoogSuggestsFound: (action.suggestions && action.suggestions.length === 0),
                 googLocResults: action.suggestions,
                 googLocLoading: false,
             }
@@ -51,7 +59,16 @@ export function serTemplate(state = initialState, action) {
             }
         case types.CLEAR_ALL:
             return {
-                ...initialState,
+                ...state,
+                autoLocLoading: false,
+                autoLocResults: [],
+                autoLocFailed: false,
+                googLocLoading: false,
+                googLocResults: [],
+                noGoogSuggestsFound: false,
+                googlLocFailed: false,
+                googLat: null,
+                googLng: null
             }
         case types.CLEAR_GOOG_LAT_LNG:
             return {

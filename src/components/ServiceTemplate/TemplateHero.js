@@ -126,7 +126,6 @@ class TemplateHero extends Component {
 
     handleClose = (type) => {
         this.setState({ anchorEl: null, copied: false });
-        const { trackClick } = this.props;
     }
 
     componentDidMount() {
@@ -176,7 +175,9 @@ class TemplateHero extends Component {
                 </DialogTitle>
                 <DialogContent>
                     <Typography gutterBottom>
-                        {service_glossary_description}
+                        <RawHTML>
+                            {service_glossary_description}
+                        </RawHTML> 
                     </Typography>
                 </DialogContent>
                 <DialogActions>

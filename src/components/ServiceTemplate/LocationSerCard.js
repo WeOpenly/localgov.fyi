@@ -48,7 +48,7 @@ class LocationSerCard extends Component {
     }
 
     render() {
-        const { classes, area, organization, ser_url_slug } = this.props;
+        const { classes, area, organization, ser_url_slug, highlight } = this.props;
         let state = null;
         let areaName = null;
         if (area.hierarchy.length ===1){
@@ -67,7 +67,7 @@ class LocationSerCard extends Component {
         if (!(areaName && ser_url_slug)) {
             return null;
         }
-
+        const border = highlight ? `#d782d9` : `#AB93FF`
         return (<Card
             style={{
                 cursor: 'pointer',
@@ -75,7 +75,7 @@ class LocationSerCard extends Component {
                 display: 'flex',
                 flexDirection: 'column',
                 margin: 16,
-                borderTop: `2px solid #AB93FF`,
+                borderTop: `2px solid ${border}`,
                 boxShadow: '0px 3px 5px 0px rgba(0,0,0,0.1),0px 1px 1px 0px rgba(0,0,0,0.07),0px 2px 6px 1px rgba(0,0,0,0.06)'
             }}
             onClick={() => navigate(`/service/${ser_url_slug}`)}>

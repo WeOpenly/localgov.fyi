@@ -25,13 +25,18 @@ ser_gloss_suggested_row:{
         display: 'flex',
         flexWrap: 'wrap',
     },
-    ser_gloss_suggested_row_heading_mob:{
-        fontSize: '16px'
-    },
 ser_gloss_suggested_row_locs:{
     display: 'flex',
     flexWrap: 'wrap',
     padding: theme.spacing.unit,
+},
+ser_gloss_suggested_row_locs_mob:{
+    display: 'flex',
+    padding: theme.spacing.unit,
+    justifyContent: 'center',
+    flexWrap: 'wrap',
+    alignItems: "center",
+    position: 'relative'
 }
 });
 
@@ -67,7 +72,7 @@ class SuggestedRow extends Component {
                         className={this.state.isMob ? classes.ser_gloss_suggested_row_heading_mob : classes.ser_gloss_suggested_row_heading}>
                         {header}
                     </Typography>
-                    <div className={classes.ser_gloss_suggested_row_locs}>
+                    <div className={this.state.isMob ? classes.ser_gloss_suggested_row_locs_mob : classes.ser_gloss_suggested_row_locs}>
                         {serviceLocations}
                     </div>
                 </Grid>

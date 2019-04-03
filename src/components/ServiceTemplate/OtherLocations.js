@@ -20,7 +20,6 @@ const styles = theme => ({
         boxShadow: `0 0 3px 0px ${theme.palette.primary['600']}`
     },
     ser_gloss_suggested_row: {
-        paddingLeft: theme.spacing.unit,
         marginTop: theme.spacing.unit * 4,
     },
     ser_gloss_suggested_row_heading: {
@@ -35,8 +34,7 @@ const styles = theme => ({
         display: 'flex'
     },
     ser_gloss_suggested_row_heading_mob: {
-        fontSize: '16px',
-        paddingBottom : theme.spacing.unit,
+        paddingBottom : theme.spacing.unit*2,
     },
 ser_gloss_others_row_header_container:{
     display: 'flex',

@@ -109,7 +109,7 @@ class Case3 extends Component {
                     </div>
                 </Grid>
                 <Grid item sm={12} className={this.state.isMob ? classes.ser_case1_suggested_row_mob : classes.ser_case1_suggested_row}>
-                    <NearbySerOrgList location={this.props.location} excAreaId={excAreaId} title={"Suggestions based on your location"}/>
+                    <NearbySerOrgList location={this.props.location} excAreaId={excAreaId} />
                 </Grid>
                 <Grid item sm={12} className={this.state.isMob ? classes.ser_case1_suggested_row_mob : classes.ser_case1_suggested_row}>
                     <Typography

@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from "react-redux";
 import {Link} from 'gatsby';
+import {isMobileOnly} from 'react-device-detect';
 import { fade } from "@material-ui/core/styles/colorManipulator";
 import Button from '@material-ui/core/Button';
 import { withStyles } from '@material-ui/core/styles';
@@ -27,7 +28,12 @@ const SuggestedLoader = () => (
 
 const styles = theme => ({
   index_otherLinkItem_mob:{
-    border:'none'
+    display: 'flex',
+    flex: '1 1 100%', border: 'none',
+    margin: theme.spacing.unit,
+    color: fade('#000', 0.75), 
+     letterSpacing: '2px',
+    justifyContent: 'center'
   },
   ser_org_list:{
     display: 'flex',
@@ -41,16 +47,25 @@ const styles = theme => ({
     color: fade('#000', 0.75), letterSpacing: '4px',
     justifyContent: 'center'
   },
+  ser_org_list_header_container_mob:{
+  display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
+        paddingBottom: theme.spacing.unit * 2,
+  },
   ser_org_list_header_container:{
    display: 'flex',
         justifyContent: 'center',
         alignItems: 'center',
         paddingBottom: theme.spacing.unit * 6,
   },
+  ser_org_list_header_mob:{
+    fontSize: '16px'
+  },
   ser_org_list_container: {
     alignItems: 'center',
     display: 'flex',
-    height: '720px',
+    minHeight: '720px',
     marginTop: theme.spacing.unit * 2,
     justifyContent: 'center',
     flexDirection: 'column',
@@ -194,11 +209,16 @@ orgLink : 'https://evergov.com/organization/usa/pennsylvania-state/philadelphia-
     } 
   }
 
+  componentDidMount() {
+    this.setState({ isMobile: isMobileOnly });
+  }
+
+
   render() {
     const {classes } = this.props;
 
        const otherLinks = this.state.items.slice(0, 24).map((item, idx) => {
-         return (<Button variant="outlined" href={`${item.orgLink}`} className={classes.index_otherLinkItem}>
+         return (<Button variant="outlined" href={`${item.orgLink}`} className={this.state.isMobile ? classes.index_otherLinkItem_mob : classes.index_otherLinkItem}>
          {item.name}
       </Button>);
       });
@@ -213,11 +233,11 @@ orgLink : 'https://evergov.com/organization/usa/pennsylvania-state/philadelphia-
          <Grid item sm={1} />
       
         <Grid item sm={10} className={classes.ser_org_list_container}>
-            <div className={classes.ser_org_list_header_container}>
+          <div className={this.state.isMobile ? classes.ser_org_list_header_container_mob :  classes.ser_org_list_header_container}>
                   <Public style={{ fontSize: '14', color: '#5627FF', marginRight: '4px' }} /> 
           <Typography
             variant="title"
-            className={this.state.isMobile ? classes.ser_org_list_header : classes.ser_org_list_header_mob}>
+              className={this.state.isMobile ? classes.ser_org_list_header_mob : classes.ser_org_list_header}>
             Disover Evergov
                     </Typography>
                     </div>

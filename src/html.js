@@ -105,7 +105,8 @@ export default class HTML extends React.Component {
           <meta
             name="viewport"
             content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
-   
+          <script async defer
+            src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBr4RixcEvuxgGr9EwNeiHCqUITczxvvuc&callback=initMapIndex&libraries=places&callback=allCallBacks"/>
           <link href={'/css/fonts.css'} rel="stylesheet"/> {this.props.headComponents}
         </head>
         <body {...this.props.bodyAttributes}>

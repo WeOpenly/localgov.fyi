@@ -21,6 +21,14 @@ const styles = theme => ({
      display: 'flex',
      justifyContent: 'space-between',
  },
+ relates_ser_list_compact :{
+     display: 'flex',
+     justifyContent: 'center',
+     flex: '1',
+     borderTop: `2px solid #AB93FF`,
+     padding: theme.spacing.unit,
+     boxShadow: '0px 3px 5px 0px rgba(0,0,0,0.1),0px 1px 1px 0px rgba(0,0,0,0.07),0px 2px 6px 1px rgba(0,0,0,0.06)'
+ },
  related_ser_list_mob: {
      display: 'flex',
      flexDirection: 'column',
@@ -55,7 +63,7 @@ const xah_randomize_array = ((arr) => {
 const SerTemplateCards = (props) => {
     let sers = [
         {
-            name: 'Pay Property taxes',
+            name: 'Pay Property Taxes ',
             link: 'pay-property-taxes/'
         }, {
             name: 'Pay Parking Citation',
@@ -76,13 +84,16 @@ const SerTemplateCards = (props) => {
     if(props.currentNameSlug)
         sers = sers.filter((ser) => ser.link.indexOf(props.currentNameSlug) === -1)
 
+    if (props.compact)
+        sers = sers.slice(0, 4)
+
     return (
        <Fragment>
             {sers.map((item, idx) => {
                 if (idx === sers.length-1 && props.showAdd)
                     return (<ConnLocationCard />)
                 return (
-                    <ServiceTemplateCard key={item.name} name={item.name} slug={item.link}/>
+                    <ServiceTemplateCard compact={props.compact}  key={item.name} name={item.name} slug={item.link}/>
                 )
             })}
         </Fragment>
@@ -109,18 +120,17 @@ class RelatedServiceTemplates extends Component {
     }
 
     render() {
-        const {classes, currentNameSlug, showAdd} = this.props;
+        const {classes, currentNameSlug, showAdd, compact} = this.props;
 
         return (
             <Fragment>
                 <Grid
                     container
-                    spacing={8}
                     className={!this.state.isMobileOnly
-                    ? classes.related_ser_list
+                    ? !compact ? classes.related_ser_list : classes.relates_ser_list_compact
                     : classes.related_ser_list_mob}>
                     
-                   <SerTemplateCards currentNameSlug={currentNameSlug} showAdd={showAdd} />
+                    <SerTemplateCards compact={compact} currentNameSlug={currentNameSlug} showAdd={showAdd} />
                   </Grid>
             </Fragment>
         );

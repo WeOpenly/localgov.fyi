@@ -10,6 +10,7 @@ import {withStyles} from '@material-ui/core/styles';
 
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
+import RelatedServiceTemplates from '../components/RelatedServiceTemplates'
 
 import withRoot from '../withRoot';
 
@@ -81,8 +82,7 @@ class Index extends React.Component {
             titleTemplate={`%s | evergov`}>
             <meta name="og:type" content="website"/>
             <meta property="og:site_name" content={`Find All Government Services in a Single Place`}/>
-          <script async defer
-            src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBr4RixcEvuxgGr9EwNeiHCqUITczxvvuc&callback=initMapIndex&libraries=places&callback=initIndex" > </script> 
+
             <link
               rel="canonical"
               href={`https://evergov.com${this.props.location.pathname}`}/>
@@ -97,6 +97,13 @@ class Index extends React.Component {
               <IndexHero location={this.props.location} />
             </Grid>
           </Grid>
+        <Grid container className={classes.index_hero}>
+          <Grid item sm={1} md={3} />
+          <Grid item sm={10} md={6}>
+            <RelatedServiceTemplates compact={true} />
+          </Grid>
+          <Grid item sm={1} md={3} />
+        </Grid>
 
         </Fragment>
     );

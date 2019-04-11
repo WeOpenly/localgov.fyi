@@ -18,6 +18,7 @@ import MobileSuggestions from './MobileSuggestions';
 
 import {fetchAreaGuess, executeSearch} from './actions';
 import { trackClick } from "../common/tracking";
+import { teal } from '@material-ui/core/colors';
 
 const styles = theme => ({
     index_hero_header: {
@@ -26,14 +27,13 @@ const styles = theme => ({
         flexWrap: 'wrap',
         justifyContent: 'space-between'
     },
-
-    index_hero_title: {
+    index_hero_container: {
         display: 'flex',
         flexDirection: 'column',
-        paddingBottom: theme.spacing.unit,
-        marginTop: theme.spacing.unit * 5,
+        justifyContent: 'center',
+        height: '480px',
+        marginBottom: theme.spacing.unit * 5,
         flexWrap: 'wrap',
-        justifyContent: 'flex-start'
     },
     index_hero_search_box:{
         display: 'flex',
@@ -48,7 +48,15 @@ const styles = theme => ({
         alignItems: 'flex-start',
         justifyContent: 'flex-start'
     },
+    index_hero_section_container:{
 
+    },
+    index_hero_slogan:{
+        marginBottom: theme.spacing.unit,
+    },
+    index_suggest_box:{
+        display: 'flex'
+    }
 });
 
 const SuggestBoxLoader = props => (<div style={{ display: 'flex', justifyContent: 'center' }}><Spinner name="ball-beat" color="white" /></div>);
@@ -72,6 +80,12 @@ class IndexHero extends Component {
 
     componentDidMount() {
         this.setState({ isMobileOnly: isMobileOnly });
+        // const script = document.createElement("script");
+
+        // script.src = "https://maps.googleapis.com/maps/api/js?key=AIzaSyBr4RixcEvuxgGr9EwNeiHCqUITczxvvuc&libraries=places&callback=initIndex";
+        // script.async = true;
+        // script.defer = true;
+        // document.head.appendChild(script);
         this.props.fetchAreaGuess();
     }
 
@@ -117,43 +131,39 @@ class IndexHero extends Component {
         }
 
         return (
-            <Grid container className={classes.index_hero_nav}>
+            <Grid container className={classes.index_hero_section_container}>
                     <CommonNav location={location} />
-                    <Grid item xs={1} sm={2} />
-                    <Grid item
-                        xs={10}
-                        sm={8}
-                        className={!this.state.isMobile
-                            ? classes.index_hero_title
-                            : classes.index_hero_title_mob}
-                    >
-                        <Typography
-                            component="span"
-                            variant="display1">
-                                All your government services 
-                        </Typography>
-                    <Typography
-                        component="span"
-                        variant="display1">
-                        in a single place
-                        </Typography>
 
-                    </Grid>
-                   
-                    <Grid item xs={1} sm={2}/>
-                <Grid item xs={1} sm={2} />
+                <Grid item xs="auto" sm={1} md={2} />
                 <Grid item
-                    xs={10}
-                    sm={6}
+                    sm={10}
+                    md={8}
                     className={!this.state.isMobile
-                        ? classes.index_hero_search_box
-                        : classes.index_hero_search_box_mob}
+                        ? classes.index_hero_title
+                        : classes.index_hero_title_mob}
                 >
-              
-                    <AreaSuggestions />
-                    <SerSuggestions onSearch={this.onSearch} />
+                <div className={classes.index_hero_container}>
+                    <div className={classes.index_hero_slogan}>
+                            <Typography
+                                component="span"
+                                variant="display1">
+                                All your government services
+                        </Typography>
+                            <Typography
+                                component="span"
+                                variant="display1">
+                                in a single place
+                        </Typography>
+                    </div>
+                    
+                    <div className={classes.index_suggest_box}>
+                        <AreaSuggestions />
+                        <SerSuggestions onSearch={this.onSearch} />
+                    </div>
+                  
+                </div>
                 </Grid>
-                <Grid item xs={1} sm={2} />
+                <Grid item xs="auto" sm={1} md={2}  />
             </Grid>
         );
     }

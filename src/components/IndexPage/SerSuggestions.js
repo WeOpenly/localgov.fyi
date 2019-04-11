@@ -51,6 +51,13 @@ ser_gloss_search_paper_root_header: {
             border: `1px solid ${theme.palette.primary['500']}`
         },
     },
+    suggestionsContainerOpen:{
+        position: 'absolute',
+        width: '592px',
+        zIndex: '300',
+        boxShadow: '0px 3px 5px 0px rgba(0,0,0,0.1),0px 1px 1px 0px rgba(0,0,0,0.07),0px 2px 6px 1px rgba(0,0,0,0.07)',
+
+    },
     ser_suggestion_title_icon:{
         marginRight: theme.spacing.unit
     },
@@ -103,6 +110,7 @@ suggestionsList:{
     listStyle: 'none',
     padding: theme.spacing.unit,
     marginTop: 0,
+
 },
 sectionTitle:{
     margin: 0
@@ -111,6 +119,7 @@ index_page_ser_suggestions_container:{
     display: 'flex',
     width: '600px',
     margin: 0,
+
 },
 index_page_ser_suggestions_container_form: {
     width: '100%',
@@ -209,7 +218,7 @@ class SerSuggest extends Component {
         const { containerProps, children } = options;
 
         return (
-            <Paper {...containerProps} square>
+            <Paper {...containerProps}  square>
                 {children}
             </Paper>
         );

@@ -32,6 +32,18 @@ ser_template_card:{
         borderTop: `2px solid #AB93FF`,
         boxShadow: '0px 3px 5px 0px rgba(0,0,0,0.1),0px 1px 1px 0px rgba(0,0,0,0.07),0px 2px 6px 1px rgba(0,0,0,0.06)'
 },
+    ser_template_card_compact:{
+        cursor: 'pointer',
+        width: '140px',
+        height: '140px',
+        background: '#fff',
+        margin: theme.spacing.unit,
+        display: 'flex',
+        flexDirection: 'column',
+        '&:hover':{
+            border: `1px solid #f1f1f1`,
+        }
+    },
 ser_template_card_img:{
     display: 'flex',
     justifyContent: 'center',
@@ -39,10 +51,19 @@ ser_template_card_img:{
     paddingBottom: theme.spacing.unit *3,
     paddingTop: theme.spacing.unit * 3
 },
+ser_template_card_img_compact:{
+    display: 'flex',
+    justifyContent: 'center',
+    minHeight: '32px',
+    marginBottom: theme.spacing.unit,
+    marginTop: theme.spacing.unit * 2
+},
 ser_template_card_content:{
  textAlign: 'center',
 display : 'flex',
+flexWrap: 'wrap',
 justifyContent : 'center',
+padding: theme.spacing.unit,
 alignItems: 'center',
 }
 });
@@ -60,22 +81,22 @@ class ServiceTemplateCard extends Component {
     }
 
     render() {
-        const {classes, name, slug} = this.props;
+        const {classes, name, slug, compact} = this.props;
         let icon = null;
         let mobIcon = null;
         const lowerCaseName = name.toLowerCase();
 
         if (lowerCaseName.indexOf('tax') !== -1){
-            icon = (<SvgTax style={{fontSize: '56px'}} />);
+            icon = (<SvgTax style={{fontSize: '48px'}} />);
             mobIcon = (<SvgTax style={{fontSize: '40px'}} />)
         }else if(lowerCaseName.indexOf('parking') !== -1){
-            icon = (<SvgParking style={{fontSize: '56px'}} />)
+            icon = (<SvgParking style={{fontSize: '48px'}} />)
             mobIcon = (<SvgParking style={{fontSize: '40px'}} />)
         }else if(lowerCaseName.indexOf('license') !== -1){
-            icon = (<SvgLicense style={{fontSize: '56px'}} />)
+            icon = (<SvgLicense style={{fontSize: '48px'}} />)
             mobIcon = (<SvgLicense style={{fontSize: '40px'}} />)
         }else if(lowerCaseName.indexOf('utility') !== -1 || lowerCaseName.indexOf('water') !== -1){
-            icon = (<SvgLeak style={{fontSize: '56px'}} />)
+            icon = (<SvgLeak style={{fontSize: '48px'}} />)
             mobIcon = (<SvgLeak style={{fontSize: '40px'}} />)
         }
 
@@ -89,13 +110,13 @@ class ServiceTemplateCard extends Component {
             </ListItem>
             )
         } else {
-            return (<div className={classes.ser_template_card} onClick={() => navigate(`/services/${slug}`, { replace: true })}>
-                        <div className={classes.ser_template_card_img}>
+            return (<div className={compact ? classes.ser_template_card_compact : classes.ser_template_card} onClick={() => navigate(`/services/${slug}`, { replace: true })}>
+                <div className={compact ? classes.ser_template_card_img_compact : classes.ser_template_card_img}>
                                 {icon}
                         </div>
                         
                     <div className={classes.ser_template_card_content}>
-                    <Typography variant="body1">
+                    <Typography style={{ fontWeight: 500, color: '#5627FF'}} variant="caption">
                     {name}
                     </Typography>
                     </div>

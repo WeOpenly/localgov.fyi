@@ -172,7 +172,7 @@ class GoogAutoComplete extends React.Component {
                 searchOptions={searchOptions}
                 highlightFirstSuggestion
                 shouldFetchSuggestions={(!autoFilled && (showInput && showInput.length > 1) )}
-                googleCallbackName="initIndex"
+                googleCallbackName={inHeader ? `initHeader` : `initIndex`}
             >
                 {({ getInputProps, suggestions, getSuggestionItemProps, loading }) => (
                         <div style={{ width: '100%' }}>

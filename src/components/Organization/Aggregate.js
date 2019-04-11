@@ -50,7 +50,11 @@ org_agg_cd:{
         flex: '1 1 30%',
         position: 'relative',
         minWidth: '150px',
-        margin: theme.spacing.unit,
+        padding: theme.spacing.unit,
+        margin: theme.spacing.unit/2,
+        '&:hover':{
+            background: '#f1f1f1',
+        }
     },
     ser_list_item_load_more:{
         padding: theme.spacing.unit,

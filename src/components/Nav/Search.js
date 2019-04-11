@@ -49,6 +49,7 @@ class SearchNav extends Component {
 
     componentDidMount() {
         this.setState({ isMobileOnly: isMobileOnly });
+        this.props.fetchAreaGuess();
     }
 
     render() {

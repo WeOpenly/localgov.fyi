@@ -19,7 +19,7 @@ import Spinner from 'react-spinkit';
 
 import withRoot from '../withRoot';
 import {trackClick, trackInput} from "./common/tracking";
-import {toggleFeedbackDialog, toggleNotifyDialog} from './Search/actions';
+import {toggleFeedbackDialog, toggleNotifyDialog} from './UserRequests/actions';
 import {navigate, redirectTo} from '@reach/router';
 
 import {encode} from 'universal-base64';

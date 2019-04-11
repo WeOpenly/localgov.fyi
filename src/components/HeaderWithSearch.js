@@ -23,7 +23,6 @@ import Menu from '@material-ui/core/Menu';
 import {isMobileOnly} from 'react-device-detect';
 import HeaderAccountMenu from './HeaderAccountMenu';
 
-import Search from './Search/Search';
 // import Feedback from './Feedback';
 import withRoot from '../withRoot';
 
@@ -103,9 +102,6 @@ class HeaderWithSearch extends Component {
             <Grid className='heaer_search_grid' item xs={2} className={classes.h_w_s_right}>
               <HeaderAccountMenu location={this.props.location} />
           </Grid>
-          <Grid className='heaer_search_grid' item xs={12} sm={6}>
-            <Search inHeader={true}/>
-          </Grid>
         
         </Grid>) : (<Grid className={classes.header_search_grid_container} container spacing={0}>
           <Grid
@@ -124,9 +120,6 @@ class HeaderWithSearch extends Component {
               className={classes.h_w_s_title}>
               evergov
             </Typography>
-          </Grid>
-          <Grid className='heaer_search_grid' item xs={12} sm={6}>
-            <Search inHeader={true}/>
           </Grid>
           <Grid className='heaer_search_grid' item xs={12} md={3} className={classes.h_w_s_right}>
               <HeaderAccountMenu location={this.props.location} />

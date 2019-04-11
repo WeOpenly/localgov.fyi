@@ -31,7 +31,7 @@ import SaveButton from '../components/Profile/SaveButton';
 import ServiceFlowDialog from './Delivery/ServiceFlowDialog';
 
 import {trackClick} from "./common/tracking";
-import {toggleNotifyDialog} from './Search/actions.js';
+import {toggleNotifyDialog} from './UserRequests/actions.js';
 import {isLoggedIn} from './Account/Auth';
 import {toggleDeliveryDialog} from './Delivery/actions';
 

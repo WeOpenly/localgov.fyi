@@ -28,7 +28,6 @@ import getPageContext from '../../../getPageContext';
 
 import withRoot from '../../../withRoot';
 import {trackView} from "../../../components/common/tracking";
-import {updateInput, fetchSearchResults} from '../../../components/Search/actions';
 
 import {getCurrentUser, isLoggedIn} from '../../../components/Account/Auth'
 import {getUserSavedItems} from '../../../components/Profile/actions'

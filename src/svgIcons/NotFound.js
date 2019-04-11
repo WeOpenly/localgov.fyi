@@ -9,8 +9,8 @@ const NotFound = props => (
         data-lt-installed="true"
         {...props}>
     <linearGradient id="grad1">
-         <stop offset="0%" stopColor="#0e07ce" />
-            <stop offset="100%" stopColor="#0e07ce"/>
+      <stop offset="0%" stopColor="#0e07ce" />
+      <stop offset="100%" stopColor="#0e07ce" />
     </linearGradient>
     <ellipse cx={540.643} cy={549.309} fill="#f2f2f2" rx={527.5} ry={34.922} />
     <path

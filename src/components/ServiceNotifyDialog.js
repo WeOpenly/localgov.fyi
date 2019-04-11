@@ -17,7 +17,7 @@ import AutoRenew from '@material-ui/icons/Autorenew';
 
 import withRoot from '../withRoot';
 import {trackInput} from "./common/tracking";
-import { toggleNotifyDialog } from './Search/actions';
+import { toggleNotifyDialog } from './UserRequests/actions';
 
 
 const styles = theme => ({

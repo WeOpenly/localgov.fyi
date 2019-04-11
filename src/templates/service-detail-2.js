@@ -27,7 +27,7 @@ import withRoot from '../withRoot';
 import {isLoggedIn} from '../components/Account/Auth';
 
 import {trackView} from "../components/common/tracking";
-import { toggleNotifyDialog } from '../components/Search/actions.js';
+import { toggleNotifyDialog } from '../components/UserRequests/actions.js';
 import RawForm from '../components/Reminders/RawForm.js';
 import SerRemCard from '../components/Reminders/Card.js';
 

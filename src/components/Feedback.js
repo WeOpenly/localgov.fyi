@@ -9,7 +9,7 @@ import SvgIcon from '@material-ui/core/SvgIcon';
 import MoodBad from '@material-ui/icons/MoodBad';
 
 import withRoot from '../withRoot';
-import {trackInput} from "./Search/tracking";
+import {trackInput} from "./common/tracking";
 
 const styles = theme => ({
   feedback_wrapper: {

@@ -9,7 +9,6 @@ import AppBar from '@material-ui/core/AppBar';
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 
-import Search from '../components/Search/Search';
 // import Feedback from '../components/Feedback';
 import withRoot from '../withRoot';
 
@@ -63,9 +62,6 @@ class Privacy extends React.Component {
               <Typography variant="display1" color="inherit" component="h1" className={classes.logo}>
                 evergov
               </Typography>
-            </Grid>
-            <Grid item xs={12} sm={6}>
-              <Search inHeader={true}/>
             </Grid>
             <Grid item xs={12} md={3} className={classes.right}>
               {/* <Feedback /> */}

@@ -15,7 +15,7 @@ import CommonNav from '../Nav/Common';
 import SerSuggestions from './SerSuggestions';
 import AreaSuggestions from './AreaSuggestions';
 import MobileSuggestions from './MobileSuggestions';
-
+import RelatedServiceTemplates from '../RelatedServiceTemplates';
 import {fetchAreaGuess, executeSearch} from './actions';
 import { trackClick } from "../common/tracking";
 import { teal } from '@material-ui/core/colors';
@@ -26,6 +26,10 @@ const styles = theme => ({
         display: 'flex',
         flexWrap: 'wrap',
         justifyContent: 'space-between'
+    },
+    index_templates_box:{
+        display:  'flex',
+        flex : '1',
     },
     index_hero_container: {
         display: 'flex',
@@ -160,8 +164,11 @@ class IndexHero extends Component {
                         <AreaSuggestions />
                         <SerSuggestions onSearch={this.onSearch} />
                     </div>
-                  
+                   
                 </div>
+                    <div className={classes.index_templates_box}>
+                        <RelatedServiceTemplates compact={true} />
+                    </div>
                 </Grid>
                 <Grid item xs="auto" sm={1} md={2}  />
             </Grid>

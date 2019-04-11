@@ -44,7 +44,9 @@ const styles = theme => ({
     "body>div>div": {
       display: "block",
       height: "100%"
-    },
+    }
+  },
+  index_section2: {
   }
 });
 
@@ -97,10 +99,10 @@ class Index extends React.Component {
               <IndexHero location={this.props.location} />
             </Grid>
           </Grid>
-        <Grid container className={classes.index_hero}>
+        <Grid container className={classes.index_section2}>
           <Grid item sm={1} md={3} />
           <Grid item sm={10} md={6}>
-            <RelatedServiceTemplates compact={true} />
+            this is location specific content
           </Grid>
           <Grid item sm={1} md={3} />
         </Grid>

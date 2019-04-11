@@ -63,6 +63,10 @@ const xah_randomize_array = ((arr) => {
 const SerTemplateCards = (props) => {
     let sers = [
         {
+            name: 'Pay Utility Bill',
+            link: 'pay-utility-bill/'
+        }, 
+        {
             name: 'Pay Property Taxes ',
             link: 'pay-property-taxes/'
         }, {
@@ -71,9 +75,6 @@ const SerTemplateCards = (props) => {
         }, {
             name: 'Renew Business License',
             link: 'renew-business-license/'
-        }, {
-            name: 'Pay Utility Bill',
-            link: 'pay-utility-bill/'
         }, 
           {
             name: 'Pay Water Bill',
@@ -84,8 +85,8 @@ const SerTemplateCards = (props) => {
     if(props.currentNameSlug)
         sers = sers.filter((ser) => ser.link.indexOf(props.currentNameSlug) === -1)
 
-    if (props.compact)
-        sers = sers.slice(0, 4)
+    // if (props.compact)
+    //     sers = sers.slice(0, 4)
 
     return (
        <Fragment>

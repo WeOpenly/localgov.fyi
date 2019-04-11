@@ -157,6 +157,16 @@ index_page_ser_control_items:{
         width: '100%',
         marginLeft: 0,
     },
+    index_page_touched_paper_header:{
+        border: `1px solid ${theme.palette.primary['100']}`,
+        boxShadow: '0px 3px 5px 0px rgba(0,0,0,0.1),0px 1px 1px 0px rgba(0,0,0,0.07),0px 2px 6px 1px rgba(0,0,0,0.06)',
+        position: 'absolute',
+        left: '-280px',
+        top: '0px',    
+        padding: theme.spacing.unit,
+        width: '320px',
+        zIndex: '200',
+    },
     index_page_touched_paper:{
         border: `1px solid ${theme.palette.primary['100']}`,
         boxShadow: '0px 3px 5px 0px rgba(0,0,0,0.1),0px 1px 1px 0px rgba(0,0,0,0.07),0px 2px 6px 1px rgba(0,0,0,0.06)',
@@ -394,7 +404,7 @@ class MobileSuggestions extends Component {
         const { serviceSearchText } = this.props;
         const placeholder = "Pay Parking Tickets";
         let suggestions = this.state.staticServiceTemplates;
-        const { locationSearchText, areaGuessResult } = this.props;
+        const { locationSearchText, areaGuessResult, inHeader } = this.props;
 
         const searchOptions = {
             types: ['(cities)']
@@ -422,7 +432,7 @@ class MobileSuggestions extends Component {
         if (serviceSearchText) {
             suggestions = this.state.filtered
         }
-        console.log('showInput', showInput);
+ 
         const autosuggestProps = {
             multiSection: !serviceSearchText,
             renderInputComponent: this.renderInput,
@@ -454,18 +464,31 @@ class MobileSuggestions extends Component {
         }
 
         const touchedInputs = this.state.touched || this.state.showSuggestions;
-        console.log(touchedInputs, this.state.touched, this.state.showSuggestions);
+        if (inHeader && !touchedInputs){
+            return ( 
+                <div style={{display: 'flex'}}>
+                    <Button
+                        color="primary"
+                        size="small"
+                        className={classes.ser_gloss_menu_button}
+                        onClick={this.onFocus}
+                        aria-label="share">
+                        <SearchIcon fontSize="small" />
+                    </Button>
+                </div>
+            )
+        }
 
         return (
             <div className={touchedInputs ? classes.index_page_ser_suggestions_container_mob__focussed : classes.index_page_ser_suggestions_container_mob}>
-                {touchedInputs ? (<Paper className={classes.index_page_touched_paper}>
+                {touchedInputs ? (<Paper className={inHeader ? classes.index_page_touched_paper_header : classes.index_page_touched_paper}>
                     <div className={classes.index_page_ser_control_items}>
                 <Button color="primary" className={classes.button} onClick={this.blurInputs}>
-        Cancel
-      </Button>
+                                Cancel
+                            </Button>
                         <Button color="primary" onClick={() => this.props.onSearch()} className={classes.button}>
                             Search
-      </Button>
+                            </Button>
                     </div>
                  
                     <PlacesAutocomplete
@@ -477,7 +500,7 @@ class MobileSuggestions extends Component {
                         searchOptions={searchOptions}
                         highlightFirstSuggestion
                         shouldFetchSuggestions={(!autoFilled && (showInput && showInput.length > 1))}
-                        googleCallbackName="initIndex"
+                        googleCallbackName={inHeader ? `initHeader` : `initIndex`}
                     >
                         {({ getInputProps, suggestions, getSuggestionItemProps, loading }) => (
                             <div style={{ width: '100%' }}>

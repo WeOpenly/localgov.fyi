@@ -122,7 +122,7 @@ class Case2 extends Component {
         const resultsAvailable = searchResults && Object.keys(searchResults).length > 0;
         const loadingComp = this.state.isMob ? (<Grid container>
             <Grid item sm={1} />
-            <Grid item sm={10} className={classes.ser_gloss_suggested_row}>
+            <Grid item sm={10} className={classes.ser_case2_loading}>
                 <MobileServiceLoader />
             </Grid>
             <Grid item sm={1} />

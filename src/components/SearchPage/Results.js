@@ -32,6 +32,7 @@ const styles = theme => ({
     ser_search_loading:{
         display: 'flex',
         justifyContent: 'center',
+        height: '600px',
     },
     suggest_loc_logo: {
         width: 56,

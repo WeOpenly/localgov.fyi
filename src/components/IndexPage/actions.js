@@ -74,7 +74,7 @@ export function executeSearch(){
         const {areaGuessResult, selectedLocationLatLng, selectedTemplateId, serviceSearchText} = getState().indexPage;
         let lat = null;
         let lng = null;
-        console.log(getState())
+
         if (selectedLocationLatLng){
             lat = selectedLocationLatLng.lat;
             lng = selectedLocationLatLng.lng;
@@ -100,27 +100,31 @@ export function executeSearch(){
 }
 
 function requestAreaServices() {
-    return { type: types.REQUEST_AREA_GUESS }
+    return { type: types.REQUEST_AREA_SERVICES }
 }
 
 function recvAreaServices(suggestions) {
-    return { type: types.SUCCESS_RECV_AREA_GUESS, suggestions }
+    return { type: types.SUCCESS_RECV_AREA_SERVICES, suggestions }
 }
 
 function failedRecvAreaServices() {
-    return { type: types.FAILED_RECV_AREA_GUESS }
+    return { type: types.FAILED_RECV_AREA_SERVICES }
 }
 
-export function fetchAreaServices() {
+export function fetchAreaServices(lat, lng) {
     return async (dispatch, getState) => {
-        dispatch(clearAll());
         dispatch(requestAreaServices());
 
         try {
-            const resp = await YusufApi(null, `get_area_services`, null, null);
-
+            let params = {
+                lat,
+                lng
+            }
+ 
+            const newQueryString = queryString.stringify(params);
+            const resp = await YusufApi(null, `get_nearby_sers?${newQueryString}`, null, null);
             if (resp && resp.success) {
-                dispatch(recvAreaServices(resp.suggested));
+                dispatch(recvAreaServices(resp.results));
             }
 
         } catch (e) {

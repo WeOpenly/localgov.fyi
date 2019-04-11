@@ -19,6 +19,8 @@ import IndexHero from '../components/IndexPage/Hero';
 import Footer from '../components/Footer';
 
 import {trackView, trackClick} from "../components/common/tracking";
+import AreaSuggestedServices from '../components/IndexPage/AreaSuggestedServices';
+import OtherLocations from '../components/IndexPage/OtherLocations';
 
 const styles = theme => ({
   "@global": {
@@ -47,7 +49,12 @@ const styles = theme => ({
     }
   },
   index_section2: {
-  }
+  },
+  index_footer: {
+    borderTop: `1px solid #dcdcdc`,
+    paddingTop: theme.spacing.unit,
+    marginTop: theme.spacing.unit * 4
+  },
 });
 
 
@@ -98,15 +105,17 @@ class Index extends React.Component {
             <Grid item xs={12}>
               <IndexHero location={this.props.location} />
             </Grid>
+            <Grid item xs={12}>
+              <AreaSuggestedServices />
+            </Grid>
+          <Grid item xs={12}>
+            <OtherLocations />
           </Grid>
-        <Grid container className={classes.index_section2}>
-          <Grid item sm={1} md={3} />
-          <Grid item sm={10} md={6}>
-            this is location specific content
           </Grid>
-          <Grid item sm={1} md={3} />
-        </Grid>
+        <div className={classes.index_footer}>
 
+          <Footer page={this.props.location.pathname} />
+        </div>
         </Fragment>
     );
   }

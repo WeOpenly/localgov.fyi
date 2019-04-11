@@ -9,8 +9,8 @@ const SvgParking = props => (
         data-lt-installed="true"
         {...props}>
           <linearGradient id="grad1">
-               <stop offset="0%" stop-color="#a0a2fc"/>
-            <stop offset="100%" stop-color="#0e07ce"  />
+            <stop offset="0%" stopColor="#0e07ce" />
+            <stop offset="100%" stopColor="#0e07ce" />
         </linearGradient>
         <g fill="#623cf5">
             <path

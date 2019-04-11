@@ -324,7 +324,7 @@ class ServiceHeader extends Component {
        <NotificationImportant className={classes.service_header_menuButtonIcon} fontSize="small"/> Get notified 
       </Button>)
 
-      const shareButton = (<Button color="primary" size="small"  className={classes.service_header_menuButton}  onClick={this.handleShareClick}  aria-label="share">
+    const shareButton = (<Button color="primary" size="small"  className={classes.service_header_menuButton}  onClick={this.handleShareClick}  aria-label="share">
       <Share className={classes.service_header_menuButtonIcon}  fontSize="small"/> Share
       </Button>)
 

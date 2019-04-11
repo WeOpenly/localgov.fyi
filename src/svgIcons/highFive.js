@@ -9,8 +9,8 @@ const HighFive = props => (
         data-lt-installed="true"
         {...props}>
         <linearGradient id="grad1">
-            <stop offset="100%" stop-color="#D4E1F4" />
-            <stop offset="0%" stop-color="#a0a2fc" />
+            <stop offset="0%" stopColor="#0e07ce" />
+            <stop offset="100%" stopColor="#0e07ce" />
         </linearGradient>
         <path
             d="M186 298.5h-69.5C85.848 298.5 61 323.348 61 354v108h109V338.055l48.55-72.106zm0 0"

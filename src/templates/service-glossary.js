@@ -5,9 +5,9 @@ import {connect} from 'react-redux';
 import Paper from '@material-ui/core/Paper';
 
 import queryString from 'query-string'
-import Fuse from 'fuse.js';
+
 import {navigate} from '@reach/router';
-import Link from 'gatsby-link';
+
 import Helmet from "react-helmet";
 import {isMobileOnly, isTablet, isMobile} from 'react-device-detect';
 
@@ -20,17 +20,17 @@ import Typography from '@material-ui/core/Typography';
 import RelatedServiceTemplates from '../components/RelatedServiceTemplates';
 import Footer from '../components/Footer';
 import withRoot from '../withRoot';
-import StateSuggest from '../components/StateSuggest';
+
 import LoginRegisterDialog from '../components/Account/LoginRegisterDialog';
 import {NO_SEARCH_RESULTS} from '../components/common/tracking_events';
 import RawForm from '../components/Reminders/RawForm';
-import { fetchGoogLoc, fetchAutoLoc} from '../components/ServiceTemplate/actions';
+import { fetchGoogLoc, fetchAutoLoc} from '../components/ServiceTemplatePage/actions';
 
 import {trackView, trackClick, trackInput, trackEvent} from "../components/common/tracking";
-import Suggested from '../components/ServiceTemplate/Suggested';
-import TemplateHero from '../components/ServiceTemplate/TemplateHero';
-import GoogAutoComplete from '../components/ServiceTemplate/GoogAutoComplete';
-import OtherLocations from '../components/ServiceTemplate/OtherLocations';
+import Suggested from '../components/ServiceTemplatePage/Suggested';
+import TemplateHero from '../components/ServiceTemplatePage/TemplateHero';
+import GoogAutoComplete from '../components/ServiceTemplatePage/GoogAutoComplete';
+import OtherLocations from '../components/ServiceTemplatePage/OtherLocations';
 
 const styles = theme => ({
     "@global": {
@@ -168,6 +168,9 @@ const styles = theme => ({
     ser_gloss_state_name: {
         color: '#4c4d55'
     },
+    ser_gloss_related_container:{
+        margin: `${theme.spacing.unit * 2}px  ${theme.spacing.unit * 10}px ${theme.spacing.unit * 4}px ${theme.spacing.unit * 10}px`
+    }
 });
 
 const RawHTML = ({
@@ -309,7 +312,8 @@ class ServiceGlossary extends Component {
             <Fragment>
                 <Helmet>
                     <title>{`${service_name} | Evergov`}</title>
-                      
+                    <script async defer
+                        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBr4RixcEvuxgGr9EwNeiHCqUITczxvvuc&callback=initMapIndex&libraries=place&scallback=initTemplate" > </script> 
 
                     <link
                         rel="canonical"
@@ -364,7 +368,11 @@ class ServiceGlossary extends Component {
                             More Services</Typography>
                     </Grid>
                     <Grid item xs={1}/>
-                    <RelatedServiceTemplates currentNameSlug={service_name_slug}/>
+                    <Grid item xs={12}  className={classes.ser_gloss_related_container}>
+                        <RelatedServiceTemplates currentNameSlug={service_name_slug} showAdd={true} />
+
+                    </Grid>
+              
                 </Grid>
                 <div className={classes.ser_gloss_footer}>
 

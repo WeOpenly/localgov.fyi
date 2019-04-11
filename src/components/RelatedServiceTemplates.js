@@ -19,8 +19,7 @@ import {trackClick} from "../components/common/tracking";
 const styles = theme => ({
  related_ser_list:{
      display: 'flex',
-     justifyContent: 'space-around',
-    margin: `${theme.spacing.unit *2}px  ${theme.spacing.unit *10}px ${theme.spacing.unit *4}px ${theme.spacing.unit *10}px`,
+     justifyContent: 'space-between',
  },
  related_ser_list_mob: {
      display: 'flex',
@@ -80,7 +79,7 @@ const SerTemplateCards = (props) => {
     return (
        <Fragment>
             {sers.map((item, idx) => {
-                if (idx === sers.length-1)
+                if (idx === sers.length-1 && props.showAdd)
                     return (<ConnLocationCard />)
                 return (
                     <ServiceTemplateCard key={item.name} name={item.name} slug={item.link}/>
@@ -110,7 +109,7 @@ class RelatedServiceTemplates extends Component {
     }
 
     render() {
-        const {data, classes, currentNameSlug, search} = this.props;
+        const {classes, currentNameSlug, showAdd} = this.props;
 
         return (
             <Fragment>
@@ -121,7 +120,7 @@ class RelatedServiceTemplates extends Component {
                     ? classes.related_ser_list
                     : classes.related_ser_list_mob}>
                     
-                   <SerTemplateCards currentNameSlug={currentNameSlug} />
+                   <SerTemplateCards currentNameSlug={currentNameSlug} showAdd={showAdd} />
                   </Grid>
             </Fragment>
         );

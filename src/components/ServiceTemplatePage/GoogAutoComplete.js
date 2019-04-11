@@ -149,7 +149,7 @@ class GoogAutoComplete extends React.Component {
                 debounce={50}
                 highlightFirstSuggestion
                 shouldFetchSuggestions={(searchText && searchText.length > 1)}
-                googleCallbackName="initMap"
+                        googleCallbackName="initTemplate"
             >
                 {({ getInputProps, suggestions, getSuggestionItemProps, loading }) => (
                         <div style={{ width: '100%' }}>

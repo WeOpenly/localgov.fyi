@@ -23,24 +23,27 @@ import { navigate } from "@reach/router";
 const styles = theme => ({
 ser_template_card:{
     cursor: 'pointer',
-    width: '240px',
+    width: '200px',
+    height: '160px',
+    background: '#fff',
+    margin: theme.spacing.unit,
     display: 'flex',
     flexDirection: 'column',
-    padding: theme.spacing.unit,
-    margin: theme.spacing.unit,
-    boxShadow : `0 2px 5px 2px ${theme.palette.primary['100']}`,
+        borderTop: `2px solid #AB93FF`,
+        boxShadow: '0px 3px 5px 0px rgba(0,0,0,0.1),0px 1px 1px 0px rgba(0,0,0,0.07),0px 2px 6px 1px rgba(0,0,0,0.06)'
 },
 ser_template_card_img:{
     display: 'flex',
     justifyContent: 'center',
     minHeight: '80px',
-    padding: theme.spacing.unit *3
+    paddingBottom: theme.spacing.unit *3,
+    paddingTop: theme.spacing.unit * 3
 },
 ser_template_card_content:{
  textAlign: 'center',
 display : 'flex',
 justifyContent : 'center',
-
+alignItems: 'center',
 }
 });
 
@@ -63,22 +66,22 @@ class ServiceTemplateCard extends Component {
         const lowerCaseName = name.toLowerCase();
 
         if (lowerCaseName.indexOf('tax') !== -1){
-            icon = (<SvgTax style={{fontSize: '64px'}} />);
+            icon = (<SvgTax style={{fontSize: '56px'}} />);
             mobIcon = (<SvgTax style={{fontSize: '40px'}} />)
         }else if(lowerCaseName.indexOf('parking') !== -1){
-            icon = (<SvgParking style={{fontSize: '64px'}} />)
+            icon = (<SvgParking style={{fontSize: '56px'}} />)
             mobIcon = (<SvgParking style={{fontSize: '40px'}} />)
         }else if(lowerCaseName.indexOf('license') !== -1){
-            icon = (<SvgLicense style={{fontSize: '64px'}} />)
+            icon = (<SvgLicense style={{fontSize: '56px'}} />)
             mobIcon = (<SvgLicense style={{fontSize: '40px'}} />)
         }else if(lowerCaseName.indexOf('utility') !== -1 || lowerCaseName.indexOf('water') !== -1){
-            icon = (<SvgLeak style={{fontSize: '64px'}} />)
+            icon = (<SvgLeak style={{fontSize: '56px'}} />)
             mobIcon = (<SvgLeak style={{fontSize: '40px'}} />)
         }
 
         if (this.state.isMob){
             return (
-            <ListItem  onClick={() => navigate(`/services/${slug}`, true)} style={{background: '#fff', margin: '8px', padding: '24px', cursor: 'pointer'}} alignItems="flex-start">
+                <ListItem onClick={() => navigate(`/services/${slug}`, true)} style={{ background: '#fff', margin: '8px', border: `2px solid #AB93FF`, padding: '24px', width: '300px', cursor: 'pointer'}} >
                 <ListItemAvatar>
                     {mobIcon}
                 </ListItemAvatar>
@@ -86,18 +89,18 @@ class ServiceTemplateCard extends Component {
             </ListItem>
             )
         } else {
-            return (<Card className={classes.ser_template_card} onClick={() => navigate(`/services/${slug}`, { replace: true })}>
+            return (<div className={classes.ser_template_card} onClick={() => navigate(`/services/${slug}`, { replace: true })}>
                         <div className={classes.ser_template_card_img}>
                                 {icon}
                         </div>
                         
-                    <CardContent className={classes.ser_template_card_content}>
-                    <Typography variant="body1" gutterBottom>
+                    <div className={classes.ser_template_card_content}>
+                    <Typography variant="body1">
                     {name}
                     </Typography>
-                    </CardContent>
+                    </div>
 
-                </Card>)
+                </div>)
         }
 
         

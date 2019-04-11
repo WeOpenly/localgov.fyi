@@ -3,7 +3,7 @@ import Grid from '@material-ui/core/Grid';
 import { withStyles } from '@material-ui/core/styles';
 import {isMobileOnly} from 'react-device-detect';
 import Share from "./Share";
-import HeaderWithSearch from './HeaderWithSearch';
+import SearchNav from './Nav/Search';
 import Footer from './Footer';
 import withRoot from '../withRoot';
 
@@ -47,7 +47,7 @@ class DetailTemplate extends React.Component {
     return (
       <div className={classes.default_template_root}>
         <div className={isMobileOnly ? classes.default_template_mainMobile : classes.default_template_main}>
-          <HeaderWithSearch location={this.props.location} />
+          <SearchNav />
           <Grid container spacing={0}>
             <Grid item xs={1} />
             <Grid item xs={10}>

@@ -6,20 +6,15 @@ import {isMobileOnly} from 'react-device-detect';
 import {connect} from "react-redux";
 import Helmet from "react-helmet";
 import {withStyles} from '@material-ui/core/styles';
-import AppBar from '@material-ui/core/AppBar';
 import Grid from '@material-ui/core/Grid';
 import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
 import AnchorLink from 'react-anchor-link-smooth-scroll'
-import ListItemIcon from '@material-ui/core/ListItemIcon';
-import ListItemText from '@material-ui/core/ListItemText';
-import Typography from '@material-ui/core/Typography';
-import Divider from '@material-ui/core/Divider';
 
+import Typography from '@material-ui/core/Typography';
 import withRoot from '../withRoot';
 import Footer from '../components/Footer';
 import HeaderWithSearch from '../components/HeaderWithSearch';
-import ServiceTemplateCard from '../components/ServiceTemplateCard';
 import {trackView, trackClick} from "../components/common/tracking";
 
 const styles = theme => ({

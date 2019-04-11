@@ -9,8 +9,8 @@ const SvgTax = props => (
         height={512}
         {...props}>
         <linearGradient id="grad1">
-            <stop offset="0%" stop-color="#a0a2fc"/>
-            <stop offset="100%" stop-color="#5a4aff"  />
+            <stop offset="0%" stopColor="#0e07ce" />
+            <stop offset="100%" stopColor="#0e07ce" />
         </linearGradient>
         <path
             d="M420.936 150.964a10.066 10.066 0 0 0-7.067-2.929 10.072 10.072 0 0 0-7.068 2.929c-1.859 1.86-2.929 4.439-2.929 7.068s1.069 5.208 2.929 7.067a10.075 10.075 0 0 0 7.068 2.93c2.629 0 5.208-1.07 7.067-2.93 1.859-1.858 2.93-4.438 2.93-7.067s-1.07-5.209-2.93-7.068z"

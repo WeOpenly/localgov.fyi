@@ -21,8 +21,7 @@ const windowGlobal = typeof window !== 'undefined' && window
 
 const styles = theme => ({
 h_a_m_login : {
-  zIndex: '2000',
-
+  zIndex: '109',
 },
 h_a_m_avatar : {
   width: 32,
@@ -31,7 +30,7 @@ h_a_m_avatar : {
 },
 h_a_m_headerMenu : {
   maxHeight: 280,
-  zIndex: '2000',
+  zIndex: '198',
   overflow: 'hidden',
 },
 h_a_m_profileHeading : {

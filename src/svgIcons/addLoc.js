@@ -10,8 +10,9 @@ const SvgAddloc = props => (
         data-lt-installed="true"
         {...props}>
           <linearGradient id="grad1">
-               <stop offset="100%" stop-color="#D4E1F4"/>
-            <stop offset="0%" stop-color="#0e07ce"  />
+            <stop offset="0%" stopColor="#0e07ce" />
+            <stop offset="100%" stopColor="#0e07ce"/>
+          
         </linearGradient>
         <path
             d="M108.64 258.477c-16.078-17.125-27.886-35.832-35.1-55.598a150.738 150.738 0 0 1-9.126-62.031 160.625 160.625 0 0 1 46.367-102.715A151.222 151.222 0 0 1 137.2 16.957a148.984 148.984 0 0 0-76.418 41.176 160.625 160.625 0 0 0-46.367 102.715 150.729 150.729 0 0 0 9.125 62.027c7.215 19.77 19.023 38.477 35.102 55.602L167.094 394l34.39-36.629zm0 0"

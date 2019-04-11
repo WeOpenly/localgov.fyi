@@ -24,6 +24,24 @@ if (process.env.NODE_ENV === `production`) {
   }}/>)
 }
 
+let GmapScript = () => (<Fragment></Fragment>)
+const windowGlobal = typeof window !== 'undefined' && window
+if (windowGlobal){
+  GmapScript =  () => (<Fragment>
+  <script>
+  {windowGlobal.myCallbackFunc = function () {
+      windowGlobal.initIndex && windowGlobal.initIndex()
+      windowGlobal.initTemplate && windowGlobal.initTemplate()
+  }}
+  </script>
+    <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBr4RixcEvuxgGr9EwNeiHCqUITczxvvuc&callback=initMapIndex&libraries=placescallback=myCallbackFunc" > </script> </Fragment>)
+}
+      
+
+
+
+
 const searchLinksSchema = {
   "@context": "http://schema.org",
   "@type": "WebSite",
@@ -87,8 +105,8 @@ export default class HTML extends React.Component {
           <meta
             name="viewport"
             content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
+   
           <link href={'/css/fonts.css'} rel="stylesheet"/> {this.props.headComponents}
-          <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBr4RixcEvuxgGr9EwNeiHCqUITczxvvuc&callback=initMap&libraries=places" async defer > </script>
         </head>
         <body {...this.props.bodyAttributes}>
           {this.props.preBodyComponents}

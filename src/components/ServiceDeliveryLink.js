@@ -524,7 +524,7 @@ const mapDispatchToProps = (dispatch) => {
 
 const mapStateToProps = function (state, ownProps) {
   return {
-    showFeedbackDialog: state.search.showFeedbackDialog,
+showFeedbackDialog : state.userRequests.showFeedbackDialog,
     ...ownProps
   };
 };

@@ -1,7 +1,9 @@
 import * as types from "./ActionTypes";
 
 const initialState = {
-    showLocRequestDialog: false
+    showLocRequestDialog: false,
+    showFeedbackDialog: false,
+      showNotifyDialog: false,
 };
 
 export function userRequests(state = initialState, action) {
@@ -10,6 +12,16 @@ export function userRequests(state = initialState, action) {
             return {
                 ...state,
                 showLocRequestDialog: action.toggle
+            };
+        case types.TOGGLE_NOTIFY_DIALOG:
+            return {
+                ...state,
+                showNotifyDialog: action.toggle,
+            };
+        case types.TOGGLE_FEEDBACK_DIALOG:
+            return {
+                ...state,
+                showFeedbackDialog: action.toggle,
             };
         default:
             return state;

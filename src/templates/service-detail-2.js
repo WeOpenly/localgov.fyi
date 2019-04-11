@@ -223,8 +223,8 @@ class ServiceDetailTemplate extends React.Component {
 
     componentDidMount() {
         const {dispatch} = this.props;
-        const { search} = this.props;
-        const { showNotifyDialog} = search;
+        const { userRequests} = this.props;
+        const { showNotifyDialog} = userRequests;
         const {id, name} = this.props.pageContext.data;
         dispatch(trackView('entity_detail', 'service', id, name));
         const loggedin = isLoggedIn();
@@ -438,6 +438,79 @@ class ServiceDetailTemplate extends React.Component {
             });
         });
 
+
+        const serviceNotifyForm = (<form hidden name="serviceNotify" method="post" action="/" data-netlify="true">
+            <p hidden>
+                <label>
+                    Don’t fill this out:{" "}
+                    <input name="bot-field" onChange={this.handleChange} />
+                </label>
+            </p>
+            <p hidden>
+                <label>
+                    Don’t fill this out:{" "}
+                    <input name="path" type="text" value="" />
+                </label>
+            </p>
+            <p hidden>
+                <label>
+                    Don’t fill this out:{" "}
+                    <input name="org_id" type="text" value="" />
+                </label>
+            </p>
+            <p hidden>
+                <label>
+                    Don’t fill this out:{" "}
+                    <input name="ser_name" type="text" value="" />
+                </label>
+            </p>
+            <p hidden>
+                <label>
+                    Don’t fill this out:{" "}
+                    <input name="phone" type="tel" value="" />
+                </label>
+            </p>
+            <p hidden>
+                <label>
+                    Don’t fill this out:{" "}
+                    <input name="email" type="email" value="" />
+                </label>
+            </p>
+        </form>);
+        const serviceDeliveryFeedbackForm = (<form hidden name="serviceDeliveryFeedback" method="post" action="/" data-netlify="true">
+            <p hidden>
+                <label>
+                    Don’t fill this out:{" "}
+                    <input name="bot-field" onChange={this.handleChange} />
+                </label>
+            </p>
+            <p hidden>
+                <label>
+                    Don’t fill this out:{" "}
+                    <input name="path" type="text" value="" />
+                </label>
+            </p>
+            <p hidden>
+                <label>
+                    Don’t fill this out:{" "}
+                    <input name="satisfied" type="text" value="" />
+                </label>
+            </p>
+            <p hidden>
+                <label>
+                    Don’t fill this out:{" "}
+                    <input name="feedbackComment" type="text" value="" />
+                </label>
+            </p>
+            <p hidden>
+                <label>
+                    Don’t fill this out:{" "}
+                    <input name="email" type="email" value="" />
+                </label>
+            </p>
+        </form>);
+
+
         const otherSersComp = otherServices
             .slice(0, 3)
             .map((service, idx) => <div style={{marginBottom: '24px'}}><ServiceCard
@@ -550,7 +623,8 @@ class ServiceDetailTemplate extends React.Component {
               <div className={classes.ser_detail_footer}>
           <Footer page={this.props.location.pathname} />
         </div>
-          
+                {serviceNotifyForm}
+                {serviceDeliveryFeedbackForm}
             </DetailTemplate>
         )
     }

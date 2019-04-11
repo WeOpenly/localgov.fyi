@@ -13,7 +13,7 @@ import Typography from '@material-ui/core/Typography';
 import SerRemForm from './Form';
 import posed, { PoseGroup } from 'react-pose';
 import { trackClick, trackEvent } from "../common/tracking";
-import { toggleNotifyDialog, slowToggleNotifyDilog } from '../Search/actions';
+import { toggleNotifyDialog, slowToggleNotifyDilog } from '../UserRequests/actions';
 
 const windowGlobal = typeof window !== 'undefined' && window
 const styles = theme => ({
@@ -238,8 +238,8 @@ class Card extends Component {
 
 const mapStateToProps = function (state, ownProps) {
     return {
-        showNotifyDialog: state.search.showNotifyDialog,
-        showFeedbackDialog: state.search.showFeedbackDialog,
+        showNotifyDialog: state.userRequests.showNotifyDialog,
+showFeedbackDialog : state.userRequests.showFeedbackDialog,
         ...ownProps,
     };
 };

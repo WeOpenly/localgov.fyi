@@ -18,7 +18,7 @@ import IndexHero from '../components/IndexPage/Hero';
 import Footer from '../components/Footer';
 
 import {trackView, trackClick} from "../components/common/tracking";
-import AreaSuggestedServices from '../components/IndexPage/AreaSuggestedServices.js';
+import AreaSuggestedServices from '../components/IndexPage/AreaSuggestedservices.js';
 import OtherLocations from '../components/IndexPage/OtherLocations.js';
 
 const styles = theme => ({

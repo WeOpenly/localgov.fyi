@@ -33,9 +33,12 @@ const styles = theme => ({
     org_agg_name:{
         alignItems: 'center',
         display: 'flex',
+        cursor: 'pointer',
         flexDirection: 'column',
         padding: theme.spacing.unit,
-        marginBottom: theme.spacing.unit
+        '&:hover': {
+            textDecoration: 'underline',
+        }
     },
 org_agg_cd:{
     margin: theme.spacing.unit,
@@ -70,6 +73,7 @@ org_agg_cd:{
     },
     org_header_buttonContent: {
         display: 'flex',
+        fontWeight: '500',
         alignItems: 'center',
         fontSize: '10px',
         color: '#fff'
@@ -89,9 +93,10 @@ org_agg_cd:{
     org_agg_logo:{
         alignSelf: 'center',
         display: 'flex',
+        marginBottom: theme.spacing.unit,
         height: theme.spacing.unit *9,
         width: theme.spacing.unit *9,
-        boxShadow: `0 0 1px 1px ${theme.palette.primary["200"]}`,
+        boxShadow: '0px 3px 5px 0px rgba(0,0,0,0.1),0px 1px 1px 0px rgba(0,0,0,0.07),0px 4px 4px 8px rgba(0,0,0,0.09)',
         border: '2px solid #fff'
     },
     org_agg_ser_section:{
@@ -323,7 +328,7 @@ class OrgAggregate extends Component {
                 <div className={classes.org_agg_org_section}>
                     {logo_url ? <Avatar className={classes.org_agg_logo} src={logo_url}>
                     </Avatar> : null}
-                    <div className={classes.org_agg_name}>
+                    <div className={classes.org_agg_name} onClick={() => navigate(`/organization/${url_slug}`)}>
                         <Typography style={{
                             color: '#fff',
                             textAlign: 'center',

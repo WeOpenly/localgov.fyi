@@ -34,6 +34,7 @@ import {trackClick} from "./common/tracking";
 import {toggleNotifyDialog} from './UserRequests/actions.js';
 import {isLoggedIn} from './Account/Auth';
 import {toggleDeliveryDialog} from './Delivery/actions';
+import { action } from 'popmotion';
 
 const styles = theme => ({
   service_header_main: {
@@ -215,6 +216,10 @@ class ServiceHeader extends Component {
   render() {
     const { classes, name, offeredIn, info, serDelLinks, id, logoSizes, service_delivery_enabled, orgSlug } = this.props;
 
+    if (!(name && offeredIn && info && serDelLinks )){
+      return null;
+    }
+
     const { anchorEl, copied } = this.state;
     const windowGlobal = typeof window !== 'undefined' && window;
     const windowLocation = windowGlobal.location ? windowGlobal.location : {};
@@ -319,21 +324,24 @@ class ServiceHeader extends Component {
       return <div className={classes.service_header_contactIcons}>{value} </div>;
     });
 
-
-    const actionButton = isLoggedIn() ? (<SaveButton service={id}/>) : (<Button color="primary" size="medium" className={classes.service_header_menuButtonNotify} onClick={this.handleNotifyClick}  aria-label="Ge Notified">
-       <NotificationImportant className={classes.service_header_menuButtonIcon} fontSize="small"/> Get notified 
+    let actionButton = null;
+    if(isLoggedIn()){
+      actionButton = <SaveButton service={id} />
+    } else{
+      actionButton = (<Button color="primary" size="medium" className={classes.service_header_menuButtonNotify} onClick={this.handleNotifyClick} aria-label="Ge Notified">
+        <NotificationImportant className={classes.service_header_menuButtonIcon} fontSize="small" /> Get notified
       </Button>)
+    }
 
     const shareButton = (<Button color="primary" size="small"  className={classes.service_header_menuButton}  onClick={this.handleShareClick}  aria-label="share">
       <Share className={classes.service_header_menuButtonIcon}  fontSize="small"/> Share
       </Button>)
 
     const serviceFlowButton = service_delivery_enabled ? (<Button size="small" variant="outlined" color="primary" onClick={this.toggleServiceFlow} className={classes.service_header_notifyButton}>Pay with evergov</Button>) : null;
-    
+
 
     return (
       <Grid container spacing={16} className={!this.state.isMobileOnly ? classes.service_header_main : classes.service_header_mainMobile}>
-        <ServiceNotifyDialog ser_name={name} org_id={this.props.orgID}/>
         <ServiceFlowDialog service_name={name} service_id={this.props.id} />
 
         <Grid item xs={12} md={10}>

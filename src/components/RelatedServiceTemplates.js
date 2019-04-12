@@ -25,9 +25,10 @@ const styles = theme => ({
      display: 'flex',
      justifyContent: 'center',
      flex: '1',
-     borderTop: `2px solid #AB93FF`,
-     padding: theme.spacing.unit,
-     boxShadow: '0px 3px 5px 0px rgba(0,0,0,0.1),0px 1px 1px 0px rgba(0,0,0,0.07),0px 2px 6px 1px rgba(0,0,0,0.06)'
+     border: `1px solid #AB93FF`,
+     borderRadius: '8px',
+     padding: theme.spacing.unit *2,
+     boxShadow: '0px 1px 1px 0px rgba(0,0,0,0.1),0px 1px 1px 0px rgba(0,0,0,0.07),0px 2px 18px 4px rgba(0,0,0,0.06)'
  },
  related_ser_list_mob: {
      display: 'flex',

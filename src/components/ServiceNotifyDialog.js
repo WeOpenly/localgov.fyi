@@ -31,10 +31,7 @@ service_notify_dialog_bootstrapInput : {
     width: '100%',
     transition: theme.transitions.create(['border-color', 'box-shadow'])
   },
-  listItem: {
-    display: 'flex',
-    margin: theme.spacing.unit * 2,
-  },
+
 service_notify_dialog_bootstrapInputComment : {
     borderRadius: 3,
     // backgroundColor: theme.palette.primary['50'],

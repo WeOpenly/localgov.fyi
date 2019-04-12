@@ -5,12 +5,8 @@ import {navigate} from '@reach/router';
 import { connect } from 'react-redux';
 import { CopyToClipboard } from 'react-copy-to-clipboard';
 import {Info} from 'react-feather';
+import ContentLoader from "react-content-loader"
 
-import {
-    FacebookShareButton,
-    TwitterShareButton,
-} from 'react-share';
-import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper';
 import InfoOutlined from '@material-ui/icons/InfoOutlined'
 import AccessTimeOutlined from '@material-ui/icons/AccessTimeOutlined'
@@ -76,6 +72,33 @@ ser_detail_dummyfaq_details:{
 }
 });
 
+
+
+const Tabloader = () => (
+    <ContentLoader
+        height={300}
+        width={400}
+        speed={100}
+        primaryColor="#f3f3f3"
+        secondaryColor="#d5d9f3"
+    >
+        <circle cx="27" cy="26" r="1" />
+        <circle cx="46" cy="49" r="1" />
+        <rect x="65" y="109" rx="0" ry="0" width="0" height="0" />
+        <rect x="384" y="243" rx="0" ry="0" width="0" height="0" />
+        <rect x="673" y="174" rx="0" ry="0" width="0" height="1" />
+        <rect x="148" y="192" rx="0" ry="0" width="0" height="0" />
+        <rect x="571" y="117" rx="0" ry="0" width="197" height="101" />
+        <rect x="573" y="244" rx="0" ry="0" width="197" height="101" />
+        <rect x="229" y="71" rx="0" ry="0" width="0" height="0" />
+        <rect x="7" y="105" rx="0" ry="0" width="410" height="139" />
+        <rect x="7" y="60" rx="0" ry="0" width="77" height="38" />
+        <rect x="92" y="60" rx="0" ry="0" width="77" height="38" />
+        <rect x="178" y="60" rx="0" ry="0" width="77" height="38" />
+    </ContentLoader>
+)
+
+
 const RawHTML = ({ children, className = "" }) => (
     <div
         className={className}
@@ -89,7 +112,8 @@ class ServiceDetail extends Component {
         super(props);
         this.state = {
             currentTab: 0,
-            tabContent : []
+            tabContent : [],
+            tabs: []
         };
     }
     
@@ -99,6 +123,49 @@ class ServiceDetail extends Component {
 
     componentDidMount(){
         const { classes, description, price, timingList, formList, qaList, stepList, locList } = this.props;
+        let tabs = []
+
+        tabs.push(
+            <Tab
+                classes={{
+                    root: classes.ser_detail_tab_tabRoot,
+                    selected: classes.ser_detail_tab_tabSelected
+                }}
+                label="Details"
+                icon={<InfoOutlined />} />
+        )
+
+
+        //  push this regardless
+        tabs.push(<Tab classes={{ root: classes.ser_detail_tab_tabRoot, selected: classes.ser_detail_tab_tabSelected }} label="FAQs" icon={<HelpOutline />} />)
+
+        if (stepList) {
+            tabs.push(<Tab classes={{ root: classes.ser_detail_tab_tabRoot, selected: classes.ser_detail_tab_tabSelected }} label="Checklist" icon={<List />} />)
+        }
+
+
+        if (formList) {
+            tabs.push(
+                <Tab
+                    classes={{
+                        root: classes.ser_detail_tab_tabRoot,
+                        selected: classes.ser_detail_tab_tabSelected
+                    }}
+                    label="Forms"
+                    icon={<FolderOpenOutlined />} />
+            )
+        }
+        if (timingList) {
+            tabs.push(
+                <Tab
+                    classes={{
+                        root: classes.ser_detail_tab_tabRoot,
+                        selected: classes.ser_detail_tab_tabSelected
+                    }}
+                    label="Timings"
+                    icon={< AccessTimeOutlined />} />
+            )
+        }
         let tabContent = []
 
         if(description){
@@ -177,7 +244,9 @@ class ServiceDetail extends Component {
                 </div>
             </Fragment>)
         }
+
         this.setState({
+            tabs,
             tabContent
         })
     }
@@ -185,49 +254,15 @@ class ServiceDetail extends Component {
    
     render() {
         const { classes, description, price, timingList, formList, qaList, stepList, locList } = this.props;
-        let tabs = []
-   
-            tabs.push(
-                <Tab
-                    classes={{
-                    root: classes.ser_detail_tab_tabRoot,
-                    selected: classes.ser_detail_tab_tabSelected
-                }}
-                    label="Details"
-                    icon={<InfoOutlined />}/>
-            )
-
-    
-        //  push this regardless
-        tabs.push(<Tab  classes={{ root: classes.ser_detail_tab_tabRoot, selected: classes.ser_detail_tab_tabSelected }} label="FAQs" icon={<HelpOutline />} />)
-        
-        if(stepList){
-            tabs.push(<Tab      classes={{ root: classes.ser_detail_tab_tabRoot, selected: classes.ser_detail_tab_tabSelected }} label="Checklist" icon={<List />} />)
-        }
+        const {tabs} = this.state;
 
 
-        if (formList) {
-            tabs.push(
-                <Tab
-                    classes={{
-                    root: classes.ser_detail_tab_tabRoot,
-                    selected: classes.ser_detail_tab_tabSelected
-                }}
-                    label="Forms"
-                    icon={<FolderOpenOutlined />}/>
-            )
+        if (!tabs || tabs.length === 0 || tabs.length !== this.state.tabContent.length){
+            return <Tabloader />
         }
-        if (timingList) {
-            tabs.push(
-                <Tab
-                    classes={{
-                    root: classes.ser_detail_tab_tabRoot,
-                    selected: classes.ser_detail_tab_tabSelected
-                }}
-                    label="Timings"
-                    icon={< AccessTimeOutlined />}/>
-            )
-        }
+
+        const currentTabContent = this.state.tabContent[this.state.currentTab]
+        console.log(tabs, currentTabContent)
          return (<Paper className={classes.ser_detail_cardWrapper} elevation={2}>
                             <Tabs
             value={this.state.currentTab}
@@ -238,7 +273,7 @@ class ServiceDetail extends Component {
           >
           {tabs}
            </Tabs>
-          {this.state.tabContent[this.state.currentTab]}
+             {currentTabContent ? currentTabContent : null}
         </Paper>)
     }
 }

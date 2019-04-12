@@ -482,6 +482,8 @@ class ServiceDeliveryLink extends Component {
         </Paper>
       </Dialog>
     )
+
+
     return (
       <Fragment>
         {serButtons}
@@ -529,6 +531,6 @@ showFeedbackDialog : state.userRequests.showFeedbackDialog,
   };
 };
 
-const ConnServiceDeliveryLink = connect(mapStateToProps, mapDispatchToProps)(withStyles(styles)(ServiceDeliveryLink));
+const ConnServiceDeliveryLink = connect(mapStateToProps, mapDispatchToProps)(withStyles(styles, {name: 'ser-deliv-link'})(ServiceDeliveryLink));
 
 export default ConnServiceDeliveryLink;

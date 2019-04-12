@@ -144,13 +144,13 @@ class Card extends Component {
 
         const { dispatch, showNotifyDialog, service_delivery_enabled } = this.props;
 
-        if (windowGlobal && windowGlobal.localStorage) {
-            const remSubDone = localStorage.getItem(`rem_sub_${this.props.service_id}`);
-            const remClosedone = localStorage.getItem(`rem_close_${this.props.service_id}`);
-            if (!(remClosedone || remSubDone || service_delivery_enabled) && !showNotifyDialog){
-                dispatch(slowToggleNotifyDilog());
-            }
-        }
+        // if (windowGlobal && windowGlobal.localStorage) {
+        //     const remSubDone = localStorage.getItem(`rem_sub_${this.props.service_id}`);
+        //     const remClosedone = localStorage.getItem(`rem_close_${this.props.service_id}`);
+        //     if (!(remClosedone || remSubDone || service_delivery_enabled) && !showNotifyDialog){
+        //         dispatch(slowToggleNotifyDilog());
+        //     }
+        // }
     }
 
     componentWillUnmount() {
@@ -159,7 +159,7 @@ class Card extends Component {
 
     render() {
         const { classes, greeting_msg, thanks_msg, field_schema, ui_schema, ser_rem_form_id, org_id, service_id, showNotifyDialog} = this.props;
-
+        return null;
         const { showGreeting } = this.state;
 
         if (!field_schema) {

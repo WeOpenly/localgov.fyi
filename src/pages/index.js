@@ -10,7 +10,6 @@ import {withStyles} from '@material-ui/core/styles';
 
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
-import RelatedServiceTemplates from '../components/RelatedServiceTemplates'
 
 import withRoot from '../withRoot';
 
@@ -19,8 +18,8 @@ import IndexHero from '../components/IndexPage/Hero';
 import Footer from '../components/Footer';
 
 import {trackView, trackClick} from "../components/common/tracking";
-import AreaSuggestedServices from '../components/IndexPage/AreaSuggestedServices';
-import OtherLocations from '../components/IndexPage/OtherLocations';
+import AreaSuggestedServices from '../components/IndexPage/AreaSuggestedServices.js';
+import OtherLocations from '../components/IndexPage/OtherLocations.js';
 
 const styles = theme => ({
   "@global": {

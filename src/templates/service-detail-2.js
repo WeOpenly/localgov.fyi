@@ -195,6 +195,26 @@ const genericFSchema = {
   }
 }
 
+const OtherSerLoader = () => (
+    <ContentLoader
+        height={350}
+        width={300}
+        speed={100}
+        primaryColor="#f3f3f3"
+        secondaryColor="#d5d9f3"
+    >
+        <circle cx="27" cy="26" r="1" />
+        <circle cx="46" cy="49" r="1" />
+        <rect x="65" y="109" rx="0" ry="0" width="0" height="0" />
+        <rect x="384" y="243" rx="0" ry="0" width="0" height="0" />
+        <rect x="673" y="174" rx="0" ry="0" width="0" height="1" />
+        <rect x="148" y="192" rx="0" ry="0" width="0" height="0" />
+        <rect x="229" y="71" rx="0" ry="0" width="0" height="0" />
+        <rect x="66" y="48" rx="0" ry="0" width="16" height="1" />
+        <rect x="-7" y="6" rx="0" ry="0" width="327" height="133" />
+        <rect x="2" y="170" rx="0" ry="0" width="327" height="133" />
+    </ContentLoader>
+)
 
 const DeskTopServiceLoader = () => (
     <ContentLoader
@@ -535,20 +555,22 @@ class ServiceDetailTemplate extends React.Component {
             </p>
         </form>);
 
-
-        const otherSersComp = otherServices
-            .slice(0, 3)
-            .map((service, idx) => <div style={{marginBottom: '24px'}}><ServiceCard
-                key={`service-card-other-${service.id}`}
-                resultType='service'
-                id={service.id}
-                listIndex={`${service.id}-${idx}`}
-                toLink={`/service/${service.url_slug}/`}
-                title={service.service_name}
-                description={service.service_description}
-                deliveryLink={service.service_del_links && service.service_del_links[0]
-                ? service.service_del_links[0]
-                : null}/></div>);
+        let otherSer = (<OtherSerLoader />)
+        if (!this.state.loggedin){
+            otherSer = otherServices
+                .slice(0, 3)
+                .map((service, idx) => <div style={{ marginBottom: '24px' }}><ServiceCard
+                    key={`service-card-other-${service.id}`}
+                    resultType='service'
+                    id={service.id}
+                    listIndex={`${service.id}-${idx}`}
+                    toLink={`/service/${service.url_slug}/`}
+                    title={service.service_name}
+                    description={service.service_description}
+                    deliveryLink={service.service_del_links && service.service_del_links[0]
+                        ? service.service_del_links[0]
+                        : null} /></div>);
+        }
 
         const jsonLd = {
             "@context": "http://schema.org",
@@ -568,6 +590,7 @@ class ServiceDetailTemplate extends React.Component {
         }
 
         const someDetails = description || price || timingList || formList || stepList || qaList || locList;
+
         if (!someDetails){
             return <DeskTopServiceLoader />
         }
@@ -634,10 +657,9 @@ class ServiceDetailTemplate extends React.Component {
                     <Grid item xs={12} sm={12} md={4}>
                         <div className={classes.other_ser_headerWrapper}>
                             <Typography variant="subheading">Additional services</Typography>
+
                         </div>
-                        {this.state.logincheckloading ? (<Spinner className={classes.ser_detail_loading_spinner} name="ball-beat" color="blue"/>) : (<div>
-                            {otherSersComp}
-                        </div>)}
+                        {otherSer}
                         <div className={classes.other_ser_linkWrapper}>
                             <Link to={`/organization/${org_slug}/`} className={classes.other_ser_link}>
                                 <Typography variant="caption" className={classes.other_ser_linkText}>See all services from {org_name}</Typography>

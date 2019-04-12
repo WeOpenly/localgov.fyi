@@ -88,13 +88,12 @@ const Tabloader = () => (
         <rect x="384" y="243" rx="0" ry="0" width="0" height="0" />
         <rect x="673" y="174" rx="0" ry="0" width="0" height="1" />
         <rect x="148" y="192" rx="0" ry="0" width="0" height="0" />
-        <rect x="571" y="117" rx="0" ry="0" width="197" height="101" />
-        <rect x="573" y="244" rx="0" ry="0" width="197" height="101" />
         <rect x="229" y="71" rx="0" ry="0" width="0" height="0" />
-        <rect x="7" y="105" rx="0" ry="0" width="410" height="139" />
-        <rect x="7" y="60" rx="0" ry="0" width="77" height="38" />
-        <rect x="92" y="60" rx="0" ry="0" width="77" height="38" />
-        <rect x="178" y="60" rx="0" ry="0" width="77" height="38" />
+        <rect x="11" y="53" rx="0" ry="0" width="410" height="139" />
+        <rect x="11" y="4" rx="0" ry="0" width="66" height="33" />
+        <rect x="86" y="5" rx="0" ry="0" width="66" height="33" />
+        <rect x="66" y="48" rx="0" ry="0" width="16" height="1" />
+        <rect x="166" y="4" rx="0" ry="0" width="66" height="33" />
     </ContentLoader>
 )
 
@@ -262,7 +261,7 @@ class ServiceDetail extends Component {
         }
 
         const currentTabContent = this.state.tabContent[this.state.currentTab]
-        console.log(tabs, currentTabContent)
+
          return (<Paper className={classes.ser_detail_cardWrapper} elevation={2}>
                             <Tabs
             value={this.state.currentTab}

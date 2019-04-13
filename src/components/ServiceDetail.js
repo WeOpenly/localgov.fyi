@@ -6,6 +6,9 @@ import { connect } from 'react-redux';
 import { CopyToClipboard } from 'react-copy-to-clipboard';
 import {Info} from 'react-feather';
 import ContentLoader from "react-content-loader"
+import List from '@material-ui/core/List';
+import ListItem from '@material-ui/core/ListItem';
+import ListItemText from '@material-ui/core/ListItemText';
 
 import Paper from '@material-ui/core/Paper';
 import InfoOutlined from '@material-ui/icons/InfoOutlined'
@@ -13,7 +16,7 @@ import AccessTimeOutlined from '@material-ui/icons/AccessTimeOutlined'
 import FolderOpenOutlined from '@material-ui/icons/FolderOpenOutlined'
 import HelpOutline from '@material-ui/icons/HelpOutline'
 import PriorityHigh from '@material-ui/icons/PriorityHigh';
-import List from '@material-ui/icons/List'
+
 
 import { withStyles } from '@material-ui/core/styles';
 import Tabs from '@material-ui/core/Tabs';
@@ -22,6 +25,9 @@ import Typography from '@material-ui/core/Typography';
 
 import Divider from '@material-ui/core/Divider';
 import { trackClick} from "./common/tracking";
+const windowGlobal = typeof window !== 'undefined'
+    ? window
+    : null
 
 const styles = theme => ({
     ser_detail_tab_root: {
@@ -121,8 +127,90 @@ class ServiceDetail extends Component {
     };
 
     componentDidMount(){
-        const { classes, description, price, timingList, formList, qaList, stepList, locList } = this.props;
+
+        const { classes, description, price, alltimings, allForms, allfaq, allSteps } = this.props;
         let tabs = []
+        let timingList = null;
+        if (alltimings.length > 0) {
+            timingList = alltimings.map((timing, index) => {
+                const { day, open } = timing;
+                const breakTime = timing["break"];
+                let openTime = "";
+
+                if (open && breakTime) {
+                    openTime = `OPEN: ${open} CLOSED: ${breakTime}`;
+                }
+
+                return (
+                    <ListItem disableGutters>
+                        <ListItemText
+                            primary={openTime}
+                            secondary={day}
+                            secondaryTypographyProps={{
+                                variant: "subheading"
+                            }} />
+                    </ListItem>
+                );
+            });
+        }
+
+        let stepList = null;
+        if (allSteps.length > 0) {
+            stepList = allSteps.map((step, index) => {
+                const { description } = step;
+                const text = (
+                    <RawHTML>
+                        {description}
+                    </RawHTML>
+                );
+                return <ListItem disableGutters>
+                    <Typography type="caption" className={classes.serviceDetailStepNumber} gutterBottom>
+                        {index + 1}
+                    </Typography>
+                    <Typography type="body1" className={classes.serviceDetailStepText} gutterBottom>
+                        {text}
+                    </Typography>
+
+                </ListItem>;
+            });
+        }
+
+        let formList = null;
+        if (allForms.length > 0) {
+            formList = allForms.map((form, index) => {
+                const { name, url, price } = form;
+                return <ListItem button disableGutters>
+                    <ListItemText
+                        primary={name}
+                        onClick={() => {
+                            if (url) {
+                                windowGlobal.open(url, "_blank");
+                            }
+                        }}
+                        secondary={price}
+                        className={classes.ser_detail_formLink} />
+                </ListItem>;
+            });
+        }
+
+        let qaList = null;
+        if (allfaq.length > 0) {
+            qaList = allfaq.map((qa, index) => {
+                const { answer, question } = qa;
+                const text = (
+                    <RawHTML>
+                        {answer}
+                    </RawHTML>
+                );
+
+                return <Fragment>
+                    <ListItem disableGutters>
+                        <ListItemText primary={<Typography variant='subheading'>{question}</Typography>} secondary={<Typography color="textPrimary">{text}</Typography>} />
+                    </ListItem>
+                    {(index !== allfaq.length - 1) ? <Divider style={{ margin: '8px' }} /> : null}
+                </Fragment>;
+            });
+        }
 
         tabs.push(
             <Tab

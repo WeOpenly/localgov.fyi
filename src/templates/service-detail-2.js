@@ -10,6 +10,7 @@ import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
 import Spinner from 'react-spinkit';
+import ServiceFlowDialog from '../components/Delivery/ServiceFlowDialog';
 
 import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
@@ -21,16 +22,13 @@ import KeyboardBackspace from '@material-ui/icons/KeyboardBackspace';
 import ServiceDetail from '../components/ServiceDetail';
 import DetailTemplate from '../components/detailTemplate';
 import ServiceHeader from '../components/ServiceHeader';
-import AddressGoogleMap from '../components/AddressGoogleMap';
+
 import Footer from '../components/Footer';
 import ServiceCard from '../components/ServiceCard';
 import withRoot from '../withRoot';
 import {isLoggedIn} from '../components/Account/Auth';
 
 import {trackView} from "../components/common/tracking";
-import { toggleNotifyDialog } from '../components/UserRequests/actions.js';
-import RawForm from '../components/Reminders/RawForm.js';
-import SerRemCard from '../components/Reminders/Card.js';
 
 const windowGlobal = typeof window !== 'undefined' && window;
 
@@ -91,7 +89,7 @@ const styles = theme => ({
         paddingTop: theme.spacing.unit,
         paddingLeft: theme.spacing.unit * 2
     },
-    ser_detail_button: {
+    ser_goback_button: {
         border: 'none',
         '&:hover':{
             background: 'none'
@@ -256,14 +254,12 @@ const RawHTML = ({
 }}/>);
 
 class ServiceDetailTemplate extends React.Component {
-    static propTypes = {
-        data: PropTypes.shape({postsJson: PropTypes.object.isRequired})
-    }
-
-    state = {
-        loggedin: false,
-        logincheckloading: true,
-        notifyInterval: null,
+    constructor(props) {
+        super(props);
+        this.state = {
+            loggedin: false,
+            logincheckloading: true,
+        };
     }
 
     componentDidMount() {
@@ -287,10 +283,10 @@ class ServiceDetailTemplate extends React.Component {
     }
 
     componentWillUnmount(){
-        if (this.state.notifyInterval && windowGlobal){
-            const notifyInterval = this.state.notifyInterval;
-            windowGlobal.clearTimeout(notifyInterval);
-        }
+        // if (this.state.notifyInterval && windowGlobal){
+        //     const notifyInterval = this.state.notifyInterval;
+        //     windowGlobal.clearTimeout(notifyInterval);
+        // }
     }
 
     render() {
@@ -319,151 +315,50 @@ class ServiceDetailTemplate extends React.Component {
         const {classes} = this.props;
         
         let serRemFormRaw = null;
-        if (service_reminder_bp_json){
-            const { field_schema} = service_reminder_bp_json;
-            serRemFormRaw = <RawForm field_schema={field_schema} id={service_reminder_bp_json.id} service_id={id} org_id={org_id}/>
-        }
-        else{
-            serRemFormRaw = <RawForm field_schema={JSON.stringify(genericFSchema)} id="generic_ser_rem_form" service_id={id} org_id={org_id} />
-        }
+        // if (service_reminder_bp_json){
+        //     const { field_schema} = service_reminder_bp_json;
+        //     serRemFormRaw = <RawForm field_schema={field_schema} id={service_reminder_bp_json.id} service_id={id} org_id={org_id}/>
+        // }
+        // else{
+        //     serRemFormRaw = <RawForm field_schema={JSON.stringify(genericFSchema)} id="generic_ser_rem_form" service_id={id} org_id={org_id} />
+        // }
 
         let serRemFormCard = null;
-        if (service_reminder_bp_json) {
-            const { field_schema, ui_schema, thanks_msg, greeting_msg} = service_reminder_bp_json;
-            serRemFormCard = <SerRemCard
-            key={id}
-            service_delivery_enabled={service_delivery_enabled}
-            field_schema={field_schema}
-            greeting_msg={greeting_msg}
-            thanks_msg={thanks_msg}
-            ui_schema={ui_schema}
-            ser_rem_form_id={service_reminder_bp_json.id}
-            service_id={id}
-            org_id={org_id}/>
-        }
-        else {
-            serRemFormCard = <SerRemCard
-                key = "generic_ser_rem_form"
-                service_delivery_enabled={service_delivery_enabled}
-                field_schema={JSON.stringify(genericFSchema)}
-                service_delivery_enabled={service_delivery_enabled}
-                greeting_msg={null}
-                thanks_msg={null}
-                ui_schema={null}
-                ser_rem_form_id="generic_ser_rem_form"
-                service_id={id}
-                org_id={org_id} />
-        }
+        // if (service_reminder_bp_json) {
+        //     const { field_schema, ui_schema, thanks_msg, greeting_msg} = service_reminder_bp_json;
+        //     serRemFormCard = <SerRemCard
+        //     key={id}
+        //     service_delivery_enabled={service_delivery_enabled}
+        //     field_schema={field_schema}
+        //     greeting_msg={greeting_msg}
+        //     thanks_msg={thanks_msg}
+        //     ui_schema={ui_schema}
+        //     ser_rem_form_id={service_reminder_bp_json.id}
+        //     service_id={id}
+        //     org_id={org_id}/>
+        // }
+        // else {
+        //     serRemFormCard = <SerRemCard
+        //         key = "generic_ser_rem_form"
+        //         service_delivery_enabled={service_delivery_enabled}
+        //         field_schema={JSON.stringify(genericFSchema)}
+        //         service_delivery_enabled={service_delivery_enabled}
+        //         greeting_msg={null}
+        //         thanks_msg={null}
+        //         ui_schema={null}
+        //         ser_rem_form_id="generic_ser_rem_form"
+        //         service_id={id}
+        //         org_id={org_id} />
+        // }
  
         let serLogoSvg = null
         if (logoSizes && logoSizes.sizes) {
             serLogoSvg = logoSizes.sizes
         }
 
-        let timingList = null;
-        if (alltimings.length > 0) {
-            timingList = alltimings.map((timing, index) => {
-                const {day, open} = timing;
-                const breakTime = timing["break"];
-                let openTime = "";
-
-                if (open && breakTime) {
-                    openTime = `OPEN: ${open} CLOSED: ${breakTime}`;
-                }
-
-                return (
-                    <ListItem disableGutters>
-                        <ListItemText
-                            primary={openTime}
-                            secondary={day}
-                            secondaryTypographyProps={{
-                            variant: "subheading"
-                        }}/>
-                    </ListItem>
-                );
-            });
-        }
-
-        let stepList = null;
-        if (allSteps.length > 0) {
-            stepList = allSteps.map((step, index) => {
-                const {description} = step;
-                const text = (
-                    <RawHTML>
-                        {description}
-                    </RawHTML>
-                );
-                return <ListItem disableGutters>
-                    <Typography type="caption" className={classes.serviceDetailStepNumber} gutterBottom>
-                        {index + 1}
-                    </Typography>
-                     <Typography type="body1" className={classes.serviceDetailStepText}  gutterBottom>
-                       {text}
-                    </Typography>
-                  
-                </ListItem>;
-            });
-        }
-
-        let formList = null;
-        if (allForms.length > 0) {
-            formList = allForms.map((form, index) => {
-                const {name, url, price} = form;
-                return <ListItem button disableGutters>
-                    <ListItemText
-                        primary={name}
-                        onClick={() => {
-                        if (url) {
-                            windowGlobal.open(url, "_blank");
-                        }
-                    }}
-                        secondary={price}
-                        className={classes.ser_detail_formLink}/>
-                </ListItem>;
-            });
-        }
-
-        let qaList = null;
-        if (allfaq.length > 0) {
-            qaList = allfaq.map((qa, index) => {
-                const {answer, question} = qa;
-                const text = (
-                    <RawHTML>
-                        {answer}
-                    </RawHTML>
-                );
-
-                return <Fragment>
-                    <ListItem disableGutters>
-                    <ListItemText primary={<Typography variant='subheading'>{question}</Typography>} secondary=     {<Typography color="textPrimary">{text}</Typography> }/>
-                    </ListItem>
-                      {(index !== allfaq.length-1) ? <Divider style={{margin: '8px'}} /> : null}
-                </Fragment>;
-            });
-        }
+    
 
         let locList = null;
-        if (alllocations.length > 0) {
-            locList = alllocations.map((loc, index) => {
-                const {id, description, address} = loc;
-                return <div>
-                    <Typography variant="body" gutterBottom>
-                        {id}
-                    </Typography>
-                    <Typography variant="caption" gutterBottom>
-                        {description}
-                    </Typography>
-                    <br/>
-                    <AddressGoogleMap
-                        googleMapURL="https://maps.googleapis.com/maps/api/js?v=3.exp&key=AIzaSyC1d6ej2p77--6Wf8m6dzdrbvKhfBnb3Ks&libraries=places"
-                        loadingElement={< div style = {{ height: "205px", width: "280px" }}/>}
-                        containerElement={< div style = {{ height: "200px", width: "280px" }}/>}
-                        mapElement={< div style = {{ height: "200px", width: "280px" }}/>}
-                        address={address.toLowerCase()}/>
-                    <br/>
-                </div>;
-            });
-        }
 
         const serDel = service_del_links.map((link, idx) => {
             return ({
@@ -484,44 +379,7 @@ class ServiceDetailTemplate extends React.Component {
         });
 
 
-        const serviceNotifyForm = (<form hidden name="serviceNotify" method="post" action="/" data-netlify="true">
-            <p hidden>
-                <label>
-                    Don’t fill this out:{" "}
-                    <input name="bot-field" onChange={this.handleChange} />
-                </label>
-            </p>
-            <p hidden>
-                <label>
-                    Don’t fill this out:{" "}
-                    <input name="path" type="text" value="" />
-                </label>
-            </p>
-            <p hidden>
-                <label>
-                    Don’t fill this out:{" "}
-                    <input name="org_id" type="text" value="" />
-                </label>
-            </p>
-            <p hidden>
-                <label>
-                    Don’t fill this out:{" "}
-                    <input name="ser_name" type="text" value="" />
-                </label>
-            </p>
-            <p hidden>
-                <label>
-                    Don’t fill this out:{" "}
-                    <input name="phone" type="tel" value="" />
-                </label>
-            </p>
-            <p hidden>
-                <label>
-                    Don’t fill this out:{" "}
-                    <input name="email" type="email" value="" />
-                </label>
-            </p>
-        </form>);
+    
         const serviceDeliveryFeedbackForm = (<form hidden name="serviceDeliveryFeedback" method="post" action="/" data-netlify="true">
             <p hidden>
                 <label>
@@ -555,15 +413,15 @@ class ServiceDetailTemplate extends React.Component {
             </p>
         </form>);
 
-        let otherSer = (<OtherSerLoader />)
+        let otherSer =null;
         if (!this.state.loggedin){
             otherSer = otherServices
                 .slice(0, 3)
                 .map((service, idx) => <div style={{ marginBottom: '24px' }}><ServiceCard
-                    key={`service-card-other-${service.id}`}
+                    key={`service-card-other-${idx}`}
                     resultType='service'
-                    id={service.id}
-                    listIndex={`${service.id}-${idx}`}
+                    id={id}
+                    listIndex={`${id}-${idx}`}
                     toLink={`/service/${service.url_slug}/`}
                     title={service.service_name}
                     description={service.service_description}
@@ -589,14 +447,40 @@ class ServiceDetailTemplate extends React.Component {
             jsonLd['potentialAction'] = serDel[0]['potentialAction']
         }
 
-        const someDetails = description || price || timingList || formList || stepList || qaList || locList;
 
-        if (!someDetails){
-            return <DeskTopServiceLoader />
+        let serHeader = null;
+        if (name){
+            serHeader = <ServiceHeader
+                name={name}
+                service_delivery_enabled={service_delivery_enabled}
+                id={id}
+                offeredIn={org_name}
+                orgID={org_id}
+                orgSlug={org_slug}
+                info={contact_details}
+                serDelLinks={service_del_links}
+                logoSizes={serLogoSvg} />
+        }
+      
+
+        let backButton = null;
+        if((windowGlobal && window.history.length > 2) && !isMobileOnly){
+            backButton = (
+                <IconButton
+                    variant=""
+                    aria-label="goback"
+                    disableRipple
+                    disableFocusRipple
+                    onClick={() => window.history.back()}
+                    className={classes.ser_goback_button}>
+                    <KeyboardBackspace />
+                </IconButton>
+            )
         }
 
         return (
             <DetailTemplate location={this.props.location}>
+                <ServiceFlowDialog service_name={name} service_id={id} /> 
 
                 <Grid container spacing={16} className={classes.ser_detail_container}>
                     <Helmet>
@@ -623,36 +507,14 @@ class ServiceDetailTemplate extends React.Component {
                             content={`Forms, Price, Checklist, FAQS, Timings and Local Government Service Contact Details for ${name} offered in ${org_name} | Evergov`}/>
                      
                     </Helmet>
-                    {(windowGlobal && window.history.length > 2) && !isMobileOnly
-                        ? (
-                            <IconButton
-                                variant=""
-                                aria-label="goback"
-                                disableRipple
-                                disableFocusRipple
-                                onClick={() => window.history.back()}
-                                className={classes.ser_detail_button}>
-                                <KeyboardBackspace/>
-                            </IconButton>
-                        )
-                        : null}
+      
                     <Grid item xs={12}>
-                        <ServiceHeader
-                            name={name}
-                            service_delivery_enabled={service_delivery_enabled}
-                            id={id}
-                            offeredIn={org_name}
-                            orgID={org_id}
-                            orgSlug={org_slug}
-                            info={contact_details}
-                            serDelLinks={service_del_links}
-                            logoSizes={serLogoSvg}/>
+                       {serHeader}
                     </Grid>
                  
          
                     <Grid item xs={12} md={8} className={classes.ser_detail_details}>
-                        {serRemFormCard}
-                        <ServiceDetail description={description} price={price} timingList={timingList} formList={formList} qaList={qaList} stepList={stepList} locList={locList} />
+                        <ServiceDetail description={description} price={price} alltimings={alltimings} allForms={allForms} allfaq={allfaq} allSteps={allSteps}  />
                     </Grid>
                     <Grid item xs={12} sm={12} md={4}>
                         <div className={classes.other_ser_headerWrapper}>
@@ -668,12 +530,10 @@ class ServiceDetailTemplate extends React.Component {
                     </Grid>
                 </Grid>
        
-                   
-                    {serRemFormRaw}
               <div className={classes.ser_detail_footer}>
-          <Footer page={this.props.location.pathname} />
-        </div>
-                {serviceNotifyForm}
+                <Footer page={this.props.location.pathname} />
+                </div>
+
                 {serviceDeliveryFeedbackForm}
             </DetailTemplate>
         )
@@ -687,4 +547,4 @@ const mapStateToProps = function (state, ownProps) {
     };
 };
 
-export default connect(mapStateToProps)(withRoot(withStyles(styles, { name: 'ser-detail-styles' })(ServiceDetailTemplate)));
+export default connect(mapStateToProps)(withRoot(withStyles(styles)(ServiceDetailTemplate)));

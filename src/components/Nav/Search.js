@@ -14,6 +14,29 @@ import MobileSuggestions from '../IndexPage/MobileSuggestions'
 
 import { fetchAreaGuess, executeSearch } from '../IndexPage/actions';
 import { trackClick } from "../common/tracking";
+import ContentLoader from "react-content-loader"
+
+const SuggestionBoxLoader = () => (
+    <ContentLoader
+        height={50}
+        width={700}
+        speed={100}
+        primaryColor="#f3f3f3"
+        secondaryColor="#d5d9f3"
+    >
+        <circle cx="27" cy="26" r="1" />
+        <circle cx="46" cy="49" r="1" />
+        <rect x="65" y="109" rx="0" ry="0" width="0" height="0" />
+        <rect x="384" y="243" rx="0" ry="0" width="0" height="0" />
+        <rect x="673" y="174" rx="0" ry="0" width="0" height="1" />
+        <rect x="148" y="192" rx="0" ry="0" width="0" height="0" />
+        <rect x="229" y="71" rx="0" ry="0" width="0" height="0" />
+        <rect x="66" y="48" rx="0" ry="0" width="16" height="1" />
+        <rect x="30" y="4" rx="0" ry="0" width="180" height="39" />
+        <rect x="221" y="4" rx="0" ry="0" width="465" height="37" />
+    </ContentLoader>
+)
+
 
 const styles = theme => ({
     header_search_cont: {
@@ -24,21 +47,21 @@ const styles = theme => ({
         background: '#fff',
         boxShadow: '0px 3px 5px 0px rgba(0,0,0,0.1),0px 1px 1px 0px rgba(0,0,0,0.07),0px 2px 6px 1px rgba(0,0,0,0.06)'
     },
-    index_hero_nav_items_mob:{
+    search_header_nav_items_mob:{
         display: 'flex',
         width: '100%',
         justifyContent: 'space-between',
         alignItems: 'center',
         paddingLeft: theme.spacing.unit,
     },
-    index_hero_nav_items: {
+    search_header_nav_items: {
         display: 'flex',
         width: '100%',
         justifyContent: 'space-between',
         alignItems: 'center',
         padding: theme.spacing.unit,
     },
-    index_hero_app_name: {
+    search_header_app_name: {
         textDecoration: 'none',
         cursor: 'pointer',
         '&:hover': {
@@ -67,29 +90,34 @@ class SearchNav extends Component {
     }
 
     render() {
-        const { classes, location } = this.props;
+        const { classes, location, areaGuessLoading, areaGuessResult } = this.props;
+        let suggestionSection = null;
 
-        return (
-            <Grid container className={classes.search_nav}>
-                <Grid item sm={1} />
-                <Grid item sm={10} align="center" className={this.state.isMobileOnly ? classes.index_hero_nav_items_mob: classes.index_hero_nav_items}>
-                    <Typography
-                        variant="title">
-                        <Link
-                            to="/"
-                            className={classes.index_hero_app_name}>
-                            evergov
-                           </Link>
-                    </Typography>
-                    {this.state.isMobileOnly ? (<div className={classes.header_search_cont}><MobileSuggestions inHeader={true} onSearch={this.onSearch} />    <HeaderAccountMenu location={location} /></div>) : (<Fragment><div className={classes.header_search_cont}>
+        if (!areaGuessLoading && areaGuessResult){
+            suggestionSection = this.state.isMobileOnly ? (<div className={classes.header_search_cont}><MobileSuggestions inHeader={true} onSearch={this.onSearch} />    <HeaderAccountMenu location={location} /></div>) : (<Fragment><div className={classes.header_search_cont}>
                         <AreaSuggestions inHeader={true} />
                         <SerSuggestions inHeader={true} onSearch={this.onSearch} />
                     </div>
                         <HeaderAccountMenu location={location} />
                     </Fragment>
-                    )}
+                    )
+        }
+
+    
+        return (
+            <Grid container className={classes.search_nav}>
+                <Grid item sm={1} />
+                <Grid item sm={10} align="center" className={this.state.isMobileOnly ? classes.search_header_nav_items_mob: classes.search_header_nav_items}>
+                    <Typography
+                        variant="title">
+                        <Link
+                            to="/"
+                            className={classes.search_header_app_name}>
+                            evergov
+                           </Link>
+                    </Typography>
+                    {suggestionSection}
                    
-                
                 </Grid>
                 <Grid item sm={1} />
             </Grid>

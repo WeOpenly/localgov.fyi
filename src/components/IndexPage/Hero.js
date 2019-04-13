@@ -59,7 +59,8 @@ const styles = theme => ({
         marginBottom: theme.spacing.unit,
     },
     index_suggest_box:{
-        display: 'flex'
+        display: 'flex',
+        flexWrap: 'wrap'
     }
 });
 

@@ -165,7 +165,6 @@ class SearchResult extends Component {
             const encodedData = encode(JSON.stringify(data))
             redir = `/deep_link/?data=${encodedData}`
         }
-
         
         let key = title
         if (this.props.key) {

@@ -17,11 +17,11 @@ import { withStyles } from '@material-ui/core/styles';
 const styles = theme => ({
     ser_case1_suggested_row: {
         paddingLeft: theme.spacing.unit,
-        marginTop: theme.spacing.unit * 4,
+        marginTop: theme.spacing.unit,
     },
     ser_case1_suggested_row_mob: {
         paddingLeft: theme.spacing.unit * 2,
-        marginTop: theme.spacing.unit * 1,
+        marginTop: theme.spacing.unit * 2,
     },
     ser_case1_suggested_row_mob_heading: {
         paddingBottom: theme.spacing.unit * 2,
@@ -29,7 +29,7 @@ const styles = theme => ({
         flexWrap: 'wrap',
     },
     ser_case1_suggested_row_heading_mob:{
-        paddingBottom: theme.spacing.unit * 2,
+        paddingBottom: theme.spacing.unit ,
         display: 'flex',
         flexWrap: 'wrap',
     },

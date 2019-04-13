@@ -100,7 +100,7 @@ class AreaSuggestedServices extends React.Component {
 
     componentWillReceiveProps(nextProps){
         const { dispatch } = this.props;
-        console.log(this.props, nextProps)
+
         if(!this.props.areaGuessResult.lat && nextProps.areaGuessResult.lat){
             dispatch(fetchAreaServices(nextProps.areaGuessResult.lat, nextProps.areaGuessResult.lng));
         }

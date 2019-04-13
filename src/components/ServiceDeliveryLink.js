@@ -324,30 +324,33 @@ class ServiceDeliveryLink extends Component {
       return null;
     }
 
-    const serButtons = serDelLinks.map((link, idx) => {
-      const data = {
-        's': service_name,
-        'o': org_name,
-        'u': link.url
-      }
-      const encodedData = encode(JSON.stringify(data))
-      const redir = `/deep_link/?data=${encodedData}`
-      return (
-        <Button
-          key={link.link_name}
-          href={redir}
-          onClick={this.handleClick}
-          target="_blank"
-          variant="contained"
-          color="primary"
-          size="large"
-          className={classes.ser_del_link_button}>
-          {this.state.redirectClicked
-            ? (<Spinner name="ball-beat" color="white"/>)
-            : `${link.link_name}`}
-        </Button>
-      );
-    });
+    let serButtons = null;
+    if(serDelLinks){
+      serButtons = serDelLinks.map((link, idx) => {
+        const data = {
+          's': service_name,
+          'o': org_name,
+          'u': link.url
+        }
+        const encodedData = encode(JSON.stringify(data))
+        const redir = `/deep_link/?data=${encodedData}`
+        return (
+          <Button
+            key={link.link_name}
+            href={redir}
+            onClick={this.handleClick}
+            target="_blank"
+            variant="contained"
+            color="primary"
+            size="large"
+            className={classes.ser_del_link_button}>
+            {this.state.redirectClicked
+              ? (<Spinner name="ball-beat" color="white" />)
+              : `${link.link_name}`}
+          </Button>
+        );
+      });
+    }
 
     const dialog = (
       <Dialog
@@ -482,26 +485,25 @@ class ServiceDeliveryLink extends Component {
         </Paper>
       </Dialog>
     )
+    
+    let redirMsg = null;
+    if (this.state.redirectClicked){
+      redirMsg = (
+        <Typography variant="caption" className='ser_del_redir' gutterBottom>
+          <i>Redirecting to
+            </i>
+          {org_name}'s {service_name}
+          page
+          </Typography>
+      )
+    }
 
 
     return (
       <Fragment>
         {serButtons}
-        {
-          this.state.redirectClicked
-            ? (
-              <Typography variant="caption" className='ser_del_redir' gutterBottom>
-                <i>Redirecting to
-            </i>
-                {org_name}'s {service_name}
-                page
-          </Typography>
-            )
-            : null
-        }
-        {
-          dialog
-        }
+        {redirMsg}
+        {dialog}
       </Fragment>
    );
   }

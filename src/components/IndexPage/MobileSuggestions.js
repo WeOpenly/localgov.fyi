@@ -315,7 +315,7 @@ class MobileSuggestions extends Component {
 
     handleSelect = address => {
         const { setGoogleLoc } = this.props;
-        console.log(address)
+
         geocodeByAddress(address)
             .then(results => getLatLng(results[0]))
             .then(latLng => setGoogleLoc(latLng))
@@ -359,7 +359,7 @@ class MobileSuggestions extends Component {
 
 
     handleChange(event, { newValue, method }) {
-        console.log("handleChange");
+
         if (method === "type") {
             this.props.updateSearch(newValue)
         }
@@ -382,7 +382,6 @@ class MobileSuggestions extends Component {
         const inputLength = inputValue.length;
         let count = 0;
         const suggestions = this.state.staticServiceTemplates[0].suggestions;
-        console.log(suggestions, "suggestions");
 
         const filtered = inputLength === 0
             ? suggestions

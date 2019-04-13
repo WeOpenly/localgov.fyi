@@ -23,12 +23,8 @@ import NotificationImportant from '@material-ui/icons/NotificationImportant'
 import IconButton from '@material-ui/core/IconButton';
 import Share from '@material-ui/icons/Share';
 import SvgIcon from '@material-ui/core/SvgIcon';
-import MoreVert from '@material-ui/icons/MoreVert';
-import withRoot from '../withRoot';
+
 import ServiceDeliveryLink from './ServiceDeliveryLink';
-import ServiceNotifyDialog from './ServiceNotifyDialog';
-import SaveButton from '../components/Profile/SaveButton';
-import ServiceFlowDialog from './Delivery/ServiceFlowDialog';
 
 import {trackClick} from "./common/tracking";
 import {toggleNotifyDialog} from './UserRequests/actions.js';
@@ -90,9 +86,6 @@ service_header_shareButton : {
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
-  },
-service_header_cardActions : {
- 
   },
 service_header_buttonContent : {
     display: 'flex',
@@ -324,42 +317,38 @@ class ServiceHeader extends Component {
       return <div className={classes.service_header_contactIcons}>{value} </div>;
     });
 
-    let actionButton = null;
-    if(isLoggedIn()){
-      actionButton = <SaveButton service={id} />
-    } else{
-      actionButton = (<Button color="primary" size="medium" className={classes.service_header_menuButtonNotify} onClick={this.handleNotifyClick} aria-label="Ge Notified">
-        <NotificationImportant className={classes.service_header_menuButtonIcon} fontSize="small" /> Get notified
-      </Button>)
-    }
+      const actionButton = null;
+      // const actionButton = (<Button color="primary" size="medium" className={classes.service_header_menuButtonNotify} onClick={this.handleNotifyClick} aria-label="Ge Notified">
+      //   <NotificationImportant className={classes.service_header_menuButtonIcon} fontSize="small" /> Get notified
+      // </Button>)
+
 
     const shareButton = (<Button color="primary" size="small"  className={classes.service_header_menuButton}  onClick={this.handleShareClick}  aria-label="share">
       <Share className={classes.service_header_menuButtonIcon}  fontSize="small"/> Share
       </Button>)
 
     const serviceFlowButton = service_delivery_enabled ? (<Button size="small" variant="outlined" color="primary" onClick={this.toggleServiceFlow} className={classes.service_header_notifyButton}>Pay with evergov</Button>) : null;
-
+    const sdl = <ServiceDeliveryLink id={id} service_name={name} org_name={offeredIn} serDelLinks={serDelLinks} />
 
     return (
       <Grid container spacing={16} className={!this.state.isMobileOnly ? classes.service_header_main : classes.service_header_mainMobile}>
-        <ServiceFlowDialog service_name={name} service_id={this.props.id} />
-
+ 
         <Grid item xs={12} md={10}>
-              <div className={!this.state.isMobileOnly ? classes.service_header_cardTop : classes.service_header_cardTop_mob}>
-                <div className={!this.state.isMobileOnly ?  classes.service_header_title: classes.service_header_title_mob}>
+          <div className={!this.state.isMobileOnly ? classes.service_header_cardTop : classes.service_header_cardTop_mob}>
+            <div className={!this.state.isMobileOnly ?  classes.service_header_title: classes.service_header_title_mob}>
                   <Typography variant="display1">{name}</Typography>
                   <Typography variant="subheading" onClick={this.handleOrgClick} 
-                 >Offered by  <span  className={classes.service_header_in}> {offeredIn} </span></Typography>
+                 >Offered by  <span className={classes.service_header_in}> {offeredIn} </span></Typography>
                 </div>
-                    <div className={classes.service_header_serDelLink}>
-                <ServiceDeliveryLink id={id} service_name={name} org_name={offeredIn} serDelLinks={serDelLinks} />
-              </div>
-              </div>
+            <div className={classes.service_header_serDelLink}>
+              {sdl}
+            </div>
+          </div>
 
-              <div className={classes.service_header_cardActions}>
-                {contactDetailButtons}
-              </div>
- 
+          <div className={classes.service_header_cardActions}>
+            {contactDetailButtons && contactDetailButtons}
+          </div>
+
         </Grid>
         <Grid item xs={12} md={2}>
               <div className={classes.service_header_serviceActions}>
@@ -372,9 +361,9 @@ class ServiceHeader extends Component {
                     {serviceFlowButton}
                 </div>
                 </div>    
- <div className={classes.service_header_serviceShare}>
-                  {shareButton}
-                </div>
+              <div className={classes.service_header_serviceShare}>
+                                {shareButton}
+                              </div>
               </div>
               <Menu
                 id="simple-menu"
@@ -410,9 +399,6 @@ const mapDispatchToProps = (dispatch) => {
   return {
     trackClick: (click_type, resultType, id, title, listIndex, extra) => {
       dispatch(trackClick(click_type, resultType, id, title, listIndex, extra));
-    },
-    openNotifyDialog: () => {
-      dispatch(toggleNotifyDialog(true));
     },
     openServiceFlowDialog: () => {
       dispatch(toggleDeliveryDialog(true));

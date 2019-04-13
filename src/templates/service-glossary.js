@@ -312,9 +312,6 @@ class ServiceGlossary extends Component {
             <Fragment>
                 <Helmet>
                     <title>{`${service_name} | Evergov`}</title>
-                    <script async defer
-                        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBr4RixcEvuxgGr9EwNeiHCqUITczxvvuc&callback=initMapIndex&libraries=place&scallback=initTemplate" > </script> 
-
                     <link
                         rel="canonical"
                         href={`https://evergov.com/services/${service_name_slug}/`}/>

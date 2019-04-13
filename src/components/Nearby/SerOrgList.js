@@ -76,7 +76,7 @@ class NearbySerOrgList extends React.Component {
 
     render() {
         const { loading, items, failed, classes } = this.props;
-        console.log(loading, items, failed)
+  
  
         if (loading && !failed && items.length ==0) {
             return (<Grid container>
@@ -96,7 +96,7 @@ class NearbySerOrgList extends React.Component {
 
     
         if (items && items.length > 0) {
-            console.log(items);
+
             nearbyComp = items.map((ser, idx) => <SerListItemWithOrg {...ser} />)
             return (<Grid container>
                 <Typography

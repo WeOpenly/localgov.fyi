@@ -29,9 +29,11 @@ export function fetchAutoLoc(serTemplateId) {
 
         try {
             const resp = await YusufApi(null, `template_results?service_template_id=${serTemplateId}&auto=True`, null, null);
-
+   
             if (resp && resp.success) {
                 dispatch(recvFetchAutLoc(resp.suggested));
+            }else{
+                 dispatch(failedRecvFetchAutoloc());
             }
 
         } catch (e) {

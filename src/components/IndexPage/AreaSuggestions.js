@@ -124,7 +124,7 @@ class GoogAutoComplete extends React.Component {
 
     handleSelect = address => {
         const { setGoogleLoc} = this.props;
-        console.log(address);
+
 
         geocodeByAddress(address)
             .then(results => getLatLng(results[0]))

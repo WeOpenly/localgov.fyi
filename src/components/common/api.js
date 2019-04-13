@@ -152,7 +152,6 @@ export function DspApi(endPoint, method = "GET", headers = null, data = null) {
         }
     }
 
-    console.log(callParams);
 
     return fetch(`${DSP_BACKEND}${endPoint}`, callParams)
         .then(checkStatus)

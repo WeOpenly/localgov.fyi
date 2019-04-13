@@ -32,12 +32,13 @@ const SuggestedLoader = () => (
 const styles = theme => ({
     ser_org_list_container: {
         display: 'flex',
+        flexWrap: 'wrap'
     },
     ser_org_list_header: {
         paddingBottom: theme.spacing.unit * 2,
     },
     ser_org_list_header_mob: {
-        paddingBottom: theme.spacing.unit * 2,
+        paddingBottom: theme.spacing.unit * 3,
     },
     ser_gloss_suggested_row: {
         paddingLeft: theme.spacing.unit,
@@ -75,7 +76,7 @@ class NearbyOrgList extends React.Component {
 
     render() {
         const { loading, items, failed, classes } = this.props;
-        console.log(loading, items, failed)
+
 
         if (loading && !failed && items.length == 0) {
             return (<Grid container>
@@ -95,12 +96,12 @@ class NearbyOrgList extends React.Component {
 
 
         if (items && items.length > 0) {
-            console.log(items);
+      
             nearbyComp = items.map((org, idx) => <OrgLite {...org} />)
             return (<Grid container>
                 <Typography
                     variant="title"
-                    className={this.state.isMobile ? classes.ser_org_list_header : classes.ser_org_list_header_mob}>
+                    className={this.state.isMobile ? classes.ser_org_list_header_mob : classes.ser_org_list_header}>
                     Suggestions based on your location
                     </Typography>
                 <Grid item sm={12} className={classes.ser_org_list_container}>

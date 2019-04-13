@@ -175,7 +175,7 @@ class Card extends Component {
                 trimmedFS = JSON.parse(trimmedFS);
             }
             catch (err) {
-                console.log(err, ser_rem_form_id, service_id, trimmedFS);
+
                 return null;
             }
         }

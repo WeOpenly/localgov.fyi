@@ -89,14 +89,13 @@ class NearbySerOrgList extends React.Component {
         }
 
         if (failed){
-            return "failed loading nearby services";
+            return null;
         }
 
         let nearbyComp = null;
 
     
         if (items && items.length > 0) {
-
             nearbyComp = items.map((ser, idx) => <SerListItemWithOrg {...ser} />)
             return (<Grid container>
                 <Typography

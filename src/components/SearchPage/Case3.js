@@ -10,7 +10,7 @@ import Typography from '@material-ui/core/Typography';
 import OrgAggregate from '../Organization/Aggregate';
 import SerListItemWithOrg from '../Service/ListItemWithOrg';
 import LocationCard from '../UserRequests/LocationCard';
-import NearbySerOrgList from '../Nearby/SerOrgList';
+import NearbyOrgList from '../Nearby/OrgList';
 import RelatedServiceTemplates from '../RelatedServiceTemplates';
 import { withStyles } from '@material-ui/core/styles';
 
@@ -129,7 +129,7 @@ class Case3 extends Component {
                     </div>
                 </Grid>
                 <Grid item sm={12} className={this.state.isMob ? classes.ser_case1_suggested_row_mob : classes.ser_case1_suggested_row}>
-                    <NearbySerOrgList location={this.props.location} excAreaId={excAreaId} />
+                    <NearbyOrgList location={this.props.location} excAreaId={excAreaId} />
                 </Grid>
                 <Grid item sm={12} className={this.state.isMob ? classes.ser_case1_suggested_row_mob : classes.ser_case1_suggested_row}>
                     <Typography

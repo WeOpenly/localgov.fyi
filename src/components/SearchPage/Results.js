@@ -12,6 +12,7 @@ import CardContent from '@material-ui/core/CardContent';
 import Img from "gatsby-image";
 import Avatar from '@material-ui/core/Avatar';
 import OtherLocations from '../IndexPage/OtherLocations'
+import RelatedServiceTemplates from '../RelatedServiceTemplates';
 
 import Grid from '@material-ui/core/Grid';
 import ContentLoader from "react-content-loader"
@@ -121,6 +122,16 @@ class SearchPageResults extends Component {
                     <OtherLocations />
                 </Grid>
                 <Grid item xs="auto" />
+                <Grid item sm={12} className={this.state.isMob ? classes.ser_case1_suggested_row_mob : classes.ser_case1_suggested_row}>
+                    <Typography
+                        variant="title"
+                        className={this.state.isMob ? classes.ser_case1_suggested_row_heading_mob : classes.ser_case1_suggested_row_heading}>
+                        Popular Services
+                    </Typography>
+                    <div className={this.state.isMob ? classes.ser_case1_suggested_row_mob : classes.ser_case1_suggested_row}>
+                        <RelatedServiceTemplates />
+                    </div>
+                </Grid>
             </Grid>)
         }
 

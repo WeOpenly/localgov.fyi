@@ -1,6 +1,7 @@
 import fetch from 'isomorphic-fetch'
 import fetchWithTimeOut from './fetchWithTimeout';
 
+
 const windowGlobal = typeof window !== 'undefined' && window
 export function checkStatus(response) {
 
@@ -17,6 +18,15 @@ export function parseJSON(response) {
     if (response.status === 200 || response.status === 201 || response.status === 302)
         return response.json()
     return response
+}
+
+export function trackApiCall(resp){
+
+    if (windowGlobal && windowGlobal.mixpanel) {
+        windowGlobal.mixpanel.track(`yusuf_api_call`, { resp: resp});
+    }
+   
+    return resp
 }
 
 export function getCookie(name) {
@@ -59,10 +69,16 @@ export function YusufApi(lang = undefined, endPoint, headers = {}) {
         }
     }
 
+
+    if (windowGlobal && windowGlobal.mixpanel) {
+        windowGlobal.mixpanel.time_event(`yusuf_api_call`);
+    }
+
     return fetchWithTimeOut(`${YUSUF_BACKEND}/${endPoint}`, headers)
         .then(checkStatus)
         .then(parseJSON)
         .then(resp => resp)
+        .then(trackApiCall)
         .catch(err => err)
     // let timeout = new Promise((resolve, reject) => {
     //     setTimeout(reject, 10000, 'request timed out');

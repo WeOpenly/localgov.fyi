@@ -63,23 +63,23 @@ const xah_randomize_array = ((arr) => {
 
 const SerTemplateCards = (props) => {
     let sers = [
-        {
-            name: 'Pay Utility Bill',
-            link: 'pay-utility-bill/'
-        }, 
+      
         {
             name: 'Pay Property Taxes ',
             link: 'pay-property-taxes/'
-        }, {
+        },    {
             name: 'Pay Parking Citation',
             link: 'pay-parking-citation/'
+        },
+        {
+            name: 'Register for Recreational Classes',
+            link: 'register-for-recreational-activity-or-class/'
         }, {
+            name: 'Pay Utility Bill',
+            link: 'pay-utility-bill/'
+        },{
             name: 'Renew Business License',
             link: 'renew-business-license/'
-        }, 
-          {
-            name: 'Pay Water Bill',
-            link: 'pay-water-bill/'
         },
     ]
     

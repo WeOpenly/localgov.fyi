@@ -13,6 +13,8 @@ import SvgTax from '../svgIcons/tax.js';
 import SvgParking from '../svgIcons/parking.js';
 import SvgLicense from '../svgIcons/license.js';
 import SvgLeak from '../svgIcons/leak.js';
+import SvgPark from '../svgIcons/park.js';
+
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
@@ -41,7 +43,8 @@ ser_template_card:{
         display: 'flex',
         flexDirection: 'column',
         '&:hover':{
-            border: `1px solid #f1f1f1`,
+            bordeRadius: theme.spacing.unit,
+            boxShadow: '0px 3px 5px 0px rgba(0,0,0,0.1),0px 1px 1px 0px rgba(0,0,0,0.07),0px 12px 16px 1px rgba(0,0,0,0.06)'
         }
     },
 ser_template_card_img:{
@@ -98,7 +101,10 @@ class ServiceTemplateCard extends Component {
         }else if(lowerCaseName.indexOf('utility') !== -1 || lowerCaseName.indexOf('water') !== -1){
             icon = (<SvgLeak style={{fontSize: '48px'}} />)
             mobIcon = (<SvgLeak style={{fontSize: '32px'}} />)
-        }
+        } else if (lowerCaseName.indexOf('recreation') !== -1 || lowerCaseName.indexOf('recreational') !== -1) {
+            icon = (<SvgPark style={{ fontSize: '48px' }} />)
+            mobIcon = (<SvgPark style={{ fontSize: '32px' }} />)
+        } 
 
         if (this.state.isMob){
             return (
@@ -118,7 +124,7 @@ class ServiceTemplateCard extends Component {
                         </div>
                         
                     <div className={classes.ser_template_card_content}>
-                    <Typography style={{ fontWeight: 500, color: '#5627FF'}} variant="caption">
+                    <Typography style={{ fontWeight: 500, color: '#4D4D4D'}} variant="caption">
                     {name}
                     </Typography>
                     </div>

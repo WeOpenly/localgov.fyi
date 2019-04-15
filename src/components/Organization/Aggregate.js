@@ -136,7 +136,8 @@ class OrgAggregate extends Component {
         const { classes, org_name, area, offered_services, logo_url, contact_details, url_slug } = this.props;
 
         const serviceList = offered_services.map((s,i)=> {
-            return (<div className={classes.ser_list_item} key={i}>
+            console.log(s)
+            return (<div className={classes.ser_list_item} onClick={() => navigate(`/service/${s.url_slug}`)} key={i}>
                 <Typography style={{
                     color: '#5627FF',
                     position: 'relative',
@@ -152,8 +153,7 @@ class OrgAggregate extends Component {
         let slicedServices = null;
         if (serviceList.length > 9){
             slicedServices = serviceList.slice(0, 9)
-
-            slicedServices.push(<div className={classes.ser_list_item_load_more} key={'load-more'}>
+            slicedServices.push(<div onClick={() => navigate(`/organization/${url_slug}`)} className={classes.ser_list_item_load_more} key={'load-more'}>
                 <Typography style={{ color: '#5627FF'}} variant="caption">
                     See More 
             </Typography> <ExitToApp style={{ fontSize: '20px', marginLeft: '4px', color: '#5627FF' }}/>

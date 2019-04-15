@@ -143,7 +143,7 @@ class SearchPageResults extends Component {
             return <Case3 location={location}/>
         }
 
-        return "search results"
+        return (<SearchSuggestedLoader />)
         
     }
 }

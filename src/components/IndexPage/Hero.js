@@ -116,7 +116,7 @@ class IndexHero extends Component {
                    
                             component="span"
                             variant="title">
-                            All your government services  in a single place
+                            All your government services  in a single place.
                         </Typography>
 
                     </Grid>
@@ -165,7 +165,7 @@ class IndexHero extends Component {
                             <Typography
                                 component="span"
                                 variant="display1">
-                                in a single place
+                                in a single place.
                         </Typography>
                     </div>
                     

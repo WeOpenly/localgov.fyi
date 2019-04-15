@@ -48,6 +48,7 @@ const styles = theme => ({
         flexDirection: 'column',
         marginTop: theme.spacing.unit *3,
         marginBottom: theme.spacing.unit,
+        paddingLeft: theme.spacing.unit*2,
         flexWrap: 'wrap',
         alignItems: 'flex-start',
         justifyContent: 'flex-start'
@@ -104,9 +105,9 @@ class IndexHero extends Component {
             return (
                 <Grid container className={classes.index_hero_mob_container}>
                     <CommonNav location={location} />
-                    <Grid item xs={1} sm={2} />
+                    <Grid item xs="auto" sm={2} />
                     <Grid item
-                        xs={10}
+                        xs={12}
                         sm={8}
                         align="left"
                         className={classes.index_hero_mob_slogan}
@@ -120,7 +121,7 @@ class IndexHero extends Component {
 
                     </Grid>
 
-                    <Grid item xs={1} sm={2} />
+                    <Grid item xs="auto" sm={2} />
 
                     <Grid item
                         xs={12}
@@ -130,6 +131,13 @@ class IndexHero extends Component {
                             : classes.index_hero_search_box_mob}
                     >
                         <MobileSuggestions onSearch={this.onSearch}/>
+                    </Grid>
+                    <Grid item
+                        xs={12}
+
+                       
+                    >
+                        <RelatedServiceTemplates compact={true} />
                     </Grid>
                 </Grid>
             );

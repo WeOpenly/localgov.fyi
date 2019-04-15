@@ -88,25 +88,27 @@ class ServiceTemplateCard extends Component {
 
         if (lowerCaseName.indexOf('tax') !== -1){
             icon = (<SvgTax style={{fontSize: '48px'}} />);
-            mobIcon = (<SvgTax style={{fontSize: '40px'}} />)
+            mobIcon = (<SvgTax style={{fontSize: '32px'}} />)
         }else if(lowerCaseName.indexOf('parking') !== -1){
             icon = (<SvgParking style={{fontSize: '48px'}} />)
-            mobIcon = (<SvgParking style={{fontSize: '40px'}} />)
+            mobIcon = (<SvgParking style={{fontSize: '32px'}} />)
         }else if(lowerCaseName.indexOf('license') !== -1){
             icon = (<SvgLicense style={{fontSize: '48px'}} />)
-            mobIcon = (<SvgLicense style={{fontSize: '40px'}} />)
+            mobIcon = (<SvgLicense style={{fontSize: '32px'}} />)
         }else if(lowerCaseName.indexOf('utility') !== -1 || lowerCaseName.indexOf('water') !== -1){
             icon = (<SvgLeak style={{fontSize: '48px'}} />)
-            mobIcon = (<SvgLeak style={{fontSize: '40px'}} />)
+            mobIcon = (<SvgLeak style={{fontSize: '32px'}} />)
         }
 
         if (this.state.isMob){
             return (
-                <ListItem onClick={() => navigate(`/services/${slug}`, true)} style={{ background: '#fff', margin: '8px', border: `2px solid #AB93FF`, padding: '24px', width: '300px', cursor: 'pointer'}} >
+                <ListItem onClick={() => navigate(`/services/${slug}`, true)} style={{ background: '#fff', margin: '8px', borderTop: `1px solid #AB93FF`, boxShadow: '0px 3px 5px 0px rgba(0,0,0,0.1),0px 1px 1px 0px rgba(0,0,0,0.07),0px 2px 6px 1px rgba(0,0,0,0.06)', padding: '16px', width: '300px', cursor: 'pointer'}} >
                 <ListItemAvatar>
                     {mobIcon}
                 </ListItemAvatar>
-                <ListItemText primary={name} />
+                    <ListItemText primary={<Typography style={{ fontWeight: 500, color: '#5627FF' }} variant="caption">
+                        {name}
+                    </Typography>} />
             </ListItem>
             )
         } else {

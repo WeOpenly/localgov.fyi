@@ -5,6 +5,7 @@ import {navigate} from '@reach/router';
 import {isMobileOnly} from 'react-device-detect';
 import {connect} from "react-redux";
 import Masonry from 'react-masonry-component';
+import NavSearch from '../components/Nav/Search';
 
 import {withStyles} from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
@@ -180,7 +181,7 @@ class Locations extends Component {
 
     return (
       <Fragment>
-        <HeaderWithSearch/>
+        <NavSearch />
         <Grid container className={classes.titleWrapper}>
           <Grid item xs={2}/>
           <Grid item xs={8} align="center">

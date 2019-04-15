@@ -15,7 +15,7 @@ import HeaderAccountMenu from '../HeaderAccountMenu';
 
 const styles = theme => ({
     index_hero_nav: {
-
+        paddingLeft: theme.spacing.unit,
     },
     index_hero_nav_items: {
         display: 'flex',

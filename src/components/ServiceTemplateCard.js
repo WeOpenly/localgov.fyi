@@ -102,7 +102,7 @@ class ServiceTemplateCard extends Component {
             icon = (<SvgLeak style={{fontSize: '48px'}} />)
             mobIcon = (<SvgLeak style={{fontSize: '32px'}} />)
         } else if (lowerCaseName.indexOf('recreation') !== -1 || lowerCaseName.indexOf('recreational') !== -1) {
-            icon = (<SvgPark style={{ fontSize: '48px' }} />)
+            icon = (<SvgPark style={{ fontSize: '53px' }} />)
             mobIcon = (<SvgPark style={{ fontSize: '32px' }} />)
         } 
 

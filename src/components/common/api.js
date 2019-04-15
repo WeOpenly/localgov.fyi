@@ -59,10 +59,27 @@ export function YusufApi(lang = undefined, endPoint, headers = {}) {
         }
     }
 
-    return fetchWithTimeOut(`${YUSUF_BACKEND}/${endPoint}`, headers).then(checkStatus)
+    return fetchWithTimeOut(`${YUSUF_BACKEND}/${endPoint}`, headers)
+        .then(checkStatus)
         .then(parseJSON)
-        .then((data) => data)
-    
+        .then(resp => resp)
+        .catch(err => err)
+    // let timeout = new Promise((resolve, reject) => {
+    //     setTimeout(reject, 10000, 'request timed out');
+    // })
+
+    // let fetchT = new Promise((resolve, reject) => {
+    //     fetch(`${YUSUF_BACKEND}/${endPoint}`, headers)
+    //         .then(parseJSON)
+    //         .catch(reject)
+    // })
+
+    // return Promise
+    //     .race([timeout, fetchT])
+    //     .then(json => json)
+    //     .catch(err => err)
+
+
 }
 
 

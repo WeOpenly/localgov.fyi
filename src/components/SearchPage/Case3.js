@@ -7,6 +7,7 @@ import ContentLoader from "react-content-loader"
 import Grid from '@material-ui/core/Grid';
 import { isMobileOnly } from 'react-device-detect';
 import Typography from '@material-ui/core/Typography';
+import OrgAggregate from '../Organization/Aggregate';
 import SerListItemWithOrg from '../Service/ListItemWithOrg';
 import LocationCard from '../UserRequests/LocationCard';
 import NearbySerOrgList from '../Nearby/SerOrgList';
@@ -26,6 +27,13 @@ const styles = theme => ({
         paddingBottom: theme.spacing.unit * 2,
         display: 'flex',
         flexWrap: 'wrap',
+    },
+    ser_case3_org_agg_container:{
+        display: 'flex',
+        flexDirection: 'column',
+    },
+    ser_gloss_suggested_failed_row:{
+        marginTop: theme.spacing.unit *2,
     },
     ser_case1_suggested_row_heading_mob:{
         paddingBottom: theme.spacing.unit * 2,
@@ -90,10 +98,22 @@ class Case3 extends Component {
         </Grid>
 
         let excAreaId = null;
+        let header = 'Results matching your search based on your location';
 
         if (resultsAvailable){
-            serResultsComponent = searchResults.map((ser, idx) => <SerListItemWithOrg {...ser}/>)
-            excAreaId = searchResults[0].area.id;
+            if (searchResults.result_type === 'ser_list'){
+                serResultsComponent = searchResults.results.map((ser, idx) => <SerListItemWithOrg {...ser} />)
+                excAreaId = searchResults.results[0].area.id;
+            }
+            else if(searchResults.result_type === 'org_agg'){
+                header = null
+                serResultsComponent = (<div className={classes.ser_case3_org_agg_container}>
+                    <OrgAggregate {...searchResults.results} />
+                    <div className={classes.ser_gloss_suggested_failed_row} >
+                    <LocationCard compact message={`We couldn't find results matching your search`}/> </div>
+                </div>)
+                excAreaId = searchResults.results.area.id;
+            }
         }
      
         return (
@@ -102,7 +122,7 @@ class Case3 extends Component {
                     <Typography
                         variant="title"
                         className={this.state.isMob ? classes.ser_case1_suggested_row_heading_mob : classes.ser_case1_suggested_row_heading}>
-                        Results matching your search based on your location
+                        {header}
                     </Typography>
                     <div className={this.state.isMob ? classes.ser_case1_suggested_row_locs_mob : classes.ser_case1_suggested_row_locs}>
                         {serResultsComponent}

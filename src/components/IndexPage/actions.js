@@ -31,7 +31,7 @@ export function fetchAreaGuess() {
 
         try {
             const resp = await YusufApi(null, `index_auto_locate`, null, null);
-    
+
             if (resp && resp.success) {
                 dispatch(recvAreaGuess(resp.suggestion));
             }
@@ -123,8 +123,11 @@ export function fetchAreaServices(lat, lng) {
  
             const newQueryString = queryString.stringify(params);
             const resp = await YusufApi(null, `get_nearby_sers?${newQueryString}`, null, null);
+
             if (resp && resp.success) {
                 dispatch(recvAreaServices(resp.results));
+            }else{
+                dispatch(failedRecvAreaServices());
             }
 
         } catch (e) {

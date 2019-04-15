@@ -6,11 +6,13 @@ import { isMobileOnly } from 'react-device-detect';
 import Typography from '@material-ui/core/Typography';
 import { withStyles } from '@material-ui/core/styles';
 import TextLoop from "react-text-loop";
-
+import LocationCard from '../UserRequests/LocationCard';
 import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
 import Img from "gatsby-image";
 import Avatar from '@material-ui/core/Avatar';
+import OtherLocations from '../IndexPage/OtherLocations'
+
 import Grid from '@material-ui/core/Grid';
 import ContentLoader from "react-content-loader"
 import Case1 from './Case1'
@@ -20,6 +22,10 @@ import Case3 from './Case3'
 const styles = theme => ({
     ser_gloss_gridItemLocation_mob_focus: {
         boxShadow: `0 0 3px 0px ${theme.palette.primary['600']}`
+    },
+    ser_results_failed_row:{
+        display: 'flex',
+        justifyContent: 'center'
     },
     suggest_loc_card: {
         display: 'flex'
@@ -32,7 +38,7 @@ const styles = theme => ({
     ser_search_loading:{
         display: 'flex',
         justifyContent: 'center',
-        height: '600px',
+        minHeight: '600px',
     },
     suggest_loc_logo: {
         width: 56,
@@ -91,19 +97,31 @@ class SearchPageResults extends Component {
     render() {
         const { classes, searchResultsLoading, searchResults, searchResultCase, searchResultsFailed, location} = this.props;
         
-        if(searchResultsLoading){
+        if(searchResultsLoading && !searchResultsFailed){
             return (<Grid container>
 
                 <Grid item sm={12} className={classes.ser_search_loading}>
                     <Typography variant="subheading" style={{ paddingBottom: 16 }} gutterBottom>
-                        <TextLoop interval={200} children={[`Understanding your search `, "Searching our directory", `Loading results`]} />
+                        <TextLoop interval={800} children={[`Understanding your search `, "Searching our directory", `Loading results`]} />
                     </Typography>
                 </Grid>
             </Grid>)
         }
 
         if (searchResultsFailed || !searchResultCase){
-            return "something went wrong";
+            return (<Grid container>
+
+                <Grid item xs="auto" />
+                <Grid item xs={12} className={classes.ser_results_failed_row}>
+                    <LocationCard compact message={`Sorry, we couldn't find any results for your location`} />
+                </Grid>
+                <Grid item xs="auto" />
+                <Grid item xs="auto" />
+                <Grid item xs={12} className={classes.ser_results_failed_row}>
+                    <OtherLocations />
+                </Grid>
+                <Grid item xs="auto" />
+            </Grid>)
         }
 
         if (searchResultCase === 1){

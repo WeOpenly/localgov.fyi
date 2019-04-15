@@ -218,7 +218,7 @@ orgLink : 'https://evergov.com/organization/usa/pennsylvania-state/philadelphia-
     const {classes } = this.props;
 
        const otherLinks = this.state.items.slice(0, 24).map((item, idx) => {
-         return (<Button variant="outlined" href={`${item.orgLink}`} className={this.state.isMobile ? classes.index_otherLinkItem_mob : classes.index_otherLinkItem}>
+         return (<Button key={`other-link-${idx}`} variant="outlined" href={`${item.orgLink}`} className={this.state.isMobile ? classes.index_otherLinkItem_mob : classes.index_otherLinkItem}>
          {item.name}
       </Button>);
       });

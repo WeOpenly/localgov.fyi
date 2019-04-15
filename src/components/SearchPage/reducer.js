@@ -30,7 +30,7 @@ export function searchPage(state = initialState, action) {
                 searchResultsFoundAtParent: action.found_at_parent,
                 searchResultsFailed: false
             }
-        case types.FAILED_RECV_SEARCH_RESULTS_SUCCESS:
+        case types.FAILED_RECV_SEARCH_RESULTS:
             return {
                 ...state,
                 searchResultsLoading: false,

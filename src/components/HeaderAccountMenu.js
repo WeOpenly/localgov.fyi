@@ -16,7 +16,7 @@ import ListItem from '@material-ui/core/ListItem';
 import Spinner from 'react-spinkit';
 import MoreIcon from '@material-ui/icons/MoreVert';
 import { isMobileOnly } from "react-device-detect";
-
+import {fade} from "@material-ui/core/styles/colorManipulator";
 const windowGlobal = typeof window !== 'undefined' && window
 
 const styles = theme => ({
@@ -38,12 +38,21 @@ h_a_m_profileHeading : {
   margin: theme.spacing.unit,
 },
 h_a_m_login_button:{
-  display : 'flex',
+
   alignSelf : 'center',
-  fontWeight: '600'
+  fontWeight: '500',
+
+      display: 'flex',
+     border: 'none',
+    justifyContent: 'center'
+
 },
 h_a_m_signup_button:{
-
+  alignSelf: 'center',
+  fontWeight: '500',
+  display: 'flex',
+  border: 'none',
+  justifyContent: 'center'
 },
 h_a_m_loging_signup_container:{
   display: 'flex',
@@ -192,14 +201,14 @@ class HeaderAccountMenu extends Component {
           <Button
                 variant="text"
                 className={classes.h_a_m_login_button}
-                            href="/login"
-                  color="inherit">Login</Button>
+                            href="/services"
+                  color="inherit">Services</Button>
       
             <Button
             variant="text"
-            href="/signup"
+            href="/locations"
             className={classes.h_a_m_signup_button}
-              color="inherit">SignUp</Button>
+              color="inherit">Locations</Button>
       
         </div>) )
       );

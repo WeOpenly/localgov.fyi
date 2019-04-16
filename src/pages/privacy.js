@@ -5,7 +5,7 @@ import {navigate} from '@reach/router';
 import { isMobileOnly } from 'react-device-detect';
 
 import { withStyles } from '@material-ui/core/styles';
-import AppBar from '@material-ui/core/AppBar';
+import Nav from '../components/Nav/Common'
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 
@@ -56,18 +56,7 @@ class Privacy extends React.Component {
     const { classes } = this.props;
     return (
       <Fragment>
-        <AppBar position="static" className={!isMobileOnly ? classes.header : classes.headerMobile}>
-          <Grid container spacing={0}>
-            <Grid item xs={12} sm={3} style={{'cursor': 'pointer'}} onClick={() => navigate('/') }>
-              <Typography variant="display1" color="inherit" component="h1" className={classes.logo}>
-                evergov
-              </Typography>
-            </Grid>
-            <Grid item xs={12} md={3} className={classes.right}>
-              {/* <Feedback /> */}
-            </Grid>
-          </Grid>
-        </AppBar>
+        <Nav />
         <Grid container className={classes.container}>
           <Grid item md={1}/>
           <Grid item md={10}>

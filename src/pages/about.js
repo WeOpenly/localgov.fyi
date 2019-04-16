@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import Link from 'gatsby-link';
 import Helmet from "react-helmet";
 import { isMobileOnly } from 'react-device-detect';
-
+import Nav from '../components/Nav/Common';
 import { withStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import Grid from '@material-ui/core/Grid';
@@ -110,13 +110,13 @@ class About extends React.Component {
     return (
       <Fragment>
         <Helmet>
-          <title>{`Openly | evergov`}
+          <title>{`About | evergov`}
           </title>
           <meta
             name="description"
-            content={`Openly, organizing world's governance information`} />
+            content={`Organizing world's governance information`} />
         </Helmet>
-        <HeaderWithSearch />
+        <Nav />
         <div className={classes.section1}>
           <Grid container>
             <Grid item md={1} />

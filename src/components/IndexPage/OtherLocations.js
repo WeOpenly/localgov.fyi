@@ -31,7 +31,7 @@ const styles = theme => ({
     display: 'flex',
     flex: '1 1 100%', border: 'none',
     margin: theme.spacing.unit,
-    color: fade('#000', 0.75), 
+    color: fade('#5627FF', 0.75), 
      letterSpacing: '2px',
     justifyContent: 'center'
   },
@@ -238,7 +238,7 @@ orgLink : 'https://evergov.com/organization/usa/pennsylvania-state/philadelphia-
           <Typography
             variant="title"
               className={this.state.isMobile ? classes.ser_org_list_header_mob : classes.ser_org_list_header}>
-            Disover Evergov
+            Discover Evergov
                     </Typography>
                     </div>
         <div className={classes.ser_org_list} >

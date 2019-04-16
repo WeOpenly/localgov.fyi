@@ -59,7 +59,7 @@ const styles = theme => ({
         width: '100%',
         justifyContent: 'space-between',
         alignItems: 'center',
-        padding: theme.spacing.unit,
+        padding: `${theme.spacing.unit}px ${theme.spacing.unit*2}px`,
     },
     search_header_app_name: {
         textDecoration: 'none',
@@ -106,8 +106,8 @@ class SearchNav extends Component {
     
         return (
             <Grid container className={classes.search_nav}>
-                <Grid item sm={1} />
-                <Grid item sm={10} align="center" className={this.state.isMobileOnly ? classes.search_header_nav_items_mob: classes.search_header_nav_items}>
+                <Grid item xs="auto"  />
+                <Grid item xs={12}  align="center" className={this.state.isMobileOnly ? classes.search_header_nav_items_mob: classes.search_header_nav_items}>
                     <Typography
                         variant="title">
                         <Link
@@ -119,7 +119,7 @@ class SearchNav extends Component {
                     {suggestionSection}
                    
                 </Grid>
-                <Grid item sm={1} />
+                <Grid item xs="auto" />
             </Grid>
         );
     }

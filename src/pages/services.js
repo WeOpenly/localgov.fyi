@@ -10,7 +10,7 @@ import Grid from '@material-ui/core/Grid';
 import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
 import AnchorLink from 'react-anchor-link-smooth-scroll'
-
+import NavSearch from '../components/Nav/Search';
 import Typography from '@material-ui/core/Typography';
 import withRoot from '../withRoot';
 import Footer from '../components/Footer';
@@ -220,7 +220,7 @@ class ServiceList extends Component {
                     <html lang="en"/>
 
                 </Helmet>
-                <HeaderWithSearch/>
+                <NavSearch />
                 <Grid container>
                     <Grid item xs={1} sm={4}/>
                     <Grid className={classes.ser_list_heading} item xs={10} sm={4} align="center">

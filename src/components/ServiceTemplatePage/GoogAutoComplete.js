@@ -43,16 +43,15 @@ const styles = theme => ({
         justifyContent: 'center'
     },
     ser_gloss_search_paper_root: {
-        padding: '6px',
- 
+    
         display: 'flex',
         alignItems: 'center',
-        boxShadow: `0 1px 6px 0 #dfdfdf`,
-        border: `1px solid ${theme.palette.primary['100']}`,
-        borderRadius: '8px',
+        boxShadow: '0px 3px 5px 0px rgba(0,0,0,0.1),0px 1px 1px 0px rgba(0,0,0,0.07),0px 2px 6px 1px rgba(0,0,0,0.06)',
+        border: `1px solid ${theme.palette.primary['200']}`,
+        borderRadius: '4px',
         '&:hover': {
             boxShadow: `0 4px 8px 0 #dfdfdf, 0 1px 16px 0 #fafafa inset`,
-            border: `1px solid ${theme.palette.primary['200']}`
+            border: `1px solid ${theme.palette.primary['500']}`
         },
     },
     ser_gloss_search_input: {
@@ -63,14 +62,17 @@ const styles = theme => ({
         lineHeight: "1.46429em",
         width: '100%',
         color: "rgba(30, 30, 50,0.99)",
+        padding: '6px 0 6px 16px',
     },
     ser_gloss_placesContainer:{
         display: 'flex',
         width: '100%',
+        maxWidth: '480px',
         minWidth: '320px',
         justifyContent: 'center',
         position: 'relative',
-        margin: theme.spacing.unit *2
+        margin: theme.spacing.unit,
+        marginTop: theme.spacing.unit *3
     },
     ser_gloss_search_suggestions:{
         position: 'absolute',
@@ -83,7 +85,9 @@ const styles = theme => ({
     },
     ser_gloss_search_iconButton: {
         minHeight: '1em',
-        padding: theme.spacing.unit,
+        borderRadius: 0,
+        background: theme.palette.primary['700'],
+
     }
 });
 
@@ -138,9 +142,9 @@ class GoogAutoComplete extends React.Component {
         const {classes, searchText} = this.props;
         return (
             <Grid container>
-            <Grid item xs="auto" md={4}></Grid>
+            <Grid item xs={1} ></Grid>
 
-            <Grid item xs={12} md={4} className={classes.ser_gloss_placesContainer}>
+            <Grid item xs={10} className={classes.ser_gloss_placesContainer}>
             <PlacesAutocomplete
                 value={searchText}
                 onChange={this.handleChange}
@@ -154,9 +158,7 @@ class GoogAutoComplete extends React.Component {
                 {({ getInputProps, suggestions, getSuggestionItemProps, loading }) => (
                         <div style={{ width: '100%' }}>
                         <Paper className={classes.ser_gloss_search_paper_root} elevation={2}>
-                            <IconButton className={classes.ser_gloss_search_iconButton} aria-label="Search">
-                                        {loading ? (<CircularProgress size={24}  />) : (<SearchIcon color="primary" />)}
-                            </IconButton>
+                       
                                     <InputBase {...getInputProps({
                                 placeholder: 'Search locations',
                                 autoFocus: false,
@@ -166,6 +168,9 @@ class GoogAutoComplete extends React.Component {
                                 },
                                 className:  classes.ser_gloss_search_input,
                             })} />
+                                    <IconButton className={classes.ser_gloss_search_iconButton} aria-label="Search">
+                                        {loading ? (<CircularProgress style={{color:'#fff'}} size={24} />) : (<SearchIcon style={{color: '#fff'}} />)}
+                                    </IconButton>
                         </Paper>
                 
                         <Paper className={classes.ser_gloss_search_suggestions} elevation={2}>
@@ -197,7 +202,7 @@ class GoogAutoComplete extends React.Component {
                 )}
             </PlacesAutocomplete>
             </Grid>
-                <Grid item xs="auto" md={4}></Grid>
+                <Grid item xs={1}></Grid>
             </Grid>
         );
     }

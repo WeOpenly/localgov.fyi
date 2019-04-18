@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { Component, Fragment } from "react";
 import { connect } from "react-redux";
 import _ from "lodash";
 import Grid from '@material-ui/core/Grid';
@@ -9,6 +9,7 @@ import { CopyToClipboard } from 'react-copy-to-clipboard';
 import Link from 'gatsby-link';
 import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
+import IconButton from '@material-ui/core/IconButton';
 import Button from '@material-ui/core/Button';
 import Share from '@material-ui/icons/Share';
 import Info from '@material-ui/icons/InfoOutlined';
@@ -18,8 +19,7 @@ import DialogContent from '@material-ui/core/DialogContent';
 import HeaderAccountMenu from '../HeaderAccountMenu';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import { FacebookShareButton, TwitterShareButton } from 'react-share';
-import Truncate from 'react-truncate-html';
-
+import TemplateViews from './TemplateViews';
 
 const styles = theme => ({
     ser_gloss_gridItemLocation_mob_focus: {
@@ -41,12 +41,15 @@ const styles = theme => ({
     },
     ser_gloss_servicename_text: {
         display: 'flex',
-        paddingBottom: theme.spacing.unit,
-        paddingTop: theme.spacing.unit * 4,
+        padding: theme.spacing.unit,
+        paddingBottom: '0px',
+        paddingTop: theme.spacing.unit*2,
         flexWrap: 'wrap',
-        justifyContent: 'center'
+        justifyContent: 'left',
+        alignItems: 'center',
     },
     ser_gloss_app_name:{
+    
     textDecoration: 'none',
     cursor: 'pointer',
     '&:hover': {
@@ -54,17 +57,19 @@ const styles = theme => ({
     },
 
     },
+    ser_gloss_share:{
+        fontSize: '16px',
+    },
     ser_gloss_servicename_text_mob: {
         width: '100%',
-        paddingLeft: theme.spacing.unit,
-        paddingTop: theme.spacing.unit,
+        margin: theme.spacing.unit,
         flexWrap: 'wrap',
-        textAlign: 'center',
-        justifyContent: 'center'
+        textAlign: 'left',
+        justifyContent: 'left'
     },
     ser_gloss_servicename_description: {
         display: 'flex',
-        justifyContent: 'center',
+        justifyContent: 'left',
         padding: `0px ${theme.spacing.unit}px  ${theme.spacing.unit}px ${theme.spacing.unit}px`
     },
 });
@@ -77,13 +82,13 @@ const RawHTML = ({
     style={{
             display: 'flex',
             'flexDirection': 'column',
-            fontSize: "0.79rem",
             fontWeight: 300,
             lineHeight: "1.36429em",
             fontFamily: '"Nunito Sans",  -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen-Sans,Ubuntu,Cantarell,"Helvetica Neue", sans-serif',
-            color: "rgba(30, 30, 50,0.79)",
-            alignItems: 'center',
-            justifyContent: 'center'
+            fontSize: '0.9rem',
+            color: '#080808',
+            alignItems: 'left',
+            justifyContent: 'left'
     }}
     dangerouslySetInnerHTML={{
         __html: children
@@ -133,7 +138,15 @@ class TemplateHero extends Component {
     }
 
     render() {
-        const { classes, service_name, service_glossary_description, trackClick } = this.props;
+        const {
+          classes,
+          service_name,
+          service_glossary_description,
+          trackClick,
+          views,
+          orgsCnt
+        } = this.props;
+
         const { anchorEl, copied } = this.state;
 
         const windowGlobal = typeof window !== 'undefined' && window;
@@ -144,25 +157,25 @@ class TemplateHero extends Component {
         const shareLink = windowLocation.href;
 
         const shareButton = (
-            <Button
+            <IconButton
                 color="primary"
                 size="small"
                 className={classes.ser_gloss_menu_button}
                 onClick={this.handleShareClick}
                 aria-label="share">
                 <Share className={classes.ser_gloss_share} fontSize="small" />
-            </Button>
+            </IconButton>
         )
 
         const learnMoreButton = (
-            <Button
+            <IconButton
                 color="primary"
                 size="small"
                 className={classes.ser_gloss_learn_more}
                 onClick={this.toggleDescDialog}
                 aria-label="share">
                 <Info className={classes.ser_gloss_share} fontSize="small" />
-            </Button>
+            </IconButton>
         )
 
         const descDialog = (
@@ -188,84 +201,115 @@ class TemplateHero extends Component {
             </Dialog>
         )
 
-        return (<Grid container className={classes.ser_gloss_serviceheading}>
+        return (
+          <Grid container className={classes.ser_gloss_serviceheading}>
             <Grid item sm={1} />
-            <Grid item sm={10} align="center" className={classes.ser_gloss_nav_items}>
+            <Grid
+              item
+              xs={12}
+              sm={10}
+              className={classes.ser_gloss_nav_items}
+            >
+              <Typography variant="title">
+                <Link to="/" className={classes.ser_gloss_app_name}>
+                  evergov
+                </Link>
+              </Typography>
+              {this.state.isMobile && (
+                <div className={classes.ser_gloss_service_mob_actions}>
+                  {shareButton}
+                  {learnMoreButton}
+                </div>
+              )}
+              <HeaderAccountMenu location={this.props.location} />
+            </Grid>
+            <Grid item sm={1} />
 
-                    <Typography
-                        variant="title">
-                    <Link
-                        to="/"
-                        className={classes.ser_gloss_app_name}>
-                        evergov
-                           </Link>
+            <Grid item sm={1} />
+            <Grid
+              item
+              xs={12}
+              sm={10}
+              className={
+                !this.state.isMobile
+                  ? classes.ser_gloss_servicename_text
+                  : classes.ser_gloss_servicename_text_mob
+              }
+            >
+              <Typography component="h1" variant="display1">
+                {service_name}
+              </Typography>
 
+              {!this.state.isMobile ? (
+                <div className={classes.ser_gloss_service_actions}>
+                  {shareButton}
+                </div>
+              ) : null}
+              <Menu
+                id="simple-menu"
+                anchorEl={anchorEl}
+                open={Boolean(anchorEl)}
+                onClose={this.handleClose}
+              >
+                <CopyToClipboard
+                  text={shareLink}
+                  onCopy={this.handleCopy}
+                >
+                  <MenuItem className={classes.ser_gloss_menu_item}>
+                    <Typography>
+                      {copied ? "Copied!" : "Copy link"}
                     </Typography>
-                {this.state.isMobile && (<div className={classes.ser_gloss_service_mob_actions}>
-                    {shareButton}
-                    {learnMoreButton}
-                </div>)}
-                   <HeaderAccountMenu location={this.props.location} />
+                  </MenuItem>
+                </CopyToClipboard>
+                <MenuItem
+                  onClick={() => this.handleClose("facebook")}
+                  className={classes.ser_gloss_menu_item}
+                >
+                  <FacebookShareButton
+                    url={shareLink}
+                    className={classes.ser_gloss_sharebutton}
+                  >
+                    <Typography>Facebook</Typography>
+                  </FacebookShareButton>
+                </MenuItem>
+                <MenuItem
+                  onClick={() => this.handleClose("twitter")}
+                  className={classes.ser_gloss_menu_item}
+                >
+                  <TwitterShareButton
+                    url={shareLink}
+                    className={classes.ser_gloss_sharebutton}
+                  >
+                    <Typography>Twitter</Typography>
+                  </TwitterShareButton>
+                </MenuItem>
+              </Menu>
             </Grid>
             <Grid item sm={1} />
-
-            <Grid item xs={1} />
-            <Grid item
-                xs={10}
-                className={!this.state.isMobile
-                    ? classes.ser_gloss_servicename_text
-                    : classes.ser_gloss_servicename_text_mob}
-                >  
-                <Typography
-                    component="span"
-                    variant="title">
-                    {service_name}
-                </Typography>
- 
-                
-                {!this.state.isMobile ? (<div className={classes.ser_gloss_service_actions}>
-                    {shareButton}
-                </div>) : null}
-                <Menu
-                    id="simple-menu"
-                    anchorEl={anchorEl}
-                    open={Boolean(anchorEl)}
-                    onClose={this.handleClose}>
-                    <CopyToClipboard text={shareLink} onCopy={this.handleCopy}>
-                        <MenuItem className={classes.ser_gloss_menu_item}>
-                            <Typography>{copied
-                                ? 'Copied!'
-                                : 'Copy link'}</Typography>
-                        </MenuItem>
-                    </CopyToClipboard>
-                    <MenuItem
-                        onClick={() => this.handleClose('facebook')}
-                        className={classes.ser_gloss_menu_item}>
-                        <FacebookShareButton url={shareLink} className={classes.ser_gloss_sharebutton}>
-                            <Typography>Facebook</Typography>
-                        </FacebookShareButton>
-                    </MenuItem>
-                    <MenuItem
-                        onClick={() => this.handleClose('twitter')}
-                        className={classes.ser_gloss_menu_item}>
-                        <TwitterShareButton url={shareLink} className={classes.ser_gloss_sharebutton}>
-                            <Typography>Twitter</Typography>
-                        </TwitterShareButton>
-                    </MenuItem>
-                </Menu>
+            <Grid item sm={1} />
+            <Grid item xs={12} sm={10}>
+              <TemplateViews views={views} orgsCnt={orgsCnt} />
             </Grid>
-            <Grid item xs={1} />
-
-            <Grid item sm={1} md={3} />
-          
-
-            {this.state.isMobile ? null : (<Grid item sm={10} md={6} className={classes.ser_gloss_servicename_description}><RawHTML>
-                    {service_glossary_description}
-                </RawHTML> </Grid>)}
-      
             {descDialog}
-            <Grid item sm={1} md={3} />
-        </Grid>)
+            <Grid item sm={1} />
+            {!this.state.isMobile ? (
+              <Fragment>
+                <Grid item xs={1} />
+                <Grid item xs={8} align="left">
+                  <Typography
+                    style={{ paddingLeft: "8px" }}
+                    gutterBottom
+                    variant="body1"
+                  >
+                    <RawHTML>{service_glossary_description}</RawHTML>
+                  </Typography>
+                </Grid>
+              </Fragment>
+            ) : null}
+
+            <Grid item xs={3} />
+          </Grid>
+        );
     }
 }
 

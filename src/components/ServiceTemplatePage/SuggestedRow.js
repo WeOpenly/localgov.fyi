@@ -14,14 +14,18 @@ import LocationSerCard from "./LocationSerCard";
 const styles = theme => ({
 ser_gloss_suggested_row:{
     paddingLeft: theme.spacing.unit,
-    marginTop: theme.spacing.unit *4,
+    marginTop: theme.spacing.unit *5,
 },
     ser_gloss_suggested_row_mob:{
-        paddingLeft: theme.spacing.unit*2,
-        marginTop: theme.spacing.unit * 1,
+        paddingLeft: theme.spacing.unit,
+        marginTop: theme.spacing.unit * 2,
+    },
+    ser_gloss_suggested_row_heading_mob:{
+        fontSize: '16px'
     },
     ser_gloss_suggested_row_heading:{
-        paddingBottom: theme.spacing.unit*2,
+        fontSize: '18px',
+        paddingBottom: theme.spacing.unit,
         display: 'flex',
         flexWrap: 'wrap',
     },

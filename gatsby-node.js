@@ -24,7 +24,7 @@ exports.createPages = ({graphql, actions}) => {
   allServiceGlossaryJson {
     edges {
       node {
-        id service_name service_name_slug service_glossary_description
+        id service_name service_name_slug service_glossary_description views {date views}
         orgs {
           organization {org_name id logo_url}
           area {

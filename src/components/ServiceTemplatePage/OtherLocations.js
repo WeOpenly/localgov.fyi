@@ -16,47 +16,58 @@ import LocationSerCard from './LocationSerCard';
 import StateSuggest from '../StateSuggest';
 
 const styles = theme => ({
-    ser_gloss_gridItemLocation_mob_focus: {
-        boxShadow: `0 0 3px 0px ${theme.palette.primary['600']}`
-    },
-    ser_gloss_suggested_row: {
-        marginTop: theme.spacing.unit * 4,
-    },
-    ser_gloss_suggested_row_heading: {
-        paddingBottom: theme.spacing.unit * 2,
-    },
-    ser_gloss_suggested_row_locs: {
-        display: 'flex',
-        flexWrap: 'wrap',
-        justifyContent: 'center',
-    },
-    suggest_loc_card: {
-        display: 'flex'
-    },
-    ser_gloss_suggested_row_heading_mob: {
-        paddingBottom : theme.spacing.unit*2,
-    },
-ser_gloss_others_row_header_container:{
-    display: 'flex',
-    justifyContent: 'space-between',
-     flexWrap: 'wrap',
-    alignItems:"center",
-    position: 'relative'
-},
-    ser_gloss_others_row_header_container_mob:{
-        display: 'flex',
-        justifyContent: 'center',
-        flexWrap: 'wrap',
-        alignItems: "center",
-        position: 'relative'
-    },
-    suggest_loc_logo: {
-        width: 56,
-        height: 56,
-        boxShadow: `0 0 0px 1px ${theme.palette.primary["200"]}`,
-        border: '1px solid #fff',
-        marginRight: theme.spacing.unit * 2,
-    }
+  ser_gloss_gridItemLocation_mob_focus: {
+    boxShadow: `0 0 3px 0px ${theme.palette.primary["600"]}`
+  },
+  ser_gloss_suggested_row: {
+    marginTop: theme.spacing.unit * 4
+  },
+  ser_gloss_suggested_row_heading: {
+    paddingLeft: theme.spacing.unit,
+    paddingBottom: theme.spacing.unit * 2,
+    fontSize: "18px"
+  },
+  ser_gloss_suggested_row_locs: {
+    display: "flex",
+    flexWrap: "wrap",
+    justifyContent: "left",
+    margin: theme.spacing.unit
+  },
+  ser_gloss_suggested_row_locs_mob: {
+    display: "flex",
+    flexWrap: "wrap",
+    justifyContent: "center",
+    margin: theme.spacing.unit
+  },
+  suggest_loc_card: {
+    display: "flex",
+  },
+  ser_gloss_suggested_row_heading_mob: {
+    fontSize: "16px",
+    paddingLeft: theme.spacing.unit,
+    paddingBottom: theme.spacing.unit * 2
+  },
+  ser_gloss_others_row_header_container: {
+    display: "flex",
+    justifyContent: "space-between",
+    flexWrap: "wrap",
+    alignItems: "center",
+    position: "relative"
+  },
+  ser_gloss_others_row_header_container_mob: {
+    display: "flex",
+    justifyContent: "left",
+    flexWrap: "wrap",
+    alignItems: "center",
+    position: "relative"
+  },
+  suggest_loc_logo: {
+    width: 56,
+    height: 56,
+    boxShadow: `0 0 0px 1px ${theme.palette.primary["200"]}`,
+    border: "1px solid #fff",
+    marginRight: theme.spacing.unit * 2
+  }
 });
 
 
@@ -146,27 +157,47 @@ class OtherLocations extends Component {
         })
     
          
-        return (<Grid container>
+        return (
+          <Grid container>
             <Grid item sm={1} />
-            <Grid item sm={10} className={classes.ser_gloss_suggested_row}>
-                <div className={this.state.isMobile ? classes.ser_gloss_others_row_header_container_mob : classes.ser_gloss_others_row_header_container}>
-                    <Typography
-                        variant="title"
-                        className={this.state.isMobile ? classes.ser_gloss_suggested_row_heading_mob : classes.ser_gloss_suggested_row_heading}>
-                        Other locations offering this service
-                    </Typography>
-                    <StateSuggest clearStateName={this.clearStateName}
-                        selected={this.state.stateName}
-                        allStates={allStates}
-                        onSelectSuggestion={this.setStateFilter}/>
-                </div>
-
-                <div className={classes.ser_gloss_suggested_row_locs}>
-                    {locs}
-                </div>
+            <Grid
+              item
+              sm={10}
+              className={classes.ser_gloss_suggested_row}
+            >
+              <div
+                className={
+                  this.state.isMobile
+                    ? classes.ser_gloss_others_row_header_container_mob
+                    : classes.ser_gloss_others_row_header_container
+                }
+              >
+                <Typography
+                  variant="title"
+                  className={
+                    this.state.isMobile
+                      ? classes.ser_gloss_suggested_row_heading_mob
+                      : classes.ser_gloss_suggested_row_heading
+                  }
+                >
+                  Other locations offering this service
+                </Typography>
+                <StateSuggest
+                  clearStateName={this.clearStateName}
+                  selected={this.state.stateName}
+                  allStates={allStates}
+                  onSelectSuggestion={this.setStateFilter}
+                />
+              </div>
+          
+              <div className={this.state.isMobile ? classes.ser_gloss_suggested_row_locs_mob
+              : classes.ser_gloss_suggested_row_locs}>
+                {locs}
+              </div>
             </Grid>
             <Grid item sm={1} />
-        </Grid>)
+          </Grid>
+        );
     }
 }
 

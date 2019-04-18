@@ -43,6 +43,7 @@ const styles = theme => ({
             overflow: 'hidden',
             margin: 0,
             padding: 0,
+            background: '#fff',
             overflowWrap: "break-word",
             overflowY: "scroll",
             overflowX: "hidden"
@@ -146,12 +147,6 @@ const styles = theme => ({
         display: 'flex',
         marginTop: theme.spacing.unit * 2,
         marginLeft: theme.spacing.unit * 2
-    },
-    ser_gloss_searchContainer: {
-        marginTop: '-40px'
-    },
-    ser_gloss_searchContainer_mob: {
-        marginTop: '0px'
     },
     ser_gloss_countContainer: {
         marginTop: theme.spacing.unit *2
@@ -302,80 +297,102 @@ class ServiceGlossary extends Component {
 
     render() {
         const {classes} = this.props;
-        const {id, service_name, service_name_slug, service_glossary_description, orgs} = this.props.pageContext.data;
+        const { id, service_name, service_name_slug, service_glossary_description, orgs, views} = this.props.pageContext.data;
 
-        const userLocReqFormRaw = <RawForm
+
+        const userLocReqFormRaw = <RawForm  
             field_schema={JSON.stringify(genericFSchema)}
             id="user_request_missing_loc_ser"/>
 
         return (
-            <Fragment>
-                <Helmet>
-                    <title>{`${service_name} | Evergov`}</title>
-                    <link
-                        rel="canonical"
-                        href={`https://evergov.com/services/${service_name_slug}/`}/>
+          <Fragment>
+            <Helmet>
+              <title>{`${service_name} | Evergov`}</title>
+              <link
+                rel="canonical"
+                href={`https://evergov.com/services/${service_name_slug}/`}
+              />
 
-                    <meta property="og:title" content={`${service_name} | Evergov`}/>
-                    <meta
-                        property="og:url"
-                        content={`https://evergov.com/service/${service_name_slug}/`}/>
+              <meta
+                property="og:title"
+                content={`${service_name} | Evergov`}
+              />
+              <meta
+                property="og:url"
+                content={`https://evergov.com/service/${service_name_slug}/`}
+              />
 
-                    <meta
-                        name="description"
-                        content={`Forms, Price, Timings and Contact Details for ${service_name} | Evergov`}/>
-                    <meta
-                        name="keywords"
-                        content={`${service_name}, ${service_name} online, Local Government Service Onine, my ${service_name}, ${service_name} near me, How do you ${service_name}, can you ${service_name} onine, ${service_glossary_description}`}/>
-                    <meta
-                        property="og:description"
-                        content={`Forms, Price, Timings and Local Government Service Contact Details for ${service_name} | Evergov`}/>
+              <meta
+                name="description"
+                content={`Forms, Price, Timings and Contact Details for ${service_name} | Evergov`}
+              />
+              <meta
+                name="keywords"
+                content={`${service_name}, ${service_name} online, Local Government Service Onine, my ${service_name}, ${service_name} near me, How do you ${service_name}, can you ${service_name} onine, ${service_glossary_description}`}
+              />
+              <meta
+                property="og:description"
+                content={`Forms, Price, Timings and Local Government Service Contact Details for ${service_name} | Evergov`}
+              />
+            </Helmet>
+            {userLocReqFormRaw}
 
-                </Helmet>
-                {userLocReqFormRaw}
-            
-                <LoginRegisterDialog location={this.props.location}/>
+            <Grid container className={classes.ser_gloss_search}>
+              <Grid item xs={12}>
+                <TemplateHero
+                  views={views}
+                  orgsCnt={orgs.length}
+                  service_name={service_name}
+                  trackClick={this.trackClick}
+                  service_glossary_description={
+                    service_glossary_description
+                  }
+                />
+              </Grid>
+              <Grid item xs={12}>
+                <GoogAutoComplete serviceTemplateId={id} />
+              </Grid>
+              <Grid item xs={12}>
+                <Suggested handleOrgClick={this.handleOrgClick} />
+              </Grid>
+              <Grid item xs={12}>
+                <OtherLocations allOrgs={orgs} />
+              </Grid>
+            </Grid>
 
-                <Grid container className={classes.ser_gloss_search}>
-                    <Grid item xs={12}>
-                      <TemplateHero service_name={service_name} trackClick={this.trackClick} service_glossary_description={service_glossary_description} />
-                    </Grid>
-                    <Grid item xs={12}>
-                        <GoogAutoComplete serviceTemplateId={id}/>
-                    </Grid>
-                    <Grid item xs={12}>
-                        <Suggested  handleOrgClick={this.handleOrgClick} />
-                    </Grid>
-                    <Grid item xs={12}>
-                        <OtherLocations allOrgs={orgs} />
-                    </Grid>
-                </Grid>
-
-               
-                <Grid container className={classes.ser_gloss_relatedServiceContainer}>
-                    <Grid item xs={1}/>
-                    <Grid item xs={10}>
-                        <div className={classes.ser_gloss_relatedSerDivider}></div>
-                        <Typography
-                            style={{
-                            padding: "32px 0 16px 0"
-                        }}
-                            variant="title"
-                            component="h5">
-                            More Services</Typography>
-                    </Grid>
-                    <Grid item xs={1}/>
-                    <Grid item xs={12}  className={classes.ser_gloss_related_container}>
-                        <RelatedServiceTemplates currentNameSlug={service_name_slug} showAdd={true} />
-
-                    </Grid>
-              
-                </Grid>
-                <div className={classes.ser_gloss_footer}>
-
-                    <Footer page={this.props.location.pathname}/>
-                </div>
-            </Fragment>
+            <Grid
+              container
+              className={classes.ser_gloss_relatedServiceContainer}
+            >
+              <Grid item xs={1} />
+              <Grid item xs={10}>
+                <div className={classes.ser_gloss_relatedSerDivider} />
+                <Typography
+                  style={{
+                    padding: "32px 0 16px 0"
+                  }}
+                  variant="title"
+                  component="h5"
+                >
+                  More Services
+                </Typography>
+              </Grid>
+              <Grid item xs={1} />
+              <Grid
+                item
+                xs={12}
+                className={classes.ser_gloss_related_container}
+              >
+                <RelatedServiceTemplates
+                  currentNameSlug={service_name_slug}
+                  showAdd={true}
+                />
+              </Grid>
+            </Grid>
+            <div className={classes.ser_gloss_footer}>
+              <Footer page={this.props.location.pathname} />
+            </div>
+          </Fragment>
         );
     }
 }

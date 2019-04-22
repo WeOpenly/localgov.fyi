@@ -180,7 +180,7 @@ class OtherLocations extends Component {
                       : classes.ser_gloss_suggested_row_heading
                   }
                 >
-                  Other locations offering this service
+                  More locations offering this service
                 </Typography>
                 <StateSuggest
                   clearStateName={this.clearStateName}

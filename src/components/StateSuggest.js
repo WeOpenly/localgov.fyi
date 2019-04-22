@@ -118,7 +118,7 @@ const styles = theme => ({
     suggestionsList: {
         margin: 0,
         padding: 0,
-        height: 'auto',
+        height: '320px',
         overflowY: 'scroll',
         listStyleType: 'none'
     },

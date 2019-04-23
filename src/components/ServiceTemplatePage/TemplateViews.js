@@ -69,12 +69,14 @@ class TemplateViews extends Component {
     render() {
         const { views, orgsCnt, classes } = this.props;
         let moreThan = 50;
-        let viewsAgg = views
-          .map(item => item.views)
-          .reduce((a, b) => a + b);
+  
 
-        if(viewsAgg/100 > 1){
-            moreThan = 100 * (Math.ceil(viewsAgg/100))
+        if(views){
+          let viewsAgg = views.map(item => item.views).reduce((a, b) => a + b);
+
+          if(viewsAgg && viewsAgg/100 > 1){
+            moreThan = 100 * Math.ceil(viewsAgg / 100);
+          }  
         }
 
         return (

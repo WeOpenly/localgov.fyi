@@ -4,9 +4,11 @@ const initialState = {
     searchText: null,
     autoLocLoading: false,
     autoLocResults: [],
+    autoLocRegion: null,
     autoLocFailed: false,
     googLocLoading: false,
     googLocResults: [],
+    googleLocRegion: null,
     noGoogSuggestsFound: false,
     googlLocFailed: false,
     googLat: null,
@@ -15,6 +17,16 @@ const initialState = {
 
 export function serTemplate(state = initialState, action) {
     switch (action.type) {
+        case types.SET_GOOG_REGION:
+            return {
+                ...state,
+                googleLocRegion: action.region
+            };
+        case types.SET_AUTO_REGION:
+            return {
+              ...state,
+                autoLocRegion: action.region
+            };
         case types.UPDATE_SEARCH_TEXT_FOR_GOOG:
             return {
                 ...state,
@@ -59,17 +71,20 @@ export function serTemplate(state = initialState, action) {
             }
         case types.CLEAR_ALL:
             return {
-                ...state,
-                autoLocLoading: false,
-                autoLocResults: [],
-                autoLocFailed: false,
-                googLocLoading: false,
-                googLocResults: [],
-                noGoogSuggestsFound: false,
-                googlLocFailed: false,
-                googLat: null,
-                googLng: null
-            }
+              ...state,
+              autoLocLoading: false,
+              autoLocResults: [],
+              autoLocFailed: false,
+              googLocLoading: false,
+              googLocResults: [],
+              noGoogSuggestsFound: false,
+              googlLocFailed: false,
+              googLat: null,
+              autoLocRegion: null,
+              googleLocRegion: null,
+              searchText: null,
+              googLng: null
+            };
         case types.CLEAR_GOOG_LAT_LNG:
             return {
                 ...state,

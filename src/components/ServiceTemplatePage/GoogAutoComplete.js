@@ -17,7 +17,7 @@ import PlacesAutocomplete, {
 } from 'react-places-autocomplete';
 import Grid from '@material-ui/core/Grid';
 import {withStyles} from '@material-ui/core/styles';
-import { fetchGoogLoc, updateSearchText} from './actions';
+import { fetchGoogLoc, updateSearchText, setGoogRegion } from "./actions";
 
 import { trackClick, trackInput} from "../common/tracking";
 
@@ -120,19 +120,38 @@ const SuggestionContentLoader = props => (
 class GoogAutoComplete extends React.Component {
     constructor(props) {
         super(props);
+
     }
 
     handleChange = address => {
-
         this.props.setSearchText(address)
     };
 
+    parseState = results => {
+        if (results){
+            const addrComps = results[0].address_components;
+            const state = addrComps.filter((it)=>{
+                const {types} = it;
+                if (types.indexOf("administrative_area_level_1") !== -1 ){
+                    return true
+                }
+            })
+            if(state && state[0].long_name){
+                this.props.setGoogRegion(state[0].long_name);
+            }
+        }
+        return results
+    }
+
     handleSelect = address => {
         const { serviceTemplateId, fetchGoogLoc} = this.props;
+        geocodeByAddress(address).then(results => console.log(results))
+        
         geocodeByAddress(address)
-            .then(results => getLatLng(results[0]))
-            .then(latLng => fetchGoogLoc(serviceTemplateId, ...latLng))
-            .catch(error => console.error('Error', error));
+          .then(this.parseState)
+          .then(results => getLatLng(results[0]))
+          .then(latLng => fetchGoogLoc(serviceTemplateId, ...latLng))
+          .catch(error => console.error("Error", error));
         this.props.setSearchText(address)
         this.searchInput.blur();
     };
@@ -210,16 +229,19 @@ class GoogAutoComplete extends React.Component {
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        trackClick: (click_type, resultType, id, title, listIndex) => {
-            dispatch(trackClick(click_type, resultType, id, title, listIndex));
-        },
-        fetchGoogLoc: (serviceTemplateId, lat, lng) => {
-            dispatch(fetchGoogLoc(serviceTemplateId, lat, lng));
-        },
-        setSearchText: (addr) => {
-            dispatch(updateSearchText(addr));
-        },
-    }
+      trackClick: (click_type, resultType, id, title, listIndex) => {
+        dispatch(trackClick(click_type, resultType, id, title, listIndex));
+      },
+      fetchGoogLoc: (serviceTemplateId, lat, lng) => {
+        dispatch(fetchGoogLoc(serviceTemplateId, lat, lng));
+      },
+      setSearchText: addr => {
+        dispatch(updateSearchText(addr));
+      },
+      setGoogRegion: reg =>{
+          dispatch(setGoogRegion(reg));
+      }
+    };
 }
 
 const mapStateToProps = function (state, ownProps) {

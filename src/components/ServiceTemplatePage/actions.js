@@ -4,10 +4,18 @@ import { YusufApi } from '../common/api';
 
 const windowGlobal = typeof window !== 'undefined' && window
 
-function clearAll(){
+export function clearAll(){
     return {
         type: types.CLEAR_ALL
     }
+}
+
+export function setGoogRegion(region){
+    return {type: types.SET_GOOG_REGION, region}
+}
+
+function setAutoRegion(region){
+    return {type: types.SET_AUTO_REGION, region}
 }
 
 function requestFetchAutoloc() {
@@ -24,7 +32,6 @@ function failedRecvFetchAutoloc() {
 
 export function fetchAutoLoc(serTemplateId) {
     return async (dispatch, getState) => {
-        dispatch(clearAll());
         dispatch(requestFetchAutoloc());
 
         try {
@@ -32,6 +39,7 @@ export function fetchAutoLoc(serTemplateId) {
    
             if (resp && resp.success) {
                 dispatch(recvFetchAutLoc(resp.suggested));
+                dispatch(setAutoRegion(resp.region));
             }else{
                  dispatch(failedRecvFetchAutoloc());
             }
@@ -64,7 +72,6 @@ function failedFetchGoogleLoc() {
 
 export function fetchGoogLoc(serTemplateId, latlng) {
     return async(dispatch, getState) => {
-        dispatch(clearAll());
         dispatch(requestFetchGoogleLoc());
         const {lat, lng} = latlng;
         try {

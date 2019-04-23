@@ -1,6 +1,3 @@
-
-
-
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import _ from "lodash";
@@ -11,7 +8,8 @@ import { withStyles } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
 import Fuse from 'fuse.js';
-import { navigate } from '@reach/router';
+import OtherStateLocations from './OtherStateLocations';
+
 import LocationSerCard from './LocationSerCard';
 import StateSuggest from '../StateSuggest';
 
@@ -108,9 +106,10 @@ class OtherLocations extends Component {
     }
 
     render() {
-        const { classes, allOrgs } = this.props;
+        const { classes, allOrgs,  } = this.props;
         const { stateName} = this.state;
 
+   
         let filteredOrgs = allOrgs;
 
         const allStatesSet = new Set();
@@ -156,9 +155,10 @@ class OtherLocations extends Component {
             )
         })
     
-         
+
         return (
           <Grid container>
+            <OtherStateLocations allOrgs={allOrgs} />
             <Grid item sm={1} />
             <Grid
               item
@@ -189,9 +189,14 @@ class OtherLocations extends Component {
                   onSelectSuggestion={this.setStateFilter}
                 />
               </div>
-          
-              <div className={this.state.isMobile ? classes.ser_gloss_suggested_row_locs_mob
-              : classes.ser_gloss_suggested_row_locs}>
+
+              <div
+                className={
+                  this.state.isMobile
+                    ? classes.ser_gloss_suggested_row_locs_mob
+                    : classes.ser_gloss_suggested_row_locs
+                }
+              >
                 {locs}
               </div>
             </Grid>
@@ -201,4 +206,11 @@ class OtherLocations extends Component {
     }
 }
 
-export default withStyles(styles)(OtherLocations);
+const mapStateToProps = function (state, ownProps) {
+    return {
+        ...state.serTemplate,
+        ...ownProps
+    };
+};
+
+export default connect(mapStateToProps)(withStyles(styles)(OtherLocations));

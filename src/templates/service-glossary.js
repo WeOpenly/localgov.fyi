@@ -24,7 +24,7 @@ import withRoot from '../withRoot';
 import LoginRegisterDialog from '../components/Account/LoginRegisterDialog';
 import {NO_SEARCH_RESULTS} from '../components/common/tracking_events';
 import RawForm from '../components/Reminders/RawForm';
-import { fetchGoogLoc, fetchAutoLoc} from '../components/ServiceTemplatePage/actions';
+import { fetchGoogLoc, fetchAutoLoc, clearAll} from '../components/ServiceTemplatePage/actions';
 
 import {trackView, trackClick, trackInput, trackEvent} from "../components/common/tracking";
 import Suggested from '../components/ServiceTemplatePage/Suggested';
@@ -286,6 +286,7 @@ class ServiceGlossary extends Component {
     componentDidMount() {
         const { id } = this.props.pageContext.data;
         this.setState({ isMobile: isMobileOnly })
+        this.props.clearAll();
         this.props.trackView();
         this.props.autoGetLoc(id);
     }
@@ -403,25 +404,28 @@ ServiceGlossary.propTypes = {
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        trackView: (click_type, resultType, id, title, listIndex) => {
-            dispatch(trackView('service_glossary', null, null, null));
-        },
-        trackClick: (click_type, resultType, id, title, listIndex) => {
-            dispatch(trackClick(click_type, resultType, id, title, listIndex));
-        },
-        trackFeedback: (input) => {
-            dispatch(trackInput('service_glossary_search', input));
-        },
-        trackEvent: (evName, data) => {
-            dispatch(trackEvent(evName, data));
-        },
-        autoGetLoc: (serviceTemplateId) => {
-            dispatch(fetchAutoLoc(serviceTemplateId));
-        },
-        setGoogLoc: (serviceTemplateId, lat, lng) => {
-            dispatch(fetchGoogLoc(serviceTemplateId, lat, lng));
-        }
-    }
+      trackView: (click_type, resultType, id, title, listIndex) => {
+        dispatch(trackView("service_glossary", null, null, null));
+      },
+      trackClick: (click_type, resultType, id, title, listIndex) => {
+        dispatch(trackClick(click_type, resultType, id, title, listIndex));
+      },
+      trackFeedback: input => {
+        dispatch(trackInput("service_glossary_search", input));
+      },
+      trackEvent: (evName, data) => {
+        dispatch(trackEvent(evName, data));
+      },
+      autoGetLoc: serviceTemplateId => {
+        dispatch(fetchAutoLoc(serviceTemplateId));
+      },
+      setGoogLoc: (serviceTemplateId, lat, lng) => {
+        dispatch(fetchGoogLoc(serviceTemplateId, lat, lng));
+      },
+      clearAll: () =>{
+          dispatch(clearAll());
+      }
+    };
 }
 
 const mapStateToProps = function (state, ownProps) {

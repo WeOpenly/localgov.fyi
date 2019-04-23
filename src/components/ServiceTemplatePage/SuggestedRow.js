@@ -8,6 +8,8 @@ import Grid from '@material-ui/core/Grid';
 import { isMobileOnly } from 'react-device-detect';
 import Typography from '@material-ui/core/Typography';
 import { withStyles } from '@material-ui/core/styles';
+import NearMe from "@material-ui/icons/NearMe";
+
 import LocationSerCard from "./LocationSerCard";
 
 
@@ -57,7 +59,7 @@ class SuggestedRow extends Component {
     }
 
     render() {
-    const {header, results, handleOrgClick, classes} = this.props;
+    const {header, results, classes} = this.props;
 
         let serviceLocations = null;
 

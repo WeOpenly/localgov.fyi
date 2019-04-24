@@ -113,7 +113,7 @@ class Case2 extends Component {
 
     componentWillMount() {
         this.setState({ isMob: isMobileOnly });
-        console.log("here");
+
     }
 
 

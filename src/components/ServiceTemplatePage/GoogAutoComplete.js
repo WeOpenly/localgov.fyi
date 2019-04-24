@@ -145,7 +145,7 @@ class GoogAutoComplete extends React.Component {
 
     handleSelect = address => {
         const { serviceTemplateId, fetchGoogLoc} = this.props;
-        geocodeByAddress(address).then(results => console.log(results))
+
         
         geocodeByAddress(address)
           .then(this.parseState)

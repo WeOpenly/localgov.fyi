@@ -136,7 +136,7 @@ class OrgAggregate extends Component {
         const { classes, org_name, area, offered_services, logo_url, contact_details, url_slug } = this.props;
 
         const serviceList = offered_services.map((s,i)=> {
-            console.log(s)
+ 
             return (<div className={classes.ser_list_item} onClick={() => navigate(`/service/${s.url_slug}`)} key={i}>
                 <Typography style={{
                     color: '#5627FF',

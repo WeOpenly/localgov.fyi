@@ -62,7 +62,7 @@ export function createServiceFlow(serviceId) {
         try {
 
             const allValues = { service_id: serviceId };
-            console.log(allValues);
+
 
             const createdFlow = await DspApi(`/serve/service_request_flow/api/create/`, "PUT", null, allValues);
                

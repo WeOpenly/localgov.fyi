@@ -74,7 +74,6 @@ class OtherStateLocations extends Component {
            googleLocRegion
          } = this.props;
 
-    console.log(this.props);
 
     if (autoLocLoading || googLocLoading) {
       return (

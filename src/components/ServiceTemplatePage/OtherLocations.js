@@ -155,7 +155,7 @@ class OtherLocations extends Component {
             )
         })
     
-
+        
         return (
           <Grid container>
             <OtherStateLocations allOrgs={allOrgs} />
@@ -174,6 +174,7 @@ class OtherLocations extends Component {
               >
                 <Typography
                   variant="title"
+                  component="h2"
                   className={
                     this.state.isMobile
                       ? classes.ser_gloss_suggested_row_heading_mob

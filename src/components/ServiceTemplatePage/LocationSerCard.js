@@ -91,7 +91,7 @@ class LocationSerCard extends Component {
                 <Avatar
                   alt={areaName}
                   className={classes.suggest_loc_logo}
-                  src={logoUrl}
+                  src={`data:image/jpeg;base64,${logoUrl}`}
                 />
               ) : null}
               <div className={classes.suggest_loc_org_details}>

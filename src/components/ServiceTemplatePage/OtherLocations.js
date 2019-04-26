@@ -149,7 +149,6 @@ class OtherLocations extends Component {
 
         const locs = filteredOrgs.map((org, idx) => {
             const organization = org.organization;
-
             return (
                 <LocationSerCard key={idx} idx={idx} organization={organization} ser_url_slug={org.url_slug} area={org.area}  />
             )

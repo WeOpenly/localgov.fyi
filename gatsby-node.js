@@ -26,7 +26,7 @@ exports.createPages = ({graphql, actions}) => {
       node {
         id service_name service_name_slug service_glossary_description views {date views}
         orgs {
-          organization {org_name id logo_url}
+          organization {org_name id logo_url logo_url_base64}
           area {
             hierarchy {area_classification area_id area_name area_classsification_level_number}
           }

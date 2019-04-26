@@ -124,7 +124,7 @@ class OtherStateLocations extends Component {
        if (filteredOrgs.length === 0){
             return null;
         }
-        console.log(filteredOrgs, "filteredorgs")
+
           return (
             <SuggestedRow
               key={`AUTO-state-LOC`}

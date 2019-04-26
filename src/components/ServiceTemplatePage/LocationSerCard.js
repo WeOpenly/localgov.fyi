@@ -67,6 +67,7 @@ class LocationSerCard extends Component {
         if (!(areaName && ser_url_slug)) {
             return null;
         }
+        
         const border = highlight ? `#d782d9` : `#AB93FF`
         return (<Card
             style={{

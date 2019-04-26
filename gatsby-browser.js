@@ -29,20 +29,22 @@ export const shouldUpdateScroll = ({routerProps: {
   return getSavedScrollPosition(location)
 }
 
+export const onInitialClientRender = () =>{
+ if (typeof window !== `undefined`) {
+   window.allCallBacks = function() {
+     window.initIndex && window.initIndex();
+     window.initHeader && window.initHeader();
+     window.initTemplate && window.initTemplate();
+   };
+ }
+}
 
 export const onRouteUpdate = (state, page, pages) => {
 
-
   if (typeof window !== `undefined`) {
-    window.allCallBacks = function () {
-      window.initIndex && window.initIndex();
-      window.initHeader && window.initHeader();
-      window.initTemplate && window.initTemplate();
-    }
     window.scrollTo(0, 0)
-
   }
-
+    
   if (!isLoggedIn){
     auth.logout();
   }

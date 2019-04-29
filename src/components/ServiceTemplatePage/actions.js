@@ -42,6 +42,9 @@ export function fetchAutoLoc(serTemplateId) {
                 dispatch(setAutoRegion(resp.region));
             }else{
                  dispatch(failedRecvFetchAutoloc());
+                 if(resp && resp.region){
+                    dispatch(setAutoRegion(resp.region));
+                 }
             }
 
         } catch (e) {
@@ -73,14 +76,20 @@ function failedFetchGoogleLoc() {
 export function fetchGoogLoc(serTemplateId, latlng) {
     return async(dispatch, getState) => {
         dispatch(requestFetchGoogleLoc());
+        dispatch(clearAll());
+
         const {lat, lng} = latlng;
         try {
             const resp = await YusufApi(null, `template_results?service_template_id=${serTemplateId}&lat=${lat}&lng=${lng}`, null, null);
 
             if (resp && resp.success) {
                 dispatch(recvFetchGoogleLoc(resp.suggested));
+                dispatch(setAutoRegion(resp.region));
             }else{
                 dispatch(failedFetchGoogleLoc());
+                if (resp && resp.region) {
+                    dispatch(setAutoRegion(resp.region));
+                }
             }
 
         } catch (e) {

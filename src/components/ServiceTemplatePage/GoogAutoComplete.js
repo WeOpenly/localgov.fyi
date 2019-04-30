@@ -143,6 +143,10 @@ class GoogAutoComplete extends React.Component {
         return results
     }
 
+    componentWillUnmount(){
+        this.props.setSearchText('')
+    }
+
     handleSelect = address => {
         const { serviceTemplateId, fetchGoogLoc} = this.props;
 

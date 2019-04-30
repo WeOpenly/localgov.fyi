@@ -23,7 +23,7 @@ import NotificationImportant from '@material-ui/icons/NotificationImportant'
 import IconButton from '@material-ui/core/IconButton';
 import Share from '@material-ui/icons/Share';
 import SvgIcon from '@material-ui/core/SvgIcon';
-
+import Avatar from '@material-ui/core/Avatar';
 import ServiceDeliveryLink from './ServiceDeliveryLink';
 
 import {trackClick} from "./common/tracking";
@@ -37,10 +37,9 @@ const styles = theme => ({
     // marginRight: theme.spacing.unit,
     boxShadow: '0 0 0 0',
     paddingTop: theme.spacing.unit * 2,
-    paddingLeft: theme.spacing.unit * 2,
-    paddingRight: theme.spacing.unit * 2,
+    paddingLeft: theme.spacing.unit,
+    paddingRight: theme.spacing.unit,
     paddingBottom: theme.spacing.unit * 2,
-    margin: '1px',
   },
 service_header_mainMobile : {
     boxShadow: '0 0 0 0',
@@ -75,6 +74,7 @@ service_header_cardTop : {
   },
   service_header_in : {
     cursor: 'pointer',
+
     color: theme.palette.primary['400'],
   },
 
@@ -117,6 +117,16 @@ service_header_contactIcons : {
   },
 service_header_serviceNotify : {
   },
+  org_header_avatar:{
+    alignSelf: 'center',
+    display: 'flex',
+    height: theme.spacing.unit * 4,
+    width: theme.spacing.unit * 4,
+    boxShadow: `0 0 1px 1px ${theme.palette.primary["200"]}`,
+    border: '1px solid #fff',
+    margin: theme.spacing.unit,
+  },
+
 service_header_serviceShare : {
   },
 service_header_deliveryLinkWrapper : {
@@ -129,7 +139,7 @@ service_header_deliveryLinkWrapper : {
     // borderLeft: '1px solid #e4e4e4',
   },
   svgIcon:{
-    fontSize: theme.spacing.unit *2,
+    fontSize: '18px',
     marginRight: 8, 
     color: theme.palette.primary['400']
   },
@@ -207,7 +217,7 @@ class ServiceHeader extends Component {
   }
 
   render() {
-    const { classes, name, offeredIn, info, serDelLinks, id, logoSizes, service_delivery_enabled, orgSlug } = this.props;
+    const { classes, name, offeredIn, info, serDelLinks, id, logoSizes, service_delivery_enabled, orgLogoSvg } = this.props;
 
     if (!(name && offeredIn && info && serDelLinks )){
       return null;
@@ -331,14 +341,18 @@ class ServiceHeader extends Component {
     const sdl = <ServiceDeliveryLink id={id} service_name={name} org_name={offeredIn} serDelLinks={serDelLinks} />
 
     return (
-      <Grid container spacing={16} className={!this.state.isMobileOnly ? classes.service_header_main : classes.service_header_mainMobile}>
+      <Grid container spacing={0} className={!this.state.isMobileOnly ? classes.service_header_main : classes.service_header_mainMobile}>
  
         <Grid item xs={12} md={10}>
           <div className={!this.state.isMobileOnly ? classes.service_header_cardTop : classes.service_header_cardTop_mob}>
             <div className={!this.state.isMobileOnly ?  classes.service_header_title: classes.service_header_title_mob}>
-                  <Typography variant="display1">{name}</Typography>
-                  <Typography variant="subheading" onClick={this.handleOrgClick} 
-                 >Offered by  <span className={classes.service_header_in}> {offeredIn} </span></Typography>
+                  <Typography component="h1" variant="display1">{name}</Typography>
+
+            
+                <Typography variant="subheading" className={classes.ser_header_offered_in_org} onClick={this.handleOrgClick}>
+                  Offered by  <span className={classes.service_header_in}> {offeredIn} </span>
+                 </Typography>
+    
                 </div>
             <div className={classes.service_header_serDelLink}>
               {sdl}

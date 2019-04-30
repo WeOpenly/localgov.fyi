@@ -1,7 +1,7 @@
 import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import {navigate} from '@reach/router';
-
+import { isMobileOnly } from 'react-device-detect';
 import { connect } from 'react-redux';
 import { CopyToClipboard } from 'react-copy-to-clipboard';
 import {Info} from 'react-feather';
@@ -9,7 +9,7 @@ import ContentLoader from "react-content-loader"
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
-
+import AnchorLink from 'react-anchor-link-smooth-scroll'
 import Paper from '@material-ui/core/Paper';
 import InfoOutlined from '@material-ui/icons/InfoOutlined'
 import AccessTimeOutlined from '@material-ui/icons/AccessTimeOutlined'
@@ -30,40 +30,44 @@ const windowGlobal = typeof window !== 'undefined'
     : null
 
 const styles = theme => ({
-    ser_detail_tab_root: {
-    flexGrow: 1,
-    backgroundColor: theme.palette.background.paper,
-  },
-ser_detail_tab_tabSelected : {},
-ser_detail_tab_tabRoot : {
- 
-    fontWeight: theme.typography.fontWeightRegular,
-    letterSpacing: '2px',
-    marginTop: theme.spacing.unit,
-    '&:hover': {
-        color: theme.palette.primary['500'],
-        opacity: 1
-    },
-    '&$tabSelected': {
-        color: theme.palette.primary['500'],
-   
-    },
-    '&:focus': {
-        color: theme.palette.primary['700'],
-    }
+
+    ser_detail_tab_item:{
+    display: 'flex',
+    margin: `0 ${theme.spacing.unit * 2}px 0 ${theme.spacing.unit}px`,
 },
-    ser_detail_tab_tabsRoot : {
-    borderBottom: '1px solid #f1f1f1',
-  },
-    ser_detail_tab_tabsIndicator : {
-    backgroundColor: theme.palette.primary['500'],
-  },
-    ser_detail_cardWrapper:{
-        margin: theme.spacing.unit,
-        boxShadow : `1px 1px 3px 1px ${theme.palette.primary['100']}`,
+    set_list_link_anchor:{
+        textDecoration: 'none',
+        color: '#5627FF',
+        position: 'relative',
+        '&:hover::after': {
+            content: '""',
+            position: 'absolute',
+            bottom: '-9px',
+            left: 0,
+            height: '4px',
+            width: '100%',
+            background: `linear-gradient(bottom, #AB93FF 0%, #5627FF 35%,transparent 60%, transparent 100%)`
+        },
+        '@media only screen and (max-width: 768px)': {
+            '&:hover': {
+                color: '#fff',
+                background: theme.palette.primary['700']
+            }
+        }
     },
 ser_detail_cardContent : {
-    padding: theme.spacing.unit *4
+    padding: `${theme.spacing.unit}px ${theme.spacing.unit * 3}px ${theme.spacing.unit*4}px ${theme.spacing.unit}px`,
+},
+ser_detail_tab_container_mob:{
+    display: 'flex',
+    marginTop: theme.spacing.unit * 2,
+    position: 'relative',
+    justifyContent: 'center'
+},
+ser_detail_tab_container:{
+    display: 'flex',
+   marginTop: theme.spacing.unit * 2,
+    position: 'relative',
 },
 ser_detail_dummyfaq:{
     display: 'flex',
@@ -117,6 +121,7 @@ class ServiceDetail extends Component {
         super(props);
         this.state = {
             currentTab: 0,
+            isMob: false,
             tabContent : [],
             tabs: []
         };
@@ -128,7 +133,7 @@ class ServiceDetail extends Component {
 
     componentDidMount(){
 
-        const { classes, description, price, alltimings, allForms, allfaq, allSteps } = this.props;
+        const { classes, name, orgHieSlug, description, price, alltimings, allForms, allfaq, allSteps } = this.props;
         let tabs = []
         let timingList = null;
         if (alltimings.length > 0) {
@@ -205,59 +210,94 @@ class ServiceDetail extends Component {
 
                 return <Fragment>
                     <ListItem disableGutters>
-                        <ListItemText primary={<Typography variant='subheading'>{question}</Typography>} secondary={<Typography color="textPrimary">{text}</Typography>} />
+                        <ListItemText primary={<Typography component="h3" style={{ color: "rgba(30, 30, 50, 0.78)"}}variant='subheading'>{question}</Typography>} secondary={<Typography color="textPrimary">{text}</Typography>} />
                     </ListItem>
                     {(index !== allfaq.length - 1) ? <Divider style={{ margin: '8px' }} /> : null}
                 </Fragment>;
             });
         }
-
+ 
         tabs.push(
-            <Tab
-                classes={{
-                    root: classes.ser_detail_tab_tabRoot,
-                    selected: classes.ser_detail_tab_tabSelected
-                }}
-                label="Details"
-                icon={<InfoOutlined />} />
+            <div className={classes.ser_detail_tab_item}>
+                <AnchorLink
+                    style={{
+                        textDecoration: 'none'
+                    }}
+                    offset='48'
+                    href={`#details`}>
+                    <Typography className={classes.set_list_link_anchor} variant="subheading">Details
+                </Typography>
+                </AnchorLink>
+            </div>
         )
 
 
         //  push this regardless
-        tabs.push(<Tab classes={{ root: classes.ser_detail_tab_tabRoot, selected: classes.ser_detail_tab_tabSelected }} label="FAQs" icon={<HelpOutline />} />)
+        if (qaList){
+            tabs.push(<div className={classes.ser_detail_tab_item}>
+                <AnchorLink
+                    style={{
+                        textDecoration: 'none'
+                    }}
+                    offset='48'
+                    href={`#faqs`}>
+                    <Typography className={classes.set_list_link_anchor} variant="subheading">FAQs
+                </Typography>
+                </AnchorLink>
+            </div>)
+        }
+       
 
         if (stepList) {
-            tabs.push(<Tab classes={{ root: classes.ser_detail_tab_tabRoot, selected: classes.ser_detail_tab_tabSelected }} label="Checklist" icon={<List />} />)
+            tabs.push(<div className={classes.ser_detail_tab_item}>
+                <AnchorLink
+                    style={{
+                        textDecoration: 'none'
+                    }}
+                    offset='48'
+                    href={`#steps`}>
+                    <Typography className={classes.set_list_link_anchor} variant="subheading">Steps
+                </Typography>
+                </AnchorLink>
+            </div>)
         }
 
 
         if (formList) {
-            tabs.push(
-                <Tab
-                    classes={{
-                        root: classes.ser_detail_tab_tabRoot,
-                        selected: classes.ser_detail_tab_tabSelected
+            tabs.push(<div className={classes.ser_detail_tab_item}>
+                <AnchorLink
+                    style={{
+                        textDecoration: 'none'
                     }}
-                    label="Forms"
-                    icon={<FolderOpenOutlined />} />
-            )
+                    offset='48'
+                    href={`#forms`}>
+                    <Typography className={classes.set_list_link_anchor} variant="subheading">Forms
+                </Typography>
+                </AnchorLink>
+            </div>)
         }
+
         if (timingList) {
-            tabs.push(
-                <Tab
-                    classes={{
-                        root: classes.ser_detail_tab_tabRoot,
-                        selected: classes.ser_detail_tab_tabSelected
+            tabs.push(<div className={classes.ser_detail_tab_item}>
+                <AnchorLink
+                    style={{
+                        textDecoration: 'none'
                     }}
-                    label="Timings"
-                    icon={< AccessTimeOutlined />} />
-            )
+                    offset='48'
+                    href={`#timings`}>
+                    <Typography className={classes.set_list_link_anchor} variant="subheading">Timings
+                </Typography>
+                </AnchorLink>
+            </div>)
         }
+
         let tabContent = []
 
         if(description){
             tabContent.push(<Fragment>
-                <div className={classes.ser_detail_cardContent}>
+ 
+                <div className={classes.ser_detail_cardContent} id={`details`}>
+                 
                     <Typography variant="body1" gutterBottom>
                         <RawHTML>{description}</RawHTML>
                     </Typography>
@@ -268,49 +308,36 @@ class ServiceDetail extends Component {
                     </Typography>
                     <Typography variant="body2" gutterBottom>
                        {price}
-                    </Typography>  </Fragment>)}
+                    </Typography> 
+               </Fragment>)}
+                  
                 </div>
             </Fragment>)
         }else{
-                tabContent.push(<Fragment>
-                <div className={classes.ser_detail_dummyfaq}>
-                    <div className={classes.ser_detail_dummyfaq_details}>
-                          <PriorityHigh size="small" />
-                       <Typography variant="body1" gutterBottom>
-                          
-                        Looks like we don't have any details yet!
+            tabContent.push(<Fragment>
+                    <div className={classes.ser_detail_cardContent} id={`details`}>
+                    <Typography variant="body1" gutterBottom>
+                        {name} in the {orgHieSlug} using this service
                     </Typography>
-                        </div>
-                   
-                  
                 </div>
             </Fragment>)
         }
         
         if(qaList){
             tabContent.push(<Fragment>
-                <div className={classes.ser_detail_cardContent}>
+                <Typography className={classes.ser_tab_content_heading} component="h2" variant="title">FAQs
+                      </Typography>
+                <div className={classes.ser_detail_cardContent} id={`faqs`}>
                    {qaList}
                 </div>
             </Fragment>)
-        }else{
-                tabContent.push(<Fragment>
-                <div className={classes.ser_detail_dummyfaq}>
-                    <div className={classes.ser_detail_dummyfaq_details}>
-                          <PriorityHigh size="small" />
-                       <Typography variant="body1" gutterBottom>
-                          
-                        Looks like we don't have any FAQs yet!
-                    </Typography>
-                        </div>
-                   
-                  
-                </div>
-            </Fragment>)
         }
+
         if(stepList){
             tabContent.push(<Fragment>
-                <div className={classes.ser_detail_cardContent}>
+                <Typography className={classes.ser_tab_content_heading} component="h2" variant="title">Steps
+                      </Typography>
+                <div className={classes.ser_detail_cardContent} id={`steps`}>
                    {stepList}
                 </div>
             </Fragment>)
@@ -318,7 +345,9 @@ class ServiceDetail extends Component {
 
         if(formList){
             tabContent.push(<Fragment>
-                <div className={classes.ser_detail_cardContent}>
+                <Typography className={classes.ser_tab_content_heading} component="h2" variant="title">Forms
+                      </Typography>
+                <div className={classes.ser_detail_cardContent} id={`forms`}>
                    {formList}
                 </div>
             </Fragment>)
@@ -326,7 +355,9 @@ class ServiceDetail extends Component {
        
         if(timingList){
             tabContent.push(<Fragment>
-                <div className={classes.ser_detail_cardContent}>
+                <Typography className={classes.ser_tab_content_heading} component="h2" variant="title">Timings
+                      </Typography>
+                <div className={classes.ser_detail_cardContent} id={`timings`}>
                    {timingList}
                 </div>
             </Fragment>)
@@ -334,7 +365,8 @@ class ServiceDetail extends Component {
 
         this.setState({
             tabs,
-            tabContent
+            tabContent,
+            isMob: isMobileOnly,
         })
     }
 
@@ -347,21 +379,17 @@ class ServiceDetail extends Component {
         if (!tabs || tabs.length === 0 || tabs.length !== this.state.tabContent.length){
             return <Tabloader />
         }
+    
 
-        const currentTabContent = this.state.tabContent[this.state.currentTab]
+         return (<Fragment>
+             <div className={this.state.isMob ? classes.ser_detail_tab_container_mob : classes.ser_detail_tab_container}>
+            {tabs}
 
-         return (<Paper className={classes.ser_detail_cardWrapper} elevation={2}>
-                            <Tabs
-            value={this.state.currentTab}
-            onChange={this.handleChange}
-            classes={{ root: classes.ser_detail_tab_tabsRoot, indicator: classes.ser_detail_tab_tabsIndicator }}
-            indicatorColor="primary"
-            textColor="primary"
-          >
-          {tabs}
-           </Tabs>
-             {currentTabContent ? currentTabContent : null}
-        </Paper>)
+            </div>
+             <Divider style={{ margin: '8px 8px 24px 0px' }} />
+             {this.state.tabContent}
+             </Fragment>
+       )
     }
 }
 

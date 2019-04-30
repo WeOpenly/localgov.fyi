@@ -122,6 +122,11 @@ allSersJson {
           contact_type contact_value
         }
         id 
+        area {
+          hierarchy {
+            area_name
+          }
+        }
         url_slug
       }
     }
@@ -230,6 +235,8 @@ allLogos : allFile(filter : {
               service_del_links: service.service_del_links || [],
               org_id: org_details.id,
               org_slug: org_details.url_slug,
+              org_area_hie: org_details.area.hierarchy || [],
+              org_logo_sizes: orgLogoMap[`${org_details.id}_org_logo`],
               org_name: org_details.org_name,
               otherServices: additional_sers,
               logoSizes: serviceLogoMap[`${service.id}_ser_logo`]

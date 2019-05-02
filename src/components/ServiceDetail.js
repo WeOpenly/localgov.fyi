@@ -210,7 +210,7 @@ class ServiceDetail extends Component {
 
                 return <Fragment>
                     <ListItem disableGutters>
-                        <ListItemText primary={<Typography component="h3" style={{ color: "rgba(30, 30, 50, 0.78)"}}variant='subheading'>{question}</Typography>} secondary={<Typography color="textPrimary">{text}</Typography>} />
+                        <ListItemText primary={<Typography component="h3" style={{ fontWeight: 500, color: "rgba(30, 30, 50, 1.20)"}} variant='subheading'>{question}</Typography>} secondary={<Typography color="textPrimary">{text}</Typography>} />
                     </ListItem>
                     {(index !== allfaq.length - 1) ? <Divider style={{ margin: '8px' }} /> : null}
                 </Fragment>;
@@ -224,8 +224,8 @@ class ServiceDetail extends Component {
                         textDecoration: 'none'
                     }}
                     offset='48'
-                    href={`#details`}>
-                    <Typography className={classes.set_list_link_anchor} variant="subheading">Details
+                    href={`#about`}>
+                    <Typography className={classes.set_list_link_anchor} variant="subheading">About
                 </Typography>
                 </AnchorLink>
             </div>
@@ -296,7 +296,7 @@ class ServiceDetail extends Component {
         if(description){
             tabContent.push(<Fragment>
  
-                <div className={classes.ser_detail_cardContent} id={`details`}>
+                <div className={classes.ser_detail_cardContent} id={`about`}>
                  
                     <Typography variant="body1" gutterBottom>
                         <RawHTML>{description}</RawHTML>
@@ -315,7 +315,7 @@ class ServiceDetail extends Component {
             </Fragment>)
         }else{
             tabContent.push(<Fragment>
-                    <div className={classes.ser_detail_cardContent} id={`details`}>
+                    <div className={classes.ser_detail_cardContent} id={`about`}>
                     <Typography variant="body1" gutterBottom>
                         {name} in the {orgHieSlug} using this service
                     </Typography>

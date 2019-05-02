@@ -14,13 +14,11 @@ import SvgParking from '../svgIcons/parking.js';
 import SvgLicense from '../svgIcons/license.js';
 import SvgLeak from '../svgIcons/leak.js';
 import SvgPark from '../svgIcons/park.js';
-import Link from "gatsby-link";
-import List from '@material-ui/core/List';
-import ListItem from '@material-ui/core/ListItem';
+import Link, {navigate} from "gatsby-link";
+
 import ListItemText from '@material-ui/core/ListItemText';
 import ListItemAvatar from '@material-ui/core/ListItemAvatar';
 import Grid from '@material-ui/core/Grid';
-import { navigate } from "@reach/router";
 
 const styles = theme => ({
   ser_template_card: {
@@ -108,12 +106,13 @@ class ServiceTemplateCard extends Component {
         } else if (lowerCaseName.indexOf('recreation') !== -1 || lowerCaseName.indexOf('recreational') !== -1) {
             icon = (<SvgPark style={{ fontSize: '53px' }} />)
             mobIcon = (<SvgPark style={{ fontSize: '32px' }} />)
-        } 
+        }   
 
+   
         if (this.state.isMob){
             return (
-              <Link
-                to={`/services/${slug}`}
+              <div
+                onClick={() => navigate(`/services/${slug}`)}
                 style={{
                   background: "#fff",
                   margin: "8px",
@@ -122,6 +121,8 @@ class ServiceTemplateCard extends Component {
                     "0px 3px 5px 0px rgba(0,0,0,0.1),0px 1px 1px 0px rgba(0,0,0,0.07),0px 2px 6px 1px rgba(0,0,0,0.06)",
                   padding: "16px",
                   width: "300px",
+                  display: "flex",
+                  textDecoration: "none",
                   cursor: "pointer"
                 }}
               >
@@ -136,7 +137,7 @@ class ServiceTemplateCard extends Component {
                     </Typography>
                   }
                 />
-              </Link>
+              </div>
             );
         } else {
             return (<Link className={compact ? classes.ser_template_card_compact : classes.ser_template_card} to={`/services/${slug}`}>

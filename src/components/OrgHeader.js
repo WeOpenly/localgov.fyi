@@ -106,7 +106,7 @@ org_header_serDelLink : {
   alignSelf: 'center'
 },
 svgIcon : {
- fontSize: '18px',
+  fontSize: '18px',
     marginRight: 8, 
     color: theme.palette.primary['400']
 },

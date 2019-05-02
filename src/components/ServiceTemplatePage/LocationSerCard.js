@@ -75,6 +75,38 @@ class LocationSerCard extends Component {
         if (!(areaName && ser_url_slug)) {
             return null;
         }
+        let logo = null;
+        if (this.state.isMob){
+          if (logoUrl){
+            logo = (
+              <Avatar
+                alt={areaName}
+                className={classes.suggest_loc_logo}
+                src={`${logoUrl}`}
+              />
+            );
+          }
+        }
+        else{
+        if (logoUrl) {
+          logo = (
+            <Avatar
+              alt={areaName}
+              className={classes.suggest_loc_logo}
+              src={`${logoUrl}`}
+            />
+          );
+        }
+        if (logoUrlBase64) {
+          logo = (
+            <Avatar
+              alt={areaName}
+              className={classes.suggest_loc_logo}
+              src={`data:image/jpeg;base64,${logoUrlBase64}`}
+            />
+          );
+        }
+        }
 
         const border = highlight ? `#d782d9` : `#AB93FF`
         return (
@@ -93,19 +125,7 @@ class LocationSerCard extends Component {
             to={`/service/${ser_url_slug}`}
           >
             <CardContent className={classes.suggest_loc_card}>
-              {logoUrlBase64 ? (
-                <Avatar
-                  alt={areaName}
-                  className={classes.suggest_loc_logo}
-                  src={`data:image/jpeg;base64,${logoUrlBase64}`}
-                />
-              ) : logoUrl ? (
-                <Avatar
-                  alt={areaName}
-                  className={classes.suggest_loc_logo}
-                  src={`${logoUrl}`}
-                />
-              ) : null}
+              {logo}
               <div className={classes.suggest_loc_org_details}>
                 <Typography variant="body2" gutterBottom>
                   {areaName}

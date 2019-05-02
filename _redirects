@@ -1,3 +1,5 @@
+/org_images/* https://s3-us-west-2.amazonaws.com/dsp-static-us/organization_logo_uploads/:splat 200!
+
 /api/yusuf/* http://127.0.0.1:8010/:splat 200!
 
 /blog/* https://blogevergov.wordpress.com/:splat 200!

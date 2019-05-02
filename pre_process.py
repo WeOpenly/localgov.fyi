@@ -255,7 +255,9 @@ def get_all_locations():
 
 def write_standard_redirects():
     print(DSP_HOST, YUSUF_HOST)
-    redirs = """/api/yusuf/* {y}/:splat 200!
+    redirs = """/org_images/* https://s3-us-west-2.amazonaws.com/dsp-static-us/organization_logo_uploads/:splat 200!
+    
+    /api/yusuf/* {y}/:splat 200!
 
 /blog/* https://blogevergov.wordpress.com/:splat 200!
 

@@ -69,15 +69,11 @@ if (!service_name || !organization) {
             return null;
         }
 
-        const {org_name, logo_url, logo_url_base64} = organization;
+        const {org_name, logo_url} = organization;
         
         let avatar = (<Avatar className={classes.ser_list_org_agg_logo}>
             <LocationCity />
         </Avatar>)
-
-        if (logo_url_base64) {
-           avatar =  <Avatar  className={classes.ser_list_org_agg_logo}  src={`data:image/jpeg;base64,${logo_url_base64}`} />;
-        }
 
         if (logo_url){
             avatar=  (<Avatar className={classes.ser_list_org_agg_logo} src={logo_url}/>)

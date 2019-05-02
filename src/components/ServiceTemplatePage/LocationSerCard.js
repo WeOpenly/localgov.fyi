@@ -62,52 +62,49 @@ class LocationSerCard extends Component {
             state = `State of ${area.hierarchy[area.hierarchy.length - 1].area_name}`;
         }
         let logoUrl = null;
-        let logoUrlBase64 = null;
 
         if (organization.logo_url){
-            logoUrl = organization.logo_url
-        }
-
-        if (organization.logo_url_base64) {
-          logoUrlBase64 = organization.logo_url_base64;
+            const filename = organization.logo_url.replace(/^.*[\\\/]/, "");
+            logoUrl = `/org_images/${filename}`;
         }
 
         if (!(areaName && ser_url_slug)) {
             return null;
         }
-        let logo = null;
-        if (this.state.isMob){
-          if (logoUrl){
-            logo = (
-              <Avatar
-                alt={areaName}
-                className={classes.suggest_loc_logo}
-                src={`${logoUrl}`}
-              />
-            );
-          }
-        }
-        else{
-        if (logoUrl) {
-          logo = (
-            <Avatar
-              alt={areaName}
-              className={classes.suggest_loc_logo}
-              src={`${logoUrl}`}
-            />
-          );
-        }
-        if (logoUrlBase64) {
-          logo = (
-            <Avatar
-              alt={areaName}
-              className={classes.suggest_loc_logo}
-              src={`data:image/jpeg;base64,${logoUrlBase64}`}
-            />
-          );
-        }
-        }
 
+        // if (this.state.isMob){
+        //   if (logoUrl){
+        //     logo = (
+        //       <Avatar
+        //         alt={areaName}
+        //         className={classes.suggest_loc_logo}
+        //         src={`${logoUrl}`}
+        //       />
+        //     );
+        //   }
+        // }
+        // else{
+        // if (logoUrl) {
+        //   logo = (
+        //     <Avatar
+        //       alt={areaName}
+        //       className={classes.suggest_loc_logo}
+        //       src={`${logoUrl}`}
+        //     />
+        //   );
+        // }
+        // if (logoUrlBase64) {
+        //   logo = (
+        //     <Avatar
+        //       alt={areaName}
+        //       className={classes.suggest_loc_logo}
+        //       src={`data:image/jpeg;base64,${logoUrlBase64}`}
+        //     />
+        //   );
+        // }
+        // }
+
+    
         const border = highlight ? `#d782d9` : `#AB93FF`
         return (
           <Link
@@ -125,7 +122,13 @@ class LocationSerCard extends Component {
             to={`/service/${ser_url_slug}`}
           >
             <CardContent className={classes.suggest_loc_card}>
-              {logo}
+              {logoUrl ? (
+                <Avatar
+                  alt={areaName}
+                  className={classes.suggest_loc_logo}
+                  src={`${logoUrl}`}
+                />
+              ) : null}
               <div className={classes.suggest_loc_org_details}>
                 <Typography variant="body2" gutterBottom>
                   {areaName}

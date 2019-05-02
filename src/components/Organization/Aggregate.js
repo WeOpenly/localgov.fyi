@@ -333,13 +333,7 @@ class OrgAggregate extends Component {
               }
             >
               <div className={classes.org_agg_org_section}>
-                {logo_url_base64 ? (
-                  <Avatar
-                    alt={areaName}
-                    className={classes.org_agg_logo}
-                    src={`data:image/jpeg;base64,${logo_url_base64}`}
-                  />
-                ) : logo_url ? (
+                {logo_url ? (
                   <Avatar
                     alt={areaName}
                     className={classes.org_agg_logo}

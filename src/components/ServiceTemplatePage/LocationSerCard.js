@@ -61,6 +61,7 @@ class LocationSerCard extends Component {
             areaName = area.name || organization.org_name
             state = `State of ${area.hierarchy[area.hierarchy.length - 1].area_name}`;
         }
+        
         let logoUrl = null;
 
         if (organization.logo_url){

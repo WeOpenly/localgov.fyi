@@ -133,7 +133,7 @@ class OrgAggregate extends Component {
     }
 
     render() {
-        const { classes, org_name, area, offered_services, logo_url, logo_url_base64, contact_details, url_slug } = this.props;
+        const { classes, org_name, area, offered_services, logo_url, contact_details, url_slug } = this.props;
   
 
         const serviceList = offered_services.map((s,i)=> {
@@ -323,6 +323,18 @@ class OrgAggregate extends Component {
             </div>;
         });
 
+
+        let logoUrl = null;
+
+        if (logo_url) {
+            const filename = logo_url.replace(
+              /^.*[\\\/]/,
+              ""
+            );
+    
+            logoUrl = `/org_images/${filename}`;
+        }
+
         return (
           <Card className={classes.org_agg_card}>
             <div
@@ -333,11 +345,11 @@ class OrgAggregate extends Component {
               }
             >
               <div className={classes.org_agg_org_section}>
-                {logo_url ? (
+                {logoUrl ? (
                   <Avatar
                     alt={areaName}
                     className={classes.org_agg_logo}
-                    src={`${logo_url}`}
+                    src={`/org_images/${logoUrl}`}
                   />
                 ) : null}
                 <div

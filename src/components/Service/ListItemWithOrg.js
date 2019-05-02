@@ -76,7 +76,15 @@ if (!service_name || !organization) {
         </Avatar>)
 
         if (logo_url){
-            avatar=  (<Avatar className={classes.ser_list_org_agg_logo} src={logo_url}/>)
+            const filename = logo_url.replace(/^.*[\\\/]/, "");
+
+            const  logoUrl = `/org_images/${filename}`;
+            avatar = (
+              <Avatar
+                className={classes.ser_list_org_agg_logo}
+                src={logoUrl}
+              />
+            );
         }
 
 

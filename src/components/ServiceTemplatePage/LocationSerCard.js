@@ -64,7 +64,7 @@ class LocationSerCard extends Component {
         
         let logoUrl = null;
 
-        if (organization.logo_url){
+        if (organization.logo_url && organization.logo_url.indexOf('https://s3-us-') !== -1){
             const filename = organization.logo_url.replace(/^.*[\\\/]/, "");
             logoUrl = `/org_images/${filename}`;
         }

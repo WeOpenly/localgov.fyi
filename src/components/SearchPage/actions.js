@@ -41,7 +41,6 @@ export function fetchSearchResults(lat, lng, service_template_id, service_text) 
 
         try {
             const resp = await YusufApi(null, `get_search_results?${newQueryString}`, null, null);
-            console.log(resp)
             if (resp && resp.success) {
                 dispatch(recvSearchResults(resp.results, resp.case, resp.is_redirect, resp.found_at_parent_level));
             }

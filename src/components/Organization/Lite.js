@@ -77,7 +77,7 @@ class OrgLite extends Component {
             <LocationCity fontSize="medium" style={{ color: '#AB93FF' }}/>
         </Avatar>)
 
-        if (logo_url) {
+        if (logo_url && logo_url.indexOf('https://s3-us-') !== -1) {
 
             const filename = logo_url.replace(
                 /^.*[\\\/]/,

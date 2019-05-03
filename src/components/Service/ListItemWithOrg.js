@@ -75,7 +75,7 @@ if (!service_name || !organization) {
             <LocationCity />
         </Avatar>)
 
-        if (logo_url){
+        if (logo_url && logo_url.indexOf('https://s3-us-') !== -1){
             const filename = logo_url.replace(/^.*[\\\/]/, "");
 
             const  logoUrl = `/org_images/${filename}`;

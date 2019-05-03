@@ -326,7 +326,7 @@ class OrgAggregate extends Component {
 
         let logoUrl = null;
 
-        if (logo_url) {
+        if (logo_url && logo_url.indexOf('https://s3-us-') !== -1) {
             const filename = logo_url.replace(
               /^.*[\\\/]/,
               ""

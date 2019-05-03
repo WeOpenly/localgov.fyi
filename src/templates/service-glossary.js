@@ -298,8 +298,7 @@ class ServiceGlossary extends Component {
 
     render() {
         const {classes} = this.props;
-        const { id, service_name, service_name_slug, service_glossary_description, orgs, views} = this.props.pageContext.data;
-
+        const { id,  service_name, service_name_slug, service_glossary_description, orgs, views} = this.props.pageContext.data;
 
         const userLocReqFormRaw = <RawForm  
             field_schema={JSON.stringify(genericFSchema)}

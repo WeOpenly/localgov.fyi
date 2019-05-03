@@ -134,6 +134,7 @@ class OrgAggregate extends Component {
 
     render() {
         const { classes, org_name, area, offered_services, logo_url, contact_details, url_slug } = this.props;
+  
 
         const serviceList = offered_services.map((s,i)=> {
  
@@ -322,43 +323,82 @@ class OrgAggregate extends Component {
             </div>;
         });
 
-        return (<Card
-            className={classes.org_agg_card}>
-            <div className={this.state.isMob ? classes.org_aggregate_container_mob : classes.org_aggregate_container}>
-           
-                <div className={classes.org_agg_org_section}>
-                    {logo_url ? <Avatar className={classes.org_agg_logo} src={logo_url}>
-                    </Avatar> : null}
-                    <div className={classes.org_agg_name} onClick={() => navigate(`/organization/${url_slug}`)}>
-                        <Typography style={{
-                            color: '#fff',
-                            textAlign: 'center',
-                        }} variant="title" gutterBottom>
-                            {org_name}
-                        </Typography>
-                        <Typography style={{
-                            color: '#fff'
-                        }} variant="caption">
-                            {state}
-                        </Typography>
-                    </div>
-                    <div className={classes.org_agg_cd}>
-                        {contactDetailButtons}
-                    </div>
-                </div>
-                {serviceList.length > 0 ? (<div className={classes.org_agg_ser_section}>
-                    <div className={classes.org_agg_service_header}>
-                        <Typography style={{ fontSize: '1.1rem' }} variant="title" gutterBottom>
-                            Services from {org_name}
-                        </Typography>
-                    </div>
 
-                    <div className={classes.org_agg_ser_list}>
-                        {slicedServices}
-                    </div>
-                </div>) : null}
+        let logoUrl = null;
+
+        if (logo_url) {
+            const filename = logo_url.replace(
+              /^.*[\\\/]/,
+              ""
+            );
+    
+            logoUrl = `/org_images/${filename}`;
+        }
+
+        return (
+          <Card className={classes.org_agg_card}>
+            <div
+              className={
+                this.state.isMob
+                  ? classes.org_aggregate_container_mob
+                  : classes.org_aggregate_container
+              }
+            >
+              <div className={classes.org_agg_org_section}>
+                {logoUrl ? (
+                  <Avatar
+                    alt={areaName}
+                    className={classes.org_agg_logo}
+                    src={`${logoUrl}`}
+                  />
+                ) : null}
+                <div
+                  className={classes.org_agg_name}
+                  onClick={() => navigate(`/organization/${url_slug}`)}
+                >
+                  <Typography
+                    style={{
+                      color: "#fff",
+                      textAlign: "center"
+                    }}
+                    variant="title"
+                    gutterBottom
+                  >
+                    {org_name}
+                  </Typography>
+                  <Typography
+                    style={{
+                      color: "#fff"
+                    }}
+                    variant="caption"
+                  >
+                    {state}
+                  </Typography>
+                </div>
+                <div className={classes.org_agg_cd}>
+                  {contactDetailButtons}
+                </div>
+              </div>
+              {serviceList.length > 0 ? (
+                <div className={classes.org_agg_ser_section}>
+                  <div className={classes.org_agg_service_header}>
+                    <Typography
+                      style={{ fontSize: "1.1rem" }}
+                      variant="title"
+                      gutterBottom
+                    >
+                      Services from {org_name}
+                    </Typography>
+                  </div>
+
+                  <div className={classes.org_agg_ser_list}>
+                    {slicedServices}
+                  </div>
+                </div>
+              ) : null}
             </div>
-        </Card>)
+          </Card>
+        );
     }
 }
 

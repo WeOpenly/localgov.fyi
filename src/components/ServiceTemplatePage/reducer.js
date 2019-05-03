@@ -82,7 +82,6 @@ export function serTemplate(state = initialState, action) {
               googLat: null,
               autoLocRegion: null,
               googleLocRegion: null,
-              searchText: null,
               googLng: null
             };
         case types.CLEAR_GOOG_LAT_LNG:

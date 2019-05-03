@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import _ from "lodash";
+import Link from "gatsby-link";
 import {StaticQuery, graphql} from "gatsby"
 import { isMobileOnly } from 'react-device-detect';
 import Typography from '@material-ui/core/Typography';
@@ -16,7 +17,8 @@ ser_gloss_gridItemLocation_mob_focus : {
     boxShadow: `0 0 3px 0px ${theme.palette.primary['600']}`
 },
     suggest_loc_card:{
-        display: 'flex'
+        display: 'flex',
+
     },
 suggest_loc_org_details:{
     display: 'flex',
@@ -59,40 +61,84 @@ class LocationSerCard extends Component {
             areaName = area.name || organization.org_name
             state = `State of ${area.hierarchy[area.hierarchy.length - 1].area_name}`;
         }
+        
         let logoUrl = null;
+
         if (organization.logo_url){
-            logoUrl = organization.logo_url
+            const filename = organization.logo_url.replace(/^.*[\\\/]/, "");
+            logoUrl = `/org_images/${filename}`;
         }
 
         if (!(areaName && ser_url_slug)) {
             return null;
         }
-        
+
+        // if (this.state.isMob){
+        //   if (logoUrl){
+        //     logo = (
+        //       <Avatar
+        //         alt={areaName}
+        //         className={classes.suggest_loc_logo}
+        //         src={`${logoUrl}`}
+        //       />
+        //     );
+        //   }
+        // }
+        // else{
+        // if (logoUrl) {
+        //   logo = (
+        //     <Avatar
+        //       alt={areaName}
+        //       className={classes.suggest_loc_logo}
+        //       src={`${logoUrl}`}
+        //     />
+        //   );
+        // }
+        // if (logoUrlBase64) {
+        //   logo = (
+        //     <Avatar
+        //       alt={areaName}
+        //       className={classes.suggest_loc_logo}
+        //       src={`data:image/jpeg;base64,${logoUrlBase64}`}
+        //     />
+        //   );
+        // }
+        // }
+
+    
         const border = highlight ? `#d782d9` : `#AB93FF`
-        return (<Card
+        return (
+          <Link
             style={{
-                cursor: 'pointer',
-                width: '280px',
-                display: 'flex',
-                flexDirection: 'column',
-                margin: 16,
-                borderTop: `2px solid ${border}`,
-                boxShadow: '0px 3px 5px 0px rgba(0,0,0,0.1),0px 1px 1px 0px rgba(0,0,0,0.07),0px 2px 6px 1px rgba(0,0,0,0.06)'
+              cursor: "pointer",
+              width: "280px",
+              display: "flex",
+              flexDirection: "column",
+              textDecoration: "none",
+              margin: 16,
+              borderTop: `2px solid ${border}`,
+              boxShadow:
+                "0px 3px 5px 0px rgba(0,0,0,0.1),0px 1px 1px 0px rgba(0,0,0,0.07),0px 2px 6px 1px rgba(0,0,0,0.06)"
             }}
-            onClick={() => navigate(`/service/${ser_url_slug}`)}>
+            to={`/service/${ser_url_slug}`}
+          >
             <CardContent className={classes.suggest_loc_card}>
-                {logoUrl ? <Avatar className={classes.suggest_loc_logo} src={logoUrl}>
-                </Avatar> : null}
-                <div className={classes.suggest_loc_org_details}>
-                    <Typography variant="body2" gutterBottom>
-                        {areaName}
-                    </Typography>
-                    <Typography variant="caption">
-                        {state}
-                    </Typography>
-                </div>
+              {logoUrl ? (
+                <Avatar
+                  alt={areaName}
+                  className={classes.suggest_loc_logo}
+                  src={`${logoUrl}`}
+                />
+              ) : null}
+              <div className={classes.suggest_loc_org_details}>
+                <Typography variant="body2" gutterBottom>
+                  {areaName}
+                </Typography>
+                <Typography variant="caption">{state}</Typography>
+              </div>
             </CardContent>
-        </Card>)
+          </Link>
+        );
     }
 }
 

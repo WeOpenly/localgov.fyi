@@ -45,7 +45,7 @@ const styles = theme => ({
     },
     search_nav:{
         background: '#fff',
-        boxShadow: '0px 3px 5px 0px rgba(0,0,0,0.1),0px 1px 1px 0px rgba(0,0,0,0.07),0px 2px 6px 1px rgba(0,0,0,0.06)'
+        boxShadow: '0px 1px 2px 0px rgba(0,0,0,0.1),0px 1px 1px 0px rgba(0,0,0,0.07),0px 2px 6px 1px rgba(0,0,0,0.06)'
     },
     search_header_nav_items_mob:{
         display: 'flex',

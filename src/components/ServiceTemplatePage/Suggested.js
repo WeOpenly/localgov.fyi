@@ -64,7 +64,7 @@ class Suggested extends Component {
 
     render() {        
         const { autoLocLoading, autoLocResults, autoLocFailed, handleOrgClick, classes} = this.props;
-const {googLocLoading, googLocResults, googlLocFailed, noGoogSuggestsFound, searchText} = this.props;
+        const {googLocLoading, googLocResults, googlLocFailed, noGoogSuggestsFound, searchText} = this.props;
    
         if (autoLocLoading || googLocLoading){
             return (<Grid container>
@@ -81,6 +81,7 @@ const {googLocLoading, googLocResults, googlLocFailed, noGoogSuggestsFound, sear
             </Grid>)
         }
 
+      
         if (autoLocFailed){
             return null;
         }
@@ -103,10 +104,10 @@ const {googLocLoading, googLocResults, googlLocFailed, noGoogSuggestsFound, sear
             });
         }
 
-        if ((noGoogSuggestsFound || googlLocFailed) && searchText){
+        if ((noGoogSuggestsFound || googlLocFailed) && searchText) {
             return (<Grid container>
                 <Grid item xs="auto" />
-                <Grid item xs={12}  className={classes.ser_gloss_suggested_failed_row}>
+                <Grid item xs={12} className={classes.ser_gloss_suggested_failed_row}>
                     <LocationCard compact message={`Sorry, we couldn't find any results for '${searchText}'`} />
                 </Grid>
                 <Grid item xs="auto" />

@@ -35,26 +35,28 @@ const windowGlobal = typeof window !== 'undefined' && window;
 const styles = theme => ({
     "@global": {
         html: {
-            background: theme.palette.common.white,
             WebkitFontSmoothing: "antialiased", // Antialiasing.
             MozOsxFontSmoothing: "grayscale", // Antialiasing.
-            height: "100%",
-            overflow: 'hidden'
+            height: "100%"
         },
         body: {
             margin: 0,
             padding: 0,
-            width: '100%',
-            height: '100%',
+            height: "100%",
+            width: "100%",
+            background: '#fff',
             overflowWrap: "break-word",
             overflowY: "scroll",
             overflowX: "hidden"
         },
-            "body>div": {
-        display: "block",
-        height: "100%"
+        "body>div": {
+            display: "block",
+            height: "100%"
         },
- 
+        "body>div>div": {
+            display: "block",
+            height: "100%"
+        }
     },
     ser_detail_container: {
         marginTop: theme.spacing.unit * 2
@@ -113,7 +115,8 @@ const styles = theme => ({
         display: 'flex',
         justifyContent: 'left',
         marginBottom: theme.spacing.unit * 2,
-        marginLeft: theme.spacing.unit
+        marginLeft: theme.spacing.unit,
+        marginTop: theme.spacing.unit * 2,
     },
     other_ser_card: {
         marginBottom: theme.spacing.unit * 2,
@@ -309,11 +312,28 @@ class ServiceDetailTemplate extends React.Component {
             service_del_links,
             service_reminder_bp_json,
             otherServices,
-            logoSizes
+            logoSizes,
+            org_area_hie,
+            org_logo_sizes
         } = this.props.pageContext.data;
 
         const {classes} = this.props;
-        
+        let orgLogoSvg = null
+        if (org_logo_sizes && org_logo_sizes.fluid) {
+            orgLogoSvg = org_logo_sizes.fluid
+        }
+
+        let orgHieSlug = null;
+
+    
+        if (org_area_hie.length === 1) {
+            orgHieSlug = `State of ${org_name}`
+        }
+        else {
+            if (org_area_hie.length)
+            orgHieSlug = `${org_name}, ${org_area_hie[org_area_hie.length - 1].area_name}`;
+        }
+
         let serRemFormRaw = null;
         // if (service_reminder_bp_json){
         //     const { field_schema} = service_reminder_bp_json;
@@ -356,7 +376,6 @@ class ServiceDetailTemplate extends React.Component {
             serLogoSvg = logoSizes.sizes
         }
 
-    
 
         let locList = null;
 
@@ -454,6 +473,7 @@ class ServiceDetailTemplate extends React.Component {
                 name={name}
                 service_delivery_enabled={service_delivery_enabled}
                 id={id}
+                orgLogoSvg={orgLogoSvg}
                 offeredIn={org_name}
                 orgID={org_id}
                 orgSlug={org_slug}
@@ -480,46 +500,47 @@ class ServiceDetailTemplate extends React.Component {
 
         return (
             <DetailTemplate location={this.props.location}>
+                <Helmet>
+                    <title>{`${name} | ${org_name} | Evergov`}
+                    </title>
+                    <script src="https://js.stripe.com/v3/"></script>
+                    <script type="application/ld+json">{`${JSON.stringify(jsonLd)}`}</script>
+                    <link rel="canonical" href={`https://evergov.com/service/${url_slug}/`} />
+                    <meta
+                        property="og:title"
+                        content={`${name} | ${org_name} | Evergov`} />
+                    <meta property="og:url" content={`https://evergov.com/service/${url_slug}/`} />
+
+                    {description ? (<meta
+                        name="description"
+                        content={description.substr(0, 300)} />) : (<meta
+                            name="description"
+                            content={`${name} online in ${org_name} seamlessly with Evergov. Be it property taxes, utility bills, tickets or permits and licenses, you can find them all on Evergov.`} />)}
+                    <meta
+                        name="keywords"
+                        content={`${name} online , ${org_name} services `} />
+                    <meta
+                        property="og:description"
+                        content={`Forms, Price, Checklist, FAQS, Timings and Local Government Service Contact Details for ${name} offered in ${org_name} | Evergov`} />
+
+                </Helmet>
+
                 <ServiceFlowDialog service_name={name} service_id={id} /> 
 
-                <Grid container spacing={16} className={classes.ser_detail_container}>
-                    <Helmet>
-                        <title>{`${name} | ${org_name} | Evergov`}
-                        </title>
-                        <script src="https://js.stripe.com/v3/"></script>
-                        <script type="application/ld+json">{`${JSON.stringify(jsonLd)}`}</script>
-                        <link rel="canonical" href={`https://evergov.com/service/${url_slug}/`}/>
-                        <meta
-                            property="og:title"
-                            content={`${name} | ${org_name} | Evergov`}/>
-                        <meta property="og:url" content={`https://evergov.com/service/${url_slug}/`}/>
-
-                       {description ? (<meta
-                            name="description"
-                            content={description.substr(0,300)}/>) : (<meta
-                            name="description"
-                            content={`${name} online in ${org_name} seamlessly with Evergov. Be it property taxes, utility bills, tickets or permits and licenses, you can find them all on Evergov.`}/>) }
-                        <meta
-                            name="keywords"
-                            content={`${name} online , ${org_name} services `}/>
-                        <meta
-                            property="og:description"
-                            content={`Forms, Price, Checklist, FAQS, Timings and Local Government Service Contact Details for ${name} offered in ${org_name} | Evergov`}/>
-                     
-                    </Helmet>
-      
-                    <Grid item xs={12}>
-                       {serHeader}
-                    </Grid>
+                <Grid container spacing={0} className={classes.ser_detail_container}>
+                    
+                <Grid item xs={12}>
+                    {serHeader}
+                </Grid>
                  
          
-                    <Grid item xs={12} md={8} className={classes.ser_detail_details}>
-                        <ServiceDetail description={description} price={price} alltimings={alltimings} allForms={allForms} allfaq={allfaq} allSteps={allSteps}  />
+                    <Grid item xs={12} sm={12} md={8} className={classes.ser_detail_details}>
+                        <ServiceDetail name={name} orgHieSlug={orgHieSlug} description={description} price={price} alltimings={alltimings} allForms={allForms} allfaq={allfaq} allSteps={allSteps}  />
                     </Grid>
+
                     <Grid item xs={12} sm={12} md={4}>
                         <div className={classes.other_ser_headerWrapper}>
-                            <Typography variant="subheading">Additional services</Typography>
-
+                            <Typography variant="subheading">More Services</Typography>
                         </div>
                         {otherSer}
                         <div className={classes.other_ser_linkWrapper}>

@@ -76,6 +76,7 @@ class SuggestedRow extends Component {
                 <Grid item sm={10} className={this.state.isMob ? classes.ser_gloss_suggested_row_mob :  classes.ser_gloss_suggested_row}>
                     <Typography
                         variant="title"
+                        component="h2"
                         className={this.state.isMob ? classes.ser_gloss_suggested_row_heading_mob : classes.ser_gloss_suggested_row_heading}>
                         {header}
                     </Typography>

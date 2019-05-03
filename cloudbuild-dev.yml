@@ -4,7 +4,7 @@ steps:
 - name: gcr.io/cloud-builders/gsutil
   dir: 'localgov.fyi'
   args: ['cp', 'gs://$PROJECT_ID-netlify-env/dsp-creds.sh', 'dsp-creds.sh']
-- name: 'docker.io/ybvkr/ubuntu-curl-python'
+- name: 'gcr.io/evergov-dev3/curl-python'
   dir: 'localgov.fyi'
   args: ['bash', '-c',  'source ./dsp-creds.sh && python ./pre_process.py']
 - name: node:8
@@ -36,4 +36,5 @@ steps:
   args: ['env']
 timeout: 3600s
 options:
-  diskSizeGb: 100
+  diskSizeGb: 20
+  machineType: 'N1_HIGHCPU_8'

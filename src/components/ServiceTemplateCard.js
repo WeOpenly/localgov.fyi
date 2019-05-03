@@ -14,61 +14,63 @@ import SvgParking from '../svgIcons/parking.js';
 import SvgLicense from '../svgIcons/license.js';
 import SvgLeak from '../svgIcons/leak.js';
 import SvgPark from '../svgIcons/park.js';
+import Link, {navigate} from "gatsby-link";
 
-import List from '@material-ui/core/List';
-import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
 import ListItemAvatar from '@material-ui/core/ListItemAvatar';
 import Grid from '@material-ui/core/Grid';
-import { navigate } from "@reach/router";
 
 const styles = theme => ({
-ser_template_card:{
-    cursor: 'pointer',
-    width: '200px',
-    height: '160px',
-    background: '#fff',
+  ser_template_card: {
+    cursor: "pointer",
+    width: "200px",
+    textDecoration: "none",
+    height: "160px",
+    background: "#fff",
     margin: theme.spacing.unit,
-    display: 'flex',
-    flexDirection: 'column',
-        borderTop: `2px solid #AB93FF`,
-        boxShadow: '0px 3px 5px 0px rgba(0,0,0,0.1),0px 1px 1px 0px rgba(0,0,0,0.07),0px 2px 6px 1px rgba(0,0,0,0.06)'
-},
-    ser_template_card_compact:{
-        cursor: 'pointer',
-        width: '140px',
-        height: '140px',
-        background: '#fff',
-        margin: theme.spacing.unit,
-        display: 'flex',
-        flexDirection: 'column',
-        '&:hover':{
-            bordeRadius: theme.spacing.unit,
-            boxShadow: '0px 3px 5px 0px rgba(0,0,0,0.1),0px 1px 1px 0px rgba(0,0,0,0.07),0px 12px 16px 1px rgba(0,0,0,0.06)'
-        }
-    },
-ser_template_card_img:{
-    display: 'flex',
-    justifyContent: 'center',
-    minHeight: '80px',
-    paddingBottom: theme.spacing.unit *3,
+    display: "flex",
+    flexDirection: "column",
+    borderTop: `2px solid #AB93FF`,
+    boxShadow:
+      "0px 3px 5px 0px rgba(0,0,0,0.1),0px 1px 1px 0px rgba(0,0,0,0.07),0px 2px 6px 1px rgba(0,0,0,0.06)"
+  },
+  ser_template_card_compact: {
+    cursor: "pointer",
+    textDecoration: "none",
+    width: "140px",
+    height: "140px",
+    background: "#fff",
+    margin: theme.spacing.unit,
+    display: "flex",
+    flexDirection: "column",
+    "&:hover": {
+      bordeRadius: theme.spacing.unit,
+      boxShadow:
+        "0px 3px 5px 0px rgba(0,0,0,0.1),0px 1px 1px 0px rgba(0,0,0,0.07),0px 12px 16px 1px rgba(0,0,0,0.06)"
+    }
+  },
+  ser_template_card_img: {
+    display: "flex",
+    justifyContent: "center",
+    minHeight: "80px",
+    paddingBottom: theme.spacing.unit * 3,
     paddingTop: theme.spacing.unit * 3
-},
-ser_template_card_img_compact:{
-    display: 'flex',
-    justifyContent: 'center',
-    minHeight: '32px',
+  },
+  ser_template_card_img_compact: {
+    display: "flex",
+    justifyContent: "center",
+    minHeight: "32px",
     marginBottom: theme.spacing.unit,
     marginTop: theme.spacing.unit * 2
-},
-ser_template_card_content:{
- textAlign: 'center',
-display : 'flex',
-flexWrap: 'wrap',
-justifyContent : 'center',
-padding: theme.spacing.unit,
-alignItems: 'center',
-}
+  },
+  ser_template_card_content: {
+    textAlign: "center",
+    display: "flex",
+    flexWrap: "wrap",
+    justifyContent: "center",
+    padding: theme.spacing.unit,
+    alignItems: "center"
+  }
 });
 
 class ServiceTemplateCard extends Component {
@@ -104,21 +106,41 @@ class ServiceTemplateCard extends Component {
         } else if (lowerCaseName.indexOf('recreation') !== -1 || lowerCaseName.indexOf('recreational') !== -1) {
             icon = (<SvgPark style={{ fontSize: '53px' }} />)
             mobIcon = (<SvgPark style={{ fontSize: '32px' }} />)
-        } 
+        }   
 
+   
         if (this.state.isMob){
             return (
-                <ListItem onClick={() => navigate(`/services/${slug}`, true)} style={{ background: '#fff', margin: '8px', borderTop: `1px solid #AB93FF`, boxShadow: '0px 3px 5px 0px rgba(0,0,0,0.1),0px 1px 1px 0px rgba(0,0,0,0.07),0px 2px 6px 1px rgba(0,0,0,0.06)', padding: '16px', width: '300px', cursor: 'pointer'}} >
-                <ListItemAvatar>
-                    {mobIcon}
-                </ListItemAvatar>
-                    <ListItemText primary={<Typography style={{ fontWeight: 500, color: '#5627FF' }} variant="caption">
-                        {name}
-                    </Typography>} />
-            </ListItem>
-            )
+              <div
+                onClick={() => navigate(`/services/${slug}`)}
+                style={{
+                  background: "#fff",
+                  margin: "8px",
+                  borderTop: `1px solid #AB93FF`,
+                  boxShadow:
+                    "0px 3px 5px 0px rgba(0,0,0,0.1),0px 1px 1px 0px rgba(0,0,0,0.07),0px 2px 6px 1px rgba(0,0,0,0.06)",
+                  padding: "16px",
+                  width: "300px",
+                  display: "flex",
+                  textDecoration: "none",
+                  cursor: "pointer"
+                }}
+              >
+                <ListItemAvatar>{mobIcon}</ListItemAvatar>
+                <ListItemText
+                  primary={
+                    <Typography
+                      style={{ fontWeight: 500, color: "#5627FF" }}
+                      variant="caption"
+                    >
+                      {name}
+                    </Typography>
+                  }
+                />
+              </div>
+            );
         } else {
-            return (<div className={compact ? classes.ser_template_card_compact : classes.ser_template_card} onClick={() => navigate(`/services/${slug}`, { replace: true })}>
+            return (<Link className={compact ? classes.ser_template_card_compact : classes.ser_template_card} to={`/services/${slug}`}>
                 <div className={compact ? classes.ser_template_card_img_compact : classes.ser_template_card_img}>
                                 {icon}
                         </div>
@@ -129,7 +151,7 @@ class ServiceTemplateCard extends Component {
                     </Typography>
                     </div>
 
-                </div>)
+                </Link>)
         }
 
         

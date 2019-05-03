@@ -186,6 +186,7 @@ module.exports = {
         policy: [{ userAgent: "*", disallow: [`/app/*`, `/deep_link/*`] }]
       }
     },
+    `gatsby-plugin-offline`,
     `gatsby-plugin-react-helmet`,
     `gatsby-plugin-netlify`
     // This plugin generates a service worker and AppShell html file so the site

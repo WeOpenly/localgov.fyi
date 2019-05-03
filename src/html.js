@@ -109,7 +109,6 @@ export default class HTML extends React.Component {
             defer
             src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBr4RixcEvuxgGr9EwNeiHCqUITczxvvuc&callback=initMapIndex&libraries=places&callback=allCallBacks"
           />
-
           <link href={"/css/fonts.css"} rel="stylesheet" />
           <link href={"/css/stripe.css"} rel="stylesheet" />
           {this.props.headComponents}

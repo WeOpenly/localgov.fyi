@@ -8,7 +8,7 @@ import Button from '@material-ui/core/Button';
 import { withStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
 import Grid from '@material-ui/core/Grid';
-
+import ContentLoader from "react-content-loader";
 
 import CommonNav from '../Nav/Common';
 
@@ -19,6 +19,8 @@ import RelatedServiceTemplates from '../RelatedServiceTemplates';
 import {fetchAreaGuess, executeSearch} from './actions';
 import { trackClick } from "../common/tracking";
 import { teal } from '@material-ui/core/colors';
+
+
 
 const styles = theme => ({
     index_hero_header: {
@@ -79,7 +81,7 @@ class IndexHero extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            isMobileOnly: false
+            isMobileOnly: false, 
         };
         this.onSearch = this.onSearch.bind(this)
     }
@@ -92,7 +94,7 @@ class IndexHero extends Component {
         // script.async = true;
         // script.defer = true;
         // document.head.appendChild(script);
-        this.props.fetchAreaGuess();
+        // this.props.fetchAreaGuess();
     }
 
     onSearch(){
@@ -101,47 +103,48 @@ class IndexHero extends Component {
 
     render() {
         const { classes, location } = this.props;
-        if (this.state.isMobileOnly){
+       
+
+        if (this.state.isMobileOnly) {
             return (
-                <Grid container className={classes.index_hero_mob_container}>
-                    <CommonNav location={location} />
-                    <Grid item xs="auto" sm={2} />
-                    <Grid item
-                        xs={12}
-                        sm={8}
-                        align="left"
-                        className={classes.index_hero_mob_slogan}
-                    >
-                        <Typography
-                   
-                            component="span"
-                            variant="title">
-                            All your government services  in a single place.
-                        </Typography>
-
-                    </Grid>
-
-                    <Grid item xs="auto" sm={2} />
-
-                    <Grid item
-                        xs={12}
-                        sm={6}
-                        className={!this.state.isMobile
-                            ? classes.index_hero_search_box
-                            : classes.index_hero_search_box_mob}
-                    >
-                        <MobileSuggestions onSearch={this.onSearch}/>
-                    </Grid>
-                    <Grid item
-                        xs={12}
-
-                       
-                    >
-                        <RelatedServiceTemplates compact={true} />
-                    </Grid>
+              <Grid
+                container
+                className={classes.index_hero_mob_container}
+              >
+                <CommonNav location={location} />
+                <Grid item xs="auto" sm={2} />
+                <Grid
+                  item
+                  xs={12}
+                  sm={8}
+                  align="left"
+                  className={classes.index_hero_mob_slogan}
+                >
+                  <Typography component="span" variant="title">
+                    All your government services in a single place.
+                  </Typography>
                 </Grid>
+
+                <Grid item xs="auto" sm={2} />
+
+                <Grid
+                  item
+                  xs={12}
+                  sm={6}
+                  className={
+                    !this.state.isMobile
+                      ? classes.index_hero_search_box
+                      : classes.index_hero_search_box_mob
+                  }
+                >
+                  <MobileSuggestions onSearch={this.onSearch} />
+                </Grid>
+                <Grid item xs={12}>
+                  <RelatedServiceTemplates compact={true} />
+                </Grid>
+              </Grid>
             );
-        }
+          }
 
         return (
             <Grid container className={classes.index_hero_section_container}>

@@ -22,6 +22,11 @@ const initialState = {
 
 export function indexPage(state = initialState, action) {
     switch (action.type) {
+        case types.APP_READY:
+            return {
+                ...state,
+                appReady: true,
+            };
         case types.UPDATE_SERVICE_SEARCH_TEXT:
             return {
                 ...state,

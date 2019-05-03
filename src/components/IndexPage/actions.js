@@ -12,6 +12,13 @@ function clearAll() {
     }
 }
 
+
+function setAppReady(){
+    return {
+        type: types.APP_READY
+    }
+}
+
 function requestAreaGuess() {
     return {type: types.REQUEST_AREA_GUESS}
 }
@@ -50,6 +57,7 @@ export function fetchAreaGuess() {
         } catch (e) {
             dispatch(failedRecvAreaGuess());
         }
+        dispatch(setAppReady());
     }
 }
 

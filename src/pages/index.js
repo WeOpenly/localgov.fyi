@@ -5,7 +5,7 @@ import {connect} from "react-redux";
 
 import Helmet from "react-helmet";
 import {isMobileOnly} from 'react-device-detect';
-
+import Spinner from 'react-spinkit';
 import {withStyles} from '@material-ui/core/styles';
 
 import Grid from '@material-ui/core/Grid';
@@ -16,6 +16,7 @@ import withRoot from '../withRoot';
 import IndexHero from '../components/IndexPage/Hero';
 
 import Footer from '../components/Footer';
+import { fetchAreaGuess } from "../components/IndexPage/actions";
 
 import {trackView, trackClick} from "../components/common/tracking";
 import AreaSuggestedServices from '../components/IndexPage/AreaSuggestedservices.js';
@@ -33,7 +34,7 @@ const styles = theme => ({
       padding: 0,
       height: "100%",
       width: "100%",
-      background: '#fff',
+      background: "#fff",
       overflowWrap: "break-word",
       overflowY: "scroll",
       overflowX: "hidden"
@@ -47,15 +48,21 @@ const styles = theme => ({
       height: "100%"
     }
   },
-  index_section2: {
-  },
+  index_section2: {},
   index_footer: {
     borderTop: `1px solid #dcdcdc`,
     paddingTop: theme.spacing.unit,
     marginTop: theme.spacing.unit * 4
   },
+  index_hero_suggestions_loading:{
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    minHeight: '400px'
+  }
 });
 
+const SuggestBoxLoader = props => (<div style={{ display: 'flex', justifyContent: 'center' }}><Spinner name="ball-beat" color="blue" /></div>);
 
 
 class Index extends React.Component {
@@ -73,7 +80,7 @@ class Index extends React.Component {
     if (this.props.location.pathname === '/') {
       dispatch(trackView('index', null, null, null));
     }
-
+    dispatch(fetchAreaGuess())
     this.setState({
       isMobile: isMobileOnly
     })
@@ -81,41 +88,58 @@ class Index extends React.Component {
 
 
   render() {
-    const {classes} = this.props;
+    const { classes, appReady } = this.props;
 
     return (
-        <Fragment>
-          <Helmet
-          defaultTitle = {`Evergov: Find All Government Services in a Single Place`}
-            titleTemplate={`%s | evergov`}>
-            <meta name="og:type" content="website"/>
-            <meta property="og:site_name" content={`Find All Government Services in a Single Place`}/>
+      <Fragment>
+        <Helmet
+          defaultTitle={`Evergov: Find All Government Services in a Single Place`}
+          titleTemplate={`%s | evergov`}
+        >
+          <meta name="og:type" content="website" />
+          <meta
+            property="og:site_name"
+            content={`Find All Government Services in a Single Place`}
+          />
 
-            <link
-              rel="canonical"
-              href={`https://evergov.com${this.props.location.pathname}`}/>
-            <meta
-              property="og:url"
-              content={`https://evergov.com${this.props.location.pathname}`}/>
-            <html lang="en"/>
-          </Helmet>
+          <link
+            rel="canonical"
+            href={`https://evergov.com${this.props.location.pathname}`}
+          />
+          <meta
+            property="og:url"
+            content={`https://evergov.com${this.props.location.pathname}`}
+          />
+          <html lang="en" />
+        </Helmet>
 
-          <Grid container className={classes.index_hero}>
-            <Grid item xs={12}>
-              <IndexHero location={this.props.location} />
+        <Grid container className={classes.index_hero}>
+          {appReady ? (
+            <Fragment>
+              <Grid item xs={12}>
+                <IndexHero location={this.props.location} />
+              </Grid>
+              <Grid item xs={12}>
+                <AreaSuggestedServices />
+              </Grid>
+            </Fragment>
+          ) : (
+            <Grid
+              item
+              xs={12}
+              className={classes.index_hero_suggestions_loading}
+            >
+              <SuggestBoxLoader />
             </Grid>
-            <Grid item xs={12}>
-              <AreaSuggestedServices />
-            </Grid>
+          )}
           <Grid item xs={12}>
             <OtherLocations />
           </Grid>
-          </Grid>
+        </Grid>
         <div className={classes.index_footer}>
-
           <Footer page={this.props.location.pathname} />
         </div>
-        </Fragment>
+      </Fragment>
     );
   }
 }
@@ -127,7 +151,7 @@ Index.propTypes = {
 
 const mapStateToProps = function (state, ownProps) {
   return {
-    ...state,
+    ...state.indexPage,
     ...ownProps
   };
 };

@@ -55,7 +55,7 @@ module.exports = {
         path: path.join(__dirname, `data/sers`)
       }
     },
-     {
+    {
       resolve: `gatsby-source-filesystem`,
       options: {
         name: `all_locations`,
@@ -69,7 +69,7 @@ module.exports = {
         path: path.join(__dirname, `data/service_glossary`)
       }
     },
-     {
+    {
       resolve: `gatsby-source-filesystem`,
       options: {
         name: `logos`,
@@ -87,14 +87,14 @@ module.exports = {
       resolve: `gatsby-source-filesystem`,
       options: {
         path: path.join(__dirname, `tos`),
-        name: "tos",
-      },
+        name: "tos"
+      }
     },
     `gatsby-transformer-remark`,
     {
       resolve: `gatsby-plugin-sitemap`,
       options: {
-          query: `
+        query: `
           {
             site {
               siteMetadata {
@@ -119,11 +119,11 @@ module.exports = {
         }`,
         serialize: ({ site, allSitePage }) =>
           allSitePage.edges.map(edge => {
-              return {
-                url: site.siteMetadata.siteUrl + edge.node.path,
-                changefreq: `weekly`,
-                priority: 0.9,
-              }
+            return {
+              url: site.siteMetadata.siteUrl + edge.node.path,
+              changefreq: `weekly`,
+              priority: 0.9
+            };
           })
       }
     },
@@ -141,14 +141,14 @@ module.exports = {
         short_name: `Evergov`,
         start_url: `/`,
         background_color: `#f7f7f7`,
-        theme_color : `#0000ca`,
+        theme_color: `#0000ca`,
         display: `minimal-ui`
       }
     },
     {
       resolve: `gatsby-plugin-create-client-paths`,
       options: {
-        prefixes : [`/search/*`, `/app/*`, `/deep_link/*`]
+        prefixes: [`/search/*`, `/app/*`, `/deep_link/*`]
       }
     },
     {
@@ -157,8 +157,8 @@ module.exports = {
         // Setting a color is optional.
         color: `#0000ca`,
         // Disable the loading spinner.
-        showSpinner: false,
-      },
+        showSpinner: false
+      }
     },
     {
       resolve: `gatsby-plugin-favicon`,
@@ -181,15 +181,15 @@ module.exports = {
     {
       resolve: `gatsby-plugin-robots-txt`,
       options: {
-        host: 'https://evergov.com',
-        sitemap: 'https://evergov.com/sitemap.xml',
-        policy: [{ userAgent: '*', disallow: [`/app/*`, `/deep_link/*`] }]
+        host: "https://evergov.com",
+        sitemap: "https://evergov.com/sitemap.xml",
+        policy: [{ userAgent: "*", disallow: [`/app/*`, `/deep_link/*`] }]
       }
     },
     `gatsby-plugin-react-helmet`,
-    `gatsby-plugin-netlify`,
+    `gatsby-plugin-netlify`
     // This plugin generates a service worker and AppShell html file so the site
     // works offline and is otherwise resistant to bad networks. Works with almost
     // any site!
   ]
-}
+};

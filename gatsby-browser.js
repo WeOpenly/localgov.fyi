@@ -36,6 +36,7 @@ export const onInitialClientRender = () =>{
      window.initHeader && window.initHeader();
      window.initTemplate && window.initTemplate();
    };
+   
  }
 }
 

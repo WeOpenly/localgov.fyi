@@ -138,6 +138,7 @@ class GoogAutoComplete extends React.Component {
     render() {
         const { classes, locationSearchText, areaGuessResult, inHeader} = this.props;
 
+
         const searchOptions = {
             types: ['(cities)']
         }
@@ -241,6 +242,7 @@ const mapDispatchToProps = (dispatch) => {
 }
 
 const mapStateToProps = function (state, ownProps) {
+
     return {
         ...state.indexPage,
         ...ownProps

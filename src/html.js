@@ -15,14 +15,7 @@ const JsonLd = ({data}) => <script
   __html: JSON.stringify(data)
 }}/>;
 
-let fontcss = null;
-if (process.env.NODE_ENV === `production`) {
-  fontcss = (<style
-    id="gatsby-inlined-css-fonts"
-    dangerouslySetInnerHTML={{
-    __html: fontStyleCss
-  }}/>)
-}
+
 
 let GmapScript = () => (<Fragment></Fragment>)
 const windowGlobal = typeof window !== 'undefined' && window
@@ -78,36 +71,48 @@ export default class HTML extends React.Component {
     return (
       <html lang="en" {...this.props.htmlAttributes}>
         <head>
-          <meta charSet="utf-8"/>
-
+          <meta charSet="utf-8" />
           <meta
             name="google-site-verification"
-            content="p3v6COYIhh8GXmPp7G12ZTegImSx88kJ8mmc-AAOPoc"/>
-          <meta name="msvalidate.01" content="D1BADF38847C730E9DC76BE0CCC4B42B"/>
-
-          <JsonLd data={searchLinksSchema}/>
-
+            content="p3v6COYIhh8GXmPp7G12ZTegImSx88kJ8mmc-AAOPoc"
+          />
+          <meta
+            name="msvalidate.01"
+            content="D1BADF38847C730E9DC76BE0CCC4B42B"
+          />
+          <JsonLd data={searchLinksSchema} />
           <meta
             name="description"
-            content={`Search and get notfied when you're due for local government services like payments of utility bill, property tax, parking citation & renewing business licence`}/>
-
+            content={`Search and get notfied when you're due for local government services like payments of utility bill, property tax, parking citation & renewing business licence`}
+          />
           <meta
             property="og:site_name"
-            content={`Evergov: all your gov services in a single place`}/>
-
+            content={`Evergov: all your gov services in a single place`}
+          />
           <meta
             property="twitter:card"
             name="twitter:card"
-            content="summary_large_image"/>
-          <meta property="twitter:site" name="twitter:site" content="@myevergov"/>
-          <meta httpEquiv="x-ua-compatible" content="ie=edge"/>
-
+            content="summary_large_image"
+          />
+          <meta
+            property="twitter:site"
+            name="twitter:site"
+            content="@myevergov"
+          />
+          <meta httpEquiv="x-ua-compatible" content="ie=edge" />
           <meta
             name="viewport"
-            content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
-          <script async defer
-            src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBr4RixcEvuxgGr9EwNeiHCqUITczxvvuc&callback=initMapIndex&libraries=places&callback=allCallBacks"/>
-          <link href={'/css/fonts.css'} rel="stylesheet"/> {this.props.headComponents}
+            content="width=device-width, initial-scale=1, shrink-to-fit=no"
+          />
+          <script
+            async
+            defer
+            src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBr4RixcEvuxgGr9EwNeiHCqUITczxvvuc&callback=initMapIndex&libraries=places&callback=allCallBacks"
+          />
+
+          <link href={"/css/fonts.css"} rel="stylesheet" />
+          <link href={"/css/stripe.css"} rel="stylesheet" />
+          {this.props.headComponents}
         </head>
         <body {...this.props.bodyAttributes}>
           {this.props.preBodyComponents}
@@ -115,13 +120,13 @@ export default class HTML extends React.Component {
             key={`body`}
             id="___gatsby"
             dangerouslySetInnerHTML={{
-            __html: this.props.body
-          }}/> {this.props.postBodyComponents}
-          <link href={'/css/stripe.css'} rel="stylesheet"/>
+              __html: this.props.body
+            }}
+          />{" "}
+          {this.props.postBodyComponents}
         </body>
-
       </html>
-    )
+    );
   }
 }
 

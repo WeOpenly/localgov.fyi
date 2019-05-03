@@ -349,7 +349,7 @@ class OrgAggregate extends Component {
                   <Avatar
                     alt={areaName}
                     className={classes.org_agg_logo}
-                    src={`/org_images/${logoUrl}`}
+                    src={`${logoUrl}`}
                   />
                 ) : null}
                 <div

@@ -332,11 +332,12 @@ class SerSuggest extends Component {
         };
 
         const inputProps = {
-            onChange: this.handleChange,
-            type: 'search',
-            placeholder: this.state.placeholder,
-            value: serviceSearchText ? serviceSearchText : ''
-        }
+          onChange: this.handleChange,
+          type: "search",
+          "aria-label": "search services",
+          placeholder: this.state.placeholder,
+          value: serviceSearchText ? serviceSearchText : ""
+        };
         
         const theme = {
             suggestionsContainerOpen: classes.suggestionsContainerOpen,

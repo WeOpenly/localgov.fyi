@@ -129,7 +129,6 @@ class HeaderAccountMenu extends Component {
             aria-owns={open
             ? 'menu-appbar'
             : null}
-            aria-haspopup="true"
             onClick={this.handleMenu}
             color="inherit">
             <MoreIcon />
@@ -158,60 +157,29 @@ class HeaderAccountMenu extends Component {
         </div>)
 
 
-    return (this.state.loggedin
-      ? (
-        <div className={classes.h_a_m_login}>
-          <IconButton
-            aria-owns={open
-            ? 'menu-appbar'
-            : null}
-            aria-haspopup="true"
-            onClick={this.handleMenu}
-            color="inherit">
-            <Avatar
-              alt={user.email}
-              src={user.picture}
-              className={classes.h_a_m_avatar}/>
-          </IconButton>
-          <Menu
-            className={classes.h_a_m_headerMenu}
-            id="menu-appbar"
-            anchorEl={anchorEl}
-            anchorOrigin={{
-            vertical: 'top',
-            horizontal: 'left'
-          }}
-            transformOrigin={{
-            vertical: 'top',
-            horizontal: 'right'
-          }}
-            open={open}
-            onClose={this.handleClose}>
-            <MenuItem onClick={() => navigate('/app/profile/')}>  <Typography variant="body1" className={classes.h_a_m_title}>
-              Profile
-              </Typography></MenuItem>
-            <MenuItem onClick={() => this.logout()}><Typography variant="body1" className={classes.h_a_m_title}>
-              Log out
-              </Typography></MenuItem>
-          </Menu>
-        </div>
-      )
-      : ( this.state.isMobile ? mobNotLoggeInMenu : (
-        <div className={classes.h_a_m_loging_signup_container}>
-          <Button
-                variant="text"
-                className={classes.h_a_m_login_button}
-                            href="/services"
-                  color="inherit">Services</Button>
-      
-            <Button
-            variant="text"
-            href="/locations"
-            className={classes.h_a_m_signup_button}
-              color="inherit">Locations</Button>
-      
-        </div>) )
-      );
+    return (
+      <div className={classes.h_a_m_loging_signup_container}>
+        <Button
+          variant="text"
+          aria-label="services-list"
+          className={classes.h_a_m_login_button}
+          href="/services"
+          color="inherit"
+        >
+          Services
+        </Button>
+
+        <Button
+          variant="text"
+          href="/locations"
+          aria-label="locations-list"
+          className={classes.h_a_m_signup_button}
+          color="inherit"
+        >
+          Locations
+        </Button>
+      </div>
+    );
   }
 }
 

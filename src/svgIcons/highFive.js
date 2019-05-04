@@ -8,7 +8,7 @@ const HighFive = props => (
         width={512}
         data-lt-installed="true"
         {...props}>
-        <linearGradient id="grad1">
+        <linearGradient id="high_five_grad1">
             <stop offset="0%" stopColor="#0e07ce" />
             <stop offset="100%" stopColor="#0e07ce" />
         </linearGradient>

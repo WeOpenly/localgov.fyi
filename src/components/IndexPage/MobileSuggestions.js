@@ -450,11 +450,12 @@ class MobileSuggestions extends Component {
         };
 
         const inputProps = {
-            onChange: this.handleChange,
-            type: 'search',
-            placeholder: this.state.placeholder,
-            value: serviceSearchText ? serviceSearchText : '',
-        }
+          onChange: this.handleChange,
+          type: "search",
+          "aria-label": "search services",
+          placeholder: this.state.placeholder,
+          value: serviceSearchText ? serviceSearchText : ""
+        };
 
         const theme = {
             suggestionsContainerOpen: classes.suggestionsContainerOpen,
@@ -479,156 +480,305 @@ class MobileSuggestions extends Component {
         }
 
         return (
-            <div className={touchedInputs ? classes.index_page_ser_suggestions_container_mob__focussed : classes.index_page_ser_suggestions_container_mob}>
-                {touchedInputs ? (<Paper className={inHeader ? classes.index_page_touched_paper_header : classes.index_page_touched_paper}>
-                    <div className={classes.index_page_ser_control_items}>
-                <Button color="primary" className={classes.button} onClick={this.blurInputs}>
-                                Cancel
-                            </Button>
-                        <Button color="primary" onClick={() => this.props.onSearch()} className={classes.button}>
-                            Search
-                            </Button>
-                    </div>
-                 
-                    <PlacesAutocomplete
-                        value={showInput}
-                        onChange={this.handleAreaChange}
-                        ref="placesAutocomplete"
-                        onSelect={this.handleSelect}
-                        debounce={50}
-                        searchOptions={searchOptions}
-                        highlightFirstSuggestion
-                        shouldFetchSuggestions={(!autoFilled && (showInput && showInput.length > 1))}
-                        googleCallbackName={inHeader ? `initHeader` : `initIndex`}
-                    >
-                        {({ getInputProps, suggestions, getSuggestionItemProps, loading }) => (
-                            <div style={{ width: '100%' }}>
-                                <Paper className={classes.index_area_search_search_paper_root} elevation={2}>
-
-                                    {loading ? (<CircularProgress size={24} />) : (<NearMe className={classes.index_page_search_iconButton} aria-label="near-me" />)}
-
-                                    <InputBase {...getInputProps({
-                                        placeholder: 'Search locations',
-                                        autoFocus: false,
-                                        onFocus: this.handleFocus,
-                                        type: 'search',
-                                        inputRef: node => {
-                                            this.searchInput = node;
-                                        },
-                            
-                                        className: classes.index_area_search_search_input,
-                                    })} />
-                                </Paper>
-
-                                <Paper className={classes.index_area_search_search_suggestions} square>
-                                    {loading ? (<div style={{ padding: '8px' }}>
-                                        <SuggestionContentLoader />
-                                    </div>) : null}
-                                    {!loading ? (suggestions.map(suggestion => {
-                                        const className = suggestion.active
-                                            ? 'suggestion-item--active'
-                                            : 'suggestion-item';
-                                        // inline style for demonstration purpose
-                                        const style = suggestion.active
-                                            ? { backgroundColor: '#fafafa', cursor: 'pointer' }
-                                            : { backgroundColor: '#ffffff', cursor: 'pointer' };
-                                        return (
-                                            <div style={{ margin: '16px' }}
-                                                {...getSuggestionItemProps(suggestion, {
-                                                    className,
-                                                    style,
-                                                })}
-                                            >
-                                                <Typography variant='body1' style={{ color: "rgba(30, 30, 50,0.99)", padding: '8px' }} >
-                                                    {suggestion.description}</Typography>
-                                            </div>
-                                        );
-                                    })) : null}
-                                </Paper>
-                            </div>
-                        )}
-                    </PlacesAutocomplete>
-                    <Divider />
-                    <form onSubmit={this.onSubmit} className={classes.index_page_ser_suggestions_container_form}>
-
-                        <Autosuggest
-                            {...autosuggestProps}
-                            inputProps={inputProps}
-                            theme={theme}
-                        />
-                    </form>
-          
-                </Paper>) : (<Fragment>
-                    <PlacesAutocomplete
-                        value={showInput}
-                        onChange={this.handleAreaChange}
-                        ref="placesAutocomplete"
-                        onSelect={this.handleSelect}
-                        debounce={50}
-                        searchOptions={searchOptions}
-                        highlightFirstSuggestion
-                        shouldFetchSuggestions={(!autoFilled && (showInput && showInput.length > 1))}
-                        googleCallbackName="initIndex"
-                    >
-                        {({ getInputProps, suggestions, getSuggestionItemProps, loading }) => (
-                            <div style={{ width: '100%' }}>
-                                <Paper className={classes.index_area_search_search_paper_root} elevation={2}>
-
-                                    {loading ? (<CircularProgress size={24} />) : (<NearMe className={classes.index_page_search_iconButton} aria-label="near-me" />)}
-
-                                    <InputBase {...getInputProps({
-                                        placeholder: 'Search locations',
-                                        autoFocus: false,
-                                        onFocus: this.handleFocus,
-                                        type: 'search',
-                                        inputRef: node => {
-                                            this.searchInput = node;
-                                        },
-                                        className: classes.index_area_search_search_input,
-                                    })} />
-                                </Paper>
-
-                                <Paper className={classes.index_area_search_search_suggestions} square>
-                                    {loading ? (<div style={{ padding: '8px' }}>
-                                        <SuggestionContentLoader />
-                                    </div>) : null}
-                                    {!loading ? (suggestions.map(suggestion => {
-                                        const className = suggestion.active
-                                            ? 'suggestion-item--active'
-                                            : 'suggestion-item';
-                                        // inline style for demonstration purpose
-                                        const style = suggestion.active
-                                            ? { backgroundColor: '#fafafa', cursor: 'pointer' }
-                                            : { backgroundColor: '#ffffff', cursor: 'pointer' };
-                                        return (
-                                            <div style={{ margin: '16px' }}
-                                                {...getSuggestionItemProps(suggestion, {
-                                                    className,
-                                                    style,
-                                                })}
-                                            >
-                                                <Typography variant='body1' style={{ color: "rgba(30, 30, 50,0.99)", padding: '8px' }} >
-                                                    {suggestion.description}</Typography>
-                                            </div>
-                                        );
-                                    })) : null}
-                                </Paper>
-                            </div>
-                        )}
-                    </PlacesAutocomplete>
-                        <Divider />
-                    <form onSubmit={this.onSubmit} className={classes.index_page_ser_suggestions_container_form}>
-
-                    <Autosuggest
-                        {...autosuggestProps}
-                        inputProps={inputProps}
-                        theme={theme}
-                    />
-                </form>
-                   
-                    </Fragment>)
+          <div
+            className={
+              touchedInputs
+                ? classes.index_page_ser_suggestions_container_mob__focussed
+                : classes.index_page_ser_suggestions_container_mob
+            }
+          >
+            {touchedInputs ? (
+              <Paper
+                className={
+                  inHeader
+                    ? classes.index_page_touched_paper_header
+                    : classes.index_page_touched_paper
                 }
-            </div>
+              >
+                <div className={classes.index_page_ser_control_items}>
+                  <Button
+                    color="primary"
+                    className={classes.button}
+                    onClick={this.blurInputs}
+                  >
+                    Cancel
+                  </Button>
+                  <Button
+                    color="primary"
+                    onClick={() => this.props.onSearch()}
+                    className={classes.button}
+                  >
+                    Search
+                  </Button>
+                </div>
+
+                <PlacesAutocomplete
+                  value={showInput}
+                  onChange={this.handleAreaChange}
+                  ref="placesAutocomplete"
+                  onSelect={this.handleSelect}
+                  debounce={50}
+                  searchOptions={searchOptions}
+                  highlightFirstSuggestion
+                  shouldFetchSuggestions={
+                    !autoFilled && (showInput && showInput.length > 1)
+                  }
+                  googleCallbackName={
+                    inHeader ? `initHeader` : `initIndex`
+                  }
+                >
+                  {({
+                    getInputProps,
+                    suggestions,
+                    getSuggestionItemProps,
+                    loading
+                  }) => (
+                    <div style={{ width: "100%" }}>
+                      <Paper
+                        className={
+                          classes.index_area_search_search_paper_root
+                        }
+                        elevation={2}
+                        aria-label="area-list"
+                      >
+                        {loading ? (
+                          <CircularProgress size={24} />
+                        ) : (
+                          <NearMe
+                            className={
+                              classes.index_page_search_iconButton
+                            }
+                            aria-label="near-me"
+                          />
+                        )}
+
+                        <InputBase
+                          {...getInputProps({
+                            placeholder: "Search locations",
+                            autoFocus: false,
+                            onFocus: this.handleFocus,
+                            type: "search",
+                            inputRef: node => {
+                              this.searchInput = node;
+                            },
+                            role: "combobox",
+                            "aria-label": "search locations",
+                            "aria-autocomplete": "list",
+                            "aria-haspopup": "true",
+                            "aria-expanded": "true",
+                            "aria-owns": "mob_suggestions_1",
+                            className:
+                              classes.index_area_search_search_input
+                          })}
+                        />
+                      </Paper>
+
+                      <Paper
+                        className={
+                          classes.index_area_search_search_suggestions
+                        }
+                        role="listbox"
+                        id="mob_suggestions_1"
+                        square
+                      >
+                        {loading ? (
+                          <div style={{ padding: "8px" }}>
+                            <SuggestionContentLoader />
+                          </div>
+                        ) : null}
+                        {!loading
+                          ? suggestions.map(suggestion => {
+                              const className = suggestion.active
+                                ? "suggestion-item--active"
+                                : "suggestion-item";
+                              // inline style for demonstration purpose
+                              const style = suggestion.active
+                                ? {
+                                    backgroundColor: "#fafafa",
+                                    cursor: "pointer"
+                                  }
+                                : {
+                                    backgroundColor: "#ffffff",
+                                    cursor: "pointer"
+                                  };
+                              return (
+                                <div
+                                  style={{ margin: "16px" }}
+                                  {...getSuggestionItemProps(
+                                    suggestion,
+                                    {
+                                      className,
+                                      style
+                                    }
+                                  )}
+                                >
+                                  <Typography
+                                    variant="body1"
+                                    style={{
+                                      color: "rgba(30, 30, 50,0.99)",
+                                      padding: "8px"
+                                    }}
+                                  >
+                                    {suggestion.description}
+                                  </Typography>
+                                </div>
+                              );
+                            })
+                          : null}
+                      </Paper>
+                    </div>
+                  )}
+                </PlacesAutocomplete>
+                <Divider />
+                <form
+                  onSubmit={this.onSubmit}
+                  className={
+                    classes.index_page_ser_suggestions_container_form
+                  }
+                >
+                  <Autosuggest
+                    {...autosuggestProps}
+                    inputProps={inputProps}
+                    theme={theme}
+                  />
+                </form>
+              </Paper>
+            ) : (
+              <Fragment>
+                <PlacesAutocomplete
+                  value={showInput}
+                  onChange={this.handleAreaChange}
+                  ref="placesAutocomplete"
+                  onSelect={this.handleSelect}
+                  debounce={50}
+                  searchOptions={searchOptions}
+                  highlightFirstSuggestion
+                  shouldFetchSuggestions={
+                    !autoFilled && (showInput && showInput.length > 1)
+                  }
+                  googleCallbackName="initIndex"
+                >
+                  {({
+                    getInputProps,
+                    suggestions,
+                    getSuggestionItemProps,
+                    loading
+                  }) => (
+                    <div style={{ width: "100%" }}>
+                      <Paper
+                        className={
+                          classes.index_area_search_search_paper_root
+                        }
+                        elevation={2}
+                        aria-label="area-list"
+                      >
+                        {loading ? (
+                          <CircularProgress size={24} />
+                        ) : (
+                          <NearMe
+                            className={
+                              classes.index_page_search_iconButton
+                            }
+                            aria-label="near-me"
+                          />
+                        )}
+
+                        <InputBase
+                          {...getInputProps({
+                            placeholder: "Search locations",
+                            autoFocus: false,
+                            onFocus: this.handleFocus,
+                            type: "search",
+                            inputRef: node => {
+                              this.searchInput = node;
+                            },
+                            role: "combobox",
+                            "aria-label": "search locations",
+                            "aria-autocomplete": "list",
+                            "aria-haspopup": "true",
+                            "aria-expanded": "true",
+                            "aria-owns": "mob_suggestions_2",
+                            className:
+                              classes.index_area_search_search_input
+                          })}
+                        />
+                      </Paper>
+
+                      <Paper
+                        className={
+                          classes.index_area_search_search_suggestions
+                        }
+                        id="mob_suggestions_2"
+                        role="listbox"
+                        square
+                      >
+                        {loading ? (
+                          <div style={{ padding: "8px" }}>
+                            <SuggestionContentLoader />
+                          </div>
+                        ) : null}
+                        {!loading
+                          ? suggestions.map(suggestion => {
+                              const className = suggestion.active
+                                ? "suggestion-item--active"
+                                : "suggestion-item";
+                              // inline style for demonstration purpose
+                              const style = suggestion.active
+                                ? {
+                                    backgroundColor: "#fafafa",
+                                    cursor: "pointer"
+                                  }
+                                : {
+                                    backgroundColor: "#ffffff",
+                                    cursor: "pointer"
+                                  };
+                              return (
+                                <div
+                                  style={{
+                                    margin: "16px"
+                                  }}
+                                  role="option"
+                                  {...getSuggestionItemProps(
+                                    suggestion,
+                                    {
+                                      className,
+                                      style
+                                    }
+                                  )}
+                                >
+                                  <Typography
+                                    variant="body1"
+                                    style={{
+                                      color: "rgba(30, 30, 50,0.99)",
+                                      padding: "8px"
+                                    }}
+                                  >
+                                    {suggestion.description}
+                                  </Typography>
+                                </div>
+                              );
+                            })
+                          : null}
+                      </Paper>
+                    </div>
+                  )}
+                </PlacesAutocomplete>
+                <Divider />
+                <form
+                  onSubmit={this.onSubmit}
+                  className={
+                    classes.index_page_ser_suggestions_container_form
+                  }
+                >
+                  <Autosuggest
+                    {...autosuggestProps}
+                    inputProps={inputProps}
+                    theme={theme}
+                  />
+                </form>
+              </Fragment>
+            )}
+          </div>
         );
     }
 }

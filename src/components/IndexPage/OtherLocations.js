@@ -27,50 +27,53 @@ const SuggestedLoader = () => (
 )
 
 const styles = theme => ({
-  index_otherLinkItem_mob:{
-    display: 'flex',
-    flex: '1 1 100%', border: 'none',
+  index_otherLinkItem_mob: {
+    display: "flex",
+    flex: "1 1 100%",
+    border: "none",
     margin: theme.spacing.unit,
-    color: fade('#5627FF', 0.75), 
-     letterSpacing: '2px',
-    justifyContent: 'center'
+    color: "#4F1FFF",
+    letterSpacing: "2px",
+    justifyContent: "center"
   },
-  ser_org_list:{
-    display: 'flex',
-    flexWrap: 'wrap',
-    justifyContent: 'center'
+  ser_org_list: {
+    display: "flex",
+    flexWrap: "wrap",
+    justifyContent: "center"
   },
-  index_otherLinkItem:{
-    display: 'flex',
-    flex: '1 1 30%', border: 'none',
+  index_otherLinkItem: {
+    display: "flex",
+    flex: "1 1 30%",
+    border: "none",
     margin: theme.spacing.unit,
-    color: fade('#000', 0.75), letterSpacing: '4px',
-    justifyContent: 'center'
+    color: fade("#000", 0.75),
+    letterSpacing: "4px",
+    justifyContent: "center"
   },
-  ser_org_list_header_container_mob:{
-  display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center',
-        paddingBottom: theme.spacing.unit * 2,
+  ser_org_list_header_container_mob: {
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+    paddingBottom: theme.spacing.unit * 2
   },
-  ser_org_list_header_container:{
-   display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center',
-        paddingBottom: theme.spacing.unit * 6,
+  ser_org_list_header_container: {
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+    paddingBottom: theme.spacing.unit * 6
   },
-  ser_org_list_header_mob:{
-    fontSize: '16px'
+  ser_org_list_header_mob: {
+    fontSize: "16px"
   },
   ser_org_list_container: {
-    alignItems: 'center',
-    display: 'flex',
-    minHeight: '720px',
+    alignItems: "center",
+    display: "flex",
+    minHeight: "720px",
     marginTop: theme.spacing.unit * 2,
-    justifyContent: 'center',
-    flexDirection: 'column',
-    flexWrap: 'wrap',
-  },
+    justifyContent: "center",
+    flexDirection: "column",
+    flexWrap: "wrap"
+  }
 });
 
 class OtherLocationList extends React.Component {
@@ -218,7 +221,7 @@ orgLink : 'https://evergov.com/organization/usa/pennsylvania-state/philadelphia-
     const {classes } = this.props;
 
        const otherLinks = this.state.items.slice(0, 24).map((item, idx) => {
-         return (<Button key={`other-link-${idx}`} variant="outlined" href={`${item.orgLink}`} className={this.state.isMobile ? classes.index_otherLinkItem_mob : classes.index_otherLinkItem}>
+         return (<Button key={`other-link-${idx}`} variant="outlined"  href={`${item.orgLink}`} className={this.state.isMobile ? classes.index_otherLinkItem_mob : classes.index_otherLinkItem}>
          {item.name}
       </Button>);
       });
@@ -229,29 +232,50 @@ orgLink : 'https://evergov.com/organization/usa/pennsylvania-state/philadelphia-
       //     </Link>
       // </Typography>
       // ))
-      return (<Grid container>
-         <Grid item sm={1} />
-      
-        <Grid item sm={10} className={classes.ser_org_list_container}>
-          <div className={this.state.isMobile ? classes.ser_org_list_header_container_mob :  classes.ser_org_list_header_container}>
-                  <Public style={{ fontSize: '14', color: '#5627FF', marginRight: '4px' }} /> 
-          <Typography
-            variant="title"
-              className={this.state.isMobile ? classes.ser_org_list_header_mob : classes.ser_org_list_header}>
-            Discover Evergov
-                    </Typography>
-                    </div>
-        <div className={classes.ser_org_list} >
-          {otherLinks}
-          </div>
-          <div className={classes.other_locs_more}>
-            <Button variant="outlined" href={'/locations'} className={classes.index_otherLinkItem}>
-              Discover more
-            </Button>
+      return (
+        <Grid container>
+          <Grid item sm={1} />
+
+          <Grid item sm={10} className={classes.ser_org_list_container}>
+            <div
+              className={
+                this.state.isMobile
+                  ? classes.ser_org_list_header_container_mob
+                  : classes.ser_org_list_header_container
+              }
+            >
+              <Public
+                style={{
+                  fontSize: "14",
+                  color: "#4F1FFF",
+                  marginRight: "4px"
+                }}
+              />
+              <Typography
+                variant="title"
+                className={
+                  this.state.isMobile
+                    ? classes.ser_org_list_header_mob
+                    : classes.ser_org_list_header
+                }
+              >
+                Discover Evergov
+              </Typography>
             </div>
+            <div className={classes.ser_org_list}>{otherLinks}</div>
+            <div className={classes.other_locs_more}>
+              <Button
+                variant="outlined"
+                href={"/locations"}
+                className={classes.index_otherLinkItem}
+              >
+                Discover more
+              </Button>
+            </div>
+          </Grid>
+          <Grid item sm={1} />
         </Grid>
-        <Grid item sm={1} />
-      </Grid>)
+      );
     } 
   }
 

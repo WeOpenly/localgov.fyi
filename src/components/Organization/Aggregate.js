@@ -326,13 +326,14 @@ class OrgAggregate extends Component {
 
         let logoUrl = null;
 
-        if (logo_url && logo_url.indexOf('https://s3-us-') !== -1) {
+        if (logo_url) {
             const filename = logo_url.replace(
               /^.*[\\\/]/,
               ""
             );
-    
-            logoUrl = `/org_images/${filename}`;
+
+
+            logoUrl = `/org_images/${filename}_512_thumb.jpg`;
         }
 
         return (

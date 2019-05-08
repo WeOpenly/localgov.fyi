@@ -65,7 +65,7 @@ class SerListItemWithOrg extends Component {
 
     render() {
         const { classes, organization, service_name, area, url_slug } = this.props;
-if (!service_name || !organization) {
+        if (!service_name || !organization) {
             return null;
         }
 
@@ -75,10 +75,10 @@ if (!service_name || !organization) {
             <LocationCity />
         </Avatar>)
 
-        if (logo_url && logo_url.indexOf('https://s3-us-') !== -1){
+        if (logo_url){
             const filename = logo_url.replace(/^.*[\\\/]/, "");
 
-            const  logoUrl = `/org_images/${filename}`;
+            const logoUrl = `/org_images/${filename}_32_thumb.jpg`;
             avatar = (
               <Avatar
                 className={classes.ser_list_org_agg_logo}

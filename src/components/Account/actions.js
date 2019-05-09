@@ -130,8 +130,8 @@ export function handleRegisterRequest(values) {
                 }
                 if (res) {
                     resolve(res);
-                    if (windowGlobal && windowGlobal.mixpanel) {
-                        windowGlobal.mixpanel.alias(email);
+                    if (windowGlobal && windowGlobal.analytics) {
+                        windowGlobal.analytics.alias(email);
                     }
                 }
             });

@@ -22,8 +22,8 @@ export function parseJSON(response) {
 
 export function trackApiCall(resp){
 
-    if (windowGlobal && windowGlobal.mixpanel) {
-        windowGlobal.mixpanel.track(`yusuf_api_call`, { resp: resp});
+    if (windowGlobal && windowGlobal.analytics) {
+        windowGlobal.analytics.track(`yusuf_api_call`, { resp: resp});
     }
    
     return resp
@@ -70,8 +70,8 @@ export function YusufApi(lang = undefined, endPoint, headers = {}) {
     }
 
 
-    if (windowGlobal && windowGlobal.mixpanel) {
-        windowGlobal.mixpanel.time_event(`yusuf_api_call`);
+    if (windowGlobal && windowGlobal.analytics) {
+        windowGlobal.analytics.time_event(`yusuf_api_call`);
     }
 
     return fetchWithTimeOut(`${YUSUF_BACKEND}/${endPoint}`, headers)

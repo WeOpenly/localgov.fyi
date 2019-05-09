@@ -40,7 +40,6 @@
     "jss": "^9.8.7",
     "lodash": "^4.17.11",
     "material-ui-search-bar": "^0.4.2",
-    "mixpanel-browser": "^2.25.0",
     "mkdirp": "^0.5.1",
     "mousetrap": "^1.6.0",
     "netlify-cli": "^2.8.1",

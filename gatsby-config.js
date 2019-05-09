@@ -142,7 +142,8 @@ module.exports = {
         start_url: `/`,
         background_color: `#f7f7f7`,
         theme_color: `#0000ca`,
-        display: `minimal-ui`
+        display: `minimal-ui`,
+        icon: "src/favicon.png"
       }
     },
     {
@@ -186,7 +187,7 @@ module.exports = {
         policy: [{ userAgent: "*", disallow: [`/app/*`, `/deep_link/*`] }]
       }
     },
-    `gatsby-plugin-offline`,
+    `gatsby-plugin-remove-serviceworker`,
     `gatsby-plugin-react-helmet`,
     `gatsby-plugin-netlify`
     // This plugin generates a service worker and AppShell html file so the site

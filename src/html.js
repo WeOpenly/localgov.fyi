@@ -114,7 +114,7 @@ export default class HTML extends React.Component {
           <script
             async
             defer
-            src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBr4RixcEvuxgGr9EwNeiHCqUITczxvvuc&callback=initMapIndex&libraries=places&callback=allCallBacks"
+            src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBr4RixcEvuxgGr9EwNeiHCqUITczxvvuc&libraries=places&callback=allCallBacks"
           />
           {fontcss}
           {/* <link href={"/css/fonts.css"} rel="stylesheet" /> */}

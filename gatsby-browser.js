@@ -30,7 +30,7 @@ export const shouldUpdateScroll = ({routerProps: {
 }
 
 export const onInitialClientRender = () =>{
- if (typeof window !== `undefined`) {
+ if (typeof window !== `undefined` && !window.allCallBacks) {
    window.allCallBacks = function() {
      window.initIndex && window.initIndex();
      window.initHeader && window.initHeader();

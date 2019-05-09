@@ -36,7 +36,6 @@ export const onInitialClientRender = () =>{
      window.initHeader && window.initHeader();
      window.initTemplate && window.initTemplate();
    };
-   
  }
 }
 
@@ -44,6 +43,13 @@ export const onRouteUpdate = (state, page, pages) => {
 
   if (typeof window !== `undefined`) {
     window.scrollTo(0, 0)
+     if (typeof window !== `undefined` && !window.allCallBacks) {
+       window.allCallBacks = function() {
+         window.initIndex && window.initIndex();
+         window.initHeader && window.initHeader();
+         window.initTemplate && window.initTemplate();
+       };
+     }
   }
     
   if (!isLoggedIn){

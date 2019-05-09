@@ -33,7 +33,14 @@ if (windowGlobal){
       
 
 
-
+let fontcss = null;
+if (process.env.NODE_ENV === `production`) {
+  fontcss = (<style
+    id="gatsby-inlined-css-fonts"
+    dangerouslySetInnerHTML={{
+      __html: fontStyleCss
+    }} />)
+}
 
 const searchLinksSchema = {
   "@context": "http://schema.org",
@@ -109,8 +116,8 @@ export default class HTML extends React.Component {
             defer
             src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBr4RixcEvuxgGr9EwNeiHCqUITczxvvuc&callback=initMapIndex&libraries=places&callback=allCallBacks"
           />
-          <link href={"/css/fonts.css"} rel="stylesheet" />
-          <link href={"/css/stripe.css"} rel="stylesheet" />
+          {fontcss}
+          {/* <link href={"/css/fonts.css"} rel="stylesheet" /> */}
           {this.props.headComponents}
         </head>
         <body {...this.props.bodyAttributes}>

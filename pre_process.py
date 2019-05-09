@@ -255,7 +255,7 @@ def get_all_locations():
 
 def write_standard_redirects():
     print(DSP_HOST, YUSUF_HOST)
-    redirs = """/org_images/* http://storage.googleapis.com/evergov-dev3-dsp-uploads/organization_logo_uploads/:splat 200!
+    redirs = """/org_images/* http://storage.googleapis.com/evergov-prod-dsp-uploads/organization_logo_uploads/:splat 200!
     
     /api/yusuf/* {y}/:splat 200!
 

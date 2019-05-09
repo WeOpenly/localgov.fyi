@@ -77,14 +77,14 @@ class OrgLite extends Component {
             <LocationCity fontSize="medium" style={{ color: '#AB93FF' }}/>
         </Avatar>)
 
-        if (logo_url && logo_url.indexOf('https://s3-us-') !== -1) {
+        if (logo_url) {
 
             const filename = logo_url.replace(
                 /^.*[\\\/]/,
                 ""
             );
-            const logoUrl = `/org_images/${filename}`;
-
+            const logoUrl = `/org_images/${filename}_128_thumb.jpg`;
+    
             avatar = (
               <Avatar
                 className={classes.ser_list_org_agg_logo}

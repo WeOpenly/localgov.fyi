@@ -504,6 +504,7 @@ class ServiceDetailTemplate extends React.Component {
                     <title>{`${name} | ${org_name} | Evergov`}
                     </title>
                     <script src="https://js.stripe.com/v3/"></script>
+                    <link href={"/css/stripe.css"} rel="stylesheet" />
                     <script type="application/ld+json">{`${JSON.stringify(jsonLd)}`}</script>
                     <link rel="canonical" href={`https://evergov.com/service/${url_slug}/`} />
                     <meta

@@ -95,15 +95,9 @@ class AreaSuggestedServices extends React.Component {
     }
 
     componentDidMount() {
-        this.setState({ isMobile: isMobileOnly });
-    }
-
-    componentWillReceiveProps(nextProps){
         const { dispatch } = this.props;
-
-        if(!this.props.areaGuessResult.lat && nextProps.areaGuessResult.lat){
-            dispatch(fetchAreaServices(nextProps.areaGuessResult.lat, nextProps.areaGuessResult.lng));
-        }
+        this.setState({ isMobile: isMobileOnly });
+        dispatch(fetchAreaServices(this.props.areaGuessResult.lat, this.props.areaGuessResult.lng));
     }
 
     render() {

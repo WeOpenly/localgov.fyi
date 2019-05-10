@@ -341,8 +341,11 @@ class MobileSuggestions extends Component {
 
         return (
             <Paper className={classes.ser_gloss_search_paper_root} elevation={2}>
+              <label for="mob_ser_suggestions" style={{display: 'none'}}>
+                Search Services
+              </label>
                 <SearchIcon className={classes.index_page_search_iconButton} aria-label="search" />
-                <InputBase {...inputProps} onFocus={(ev, val) => {
+                <InputBase id="mob_ser_suggestions" inputProps={inputProps} onFocus={(ev, val) => {
                     this.onFocus();
                     inputProps.onFocus(ev, val);
                 }} className={classes.ser_gloss_search_input} />
@@ -452,7 +455,6 @@ class MobileSuggestions extends Component {
         const inputProps = {
           onChange: this.handleChange,
           type: "search",
-          "aria-label": "search services",
           placeholder: this.state.placeholder,
           value: serviceSearchText ? serviceSearchText : ""
         };
@@ -553,6 +555,14 @@ class MobileSuggestions extends Component {
                         )}
 
                         <InputBase
+                            inputProps={{
+                              "aria-label": "search locations",
+                              "aria-autocomplete": "list",
+                              "aria-haspopup": "true",
+                              role: "combobox",
+                              "aria-expanded": "true",
+                              "aria-controls": "mob_suggestions_1",
+                            }}
                           {...getInputProps({
                             placeholder: "Search locations",
                             autoFocus: false,
@@ -561,12 +571,6 @@ class MobileSuggestions extends Component {
                             inputRef: node => {
                               this.searchInput = node;
                             },
-                            role: "combobox",
-                            "aria-label": "search locations",
-                            "aria-autocomplete": "list",
-                            "aria-haspopup": "true",
-                            "aria-expanded": "true",
-                            "aria-owns": "mob_suggestions_1",
                             className:
                               classes.index_area_search_search_input
                           })}
@@ -637,6 +641,7 @@ class MobileSuggestions extends Component {
                   }
                 >
                   <Autosuggest
+                    id="serviceSuggestions_mob_1"
                     {...autosuggestProps}
                     inputProps={inputProps}
                     theme={theme}
@@ -684,6 +689,14 @@ class MobileSuggestions extends Component {
                         )}
 
                         <InputBase
+                              inputProps={{
+                                "aria-label": "search locations",
+                                "aria-autocomplete": "list",
+                                "aria-haspopup": "true",
+                                role: "combobox",
+                                "aria-expanded": "true",
+                                "aria-controls": "mob_suggestions_2",
+                              }}
                           {...getInputProps({
                             placeholder: "Search locations",
                             autoFocus: false,
@@ -692,12 +705,6 @@ class MobileSuggestions extends Component {
                             inputRef: node => {
                               this.searchInput = node;
                             },
-                            role: "combobox",
-                            "aria-label": "search locations",
-                            "aria-autocomplete": "list",
-                            "aria-haspopup": "true",
-                            "aria-expanded": "true",
-                            "aria-owns": "mob_suggestions_2",
                             className:
                               classes.index_area_search_search_input
                           })}
@@ -771,6 +778,7 @@ class MobileSuggestions extends Component {
                   }
                 >
                   <Autosuggest
+                    id="serviceSuggestions_mob_1"
                     {...autosuggestProps}
                     inputProps={inputProps}
                     theme={theme}

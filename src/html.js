@@ -116,6 +116,7 @@ export default class HTML extends React.Component {
             defer
             src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBr4RixcEvuxgGr9EwNeiHCqUITczxvvuc&libraries=places&callback=allCallBacks"
           />
+        
           {fontcss}
           {/* <link href={"/css/fonts.css"} rel="stylesheet" /> */}
           {this.props.headComponents}
@@ -131,6 +132,7 @@ export default class HTML extends React.Component {
           />{" "}
           {this.props.postBodyComponents}
         </body>
+   
       </html>
     );
   }

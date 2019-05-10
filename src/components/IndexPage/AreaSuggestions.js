@@ -208,13 +208,16 @@ class GoogAutoComplete extends React.Component {
                     )}
 
                     <InputBase
+                      inputProps={{
+                          "aria-label": "search locations",
+                          "aria-autocomplete": "list",
+                          "aria-haspopup": "true",
+                          "aria-expanded": "true",
+                          role: "combobox",
+                          "aria-controls": "area_suggestions_1",
+                      }}
+                      
                       {...getInputProps({
-                        role: "combobox",
-                        "aria-label": "search locations",
-                        "aria-autocomplete": "list",
-                        "aria-haspopup": "true",
-                        "aria-expanded": "true",
-                        "aria-owns": "area_suggestions_1",
                         placeholder: "Search locations",
                         autoFocus: false,
                         onFocus: this.handleFocus,

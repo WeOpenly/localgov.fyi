@@ -83,6 +83,7 @@ class SerListItemWithOrg extends Component {
               <Avatar
                 className={classes.ser_list_org_agg_logo}
                 src={logoUrl}
+                alt={org_name}
               />
             );
         }
@@ -122,7 +123,8 @@ class SerListItemWithOrg extends Component {
                     <Link className={classes.link_style}  to={`/organization/${organization.url_slug}`}>
                         <Typography style={{
                             position: 'relative',
-                            fontWeight: '700'
+                            fontWeight: '700',
+                            color: '#1f1f33'
                         }}  variant="caption">
                             {org_name}
                         </Typography>

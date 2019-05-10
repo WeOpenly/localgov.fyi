@@ -10,7 +10,7 @@ import InputBase from '@material-ui/core/InputBase';
 import { withStyles } from '@material-ui/core/styles';
 import { fade } from "@material-ui/core/styles/colorManipulator";
 import Grid from '@material-ui/core/Grid';
-
+import FormLabel from '@material-ui/core/FormLabel';
 import SearchIcon from '@material-ui/icons/Search';
 import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
@@ -89,7 +89,7 @@ index_page_search_iconButton:{
 },
     ser_gloss_search_input: {
         flex: 1,
-        padding: '6px',
+
         marginRight: theme.spacing.unit,
         marginLeft: theme.spacing.unit,
         fontSize: "16px",
@@ -252,7 +252,8 @@ class SerSuggest extends Component {
 
         return (
             <Paper className={inHeader ? classes.ser_gloss_search_paper_root_header : classes.ser_gloss_search_paper_root} elevation={2}>
-                <InputBase {...inputProps}  className={classes.ser_gloss_search_input} />
+            
+                <InputBase inputProps={inputProps}  className={classes.ser_gloss_search_input} />
                 <div onClick={this.props.onSearch} className={classes.index_page_search_iconButton_container}>
                     <SearchIcon className={classes.index_page_search_iconButton} aria-label="search" />
                 </div>
@@ -334,7 +335,8 @@ class SerSuggest extends Component {
         const inputProps = {
           onChange: this.handleChange,
           type: "search",
-          "aria-label": "search services",
+            "aria-label": "Service Suggestions",
+            
           placeholder: this.state.placeholder,
           value: serviceSearchText ? serviceSearchText : ""
         };
@@ -350,6 +352,7 @@ class SerSuggest extends Component {
              <div className={classes.index_page_ser_suggestions_container}>
             <form onSubmit={this.onSubmit} className={!inHeader ? classes.index_page_ser_suggestions_container_form : classes.index_page_ser_suggestions_container_form_header }>
                 <Autosuggest
+                    id="serviceSuggestions"
                     {...autosuggestProps}
                     inputProps={inputProps}
                     theme={theme}

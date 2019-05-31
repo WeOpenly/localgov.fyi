@@ -327,7 +327,7 @@ class ServiceDetailTemplate extends React.Component {
 
     
         if (org_area_hie.length === 1) {
-            orgHieSlug = `State of ${org_name}`
+            orgHieSlug = `${org_name}`
         }
         else {
             if (org_area_hie.length)
@@ -474,7 +474,7 @@ class ServiceDetailTemplate extends React.Component {
                 service_delivery_enabled={service_delivery_enabled}
                 id={id}
                 orgLogoSvg={orgLogoSvg}
-                offeredIn={org_name}
+                offeredIn={orgHieSlug}
                 orgID={org_id}
                 orgSlug={org_slug}
                 info={contact_details}

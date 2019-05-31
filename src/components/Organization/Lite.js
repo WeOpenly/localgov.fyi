@@ -104,7 +104,7 @@ class OrgLite extends Component {
                 borderTop: `2px solid ${border}`,
                 boxShadow: '0px 3px 5px 0px rgba(0,0,0,0.1),0px 1px 1px 0px rgba(0,0,0,0.07),0px 2px 6px 1px rgba(0,0,0,0.06)'
             }}
-            onClick={() => navigate(`/organization/${url_slug}`)}>
+            onClick={() => navigate(`/${url_slug}`)}>
             <CardContent className={classes.suggest_loc_card}>
                {avatar}
                 <div className={classes.suggest_loc_org_details}>

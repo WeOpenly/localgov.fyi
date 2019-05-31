@@ -319,7 +319,7 @@ class ServiceGlossary extends Component {
               />
               <meta
                 property="og:url"
-                content={`https://evergov.com/service/${service_name_slug}/`}
+                content={`https://evergov.com/services/${service_name_slug}/`}
               />
 
               <meta

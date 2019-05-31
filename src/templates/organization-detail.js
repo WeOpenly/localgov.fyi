@@ -129,7 +129,7 @@ other_orgs_from_state
                 return (
              
              
-                              <a href={`/organization/${item.url_slug}`} >
+                              <a href={`/${item.url_slug}`} >
                                         <Typography variant="body2" style={{fontSize: '1.1rem'}}>
                   {item.org_name}
                       </Typography>
@@ -214,7 +214,7 @@ other_orgs_from_state
                   id={ser.id}
                   org_name={org_name}
                   listIndex={idx}
-                  toLink={`/service/${ser.url_slug}/`}
+                  toLink={`/${ser.url_slug}/`}
                   title={ser.service_name}
                   description={ser.service_description}
                   deliveryLink={deliveryLink}
@@ -280,7 +280,7 @@ other_orgs_from_state
 
     const jsonLd = {
       "@context": "http://schema.org",
-      "@id": `https://evergov.com/organization/${url_slug}/`,
+      "@id": `https://evergov.com/${url_slug}/`,
       "@type": "Organization",
       name: `${name}`,
       sameAs: sameAs,
@@ -300,9 +300,9 @@ other_orgs_from_state
           <meta name="keywords"
               content={`${name} online, info , local government services`}/>
           <meta property="og:title" content={`${name}`} />
-            <meta property="og:url" content={`https://evergov.com/organization/${url_slug}/`} />
+            <meta property="og:url" content={`https://evergov.com/${url_slug}/`} />
           <meta property="og:description" content={`${name} info, contact details and services`} />
-            <link rel="canonical" href={`https://evergov.com/organization/${url_slug}/`} />
+            <link rel="canonical" href={`https://evergov.com/${url_slug}/`} />
         
         </Helmet>
         <Grid container spacing={16} item xs={12} md={12}>

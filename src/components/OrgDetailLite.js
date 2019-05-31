@@ -59,7 +59,7 @@ class OrgDetailLite extends Component {
                 <Typography variant="subheading" gutterBottom>
                     {heading}
                 </Typography>
-                <Card className={classes.org_detail_lite_card} onClick={() => navigate(`/organization/${org_id}/`)}>
+                <Card className={classes.org_detail_lite_card} onClick={() => navigate(`/${org_id}/`)}>
                     <CardContent className={classes.org_detail_lite_cardContent}>
                         <AccountBalance className={classes.org_detail_lite_icon} />
                         <Typography align="center" variant="title">

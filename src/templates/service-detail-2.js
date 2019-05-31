@@ -441,7 +441,7 @@ class ServiceDetailTemplate extends React.Component {
                     resultType='service'
                     id={id}
                     listIndex={`${id}-${idx}`}
-                    toLink={`/service/${service.url_slug}/`}
+                    toLink={`/${service.url_slug}/`}
                     title={service.service_name}
                     description={service.service_description}
                     deliveryLink={service.service_del_links && service.service_del_links[0]
@@ -452,11 +452,11 @@ class ServiceDetailTemplate extends React.Component {
         const jsonLd = {
             "@context": "http://schema.org",
             "@type": "GovernmentService",
-            "@id": `https://evergov.com/service/${url_slug}/`,
+            "@id": `https://evergov.com/${url_slug}/`,
             "name": `${name}`,
             "operator": {
                 "@context": "http://schema.org",
-                "@id": `https://evergov.com/organization/${org_slug}/`,
+                "@id": `https://evergov.com/${org_slug}/`,
                 "@type": "GovernmentOrganization",
                 "name": `${org_name}`
             }
@@ -506,11 +506,11 @@ class ServiceDetailTemplate extends React.Component {
                     <script src="https://js.stripe.com/v3/"></script>
                     <link href={"/css/stripe.css"} rel="stylesheet" />
                     <script type="application/ld+json">{`${JSON.stringify(jsonLd)}`}</script>
-                    <link rel="canonical" href={`https://evergov.com/service/${url_slug}/`} />
+                    <link rel="canonical" href={`https://evergov.com/${url_slug}/`} />
                     <meta
                         property="og:title"
                         content={`${name} | ${org_name} | Evergov`} />
-                    <meta property="og:url" content={`https://evergov.com/service/${url_slug}/`} />
+                    <meta property="og:url" content={`https://evergov.com/${url_slug}/`} />
 
                     {description ? (<meta
                         name="description"
@@ -545,7 +545,7 @@ class ServiceDetailTemplate extends React.Component {
                         </div>
                         {otherSer}
                         <div className={classes.other_ser_linkWrapper}>
-                            <Link to={`/organization/${org_slug}/`} className={classes.other_ser_link}>
+                            <Link to={`/${org_slug}/`} className={classes.other_ser_link}>
                                 <Typography variant="caption" className={classes.other_ser_linkText}>See all services from {org_name}</Typography>
                             </Link>
                         </div>

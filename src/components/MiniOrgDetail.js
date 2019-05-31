@@ -56,7 +56,7 @@ const {org_name, org_link, logoFluid} = this.props;
 
         return (
 
-            <Link style={{textDecoration: 'none'}} to={`organization/${org_link}`} >
+            <Link style={{textDecoration: 'none'}} to={`/${org_link}`} >
                          <Card className={classes.card}>
       <div className={classes.details}>
           {logoFluid && (

@@ -756,9 +756,22 @@ class ServiceDetailTemplate extends React.Component {
        
                     <Grid item sm={1}>
 
+<<<<<<< HEAD
                     </Grid>
                     <Grid item xs={12} className={classes.ser_detail_morelinks} >
                         <MoreLinks otherServices={otherServices} state_name={'state'} glossaryLinks={[]}/>
+=======
+                    <Grid item xs={12} sm={12} md={4}>
+                        <div className={classes.other_ser_headerWrapper}>
+                            <Typography variant="subheading">More Services</Typography>
+                        </div>
+                        {otherSer}
+                        <div className={classes.other_ser_linkWrapper}>
+                            <Link to={`/${org_slug}/`} className={classes.other_ser_link}>
+                                <Typography variant="caption" className={classes.other_ser_linkText}>See all services from {org_name}</Typography>
+                            </Link>
+                        </div>
+>>>>>>> changes
                     </Grid>
                 </Grid>
 

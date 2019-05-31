@@ -156,7 +156,10 @@ class HeaderAccountMenu extends Component {
           </Menu>
         </div>)
 
-
+    if (this.state.isMobile){
+      return null;
+    }
+    
     return (
       <div className={classes.h_a_m_loging_signup_container}>
         <Button

@@ -70,7 +70,7 @@ service_header_cardTop : {
     marginRight: theme.spacing.unit * 5,
   },
   service_header_title_mob : {
-      marginBottom: theme.spacing.unit *3
+
   },
   service_header_in : {
     cursor: 'pointer',
@@ -101,6 +101,7 @@ service_header_notifyButton : {
 service_header_serDelLink:{
   display: 'flex',
   alignSelf: 'center',
+  width: '100%'
 },
 service_header_menuButtonIcon:{
   marginRight: theme.spacing.unit
@@ -343,7 +344,7 @@ class ServiceHeader extends Component {
     return (
       <Grid container spacing={0} className={!this.state.isMobileOnly ? classes.service_header_main : classes.service_header_mainMobile}>
  
-        <Grid item xs={12} md={10}>
+        <Grid item xs={12} md={8}>
           <div className={!this.state.isMobileOnly ? classes.service_header_cardTop : classes.service_header_cardTop_mob}>
             <div className={!this.state.isMobileOnly ?  classes.service_header_title: classes.service_header_title_mob}>
                   <Typography component="h1" variant="display1">{name}</Typography>
@@ -354,9 +355,7 @@ class ServiceHeader extends Component {
                  </Typography>
     
                 </div>
-            <div className={classes.service_header_serDelLink}>
-              {sdl}
-            </div>
+         
           </div>
 
           <div className={classes.service_header_cardActions}>
@@ -364,44 +363,18 @@ class ServiceHeader extends Component {
           </div>
 
         </Grid>
-        <Grid item xs={12} md={2}>
+        <Grid item xs={12} md={4}>
               <div className={classes.service_header_serviceActions}>
-               
+            <div className={classes.service_header_serDelLink}>
+              {sdl}
+            </div>
                 <div className={classes.service_header_serviceNotify}>
-                <div className={classes.service_header_serDelLink}>
-                    {actionButton}
-                </div>
-                <div className={classes.service_header_serDelLink}>
-                    {serviceFlowButton}
-                </div>
+                  <div className={classes.service_header_serDelLink}>
+                      {serviceFlowButton}
+                  </div>
                 </div>    
-              <div className={classes.service_header_serviceShare}>
-                                {shareButton}
-                              </div>
               </div>
-              <Menu
-                id="simple-menu"
-                anchorEl={anchorEl}
-                open={Boolean(anchorEl)}
-                onClose={() => this.handleClose()}
-              >
-                <CopyToClipboard text={shareLink} onCopy={this.handleCopy}>
-                  <MenuItem className={classes.service_header_menuItem}>
-                    <Typography>{copied ? 'Copied!' : 'Copy link'}</Typography>
-                  </MenuItem>
-                </CopyToClipboard>
-                <MenuItem onClick={() => this.handleClose('facebook')} className={classes.service_header_menuItem}>
-                  <FacebookShareButton url={shareLink} className={classes.service_header_shareButton}>
-                    <Typography>Facebook</Typography>
-                  </FacebookShareButton>
-                </MenuItem>
-                <MenuItem onClick={() => this.handleClose('twitter')} className={classes.service_header_menuItem}>
-                  <TwitterShareButton url={shareLink} className={classes.service_header_shareButton}>
-                    <Typography>Twitter</Typography>
-                  </TwitterShareButton>
-                </MenuItem>
-              </Menu>
-
+  
         </Grid>
         
       </Grid>

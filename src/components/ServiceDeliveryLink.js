@@ -56,6 +56,7 @@ const styles = theme => ({
     alignItems: 'center'
   },
   ser_del_link_button: {
+    width: '100%',
     marginBottom: theme.spacing.unit
   },
   ser_del_link_paper: {

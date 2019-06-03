@@ -6,7 +6,7 @@ import { withStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 import Divider from '@material-ui/core/Divider';
-
+import FooterNew from  './FooterNew'
 import withRoot from '../withRoot';
 
 const styles = theme => ({
@@ -94,6 +94,9 @@ class Footer extends Component {
     const { classes } = this.props;
     const { page, dark } = this.props;
     
+
+    return (<FooterNew />);
+
     return (
           <footer className={dark ? classes.footer_footer_dark : classes.footer_footer}>
               <div className={classes.footer_left_items}>

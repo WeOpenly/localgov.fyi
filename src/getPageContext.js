@@ -144,6 +144,13 @@ const theme = createMuiTheme({
             lineHeight: "1.46429em",
             color: "rgba(30, 30, 50,0.99)"
         },
+        body3: {
+            fontSize: "0.995rem",
+            fontWeight: 700,
+            fontFamily: '"Nunito Sans",  -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen-Sans,Ubuntu,Cantarell,"Helvetica Neue", sans-serif',
+            lineHeight: "1.76429em",
+            color: "rgba(30, 30, 50,0.87)"
+        },
         body1: {
             fontSize: "0.975rem",
             fontWeight: 300,

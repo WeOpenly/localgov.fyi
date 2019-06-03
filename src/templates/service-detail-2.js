@@ -324,7 +324,7 @@ class ServiceDetailTemplate extends React.Component {
         }
 
         let orgHieSlug = null;
-
+        
     
         if (org_area_hie.length === 1) {
             orgHieSlug = `${org_name}`

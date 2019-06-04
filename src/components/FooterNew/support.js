@@ -51,7 +51,7 @@ class FooterSupport extends Component {
         return (
             <div className={classes.support_footer}>
                 <div className={classes.support_footer_header}>
-                    <Typography variant="body3" >
+                    <Typography variant="body2" >
                         Support
                     </Typography>
                 </div>

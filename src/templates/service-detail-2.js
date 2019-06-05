@@ -25,6 +25,9 @@ import ServiceHeader from '../components/ServiceHeader';
 
 import Footer from '../components/Footer';
 import ServiceCard from '../components/ServiceCard';
+
+import MoreLinks from '../components/ServicePage/MoreLinks';
+
 import withRoot from '../withRoot';
 import {isLoggedIn} from '../components/Account/Auth';
 
@@ -59,7 +62,8 @@ const styles = theme => ({
         }
     },
     ser_detail_container: {
-        marginTop: theme.spacing.unit * 2
+        marginTop: theme.spacing.unit * 2,
+        maxWidth: '1000px',
     },
     ser_detail_details: {
         width: '100%'
@@ -177,7 +181,12 @@ ser_detail_footer : {
     borderTop: `1px solid #dcdcdc`,
     paddingTop: theme.spacing.unit,
     marginTop: theme.spacing.unit *6
-}
+},
+    ser_detail_morelinks:{
+        borderTop: `1px solid #dcdcdc`,
+        paddingTop: theme.spacing.unit,
+        marginTop: theme.spacing.unit * 6
+    }
 });
 
 
@@ -432,6 +441,7 @@ class ServiceDetailTemplate extends React.Component {
             </p>
         </form>);
 
+<<<<<<< HEAD
         let otherSer =null;
         if (!this.state.loggedin){
             otherSer = otherServices
@@ -448,6 +458,10 @@ class ServiceDetailTemplate extends React.Component {
                         ? service.service_del_links[0]
                         : null} /></div>);
         }
+=======
+
+
+>>>>>>> service-add-links
 
         const jsonLd = {
             "@context": "http://schema.org",
@@ -527,30 +541,31 @@ class ServiceDetailTemplate extends React.Component {
                 </Helmet>
 
                 <ServiceFlowDialog service_name={name} service_id={id} /> 
+                <Grid container>
+                    <Grid item sm={1}>
 
-                <Grid container spacing={0} className={classes.ser_detail_container}>
-                    
-                <Grid item xs={12}>
-                    {serHeader}
-                </Grid>
-                 
-         
-                    <Grid item xs={12} sm={12} md={8} className={classes.ser_detail_details}>
-                        <ServiceDetail name={name} orgHieSlug={orgHieSlug} description={description} price={price} alltimings={alltimings} allForms={allForms} allfaq={allfaq} allSteps={allSteps}  />
                     </Grid>
+                    <Grid item xs={12} sm={10}>
+                        <Grid item xs={12}>
+                            {serHeader}
+                        </Grid>
 
-                    <Grid item xs={12} sm={12} md={4}>
-                        <div className={classes.other_ser_headerWrapper}>
-                            <Typography variant="subheading">More Services</Typography>
-                        </div>
-                        {otherSer}
-                        <div className={classes.other_ser_linkWrapper}>
-                            <Link to={`/${org_slug}/`} className={classes.other_ser_link}>
-                                <Typography variant="caption" className={classes.other_ser_linkText}>See all services from {org_name}</Typography>
-                            </Link>
-                        </div>
+
+                        <Grid item xs={12} sm={12} className={classes.ser_detail_details}>
+                            <ServiceDetail name={name} orgHieSlug={orgHieSlug} description={description} price={price} alltimings={alltimings} allForms={allForms} allfaq={allfaq} allSteps={allSteps} />
+                        </Grid>
+
+
+                        </Grid>
+       
+                    <Grid item sm={1}>
+
+                    </Grid>
+                    <Grid item xs={12} className={classes.ser_detail_morelinks} >
+                        <MoreLinks otherServices={otherServices} state_name={'state'} glossaryLinks={[]}/>
                     </Grid>
                 </Grid>
+
        
               <div className={classes.ser_detail_footer}>
                 <Footer page={this.props.location.pathname} />

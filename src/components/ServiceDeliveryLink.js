@@ -361,8 +361,8 @@ class ServiceDeliveryLink extends Component {
     if (views) {
       let viewsAgg = views.map(item => item.views).reduce((a, b) => a + b);
 
-      if (viewsAgg && viewsAgg / 100 > 1) {
-        moreThan = 100 * Math.ceil(viewsAgg / 100);
+      if (viewsAgg && viewsAgg / 10 > 1) {
+        moreThan = 10 * Math.ceil(viewsAgg / 10);
       }
     }
 

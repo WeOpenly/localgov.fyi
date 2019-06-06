@@ -141,7 +141,7 @@ class Case2 extends Component {
         if (!searchResultsLoading && searchResults && searchResults.length > 0 && shouldRedirect){
             if (windowGlobal){
                 const url = searchResults[0].url_slug
-                navigate(`/service/${url}`)
+                navigate(`/${url}`)
                 return loadingComp
             }
         

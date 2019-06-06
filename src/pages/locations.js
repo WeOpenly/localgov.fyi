@@ -151,7 +151,7 @@ class Locations extends Component {
               textDecoration: 'underline',
               cursor: 'pointer'
             }}
-              onClick={() => this.handleOrgClick(id, org_name, idx, `/organization/${url_slug}/`)}
+              onClick={() => this.handleOrgClick(id, org_name, idx, `/${url_slug}/`)}
               className={classes.link}>
               <Typography variant="body1">
                 {strippedName}

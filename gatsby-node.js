@@ -7,6 +7,9 @@ const fs = require("fs");
 // Implement the Gatsby API “createPages”. This is called after the Gatsby
 // bootstrap is finished so you have access to any information necessary to
 // programmatically create pages.
+
+
+
 exports.createPages = ({graphql, actions}) => {
   const {createPage} = actions
 
@@ -22,37 +25,37 @@ exports.createPages = ({graphql, actions}) => {
     resolve(
       graphql(`
         {
-          allServiceGlossaryJson {
-            edges {
-              node {
-                id
-                service_name
-                service_name_slug
-                service_glossary_description
-                views {
-                  date
-                  views
-                }
-                orgs {
-                  organization {
-                    org_name
-                    id
-                    logo_url
-                  }
-                  area {
-                    hierarchy {
-                      area_classification
-                      area_id
-                      area_name
-                      area_classsification_level_number
-                    }
-                  }
-                  id
-                  url_slug
-                }
-              }
-            }
-          }
+         allServiceGlossaryJson {
+  edges {
+    node {
+      id
+      service_name
+      service_name_slug
+      service_glossary_description
+      views {
+  date
+  views
+}
+orgs {
+  organization {
+    org_name
+    id
+    logo_url
+  }
+  area {
+    hierarchy {
+      area_classification
+      area_id
+      area_name
+      area_classsification_level_number
+    }
+  }
+  id
+  url_slug
+}
+    }
+  }
+}
           allOrgsJson {
             edges {
               node {
@@ -261,7 +264,7 @@ exports.createPages = ({graphql, actions}) => {
 
         _.each(result.data.allOrgsJson.edges, edge => {
           createPage({
-            path: `organization/${edge.node.url_slug}/`,
+            path: `${edge.node.url_slug}/`,
             component: slash(orgTemplate),
             context: {
               data: edge.node,
@@ -286,7 +289,7 @@ exports.createPages = ({graphql, actions}) => {
           const { service, org_details, additional_sers } = node;
 
           createPage({
-            path: `service/${service.url_slug}/`,
+            path: `${service.url_slug}/`,
             component: slash(serTemplate),
             context: {
               data: {

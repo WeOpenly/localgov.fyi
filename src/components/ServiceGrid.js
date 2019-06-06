@@ -103,7 +103,7 @@ Vehicle : <DirectionsCar className={classes.service_grid_icon}/>,
               <Fragment>
                 <Grid item xs={6} align="center" md={2}>
                   <a onClick = {() => {
-                      clickGridItem(type, 'more', '', index, `/organization/${city.url_slug}/`);
+                      clickGridItem(type, 'more', '', index, `/${city.url_slug}/`);
                  
             }}   className={classes.service_grid_link}>
                     <Card className={classes.service_grid_card}>

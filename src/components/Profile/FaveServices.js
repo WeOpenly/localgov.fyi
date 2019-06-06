@@ -22,7 +22,7 @@ class FaveServices extends React.Component {
   render() {
         const {classes, sers} = this.props;
         const serItems = sers.map((ser) => {
-            return (<ListItem key={ser.id} dense button><ListItemText  primary={ser.heading} secondary={ser.subheading} onClick={() => navigate(`/service/${ser.id}/`) } />
+            return (<ListItem key={ser.id} dense button><ListItemText  primary={ser.heading} secondary={ser.subheading} onClick={() => navigate(`/${ser.id}/`) } />
                 </ListItem>);
         });
 

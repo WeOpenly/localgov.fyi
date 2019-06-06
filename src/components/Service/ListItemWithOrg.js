@@ -106,7 +106,7 @@ class SerListItemWithOrg extends Component {
         return (<Card
             className={classes.ser_list_item_card}>
                 <div className={classes.ser_list_item_ser_name} >
-                <Link className={classes.link_style} to={`/service/${url_slug}`}>
+                <Link className={classes.link_style} to={`/${url_slug}`}>
                 <Typography style={{
                     color: '#5627FF',
                     position: 'relative',
@@ -120,7 +120,7 @@ class SerListItemWithOrg extends Component {
                 <div className={classes.ser_list_item_agg_org_section}>
                 {avatar}
                     <div className={classes.org_agg_name}>
-                    <Link className={classes.link_style}  to={`/organization/${organization.url_slug}`}>
+                    <Link className={classes.link_style}  to={`/${organization.url_slug}`}>
                         <Typography style={{
                             position: 'relative',
                             fontWeight: '700',

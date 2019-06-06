@@ -174,9 +174,6 @@ def get_orgs():
 
             urllib.urlretrieve(org_logo, org_logo_filename)
 
-        if rewrites_string:
-            with open('_redirects', 'a') as f:
-                f.write(rewrites_string)
 
 
 def get_services():
@@ -222,9 +219,6 @@ def get_services():
                     pass
             urllib.urlretrieve(service_logo, ser_logo_filename)
 
-        if rewrites_string:
-            with open('_redirects', 'a') as f:
-                f.write(rewrites_string)
 
 
 def get_service_glossary_items():
@@ -255,7 +249,7 @@ def get_all_locations():
 
 def write_standard_redirects():
     print(DSP_HOST, YUSUF_HOST)
-    redirs = """/org_images/* http://storage.googleapis.com/evergov-prod-dsp-uploads/organization_logo_uploads/:splat 200!
+    redir_string = """/org_images/* http://storage.googleapis.com/evergov-prod-dsp-uploads/organization_logo_uploads/:splat 200!
     
     /api/yusuf/* {y}/:splat 200!
 
@@ -274,9 +268,49 @@ http://evergov.netlify.com/* https://evergov.com/:splat 301!
 /search/*  /search/  200
 
 """.format(y=YUSUF_HOST, d=DSP_HOST)
-    print(redirs)
+
+    res = urllib2.urlopen('{h}/arthur/redirects?token={t}'.format(h=DSP_HOST, t=token))
+    result = json.load(res)
+
+    if not result.get('success'):
+        print("failed getting redirects")
+        return
+
+    orgs = result.get('orgs')
+    services = result.get('sers')
+
+    for org_id in orgs:
+        org_revs = orgs[org_id]
+        if not org_revs:
+            continue
+        
+        latest_rev = org_revs[-1]
+        other_revs = org_revs[:-1]
+
+        redir_string = redir_string + "\norganization/{f}/     /{s}/   301!".format(
+            f=org_id, s=latest_rev)
+        
+        for rev in other_revs:
+            redir_string = redir_string + "\n/{f}/     /{s}/   301!".format(
+                f=rev, s=latest_rev)
+
+    for ser_id in services:
+        ser_revs = services[ser_id]
+        if not ser_revs:
+            continue
+
+        latest_rev = ser_revs[-1]
+        other_revs = ser_revs[:-1]
+        
+        redir_string = redir_string + "\nservice/{f}/     /{s}/   301!".format(
+            f=ser_id, s=latest_rev)
+
+        for rev in other_revs:
+            redir_string = redir_string + "\n/{f}/     /{s}/   301!".format(
+                f=rev, s=latest_rev)
+            
     with open('_redirects', 'w+') as f:
-        f.write(redirs)
+        f.write(redir_string)
 
 
 write_standard_redirects()

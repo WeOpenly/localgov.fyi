@@ -58,11 +58,13 @@ class NotFound extends Component {
                     <Grid item xs='auto' sm={4} />
 
                     <Grid item xs='auto' sm={4} />
+                    
                     <Grid item xs={12} sm={4}>
                         <Typography variant="subheading">
                             {`This page no longer exists or hasn't been created yet.`}
                         </Typography>
                     </Grid>
+
                     <Grid item xs='auto' sm={4} />
 
                     <Grid item xs='auto' sm={4} />

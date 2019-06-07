@@ -132,7 +132,7 @@ class MoreLinks extends Component {
         const glossLinks = (<div className={classes.disco_footer}>
             <div className={classes.ser_more_links_header}>
                 <Typography variant="display1" style={{ fontSize: "0.85rem" }} >
-                    Tending on Evergov
+                    Trending on Evergov
                  </Typography>
             </div>
             <div className={classes.disco_footer_links}>

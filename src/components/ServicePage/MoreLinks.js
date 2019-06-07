@@ -40,7 +40,7 @@ class MoreLinks extends Component {
     }
 
     render() {
-        const { classes, state_name, org_name, otherServices } = this.props;
+        const { classes, state_name, org_name, stateServices, otherServices } = this.props;
         let glossaries = [
 
             {
@@ -97,14 +97,27 @@ class MoreLinks extends Component {
             </div>
         </div>)
 
-        const stateServices = (<div className={classes.disco_footer}>
+        const stateSerLinks = _.shuffle(stateServices).map((ss, idx) =>
+            (<Typography key={idx}>
+                <a
+                    href={`/services/${ss.url_slug}`}
+                    className={classes.footer_social_icon}
+
+                    target="_blank">
+
+                    {ss.name}
+                </a>
+            </Typography>)
+        )
+
+        const stateSers = (<div className={classes.disco_footer}>
             <div className={classes.ser_more_links_header}>
                 <Typography variant="body2" >
                     Services from {state_name}
                  </Typography>
             </div>
             <div className={classes.disco_footer_links}>
-
+                {stateSerLinks}
             </div>
         </div>)
 

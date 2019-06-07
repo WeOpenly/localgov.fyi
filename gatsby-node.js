@@ -105,6 +105,10 @@ orgs {
                   logo_url
                   delivery_enabled
                   service_name
+                  views {
+                    date
+                    views
+                  }
                   service_faq {
                     answer
                     question
@@ -139,6 +143,11 @@ orgs {
                   service_reminder_bp_json {
                     id
                   }
+                  service_parent {
+                    name
+                    logo_url
+                    description
+                  }
                 }
                 additional_sers {
                   url_slug
@@ -172,6 +181,16 @@ orgs {
                   service_description
                   service_reminder_bp_json {
                     id
+                  }
+                }
+                state_org_details {
+                  offered_services {
+                    name
+                    url_slug
+                  }
+                  url_slug
+                  area {
+                    name
                   }
                 }
                 org_details {
@@ -286,7 +305,7 @@ orgs {
             service_reminder_bp_json &&
             "field_schema" in service_reminder_bp_json &&
             service_reminder_bp_json["field_schema"] !== null;
-          const { service, org_details, additional_sers } = node;
+          const { service, org_details, additional_sers, state_org_details } = node;
 
           createPage({
             path: `${service.url_slug}/`,
@@ -295,7 +314,9 @@ orgs {
               data: {
                 id: service.id,
                 url_slug: service.url_slug,
+                state_org_details: state_org_details,
                 contact_details: service.contact_details,
+                service_parent: service_parent || null,
                 service_delivery_enabled: service.delivery_enabled,
                 name: service.service_name,
                 allForms: service.service_forms || [],

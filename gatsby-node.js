@@ -313,10 +313,11 @@ orgs {
             context: {
               data: {
                 id: service.id,
+                views: service.views,
                 url_slug: service.url_slug,
                 state_org_details: state_org_details,
                 contact_details: service.contact_details,
-                service_parent: service_parent || null,
+                service_parent: service.service_parent || null,
                 service_delivery_enabled: service.delivery_enabled,
                 name: service.service_name,
                 allForms: service.service_forms || [],

@@ -139,6 +139,10 @@ service_header_deliveryLinkWrapper : {
     // marginRight: -theme.spacing.unit,
     // borderLeft: '1px solid #e4e4e4',
   },
+  ser_header_offered_in_org:{
+    paddingTop: '2px',
+    fontSize: '1rem'
+  },
   svgIcon:{
     fontSize: '18px',
     marginRight: 8, 
@@ -218,7 +222,7 @@ class ServiceHeader extends Component {
   }
 
   render() {
-    const { classes, name, offeredIn, info, serDelLinks, id, logoSizes, service_delivery_enabled, views, orgLogoSvg } = this.props;
+    const { classes, name, offeredIn, info, serDelLinks, id, logoSizes, service_delivery_enabled, views, orgLogoSvg, orgHieComp } = this.props;
 
     if (!(name && offeredIn && info && serDelLinks )){
       return null;
@@ -351,7 +355,7 @@ class ServiceHeader extends Component {
 
             
                 <Typography variant="subheading" className={classes.ser_header_offered_in_org} onClick={this.handleOrgClick}>
-                  Offered by  <span className={classes.service_header_in}> {offeredIn} </span>
+                Offered by  <span className={classes.service_header_in}> {orgHieComp} </span>
                  </Typography>
     
                 </div>

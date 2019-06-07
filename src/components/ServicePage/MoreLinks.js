@@ -14,7 +14,7 @@ const styles = theme => ({
     },
     more_links_container: {
         display: 'flex',
-        justifyContent: 'space-around'
+        justifyContent: 'space-between'
     },
     more_links_container_mob: {
         display: 'flex',
@@ -100,7 +100,7 @@ class MoreLinks extends Component {
         const stateSerLinks = _.shuffle(stateServices).map((ss, idx) =>
             (<Typography key={idx}>
                 <a
-                    href={`/services/${ss.url_slug}`}
+                    href={`/${ss.url_slug}`}
                     className={classes.footer_social_icon}
 
                     target="_blank">
@@ -136,7 +136,7 @@ class MoreLinks extends Component {
             <div className={classes.more_links}>
                 <div className={this.state.isMob ? classes.more_links_container_mob : classes.more_links_container}>
                     {additionalServices}
-                    {stateServices}
+                    {stateSers}
                     {glossLinks}
                 </div>
             </div>

@@ -51,7 +51,7 @@ class FooterSupport extends Component {
         return (
             <div className={classes.support_footer}>
                 <div className={classes.support_footer_header}>
-                    <Typography variant="body2" >
+                    <Typography variant="display1" style={{ fontSize: "0.85rem" }} >
                         Support
                     </Typography>
                 </div>

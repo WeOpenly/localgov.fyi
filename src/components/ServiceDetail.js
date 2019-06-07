@@ -30,7 +30,10 @@ const windowGlobal = typeof window !== 'undefined'
     : null
 
 const styles = theme => ({
-
+    serviceDetailStepNumber:{
+        margin: theme.spacing.unit,
+        fontWeight: 700,
+    },
     ser_detail_tab_item:{
     display: 'flex',
     margin: `0 ${theme.spacing.unit * 2}px 0 ${theme.spacing.unit}px`,

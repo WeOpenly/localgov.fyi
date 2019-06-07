@@ -109,7 +109,7 @@ class FooterDiscover extends Component {
         return (
             <div className={classes.disco_footer}>
                 <div className={classes.disco_footer_header}>
-                    <Typography variant="body2" >
+                    <Typography variant="display1" style={{ fontSize: "0.85rem" }} >
                         Discover
                     </Typography>
                 </div>

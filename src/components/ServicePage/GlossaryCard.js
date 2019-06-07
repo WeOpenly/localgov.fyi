@@ -34,7 +34,13 @@ const styles = theme => ({
         marginRight: theme.spacing.unit * 2,
     }
 });
-
+const RawHTML = ({ children, className = "" }) => (
+    <div
+        className={className}
+        style={{ padding: 0, margin: 0, color: "rgba(30, 30, 50,0.87)" }}
+        dangerouslySetInnerHTML={{ __html: children.replace(/\n/g, " ") }}
+    />
+);
 
 
 class GlossaryCard extends Component {
@@ -51,7 +57,12 @@ class GlossaryCard extends Component {
 
     render() {
         const { classes, name, description, logoUrl } = this.props;
-
+        if (!description){
+            return null;
+        }
+        if (description.length < 15){
+            return null;
+        }
 
         const border = `#AB93FF`
         return (
@@ -77,7 +88,9 @@ class GlossaryCard extends Component {
                         <Typography variant="title" gutterBottom>
                             {name}
                         </Typography>
-                        <Typography variant="body1">{description}</Typography>
+                        <Typography variant="body1"><RawHTML>
+                            {description}
+                            </RawHTML></Typography>
                     </div>
                 </CardContent>
             </div>

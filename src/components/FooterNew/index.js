@@ -52,9 +52,9 @@ class FooterNew extends Component {
         return (
             <div className={classes.new_footer}>
                 <div className={this.state.isMob ? classes.new_footer_links_mob : classes.new_footer_links}>
-                    <FooterSupport />
-                    <FooterDiscover />
                     <FooterSocial />
+                    <FooterDiscover />
+                    <FooterSupport />
                 </div>
                 <div className={classes.new_footer_copyright}>
                     <Typography variant="caption">

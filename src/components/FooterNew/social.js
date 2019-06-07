@@ -143,7 +143,7 @@ class FooterSocial extends Component {
         return (
             <div className={classes.social_footer}>
                 <div className={classes.social_footer_header}>
-                    <Typography variant="body2" >
+                    <Typography variant="display1" style={{ fontSize: "0.85rem"}} >
                         Evergov
                     </Typography>
                 </div>

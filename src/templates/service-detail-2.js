@@ -326,6 +326,7 @@ class ServiceDetailTemplate extends React.Component {
             otherServices,
             logoSizes,
             org_area_hie,
+            views,
             org_logo_sizes
         } = this.props.pageContext.data;
 
@@ -335,15 +336,23 @@ class ServiceDetailTemplate extends React.Component {
             orgLogoSvg = org_logo_sizes.fluid
         }
 
+        let orgHieComp = null;
         let orgHieSlug = null;
         
     
         if (org_area_hie.length === 1) {
-            orgHieSlug = `${org_name}`
+            orgHieComp = <Link style={{ color: '#6F47FF'}} to={state_org_details.url_slug}>{org_name}</Link>
+            orgHieSlug = org_name;
         }
         else {
-            if (org_area_hie.length)
-            orgHieSlug = `${org_name}, ${org_area_hie[org_area_hie.length - 1].area_name}`;
+            if (org_area_hie.length){
+                orgHieComp = (<span>
+        
+                    <Link style={{ color: '#6F47FF'}} to={org_slug}>{org_name}</Link>,{" "}
+                    <Link style={{ color: '#6F47FF'}} to={state_org_details.url_slug}>{org_area_hie[org_area_hie.length - 1].area_name}</Link>
+                </span>)
+                orgHieSlug = org_area_hie[org_area_hie.length - 1].area_name
+            }
         }
 
         let serRemFormRaw = null;
@@ -494,7 +503,7 @@ class ServiceDetailTemplate extends React.Component {
                 orgLogoSvg={orgLogoSvg}
                 offeredIn={orgHieSlug}
                 orgID={org_id}
-                orgSlug={org_slug}
+                orgHieComp={orgHieComp}
                 info={contact_details}
                 serDelLinks={service_del_links}
                 logoSizes={serLogoSvg} />
@@ -515,206 +524,13 @@ class ServiceDetailTemplate extends React.Component {
                 </IconButton>
             )
         }
-        const views = [{
-            "date": "2019-03-23T00:00:00",
-            "views": 0
-        },
-        {
-            "date": "2019-03-22T00:00:00",
-            "views": 0
-        },
-        {
-            "date": "2019-05-09T00:00:00",
-            "views": 0
-        },
-        {
-            "date": "2019-03-20T00:00:00",
-            "views": 0
-        },
-        {
-            "date": "2019-05-07T00:00:00",
-            "views": 1
-        },
-        {
-            "date": "2019-05-06T00:00:00",
-            "views": 1
-        },
-        {
-            "date": "2019-05-05T00:00:00",
-            "views": 0
-        },
-        {
-            "date": "2019-05-04T00:00:00",
-            "views": 4
-        },
-        {
-            "date": "2019-05-03T00:00:00",
-            "views": 0
-        },
-        {
-            "date": "2019-05-02T00:00:00",
-            "views": 0
-        },
-        {
-            "date": "2019-05-01T00:00:00",
-            "views": 0
-        },
-        {
-            "date": "2019-03-28T00:00:00",
-            "views": 0
-        },
-        {
-            "date": "2019-05-14T00:00:00",
-            "views": 0
-        },
-        {
-            "date": "2019-05-15T00:00:00",
-            "views": 0
-        },
-        {
-            "date": "2019-03-18T00:00:00",
-            "views": 0
-        },
-        {
-            "date": "2019-05-30T00:00:00",
-            "views": 0
-        },
-        {
-            "date": "2019-05-31T00:00:00",
-            "views": 0
-        },
-        {
-            "date": "2019-04-04T00:00:00",
-            "views": 1
-        },
-        {
-            "date": "2019-04-05T00:00:00",
-            "views": 1
-        },
-        {
-            "date": "2019-05-25T00:00:00",
-            "views": 0
-        },
-        {
-            "date": "2019-05-24T00:00:00",
-            "views": 0
-        },
-        {
-            "date": "2019-05-27T00:00:00",
-            "views": 0
-        },
-        {
-            "date": "2019-05-26T00:00:00",
-            "views": 0
-        },
-        {
-            "date": "2019-05-21T00:00:00",
-            "views": 0
-        },
-        {
-            "date": "2019-05-20T00:00:00",
-            "views": 0
-        },
-        {
-            "date": "2019-05-23T00:00:00",
-            "views": 0
-        },
-        {
-            "date": "2019-05-22T00:00:00",
-            "views": 0
-        },
-        {
-            "date": "2019-04-25T00:00:00",
-            "views": 0
-        },
-        {
-            "date": "2019-05-29T00:00:00",
-            "views": 0
-        },
-        {
-            "date": "2019-05-28T00:00:00",
-            "views": 0
-        },
-        {
-            "date": "2019-04-28T00:00:00",
-            "views": 1
-        },
-        {
-            "date": "2019-04-29T00:00:00",
-            "views": 0
-        },
-        {
-            "date": "2019-04-22T00:00:00",
-            "views": 0
-        },
-        {
-            "date": "2019-04-23T00:00:00",
-            "views": 0
-        },
-        {
-            "date": "2019-04-20T00:00:00",
-            "views": 0
-        },
-        {
-            "date": "2019-04-21T00:00:00",
-            "views": 1
-        },
-        {
-            "date": "2019-04-26T00:00:00",
-            "views": 0
-        },
-        {
-            "date": "2019-04-27T00:00:00",
-            "views": 0
-        },
-        {
-            "date": "2019-04-24T00:00:00",
-            "views": 0
-        },
-        {
-            "date": "2019-03-19T00:00:00",
-            "views": 0
-        },
-        {
-            "date": "2019-03-16T00:00:00",
-            "views": 0
-        },
-        {
-            "date": "2019-03-17T00:00:00",
-            "views": 1
-        },
-        {
-            "date": "2019-03-14T00:00:00",
-            "views": 0
-        },
-        {
-            "date": "2019-03-15T00:00:00",
-            "views": 0
-        },
-        {
-            "date": "2019-03-12T00:00:00",
-            "views": 0
-        },
-        {
-            "date": "2019-03-13T00:00:00",
-            "views": 0
-        },
-        {
-            "date": "2019-03-10T00:00:00",
-            "views": 0
-        },
-        {
-            "date": "2019-03-11T00:00:00",
-            "views": 0
-        }
-        ]
-
+     
 
 
         let actionCard = null;
+
         if (service_parent){
             const { name, description, logo_url } = service_parent;
-
             actionCard = (<GlossaryCard name={name} description={description} logoUrl={logo_url} />)
         }
 
@@ -759,7 +575,7 @@ class ServiceDetailTemplate extends React.Component {
 
                         <Grid item xs={12} sm={12} className={classes.ser_detail_details}>
                             <ServiceDetail name={name} 
-                                stateUrlSlug={state_org_details.url_slug}
+                              
                             orgHieSlug={orgHieSlug} description={description} price={price} alltimings={alltimings} allForms={allForms} allfaq={allfaq} allSteps={allSteps} />
                         </Grid>
                         

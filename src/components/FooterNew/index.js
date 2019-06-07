@@ -18,11 +18,13 @@ const styles = theme => ({
     },
     new_footer_links:{
         display: 'flex',
-        justifyContent: 'space-around'
+        width: '800px',
+        justifyContent: 'space-between',
+        alignSelf: 'center',
     },
     new_footer_links_mob:{
         display: 'flex',
-        justifyContent: 'space-around',
+        justifyContent: 'space-between',
         textAlign: 'center',
     },
     new_footer_copyright:{

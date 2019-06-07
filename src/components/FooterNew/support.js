@@ -56,7 +56,7 @@ class FooterSupport extends Component {
                     </Typography>
                 </div>
                 <div className={classes.support_footer_links}>
-                    <Typography >
+                    <Typography variant="caption" >
                     <a
                         href={`https://evergov.zendesk.com/hc/en-us`}
                         className={classes.footer_social_icon}
@@ -65,7 +65,7 @@ class FooterSupport extends Component {
                         Help
                         </a>
                         </Typography>
-                    <Typography >
+                    <Typography variant="caption">
                     <a
                         href={`/terms`}
                         className={classes.footer_social_icon}

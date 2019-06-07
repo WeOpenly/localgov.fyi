@@ -148,7 +148,7 @@ class FooterSocial extends Component {
                     </Typography>
                 </div>
                 <div className={classes.social_footer_links}>
-                    <Typography>
+                    <Typography variant="caption">
                     <a
                         href={`/about`}
                         className={classes.footer_social_icon}
@@ -157,7 +157,7 @@ class FooterSocial extends Component {
                         About
                         </a>
                     </Typography>
-                    <Typography>
+                    <Typography variant="caption">
                     <a
                         href={`https://evergov.com/blog`}
                         className={classes.footer_social_icon}

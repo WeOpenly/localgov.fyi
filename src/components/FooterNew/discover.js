@@ -114,7 +114,7 @@ class FooterDiscover extends Component {
                     </Typography>
                 </div>
                 <div className={classes.disco_footer_links}>
-                    <Typography>
+                    <Typography variant="caption">
                     <a
                         href={`/locations`}
                         className={classes.footer_social_icon}
@@ -125,7 +125,7 @@ class FooterDiscover extends Component {
                     
                         </a>
                     </Typography>
-                    <Typography>
+                    <Typography variant="caption">
                     <a
                         href={`/services`}
                         className={classes.footer_social_icon}

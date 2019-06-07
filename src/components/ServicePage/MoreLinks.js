@@ -10,16 +10,24 @@ const styles = theme => ({
     more_links: {
         display: 'flex',
         flexDirection: 'column',
-        marginTop: theme.spacing.unit*3,
+        marginTop: theme.spacing.unit*1,
     },
     more_links_container: {
         display: 'flex',
-        justifyContent: 'space-between'
+        width: '800px',
+        alignSelf: 'center',
+        justifyContent: 'space-between',
+        marginLeft: theme.spacing.unit * 6,
+        marginRight: theme.spacing.unit * 6,
     },
     more_links_container_mob: {
         display: 'flex',
+        flexDirection: 'column',
         justifyContent: 'space-around',
         textAlign: 'center',
+    },
+    disco_footer:{
+        paddingTop: theme.spacing.unit*2,
     },
     ser_more_links_header:{
         marginBottom: theme.spacing.unit,
@@ -63,7 +71,7 @@ class MoreLinks extends Component {
         ]
 
         const glosaaryLinks = _.shuffle(glossaries).map((gl, idx) => 
-            (<Typography key={idx}>
+            (<Typography variant="caption" key={idx}>
                 <a
                     href={`/services/${gl.link}`}
                     className={classes.footer_social_icon}
@@ -75,7 +83,7 @@ class MoreLinks extends Component {
             </Typography>)
     )
 
-        const otherSers = otherServices.slice(0,4).map((ser, idx) => (<Typography key={idx}>
+        const otherSers = otherServices.slice(0, 4).map((ser, idx) => (<Typography variant="caption" key={idx}>
                     <a
                         href={`/${ser.url_slug}`}
                         className={classes.footer_social_icon}
@@ -88,7 +96,7 @@ class MoreLinks extends Component {
                 
         const additionalServices = (<div className={classes.disco_footer}>
             <div className={classes.ser_more_links_header}>
-                <Typography variant="body2" >
+                <Typography variant="display1" style={{ fontSize: "0.85rem" }} >
                     Popular in {org_name}
                  </Typography>
             </div>
@@ -98,7 +106,7 @@ class MoreLinks extends Component {
         </div>)
 
         const stateSerLinks = _.shuffle(stateServices).map((ss, idx) =>
-            (<Typography key={idx}>
+            (<Typography variant="caption" key={idx}>
                 <a
                     href={`/${ss.url_slug}`}
                     className={classes.footer_social_icon}
@@ -112,7 +120,7 @@ class MoreLinks extends Component {
 
         const stateSers = (<div className={classes.disco_footer}>
             <div className={classes.ser_more_links_header}>
-                <Typography variant="body2" >
+                <Typography variant="display1" style={{ fontSize: "0.85rem" }} >
                     Services in {state_name}
                  </Typography>
             </div>
@@ -123,7 +131,7 @@ class MoreLinks extends Component {
 
         const glossLinks = (<div className={classes.disco_footer}>
             <div className={classes.ser_more_links_header}>
-                <Typography variant="body2" >
+                <Typography variant="display1" style={{ fontSize: "0.85rem" }} >
                     Tending on Evergov
                  </Typography>
             </div>

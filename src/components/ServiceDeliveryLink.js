@@ -119,6 +119,7 @@ const styles = theme => ({
   ser_del_button_msg_container:{
     display: 'flex',
     flexDirection: 'column',
+    width: '100%',
     justifyContent: 'space-between'
   },
   ser_del_link_dialogButton2: {
@@ -540,7 +541,7 @@ class ServiceDeliveryLink extends Component {
       )
     }
 
-    const viewsComp = (<div className={this.state.isMob ? classes.template_views_card_item_mob : classes.template_views_card_item}>
+    const viewsComp = (moreThan > 10) ? (<div className={this.state.isMob ? classes.template_views_card_item_mob : classes.template_views_card_item}>
       <div>
         {" "}
         <SvgUsers style={{ fontSize: "26px" }} />{" "}
@@ -550,11 +551,12 @@ class ServiceDeliveryLink extends Component {
           variant="caption"
           className={classes.template_views_message_text}
         >
-        <b>{moreThan}</b> accessed this
+        <b>{moreThan}</b> people accessed this
           service in the past month
                 </Typography>
       </div>
-    </div>)
+    </div>) : null
+
     return (
       <Fragment>
         <div className={classes.ser_del_button_msg_container}>

@@ -591,7 +591,7 @@ class ServiceDetailTemplate extends React.Component {
                     </Grid>
          
                     <Grid item xs={12} className={classes.ser_detail_morelinks} >
-                        <MoreLinks otherServices={otherServices} state_name={state_org_details.area.name} 
+                        <MoreLinks otherServices={otherServices} state_name={state_org_details.area.name} org_name={orgHieSlug}
                         stateServices={state_org_details.offered_services}
                         glossaryLinks={state_org_details.offered_services}/>
                     </Grid>

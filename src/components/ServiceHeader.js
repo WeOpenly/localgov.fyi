@@ -378,9 +378,7 @@ class ServiceHeader extends Component {
                   </div>
                 </div>    
               </div>
-  
         </Grid>
-        
       </Grid>
     );
   }

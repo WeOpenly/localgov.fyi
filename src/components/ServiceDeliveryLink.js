@@ -550,8 +550,8 @@ class ServiceDeliveryLink extends Component {
           variant="caption"
           className={classes.template_views_message_text}
         >
-          More than <b>{moreThan}</b> people accessed this
-          service in the last two months
+        <b>{moreThan}</b> accessed this
+          service in the past month
                 </Typography>
       </div>
     </div>)

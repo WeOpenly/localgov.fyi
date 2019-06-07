@@ -89,7 +89,7 @@ class MoreLinks extends Component {
         const additionalServices = (<div className={classes.disco_footer}>
             <div className={classes.ser_more_links_header}>
                 <Typography variant="body2" >
-                    More Services {org_name}
+                    Popular in {org_name}
                  </Typography>
             </div>
             <div className={classes.disco_footer_links}>
@@ -113,7 +113,7 @@ class MoreLinks extends Component {
         const stateSers = (<div className={classes.disco_footer}>
             <div className={classes.ser_more_links_header}>
                 <Typography variant="body2" >
-                    Services from {state_name}
+                    Services in {state_name}
                  </Typography>
             </div>
             <div className={classes.disco_footer_links}>
@@ -124,7 +124,7 @@ class MoreLinks extends Component {
         const glossLinks = (<div className={classes.disco_footer}>
             <div className={classes.ser_more_links_header}>
                 <Typography variant="body2" >
-                    Popular Services
+                    Tending on Evergov
                  </Typography>
             </div>
             <div className={classes.disco_footer_links}>

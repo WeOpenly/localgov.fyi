@@ -97,41 +97,6 @@ class Footer extends Component {
 
     return (<FooterNew />);
 
-    return (
-          <footer className={dark ? classes.footer_footer_dark : classes.footer_footer}>
-              <div className={classes.footer_left_items}>
-                  <Typography>
-                    <a href="https://twitter.com/myevergov" className={dark ? classes.footer_a_dark : classes.footer_a}>Twitter </a>
-                  </Typography>
-                  <Typography>
-                    <a  href="https://evergov.zendesk.com/hc/en-us" className={dark ? classes.footer_a_dark : classes.footer_a}>Support</a>
-                  </Typography>
-                   
-
-            <Typography >
-              <a href="/locations/" className={dark ? classes.footer_a_dark : classes.footer_a}>All Locations</a>
-                                 </Typography>
-           
-              </div>
-              <div className={classes.footer_right_items}>
-              <Link to="/about/" className={dark ? classes.footer_link_dark : classes.footer_link}>
-                    <Typography className={dark ? classes.footer_link_dark : classes.footer_link}>
-                About
-                 </Typography>
-              </Link>
-              <Link to="/terms/" className={dark ? classes.footer_link_dark : classes.footer_link}>
-                <Typography className={dark ? classes.footer_link_dark : classes.footer_link}>
-                Terms
-                 </Typography>
-              </Link>
-              <Link to="/privacy/" className={dark ? classes.footer_link_dark : classes.footer_link}>
-              <Typography className={dark ? classes.footer_link_dark : classes.footer_link}>
-                Privacy
-                </Typography>
-              </Link>
-              </div>
-          </footer>
-    );
   }
 }
 

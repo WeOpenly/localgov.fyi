@@ -10,6 +10,10 @@ const fs = require("fs");
 
 
 
+
+
+
+
 exports.createPages = ({graphql, actions}) => {
   const {createPage} = actions
 
@@ -25,7 +29,7 @@ exports.createPages = ({graphql, actions}) => {
     resolve(
       graphql(`
         {
-         allServiceGlossaryJson {
+          allServiceGlossaryJson {
   edges {
     node {
       id
@@ -33,164 +37,184 @@ exports.createPages = ({graphql, actions}) => {
       service_name_slug
       service_glossary_description
       views {
-  date
-  views
-}
-orgs {
-  organization {
-    org_name
-    id
-    logo_url
-  }
-  area {
-    hierarchy {
-      area_classification
-      area_id
-      area_name
-      area_classsification_level_number
+        date
+        views
+      }
+      orgs {
+        organization {
+          org_name
+          id
+          logo_url
+        }
+        area {
+          hierarchy {
+            area_classification
+            area_id
+            area_name
+            area_classsification_level_number
+          }
+        }
+        id
+        url_slug
+      }
     }
   }
-  id
-  url_slug
 }
+allOrgsJson {
+  edges {
+    node {
+      id
+      org_name
+      area {
+        hierarchy {
+          area_name
+          area_classification
+        }
+      }
+      url_slug
+      logo_url
+      contact_details {
+        contact_type
+        contact_value
+      }
+      other_orgs_from_state {
+        org_name
+        url_slug
+        id
+      }
+      other_orgs_from_state_heading
+      hierarchial_service_details {
+        org {
+          name
+        }
+        services {
+          service_name
+          service_del_links {
+            link_name
+            url
+          }
+          service_description
+          url_slug
+        }
+      }
     }
   }
 }
-          allOrgsJson {
-            edges {
-              node {
-                id
-                org_name
-                area {
-                  hierarchy {
-                    area_name
-                    area_classification
-                  }
-                }
-                url_slug
-                logo_url
-                contact_details {
-                  contact_type
-                  contact_value
-                }
-                other_orgs_from_state {
-                  org_name
-                  url_slug
-                  id
-                }
-                other_orgs_from_state_heading
-                hierarchial_service_details {
-                  org {
-                    name
-                  }
-                  services {
-                    service_name
-                    service_del_links {
-                      link_name
-                      url
-                    }
-                    service_description
-                    url_slug
-                  }
-                }
-              }
-            }
+allSersJson {
+  edges {
+    node {
+      service {
+        id
+        url_slug
+        logo_url
+        delivery_enabled
+        service_name
+        views {
+          date
+          views
+        }
+        service_faq {
+          answer
+          question
+        }
+        service_forms {
+          url
+          price
+          name
+        }
+        service_price
+        service_steps {
+          step_number
+          description
+        }
+        contact_details {
+          contact_type
+          contact_value
+        }
+        service_timing {
+          break
+          open
+          day
+        }
+        service_location {
+          id
+        }
+        service_del_links {
+          url
+          link_name
+        }
+        service_description
+        service_reminder_bp_json {
+          id
+        }
+        service_parent {
+          name
+          logo_url
+          description
+        }
+      }
+      additional_sers {
+        url_slug
+        service_name
+        service_price
+        service_faq {
+          answer
+          question
+        }
+        service_forms {
+          url
+          price
+          name
+        }
+        service_steps {
+          step_number
+          description
+        }
+        service_timing {
+          break
+          open
+          day
+        }
+        service_location {
+          id
+        }
+        service_del_links {
+          url
+          link_name
+        }
+        service_description
+        service_reminder_bp_json {
+          id
+        }
+      }
+      state_org_details {
+        offered_services {
+          name
+          url_slug
+        }
+        url_slug
+        area {
+          name
+        }
+      }
+      org_details {
+        org_name
+        contact_details {
+          contact_type
+          contact_value
+        }
+        id
+        area {
+          hierarchy {
+            area_name
           }
-          allSersJson {
-            edges {
-              node {
-                service {
-                  id
-                  url_slug
-                  logo_url
-                  delivery_enabled
-                  service_name
-                  service_faq {
-                    answer
-                    question
-                  }
-                  service_forms {
-                    url
-                    price
-                    name
-                  }
-                  service_price
-                  service_steps {
-                    step_number
-                    description
-                  }
-                  contact_details {
-                    contact_type
-                    contact_value
-                  }
-                  service_timing {
-                    break
-                    open
-                    day
-                  }
-                  service_location {
-                    id
-                  }
-                  service_del_links {
-                    url
-                    link_name
-                  }
-                  service_description
-                  service_reminder_bp_json {
-                    id
-                  }
-                }
-                additional_sers {
-                  url_slug
-                  service_name
-                  service_price
-                  service_faq {
-                    answer
-                    question
-                  }
-                  service_forms {
-                    url
-                    price
-                    name
-                  }
-                  service_steps {
-                    step_number
-                    description
-                  }
-                  service_timing {
-                    break
-                    open
-                    day
-                  }
-                  service_location {
-                    id
-                  }
-                  service_del_links {
-                    url
-                    link_name
-                  }
-                  service_description
-                  service_reminder_bp_json {
-                    id
-                  }
-                }
-                org_details {
-                  org_name
-                  contact_details {
-                    contact_type
-                    contact_value
-                  }
-                  id
-                  area {
-                    hierarchy {
-                      area_name
-                    }
-                  }
-                  url_slug
-                }
-              }
-            }
-          }
+        }
+        url_slug
+      }
+    }
+  }
+}
+
           allLogos: allFile(
             filter: { sourceInstanceName: { eq: "logos" } }
           ) {
@@ -273,7 +297,7 @@ orgs {
           });
         });
 
-        // service page
+        //service page
 
         const serTemplate = path.resolve(
           `src/templates/service-detail-2.js`
@@ -286,7 +310,7 @@ orgs {
             service_reminder_bp_json &&
             "field_schema" in service_reminder_bp_json &&
             service_reminder_bp_json["field_schema"] !== null;
-          const { service, org_details, additional_sers } = node;
+          const { service, org_details, additional_sers, state_org_details } = node;
 
           createPage({
             path: `${service.url_slug}/`,
@@ -294,8 +318,11 @@ orgs {
             context: {
               data: {
                 id: service.id,
+                views: service.views,
                 url_slug: service.url_slug,
+                state_org_details: state_org_details,
                 contact_details: service.contact_details,
+                service_parent: service.service_parent || null,
                 service_delivery_enabled: service.delivery_enabled,
                 name: service.service_name,
                 allForms: service.service_forms || [],

@@ -22,9 +22,13 @@ import KeyboardBackspace from '@material-ui/icons/KeyboardBackspace';
 import ServiceDetail from '../components/ServiceDetail';
 import DetailTemplate from '../components/detailTemplate';
 import ServiceHeader from '../components/ServiceHeader';
+import GlossaryCard from '../components/ServicePage/GlossaryCard';
 
 import Footer from '../components/Footer';
 import ServiceCard from '../components/ServiceCard';
+
+import MoreLinks from '../components/ServicePage/MoreLinks';
+
 import withRoot from '../withRoot';
 import {isLoggedIn} from '../components/Account/Auth';
 
@@ -59,7 +63,8 @@ const styles = theme => ({
         }
     },
     ser_detail_container: {
-        marginTop: theme.spacing.unit * 2
+        marginTop: theme.spacing.unit * 2,
+        maxWidth: '1000px',
     },
     ser_detail_details: {
         width: '100%'
@@ -177,7 +182,12 @@ ser_detail_footer : {
     borderTop: `1px solid #dcdcdc`,
     paddingTop: theme.spacing.unit,
     marginTop: theme.spacing.unit *6
-}
+},
+    ser_detail_morelinks:{
+        borderTop: `1px solid #dcdcdc`,
+        paddingTop: theme.spacing.unit,
+        marginTop: theme.spacing.unit * 6
+    }
 });
 
 
@@ -310,10 +320,13 @@ class ServiceDetailTemplate extends React.Component {
             org_slug,
             org_name,
             service_del_links,
+            service_parent,
+            state_org_details,
             service_reminder_bp_json,
             otherServices,
             logoSizes,
             org_area_hie,
+            views,
             org_logo_sizes
         } = this.props.pageContext.data;
 
@@ -323,15 +336,23 @@ class ServiceDetailTemplate extends React.Component {
             orgLogoSvg = org_logo_sizes.fluid
         }
 
+        let orgHieComp = null;
         let orgHieSlug = null;
         
     
         if (org_area_hie.length === 1) {
-            orgHieSlug = `${org_name}`
+            orgHieComp = <Link style={{ color: '#6F47FF'}} to={state_org_details.url_slug}>{org_name}</Link>
+            orgHieSlug = org_name;
         }
         else {
-            if (org_area_hie.length)
-            orgHieSlug = `${org_name}, ${org_area_hie[org_area_hie.length - 1].area_name}`;
+            if (org_area_hie.length){
+                orgHieComp = (<span>
+        
+                    <Link style={{ color: '#6F47FF'}} to={org_slug}>{org_name}</Link>,{" "}
+                    <Link style={{ color: '#6F47FF'}} to={state_org_details.url_slug}>{org_area_hie[org_area_hie.length - 1].area_name}</Link>
+                </span>)
+                orgHieSlug = org_area_hie[org_area_hie.length - 1].area_name
+            }
         }
 
         let serRemFormRaw = null;
@@ -432,22 +453,8 @@ class ServiceDetailTemplate extends React.Component {
             </p>
         </form>);
 
-        let otherSer =null;
-        if (!this.state.loggedin){
-            otherSer = otherServices
-                .slice(0, 3)
-                .map((service, idx) => <div style={{ marginBottom: '24px' }}><ServiceCard
-                    key={`service-card-other-${idx}`}
-                    resultType='service'
-                    id={id}
-                    listIndex={`${id}-${idx}`}
-                    toLink={`/${service.url_slug}/`}
-                    title={service.service_name}
-                    description={service.service_description}
-                    deliveryLink={service.service_del_links && service.service_del_links[0]
-                        ? service.service_del_links[0]
-                        : null} /></div>);
-        }
+
+
 
         const jsonLd = {
             "@context": "http://schema.org",
@@ -471,12 +478,13 @@ class ServiceDetailTemplate extends React.Component {
         if (name){
             serHeader = <ServiceHeader
                 name={name}
+                views={views}
                 service_delivery_enabled={service_delivery_enabled}
                 id={id}
                 orgLogoSvg={orgLogoSvg}
                 offeredIn={orgHieSlug}
                 orgID={org_id}
-                orgSlug={org_slug}
+                orgHieComp={orgHieComp}
                 info={contact_details}
                 serDelLinks={service_del_links}
                 logoSizes={serLogoSvg} />
@@ -496,6 +504,15 @@ class ServiceDetailTemplate extends React.Component {
                     <KeyboardBackspace />
                 </IconButton>
             )
+        }
+     
+
+
+        let actionCard = null;
+
+        if (service_parent){
+            const { name, description, logo_url } = service_parent;
+            actionCard = (<GlossaryCard name={name} description={description} logoUrl={logo_url} />)
         }
 
         return (
@@ -527,30 +544,40 @@ class ServiceDetailTemplate extends React.Component {
                 </Helmet>
 
                 <ServiceFlowDialog service_name={name} service_id={id} /> 
+                <Grid container>
+                    <Grid item sm={1}>
 
-                <Grid container spacing={0} className={classes.ser_detail_container}>
-                    
-                <Grid item xs={12}>
-                    {serHeader}
-                </Grid>
-                 
+                    </Grid>
+                    <Grid item xs={12} sm={10}>
+                        <Grid item xs={12}>
+                            {serHeader}
+                        </Grid>
+
+
+                        <Grid item xs={12} sm={12} className={classes.ser_detail_details}>
+                            <ServiceDetail name={name} 
+                              
+                            orgHieSlug={orgHieSlug} description={description} price={price} alltimings={alltimings} allForms={allForms} allfaq={allfaq} allSteps={allSteps} />
+                        </Grid>
+                        
+
+                        <Grid item xs={12} sm={12} className={classes.ser_detail_action_card}>
+                            {actionCard}
+                        </Grid>
+
+                        </Grid>
+       
+                    <Grid item sm={1}>
+
+                    </Grid>
          
-                    <Grid item xs={12} sm={12} md={8} className={classes.ser_detail_details}>
-                        <ServiceDetail name={name} orgHieSlug={orgHieSlug} description={description} price={price} alltimings={alltimings} allForms={allForms} allfaq={allfaq} allSteps={allSteps}  />
-                    </Grid>
-
-                    <Grid item xs={12} sm={12} md={4}>
-                        <div className={classes.other_ser_headerWrapper}>
-                            <Typography variant="subheading">More Services</Typography>
-                        </div>
-                        {otherSer}
-                        <div className={classes.other_ser_linkWrapper}>
-                            <Link to={`/${org_slug}/`} className={classes.other_ser_link}>
-                                <Typography variant="caption" className={classes.other_ser_linkText}>See all services from {org_name}</Typography>
-                            </Link>
-                        </div>
+                    <Grid item xs={12} className={classes.ser_detail_morelinks} >
+                        <MoreLinks otherServices={otherServices} state_name={state_org_details.area.name} org_name={org_name}
+                        stateServices={state_org_details.offered_services}
+                        glossaryLinks={state_org_details.offered_services}/>
                     </Grid>
                 </Grid>
+
        
               <div className={classes.ser_detail_footer}>
                 <Footer page={this.props.location.pathname} />

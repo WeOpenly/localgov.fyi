@@ -52,7 +52,7 @@ class MiniOrgDetail extends Component {
 
     render() {
         const {classes} = this.props;
-const {org_name, org_link, logoFluid} = this.props;
+        const {org_name, org_link, logoFluid} = this.props;
 
         return (
 

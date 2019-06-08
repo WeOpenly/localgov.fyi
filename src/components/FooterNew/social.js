@@ -143,12 +143,12 @@ class FooterSocial extends Component {
         return (
             <div className={classes.social_footer}>
                 <div className={classes.social_footer_header}>
-                    <Typography variant="body2" >
+                    <Typography variant="display1" style={{ fontSize: "0.85rem"}} >
                         Evergov
                     </Typography>
                 </div>
                 <div className={classes.social_footer_links}>
-                    <Typography>
+                    <Typography variant="caption">
                     <a
                         href={`/about`}
                         className={classes.footer_social_icon}
@@ -157,7 +157,7 @@ class FooterSocial extends Component {
                         About
                         </a>
                     </Typography>
-                    <Typography>
+                    <Typography variant="caption">
                     <a
                         href={`https://evergov.com/blog`}
                         className={classes.footer_social_icon}

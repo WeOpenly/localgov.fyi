@@ -18,11 +18,13 @@ const styles = theme => ({
     },
     new_footer_links:{
         display: 'flex',
-        justifyContent: 'space-around'
+        width: '800px',
+        justifyContent: 'space-between',
+        alignSelf: 'center',
     },
     new_footer_links_mob:{
         display: 'flex',
-        justifyContent: 'space-around',
+        justifyContent: 'space-between',
         textAlign: 'center',
     },
     new_footer_copyright:{
@@ -52,9 +54,9 @@ class FooterNew extends Component {
         return (
             <div className={classes.new_footer}>
                 <div className={this.state.isMob ? classes.new_footer_links_mob : classes.new_footer_links}>
-                    <FooterSupport />
-                    <FooterDiscover />
                     <FooterSocial />
+                    <FooterDiscover />
+                    <FooterSupport />
                 </div>
                 <div className={classes.new_footer_copyright}>
                     <Typography variant="caption">

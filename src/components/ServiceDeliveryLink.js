@@ -24,6 +24,7 @@ import {navigate, redirectTo} from '@reach/router';
 
 import {encode} from 'universal-base64';
 import ShareBox from './ShareBox';
+import SvgUsers from '../svgIcons/users';
 
 const styles = theme => ({
   ser_del_link_root: {
@@ -115,6 +116,12 @@ const styles = theme => ({
       color: 'white'
     }
   },
+  ser_del_button_msg_container:{
+    display: 'flex',
+    flexDirection: 'column',
+    width: '100%',
+    justifyContent: 'space-between'
+  },
   ser_del_link_dialogButton2: {
     marginTop: theme.spacing.unit * 2,
     marginBottom: theme.spacing.unit * 2
@@ -160,6 +167,31 @@ ser_del_link_icymi:{
 ser_del_link_icymi_text:{
   color: theme.palette.primary['100']
 },
+  template_views_card_item: {
+    display: "flex",
+    justifyContent: "center"
+  },
+  template_views_card_item_mob: {
+    display: "flex",
+  },
+  template_views_card_mob: {
+    display: "flex",
+    flexWrap: "wrap",
+    paddingLeft: theme.spacing.unit,
+  },
+  template_views_card: {
+    display: "flex",
+    flexWrap: "wrap",
+    padding: theme.spacing.unit
+  },
+  template_views_message: {
+    paddingLeft: theme.spacing.unit,
+    paddingTop: theme.spacing.unit / 4
+  },
+  template_views_message_text: {
+    fontWeight: 500,
+    textAlign: "left"
+  }
 });
 
 const windowGlobal = typeof window !== 'undefined' && window
@@ -306,7 +338,7 @@ class ServiceDeliveryLink extends Component {
   }
 
   render() {
-    const {showFeedbackDialog, classes, serDelLinks, org_name, service_name} = this.props;
+    const { showFeedbackDialog, classes, serDelLinks, org_name, service_name, views} = this.props;
     const {
       feedbackOpen,
       showSatisfied,
@@ -323,6 +355,16 @@ class ServiceDeliveryLink extends Component {
 
     if (serDelLinks.length === 0) {
       return null;
+    }
+
+    let moreThan = 10;
+
+    if (views) {
+      let viewsAgg = views.map(item => item.views).reduce((a, b) => a + b);
+
+      if (viewsAgg && viewsAgg / 10 > 1) {
+        moreThan = 10 * Math.ceil(viewsAgg / 10);
+      }
     }
 
     let serButtons = null;
@@ -499,10 +541,29 @@ class ServiceDeliveryLink extends Component {
       )
     }
 
+    const viewsComp = (moreThan > 10) ? (<div className={this.state.isMob ? classes.template_views_card_item_mob : classes.template_views_card_item}>
+      <div>
+        {" "}
+        <SvgUsers style={{ fontSize: "26px" }} />{" "}
+      </div>{" "}
+      <div className={classes.template_views_message}>
+        <Typography
+          variant="caption"
+          className={classes.template_views_message_text}
+        >
+        <b>{moreThan}</b> people accessed this
+          service in the past month
+                </Typography>
+      </div>
+    </div>) : null
 
     return (
       <Fragment>
-        {serButtons}
+        <div className={classes.ser_del_button_msg_container}>
+          {serButtons}
+          {viewsComp}
+        </div>
+      
         {redirMsg}
         {dialog}
       </Fragment>

@@ -453,27 +453,8 @@ class ServiceDetailTemplate extends React.Component {
             </p>
         </form>);
 
-<<<<<<< HEAD
-        let otherSer =null;
-        if (!this.state.loggedin){
-            otherSer = otherServices
-                .slice(0, 3)
-                .map((service, idx) => <div style={{ marginBottom: '24px' }}><ServiceCard
-                    key={`service-card-other-${idx}`}
-                    resultType='service'
-                    id={id}
-                    listIndex={`${id}-${idx}`}
-                    toLink={`/${service.url_slug}/`}
-                    title={service.service_name}
-                    description={service.service_description}
-                    deliveryLink={service.service_del_links && service.service_del_links[0]
-                        ? service.service_del_links[0]
-                        : null} /></div>);
-        }
-=======
 
 
->>>>>>> service-add-links
 
         const jsonLd = {
             "@context": "http://schema.org",

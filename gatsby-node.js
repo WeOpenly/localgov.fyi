@@ -78,7 +78,9 @@ allOrgsJson {
         contact_value
       }
       other_orgs_from_state {
-        org_name
+        area {
+          name
+        }
         url_slug
         id
       }

@@ -11,6 +11,8 @@ import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
 import Img from "gatsby-image";
 import Avatar from '@material-ui/core/Avatar';
+import LocationCity from '@material-ui/icons/LocationCity'
+
 
 const styles = theme => ({
 ser_gloss_gridItemLocation_mob_focus : {
@@ -32,7 +34,16 @@ suggest_loc_org_details:{
         boxShadow: `0 0 0px 1px ${theme.palette.primary["200"]}`,
         border: '1px solid #fff',
         marginRight: theme.spacing.unit * 2, 
-    }
+    },
+  ser_list_org_agg_logo_dum: {
+    width: 48,
+    zIndex: '190',
+    background: '#fff',
+    height: 48,
+    boxShadow: `0 0 0px 1px ${theme.palette.primary["900"]}`,
+    border: '1px solid #d4d4d4',
+    marginRight: theme.spacing.unit * 2,
+  }
 });
 
 
@@ -105,6 +116,19 @@ class LocationSerCard extends Component {
         // }
         // }
 
+      let avatar = (<Avatar className={classes.ser_list_org_agg_logo_dum}>
+        <LocationCity fontSize="medium" style={{ color: '#AB93FF' }} />
+      </Avatar>)
+
+      if (logoUrl) {
+        avatar = (
+          <Avatar
+            alt={areaName}
+            className={classes.suggest_loc_logo}
+            src={`${logoUrl}`}
+          />
+        )
+      }
     
         const border = highlight ? `#d782d9` : `#AB93FF`
         return (
@@ -123,13 +147,7 @@ class LocationSerCard extends Component {
             to={`/${ser_url_slug}`}
           >
             <CardContent className={classes.suggest_loc_card}>
-              {logoUrl ? (
-                <Avatar
-                  alt={areaName}
-                  className={classes.suggest_loc_logo}
-                  src={`${logoUrl}`}
-                />
-              ) : null}
+              {avatar}
               <div className={classes.suggest_loc_org_details}>
                 <Typography variant="body2" gutterBottom>
                   {areaName}

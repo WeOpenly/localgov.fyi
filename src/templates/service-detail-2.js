@@ -351,7 +351,7 @@ class ServiceDetailTemplate extends React.Component {
                     <Link style={{ color: '#6F47FF'}} to={org_slug}>{org_name}</Link>,{" "}
                     <Link style={{ color: '#6F47FF'}} to={state_org_details.url_slug}>{org_area_hie[org_area_hie.length - 1].area_name}</Link>
                 </span>)
-                orgHieSlug = org_area_hie[org_area_hie.length - 1].area_name
+                orgHieSlug = `${org_name}, ${org_area_hie[org_area_hie.length - 1].area_name}`
             }
         }
 
@@ -483,6 +483,7 @@ class ServiceDetailTemplate extends React.Component {
                 id={id}
                 orgLogoSvg={orgLogoSvg}
                 offeredIn={orgHieSlug}
+                orgNameOnly={org_name}
                 orgID={org_id}
                 orgHieComp={orgHieComp}
                 info={contact_details}

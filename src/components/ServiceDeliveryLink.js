@@ -338,7 +338,7 @@ class ServiceDeliveryLink extends Component {
   }
 
   render() {
-    const { showFeedbackDialog, classes, serDelLinks, org_name, service_name, views} = this.props;
+    const { showFeedbackDialog, classes, serDelLinks, org_name, orgNameOnly, service_name, views} = this.props;
     const {
       feedbackOpen,
       showSatisfied,
@@ -372,7 +372,7 @@ class ServiceDeliveryLink extends Component {
       serButtons = serDelLinks.map((link, idx) => {
         const data = {
           's': service_name,
-          'o': org_name,
+          'o': orgNameOnly,
           'u': link.url
         }
         const encodedData = encode(JSON.stringify(data))

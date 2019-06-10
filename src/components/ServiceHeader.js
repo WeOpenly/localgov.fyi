@@ -222,7 +222,7 @@ class ServiceHeader extends Component {
   }
 
   render() {
-    const { classes, name, offeredIn, info, serDelLinks, id, logoSizes, service_delivery_enabled, views, orgLogoSvg, orgHieComp } = this.props;
+    const { classes, name, offeredIn, info, serDelLinks, id, logoSizes, service_delivery_enabled, views, orgLogoSvg, orgHieComp, orgNameOnly } = this.props;
 
     if (!(name && offeredIn && info && serDelLinks )){
       return null;
@@ -343,7 +343,7 @@ class ServiceHeader extends Component {
       </Button>)
 
     const serviceFlowButton = service_delivery_enabled ? (<Button size="small" variant="outlined" color="primary" onClick={this.toggleServiceFlow} className={classes.service_header_notifyButton}>Pay with evergov</Button>) : null;
-    const sdl = <ServiceDeliveryLink views={views} id={id} service_name={name} org_name={offeredIn} serDelLinks={serDelLinks} />
+    const sdl = <ServiceDeliveryLink orgNameOnly={orgNameOnly} views={views} id={id} service_name={name} org_name={offeredIn} serDelLinks={serDelLinks} />
 
     return (
       <Grid container spacing={0} className={!this.state.isMobileOnly ? classes.service_header_main : classes.service_header_mainMobile}>

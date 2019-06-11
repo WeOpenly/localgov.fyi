@@ -409,7 +409,10 @@ class MobileSuggestions extends Component {
         const { locationSearchText, areaGuessResult, inHeader } = this.props;
 
         const searchOptions = {
-            types: ['(cities)']
+            types: ['(cities)'],
+          componentRestrictions: {
+            'country': 'us'
+          }
         }
 
         let autoFilled = false;

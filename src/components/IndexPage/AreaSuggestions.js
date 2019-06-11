@@ -140,7 +140,10 @@ class GoogAutoComplete extends React.Component {
 
 
         const searchOptions = {
-            types: ['(cities)']
+            types: ['(cities)'],
+          componentRestrictions: {
+            'country': 'us'
+          }
         }
 
         let autoFilled = false;

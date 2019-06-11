@@ -65,7 +65,7 @@ class LocationSerCard extends Component {
         let state = null;
         let areaName = null;
         if (area.hierarchy.length ===1){
-            areaName = area.name || organization.org_name
+            areaName = area.name 
             areaName = `State of ${areaName}`
         }
         else{

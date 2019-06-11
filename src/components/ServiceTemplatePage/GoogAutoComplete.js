@@ -160,9 +160,16 @@ class GoogAutoComplete extends React.Component {
         this.searchInput.blur();
     };
 
-
+   
     render() {
         const {classes, searchText} = this.props;
+        const searchOptions = {
+            types: ['(cities)'],
+            componentRestrictions: {
+                'country': 'us'
+            }
+        }
+
         return (
             <Grid container>
             <Grid item xs={1} ></Grid>
@@ -170,6 +177,7 @@ class GoogAutoComplete extends React.Component {
             <Grid item xs={10} className={classes.ser_gloss_placesContainer}>
             <PlacesAutocomplete
                 value={searchText}
+                searchOptions={searchOptions}
                 onChange={this.handleChange}
                 ref="placesAutocomplete"
                 onSelect={this.handleSelect}

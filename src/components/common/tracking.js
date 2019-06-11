@@ -46,13 +46,13 @@ export const trackEvent = (event_type, event_props) => async(dispatch, getState)
         .get(function (result, components) {
             try {
 
-                if (windowGlobal && windowGlobal.analytics) {
+                if (windowGlobal && windowGlobal.mixpanel) {
                     windowGlobal
-                        .analytics
+                        .mixpanel
                         .identify(result);
-                    windowGlobal.analytics.people.set({"$distinct_id": result });
+                    windowGlobal.mixpanel.people.set({"$distinct_id": result });
                     windowGlobal
-                        .analytics
+                        .mixpanel
                         .track(`event_${event_type}`, event_props);
                 }
 
@@ -77,13 +77,13 @@ export const trackView = (page_layout_type, viewing_entity_type, viewing_entity_
 
     
 
-                if (windowGlobal && windowGlobal.analytics) {
+                if (windowGlobal && windowGlobal.mixpanel) {
                     windowGlobal
-                        .analytics
+                        .mixpanel
                         .identify(result);
-                    windowGlobal.analytics.people.set({"$distinct_id": result });
+                    windowGlobal.mixpanel.people.set({"$distinct_id": result });
                     windowGlobal
-                        .analytics
+                        .mixpanel
                         .track(`page_view_${page_layout_type}`, eventParams);
                 }
 
@@ -106,10 +106,10 @@ export const trackInput = (input_type, text, extra) => async(dispatch, getState)
                 }
 
 
-                if (windowGlobal && windowGlobal.analytics) {
-                    windowGlobal.analytics.identify(result);
-                    windowGlobal.analytics.people.set({"$distinct_id": result });
-                    windowGlobal.analytics.track(`input_${input_type}`, eventParams);
+                if (windowGlobal && windowGlobal.mixpanel) {
+                    windowGlobal.mixpanel.identify(result);
+                    windowGlobal.mixpanel.people.set({"$distinct_id": result });
+                    windowGlobal.mixpanel.track(`input_${input_type}`, eventParams);
                 }
           
             } catch (e) {
@@ -137,10 +137,10 @@ export const trackClick = (click_type, clicked_entity_type, clicked_entity_id, c
 
     
 
-                if (windowGlobal && windowGlobal.analytics) {
-                    windowGlobal.analytics.identify(result);
-                    windowGlobal.analytics.people.set({"$distinct_id": result });
-                    windowGlobal.analytics.track(`click_${click_type}`, eventParams);
+                if (windowGlobal && windowGlobal.mixpanel) {
+                    windowGlobal.mixpanel.identify(result);
+                    windowGlobal.mixpanel.people.set({"$distinct_id": result });
+                    windowGlobal.mixpanel.track(`click_${click_type}`, eventParams);
                 }
 
             

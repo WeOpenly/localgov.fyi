@@ -10,7 +10,7 @@ import {withStyles} from '@material-ui/core/styles';
 
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
-
+import CircularProgress from '@material-ui/core/CircularProgress';
 import withRoot from '../withRoot';
 
 import IndexHero from '../components/IndexPage/Hero';
@@ -58,11 +58,13 @@ const styles = theme => ({
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
-    minHeight: '400px'
+    minHeight: '480px'
   }
 });
 
-const SuggestBoxLoader = props => (<div style={{ display: 'flex', justifyContent: 'center' }}><Spinner name="ball-beat" color="blue" /></div>);
+const SuggestBoxLoader = props => (<div style={{ display: 'flex', justifyContent: 'center' }}>
+  <CircularProgress size={24} />
+  </div>);
 
 
 class Index extends React.Component {

@@ -64,9 +64,10 @@ class LocationSerCard extends Component {
         const { classes, area, organization, ser_url_slug, highlight } = this.props;
         let state = null;
         let areaName = null;
+
+
         if (area.hierarchy.length ===1){
-            areaName = area.name 
-            areaName = `State of ${areaName}`
+            areaName = `State of ${area.hierarchy[area.hierarchy.length - 1].area_name}`;
         }
         else{
             areaName = area.name || organization.org_name

@@ -112,7 +112,7 @@ class TemplateViews extends Component {
                   variant="caption"
                   className={classes.template_views_message_text}
                 >
-                  More than <b>{moreThan}</b> people accessed this
+                  <b>{moreThan}</b> people accessed this
                   service in the last month
                 </Typography>
               </div>

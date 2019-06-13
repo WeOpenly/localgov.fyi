@@ -98,6 +98,10 @@ class Index extends React.Component {
         >
           <meta name="og:type" content="website" />
           <meta
+            name="description"
+            content={`Search and get notfied when you're due for local government services like payments of utility bill, property tax, parking citation & renewing business licence`}
+          />
+          <meta
             property="og:site_name"
             content={`Find All Government Services in a Single Place`}
           />

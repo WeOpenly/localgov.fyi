@@ -25,6 +25,7 @@ function failedRecvSearchResults() {
 }
 
 
+
 export function hideResultHelperMsg(){
     return { type: types.HIDE_RESULT_HELPER_MSG }
 }

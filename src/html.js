@@ -88,10 +88,7 @@ export default class HTML extends React.Component {
             content="D1BADF38847C730E9DC76BE0CCC4B42B"
           />
           <JsonLd data={searchLinksSchema} />
-          <meta
-            name="description"
-            content={`Search and get notfied when you're due for local government services like payments of utility bill, property tax, parking citation & renewing business licence`}
-          />
+   
           <meta
             property="og:site_name"
             content={`Evergov: all your gov services in a single place`}

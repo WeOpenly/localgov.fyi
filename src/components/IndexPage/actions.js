@@ -73,8 +73,8 @@ export function selectServiceTemplateId(service_template_id) {
     return { type: types.SELECT_SERVICE_TEMPLATE_ID, service_template_id}
 }
 
-export function selectGoogLocation(lat,lng){
-    return {type: types.SELECT_GOOG_LOCATION, lat, lng}
+export function selectGoogLocation(lat,lng, addr){
+    return {type: types.SELECT_GOOG_LOCATION, lat, lng, addr}
 }
 
 export function executeSearch(){

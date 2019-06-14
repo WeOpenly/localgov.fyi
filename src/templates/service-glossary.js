@@ -353,7 +353,7 @@ class ServiceGlossary extends Component {
                 <GoogAutoComplete serviceTemplateId={id} />
               </Grid>
               <Grid item xs={12}>
-                <Suggested handleOrgClick={this.handleOrgClick} />
+                <Suggested service_name={service_name} handleOrgClick={this.handleOrgClick} />
               </Grid>
               <Grid item xs={12}>
                 <OtherLocations allOrgs={orgs} />

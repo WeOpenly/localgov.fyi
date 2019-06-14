@@ -128,15 +128,16 @@ class GoogAutoComplete extends React.Component {
 
         geocodeByAddress(address)
             .then(results => getLatLng(results[0]))
-            .then(latLng => setGoogleLoc(latLng))
+          .then(latLng => setGoogleLoc(latLng, address))
             .catch(error => console.error('Error', error));
         this.props.setSearchText(address)
         this.searchInput.blur();
     };
 
 
+
     render() {
-        const { classes, locationSearchText, areaGuessResult, inHeader} = this.props;
+        const { classes, locationSearchText, selectedLocationLatLng, areaGuessResult, inHeader} = this.props;
 
 
         const searchOptions = {
@@ -148,12 +149,23 @@ class GoogAutoComplete extends React.Component {
 
         let autoFilled = false;
         let showInput = '';
+
+     
         const { lat, lng, city_name } = areaGuessResult;
 
         if (city_name){
             autoFilled = true;
             showInput = city_name;
         }
+
+      if (selectedLocationLatLng && 'addr' in selectedLocationLatLng){
+          const { addr } = selectedLocationLatLng;
+          if (addr) {
+            autoFilled = true;
+            showInput = addr;
+          }
+        }
+   
        
         if (!showInput){
             autoFilled = false;
@@ -300,9 +312,8 @@ const mapDispatchToProps = (dispatch) => {
         trackClick: (click_type, resultType, id, title, listIndex) => {
             dispatch(trackClick(click_type, resultType, id, title, listIndex));
         },
-        setGoogleLoc: (latlng) => {
-
-            dispatch(selectGoogLocation(latlng.lat, latlng.lng));
+        setGoogleLoc: (latlng, result) => {
+            dispatch(selectGoogLocation(latlng.lat, latlng.lng, result));
         },
         setSearchText: (addr) => {
             dispatch(updateGoogLocationSearchText(addr));

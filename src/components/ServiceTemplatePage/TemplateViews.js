@@ -85,7 +85,7 @@ class TemplateViews extends Component {
               <div style={{marginBottom: '4px'}}>
                 {" "}
                 <LocationCity
-                  fontSize="medium"
+             
                   style={{
                     color: "#AB93FF",
                     background: "#fff",

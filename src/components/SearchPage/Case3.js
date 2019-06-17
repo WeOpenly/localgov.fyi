@@ -13,6 +13,7 @@ import LocationCard from '../UserRequests/LocationCard';
 import NearbyOrgList from '../Nearby/OrgList';
 import RelatedServiceTemplates from '../RelatedServiceTemplates';
 import { withStyles } from '@material-ui/core/styles';
+import { trackEvent } from '../common/tracking';
 
 const styles = theme => ({
     ser_case1_suggested_row: {
@@ -83,6 +84,18 @@ class Case3 extends Component {
 
     componentDidMount() {
         this.setState({ isMob: isMobileOnly });
+    }
+
+    componentWillReceiveProps(nextProps) {
+        const {dispatch} = this.props;
+        if (this.props.searchResultsLoading && !nextProps.searchResultsLoading) {
+            const { searchResults } = nextProps;
+            const resLen = searchResults && Object.keys(searchResults).length > 0;
+            dispatch(trackEvent('index_search_result', {
+                results_case: 3,
+                results_len: resLen,
+            }));
+        }
     }
 
     render() {

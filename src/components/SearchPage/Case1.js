@@ -11,6 +11,8 @@ import OrgAggregate from '../Organization/Aggregate';
 import NearbyOrgList from '../Nearby/OrgList';
 import LocationCard from '../UserRequests/LocationCard';
 import RelatedServiceTemplates from '../RelatedServiceTemplates';
+import { trackEvent} from '../common/tracking';
+
 import ContentLoader from "react-content-loader"
 import { withStyles } from '@material-ui/core/styles';
 
@@ -71,6 +73,18 @@ class Case1 extends Component {
 
     componentDidMount() {
         this.setState({ isMob: isMobileOnly });
+    }
+
+    componentWillReceiveProps(nextProps) {
+        const { dispatch } = this.props;
+        if (this.props.searchResultsLoading && !nextProps.searchResultsLoading) {
+            const { searchResults} = nextProps;
+            const resLen = searchResults && Object.keys(searchResults).length > 0;
+            dispatch(trackEvent('index_search_result', {
+                results_case: 1,
+                results_len: resLen,
+            }));
+        }
     }
 
     render() {

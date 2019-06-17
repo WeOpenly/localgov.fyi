@@ -12,7 +12,7 @@ import CommonNav from '../../components/Nav/Common';
 import withRoot from '../../withRoot';
 import Footer from '../../components/Footer';
 
-import { trackView } from "../../components/common/tracking";
+import { trackView, trackEvent } from "../../components/common/tracking";
 import {fetchSearchResults} from '../../components/SearchPage/actions.js';
 import { navigate } from '@reach/router';
 
@@ -85,6 +85,12 @@ class Search extends React.Component {
                 }
             }
             dispatch(fetchSearchResults(lat, lng, service_template_id, service_text));
+            dispatch(trackEvent('index_search_query', {
+                lat,
+                lng,
+                service_template_id,
+                service_text
+            }));
         }
         else{
             if (windowGlobal) {

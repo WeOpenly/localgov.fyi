@@ -95,6 +95,8 @@ class SearchPageResults extends Component {
         this.setState({ isMob: isMobileOnly });
     }
 
+
+
     render() {
         const { classes, searchResultsLoading, searchResults, searchResultCase, searchResultsFailed, location} = this.props;
         

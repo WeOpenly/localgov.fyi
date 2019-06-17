@@ -13,6 +13,7 @@ import Img from "gatsby-image";
 import Avatar from '@material-ui/core/Avatar';
 import OtherLocations from '../IndexPage/OtherLocations'
 import RelatedServiceTemplates from '../RelatedServiceTemplates';
+import { trackEvent } from '../common/tracking';
 
 import Grid from '@material-ui/core/Grid';
 import ContentLoader from "react-content-loader"
@@ -95,7 +96,19 @@ class SearchPageResults extends Component {
         this.setState({ isMob: isMobileOnly });
     }
 
+    componentWillReceiveProps(nextProps){
+        const {dispatch} = this.props;
 
+        if (this.props.searchResultsLoading && !nextProps.searchResultsLoading && !nextProps.searchResultsFailed){
+            const { searchResults, shouldRedirect } = nextProps;
+            const resLen = searchResults && Object.keys(searchResults).length > 0;
+            dispatch(trackEvent('index_search_result', {
+                results_case: nextProps.searchResultCase,
+                results_len: resLen,
+                redirected: shouldRedirect
+            }));
+        }
+    }
 
     render() {
         const { classes, searchResultsLoading, searchResults, searchResultCase, searchResultsFailed, location} = this.props;

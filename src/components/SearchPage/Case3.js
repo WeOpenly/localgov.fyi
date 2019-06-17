@@ -86,17 +86,6 @@ class Case3 extends Component {
         this.setState({ isMob: isMobileOnly });
     }
 
-    componentWillReceiveProps(nextProps) {
-        const {dispatch} = this.props;
-        if (this.props.searchResultsLoading && !nextProps.searchResultsLoading) {
-            const { searchResults } = nextProps;
-            const resLen = searchResults && Object.keys(searchResults).length > 0;
-            dispatch(trackEvent('index_search_result', {
-                results_case: 3,
-                results_len: resLen,
-            }));
-        }
-    }
 
     render() {
         const { classes, searchResults, searchResultsFailed } = this.props;

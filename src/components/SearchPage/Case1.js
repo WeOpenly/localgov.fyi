@@ -75,6 +75,7 @@ class Case1 extends Component {
         this.setState({ isMob: isMobileOnly });
     }
 
+
     componentWillReceiveProps(nextProps) {
         const { dispatch } = this.props;
         if (this.props.searchResultsLoading && !nextProps.searchResultsLoading) {

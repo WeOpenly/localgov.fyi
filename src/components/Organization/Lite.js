@@ -74,7 +74,7 @@ class OrgLite extends Component {
         }
 
         let avatar = (<Avatar className={classes.ser_list_org_agg_logo_dum}>
-            <LocationCity fontSize="medium" style={{ color: '#AB93FF' }}/>
+            <LocationCity  style={{ color: '#AB93FF' }}/>
         </Avatar>)
 
         if (logo_url) {
@@ -95,6 +95,7 @@ class OrgLite extends Component {
 
         const border =  `#AB93FF`
         return (<Card
+            key={`nearby-org-${url_slug}`}
             style={{
                 cursor: 'pointer',
                 width: '280px',

@@ -1,6 +1,7 @@
 import 'regenerator-runtime/runtime';
 import * as types from './ActionTypes';
 import { YusufApi } from '../common/api';
+import {trackEvent} from '../common/api';
 import queryString from 'query-string'
 
 const windowGlobal = typeof window !== 'undefined' && window
@@ -46,13 +47,13 @@ export function fetchSearchResults(lat, lng, service_template_id, service_text) 
 
         try {
             const resp = await YusufApi(null, `get_search_results?${newQueryString}`, null, null);
+
             if (resp && resp.success) {
                 dispatch(recvSearchResults(resp.results, resp.case, resp.is_redirect, resp.is_parent_ser, resp.is_assoc_ser, resp.assoc_original_name));
             }
             else{
-                dispatch(failedRecvSearchResults());
+                dispatch(failedRecvSearchResults()); 
             }
-
         } catch (e) {
             dispatch(failedRecvSearchResults());
         }

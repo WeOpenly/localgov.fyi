@@ -25,7 +25,7 @@ const styles = theme => ({
     index_page_ser_suggestions_container:{
         margin: `${theme.spacing.unit}px ${theme.spacing.unit}px ${theme.spacing.unit}px 0`,
         display: 'flex',
-        width: '248px',
+        width: theme.spacing.unit * 23,
         justifyContent: 'center',
         position: 'relative'
     },
@@ -80,7 +80,7 @@ const styles = theme => ({
     
     index_page_search_iconButton: {
         minHeight: '1em',
-        fontSize: '18px',
+        fontSize: '16px',
         color: theme.palette.primary['500'],
         marginLeft: '12px',
     }
@@ -214,7 +214,7 @@ class GoogAutoComplete extends React.Component {
                     elevation={2}
                   >
                     {loading ? (
-                      <CircularProgress size={18} />
+                        <CircularProgress className={classes.index_page_search_iconButton}size={15} />
                     ) : (
                       <NearMe
                         className={classes.index_page_search_iconButton}

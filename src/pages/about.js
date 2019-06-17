@@ -11,6 +11,7 @@ import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
 import Search from '@material-ui/icons/Search';
+import AboutIl from '../svgIcons/AboutIl.js';
 
 import withRoot from '../withRoot';
 import HeaderWithSearch from '../components/HeaderWithSearch';
@@ -57,6 +58,21 @@ const styles = theme => ({
     paddingRight: theme.spacing.unit * 2,
     background: '#fafafa',
   },
+  about_desc:{
+    marginTop: theme.spacing.unit * 10,
+    maxWidth: '500px',
+    display: 'flex',
+    flexDirection : 'column',
+    justifyContent: 'center',
+  },
+  about_desc_mob:{
+    display: 'flex',
+    marginTop: theme.spacing.unit * 5,
+    flexDirection: 'column',
+    justifyContent: 'center',
+    alignItems: 'center',
+    margin: theme.spacing.unit*2
+  },
   section2Center: {
     display: 'flex',
     justifyContent: 'center',
@@ -86,8 +102,6 @@ const styles = theme => ({
   },
   bodyText: {
     marginTop: theme.spacing.unit * 2,
-    fontWeight: 400,
-    lineHeight: '1.75rem',
   },
   mailTo: {
     color: theme.palette.primary['500'],
@@ -95,13 +109,34 @@ const styles = theme => ({
     '&:hover': {
       textDecoration: 'underline',
     },
+  },
+  about_section_1:{
+    display: 'flex',
+    justifyContent: 'center',
   }
+  
 });
 
 class About extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      isMobileOnly: false,
+    };
+    
+  }
+
   componentDidMount() {
     const { dispatch } = this.props;
     dispatch(trackView('about', null, null, null));
+    this.setState({ isMobileOnly: isMobileOnly });
+    // const script = document.createElement("script");
+
+    // script.src = "https://maps.googleapis.com/maps/api/js?key=AIzaSyBr4RixcEvuxgGr9EwNeiHCqUITczxvvuc&libraries=places&callback=initIndex";
+    // script.async = true;
+    // script.defer = true;
+    // document.head.appendChild(script);
+    // this.props.fetchAreaGuess();
   }
 
   render() {
@@ -114,75 +149,29 @@ class About extends React.Component {
           </title>
           <meta
             name="description"
-            content={`Organizing world's governance information`} />
+            content={`All your government servicesin a single place`} />
         </Helmet>
         <Nav />
-        <div className={classes.section1}>
-          <Grid container>
-            <Grid item md={1} />
-            <Grid item md={10}>
-              <Typography
-                variant="display1"
-                align="center"
-                className={classes.headline}
-              >
-                We are on a mission
+        <div className={classes.about_section_1}>
+         {!this.state.isMobileOnly ? (<div className={classes.about_ill}>
+            <AboutIl />
+          </div>) : null}
+          <div className={this.state.isMobileOnly ? classes.about_desc_mob: classes.about_desc}>
+            <Typography
+              variant="headline"
+              align="left"
+            >
+              We are on a mission to make every government service accessible online.
               </Typography>
-              <Typography
-                variant="display1"
-                align="center"
-                className={classes.headline}
-              >
-                to make every government
-              </Typography>
-              <Typography
-                variant="display1"
-                align="center"
-                className={classes.headline}
-                gutterBottom
-              >
-                service accessible online.
-              </Typography>
-            </Grid>
-            <Grid item md={1} />
-          </Grid>
-        </div>
-        <div className={classes.section2}>
-          <Grid container>
-            <Grid item md={3} />
-            <Grid item md={6} className={classes.section2Center}>
-              <Search className={classes.searchIcon}/>
-              <div>
-                <Typography variant="display2" className={classes.subheading}>
-                  Find your government services instantly.
+
+            <Typography variant="caption" align="left" className={classes.bodyText}>
+            Be it individuals or businesses, we are making sense of all the government services out there and serving them on a silver platter for all.
                 </Typography>
-                <Typography variant="subheading" className={classes.bodyText}>
-                  Be it individuals or businesses, we are making sense of all the government services out there and serving them on a silver platter for all.
-                </Typography>
-              </div>
-            </Grid>
-            <Grid item md={3} />
-          </Grid>
-        </div>
-        <div className={classes.section3}>
-          <Grid container>
-            <Grid item md={1} />
-            <Grid item md={10} className={classes.section3Content}>
-              <div className={classes.section3Text}>
-                <Typography variant="display2" className={classes.subheading}>
-                  We are at the beginning of a long journey.
-                </Typography>
-                <Typography variant="subheading" className={classes.bodyText}>
-                  We are a small team with a big vision to make government services delightful. We are adding more services and locations everday.
-                </Typography>
-                <Typography variant="subheading" className={classes.bodyText}>
-                  If you haven't found anything you are looking for and want us to add them, drop us a line {<a href="mailto:team@weopenly.com" className={classes.mailTo}>here.</a>}
-                </Typography>
-              </div>
-            </Grid>
-            <Grid item md={1} />
-          </Grid>
-        </div>
+          <Typography variant="body1" align="left" className={classes.bodyText}>
+            We are a small team with a big vision to make government services delightful. We are adding more services and locations everday. If you haven't found anything you are looking for and want us to add them, drop us a line {<a href="mailto:team@weopenly.com" className={classes.mailTo}>here.</a>}
+          </Typography>
+          </div>
+          </div>
       </Fragment>
     );
   }

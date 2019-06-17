@@ -10,6 +10,8 @@ import Typography from '@material-ui/core/Typography';
 import Grid from '@material-ui/core/Grid';
 import ContentLoader from "react-content-loader";
 
+import IndexheroSvg from '../../svgIcons/IndexHeroIl1.js';
+
 import CommonNav from '../Nav/Common';
 
 import SerSuggestions from './SerSuggestions';
@@ -18,7 +20,6 @@ import MobileSuggestions from './MobileSuggestions';
 import RelatedServiceTemplates from '../RelatedServiceTemplates';
 import {fetchAreaGuess, executeSearch} from './actions';
 import { trackClick } from "../common/tracking";
-import { teal } from '@material-ui/core/colors';
 
 
 
@@ -32,6 +33,10 @@ const styles = theme => ({
     index_templates_box:{
         display:  'flex',
         flex : '1',
+    },
+    index_hero_title:{
+        display: 'flex',
+        justifyContent: 'space-around'
     },
     index_hero_container: {
         display: 'flex',
@@ -148,12 +153,12 @@ class IndexHero extends Component {
 
         return (
             <Grid container className={classes.index_hero_section_container}>
-                    <CommonNav location={location} />
+                <CommonNav location={location} />
 
-                <Grid item xs="auto" sm={1} md={2} />
+                <Grid item xs="auto" sm={1} />
                 <Grid item
                     sm={10}
-                    md={8}
+
                     className={!this.state.isMobile
                         ? classes.index_hero_title
                         : classes.index_hero_title_mob}
@@ -176,13 +181,17 @@ class IndexHero extends Component {
                         <AreaSuggestions />
                         <SerSuggestions onSearch={this.onSearch} />
                     </div>
-                   
+                 
                 </div>
+                    <IndexheroSvg />
+                   
+                </Grid>
+                <Grid item xs="auto" sm={1}   />
+                <Grid item xs={12}>
                     <div className={classes.index_templates_box}>
                         <RelatedServiceTemplates compact={true} />
                     </div>
-                </Grid>
-                <Grid item xs="auto" sm={1} md={2}  />
+                    </Grid>
             </Grid>
         );
     }

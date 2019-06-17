@@ -37,9 +37,8 @@ const styles = theme => ({
   ser_template_card_compact: {
     cursor: "pointer",
     textDecoration: "none",
-    width: "140px",
-    height: "140px",
-    background: "#fff",
+    width: "160px",
+    height: "160px",
     margin: theme.spacing.unit,
     display: "flex",
     flexDirection: "column",

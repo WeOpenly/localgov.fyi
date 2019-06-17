@@ -117,6 +117,17 @@ class Case2 extends Component {
 
     }
 
+    componentWillReceiveProps(nextProps) {
+        const { dispatch } = this.props;
+        if (this.props.searchResultsLoading && !nextProps.searchResultsLoading) {
+            const { searchResults } = nextProps;
+            const resLen = searchResults && Object.keys(searchResults).length > 0;
+            dispatch(trackEvent('index_search_result', {
+                results_case: 2,
+                results_len: resLen,
+            }));
+        }
+    }
 
 
     render() {

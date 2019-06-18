@@ -31,6 +31,7 @@ const styles = theme => ({
         justifyContent: 'space-between'
     },
     index_templates_box:{
+        marginTop: theme.spacing.unit *5,
         display:  'flex',
         flex : '1',
     },

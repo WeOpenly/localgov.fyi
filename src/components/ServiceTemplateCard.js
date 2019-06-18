@@ -9,11 +9,19 @@ import CardMedia from '@material-ui/core/CardMedia';
 import IconButton from '@material-ui/core/IconButton';
 import Typography from '@material-ui/core/Typography';
 import {withStyles} from '@material-ui/core/styles';
+import ProptaxSvg from '../svgIcons/PropTaxIl.js';
+import ParkingcitSvg from '../svgIcons/ParkingCitIl.js';
+import RecreationSvg from '../svgIcons/RecreationIl.js';
+import Utilitybill from '../svgIcons/utbIl.js';
+import BusinessLic from '../svgIcons/businessLic.js';
+
 import SvgTax from '../svgIcons/tax.js';
 import SvgParking from '../svgIcons/parking.js';
 import SvgLicense from '../svgIcons/license.js';
 import SvgLeak from '../svgIcons/leak.js';
 import SvgPark from '../svgIcons/park.js';
+
+
 import Link, {navigate} from "gatsby-link";
 
 import ListItemText from '@material-ui/core/ListItemText';
@@ -38,7 +46,7 @@ const styles = theme => ({
     cursor: "pointer",
     textDecoration: "none",
     width: "160px",
-    height: "160px",
+    height: "200px",
     margin: theme.spacing.unit,
     display: "flex",
     flexDirection: "column",
@@ -91,22 +99,22 @@ class ServiceTemplateCard extends Component {
         const lowerCaseName = name.toLowerCase();
 
         if (lowerCaseName.indexOf('tax') !== -1){
-            icon = (<SvgTax style={{fontSize: '48px'}} />);
-            mobIcon = (<SvgTax style={{fontSize: '32px'}} />)
+          icon = (<ProptaxSvg style={{ fontSize: '88px' }} />);
+          mobIcon = (<ProptaxSvg style={{fontSize: '48px'}} />)
         }else if(lowerCaseName.indexOf('parking') !== -1){
-            icon = (<SvgParking style={{fontSize: '48px'}} />)
-            mobIcon = (<SvgParking style={{fontSize: '32px'}} />)
+          icon = (<ParkingcitSvg style={{ fontSize: '88px' }}/>)
+          mobIcon = (<ParkingcitSvg style={{ fontSize: '48px' }} />)
         }else if(lowerCaseName.indexOf('license') !== -1){
-            icon = (<SvgLicense style={{fontSize: '48px'}} />)
-            mobIcon = (<SvgLicense style={{fontSize: '32px'}} />)
+          icon = (<BusinessLic style={{ fontSize: '88px' }} />)
+          mobIcon = (<BusinessLic style={{ fontSize: '48px' }} />)
         }else if(lowerCaseName.indexOf('utility') !== -1 || lowerCaseName.indexOf('water') !== -1){
-            icon = (<SvgLeak style={{fontSize: '48px'}} />)
-            mobIcon = (<SvgLeak style={{fontSize: '32px'}} />)
+          icon = (<Utilitybill style={{ fontSize: '88px'}} />)
+          mobIcon = (<Utilitybill style={{ fontSize: '48px'}} />)
         } else if (lowerCaseName.indexOf('recreation') !== -1 || lowerCaseName.indexOf('recreational') !== -1) {
-            icon = (<SvgPark style={{ fontSize: '53px' }} />)
-            mobIcon = (<SvgPark style={{ fontSize: '32px' }} />)
+          icon = (<RecreationSvg style={{ fontSize: '88px' }} />)
+          mobIcon = (<RecreationSvg style={{ fontSize: '48px' }} />)
         }   
-
+    
    
         if (this.state.isMob){
             return (
@@ -119,6 +127,7 @@ class ServiceTemplateCard extends Component {
                   boxShadow:
                     "0px 3px 5px 0px rgba(0,0,0,0.1),0px 1px 1px 0px rgba(0,0,0,0.07),0px 2px 6px 1px rgba(0,0,0,0.06)",
                   padding: "16px",
+                  "alignItems": 'center',
                   width: "300px",
                   display: "flex",
                   textDecoration: "none",
@@ -130,7 +139,7 @@ class ServiceTemplateCard extends Component {
                   primary={
                     <Typography
                       style={{ fontWeight: 500, color: "#5627FF" }}
-                      variant="caption"
+                      variant="body1"
                     >
                       {name}
                     </Typography>
@@ -145,7 +154,7 @@ class ServiceTemplateCard extends Component {
                         </div>
                         
                     <div className={classes.ser_template_card_content}>
-                    <Typography style={{ fontWeight: 500, color: '#4D4D4D'}} variant="caption">
+                    <Typography svariant="body2">
                     {name}
                     </Typography>
                     </div>

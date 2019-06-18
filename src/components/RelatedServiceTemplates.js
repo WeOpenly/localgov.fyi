@@ -25,10 +25,10 @@ const styles = theme => ({
      display: 'flex',
      justifyContent: 'center',
      flex: '1',
-     backgroundImage: `linear-gradient(#fdf8ff, #fff)`,
-     borderRadius: '8px',
+     borderTop: `1px solid ${theme.palette.primary['100']}`,
+     margin: theme.spacing.unit,
+     borderRadius: '2px',
      padding: theme.spacing.unit *4,
-
  },
  related_ser_list_mob: {
      display: 'flex',

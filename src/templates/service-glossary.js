@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
 
 import Paper from '@material-ui/core/Paper';
-
+import Link from 'gatsby-link';
 import queryString from 'query-string'
 
 import {navigate} from '@reach/router';
@@ -16,15 +16,24 @@ import {withStyles} from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 
-
+import IconButton from '@material-ui/core/IconButton';
+import Button from '@material-ui/core/Button';
+import Share from '@material-ui/icons/Share';
 import RelatedServiceTemplates from '../components/RelatedServiceTemplates';
 import Footer from '../components/Footer';
 import withRoot from '../withRoot';
+import Info from '@material-ui/icons/InfoOutlined';
+import HeaderAccountMenu from '../components/HeaderAccountMenu';
 
-import LoginRegisterDialog from '../components/Account/LoginRegisterDialog';
 import {NO_SEARCH_RESULTS} from '../components/common/tracking_events';
 import RawForm from '../components/Reminders/RawForm';
 import { fetchGoogLoc, fetchAutoLoc, clearAll} from '../components/ServiceTemplatePage/actions';
+import ProptaxSvg from '../svgIcons/PropTaxIl.js';
+
+import ParkingcitSvg from '../svgIcons/ParkingCitIl.js';
+import RecreationSvg from '../svgIcons/RecreationIl.js';
+import Utilitybill from '../svgIcons/utbIl.js';
+import BusinessLic from '../svgIcons/businessLic.js';
 
 import {trackView, trackClick, trackInput, trackEvent} from "../components/common/tracking";
 import Suggested from '../components/ServiceTemplatePage/Suggested';
@@ -60,6 +69,13 @@ const styles = theme => ({
     ser_gloss_locGridContainer: {
         width: '100%'
     },
+  ser_gloss_nav_items: {
+    display: 'flex',
+    width: '100%',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    padding: theme.spacing.unit,
+  },
     ser_gloss_locationPaper: {
         padding: theme.spacing.unit *5,
         display: 'flex',
@@ -304,6 +320,55 @@ class ServiceGlossary extends Component {
             field_schema={JSON.stringify(genericFSchema)}
             id="user_request_missing_loc_ser"/>
 
+      const { anchorEl, copied } = this.state;
+      let icon = null;
+      let mobIcon = null;
+      const windowGlobal = typeof window !== 'undefined' && window;
+      const windowLocation = windowGlobal.location
+        ? windowGlobal.location
+        : {};
+
+      const shareLink = windowLocation.href;
+
+      const shareButton = (
+        <IconButton
+          color="primary"
+          size="small"
+          className={classes.ser_gloss_menu_button}
+          onClick={this.handleShareClick}
+          aria-label="share">
+          <Share className={classes.ser_gloss_share} fontSize="small" />
+        </IconButton>
+      )
+
+      const learnMoreButton = (
+        <IconButton
+          color="primary"
+          size="small"
+          className={classes.ser_gloss_learn_more}
+          onClick={this.toggleDescDialog}
+          aria-label="share">
+          <Info className={classes.ser_gloss_share} fontSize="small" />
+        </IconButton>
+      )
+      const lowerCaseName = service_name.toLowerCase();
+
+      if (lowerCaseName.indexOf('tax') !== -1) {
+        icon = (<ProptaxSvg style={{ fontSize: '224px' }} />);
+        mobIcon = (<ProptaxSvg style={{ fontSize: '48px' }} />)
+      } else if (lowerCaseName.indexOf('parking') !== -1) {
+        icon = (<ParkingcitSvg style={{ fontSize: '224px' }} />)
+        mobIcon = (<ParkingcitSvg style={{ fontSize: '48px' }} />)
+      } else if (lowerCaseName.indexOf('license') !== -1) {
+        icon = (<BusinessLic style={{ fontSize: '224px' }} />)
+        mobIcon = (<BusinessLic style={{ fontSize: '48px' }} />)
+      } else if (lowerCaseName.indexOf('utility') !== -1 || lowerCaseName.indexOf('water') !== -1) {
+        icon = (<Utilitybill style={{ fontSize: '224px' }} />)
+        mobIcon = (<Utilitybill style={{ fontSize: '48px' }} />)
+      } else if (lowerCaseName.indexOf('recreation') !== -1 || lowerCaseName.indexOf('recreational') !== -1) {
+        icon = (<RecreationSvg style={{ fontSize: '224px' }} />)
+        mobIcon = (<RecreationSvg style={{ fontSize: '48px' }} />)
+      }   
         return (
           <Fragment>
             <Helmet>
@@ -338,7 +403,41 @@ class ServiceGlossary extends Component {
             {userLocReqFormRaw}
 
             <Grid container className={classes.ser_gloss_search}>
-              <Grid item xs={12}>
+              <Grid item sm={1} />
+              <Grid
+                item
+                xs={12}
+                sm={10}
+                className={classes.ser_gloss_nav_items}
+              >
+                <Typography variant="title">
+                  <Link to="/" className={classes.ser_gloss_app_name}>
+                    evergov
+                </Link>
+                </Typography>
+                {this.state.isMobile && (
+                  <div className={classes.ser_gloss_service_mob_actions}>
+                    {shareButton}
+                    {learnMoreButton}
+                  </div>
+                )}
+                <HeaderAccountMenu location={this.props.location} />
+              </Grid>
+              <Grid item sm={1} />
+
+              <Grid item xs={1} />
+              {this.state.isMobile ? (<Grid item xs={12}>
+                <TemplateHero
+                  views={views}
+                  orgsCnt={orgs.length}
+                  service_name={service_name}
+                  trackClick={this.trackClick}
+                  service_glossary_description={
+                    service_glossary_description
+                  }
+                />
+              </Grid>) : (<Fragment>
+                <Grid item xs={6}>
                 <TemplateHero
                   views={views}
                   orgsCnt={orgs.length}
@@ -349,6 +448,13 @@ class ServiceGlossary extends Component {
                   }
                 />
               </Grid>
+                           <Grid item xs={4} align="right" style={{display: 'flex', justifyContent: 'flex-end'}}>
+                    {icon}
+                </Grid>
+                </Fragment>)}
+ 
+              <Grid item xs={1} />
+
               <Grid item xs={12}>
                 <GoogAutoComplete serviceTemplateId={id} />
               </Grid>

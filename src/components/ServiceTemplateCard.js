@@ -33,12 +33,13 @@ const styles = theme => ({
     cursor: "pointer",
     width: "200px",
     textDecoration: "none",
-    height: "160px",
+    height: "200px",
     background: "#fff",
     margin: theme.spacing.unit,
+    paddingBottom: theme.spacing.unit,
     display: "flex",
     flexDirection: "column",
-    borderTop: `2px solid #AB93FF`,
+    borderTop: `1px solid #AB93FF`,
     boxShadow:
       "0px 3px 5px 0px rgba(0,0,0,0.1),0px 1px 1px 0px rgba(0,0,0,0.07),0px 2px 6px 1px rgba(0,0,0,0.06)"
   },
@@ -49,11 +50,21 @@ const styles = theme => ({
     height: "200px",
     margin: theme.spacing.unit,
     display: "flex",
+    position: "relative",
     flexDirection: "column",
-    "&:hover": {
-      bordeRadius: theme.spacing.unit,
-      boxShadow:
-        "0px 3px 5px 0px rgba(0,0,0,0.1),0px 1px 1px 0px rgba(0,0,0,0.07),0px 12px 16px 1px rgba(0,0,0,0.06)"
+    "&::after": {
+      content: '""',
+      position: "absolute",
+      bottom: "1px",
+      left: 40,
+      height: "4px",
+      width: "50%",
+      background: `linear-gradient(bottom, #5627da 0%, #5627FF 65%, transparent 65%, transparent 100%)`,
+      transform: `scaleX(0)`,
+      transition: `transform 180ms ease-in-out`
+    },
+    "&:hover::after": {
+      transform: `scaleX(1)`
     }
   },
   ser_template_card_img: {

@@ -21,6 +21,9 @@ import DialogTitle from '@material-ui/core/DialogTitle';
 import { FacebookShareButton, TwitterShareButton } from 'react-share';
 import TemplateViews from './TemplateViews';
 
+
+
+
 const styles = theme => ({
     ser_gloss_gridItemLocation_mob_focus: {
         boxShadow: `0 0 3px 0px ${theme.palette.primary['600']}`
@@ -203,33 +206,13 @@ class TemplateHero extends Component {
 
         return (
           <Grid container className={classes.ser_gloss_serviceheading}>
-            <Grid item sm={1} />
-            <Grid
-              item
-              xs={12}
-              sm={10}
-              className={classes.ser_gloss_nav_items}
-            >
-              <Typography variant="title">
-                <Link to="/" className={classes.ser_gloss_app_name}>
-                  evergov
-                </Link>
-              </Typography>
-              {this.state.isMobile && (
-                <div className={classes.ser_gloss_service_mob_actions}>
-                  {shareButton}
-                  {learnMoreButton}
-                </div>
-              )}
-              <HeaderAccountMenu location={this.props.location} />
-            </Grid>
-            <Grid item sm={1} />
+ 
 
-            <Grid item sm={1} />
+ 
             <Grid
               item
               xs={12}
-              sm={10}
+              sm={12}
               className={
                 !this.state.isMobile
                   ? classes.ser_gloss_servicename_text
@@ -285,17 +268,16 @@ class TemplateHero extends Component {
                 </MenuItem>
               </Menu>
             </Grid>
-            <Grid item sm={1} />
-            <Grid item sm={1} />
-            <Grid item xs={12} sm={10}>
+  
+
+            <Grid item xs={12} >
               <TemplateViews views={views} orgsCnt={orgsCnt} />
             </Grid>
             {descDialog}
-            <Grid item sm={1} />
+     
             {!this.state.isMobile ? (
               <Fragment>
-                <Grid item xs={1} />
-                <Grid item xs={8} align="left">
+                <Grid item xs={12} align="left">
                   <Typography
                     style={{ paddingLeft: "8px" }}
                     gutterBottom
@@ -304,10 +286,12 @@ class TemplateHero extends Component {
                     <RawHTML>{service_glossary_description}</RawHTML>
                   </Typography>
                 </Grid>
+     
               </Fragment>
             ) : null}
 
-            <Grid item xs={3} />
+            <Grid item xs={3}/>
+            
           </Grid>
         );
     }

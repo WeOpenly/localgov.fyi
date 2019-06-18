@@ -9,6 +9,7 @@ import { withStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
 import Grid from '@material-ui/core/Grid';
 import ContentLoader from "react-content-loader";
+import Divider from '@material-ui/core/Divider';
 
 import IndexheroSvg from '../../svgIcons/IndexHeroIl1.js';
 
@@ -31,7 +32,6 @@ const styles = theme => ({
         justifyContent: 'space-between'
     },
     index_templates_box:{
-        marginTop: theme.spacing.unit *5,
         display:  'flex',
         flex : '1',
     },
@@ -187,8 +187,14 @@ class IndexHero extends Component {
                     <IndexheroSvg />
                    
                 </Grid>
-                <Grid item xs="auto" sm={1}   />
+                 <Grid item xs="auto" sm={1}   />
+                <Grid item xs="auto" sm={1} />
+                <Grid item xs={10} style={{ marginLeft: '16px', marginRight: '16px', marginTop: '32px'}}>
+                    <Divider center />
+                </Grid>
+                <Grid item xs="auto" sm={1} />
                 <Grid item xs={12}>
+               
                     <div className={classes.index_templates_box}>
                         <RelatedServiceTemplates compact={true} />
                     </div>

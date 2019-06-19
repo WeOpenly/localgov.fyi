@@ -42,146 +42,154 @@ import GoogAutoComplete from '../components/ServiceTemplatePage/GoogAutoComplete
 import OtherLocations from '../components/ServiceTemplatePage/OtherLocations';
 
 const styles = theme => ({
-    "@global": {
-        html: {
-            WebkitFontSmoothing: "antialiased", // Antialiasing.
-            MozOsxFontSmoothing: "grayscale", // Antialiasing.
-        },
-        body: {
-            height: "100%",
-            overflow: 'hidden',
-            margin: 0,
-            padding: 0,
-            background: '#fff',
-            overflowWrap: "break-word",
-            overflowY: "scroll",
-            overflowX: "hidden"
-        }
+  "@global": {
+    html: {
+      WebkitFontSmoothing: "antialiased", // Antialiasing.
+      MozOsxFontSmoothing: "grayscale" // Antialiasing.
     },
-    ser_gloss_filterContainer: {
-        padding: '16px 16px',
-        margin: theme.spacing.unit,
-        display: 'flex',
-        alignItems: 'center',
-        boxShadow: `0 5px 10px 0 #f1f1f1`,
-        borderRadius: '5px'
-    },
-    ser_gloss_locGridContainer: {
-        width: '100%'
-    },
-  ser_gloss_nav_items: {
-    display: 'flex',
-    width: '100%',
-    justifyContent: 'space-between',
-    alignItems: 'center',
-    padding: theme.spacing.unit,
-  },
-    ser_gloss_locationPaper: {
-        padding: theme.spacing.unit *5,
-        display: 'flex',
-        alignItems: 'center',
-        width: '100%',
-        margin: theme.spacing.unit,
-        boxShadow: `0 0 1px 0 #d4d4d4`
-    },
-    ser_gloss_loc_search_root: {
-        padding: '4px 8px',
-        display: 'flex',
-        justifyContent: 'center',
-        width: '100%',
-        boxShadow: `0 0 1px 0 ${theme.palette.primary['300']}`
-    },
-    ser_gloss_input: {
-        marginLeft: 16,
-        flex: 1
-    },
-    ser_gloss_iconButton: {
-        padding: 12
-    },
-    ser_gloss_divider: {
-        width: 1,
-        height: 32,
-        margin: 4
-    },
-    ser_gloss_gridItemLocation_mob_focus: {
-        boxShadow: `0 0 3px 0px ${theme.palette.primary['600']}`
-    },
-    ser_gloss_gridItemLocation_focus: {
-        cursor: 'pointer',
-        padding: theme.spacing.unit *2,
-        display: 'flex',
-        flexWrap: 'wrap',
-        alignItems: 'center',
-        margin: theme.spacing.unit * 2,
-        justifyContent: 'left',
-        width: 320,
-        height: 104,
-        boxShadow: `0 0 4px 0px ${theme.palette.primary['600']}`
-    },
-    ser_gloss_titleWrapper: {
-        textAlign: 'center',
-        padding: theme.spacing.unit * 4,
-        margin: theme.spacing.unit * 2
-    },
-    ser_gloss_subtitle: {
-        marginTop: theme.spacing.unit,
-        marginBottom: theme.spacing.unit * 4
-    },
-    ser_gloss_section: {
-        marginBottom: theme.spacing.unit
-    },
-    ser_gloss_link: {
-        padding: theme.spacing.unit
-    },
-    ser_gloss_locGrid: {
-        display: 'flex',
-        flexWrap: 'wrap',
-        justifyContent: 'center',
-        padding: theme.spacing.unit *4
-    },
-    ser_gloss_gridItemLocation: {
-        cursor: 'pointer',
-        padding: theme.spacing.unit *2,
-        display: 'flex',
-        flexWrap: 'wrap',
-        alignItems: 'center',
-        margin: theme.spacing.unit * 2,
-        boxShadow: `0 0px 1px 0 ${theme.palette.primary['200']}`,
-        justifyContent: 'left',
-        width: 320,
-        height: 104
-    },
-    ser_gloss_locGrid_list: {
-        width: '100%',
-        margin: theme.spacing.unit *2,
-        backgroundColor: theme.palette.background.paper
-    },
-    ser_gloss_heading: {
-        fontWeight: 600
-    },
-    ser_gloss_listItem: {
-        display: 'flex',
-        marginTop: theme.spacing.unit * 2,
-        marginLeft: theme.spacing.unit * 2
-    },
-    ser_gloss_countContainer: {
-        marginTop: theme.spacing.unit *2
-    },
-    ser_gloss_footer: {
-        borderTop: `1px solid #dcdcdc`,
-        paddingTop: theme.spacing.unit,
-        marginTop: theme.spacing.unit * 4
-    },
-    ser_gloss_relatedSerDivider: {
-        marginTop: theme.spacing.unit * 2,
-        borderTop: `1px solid #dcdcdc`
-    },
-    ser_gloss_state_name: {
-        color: '#4c4d55'
-    },
-    ser_gloss_related_container:{
-        margin: `${theme.spacing.unit * 2}px  ${theme.spacing.unit * 10}px ${theme.spacing.unit * 4}px ${theme.spacing.unit * 10}px`
+    body: {
+      height: "100%",
+      overflow: "hidden",
+      margin: 0,
+      padding: 0,
+      background: "#fff",
+      overflowWrap: "break-word",
+      overflowY: "scroll",
+      overflowX: "hidden"
     }
+  },
+  ser_gloss_filterContainer: {
+    padding: "16px 16px",
+    margin: theme.spacing.unit,
+    display: "flex",
+    alignItems: "center",
+    boxShadow: `0 5px 10px 0 #f1f1f1`,
+    borderRadius: "5px"
+  },
+  ser_gloss_locGridContainer: {
+    width: "100%"
+  },
+  ser_gloss_nav_items: {
+    display: "flex",
+    width: "100%",
+    justifyContent: "space-between",
+    alignItems: "center",
+    padding: theme.spacing.unit
+  },
+  ser_gloss_locationPaper: {
+    padding: theme.spacing.unit * 5,
+    display: "flex",
+    alignItems: "center",
+    width: "100%",
+    margin: theme.spacing.unit,
+    boxShadow: `0 0 1px 0 #d4d4d4`
+  },
+  ser_gloss_loc_search_root: {
+    padding: "4px 8px",
+    display: "flex",
+    justifyContent: "center",
+    width: "100%",
+    boxShadow: `0 0 1px 0 ${theme.palette.primary["300"]}`
+  },
+  ser_gloss_input: {
+    marginLeft: 16,
+    flex: 1
+  },
+  ser_gloss_iconButton: {
+    padding: 12
+  },
+  ser_gloss_divider: {
+    width: 1,
+    height: 32,
+    margin: 4
+  },
+  ser_gloss_gridItemLocation_mob_focus: {
+    boxShadow: `0 0 3px 0px ${theme.palette.primary["600"]}`
+  },
+  ser_gloss_gridItemLocation_focus: {
+    cursor: "pointer",
+    padding: theme.spacing.unit * 2,
+    display: "flex",
+    flexWrap: "wrap",
+    alignItems: "center",
+    margin: theme.spacing.unit * 2,
+    justifyContent: "left",
+    width: 320,
+    height: 104,
+    boxShadow: `0 0 4px 0px ${theme.palette.primary["600"]}`
+  },
+  ser_gloss_titleWrapper: {
+    textAlign: "center",
+    padding: theme.spacing.unit * 4,
+    margin: theme.spacing.unit * 2
+  },
+  ser_gloss_subtitle: {
+    marginTop: theme.spacing.unit,
+    marginBottom: theme.spacing.unit * 4
+  },
+  ser_gloss_section: {
+    marginBottom: theme.spacing.unit
+  },
+  ser_gloss_link: {
+    padding: theme.spacing.unit
+  },
+  ser_gloss_locGrid: {
+    display: "flex",
+    flexWrap: "wrap",
+    justifyContent: "center",
+    padding: theme.spacing.unit * 4
+  },
+  ser_gloss_app_name: {
+    textDecoration: "none",
+    cursor: "pointer",
+    "&:hover": {
+      color: theme.palette.primary["700"]
+    }
+  },
+  ser_gloss_gridItemLocation: {
+    cursor: "pointer",
+    padding: theme.spacing.unit * 2,
+    display: "flex",
+    flexWrap: "wrap",
+    alignItems: "center",
+    margin: theme.spacing.unit * 2,
+    boxShadow: `0 0px 1px 0 ${theme.palette.primary["200"]}`,
+    justifyContent: "left",
+    width: 320,
+    height: 104
+  },
+  ser_gloss_locGrid_list: {
+    width: "100%",
+    margin: theme.spacing.unit * 2,
+    backgroundColor: theme.palette.background.paper
+  },
+  ser_gloss_heading: {
+    fontWeight: 600
+  },
+  ser_gloss_listItem: {
+    display: "flex",
+    marginTop: theme.spacing.unit * 2,
+    marginLeft: theme.spacing.unit * 2
+  },
+  ser_gloss_countContainer: {
+    marginTop: theme.spacing.unit * 2
+  },
+  ser_gloss_footer: {
+    borderTop: `1px solid #dcdcdc`,
+    paddingTop: theme.spacing.unit,
+    marginTop: theme.spacing.unit * 4
+  },
+  ser_gloss_relatedSerDivider: {
+    marginTop: theme.spacing.unit * 2,
+    borderTop: `1px solid #dcdcdc`
+  },
+  ser_gloss_state_name: {
+    color: "#4c4d55"
+  },
+  ser_gloss_related_container: {
+    margin: `${theme.spacing.unit * 2}px  ${theme.spacing.unit * 10}px ${theme
+      .spacing.unit * 4}px ${theme.spacing.unit * 10}px`
+  }
 });
 
 const RawHTML = ({

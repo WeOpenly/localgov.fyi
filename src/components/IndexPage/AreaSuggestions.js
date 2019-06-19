@@ -22,68 +22,75 @@ import { updateGoogLocationSearchText, selectGoogLocation} from './actions';
 import { trackClick, trackInput} from "../common/tracking";
 
 const styles = theme => ({
-    index_page_ser_suggestions_container:{
-        margin: `${theme.spacing.unit}px ${theme.spacing.unit}px ${theme.spacing.unit}px 0`,
-        display: 'flex',
-        width: theme.spacing.unit * 23,
-        justifyContent: 'center',
-        position: 'relative'
-    },
-    index_page_ser_suggestions_container_header:{
-        display: 'flex',
-        marginRight: theme.spacing.unit,
-        width: '248px',
-        justifyContent: 'center',
-        position: 'relative'
-    },
-    index_area_search_search_paper_root_header:{
-        display: 'flex',
-        alignItems: 'center',
-        boxShadow: 'none',
-        border: `1px solid ${theme.palette.primary['200']}`,
-        borderRadius: '4px',
-        '&:hover': {
-            boxShadow: `0 4px 8px 0 #dfdfdf, 0 1px 16px 0 #fafafa inset`,
-            border: `1px solid ${theme.palette.primary['500']}`
-        },
-    },
-    index_area_search_search_paper_root: {
-           display: 'flex',
-        alignItems: 'center',
-        boxShadow: '0px 3px 5px 0px rgba(0,0,0,0.1),0px 1px 1px 0px rgba(0,0,0,0.07),0px 2px 6px 1px rgba(0,0,0,0.06)',
-        border: `1px solid ${theme.palette.primary['200']}`,
-        borderRadius: '4px',
-        '&:hover': {
-            boxShadow: `0 4px 8px 0 #dfdfdf, 0 1px 16px 0 #fafafa inset`,
-            border: `1px solid ${theme.palette.primary['500']}`
-        },
-    },
-    index_area_search_search_input: {
-        flex: 1,
-                  padding: '6px',
-
-        marginRight: theme.spacing.unit,
-        fontSize: "16px",
-        fontWeight: 500,
-        fontFamily: '"Nunito Sans",  -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen-Sans,Ubuntu,Cantarell,"Helvetica Neue", sans-serif',
-        lineHeight: "1.46429em",
-        width: '100%',
-        color: "rgba(30, 30, 50,0.99)",
-    },
-    index_area_search_search_suggestions:{
-        position: 'absolute',
-        zIndex: '200',
-        display: 'flex',
-        width: '100%',
-        flexDirection: 'column',
-    },
-    
-    index_page_search_iconButton: {
-        minHeight: '1em',
-        fontSize: '16px',
-        color: theme.palette.primary['500'],
-        marginLeft: '12px',
+  index_page_ser_suggestions_container: {
+    margin: `${theme.spacing.unit}px ${theme.spacing.unit}px ${
+      theme.spacing.unit
+    }px 0`,
+    display: "flex",
+    width: theme.spacing.unit * 23,
+    justifyContent: "center",
+    position: "relative"
+  },
+  index_page_ser_suggestions_container_header: {
+    display: "flex",
+    marginRight: theme.spacing.unit,
+    width: "248px",
+    justifyContent: "center",
+    alignItems: 'center',
+    position: "relative"
+  },
+  index_area_search_search_paper_root_header: {
+    display: "flex",
+    alignItems: "center",
+    height: "40px",
+    boxShadow: "none",
+    background: "#fafafa",
+    border: `1px solid ${theme.palette.primary["100"]}`,
+    borderRadius: "4px",
+    "&:hover": {
+      boxShadow: `0 4px 8px 0 #dfdfdf, 0 1px 16px 0 #fafafa inset`,
+      border: `1px solid ${theme.palette.primary["500"]}`
     }
+  },
+  index_area_search_search_paper_root: {
+    display: "flex",
+    alignItems: "center",
+    boxShadow:
+      "0px 3px 5px 0px rgba(0,0,0,0.1),0px 1px 1px 0px rgba(0,0,0,0.07),0px 2px 6px 1px rgba(0,0,0,0.06)",
+    border: `1px solid ${theme.palette.primary["200"]}`,
+    borderRadius: "4px",
+    "&:hover": {
+      boxShadow: `0 4px 8px 0 #dfdfdf, 0 1px 16px 0 #fafafa inset`,
+      border: `1px solid ${theme.palette.primary["500"]}`
+    }
+  },
+  index_area_search_search_input: {
+    flex: 1,
+    padding: "6px",
+
+    marginRight: theme.spacing.unit,
+    fontSize: "16px",
+    fontWeight: 500,
+    fontFamily:
+      '"Nunito Sans",  -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen-Sans,Ubuntu,Cantarell,"Helvetica Neue", sans-serif',
+    lineHeight: "1.46429em",
+    width: "100%",
+    color: "rgba(30, 30, 50,0.99)"
+  },
+  index_area_search_search_suggestions: {
+    position: "absolute",
+    zIndex: "200",
+    display: "flex",
+    width: "100%",
+    flexDirection: "column"
+  },
+
+  index_page_search_iconButton: {
+    minHeight: "1em",
+    fontSize: "16px",
+    color: theme.palette.primary["500"],
+    marginLeft: "12px"
+  }
 });
 
 

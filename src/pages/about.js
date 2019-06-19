@@ -145,33 +145,60 @@ class About extends React.Component {
     return (
       <Fragment>
         <Helmet>
-          <title>{`About | evergov`}
-          </title>
+          <title>{`About | evergov`}</title>
           <meta
             name="description"
-            content={`All your government servicesin a single place`} />
+            content={`All your government servicesin a single place`}
+          />
         </Helmet>
         <Nav />
         <div className={classes.about_section_1}>
-         {!this.state.isMobileOnly ? (<div className={classes.about_ill}>
-            <AboutIl />
-          </div>) : null}
-          <div className={this.state.isMobileOnly ? classes.about_desc_mob: classes.about_desc}>
-            <Typography
-              variant="headline"
-              align="left"
-            >
-              We are on a mission to make every government service accessible online.
-              </Typography>
+          {!this.state.isMobileOnly ? (
+            <div className={classes.about_ill}>
+              <AboutIl />
+            </div>
+          ) : null}
+          <div
+            className={
+              this.state.isMobileOnly
+                ? classes.about_desc_mob
+                : classes.about_desc
+            }
+          >
+            <Typography variant="display1" align="left">
+              We are on a mission to make every government service
+              accessible online.
+            </Typography>
 
-            <Typography variant="caption" align="left" className={classes.bodyText}>
-            Be it individuals or businesses, we are making sense of all the government services out there and serving them on a silver platter for all.
-                </Typography>
-          <Typography variant="body1" align="left" className={classes.bodyText}>
-            We are a small team with a big vision to make government services delightful. We are adding more services and locations everday. If you haven't found anything you are looking for and want us to add them, drop us a line {<a href="mailto:team@weopenly.com" className={classes.mailTo}>here.</a>}
-          </Typography>
+            <Typography
+              variant="caption"
+              align="left"
+              className={classes.bodyText}
+            >
+              Be it individuals or businesses, we are making sense of all
+              the government services out there and serving them on a silver
+              platter for all.
+            </Typography>
+            <Typography
+              variant="body1"
+              align="left"
+              className={classes.bodyText}
+            >
+              We are a small team with a big vision to make government
+              services delightful. We are adding more services and locations
+              everday. If you haven't found anything you are looking for and
+              want us to add them, drop us a line{" "}
+              {
+                <a
+                  href="mailto:team@weopenly.com"
+                  className={classes.mailTo}
+                >
+                  here.
+                </a>
+              }
+            </Typography>
           </div>
-          </div>
+        </div>
       </Fragment>
     );
   }

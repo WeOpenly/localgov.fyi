@@ -32,7 +32,7 @@ const styles = theme => ({
     display: "flex",
     alignItems: "center",
     width: '350px',
-    margin: '8px',
+    margin: '8px 8px 8px 0',
     boxShadow:
       "0px 3px 5px 0px rgba(0,0,0,0.1),0px 1px 1px 0px rgba(0,0,0,0.07),0px 2px 6px 1px rgba(0,0,0,0.07)",
     border: `1px solid ${theme.palette.primary["100"]}`,
@@ -143,14 +143,13 @@ const styles = theme => ({
   },
   index_page_ser_suggestions_container: {
     display: "flex",
-    width: theme.spacing(5),
     margin: 0
   },
   index_page_ser_suggestions_container_form: {
     width: "100%",
     margin: `${theme.spacing()} ${theme.spacing()} ${
       theme.spacing()
-    }px 0`,
+    } 0`,
     marginLeft: 0
   },
   index_page_ser_suggestions_container_form_header: {

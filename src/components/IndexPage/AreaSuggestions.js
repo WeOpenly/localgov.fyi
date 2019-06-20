@@ -27,7 +27,6 @@ const styles = theme => ({
       theme.spacing()
     }px 0`,
     display: "flex",
-    width: '240px',
     justifyContent: "center",
     position: "relative"
   },

@@ -57,7 +57,7 @@ class CommonNav extends Component {
                      
                     <Typography
                         component="h3"
-                        variant="smHeadline">
+                        variant="h6">
                             evergov
                                  </Typography>
                          

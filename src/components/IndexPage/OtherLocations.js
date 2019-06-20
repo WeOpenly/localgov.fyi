@@ -252,7 +252,7 @@ orgLink : 'https://evergov.com/organization/usa/pennsylvania-state/philadelphia-
                 }}
               />
               <Typography
-                variant="h4"
+                variant="h6"
                 className={
                   this.state.isMobile
                     ? classes.ser_org_list_header_mob

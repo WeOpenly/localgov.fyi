@@ -114,26 +114,20 @@ const theme = createMuiTheme({
         },
 
         h5: {
-            fontSize: "1.5rem",
+            fontSize: "1.2rem",
             fontWeight: 700,
             fontFamily: '"Nunito Sans",  -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen-Sans,Ubuntu,Cantarell,"Helvetica Neue", sans-serif',
             lineHeight: "1.35417em",
-            color: "rgba(30, 30, 50,0.84)"
+                color: "rgba(30, 30, 50,0.94)"
         },
-        smHeadline: {
-        fontSize: "1rem",
+
+        h6: {
+                fontSize: "1rem",
                 fontWeight: 300,
                 fontFamily: '"Poppins", -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen-Sans,Ubuntu,Cantarell,"Helvetica Neue", sans-serif',
                 lineHeight: "1.20588em",
                 marginLeft: "-.04em",
-                color: "rgba(30, 30, 50,0.54)"
-        },
-        h6: {
-            fontSize: "1.3125rem",
-            fontWeight: 300,
-            fontFamily: '"Poppins",  -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen-Sans,Ubuntu,Cantarell,"Helvetica Neue", sans-serif',
-            lineHeight: "0.967em",
-            color: "rgba(30, 30, 50,0.84)"
+                color: "rgba(30, 30, 50,0.94)"
         },
         subtitle1: {
             fontSize: "1.125rem",

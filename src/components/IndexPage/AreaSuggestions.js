@@ -33,7 +33,7 @@ const styles = theme => ({
   index_page_ser_suggestions_container_header: {
     display: "flex",
     marginRight: theme.spacing(1),
-    width: "248px",
+    width: "24px",
     justifyContent: "center",
     alignItems: 'center',
     position: "relative"

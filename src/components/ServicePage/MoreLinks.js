@@ -4,21 +4,21 @@ import _ from "lodash";
 
 import { isMobileOnly } from 'react-device-detect';
 import Typography from '@material-ui/core/Typography';
-import { withStyles } from '@material-ui/core/styles';
+import { withStyles } from '@material-ui/core';
 
 const styles = theme => ({
     more_links: {
         display: 'flex',
         flexDirection: 'column',
-        marginTop: theme.spacing.unit*1,
+        marginTop: theme.spacing(1),
     },
     more_links_container: {
         display: 'flex',
         width: '800px',
         alignSelf: 'center',
         justifyContent: 'space-between',
-        marginLeft: theme.spacing.unit * 6,
-        marginRight: theme.spacing.unit * 6,
+        marginLeft: theme.spacing(6),
+        marginRight: theme.spacing(6),
     },
     more_links_container_mob: {
         display: 'flex',
@@ -27,10 +27,10 @@ const styles = theme => ({
         textAlign: 'center',
     },
     disco_footer:{
-        paddingTop: theme.spacing.unit*2,
+        paddingTop: theme.spacing(2),
     },
     ser_more_links_header:{
-        marginBottom: theme.spacing.unit,
+        marginBottom: theme.spacing(1),
     }
 });
 
@@ -96,7 +96,7 @@ class MoreLinks extends Component {
                 
         const additionalServices = (<div className={classes.disco_footer}>
             <div className={classes.ser_more_links_header}>
-                <Typography variant="display1" style={{ fontSize: "0.85rem" }} >
+                <Typography variant="h4" style={{ fontSize: "0.85rem" }} >
                     Popular in {org_name}
                  </Typography>
             </div>
@@ -120,7 +120,7 @@ class MoreLinks extends Component {
 
         const stateSers = (<div className={classes.disco_footer}>
             <div className={classes.ser_more_links_header}>
-                <Typography variant="display1" style={{ fontSize: "0.85rem" }} >
+                <Typography variant="h4" style={{ fontSize: "0.85rem" }} >
                     Services in {state_name}
                  </Typography>
             </div>
@@ -131,7 +131,7 @@ class MoreLinks extends Component {
 
         const glossLinks = (<div className={classes.disco_footer}>
             <div className={classes.ser_more_links_header}>
-                <Typography variant="display1" style={{ fontSize: "0.85rem" }} >
+                <Typography variant="h4" style={{ fontSize: "0.85rem" }} >
                     Trending on Evergov
                  </Typography>
             </div>

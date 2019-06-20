@@ -1,7 +1,7 @@
 import * as PropTypes from "prop-types"
 import React from "react"
 import { connect } from "react-redux";
-import { withStyles } from '@material-ui/core/styles';
+import { withStyles } from '@material-ui/core';
 import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
@@ -25,7 +25,7 @@ import HorizontalList from '../components/HorizontalList';
 // import MemberListItem from '../components/MemberListItem';
 import SearchResult from '../components/SearchResult';
 import ServiceDeliveryLink from '../components/ServiceDeliveryLink';
-import withRoot from '../withRoot';
+
 
 import { trackView } from "../components/Search/tracking";
 
@@ -33,14 +33,14 @@ const windowGlobal = typeof window !== 'undefined' && window;
 
 const styles = theme => ({
     ser_detail_search_container: {
-        marginTop: theme.spacing.unit * 2
+        marginTop: theme.spacing(2)
     },
 ser_detail_search_details : {
         width: '100%',
     },
 ser_detail_search_cards : {
-        marginBottom: theme.spacing.unit * 2,
-        paddingTop: theme.spacing.unit,
+        marginBottom: theme.spacing(2),
+        paddingTop: theme.spacing(1),
         borderRadius: 3,
         boxShadow: `0 0 2px 1px ${theme.palette.primary["50"]}`
     },
@@ -51,8 +51,8 @@ ser_detail_search_cardContent : {
         padding: 4
     },
 ser_detail_search_iconWrapper : {
-        paddingTop: theme.spacing.unit,
-        paddingLeft: theme.spacing.unit * 2,
+        paddingTop: theme.spacing(1),
+        paddingLeft: theme.spacing(2),
     },
 ser_detail_search_icon : {
         fontSize: 24,
@@ -210,7 +210,7 @@ class ServiceDetailInSearch extends React.Component {
             // marginTop: 16
         }}>
             <Grid item xs={12} sm={12}>
-                <Typography variant="subheading" gutterBottom>
+                <Typography varant="subtitle1" gutterBottom>
                     Offered in
                 </Typography>
             </Grid>
@@ -281,7 +281,7 @@ class ServiceDetailInSearch extends React.Component {
                                 </Grid>
                                 <Grid item xs={10} sm={11}>
                                     <div className={classes.ser_detail_search_cardContent}>
-                                        <Typography variant="subheading" gutterBottom>
+                                        <Typography varant="subtitle1" gutterBottom>
                                             {name}
                                         </Typography>
                                         <Typography variant="body1" gutterBottom>

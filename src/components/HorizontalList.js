@@ -1,8 +1,8 @@
 import React from 'react';
-import {withStyles} from '@material-ui/core/styles';
+import {withStyles} from '@material-ui/core';
 import GridList from '@material-ui/core/GridList';
 import HorizontalListItem from './HorizontalListItem';
-import withRoot from '../withRoot';
+
 
 const styles = theme => ({
     ho_l_gridList: {

@@ -6,7 +6,7 @@ import {FacebookShareButton, TwitterShareButton} from 'react-share';
 import Img from "gatsby-image";
 import {isMobileOnly} from 'react-device-detect';
 
-import {withStyles} from '@material-ui/core/styles';
+import {withStyles} from '@material-ui/core';
 import Typography from '@material-ui/core/Typography';
 import Card from '@material-ui/core/Card';
 import CardActions from '@material-ui/core/CardActions';
@@ -22,37 +22,36 @@ import SvgIcon from '@material-ui/core/SvgIcon';
 import CheckCircle from '@material-ui/icons/CheckCircle';
 import Help from '@material-ui/icons/Help';
 import MoreVert from '@material-ui/icons/MoreVert';
-import SaveButton from '../components/Profile/SaveButton';
 
-import withRoot from '../withRoot';
-import UnclaimedHover from './UnclaimedHover';
+
+
 
 import {trackClick} from './common/tracking';
 
 const styles = theme => ({
 org_header_main : {
-  // marginRight: theme.spacing.unit,
+  // marginRight: theme.spacing(1),
   borderBottom: '1px solid #d4d4d4',
-  paddingTop: theme.spacing.unit * 2,
-  paddingLeft: theme.spacing.unit * 2,
-  paddingRight: theme.spacing.unit * 2,
-  paddingBottom: theme.spacing.unit * 2,
+  paddingTop:theme.spacing(2),
+  paddingLeft:theme.spacing(2),
+  paddingRight:theme.spacing(2),
+  paddingBottom:theme.spacing(2),
   margin: '1px'
 },
 org_header_mainMobile : {
   justifyContent : 'center',
   textAlign: 'center',
   borderBottom: '1px solid #d4d4d4',
-    paddingTop: theme.spacing.unit * 2,
-  paddingLeft: theme.spacing.unit * 2,
-  paddingRight: theme.spacing.unit * 2,
-  paddingBottom: theme.spacing.unit * 2,
+    paddingTop:theme.spacing(2),
+  paddingLeft:theme.spacing(2),
+  paddingRight:theme.spacing(2),
+  paddingBottom:theme.spacing(2),
 },
 org_header_cardTop : {
   display: 'flex',
   justifyContent: 'space-between',
-  paddingTop: theme.spacing.unit,
-  paddingBottom: theme.spacing.unit,
+  paddingTop: theme.spacing(1),
+  paddingBottom: theme.spacing(1),
   flexWrap: 'wrap'
 },
 org_header_logoName : {
@@ -62,7 +61,7 @@ org_header_title : {
   flexGrow: 1,
 },
 org_header_menuButtonIcon:{
-  marginRight: theme.spacing.unit
+  marginRight: theme.spacing()
 },
 org_header_in : {
   cursor: 'pointer',
@@ -73,11 +72,11 @@ org_header_avatar : {
   height: 80,
   boxShadow: `0 0 1px 1px ${theme.palette.primary["200"]}`,
   border: '2px solid #fff',
-  marginRight: theme.spacing.unit *2, 
+  marginRight: theme.spacing(2), 
 },
 org_header_menuButton : {
-  marginTop: theme.spacing.unit * -1,
-  marginRight: theme.spacing.unit * -1
+  marginTop: theme.spacing(-1),
+  marginRight: theme.spacing(-1)
 },
 org_header_menuItem : {
   display: 'flex',
@@ -89,17 +88,17 @@ org_header_shareButton : {
   alignItems: 'center'
 },
 org_header_cardActions : {
-  paddingTop: theme.spacing.unit,
+  paddingTop: theme.spacing(1),
 },
 org_header_buttonContent : {
   display: 'flex',
   alignItems: 'space-between'
 },
 org_header_contactButton : {
-  marginTop: theme.spacing.unit * 2
+  marginTop: theme.spacing( 2)
 },
 org_header_notifyButton : {
-  marginLeft: theme.spacing.unit
+  marginLeft: theme.spacing()
 },
 org_header_serDelLink : {
   display: 'flex',
@@ -111,12 +110,12 @@ svgIcon : {
     color: theme.palette.primary['400']
 },
 org_header_contactIcons : {
-  marginTop: theme.spacing.unit
+  marginTop: theme.spacing()
 },
 org_header_serviceNotify : {},
 org_header_serviceShare : {
-  marginBottom: theme.spacing.unit*2,
-  marginTop: theme.spacing.unit
+  marginBottom: theme.spacing(2),
+  marginTop: theme.spacing()
 },
 });
 
@@ -208,24 +207,7 @@ class OrgHeader extends Component {
       : {};
     const shareLink = windowLocation.href + '/';
 
-    const claimedComponent = claimed
-      ? (
-        <div className={classes.org_header_claimed}>
-          <CheckCircle color="primary" className={classes.org_header_claimedIcon}/>
-          <Typography variant="caption">Claimed</Typography>
-        </div>
-      )
-      : (
-        <div
-          className={classes.org_header_claimed}
-          onMouseEnter={this.handleMouseEnter}
-          onMouseLeave={this.handleMouseLeave}
-          onClick={() => this.handleMouseEnter(id, name)}>
-          <Help color="disabled" className={classes.claimedIcon}/>
-          <Typography variant="caption">Unclaimed</Typography>
-          {this.state.hover && <UnclaimedHover/>}
-        </div>
-      );
+ 
 
     let contactAddress;
     if (info) 
@@ -399,8 +381,8 @@ class OrgHeader extends Component {
             </div>
             <div className={classes.org_header_title}>
             
-              <Typography variant="display1">{name}</Typography>
-              {parent ? (<Typography variant="subheading"> <span  className={classes.service_header_in}> {parent} </span></Typography>) : null}
+              <Typography variant="h4">{name}</Typography>
+              {parent ? (<Typography varant="subtitle1"> <span  className={classes.service_header_in}> {parent} </span></Typography>) : null}
                 <div className={classes.org_header_cardActions}>
             {contactDetailButtons}
           </div>

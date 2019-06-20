@@ -1,5 +1,5 @@
 import 'regenerator-runtime/runtime';
-import {SubmissionError} from 'redux-form';
+
 import * as types from './ActionTypes';
 import {navigate} from '@reach/router';
 import {DspApi} from '../common/api';

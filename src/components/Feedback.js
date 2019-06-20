@@ -1,14 +1,13 @@
 import React, { Component, Fragment } from 'react';
-import Spinner from 'react-spinkit';
 import { connect } from "react-redux";
-import { withStyles } from '@material-ui/core/styles';
+import { withStyles } from '@material-ui/core';
 import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
 import SvgIcon from '@material-ui/core/SvgIcon';
 import MoodBad from '@material-ui/icons/MoodBad';
+import CircularProgress from '@material-ui/core/CircularProgress';
 
-import withRoot from '../withRoot';
 import {trackInput} from "./common/tracking";
 
 const styles = theme => ({
@@ -22,10 +21,10 @@ feedback_paper : {
     height: 280,
     width: 332,
     zIndex: 10,
-    paddingLeft: theme.spacing.unit * 2,
-    paddingRight: theme.spacing.unit * 2,
-    paddingTop: theme.spacing.unit * 2,
-    marginBottom: theme.spacing.unit * 3,
+    paddingLeft: theme.spacing(2),
+    paddingRight: theme.spacing(2),
+    paddingTop: theme.spacing(2),
+    marginBottom: theme.spacing(3),
     borderTop : `6px solid ${theme.palette.primary["500"]}`,
   },
 feedback_bootstrapInput : {
@@ -34,7 +33,7 @@ feedback_bootstrapInput : {
     color: theme.palette.primary['200'],
     border: '1px solid #ced4da',
     padding: '10px 12px 12px 12px',
-    marginTop: theme.spacing.unit,
+    marginTop: theme.spacing(1),
     width: '100%',
     transition: theme.transitions.create(['border-color', 'box-shadow'])
   },
@@ -44,15 +43,15 @@ feedback_bootstrapInputComment : {
     color: theme.palette.primary['200'],
     border: '1px solid #ced4da',
     padding: '10px 12px 12px 12px',
-    marginTop: theme.spacing.unit,
+    marginTop: theme.spacing(1),
     width: '100%',
     height: '100px',
     'wordBreak': 'break-word',
     transition: theme.transitions.create(['border-color', 'box-shadow'])
   },
 feedback_button : {
-    marginTop: theme.spacing.unit * 2,
-    marginBottom: theme.spacing.unit,
+    marginTop: theme.spacing(2),
+    marginBottom: theme.spacing(1),
   },
 feedback_afterSubmit : {
     width: '100%',
@@ -68,7 +67,7 @@ feedback_spinner : {
 feedback_icon : {
     color: theme.palette.primary['500'],
     fontSize: 32,
-    marginBottom: theme.spacing.unit * 2,
+    marginBottom: theme.spacing(2),
   },
 });
 
@@ -165,7 +164,7 @@ class Feedback extends Component {
         <Typography onClick={this.handleClick} style={{cursor: 'pointer'}}> Send feedback</Typography>
         {open && <Paper className={classes.feedback_paper}>
           {(!success && !failure && !submitting) && <Fragment>
-            <Typography variant="title" component="h1">
+            <Typography varant="h6" component="h1">
               Share your feedback
             </Typography>
             <form
@@ -218,7 +217,7 @@ class Feedback extends Component {
             </form>
           </Fragment>}
           {submitting && <div className={classes.feedback_afterSubmit}>
-            <Spinner className={classes.feedback_spinner}/>
+            <CircularProgress size={18} />
           </div>}
           {success && <div className={classes.feedback_afterSubmit}>
             <SvgIcon className={classes.feedback_icon}>

@@ -9,7 +9,7 @@ import {
     TwitterShareButton,
 } from 'react-share';
 import { encode } from 'universal-base64';
-import { withStyles } from '@material-ui/core/styles';
+import { withStyles } from '@material-ui/core';
 import Card from '@material-ui/core/Card';
 import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
@@ -22,10 +22,8 @@ import IconButton from '@material-ui/core/IconButton';
 import SvgIcon from '@material-ui/core/SvgIcon';
 import Divider from '@material-ui/core/Divider';
 import MoreVert from '@material-ui/icons/MoreVert';
-import SaveButton from '../components/Profile/SaveButton';
-import {isLoggedIn} from './Account/Auth';
 
-import withRoot from '../withRoot';
+
 
 import { trackClick} from "./common/tracking";
 
@@ -36,14 +34,14 @@ const styles = theme => ({
     justifyContent: 'baseline',
     borderTop: `2px solid #AB93FF`,
     boxShadow: '0px 3px 5px 0px rgba(0,0,0,0.1),0px 1px 1px 0px rgba(0,0,0,0.07),0px 2px 6px 1px rgba(0,0,0,0.06)',
-    padding: theme.spacing.unit/2,
-    height: theme.spacing.unit * 19,
-    margin: theme.spacing.unit
+    padding: "4px",
+    height: theme.spacing(1),
+    margin: theme.spacing()
   },
 service_card_cardTop : {
     display: 'flex',
     justifyContent: 'space-between',
-    marginRight: -theme.spacing.unit,
+    marginRight: -theme.spacing(1),
   },
     service_card_cardTitle:{
         cursor: 'pointer',
@@ -51,7 +49,7 @@ service_card_cardTop : {
 service_card_caption : {
     overflowY: 'hidden',
     cursor: 'pointer',
-    height : theme.spacing.unit * 6,
+    height : theme.spacing(6),
   },
 service_card_cardActions : {
     display: 'flex',
@@ -59,8 +57,8 @@ service_card_cardActions : {
     padding:0,
   },
 service_card_iconButton : {
-    marginTop: theme.spacing.unit * -2,
-    marginRight: theme.spacing.unit * -2,
+    marginTop: theme.spacing(-2),
+    marginRight: theme.spacing(-2),
   },
 service_card_menuItem : {
     display: 'flex',
@@ -73,11 +71,11 @@ service_card_shareButton : {
   },
 service_card_cardContent : {
     paddingBottom: 0,
-    height : theme.spacing.unit * 13,
+    height : theme.spacing(1),
 },
 service_card_dividerWrapper : {
-    paddingLeft: theme.spacing.unit * 4,
-    paddingRight: theme.spacing.unit * 4,
+    paddingLeft: theme.spacing(4),
+    paddingRight: theme.spacing(4),
   },
   "service_card_raw":{
       height: 'auto',
@@ -102,9 +100,7 @@ class SearchResult extends Component {
         super(props);
         this.state = {
             anchorEl: null,
-            copied: false,
-                loggedin: false,
-    logincheckloading: true
+            copied: false
         };
         this.handleClick = this.handleClick.bind(this);
         this.handleDeliveryClick = this.handleDeliveryClick.bind(this);
@@ -112,17 +108,7 @@ class SearchResult extends Component {
         this.handleClose = this.handleClose.bind(this);
         this.handleCopy = this.handleCopy.bind(this);
     }
-      componentDidMount(){
-    const loggedin = isLoggedIn();
-    this.setState({
-      logincheckloading: false,
-    });
-    if (loggedin){
-      this.setState({
-        loggedin: true,
-      })
-    }
-  }
+      
 
     handleClick() {
         const { trackClick, resultType, id, toLink, title,  listIndex} = this.props;
@@ -219,8 +205,6 @@ class SearchResult extends Component {
                     {(deliveryLink && deliveryLink.link_name) && <Button size="small" color="primary" href={redir}  target="_blank" onClick={this.handleDeliveryClick}>
                             {deliveryLink.link_name}
                         </Button>}
-                        {this.state.logincheckloading ? null : ''} 
-                        {(!this.state.logincheckloading && this.state.loggedin) ?(<SaveButton icon={true} service={id}/>) : null}
                     </CardActions>
             </Card>
         );

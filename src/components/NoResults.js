@@ -4,7 +4,7 @@ import {navigate} from '@reach/router';
 
 import { connect } from "react-redux";
 
-import { withStyles } from '@material-ui/core/styles';
+import { withStyles } from '@material-ui/core';
 import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
 import SentimentDissatisfied from '@material-ui/icons/SentimentDissatisfied';
@@ -14,7 +14,7 @@ import Grid from '@material-ui/core/Grid';
 import Card from '@material-ui/core/Card';
 import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
-import withRoot from '../withRoot';
+
 import {NO_SEARCH_RESULTS} from './common/tracking_events';
 import { trackEvent } from "./common/tracking";
 
@@ -25,7 +25,7 @@ const styles = theme => ({
 no_res_icon : {
     fontSize: 48,
     color: theme.palette.primary['500'],
-    marginBottom: theme.spacing.unit * 2,
+    marginBottom: theme.spacing(2),
   },
 no_res_title : {
     fontWeight: 600,
@@ -36,10 +36,10 @@ no_res_paper : {
     left: -230,
     height: 280,
     width: 332,
-    paddingLeft: theme.spacing.unit * 2,
-    paddingRight: theme.spacing.unit * 2,
-    paddingTop: theme.spacing.unit * 2,
-    marginBottom: theme.spacing.unit * 3,
+    paddingLeft: theme.spacing(2),
+    paddingRight: theme.spacing(2),
+    paddingTop: theme.spacing(2),
+    marginBottom: theme.spacing(3),
     borderTop: `6px solid ${theme.palette.primary["500"]}`,
   },
 no_res_bootstrapInput : {
@@ -48,13 +48,13 @@ no_res_bootstrapInput : {
     color: theme.palette.primary['200'],
     border: '1px solid #ced4da',
     padding: '10px 12px 12px 12px',
-    marginTop: theme.spacing.unit,
+    marginTop: theme.spacing(1),
     width: '300px',
     transition: theme.transitions.create(['border-color', 'box-shadow'])
   },
 no_res_button : {
-    marginTop: theme.spacing.unit * 2,
-    marginBottom: theme.spacing.unit,
+    marginTop: theme.spacing(2),
+    marginBottom: theme.spacing(1),
   },
 no_res_afterSubmit : {
     width: '100%',
@@ -70,15 +70,15 @@ no_res_spinner : {
 no_res_icon : {
     color: theme.palette.primary['100'],
     fontSize: 64,
-    marginBottom: theme.spacing.unit * 2,
+    marginBottom: theme.spacing(2),
   },
 no_res_divider : {
-    marginRight: theme.spacing.unit * 4,
-    marginLeft: theme.spacing.unit * 4,
-    marginBottom: theme.spacing.unit * 3,
+    marginRight: theme.spacing(4),
+    marginLeft: theme.spacing(4),
+    marginBottom: theme.spacing(3),
   },
 no_res_otherCitiesHeader : {
-    marginBottom: theme.spacing.unit * 1,
+    marginBottom: theme.spacing(1),
   },
 no_res_link : {
     textDecoration: 'none',
@@ -221,7 +221,7 @@ class NoResults extends Component {
 
         <Grid item xs='auto' sm={4} />
         <Grid item xs={12} sm={4} >
-        <Typography variant="title" className={classes.no_res_title}>
+        <Typography varant="h6" className={classes.no_res_title}>
             {`We couldn't find any results for your query '${searchQuery}'`}
         </Typography>
         </Grid>

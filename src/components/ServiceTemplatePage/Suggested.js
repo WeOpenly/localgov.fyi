@@ -5,7 +5,7 @@ import Grid from '@material-ui/core/Grid';
 import { isMobileOnly } from 'react-device-detect';
 import SuggestedRow from './SuggestedRow';
 import LocationCard from '../UserRequests/LocationCard';
-import { withStyles } from '@material-ui/core/styles';
+import { withStyles } from '@material-ui/core';
 import ContentLoader from "react-content-loader"
 
 const SuggestedLoader = () => (
@@ -27,15 +27,15 @@ const styles = theme => ({
         width: '240px',
         display: 'flex',
         flexDirection: 'column',
-        padding: theme.spacing.unit,
-        margin: theme.spacing.unit,
+        padding: theme.spacing(1),
+        margin: theme.spacing(1),
         boxShadow: `0 2px 5px 2px ${theme.palette.primary['100']}`,
     },
     ser_template_card_img: {
         display: 'flex',
         justifyContent: 'center',
         minHeight: '80px',
-        padding: theme.spacing.unit * 3
+        padding: theme.spacing(3)
     },
     ser_template_card_content: {
         textAlign: 'center',
@@ -44,8 +44,8 @@ const styles = theme => ({
 
     },
     ser_gloss_suggested_row: {
-        paddingLeft: theme.spacing.unit,
-        marginTop: theme.spacing.unit * 2,
+        paddingLeft: theme.spacing(1),
+        marginTop: theme.spacing(2),
     },
 ser_gloss_suggested_failed_row:{
     display: 'flex',

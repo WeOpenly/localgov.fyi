@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import {connect} from "react-redux";
 import Form from "react-jsonschema-form";
 
-import Spinner from 'react-spinkit';
+import CircularProgress from  '@material-ui/core/CircularProgress';
 import {isMobileOnly} from 'react-device-detect';
 import {navigate} from '@reach/router';
 
@@ -13,7 +13,7 @@ import Dialog from '@material-ui/core/Dialog';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import DialogContent from '@material-ui/core/DialogContent';
 import queryString from 'query-string'
-import {withStyles} from '@material-ui/core/styles';
+import {withStyles} from '@material-ui/core';
 import Divider from '@material-ui/core/Divider';
 
 import Grid from '@material-ui/core/Grid';
@@ -32,14 +32,14 @@ const styles = theme => ({
     },
     account_form_loginEmbed: {},
     account_form_registerinstead: {
-        marginTop: theme.spacing.unit *4,
+        marginTop: theme.spacing(4),
         display: 'flex'
     },
     amount: {
-        margin: theme.spacing.unit *4
+        margin: theme.spacing(4)
     },
     button: {
-        margin: theme.spacing.unit *4,
+        margin: theme.spacing(4),
         display: 'flex',
         justifyContent: 'center'
     }
@@ -113,7 +113,7 @@ class CallApiStepDetails extends React.Component {
         const {step_details} = stepDetails;
 
         if (stepDetailsLoading) {
-            return (<Spinner name="ball-beat" color="blue"/>);
+            return ( <CircularProgress size={15} />);
         }
 
         if (stepDetailsLoadingFailed && !stepDetailsfailedReason) {
@@ -138,7 +138,7 @@ class CallApiStepDetails extends React.Component {
             <Grid container spacing={16} align="center" >
                 <Grid item xs='auto' sm={2} />
                     <Grid item xs={12} sm={8} >
-                    <Typography variant="headline" component="h1" className={classes.amount}>
+                    <Typography variant="h5" component="h1" className={classes.amount}>
                         {amount_to_pay_display}
                     </Typography>
                     </Grid> 

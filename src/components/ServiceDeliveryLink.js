@@ -2,7 +2,7 @@ import React, {Component, Fragment} from 'react';
 import PropTypes from 'prop-types';
 import {connect} from "react-redux";
 
-import {withStyles} from '@material-ui/core/styles';
+import {withStyles} from '@material-ui/core';
 import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
 import Dialog from '@material-ui/core/Dialog';
@@ -11,13 +11,13 @@ import Paper from '@material-ui/core/Paper';
 import SvgIcon from '@material-ui/core/SvgIcon';
 import Mood from '@material-ui/icons/Mood';
 import HighLightOutlined from '@material-ui/icons/HighlightOutlined';
-
+import Fab from '@material-ui/core/Fab';
 import SentimentDissatisfied from '@material-ui/icons/SentimentDissatisfied';
 import Cancel from '@material-ui/icons/Cancel';
 import MoodBad from '@material-ui/icons/MoodBad';
-import Spinner from 'react-spinkit';
+import CircularProgress from '@material-ui/core/CircularProgress';
 
-import withRoot from '../withRoot';
+
 import {trackClick, trackInput} from "./common/tracking";
 import {toggleFeedbackDialog, toggleNotifyDialog} from './UserRequests/actions';
 import {navigate, redirectTo} from '@reach/router';
@@ -28,7 +28,7 @@ import SvgUsers from '../svgIcons/users';
 
 const styles = theme => ({
   ser_del_link_root: {
-    marginBottom: theme.spacing.unit
+    marginBottom: theme.spacing()
   },
   ser_del_link_media: {
     minWidth: "100px",
@@ -38,7 +38,7 @@ const styles = theme => ({
     boxShadow: `0 0 2px 1px ${theme.palette.primary["50"]}`
   },
   ser_del_link_mediaContainer: {
-    paddingTop: theme.spacing.unit * 2,
+    paddingTop: theme.spacing(2),
     borderRadius: 3,
     cursor: "pointer",
     display: "flex",
@@ -49,7 +49,7 @@ const styles = theme => ({
     border: `1px solid ${theme.palette.primary['50']}`
   },
   ser_del_link_feedbackIcon: {
-    margin: theme.spacing.unit
+    margin: theme.spacing()
   },
   ser_del_link_content: {
     display: 'flex',
@@ -58,26 +58,26 @@ const styles = theme => ({
   },
   ser_del_link_button: {
     width: '100%',
-    marginBottom: theme.spacing.unit
+    marginBottom: theme.spacing()
   },
   ser_del_link_paper: {
-    paddingLeft: theme.spacing.unit,
-    paddingRight: theme.spacing.unit,
-    paddingTop: theme.spacing.unit * 2,
+    paddingLeft: theme.spacing(1),
+    paddingRight: theme.spacing(1),
+    paddingTop: theme.spacing(2),
     // borderTop : `6px solid ${theme.palette.primary["500"]}`,
     backgroundImage: `linear-gradient(to left bottom, #6f47ff, #5d38f2, #4829e4, #3017d7)`,
     backgroundColor: theme.palette.primary['400']
   },
   ser_del_link_title: {
     color: theme.palette.common.white,
-    paddingBottom: theme.spacing.unit * 2
+    paddingBottom: theme.spacing(2)
   },
   ser_del_link_satisfiedDialog: {
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
     justifyContent: 'center',
-    margin: theme.spacing.unit * 4
+    margin: theme.spacing(4)
   },
   ser_del_link_form: {
     width: '350px'
@@ -87,7 +87,7 @@ const styles = theme => ({
     color: theme.palette.primary['200'],
     border: '1px solid #ced4da',
     padding: '10px 12px 12px 12px',
-    marginTop: theme.spacing.unit,
+    marginTop: theme.spacing(1),
     width: '100%',
     transition: theme
       .transitions
@@ -98,7 +98,7 @@ const styles = theme => ({
     color: theme.palette.primary['200'],
     border: '1px solid #ced4da',
     padding: '10px 12px 12px 12px',
-    marginTop: theme.spacing.unit,
+    marginTop: theme.spacing(1),
     width: '100%',
     height: '100px',
     'wordBreak': 'break-word',
@@ -107,8 +107,8 @@ const styles = theme => ({
       .create(['border-color', 'box-shadow'])
   },
   ser_del_link_dialogButton: {
-    marginTop: theme.spacing.unit * 2,
-    marginBottom: theme.spacing.unit * 2,
+    marginTop: theme.spacing(2),
+    marginBottom: theme.spacing(2),
     backgroundColor: 'white',
     color: theme.palette.primary['700'],
     textTransform: 'capitalize',
@@ -123,11 +123,11 @@ const styles = theme => ({
     justifyContent: 'space-between'
   },
   ser_del_link_dialogButton2: {
-    marginTop: theme.spacing.unit * 2,
-    marginBottom: theme.spacing.unit * 2
+    marginTop: theme.spacing(2),
+    marginBottom: theme.spacing(2)
   },
   ser_del_link_afterSubmit: {
-    margin: theme.spacing.unit * 6,
+    margin: theme.spacing(6),
     display: 'flex',
     flexDirection: 'column',
     justifyContent: 'center',
@@ -139,12 +139,12 @@ const styles = theme => ({
   ser_del_link_icon: {
     color: theme.palette.primary['500'],
     fontSize: 32,
-    marginBottom: theme.spacing.unit * 2
+    marginBottom: theme.spacing(2)
   },
   ser_del_link_successIcon: {
     color: theme.palette.primary['100'],
     fontSize: 56,
-    margin: theme.spacing.unit *2
+    margin: theme.spacing(2)
   },
   ser_del_link_bodyText: {
     color: theme.palette.common.white
@@ -158,11 +158,11 @@ const styles = theme => ({
 ser_del_link_icymi:{
   display: 'flex',
   alignItems: 'center',
-  paddingTop: theme.spacing.unit,
+  paddingTop: theme.spacing(1),
 },
   ser_del_link_icymi_icon:{
     color: theme.palette.primary['100'],
-    margin: theme.spacing.unit,
+    margin: theme.spacing(1),
   },
 ser_del_link_icymi_text:{
   color: theme.palette.primary['100']
@@ -177,16 +177,16 @@ ser_del_link_icymi_text:{
   template_views_card_mob: {
     display: "flex",
     flexWrap: "wrap",
-    paddingLeft: theme.spacing.unit,
+    paddingLeft: theme.spacing(1),
   },
   template_views_card: {
     display: "flex",
     flexWrap: "wrap",
-    padding: theme.spacing.unit
+    padding: theme.spacing()
   },
   template_views_message: {
-    paddingLeft: theme.spacing.unit,
-    paddingTop: theme.spacing.unit / 4
+    paddingLeft: theme.spacing(1),
+    paddingTop:'2px'
   },
   template_views_message_text: {
     fontWeight: 500,
@@ -388,7 +388,7 @@ class ServiceDeliveryLink extends Component {
             size="large"
             className={classes.ser_del_link_button}>
             {this.state.redirectClicked
-              ? (<Spinner name="ball-beat" color="white" />)
+              ? (<CircularProgress size={18} />)
               : `${link.link_name}`}
           </Button>
         );
@@ -418,29 +418,29 @@ class ServiceDeliveryLink extends Component {
             </div>
             <Typography
               id="ser-notify-form-dialog-title"
-              variant="headline"
+              variant="h5"
               component="h2"
               className={classes.ser_del_link_title}>
               How was your experience with evergov?
             </Typography>
-            <Button
+            <Fab
               onClick={this.handleGood}
-              variant="extendedFab"
+              variant="h5"
               color="primary"
               type="submit"
               className={classes.ser_del_link_dialogButton}>
               <Mood className={classes.ser_del_link_feedbackIcon}/>
               Good so far!
-            </Button>
-            <Button
+            </Fab>
+            <Fab
               onClick={this.handleBad}
-              variant="extendedFab"
+              variant="extended"
               color="primary"
               type="submit"
               className={classes.ser_del_link_dialogButton}>
               <SentimentDissatisfied className={classes.ser_del_link_feedbackIcon}/>
               It could have been better.
-            </Button>
+            </Fab>
             <div className={classes.ser_del_link_icymi}>
               <HighLightOutlined style={{fontSize: '20px'}} className={classes.ser_del_link_icymi_icon} /> <Typography
                 variant="caption"
@@ -452,7 +452,7 @@ class ServiceDeliveryLink extends Component {
           {(!showSatisfied && !success && !failure && !submitting) && <Fragment>
             <div className={classes.ser_del_link_satisfiedDialog}>
               <Typography
-                variant="headline"
+                variant="h5"
                 component="h2"
                 className={classes.ser_del_link_title}>
                 Let us know how we can improve
@@ -514,7 +514,7 @@ class ServiceDeliveryLink extends Component {
             </div>
           </Fragment>}
           {submitting && <div className={classes.ser_del_link_afterSubmit}>
-            <Spinner className={classes.ser_del_link_spinner}/>
+            <CircularProgress size={18} />
           </div>}
           {success && (<ShareBox title={`Help them find government services easily`} messageToShare={`${service_name} easily on EverGov`}/>)}
           {failure && <div className={classes.ser_del_link_afterSubmit}>

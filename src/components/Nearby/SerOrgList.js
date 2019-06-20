@@ -4,7 +4,7 @@ import { connect } from "react-redux";
 
 import { isMobileOnly } from 'react-device-detect';
 import queryString from 'query-string'
-import { withStyles } from '@material-ui/core/styles';
+import { withStyles } from '@material-ui/core';
 import Grid from '@material-ui/core/Grid';
 import SerListItemWithOrg from '../Service/ListItemWithOrg';
 import Typography from '@material-ui/core/Typography';
@@ -35,14 +35,14 @@ ser_org_list_container : {
         flexWrap: 'wrap',
     },
     ser_org_list_header:{
-        paddingBottom: theme.spacing.unit * 2,
+        paddingBottom: theme.spacing(2),
     },
     ser_org_list_header_mob:{
-        paddingBottom: theme.spacing.unit * 2,
+        paddingBottom: theme.spacing(2),
     },
     ser_gloss_suggested_row: {
-        paddingLeft: theme.spacing.unit,
-        marginTop: theme.spacing.unit * 2,
+        paddingLeft: theme.spacing(1),
+        marginTop: theme.spacing(2),
     },
 });
 
@@ -99,7 +99,7 @@ class NearbySerOrgList extends React.Component {
             nearbyComp = items.map((ser, idx) => <SerListItemWithOrg {...ser} />)
             return (<Grid container>
                 <Typography
-                    variant="title"
+                    varant="h6"
                     className={this.state.isMobile ? classes.ser_org_list_header : classes.ser_org_list_header_mob}>
                     Suggestions based on your location
                     </Typography>

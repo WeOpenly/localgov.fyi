@@ -2,7 +2,7 @@ import React, {Fragment} from 'react';
 import PropTypes from 'prop-types';
 import {connect} from "react-redux";
 import queryString from 'query-string'
-import {withStyles} from '@material-ui/core/styles';
+import {withStyles} from '@material-ui/core';
 import Divider from '@material-ui/core/Divider';
 
 import Grid from '@material-ui/core/Grid';
@@ -18,7 +18,8 @@ import DialogContent from '@material-ui/core/DialogContent';
 import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
 
-import Spinner from 'react-spinkit';
+
+import CircularProgress from '@material-ui/core/CircularProgress';
 import {ferchServiceBpFlowSummary, createServiceFlow} from './actions';
 
 const windowGlobal = typeof window !== 'undefined'
@@ -31,7 +32,7 @@ const styles = theme => ({
     },
     account_form_loginEmbed: {},
     account_form_registerinstead: {
-        marginTop: theme.spacing.unit *4,
+        marginTop: theme.spacing(4),
         display: 'flex'
     },
     summaryTitle: {
@@ -40,7 +41,7 @@ const styles = theme => ({
     },
     summaryActions: {
         display: 'flex',
-        margin: theme.spacing.unit *4,
+        margin: theme.spacing(4),
         justifyContent: 'center'
     }
 });
@@ -70,7 +71,7 @@ class FlowSummary extends React.Component {
         let actions = null;
 
         if (flowSummaryLoading) {
-            return (<Spinner name="ball-beat" color="blue"/>);
+            return ( <CircularProgress size={18} />);
         }
 
         if (flowSummaryLoadingFailed) {

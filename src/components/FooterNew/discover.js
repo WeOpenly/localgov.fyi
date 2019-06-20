@@ -4,7 +4,7 @@ import _ from "lodash";
 
 import { isMobileOnly } from 'react-device-detect';
 import Typography from '@material-ui/core/Typography';
-import { withStyles } from '@material-ui/core/styles';
+import { withStyles } from '@material-ui/core';
 
 import ExitToApp from '@material-ui/icons/ExitToApp'
 import SvgIcon from '@material-ui/core/SvgIcon';
@@ -13,13 +13,13 @@ import Avatar from '@material-ui/core/Avatar';
 
 const styles = theme => ({
     disco_footer: {
-        margin: `${theme.spacing.unit * 3}px 0`,
+        margin: `${theme.spacing(3)}px 0`,
         display: 'flex',
         flexDirection: 'column',
         alignItems: 'left'
     },
     disco_footer_header: {
-        marginBottom: theme.spacing.unit,
+        marginBottom: theme.spacing(1),
     },
     disco_footer_links: {
         display: 'flex',
@@ -109,7 +109,7 @@ class FooterDiscover extends Component {
         return (
             <div className={classes.disco_footer}>
                 <div className={classes.disco_footer_header}>
-                    <Typography variant="display1" style={{ fontSize: "0.85rem" }} >
+                    <Typography variant="h4" style={{ fontSize: "0.85rem" }} >
                         Discover
                     </Typography>
                 </div>

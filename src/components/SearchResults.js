@@ -2,15 +2,15 @@ import React, { Component } from "react";
 
 import { connect } from "react-redux";
 import _ from "lodash";
-import Spinner from 'react-spinkit';
 
-import { withStyles } from '@material-ui/core/styles';
+
+import { withStyles } from '@material-ui/core';
 
 import Grid from '@material-ui/core/Grid';
 
 import SearchResult from "./SearchResult";
 
-import withRoot from '../withRoot';
+
 
 const styles = theme => ({
     search_res_root: {
@@ -20,7 +20,7 @@ const styles = theme => ({
         justifyContent: "center"
     },
 search_res_searchResults : {
-        paddingTop: theme.spacing.unit * 3
+        paddingTop: theme.spacing(3)
     },
 search_res_errorMsgContainer : {
         flexGrow: 1,

@@ -6,7 +6,7 @@ import Typography from '@material-ui/core/Typography';
 
 import InsertLink from '@material-ui/icons/InsertLink';
 import DoneAll from '@material-ui/icons/DoneAll';
-import {withStyles} from '@material-ui/core/styles';
+import {withStyles} from '@material-ui/core';
 import {Twitter, Facebook} from 'react-social-sharing';
 import { CopyToClipboard } from 'react-copy-to-clipboard';
 import Tooltip from '@material-ui/core/Tooltip';
@@ -16,18 +16,18 @@ import HighFive from '../svgIcons/highFive';
 const styles = theme => ({
     share_box_root: {
         textAlign: 'center',
-        padding: theme.spacing.unit * 2,
-        marginBottom: theme.spacing.unit * 3,
+        padding: theme.spacing(2),
+        marginBottom: theme.spacing(3),
         display: 'flex',
         flexDirection: 'column'
     },
     share_box_title:{
         color: '#fff',
-        padding: theme.spacing.unit/2,
+        padding: "4px",
     },
     share_box_hero:{
         textAlign: 'center',
-        padding: theme.spacing.unit * 2,
+        padding: theme.spacing(2),
         display: 'flex',
         flexDirection: 'column'
     },
@@ -38,11 +38,11 @@ const styles = theme => ({
     share_box_button:{
         minWidth: '32px',
         height: '32px',
-        margin: theme.spacing.unit,
+        margin: theme.spacing(1),
         boxShadow: '0px 3px 5px 0px rgba(0,0,0,0.1),0px 1px 1px 0px rgba(0,0,0,0.07),0px 2px 6px 1px rgba(0,0,0,0.06)'
     },
     share_box_tt:{
-        maxHeight: theme.spacing.unit *3,
+        maxHeight: theme.spacing(3),
     }
 });
 
@@ -81,7 +81,7 @@ class ShareBox extends React.Component {
                         <HighFive style={{fontSize: "48px"}} />
                     </div>
                     <div className={classes.share_box_title_container}>
-                        <Typography variant="title" className={classes.share_box_title}>
+                        <Typography varant="h6" className={classes.share_box_title}>
                             Share with your friends
                         </Typography>
                         <Typography variant="caption" className={classes.share_box_title}>

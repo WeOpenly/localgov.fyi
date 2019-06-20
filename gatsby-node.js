@@ -8,15 +8,6 @@ const fs = require("fs");
 // bootstrap is finished so you have access to any information necessary to
 // programmatically create pages.
 
-
-
-
-
-
-
-
-
-
 exports.createPages = ({graphql, actions}) => {
   const {createPage} = actions
 

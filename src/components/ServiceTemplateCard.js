@@ -1,14 +1,14 @@
 import React, {Component} from "react";
 import {connect} from "react-redux";
 import _ from "lodash";
-import Spinner from 'react-spinkit';
+
 import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
 import {isMobileOnly} from 'react-device-detect';
 import CardMedia from '@material-ui/core/CardMedia';
 import IconButton from '@material-ui/core/IconButton';
 import Typography from '@material-ui/core/Typography';
-import {withStyles} from '@material-ui/core/styles';
+import {withStyles} from '@material-ui/core';
 import ProptaxSvg from '../svgIcons/PropTaxIl.js';
 import ParkingcitSvg from '../svgIcons/ParkingCitIl.js';
 import RecreationSvg from '../svgIcons/RecreationIl.js';
@@ -35,8 +35,8 @@ const styles = theme => ({
     textDecoration: "none",
     height: "200px",
     background: "#fff",
-    margin: theme.spacing.unit,
-    paddingBottom: theme.spacing.unit,
+    margin: theme.spacing(1),
+    paddingBottom: theme.spacing(1),
     display: "flex",
     flexDirection: "column",
     borderTop: `1px solid #AB93FF`,
@@ -48,7 +48,7 @@ const styles = theme => ({
     textDecoration: "none",
     width: "160px",
     height: "200px",
-    margin: theme.spacing.unit,
+    margin: theme.spacing(1),
     display: "flex",
     position: "relative",
     flexDirection: "column",
@@ -71,22 +71,22 @@ const styles = theme => ({
     display: "flex",
     justifyContent: "center",
     minHeight: "80px",
-    paddingBottom: theme.spacing.unit * 3,
-    paddingTop: theme.spacing.unit * 3
+    paddingBottom: theme.spacing(3),
+    paddingTop: theme.spacing(3)
   },
   ser_template_card_img_compact: {
     display: "flex",
     justifyContent: "center",
     minHeight: "32px",
-    marginBottom: theme.spacing.unit,
-    marginTop: theme.spacing.unit * 2
+    marginBottom: theme.spacing(1),
+    marginTop: theme.spacing(2)
   },
   ser_template_card_content: {
     textAlign: "center",
     display: "flex",
     flexWrap: "wrap",
     justifyContent: "center",
-    padding: theme.spacing.unit,
+    padding: theme.spacing(1),
     alignItems: "center"
   }
 });

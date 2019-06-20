@@ -1,18 +1,17 @@
 import React, {Component, Fragment} from 'react';
 import {connect} from "react-redux";
-import Spinner from 'react-spinkit';
+
 import {isMobileOnly} from 'react-device-detect';
 import {StaticQuery, graphql, Link} from "gatsby";
 import {navigate} from '@reach/router';
 
 import Button from '@material-ui/core/Button';
-import {withStyles} from '@material-ui/core/styles';
+import {withStyles} from '@material-ui/core';
 import Typography from '@material-ui/core/Typography';
 import Grid from '@material-ui/core/Grid';
 import IconButton from '@material-ui/core/IconButton';
 import ConnLocationCard from './UserRequests/LocationCard';
 import ServiceTemplateCard from './ServiceTemplateCard';
-import {fade} from "@material-ui/core/styles/colorManipulator";
 
 import {trackClick} from "../components/common/tracking";
 
@@ -25,11 +24,11 @@ const styles = theme => ({
      display: 'flex',
      justifyContent: 'center',
      flex: '1',
-     margin: theme.spacing.unit,
+     margin: theme.spacing(1),
      marginRight: '4px',
      marginLeft: '4px',
      borderRadius: '2px',
-     padding: theme.spacing.unit *4,
+     padding: theme.spacing(4),
  },
  related_ser_list_mob: {
      display: 'flex',
@@ -38,12 +37,7 @@ const styles = theme => ({
  }
 });
 
-const SuggestBoxLoader = props => (
-    <div style={{
-        display: 'flex',
-        justifyContent: 'center'
-    }}><Spinner name="ball-beat" color="white"/></div>
-);
+
 
 const xah_randomize_array = ((arr) => {
     /* [ Fisher-Yates shuffle. can be used on array-like object

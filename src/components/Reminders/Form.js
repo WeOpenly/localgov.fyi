@@ -1,7 +1,7 @@
 import React, { Component, Fragment } from 'react';
-import Spinner from 'react-spinkit';
+
 import { connect } from "react-redux";
-import { withStyles } from '@material-ui/core/styles';
+import { withStyles } from '@material-ui/core';
 import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
@@ -30,10 +30,10 @@ const styles = theme => ({
         height: 280,
         width: 332,
         zIndex: 10,
-        paddingLeft: theme.spacing.unit * 2,
-        paddingRight: theme.spacing.unit * 2,
-        paddingTop: theme.spacing.unit * 2,
-        marginBottom: theme.spacing.unit * 3,
+        paddingLeft: theme.spacing(2),
+        paddingRight: theme.spacing(2),
+        paddingTop: theme.spacing(2),
+        marginBottom: theme.spacing(3),
         borderTop: `6px solid ${theme.palette.primary["500"]}`,
     },
     feedback_bootstrapInput: {
@@ -42,7 +42,7 @@ const styles = theme => ({
         color: theme.palette.primary['200'],
         border: '1px solid #ced4da',
         padding: '10px 12px 12px 12px',
-        marginTop: theme.spacing.unit,
+        marginTop: theme.spacing(1),
         width: '100%',
         transition: theme.transitions.create(['border-color', 'box-shadow'])
     },
@@ -52,15 +52,15 @@ const styles = theme => ({
         color: theme.palette.primary['200'],
         border: '1px solid #ced4da',
         padding: '10px 12px 12px 12px',
-        marginTop: theme.spacing.unit,
+        marginTop: theme.spacing(1),
         width: '100%',
         height: '100px',
         'wordBreak': 'break-word',
         transition: theme.transitions.create(['border-color', 'box-shadow'])
     },
     feedback_button: {
-        marginTop: theme.spacing.unit * 2,
-        marginBottom: theme.spacing.unit,
+        marginTop: theme.spacing(2),
+        marginBottom: theme.spacing(1),
     },
     feedback_afterSubmit: {
         width: '100%',
@@ -76,14 +76,14 @@ const styles = theme => ({
     feedback_icon: {
         color: theme.palette.primary['500'],
         fontSize: 32,
-        marginBottom: theme.spacing.unit * 2,
+        marginBottom: theme.spacing(2),
     },
 reminder_card_form_button_container:{
     display: 'flex',
-    padding: `${theme.spacing.unit * 2}px 0 ${theme.spacing.unit * 2}px 0`
+    padding: `${theme.spacing(2)}px 0 ${theme.spacing(2)}px 0`
 },
     reminder_card_form_container:{
-        padding: theme.spacing.unit
+        padding: theme.spacing()
     }
 });
 

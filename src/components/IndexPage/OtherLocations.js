@@ -3,9 +3,9 @@ import PropTypes from 'prop-types';
 import { connect } from "react-redux";
 import {Link} from 'gatsby';
 import {isMobileOnly} from 'react-device-detect';
-import { fade } from "@material-ui/core/styles/colorManipulator";
+
 import Button from '@material-ui/core/Button';
-import { withStyles } from '@material-ui/core/styles';
+import { withStyles } from '@material-ui/core';
 import Grid from '@material-ui/core/Grid';
 import OrgLite from '../Organization/Lite';
 import Typography from '@material-ui/core/Typography';
@@ -31,7 +31,7 @@ const styles = theme => ({
     display: "flex",
     flex: "1 1 100%",
     border: "none",
-    margin: theme.spacing.unit,
+    margin: theme.spacing(1),
     color: "#4F1FFF",
     letterSpacing: "2px",
     justifyContent: "center"
@@ -45,8 +45,8 @@ const styles = theme => ({
     display: "flex",
     flex: "1 1 30%",
     border: "none",
-    margin: theme.spacing.unit,
-    color: fade("#000", 0.75),
+    margin: theme.spacing(1),
+    color: "#000",
     letterSpacing: "4px",
     justifyContent: "center"
   },
@@ -54,13 +54,13 @@ const styles = theme => ({
     display: "flex",
     justifyContent: "center",
     alignItems: "center",
-    paddingBottom: theme.spacing.unit * 2
+    paddingBottom: theme.spacing(2)
   },
   ser_org_list_header_container: {
     display: "flex",
     justifyContent: "center",
     alignItems: "center",
-    paddingBottom: theme.spacing.unit * 6
+    paddingBottom: theme.spacing(6)
   },
   ser_org_list_header_mob: {
     fontSize: "16px"
@@ -69,7 +69,7 @@ const styles = theme => ({
     alignItems: "center",
     display: "flex",
     minHeight: "720px",
-    marginTop: theme.spacing.unit * 2,
+    marginTop: theme.spacing(2),
     justifyContent: "center",
     flexDirection: "column",
     flexWrap: "wrap"
@@ -252,7 +252,7 @@ orgLink : 'https://evergov.com/organization/usa/pennsylvania-state/philadelphia-
                 }}
               />
               <Typography
-                variant="title"
+                variant="smHeadline"
                 className={
                   this.state.isMobile
                     ? classes.ser_org_list_header_mob

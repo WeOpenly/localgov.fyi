@@ -1,11 +1,11 @@
 import React, { Component, Fragment } from 'react';
 import { connect } from "react-redux";
-import Spinner from 'react-spinkit';
-import { isMobileOnly } from 'react-device-detect';
-import { StaticQuery, graphql, Link } from "gatsby";
 
-import Button from '@material-ui/core/Button';
-import { withStyles } from '@material-ui/core/styles';
+import { isMobileOnly } from 'react-device-detect';
+// import { StaticQuery, graphql, Link } from "gatsby";
+
+// import Button from '@material-ui/core/Button';
+import { withStyles } from '@material-ui/core';
 import Typography from '@material-ui/core/Typography';
 import Grid from '@material-ui/core/Grid';
 import ContentLoader from "react-content-loader";
@@ -26,7 +26,7 @@ import { trackClick } from "../common/tracking";
 
 const styles = theme => ({
     index_hero_header: {
-        margin: theme.spacing.unit * 5,
+        margin: theme.spacing(5),
         display: 'flex',
         flexWrap: 'wrap',
         justifyContent: 'space-between'
@@ -37,14 +37,14 @@ const styles = theme => ({
     },
     index_hero_title:{
         display: 'flex',
-        justifyContent: 'space-around'
+        justifyContent: 'flex-start'
     },
     index_hero_container: {
         display: 'flex',
         flexDirection: 'column',
         justifyContent: 'center',
         height: '480px',
-        marginBottom: theme.spacing.unit * 5,
+        marginBottom: theme.spacing(5),
         flexWrap: 'wrap',
     },
     index_hero_search_box:{
@@ -54,9 +54,9 @@ const styles = theme => ({
     index_hero_mob_slogan: {
         width: '100%',
         flexDirection: 'column',
-        marginTop: theme.spacing.unit *3,
-        marginBottom: theme.spacing.unit,
-        paddingLeft: theme.spacing.unit*2,
+        marginTop: theme.spacing(3),
+        marginBottom: theme.spacing(1),
+        paddingLeft: theme.spacing(2),
         flexWrap: 'wrap',
         alignItems: 'flex-start',
         justifyContent: 'flex-start'
@@ -65,7 +65,7 @@ const styles = theme => ({
 
     },
     index_hero_slogan:{
-        marginBottom: theme.spacing.unit,
+        marginBottom: theme.spacing(1),
     },
     index_suggest_box:{
         display: 'flex',
@@ -73,7 +73,7 @@ const styles = theme => ({
     }
 });
 
-const SuggestBoxLoader = props => (<div style={{ display: 'flex', justifyContent: 'center' }}><Spinner name="ball-beat" color="white" /></div>);
+
 
 // const serTemp = (
 //     <StaticQuery
@@ -126,7 +126,7 @@ class IndexHero extends Component {
                   align="left"
                   className={classes.index_hero_mob_slogan}
                 >
-                  <Typography component="span" variant="title">
+                  <Typography component="span" varant="h6">
                     All your government services in a single place.
                   </Typography>
                 </Grid>
@@ -158,7 +158,7 @@ class IndexHero extends Component {
 
                 <Grid item xs="auto" sm={1} />
                 <Grid item
-                    sm={10}
+                    sm={5}
 
                     className={!this.state.isMobile
                         ? classes.index_hero_title
@@ -167,13 +167,13 @@ class IndexHero extends Component {
                 <div className={classes.index_hero_container}>
                     <div className={classes.index_hero_slogan}>
                             <Typography
-                                component="span"
-                                variant="display1">
+                                component="h1"
+                                variant="h4">
                                 All your government services
                         </Typography>
                             <Typography
-                                component="span"
-                                variant="display1">
+                                component="h1"
+                                variant="h4">
                                 in a single place.
                         </Typography>
                     </div>
@@ -184,8 +184,11 @@ class IndexHero extends Component {
                     </div>
                  
                 </div>
+              
+                </Grid>
+                <Grid item
+                    sm={5}>
                     <IndexheroSvg />
-                   
                 </Grid>
                  <Grid item xs="auto" sm={1}   />
                 <Grid item xs="auto" sm={1} />

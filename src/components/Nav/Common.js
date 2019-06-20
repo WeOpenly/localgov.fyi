@@ -7,7 +7,7 @@ import React, { Component } from 'react';
 import { isMobileOnly } from 'react-device-detect';
 
 
-import { withStyles } from '@material-ui/core/styles';
+import { withStyles } from '@material-ui/core';
 import Typography from '@material-ui/core/Typography';
 import Grid from '@material-ui/core/Grid';
 import Link from 'gatsby-link';
@@ -15,14 +15,14 @@ import HeaderAccountMenu from '../HeaderAccountMenu';
 
 const styles = theme => ({
     index_hero_nav: {
-        paddingLeft: theme.spacing.unit,
+        paddingLeft: theme.spacing(1),
     },
     index_hero_nav_items: {
         display: 'flex',
         width: '100%',
         justifyContent: 'space-between',
         alignItems: 'center',
-        padding: theme.spacing.unit,
+        padding: theme.spacing(1),
     },
     index_hero_app_name: {
         textDecoration: 'none',
@@ -53,14 +53,15 @@ class CommonNav extends Component {
             <Grid container className={classes.index_hero_nav}>
                 <Grid item sm={1} />
                 <Grid item sm={10} align="center" className={classes.index_hero_nav_items}>
+                 
+                     
                     <Typography
-                        variant="title">
-                        <Link
-                            to="/"
-                            className={classes.index_hero_app_name}>
+                        component="h3"
+                        variant="smHeadline">
                             evergov
-                           </Link>
-                    </Typography>
+                                 </Typography>
+                         
+               
                     <HeaderAccountMenu location={location} />
                 </Grid>
                 <Grid item sm={1} />

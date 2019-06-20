@@ -4,7 +4,6 @@ import {navigate} from '@reach/router';
 import { isMobileOnly } from 'react-device-detect';
 import { connect } from 'react-redux';
 import { CopyToClipboard } from 'react-copy-to-clipboard';
-import {Info} from 'react-feather';
 import ContentLoader from "react-content-loader"
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
@@ -18,7 +17,7 @@ import HelpOutline from '@material-ui/icons/HelpOutline'
 import PriorityHigh from '@material-ui/icons/PriorityHigh';
 
 
-import { withStyles } from '@material-ui/core/styles';
+import { withStyles } from '@material-ui/core';
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
 import Typography from '@material-ui/core/Typography';
@@ -31,12 +30,12 @@ const windowGlobal = typeof window !== 'undefined'
 
 const styles = theme => ({
     serviceDetailStepNumber:{
-        margin: theme.spacing.unit,
+        margin: theme.spacing(1),
         fontWeight: 700,
     },
     ser_detail_tab_item:{
     display: 'flex',
-    margin: `0 ${theme.spacing.unit * 2}px 0 ${theme.spacing.unit}px`,
+    margin: `0 ${theme.spacing(2)}px 0 ${theme.spacing(1)}px`,
 },
     set_list_link_anchor:{
         textDecoration: 'none',
@@ -59,17 +58,17 @@ const styles = theme => ({
         }
     },
 ser_detail_cardContent : {
-    padding: `${theme.spacing.unit}px ${theme.spacing.unit * 3}px ${theme.spacing.unit*4}px ${theme.spacing.unit}px`,
+    padding: `${theme.spacing()}px ${theme.spacing(3)}px ${theme.spacing(4)}px ${theme.spacing()}px`,
 },
 ser_detail_tab_container_mob:{
     display: 'flex',
-    marginTop: theme.spacing.unit * 2,
+    marginTop: theme.spacing(2),
     position: 'relative',
     justifyContent: 'center'
 },
 ser_detail_tab_container:{
     display: 'flex',
-   marginTop: theme.spacing.unit * 2,
+   marginTop: theme.spacing(2),
     position: 'relative',
 },
 ser_detail_dummyfaq:{
@@ -213,7 +212,7 @@ class ServiceDetail extends Component {
 
                 return <Fragment>
                     <ListItem disableGutters>
-                        <ListItemText primary={<Typography style={{ fontSize: "1.25rem" }} variant='display1'>{question}</Typography>} secondary={<Typography color="textPrimary">{text}</Typography>} />
+                        <ListItemText primary={<Typography style={{ fontSize: "1.25rem" }} variant='h4'>{question}</Typography>} secondary={<Typography color="textPrimary">{text}</Typography>} />
                     </ListItem>
                     {(index !== allfaq.length - 1) ? <Divider style={{ margin: '8px' }} /> : null}
                 </Fragment>;
@@ -228,7 +227,7 @@ class ServiceDetail extends Component {
                     }}
                     offset='48'
                     href={`#about`}>
-                    <Typography className={classes.set_list_link_anchor} variant="subheading">About
+                    <Typography className={classes.set_list_link_anchor} varant="subtitle1">About
                 </Typography>
                 </AnchorLink>
             </div>
@@ -244,7 +243,7 @@ class ServiceDetail extends Component {
                     }}
                     offset='48'
                     href={`#faqs`}>
-                    <Typography className={classes.set_list_link_anchor} variant="subheading">FAQs
+                    <Typography className={classes.set_list_link_anchor} varant="subtitle1">FAQs
                 </Typography>
                 </AnchorLink>
             </div>)
@@ -259,7 +258,7 @@ class ServiceDetail extends Component {
                     }}
                     offset='48'
                     href={`#steps`}>
-                    <Typography className={classes.set_list_link_anchor} variant="subheading">Steps
+                    <Typography className={classes.set_list_link_anchor} varant="subtitle1">Steps
                 </Typography>
                 </AnchorLink>
             </div>)
@@ -274,7 +273,7 @@ class ServiceDetail extends Component {
                     }}
                     offset='48'
                     href={`#forms`}>
-                    <Typography className={classes.set_list_link_anchor} variant="subheading">Forms
+                    <Typography className={classes.set_list_link_anchor} varant="subtitle1">Forms
                 </Typography>
                 </AnchorLink>
             </div>)
@@ -288,7 +287,7 @@ class ServiceDetail extends Component {
                     }}
                     offset='48'
                     href={`#timings`}>
-                    <Typography className={classes.set_list_link_anchor} variant="subheading">Timings
+                    <Typography className={classes.set_list_link_anchor} varant="subtitle1">Timings
                 </Typography>
                 </AnchorLink>
             </div>)
@@ -306,7 +305,7 @@ class ServiceDetail extends Component {
                     </Typography>
 
                     {price && (<Fragment>
-                      <Typography variant="subheading" gutterBottom>
+                      <Typography varant="subtitle1" gutterBottom>
                         Price
                     </Typography>
                     <Typography variant="body2" gutterBottom>
@@ -328,7 +327,7 @@ class ServiceDetail extends Component {
         
         if(qaList){
             tabContent.push(<Fragment>
-                <Typography className={classes.ser_tab_content_heading} component="h2" variant="title">FAQs
+                <Typography className={classes.ser_tab_content_heading} component="h2" varant="h6">FAQs
                       </Typography>
                 <div className={classes.ser_detail_cardContent} id={`faqs`}>
                    {qaList}
@@ -338,7 +337,7 @@ class ServiceDetail extends Component {
 
         if(stepList){
             tabContent.push(<Fragment>
-                <Typography className={classes.ser_tab_content_heading} component="h2" variant="title">Steps
+                <Typography className={classes.ser_tab_content_heading} component="h2" varant="h6">Steps
                       </Typography>
                 <div className={classes.ser_detail_cardContent} id={`steps`}>
                    {stepList}
@@ -348,7 +347,7 @@ class ServiceDetail extends Component {
 
         if(formList){
             tabContent.push(<Fragment>
-                <Typography className={classes.ser_tab_content_heading} component="h2" variant="title">Forms
+                <Typography className={classes.ser_tab_content_heading} component="h2" varant="h6">Forms
                       </Typography>
                 <div className={classes.ser_detail_cardContent} id={`forms`}>
                    {formList}
@@ -358,7 +357,7 @@ class ServiceDetail extends Component {
        
         if(timingList){
             tabContent.push(<Fragment>
-                <Typography className={classes.ser_tab_content_heading} component="h2" variant="title">Timings
+                <Typography className={classes.ser_tab_content_heading} component="h2" varant="h6">Timings
                       </Typography>
                 <div className={classes.ser_detail_cardContent} id={`timings`}>
                    {timingList}

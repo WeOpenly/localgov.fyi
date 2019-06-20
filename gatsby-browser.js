@@ -2,11 +2,10 @@ import 'babel-polyfill';
 
 import React from 'react'
 import {Provider} from 'react-redux'
-import Auth, {isLoggedIn} from './src/components/Account/Auth';
 
 import reduxCreateStore from './src/state/createStore';
 
-const auth = new Auth();
+
 
 
 export const wrapRootElement = ({ element }) => {
@@ -50,10 +49,6 @@ export const onRouteUpdate = (state, page, pages) => {
          window.initTemplate && window.initTemplate();
        };
      }
-  }
-    
-  if (!isLoggedIn){
-    auth.logout();
   }
   
 }

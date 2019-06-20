@@ -2,13 +2,13 @@ import React, { Component } from 'react';
 import Link from 'gatsby-link';
 import {connect} from "react-redux";
 
-import { withStyles } from '@material-ui/core/styles';
+import { withStyles } from '@material-ui/core';
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
 import Divider from '@material-ui/core/Divider';
 import NotFoundIcon from '../svgIcons/NotFound';
-import withRoot from '../withRoot';
+
 import {trackView} from "../components/common/tracking";
 
 const styles = theme => ({
@@ -22,12 +22,12 @@ const styles = theme => ({
     icon: {
         color: theme.palette.primary['100'],
         fontSize: 64,
-        marginBottom: theme.spacing.unit * 2,
+        marginBottom: theme.spacing(2),
     },
     divider:{
-        marginRight: theme.spacing.unit * 4,
-        marginLeft: theme.spacing.unit * 4,
-        marginBottom: theme.spacing.unit * 3,
+        marginRight: theme.spacing(4),
+        marginLeft: theme.spacing(4),
+        marginBottom: theme.spacing(3),
     },
     link: {
         textDecoration: 'none',
@@ -60,7 +60,7 @@ class NotFound extends Component {
                     <Grid item xs='auto' sm={4} />
                     
                     <Grid item xs={12} sm={4}>
-                        <Typography variant="subheading">
+                        <Typography varant="subtitle1">
                             {`This page no longer exists or hasn't been created yet.`}
                         </Typography>
                     </Grid>
@@ -104,6 +104,6 @@ const mapStateToProps = function (state, ownProps) {
     };
 };
 
-const ConnNotFound = connect(mapStateToProps, mapDispatchToProps)(withRoot(withStyles(styles)(NotFound)));
+const ConnNotFound = connect(mapStateToProps, mapDispatchToProps)(withStyles(styles)(NotFound));
 
 export default ConnNotFound;

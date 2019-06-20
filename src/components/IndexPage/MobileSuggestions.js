@@ -7,8 +7,8 @@ import deburr from 'lodash/deburr';
 import match from "autosuggest-highlight/match";
 import parse from "autosuggest-highlight/parse";
 import InputBase from '@material-ui/core/InputBase';
-import { withStyles } from '@material-ui/core/styles';
-import { fade } from "@material-ui/core/styles/colorManipulator";
+import { withStyles } from '@material-ui/core';
+
 import Grid from '@material-ui/core/Grid';
 import Button from '@material-ui/core/Button';
 import SearchIcon from '@material-ui/icons/Search';
@@ -42,7 +42,7 @@ import { trackInput, trackClick } from '../common/tracking';
 
 const styles = theme => ({
     index_page_ser_suggestions_container: {
-        margin: theme.spacing.unit,
+        margin: theme.spacing(1),
         display: 'flex',
         width: '300px',
         justifyContent: 'center',
@@ -88,7 +88,7 @@ const styles = theme => ({
         },
     },
     ser_suggestion_title_icon: {
-        marginRight: theme.spacing.unit
+        marginRight: theme.spacing()
     },
     ser_suggestion_title: {
         fontSize: '10px',
@@ -104,13 +104,13 @@ const styles = theme => ({
 index_page_ser_control_items:{
     display: 'flex',
     justifyContent: 'space-between',
-    marginLeft: theme.spacing.unit,
-    marginRight: theme.spacing.unit,
+    marginLeft: theme.spacing(1),
+    marginRight: theme.spacing(1),
 },
     ser_gloss_search_input: {
         flex: 1,
         padding: '6px',
-        marginRight: theme.spacing.unit,
+        marginRight: theme.spacing(1),
         fontSize: "16px",
         fontWeight: 500,
         fontFamily: '"Nunito Sans",  -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen-Sans,Ubuntu,Cantarell,"Helvetica Neue", sans-serif',
@@ -127,14 +127,14 @@ index_page_ser_control_items:{
     },
     ser_suggestion_title_container: {
         display: 'flex',
-        padding: theme.spacing.unit,
+        padding: theme.spacing(1),
         alignItems: 'center',
         background: '#fafafa',
         borderBottom: `1px solid ${theme.palette.primary['100']}`,
     },
     suggestionsList: {
         listStyle: 'none',
-        padding: theme.spacing.unit,
+        padding: theme.spacing(1),
         marginTop: 0,
     },
     sectionTitle: {
@@ -142,7 +142,7 @@ index_page_ser_control_items:{
     },
     index_page_ser_suggestions_container_mob: {
         display: 'flex',
-        margin: theme.spacing.unit*2,
+        margin: theme.spacing(2),
         flexDirection: 'column',
         width: '100%',
         position: 'relative',
@@ -163,7 +163,7 @@ index_page_ser_control_items:{
         position: 'absolute',
         left: '-280px',
         top: '0px',    
-        padding: theme.spacing.unit,
+        padding: theme.spacing(1),
         width: '320px',
         zIndex: '200',
     },
@@ -171,7 +171,7 @@ index_page_ser_control_items:{
         border: `1px solid ${theme.palette.primary['100']}`,
         boxShadow: '0px 3px 5px 0px rgba(0,0,0,0.1),0px 1px 1px 0px rgba(0,0,0,0.07),0px 2px 6px 1px rgba(0,0,0,0.06)',
         position: 'absolute',
-        padding: theme.spacing.unit,
+        padding: theme.spacing(1),
         width: '100%',
         zIndex: '200',
         top: '-140px',

@@ -1,15 +1,15 @@
 import React from 'react';
-import {withStyles} from '@material-ui/core/styles';
+import {withStyles} from '@material-ui/core';
 import GridList from '@material-ui/core/GridList';
 import GridListTile from '@material-ui/core/GridListTile';
-import withRoot from '../withRoot';
+
 
 const styles = theme => ({
     ho_gridListTile: {
         width: 225,
         height: 250,
         cursor: 'pointer',
-        marginRight: theme.spacing.unit
+        marginRight: theme.spacing()
     }
 });
 

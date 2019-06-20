@@ -1,46 +1,34 @@
 /* eslint-disable no-underscore-dangle */
 
-import {SheetsRegistry} from 'jss';
-import {createMuiTheme, createGenerateClassName} from '@material-ui/core/styles';
-
+import { createMuiTheme } from '@material-ui/core/styles';
 // A theme with custom primary and secondary color. It's optional.
+
 
 const theme = createMuiTheme({
     palette: {
         primary: {
-            "50": "#f9fafc",
-            "100": "#EBE5FF",
-            "200": "#AB93FF",
-            "300": "#8968FF",
-            "400": "#6F47FF",
-            "500": "#5627FF",
-            "600": "#4F23FF",
-            "700": "#451DFF",
-            "800": "#3C17FF",
-            "900": "#2B0EFF",
-            A100: "#FFFFFF",
-            A200: "#F7F6FF",
-            A300: "#fafafa",
-            A400: "#f0f3ff",
-            A700: "#B2AAFF",
+            "main": "#5627FF",
+        "50": "#f9fafc",
+        "100": "#EBE5FF",
+        "200": "#AB93FF",
+        "300": "#8968FF",
+        "400": "#6F47FF",
+        "500": "#5627FF",
+        "600": "#4F23FF",
+        "700": "#451DFF",
+        "800": "#3C17FF",
+        "900": "#2B0EFF",
             A900: "#0000ca",
             contrastDefaultColor: "light"
         }, // Purple and green play nicely together.
         secondary: {
-            "50": "#fce4ec",
-            "100": "#ffc6ef",
-            "200": "#ffc6ef",
-            "300": "#ffc6ef",
-            "400": "#ffc6ef",
-            "500": "#d782d9",
-            "600": "#d782d9",
-            "700": "#d782d9",
-            "800": "#d782d9",
-            "900": "#d782d9",
-            A100: "#ffc6ef",
-            A200: "#da92f3",
-            A400: "#da92f3",
-            A700: "#b076f3",
+            "main": "#B345E6",
+            "50": "#EDE6D4",
+            "100": "#E3DBC2",
+            "200": "#E3A6FF",
+            "300": "#DC91FF",
+            "400": "#C36CEB",
+            "500": "#B345E6",
             contrastDefaultColor: "light"
         },
         shadows: [
@@ -95,59 +83,68 @@ const theme = createMuiTheme({
         ]
     },
     typography: {
-        fontFamily: '-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen-Sans,Ubuntu,Cantarell,"Helvetica Neue", sans-serif',
+        fontFamily: '"Nunito Sans", -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen-Sans,Ubuntu,Cantarell,"Helvetica Neue", sans-serif',
         fontSize: 14,
         fontWeightLight: 300,
         fontWeightRegular: 400,
         fontWeightMedium: 500,
-        display2: {
+        h3: {
             fontSize: "1.75rem",
             fontWeight: 300,
-                fontFamily: '"Poppins", -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen-Sans,Ubuntu,Cantarell,"Helvetica Neue", sans-serif',
+            fontFamily: '"Poppins", -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen-Sans,Ubuntu,Cantarell,"Helvetica Neue", sans-serif',
             lineHeight: "1.20588em",
             marginLeft: "-.04em",
             color: "rgba(30, 30, 50,0.54)"
         },
-        display1: {
+        "MuiTypography-h4":{
             fontSize: "1.6rem",
             fontWeight: 600,
-                fontFamily: '"Poppins", -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen-Sans,Ubuntu,Cantarell,"Helvetica Neue", sans-serif',
+            fontFamily: '"Poppins", -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen-Sans,Ubuntu,Cantarell,"Helvetica Neue", sans-serif',
             lineHeight: "1.20588em",
             marginLeft: "-.04em",
             color: "rgba(30, 30, 50,0.94)"
         },
-        headline: {
+        h4: {
+            fontSize: "1.6rem",
+            fontWeight: 600,
+            fontFamily: '"Poppins", -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen-Sans,Ubuntu,Cantarell,"Helvetica Neue", sans-serif',
+            lineHeight: "1.20588em",
+            marginLeft: "-.04em",
+            color: "rgba(30, 30, 50,0.94)"
+        },
+
+        h5: {
             fontSize: "1.5rem",
             fontWeight: 700,
-                fontFamily: '"Nunito Sans",  -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen-Sans,Ubuntu,Cantarell,"Helvetica Neue", sans-serif',
+            fontFamily: '"Nunito Sans",  -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen-Sans,Ubuntu,Cantarell,"Helvetica Neue", sans-serif',
             lineHeight: "1.35417em",
             color: "rgba(30, 30, 50,0.84)"
         },
         smHeadline: {
             fontSize: "0.8rem",
             fontWeight: 700,
-            fontFamily: '"Nunito Sans",  -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen-Sans,Ubuntu,Cantarell,"Helvetica Neue", sans-serif',
+                fontFamily: '"Poppins",  -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen-Sans,Ubuntu,Cantarell,"Helvetica Neue", sans-serif',
             lineHeight: "1.35417em",
             color: "rgba(30, 30, 50,0.84)"
         },
-        title: {
+        h6: {
             fontSize: "1.3125rem",
             fontWeight: 300,
-                fontFamily: '"Poppins",  -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen-Sans,Ubuntu,Cantarell,"Helvetica Neue", sans-serif',
-            lineHeight: "1.16667em",
+            fontFamily: '"Poppins",  -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen-Sans,Ubuntu,Cantarell,"Helvetica Neue", sans-serif',
+            lineHeight: "0.967em",
             color: "rgba(30, 30, 50,0.84)"
         },
-        subheading: {
+        subtitle1: {
             fontSize: "1.125rem",
             fontWeight: 500,
-                fontFamily: '"Nunito Sans",  -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen-Sans,Ubuntu,Cantarell,"Helvetica Neue", sans-serif',
+            fontFamily: '"Nunito Sans",  -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen-Sans,Ubuntu,Cantarell,"Helvetica Neue", sans-serif',
             lineHeight: "2.0em",
             color: "rgba(30, 30, 50, 0.68)"
         },
-        body2: {
+        body1: {
             fontSize: "0.999rem",
             fontWeight: 300,
-                fontFamily: '"Nunito Sans",  -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen-Sans,Ubuntu,Cantarell,"Helvetica Neue", sans-serif',
+            fontFamily: '"Nunito Sans",  -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen-Sans,Ubuntu,Cantarell,"Helvetica Neue", sans-serif',
             lineHeight: "1.46429em",
             color: "rgba(30, 30, 50,0.99)"
         },
@@ -158,17 +155,17 @@ const theme = createMuiTheme({
             lineHeight: "1.76429em",
             color: "rgba(30, 30, 50,0.87)"
         },
-        body1: {
+        body2: {
             fontSize: "0.975rem",
             fontWeight: 300,
-                fontFamily: '"Nunito Sans",  -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen-Sans,Ubuntu,Cantarell,"Helvetica Neue", sans-serif',
+            fontFamily: '"Nunito Sans",  -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen-Sans,Ubuntu,Cantarell,"Helvetica Neue", sans-serif',
             lineHeight: "1.46429em",
             color: "rgba(30, 30, 50,0.87)"
         },
         caption: {
             fontSize: "0.87rem",
             fontWeight: 300,
-                fontFamily: '"Nunito Sans",  -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen-Sans,Ubuntu,Cantarell,"Helvetica Neue", sans-serif',
+            fontFamily: '"Nunito Sans",  -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen-Sans,Ubuntu,Cantarell,"Helvetica Neue", sans-serif',
             lineHeight: "1.375em",
             color: "rgba(30, 30, 50,0.54)"
         },
@@ -177,38 +174,16 @@ const theme = createMuiTheme({
             textTransform: "uppercase",
             letterSpaceing: '4px',
             fontWeight: 700,
-                fontFamily: '"Nunito Sans", -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen-Sans,Ubuntu,Cantarell,"Helvetica Neue", sans-serif',
+            fontFamily: '"Nunito Sans", -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen-Sans,Ubuntu,Cantarell,"Helvetica Neue", sans-serif',
         }
-    }
+    },
+    overrides: {
+        MuiCssBaseline: {
+            '@global': {
+                '@font-face': 'Nunito Sans',
+            },
+        },
+    },
 });
 
-function createPageContext() {
-    return {
-        theme,
-        // This is needed in order to deduplicate the injection of CSS in the page.
-        sheetsManager: new Map(),
-        // This is needed in order to inject the critical CSS.
-        sheetsRegistry: new SheetsRegistry(),
-        // The standard class name generator.
-        generateClassName: createGenerateClassName()
-    };
-}
-
-export default function getPageContext() {
-    const r = Math
-        .random()
-        .toString(36)
-        .substring(7);
-    // Make sure to create a new context for every server-side request so that data
-    // isn't shared between connections (which would be bad).
-    if (!process.browser) {
-        return createPageContext();
-    }
-
-    // Reuse context on the client-side.
-    if (!global.__INIT_MATERIAL_UI__) {
-        global.__INIT_MATERIAL_UI__ = createPageContext();
-    }
-
-    return global.__INIT_MATERIAL_UI__;
-}
+export default theme;

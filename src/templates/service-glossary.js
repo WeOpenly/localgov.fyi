@@ -11,7 +11,7 @@ import {navigate} from '@reach/router';
 import Helmet from "react-helmet";
 import {isMobileOnly, isTablet, isMobile} from 'react-device-detect';
 
-import {withStyles} from '@material-ui/core/styles';
+import {withStyles} from '@material-ui/core';
 
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
@@ -21,7 +21,7 @@ import Button from '@material-ui/core/Button';
 import Share from '@material-ui/icons/Share';
 import RelatedServiceTemplates from '../components/RelatedServiceTemplates';
 import Footer from '../components/Footer';
-import withRoot from '../withRoot';
+
 import Info from '@material-ui/icons/InfoOutlined';
 import HeaderAccountMenu from '../components/HeaderAccountMenu';
 
@@ -60,7 +60,7 @@ const styles = theme => ({
   },
   ser_gloss_filterContainer: {
     padding: "16px 16px",
-    margin: theme.spacing.unit,
+    margin: theme.spacing(1),
     display: "flex",
     alignItems: "center",
     boxShadow: `0 5px 10px 0 #f1f1f1`,
@@ -74,14 +74,14 @@ const styles = theme => ({
     width: "100%",
     justifyContent: "space-between",
     alignItems: "center",
-    padding: theme.spacing.unit
+    padding: theme.spacing()
   },
   ser_gloss_locationPaper: {
-    padding: theme.spacing.unit * 5,
+    padding: theme.spacing(5),
     display: "flex",
     alignItems: "center",
     width: "100%",
-    margin: theme.spacing.unit,
+    margin: theme.spacing(1),
     boxShadow: `0 0 1px 0 #d4d4d4`
   },
   ser_gloss_loc_search_root: {
@@ -108,11 +108,11 @@ const styles = theme => ({
   },
   ser_gloss_gridItemLocation_focus: {
     cursor: "pointer",
-    padding: theme.spacing.unit * 2,
+    padding: theme.spacing(2),
     display: "flex",
     flexWrap: "wrap",
     alignItems: "center",
-    margin: theme.spacing.unit * 2,
+    margin: theme.spacing(2),
     justifyContent: "left",
     width: 320,
     height: 104,
@@ -120,24 +120,24 @@ const styles = theme => ({
   },
   ser_gloss_titleWrapper: {
     textAlign: "center",
-    padding: theme.spacing.unit * 4,
-    margin: theme.spacing.unit * 2
+    padding: theme.spacing(4),
+    margin: theme.spacing(2)
   },
   ser_gloss_subtitle: {
-    marginTop: theme.spacing.unit,
-    marginBottom: theme.spacing.unit * 4
+    marginTop: theme.spacing(1),
+    marginBottom: theme.spacing(4)
   },
   ser_gloss_section: {
-    marginBottom: theme.spacing.unit
+    marginBottom: theme.spacing()
   },
   ser_gloss_link: {
-    padding: theme.spacing.unit
+    padding: theme.spacing()
   },
   ser_gloss_locGrid: {
     display: "flex",
     flexWrap: "wrap",
     justifyContent: "center",
-    padding: theme.spacing.unit * 4
+    padding: theme.spacing(4)
   },
   ser_gloss_app_name: {
     textDecoration: "none",
@@ -148,11 +148,11 @@ const styles = theme => ({
   },
   ser_gloss_gridItemLocation: {
     cursor: "pointer",
-    padding: theme.spacing.unit * 2,
+    padding: theme.spacing(2),
     display: "flex",
     flexWrap: "wrap",
     alignItems: "center",
-    margin: theme.spacing.unit * 2,
+    margin: theme.spacing(2),
     boxShadow: `0 0px 1px 0 ${theme.palette.primary["200"]}`,
     justifyContent: "left",
     width: 320,
@@ -160,7 +160,7 @@ const styles = theme => ({
   },
   ser_gloss_locGrid_list: {
     width: "100%",
-    margin: theme.spacing.unit * 2,
+    margin: theme.spacing(2),
     backgroundColor: theme.palette.background.paper
   },
   ser_gloss_heading: {
@@ -168,27 +168,26 @@ const styles = theme => ({
   },
   ser_gloss_listItem: {
     display: "flex",
-    marginTop: theme.spacing.unit * 2,
-    marginLeft: theme.spacing.unit * 2
+    marginTop: theme.spacing(2),
+    marginLeft: theme.spacing(2)
   },
   ser_gloss_countContainer: {
-    marginTop: theme.spacing.unit * 2
+    marginTop: theme.spacing(2)
   },
   ser_gloss_footer: {
     borderTop: `1px solid #dcdcdc`,
-    paddingTop: theme.spacing.unit,
-    marginTop: theme.spacing.unit * 4
+    paddingTop: theme.spacing(1),
+    marginTop: theme.spacing(4)
   },
   ser_gloss_relatedSerDivider: {
-    marginTop: theme.spacing.unit * 2,
+    marginTop: theme.spacing(2),
     borderTop: `1px solid #dcdcdc`
   },
   ser_gloss_state_name: {
     color: "#4c4d55"
   },
   ser_gloss_related_container: {
-    margin: `${theme.spacing.unit * 2}px  ${theme.spacing.unit * 10}px ${theme
-      .spacing.unit * 4}px ${theme.spacing.unit * 10}px`
+    margin: `${theme.spacing(2)}px  ${theme.spacing(1)}px ${theme.spacing(4)}px ${theme.spacing(1)}px`
   }
 });
 
@@ -390,7 +389,7 @@ class ServiceGlossary extends Component {
                 sm={10}
                 className={classes.ser_gloss_nav_items}
               >
-                <Typography variant="title">
+                <Typography varant="h6">
                   <Link to="/" className={classes.ser_gloss_app_name}>
                     evergov
                 </Link>
@@ -446,7 +445,7 @@ class ServiceGlossary extends Component {
                   style={{
                     padding: "32px 0 16px 0"
                   }}
-                  variant="title"
+                  varant="h6"
                   component="h5"
                 >
                   More Services
@@ -509,6 +508,6 @@ const mapStateToProps = function (state, ownProps) {
     };
 };
 
-const ConnServiceGlossary = connect(mapStateToProps, mapDispatchToProps)(withRoot(withStyles(styles)(ServiceGlossary)));
+const ConnServiceGlossary = connect(mapStateToProps, mapDispatchToProps)(withStyles(styles)(ServiceGlossary));
 
 export default ConnServiceGlossary;

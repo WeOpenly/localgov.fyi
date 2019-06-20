@@ -6,7 +6,7 @@ import queryString from 'query-string';
 
 import Dialog from '@material-ui/core/Dialog';
 
-import {withStyles} from '@material-ui/core/styles';
+import {withStyles} from '@material-ui/core';
 
 import {toggleDeliveryDialog} from './actions';
 

@@ -2,7 +2,7 @@ import React, { Component, Fragment } from 'react';
 import { connect } from "react-redux";
 import { isMobileOnly } from 'react-device-detect';
 
-import { withStyles } from '@material-ui/core/styles';
+import { withStyles } from '@material-ui/core';
 import Typography from '@material-ui/core/Typography';
 
 import Grid from '@material-ui/core/Grid';
@@ -40,7 +40,7 @@ const styles = theme => ({
     },
     search_nav:{
         background: '#fff',
-        minHeight: theme.spacing.unit * 6,
+        minHeight: theme.spacing(6),
         boxShadow: '0px 1px 2px 0px rgba(0,0,0,0.1),0px 1px 1px 0px rgba(0,0,0,0.07),0px 2px 6px 1px rgba(0,0,0,0.06)'
     },
     search_header_nav_items_mob:{
@@ -48,17 +48,17 @@ const styles = theme => ({
         width: '100%',
         justifyContent: 'space-between',
         alignItems: 'center',
-        paddingLeft: theme.spacing.unit,
+        paddingLeft: theme.spacing(1),
     },
     search_header_nav_items: {
         display: 'flex',
         width: '100%',
         justifyContent: 'flex-start',
         alignItems: 'center',
-        padding: `${theme.spacing.unit}px ${theme.spacing.unit*2}px`,
+        padding: `${theme.spacing()}px ${theme.spacing(2)}px`,
     },
     search_header_app_name: {
-        marginRight: theme.spacing.unit *4,
+        marginRight: theme.spacing(4),
         textDecoration: 'none',
         cursor: 'pointer',
         '&:hover': {
@@ -125,7 +125,7 @@ class SearchNav extends Component {
                   : classes.search_header_nav_items
               }
             >
-              <Typography variant="title">
+              <Typography varant="h6">
                 <Link to="/" className={classes.search_header_app_name}>
                   evergov
                 </Link>

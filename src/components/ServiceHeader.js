@@ -12,7 +12,7 @@ import {
 
 import HighLightOutlined from '@material-ui/icons/HighlightOutlined';
 
-import { withStyles } from '@material-ui/core/styles';
+import { withStyles } from '@material-ui/core';
 import Typography from '@material-ui/core/Typography';
 import Grid from '@material-ui/core/Grid';
 import Card from '@material-ui/core/Card';
@@ -31,46 +31,46 @@ import ServiceDeliveryLink from './ServiceDeliveryLink';
 import { hideResultHelperMsg} from './SearchPage/actions';
 import {trackClick} from "./common/tracking";
 import {toggleNotifyDialog} from './UserRequests/actions.js';
-import {isLoggedIn} from './Account/Auth';
+
 import {toggleDeliveryDialog} from './Delivery/actions';
-import { action } from 'popmotion';
+
 
 const styles = theme => ({
   service_header_main: {
-    // marginRight: theme.spacing.unit,
+    // marginRight: theme.spacing(1),
     boxShadow: '0 0 0 0',
-    paddingTop: theme.spacing.unit * 2,
-    paddingLeft: theme.spacing.unit,
-    paddingRight: theme.spacing.unit,
-    paddingBottom: theme.spacing.unit * 2,
+    paddingTop: theme.spacing(2),
+    paddingLeft: theme.spacing(1),
+    paddingRight: theme.spacing(1),
+    paddingBottom: theme.spacing(2),
   },
 service_header_mainMobile : {
     boxShadow: '0 0 0 0',
-    paddingTop: theme.spacing.unit * 2,
-    paddingLeft: theme.spacing.unit * 2,
-    paddingRight: theme.spacing.unit * 2,
-    paddingBottom: theme.spacing.unit * 2,
+    paddingTop: theme.spacing(2),
+    paddingLeft: theme.spacing(2),
+    paddingRight: theme.spacing(2),
+    paddingBottom: theme.spacing(2),
   },
 service_header_cardTop : {
     display: 'flex',
     justifyContent: 'left',
-    paddingTop: theme.spacing.unit,
-    paddingBottom: theme.spacing.unit,
+    paddingTop: theme.spacing(1),
+    paddingBottom: theme.spacing(1),
     flexWrap: 'wrap'
   },
   service_header_cardTop_mob:{
     display: 'flex',
     justifyContent: 'center',
     textAlign: 'center',
-    paddingTop: theme.spacing.unit,
-    paddingBottom: theme.spacing.unit,
+    paddingTop: theme.spacing(1),
+    paddingBottom: theme.spacing(1),
     flexWrap: 'wrap'
   },
   service_header_logoName : {
     display: 'flex',
   },
   service_header_title : {
-    marginRight: theme.spacing.unit * 5,
+    marginRight: theme.spacing(5),
   },
   service_header_title_mob : {
 
@@ -95,11 +95,11 @@ service_header_buttonContent : {
     alignItems: 'space-between',
   },
 service_header_contactButton : {
-    marginTop : theme.spacing.unit * 2,
+    marginTop : theme.spacing(2),
   },
 service_header_notifyButton : {
-  padding: theme.spacing.unit,
-  marginLeft: theme.spacing.unit,
+  padding: theme.spacing(1),
+  marginLeft: theme.spacing(1),
 },
 service_header_serDelLink:{
   display: 'flex',
@@ -107,7 +107,7 @@ service_header_serDelLink:{
   width: '100%'
 },
 service_header_menuButtonIcon:{
-  marginRight: theme.spacing.unit
+  marginRight: theme.spacing(1)
 },
   service_header_menuButtonNotify:{
     width: '152px'
@@ -117,18 +117,18 @@ service_header_svgIcon : {
     color: theme.palette.primary['400']
   },
 service_header_contactIcons : {
-    marginTop: theme.spacing.unit
+    marginTop: theme.spacing(1)
   },
 service_header_serviceNotify : {
   },
   org_header_avatar:{
     alignSelf: 'center',
     display: 'flex',
-    height: theme.spacing.unit * 4,
-    width: theme.spacing.unit * 4,
+    height: theme.spacing(4),
+    width: theme.spacing(4),
     boxShadow: `0 0 1px 1px ${theme.palette.primary["200"]}`,
     border: '1px solid #fff',
-    margin: theme.spacing.unit,
+    margin: theme.spacing(1),
   },
   ser_del_link_icymi: {
     display: 'flex',
@@ -136,7 +136,7 @@ service_header_serviceNotify : {
   },
   ser_del_link_icymi_icon: {
     color: theme.palette.primary['600'],
-    margin: theme.spacing.unit,
+    margin: theme.spacing(1),
     marginLeft: 0
   },
   ser_del_link_icymi_text: {
@@ -150,8 +150,8 @@ service_header_deliveryLinkWrapper : {
     flexDirection: 'column',
     justifyContent: 'center',
     alignItems: 'center',
-    marginTop: theme.spacing.unit,
-    // marginRight: -theme.spacing.unit,
+    marginTop: theme.spacing(1),
+    // marginRight: -theme.spacing(1),
     // borderLeft: '1px solid #e4e4e4',
   },
   ser_header_offered_in_org:{
@@ -166,15 +166,15 @@ service_header_deliveryLinkWrapper : {
 service_header_serviceActions : {
     display: 'flex',
     justifyContent: 'center',
-    padding: theme.spacing.unit*2
+    padding: theme.spacing(2)
   },
 service_header_deliveryLinkWrapperMobile : {
     display: 'flex',
     flexDirection: 'column',
     justifyContent: 'center',
     alignItems: 'center',
-    marginTop: theme.spacing.unit,
-    // marginRight: -theme.spacing.unit,
+    marginTop: theme.spacing(1),
+    // marginRight: -theme.spacing(1),
     // borderLeft: '1px solid #e4e4e4',
   },
 });
@@ -397,10 +397,10 @@ class ServiceHeader extends Component {
           <div className={!this.state.isMobileOnly ? classes.service_header_cardTop : classes.service_header_cardTop_mob}>
             
             <div className={!this.state.isMobileOnly ?  classes.service_header_title: classes.service_header_title_mob}>
-                  <Typography component="h1" variant="display1">{name}</Typography>
+              <Typography component="h1" variant="h4">{name}</Typography>
 
             
-                <Typography variant="subheading" className={classes.ser_header_offered_in_org} onClick={this.handleOrgClick}>
+                <Typography varant="subtitle1" className={classes.ser_header_offered_in_org} onClick={this.handleOrgClick}>
                 Offered by  <span className={classes.service_header_in}> {orgHieComp} </span>
                  </Typography>
     

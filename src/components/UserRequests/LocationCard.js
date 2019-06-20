@@ -1,14 +1,14 @@
 import React, {Component, Fragment} from "react";
 import {connect} from "react-redux";
 import _ from "lodash";
-import Spinner from 'react-spinkit';
+
 import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
 import {isMobileOnly} from 'react-device-detect';
 import CardMedia from '@material-ui/core/CardMedia';
 import IconButton from '@material-ui/core/IconButton';
 import Typography from '@material-ui/core/Typography';
-import {withStyles} from '@material-ui/core/styles';
+import {withStyles} from '@material-ui/core';
 import SvgAddloc from '../../svgIcons/addLoc.js';
 
 import List from '@material-ui/core/List';
@@ -27,16 +27,16 @@ import { toggleLocationRequestDialog } from "./actions.js";
 const styles = theme => ({
     loc_req_card: {
         width: '240px',
-        padding: theme.spacing.unit *2,
-        margin: theme.spacing.unit,
+        padding: theme.spacing(2),
+        margin: theme.spacing(1),
         boxShadow: `0 2px 5px 2px ${theme.palette.primary['100']}`
     },
 loc_req_icon_compact:{
-    paddingRight: theme.spacing.unit,
+    paddingRight: theme.spacing(1),
 },
 loc_req_card_action_compact : {
         display: 'flex',
-        paddingTop: theme.spacing.unit,
+        paddingTop: theme.spacing(1),
         justifyContent: 'flex-end'
     },
     
@@ -45,8 +45,8 @@ loc_req_card_action_compact : {
     },
     loc_req_card_content: {
         display: 'flex',
-        paddingTop: theme.spacing.unit,
-        paddingBottom: theme.spacing.unit*2,
+        paddingTop: theme.spacing(1),
+        paddingBottom: theme.spacing(2),
         justifyContent: 'space-between'
     }
 });

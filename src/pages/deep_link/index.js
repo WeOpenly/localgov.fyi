@@ -1,14 +1,14 @@
 import React, {Component} from 'react';
 import {connect} from "react-redux";
 import {navigate} from '@reach/router';
-import Spinner from 'react-spinkit';
+import CircularProgress from '@material-ui/core/CircularProgress';
 import Img from "gatsby-image";
 import {isMobileOnly} from 'react-device-detect';
 import {CopyToClipboard} from 'react-copy-to-clipboard';
 import {FacebookShareButton, TwitterShareButton} from 'react-share';
 import queryString from 'query-string'
-import {withStyles} from '@material-ui/core/styles';
-import withRoot from '../../withRoot';
+import {withStyles} from '@material-ui/core';
+
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 import Paper from '@material-ui/core/Paper';
@@ -18,13 +18,13 @@ import {trackClick} from "../../components/common/tracking";
 import {decode} from 'universal-base64';
 const styles = theme => ({
     redirDataContainer: {
-        marginTop: theme.spacing.unit *10
+        marginTop: theme.spacing(10)
     },
     ser_redir_details: {
 boxShadow : `0 1px 5px 0px #AB93FF`,
         width: '300px',
-        marginTop: theme.spacing.unit*4,
-        padding: theme.spacing.unit * 4,
+        marginTop: theme.spacing(4),
+        padding: theme.spacing(4),
 
     }
 });
@@ -79,7 +79,7 @@ class DeepLink extends Component {
             return (
                 <Grid container spacing={16}>
                     <Grid item xs={12} className={classes.redirDataContainer}>
-                        <Spinner name="ball-beat" color="blue"/>
+                        <CircularProgress size={18} />
                     </Grid>
                 </Grid>
             )
@@ -101,8 +101,8 @@ class DeepLink extends Component {
                         evergov
                     </Typography>
                     <Paper className={classes.ser_redir_details}>
-                        <Spinner name="line-scale-pulse-out-rapid" color="blue"/>
-                        <Typography variant="subheading" style={{paddingBottom: 16 }}gutterBottom>
+                        <CircularProgress size={18} />
+                        <Typography varant="subtitle1" style={{paddingBottom: 16 }}gutterBottom>
                             See you soon!
                         </Typography>
                         <Typography variant="body1" gutterBottom>
@@ -135,5 +135,5 @@ const mapStateToProps = function (state, ownProps) {
 };
 
 
-export default connect(mapStateToProps, mapDispatchToProps)(withRoot(withStyles(styles)(DeepLink)));
+export default connect(mapStateToProps, mapDispatchToProps)(withStyles(styles)(DeepLink));
 

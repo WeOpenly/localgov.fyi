@@ -2,7 +2,7 @@ import React, {Component} from "react";
 import {connect} from "react-redux";
 import {navigate} from '@reach/router';
 
-import {withStyles} from '@material-ui/core/styles';
+import {withStyles} from '@material-ui/core';
 import Button from '@material-ui/core/Button';
 import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper';
@@ -14,9 +14,7 @@ import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
 import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
-import {isLoggedIn} from './Account/Auth';
-import {logOut, toggleLogin} from './Account/actions';
-import LoginRegisterDialog from './Account/LoginRegisterDialog';
+
 import AccountCircle from '@material-ui/icons/AccountCircle';
 import MenuItem from '@material-ui/core/MenuItem';
 import Menu from '@material-ui/core/Menu';
@@ -24,13 +22,13 @@ import {isMobileOnly} from 'react-device-detect';
 import HeaderAccountMenu from './HeaderAccountMenu';
 
 // import Feedback from './Feedback';
-import withRoot from '../withRoot';
+
 
 const styles = theme => ({
   h_w_s_header: {
     background: theme.palette.common.white,
     color: theme.palette.primary['700'],
-    padding: theme.spacing.unit,
+    padding: theme.spacing(1),
     boxShadow: 'none',
     borderBottom: `1px solid ${theme.palette.primary['50']}`
   },
@@ -39,8 +37,8 @@ h_w_s_flex : {
     justifyContent: 'space-between'
   },
 h_w_s_title : {
-    paddingTop: theme.spacing.unit + 2,
-    paddingLeft: theme.spacing.unit * 2
+    paddingTop: theme.spacing(2),
+    paddingLeft: theme.spacing(2)
   },
 h_w_s_menuButton : {
     marginLeft: -12,
@@ -50,7 +48,7 @@ h_w_s_right : {
     display: 'flex',
     justifyContent: 'flex-end',
     alignItems: 'center',
-    paddingRight: theme.spacing.unit * 2
+    paddingRight: theme.spacing(2)
   },
   heaer_search_grid: {
 
@@ -92,7 +90,7 @@ class HeaderWithSearch extends Component {
           }}
             onClick={() => navigate('/')}>
             <Typography
-              variant="display2"
+              variant="h4"
               color="inherit"
               component="h1"
               className={classes.h_w_s_title}>
@@ -114,7 +112,7 @@ class HeaderWithSearch extends Component {
           }}
             onClick={() => navigate('/')}>
             <Typography
-              variant="display2"
+                variant="h4"
               color="inherit"
               component="h1"
               className={classes.h_w_s_title}>
@@ -125,7 +123,7 @@ class HeaderWithSearch extends Component {
               <HeaderAccountMenu location={this.props.location} />
           </Grid>
         </Grid>)}
-         <LoginRegisterDialog location={this.props.location}/>
+       
       </AppBar>
     );
   }

@@ -2,7 +2,7 @@ import React, {Fragment} from 'react';
 import PropTypes from 'prop-types';
 import {connect} from "react-redux";
 
-import {withStyles} from '@material-ui/core/styles';
+import {withStyles} from '@material-ui/core';
 import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
 import Stepper from '@material-ui/core/Stepper';
@@ -12,7 +12,7 @@ import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
 import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
-import Spinner from 'react-spinkit';
+import CircularProgress from '@material-ui/core/CircularProgress';
 import Button from '@material-ui/core/Button';
 import SvgIcon from '@material-ui/core/SvgIcon';
 import List from '@material-ui/core/List';
@@ -29,10 +29,10 @@ import {submitStepDetails, toggleDeliveryDialog} from './actions';
 
 const styles = theme => ({
     fave_orgs_root: {
-        padding: theme.spacing.unit * 2
+        padding: theme.spacing(2)
     },
     fave_orgs_head: {
-        padding: theme.spacing.unit
+        padding: theme.spacing()
     },
     summaryTitle: {
         display: 'flex',
@@ -40,11 +40,11 @@ const styles = theme => ({
     },
     summaryActions: {
         display: 'flex',
-        margin: theme.spacing.unit *4,
+        margin: theme.spacing(4),
         justifyContent: 'center'
     },
     deliver_feedback_afterSubmit:{
-        margin: theme.spacing.unit * 4,
+        margin: theme.spacing(4),
         display: 'flex',
         flexDirection: 'column',
         justifyContent: 'center',
@@ -53,7 +53,7 @@ const styles = theme => ({
     delivery_feedback_icon: {
         color: theme.palette.primary['500'],
         fontSize: 32,
-        marginBottom: theme.spacing.unit * 2,
+        marginBottom: theme.spacing(2),
     }
 });
 
@@ -142,7 +142,7 @@ class StepDetailFactory extends React.Component {
         let content = null;
 
         if (serviceFlowLoading) {
-            return (<Spinner name="ball-beat" color="blue"/>);
+            return (<CircularProgress size={18} />);
         }
 
         if (serviceFlowLoadingFailed) {

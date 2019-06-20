@@ -1,12 +1,11 @@
 import React, { Component } from 'react';
-import { withStyles } from '@material-ui/core/styles';
+import { withStyles } from '@material-ui/core';
 import Chip from '@material-ui/core/Chip';
 
-import withRoot from '../withRoot';
 
 const styles = theme => ({
   cf_chip: {
-    marginRight: theme.spacing.unit,
+    marginRight: theme.spacing(1),
     background: '#fff',
     color: theme.palette.primary['700'],
     border: `1px solid ${theme.palette.primary['200']}`,
@@ -16,7 +15,7 @@ const styles = theme => ({
     },
   },
 cf_chipSelected : {
-    marginRight: theme.spacing.unit,
+    marginRight: theme.spacing(1),
     color : '#fff',
     background : theme.palette.primary['700'], 
     border: `1px solid ${theme.palette.primary['200']}`,

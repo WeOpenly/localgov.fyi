@@ -7,8 +7,8 @@ import deburr from 'lodash/deburr';
 import match from "autosuggest-highlight/match";
 import parse from "autosuggest-highlight/parse";
 import InputBase from '@material-ui/core/InputBase';
-import { withStyles } from '@material-ui/core/styles';
-import { fade } from "@material-ui/core/styles/colorManipulator";
+import { withStyles } from '@material-ui/core';
+
 import Grid from '@material-ui/core/Grid';
 import FormLabel from '@material-ui/core/FormLabel';
 import SearchIcon from '@material-ui/icons/Search';
@@ -31,9 +31,11 @@ const styles = theme => ({
   ser_gloss_search_paper_root: {
     display: "flex",
     alignItems: "center",
+    width: '350px',
+    margin: '8px',
     boxShadow:
       "0px 3px 5px 0px rgba(0,0,0,0.1),0px 1px 1px 0px rgba(0,0,0,0.07),0px 2px 6px 1px rgba(0,0,0,0.07)",
-    border: `1px solid ${theme.palette.primary["200"]}`,
+    border: `1px solid ${theme.palette.primary["100"]}`,
     borderRadius: "4px",
     "&:hover": {
       boxShadow: `0 4px 8px 0 #d4d4d4, 0 1px 16px 0 #fafafa inset`,
@@ -44,7 +46,7 @@ const styles = theme => ({
     display: "flex",
     alignItems: "center",
     position: "relative",
-
+    width: '350px',
     height: "40px",
     boxShadow: "none",
     background: "#fafafa",
@@ -57,13 +59,13 @@ const styles = theme => ({
   },
   suggestionsContainerOpen: {
     position: "absolute",
-    width: theme.spacing.unit * 49,
+    width: '304px',
     zIndex: "300",
     boxShadow:
       "0px 3px 5px 0px rgba(0,0,0,0.1),0px 1px 1px 0px rgba(0,0,0,0.07),0px 2px 6px 1px rgba(0,0,0,0.07)"
   },
   ser_suggestion_title_icon: {
-    marginRight: theme.spacing.unit
+    marginRight: theme.spacing()
   },
   ser_suggestion_title: {
     fontSize: "10px",
@@ -114,8 +116,8 @@ const styles = theme => ({
   ser_gloss_search_input: {
     flex: 1,
 
-    marginRight: theme.spacing.unit,
-    marginLeft: theme.spacing.unit,
+    marginRight: theme.spacing(1),
+    marginLeft: theme.spacing(1),
     fontSize: "16px",
     fontWeight: 500,
     fontFamily:
@@ -126,14 +128,14 @@ const styles = theme => ({
   },
   ser_suggestion_title_container: {
     display: "flex",
-    padding: theme.spacing.unit,
+    padding: theme.spacing(1),
     alignItems: "center",
     background: "#fafafa",
     borderBottom: `1px solid ${theme.palette.primary["100"]}`
   },
   suggestionsList: {
     listStyle: "none",
-    padding: theme.spacing.unit,
+    padding: theme.spacing(1),
     marginTop: 0
   },
   sectionTitle: {
@@ -141,13 +143,13 @@ const styles = theme => ({
   },
   index_page_ser_suggestions_container: {
     display: "flex",
-    width: theme.spacing.unit * 50,
+    width: theme.spacing(5),
     margin: 0
   },
   index_page_ser_suggestions_container_form: {
     width: "100%",
-    margin: `${theme.spacing.unit}px ${theme.spacing.unit}px ${
-      theme.spacing.unit
+    margin: `${theme.spacing()} ${theme.spacing()} ${
+      theme.spacing()
     }px 0`,
     marginLeft: 0
   },

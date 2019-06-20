@@ -7,13 +7,14 @@ import {connect} from "react-redux";
 import Masonry from 'react-masonry-component';
 import NavSearch from '../components/Nav/Search';
 
-import {withStyles} from '@material-ui/core/styles';
+import {withStyles} from '@material-ui/core';
 import AppBar from '@material-ui/core/AppBar';
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 import Divider from '@material-ui/core/Divider';
 import {graphql} from "gatsby";
-import withRoot from '../withRoot';
+
+
 import HeaderWithSearch from '../components/HeaderWithSearch';
 
 import {trackView, trackClick} from "../components/common/tracking";
@@ -21,15 +22,15 @@ import {trackView, trackClick} from "../components/common/tracking";
 const styles = theme => ({
   titleWrapper: {
     textAlign: 'center',
-    padding: theme.spacing.unit *4,
-    margin: theme.spacing.unit *2
+    padding: theme.spacing(4),
+    margin: theme.spacing(2)
   },
   subtitle: {
-    marginTop: theme.spacing.unit,
-    marginBottom: theme.spacing.unit * 4
+    marginTop: theme.spacing(1),
+    marginBottom: theme.spacing(4)
   },
   section: {
-    marginBottom: theme.spacing.unit
+    marginBottom: theme.spacing()
   },
   masonryGrid: {
     display: 'flex',
@@ -41,10 +42,10 @@ const styles = theme => ({
     backgroundClip: 'padding-box'
   },
   gridBlockTitle: {
-    paddingTop: theme.spacing.unit *2
+    paddingTop: theme.spacing(2)
   },
   link: {
-    padding: theme.spacing.unit
+    padding: theme.spacing()
   },
   gridBlockItem: {
     width: 200
@@ -54,8 +55,8 @@ const styles = theme => ({
   },
   listItem: {
     display: 'flex',
-    marginTop: theme.spacing.unit,
-    marginLeft: theme.spacing.unit
+    marginTop: theme.spacing(1),
+    marginLeft: theme.spacing()
   }
 });
 
@@ -165,7 +166,7 @@ class Locations extends Component {
         <div key={`${state}-container`} className={classes.gridBlockItem}>
           <div className={classes.gridBlockTitle}>
 
-            <Typography id={`${state}`} variant="subheading" className={classes.heading}>
+            <Typography id={`${state}`} varant="subtitle1" className={classes.heading}>
               <a href={`#${state}`}>
                 {state}
               </a>
@@ -181,11 +182,12 @@ class Locations extends Component {
 
     return (
       <Fragment>
+  
         <NavSearch />
         <Grid container className={classes.titleWrapper}>
           <Grid item xs={2}/>
           <Grid item xs={8} align="center">
-            <Typography variant="display1" className={classes.title}>{`Currently serving ${locLen} governments`}</Typography>
+            <Typography variant="h4" className={classes.title}>{`Currently serving ${locLen} governments`}</Typography>
             <Typography variant="caption" className={classes.subtitle}>.. and adding more every day</Typography>
             <Divider/>
           </Grid>
@@ -202,6 +204,7 @@ class Locations extends Component {
           </Grid>
           <Grid item md={2}/>
         </Grid>
+
       </Fragment>
     );
   }
@@ -240,6 +243,6 @@ const mapStateToProps = function (state, ownProps) {
   };
 };
 
-const ConnLocations = connect(mapStateToProps, mapDispatchToProps)(withRoot(withStyles(styles)(Locations)));
+const ConnLocations = connect(mapStateToProps, mapDispatchToProps)(withStyles(styles)(Locations));
 
 export default ConnLocations;

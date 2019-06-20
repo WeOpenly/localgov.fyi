@@ -4,7 +4,7 @@ import _ from "lodash";
 import { StaticQuery, graphql } from "gatsby"
 import { isMobileOnly } from 'react-device-detect';
 import Typography from '@material-ui/core/Typography';
-import { withStyles } from '@material-ui/core/styles';
+import { withStyles } from '@material-ui/core';
 import TextLoop from "react-text-loop";
 import LocationCard from '../UserRequests/LocationCard';
 import Card from '@material-ui/core/Card';
@@ -48,7 +48,7 @@ const styles = theme => ({
         height: 56,
         boxShadow: `0 0 0px 1px ${theme.palette.primary["200"]}`,
         border: '1px solid #fff',
-        marginRight: theme.spacing.unit * 2,
+        marginRight: theme.spacing(2),
     }
 });
 const SuggestedLoader = () => (
@@ -117,7 +117,7 @@ class SearchPageResults extends Component {
             return (<Grid container>
 
                 <Grid item sm={12} className={classes.ser_search_loading}>
-                    <Typography variant="subheading" style={{ paddingBottom: 16 }} gutterBottom>
+                    <Typography varant="subtitle1" style={{ paddingBottom: 16 }} gutterBottom>
                         <TextLoop interval={800} children={[`Understanding your search `, "Searching our directory", `Loading results`]} />
                     </Typography>
                 </Grid>
@@ -139,7 +139,7 @@ class SearchPageResults extends Component {
                 <Grid item xs="auto" />
                 <Grid item sm={12} className={this.state.isMob ? classes.ser_case1_suggested_row_mob : classes.ser_case1_suggested_row}>
                     <Typography
-                        variant="title"
+                        varant="h6"
                         className={this.state.isMob ? classes.ser_case1_suggested_row_heading_mob : classes.ser_case1_suggested_row_heading}>
                         Popular Services
                     </Typography>

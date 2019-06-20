@@ -4,7 +4,7 @@ import {navigate} from '@reach/router';
 
 import { isMobileOnly } from 'react-device-detect';
 import {connect} from "react-redux";
-import { withStyles } from '@material-ui/core/styles';
+import { withStyles } from '@material-ui/core';
 import Grid from '@material-ui/core/Grid';
 import Card from '@material-ui/core/Card';
 // import CardMedia from '@material-ui/core/CardMedia';
@@ -23,7 +23,7 @@ import ShoppingCart from '@material-ui/icons/ShoppingCart';
 import DirectionsCar from '@material-ui/icons/DirectionsCar';
 import Autorenew from '@material-ui/icons/Autorenew';
 import {trackClick} from "./common/tracking";
-import withRoot from '../withRoot';
+
 
 const styles = theme => ({
   service_grid_link: {
@@ -34,7 +34,7 @@ service_grid_card : {
     height: '100%',
     border: `1px solid ${theme.palette.primary['100']}`,
     boxShadow : `0 1px 1px ${theme.palette.primary['50']}`,
-    paddingBottom: theme.spacing.unit*2,
+    paddingBottom: theme.spacing(2),
       '&:hover' : {
         boxShadow: `0 2px 2px ${theme.palette.primary['100']}`,
     },
@@ -54,7 +54,7 @@ service_grid_icon : {
     '&:hover' : {
         color: theme.palette.primary['400'],
     },
-    margin: theme.spacing.unit * 2,
+    margin: theme.spacing(2),
   },
 });
 

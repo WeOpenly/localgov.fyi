@@ -6,7 +6,7 @@ import queryString from 'query-string';
 import Dialog from '@material-ui/core/Dialog';
 import {Elements, StripeProvider} from 'react-stripe-elements';
 
-import {withStyles} from '@material-ui/core/styles';
+import {withStyles} from '@material-ui/core';
 import StripePaymentCard from './StripePaymentCard';
 import {submitPaymentDetails} from './actions';
 

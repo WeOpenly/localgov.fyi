@@ -4,13 +4,13 @@ import PropTypes from 'prop-types';
 import {navigate} from '@reach/router';
 import { isMobileOnly } from 'react-device-detect';
 
-import { withStyles } from '@material-ui/core/styles';
+import { withStyles } from '@material-ui/core';
 import Nav from '../components/Nav/Common'
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 
 // import Feedback from '../components/Feedback';
-import withRoot from '../withRoot';
+
 
 
 const styles = theme => ({
@@ -26,28 +26,28 @@ const styles = theme => ({
     color: theme.palette.primary['700'],
     background: theme.palette.common.white,
     boxShadow: `0 0 10px 5px ${theme.palette.primary["A200"]}`,
-    marginLeft: theme.spacing.unit * -2,
-    marginRight: theme.spacing.unit * -2,
+    marginLeft: theme.spacing(-2),
+    marginRight: theme.spacing(-2),
   },
   logo:{
-    paddingTop: theme.spacing.unit * 2,
-    paddingLeft: theme.spacing.unit * 2,
+    paddingTop: theme.spacing(2),
+    paddingLeft: theme.spacing(2),
   },
   right: {
     display: 'flex',
     justifyContent: 'flex-end',
     alignItems: 'center',
-    paddingRight: theme.spacing.unit * 2,
+    paddingRight: theme.spacing(2),
   },
   title: {
-    marginTop: theme.spacing.unit * 3,
-    marginBottom: theme.spacing.unit * 6,
+    marginTop: theme.spacing(3),
+    marginBottom: theme.spacing(6),
   },
   headline: {
-    marginBottom: theme.spacing.unit * 3,
+    marginBottom: theme.spacing(3),
   },
   body: {
-    marginBottom: theme.spacing.unit * 2,
+    marginBottom: theme.spacing(2),
   },
 });
 
@@ -60,14 +60,14 @@ class Privacy extends React.Component {
         <Grid container className={classes.container}>
           <Grid item md={1}/>
           <Grid item md={10}>
-            <Typography align="left" variant="headline" className={classes.title}>
+            <Typography align="left" variant="h5" className={classes.title}>
               Privacy Policy
             </Typography>
           </Grid>
           <Grid item md={1}/>
           <Grid item md={1}/>
           <Grid item md={10}>
-            <Typography variant="subheading" className={classes.headline}>What, how, and why:</Typography>
+            <Typography varant="subtitle1" className={classes.headline}>What, how, and why:</Typography>
             <Typography className={classes.body} gutterbottom>
               We track user interactions such as, searches, suggestion clicks, page views, and external link clicks, browser fingerprint, type of browser, type of device, and ip address.
             </Typography>
@@ -89,4 +89,4 @@ Privacy.propTypes = {
   classes: PropTypes.object.isRequired,
 };
 
-export default withRoot(withStyles(styles)(Privacy));
+export default withStyles(styles)(Privacy);

@@ -4,7 +4,7 @@ import _ from "lodash";
 import Link from 'gatsby-link';
 import { isMobileOnly } from 'react-device-detect';
 import Typography from '@material-ui/core/Typography';
-import { withStyles } from '@material-ui/core/styles';
+import { withStyles } from '@material-ui/core';
 import { navigate } from '@reach/router';
 import Card from '@material-ui/core/Card';
 import Avatar from '@material-ui/core/Avatar';
@@ -13,14 +13,14 @@ import LocationCity from '@material-ui/icons/LocationCity'
 const styles = theme => ({
     ser_list_item_card: {
         borderTop: `2px solid ${theme.palette.primary["700"]}`,
-        margin: theme.spacing.unit *2,
+        margin: theme.spacing(2),
         width: '300px',
         boxShadow: '0px 3px 5px 0px rgba(0,0,0,0.1),0px 1px 1px 0px rgba(0,0,0,0.07),0px 2px 6px 1px rgba(0,0,0,0.06)',
         display: 'flex',
         flexDirection: 'column'
     },
     ser_list_item_ser_name: {
-        margin: theme.spacing.unit * 3,
+        margin: theme.spacing(3),
         cursor: 'pointer',  
         display: 'flex',
         flex: 1,
@@ -30,16 +30,16 @@ const styles = theme => ({
         alignItems: 'center',
         borderTop: '1px solid #d4d4d4',
         background: '#fafafa',
-        padding: theme.spacing.unit/2,
+        padding: "4px",
     },
     ser_list_org_agg_logo:{
         alignSelf: 'center',
         display: 'flex',
-        height: theme.spacing.unit * 3,
-        width: theme.spacing.unit * 3,
+        height: theme.spacing(3),
+        width: theme.spacing(3),
         boxShadow: `0 0 1px 1px ${theme.palette.primary["200"]}`,
         border: '1px solid #fff',
-        margin: theme.spacing.unit,
+        margin: theme.spacing(1),
     },
     link_style:{
         textDecoration: 'none',
@@ -112,7 +112,7 @@ class SerListItemWithOrg extends Component {
                     position: 'relative',
                     fontWeight: '500'
                   
-                }} variant="subheading">
+                }} varant="subtitle1">
                     {service_name}
                 </Typography>
                 </Link>

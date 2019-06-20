@@ -1,13 +1,13 @@
 import React, { Fragment } from "react";
 import Grid from '@material-ui/core/Grid';
-import {withStyles} from '@material-ui/core/styles';
+import {withStyles} from '@material-ui/core';
 import classNames from 'classnames';
 import {graphql} from "gatsby"
 import { isMobileOnly } from 'react-device-detect';
-import Share from "../components/Share";
+
 import HeaderWithSearch from '../components/HeaderWithSearch';
 import Footer from '../components/Footer';
-import withRoot from '../withRoot';
+
 
 const styles = theme => ({
   layout_root: {

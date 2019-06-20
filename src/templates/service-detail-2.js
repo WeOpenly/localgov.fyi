@@ -5,11 +5,11 @@ import Helmet from "react-helmet";
 import {isMobileOnly} from 'react-device-detect';
 import Link from 'gatsby-link';
 
-import {withStyles} from '@material-ui/core/styles';
+import {withStyles} from '@material-ui/core';
 import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
-import Spinner from 'react-spinkit';
+
 import ServiceFlowDialog from '../components/Delivery/ServiceFlowDialog';
 
 import ListItem from '@material-ui/core/ListItem';
@@ -29,8 +29,6 @@ import ServiceCard from '../components/ServiceCard';
 
 import MoreLinks from '../components/ServicePage/MoreLinks';
 
-import withRoot from '../withRoot';
-import {isLoggedIn} from '../components/Account/Auth';
 
 import {trackView} from "../components/common/tracking";
 
@@ -63,7 +61,7 @@ const styles = theme => ({
         }
     },
     ser_detail_container: {
-        marginTop: theme.spacing.unit * 2,
+        marginTop: theme.spacing(2),
         maxWidth: '1000px',
     },
     ser_detail_details: {
@@ -75,12 +73,12 @@ const styles = theme => ({
         border: `1px solid ${theme.palette.primary['50']}`
     },
     ser_detail_body:{
-        paddingLeft: `${theme.spacing.unit*6}px`,
-        paddingRight: `${theme.spacing.unit*6}px`
+        paddingLeft: theme.spacing(6),
+        paddingRight: theme.spacing(6)
     },
     ser_detail_cards: {
-        marginBottom: theme.spacing.unit * 2,
-        paddingTop: theme.spacing.unit,
+        marginBottom: theme.spacing(2),
+        paddingTop: theme.spacing(1),
         borderRadius: 3,
         boxShadow: `0 0 0 0`,
         // border: `1px solid ${theme.palette.primary['50']}`,
@@ -89,24 +87,18 @@ const styles = theme => ({
         padding: 8
     },
     ser_detail_cardContent: {
-        marginLeft: theme.spacing.unit * 3,
-        padding: theme.spacing.unit / 2
+        marginLeft: theme.spacing( 3),
+        padding: theme.spacing(2)
     },
     ser_detail_dividerWrapper: {
-        paddingLeft: theme.spacing.unit * 3,
-        paddingRight: theme.spacing.unit * 3
+        paddingLeft: theme.spacing(3),
+        paddingRight: theme.spacing(3)
     },
     ser_detail_iconWrapper: {
-        paddingTop: theme.spacing.unit,
-        paddingLeft: theme.spacing.unit * 2
+        paddingTop: theme.spacing(1),
+        paddingLeft: theme.spacing(2)
     },
-    ser_goback_button: {
-        border: 'none',
-        '&:hover':{
-            background: 'none'
-        },
-        marginLeft: theme.spacing.unit * -6
-    },
+
     ser_detail_icon: {
         fontSize: 24,
         color: theme.palette.primary["200"]
@@ -116,24 +108,24 @@ const styles = theme => ({
         textDecorationColor: '#0000EE'
     },
     ser_detail_otherServicesDividerWrapper: {
-        marginBottom: theme.spacing.unit,
-        paddingLeft: theme.spacing.unit * 3,
-        paddingRight: theme.spacing.unit * 3
+        marginBottom: theme.spacing(1),
+        paddingLeft: theme.spacing(3),
+        paddingRight: theme.spacing(3)
     },
     other_ser_headerWrapper: {
         display: 'flex',
         justifyContent: 'left',
-        marginBottom: theme.spacing.unit * 2,
-        marginLeft: theme.spacing.unit,
-        marginTop: theme.spacing.unit * 2,
+        marginBottom: theme.spacing(2),
+        marginLeft: theme.spacing(1),
+        marginTop: theme.spacing(2),
     },
     other_ser_card: {
-        marginBottom: theme.spacing.unit * 2,
+        marginBottom: theme.spacing(2),
         boxShadow: '0 0 0 0',
         border: `1px solid ${theme.palette.primary['50']}`
     },
     other_ser_cardContent: {
-        marginBottom: theme.spacing.unit * -2
+        marginBottom: theme.spacing(-2)
     },
     other_ser_cardTitle: {
         fontWeight: 600
@@ -151,7 +143,7 @@ const styles = theme => ({
         justifyContent: 'flex-end'
     },
     other_ser_linkWrapper: {
-        margin: theme.spacing.unit *2,
+        margin: theme.spacing(2),
         display: 'flex',
         justifyContent: 'left',
         width: '100%'
@@ -175,23 +167,23 @@ ser_detail_loading_spinner:{
 },
 service_detail_footer : {
        borderTop: `1px solid #dcdcdc`,
-    paddingTop: theme.spacing.unit,
-    marginTop: theme.spacing.unit * 4,
+    paddingTop: theme.spacing(1),
+    marginTop: theme.spacing(4),
 },
 serviceDetailStepNumber:{
-    marginRight: theme.spacing.unit *2
+    marginRight: theme.spacing(2)
 },
 ser_detail_footer : {
     width: '100%',
     borderTop: `1px solid #dcdcdc`,
-    paddingTop: theme.spacing.unit,
-    marginTop: theme.spacing.unit *6
+    paddingTop: theme.spacing(1),
+    marginTop: theme.spacing(6)
 },
     ser_detail_morelinks:{
      
         borderTop: `1px solid #dcdcdc`,
-        paddingTop: theme.spacing.unit,
-        marginTop: theme.spacing.unit * 6
+        paddingTop: theme.spacing(1),
+        marginTop: theme.spacing(6)
     }
 });
 
@@ -274,10 +266,6 @@ const RawHTML = ({
 class ServiceDetailTemplate extends React.Component {
     constructor(props) {
         super(props);
-        this.state = {
-            loggedin: false,
-            logincheckloading: true,
-        };
     }
 
     componentDidMount() {
@@ -286,11 +274,7 @@ class ServiceDetailTemplate extends React.Component {
         const { showNotifyDialog} = userRequests;
         const {id, name} = this.props.pageContext.data;
         dispatch(trackView('entity_detail', 'service', id, name));
-        const loggedin = isLoggedIn();
-        this.setState({logincheckloading: false});
-        if (loggedin) {
-            this.setState({loggedin: true})
-        }
+
         // if (name.includes('Pay Property') || name.includes('Pay Utility')){
         // if (windowGlobal && !this.state.notifyInterval){
         //     const notifyInterval = windowGlobal.setTimeout(() => dispatch(toggleNotifyDialog(true)), 6000);
@@ -604,4 +588,4 @@ const mapStateToProps = function (state, ownProps) {
     };
 };
 
-export default connect(mapStateToProps)(withRoot(withStyles(styles)(ServiceDetailTemplate)));
+export default connect(mapStateToProps)(withStyles(styles)(ServiceDetailTemplate));

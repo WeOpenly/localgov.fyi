@@ -4,7 +4,7 @@ import { connect } from "react-redux";
 
 import { isMobileOnly } from 'react-device-detect';
 import queryString from 'query-string'
-import { withStyles } from '@material-ui/core/styles';
+import { withStyles } from '@material-ui/core';
 import Grid from '@material-ui/core/Grid';
 import SerListItemWithOrg from '../Service/ListItemWithOrg';
 import Typography from '@material-ui/core/Typography';
@@ -46,7 +46,7 @@ const styles = theme => ({
         alignItems: 'center',
         display: 'flex',
         minHeight: '800px',
-        marginTop: theme.spacing.unit*4,
+        marginTop: theme.spacing(4),
         justifyContent: 'center',
         flexDirection : 'column',
         flexWrap: 'wrap',
@@ -68,21 +68,21 @@ const styles = theme => ({
         display: 'flex',
         justifyContent: 'center',
         alignItems: 'center',
-        paddingBottom: theme.spacing.unit * 6,
+        paddingBottom: theme.spacing(6),
     },
     ser_org_list_header_container_mob:{
         display: 'flex',
-        marginTop: theme.spacing.unit * 2,
+        marginTop: theme.spacing(2),
         justifyContent: 'center',
         alignItems: 'center',
-        paddingBottom: theme.spacing.unit * 2,
+        paddingBottom: theme.spacing(2),
     },
     ser_org_list_header_mob: {
         fontSize: '16px'
     },
     ser_gloss_suggested_row: {
-        paddingLeft: theme.spacing.unit,
-        marginTop: theme.spacing.unit * 2,
+        paddingLeft: theme.spacing(1),
+        marginTop: theme.spacing(2),
     },
 });
 
@@ -128,7 +128,7 @@ class AreaSuggestedServices extends React.Component {
                     <div className={this.state.isMobile ? classes.ser_org_list_header_container_mob : classes.ser_org_list_header_container}>
                         <NearMe style={{ fontSize: '14', color: '#5627FF', marginRight: '4px' }} /> 
                         <Typography
-                            variant="title"
+                            variant="smHeadline"
                             className={this.state.isMobile ? classes.ser_org_list_header_mob : classes.ser_org_list_header}>
                             Suggestions based on your location
                     </Typography>

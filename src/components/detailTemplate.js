@@ -1,11 +1,11 @@
 import React from "react";
 import Grid from '@material-ui/core/Grid';
-import { withStyles } from '@material-ui/core/styles';
+import { withStyles } from '@material-ui/core';
 import {isMobileOnly} from 'react-device-detect';
-import Share from "./Share";
+
 import SearchNav from './Nav/Search';
 import Footer from './Footer';
-import withRoot from '../withRoot';
+
 
 const styles = theme => ({
   default_template_root: {
@@ -29,9 +29,9 @@ height : "100%",
   detail_template_footer : {
     borderTop: `1px solid #dcdcdc`,
     width: '100%',
-    paddingTop: theme.spacing.unit,
-    paddingBottom: theme.spacing.unit,
-  marginTop: theme.spacing.unit * 4,
+    paddingTop: theme.spacing(1),
+    paddingBottom: theme.spacing(1),
+  marginTop: theme.spacing(4),
   },
 });
 

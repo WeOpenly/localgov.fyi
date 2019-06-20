@@ -4,7 +4,7 @@ import _ from "lodash";
 
 import { isMobileOnly } from 'react-device-detect';
 import Typography from '@material-ui/core/Typography';
-import { withStyles } from '@material-ui/core/styles';
+import { withStyles } from '@material-ui/core';
 
 import FooterSocial from './social';
 import FooterDiscover from './discover';
@@ -14,7 +14,7 @@ const styles = theme => ({
     new_footer:{
         display: 'flex',
         flexDirection: 'column',
-        marginTop: theme.spacing.unit,
+        marginTop: theme.spacing(1),
     },
     new_footer_links:{
         display: 'flex',
@@ -28,9 +28,9 @@ const styles = theme => ({
         textAlign: 'center',
     },
     new_footer_copyright:{
-        padding: theme.spacing.unit,
+        padding: theme.spacing(1),
         display: 'flex',
-        marginBottom: theme.spacing.unit *2,
+        marginBottom: theme.spacing(2),
         justifyContent: 'center',
     }
 });

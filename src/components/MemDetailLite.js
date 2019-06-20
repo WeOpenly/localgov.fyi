@@ -1,7 +1,7 @@
 import React, {Component} from "react";
 
 
-import {withStyles} from '@material-ui/core/styles';
+import {withStyles} from '@material-ui/core';
 
 import Card from '@material-ui/core/Card';
 import CardActions from '@material-ui/core/CardActions';
@@ -45,7 +45,7 @@ class MemDetailLite extends Component {
             <Grid item xs={12} sm={12} md={12}>
                 <Card className={classes.mediaContainer}>
                     <CardContent>
-                        <Typography align="center" variant="title">
+                        <Typography align="center" varant="h6">
                             {mem_name}
                         </Typography>
                         <Typography align="center" variant="caption">

@@ -1,7 +1,7 @@
 import React, { Component, Fragment } from "react";
 import { connect } from "react-redux";
 import _ from "lodash";
-import Spinner from 'react-spinkit';
+
 import Card from '@material-ui/core/Card';
 import ContentLoader from "react-content-loader"
 import Grid from '@material-ui/core/Grid';
@@ -12,20 +12,20 @@ import SerListItemWithOrg from '../Service/ListItemWithOrg';
 import LocationCard from '../UserRequests/LocationCard';
 import NearbyOrgList from '../Nearby/OrgList';
 import RelatedServiceTemplates from '../RelatedServiceTemplates';
-import { withStyles } from '@material-ui/core/styles';
+import { withStyles } from '@material-ui/core';
 import { trackEvent } from '../common/tracking';
 
 const styles = theme => ({
     ser_case1_suggested_row: {
-        paddingLeft: theme.spacing.unit,
-        marginTop: theme.spacing.unit * 4,
+        paddingLeft: theme.spacing(1),
+        marginTop: theme.spacing(4),
     },
     ser_case1_suggested_row_mob: {
-        paddingLeft: theme.spacing.unit * 2,
-        marginTop: theme.spacing.unit * 1,
+        paddingLeft: theme.spacing(2),
+        marginTop: theme.spacing(1),
     },
     ser_case1_suggested_row_mob_heading: {
-        paddingBottom: theme.spacing.unit * 2,
+        paddingBottom: theme.spacing(2),
         display: 'flex',
         flexWrap: 'wrap',
     },
@@ -34,20 +34,20 @@ const styles = theme => ({
         flexDirection: 'column',
     },
     ser_gloss_suggested_failed_row:{
-        marginTop: theme.spacing.unit *2,
+        marginTop: theme.spacing(2),
     },
     ser_case1_suggested_row_heading_mob:{
-        paddingBottom: theme.spacing.unit * 2,
+        paddingBottom: theme.spacing(2),
         display: 'flex',
         flexWrap: 'wrap',
     },
     ser_case1_suggested_row_heading:{
-        paddingBottom: theme.spacing.unit * 2,
+        paddingBottom: theme.spacing(2),
     },
     ser_case1_suggested_row_locs: {
         display: 'flex',
         flexWrap: 'wrap',
-        padding: theme.spacing.unit,
+        padding: theme.spacing(1),
     },
     ser_case1_suggested_row_locs_mob: {
         display: 'flex',
@@ -56,8 +56,8 @@ const styles = theme => ({
         position: 'relative'
     },
     ser_gloss_suggested_row: {
-        paddingLeft: theme.spacing.unit,
-        marginTop: theme.spacing.unit * 2,
+        paddingLeft: theme.spacing(1),
+        marginTop: theme.spacing(2),
     },
 });
 
@@ -133,7 +133,7 @@ class Case3 extends Component {
             <Grid container>
                 <Grid item sm={12} className={this.state.isMob ? classes.ser_case1_suggested_row_mob : classes.ser_case1_suggested_row}>
                     <Typography
-                        variant="title"
+                        varant="h6"
                         className={this.state.isMob ? classes.ser_case1_suggested_row_heading_mob : classes.ser_case1_suggested_row_heading}>
                         {header}
                     </Typography>
@@ -146,7 +146,7 @@ class Case3 extends Component {
                 </Grid>
                 <Grid item sm={12} className={this.state.isMob ? classes.ser_case1_suggested_row_mob : classes.ser_case1_suggested_row}>
                     <Typography
-                        variant="title"
+                        varant="h6"
                         className={this.state.isMob ? classes.ser_case1_suggested_row_heading_mob : classes.ser_case1_suggested_row_heading}>
                         Popular Services
                     </Typography>

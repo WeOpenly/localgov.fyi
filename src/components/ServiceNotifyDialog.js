@@ -1,7 +1,7 @@
 import React, { Component, Fragment } from 'react';
-import Spinner from 'react-spinkit';
+
 import { connect } from "react-redux";
-import { withStyles } from '@material-ui/core/styles';
+import { withStyles } from '@material-ui/core';
 import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
@@ -15,7 +15,7 @@ import AlarmOn from '@material-ui/icons/AlarmOn';
 import List from '@material-ui/icons/List';
 import AutoRenew from '@material-ui/icons/Autorenew';
 
-import withRoot from '../withRoot';
+
 import {trackInput} from "./common/tracking";
 import { toggleNotifyDialog } from './UserRequests/actions';
 
@@ -27,7 +27,7 @@ service_notify_dialog_bootstrapInput : {
     color: theme.palette.primary['200'],
     border: '1px solid #ced4da',
     padding: '10px 12px 12px 12px',
-    marginTop: theme.spacing.unit *3,
+    marginTop: theme.spacing(3),
     width: '100%',
     transition: theme.transitions.create(['border-color', 'box-shadow'])
   },
@@ -38,7 +38,7 @@ service_notify_dialog_bootstrapInputComment : {
     color: theme.palette.primary['200'],
     border: '1px solid #ced4da',
     padding: '10px 12px 12px 12px',
-    marginTop: theme.spacing.unit*2,
+    marginTop: theme.spacing(2),
     width: '100%',
     height: '100px',
     'wordBreak': 'break-word',
@@ -49,8 +49,8 @@ service_notify_dialog_title:{
   textAlign: 'center'
 },
 service_notify_dialog_buttonContainer : {
-    marginTop: theme.spacing.unit * 4,
-    marginBottom: theme.spacing.unit,
+    marginTop: theme.spacing(4),
+    marginBottom: theme.spacing(1),
     display: 'flex',
     justifyContent: 'center',
   },
@@ -59,13 +59,13 @@ service_notify_dialog_afterSubmit : {
     flexDirection: 'column',
     justifyContent: 'center',
     alignItems: 'center',
-    margin: theme.spacing.unit* 4,
+    margin: theme.spacing(4),
   },
 service_notify_dialog_formWrapper : {
-  marginTop: theme.spacing.unit * 2,
-  marginLeft: theme.spacing.unit * 4,
-marginRight: theme.spacing.unit * 4,
-  marginBottom: theme.spacing.unit * 5,
+  marginTop: theme.spacing(2),
+  marginLeft: theme.spacing(4),
+marginRight: theme.spacing(4),
+  marginBottom: theme.spacing(5),
 },
 service_notify_dialog_spinner : {
     color: theme.palette.primary['500'],
@@ -77,23 +77,23 @@ service_notify_service_name:{
   fontWeight: 400,
 },
 service_notify_icon:{
-  marginRight: theme.spacing.unit *2,
+  marginRight: theme.spacing(2),
 },
 service_notify_dialog_sepDiv : {
     textAlign: 'center',
-    paddingTop: theme.spacing.unit*2,
-    paddingBottom: theme.spacing.unit*2,
+    paddingTop: theme.spacing(2),
+    paddingBottom: theme.spacing(2),
   },
   sepSpan:{
     
   },
 service_notify_dialog_feedbackText : {
-    margin: theme.spacing.unit*2,
+    margin: theme.spacing(2),
   },
 service_notify_dialog_icon : {
     color: theme.palette.primary['500'],
     fontSize: 32,
-    marginBottom: theme.spacing.unit,
+    marginBottom: theme.spacing(1),
   },
 });
 

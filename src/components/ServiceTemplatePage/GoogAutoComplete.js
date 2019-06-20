@@ -1,6 +1,6 @@
 import React, { Fragment } from 'react';
 import {connect} from "react-redux";
-import Spinner from 'react-spinkit';
+
 import Paper from '@material-ui/core/Paper';
 import InputBase from '@material-ui/core/InputBase';
 import IconButton from '@material-ui/core/IconButton';
@@ -16,7 +16,7 @@ import PlacesAutocomplete, {
     getLatLng,
 } from 'react-places-autocomplete';
 import Grid from '@material-ui/core/Grid';
-import {withStyles} from '@material-ui/core/styles';
+import {withStyles} from '@material-ui/core';
 import { fetchGoogLoc, updateSearchText, setGoogRegion } from "./actions";
 
 import { trackClick, trackInput} from "../common/tracking";
@@ -27,15 +27,15 @@ const styles = theme => ({
         width: '240px',
         display: 'flex',
         flexDirection: 'column',
-        padding: theme.spacing.unit,
-        margin: theme.spacing.unit,
+        padding: theme.spacing(1),
+        margin: theme.spacing(1),
         boxShadow: `0 2px 5px 2px ${theme.palette.primary['100']}`
     },
     ser_template_card_img: {
         display: 'flex',
         justifyContent: 'center',
         minHeight: '80px',
-        padding: theme.spacing.unit * 3
+        padding: theme.spacing(3)
     },
     ser_template_card_content: {
         textAlign: 'center',
@@ -71,8 +71,8 @@ const styles = theme => ({
         minWidth: '320px',
         justifyContent: 'center',
         position: 'relative',
-        margin: theme.spacing.unit,
-        marginTop: theme.spacing.unit *3
+        margin: theme.spacing(1),
+        marginTop: theme.spacing(3)
     },
     ser_gloss_search_suggestions:{
         position: 'absolute',

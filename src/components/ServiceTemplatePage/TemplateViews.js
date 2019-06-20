@@ -5,7 +5,7 @@ import Grid from '@material-ui/core/Grid';
 import { isMobileOnly } from 'react-device-detect';
 import Typography from '@material-ui/core/Typography';
 import SUC from '@material-ui/icons/SupervisedUserCircle'
-import { withStyles } from '@material-ui/core/styles';
+import { withStyles } from '@material-ui/core';
 import SvgUsers from '../../svgIcons/users';
 import Avatar from "@material-ui/core/Avatar";
 
@@ -29,7 +29,7 @@ const SuggestedLoader = () => (
 const styles = theme => ({
   template_views_card_item: {
     display: "flex",
-    paddingRight: theme.spacing.unit * 2
+    paddingRight: theme.spacing(2)
   },
   template_views_card_item_mob: {
     display: "flex",
@@ -37,16 +37,16 @@ const styles = theme => ({
   template_views_card_mob: {
     display: "flex",
     flexWrap: "wrap",
-    paddingLeft: theme.spacing.unit,
+    paddingLeft: theme.spacing(1),
   },
   template_views_card: {
     display: "flex",
     flexWrap: "wrap",
-    padding: theme.spacing.unit
+    padding: theme.spacing()
   },
   template_views_message: {
-    paddingLeft: theme.spacing.unit,
-    paddingTop: theme.spacing.unit / 4
+    paddingLeft: theme.spacing(1),
+    paddingTop: '2px'
   },
   template_views_message_text: {
     fontWeight: 500,

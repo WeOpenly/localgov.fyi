@@ -4,7 +4,7 @@ import _ from "lodash";
 import { StaticQuery, graphql } from "gatsby"
 import { isMobileOnly } from 'react-device-detect';
 import Typography from '@material-ui/core/Typography';
-import { withStyles } from '@material-ui/core/styles';
+import { withStyles } from '@material-ui/core';
 import { navigate } from '@reach/router';
 import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
@@ -32,7 +32,7 @@ const styles = theme => ({
         height: 56,
         boxShadow: `0 0 0px 1px ${theme.palette.primary["900"]}`,
         border: '2px solid #fff',
-        marginRight: theme.spacing.unit * 2,
+        marginRight: theme.spacing(2),
     },
 ser_list_org_agg_logo_dum:{
     width: 48,
@@ -41,7 +41,7 @@ ser_list_org_agg_logo_dum:{
     height: 48,
     boxShadow: `0 0 0px 1px ${theme.palette.primary["900"]}`,
     border: '1px solid #d4d4d4',
-    marginRight: theme.spacing.unit * 2,
+    marginRight: theme.spacing(2),
 }
 });
 

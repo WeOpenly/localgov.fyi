@@ -5,13 +5,14 @@ import {connect} from "react-redux";
 
 import Helmet from "react-helmet";
 import {isMobileOnly} from 'react-device-detect';
-import Spinner from 'react-spinkit';
-import {withStyles} from '@material-ui/core/styles';
+
+import {withStyles} from '@material-ui/core';
 
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 import CircularProgress from '@material-ui/core/CircularProgress';
-import withRoot from '../withRoot';
+
+
 
 import IndexHero from '../components/IndexPage/Hero';
 
@@ -21,6 +22,7 @@ import { fetchAreaGuess } from "../components/IndexPage/actions";
 import {trackView, trackClick} from "../components/common/tracking";
 import AreaSuggestedServices from '../components/IndexPage/AreaSuggestedservices.js';
 import OtherLocations from '../components/IndexPage/OtherLocations.js';
+
 
 const styles = theme => ({
   "@global": {
@@ -50,9 +52,9 @@ const styles = theme => ({
   },
   index_section2: {},
   index_footer: {
-    borderTop: `1px solid #dcdcdc`,
-    paddingTop: theme.spacing.unit,
-    marginTop: theme.spacing.unit * 4
+    borderTop: `1px solid #${theme.palette}`,
+    paddingTop: theme.spacing(1),
+    marginTop: theme.spacing(4),
   },
   index_hero_suggestions_loading:{
     display: 'flex',
@@ -93,7 +95,9 @@ class Index extends React.Component {
     const { classes, appReady } = this.props;
 
     return (
+
       <Fragment>
+
         <Helmet
           defaultTitle={`Evergov: Find All Government Services in a Single Place`}
           titleTemplate={`%s | evergov`}
@@ -145,6 +149,7 @@ class Index extends React.Component {
         <div className={classes.index_footer}>
           <Footer page={this.props.location.pathname} />
         </div>
+
       </Fragment>
     );
   }
@@ -162,6 +167,6 @@ const mapStateToProps = function (state, ownProps) {
   };
 };
 
-const ConnIndex = connect(mapStateToProps)(withRoot(withStyles(styles, {name: 'index-styles'})(Index)));
+const ConnIndex = connect(mapStateToProps)(withStyles(styles, {name: 'index-styles'})(Index));
 
 export default ConnIndex;

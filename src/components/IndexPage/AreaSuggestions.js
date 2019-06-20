@@ -1,6 +1,6 @@
 import React, { Fragment } from 'react';
 import {connect} from "react-redux";
-import Spinner from 'react-spinkit';
+
 import Paper from '@material-ui/core/Paper';
 import InputBase from '@material-ui/core/InputBase';
 import IconButton from '@material-ui/core/IconButton';
@@ -16,24 +16,24 @@ import PlacesAutocomplete, {
     getLatLng,
 } from 'react-places-autocomplete';
 import Grid from '@material-ui/core/Grid';
-import {withStyles} from '@material-ui/core/styles';
+import {withStyles} from '@material-ui/core';
 import { updateGoogLocationSearchText, selectGoogLocation} from './actions';
 
 import { trackClick, trackInput} from "../common/tracking";
 
 const styles = theme => ({
   index_page_ser_suggestions_container: {
-    margin: `${theme.spacing.unit}px ${theme.spacing.unit}px ${
-      theme.spacing.unit
+    margin: `${theme.spacing()}px ${theme.spacing()}px ${
+      theme.spacing()
     }px 0`,
     display: "flex",
-    width: theme.spacing.unit * 23,
+    width: '240px',
     justifyContent: "center",
     position: "relative"
   },
   index_page_ser_suggestions_container_header: {
     display: "flex",
-    marginRight: theme.spacing.unit,
+    marginRight: theme.spacing(1),
     width: "248px",
     justifyContent: "center",
     alignItems: 'center',
@@ -43,6 +43,7 @@ const styles = theme => ({
     display: "flex",
     alignItems: "center",
     height: "40px",
+
     boxShadow: "none",
     background: "#fafafa",
     border: `1px solid ${theme.palette.primary["100"]}`,
@@ -55,9 +56,10 @@ const styles = theme => ({
   index_area_search_search_paper_root: {
     display: "flex",
     alignItems: "center",
+    width: '240px',
     boxShadow:
       "0px 3px 5px 0px rgba(0,0,0,0.1),0px 1px 1px 0px rgba(0,0,0,0.07),0px 2px 6px 1px rgba(0,0,0,0.06)",
-    border: `1px solid ${theme.palette.primary["200"]}`,
+    border: `1px solid ${theme.palette.primary["100"]}`,
     borderRadius: "4px",
     "&:hover": {
       boxShadow: `0 4px 8px 0 #dfdfdf, 0 1px 16px 0 #fafafa inset`,
@@ -68,7 +70,7 @@ const styles = theme => ({
     flex: 1,
     padding: "6px",
 
-    marginRight: theme.spacing.unit,
+    marginRight: theme.spacing(1),
     fontSize: "16px",
     fontWeight: 500,
     fontFamily:
@@ -221,7 +223,7 @@ class GoogAutoComplete extends React.Component {
                     elevation={2}
                   >
                     {loading ? (
-                        <CircularProgress className={classes.index_page_search_iconButton}size={15} />
+                        <CircularProgress className={classes.index_page_search_iconButton} size={15} />
                     ) : (
                       <NearMe
                         className={classes.index_page_search_iconButton}

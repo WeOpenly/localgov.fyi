@@ -42,8 +42,7 @@ export const trackEvent = (event_type, event_props) => async(dispatch, getState)
     if (!Fingerprint2) {
         return
     }
-    new Fingerprint2(fpOptions)
-        .get(function (result, components) {
+    Fingerprint2.getPromise(fpOptions).then(function (result, components) {
             try {
 
                 if (windowGlobal && windowGlobal.mixpanel) {
@@ -64,8 +63,7 @@ export const trackView = (page_layout_type, viewing_entity_type, viewing_entity_
     if (!Fingerprint2) {
         return
     }
-    new Fingerprint2(fpOptions)
-        .get(function (result, components) {
+    Fingerprint2.getPromise(fpOptions).then(function (result, components) {
             try {
        
                 const eventParams = {
@@ -96,8 +94,7 @@ export const trackInput = (input_type, text, extra) => async(dispatch, getState)
     if (!Fingerprint2) {
         return
     }
-    new Fingerprint2(fpOptions)
-        .get(function (result, components) {
+    Fingerprint2.getPromise(fpOptions).then(function (result, components) {
             try {
 
                 const eventParams = {
@@ -123,8 +120,7 @@ export const trackClick = (click_type, clicked_entity_type, clicked_entity_id, c
     if (!Fingerprint2) {
         return
     }
-    new Fingerprint2(fpOptions)
-        .get(function (result, components) {
+    Fingerprint2.getPromise(fpOptions).then(function (result, components) {
             try {
             
                 const eventParams = {

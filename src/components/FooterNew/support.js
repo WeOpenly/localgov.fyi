@@ -4,18 +4,18 @@ import _ from "lodash";
 
 import { isMobileOnly } from 'react-device-detect';
 import Typography from '@material-ui/core/Typography';
-import { withStyles } from '@material-ui/core/styles';
+import { withStyles } from '@material-ui/core';
 
 
 const styles = theme => ({
     support_footer: {
-        margin: `${theme.spacing.unit * 3}px 0`,
+        margin: `${theme.spacing(3)}px 0`,
         display: 'flex',
         flexDirection: 'column',
         alignItems: 'left'
     },
     support_footer_header: {
-        marginBottom: theme.spacing.unit,
+        marginBottom: theme.spacing(1),
     },
    support_footer_links: {
         display: 'flex',
@@ -51,7 +51,7 @@ class FooterSupport extends Component {
         return (
             <div className={classes.support_footer}>
                 <div className={classes.support_footer_header}>
-                    <Typography variant="display1" style={{ fontSize: "0.85rem" }} >
+                    <Typography variant="h4" style={{ fontSize: "0.85rem" }} >
                         Support
                     </Typography>
                 </div>
@@ -74,7 +74,7 @@ class FooterSupport extends Component {
                         Terms
                         </a>
                     </Typography>
-                    <Typography >
+                    <Typography variant="caption">
                     <a
                         href={`/privacy`}
                         className={classes.footer_social_icon}

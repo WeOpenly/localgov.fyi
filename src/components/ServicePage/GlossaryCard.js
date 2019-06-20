@@ -5,7 +5,7 @@ import Link from "gatsby-link";
 import { StaticQuery, graphql } from "gatsby"
 import { isMobileOnly } from 'react-device-detect';
 import Typography from '@material-ui/core/Typography';
-import { withStyles } from '@material-ui/core/styles';
+import { withStyles } from '@material-ui/core';
 import { navigate } from '@reach/router';
 import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
@@ -18,7 +18,7 @@ const styles = theme => ({
     },
     suggest_loc_card: {
         display: 'flex',
-        paddingTop: theme.spacing.unit*3,
+        paddingTop: theme.spacing(3),
     },
     suggest_loc_org_details: {
         display: 'flex',
@@ -31,7 +31,7 @@ const styles = theme => ({
         height: 56,
         boxShadow: `0 0 0px 1px ${theme.palette.primary["200"]}`,
         border: '1px solid #fff',
-        marginRight: theme.spacing.unit * 2,
+        marginRight: theme.spacing(2),
     }
 });
 const RawHTML = ({ children, className = "" }) => (
@@ -85,7 +85,7 @@ class GlossaryCard extends Component {
                         />
                     ) : null}
                     <div className={classes.suggest_loc_org_details}>
-                        <Typography variant="title" gutterBottom>
+                        <Typography varant="h6" gutterBottom>
                             {name}
                         </Typography>
                         <Typography variant="body1"><RawHTML>

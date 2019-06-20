@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import classNames from 'classnames';
-import { withStyles } from "@material-ui/core/styles";
+import { withStyles } from "@material-ui/core";
 
 import Typography from "@material-ui/core/Typography";
 import Paper from '@material-ui/core/Paper';
@@ -12,13 +12,11 @@ import Card from '@material-ui/core/Card';
 import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
 
-import AddressGoogleMap from './AddressGoogleMap';
-import ContactAddressMap from './ContactAddressMap';
-import withRoot from '../withRoot';
+
 
 const styles = theme => ({
     cd_root: {
-        marginBottom: theme.spacing.unit,
+        marginBottom: theme.spacing(1),
     },
     cd_linkIconContainer: {
         paddingLeft: 20
@@ -183,7 +181,7 @@ class ContactDetails extends Component {
         return (
             <Grid container spacing={8} className={classes.cd_root}>
                 <Grid item xs={12}>
-                    <Typography variant="subheading" component="h4" gutterBottom className={classes.cd_title}>
+                    <Typography varant="subtitle1" component="h4" gutterBottom className={classes.cd_title}>
                         Contact Details
                     </Typography>
                     <Paper elevation={1} className={classes.cd_contactInfoContainer}>

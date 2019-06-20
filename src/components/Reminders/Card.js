@@ -7,7 +7,7 @@ import { connect } from 'react-redux';
 import { isMobileOnly } from 'react-device-detect';
 import Dialog from '@material-ui/core/Dialog';
 import DialogContent from '@material-ui/core/DialogContent';
-import { withStyles } from '@material-ui/core/styles';
+import { withStyles } from '@material-ui/core';
 import Cancel from '@material-ui/icons/Cancel';
 import Typography from '@material-ui/core/Typography';
 import SerRemForm from './Form';
@@ -24,7 +24,7 @@ const styles = theme => ({
     },
     reminders_card_container_mob: {
         background: '#fff',
-        margin: theme.spacing.unit * 2,
+        margin: theme.spacing(2),
         boxShadow: `1px 1px 4px 2px ${theme.palette.primary['100']}`,
         borderRadius: 6,
         textAlign: 'center'
@@ -41,20 +41,20 @@ const styles = theme => ({
         borderRadius: `6px 6px 0px 0px`,
     },
     reminders_card_content: {
-        padding: `0 ${theme.spacing.unit * 2}px ${theme.spacing.unit * 2}px ${theme.spacing.unit * 2}px`
+        padding: `0 ${theme.spacing(2)}px ${theme.spacing(2)}px ${theme.spacing(2)}px`
     },
     reminders_card_thanks_icon: {
-        marginBottom: theme.spacing.unit * 2,
+        marginBottom: theme.spacing(2),
     },
     reminders_card_thanks: {
         display: 'flex',
-        padding: theme.spacing.unit * 3,
+        padding: theme.spacing(3),
         flexDirection: 'column',
         alignItems: 'center',
     },
     reminders_card_greeting: {
         display: 'flex',
-        padding: `${theme.spacing.unit}px 0 0 ${theme.spacing.unit}px`,
+        padding: `${theme.spacing()} 0 0 ${theme.spacing()}`,
     },
     ser_rem_shade: {
         zIndex: '9999',
@@ -205,7 +205,7 @@ class Card extends Component {
                                     {thanks_msg ? thanks_msg : "Thank you, we will notify you soon!"}
                                 </Typography>
                             </div>) : (<div className={classes.reminders_card_greeting}>
-                                <Typography variant="title">
+                                <Typography varant="h6">
                                     {greeting_msg ? greeting_msg : "Never miss out"}
                                 </Typography>
                             </div>)}
@@ -222,7 +222,7 @@ class Card extends Component {
                         {thanks_msg ? thanks_msg : "Thank you, we will notify you soon!"}
                     </Typography>
                 </div>) : (<div className={classes.reminders_card_greeting}>
-                    <Typography variant="title">
+                    <Typography varant="h6">
                         {greeting_msg ? greeting_msg : "Never miss out"}
                     </Typography>
                 </div>)}

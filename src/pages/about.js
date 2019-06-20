@@ -5,7 +5,7 @@ import Link from 'gatsby-link';
 import Helmet from "react-helmet";
 import { isMobileOnly } from 'react-device-detect';
 import Nav from '../components/Nav/Common';
-import { withStyles } from '@material-ui/core/styles';
+import { withStyles } from '@material-ui/core';
 import AppBar from '@material-ui/core/AppBar';
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
@@ -13,7 +13,7 @@ import Button from '@material-ui/core/Button';
 import Search from '@material-ui/icons/Search';
 import AboutIl from '../svgIcons/AboutIl.js';
 
-import withRoot from '../withRoot';
+
 import HeaderWithSearch from '../components/HeaderWithSearch';
 import { trackView } from "../components/common/tracking";
 
@@ -28,20 +28,20 @@ const styles = theme => ({
     textDecoration: 'none',
   },
   title:{
-    paddingTop: theme.spacing.unit * 2,
-    paddingBottom: theme.spacing.unit * 2,
-    paddingLeft: theme.spacing.unit * 2,
+    paddingTop: theme.spacing(2),
+    paddingBottom: theme.spacing(2),
+    paddingLeft: theme.spacing(2),
   },
   section1: {
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
     height: '100vh',
-    marginLeft: theme.spacing.unit * -2,
-    marginRight: theme.spacing.unit * -2,
-    // paddingTop: theme.spacing.unit * 20,
-    paddingLeft: theme.spacing.unit * 2,
-    paddingRight: theme.spacing.unit * 2,
+    marginLeft: theme.spacing(-2),
+    marginRight: theme.spacing(-2),
+    // paddingTop: theme.spacing( 20,
+    paddingLeft: theme.spacing(2),
+    paddingRight: theme.spacing(2),
     backgroundColor: theme.palette.primary['500'],
   },
   headline: {
@@ -51,15 +51,15 @@ const styles = theme => ({
   },
   section2: {
     height: '100vh',
-    marginLeft: theme.spacing.unit * -2,
-    marginRight: theme.spacing.unit * -2,
-    paddingTop: theme.spacing.unit * 30,
-    paddingLeft: theme.spacing.unit * 2,
-    paddingRight: theme.spacing.unit * 2,
+    marginLeft: theme.spacing(-2),
+    marginRight: theme.spacing(-2),
+    paddingTop: theme.spacing(30),
+    paddingLeft: theme.spacing(2),
+    paddingRight: theme.spacing(2),
     background: '#fafafa',
   },
   about_desc:{
-    marginTop: theme.spacing.unit * 10,
+    marginTop: theme.spacing(10),
     maxWidth: '500px',
     display: 'flex',
     flexDirection : 'column',
@@ -67,27 +67,27 @@ const styles = theme => ({
   },
   about_desc_mob:{
     display: 'flex',
-    marginTop: theme.spacing.unit * 5,
+    marginTop: theme.spacing(5),
     flexDirection: 'column',
     justifyContent: 'center',
     alignItems: 'center',
-    margin: theme.spacing.unit*2
+    margin: theme.spacing(2)
   },
   section2Center: {
     display: 'flex',
     justifyContent: 'center',
-    paddingLeft: theme.spacing.unit * 8,
-    paddingRight: theme.spacing.unit * 8,
+    paddingLeft: theme.spacing(8),
+    paddingRight: theme.spacing(8),
   },
   searchIcon: {
     fontSize: 128,
-    marginTop: -theme.spacing.unit,
-    marginRight: theme.spacing.unit * 4,
+    marginTop: -theme.spacing(1),
+    marginRight: theme.spacing(4),
   },
   section3: {
     height: '100vh',
     marginBottom: -151,
-    paddingTop: theme.spacing.unit * 30,
+    paddingTop: theme.spacing(30),
   },
   section3Content: {
     display: 'flex',
@@ -101,7 +101,7 @@ const styles = theme => ({
     color: theme.palette.primary['500'],
   },
   bodyText: {
-    marginTop: theme.spacing.unit * 2,
+    marginTop: theme.spacing(2),
   },
   mailTo: {
     color: theme.palette.primary['500'],
@@ -165,7 +165,7 @@ class About extends React.Component {
                 : classes.about_desc
             }
           >
-            <Typography variant="display1" align="left">
+            <Typography variant="h4" align="left">
               We are on a mission to make every government service
               accessible online.
             </Typography>
@@ -214,4 +214,4 @@ const mapStateToProps = (state, ownProps) => {
   };
 };
 
-export default connect(mapStateToProps)(withRoot(withStyles(styles)(About)));
+export default connect(mapStateToProps)(withStyles(styles)(About));

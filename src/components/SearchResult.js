@@ -2,16 +2,16 @@ import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import {navigate} from '@reach/router';
 
-import { withStyles } from '@material-ui/core/styles';
+import { withStyles } from '@material-ui/core';
 import Card from '@material-ui/core/Card';
 import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
 import Typography from '@material-ui/core/Typography';
-import withRoot from '../withRoot';
+
 
 const styles = theme => ({
   search_result_card: {
-    marginBottom: theme.spacing.unit,
+    marginBottom: theme.spacing(1),
     cursor: 'pointer',
     boxShadow: `0 0 1px 1px #EBE5FF`,
   }

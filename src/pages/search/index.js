@@ -4,12 +4,12 @@ import { connect } from "react-redux";
 
 import { isMobileOnly } from 'react-device-detect';
 import queryString from 'query-string'
-import { withStyles } from '@material-ui/core/styles';
+import { withStyles } from '@material-ui/core';
 import Grid from '@material-ui/core/Grid';
 
 import SearchResults from '../../components/SearchPage/Results';
 import CommonNav from '../../components/Nav/Common';
-import withRoot from '../../withRoot';
+
 import Footer from '../../components/Footer';
 
 import { trackView, trackEvent } from "../../components/common/tracking";
@@ -54,8 +54,8 @@ const styles = theme => ({
         width: '100%',
         bottom: '0',
         borderTop: `1px solid #dcdcdc`,
-        paddingTop: theme.spacing.unit,
-        marginTop: theme.spacing.unit * 6
+        paddingTop: theme.spacing(1),
+        marginTop: theme.spacing(6)
     }
 });
 
@@ -136,4 +136,4 @@ const mapStateToProps = function (state, ownProps) {
     };
 };
 
-export default connect(mapStateToProps)(withRoot(withStyles(styles)(Search)));
+export default connect(mapStateToProps)(withStyles(styles)(Search));

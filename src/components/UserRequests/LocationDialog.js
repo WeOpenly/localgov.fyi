@@ -2,7 +2,7 @@ import React, {Component, Fragment} from 'react';
 import PropTypes from 'prop-types';
 import {connect} from "react-redux";
 
-import Spinner from 'react-spinkit';
+
 import {isMobileOnly} from 'react-device-detect';
 import {navigate} from '@reach/router';
 import IconButton from '@material-ui/core/IconButton';
@@ -13,7 +13,7 @@ import Dialog from '@material-ui/core/Dialog';
 import DialogContent from '@material-ui/core/DialogContent';
 import queryString from 'query-string'
 import MuiDialogTitle from '@material-ui/core/DialogTitle';
-import {withStyles} from '@material-ui/core/styles';
+import {withStyles} from '@material-ui/core';
 import Divider from '@material-ui/core/Divider';
 import Form from "react-jsonschema-form";
 import Grid from '@material-ui/core/Grid';
@@ -39,18 +39,18 @@ const styles = theme => ({
         maxHeight: '560px',
     },
 user_requests_thanks_icon : {
-    marginBottom: theme.spacing.unit *2
+    marginBottom: theme.spacing(2)
 },
 user_requests_thanks : {
     display: 'flex',
     backgroundImage: `linear-gradient(to right, #6f47ff, #5d38f2, #4829e4, #3017d7)`,
-    padding: theme.spacing.unit * 4,
+    padding: theme.spacing(4),
     flexDirection: 'column',
     alignItems: 'center'
 },
 user_requests_greeting : {
     display: 'flex',
-    padding: `${theme.spacing.unit}px 0 0 ${theme.spacing.unit}px`
+    padding: `${theme.spacing()} 0 0 ${theme.spacing()}`
 },
 "@global" : {
     ul: {
@@ -67,10 +67,10 @@ feedback_paper : {
     height: 280,
     width: 332,
     zIndex: 10,
-    paddingLeft: theme.spacing.unit * 2,
-    paddingRight: theme.spacing.unit * 2,
-    paddingTop: theme.spacing.unit * 2,
-    marginBottom: theme.spacing.unit * 3,
+    paddingLeft: theme.spacing(2),
+    paddingRight: theme.spacing(2),
+    paddingTop: theme.spacing(2),
+    marginBottom: theme.spacing(3),
     borderTop: `6px solid ${theme.palette.primary["500"]}`
 },
 feedback_bootstrapInput : {
@@ -79,7 +79,7 @@ feedback_bootstrapInput : {
     color: theme.palette.primary['200'],
     border: '1px solid #ced4da',
     padding: '10px 12px 12px 12px',
-    marginTop: theme.spacing.unit,
+    marginTop: theme.spacing(1),
     width: '100%',
     transition: theme
         .transitions
@@ -91,7 +91,7 @@ feedback_bootstrapInputComment : {
     color: theme.palette.primary['200'],
     border: '1px solid #ced4da',
     padding: '10px 12px 12px 12px',
-    marginTop: theme.spacing.unit,
+    marginTop: theme.spacing(1),
     width: '100%',
     height: '100px',
     'wordBreak': 'break-word',
@@ -100,8 +100,8 @@ feedback_bootstrapInputComment : {
         .create(['border-color', 'box-shadow'])
 },
 feedback_button : {
-    marginTop: theme.spacing.unit * 2,
-    marginBottom: theme.spacing.unit
+    marginTop: theme.spacing(2),
+    marginBottom: theme.spacing()
 },
 feedback_afterSubmit : {
     width: '100%',
@@ -117,14 +117,14 @@ feedback_spinner : {
 feedback_icon : {
     color: theme.palette.primary['500'],
     fontSize: 32,
-    marginBottom: theme.spacing.unit * 2
+    marginBottom: theme.spacing(2)
 },
 reminder_card_form_button_container : {
     display: 'flex',
-    padding: `0 0 ${theme.spacing.unit}px 0`
+    padding: `0 0 ${theme.spacing()} 0`
 },
 reminder_card_form_container : {
-    padding: theme.spacing.unit
+    padding: theme.spacing()
 }
 });
 
@@ -242,19 +242,19 @@ const DialogTitle = withStyles(theme => ({
         color: '#fff',
         display: 'flex',
         justifyContent: 'space-between',
-        padding: theme.spacing.unit *2
+        padding: theme.spacing(2)
     },
     closeButton: {
         cursor: 'pointer',
         color: theme.palette.grey[500],
-        marginTop: theme.spacing.unit
+        marginTop: theme.spacing()
     }
 }))(props => {
     const {children, classes, onClose} = props;
     return (
         <MuiDialogTitle disableTypography className={classes.loc_rec_dialog_title}>
             <div>
-                <Typography variant="subheading" style={{color: "#fff"}}>Request Missing Info</Typography>
+                <Typography varant="subtitle1" style={{color: "#fff"}}>Request Missing Info</Typography>
                 <Typography variant="caption" style={{color: "#fff"}}>We're constantly adding more locations and services everyday, we will notify you as soon as the locations or services requested by you are live</Typography>
             </div>
             <div>

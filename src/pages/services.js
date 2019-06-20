@@ -5,34 +5,34 @@ import {graphql} from "gatsby";
 import {isMobileOnly} from 'react-device-detect';
 import {connect} from "react-redux";
 import Helmet from "react-helmet";
-import {withStyles} from '@material-ui/core/styles';
+import {withStyles} from '@material-ui/core';
 import Grid from '@material-ui/core/Grid';
 import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
 import AnchorLink from 'react-anchor-link-smooth-scroll'
 import NavSearch from '../components/Nav/Search';
 import Typography from '@material-ui/core/Typography';
-import withRoot from '../withRoot';
+
 import Footer from '../components/Footer';
 import HeaderWithSearch from '../components/HeaderWithSearch';
 import {trackView, trackClick} from "../components/common/tracking";
 
 const styles = theme => ({
     ser_list_heading: {
-        marginTop: theme.spacing.unit *8,
-        marginBottom: theme.spacing.unit * 5
+        marginTop: theme.spacing(8),
+        marginBottom: theme.spacing(5)
     },
     ser_list_container: {
         display: 'flex',
-        padding: theme.spacing.unit,
+        padding: theme.spacing(1),
         '@media only screen and (max-width: 768px)': {
             flexDirection: 'column'
         }
     },
     ser_list_cat_item: {
         display: 'flex',
-        width: theme.spacing.unit *20,
-        padding: theme.spacing.unit,
+        width: theme.spacing(20),
+        padding: theme.spacing(1),
         '@media only screen and (max-width: 768px)': {
             width: '33%'
         }
@@ -40,7 +40,7 @@ const styles = theme => ({
     ser_list_cat_list_container: {
         display: 'flex',
         flexDirection: 'column',
-        padding: theme.spacing.unit,
+        padding: theme.spacing(1),
         '@media only screen and (max-width: 768px)': {
             flexDirection: 'row',
             flexWrap: 'wrap'
@@ -69,13 +69,13 @@ const styles = theme => ({
     ser_list_service_card_container: {
         display: 'flex',
         flexWrap: 'wrap',
-        padding: theme.spacing.unit
+        padding: theme.spacing()
     },
     ser_list_footer: {
         width: '100%',
         borderTop: `1px solid #dcdcdc`,
-        paddingTop: theme.spacing.unit,
-        marginTop: theme.spacing.unit * 6
+        paddingTop: theme.spacing(1),
+        marginTop: theme.spacing(6)
     }
 });
 
@@ -175,7 +175,7 @@ class ServiceList extends Component {
                     }
                 }}
                     id={`${cat}`}>
-                    <Typography variant="subheading">
+                    <Typography varant="subtitle1">
                         {cat}
                     </Typography>
                     <div
@@ -224,7 +224,7 @@ class ServiceList extends Component {
                 <Grid container>
                     <Grid item xs={1} sm={4}/>
                     <Grid className={classes.ser_list_heading} item xs={10} sm={4} align="center">
-                        <Typography variant="display1">
+                        <Typography variant="h4">
                             Services on Evergov
                         </Typography>
                     </Grid>
@@ -277,6 +277,6 @@ const mapStateToProps = function (state, ownProps) {
     };
 }
 
-const ConnServiceList = connect(mapStateToProps, mapDispatchToProps)(withRoot(withStyles(styles)(ServiceList)));
+const ConnServiceList = connect(mapStateToProps, mapDispatchToProps)(withStyles(styles)(ServiceList));
 
 export default ConnServiceList;

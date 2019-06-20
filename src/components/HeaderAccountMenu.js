@@ -3,20 +3,19 @@ import {connect} from "react-redux";
 import {navigate} from '@reach/router';
 import Typography from '@material-ui/core/Typography';
 import ListItemText from '@material-ui/core/ListItemText';
-import {withStyles} from '@material-ui/core/styles';
+import {withStyles} from '@material-ui/core';
 import Button from '@material-ui/core/Button';
 import Avatar from '@material-ui/core/Avatar';
-import {isLoggedIn, getCurrentUser} from './Account/Auth';
-import {logOut, toggleAccountForm} from './Account/actions';
+
 import IconButton from '@material-ui/core/IconButton';
 import AccountCircle from '@material-ui/icons/AccountCircle';
 import MenuItem from '@material-ui/core/MenuItem';
 import Menu from '@material-ui/core/Menu';
 import ListItem from '@material-ui/core/ListItem';
-import Spinner from 'react-spinkit';
+import CircularProgress from '@material-ui/core/CircularProgress';
 import MoreIcon from '@material-ui/icons/MoreVert';
 import { isMobileOnly } from "react-device-detect";
-import {fade} from "@material-ui/core/styles/colorManipulator";
+
 const windowGlobal = typeof window !== 'undefined' && window
 
 const styles = theme => ({
@@ -35,7 +34,7 @@ h_a_m_headerMenu : {
 },
 h_a_m_profileHeading : {
   cursor: 'none',
-  margin: theme.spacing.unit,
+  margin: theme.spacing(1),
 },
 h_a_m_login_button:{
 
@@ -71,9 +70,7 @@ class HeaderAccountMenu extends Component {
     this.handleMenu = this
       .handleMenu
       .bind(this);
-    this.logout = this
-      .logout
-      .bind(this);
+
     this.state = {
       anchorEl: null, 
       loggedin: false,
@@ -84,17 +81,10 @@ class HeaderAccountMenu extends Component {
   }
 
   componentDidMount(){
-    const loggedin = isLoggedIn();
     this.setState({
       logincheckloading: false,
       isMobile: isMobileOnly,
     });
-
-    if (loggedin){
-      this.setState({
-        loggedin: true,
-      })
-    }
   }
 
   handleChange = event => {
@@ -109,52 +99,18 @@ class HeaderAccountMenu extends Component {
     this.setState({anchorEl: null});
   };
 
-  logout() {
-    const {location} = this.props;
-    this.props.logout(location.path);
-  }
+
 
   render() {
     const {classes} = this.props;
     const {anchorEl} = this.state;
-    const user = getCurrentUser();
+  
     const open = Boolean(anchorEl);
 
     if (this.state.logincheckloading) {
-      return (<Spinner className='account_menu_spinner' name="ball-beat" color="blue"/> )
+      return (<CircularProgress size={18} />)
     }
 
-    const mobNotLoggeInMenu = (<div className={classes.h_a_m_login}>
-          <IconButton
-            aria-owns={open
-            ? 'menu-appbar'
-            : null}
-            onClick={this.handleMenu}
-            color="inherit">
-            <MoreIcon />
-          </IconButton>
-          <Menu
-            className={classes.h_a_m_headerMenu}
-            id="menu-appbar"
-            anchorEl={anchorEl}
-            anchorOrigin={{
-            vertical: 'top',
-            horizontal: 'left'
-          }}
-            transformOrigin={{
-            vertical: 'top',
-            horizontal: 'right'
-          }}
-            open={open}
-            onClose={this.handleClose}>
-            <MenuItem onClick={() => navigate('/login/')}>  <Typography variant="body1" className={classes.h_a_m_title}>
-              Log In
-              </Typography></MenuItem>
-            <MenuItem onClick={() => navigate('/signup/')}><Typography variant="body1" className={classes.h_a_m_title}>
-             Sign Up
-              </Typography></MenuItem>
-          </Menu>
-        </div>)
 
     if (this.state.isMobile){
       return null;
@@ -186,16 +142,7 @@ class HeaderAccountMenu extends Component {
   }
 }
 
-const mapDispatchToProps = (dispatch) => {
-  return {
-    logout: (path) => {
-      dispatch(logOut(path));
-    },
-    openLogin: () => {
-      dispatch(toggleAccountForm(true));
-    }
-  }
-}
+
 
 const mapStateToProps = function (state, ownProps) {
   return {
@@ -203,6 +150,6 @@ const mapStateToProps = function (state, ownProps) {
   };
 };
 
-const ConnHeaderAccountMenu = connect(mapStateToProps, mapDispatchToProps)(withStyles(styles)(HeaderAccountMenu));
+const ConnHeaderAccountMenu = connect(mapStateToProps)(withStyles(styles)(HeaderAccountMenu));
 
 export default ConnHeaderAccountMenu;

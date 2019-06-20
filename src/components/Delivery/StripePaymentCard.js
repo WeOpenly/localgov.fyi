@@ -7,7 +7,7 @@ import Button from '@material-ui/core/Button';
 import {injectStripe} from 'react-stripe-elements';
 import {CardElement} from 'react-stripe-elements';
 
-import {withStyles} from '@material-ui/core/styles';
+import {withStyles} from '@material-ui/core';
 
 const windowGlobal = typeof window !== 'undefined'
     ? window
@@ -16,9 +16,9 @@ const windowGlobal = typeof window !== 'undefined'
 const styles = theme => ({
     service_flow_dialog: {},
     CardElement: {
-        marginTop: theme.spacing.unit *3,
-        marginBottom: theme.spacing.unit *4,
-        padding: theme.spacing.unit *2,
+        marginTop: theme.spacing(3),
+        marginBottom: theme.spacing(4),
+        padding: theme.spacing(2),
         border: '1px solid #d4d4d4'
     }
 });

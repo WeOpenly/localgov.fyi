@@ -4,7 +4,7 @@ import _ from "lodash";
 
 import { isMobileOnly } from 'react-device-detect';
 import Typography from '@material-ui/core/Typography';
-import { withStyles } from '@material-ui/core/styles';
+import { withStyles } from '@material-ui/core';
 import { navigate } from '@reach/router';
 import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
@@ -23,7 +23,7 @@ const styles = theme => ({
     org_agg_card:{
         borderTop: `2px solid ${theme.palette.primary["700"]}`,
         margin: 0,
-        marginBottom: theme.spacing.unit,
+        marginBottom: theme.spacing(1),
         padding: 0,
         boxShadow: '2px 4px 16px 8px rgba(0,0,0,0.1),0px 1px 1px 0px rgba(0,0,0,0.07),0px 2px 6px 1px rgba(0,0,0,0.06)'
     },
@@ -36,13 +36,13 @@ const styles = theme => ({
         display: 'flex',
         cursor: 'pointer',
         flexDirection: 'column',
-        padding: theme.spacing.unit,
+        padding: theme.spacing(1),
         '&:hover': {
             textDecoration: 'underline',
         }
     },
 org_agg_cd:{
-    margin: theme.spacing.unit,
+    margin: theme.spacing(1),
     alignItems: 'center',
     display: 'flex',
     flexDirection: 'column',
@@ -54,15 +54,15 @@ org_agg_cd:{
         flex: '1 1 30%',
         position: 'relative',
         minWidth: '150px',
-        padding: theme.spacing.unit,
-        margin: theme.spacing.unit/2,
+        padding: theme.spacing(1),
+        margin: "4px",
         '&:hover':{
             background: '#f1f1f1',
         }
     },
     ser_list_item_load_more:{
-        padding: theme.spacing.unit,
-        marginTop: theme.spacing.unit,
+        padding: theme.spacing(1),
+        marginTop: theme.spacing(1),
         cursor: 'pointer',
         display: 'flex',
         flex: '1 1 100%',
@@ -88,28 +88,28 @@ org_agg_cd:{
         minWidth: '300px',
         flexDirection: 'column',
         aignitems: 'center',
-        margin: theme.spacing.unit *2, 
-        padding: theme.spacing.unit*2,
+        margin: theme.spacing(2), 
+        padding: theme.spacing(2),
     },
     org_agg_logo:{
         alignSelf: 'center',
         display: 'flex',
-        marginBottom: theme.spacing.unit,
-        height: theme.spacing.unit *9,
-        width: theme.spacing.unit *9,
+        marginBottom: theme.spacing(1),
+        height: theme.spacing(9),
+        width: theme.spacing(9),
         boxShadow: '0px 3px 5px 0px rgba(0,0,0,0.1),0px 1px 1px 0px rgba(0,0,0,0.07),0px 4px 4px 8px rgba(0,0,0,0.09)',
         border: '2px solid #fff'
     },
     org_agg_ser_section:{
-        padding: `${theme.spacing.unit}px ${theme.spacing.unit * 2}px ${theme.spacing.unit}px ${theme.spacing.unit * 4}px`,
+        padding: `${theme.spacing()} ${theme.spacing(2)}px ${theme.spacing()} ${theme.spacing(4)}px`,
         background: '#fdfdfd',
         display: 'flex',
         flexDirection: 'column',
         justifyContent: 'center',
     },
     org_agg_service_header:{
-        paddingTop: theme.spacing.unit*2,
-        paddingBottom: theme.spacing.unit*2,
+        paddingTop: theme.spacing(2),
+        paddingBottom: theme.spacing(2),
     },
     org_aggregate_container_mob:{
         display: 'flex',
@@ -362,7 +362,7 @@ class OrgAggregate extends Component {
                       color: "#fff",
                       textAlign: "center"
                     }}
-                    variant="title"
+                    varant="h6"
                     gutterBottom
                   >
                     {org_name}
@@ -385,7 +385,7 @@ class OrgAggregate extends Component {
                   <div className={classes.org_agg_service_header}>
                     <Typography
                       style={{ fontSize: "1.1rem" }}
-                      variant="title"
+                      varant="h6"
                       gutterBottom
                     >
                       Services from {org_name}

@@ -1,13 +1,13 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import _ from "lodash";
-import Spinner from 'react-spinkit';
+
 import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
 import Grid from '@material-ui/core/Grid';
 import { isMobileOnly } from 'react-device-detect';
 import Typography from '@material-ui/core/Typography';
-import { withStyles } from '@material-ui/core/styles';
+import { withStyles } from '@material-ui/core';
 import HighLightOutlined from '@material-ui/icons/HighlightOutlined';
 
 import NearMe from "@material-ui/icons/NearMe";
@@ -17,19 +17,19 @@ import LocationSerCard from "./LocationSerCard";
 
 const styles = theme => ({
 ser_gloss_suggested_row:{
-    paddingLeft: theme.spacing.unit,
-    marginTop: theme.spacing.unit *5,
+    paddingLeft: theme.spacing(1),
+    marginTop: theme.spacing(5),
 },
     ser_gloss_suggested_row_mob:{
-        paddingLeft: theme.spacing.unit,
-        marginTop: theme.spacing.unit * 2,
+        paddingLeft: theme.spacing(1),
+        marginTop: theme.spacing(2),
     },
     ser_gloss_suggested_row_heading_mob:{
         fontSize: '16px'
     },
     ser_gloss_suggested_row_heading:{
         fontSize: '18px',
-        paddingBottom: theme.spacing.unit,
+        paddingBottom: theme.spacing(1),
         display: 'flex',
         flexWrap: 'wrap',
     },
@@ -48,11 +48,11 @@ ser_gloss_suggested_row:{
 ser_gloss_suggested_row_locs:{
     display: 'flex',
     flexWrap: 'wrap',
-    padding: theme.spacing.unit,
+    padding: theme.spacing(1),
 },
 ser_gloss_suggested_row_locs_mob:{
     display: 'flex',
-    padding: theme.spacing.unit,
+    padding: theme.spacing(1),
     justifyContent: 'center',
     flexWrap: 'wrap',
     alignItems: "center",
@@ -103,7 +103,7 @@ class SuggestedRow extends Component {
                 <Grid item sm={1} />
                 <Grid item sm={10} className={this.state.isMob ? classes.ser_gloss_suggested_row_mob :  classes.ser_gloss_suggested_row}>
                     <Typography
-                        variant="title"
+                        varant="h6"
                         component="h2"
                         className={this.state.isMob ? classes.ser_gloss_suggested_row_heading_mob : classes.ser_gloss_suggested_row_heading}>
                         {header}

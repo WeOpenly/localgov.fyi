@@ -4,13 +4,12 @@ import { connect } from "react-redux";
 import Helmet from "react-helmet";
 import {Link} from 'gatsby';
 
-import { withStyles } from '@material-ui/core/styles';
+import { withStyles } from '@material-ui/core';
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
 import MiniOrgDetail from '../components/MiniOrgDetail';
 
-import withRoot from '../withRoot';
 import OrgHeader from '../components/OrgHeader';
 import ChipFilter from '../components/ChipFilter';
 import DetailTemplate from '../components/detailTemplate';
@@ -42,17 +41,17 @@ const styles = theme => ({
         },
     },
   orgTitle: {
-    marginTop: theme.spacing.unit *3,
-    marginBottom: theme.spacing.unit *3,
+    marginTop: theme.spacing(3),
+    marginBottom: theme.spacing(3),
   },
   orgSubheading: {
-    marginBottom: theme.spacing.unit,
+    marginBottom: theme.spacing(1),
   },
   org_detail_serviceListComponent : {
-    marginBottom: theme.spacing.unit * 2,
+    marginBottom: theme.spacing(2),
   },
   org_detail_servicesContainer: {
-    marginTop: theme.spacing.unit * 3,
+    marginTop: theme.spacing(3),
   },
   filters: {
     display: 'flex',
@@ -61,8 +60,8 @@ const styles = theme => ({
      org_detail_footer:{
        width: '100%',
        borderTop:`1px solid #dcdcdc`,
-       paddingTop: theme.spacing.unit,
-       marginTop: theme.spacing.unit *6,
+       paddingTop: theme.spacing(1),
+       marginTop: theme.spacing(6),
     }
 });
 
@@ -227,13 +226,13 @@ other_orgs_from_state
 
             const { name: orgName } = detailsAtLevel.org;
             const orgHeading = (
-              <Typography variant="title">
+              <Typography varant="h6">
                 Services offered by {orgName}
               </Typography>
             );
 
             let orgSubheading = (
-              <Typography variant="subheading" className={classes.orgSubheading}>
+              <Typography varant="subtitle1" className={classes.orgSubheading}>
                 More services available here
               </Typography>
             );
@@ -311,7 +310,7 @@ other_orgs_from_state
         </Grid>
         <Grid container spacing={16} item xs={12} md={12} className={classes.org_detail_servicesContainer}>
           <Grid item xs={12} md={6}>
-            <Typography variant="subheading" component="h4">
+            <Typography varant="subtitle1" component="h4">
               What would you like to get done?
             </Typography>
           </Grid>
@@ -327,7 +326,7 @@ other_orgs_from_state
         </Grid>
         <Grid container spacing={16} item xs={12} md={12} className={classes.org_detail_other_orgs_container}>
           <Grid item xs={12} md={6}>
-            <Typography variant="title">
+            <Typography varant="h6">
              {other_orgs_from_state_heading}
             </Typography>
           </Grid>
@@ -353,4 +352,4 @@ const mapStateToProps = function (state, ownProps) {
   };
 };
 
-export default connect(mapStateToProps)(withRoot(withStyles(styles)(OrganizationDetail)));
+export default connect(mapStateToProps)(withStyles(styles)(OrganizationDetail));

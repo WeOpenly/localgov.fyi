@@ -4,7 +4,7 @@ import _ from "lodash";
 import queryString from 'query-string'
 import { isMobileOnly } from 'react-device-detect';
 import Typography from '@material-ui/core/Typography';
-import { withStyles } from '@material-ui/core/styles';
+import { withStyles } from '@material-ui/core';
 import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
 import Fuse from 'fuse.js';
@@ -18,32 +18,32 @@ const styles = theme => ({
     boxShadow: `0 0 3px 0px ${theme.palette.primary["600"]}`
   },
   ser_gloss_suggested_row: {
-    marginTop: theme.spacing.unit * 4
+    marginTop: theme.spacing(4)
   },
   ser_gloss_suggested_row_heading: {
-    paddingLeft: theme.spacing.unit,
-    paddingBottom: theme.spacing.unit * 2,
+    paddingLeft: theme.spacing(1),
+    paddingBottom: theme.spacing(2),
     fontSize: "18px"
   },
   ser_gloss_suggested_row_locs: {
     display: "flex",
     flexWrap: "wrap",
     justifyContent: "left",
-    margin: theme.spacing.unit
+    margin: theme.spacing()
   },
   ser_gloss_suggested_row_locs_mob: {
     display: "flex",
     flexWrap: "wrap",
     justifyContent: "center",
-    margin: theme.spacing.unit
+    margin: theme.spacing()
   },
   suggest_loc_card: {
     display: "flex",
   },
   ser_gloss_suggested_row_heading_mob: {
     fontSize: "16px",
-    paddingLeft: theme.spacing.unit,
-    paddingBottom: theme.spacing.unit * 2
+    paddingLeft: theme.spacing(1),
+    paddingBottom: theme.spacing(2)
   },
   ser_gloss_others_row_header_container: {
     display: "flex",
@@ -64,7 +64,7 @@ const styles = theme => ({
     height: 56,
     boxShadow: `0 0 0px 1px ${theme.palette.primary["200"]}`,
     border: "1px solid #fff",
-    marginRight: theme.spacing.unit * 2
+    marginRight: theme.spacing(2)
   }
 });
 
@@ -172,7 +172,7 @@ class OtherLocations extends Component {
                 }
               >
                 <Typography
-                  variant="title"
+                  varant="h6"
                   component="h2"
                   className={
                     this.state.isMobile

@@ -4,7 +4,7 @@ import _ from "lodash";
 import Grid from '@material-ui/core/Grid';
 import { isMobileOnly } from 'react-device-detect';
 import Typography from '@material-ui/core/Typography';
-import { withStyles } from '@material-ui/core/styles';
+import { withStyles } from '@material-ui/core';
 import { CopyToClipboard } from 'react-copy-to-clipboard';
 import Link from 'gatsby-link';
 import Menu from '@material-ui/core/Menu';
@@ -33,7 +33,7 @@ const styles = theme => ({
         width: '100%',
         justifyContent: 'space-between',
         alignItems: 'center',
-        padding: theme.spacing.unit,
+        padding: theme.spacing(1),
     },
     ser_gloss_serviceheading: {
     },
@@ -44,9 +44,9 @@ const styles = theme => ({
     },
     ser_gloss_servicename_text: {
         display: 'flex',
-        padding: theme.spacing.unit,
+        padding: theme.spacing(1),
         paddingBottom: '0px',
-        paddingTop: theme.spacing.unit*2,
+        paddingTop: theme.spacing(2),
         flexWrap: 'wrap',
         justifyContent: 'left',
         alignItems: 'center',
@@ -65,7 +65,7 @@ const styles = theme => ({
     },
     ser_gloss_servicename_text_mob: {
         width: '100%',
-        margin: theme.spacing.unit,
+        margin: theme.spacing(1),
         flexWrap: 'wrap',
         textAlign: 'left',
         justifyContent: 'left'
@@ -73,7 +73,7 @@ const styles = theme => ({
     ser_gloss_servicename_description: {
         display: 'flex',
         justifyContent: 'left',
-        padding: `0px ${theme.spacing.unit}px  ${theme.spacing.unit}px ${theme.spacing.unit}px`
+        padding: `0px ${theme.spacing()}  ${theme.spacing()} ${theme.spacing()}`
     },
 });
 
@@ -207,7 +207,6 @@ class TemplateHero extends Component {
         return (
           <Grid container className={classes.ser_gloss_serviceheading}>
  
-
  
             <Grid
               item
@@ -219,7 +218,7 @@ class TemplateHero extends Component {
                   : classes.ser_gloss_servicename_text_mob
               }
             >
-              <Typography component="h1" variant="display1">
+              <Typography component="h1" variant="h4">
                 {service_name}
               </Typography>
 

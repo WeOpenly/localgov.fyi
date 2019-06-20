@@ -11,14 +11,19 @@ let middleware = [thunk, logger];
 if (process.env.NODE_ENV !== 'development') {
     middleware = [thunk];
 }
-// if (process.env.NODE_ENV === 'development') {
 
-//     const devToolsExtension = window.devToolsExtension;
-//     middleware = [thunk, logger];
-//     if (typeof devToolsExtension === 'function') {
-//         enhancers.push(devToolsExtension())
-//     }
-// }
+if (process.env.NODE_ENV === 'development') {
+
+    const windowGlobal = typeof window !== 'undefined' && window
+    if (windowGlobal){
+        const devToolsExtension = window.devToolsExtension;
+        middleware = [thunk, logger];
+        if (typeof devToolsExtension === 'function') {
+            enhancers.push(devToolsExtension())
+        }
+    }
+   
+}
 
 const composedEnhancers = compose(
     ...enhancers,

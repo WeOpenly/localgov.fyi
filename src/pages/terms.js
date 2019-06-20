@@ -3,18 +3,17 @@ import PropTypes from 'prop-types';
 import { navigate } from '@reach/router';
 import { isMobileOnly } from 'react-device-detect';
 
-import { withStyles } from '@material-ui/core/styles';
+import { withStyles } from '@material-ui/core';
 import Nav from '../components/Nav/Common'
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 import { graphql } from "gatsby"
 
 // import Feedback from '../components/Feedback';
-import withRoot from '../withRoot';
 
 const styles = theme => ({
   container: {
-    marginTop: theme.spacing.unit * 3,
+    marginTop: theme.spacing(3),
   },
   header: {
     color: theme.palette.primary['700'],
@@ -26,21 +25,21 @@ const styles = theme => ({
     color: theme.palette.primary['700'],
     background: theme.palette.common.white,
     boxShadow: `0 0 10px 5px ${theme.palette.primary["A200"]}`,
-    marginLeft: theme.spacing.unit * -2,
-    marginRight: theme.spacing.unit * -2,
+    marginLeft: theme.spacing(-2),
+    marginRight: theme.spacing(-2),
   },
   logo:{
-    paddingTop: theme.spacing.unit * 2,
-    paddingLeft: theme.spacing.unit * 2,
+    paddingTop: theme.spacing(2),
+    paddingLeft: theme.spacing(2),
   },
   right: {
     display: 'flex',
     justifyContent: 'flex-end',
     alignItems: 'center',
-    paddingRight: theme.spacing.unit * 2,
+    paddingRight: theme.spacing(2),
   },
   title: {
-    marginBottom: theme.spacing.unit * 6,
+    marginBottom: theme.spacing(6),
   },
 });
 
@@ -54,7 +53,7 @@ class Terms extends React.Component {
         <Grid container className={classes.container}>
           <Grid item md={1}/>
           <Grid item md={10}>
-            <Typography align="left" variant="headline" className={classes.title}>
+            <Typography align="left" variant="h5" className={classes.title}>
               Terms of Service
             </Typography>
           </Grid>
@@ -85,4 +84,4 @@ export const pageQuery = graphql`
   }
 `;
 
-export default withRoot(withStyles(styles)(Terms));
+export default withStyles(styles)(Terms);

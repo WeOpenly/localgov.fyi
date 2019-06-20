@@ -11,7 +11,7 @@ import Typography from '@material-ui/core/Typography';
 import OrgAggregate from '../Organization/Aggregate';
 import LocationCard from '../UserRequests/LocationCard';
 import RelatedServiceTemplates from '../RelatedServiceTemplates';
-import {withStyles} from '@material-ui/core/styles';
+import { withStyles } from '@material-ui/core';
 import ContentLoader from "react-content-loader"
 import { trackEvent } from '../common/tracking';
 
@@ -68,33 +68,33 @@ const MobileServiceLoader = () => (
 
 const styles = theme => ({
  ser_case2_loading:{
-   margin: theme.theme.spacing(1),
+   margin: theme.spacing(1),
  },
     ser_case1_suggested_row: {
-        paddingLeft: theme.theme.spacing(1),
-        marginTop: theme.spacing.unit * 4,
+        paddingLeft: theme.spacing(1),
+        marginTop: theme.spacing(4),
     },
     ser_case1_suggested_row_mob: {
-        paddingLeft: theme.spacing.unit * 2,
-        marginTop: theme.spacing.unit * 1,
+        paddingLeft: theme.spacing(2),
+        marginTop: theme.spacing(1),
     },
     ser_case1_suggested_row_mob_heading: {
-        paddingBottom: theme.spacing.unit * 2,
+        paddingBottom: theme.spacing(2),
         display: 'flex',
         flexWrap: 'wrap',
     },
     ser_case1_suggested_row_heading_mob: {
-        paddingBottom: theme.spacing.unit * 2,
+        paddingBottom: theme.spacing(2),
         display: 'flex',
         flexWrap: 'wrap',
     },
     ser_case1_suggested_row_heading: {
-        paddingBottom: theme.spacing.unit * 2,
+        paddingBottom: theme.spacing(2),
     },
     ser_case1_suggested_row_locs: {
         display: 'flex',
         flexWrap: 'wrap',
-        padding: theme.theme.spacing(1),
+        padding: theme.spacing(1),
     },
     ser_case1_suggested_row_locs_mob: {
         display: 'flex',

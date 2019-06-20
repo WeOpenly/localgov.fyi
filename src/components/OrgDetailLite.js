@@ -3,7 +3,7 @@ import React, {Component} from "react";
 
 import {navigate} from '@reach/router';
 
-import {withStyles} from '@material-ui/core/styles';
+import {withStyles} from '@material-ui/core';
 import Card from '@material-ui/core/Card';
 
 import CardContent from '@material-ui/core/CardContent';
@@ -13,7 +13,7 @@ import Typography from '@material-ui/core/Typography';
 
 import ContactDetails from "./ContactDetails";
 
-import withRoot from '../withRoot';
+
 
 const styles = theme => ({
     org_detail_lite_media: {
@@ -36,12 +36,12 @@ org_detail_lite_cardContent : {
         display: 'flex',
         justifyContent: 'center',
         alignItems: 'center',
-        paddingTop: theme.spacing.unit * 3,
+        paddingTop: theme.spacing(3),
     },
 org_detail_lite_icon : {
         color: theme.palette.primary['100'],
         fontSize: 64,
-        marginRight: theme.spacing.unit,
+        marginRight: theme.spacing(1),
     },
 });
 
@@ -56,13 +56,13 @@ class OrgDetailLite extends Component {
 
         return (<Grid container spacing={8}>
             <Grid item xs={12} sm={12} md={12}>
-                <Typography variant="subheading" gutterBottom>
+                <Typography varant="subtitle1" gutterBottom>
                     {heading}
                 </Typography>
                 <Card className={classes.org_detail_lite_card} onClick={() => navigate(`/${org_id}/`)}>
                     <CardContent className={classes.org_detail_lite_cardContent}>
                         <AccountBalance className={classes.org_detail_lite_icon} />
-                        <Typography align="center" variant="title">
+                        <Typography align="center" varant="h6">
                             {org_name}
                         </Typography>
                     </CardContent>

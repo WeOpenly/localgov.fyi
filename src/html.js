@@ -3,11 +3,11 @@ import React, {Fragment} from "react"
 import PropTypes from "prop-types"
 
 let fontStyleCss;
-if (process.env.NODE_ENV === `production`) {
+// if (process.env.NODE_ENV === `production`) {
   try {
     fontStyleCss = require(`!raw-loader!../static/css/fonts.css`)
   } catch (e) {}
-}
+// }
 
 const JsonLd = ({data}) => <script
   type="application/ld+json"
@@ -34,13 +34,13 @@ const JsonLd = ({data}) => <script
 
 
 let fontcss = null;
-if (process.env.NODE_ENV === `production`) {
+// if (process.env.NODE_ENV === `production`) {
   fontcss = (<style
     id="gatsby-inlined-css-fonts"
     dangerouslySetInnerHTML={{
       __html: fontStyleCss
     }} />)
-}
+// }
 
 const searchLinksSchema = {
   "@context": "http://schema.org",
@@ -115,7 +115,7 @@ export default class HTML extends React.Component {
           />
         
           {fontcss}
-          {/* <link href={"/css/fonts.css"} rel="stylesheet" /> */}
+ 
           {this.props.headComponents}
         </head>
         <body {...this.props.bodyAttributes}>

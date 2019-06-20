@@ -4,7 +4,7 @@ import _ from "lodash";
 
 import { isMobileOnly } from 'react-device-detect';
 import Typography from '@material-ui/core/Typography';
-import { withStyles } from '@material-ui/core/styles';
+import { withStyles } from '@material-ui/core';
 import { navigate } from '@reach/router';
 import Card from '@material-ui/core/Card';
 
@@ -25,13 +25,13 @@ const styles = theme => ({
                 margin: '2px'
     },
     social_footer:{
-        margin: `${theme.spacing.unit *3}px 0` ,
+        margin: `${theme.spacing(3)}px 0` ,
         display: 'flex',
         flexDirection: 'column',
         alignItems: 'left'
     },
     social_footer_header:{
-        marginBottom: theme.spacing.unit,
+        marginBottom: theme.spacing(1),
     },
     social_footer_links:{
         display: 'flex',
@@ -45,7 +45,7 @@ const styles = theme => ({
     },
     social_container:{
         display: 'flex',
-        marginTop: theme.spacing.unit,
+        marginTop: theme.spacing(1),
         justifyContent: 'space-around'
     }
 });
@@ -143,7 +143,7 @@ class FooterSocial extends Component {
         return (
             <div className={classes.social_footer}>
                 <div className={classes.social_footer_header}>
-                    <Typography variant="display1" style={{ fontSize: "0.85rem"}} >
+                    <Typography variant="h4" style={{ fontSize: "0.85rem"}} >
                         Evergov
                     </Typography>
                 </div>

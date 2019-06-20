@@ -3,7 +3,8 @@ import PropTypes from 'prop-types';
 import { connect } from "react-redux";
 import Form from "react-jsonschema-form";
 
-import Spinner from 'react-spinkit';
+
+import CircularProgress from '@material-ui/core/CircularProgress';
 import { isMobileOnly } from 'react-device-detect';
 import { navigate } from '@reach/router';
 
@@ -13,7 +14,7 @@ import Dialog from '@material-ui/core/Dialog';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import DialogContent from '@material-ui/core/DialogContent';
 import queryString from 'query-string'
-import { withStyles } from '@material-ui/core/styles';
+import { withStyles } from '@material-ui/core';
 import Divider from '@material-ui/core/Divider';
 
 import Grid from '@material-ui/core/Grid';
@@ -31,18 +32,18 @@ const styles = theme => ({
         height: '460px'
     },
     delivery_form_button_container: {
-        marginTop: theme.spacing.unit * 2
+        marginTop: theme.spacing(2)
     },
     account_form_loginEmbed: {},
     account_form_registerinstead: {
-        marginTop: theme.spacing.unit * 4,
+        marginTop: theme.spacing(4),
         display: 'flex'
     },
     form: {
-        margin: theme.spacing.unit * 2,
+        margin: theme.spacing(2),
     },
     formButtonContainer: {
-        margin: theme.spacing.unit * 4,
+        margin: theme.spacing(4),
         display: 'flex',
         justifyContent: 'center'
     }
@@ -136,7 +137,7 @@ class FormStepDetails extends React.Component {
 
 
         if (stepDetailsLoading) {
-            return (<Spinner name="ball-beat" color="blue" />);
+            return (<CircularProgress size={18} />);
         }
 
         if (stepDetailsLoadingFailed) {

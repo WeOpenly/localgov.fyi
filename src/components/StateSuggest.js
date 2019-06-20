@@ -11,7 +11,7 @@ import FilterList from '@material-ui/icons/FilterList';
 import MenuItem from '@material-ui/core/MenuItem';
 import Popper from '@material-ui/core/Popper';
 import {isMobileOnly, isTablet, isMobile} from 'react-device-detect';
-import {withStyles} from '@material-ui/core/styles';
+import {withStyles} from '@material-ui/core';
 import InputBase from '@material-ui/core/InputBase';
 import {throws} from 'assert';
 
@@ -76,14 +76,14 @@ function getSuggestionValue(suggestion) {
 
 const styles = theme => ({
     gloss_state_suggest_root: {
-        marginBottom: theme.spacing.unit * 2,
+        marginBottom: theme.spacing(2),
         display: 'flex',
         justifyContent: 'center',
         width: '280px',
         boxShadow: `0 0 1px 0 ${theme.palette.primary['300']}`
     },
     gloss_state_suggest_root_mob: {
-        marginTop: theme.spacing.unit *2,
+        marginTop: theme.spacing(2),
         display: 'flex',
         alignItems: 'center',
         width: '100%',
@@ -123,7 +123,7 @@ const styles = theme => ({
         listStyleType: 'none'
     },
     divider: {
-        height: theme.spacing.unit * 2
+        height: theme.spacing(2)
     }
 });
 

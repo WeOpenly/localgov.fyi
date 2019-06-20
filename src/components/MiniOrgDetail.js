@@ -3,7 +3,7 @@ import React, {Component} from "react";
 import {navigate} from '@reach/router';
 import Img from "gatsby-image";
 import {Link} from 'gatsby';
-import {withStyles} from '@material-ui/core/styles';
+import {withStyles} from '@material-ui/core';
 import Card from '@material-ui/core/Card';
 
 import CardContent from '@material-ui/core/CardContent';
@@ -13,7 +13,7 @@ import Typography from '@material-ui/core/Typography';
 
 import ContactDetails from "./ContactDetails";
 
-import withRoot from '../withRoot';
+
 
 const styles = theme => ({
     org_detail_lite_media: {
@@ -36,12 +36,12 @@ const styles = theme => ({
         display: 'flex',
         justifyContent: 'center',
         alignItems: 'center',
-        paddingTop: theme.spacing.unit * 3
+        paddingTop: theme.spacing(3)
     },
     org_detail_lite_icon: {
         color: theme.palette.primary['100'],
         fontSize: 64,
-        marginRight: theme.spacing.unit
+        marginRight: theme.spacing()
     }
 });
 

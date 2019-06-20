@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
 import {navigate} from '@reach/router';
 
-import { withStyles } from '@material-ui/core/styles';
+import { withStyles } from '@material-ui/core';
 import Typography from '@material-ui/core/Typography';
 import Icon from '@material-ui/core/Icon';
 import Card from '@material-ui/core/Card';
 import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
-import withRoot from '../withRoot';
+
 
 import HorizontalListItem from './HorizontalListItem';
 
@@ -26,7 +26,7 @@ const styles = theme => ({
         alignItems: 'center',
         justifyContent: 'center',
         borderRadius: "50%",
-        margin: theme.spacing.unit * 2,
+        margin: theme.spacing(2),
         boxShadow: '0px 0px 2px 1px lightGray',
     },
 });
@@ -59,7 +59,7 @@ class MemberListItem extends Component {
                     </div>
                 }
                 <CardContent>
-                    <Typography variant="title">
+                    <Typography varant="h6">
                         {item.person_name}
                     </Typography>
                     <Typography variant="caption">
@@ -75,4 +75,4 @@ class MemberListItem extends Component {
     }
 }
 
-export default withRoot(withStyles(styles)(MemberListItem));
+export default withStyles(styles)(MemberListItem);

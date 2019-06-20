@@ -90,6 +90,16 @@ module.exports = {
         name: "tos"
       }
     },
+    `gatsby-plugin-layout`,
+    {
+      resolve: 'gatsby-plugin-material-ui',
+      // If you want to use styled components you should change the injection order.
+      options: {
+        stylesProvider: {
+          injectFirst: false,
+        }
+      },
+    },
     `gatsby-transformer-remark`,
     {
       resolve: `gatsby-plugin-sitemap`,

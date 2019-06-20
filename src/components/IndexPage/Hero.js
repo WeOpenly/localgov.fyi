@@ -156,9 +156,9 @@ class IndexHero extends Component {
             <Grid container className={classes.index_hero_section_container}>
                 <CommonNav location={location} />
 
-                <Grid item xs="auto" sm={1} />
+                <Grid item xs="auto" sm={2} />
                 <Grid item
-                    sm={5}
+                    sm={4}
 
                     className={!this.state.isMobile
                         ? classes.index_hero_title
@@ -187,7 +187,7 @@ class IndexHero extends Component {
               
                 </Grid>
                 <Grid item
-                    sm={5}>
+                    sm={4}>
                     <IndexheroSvg />
                 </Grid>
                  <Grid item xs="auto" sm={1}   />

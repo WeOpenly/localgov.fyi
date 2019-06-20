@@ -121,11 +121,12 @@ const theme = createMuiTheme({
             color: "rgba(30, 30, 50,0.84)"
         },
         smHeadline: {
-            fontSize: "0.8rem",
-            fontWeight: 700,
-                fontFamily: '"Poppins",  -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen-Sans,Ubuntu,Cantarell,"Helvetica Neue", sans-serif',
-            lineHeight: "1.35417em",
-            color: "rgba(30, 30, 50,0.84)"
+        fontSize: "1rem",
+                fontWeight: 300,
+                fontFamily: '"Poppins", -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen-Sans,Ubuntu,Cantarell,"Helvetica Neue", sans-serif',
+                lineHeight: "1.20588em",
+                marginLeft: "-.04em",
+                color: "rgba(30, 30, 50,0.54)"
         },
         h6: {
             fontSize: "1.3125rem",

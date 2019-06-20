@@ -68,10 +68,10 @@ const MobileServiceLoader = () => (
 
 const styles = theme => ({
  ser_case2_loading:{
-   margin: theme.theme.spacing(1),
+   margin: theme.spacing.unit,
  },
     ser_case1_suggested_row: {
-        paddingLeft: theme.theme.spacing(1),
+        paddingLeft: theme.spacing.unit,
         marginTop: theme.spacing.unit * 4,
     },
     ser_case1_suggested_row_mob: {
@@ -94,7 +94,7 @@ const styles = theme => ({
     ser_case1_suggested_row_locs: {
         display: 'flex',
         flexWrap: 'wrap',
-        padding: theme.theme.spacing(1),
+        padding: theme.spacing.unit,
     },
     ser_case1_suggested_row_locs_mob: {
         display: 'flex',

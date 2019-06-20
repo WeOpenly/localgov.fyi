@@ -20,7 +20,6 @@
     "fingerprintjs2": "^1.8.5",
     "fuse.js": "^3.3.0",
     "gatsby": "^2.1.18",
-    "gatsby-cli": "^2.4.9",
     "gatsby-image": "^2.0.17",
     "gatsby-link": "^2.0.5",
     "gatsby-plugin-brotli": "^1.0.1",

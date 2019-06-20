@@ -235,8 +235,7 @@ class ServiceGlossary extends Component {
             anchorEl: null,
             copied: false,
             openDescDialog: false,
-            stateName: null,
-            searchText: null,
+            foundDevice: false,
             isMobile: false
         }
 
@@ -248,41 +247,7 @@ class ServiceGlossary extends Component {
             .bind(this);
 
     }
-
-    trackNoresults = () => {
-        this
-            .props
-            .trackEvent(NO_SEARCH_RESULTS, {
-                search_text: this.state.searchText,
-                state_name: this.state.stateName
-            })
-    }
-
-    
-    static getDerivedStateFromProps(nextProps, prevState) {
-        const values = queryString.parse(nextProps.location.search);
-
-        if (!values) {
-            return null
-        }
-
-        if ((values.searchText !== prevState.searchText) && (values.stateName !== prevState.stateName)) {
-
-            return {stateName: values.stateName, searchText: values.searchText, isMobile: isMobileOnly}
-        }
-
-        if (values.searchText !== prevState.searchText) {
-
-            return {searchText: values.searchText, stateName: prevState.stateName, isMobile: isMobileOnly}
-        }
-
-        if (values.stateName !== prevState.stateName) {
-
-            return {stateName: values.stateName, searchText: prevState.searchText, isMobile: isMobileOnly}
-        }
-
-        return null;
-    }
+   
 
 
     onSearchChange(ev) {
@@ -309,7 +274,7 @@ class ServiceGlossary extends Component {
 
     componentDidMount() {
         const { id } = this.props.pageContext.data;
-        this.setState({ isMobile: isMobileOnly })
+      this.setState({ isMobile: isMobileOnly, foundDevice: true })
         this.props.clearAll();
         this.props.trackView();
         this.props.autoGetLoc(id);
@@ -377,6 +342,13 @@ class ServiceGlossary extends Component {
         icon = (<RecreationSvg style={{ fontSize: '224px' }} />)
         mobIcon = (<RecreationSvg style={{ fontSize: '48px' }} />)
       }   
+
+      let showIcon = null;
+  
+      if (this.state.foundDevice && !this.state.isMobile){
+        showIcon = icon;
+      }
+
         return (
           <Fragment>
             <Helmet>
@@ -434,18 +406,7 @@ class ServiceGlossary extends Component {
               <Grid item sm={1} />
 
               <Grid item xs={1} />
-              {this.state.isMobile ? (<Grid item xs={12}>
-                <TemplateHero
-                  views={views}
-                  orgsCnt={orgs.length}
-                  service_name={service_name}
-                  trackClick={this.trackClick}
-                  service_glossary_description={
-                    service_glossary_description
-                  }
-                />
-              </Grid>) : (<Fragment>
-                <Grid item xs={6}>
+              <Grid item xs={12} md={6}>
                 <TemplateHero
                   views={views}
                   orgsCnt={orgs.length}
@@ -456,11 +417,11 @@ class ServiceGlossary extends Component {
                   }
                 />
               </Grid>
-                           <Grid item xs={4} align="right" style={{display: 'flex', justifyContent: 'flex-end'}}>
-                    {icon}
-                </Grid>
-                </Fragment>)}
- 
+              <Grid item xs="auto" md={4} align="right">
+                <div style={{ display: 'flex', justifyContent: 'flex-end' }}>
+                {showIcon}
+                </div>
+              </Grid>
               <Grid item xs={1} />
 
               <Grid item xs={12}>

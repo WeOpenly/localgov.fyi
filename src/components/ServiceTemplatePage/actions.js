@@ -65,7 +65,7 @@ function requestFetchGoogleLoc() {
 }
 
 function recvFetchGoogleLoc(suggestions) {
-    return {type: types.SUCCESS_RECV_GOOG_SUGGESTED_LOCS, suggestions}
+    return { type: types.SUCCESS_RECV_GOOG_SUGGESTED_LOCS, suggestions}
 }
 
 function failedFetchGoogleLoc() {

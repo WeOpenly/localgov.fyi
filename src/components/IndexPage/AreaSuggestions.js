@@ -22,68 +22,75 @@ import { updateGoogLocationSearchText, selectGoogLocation} from './actions';
 import { trackClick, trackInput} from "../common/tracking";
 
 const styles = theme => ({
-    index_page_ser_suggestions_container:{
-        margin: `${theme.spacing.unit}px ${theme.spacing.unit}px ${theme.spacing.unit}px 0`,
-        display: 'flex',
-        width: '248px',
-        justifyContent: 'center',
-        position: 'relative'
-    },
-    index_page_ser_suggestions_container_header:{
-        display: 'flex',
-        marginRight: theme.spacing.unit,
-        width: '248px',
-        justifyContent: 'center',
-        position: 'relative'
-    },
-    index_area_search_search_paper_root_header:{
-        display: 'flex',
-        alignItems: 'center',
-        boxShadow: 'none',
-        border: `1px solid ${theme.palette.primary['200']}`,
-        borderRadius: '4px',
-        '&:hover': {
-            boxShadow: `0 4px 8px 0 #dfdfdf, 0 1px 16px 0 #fafafa inset`,
-            border: `1px solid ${theme.palette.primary['500']}`
-        },
-    },
-    index_area_search_search_paper_root: {
-           display: 'flex',
-        alignItems: 'center',
-        boxShadow: '0px 3px 5px 0px rgba(0,0,0,0.1),0px 1px 1px 0px rgba(0,0,0,0.07),0px 2px 6px 1px rgba(0,0,0,0.06)',
-        border: `1px solid ${theme.palette.primary['200']}`,
-        borderRadius: '4px',
-        '&:hover': {
-            boxShadow: `0 4px 8px 0 #dfdfdf, 0 1px 16px 0 #fafafa inset`,
-            border: `1px solid ${theme.palette.primary['500']}`
-        },
-    },
-    index_area_search_search_input: {
-        flex: 1,
-                  padding: '6px',
-
-        marginRight: theme.spacing.unit,
-        fontSize: "16px",
-        fontWeight: 500,
-        fontFamily: '"Nunito Sans",  -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen-Sans,Ubuntu,Cantarell,"Helvetica Neue", sans-serif',
-        lineHeight: "1.46429em",
-        width: '100%',
-        color: "rgba(30, 30, 50,0.99)",
-    },
-    index_area_search_search_suggestions:{
-        position: 'absolute',
-        zIndex: '200',
-        display: 'flex',
-        width: '100%',
-        flexDirection: 'column',
-    },
-    
-    index_page_search_iconButton: {
-        minHeight: '1em',
-        fontSize: '18px',
-        color: theme.palette.primary['500'],
-        marginLeft: '12px',
+  index_page_ser_suggestions_container: {
+    margin: `${theme.spacing.unit}px ${theme.spacing.unit}px ${
+      theme.spacing.unit
+    }px 0`,
+    display: "flex",
+    width: theme.spacing.unit * 23,
+    justifyContent: "center",
+    position: "relative"
+  },
+  index_page_ser_suggestions_container_header: {
+    display: "flex",
+    marginRight: theme.spacing.unit,
+    width: "248px",
+    justifyContent: "center",
+    alignItems: 'center',
+    position: "relative"
+  },
+  index_area_search_search_paper_root_header: {
+    display: "flex",
+    alignItems: "center",
+    height: "40px",
+    boxShadow: "none",
+    background: "#fafafa",
+    border: `1px solid ${theme.palette.primary["100"]}`,
+    borderRadius: "4px",
+    "&:hover": {
+      boxShadow: `0 4px 8px 0 #dfdfdf, 0 1px 16px 0 #fafafa inset`,
+      border: `1px solid ${theme.palette.primary["500"]}`
     }
+  },
+  index_area_search_search_paper_root: {
+    display: "flex",
+    alignItems: "center",
+    boxShadow:
+      "0px 3px 5px 0px rgba(0,0,0,0.1),0px 1px 1px 0px rgba(0,0,0,0.07),0px 2px 6px 1px rgba(0,0,0,0.06)",
+    border: `1px solid ${theme.palette.primary["200"]}`,
+    borderRadius: "4px",
+    "&:hover": {
+      boxShadow: `0 4px 8px 0 #dfdfdf, 0 1px 16px 0 #fafafa inset`,
+      border: `1px solid ${theme.palette.primary["500"]}`
+    }
+  },
+  index_area_search_search_input: {
+    flex: 1,
+    padding: "6px",
+
+    marginRight: theme.spacing.unit,
+    fontSize: "16px",
+    fontWeight: 500,
+    fontFamily:
+      '"Nunito Sans",  -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen-Sans,Ubuntu,Cantarell,"Helvetica Neue", sans-serif',
+    lineHeight: "1.46429em",
+    width: "100%",
+    color: "rgba(30, 30, 50,0.99)"
+  },
+  index_area_search_search_suggestions: {
+    position: "absolute",
+    zIndex: "200",
+    display: "flex",
+    width: "100%",
+    flexDirection: "column"
+  },
+
+  index_page_search_iconButton: {
+    minHeight: "1em",
+    fontSize: "16px",
+    color: theme.palette.primary["500"],
+    marginLeft: "12px"
+  }
 });
 
 
@@ -128,29 +135,44 @@ class GoogAutoComplete extends React.Component {
 
         geocodeByAddress(address)
             .then(results => getLatLng(results[0]))
-            .then(latLng => setGoogleLoc(latLng))
+          .then(latLng => setGoogleLoc(latLng, address))
             .catch(error => console.error('Error', error));
         this.props.setSearchText(address)
         this.searchInput.blur();
     };
 
 
+
     render() {
-        const { classes, locationSearchText, areaGuessResult, inHeader} = this.props;
+        const { classes, locationSearchText, selectedLocationLatLng, areaGuessResult, inHeader} = this.props;
 
 
         const searchOptions = {
-            types: ['(cities)']
+            types: ['(cities)'],
+          componentRestrictions: {
+            'country': 'us'
+          }
         }
 
         let autoFilled = false;
         let showInput = '';
+
+     
         const { lat, lng, city_name } = areaGuessResult;
 
         if (city_name){
             autoFilled = true;
             showInput = city_name;
         }
+
+      if (selectedLocationLatLng && 'addr' in selectedLocationLatLng){
+          const { addr } = selectedLocationLatLng;
+          if (addr) {
+            autoFilled = true;
+            showInput = addr;
+          }
+        }
+   
        
         if (!showInput){
             autoFilled = false;
@@ -199,7 +221,7 @@ class GoogAutoComplete extends React.Component {
                     elevation={2}
                   >
                     {loading ? (
-                      <CircularProgress size={18} />
+                        <CircularProgress className={classes.index_page_search_iconButton}size={15} />
                     ) : (
                       <NearMe
                         className={classes.index_page_search_iconButton}
@@ -297,9 +319,8 @@ const mapDispatchToProps = (dispatch) => {
         trackClick: (click_type, resultType, id, title, listIndex) => {
             dispatch(trackClick(click_type, resultType, id, title, listIndex));
         },
-        setGoogleLoc: (latlng) => {
-
-            dispatch(selectGoogLocation(latlng.lat, latlng.lng));
+        setGoogleLoc: (latlng, result) => {
+            dispatch(selectGoogLocation(latlng.lat, latlng.lng, result));
         },
         setSearchText: (addr) => {
             dispatch(updateGoogLocationSearchText(addr));

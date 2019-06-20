@@ -122,20 +122,18 @@ other_orgs_from_state
             display: 'flex',
             marginTop: '24px',
             marginBottom: '24px',
-            justifyContent: 'space-between',
+            justifyContent: 'space-evenly',
             flexWrap: 'wrap'
         }}>
             {other_orgs_from_state.map((item, idx) => {
                 return (
-             
-             
-                              <a href={`/${item.url_slug}`} >
+                  <div style={{ minWidth: '200px', minHeight: '40px', display: 'flex', flexWrap: 'wrap' }}>
+                      <a href={`/${item.url_slug}`} >
                                         <Typography variant="body2" style={{fontSize: '1.1rem'}}>
-                  {item.org_name}
+                          {item.area.name}
                       </Typography>
                       </a>
-          
-              
+                  </div>
                 )
             })}
         </div>)
@@ -229,7 +227,7 @@ other_orgs_from_state
 
             const { name: orgName } = detailsAtLevel.org;
             const orgHeading = (
-              <Typography variant="title" component="h4">
+              <Typography variant="title">
                 Services offered by {orgName}
               </Typography>
             );
@@ -240,7 +238,7 @@ other_orgs_from_state
               </Typography>
             );
             if (orgName.toLowerCase().includes('county')) {
-              orgSubheading = (<Typography variant="subheading" className={classes.orgSubheading}>
+              orgSubheading = (<Typography variant="body2" className={classes.orgSubheading}>
                 Find services from the County agencies of {orgName}
               </Typography>);
             } else if (orgName.toLowerCase().includes('state')) {
@@ -329,7 +327,7 @@ other_orgs_from_state
         </Grid>
         <Grid container spacing={16} item xs={12} md={12} className={classes.org_detail_other_orgs_container}>
           <Grid item xs={12} md={6}>
-            <Typography variant="title" component="h4">
+            <Typography variant="title">
              {other_orgs_from_state_heading}
             </Typography>
           </Grid>

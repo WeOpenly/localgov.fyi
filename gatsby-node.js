@@ -14,6 +14,9 @@ const fs = require("fs");
 
 
 
+
+
+
 exports.createPages = ({graphql, actions}) => {
   const {createPage} = actions
 
@@ -28,8 +31,8 @@ exports.createPages = ({graphql, actions}) => {
 
     resolve(
       graphql(`
-        {
-          allServiceGlossaryJson {
+        {   
+allServiceGlossaryJson {
   edges {
     node {
       id
@@ -60,6 +63,7 @@ exports.createPages = ({graphql, actions}) => {
     }
   }
 }
+
 allOrgsJson {
   edges {
     node {
@@ -78,7 +82,9 @@ allOrgsJson {
         contact_value
       }
       other_orgs_from_state {
-        org_name
+        area {
+          name
+        }
         url_slug
         id
       }
@@ -100,7 +106,7 @@ allOrgsJson {
     }
   }
 }
-allSersJson {
+ allSersJson {
   edges {
     node {
       service {
@@ -149,72 +155,72 @@ allSersJson {
         }
         service_parent {
           name
+          description
           logo_url
-          description
         }
       }
-      additional_sers {
-        url_slug
-        service_name
-        service_price
-        service_faq {
-          answer
-          question
-        }
-        service_forms {
-          url
-          price
-          name
-        }
-        service_steps {
-          step_number
-          description
-        }
-        service_timing {
-          break
-          open
-          day
-        }
-        service_location {
-          id
-        }
-        service_del_links {
-          url
-          link_name
-        }
-        service_description
-        service_reminder_bp_json {
-          id
-        }
-      }
-      state_org_details {
-        offered_services {
-          name
-          url_slug
-        }
-        url_slug
-        area {
-          name
-        }
-      }
-      org_details {
-        org_name
-        contact_details {
-          contact_type
-          contact_value
-        }
-        id
-        area {
-          hierarchy {
-            area_name
-          }
-        }
-        url_slug
-      }
+additional_sers {
+  url_slug
+  service_name
+  service_price
+  service_faq {
+    answer
+    question
+  }
+  service_forms {
+    url
+    price
+    name
+  }
+  service_steps {
+    step_number
+    description
+  }
+  service_timing {
+    break
+    open
+    day
+  }
+  service_location {
+    id
+  }
+  service_del_links {
+    url
+    link_name
+  }
+  service_description
+  service_reminder_bp_json {
+    id
+  }
+}
+state_org_details {
+  offered_services {
+    name
+    url_slug
+  }
+  url_slug
+  area {
+    name
+  }
+}
+org_details {
+  org_name
+  contact_details {
+    contact_type
+    contact_value
+  }
+  id
+  area {
+    hierarchy {
+      area_name
+    }
+  }
+  url_slug
+}
+
     }
   }
 }
-
           allLogos: allFile(
             filter: { sourceInstanceName: { eq: "logos" } }
           ) {

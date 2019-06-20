@@ -74,6 +74,10 @@ const styles = theme => ({
         boxShadow: `0 0 0 0`,
         border: `1px solid ${theme.palette.primary['50']}`
     },
+    ser_detail_body:{
+        paddingLeft: `${theme.spacing.unit*6}px`,
+        paddingRight: `${theme.spacing.unit*6}px`
+    },
     ser_detail_cards: {
         marginBottom: theme.spacing.unit * 2,
         paddingTop: theme.spacing.unit,
@@ -184,6 +188,7 @@ ser_detail_footer : {
     marginTop: theme.spacing.unit *6
 },
     ser_detail_morelinks:{
+     
         borderTop: `1px solid #dcdcdc`,
         paddingTop: theme.spacing.unit,
         marginTop: theme.spacing.unit * 6
@@ -351,7 +356,7 @@ class ServiceDetailTemplate extends React.Component {
                     <Link style={{ color: '#6F47FF'}} to={org_slug}>{org_name}</Link>,{" "}
                     <Link style={{ color: '#6F47FF'}} to={state_org_details.url_slug}>{org_area_hie[org_area_hie.length - 1].area_name}</Link>
                 </span>)
-                orgHieSlug = org_area_hie[org_area_hie.length - 1].area_name
+                orgHieSlug = `${org_name}, ${org_area_hie[org_area_hie.length - 1].area_name}`
             }
         }
 
@@ -483,6 +488,7 @@ class ServiceDetailTemplate extends React.Component {
                 id={id}
                 orgLogoSvg={orgLogoSvg}
                 offeredIn={orgHieSlug}
+                orgNameOnly={org_name}
                 orgID={org_id}
                 orgHieComp={orgHieComp}
                 info={contact_details}
@@ -548,18 +554,20 @@ class ServiceDetailTemplate extends React.Component {
                     <Grid item sm={1}>
 
                     </Grid>
-                    <Grid item xs={12} sm={10}>
+                    <Grid item xs={12} sm={10} className={classes.ser_detail_body}>
+                         
                         <Grid item xs={12}>
                             {serHeader}
                         </Grid>
+                           
 
-
-                        <Grid item xs={12} sm={12} className={classes.ser_detail_details}>
+                            
+                        <Grid item xs={12}  className={classes.ser_detail_details}>
                             <ServiceDetail name={name} 
                               
                             orgHieSlug={orgHieSlug} description={description} price={price} alltimings={alltimings} allForms={allForms} allfaq={allfaq} allSteps={allSteps} />
                         </Grid>
-                        
+                          
 
                         <Grid item xs={12} sm={12} className={classes.ser_detail_action_card}>
                             {actionCard}

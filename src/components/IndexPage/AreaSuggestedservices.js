@@ -122,7 +122,7 @@ class AreaSuggestedServices extends React.Component {
 
         if (areaServices && areaServices.length > 0) {
             nearbyComp = areaServices.map((ser, idx) => <SerListItemWithOrg {...ser} />)
-            return (<Grid container>
+            return (<Grid container style={{background: '#fafafa'}}>
                 <Grid item xs="auto" sm={1} />
                 <Grid item xs={12} sm={10} className={this.state.isMobile ?classes.ser_org_list_container_mob : classes.ser_org_list_container}>
                     <div className={this.state.isMobile ? classes.ser_org_list_header_container_mob : classes.ser_org_list_header_container}>

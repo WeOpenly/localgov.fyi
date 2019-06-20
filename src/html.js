@@ -17,19 +17,19 @@ const JsonLd = ({data}) => <script
 
 
 
-let GmapScript = () => (<Fragment></Fragment>)
-const windowGlobal = typeof window !== 'undefined' && window
-if (windowGlobal){
-  GmapScript =  () => (<Fragment>
-  <script>
-  {windowGlobal.myCallbackFunc = function () {
-      windowGlobal.initIndex && windowGlobal.initIndex()
-      windowGlobal.initTemplate && windowGlobal.initTemplate()
-  }}
-  </script>
-    <script async defer
-    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBr4RixcEvuxgGr9EwNeiHCqUITczxvvuc&callback=initMapIndex&libraries=placescallback=myCallbackFunc" > </script> </Fragment>)
-}
+// let GmapScript = () => (<Fragment></Fragment>)
+// const windowGlobal = typeof window !== 'undefined' && window
+// if (windowGlobal){
+//   GmapScript =  () => (<Fragment>
+//   <script>
+//   {windowGlobal.myCallbackFunc = function () {
+//       windowGlobal.initIndex && windowGlobal.initIndex()
+//       windowGlobal.initTemplate && windowGlobal.initTemplate()
+//   }}
+//   </script>
+//     <script async defer
+//     src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBr4RixcEvuxgGr9EwNeiHCqUITczxvvuc&callback=initMapIndex&libraries=placescallback=myCallbackFunc" > </script> </Fragment>)
+// }
       
 
 
@@ -88,10 +88,7 @@ export default class HTML extends React.Component {
             content="D1BADF38847C730E9DC76BE0CCC4B42B"
           />
           <JsonLd data={searchLinksSchema} />
-          <meta
-            name="description"
-            content={`Search and get notfied when you're due for local government services like payments of utility bill, property tax, parking citation & renewing business licence`}
-          />
+   
           <meta
             property="og:site_name"
             content={`Evergov: all your gov services in a single place`}

@@ -6,6 +6,7 @@ const initialState = {
     appReady: false,
     serviceSearchText: null,
     locationSearchText: null,
+    origLocationText: null,
     selectedTemplateId: null,
     selectedLocationLatLng: null,
     areaGuessLoading: false,
@@ -35,7 +36,7 @@ export function indexPage(state = initialState, action) {
         case types.UPDATE_GOOG_LOCATION_SEARCH_TEXT:
             return {
                 ...state,
-                locationSearchText: action.text
+                locationSearchText: action.text,
             };
         case types.SELECT_SERVICE_TEMPLATE_ID:
             return {
@@ -47,7 +48,8 @@ export function indexPage(state = initialState, action) {
                 ...state,
                 selectedLocationLatLng: {
                     lat: action.lat,
-                    lng: action.lng
+                    lng: action.lng,
+                    addr: action.addr
                 }
             }
         case types.REQUEST_AREA_GUESS:
@@ -87,10 +89,9 @@ export function indexPage(state = initialState, action) {
                 areaServicesLoading: false,
                 areaServicesLoadingFailed: true
             }
-
         case types.CLEAR_ALL:
             return {
-                ...initialState
+                ...state,
             }
         default:
             return state;

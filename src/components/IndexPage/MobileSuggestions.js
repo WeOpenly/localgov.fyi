@@ -406,10 +406,13 @@ class MobileSuggestions extends Component {
         const { serviceSearchText } = this.props;
         const placeholder = "Pay Parking Tickets";
         let suggestions = this.state.staticServiceTemplates;
-        const { locationSearchText, areaGuessResult, inHeader } = this.props;
+      const { locationSearchText, areaGuessResult, selectedLocationLatLng,inHeader } = this.props;
 
         const searchOptions = {
-            types: ['(cities)']
+            types: ['(cities)'],
+          componentRestrictions: {
+            'country': 'us'
+          }
         }
 
         let autoFilled = false;
@@ -420,6 +423,15 @@ class MobileSuggestions extends Component {
             autoFilled = true;
             showInput = city_name;
         }
+
+      if (selectedLocationLatLng && 'addr' in selectedLocationLatLng) {
+      const { addr } = selectedLocationLatLng;
+      if (addr) {
+        autoFilled = true;
+        showInput = addr;
+      }
+    }
+
 
         if (!showInput) {
             autoFilled = false;

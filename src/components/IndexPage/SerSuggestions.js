@@ -28,109 +28,134 @@ import { trackInput, trackClick } from '../common/tracking';
 
 
 const styles = theme => ({
-    ser_gloss_search_paper_root: {
-        display: 'flex',
-        alignItems: 'center',
-        boxShadow: '0px 3px 5px 0px rgba(0,0,0,0.1),0px 1px 1px 0px rgba(0,0,0,0.07),0px 2px 6px 1px rgba(0,0,0,0.07)',
-        border: `1px solid ${theme.palette.primary['200']}`,
-        borderRadius: '4px',
-        '&:hover': {
-            boxShadow: `0 4px 8px 0 #d4d4d4, 0 1px 16px 0 #fafafa inset`,
-            border: `1px solid ${theme.palette.primary['500']}`
-        },
-    },
-ser_gloss_search_paper_root_header: {
-        display: 'flex',
-        alignItems: 'center',
-        position: 'relative',
-        boxShadow: 'none',
-        border: `1px solid ${theme.palette.primary['200']}`,
-        borderRadius: '4px',
-        '&:hover': {
-            boxShadow: `0 4px 8px 0 #dfdfdf, 0 1px 16px 0 #fafafa inset`,
-            border: `1px solid ${theme.palette.primary['500']}`
-        },
-    },
-    suggestionsContainerOpen:{
-        position: 'absolute',
-        width: '592px',
-        zIndex: '300',
-        boxShadow: '0px 3px 5px 0px rgba(0,0,0,0.1),0px 1px 1px 0px rgba(0,0,0,0.07),0px 2px 6px 1px rgba(0,0,0,0.07)',
+  ser_gloss_search_paper_root: {
+    display: "flex",
+    alignItems: "center",
+    boxShadow:
+      "0px 3px 5px 0px rgba(0,0,0,0.1),0px 1px 1px 0px rgba(0,0,0,0.07),0px 2px 6px 1px rgba(0,0,0,0.07)",
+    border: `1px solid ${theme.palette.primary["200"]}`,
+    borderRadius: "4px",
+    "&:hover": {
+      boxShadow: `0 4px 8px 0 #d4d4d4, 0 1px 16px 0 #fafafa inset`,
+      border: `1px solid ${theme.palette.primary["500"]}`
+    }
+  },
+  ser_gloss_search_paper_root_header: {
+    display: "flex",
+    alignItems: "center",
+    position: "relative",
 
-    },
-    ser_suggestion_title_icon:{
-        marginRight: theme.spacing.unit
-    },
-ser_suggestion_title:{
-    fontSize: '10px',
-    fontWeight: '300',
-    letterSpacing: '0.3em',
-},
-    index_page_search_iconButton_container:{
-        cursor: 'pointer',
-        height: '44px',
-        width: '48px',
-        display: 'flex',
-        alignItems: 'center',
-        borderTopRightRadius: '4px',
-        borderBottomRightRadius: '4px',
-        justifyContent: 'center',
-        background: theme.palette.primary['500'],
-        '&:hover': {
-            background: theme.palette.primary['700'],
-        },
-    },
-index_page_search_iconButton:{
-  minHeight: '1em',
-        fontSize: '18px',
-    color: '#fff'
+    height: "40px",
+    boxShadow: "none",
+    background: "#fafafa",
+    border: `1px solid ${theme.palette.primary["100"]}`,
+    borderRadius: "4px",
+    "&:hover": {
+      boxShadow: `0 4px 8px 0 #dfdfdf, 0 1px 16px 0 #fafafa inset`,
+      border: `1px solid ${theme.palette.primary["500"]}`
+    }
+  },
+  suggestionsContainerOpen: {
+    position: "absolute",
+    width: theme.spacing.unit * 49,
+    zIndex: "300",
+    boxShadow:
+      "0px 3px 5px 0px rgba(0,0,0,0.1),0px 1px 1px 0px rgba(0,0,0,0.07),0px 2px 6px 1px rgba(0,0,0,0.07)"
+  },
+  ser_suggestion_title_icon: {
+    marginRight: theme.spacing.unit
+  },
+  ser_suggestion_title: {
+    fontSize: "10px",
+    fontWeight: "300",
+    letterSpacing: "0.3em"
+  },
+  index_page_search_iconButton_container: {
+    cursor: "pointer",
+    height: "44px",
+    width: "48px",
+    display: "flex",
+    alignItems: "center",
+    borderTopRightRadius: "4px",
+    borderBottomRightRadius: "4px",
+    justifyContent: "center",
+    background: theme.palette.primary["500"],
+    "&:hover": {
+      background: theme.palette.primary["700"]
+    }
+  },
+  index_page_search_iconButton_container_header: {
+    cursor: "pointer",
+    height: "40px",
+    width: "48px",
+    display: "flex",
+    alignItems: "center",
+    borderTopRightRadius: "4px",
+    borderBottomRightRadius: "4px",
+    justifyContent: "center",
+    background: "#d4d4d4",
+    "&:hover": {
+      background: theme.palette.primary["700"]
+    }
+  },
+  index_page_search_iconButton_header: {
+    minHeight: "0.9em",
+    fontSize: "18px",
+    color: theme.palette.primary["700"],
+    "&:hover": {
+     color: '#fff'
+    }
+  },
+  index_page_search_iconButton: {
+    minHeight: "1em",
+    fontSize: "18px",
+    color: "#fff"
+  },
+  ser_gloss_search_input: {
+    flex: 1,
 
-       
-},
-    ser_gloss_search_input: {
-        flex: 1,
-
-        marginRight: theme.spacing.unit,
-        marginLeft: theme.spacing.unit,
-        fontSize: "16px",
-        fontWeight: 500,
-        fontFamily: '"Nunito Sans",  -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen-Sans,Ubuntu,Cantarell,"Helvetica Neue", sans-serif',
-        lineHeight: "1.46429em",
-        width: '100%',
-        color: "rgba(30, 30, 50,0.99)",
-    },
-ser_suggestion_title_container:{
-    display: 'flex',
+    marginRight: theme.spacing.unit,
+    marginLeft: theme.spacing.unit,
+    fontSize: "16px",
+    fontWeight: 500,
+    fontFamily:
+      '"Nunito Sans",  -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen-Sans,Ubuntu,Cantarell,"Helvetica Neue", sans-serif',
+    lineHeight: "1.46429em",
+    width: "100%",
+    color: "rgba(30, 30, 50,0.99)"
+  },
+  ser_suggestion_title_container: {
+    display: "flex",
     padding: theme.spacing.unit,
-    alignItems: 'center',
-    background: '#fafafa',
-    borderBottom: `1px solid ${theme.palette.primary['100']}`,
-},
-suggestionsList:{
-    listStyle: 'none',
+    alignItems: "center",
+    background: "#fafafa",
+    borderBottom: `1px solid ${theme.palette.primary["100"]}`
+  },
+  suggestionsList: {
+    listStyle: "none",
     padding: theme.spacing.unit,
-    marginTop: 0,
-
-},
-sectionTitle:{
+    marginTop: 0
+  },
+  sectionTitle: {
     margin: 0
-},
-index_page_ser_suggestions_container:{
-    display: 'flex',
-    width: '600px',
-    margin: 0,
-
-},
-index_page_ser_suggestions_container_form: {
-    width: '100%',
-    margin : `${theme.spacing.unit}px ${theme.spacing.unit}px ${theme.spacing.unit}px 0`,
+  },
+  index_page_ser_suggestions_container: {
+    display: "flex",
+    width: theme.spacing.unit * 50,
+    margin: 0
+  },
+  index_page_ser_suggestions_container_form: {
+    width: "100%",
+    margin: `${theme.spacing.unit}px ${theme.spacing.unit}px ${
+      theme.spacing.unit
+    }px 0`,
+    marginLeft: 0
+  },
+  index_page_ser_suggestions_container_form_header: {
+    width: "100%",
     marginLeft: 0,
-},
-index_page_ser_suggestions_container_form_header: {
-    width: '100%',
-    marginLeft: 0,
-    position: 'relative',
-}
+    position: "relative"
+  }
 });
 
 class SerSuggest extends Component {
@@ -251,13 +276,28 @@ class SerSuggest extends Component {
 
 
         return (
-            <Paper className={inHeader ? classes.ser_gloss_search_paper_root_header : classes.ser_gloss_search_paper_root} elevation={2}>
-            
-                <InputBase inputProps={inputProps}  className={classes.ser_gloss_search_input} />
-                <div onClick={this.props.onSearch} className={classes.index_page_search_iconButton_container}>
-                    <SearchIcon className={classes.index_page_search_iconButton} aria-label="search" />
-                </div>
-            </Paper>
+          <Paper
+            className={
+              inHeader
+                ? classes.ser_gloss_search_paper_root_header
+                : classes.ser_gloss_search_paper_root
+            }
+            elevation={2}
+          >
+            <InputBase
+              inputProps={inputProps}
+              className={classes.ser_gloss_search_input}
+            />
+            <div
+              onClick={this.props.onSearch}
+              className={inHeader ? classes.index_page_search_iconButton_container_header : classes.index_page_search_iconButton_container}
+            >
+              <SearchIcon
+                className={inHeader ? classes.index_page_search_iconButton_header : classes.index_page_search_iconButton}
+                aria-label="search"
+              />
+            </div>
+          </Paper>
         );
     }
 

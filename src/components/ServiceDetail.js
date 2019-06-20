@@ -213,7 +213,7 @@ class ServiceDetail extends Component {
 
                 return <Fragment>
                     <ListItem disableGutters>
-                        <ListItemText primary={<Typography component="h3" style={{ fontWeight: 500, color: "rgba(30, 30, 50, 1.20)"}} variant='subheading'>{question}</Typography>} secondary={<Typography color="textPrimary">{text}</Typography>} />
+                        <ListItemText primary={<Typography style={{ fontSize: "1.25rem" }} variant='display1'>{question}</Typography>} secondary={<Typography color="textPrimary">{text}</Typography>} />
                     </ListItem>
                     {(index !== allfaq.length - 1) ? <Divider style={{ margin: '8px' }} /> : null}
                 </Fragment>;

@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import _ from "lodash";
 import {navigate} from 'gatsby'
-import Spinner from 'react-spinkit';
+
 import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
 import Grid from '@material-ui/core/Grid';
@@ -11,7 +11,7 @@ import Typography from '@material-ui/core/Typography';
 import OrgAggregate from '../Organization/Aggregate';
 import LocationCard from '../UserRequests/LocationCard';
 import RelatedServiceTemplates from '../RelatedServiceTemplates';
-import { withStyles } from '@material-ui/core/styles';
+import { withStyles } from '@material-ui/styles';
 import ContentLoader from "react-content-loader"
 import { trackEvent } from '../common/tracking';
 
@@ -68,10 +68,10 @@ const MobileServiceLoader = () => (
 
 const styles = theme => ({
  ser_case2_loading:{
-   margin: theme.spacing.unit,
+   margin: theme.theme.spacing(1),
  },
     ser_case1_suggested_row: {
-        paddingLeft: theme.spacing.unit,
+        paddingLeft: theme.theme.spacing(1),
         marginTop: theme.spacing.unit * 4,
     },
     ser_case1_suggested_row_mob: {
@@ -94,7 +94,7 @@ const styles = theme => ({
     ser_case1_suggested_row_locs: {
         display: 'flex',
         flexWrap: 'wrap',
-        padding: theme.spacing.unit,
+        padding: theme.theme.spacing(1),
     },
     ser_case1_suggested_row_locs_mob: {
         display: 'flex',
@@ -115,6 +115,18 @@ class Case2 extends Component {
     componentWillMount() {
         this.setState({ isMob: isMobileOnly });
 
+    }
+
+    componentWillReceiveProps(nextProps) {
+        const { dispatch } = this.props;
+        if (this.props.searchResultsLoading && !nextProps.searchResultsLoading) {
+            const { searchResults } = nextProps;
+            const resLen = searchResults && Object.keys(searchResults).length > 0;
+            dispatch(trackEvent('index_search_result', {
+                results_case: 2,
+                results_len: resLen,
+            }));
+        }
     }
 
 
@@ -163,7 +175,7 @@ class Case2 extends Component {
 
                 <Grid item sm={12} className={this.state.isMob ? classes.ser_case1_suggested_row_mob : classes.ser_case1_suggested_row}>
                     <Typography
-                        variant="title"
+                        varant="h6"
                         className={this.state.isMob ? classes.ser_case1_suggested_row_heading_mob : classes.ser_case1_suggested_row_heading}>
                         Popular Services
                     </Typography>

@@ -62,9 +62,10 @@ class Suggested extends Component {
         this.setState({ isMob: isMobileOnly });
     }
 
-    render() {        
+    render() { 
+        const {service_name} = this.props;
         const { autoLocLoading, autoLocResults, autoLocFailed, handleOrgClick, classes} = this.props;
-        const {googLocLoading, googLocResults, googlLocFailed, noGoogSuggestsFound, searchText} = this.props;
+        const { googLocLoading, googLocResults, googlLocFailed, noGoogSuggestsFound, searchText} = this.props;
    
         if (autoLocLoading || googLocLoading){
             return (<Grid container>
@@ -100,7 +101,7 @@ class Suggested extends Component {
             locationCards = googLocResults.map((result, idx) => {
                 const header = result.header;
                 const results = result.location_sers;
-                return (<SuggestedRow  key={`goog-loc-${result.header}-${idx}`} header={header} results={results} handleOrgClick={handleOrgClick} />)
+                return (<SuggestedRow searchText={searchText} service_name={service_name} showingRelated={result.showing_related} showingParent={result.showing_parent}  key={`goog-loc-${result.header}-${idx}`} header={header} results={results} handleOrgClick={handleOrgClick} />)
             });
         }
 

@@ -2,6 +2,9 @@ import * as types from "./ActionTypes";
 
 const initialState = {
     searchResultCase: null,
+    is_assoc_ser: null,
+    assoc_original_name: null,
+    is_parent_ser : null,
     searchResultsFoundAtParent: false,
     shouldRedirect: false,
     searchResultsLoading: false,
@@ -14,6 +17,13 @@ const initialState = {
 
 export function searchPage(state = initialState, action) {
     switch (action.type) {
+        case types.HIDE_RESULT_HELPER_MSG:
+            return {
+                ...state,
+                is_parent_ser: null,
+                is_assoc_ser: null,
+                assoc_original_name: null,
+            }
         case types.REQUEST_SEARCH_RESULTS:
             return {
                 ...state,
@@ -24,10 +34,13 @@ export function searchPage(state = initialState, action) {
             return {
                 ...state,
                 searchResultsLoading: false,
+                is_parent_ser: action.is_parent_ser,
+                is_assoc_ser: action.is_assoc_ser,
+                assoc_original_name: action.assoc_original_name,
                 searchResults: action.results,
                 searchResultCase: action.case,
                 shouldRedirect: action.shouldRedirect,
-                searchResultsFoundAtParent: action.found_at_parent,
+                searchResultsFoundAtParent: action.is_parent_ser,
                 searchResultsFailed: false
             }
         case types.FAILED_RECV_SEARCH_RESULTS:
@@ -56,7 +69,10 @@ export function searchPage(state = initialState, action) {
             }
         case types.CLEAR_ALL:
             return {
-                ...initialState
+                ...initialState,
+                is_assoc_ser: state.is_assoc_ser,
+                is_parent_ser: state.is_parent_ser,
+                assoc_original_name: state.assoc_original_name,
             }
         default:
             return state;

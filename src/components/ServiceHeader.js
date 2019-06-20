@@ -10,6 +10,8 @@ import {
   TwitterShareButton,
 } from 'react-share';
 
+import HighLightOutlined from '@material-ui/icons/HighlightOutlined';
+
 import { withStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
 import Grid from '@material-ui/core/Grid';
@@ -26,6 +28,7 @@ import SvgIcon from '@material-ui/core/SvgIcon';
 import Avatar from '@material-ui/core/Avatar';
 import ServiceDeliveryLink from './ServiceDeliveryLink';
 
+import { hideResultHelperMsg} from './SearchPage/actions';
 import {trackClick} from "./common/tracking";
 import {toggleNotifyDialog} from './UserRequests/actions.js';
 import {isLoggedIn} from './Account/Auth';
@@ -127,7 +130,19 @@ service_header_serviceNotify : {
     border: '1px solid #fff',
     margin: theme.spacing.unit,
   },
-
+  ser_del_link_icymi: {
+    display: 'flex',
+    alignItems: 'center',
+  },
+  ser_del_link_icymi_icon: {
+    color: theme.palette.primary['600'],
+    margin: theme.spacing.unit,
+    marginLeft: 0
+  },
+  ser_del_link_icymi_text: {
+    paddingTop: 2,
+    color: theme.palette.primary['500']
+  },
 service_header_serviceShare : {
   },
 service_header_deliveryLinkWrapper : {
@@ -187,6 +202,10 @@ class ServiceHeader extends Component {
     })
   }
 
+  componentWillUnmount(){
+    this.props.hideResultHelperMsg()
+  }
+
   handleNotifyClick(){
     this.props.openNotifyDialog(true);
   }
@@ -222,7 +241,12 @@ class ServiceHeader extends Component {
   }
 
   render() {
-    const { classes, name, offeredIn, info, serDelLinks, id, logoSizes, service_delivery_enabled, views, orgLogoSvg, orgHieComp } = this.props;
+    const { classes, name, offeredIn, info, serDelLinks, id, logoSizes, service_delivery_enabled, views, orgLogoSvg, orgHieComp, orgNameOnly, is_parent_ser, is_assoc_ser, selectedAddr, areaAddr, assoc_orig_name } = this.props;
+    
+    let origLocationText = areaAddr;
+    if (selectedAddr){
+      origLocationText = selectedAddr
+    }
 
     if (!(name && offeredIn && info && serDelLinks )){
       return null;
@@ -343,13 +367,35 @@ class ServiceHeader extends Component {
       </Button>)
 
     const serviceFlowButton = service_delivery_enabled ? (<Button size="small" variant="outlined" color="primary" onClick={this.toggleServiceFlow} className={classes.service_header_notifyButton}>Pay with evergov</Button>) : null;
-    const sdl = <ServiceDeliveryLink views={views} id={id} service_name={name} org_name={offeredIn} serDelLinks={serDelLinks} />
+    const sdl = <ServiceDeliveryLink orgNameOnly={orgNameOnly} views={views} id={id} service_name={name} org_name={offeredIn} serDelLinks={serDelLinks} />
+
+    let extraMessage = null;
+    if (is_parent_ser){
+      extraMessage = (<div className={classes.ser_del_link_icymi}>
+        <HighLightOutlined style={{ fontSize: '20px' }} className={classes.ser_del_link_icymi_icon} /> <Typography
+          variant="caption"
+          className={classes.ser_del_link_icymi_text}>
+          This service in {origLocationText} is handled by {orgHieComp}
+        </Typography>
+      </div>)
+    }
+    else if (is_assoc_ser){
+      extraMessage = (<div className={classes.ser_del_link_icymi}>
+        <HighLightOutlined style={{ fontSize: '20px' }} className={classes.ser_del_link_icymi_icon} /> <Typography
+          variant="caption"
+          className={classes.ser_del_link_icymi_text}>
+          Showing related service to {assoc_orig_name} in {origLocationText}
+        </Typography>
+      </div>)
+    }
 
     return (
       <Grid container spacing={0} className={!this.state.isMobileOnly ? classes.service_header_main : classes.service_header_mainMobile}>
- 
+   
         <Grid item xs={12} md={8}>
+          {extraMessage}
           <div className={!this.state.isMobileOnly ? classes.service_header_cardTop : classes.service_header_cardTop_mob}>
+            
             <div className={!this.state.isMobileOnly ?  classes.service_header_title: classes.service_header_title_mob}>
                   <Typography component="h1" variant="display1">{name}</Typography>
 
@@ -391,13 +437,19 @@ const mapDispatchToProps = (dispatch) => {
     },
     openServiceFlowDialog: () => {
       dispatch(toggleDeliveryDialog(true));
+    },
+    hideResultHelperMsg: () => {
+      dispatch(hideResultHelperMsg())
     }
   }
 }
 
 const mapStateToProps = function (state, ownProps) {
   return {
-    ...ownProps
+    ...ownProps,
+    ...state.searchPage,
+    selectedAddr: state.indexPage.selectedLocationLatLng ? state.indexPage.selectedLocationLatLng.addr : null,
+    areaAddr: state.indexPage.areaGuessResult ? state.indexPage.areaGuessResult.city_name : null
   };
 };
 

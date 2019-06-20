@@ -11,7 +11,7 @@ import Typography from '@material-ui/core/Typography';
 import OrgAggregate from '../Organization/Aggregate';
 import LocationCard from '../UserRequests/LocationCard';
 import RelatedServiceTemplates from '../RelatedServiceTemplates';
-import { withStyles } from '@material-ui/styles';
+import {withStyles} from '@material-ui/core/styles';
 import ContentLoader from "react-content-loader"
 import { trackEvent } from '../common/tracking';
 

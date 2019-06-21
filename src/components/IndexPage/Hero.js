@@ -10,7 +10,7 @@ import Typography from '@material-ui/core/Typography';
 import Grid from '@material-ui/core/Grid';
 import ContentLoader from "react-content-loader";
 import Divider from '@material-ui/core/Divider';
-
+import CircularProgress from '@material-ui/core/CircularProgress';
 import IndexheroSvg from '../../svgIcons/IndexHeroIl1.js';
 
 import CommonNav from '../Nav/Common';
@@ -73,7 +73,20 @@ const styles = theme => ({
     }
 });
 
-const SuggestBoxLoader = props => (<div style={{ display: 'flex', justifyContent: 'center' }}><Spinner name="ball-beat" color="white" /></div>);
+
+
+const SuggestBoxLoader = props => (<div style={{ display: 'flex', justifyContent: 'flex-start', width: '560px', marginTop: '8px' }}>
+  <ContentLoader 
+    height={20}
+    width={300}
+    speed={2}
+    primaryColor="#f3f3f3"
+    secondaryColor="#ecebeb"
+  >
+    <rect x="6" y="1" rx="0" ry="0" width="85" height="27" /> 
+    <rect x="105" y="-3" rx="0" ry="0" width="152" height="27" />
+  </ContentLoader>
+</div>);
 
 // const serTemp = (
 //     <StaticQuery
@@ -108,9 +121,8 @@ class IndexHero extends Component {
     }
 
     render() {
-        const { classes, location } = this.props;
+        const { classes, location, appReady } = this.props;
        
-
         if (this.state.isMobileOnly) {
             return (
               <Grid
@@ -143,7 +155,7 @@ class IndexHero extends Component {
                       : classes.index_hero_search_box_mob
                   }
                 >
-                  <MobileSuggestions onSearch={this.onSearch} />
+                    {appReady ? <MobileSuggestions onSearch={this.onSearch} /> : <SuggestBoxLoader />}
                 </Grid>
                 <Grid item xs={12}>
                   <RelatedServiceTemplates compact={true} />
@@ -179,8 +191,10 @@ class IndexHero extends Component {
                     </div>
                     
                     <div className={classes.index_suggest_box}>
-                        <AreaSuggestions />
-                        <SerSuggestions onSearch={this.onSearch} />
+                            {appReady ? (<Fragment>       
+                                        <AreaSuggestions />
+                                        <SerSuggestions onSearch={this.onSearch} />
+                            </Fragment>) : <SuggestBoxLoader />}
                     </div>
                  
                 </div>

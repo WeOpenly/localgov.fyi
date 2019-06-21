@@ -10,7 +10,7 @@ import {withStyles} from '@material-ui/core/styles';
 
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
-import CircularProgress from '@material-ui/core/CircularProgress';
+
 import withRoot from '../withRoot';
 
 import IndexHero from '../components/IndexPage/Hero';
@@ -62,9 +62,7 @@ const styles = theme => ({
   }
 });
 
-const SuggestBoxLoader = props => (<div style={{ display: 'flex', justifyContent: 'center' }}>
-  <CircularProgress size={24} />
-  </div>);
+
 
 
 class Index extends React.Component {
@@ -120,24 +118,12 @@ class Index extends React.Component {
         </Helmet>
 
         <Grid container className={classes.index_hero}>
-          {appReady ? (
-            <Fragment>
-              <Grid item xs={12}>
-                <IndexHero location={this.props.location} />
-              </Grid>
-              <Grid item xs={12}>
-                <AreaSuggestedServices />
-              </Grid>
-            </Fragment>
-          ) : (
-            <Grid
-              item
-              xs={12}
-              className={classes.index_hero_suggestions_loading}
-            >
-              <SuggestBoxLoader />
-            </Grid>
-          )}
+          <Grid item xs={12}>
+              <IndexHero appReady={appReady} location={this.props.location} />
+          </Grid>
+          <Grid item xs={12}>
+              <AreaSuggestedServices appReady={appReady} />
+          </Grid>        
           <Grid item xs={12}>
             <OtherLocations />
           </Grid>

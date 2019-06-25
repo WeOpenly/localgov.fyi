@@ -22,8 +22,7 @@ import IconButton from '@material-ui/core/IconButton';
 import SvgIcon from '@material-ui/core/SvgIcon';
 import Divider from '@material-ui/core/Divider';
 import MoreVert from '@material-ui/icons/MoreVert';
-import SaveButton from '../components/Profile/SaveButton';
-import {isLoggedIn} from './Account/Auth';
+
 
 import withRoot from '../withRoot';
 
@@ -113,7 +112,7 @@ class SearchResult extends Component {
         this.handleCopy = this.handleCopy.bind(this);
     }
       componentDidMount(){
-    const loggedin = isLoggedIn();
+    const loggedin = false;
     this.setState({
       logincheckloading: false,
     });
@@ -219,8 +218,7 @@ class SearchResult extends Component {
                     {(deliveryLink && deliveryLink.link_name) && <Button size="small" color="primary" href={redir}  target="_blank" onClick={this.handleDeliveryClick}>
                             {deliveryLink.link_name}
                         </Button>}
-                        {this.state.logincheckloading ? null : ''} 
-                        {(!this.state.logincheckloading && this.state.loggedin) ?(<SaveButton icon={true} service={id}/>) : null}
+                
                     </CardActions>
             </Card>
         );

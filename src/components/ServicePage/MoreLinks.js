@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 
-import _ from "lodash";
+
 
 import { isMobileOnly } from 'react-device-detect';
 import Typography from '@material-ui/core/Typography';
@@ -70,7 +70,7 @@ class MoreLinks extends Component {
             },
         ]
 
-        const glosaaryLinks = _.shuffle(glossaries).map((gl, idx) => 
+        const glosaaryLinks = glossaries.map((gl, idx) => 
             (<Typography variant="caption" key={idx}>
                 <a
                     href={`/services/${gl.link}`}
@@ -105,7 +105,7 @@ class MoreLinks extends Component {
             </div>
         </div>)
 
-        const stateSerLinks = _.shuffle(stateServices).map((ss, idx) =>
+        const stateSerLinks = stateServices.map((ss, idx) =>
             (<Typography variant="caption" key={idx}>
                 <a
                     href={`/${ss.url_slug}`}

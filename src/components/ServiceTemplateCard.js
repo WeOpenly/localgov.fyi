@@ -1,6 +1,6 @@
 import React, {Component} from "react";
 import {connect} from "react-redux";
-import _ from "lodash";
+
 import Spinner from 'react-spinkit';
 import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
@@ -9,19 +9,15 @@ import CardMedia from '@material-ui/core/CardMedia';
 import IconButton from '@material-ui/core/IconButton';
 import Typography from '@material-ui/core/Typography';
 import {withStyles} from '@material-ui/core/styles';
-import ProptaxSvg from '../svgIcons/PropTaxIl.js';
-import ParkingcitSvg from '../svgIcons/ParkingCitIl.js';
-import RecreationSvg from '../svgIcons/RecreationIl.js';
+
+import ParkingcitSvg from '../svgIcons/ParkingCitIl.js'
+import ProptaxSvg from '../svgIcons/PropTaxIl.js'
+import BusinessLic from '../svgIcons/businessLic.js'
+import RecreationSvg from '../svgIcons/RecreationIl.js'
 import Utilitybill from '../svgIcons/utbIl.js';
-import BusinessLic from '../svgIcons/businessLic.js';
 
-import SvgTax from '../svgIcons/tax.js';
-import SvgParking from '../svgIcons/parking.js';
-import SvgLicense from '../svgIcons/license.js';
-import SvgLeak from '../svgIcons/leak.js';
-import SvgPark from '../svgIcons/park.js';
-
-
+import Img from "gatsby-image";
+import { graphql, StaticQuery } from 'gatsby';
 import Link, {navigate} from "gatsby-link";
 
 import ListItemText from '@material-ui/core/ListItemText';
@@ -77,7 +73,7 @@ const styles = theme => ({
   ser_template_card_img_compact: {
     display: "flex",
     justifyContent: "center",
-    minHeight: "32px",
+    minHeight: "80px",
     marginBottom: theme.spacing.unit,
     marginTop: theme.spacing.unit * 2
   },
@@ -110,20 +106,20 @@ class ServiceTemplateCard extends Component {
         const lowerCaseName = name.toLowerCase();
 
         if (lowerCaseName.indexOf('tax') !== -1){
-          icon = (<ProptaxSvg style={{ fontSize: '88px' }} />);
-          mobIcon = (<ProptaxSvg style={{fontSize: '48px'}} />)
+          icon = (<ProptaxSvg style={{ width: '64px', height: '64px' }} />);
+          mobIcon = (<ProptaxSvg style={{ width: '48px', height: '48px'}} />)
         }else if(lowerCaseName.indexOf('parking') !== -1){
-          icon = (<ParkingcitSvg style={{ fontSize: '88px' }}/>)
-          mobIcon = (<ParkingcitSvg style={{ fontSize: '48px' }} />)
+          icon = (<ParkingcitSvg style={{ width: '112px', height: '64px'  }}/>)
+          mobIcon = (<ParkingcitSvg style={{ width: '56px', height: '32px' }} />)
         }else if(lowerCaseName.indexOf('license') !== -1){
-          icon = (<BusinessLic style={{ fontSize: '88px' }} />)
-          mobIcon = (<BusinessLic style={{ fontSize: '48px' }} />)
+          icon = (<BusinessLic style={{ width: '80px', height: '64px'  }} />)
+          mobIcon = (<BusinessLic style={{ width: '56px', height: '48px' }} />)
         }else if(lowerCaseName.indexOf('utility') !== -1 || lowerCaseName.indexOf('water') !== -1){
-          icon = (<Utilitybill style={{ fontSize: '88px'}} />)
-          mobIcon = (<Utilitybill style={{ fontSize: '48px'}} />)
+          icon = (<Utilitybill style={{ width: '64px', height: '64px' }} />)
+          mobIcon = (<Utilitybill style={{ width: '48px', height: '48px'}} />)
         } else if (lowerCaseName.indexOf('recreation') !== -1 || lowerCaseName.indexOf('recreational') !== -1) {
-          icon = (<RecreationSvg style={{ fontSize: '88px' }} />)
-          mobIcon = (<RecreationSvg style={{ fontSize: '48px' }} />)
+          icon = (<RecreationSvg style={{ width: '78px', height: '64px'  }} />)
+          mobIcon = (<RecreationSvg style={{ width: '48px', height: '32px' }} />)
         }   
     
    
@@ -145,7 +141,7 @@ class ServiceTemplateCard extends Component {
                   cursor: "pointer"
                 }}
               >
-                <ListItemAvatar>{mobIcon}</ListItemAvatar>
+                <div style={{width: '56px', height:'48px'}}>{mobIcon}</div>
                 <ListItemText
                   primary={
                     <Typography
@@ -159,7 +155,7 @@ class ServiceTemplateCard extends Component {
               </div>
             );
         } else {
-            return (<Link className={compact ? classes.ser_template_card_compact : classes.ser_template_card} to={`/services/${slug}`}>
+            return (<a className={compact ? classes.ser_template_card_compact : classes.ser_template_card} href={`/services/${slug}`}>
                 <div className={compact ? classes.ser_template_card_img_compact : classes.ser_template_card_img}>
                                 {icon}
                         </div>
@@ -170,7 +166,7 @@ class ServiceTemplateCard extends Component {
                     </Typography>
                     </div>
 
-                </Link>)
+                </a>)
         }
 
         

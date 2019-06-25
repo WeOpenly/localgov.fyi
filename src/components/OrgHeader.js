@@ -22,7 +22,6 @@ import SvgIcon from '@material-ui/core/SvgIcon';
 import CheckCircle from '@material-ui/icons/CheckCircle';
 import Help from '@material-ui/icons/Help';
 import MoreVert from '@material-ui/icons/MoreVert';
-import SaveButton from '../components/Profile/SaveButton';
 
 import withRoot from '../withRoot';
 import UnclaimedHover from './UnclaimedHover';

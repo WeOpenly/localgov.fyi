@@ -1,8 +1,9 @@
 import 'regenerator-runtime/runtime';
 import * as types from './ActionTypes';
 import { YusufApi } from '../common/api';
-import {navigate} from 'gatsby';
 import queryString from 'query-string'
+import {navigate} from 'gatsby';
+
 
 const windowGlobal = typeof window !== 'undefined' && window
 

@@ -2,7 +2,7 @@
 import React, {Fragment} from 'react';
 import PropTypes from 'prop-types';
 import {connect} from "react-redux";
-import queryString from 'query-string';
+
 
 import Dialog from '@material-ui/core/Dialog';
 

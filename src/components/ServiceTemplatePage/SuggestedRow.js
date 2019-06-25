@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import _ from "lodash";
+
 import Spinner from 'react-spinkit';
 import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';

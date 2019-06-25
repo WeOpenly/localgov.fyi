@@ -14,9 +14,8 @@ import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
 import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
-import {isLoggedIn} from './Account/Auth';
-import {logOut, toggleLogin} from './Account/actions';
-import LoginRegisterDialog from './Account/LoginRegisterDialog';
+
+
 import AccountCircle from '@material-ui/icons/AccountCircle';
 import MenuItem from '@material-ui/core/MenuItem';
 import Menu from '@material-ui/core/Menu';
@@ -125,7 +124,6 @@ class HeaderWithSearch extends Component {
               <HeaderAccountMenu location={this.props.location} />
           </Grid>
         </Grid>)}
-         <LoginRegisterDialog location={this.props.location}/>
       </AppBar>
     );
   }

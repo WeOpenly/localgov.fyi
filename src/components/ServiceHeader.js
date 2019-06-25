@@ -31,7 +31,7 @@ import ServiceDeliveryLink from './ServiceDeliveryLink';
 import { hideResultHelperMsg} from './SearchPage/actions';
 import {trackClick} from "./common/tracking";
 import {toggleNotifyDialog} from './UserRequests/actions.js';
-import {isLoggedIn} from './Account/Auth';
+
 import {toggleDeliveryDialog} from './Delivery/actions';
 import { action } from 'popmotion';
 

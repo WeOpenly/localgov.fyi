@@ -1,7 +1,6 @@
 import React, {Fragment} from 'react';
 import PropTypes from 'prop-types';
 import {connect} from "react-redux";
-import queryString from 'query-string'
 import {withStyles} from '@material-ui/core/styles';
 import Divider from '@material-ui/core/Divider';
 

@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import _ from "lodash";
+
 import Link from "gatsby-link";
 import {StaticQuery, graphql} from "gatsby"
 import { isMobileOnly } from 'react-device-detect';
@@ -133,7 +133,7 @@ class LocationSerCard extends Component {
     
         const border = highlight ? `#d782d9` : `#AB93FF`
         return (
-          <Link
+          <a
             style={{
               cursor: "pointer",
               width: "280px",
@@ -145,7 +145,7 @@ class LocationSerCard extends Component {
               boxShadow:
                 "0px 3px 5px 0px rgba(0,0,0,0.1),0px 1px 1px 0px rgba(0,0,0,0.07),0px 2px 6px 1px rgba(0,0,0,0.06)"
             }}
-            to={`/${ser_url_slug}`}
+            href={`/${ser_url_slug}`}
           >
             <CardContent className={classes.suggest_loc_card}>
               {avatar}
@@ -156,7 +156,7 @@ class LocationSerCard extends Component {
                 <Typography variant="caption">{state}</Typography>
               </div>
             </CardContent>
-          </Link>
+          </a>
         );
     }
 }

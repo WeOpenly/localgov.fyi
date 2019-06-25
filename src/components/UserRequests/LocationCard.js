@@ -1,6 +1,6 @@
 import React, {Component, Fragment} from "react";
 import {connect} from "react-redux";
-import _ from "lodash";
+
 import Spinner from 'react-spinkit';
 import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
@@ -20,7 +20,7 @@ import CardActions from '@material-ui/core/CardActions';
 import Button from '@material-ui/core/Button';
 import {navigate} from "@reach/router";
 
-import LocatioDialog from './LocationDialog';
+
 import {trackClick} from "../../components/common/tracking";
 import { toggleLocationRequestDialog } from "./actions.js";
 
@@ -61,7 +61,7 @@ class LocationCard extends Component {
     }
 
     openDialog(){
-        this.props.openDialog();
+        navigate(`/locations/?show_add_loc=true`);
     }
     
     componentDidMount() {
@@ -83,7 +83,6 @@ class LocationCard extends Component {
         if (compact){
             return (
                 <Fragment>
-                    <LocatioDialog />
                     <Card
                         style={{
                             width: '300px',
@@ -120,7 +119,6 @@ class LocationCard extends Component {
         
         return (
             <Fragment>
-                <LocatioDialog  />
                     <Card className={classes.loc_req_card}>
                 <Typography variant="body1" gutterBottom>
                     {!message ? `Not seeing what you are looking for?` : message}
@@ -153,9 +151,6 @@ const mapDispatchToProps = (dispatch) => {
     return {
         trackClick: (click_type, resultType, id, title, listIndex) => {
             dispatch(trackClick(click_type, resultType, id, title, listIndex));
-        },
-        openDialog: () => {
-            dispatch(toggleLocationRequestDialog(true))
         }
     }
 }

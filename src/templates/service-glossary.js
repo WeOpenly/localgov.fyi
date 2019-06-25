@@ -2,7 +2,6 @@ import React, {Component, Fragment} from 'react';
 import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
 
-import Paper from '@material-ui/core/Paper';
 import Link from 'gatsby-link';
 import queryString from 'query-string'
 
@@ -28,8 +27,8 @@ import HeaderAccountMenu from '../components/HeaderAccountMenu';
 import {NO_SEARCH_RESULTS} from '../components/common/tracking_events';
 import RawForm from '../components/Reminders/RawForm';
 import { fetchGoogLoc, fetchAutoLoc, clearAll} from '../components/ServiceTemplatePage/actions';
-import ProptaxSvg from '../svgIcons/PropTaxIl.js';
 
+import ProptaxSvg from '../svgIcons/PropTaxIl.js';
 import ParkingcitSvg from '../svgIcons/ParkingCitIl.js';
 import RecreationSvg from '../svgIcons/RecreationIl.js';
 import Utilitybill from '../svgIcons/utbIl.js';
@@ -327,20 +326,20 @@ class ServiceGlossary extends Component {
       const lowerCaseName = service_name.toLowerCase();
 
       if (lowerCaseName.indexOf('tax') !== -1) {
-        icon = (<ProptaxSvg style={{ fontSize: '224px' }} />);
-        mobIcon = (<ProptaxSvg style={{ fontSize: '48px' }} />)
+        icon = (<ProptaxSvg style={{ width: '180px', height: '180px' }} />);
+        mobIcon = (<ProptaxSvg style={{ width: '48px', height: '48px' }} />)
       } else if (lowerCaseName.indexOf('parking') !== -1) {
-        icon = (<ParkingcitSvg style={{ fontSize: '224px' }} />)
-        mobIcon = (<ParkingcitSvg style={{ fontSize: '48px' }} />)
+        icon = (<ParkingcitSvg style={{ width: '260px', height: '150px' }} />)
+        mobIcon = (<ParkingcitSvg style={{ width: '48px', height: '48px' }} />)
       } else if (lowerCaseName.indexOf('license') !== -1) {
-        icon = (<BusinessLic style={{ fontSize: '224px' }} />)
-        mobIcon = (<BusinessLic style={{ fontSize: '48px' }} />)
+        icon = (<BusinessLic style={{ width: '196px', height: '150px' }} />)
+        mobIcon = (<BusinessLic style={{ width: '48px', height: '48px' }} />)
       } else if (lowerCaseName.indexOf('utility') !== -1 || lowerCaseName.indexOf('water') !== -1) {
-        icon = (<Utilitybill style={{ fontSize: '224px' }} />)
-        mobIcon = (<Utilitybill style={{ fontSize: '48px' }} />)
+        icon = (<Utilitybill style={{ width: '160px', height: '180px' }} />)
+        mobIcon = (<Utilitybill style={{ width: '48px', height: '48px' }} />)
       } else if (lowerCaseName.indexOf('recreation') !== -1 || lowerCaseName.indexOf('recreational') !== -1) {
-        icon = (<RecreationSvg style={{ fontSize: '224px' }} />)
-        mobIcon = (<RecreationSvg style={{ fontSize: '48px' }} />)
+        icon = (<RecreationSvg style={{ width: '180px', height: '150px' }} />)
+        mobIcon = (<RecreationSvg style={{ width: '48px', height: '48px' }} />)
       }   
 
       let showIcon = null;
@@ -418,7 +417,7 @@ class ServiceGlossary extends Component {
                 />
               </Grid>
               <Grid item xs="auto" md={4} align="right">
-                <div style={{ display: 'flex', justifyContent: 'flex-end' }}>
+                <div style={{ display: 'flex', justifyContent: 'flex-end', marginTop: '16px' }}>
                 {showIcon}
                 </div>
               </Grid>

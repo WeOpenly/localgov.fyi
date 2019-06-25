@@ -29,10 +29,12 @@ import PlacesAutocomplete, {
 import { updateGoogLocationSearchText, selectGoogLocation } from './actions';
 
 import TrendingUp from '@material-ui/icons/TrendingUp';
-import SvgTax from '../../svgIcons/tax.js';
-import SvgParking from '../../svgIcons/parking.js';
-import SvgLicense from '../../svgIcons/license.js';
-import SvgLeak from '../../svgIcons/leak.js';
+
+import ParkingcitSvg from '../../svgIcons/ParkingCitIl.js'
+import ProptaxSvg from '../../svgIcons/PropTaxIl.js'
+import BusinessLic from '../../svgIcons/businessLic.js'
+import Utilitybill from '../../svgIcons/utbIl.js';
+
 import {
     updateServciceSearchText,
     selectServiceTemplateId
@@ -205,23 +207,23 @@ class MobileSuggestions extends Component {
                 "title": "Popular Services",
                 "icon": null,
                 "suggestions": [
-                    {
-                        "icon": (<SvgTax style={{ fontSize: '22px' }} />),
+                  {
+                    "icon": (<ParkingcitSvg style={{ width: '24px', height: '24px' }} />),
                         "name": "Pay Parking Citation",
                         "id": "0bbec7f3-7c54-4ce8-8356-8494835e2ef3"
                     },
                     {
-                        "icon": (<SvgLicense style={{ fontSize: '22px' }} />),
+                      "icon": (<BusinessLic style={{ width: '24px', height: '24px' }} />),
                         "name": "Renew Business Licence",
                         "id": "b6a31bb0-90d7-4806-8a05-6e45c5485215"
                     },
                     {
-                        "icon": (<SvgParking style={{ fontSize: '22px' }} />),
+                      "icon": (<ProptaxSvg style={{ width: '24px', height: '24px' }} />),
                         "name": "Pay Property Taxes",
                         "id": "f26d145a-8058-4ec3-bb44-7baa82d3fa21"
                     },
                     {
-                        "icon": (<SvgLeak style={{ fontSize: '22px' }} />),
+                      "icon": (<Utilitybill style={{ width: '24px', height: '24px' }} />),
                         "name": "Pay Utility Bill",
                         "id": "6e9a7e19-2f41-4a43-bb56-e7f61944aaf0"
                     }

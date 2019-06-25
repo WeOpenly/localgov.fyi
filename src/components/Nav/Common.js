@@ -55,11 +55,11 @@ class CommonNav extends Component {
                 <Grid item sm={10} align="center" className={classes.index_hero_nav_items}>
                     <Typography
                         variant="title">
-                        <Link
-                            to="/"
+                        <a
+                            href="/"
                             className={classes.index_hero_app_name}>
                             evergov
-                           </Link>
+                           </a>
                     </Typography>
                     <HeaderAccountMenu location={location} />
                 </Grid>

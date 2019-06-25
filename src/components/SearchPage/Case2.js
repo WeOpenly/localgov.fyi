@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import _ from "lodash";
+
 import {navigate} from 'gatsby'
 
 import Card from '@material-ui/core/Card';

@@ -17,8 +17,8 @@ const fs = require("fs");
 
 
 
-exports.createPages = ({graphql, actions}) => {
-  const {createPage} = actions
+exports.createPages = ({ graphql, actions }) => {
+  const { createPage } = actions
 
   return new Promise((resolve, reject) => {
     // The “graphql” function allows us to run arbitrary queries against this

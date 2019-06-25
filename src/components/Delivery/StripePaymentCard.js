@@ -1,7 +1,7 @@
 import React, {Fragment} from 'react';
 import PropTypes from 'prop-types';
 import {connect} from "react-redux";
-import queryString from 'query-string';
+
 import Button from '@material-ui/core/Button';
 
 import {injectStripe} from 'react-stripe-elements';

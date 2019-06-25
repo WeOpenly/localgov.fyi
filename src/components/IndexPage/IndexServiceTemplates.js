@@ -1,48 +1,42 @@
-import React, {Component, Fragment} from 'react';
-import {connect} from "react-redux";
-import Spinner from 'react-spinkit';
-import {isMobileOnly} from 'react-device-detect';
+import React, { Component, Fragment } from 'react';
+import { connect } from "react-redux";
 
-import {navigate} from '@reach/router';
+import { isMobileOnly } from 'react-device-detect';
 
+import { navigate } from '@reach/router';
 import Button from '@material-ui/core/Button';
-import {withStyles} from '@material-ui/core/styles';
+import { withStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
 import Grid from '@material-ui/core/Grid';
 import IconButton from '@material-ui/core/IconButton';
-import ConnLocationCard from './UserRequests/LocationCard';
-import ServiceTemplateCard from './ServiceTemplateCard';
 
-import {trackClick} from "../components/common/tracking";
+import ServiceTemplateCard from '../ServiceTemplateCard';
+
+import { trackClick } from "../common/tracking";
 
 const styles = theme => ({
- related_ser_list:{
-     display: 'flex',
-     justifyContent: 'space-between',
- },
- relates_ser_list_compact :{
-     display: 'flex',
-     justifyContent: 'center',
-     flex: '1',
-     margin: theme.spacing.unit,
-     marginRight: '4px',
-     marginLeft: '4px',
-     borderRadius: '2px',
-     padding: theme.spacing.unit *4,
- },
- related_ser_list_mob: {
-     display: 'flex',
-     flexDirection: 'column',
-     alignItems: 'center'
- }
+    related_ser_list: {
+        display: 'flex',
+        justifyContent: 'space-between',
+    },
+    relates_ser_list_compact: {
+        display: 'flex',
+        justifyContent: 'center',
+        flex: '1',
+        margin: theme.spacing.unit,
+        marginRight: '4px',
+        marginLeft: '4px',
+        borderRadius: '2px',
+        padding: theme.spacing.unit * 4,
+    },
+    related_ser_list_mob: {
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center'
+    }
 });
 
-const SuggestBoxLoader = props => (
-    <div style={{
-        display: 'flex',
-        justifyContent: 'center'
-    }}><Spinner name="ball-beat" color="white"/></div>
-);
+
 
 const xah_randomize_array = ((arr) => {
     /* [ Fisher-Yates shuffle. can be used on array-like object
@@ -63,11 +57,11 @@ const xah_randomize_array = ((arr) => {
 
 const SerTemplateCards = (props) => {
     let sers = [
-      
+
         {
             name: 'Pay Property Taxes ',
             link: 'pay-property-taxes/'
-        },    {
+        }, {
             name: 'Pay Parking Citation',
             link: 'pay-parking-citation/'
         },
@@ -77,25 +71,23 @@ const SerTemplateCards = (props) => {
         }, {
             name: 'Pay Utility Bill',
             link: 'pay-utility-bill/'
-        },{
+        }, {
             name: 'Renew Business License',
             link: 'renew-business-license/'
         },
     ]
-    
-    if(props.currentNameSlug)
+
+    if (props.currentNameSlug)
         sers = sers.filter((ser) => ser.link.indexOf(props.currentNameSlug) === -1)
 
     // if (props.compact)
     //     sers = sers.slice(0, 4)
 
     return (
-       <Fragment>
+        <Fragment>
             {sers.map((item, idx) => {
-                if (idx === sers.length-1 && props.showAdd)
-                    return (<ConnLocationCard />)
                 return (
-                    <ServiceTemplateCard compact={props.compact}  key={item.name} name={item.name} slug={item.link}/>
+                    <ServiceTemplateCard compact={props.compact} key={item.name} name={item.name} slug={item.link} />
                 )
             })}
         </Fragment>
@@ -108,7 +100,7 @@ const SerTemplateCards = (props) => {
 // {service_name} name } } } }`}         render={data => {         return
 // <SerTemplateCards data={data}/>;     }}/> )
 
-class RelatedServiceTemplates extends Component {
+class IndexServiceTemplates extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -118,22 +110,22 @@ class RelatedServiceTemplates extends Component {
     }
 
     componentDidMount() {
-        this.setState({isMobileOnly: isMobileOnly});
+        this.setState({ isMobileOnly: isMobileOnly });
     }
 
     render() {
-        const {classes, currentNameSlug, showAdd, compact} = this.props;
+        const { classes, currentNameSlug, showAdd, compact } = this.props;
 
         return (
             <Fragment>
                 <Grid
                     container
                     className={!this.state.isMobileOnly
-                    ? !compact ? classes.related_ser_list : classes.relates_ser_list_compact
-                    : classes.related_ser_list_mob}>
-                    
-                    <SerTemplateCards compact={compact} currentNameSlug={currentNameSlug} showAdd={showAdd} />
-                  </Grid>
+                        ? !compact ? classes.related_ser_list : classes.relates_ser_list_compact
+                        : classes.related_ser_list_mob}>
+
+                    <SerTemplateCards compact={compact} currentNameSlug={currentNameSlug}  />
+                </Grid>
             </Fragment>
         );
     }
@@ -154,6 +146,6 @@ const mapStateToProps = function (state, ownProps) {
     };
 };
 
-const ConnRelatedServiceTemplates = connect(mapStateToProps, mapDispatchToProps)(withStyles(styles)(RelatedServiceTemplates));
+const ConnIndexServiceTemplates = connect(mapStateToProps, mapDispatchToProps)(withStyles(styles)(IndexServiceTemplates));
 
-export default ConnRelatedServiceTemplates;
+export default ConnIndexServiceTemplates;

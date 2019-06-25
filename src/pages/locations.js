@@ -6,7 +6,7 @@ import {isMobileOnly} from 'react-device-detect';
 import {connect} from "react-redux";
 import Masonry from 'react-masonry-component';
 import NavSearch from '../components/Nav/Search';
-
+import queryString from 'query-string'
 import {withStyles} from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import Grid from '@material-ui/core/Grid';
@@ -15,6 +15,8 @@ import Divider from '@material-ui/core/Divider';
 import {graphql} from "gatsby";
 import withRoot from '../withRoot';
 import HeaderWithSearch from '../components/HeaderWithSearch';
+import LocatioDialog from '../components/UserRequests/LocationDialog';
+import { toggleLocationRequestDialog } from "../components/UserRequests/actions.js";
 
 import {trackView, trackClick} from "../components/common/tracking";
 
@@ -78,6 +80,11 @@ class Locations extends Component {
     this
       .props
       .trackView();
+    const { search } = this.props.location;
+    const values = queryString.parse(this.props.location.search);
+    if (values && values.show_add_loc) {
+      this.props.openDialog()
+    }
   }
 
   render() {
@@ -182,6 +189,7 @@ class Locations extends Component {
     return (
       <Fragment>
         <NavSearch />
+        <LocatioDialog />
         <Grid container className={classes.titleWrapper}>
           <Grid item xs={2}/>
           <Grid item xs={8} align="center">
@@ -230,6 +238,9 @@ const mapDispatchToProps = (dispatch) => {
     },
     trackClick: (click_type, resultType, id, title, listIndex) => {
       dispatch(trackClick(click_type, resultType, id, title, listIndex));
+    },
+    openDialog: () => {
+      dispatch(toggleLocationRequestDialog(true))
     }
   }
 }

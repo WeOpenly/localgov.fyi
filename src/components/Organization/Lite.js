@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import _ from "lodash";
+
 import { StaticQuery, graphql } from "gatsby"
 import { isMobileOnly } from 'react-device-detect';
 import Typography from '@material-ui/core/Typography';

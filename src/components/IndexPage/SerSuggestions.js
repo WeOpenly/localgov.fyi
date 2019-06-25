@@ -16,10 +16,12 @@ import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
 
 import TrendingUp from '@material-ui/icons/TrendingUp';
-import SvgTax from '../../svgIcons/tax.js';
-import SvgParking from '../../svgIcons/parking.js';
-import SvgLicense from '../../svgIcons/license.js';
-import SvgLeak from '../../svgIcons/leak.js';
+
+import ParkingcitSvg from '../../svgIcons/ParkingCitIl.js'
+import ProptaxSvg from '../../svgIcons/PropTaxIl.js'
+import BusinessLic from '../../svgIcons/businessLic.js'
+import Utilitybill from '../../svgIcons/utbIl.js';
+
 import {
 updateServciceSearchText,
     selectServiceTemplateId
@@ -168,26 +170,26 @@ class SerSuggest extends Component {
                 "title": "Popular Services",
                 "icon": null,
                 "suggestions": [
-                    {
-                        "icon": (<SvgTax style={{ fontSize: '22px' }} />),
-                        "name":  "Pay Parking Citation",
-                        "id": "0bbec7f3-7c54-4ce8-8356-8494835e2ef3"
-                    },
-                    {
-                        "icon": (<SvgLicense style={{ fontSize: '22px' }} />),
-                        "name":  "Renew Business Licence",
-                        "id": "b6a31bb0-90d7-4806-8a05-6e45c5485215"
-                    },
-                    {
-                        "icon": (<SvgParking style={{ fontSize: '22px' }} />),
-                        "name":  "Pay Property Taxes",
-                        "id": "f26d145a-8058-4ec3-bb44-7baa82d3fa21"
-                    },
-                    {
-                        "icon": (<SvgLeak style={{ fontSize: '22px' }} />),
-                        "name":  "Pay Utility Bill",
-                        "id": "6e9a7e19-2f41-4a43-bb56-e7f61944aaf0"
-                    }
+                  {
+                    "icon": (<ParkingcitSvg style={{ width: '32px', height: '18px' }} />),
+                    "name": "Pay Parking Citation",
+                    "id": "0bbec7f3-7c54-4ce8-8356-8494835e2ef3"
+                  },
+                  {
+                    "icon": (<BusinessLic style={{ minWidth: '32px', height: '20px' }} />),
+                    "name": "Renew Business Licence",
+                    "id": "b6a31bb0-90d7-4806-8a05-6e45c5485215"
+                  },
+                  {
+                    "icon": (<ProptaxSvg style={{ minWidth: '32px', height: '24px' }} />),
+                    "name": "Pay Property Taxes",
+                    "id": "f26d145a-8058-4ec3-bb44-7baa82d3fa21"
+                  },
+                  {
+                    "icon": (<Utilitybill style={{ minWidth: '32px', height: '24px' }} />),
+                    "name": "Pay Utility Bill",
+                    "id": "6e9a7e19-2f41-4a43-bb56-e7f61944aaf0"
+                  }
                 ]
             }],
             "filtered": []
@@ -257,7 +259,7 @@ class SerSuggest extends Component {
             : { backgroundColor: '#ffffff', cursor: 'pointer' };
             
         return (
-            <div style={{ padding: '8px', display: 'flex', alignItems: 'center', width: '100%', ...style }}
+            <div style={{ padding: '8px', display: 'flex', alignItems: 'center', justifyContent: 'left', width: '240px', ...style }}
             >   {suggestion.icon}
                     <Typography style={{marginLeft: '8px'}} align="left" variant="body1">
                         {suggestion.name}

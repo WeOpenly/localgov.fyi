@@ -1,6 +1,6 @@
 import { combineReducers } from 'redux'
-import {account} from '../components/Account/reducer';
-import {profile} from '../components/Profile/reducer';
+
+
 import {delivery} from '../components/Delivery/reducer';
 import {userRequests} from '../components/UserRequests/reducer';
 import {serTemplate} from '../components/ServiceTemplatePage/reducer';
@@ -11,8 +11,6 @@ import {reducer as formReducer} from 'redux-form';
 
 export default combineReducers({
     form: formReducer,
-    account,
-    profile,
     delivery,
     userRequests,
     serTemplate,

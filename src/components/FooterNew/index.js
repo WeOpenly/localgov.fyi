@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 
-import _ from "lodash";
 
 import { isMobileOnly } from 'react-device-detect';
 import Typography from '@material-ui/core/Typography';

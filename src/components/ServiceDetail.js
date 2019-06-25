@@ -4,7 +4,7 @@ import {navigate} from '@reach/router';
 import { isMobileOnly } from 'react-device-detect';
 import { connect } from 'react-redux';
 import { CopyToClipboard } from 'react-copy-to-clipboard';
-import {Info} from 'react-feather';
+
 import ContentLoader from "react-content-loader"
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';

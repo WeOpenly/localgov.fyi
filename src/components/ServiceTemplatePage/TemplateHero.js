@@ -1,6 +1,6 @@
 import React, { Component, Fragment } from "react";
 import { connect } from "react-redux";
-import _ from "lodash";
+
 import Grid from '@material-ui/core/Grid';
 import { isMobileOnly } from 'react-device-detect';
 import Typography from '@material-ui/core/Typography';

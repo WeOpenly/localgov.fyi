@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { connect } from "react-redux";
 
 import { isMobileOnly } from 'react-device-detect';
-import queryString from 'query-string'
+
 import { withStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 import SerListItemWithOrg from '../Service/ListItemWithOrg';

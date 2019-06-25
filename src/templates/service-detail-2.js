@@ -30,8 +30,6 @@ import ServiceCard from '../components/ServiceCard';
 import MoreLinks from '../components/ServicePage/MoreLinks';
 
 import withRoot from '../withRoot';
-import {isLoggedIn} from '../components/Account/Auth';
-
 import {trackView} from "../components/common/tracking";
 
 const windowGlobal = typeof window !== 'undefined' && window;
@@ -286,11 +284,6 @@ class ServiceDetailTemplate extends React.Component {
         const { showNotifyDialog} = userRequests;
         const {id, name} = this.props.pageContext.data;
         dispatch(trackView('entity_detail', 'service', id, name));
-        const loggedin = isLoggedIn();
-        this.setState({logincheckloading: false});
-        if (loggedin) {
-            this.setState({loggedin: true})
-        }
         // if (name.includes('Pay Property') || name.includes('Pay Utility')){
         // if (windowGlobal && !this.state.notifyInterval){
         //     const notifyInterval = windowGlobal.setTimeout(() => dispatch(toggleNotifyDialog(true)), 6000);

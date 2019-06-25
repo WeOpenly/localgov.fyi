@@ -1,24 +1,24 @@
 import React, { Component, Fragment } from 'react';
 import { connect } from "react-redux";
-import Spinner from 'react-spinkit';
-import { isMobileOnly } from 'react-device-detect';
-import { StaticQuery, graphql, Link } from "gatsby";
 
-import Button from '@material-ui/core/Button';
+import { isMobileOnly } from 'react-device-detect';
+
+import Img from "gatsby-image";
+import { graphql, StaticQuery } from 'gatsby';
+
 import { withStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
 import Grid from '@material-ui/core/Grid';
 import ContentLoader from "react-content-loader";
 import Divider from '@material-ui/core/Divider';
-import CircularProgress from '@material-ui/core/CircularProgress';
-import IndexheroSvg from '../../svgIcons/IndexHeroIl1.js';
+
 
 import CommonNav from '../Nav/Common';
 
 import SerSuggestions from './SerSuggestions';
 import AreaSuggestions from './AreaSuggestions';
 import MobileSuggestions from './MobileSuggestions';
-import RelatedServiceTemplates from '../RelatedServiceTemplates';
+import IndexServiceTemplates from './IndexServiceTemplates';
 import {fetchAreaGuess, executeSearch} from './actions';
 import { trackClick } from "../common/tracking";
 
@@ -88,13 +88,44 @@ const SuggestBoxLoader = props => (<div style={{ display: 'flex', justifyContent
   </ContentLoader>
 </div>);
 
-// const serTemp = (
-//     <StaticQuery
-//         query={graphql ` query allSerGlossaryItems{ allFile(filter : { sourceInstanceName: { eq: "service_glossary" } }, limit: 6 ) { edges { node { childServiceGlossaryJson {service_name} name } } } }`}
-//         render={data => {
-//         return <SerTemplateCards data={data}/>;
-//     }}/>
-// )
+const HeroIl = () => (
+    <StaticQuery
+        query={graphql `query heroIlQuery {
+  heroIl: 
+  allFile(
+            filter: { relativePath: { eq: "indexhero.png" } }
+          ) {
+            edges {
+              node {
+                name
+                childImageSharp {
+                  fluid {
+                    base64
+                    tracedSVG
+                    aspectRatio
+                    src
+                    srcSet
+                    srcWebp
+                    srcSetWebp
+                    sizes
+                    originalImg
+                    originalName
+                  }
+                }
+              }
+            }
+          }
+
+}`}
+        render={data => {
+            return (<Img
+                title={`evergov`}
+                alt={`illustration of evergov`}
+                style={{ width: '400px' }}
+       
+                fluid={data.heroIl.edges[0].node.childImageSharp.fluid} />)
+    }}/>
+)
 
 class IndexHero extends Component {
     constructor(props) {
@@ -122,7 +153,7 @@ class IndexHero extends Component {
 
     render() {
         const { classes, location, appReady } = this.props;
-       
+
         if (this.state.isMobileOnly) {
             return (
               <Grid
@@ -158,7 +189,7 @@ class IndexHero extends Component {
                     {appReady ? <MobileSuggestions onSearch={this.onSearch} /> : <SuggestBoxLoader />}
                 </Grid>
                 <Grid item xs={12}>
-                  <RelatedServiceTemplates compact={true} />
+                  <IndexServiceTemplates compact={true} />
                 </Grid>
               </Grid>
             );
@@ -198,8 +229,8 @@ class IndexHero extends Component {
                     </div>
                  
                 </div>
-                    <IndexheroSvg />
                    
+                    <HeroIl />
                 </Grid>
                  <Grid item xs="auto" sm={1}   />
                 <Grid item xs="auto" sm={1} />
@@ -210,13 +241,15 @@ class IndexHero extends Component {
                 <Grid item xs={12}>
                
                     <div className={classes.index_templates_box}>
-                        <RelatedServiceTemplates compact={true} />
+                        <IndexServiceTemplates compact={true} />
                     </div>
                     </Grid>
             </Grid>
         );
     }
 }
+
+
 
 const mapDispatchToProps = (dispatch) => {
     return {

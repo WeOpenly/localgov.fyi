@@ -52,7 +52,7 @@ module.exports = {
       resolve: `gatsby-source-filesystem`,
       options: {
         name: `illus`,
-        path: path.join(__dirname, `data/illus`)
+        path: path.join(__dirname, `src/illus`)
       }
     },
     {
@@ -153,12 +153,12 @@ module.exports = {
         icon: "src/favicon.png"
       }
     },
-    {
-      resolve: "gatsby-plugin-webpack-bundle-analyser-v2",
-      options: {
-        devMode: true,
-      },
-    },
+    // {
+    //   resolve: "gatsby-plugin-webpack-bundle-analyser-v2",
+    //   options: {
+    //     devMode: true,
+    //   },
+    // },
     {
       resolve: `gatsby-plugin-create-client-paths`,
       options: {

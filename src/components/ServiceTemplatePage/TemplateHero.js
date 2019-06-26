@@ -5,7 +5,7 @@ import Grid from '@material-ui/core/Grid';
 import { isMobileOnly } from 'react-device-detect';
 import Typography from '@material-ui/core/Typography';
 import { withStyles } from '@material-ui/core/styles';
-import { CopyToClipboard } from 'react-copy-to-clipboard';
+
 import Link from 'gatsby-link';
 
 import { FacebookShareButton, TwitterShareButton } from 'react-share';
@@ -88,47 +88,10 @@ const RawHTML = ({
         __html: children
     }} />);
 
+
 class TemplateHero extends Component {
     constructor(props) {
         super(props);
-        this.state = {
-            anchorEl: null,
-            copied: false,
-            openDescDialog: false,
-            isMobile: false
-        }
-
-        this.toggleDescDialog = this
-            .toggleDescDialog
-            .bind(this);
-        this.handleCopy = this
-            .handleCopy
-            .bind(this);   
-    }
-
-    handleCopy() {
-        const { trackClick } = this.props;
-        this.setState({ copied: true });
-   
-    }
-
-    toggleDescDialog() {
-        this.setState({
-            openDescDialog: !this.state.openDescDialog
-        })
-    }
-
-    handleShareClick = (event) => {
-        this.setState({ anchorEl: event.currentTarget });
-        // this.props.trackClick('external', 'share', '', '', 0);
-    }
-
-    handleClose = (type) => {
-        this.setState({ anchorEl: null, copied: false });
-    }
-
-    componentDidMount() {
-        this.setState({ isMobile: isMobileOnly });
     }
 
     render() {
@@ -138,10 +101,11 @@ class TemplateHero extends Component {
           service_glossary_description,
           trackClick,
           views,
-          orgsCnt
+          orgsCnt,
+          isMobile
         } = this.props;
 
-        const { anchorEl, copied } = this.state;
+
 
         return (
           <Grid container className={classes.ser_gloss_serviceheading}>
@@ -151,7 +115,7 @@ class TemplateHero extends Component {
               xs={12}
               sm={12}
               className={
-                !this.state.isMobile
+                !isMobile
                   ? classes.ser_gloss_servicename_text
                   : classes.ser_gloss_servicename_text_mob
               }
@@ -168,7 +132,7 @@ class TemplateHero extends Component {
             </Grid>
   
      
-            {!this.state.isMobile ? (
+            {!isMobile ? (
               <Fragment>
                 <Grid item xs={12} align="left">
                   <Typography

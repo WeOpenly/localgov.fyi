@@ -4,17 +4,15 @@ import React from 'react'
 import {Provider} from 'react-redux'
 
 import reduxCreateStore from './src/state/createStore';
-
-
-
+import { isMobileOnly } from 'react-device-detect';
 
 export const wrapRootElement = ({ element }) => {
   const store = reduxCreateStore();
 
   const ConnectedRouterWrapper = (
-    <Provider store={store}>
-      {element}
-    </Provider>
+      <Provider store={store}>
+        {element}
+      </Provider>
   )
 
   return ConnectedRouterWrapper

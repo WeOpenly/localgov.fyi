@@ -13,6 +13,8 @@ import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 import Divider from '@material-ui/core/Divider';
 import {graphql} from "gatsby";
+
+import RawForm from '../components/Reminders/RawForm';
 import withRoot from '../withRoot';
 import HeaderWithSearch from '../components/HeaderWithSearch';
 import LocatioDialog from '../components/UserRequests/LocationDialog';
@@ -61,6 +63,34 @@ const styles = theme => ({
   }
 });
 
+
+const genericFSchema = {
+  "type": "object",
+  "required": ["email"],
+  "properties": {
+    "locations": {
+      "type": "string",
+      "title": "Location(s)"
+    },
+    "services": {
+      "type": "string",
+      "title": "Services(s)"
+    },
+    "email": {
+      "type": "email",
+      "title": "Email"
+    },
+    "name": {
+      "type": 'string',
+      "title": "Name"
+    },
+    "path": {
+      "type": 'string',
+      "title": "path"
+    }
+  }
+}
+
 class Locations extends Component {
   constructor(props) {
     super(props);
@@ -90,6 +120,10 @@ class Locations extends Component {
   render() {
     const {classes} = this.props;
     const locLen = this.props.data.orgs.details.length;
+
+    const userLocReqFormRaw = <RawForm
+      field_schema={JSON.stringify(genericFSchema)}
+      id="user_request_missing_loc_ser" />
 
     let stateGroupMap = {};
 
@@ -199,7 +233,7 @@ class Locations extends Component {
           </Grid>
           <Grid item xs={2}/>
         </Grid>
-
+        {userLocReqFormRaw}
         <Grid container>
           <Grid item md={2}/>
           <Grid item md={8} align="center">

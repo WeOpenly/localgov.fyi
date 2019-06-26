@@ -8,7 +8,7 @@ import queryString from 'query-string'
 import {navigate} from '@reach/router';
 
 import Helmet from "react-helmet";
-import {isMobileOnly} from 'react-device-detect';
+
 
 import {withStyles} from '@material-ui/core/styles';
 import { Defer } from 'react-progressive-loader'
@@ -25,7 +25,6 @@ import Info from '@material-ui/icons/InfoOutlined';
 import HeaderAccountMenu from '../components/HeaderAccountMenu';
 
 
-import RawForm from '../components/Reminders/RawForm';
 import { fetchGoogLoc, fetchAutoLoc, clearAll} from '../components/ServiceTemplatePage/actions';
 
 import ProptaxSvg from '../svgIcons/PropTaxIl.js';
@@ -200,32 +199,7 @@ const RawHTML = ({
     __html: children.replace(/\n/g, " ")
 }}/>);
 
-const genericFSchema = {
-    "type": "object",
-    "required": ["email"],
-    "properties": {
-        "locations": {
-            "type": "string",
-            "title": "Location(s)"
-        },
-        "services": {
-            "type": "string",
-            "title": "Services(s)"
-        },
-        "email": {
-            "type": "email",
-            "title": "Email"
-        },
-        "name": {
-            "type": 'string',
-            "title": "Name"
-        },
-        "path": {
-            "type": 'string',
-            "title": "path"
-        }
-    }
-}
+
 
 class ServiceGlossary extends Component {
     constructor(props) {
@@ -273,7 +247,9 @@ class ServiceGlossary extends Component {
 
     componentDidMount() {
         const { id } = this.props.pageContext.data;
-      this.setState({ isMobile: isMobileOnly, foundDevice: true })
+      const { isMobile} = this.props;
+        console.log(this.props, "ismb", isMobile);
+      this.setState({ isMobile: isMobile, foundDevice: true })
         this.props.clearAll();
         this.props.trackView();
         this.props.autoGetLoc(id);
@@ -288,9 +264,6 @@ class ServiceGlossary extends Component {
         const {classes} = this.props;
         const { id,  service_name, service_name_slug, service_glossary_description, orgs, views} = this.props.pageContext.data;
 
-        const userLocReqFormRaw = <RawForm  
-            field_schema={JSON.stringify(genericFSchema)}
-            id="user_request_missing_loc_ser"/>
 
       const { anchorEl, copied } = this.state;
       let icon = null;
@@ -357,7 +330,7 @@ class ServiceGlossary extends Component {
                 content={`Forms, Price, Timings and Local Government Service Contact Details for ${service_name} | Evergov`}
               />
             </Helmet>
-            {userLocReqFormRaw}
+
 
             <Grid container className={classes.ser_gloss_search}>
               <Grid item sm={1} />
@@ -381,6 +354,7 @@ class ServiceGlossary extends Component {
               <Grid item xs={12} md={6}>
                 <TemplateHero
                   views={views}
+                  isMobileOnly={!showIcon}
                   orgsCnt={orgs.length}
                   service_name={service_name}
                   trackClick={this.trackClick}

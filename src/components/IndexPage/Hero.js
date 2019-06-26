@@ -98,7 +98,7 @@ const HeroIl = () => (
         query={graphql `query heroIlQuery {
   heroIl: 
   allFile(
-            filter: { relativePath: { eq: "indexhero.jpg" } }
+            filter: { relativePath: { eq: "indexhero.png" } }
           ) {
             edges {
               node {

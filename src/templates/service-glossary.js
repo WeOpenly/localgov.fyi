@@ -8,15 +8,15 @@ import queryString from 'query-string'
 import {navigate} from '@reach/router';
 
 import Helmet from "react-helmet";
-import {isMobileOnly, isTablet, isMobile} from 'react-device-detect';
+import {isMobileOnly} from 'react-device-detect';
 
 import {withStyles} from '@material-ui/core/styles';
-
+import { Defer } from 'react-progressive-loader'
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 
 import IconButton from '@material-ui/core/IconButton';
-import Button from '@material-ui/core/Button';
+
 import Share from '@material-ui/icons/Share';
 import RelatedServiceTemplates from '../components/RelatedServiceTemplates';
 import Footer from '../components/Footer';
@@ -24,7 +24,7 @@ import withRoot from '../withRoot';
 import Info from '@material-ui/icons/InfoOutlined';
 import HeaderAccountMenu from '../components/HeaderAccountMenu';
 
-import {NO_SEARCH_RESULTS} from '../components/common/tracking_events';
+
 import RawForm from '../components/Reminders/RawForm';
 import { fetchGoogLoc, fetchAutoLoc, clearAll} from '../components/ServiceTemplatePage/actions';
 
@@ -300,29 +300,7 @@ class ServiceGlossary extends Component {
         ? windowGlobal.location
         : {};
 
-      const shareLink = windowLocation.href;
 
-      const shareButton = (
-        <IconButton
-          color="primary"
-          size="small"
-          className={classes.ser_gloss_menu_button}
-          onClick={this.handleShareClick}
-          aria-label="share">
-          <Share className={classes.ser_gloss_share} fontSize="small" />
-        </IconButton>
-      )
-
-      const learnMoreButton = (
-        <IconButton
-          color="primary"
-          size="small"
-          className={classes.ser_gloss_learn_more}
-          onClick={this.toggleDescDialog}
-          aria-label="share">
-          <Info className={classes.ser_gloss_share} fontSize="small" />
-        </IconButton>
-      )
       const lowerCaseName = service_name.toLowerCase();
 
       if (lowerCaseName.indexOf('tax') !== -1) {
@@ -368,7 +346,7 @@ class ServiceGlossary extends Component {
 
               <meta
                 name="description"
-                content={`Forms, Price, Timings and Contact Details for ${service_name} | Evergov`}
+                content={service_glossary_description}
               />
               <meta
                 name="keywords"
@@ -394,12 +372,7 @@ class ServiceGlossary extends Component {
                     evergov
                 </Link>
                 </Typography>
-                {this.state.isMobile && (
-                  <div className={classes.ser_gloss_service_mob_actions}>
-                    {shareButton}
-                    {learnMoreButton}
-                  </div>
-                )}
+              
                 <HeaderAccountMenu location={this.props.location} />
               </Grid>
               <Grid item sm={1} />
@@ -430,7 +403,8 @@ class ServiceGlossary extends Component {
                 <Suggested service_name={service_name} handleOrgClick={this.handleOrgClick} />
               </Grid>
               <Grid item xs={12}>
-                <OtherLocations allOrgs={orgs} />
+               
+                <OtherLocations isMobileOnly={this.state.isMobile} allOrgs={orgs} />
               </Grid>
             </Grid>
 
@@ -457,10 +431,15 @@ class ServiceGlossary extends Component {
                 xs={12}
                 className={classes.ser_gloss_related_container}
               >
-                <RelatedServiceTemplates
-                  currentNameSlug={service_name_slug}
-                  showAdd={true}
-                />
+              <Defer
+                  render={() => (<RelatedServiceTemplates
+                    currentNameSlug={service_name_slug}
+                    showAdd={true}
+                  />)}
+              renderPlaceholder={() => <div></div>}
+              loadOnScreen
+            />
+               
               </Grid>
             </Grid>
             <div className={classes.ser_gloss_footer}>

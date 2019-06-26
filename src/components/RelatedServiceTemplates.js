@@ -1,10 +1,10 @@
 import React, {Component, Fragment} from 'react';
 import {connect} from "react-redux";
-import Spinner from 'react-spinkit';
+
 import {isMobileOnly} from 'react-device-detect';
 
 import {navigate} from '@reach/router';
-
+import CircularProgress from '@material-ui/core/CircularProgress';
 import Button from '@material-ui/core/Button';
 import {withStyles} from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
@@ -41,7 +41,7 @@ const SuggestBoxLoader = props => (
     <div style={{
         display: 'flex',
         justifyContent: 'center'
-    }}><Spinner name="ball-beat" color="white"/></div>
+    }}><CircularProgress /></div>
 );
 
 const xah_randomize_array = ((arr) => {

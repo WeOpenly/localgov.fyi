@@ -2,7 +2,7 @@ import React, {Component, Fragment} from 'react';
 import PropTypes from 'prop-types';
 import {connect} from "react-redux";
 
-import Spinner from 'react-spinkit';
+import CircularProgress from '@material-ui/core/CircularProgress';;
 import {isMobileOnly} from 'react-device-detect';
 import {navigate} from '@reach/router';
 import IconButton from '@material-ui/core/IconButton';

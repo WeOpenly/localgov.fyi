@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 
-import Spinner from 'react-spinkit';
+import CircularProgress from '@material-ui/core/CircularProgress';
 import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
 import Grid from '@material-ui/core/Grid';
@@ -48,6 +48,7 @@ ser_gloss_suggested_row:{
 ser_gloss_suggested_row_locs:{
     display: 'flex',
     flexWrap: 'wrap',
+    justifyContent: 'left',
     padding: theme.spacing.unit,
 },
 ser_gloss_suggested_row_locs_mob:{

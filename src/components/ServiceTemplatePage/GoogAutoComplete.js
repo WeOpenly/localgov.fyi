@@ -1,16 +1,14 @@
 import React, { Fragment } from 'react';
 import {connect} from "react-redux";
-import Spinner from 'react-spinkit';
-import Paper from '@material-ui/core/Paper';
+
 import InputBase from '@material-ui/core/InputBase';
 import IconButton from '@material-ui/core/IconButton';
-import MenuIcon from '@material-ui/icons/Menu';
-import Divider from '@material-ui/core/Divider';
+import CircularProgress from '@material-ui/core/CircularProgress';
 import SearchIcon from '@material-ui/icons/Search';
 import DirectionsIcon from '@material-ui/icons/Directions';
 import Typography from '@material-ui/core/Typography';
 import ContentLoader from "react-content-loader"
-import CircularProgress from '@material-ui/core/CircularProgress';
+
 import PlacesAutocomplete, {
     geocodeByAddress,
     getLatLng,
@@ -47,7 +45,7 @@ const styles = theme => ({
         display: 'flex',
         alignItems: 'center',
         boxShadow: '0px 3px 5px 0px rgba(0,0,0,0.1),0px 1px 1px 0px rgba(0,0,0,0.07),0px 2px 6px 1px rgba(0,0,0,0.06)',
-        border: `1px solid ${theme.palette.primary['200']}`,
+        border: `1px solid ${theme.palette.primary['100']}`,
         borderRadius: '4px',
         '&:hover': {
             boxShadow: `0 4px 8px 0 #dfdfdf, 0 1px 16px 0 #fafafa inset`,
@@ -72,11 +70,12 @@ const styles = theme => ({
         justifyContent: 'center',
         position: 'relative',
         margin: theme.spacing.unit,
-        marginTop: theme.spacing.unit *3
+        marginTop: theme.spacing.unit *2
     },
     ser_gloss_search_suggestions:{
         position: 'absolute',
-        zIndex: '200',
+        zIndex: '2000',
+        background: '#fff',
         borderRadius: '8px',
         display: 'flex',
         width: '100%',
@@ -86,8 +85,7 @@ const styles = theme => ({
     ser_gloss_search_iconButton: {
         minHeight: '1em',
         borderRadius: 0,
-        background: theme.palette.primary['700'],
-
+        background: '#5627FF',
     }
 });
 
@@ -172,9 +170,9 @@ class GoogAutoComplete extends React.Component {
 
         return (
             <Grid container>
-            <Grid item xs={1} ></Grid>
+                <Grid xs="auto" sm={1} />
 
-            <Grid item xs={10} className={classes.ser_gloss_placesContainer}>
+            <Grid item xs={12} sm={10} className={classes.ser_gloss_placesContainer}>
             <PlacesAutocomplete
                 value={searchText}
                 searchOptions={searchOptions}
@@ -188,7 +186,7 @@ class GoogAutoComplete extends React.Component {
             >
                 {({ getInputProps, suggestions, getSuggestionItemProps, loading }) => (
                         <div style={{ width: '100%' }}>
-                        <Paper className={classes.ser_gloss_search_paper_root} elevation={2}>
+                        <div className={classes.ser_gloss_search_paper_root} elevation={2}>
                        
                                     <InputBase {...getInputProps({
                                 placeholder: 'Search locations',
@@ -200,11 +198,11 @@ class GoogAutoComplete extends React.Component {
                                 className:  classes.ser_gloss_search_input,
                             })} />
                                     <IconButton className={classes.ser_gloss_search_iconButton} aria-label="Search">
-                                        {loading ? (<CircularProgress style={{color:'#fff'}} size={24} />) : (<SearchIcon style={{color: '#fff'}} />)}
+                                        {loading ? (<CircularProgress style={{ color: '#fff' }} size={24} />) : (<SearchIcon style={{ color: '#fff'}} />)}
                                     </IconButton>
-                        </Paper>
+                        </div>
                 
-                        <Paper className={classes.ser_gloss_search_suggestions} elevation={2}>
+                        <div className={classes.ser_gloss_search_suggestions} elevation={2}>
                             {loading ? (<div style={{padding: '8px', width: '100%' }}>
                                        <SuggestionContentLoader/>
                                     </div>) : null}
@@ -228,12 +226,12 @@ class GoogAutoComplete extends React.Component {
                                     </div>
                                 );
                             }) ) : null }
-                        </Paper>
+                        </div>
                     </div>
                 )}
             </PlacesAutocomplete>
             </Grid>
-                <Grid item xs={1}></Grid>
+                <Grid xs="auto" sm={1} />
             </Grid>
         );
     }

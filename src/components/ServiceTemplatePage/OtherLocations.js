@@ -1,11 +1,11 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 
+import VirtualList from 'react-tiny-virtual-list';
 
-import { isMobileOnly } from 'react-device-detect';
 import Typography from '@material-ui/core/Typography';
 import { withStyles } from '@material-ui/core/styles';
-import Paper from '@material-ui/core/Paper';
+
 import Grid from '@material-ui/core/Grid';
 import Fuse from 'fuse.js';
 import OtherStateLocations from './OtherStateLocations';
@@ -52,9 +52,15 @@ const styles = theme => ({
     alignItems: "center",
     position: "relative"
   },
+  v_list_body:{
+    '&::-webkit-scrollbar': {
+      width: 0, // remove scrollbar space
+      background: 'transparent', // make scrollbar invisible
+    },
+  },
   ser_gloss_others_row_header_container_mob: {
     display: "flex",
-    justifyContent: "left",
+    justifyContent: "center",
     flexWrap: "wrap",
     alignItems: "center",
     position: "relative"
@@ -75,7 +81,7 @@ class OtherLocations extends Component {
         super(props);
         this.state = {
             stateName: null,
-            isMobile: false
+
         }
         this.setStateFilter = this
             .setStateFilter
@@ -101,12 +107,10 @@ class OtherLocations extends Component {
         })
     }
 
-    componentDidMount() {
-        this.setState({ isMobile: isMobileOnly });
-    }
+
 
     render() {
-        const { classes, allOrgs,  } = this.props;
+      const { classes, allOrgs, isMobileOnly } = this.props;
         const { stateName} = this.state;
 
    
@@ -153,6 +157,17 @@ class OtherLocations extends Component {
                 <LocationSerCard key={idx} idx={idx} organization={organization} ser_url_slug={org.url_slug} area={org.area}  />
             )
         })
+
+      const mobLocs = (<VirtualList
+        width='100%'
+        height={filteredOrgs.length*60}
+        className={classes.v_list_body}
+        itemCount={filteredOrgs.length}
+        itemSize={60} // Also supports variable heights (array or function getter)
+        renderItem={({ index, style }) =>
+          <LocationSerCard key={index} idx={index} organization={filteredOrgs[index].organization} ser_url_slug={filteredOrgs[index].url_slug} area={filteredOrgs[index].area} />
+        }
+      />)
     
         
         return (
@@ -166,7 +181,7 @@ class OtherLocations extends Component {
             >
               <div
                 className={
-                  this.state.isMobile
+                  isMobileOnly
                     ? classes.ser_gloss_others_row_header_container_mob
                     : classes.ser_gloss_others_row_header_container
                 }
@@ -175,7 +190,7 @@ class OtherLocations extends Component {
                   variant="title"
                   component="h2"
                   className={
-                    this.state.isMobile
+                    isMobileOnly
                       ? classes.ser_gloss_suggested_row_heading_mob
                       : classes.ser_gloss_suggested_row_heading
                   }
@@ -190,15 +205,11 @@ class OtherLocations extends Component {
                 />
               </div>
 
-              <div
-                className={
-                  this.state.isMobile
-                    ? classes.ser_gloss_suggested_row_locs_mob
-                    : classes.ser_gloss_suggested_row_locs
-                }
-              >
+              {!isMobileOnly ? (<div className={classes.ser_gloss_suggested_row_locs}>
                 {locs}
-              </div>
+                </div>) : (<div className={classes.ser_gloss_suggested_row_locs_mob}>
+                {mobLocs}
+                </div>)}
             </Grid>
             <Grid item sm={1} />
           </Grid>

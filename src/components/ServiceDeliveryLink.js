@@ -15,7 +15,7 @@ import HighLightOutlined from '@material-ui/icons/HighlightOutlined';
 import SentimentDissatisfied from '@material-ui/icons/SentimentDissatisfied';
 import Cancel from '@material-ui/icons/Cancel';
 import MoodBad from '@material-ui/icons/MoodBad';
-import Spinner from 'react-spinkit';
+import CircularProgress from '@material-ui/core/CircularProgress';;
 
 import withRoot from '../withRoot';
 import {trackClick, trackInput} from "./common/tracking";
@@ -388,7 +388,7 @@ class ServiceDeliveryLink extends Component {
             size="large"
             className={classes.ser_del_link_button}>
             {this.state.redirectClicked
-              ? (<Spinner name="ball-beat" color="white" />)
+              ? (<CircularProgress />)
               : `${link.link_name}`}
           </Button>
         );
@@ -514,7 +514,7 @@ class ServiceDeliveryLink extends Component {
             </div>
           </Fragment>}
           {submitting && <div className={classes.ser_del_link_afterSubmit}>
-            <Spinner className={classes.ser_del_link_spinner}/>
+            <CircularProgress />
           </div>}
           {success && (<ShareBox title={`Help them find government services easily`} messageToShare={`${service_name} easily on EverGov`}/>)}
           {failure && <div className={classes.ser_del_link_afterSubmit}>

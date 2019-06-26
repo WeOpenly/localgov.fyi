@@ -153,12 +153,12 @@ module.exports = {
         icon: "src/favicon.png"
       }
     },
-    // {
-    //   resolve: "gatsby-plugin-webpack-bundle-analyser-v2",
-    //   options: {
-    //     devMode: true,
-    //   },
-    // },
+    {
+      resolve: "gatsby-plugin-webpack-bundle-analyser-v2",
+      options: {
+        devMode: true,
+      },
+    },
     {
       resolve: `gatsby-plugin-create-client-paths`,
       options: {
@@ -199,6 +199,12 @@ module.exports = {
         sitemap: "https://evergov.com/sitemap.xml",
         policy: [{ userAgent: "*", disallow: [`/app/*`, `/deep_link/*`] }]
       }
+    },
+    {
+      resolve: `gatsby-plugin-polyfill-io`,
+      options: {
+        features: [`IntersectionObserver`]
+      },
     },
     `gatsby-plugin-remove-serviceworker`,
     'gatsby-plugin-brotli',

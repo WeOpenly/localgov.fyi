@@ -1,22 +1,16 @@
 import React, {Component, Fragment} from "react";
 import {connect} from "react-redux";
 
-import Spinner from 'react-spinkit';
-import Card from '@material-ui/core/Card';
-import CardContent from '@material-ui/core/CardContent';
+import CircularProgress from '@material-ui/core/CircularProgress';;
+
 import {isMobileOnly} from 'react-device-detect';
-import CardMedia from '@material-ui/core/CardMedia';
-import IconButton from '@material-ui/core/IconButton';
+
+
 import Typography from '@material-ui/core/Typography';
 import {withStyles} from '@material-ui/core/styles';
 import SvgAddloc from '../../svgIcons/addLoc.js';
 
-import List from '@material-ui/core/List';
-import ListItem from '@material-ui/core/ListItem';
-import ListItemText from '@material-ui/core/ListItemText';
-import ListItemAvatar from '@material-ui/core/ListItemAvatar';
-import Grid from '@material-ui/core/Grid';
-import CardActions from '@material-ui/core/CardActions';
+
 import Button from '@material-ui/core/Button';
 import {navigate} from "@reach/router";
 
@@ -41,7 +35,10 @@ loc_req_card_action_compact : {
     },
     
     suggest_loc_card: {
-        display: 'flex'
+        display: 'flex',
+        border: 0,
+        padding: theme.spacing.unit * 2,
+        boxShadow: `0 2px 6px 0 hsla(0,0%,0%, 0.2)}`,
     },
     loc_req_card_content: {
         display: 'flex',
@@ -83,7 +80,7 @@ class LocationCard extends Component {
         if (compact){
             return (
                 <Fragment>
-                    <Card
+                    <div
                         style={{
                             width: '300px',
                             display: 'flex',
@@ -92,7 +89,7 @@ class LocationCard extends Component {
                             borderTop: `2px solid #2B0EFF`,
                             boxShadow: '0px 3px 5px 0px rgba(0,0,0,0.1),0px 1px 1px 0px rgba(0,0,0,0.07),0px 2px 6px 1px rgba(0,0,0,0.06)'
                         }}>
-                    <CardContent className={classes.suggest_loc_card}>
+                    <div className={classes.suggest_loc_card}>
                             <div className={classes.loc_req_icon_compact}>
                             {icon}
                         </div>
@@ -111,15 +108,15 @@ class LocationCard extends Component {
                     </Button>
                         </div>
                         </div>
-                    </CardContent>
-                    </Card>
+                    </div>
+                    </div>
                 </Fragment>
             )
         }
         
         return (
             <Fragment>
-                    <Card className={classes.loc_req_card}>
+                    <div className={classes.loc_req_card}>
                 <Typography variant="body1" gutterBottom>
                     {!message ? `Not seeing what you are looking for?` : message}
                 </Typography>
@@ -141,7 +138,7 @@ class LocationCard extends Component {
                         Add it now
                     </Button>
                 </div>
-            </Card>
+            </div>
             </Fragment>
         )
     }

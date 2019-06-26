@@ -1,15 +1,11 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 
-import Link from "gatsby-link";
-import {StaticQuery, graphql} from "gatsby"
+import {  Defer } from 'react-progressive-loader'
 import { isMobileOnly } from 'react-device-detect';
 import Typography from '@material-ui/core/Typography';
 import { withStyles } from '@material-ui/core/styles';
-import { navigate } from '@reach/router';
-import Card from '@material-ui/core/Card';
-import CardContent from '@material-ui/core/CardContent';
-import Img from "gatsby-image";
+
 import Avatar from '@material-ui/core/Avatar';
 import LocationCity from '@material-ui/icons/LocationCity'
 
@@ -20,27 +16,39 @@ ser_gloss_gridItemLocation_mob_focus : {
 },
     suggest_loc_card:{
         display: 'flex',
-
+        border: 0,
+        padding: theme.spacing.unit *2, 
+        boxShadow:  `0 2px 6px 0 hsla(0,0%,0%, 0.2)}`,
     },
 suggest_loc_org_details:{
     display: 'flex',
     justifyContent: 'center',
     flexDirection: 'column'
 },
+  suggest_loc_logo_container:{
+    width: '57px',
+    height: '57px',
+    overflow: 'hidden',
+    marginRight: theme.spacing.unit * 2, 
+  },
     suggest_loc_logo:{
-        width: 56,
-        zIndex: '190',
-        height: 56,
-        boxShadow: `0 0 0px 1px ${theme.palette.primary["200"]}`,
-        border: '1px solid #fff',
-        marginRight: theme.spacing.unit * 2, 
+
+      width: '56px',
+      height: '56px',
+      overflow: 'hidden',
+      borderRadius: '50%',
+      boxShadow: `0 0 0px 1px ${theme.palette.primary["200"]}`,
+      border: '1px solid #fff',
+      '&img': {
+        maxHeight: '100%',
+        height: 'none'
+      }
     },
   ser_list_org_agg_logo_dum: {
-    width: 48,
+    width: 56,
     zIndex: '190',
     background: '#fff',
-    height: 48,
-    boxShadow: `0 0 0px 1px ${theme.palette.primary["900"]}`,
+    height: 56,
     border: '1px solid #d4d4d4',
     marginRight: theme.spacing.unit * 2,
   }
@@ -85,37 +93,7 @@ class LocationSerCard extends Component {
             return null;
         }
 
-        // if (this.state.isMob){
-        //   if (logoUrl){
-        //     logo = (
-        //       <Avatar
-        //         alt={areaName}
-        //         className={classes.suggest_loc_logo}
-        //         src={`${logoUrl}`}
-        //       />
-        //     );
-        //   }
-        // }
-        // else{
-        // if (logoUrl) {
-        //   logo = (
-        //     <Avatar
-        //       alt={areaName}
-        //       className={classes.suggest_loc_logo}
-        //       src={`${logoUrl}`}
-        //     />
-        //   );
-        // }
-        // if (logoUrlBase64) {
-        //   logo = (
-        //     <Avatar
-        //       alt={areaName}
-        //       className={classes.suggest_loc_logo}
-        //       src={`data:image/jpeg;base64,${logoUrlBase64}`}
-        //     />
-        //   );
-        // }
-        // }
+    
 
       let avatar = (<Avatar className={classes.ser_list_org_agg_logo_dum}>
         <LocationCity fontSize="medium" style={{ color: '#AB93FF' }} />
@@ -123,10 +101,10 @@ class LocationSerCard extends Component {
 
       if (logoUrl) {
         avatar = (
-          <Avatar
-            alt={areaName}
-            className={classes.suggest_loc_logo}
-            src={`${logoUrl}`}
+          <Defer
+            render={() => <img alt={areaName} className={classes.suggest_loc_logo} src={`${logoUrl}`}></img>}
+            renderPlaceholder={null}
+            loadOnScreen
           />
         )
       }
@@ -136,26 +114,29 @@ class LocationSerCard extends Component {
           <a
             style={{
               cursor: "pointer",
-              width: "280px",
+              width: "288px",
+              marginLeft: '16px',
+              marginRight:'16px',
+              marginTop: '16px',
               display: "flex",
               flexDirection: "column",
               textDecoration: "none",
-              margin: 16,
               borderTop: `2px solid ${border}`,
-              boxShadow:
-                "0px 3px 5px 0px rgba(0,0,0,0.1),0px 1px 1px 0px rgba(0,0,0,0.07),0px 2px 6px 1px rgba(0,0,0,0.06)"
             }}
             href={`/${ser_url_slug}`}
           >
-            <CardContent className={classes.suggest_loc_card}>
-              {avatar}
+            <div className={classes.suggest_loc_card}>
+              <div className={classes.suggest_loc_logo_container}>
+                {avatar}
+              </div>
+           
               <div className={classes.suggest_loc_org_details}>
                 <Typography variant="body2" gutterBottom>
                   {areaName}
                 </Typography>
                 <Typography variant="caption">{state}</Typography>
               </div>
-            </CardContent>
+            </div>
           </a>
         );
     }

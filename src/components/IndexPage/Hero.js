@@ -1,8 +1,6 @@
 import React, { Component, Fragment } from 'react';
 import { connect } from "react-redux";
 
-import { isMobileOnly } from 'react-device-detect';
-
 import Img from "gatsby-image";
 import { graphql, StaticQuery } from 'gatsby';
 
@@ -11,7 +9,8 @@ import Typography from '@material-ui/core/Typography';
 import Grid from '@material-ui/core/Grid';
 import ContentLoader from "react-content-loader";
 import Divider from '@material-ui/core/Divider';
-
+import CircularProgress from '@material-ui/core/CircularProgress';
+import { Defer } from 'react-progressive-loader'
 
 import CommonNav from '../Nav/Common';
 
@@ -51,12 +50,18 @@ const styles = theme => ({
         display: 'flex',
         alignItems: 'flex-start'
     },
+  index_hero_search_box_mob:{
+    display: 'flex',
+    alignItems: 'flex-start',
+    justifyContent: 'center'
+  },
     index_hero_mob_slogan: {
         width: '100%',
         flexDirection: 'column',
         marginTop: theme.spacing.unit *3,
         marginBottom: theme.spacing.unit,
-        paddingLeft: theme.spacing.unit*2,
+        paddingLeft: theme.spacing.unit,
+        paddingRight: theme.spacing.unit,
         flexWrap: 'wrap',
         alignItems: 'flex-start',
         justifyContent: 'flex-start'
@@ -93,7 +98,7 @@ const HeroIl = () => (
         query={graphql `query heroIlQuery {
   heroIl: 
   allFile(
-            filter: { relativePath: { eq: "indexhero.png" } }
+            filter: { relativePath: { eq: "indexhero.jpg" } }
           ) {
             edges {
               node {
@@ -130,31 +135,18 @@ const HeroIl = () => (
 class IndexHero extends Component {
     constructor(props) {
         super(props);
-        this.state = {
-            isMobileOnly: false, 
-        };
         this.onSearch = this.onSearch.bind(this)
     }
 
-    componentDidMount() {
-        this.setState({ isMobileOnly: isMobileOnly });
-        // const script = document.createElement("script");
-
-        // script.src = "https://maps.googleapis.com/maps/api/js?key=AIzaSyBr4RixcEvuxgGr9EwNeiHCqUITczxvvuc&libraries=places&callback=initIndex";
-        // script.async = true;
-        // script.defer = true;
-        // document.head.appendChild(script);
-        // this.props.fetchAreaGuess();
-    }
 
     onSearch(){
         this.props.executeSearch()
     }
 
     render() {
-        const { classes, location, appReady } = this.props;
+      const { classes, location, appReady, isMobileOnly } = this.props;
 
-        if (this.state.isMobileOnly) {
+      if (isMobileOnly) {
             return (
               <Grid
                 container
@@ -169,7 +161,7 @@ class IndexHero extends Component {
                   align="left"
                   className={classes.index_hero_mob_slogan}
                 >
-                  <Typography component="span" variant="title">
+                  <Typography component="h1" variant="display1">
                     All your government services in a single place.
                   </Typography>
                 </Grid>
@@ -181,15 +173,19 @@ class IndexHero extends Component {
                   xs={12}
                   sm={6}
                   className={
-                    !this.state.isMobile
-                      ? classes.index_hero_search_box
-                      : classes.index_hero_search_box_mob
+                    isMobileOnly
+                      ? classes.index_hero_search_box_mob
+                      : classes.index_hero_search_box
                   }
                 >
-                    {appReady ? <MobileSuggestions onSearch={this.onSearch} /> : <SuggestBoxLoader />}
+                  {appReady ? <MobileSuggestions onSearch={this.onSearch} /> : <CircularProgress style={{alignSelf: 'center'}} />}
                 </Grid>
                 <Grid item xs={12}>
-                  <IndexServiceTemplates compact={true} />
+                  <Defer
+                    render={() => (<IndexServiceTemplates compact={true} />)}
+                    renderPlaceholder={() => <div></div>}
+                    loadOnScreen
+                  /> 
                 </Grid>
               </Grid>
             );
@@ -203,19 +199,19 @@ class IndexHero extends Component {
                 <Grid item
                     sm={10}
 
-                    className={!this.state.isMobile
+              className={!isMobileOnly
                         ? classes.index_hero_title
                         : classes.index_hero_title_mob}
                 >
                 <div className={classes.index_hero_container}>
                     <div className={classes.index_hero_slogan}>
                             <Typography
-                                component="span"
+                                component="h1"
                                 variant="display1">
                                 All your government services
                         </Typography>
                             <Typography
-                                component="span"
+                                component="h1"
                                 variant="display1">
                                 in a single place.
                         </Typography>

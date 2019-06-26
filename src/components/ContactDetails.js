@@ -12,8 +12,7 @@ import Card from '@material-ui/core/Card';
 import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
 
-import AddressGoogleMap from './AddressGoogleMap';
-import ContactAddressMap from './ContactAddressMap';
+
 import withRoot from '../withRoot';
 
 const styles = theme => ({

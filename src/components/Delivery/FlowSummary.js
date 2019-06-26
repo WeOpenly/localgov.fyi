@@ -17,7 +17,7 @@ import DialogContent from '@material-ui/core/DialogContent';
 import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
 
-import Spinner from 'react-spinkit';
+import CircularProgress from '@material-ui/core/CircularProgress';;
 import {ferchServiceBpFlowSummary, createServiceFlow} from './actions';
 
 const windowGlobal = typeof window !== 'undefined'
@@ -69,7 +69,7 @@ class FlowSummary extends React.Component {
         let actions = null;
 
         if (flowSummaryLoading) {
-            return (<Spinner name="ball-beat" color="blue"/>);
+            return (<CircularProgress />);
         }
 
         if (flowSummaryLoadingFailed) {

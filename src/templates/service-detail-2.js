@@ -1,5 +1,5 @@
 import React, { Fragment } from "react"
-import * as PropTypes from "prop-types"
+
 import {connect} from "react-redux";
 import Helmet from "react-helmet";
 import {isMobileOnly} from 'react-device-detect';
@@ -9,7 +9,7 @@ import {withStyles} from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
-import Spinner from 'react-spinkit';
+import CircularProgress from '@material-ui/core/CircularProgress';;
 import ServiceFlowDialog from '../components/Delivery/ServiceFlowDialog';
 
 import ListItem from '@material-ui/core/ListItem';

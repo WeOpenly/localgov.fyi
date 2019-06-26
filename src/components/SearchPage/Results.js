@@ -5,7 +5,7 @@ import { StaticQuery, graphql } from "gatsby"
 import { isMobileOnly } from 'react-device-detect';
 import Typography from '@material-ui/core/Typography';
 import { withStyles } from '@material-ui/core/styles';
-import TextLoop from "react-text-loop";
+
 import LocationCard from '../UserRequests/LocationCard';
 import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
@@ -118,7 +118,7 @@ class SearchPageResults extends Component {
 
                 <Grid item sm={12} className={classes.ser_search_loading}>
                     <Typography variant="subheading" style={{ paddingBottom: 16 }} gutterBottom>
-                        <TextLoop interval={800} children={[`Understanding your search `, "Searching our directory", `Loading results`]} />
+                       Loading results ...
                     </Typography>
                 </Grid>
             </Grid>)

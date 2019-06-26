@@ -1,5 +1,5 @@
 import React, {Component, Fragment} from 'react';
-import Spinner from 'react-spinkit';
+import CircularProgress from '@material-ui/core/CircularProgress';;
 import {connect} from "react-redux";
 
 import Link from 'gatsby-link';
@@ -279,7 +279,7 @@ class ClainReq extends Component {
         }
         {
           submitting && <div className={classes.afterSubmit}>
-            <Spinner className={classes.spinner}/>
+            <CircularProgress />
           </div>
         }
         {

@@ -1,6 +1,6 @@
 import React, { Fragment } from 'react';
 import {connect} from "react-redux";
-import Spinner from 'react-spinkit';
+import CircularProgress from '@material-ui/core/CircularProgress';;
 import Paper from '@material-ui/core/Paper';
 import InputBase from '@material-ui/core/InputBase';
 import IconButton from '@material-ui/core/IconButton';
@@ -10,7 +10,7 @@ import Divider from '@material-ui/core/Divider';
 import DirectionsIcon from '@material-ui/icons/Directions';
 import Typography from '@material-ui/core/Typography';
 import ContentLoader from "react-content-loader"
-import CircularProgress from '@material-ui/core/CircularProgress';
+
 import PlacesAutocomplete, {
     geocodeByAddress,
     getLatLng,

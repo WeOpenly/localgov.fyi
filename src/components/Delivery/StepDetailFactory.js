@@ -12,7 +12,7 @@ import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
 import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
-import Spinner from 'react-spinkit';
+import CircularProgress from '@material-ui/core/CircularProgress';;
 import Button from '@material-ui/core/Button';
 import SvgIcon from '@material-ui/core/SvgIcon';
 import List from '@material-ui/core/List';
@@ -142,7 +142,7 @@ class StepDetailFactory extends React.Component {
         let content = null;
 
         if (serviceFlowLoading) {
-            return (<Spinner name="ball-beat" color="blue"/>);
+            return (<CircularProgress />);
         }
 
         if (serviceFlowLoadingFailed) {

@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import {connect} from "react-redux";
 import Form from "react-jsonschema-form";
 
-import Spinner from 'react-spinkit';
+import CircularProgress from '@material-ui/core/CircularProgress';;
 import {isMobileOnly} from 'react-device-detect';
 import {navigate} from '@reach/router';
 
@@ -113,7 +113,7 @@ class CallApiStepDetails extends React.Component {
         const {step_details} = stepDetails;
 
         if (stepDetailsLoading) {
-            return (<Spinner name="ball-beat" color="blue"/>);
+            return (<CircularProgress />);
         }
 
         if (stepDetailsLoadingFailed && !stepDetailsfailedReason) {

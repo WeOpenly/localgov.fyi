@@ -1,7 +1,7 @@
 import React, { Component, Fragment } from "react";
 import { connect } from "react-redux";
 
-import Spinner from 'react-spinkit';
+import CircularProgress from '@material-ui/core/CircularProgress';;
 import Card from '@material-ui/core/Card';
 import ContentLoader from "react-content-loader"
 import Grid from '@material-ui/core/Grid';

@@ -7,17 +7,7 @@ import Typography from '@material-ui/core/Typography';
 import { withStyles } from '@material-ui/core/styles';
 import { CopyToClipboard } from 'react-copy-to-clipboard';
 import Link from 'gatsby-link';
-import Menu from '@material-ui/core/Menu';
-import MenuItem from '@material-ui/core/MenuItem';
-import IconButton from '@material-ui/core/IconButton';
-import Button from '@material-ui/core/Button';
-import Share from '@material-ui/icons/Share';
-import Info from '@material-ui/icons/InfoOutlined';
-import Dialog from '@material-ui/core/Dialog';
-import DialogActions from '@material-ui/core/DialogActions';
-import DialogContent from '@material-ui/core/DialogContent';
-import HeaderAccountMenu from '../HeaderAccountMenu';
-import DialogTitle from '@material-ui/core/DialogTitle';
+
 import { FacebookShareButton, TwitterShareButton } from 'react-share';
 import TemplateViews from './TemplateViews';
 
@@ -40,7 +30,7 @@ const styles = theme => ({
     ser_gloss_service_mob_actions: {
         display: 'flex',
         width: '100%',
-        justifyContent: 'flex-end',
+        justifyContent: 'flex-start',
     },
     ser_gloss_servicename_text: {
         display: 'flex',
@@ -61,7 +51,8 @@ const styles = theme => ({
 
     },
     ser_gloss_share:{
-        fontSize: '16px',
+        fontSize: '18px',
+        marginRight: '8px',
     },
     ser_gloss_servicename_text_mob: {
         width: '100%',
@@ -152,62 +143,8 @@ class TemplateHero extends Component {
 
         const { anchorEl, copied } = this.state;
 
-        const windowGlobal = typeof window !== 'undefined' && window;
-        const windowLocation = windowGlobal.location
-            ? windowGlobal.location
-            : {};
-
-        const shareLink = windowLocation.href;
-
-        const shareButton = (
-            <IconButton
-                color="primary"
-                size="small"
-                className={classes.ser_gloss_menu_button}
-                onClick={this.handleShareClick}
-                aria-label="share">
-                <Share className={classes.ser_gloss_share} fontSize="small" />
-            </IconButton>
-        )
-
-        const learnMoreButton = (
-            <IconButton
-                color="primary"
-                size="small"
-                className={classes.ser_gloss_learn_more}
-                onClick={this.toggleDescDialog}
-                aria-label="share">
-                <Info className={classes.ser_gloss_share} fontSize="small" />
-            </IconButton>
-        )
-
-        const descDialog = (
-            <Dialog
-                onClose={this.toggleDescDialog}
-                aria-labelledby="customized-dialog-title"
-                open={this.state.openDescDialog}>
-                <DialogTitle id="customized-dialog-title" onClose={this.toggleDescDialog}>
-                    {service_name}
-                </DialogTitle>
-                <DialogContent>
-                    <Typography gutterBottom>
-                        <RawHTML>
-                            {service_glossary_description}
-                        </RawHTML> 
-                    </Typography>
-                </DialogContent>
-                <DialogActions>
-                    <Button onClick={this.toggleDescDialog} color="outlined">
-                        Close
-                    </Button>
-                </DialogActions>
-            </Dialog>
-        )
-
         return (
           <Grid container className={classes.ser_gloss_serviceheading}>
- 
-
  
             <Grid
               item
@@ -219,61 +156,17 @@ class TemplateHero extends Component {
                   : classes.ser_gloss_servicename_text_mob
               }
             >
+            
               <Typography component="h1" variant="display1">
-                {service_name}
-              </Typography>
-
-              {!this.state.isMobile ? (
-                <div className={classes.ser_gloss_service_actions}>
-                  {shareButton}
-                </div>
-              ) : null}
-              <Menu
-                id="simple-menu"
-                anchorEl={anchorEl}
-                open={Boolean(anchorEl)}
-                onClose={this.handleClose}
-              >
-                <CopyToClipboard
-                  text={shareLink}
-                  onCopy={this.handleCopy}
-                >
-                  <MenuItem className={classes.ser_gloss_menu_item}>
-                    <Typography>
-                      {copied ? "Copied!" : "Copy link"}
-                    </Typography>
-                  </MenuItem>
-                </CopyToClipboard>
-                <MenuItem
-                  onClick={() => this.handleClose("facebook")}
-                  className={classes.ser_gloss_menu_item}
-                >
-                  <FacebookShareButton
-                    url={shareLink}
-                    className={classes.ser_gloss_sharebutton}
-                  >
-                    <Typography>Facebook</Typography>
-                  </FacebookShareButton>
-                </MenuItem>
-                <MenuItem
-                  onClick={() => this.handleClose("twitter")}
-                  className={classes.ser_gloss_menu_item}
-                >
-                  <TwitterShareButton
-                    url={shareLink}
-                    className={classes.ser_gloss_sharebutton}
-                  >
-                    <Typography>Twitter</Typography>
-                  </TwitterShareButton>
-                </MenuItem>
-              </Menu>
+                {service_name} 
+              </Typography>   
             </Grid>
   
-
             <Grid item xs={12} >
+        
               <TemplateViews views={views} orgsCnt={orgsCnt} />
             </Grid>
-            {descDialog}
+  
      
             {!this.state.isMobile ? (
               <Fragment>

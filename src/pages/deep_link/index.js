@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {connect} from "react-redux";
 import {navigate} from '@reach/router';
-import Spinner from 'react-spinkit';
+import CircularProgress from '@material-ui/core/CircularProgress';;
 import Img from "gatsby-image";
 import {isMobileOnly} from 'react-device-detect';
 import {CopyToClipboard} from 'react-copy-to-clipboard';
@@ -79,7 +79,7 @@ class DeepLink extends Component {
             return (
                 <Grid container spacing={16}>
                     <Grid item xs={12} className={classes.redirDataContainer}>
-                        <Spinner name="ball-beat" color="blue"/>
+                        <CircularProgress />
                     </Grid>
                 </Grid>
             )
@@ -101,7 +101,7 @@ class DeepLink extends Component {
                         evergov
                     </Typography>
                     <Paper className={classes.ser_redir_details}>
-                        <Spinner name="line-scale-pulse-out-rapid" color="blue"/>
+                        <CircularProgress />
                         <Typography variant="subheading" style={{paddingBottom: 16 }}gutterBottom>
                             See you soon!
                         </Typography>

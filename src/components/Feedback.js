@@ -1,5 +1,5 @@
 import React, { Component, Fragment } from 'react';
-import Spinner from 'react-spinkit';
+import CircularProgress from '@material-ui/core/CircularProgress';;
 import { connect } from "react-redux";
 import { withStyles } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
@@ -218,7 +218,7 @@ class Feedback extends Component {
             </form>
           </Fragment>}
           {submitting && <div className={classes.feedback_afterSubmit}>
-            <Spinner className={classes.feedback_spinner}/>
+            <CircularProgress />
           </div>}
           {success && <div className={classes.feedback_afterSubmit}>
             <SvgIcon className={classes.feedback_icon}>

@@ -1,11 +1,10 @@
 import React, {Fragment} from 'react';
-import PropTypes from 'prop-types';
 import {connect} from "react-redux";
 
 
 import Helmet from "react-helmet";
 import {isMobileOnly} from 'react-device-detect';
-import Spinner from 'react-spinkit';
+import CircularProgress from '@material-ui/core/CircularProgress';
 import {withStyles} from '@material-ui/core/styles';
 
 import Grid from '@material-ui/core/Grid';
@@ -119,7 +118,7 @@ class Index extends React.Component {
 
         <Grid container className={classes.index_hero}>
           <Grid item xs={12}>
-              <IndexHero appReady={appReady} location={this.props.location} />
+            <IndexHero isMobileOnly={this.state.isMobile} appReady={appReady} location={this.props.location} />
           </Grid>
           <Grid item xs={12}>
               <AreaSuggestedServices appReady={appReady} />
@@ -136,9 +135,7 @@ class Index extends React.Component {
   }
 }
 
-Index.propTypes = {
-  classes: PropTypes.object.isRequired
-};
+
 
 
 const mapStateToProps = function (state, ownProps) {

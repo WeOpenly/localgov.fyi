@@ -111,7 +111,7 @@ class LocationCard extends Component {
                 <Typography variant="body1" gutterBottom>
                     {!message ? `Not seeing what you are looking for?` : message}
                 </Typography>
-                <div className={classes.loc_req_card_content}>
+                <div style={{display: 'flex'}} className={classes.loc_req_card_content}>
                     <Typography variant="caption" gutterBottom>
                         {!prompt ?  `Let us know what's missing` : prompt}
                     </Typography>

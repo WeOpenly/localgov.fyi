@@ -384,6 +384,7 @@ class ServiceGlossary extends Component {
                 </Typography>
               </Grid>
               <Grid item xs="auto" sm={1} />
+              <Grid item xs="auto" sm={1} />
               <Grid
                 item
                 xs="auto"

@@ -163,7 +163,7 @@ index_page_ser_control_items:{
         border: `1px solid ${theme.palette.primary['100']}`,
         boxShadow: '0px 3px 5px 0px rgba(0,0,0,0.1),0px 1px 1px 0px rgba(0,0,0,0.07),0px 2px 6px 1px rgba(0,0,0,0.06)',
         position: 'absolute',
-        left: '-280px',
+        left: '-320px',
         top: '0px',    
         padding: theme.spacing.unit,
         width: '320px',

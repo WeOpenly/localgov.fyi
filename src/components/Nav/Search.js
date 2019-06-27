@@ -38,7 +38,7 @@ const styles = theme => ({
         display: 'flex'
     },
     search_nav:{
-        background: '#fff',
+        background: theme.palette.primary['50'],
         minHeight: theme.spacing.unit * 6,
         boxShadow: '0px 1px 2px 0px rgba(0,0,0,0.1),0px 1px 1px 0px rgba(0,0,0,0.07),0px 2px 6px 1px rgba(0,0,0,0.06)'
     },
@@ -52,7 +52,7 @@ const styles = theme => ({
     search_header_nav_items: {
         display: 'flex',
         width: '100%',
-        justifyContent: 'flex-start',
+        justifyContent: 'space-between',
         alignItems: 'center',
         padding: `${theme.spacing.unit}px ${theme.spacing.unit*2}px`,
     },

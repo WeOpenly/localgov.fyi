@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 
 import SvgIcon from '@material-ui/core/SvgIcon';
 import { connect } from 'react-redux';
-import { isMobileOnly } from 'react-device-detect';
+
 import Dialog from '@material-ui/core/Dialog';
 import DialogContent from '@material-ui/core/DialogContent';
 import { withStyles } from '@material-ui/core/styles';
@@ -112,7 +112,6 @@ class Card extends Component {
         super(props);
         this.state = {
             showGreeting: false,
-            isMob: false,
         }
         this.submissionDoneCb = this.submissionDoneCb.bind(this);
         this.closeDialog = this.closeDialog.bind(this);
@@ -138,9 +137,6 @@ class Card extends Component {
     }
 
     componentDidMount() {
-        this.setState({
-            isMob: isMobileOnly
-        })
 
         const { dispatch, showNotifyDialog, service_delivery_enabled } = this.props;
 
@@ -186,7 +182,7 @@ class Card extends Component {
         }
 
 
-        return (!this.state.isMob ? (<PoseGroup>
+        return (!this.props.isMobile ? (<PoseGroup>
             {showNotifyDialog && [
                 <Shade key="shade" className={classes.ser_rem_shade} />,
                 <Modal key={ser_rem_form_id} className={classes.ser_rem_modal}  >

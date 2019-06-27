@@ -4,7 +4,7 @@ import {connect} from "react-redux";
 import CircularProgress from '@material-ui/core/CircularProgress';;
 import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
-import {isMobileOnly} from 'react-device-detect';
+
 import CardMedia from '@material-ui/core/CardMedia';
 import IconButton from '@material-ui/core/IconButton';
 import Typography from '@material-ui/core/Typography';
@@ -90,14 +90,9 @@ const styles = theme => ({
 class ServiceTemplateCard extends Component {
     constructor(props) {
         super(props);
-        this.state = {
-            isMob: false,
-        }
+
     }
 
-    componentDidMount() {
-        this.setState({isMob: isMobileOnly});
-    }
 
     render() {
         const {classes, name, slug, compact} = this.props;
@@ -123,7 +118,7 @@ class ServiceTemplateCard extends Component {
         }   
     
    
-        if (this.state.isMob){
+        if (this.props.isMobile){
             return (
               <div
                 onClick={() => navigate(`/services/${slug}`)}

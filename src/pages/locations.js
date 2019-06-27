@@ -2,7 +2,7 @@ import React, {Component, Fragment} from 'react';
 import Link from 'gatsby-link';
 import {navigate} from '@reach/router';
 
-import {isMobileOnly} from 'react-device-detect';
+
 import {connect} from "react-redux";
 import Masonry from 'react-masonry-component';
 import NavSearch from '../components/Nav/Search';
@@ -118,7 +118,7 @@ class Locations extends Component {
   }
 
   render() {
-    const {classes} = this.props;
+    const { classes, isMobile} = this.props;
     const locLen = this.props.data.orgs.details.length;
 
     const userLocReqFormRaw = <RawForm
@@ -222,7 +222,7 @@ class Locations extends Component {
 
     return (
       <Fragment>
-        <NavSearch />
+        <NavSearch isMobile={isMobile}/>
         <LocatioDialog />
         <Grid container className={classes.titleWrapper}>
           <Grid item xs={2}/>

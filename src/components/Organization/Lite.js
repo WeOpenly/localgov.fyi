@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 
 import { StaticQuery, graphql } from "gatsby"
-import { isMobileOnly } from 'react-device-detect';
+
 import Typography from '@material-ui/core/Typography';
 import { withStyles } from '@material-ui/core/styles';
 import { navigate } from '@reach/router';
@@ -50,13 +50,6 @@ ser_list_org_agg_logo_dum:{
 class OrgLite extends Component {
     constructor(props) {
         super(props);
-        this.state = {
-            isMob: false,
-        }
-    }
-
-    componentDidMount() {
-        this.setState({ isMob: isMobileOnly });
     }
 
     render() {

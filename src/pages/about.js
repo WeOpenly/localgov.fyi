@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import Link from 'gatsby-link';
 import Helmet from "react-helmet";
-import { isMobileOnly } from 'react-device-detect';
+
 import Nav from '../components/Nav/Common';
 import { withStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
@@ -120,16 +120,12 @@ const styles = theme => ({
 class About extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {
-      isMobileOnly: false,
-    };
     
   }
 
   componentDidMount() {
     const { dispatch } = this.props;
     dispatch(trackView('about', null, null, null));
-    this.setState({ isMobileOnly: isMobileOnly });
     // const script = document.createElement("script");
 
     // script.src = "https://maps.googleapis.com/maps/api/js?key=AIzaSyBr4RixcEvuxgGr9EwNeiHCqUITczxvvuc&libraries=places&callback=initIndex";
@@ -153,14 +149,14 @@ class About extends React.Component {
         </Helmet>
         <Nav />
         <div className={classes.about_section_1}>
-          {!this.state.isMobileOnly ? (
+          {!this.props.isMobile ? (
             <div className={classes.about_ill}>
               <AboutIl />
             </div>
           ) : null}
           <div
             className={
-              this.state.isMobileOnly
+              this.props.isMobile
                 ? classes.about_desc_mob
                 : classes.about_desc
             }

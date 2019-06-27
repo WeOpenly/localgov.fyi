@@ -95,7 +95,7 @@ class StateSuggest extends React.Component {
                         name:"Filter State",
                         id:"outlined-state-filter-native-simple"
                     }}
-                    displayEmpty
+     
                     value={selected ? selected.label : ""}
                     onChange={this.handleChange}
                 >

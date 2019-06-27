@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 
 import Grid from '@material-ui/core/Grid';
-import { isMobileOnly } from 'react-device-detect';
+
 import Typography from '@material-ui/core/Typography';
 import SUC from '@material-ui/icons/SupervisedUserCircle'
 import { withStyles } from '@material-ui/core/styles';
@@ -57,14 +57,8 @@ const styles = theme => ({
 class TemplateViews extends Component {
     constructor(props) {
         super(props);
-        this.state = {
-            isMob: false
-        }
     }
 
-    componentDidMount() {
-        this.setState({ isMob: isMobileOnly });
-    }
 
     render() {
         const { views, orgsCnt, classes } = this.props;
@@ -80,8 +74,8 @@ class TemplateViews extends Component {
         }
 
         return (
-          <div className={this.state.isMob ? classes.template_views_card_mob : classes.template_views_card}>
-            <div className={this.state.isMob ? classes.template_views_card_item_mob : classes.template_views_card_item}>
+          <div className={this.props.isMobile ? classes.template_views_card_mob : classes.template_views_card}>
+            <div className={this.props.isMobile ? classes.template_views_card_item_mob : classes.template_views_card_item}>
               <div style={{marginBottom: '4px'}}>
                 {" "}
                 <LocationCity
@@ -102,7 +96,7 @@ class TemplateViews extends Component {
                 </Typography>
               </div>
             </div>
-            <div className={this.state.isMob ? classes.template_views_card_item_mob : classes.template_views_card_item}>
+            <div className={this.props.isMobile ? classes.template_views_card_item_mob : classes.template_views_card_item}>
               <div>
                 {" "}
                 <SvgUsers style={{ fontSize: "26px" }} />{" "}

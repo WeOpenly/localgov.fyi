@@ -3,7 +3,7 @@ import {connect} from "react-redux";
 import {navigate} from '@reach/router';
 import CircularProgress from '@material-ui/core/CircularProgress';;
 import Img from "gatsby-image";
-import {isMobileOnly} from 'react-device-detect';
+
 import {CopyToClipboard} from 'react-copy-to-clipboard';
 import {FacebookShareButton, TwitterShareButton} from 'react-share';
 import queryString from 'query-string'

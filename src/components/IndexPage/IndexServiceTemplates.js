@@ -1,8 +1,6 @@
 import React, { Component, Fragment } from 'react';
 import { connect } from "react-redux";
 
-import { isMobileOnly } from 'react-device-detect';
-
 import { navigate } from '@reach/router';
 import Button from '@material-ui/core/Button';
 import { withStyles } from '@material-ui/core/styles';
@@ -87,7 +85,7 @@ const SerTemplateCards = (props) => {
         <Fragment>
             {sers.map((item, idx) => {
                 return (
-                    <ServiceTemplateCard compact={props.compact} key={item.name} name={item.name} slug={item.link} />
+                    <ServiceTemplateCard isMobile={props.isMobile} compact={props.compact} key={item.name} name={item.name} slug={item.link} />
                 )
             })}
         </Fragment>
@@ -103,28 +101,22 @@ const SerTemplateCards = (props) => {
 class IndexServiceTemplates extends Component {
     constructor(props) {
         super(props);
-        this.state = {
-            isMobileOnly: false
-        };
 
     }
 
-    componentDidMount() {
-        this.setState({ isMobileOnly: isMobileOnly });
-    }
 
     render() {
-        const { classes, currentNameSlug, showAdd, compact } = this.props;
-
+        const { classes, currentNameSlug, showAdd, compact, isMobile } = this.props;
+        
         return (
             <Fragment>
                 <Grid
                     container
-                    className={!this.state.isMobileOnly
+                    className={!isMobile
                         ? !compact ? classes.related_ser_list : classes.relates_ser_list_compact
                         : classes.related_ser_list_mob}>
 
-                    <SerTemplateCards compact={compact} currentNameSlug={currentNameSlug}  />
+                    <SerTemplateCards isMobile={isMobile} compact={compact} currentNameSlug={currentNameSlug}  />
                 </Grid>
             </Fragment>
         );

@@ -144,15 +144,15 @@ class IndexHero extends Component {
     }
 
     render() {
-      const { classes, location, appReady, isMobileOnly } = this.props;
+      const { classes, location, appReady, isMobile } = this.props;
 
-      if (isMobileOnly) {
+      if (isMobile) {
             return (
               <Grid
                 container
                 className={classes.index_hero_mob_container}
               >
-                <CommonNav location={location} />
+                <CommonNav isMobile={isMobile} location={location} />
                 <Grid item xs="auto" sm={2} />
                 <Grid
                   item
@@ -173,7 +173,7 @@ class IndexHero extends Component {
                   xs={12}
                   sm={6}
                   className={
-                    isMobileOnly
+                    isMobile
                       ? classes.index_hero_search_box_mob
                       : classes.index_hero_search_box
                   }
@@ -182,7 +182,7 @@ class IndexHero extends Component {
                 </Grid>
                 <Grid item xs={12}>
                   <Defer
-                    render={() => (<IndexServiceTemplates compact={true} />)}
+                    render={() => (<IndexServiceTemplates isMobile={isMobile} compact={true} />)}
                     renderPlaceholder={() => <div></div>}
                     loadOnScreen
                   /> 
@@ -199,7 +199,7 @@ class IndexHero extends Component {
                 <Grid item
                     sm={10}
 
-              className={!isMobileOnly
+              className={!isMobile
                         ? classes.index_hero_title
                         : classes.index_hero_title_mob}
                 >

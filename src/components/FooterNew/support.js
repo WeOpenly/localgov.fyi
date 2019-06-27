@@ -1,8 +1,5 @@
 import React, { Component } from "react";
 
-
-
-import { isMobileOnly } from 'react-device-detect';
 import Typography from '@material-ui/core/Typography';
 import { withStyles } from '@material-ui/core/styles';
 
@@ -36,14 +33,9 @@ const styles = theme => ({
 class FooterSupport extends Component {
     constructor(props) {
         super(props);
-        this.state = {
-            isMob: false,
-        }
     }
 
-    componentDidMount() {
-        this.setState({ isMob: isMobileOnly });
-    }
+
 
     render() {
         const { classes, } = this.props;

@@ -2,7 +2,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from "react-redux";
 
-import { isMobileOnly } from 'react-device-detect';
 import queryString from 'query-string'
 import { withStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
@@ -62,9 +61,6 @@ const styles = theme => ({
 class Search extends React.Component {
     constructor(props) {
         super(props);
-        this.state = {
-            isMobile: false
-        }
     }
 
     componentDidMount() {
@@ -99,7 +95,7 @@ class Search extends React.Component {
         }
 
         dispatch(trackView('search', null, null, null));
-        this.setState({ isMobile: isMobileOnly });
+
     }
 
     render() {
@@ -112,7 +108,7 @@ class Search extends React.Component {
             <Grid item
                 xs={12}
                 sm={10}
-                className={!this.state.isMobile
+                className={!this.props.isMobile
                     ? classes.search_page_search_results_container
                     : classes.search_page_search_results_container_mob}
             > 

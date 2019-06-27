@@ -1,7 +1,7 @@
 import React from "react";
 import Grid from '@material-ui/core/Grid';
 import { withStyles } from '@material-ui/core/styles';
-import {isMobileOnly} from 'react-device-detect';
+
 import Share from "./Share";
 import SearchNav from './Nav/Search';
 import Footer from './Footer';
@@ -42,12 +42,12 @@ class DetailTemplate extends React.Component {
 
   render() {
 
-    const { classes } = this.props;
+    const { classes, isMobile } = this.props;
 
     return (
       <div className={classes.default_template_root}>
-        <div className={isMobileOnly ? classes.default_template_mainMobile : classes.default_template_main}>
-          <SearchNav />
+        <div className={isMobile ? classes.default_template_mainMobile : classes.default_template_main}>
+          <SearchNav isMobile={isMobile} />
           <Grid container spacing={0}>
             <Grid item xs={1} />
             <Grid item xs={10}>

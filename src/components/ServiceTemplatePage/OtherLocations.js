@@ -1,7 +1,6 @@
-import React, { Component } from "react";
+import React, { Component, Fragment } from "react";
 import { connect } from "react-redux";
 
-import VirtualList from 'react-tiny-virtual-list';
 
 import Typography from '@material-ui/core/Typography';
 import { withStyles } from '@material-ui/core/styles';
@@ -17,8 +16,15 @@ const styles = theme => ({
   ser_gloss_gridItemLocation_mob_focus: {
     boxShadow: `0 0 3px 0px ${theme.palette.primary["600"]}`
   },
+  show_more_mob:{
+    margin: theme.spacing.unit,
+    textAlign: 'center',
+    cursor: 'pointer',
+    textDecoration: 'underline',
+  },
   ser_gloss_suggested_row: {
-    marginTop: theme.spacing.unit * 4
+    marginTop: theme.spacing.unit * 4,
+
   },
   ser_gloss_suggested_row_heading: {
     paddingLeft: theme.spacing.unit,
@@ -81,8 +87,9 @@ class OtherLocations extends Component {
         super(props);
         this.state = {
             stateName: null,
-
+            showMore: false,
         }
+        this.toggleShowMore = this.toggleShowMore.bind(this)
         this.setStateFilter = this
             .setStateFilter
             .bind(this);
@@ -91,6 +98,11 @@ class OtherLocations extends Component {
             .bind(this);
     }
 
+    toggleShowMore(toggle){
+      this.setState({
+        showMore: !toggle,
+      })
+    }
 
     clearStateName() {
         const { location } = this.props;
@@ -110,7 +122,7 @@ class OtherLocations extends Component {
 
 
     render() {
-      const { classes, allOrgs, isMobileOnly } = this.props;
+      const { classes, allOrgs, isMobile } = this.props;
         const { stateName} = this.state;
 
    
@@ -158,58 +170,66 @@ class OtherLocations extends Component {
             )
         })
 
-      const mobLocs = (<VirtualList
-        width='100%'
-        height={filteredOrgs.length*60}
-        className={classes.v_list_body}
-        itemCount={filteredOrgs.length}
-        itemSize={60} // Also supports variable heights (array or function getter)
-        renderItem={({ index, style }) =>
-          <LocationSerCard key={index} idx={index} organization={filteredOrgs[index].organization} ser_url_slug={filteredOrgs[index].url_slug} area={filteredOrgs[index].area} />
+
+      let moreLocs = null;
+      if (!this.state.showMore){
+        moreLocs = (<a
+          onClick={() => this.toggleShowMore(this.state.showMore)}
+          className={classes.show_more_mob}
+        >
+          <Typography
+            variant="title"
+            component="body1">
+            Show More Locations
+      </Typography>
+        </a>)
+      } 
+        if (!this.props.isMobile || this.state.showMore){
+          moreLocs = (<Fragment> 
+            <div
+            className={
+              isMobile
+                ? classes.ser_gloss_others_row_header_container_mob
+                : classes.ser_gloss_others_row_header_container
+            }
+          >
+            <Typography
+              variant="title"
+              component="h2"
+              className={
+                this.props.isMobile
+                  ? classes.ser_gloss_suggested_row_heading_mob
+                  : classes.ser_gloss_suggested_row_heading
+              }
+            >
+              More locations offering this service
+                </Typography>
+            <StateSuggest
+              isMobile={isMobile}
+              clearStateName={this.clearStateName}
+              selected={this.state.stateName}
+              allStates={allStates}
+              onSelectSuggestion={this.setStateFilter}
+            />
+           
+          </div>
+            <div className={classes.ser_gloss_suggested_row_locs}>
+              {locs}
+            </div>
+          </Fragment>
+            )
         }
-      />)
-    
         
         return (
           <Grid container>
-            <OtherStateLocations allOrgs={allOrgs} />
+            <OtherStateLocations isMobile={isMobile} allOrgs={allOrgs} />
             <Grid item sm={1} />
             <Grid
               item
               sm={10}
               className={classes.ser_gloss_suggested_row}
             >
-              <div
-                className={
-                  isMobileOnly
-                    ? classes.ser_gloss_others_row_header_container_mob
-                    : classes.ser_gloss_others_row_header_container
-                }
-              >
-                <Typography
-                  variant="title"
-                  component="h2"
-                  className={
-                    isMobileOnly
-                      ? classes.ser_gloss_suggested_row_heading_mob
-                      : classes.ser_gloss_suggested_row_heading
-                  }
-                >
-                  More locations offering this service
-                </Typography>
-                <StateSuggest
-                  clearStateName={this.clearStateName}
-                  selected={this.state.stateName}
-                  allStates={allStates}
-                  onSelectSuggestion={this.setStateFilter}
-                />
-              </div>
-
-              {!isMobileOnly ? (<div className={classes.ser_gloss_suggested_row_locs}>
-                {locs}
-                </div>) : (<div className={classes.ser_gloss_suggested_row_locs_mob}>
-                {mobLocs}
-                </div>)}
+            {moreLocs}
             </Grid>
             <Grid item sm={1} />
           </Grid>

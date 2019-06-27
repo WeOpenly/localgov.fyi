@@ -1,11 +1,9 @@
 import React, { Component } from 'react';
 import Link from 'gatsby-link';
-import { isMobileOnly } from 'react-device-detect';
 
 import { withStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
-import Typography from '@material-ui/core/Typography';
-import Divider from '@material-ui/core/Divider';
+
 import FooterNew from  './FooterNew'
 import withRoot from '../withRoot';
 
@@ -91,11 +89,8 @@ footer_link_dark:{
 
 class Footer extends Component {
   render() {
-    const { classes } = this.props;
-    const { page, dark } = this.props;
-    
 
-    return (<FooterNew />);
+    return (<FooterNew isMobile={this.props.isMobile} />);
 
   }
 }

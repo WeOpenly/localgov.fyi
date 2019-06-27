@@ -1,6 +1,5 @@
 import React, { Component, Fragment } from 'react';
 import { connect } from "react-redux";
-import { isMobileOnly } from 'react-device-detect';
 
 import { withStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
@@ -71,14 +70,12 @@ const styles = theme => ({
 class SearchNav extends Component {
     constructor(props) {
         super(props);
-        this.state = {
-            isMobileOnly: false
-        };
+
         this.onSearch = this.onSearch.bind(this);
     }
 
     componentDidMount() {
-        this.setState({ isMobileOnly: isMobileOnly });
+
         this.props.fetchAreaGuess();
     }
 
@@ -95,7 +92,7 @@ class SearchNav extends Component {
         );
  
         if (!areaGuessLoading && areaGuessResult){
-            if(this.state.isMobileOnly){
+            if(this.props.isMobile){
                 suggestionSection = (<div className={classes.header_search_cont}><MobileSuggestions inHeader={true} onSearch={this.onSearch} /></div> )
             }
             else{
@@ -120,7 +117,7 @@ class SearchNav extends Component {
               sm={9}
               align="center"
               className={
-                this.state.isMobileOnly
+                this.props.isMobile
                   ? classes.search_header_nav_items_mob
                   : classes.search_header_nav_items
               }
@@ -133,7 +130,7 @@ class SearchNav extends Component {
               {suggestionSection}
             </Grid>
             <Grid item xs="auto" sm={3}  style={{'display': 'flex', justifyContent: 'flex-end'}}>
-              {!this.state.isMobileOnly && (
+              {!this.props.isMobile && (
                 <HeaderAccountMenu location={location} />
               )}
             </Grid>

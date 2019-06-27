@@ -4,7 +4,6 @@ import Link from 'gatsby-link';
 import {CopyToClipboard} from 'react-copy-to-clipboard';
 import {FacebookShareButton, TwitterShareButton} from 'react-share';
 import Img from "gatsby-image";
-import {isMobileOnly} from 'react-device-detect';
 
 import {withStyles} from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
@@ -126,7 +125,6 @@ class OrgHeader extends Component {
       anchorEl: null,
       copied: false,
       hover: false,
-      isMobileOnly: false,
     };
     this.handleShareClick = this
       .handleShareClick
@@ -148,11 +146,6 @@ class OrgHeader extends Component {
       .bind(this);
   }
 
-  componentDidMount(){
-    this.setState({
-      isMobileOnly: isMobileOnly,
-    });
-  }
 
   handleShareClick(event) {
     this.setState({anchorEl: event.currentTarget});
@@ -195,6 +188,7 @@ class OrgHeader extends Component {
       info,
       logoFluid,
       claimed,
+      isMobile,
       displayShare = true
     } = this.props;
     const {anchorEl, copied} = this.state;
@@ -207,24 +201,7 @@ class OrgHeader extends Component {
       : {};
     const shareLink = windowLocation.href + '/';
 
-    const claimedComponent = claimed
-      ? (
-        <div className={classes.org_header_claimed}>
-          <CheckCircle color="primary" className={classes.org_header_claimedIcon}/>
-          <Typography variant="caption">Claimed</Typography>
-        </div>
-      )
-      : (
-        <div
-          className={classes.org_header_claimed}
-          onMouseEnter={this.handleMouseEnter}
-          onMouseLeave={this.handleMouseLeave}
-          onClick={() => this.handleMouseEnter(id, name)}>
-          <Help color="disabled" className={classes.claimedIcon}/>
-          <Typography variant="caption">Unclaimed</Typography>
-          {this.state.hover && <UnclaimedHover/>}
-        </div>
-      );
+
 
     let contactAddress;
     if (info) 
@@ -382,7 +359,7 @@ class OrgHeader extends Component {
       <Grid
         container
         spacing={16}
-        className={!this.state.isMobileOnly
+        className={!isMobile
         ? classes.org_header_main
         : classes.org_header_mainMobile}>
         <Grid item xs={12} md={11}>

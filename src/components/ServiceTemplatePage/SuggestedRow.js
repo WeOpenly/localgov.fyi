@@ -5,7 +5,7 @@ import CircularProgress from '@material-ui/core/CircularProgress';
 import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
 import Grid from '@material-ui/core/Grid';
-import { isMobileOnly } from 'react-device-detect';
+
 import Typography from '@material-ui/core/Typography';
 import { withStyles } from '@material-ui/core/styles';
 import HighLightOutlined from '@material-ui/icons/HighlightOutlined';
@@ -64,18 +64,12 @@ ser_gloss_suggested_row_locs_mob:{
 class SuggestedRow extends Component {
     constructor(props) {
         super(props);
-        this.state = {
-            isMob: false,
-        }
     }
 
-    componentDidMount() {
-        this.setState({ isMob: isMobileOnly });
-    }
 
     render() {
      
-        const { header, results, classes, searchText, showingRelated, showingParent, service_name } = this.props;
+        const { header, isMobile, results, classes, searchText, showingRelated, showingParent, service_name } = this.props;
 
         let serviceLocations = null;
         let parentFirstResName = null;
@@ -86,7 +80,7 @@ class SuggestedRow extends Component {
             if(idx === 0){
                 parentFirstResName = organization.org_name
             }
-            return <LocationSerCard highlight key={idx} idx={idx} organization={organization} ser_url_slug={url_slug} area={area}/>
+            return <LocationSerCard isMobile={isMobile} highlight key={idx} idx={idx} organization={organization} ser_url_slug={url_slug} area={area}/>
         });
 
         let extraMessage = null;
@@ -102,15 +96,15 @@ class SuggestedRow extends Component {
         return (
             <Grid container>
                 <Grid item sm={1} />
-                <Grid item sm={10} className={this.state.isMob ? classes.ser_gloss_suggested_row_mob :  classes.ser_gloss_suggested_row}>
+                <Grid item sm={10} className={this.props.isMobile ? classes.ser_gloss_suggested_row_mob :  classes.ser_gloss_suggested_row}>
                     <Typography
                         variant="title"
                         component="h2"
-                        className={this.state.isMob ? classes.ser_gloss_suggested_row_heading_mob : classes.ser_gloss_suggested_row_heading}>
+                        className={this.props.isMobile ? classes.ser_gloss_suggested_row_heading_mob : classes.ser_gloss_suggested_row_heading}>
                         {header}
                     </Typography>
                     {extraMessage}
-                    <div className={this.state.isMob ? classes.ser_gloss_suggested_row_locs_mob : classes.ser_gloss_suggested_row_locs}>
+                    <div className={this.props.isMobile ? classes.ser_gloss_suggested_row_locs_mob : classes.ser_gloss_suggested_row_locs}>
                         {serviceLocations}
                     </div>
                 </Grid>

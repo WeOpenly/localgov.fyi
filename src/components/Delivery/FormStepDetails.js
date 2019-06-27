@@ -4,7 +4,7 @@ import { connect } from "react-redux";
 import Form from "react-jsonschema-form";
 
 import CircularProgress from '@material-ui/core/CircularProgress';;
-import { isMobileOnly } from 'react-device-detect';
+
 import { navigate } from '@reach/router';
 
 import TextField from '@material-ui/core/TextField';

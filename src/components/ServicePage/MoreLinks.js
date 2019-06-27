@@ -2,7 +2,6 @@ import React, { Component } from "react";
 
 
 
-import { isMobileOnly } from 'react-device-detect';
 import Typography from '@material-ui/core/Typography';
 import { withStyles } from '@material-ui/core/styles';
 
@@ -38,13 +37,6 @@ const styles = theme => ({
 class MoreLinks extends Component {
     constructor(props) {
         super(props);
-        this.state = {
-            isMob: false,
-        }
-    }
-
-    componentDidMount() {
-        this.setState({ isMob: isMobileOnly });
     }
 
     render() {
@@ -142,7 +134,7 @@ class MoreLinks extends Component {
 
         return (
             <div className={classes.more_links}>
-                <div className={this.state.isMob ? classes.more_links_container_mob : classes.more_links_container}>
+                <div className={this.props.isMobile ? classes.more_links_container_mob : classes.more_links_container}>
                     {additionalServices}
                     {stateSers}
                     {glossLinks}

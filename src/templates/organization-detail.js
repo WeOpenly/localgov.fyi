@@ -107,6 +107,7 @@ const {
   other_orgs_from_state_heading,
 other_orgs_from_state
 } = this.props.pageContext.data;
+    const { isMobile} = this.props;
     const name = org_name;
     const services = hierarchial_service_details;
     const { hierarchy } = area;
@@ -157,6 +158,7 @@ other_orgs_from_state
 
       contactDetailComponent = (
         <OrgHeader
+          isMobile={isMobile}
           name={name}
           parent={state}
           info={contact_details}
@@ -208,6 +210,7 @@ other_orgs_from_state
             return (
               <Grid item xs={12} md={4} key={ser.id}>
                 <ServiceCard
+                  isMobile={isMobile}
                   resultType='service'
                   id={ser.id}
                   org_name={org_name}
@@ -286,7 +289,7 @@ other_orgs_from_state
     }
 
     return (
-      <DetailTemplate location={this.props.location}>
+      <DetailTemplate isMobile={isMobile} location={this.props.location}>
       <Grid container spacing={16}>
         <Helmet>
           <script type="application/ld+json">{`${JSON.stringify(jsonLd)}`}</script>
@@ -338,7 +341,7 @@ other_orgs_from_state
         </Grid>
       </Grid>
        <div className={classes.org_detail_footer}>
-          <Footer page={this.props.location.pathname} />
+          <Footer isMobile={isMobile} page={this.props.location.pathname} />
         </div>
         </DetailTemplate>
         

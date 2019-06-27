@@ -160,7 +160,7 @@ class GoogAutoComplete extends React.Component {
 
    
     render() {
-        const {classes, searchText} = this.props;
+        const {classes, searchText, isMobile} = this.props;
         const searchOptions = {
             types: ['(cities)'],
             componentRestrictions: {
@@ -197,9 +197,9 @@ class GoogAutoComplete extends React.Component {
                                 },
                                 className:  classes.ser_gloss_search_input,
                             })} />
-                                    <IconButton className={classes.ser_gloss_search_iconButton} aria-label="Search">
-                                        {loading ? (<CircularProgress style={{ color: '#fff' }} size={24} />) : (<SearchIcon style={{ color: '#fff'}} />)}
-                                    </IconButton>
+                            <IconButton className={classes.ser_gloss_search_iconButton} aria-label="Search">
+                                {loading ? (<CircularProgress style={{ color: '#fff' }} size={24} />) : (<SearchIcon style={{ color: '#fff'}} />)}
+                            </IconButton>
                         </div>
                 
                         <div className={classes.ser_gloss_search_suggestions} elevation={2}>

@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 
 import { StaticQuery, graphql } from "gatsby"
-import { isMobileOnly } from 'react-device-detect';
+
 import Typography from '@material-ui/core/Typography';
 import { withStyles } from '@material-ui/core/styles';
 
@@ -87,14 +87,10 @@ const SearchSuggestedLoader = () => (
 class SearchPageResults extends Component {
     constructor(props) {
         super(props);
-        this.state = {
-            isMob: false,
-        }
+
     }
 
-    componentDidMount() {
-        this.setState({ isMob: isMobileOnly });
-    }
+
 
     componentWillReceiveProps(nextProps){
         const {dispatch} = this.props;
@@ -137,13 +133,13 @@ class SearchPageResults extends Component {
                     <OtherLocations />
                 </Grid>
                 <Grid item xs="auto" />
-                <Grid item sm={12} className={this.state.isMob ? classes.ser_case1_suggested_row_mob : classes.ser_case1_suggested_row}>
+                <Grid item sm={12} className={this.props.isMobile ? classes.ser_case1_suggested_row_mob : classes.ser_case1_suggested_row}>
                     <Typography
                         variant="title"
-                        className={this.state.isMob ? classes.ser_case1_suggested_row_heading_mob : classes.ser_case1_suggested_row_heading}>
+                        className={this.props.isMobile ? classes.ser_case1_suggested_row_heading_mob : classes.ser_case1_suggested_row_heading}>
                         Popular Services
                     </Typography>
-                    <div className={this.state.isMob ? classes.ser_case1_suggested_row_mob : classes.ser_case1_suggested_row}>
+                    <div className={this.props.isMobile ? classes.ser_case1_suggested_row_mob : classes.ser_case1_suggested_row}>
                         <RelatedServiceTemplates />
                     </div>
                 </Grid>

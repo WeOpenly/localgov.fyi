@@ -3,7 +3,7 @@ import {connect} from "react-redux";
 
 
 import Helmet from "react-helmet";
-import {isMobileOnly} from 'react-device-detect';
+
 import CircularProgress from '@material-ui/core/CircularProgress';
 import {withStyles} from '@material-ui/core/styles';
 
@@ -67,9 +67,6 @@ const styles = theme => ({
 class Index extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {
-      isMobile: false
-    }
   }
 
 
@@ -80,9 +77,6 @@ class Index extends React.Component {
       dispatch(trackView('index', null, null, null));
     }
     dispatch(fetchAreaGuess())
-    this.setState({
-      isMobile: isMobileOnly
-    })
   }
 
 
@@ -118,17 +112,17 @@ class Index extends React.Component {
 
         <Grid container className={classes.index_hero}>
           <Grid item xs={12}>
-            <IndexHero isMobileOnly={this.state.isMobile} appReady={appReady} location={this.props.location} />
+            <IndexHero isMobile={this.props.isMobile} appReady={appReady} location={this.props.location} />
           </Grid>
           <Grid item xs={12}>
-              <AreaSuggestedServices appReady={appReady} />
+            <AreaSuggestedServices isMobile={this.props.isMobile} appReady={appReady} />
           </Grid>        
           <Grid item xs={12}>
-            <OtherLocations />
+            <OtherLocations isMobile={this.props.isMobile}  />
           </Grid>
         </Grid>
         <div className={classes.index_footer}>
-          <Footer page={this.props.location.pathname} />
+          <Footer isMobile={this.props.isMobile}  page={this.props.location.pathname} />
         </div>
       </Fragment>
     );

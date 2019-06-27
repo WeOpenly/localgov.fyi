@@ -33,6 +33,7 @@ import RecreationSvg from '../svgIcons/RecreationIl.js';
 import Utilitybill from '../svgIcons/utbIl.js';
 import BusinessLic from '../svgIcons/businessLic.js';
 
+import FooterNew from '../components/FooterNew'
 import {trackView, trackClick, trackInput, trackEvent} from "../components/common/tracking";
 import Suggested from '../components/ServiceTemplatePage/Suggested';
 import TemplateHero from '../components/ServiceTemplatePage/TemplateHero';
@@ -185,8 +186,8 @@ const styles = theme => ({
     color: "#4c4d55"
   },
   ser_gloss_related_container: {
-    margin: `${theme.spacing.unit * 2}px  ${theme.spacing.unit * 10}px ${theme
-      .spacing.unit * 4}px ${theme.spacing.unit * 10}px`
+    margin: `${theme.spacing.unit * 2}px  ${theme.spacing.unit}px ${theme
+      .spacing.unit * 4}px ${theme.spacing.unit }px`
   }
 });
 
@@ -204,14 +205,6 @@ const RawHTML = ({
 class ServiceGlossary extends Component {
     constructor(props) {
         super(props);
-        this.state = {
-            anchorEl: null,
-            copied: false,
-            openDescDialog: false,
-            foundDevice: false,
-            isMobile: false
-        }
-
         this.handleOrgClick = this
             .handleOrgClick
             .bind(this);
@@ -247,9 +240,6 @@ class ServiceGlossary extends Component {
 
     componentDidMount() {
         const { id } = this.props.pageContext.data;
-      const { isMobile} = this.props;
-        console.log(this.props, "ismb", isMobile);
-      this.setState({ isMobile: isMobile, foundDevice: true })
         this.props.clearAll();
         this.props.trackView();
         this.props.autoGetLoc(id);
@@ -264,14 +254,9 @@ class ServiceGlossary extends Component {
         const {classes} = this.props;
         const { id,  service_name, service_name_slug, service_glossary_description, orgs, views} = this.props.pageContext.data;
 
-
-      const { anchorEl, copied } = this.state;
       let icon = null;
       let mobIcon = null;
-      const windowGlobal = typeof window !== 'undefined' && window;
-      const windowLocation = windowGlobal.location
-        ? windowGlobal.location
-        : {};
+
 
 
       const lowerCaseName = service_name.toLowerCase();
@@ -295,7 +280,7 @@ class ServiceGlossary extends Component {
 
       let showIcon = null;
   
-      if (this.state.foundDevice && !this.state.isMobile){
+      if (!this.props.isMobile){
         showIcon = icon;
       }
 
@@ -346,7 +331,7 @@ class ServiceGlossary extends Component {
                 </Link>
                 </Typography>
               
-                <HeaderAccountMenu location={this.props.location} />
+                <HeaderAccountMenu isMobile={this.props.isMobile} location={this.props.location} />
               </Grid>
               <Grid item sm={1} />
 
@@ -354,7 +339,7 @@ class ServiceGlossary extends Component {
               <Grid item xs={12} md={6}>
                 <TemplateHero
                   views={views}
-                  isMobileOnly={!showIcon}
+                  isMobile={this.props.isMobile}
                   orgsCnt={orgs.length}
                   service_name={service_name}
                   trackClick={this.trackClick}
@@ -371,14 +356,13 @@ class ServiceGlossary extends Component {
               <Grid item xs={1} />
 
               <Grid item xs={12}>
-                <GoogAutoComplete serviceTemplateId={id} />
+                <GoogAutoComplete isMobile={this.props.isMobile} serviceTemplateId={id} />
               </Grid>
               <Grid item xs={12}>
-                <Suggested service_name={service_name} handleOrgClick={this.handleOrgClick} />
+                <Suggested isMobile={this.props.isMobile} service_name={service_name} handleOrgClick={this.handleOrgClick} />
               </Grid>
               <Grid item xs={12}>
-               
-                <OtherLocations isMobileOnly={this.state.isMobile} allOrgs={orgs} />
+                <OtherLocations isMobile={this.props.isMobile} allOrgs={orgs} />
               </Grid>
             </Grid>
 
@@ -399,25 +383,24 @@ class ServiceGlossary extends Component {
                   More Services
                 </Typography>
               </Grid>
-              <Grid item xs={1} />
+              <Grid item xs="auto" sm={1} />
               <Grid
                 item
-                xs={12}
+                xs="auto"
+                sm={10}
                 className={classes.ser_gloss_related_container}
               >
-              <Defer
-                  render={() => (<RelatedServiceTemplates
+          <RelatedServiceTemplates
+                    isMobile={this.props.isMobile}
                     currentNameSlug={service_name_slug}
                     showAdd={true}
-                  />)}
-              renderPlaceholder={() => <div></div>}
-              loadOnScreen
-            />
+                  />
                
               </Grid>
+              <Grid xs="auto" item sm={1} />
             </Grid>
             <div className={classes.ser_gloss_footer}>
-              <Footer page={this.props.location.pathname} />
+              <FooterNew isMobile={this.props.isMobile} />
             </div>
           </Fragment>
         );

@@ -1,7 +1,6 @@
 import React, {Component, Fragment} from 'react';
 import {connect} from "react-redux";
 
-import {isMobileOnly} from 'react-device-detect';
 
 import {navigate} from '@reach/router';
 import CircularProgress from '@material-ui/core/CircularProgress';
@@ -95,7 +94,7 @@ const SerTemplateCards = (props) => {
                 if (idx === sers.length-1 && props.showAdd)
                     return (<ConnLocationCard />)
                 return (
-                    <ServiceTemplateCard compact={props.compact}  key={item.name} name={item.name} slug={item.link}/>
+                    <ServiceTemplateCard isMobile={props.isMobile}  compact={props.compact}  key={item.name} name={item.name} slug={item.link}/>
                 )
             })}
         </Fragment>
@@ -111,28 +110,23 @@ const SerTemplateCards = (props) => {
 class RelatedServiceTemplates extends Component {
     constructor(props) {
         super(props);
-        this.state = {
-            isMobileOnly: false
-        };
 
     }
 
-    componentDidMount() {
-        this.setState({isMobileOnly: isMobileOnly});
-    }
+
 
     render() {
-        const {classes, currentNameSlug, showAdd, compact} = this.props;
+        const {classes, currentNameSlug, showAdd, compact, } = this.props;
 
         return (
             <Fragment>
                 <Grid
                     container
-                    className={!this.state.isMobileOnly
+                    className={!this.props.isMobile
                     ? !compact ? classes.related_ser_list : classes.relates_ser_list_compact
                     : classes.related_ser_list_mob}>
                     
-                    <SerTemplateCards compact={compact} currentNameSlug={currentNameSlug} showAdd={showAdd} />
+                    <SerTemplateCards isMobile={this.props.isMobile} compact={compact} currentNameSlug={currentNameSlug} showAdd={showAdd} />
                   </Grid>
             </Fragment>
         );

@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 
 
-import { isMobileOnly } from 'react-device-detect';
+
 import Typography from '@material-ui/core/Typography';
 import { withStyles } from '@material-ui/core/styles';
 
@@ -38,24 +38,18 @@ const styles = theme => ({
 class FooterNew extends Component {
     constructor(props) {
         super(props);
-        this.state = {
-            isMob: false,
-        }
-    }
-
-    componentDidMount() {
-        this.setState({ isMob: isMobileOnly });
     }
 
     render() {
-        const { classes } = this.props;
+        const { classes, isMobile } = this.props;
         const date = new Date().getFullYear();
+
         return (
             <div className={classes.new_footer}>
-                <div className={this.state.isMob ? classes.new_footer_links_mob : classes.new_footer_links}>
-                    <FooterSocial />
-                    <FooterDiscover />
-                    <FooterSupport />
+                <div className={this.props.isMobile ? classes.new_footer_links_mob : classes.new_footer_links}>
+                    <FooterSocial isMobile={isMobile}/>
+                    <FooterDiscover isMobile={isMobile}/>
+                    <FooterSupport isMobile={isMobile}/>
                 </div>
                 <div className={classes.new_footer_copyright}>
                     <Typography variant="caption">

@@ -2,8 +2,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from "react-redux";
 
-import { isMobileOnly } from 'react-device-detect';
-
 import { withStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 import SerListItemWithOrg from '../Service/ListItemWithOrg';
@@ -89,14 +87,10 @@ const styles = theme => ({
 class AreaSuggestedServices extends React.Component {
     constructor(props) {
         super(props);
-        this.state = {
-            isMobile: false
-        }
     }
 
     componentDidMount() {
         const { dispatch } = this.props;
-        this.setState({ isMobile: isMobileOnly });
         dispatch(fetchAreaServices(this.props.areaGuessResult.lat, this.props.areaGuessResult.lng));
     }
 
@@ -124,12 +118,12 @@ class AreaSuggestedServices extends React.Component {
             nearbyComp = areaServices.map((ser, idx) => <SerListItemWithOrg {...ser} />)
             return (<Grid container style={{background: '#fafafa'}}>
                 <Grid item xs="auto" sm={1} />
-                <Grid item xs={12} sm={10} className={this.state.isMobile ?classes.ser_org_list_container_mob : classes.ser_org_list_container}>
-                    <div className={this.state.isMobile ? classes.ser_org_list_header_container_mob : classes.ser_org_list_header_container}>
+                <Grid item xs={12} sm={10} className={this.props.isMobile ?classes.ser_org_list_container_mob : classes.ser_org_list_container}>
+                    <div className={this.props.isMobile ? classes.ser_org_list_header_container_mob : classes.ser_org_list_header_container}>
                         <NearMe style={{ fontSize: '14', color: '#5627FF', marginRight: '4px' }} /> 
                         <Typography
                             variant="title"
-                            className={this.state.isMobile ? classes.ser_org_list_header_mob : classes.ser_org_list_header}>
+                            className={this.props.isMobile ? classes.ser_org_list_header_mob : classes.ser_org_list_header}>
                             Suggestions based on your location
                     </Typography>
                     </div>

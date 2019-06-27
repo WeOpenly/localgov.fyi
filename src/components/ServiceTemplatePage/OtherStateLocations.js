@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 
 import Grid from "@material-ui/core/Grid";
-import { isMobileOnly } from "react-device-detect";
+
 import SuggestedRow from "./SuggestedRow";
 import Fuse from "fuse.js";
 import { withStyles } from "@material-ui/core/styles";
@@ -57,9 +57,6 @@ class OtherStateLocations extends Component {
     super(props);
   }
 
-  componentDidMount() {
-    this.setState({ isMob: isMobileOnly });
-  }
 
   render() {
     const {
@@ -67,7 +64,7 @@ class OtherStateLocations extends Component {
           autoLocRegion,
          } = this.props;
 
-    const {classes, allOrgs} = this.props;
+    const { classes, allOrgs, isMobile} = this.props;
     
     const {
            googLocLoading,
@@ -111,6 +108,7 @@ class OtherStateLocations extends Component {
         }
          return (
            <SuggestedRow
+             isMobile={isMobile}
              key={`goog-STATE-LOC`}
              header={`Suggestions from ${googleLocRegion}`}
              results={filteredOrgs}
@@ -126,6 +124,7 @@ class OtherStateLocations extends Component {
         }
           return (
             <SuggestedRow
+              isMobile={isMobile}
               key={`AUTO-state-LOC`}
               header={`Suggestions from ${autoLocRegion}`}
               results={filteredOrgs}

@@ -3,9 +3,6 @@ import {connect} from "react-redux";
 
 import CircularProgress from '@material-ui/core/CircularProgress';;
 
-import {isMobileOnly} from 'react-device-detect';
-
-
 import Typography from '@material-ui/core/Typography';
 import {withStyles} from '@material-ui/core/styles';
 import SvgAddloc from '../../svgIcons/addLoc.js';
@@ -51,9 +48,7 @@ loc_req_card_action_compact : {
 class LocationCard extends Component {
     constructor(props) {
         super(props);
-        this.state = {
-            isMob: false
-        }
+
         this.openDialog = this.openDialog.bind(this);
     }
 
@@ -61,10 +56,6 @@ class LocationCard extends Component {
         navigate(`/locations/?show_add_loc=true`);
     }
     
-    componentDidMount() {
-        this.setState({isMob: isMobileOnly});
-    }
-
     render() {
         const {classes, compact, message, prompt} = this.props;
         let icon = null;

@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 
 import Grid from '@material-ui/core/Grid';
-import { isMobileOnly } from 'react-device-detect';
+
 import SuggestedRow from './SuggestedRow';
 import LocationCard from '../UserRequests/LocationCard';
 import { withStyles } from '@material-ui/core/styles';
@@ -58,12 +58,9 @@ class Suggested extends Component {
         super(props);
     }
 
-    componentDidMount() {
-        this.setState({ isMob: isMobileOnly });
-    }
 
     render() { 
-        const {service_name} = this.props;
+        const { service_name, isMobile} = this.props;
         const { autoLocLoading, autoLocResults, autoLocFailed, handleOrgClick, classes} = this.props;
         const { googLocLoading, googLocResults, googlLocFailed, noGoogSuggestsFound, searchText} = this.props;
    
@@ -93,7 +90,7 @@ class Suggested extends Component {
             locationCards = autoLocResults.map((result, idx) => {
                 const header = result.header;
                 const results = result.location_sers;
-                return (<SuggestedRow key={`auto-loc-${result.header}-${idx}`} header={header} results={results} handleOrgClick={handleOrgClick} />)
+                return (<SuggestedRow isMobile={isMobile} key={`auto-loc-${result.header}-${idx}`} header={header} results={results} handleOrgClick={handleOrgClick} />)
             });
         }
 
@@ -101,7 +98,7 @@ class Suggested extends Component {
             locationCards = googLocResults.map((result, idx) => {
                 const header = result.header;
                 const results = result.location_sers;
-                return (<SuggestedRow searchText={searchText} service_name={service_name} showingRelated={result.showing_related} showingParent={result.showing_parent}  key={`goog-loc-${result.header}-${idx}`} header={header} results={results} handleOrgClick={handleOrgClick} />)
+                return (<SuggestedRow isMobile={isMobile} searchText={searchText} service_name={service_name} showingRelated={result.showing_related} showingParent={result.showing_parent}  key={`goog-loc-${result.header}-${idx}`} header={header} results={results} handleOrgClick={handleOrgClick} />)
             });
         }
 
@@ -109,7 +106,7 @@ class Suggested extends Component {
             return (<Grid container>
                 <Grid item xs="auto" />
                 <Grid item xs={12} className={classes.ser_gloss_suggested_failed_row}>
-                    <LocationCard compact message={`Sorry, we couldn't find any results for '${searchText}'`} />
+                    <LocationCard isMobile={isMobile} compact message={`Sorry, we couldn't find any results for '${searchText}'`} />
                 </Grid>
                 <Grid item xs="auto" />
             </Grid>)

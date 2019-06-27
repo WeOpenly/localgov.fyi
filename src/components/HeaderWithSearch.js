@@ -19,7 +19,6 @@ import MenuIcon from '@material-ui/icons/Menu';
 import AccountCircle from '@material-ui/icons/AccountCircle';
 import MenuItem from '@material-ui/core/MenuItem';
 import Menu from '@material-ui/core/Menu';
-import {isMobileOnly} from 'react-device-detect';
 import HeaderAccountMenu from './HeaderAccountMenu';
 
 // import Feedback from './Feedback';
@@ -65,23 +64,15 @@ header_search_grid_container:{
 class HeaderWithSearch extends Component {
   constructor(props) {
     super(props);
-    this.state = {
-      isMobile: false
-    }
   }
 
-  componentDidMount(){
-    this.setState({
-      isMobile: isMobileOnly
-    })
-  }
 
   render() {
-    const {classes} = this.props;
+    const {classes, isMobile} = this.props;
 
     return (
       <AppBar position="static" className={classes.h_w_s_header}>
-        {this.state.isMobile ? (<Grid className={classes.header_search_grid_container} container spacing={0}>
+        {isMobile ? (<Grid className={classes.header_search_grid_container} container spacing={0}>
           <Grid
             className='heaer_search_grid_item' 
             item

@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 
-import { isMobileOnly } from 'react-device-detect';
+
 import Typography from '@material-ui/core/Typography';
 import { withStyles } from '@material-ui/core/styles';
 
@@ -37,7 +37,7 @@ const styles = theme => ({
         fontSize: '18px',
         margin: '2px'
     },
-    social_container:{
+    social_footer_container:{
         display: 'flex',
         marginTop: theme.spacing.unit,
         justifyContent: 'space-around'
@@ -48,17 +48,11 @@ const styles = theme => ({
 class FooterSocial extends Component {
     constructor(props) {
         super(props);
-        this.state = {
-            isMob: false,
-        }
     }
 
-    componentDidMount() {
-        this.setState({ isMob: isMobileOnly });
-    }
 
     render() {
-        const { classes, } = this.props;
+        const { classes, isMobile } = this.props;
 
         const facebookLogo = (<a
             href={`https://www.facebook.com/evergov/`}
@@ -142,7 +136,7 @@ class FooterSocial extends Component {
                         Blog
                         </a>
                         </Typography>
-                    <div className={classes.social_container}>
+                    <div className={classes.social_footer_container}>
                         {facebookLogo}
                         {twitterLogo}
                         {mediumLogo}

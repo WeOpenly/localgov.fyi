@@ -4,9 +4,6 @@
 
 import React, { Component } from 'react';
 
-import { isMobileOnly } from 'react-device-detect';
-
-
 import { withStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
 import Grid from '@material-ui/core/Grid';
@@ -37,17 +34,9 @@ const styles = theme => ({
 class CommonNav extends Component {
     constructor(props) {
         super(props);
-        this.state = {
-            isMobileOnly: false
-        };
     }
-
-    componentDidMount() {
-        this.setState({ isMobileOnly: isMobileOnly });
-    }
-
     render() {
-        const { classes, location } = this.props;
+        const { classes, location, isMobile } = this.props;
 
         return (
             <Grid container className={classes.index_hero_nav}>
@@ -61,7 +50,7 @@ class CommonNav extends Component {
                             evergov
                            </a>
                     </Typography>
-                    <HeaderAccountMenu location={location} />
+                    <HeaderAccountMenu isMobile={isMobile} location={location} />
                 </Grid>
                 <Grid item sm={1} />
             </Grid>

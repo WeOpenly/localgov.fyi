@@ -1,7 +1,7 @@
 import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import {navigate} from '@reach/router';
-import { isMobileOnly } from 'react-device-detect';
+
 import { connect } from 'react-redux';
 import { CopyToClipboard } from 'react-copy-to-clipboard';
 
@@ -369,7 +369,6 @@ class ServiceDetail extends Component {
         this.setState({
             tabs,
             tabContent,
-            isMob: isMobileOnly,
         })
     }
 

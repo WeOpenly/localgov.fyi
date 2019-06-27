@@ -13,7 +13,6 @@ import AccountCircle from '@material-ui/icons/AccountCircle';
 import ListItem from '@material-ui/core/ListItem';
 import CircularProgress from '@material-ui/core/CircularProgress';
 import MoreIcon from '@material-ui/icons/MoreVert';
-import { isMobileOnly } from "react-device-detect";
 
 const windowGlobal = typeof window !== 'undefined' && window
 
@@ -60,58 +59,18 @@ const styles = theme => ({
 class HeaderAccountMenu extends Component {
   constructor(props) {
     super(props);
-    this.handleChange = this
-      .handleChange
-      .bind(this);
-    this.handleClose = this
-      .handleClose
-      .bind(this);
-    this.handleMenu = this
-      .handleMenu
-      .bind(this);
 
-    this.state = {
-      anchorEl: null,
-      loggedin: false,
-      logincheckloading: true,
-      isMobile: false,
-    }
+
 
   }
-
-  componentDidMount() {
-    this.setState({
-      logincheckloading: false,
-      isMobile: isMobileOnly,
-    });
-  }
-
-  handleChange = event => {
-    this.setState({ auth: event.target.checked });
-  };
-
-  handleMenu = event => {
-    this.setState({ anchorEl: event.currentTarget });
-  };
-
-  handleClose = () => {
-    this.setState({ anchorEl: null });
-  };
 
 
 
   render() {
-    const { classes } = this.props;
-    const { anchorEl } = this.state;
-
-    const open = Boolean(anchorEl);
-
-    if (this.state.logincheckloading) {
-      return (<CircularProgress size={18} />)
-    }
+    const { classes, isMobile } = this.props;
 
 
-    if (this.state.isMobile) {
+    if (isMobile) {
       return null;
     }
 

@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from "react-redux";
 
-import { isMobileOnly } from 'react-device-detect';
+
 import queryString from 'query-string'
 import { withStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
@@ -71,7 +71,6 @@ class NearbyOrgList extends React.Component {
             dispatch(fetchNearbyOrgs(lat, lng, service_template_id, service_text, excAreaId));
         }
 
-        this.setState({ isMobile: isMobileOnly });
     }
 
     render() {
@@ -101,7 +100,7 @@ class NearbyOrgList extends React.Component {
             return (<Grid container>
                 <Typography
                     variant="title"
-                    className={this.state.isMobile ? classes.ser_org_list_header_mob : classes.ser_org_list_header}>
+                    className={this.props.isMobile ? classes.ser_org_list_header_mob : classes.ser_org_list_header}>
                     Suggestions based on your location
                     </Typography>
                 <Grid item sm={12} className={classes.ser_org_list_container}>

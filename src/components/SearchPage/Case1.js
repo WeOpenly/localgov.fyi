@@ -5,7 +5,7 @@ import CircularProgress from '@material-ui/core/CircularProgress';;
 import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
 import Grid from '@material-ui/core/Grid';
-import { isMobileOnly } from 'react-device-detect';
+
 import Typography from '@material-ui/core/Typography';
 import OrgAggregate from '../Organization/Aggregate';
 import NearbyOrgList from '../Nearby/OrgList';
@@ -66,13 +66,7 @@ const SuggestedLoader = () => (
 class Case1 extends Component {
     constructor(props) {
         super(props);
-        this.state = {
-            isMob: false,
-        }
-    }
 
-    componentDidMount() {
-        this.setState({ isMob: isMobileOnly });
     }
 
 
@@ -107,21 +101,21 @@ class Case1 extends Component {
      
         return (
             <Grid container>
-                <Grid item sm={12} className={this.state.isMob ? classes.ser_case1_suggested_row_mob : classes.ser_case1_suggested_row}>
-                    <div className={this.state.isMob ? classes.ser_case1_suggested_row_locs_mob : classes.ser_case1_suggested_row_locs}>
+                <Grid item sm={12} className={this.props.isMobile ? classes.ser_case1_suggested_row_mob : classes.ser_case1_suggested_row}>
+                    <div className={this.props.isMobile ? classes.ser_case1_suggested_row_locs_mob : classes.ser_case1_suggested_row_locs}>
                         {searchResultComponent}
                     </div>
                 </Grid>
-                {resultsAvailable ? (<Grid item sm={12} className={this.state.isMob ? classes.ser_case1_suggested_row_mob : classes.ser_case1_suggested_row}>
+                {resultsAvailable ? (<Grid item sm={12} className={this.props.isMobile ? classes.ser_case1_suggested_row_mob : classes.ser_case1_suggested_row}>
                     <NearbyOrgList location={this.props.location} excAreaId={excAreaId} />
-                </Grid>) : (<Grid item sm={12} className={this.state.isMob ? classes.ser_case1_suggested_row_mob : classes.ser_case1_suggested_row}><SuggestedLoader /></Grid>)}
-                <Grid item sm={12} className={this.state.isMob ? classes.ser_case1_suggested_row_mob : classes.ser_case1_suggested_row}>
+                </Grid>) : (<Grid item sm={12} className={this.props.isMobile ? classes.ser_case1_suggested_row_mob : classes.ser_case1_suggested_row}><SuggestedLoader /></Grid>)}
+                <Grid item sm={12} className={this.props.isMobile ? classes.ser_case1_suggested_row_mob : classes.ser_case1_suggested_row}>
                     <Typography
                         variant="title"
-                        className={this.state.isMob ? classes.ser_case1_suggested_row_heading_mob : classes.ser_case1_suggested_row_heading}>
+                        className={this.props.isMobile ? classes.ser_case1_suggested_row_heading_mob : classes.ser_case1_suggested_row_heading}>
                         Popular Services
                     </Typography>
-                    <div className={this.state.isMob ? classes.ser_case1_suggested_row_mob : classes.ser_case1_suggested_row}>
+                    <div className={this.props.isMobile ? classes.ser_case1_suggested_row_mob : classes.ser_case1_suggested_row}>
                         <RelatedServiceTemplates  />
                     </div>
                 </Grid>

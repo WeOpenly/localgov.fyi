@@ -3,7 +3,7 @@ import Grid from '@material-ui/core/Grid';
 import {withStyles} from '@material-ui/core/styles';
 import classNames from 'classnames';
 import {graphql} from "gatsby"
-import { isMobileOnly } from 'react-device-detect';
+
 import Share from "../components/Share";
 import HeaderWithSearch from '../components/HeaderWithSearch';
 import Footer from '../components/Footer';
@@ -55,10 +55,10 @@ class Index extends React.Component {
 
     return (
       <div className={classes.layout_root}>
-        <div className={isMobileOnly ? classes.layout_mainMobile : classes.layout_main}>
+        <div className={this.props.isMobileOnly ? classes.layout_mainMobile : classes.layout_main}>
           {this.props.children}
         </div>
-        <div className={isMobileOnly ? classes.layout_footerMobile : classes.layout_footer}>
+        <div className={this.props.isMobileOnly ? classes.layout_footerMobile : classes.layout_footer}>
           <Footer page={this.props.location.pathname} />
         </div>
       </div>

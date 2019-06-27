@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 
 
-import { isMobileOnly } from 'react-device-detect';
+
 import Typography from '@material-ui/core/Typography';
 import { withStyles } from '@material-ui/core/styles';
 import { navigate } from '@reach/router';
@@ -123,14 +123,9 @@ org_agg_cd:{
 class OrgAggregate extends Component {
     constructor(props) {
         super(props);
-        this.state = {
-            isMob: false,
-        }
+
     }
 
-    componentDidMount() {
-        this.setState({ isMob: isMobileOnly });
-    }
 
     render() {
         const { classes, org_name, area, offered_services, logo_url, contact_details, url_slug } = this.props;
@@ -340,7 +335,7 @@ class OrgAggregate extends Component {
           <Card className={classes.org_agg_card}>
             <div
               className={
-                this.state.isMob
+                this.props.isMobile
                   ? classes.org_aggregate_container_mob
                   : classes.org_aggregate_container
               }

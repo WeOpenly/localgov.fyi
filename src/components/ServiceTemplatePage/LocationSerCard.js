@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 
 import {  Defer } from 'react-progressive-loader'
-import { isMobileOnly } from 'react-device-detect';
+
 import Typography from '@material-ui/core/Typography';
 import { withStyles } from '@material-ui/core/styles';
 
@@ -59,17 +59,12 @@ suggest_loc_org_details:{
 class LocationSerCard extends Component {
     constructor(props) {
         super(props);
-        this.state = {
-            isMob: false,
-        }
     }
 
-    componentDidMount() {
-        this.setState({ isMob: isMobileOnly });
-    }
+
 
     render() {
-        const { classes, area, organization, ser_url_slug, highlight } = this.props;
+      const { classes, area, organization, ser_url_slug, highlight, isMobile } = this.props;
         let state = null;
         let areaName = null;
 

@@ -2,7 +2,7 @@ import React, { Fragment } from "react"
 
 import {connect} from "react-redux";
 import Helmet from "react-helmet";
-import {isMobileOnly} from 'react-device-detect';
+
 import Link from 'gatsby-link';
 
 import {withStyles} from '@material-ui/core/styles';
@@ -75,6 +75,9 @@ const styles = theme => ({
     ser_detail_body:{
         paddingLeft: `${theme.spacing.unit*6}px`,
         paddingRight: `${theme.spacing.unit*6}px`
+    },
+    ser_detail_body_mob:{
+
     },
     ser_detail_cards: {
         marginBottom: theme.spacing.unit * 2,
@@ -328,7 +331,7 @@ class ServiceDetailTemplate extends React.Component {
             org_logo_sizes
         } = this.props.pageContext.data;
 
-        const {classes} = this.props;
+        const {classes, isMobile} = this.props;
         let orgLogoSvg = null
         if (org_logo_sizes && org_logo_sizes.fluid) {
             orgLogoSvg = org_logo_sizes.fluid
@@ -475,6 +478,7 @@ class ServiceDetailTemplate extends React.Component {
         let serHeader = null;
         if (name){
             serHeader = <ServiceHeader
+                isMobile={isMobile}
                 name={name}
                 views={views}
                 service_delivery_enabled={service_delivery_enabled}
@@ -491,31 +495,16 @@ class ServiceDetailTemplate extends React.Component {
       
 
         let backButton = null;
-        if((windowGlobal && window.history.length > 2) && !isMobileOnly){
-            backButton = (
-                <IconButton
-                    variant=""
-                    aria-label="goback"
-                    disableRipple
-                    disableFocusRipple
-                    onClick={() => window.history.back()}
-                    className={classes.ser_goback_button}>
-                    <KeyboardBackspace />
-                </IconButton>
-            )
-        }
-     
-
-
+    
         let actionCard = null;
 
         if (service_parent){
             const { name, description, logo_url } = service_parent;
-            actionCard = (<GlossaryCard name={name} description={description} logoUrl={logo_url} />)
+            actionCard = (<GlossaryCard isMobile={isMobile} name={name} description={description} logoUrl={logo_url} />)
         }
 
         return (
-            <DetailTemplate location={this.props.location}>
+            <DetailTemplate isMobile={isMobile}  location={this.props.location}>
                 <Helmet>
                     <title>{`${name} | ${org_name} | Evergov`}
                     </title>
@@ -542,12 +531,12 @@ class ServiceDetailTemplate extends React.Component {
 
                 </Helmet>
 
-                <ServiceFlowDialog service_name={name} service_id={id} /> 
+                <ServiceFlowDialog isMobile={isMobile} service_name={name} service_id={id} /> 
                 <Grid container>
-                    <Grid item sm={1}>
+                    <Grid item xs="auto" sm={1}>
 
                     </Grid>
-                    <Grid item xs={12} sm={10} className={classes.ser_detail_body}>
+                    <Grid item xs={12} sm={10} className={this.props.isMobile ? classes.ser_detail_body_mob : classes.ser_detail_body}>
                          
                         <Grid item xs={12}>
                             {serHeader}
@@ -557,7 +546,7 @@ class ServiceDetailTemplate extends React.Component {
                             
                         <Grid item xs={12}  className={classes.ser_detail_details}>
                             <ServiceDetail name={name} 
-                              
+                                isMobile={isMobile}
                             orgHieSlug={orgHieSlug} description={description} price={price} alltimings={alltimings} allForms={allForms} allfaq={allfaq} allSteps={allSteps} />
                         </Grid>
                           
@@ -568,12 +557,12 @@ class ServiceDetailTemplate extends React.Component {
 
                         </Grid>
        
-                    <Grid item sm={1}>
+                    <Grid item xs="auto"  sm={1}>
 
                     </Grid>
          
                     <Grid item xs={12} className={classes.ser_detail_morelinks} >
-                        <MoreLinks otherServices={otherServices} state_name={state_org_details.area.name} org_name={org_name}
+                        <MoreLinks isMobile={isMobile} otherServices={otherServices} state_name={state_org_details.area.name} org_name={org_name}
                         stateServices={state_org_details.offered_services}
                         glossaryLinks={state_org_details.offered_services}/>
                     </Grid>
@@ -581,7 +570,7 @@ class ServiceDetailTemplate extends React.Component {
 
        
               <div className={classes.ser_detail_footer}>
-                <Footer page={this.props.location.pathname} />
+                    <Footer isMobile={isMobile} page={this.props.location.pathname} />
                 </div>
 
                 {serviceDeliveryFeedbackForm}

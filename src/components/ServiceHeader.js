@@ -3,7 +3,7 @@ import {connect} from "react-redux";
 import {navigate} from '@reach/router';
 
 import Img from "gatsby-image";
-import { isMobileOnly } from 'react-device-detect';
+
 import { CopyToClipboard } from 'react-copy-to-clipboard';
 import {
   FacebookShareButton,
@@ -183,7 +183,6 @@ class ServiceHeader extends Component {
     this.state = {
       anchorEl: null,
       copied: false,
-      isMobileOnly: false,
     };
     this.handleShareClick = this.handleShareClick.bind(this);
     this.handleClose = this.handleClose.bind(this);
@@ -194,12 +193,6 @@ class ServiceHeader extends Component {
     this.toggleServiceFlow = this.toggleServiceFlow.bind(this);
   }
   
-  componentDidMount(){
-    this.setState({
-      isMobileOnly: isMobileOnly
-    })
-  }
-
   componentWillUnmount(){
     this.props.hideResultHelperMsg()
   }
@@ -250,7 +243,6 @@ class ServiceHeader extends Component {
       return null;
     }
 
-    const { anchorEl, copied } = this.state;
     const windowGlobal = typeof window !== 'undefined' && window;
     const windowLocation = windowGlobal.location ? windowGlobal.location : {};
     const shareLink = windowLocation.href + '/';
@@ -388,13 +380,13 @@ class ServiceHeader extends Component {
     }
 
     return (
-      <Grid container spacing={0} className={!this.state.isMobileOnly ? classes.service_header_main : classes.service_header_mainMobile}>
+      <Grid container spacing={0} className={!this.props.isMobile ? classes.service_header_main : classes.service_header_mainMobile}>
    
         <Grid item xs={12} md={8}>
           {extraMessage}
-          <div className={!this.state.isMobileOnly ? classes.service_header_cardTop : classes.service_header_cardTop_mob}>
+          <div className={!this.props.isMobile ? classes.service_header_cardTop : classes.service_header_cardTop_mob}>
             
-            <div className={!this.state.isMobileOnly ?  classes.service_header_title: classes.service_header_title_mob}>
+            <div className={!this.props.isMobile ?  classes.service_header_title: classes.service_header_title_mob}>
                   <Typography component="h1" variant="display1">{name}</Typography>
 
             

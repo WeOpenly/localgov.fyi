@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import {connect} from "react-redux";
 
 import CircularProgress from '@material-ui/core/CircularProgress';;
-import {isMobileOnly} from 'react-device-detect';
+
 import {navigate} from '@reach/router';
 import IconButton from '@material-ui/core/IconButton';
 import CloseIcon from '@material-ui/icons/Close';

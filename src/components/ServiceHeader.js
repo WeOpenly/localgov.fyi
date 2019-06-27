@@ -4,27 +4,17 @@ import {navigate} from '@reach/router';
 
 import Img from "gatsby-image";
 
-import { CopyToClipboard } from 'react-copy-to-clipboard';
-import {
-  FacebookShareButton,
-  TwitterShareButton,
-} from 'react-share';
 
 import HighLightOutlined from '@material-ui/icons/HighlightOutlined';
 
 import { withStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
 import Grid from '@material-ui/core/Grid';
-import Card from '@material-ui/core/Card';
-import CardActions from '@material-ui/core/CardActions';
-import CardContent from '@material-ui/core/CardContent';
 
 import Button from '@material-ui/core/Button';
-import NotificationImportant from '@material-ui/icons/NotificationImportant'
 import IconButton from '@material-ui/core/IconButton';
-import Share from '@material-ui/icons/Share';
+
 import SvgIcon from '@material-ui/core/SvgIcon';
-import Avatar from '@material-ui/core/Avatar';
 import ServiceDeliveryLink from './ServiceDeliveryLink';
 
 import { hideResultHelperMsg} from './SearchPage/actions';
@@ -347,14 +337,8 @@ class ServiceHeader extends Component {
     });
 
       const actionButton = null;
-      // const actionButton = (<Button color="primary" size="medium" className={classes.service_header_menuButtonNotify} onClick={this.handleNotifyClick} aria-label="Ge Notified">
-      //   <NotificationImportant className={classes.service_header_menuButtonIcon} fontSize="small" /> Get notified
-      // </Button>)
 
 
-    const shareButton = (<Button color="primary" size="small"  className={classes.service_header_menuButton}  onClick={this.handleShareClick}  aria-label="share">
-      <Share className={classes.service_header_menuButtonIcon}  fontSize="small"/> Share
-      </Button>)
 
     const serviceFlowButton = service_delivery_enabled ? (<Button size="small" variant="outlined" color="primary" onClick={this.toggleServiceFlow} className={classes.service_header_notifyButton}>Pay with evergov</Button>) : null;
     const sdl = <ServiceDeliveryLink orgNameOnly={orgNameOnly} views={views} id={id} service_name={name} org_name={offeredIn} serDelLinks={serDelLinks} />

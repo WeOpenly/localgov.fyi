@@ -3,24 +3,12 @@ import PropTypes from 'prop-types';
 import {navigate} from '@reach/router';
 
 import { connect } from 'react-redux';
-import { CopyToClipboard } from 'react-copy-to-clipboard';
-
 import ContentLoader from "react-content-loader"
-import List from '@material-ui/core/List';
-import ListItem from '@material-ui/core/ListItem';
-import ListItemText from '@material-ui/core/ListItemText';
-import AnchorLink from 'react-anchor-link-smooth-scroll'
-import Paper from '@material-ui/core/Paper';
-import InfoOutlined from '@material-ui/icons/InfoOutlined'
-import AccessTimeOutlined from '@material-ui/icons/AccessTimeOutlined'
-import FolderOpenOutlined from '@material-ui/icons/FolderOpenOutlined'
-import HelpOutline from '@material-ui/icons/HelpOutline'
-import PriorityHigh from '@material-ui/icons/PriorityHigh';
 
+import AnchorLink from 'react-anchor-link-smooth-scroll'
 
 import { withStyles } from '@material-ui/core/styles';
-import Tabs from '@material-ui/core/Tabs';
-import Tab from '@material-ui/core/Tab';
+
 import Typography from '@material-ui/core/Typography';
 
 import Divider from '@material-ui/core/Divider';
@@ -89,24 +77,17 @@ ser_detail_dummyfaq_details:{
 
 const Tabloader = () => (
     <ContentLoader
-        height={300}
-        width={400}
-        speed={100}
+        height={475}
+        width={800}
+        speed={2}
         primaryColor="#f3f3f3"
-        secondaryColor="#d5d9f3"
+        secondaryColor="#ecebeb"
     >
-        <circle cx="27" cy="26" r="1" />
-        <circle cx="46" cy="49" r="1" />
-        <rect x="65" y="109" rx="0" ry="0" width="0" height="0" />
-        <rect x="384" y="243" rx="0" ry="0" width="0" height="0" />
-        <rect x="673" y="174" rx="0" ry="0" width="0" height="1" />
-        <rect x="148" y="192" rx="0" ry="0" width="0" height="0" />
-        <rect x="229" y="71" rx="0" ry="0" width="0" height="0" />
-        <rect x="11" y="53" rx="0" ry="0" width="410" height="139" />
-        <rect x="11" y="4" rx="0" ry="0" width="66" height="33" />
-        <rect x="86" y="5" rx="0" ry="0" width="66" height="33" />
-        <rect x="66" y="48" rx="0" ry="0" width="16" height="1" />
-        <rect x="166" y="4" rx="0" ry="0" width="66" height="33" />
+        <rect x="14" y="7" rx="4" ry="4" width="100" height="13" />
+        <rect x="14" y="47" rx="0" ry="0" width="606" height="92" />
+        <rect x="16" y="213" rx="0" ry="0" width="576" height="50" />
+        <rect x="16" y="179" rx="4" ry="4" width="429" height="16" />
+        <rect x="131" y="7" rx="4" ry="4" width="100" height="13" />
     </ContentLoader>
 )
 
@@ -150,14 +131,14 @@ class ServiceDetail extends Component {
                 }
 
                 return (
-                    <ListItem disableGutters>
-                        <ListItemText
+                    <div disableGutters>
+                        <div
                             primary={openTime}
                             secondary={day}
                             secondaryTypographyProps={{
                                 variant: "subheading"
                             }} />
-                    </ListItem>
+                    </div>
                 );
             });
         }
@@ -171,7 +152,7 @@ class ServiceDetail extends Component {
                         {description}
                     </RawHTML>
                 );
-                return <ListItem disableGutters>
+                return <div style={{ display: 'flex' }} disableGutters>
                     <Typography type="caption" className={classes.serviceDetailStepNumber} gutterBottom>
                         {index + 1}
                     </Typography>
@@ -179,7 +160,7 @@ class ServiceDetail extends Component {
                         {text}
                     </Typography>
 
-                </ListItem>;
+                </div>;
             });
         }
 
@@ -187,8 +168,8 @@ class ServiceDetail extends Component {
         if (allForms.length > 0) {
             formList = allForms.map((form, index) => {
                 const { name, url, price } = form;
-                return <ListItem button disableGutters>
-                    <ListItemText
+                return <div button disableGutters>
+                    <a
                         primary={name}
                         onClick={() => {
                             if (url) {
@@ -197,7 +178,7 @@ class ServiceDetail extends Component {
                         }}
                         secondary={price}
                         className={classes.ser_detail_formLink} />
-                </ListItem>;
+                </div>;
             });
         }
 
@@ -212,9 +193,11 @@ class ServiceDetail extends Component {
                 );
 
                 return <Fragment>
-                    <ListItem disableGutters>
-                        <ListItemText primary={<Typography style={{ fontSize: "1.25rem" }} variant='display1'>{question}</Typography>} secondary={<Typography color="textPrimary">{text}</Typography>} />
-                    </ListItem>
+                    <div style={{display: 'flex', flexDirection: 'column'}} disableGutters>
+                        <Typography style={{ fontSize: "1.15rem", padding: '8px' }} variant='display1'>{question}</Typography>
+
+                        <Typography style={{padding: '8px'}} variant="body1">{text}</Typography>
+                    </div>
                     {(index !== allfaq.length - 1) ? <Divider style={{ margin: '8px' }} /> : null}
                 </Fragment>;
             });
@@ -235,7 +218,7 @@ class ServiceDetail extends Component {
         )
 
 
-        //  push this regardless
+
         if (qaList){
             tabs.push(<div className={classes.ser_detail_tab_item}>
                 <AnchorLink

@@ -7,15 +7,10 @@ import Link from 'gatsby-link';
 
 import {withStyles} from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
-import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
 import CircularProgress from '@material-ui/core/CircularProgress';;
 import ServiceFlowDialog from '../components/Delivery/ServiceFlowDialog';
 
-import ListItem from '@material-ui/core/ListItem';
-import ListItemText from '@material-ui/core/ListItemText';
-import Divider from '@material-ui/core/Divider';
-import IconButton from '@material-ui/core/IconButton';
 import ContentLoader from 'react-content-loader';
 
 import KeyboardBackspace from '@material-ui/icons/KeyboardBackspace';
@@ -212,50 +207,7 @@ const genericFSchema = {
   }
 }
 
-const OtherSerLoader = () => (
-    <ContentLoader
-        height={350}
-        width={300}
-        speed={100}
-        primaryColor="#f3f3f3"
-        secondaryColor="#d5d9f3"
-    >
-        <circle cx="27" cy="26" r="1" />
-        <circle cx="46" cy="49" r="1" />
-        <rect x="65" y="109" rx="0" ry="0" width="0" height="0" />
-        <rect x="384" y="243" rx="0" ry="0" width="0" height="0" />
-        <rect x="673" y="174" rx="0" ry="0" width="0" height="1" />
-        <rect x="148" y="192" rx="0" ry="0" width="0" height="0" />
-        <rect x="229" y="71" rx="0" ry="0" width="0" height="0" />
-        <rect x="66" y="48" rx="0" ry="0" width="16" height="1" />
-        <rect x="-7" y="6" rx="0" ry="0" width="327" height="133" />
-        <rect x="2" y="170" rx="0" ry="0" width="327" height="133" />
-    </ContentLoader>
-)
 
-const DeskTopServiceLoader = () => (
-    <ContentLoader
-        height={400}
-        width={800}
-        speed={100}
-        primaryColor="#f3f3f3"
-        secondaryColor="#d5d9f3"
-    >
-        <circle cx="27" cy="26" r="1" />
-        <circle cx="46" cy="49" r="1" />
-        <rect x="65" y="109" rx="0" ry="0" width="0" height="0" />
-        <rect x="13" y="141" rx="0" ry="0" width="538" height="220" />
-        <rect x="384" y="243" rx="0" ry="0" width="0" height="0" />
-        <rect x="594" y="141" rx="0" ry="0" width="181" height="56" />
-        <rect x="673" y="174" rx="0" ry="0" width="0" height="1" />
-        <rect x="594" y="214" rx="0" ry="0" width="181" height="56" />
-        <rect x="590" y="290" rx="0" ry="0" width="181" height="56" />
-        <rect x="17" y="22" rx="0" ry="0" width="277" height="20" />
-        <rect x="19" y="60" rx="0" ry="0" width="113" height="20" />
-        <rect x="16" y="99" rx="0" ry="0" width="113" height="20" />
-        <rect x="651" y="23" rx="0" ry="0" width="122" height="21" />
-    </ContentLoader>
-)
 
 const JsonLd = ({data}) => <script
     type="application/ld+json"
@@ -569,10 +521,9 @@ class ServiceDetailTemplate extends React.Component {
                 </Grid>
 
        
-              <div className={classes.ser_detail_footer}>
+                <div className={classes.ser_detail_footer}>
                     <Footer isMobile={isMobile} page={this.props.location.pathname} />
                 </div>
-
                 {serviceDeliveryFeedbackForm}
             </DetailTemplate>
         )

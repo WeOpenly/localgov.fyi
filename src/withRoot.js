@@ -32,9 +32,7 @@ function withRoot(Component) {
         }
 
         render() {
-            if (this.state.loadingDevice){
-                return null;
-            }
+     
             return (
                 <JssProvider generateClassName={this.muiPageContext.generateClassName}>
                     {/* MuiThemeProvider makes the theme available down the React

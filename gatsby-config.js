@@ -162,7 +162,7 @@ module.exports = {
     {
       resolve: `gatsby-plugin-create-client-paths`,
       options: {
-        prefixes: [`/search/*`, `/app/*`, `/deep_link/*`]
+        prefixes: [`/search/*`, `/quick_pay/*`,`/app/*`, `/deep_link/*`]
       }
     },
     {

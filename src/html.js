@@ -113,7 +113,7 @@ export default class HTML extends React.Component {
             defer
             src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBr4RixcEvuxgGr9EwNeiHCqUITczxvvuc&libraries=places&callback=allCallBacks"
           />
-        
+          <script id="stripe-js" src="https://js.stripe.com/v3/" async></script>
           {fontcss}
           {/* <link href={"/css/fonts.css"} rel="stylesheet" /> */}
           {this.props.headComponents}

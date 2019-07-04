@@ -1,6 +1,6 @@
 import { combineReducers } from 'redux'
 
-import { quickPay} from '../pages/quick_pay/reducer'
+import { quickPay } from '../components/QuickPay/reducer'
 import {delivery} from '../components/Delivery/reducer';
 import {userRequests} from '../components/UserRequests/reducer';
 import {serTemplate} from '../components/ServiceTemplatePage/reducer';

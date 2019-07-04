@@ -2,11 +2,10 @@
 import * as types from './ActionTypes';
 const windowGlobal = typeof window !== 'undefined' && window
 
-if (windowGlobal){
-    import getFirebase from './firebase/firebase';
-    const firebase = getFirebase();
-    const storageRef = firebase.storage().ref();
-}
+import getFirebase from './firebase/firebase';
+const firebase = getFirebase();
+const storageRef = firebase.storage().ref();
+
 
 const dateNow = Date.now();
 

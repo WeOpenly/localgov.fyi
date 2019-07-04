@@ -3,16 +3,16 @@ import PropTypes from 'prop-types';
 import { connect } from "react-redux";
 import Helmet from 'react-helmet';
 import { Elements, StripeProvider } from 'react-stripe-elements';
-import Landing from './Landing'
-import SubmitDetails from './SubmitDetails'
-import FinalConf from './FinalConf'
+import Landing from '../../components/QuickPay/Landing'
+import SubmitDetails from '../../components/QuickPay/SubmitDetails'
+import FinalConf from '../../components/QuickPay/FinalConf'
 
-import styles from "./spectre.min.module.css"
-import FirebaseContext from './firebase/context'
-import getFirebse from './firebase/firebase';
-import { loginAnon} from './actions';
+import styles from "../../components/QuickPay/spectre.min.module.css"
+import FirebaseContext from '../../components/QuickPay/firebase/context.js';
+import getFirebse from '../../components/QuickPay/firebase/firebase.js';
+import { loginAnon } from '../../components/QuickPay/actions';
 const windowGlobal = typeof window !== 'undefined' && window
-
+console.log(styles)
 
 class QPIndex extends React.Component {
     constructor(props) {
@@ -86,12 +86,12 @@ class QPIndex extends React.Component {
 
                 <header className={styles.navbar} style={{ background: '#fff', padding: '4px 2px',boxShadow:'0 2px 4px rgba(50,50,93,.11)'}}>
                     <section className={styles.navbarSection}>
-                        <a href="/" style={{ fontSize: '22px' }} class={`${styles.btn} ${styles.btnLink} ${styles.h1}`}>evergov</a><sub className={styles.textUppercase}  style={{ fontSize: '9px', paddingTop: '4px', letterSpacing: '0.1rem',fontWeight: 'bold' }} >Quick Pay</sub>
+                        <a href="/" style={{ fontSize: '22px' }} className={`${styles.btn} ${styles.btnLink} ${styles.h1}`}>evergov</a><sub className={styles.textUppercase}  style={{ fontSize: '9px', paddingTop: '4px', letterSpacing: '0.1rem',fontWeight: 'bold' }} >Quick Pay</sub>
                     </section>
             
                     <section className={styles.navbarSection}>
-                        <a href="/" style={{ fontSize: '14px' }} class={`${styles.btn} ${styles.btnLink}`}>Terms</a>
-                        <a href="/" style={{ fontSize: '14px' }} class={`${styles.btn} ${styles.btnLink}`}>Privacy</a>
+                        <a href="/" style={{ fontSize: '14px' }} className={`${styles.btn} ${styles.btnLink}`}>Terms</a>
+                        <a href="/" style={{ fontSize: '14px' }} className={`${styles.btn} ${styles.btnLink}`}>Privacy</a>
                     </section>
                 </header>
             <FirebaseContext.Provider value={getFirebse}>

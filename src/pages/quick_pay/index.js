@@ -22,7 +22,7 @@ class QPIndex extends React.Component {
 
     componentWillMount() {
         const {dispatch} = this.props;
-        dispatch(loginAnon());
+         dispatch(loginAnon());
         if (windowGlobal){
             if (window.Stripe) {
                 this.setState({ stripe: window.Stripe('pk_test_mfpTB8neHnQHt11iMoGrN9wX') });

@@ -12,7 +12,7 @@ import FirebaseContext from '../../components/QuickPay/firebase/context.js';
 import getFirebse from '../../components/QuickPay/firebase/firebase.js';
 import { loginAnon } from '../../components/QuickPay/actions';
 const windowGlobal = typeof window !== 'undefined' && window
-console.log(styles)
+
 
 class QPIndex extends React.Component {
     constructor(props) {
@@ -81,10 +81,11 @@ class QPIndex extends React.Component {
             <Helmet>
                 <title>{`Evergov Quickpay`}
                 </title>
-               
+                    <link rel="stylesheet" type="text/css" charset="UTF-8" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick.min.css" />
+                    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick-theme.min.css" />
             </Helmet>
 
-                <header className={styles.navbar} style={{ background: '#fff', padding: '4px 2px',boxShadow:'0 2px 4px rgba(50,50,93,.11)'}}>
+                {step !== 'show_landing' ?  (<header className={styles.navbar} style={{ background: '#fff', padding: '4px 2px',boxShadow:'0 2px 4px rgba(50,50,93,.11)'}}>
                     <section className={styles.navbarSection}>
                         <a href="/" style={{ fontSize: '22px' }} className={`${styles.btn} ${styles.btnLink} ${styles.h1}`}>evergov</a><sub className={styles.textUppercase}  style={{ fontSize: '9px', paddingTop: '4px', letterSpacing: '0.1rem',fontWeight: 'bold' }} >Quick Pay</sub>
                     </section>
@@ -93,18 +94,16 @@ class QPIndex extends React.Component {
                         <a href="/" style={{ fontSize: '14px' }} className={`${styles.btn} ${styles.btnLink}`}>Terms</a>
                         <a href="/" style={{ fontSize: '14px' }} className={`${styles.btn} ${styles.btnLink}`}>Privacy</a>
                     </section>
-                </header>
+                </header>) : null}
             <FirebaseContext.Provider value={getFirebse}>
                 <div className={`${styles.container} ${styles.gridLg}`}>
                         {(step === 'show_landing' || step === 'final_conf') ? null : (<div className={`${styles.columns} ${styles.col12}`} >
                             {tabs}
                         </div>)}
                     {
-                        step === 'show_landing' ? (<div className={styles.columns}>
-                            <div className={`${styles.column} ${styles.col12}`}>
+                        step === 'show_landing' ? (
                                     <Landing />
-                            </div>
-                        </div>) : null
+                            ) : null
                     }
                     {
                         (step === 'guess_price_and_update_details' || step === 'show_submit_confirm')  ? submitDetails : null

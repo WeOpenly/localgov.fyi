@@ -19,17 +19,17 @@ class QPIndex extends React.Component {
         super(props);
         this.state = { stripe: null };
     }
-
+    
     componentWillMount() {
         const {dispatch} = this.props;
          dispatch(loginAnon());
         if (windowGlobal){
             if (window.Stripe) {
-                this.setState({ stripe: window.Stripe('pk_test_mfpTB8neHnQHt11iMoGrN9wX') });
+                this.setState({ stripe: window.Stripe(process.env.GATSBY_STRIPE_KEY) });
             } else {
                 document.querySelector('#stripe-js').addEventListener('load', () => {
                     // Create Stripe instance once Stripe.js loads
-                    this.setState({ stripe: window.Stripe('pk_test_mfpTB8neHnQHt11iMoGrN9wX') });
+                    this.setState({ stripe: window.Stripe(process.env.GATSBY_STRIPE_KEY) });
                 });
             }
         }

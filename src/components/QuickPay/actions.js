@@ -79,7 +79,7 @@ export function uploadDocumentAndCreateSubmission(file, userId) {
             .then(function (docRef) {
                 console.log("Document written with ID: ", docRef.id);
 
-                storageRef.child(`user_submission_imgs/${docRef.id}-${dateNow}.jpg`).put(file).then(function (snapshot) {
+                storageRef.child(`user_submission_imgs/${userId}/${docRef.id}-${dateNow}.jpg`).put(file).then(function (snapshot) {
                     console.log('Uploaded a blob or file!', snapshot);
                     snapshot.ref.getDownloadURL().then(function (downloadUrl) {
                         console.log(downloadUrl);

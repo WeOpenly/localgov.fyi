@@ -4,14 +4,15 @@ import 'firebase/firestore';
 import 'firebase/storage';
 
 const firebaseConfig = {
-    apiKey: "AIzaSyBV3l7Oof-jo0Og_mElvbFzKqNNpY2NB0M",
-    authDomain: "evergov-dev3.firebaseapp.com",
-    databaseURL: "https://evergov-dev3.firebaseio.com",
-    projectId: "evergov-dev3",
-    storageBucket: "evergov-dev3.appspot.com",
-    messagingSenderId: "1073516806217",
-    appId: "1:1073516806217:web:4fbc0065253ec88c"
+    apiKey: process.env.GATSBY_FIREBASE_API_KEY,
+    authDomain: process.env.GATSBY_FIREBASE_DOMAIN,
+    databaseURL: process.env.GATSBY_FIREBASE_DB_URL,
+    projectId: process.env.GATSBY_FIREBASE_PROJECT_ID,
+    storageBucket: process.env.GATSBY_FIREBASE_STORAGE_BUCKET,
+    messagingSenderId: process.env.GATSBY_FIREBASE_MSG_SENDER_ID,
+    appId: process.env.GATSBY_FIREBASE_APP_ID
 };
+
 
 let firebaseCache
 

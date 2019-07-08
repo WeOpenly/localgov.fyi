@@ -15,6 +15,7 @@ import styles from "./spectre.min.module.css"
 import iconStyles from './typicons.min.module.css';
 
 import {subscribeUploadAnalysis, stepChange, updatePrice, updateEmail} from './actions';
+import TablePaginationActions from '@material-ui/core/TablePagination/TablePaginationActions';
 
 const createOptions = (fontSize, padding) => {
     return {
@@ -43,17 +44,33 @@ class SubmitDetails extends Component {
         this.contentEditable = React.createRef();
         this.changeEmail = this.changeEmail.bind(this);
         this.changePrice = this.changePrice.bind(this);
-      
+        this.stripeElementChange = this.stripeElementChange.bind(this);
+        this.state = {
+            card_no: false,
+            card_exp: false,
+            cvc_number: false,
+            postal: false,
+            email: false,
+        }
+    }
+
+    stripeElementChange(element, name){
+        console.log(element);
+        if (!element.empty && element.complete) {
+            this.setState({ [name]: true });
+        }
     }
 
     componentDidMount(){
         const { dispatch, createdSubId } = this.props;
         dispatch(subscribeUploadAnalysis(createdSubId));
+     
     }
 
     changeEmail(e){
         const {dispatch} = this.props;
         dispatch(updateEmail(e.target.value));
+        this.setState({ email: e.target.value})
     }
 
     changePrice(evt){
@@ -84,6 +101,9 @@ class SubmitDetails extends Component {
         if (userPrice){
             price = userPrice;
         }
+
+        const canSubmit = this.state.card_no && this.state.card_exp && this.state.cvc_number && this.state.postal && this.state.email
+        
         const isPreview = (step === 'show_submit_confirm')
         return (
             <Fragment>
@@ -118,6 +138,8 @@ class SubmitDetails extends Component {
                                 <label className={`${styles.formLabel} ${styles.textUppercase} ${styles.textBold}`} style={{fontSize: '12px'}}>
                     Card number
           <CardNumberElement
+                                            name="card_no"
+                                            onChange={(element) => this.stripeElementChange(element, 'card_no')}
                       className={styles.formInput}
                         {...createOptions('19px')}
                     />
@@ -127,6 +149,8 @@ class SubmitDetails extends Component {
                                 <label className={`${styles.formLabel} ${styles.textUppercase} ${styles.textBold}`} style={{ fontSize: '12px' }}>
                     Exp. date
           <CardExpiryElement
+                                            name="card_exp"
+                                            onChange={(element) => this.stripeElementChange(element, 'card_exp')}
                         className={styles.formInput}
                         {...createOptions('19px')}
                     />
@@ -136,6 +160,8 @@ class SubmitDetails extends Component {
                     <label className={`${styles.formLabel} ${styles.textUppercase} ${styles.textBold}`} style={{ fontSize: '12px' }}>
                     CVC
           <CardCVCElement
+                name="cvc_number"
+                onChange={(element) => this.stripeElementChange(element, 'cvc_number')}
                         className={styles.formInput}
                         {...createOptions('19px')}
                     />
@@ -145,6 +171,8 @@ class SubmitDetails extends Component {
                     <label className={`${styles.formLabel} ${styles.textUppercase} ${styles.textBold}`} style={{ fontSize: '12px' }}>
                     Postal code
           <PostalCodeElement
+                    name="postal"
+                    onChange={(element) => this.stripeElementChange(element, 'postal')}
                         className={styles.formInput}
                         {...createOptions('19px')}
                     />
@@ -172,7 +200,7 @@ class SubmitDetails extends Component {
                 </div>
                 </div>
                 <div className={styles.panelFooter}>
-                        <button style={{ marginTop: '16px', width: '100%', fontSize: '14px' }} className={`${styles.btn} ${styles.btnPrimary} ${styles.btnLg} ${styles.textUppercase} ${styles.textBold}`} onClick={this.onPreview}>Preview</button>
+                            <button disabled={!canSubmit} style={{ marginTop: '16px', width: '100%', fontSize: '14px' }} className={`${styles.btn} ${styles.btnPrimary} ${styles.btnLg} ${styles.textUppercase} ${styles.textBold}`} onClick={this.onPreview}>Preview</button>
 
                       </div>
                 </div>

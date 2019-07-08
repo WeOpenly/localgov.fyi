@@ -252,7 +252,7 @@ class ServiceList extends Component {
     }
 }
 
-export const query = graphql ` query servicesQuery {services : allServiceGlossaryJson {
+export const query = graphql `query servicesQuery {services : allServiceGlossaryJson {
                         edges {
                             node {
                                 id service_name service_name_slug service_glossary_description

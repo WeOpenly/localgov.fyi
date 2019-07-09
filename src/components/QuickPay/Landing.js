@@ -5,7 +5,7 @@ import styles from "./spectre.min.module.css"
 import inputStyles from './inputfile.module.css';
 import iconStyles from './typicons.min.module.css';
 import Slider from "react-slick";
-import Lock from '../../svgIcons/Lock';
+import Lock from '../../svgIcons/lock.js';
 
 import {uploadDocumentAndCreateSubmission} from './actions'
 import { graphql, StaticQuery } from 'gatsby';

@@ -11,44 +11,8 @@ import {uploadDocumentAndCreateSubmission} from './actions'
 import { graphql, StaticQuery } from 'gatsby';
 import Img from "gatsby-image";
 import {stepChange} from './actions'
+import AboutSVG from './AboutSvgComp'
 
-const AboutSVG = () => (
-  <StaticQuery
-    query={graphql`query AboutSVGq2 {
-  heroIl: 
-  allFile(
-            filter: { relativePath: { eq: "aboutil.png" } }
-          ) {
-            edges {
-              node {
-                name
-                childImageSharp {
-                  fluid {
-                    base64
-                    tracedSVG
-                    aspectRatio
-                    src
-                    srcSet
-                    srcWebp
-                    srcSetWebp
-                    sizes
-                    originalImg
-                    originalName
-                  }
-                }
-              }
-            }
-          }
-
-}`}
-    render={data => {
-      return (<Img
-        title={`evergov`}
-        alt={`illustration of evergov`}
-          style={{ width: '320px', height: '200px' }}
-        sizes={data.heroIl.edges[0].node.childImageSharp.fluid} />)
-    }} />
-)
 
 const HeroIl = () => (
     <StaticQuery

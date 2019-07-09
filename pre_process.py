@@ -225,7 +225,7 @@ def get_service_glossary_items():
     res = urllib2.urlopen(
         '{h}/arthur/service_glossary_overview?token={t}'.format(h=DSP_HOST, t=token))
     sg_items = json.load(res)
-    print(sg_items)
+
     if sg_items and 'success' in sg_items:
         items = sg_items.get('details')
         for item in items:

@@ -96,7 +96,7 @@ class QPIndex extends React.Component {
                     </section>
                 </header>) : null}
             <FirebaseContext.Provider value={getFirebse}>
-                <div className={`${styles.container} ${styles.gridLg}`}>
+                <div className={`${styles.container} ${styles.gridSm}`}>
                         {(step === 'show_landing' || step === 'final_conf') ? null : (<div className={`${styles.columns} ${styles.col12}`} >
                             {tabs}
                         </div>)}

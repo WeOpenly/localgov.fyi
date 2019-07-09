@@ -93,9 +93,9 @@ class Landing extends React.Component {
             slidesToScroll: 1
         };
 
-        return (<div style={{ width: '100%', display: 'flex', height: '100vh', flexDirection: 'column',justifyContent: 'space-evenly'}}>
+        return (<div style={{ width: '100%', display: 'flex', height: '100vh', flexDirection: 'column',justifyContent: 'center', 'scrollX': 'hidden'}}>
      
-            <div style={{margin: '8px 0 0 0 '}}>
+            <div style={{margin: '40px 0 0 0 ', flex: '70'}}>
   
                     <Slider {...settings}>
 
@@ -142,7 +142,7 @@ class Landing extends React.Component {
                     </Slider> 
                
             </div>
-            <div style={{width: '100%', borderTop: '1px solid #d4d4d4', padding: '24px',}}>
+            <div style={{width: '100%', borderTop: '1px solid #d4d4d4', padding: '24px', marginTop: '24px', flex: '30'}}>
                 <input onChange={this.onChange} className={`${inputStyles.inputfile} ${styles.btn} ${styles.btnPrimary} ${styles.btnLg}`}  type="file" id="inputfile" accept="image/*" capture/>
                
                 <label htmlFor="inputfile"> <span className={`${iconStyles.typcn} ${iconStyles.typcnCameraOutline}` }></span>{btnLabel}</label>

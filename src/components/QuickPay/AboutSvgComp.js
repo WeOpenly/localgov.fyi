@@ -13,7 +13,13 @@ const AboutSVG = () => (
               node {
                 name
                 childImageSharp {
-                  fluid {
+                  fluid  (
+  traceSVG: {
+    color: "#f0d3fe"
+    turnPolicy: TURNPOLICY_MINORITY
+    blackOnWhite: true
+  }
+){
                     base64
                     tracedSVG
                     aspectRatio

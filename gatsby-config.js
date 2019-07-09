@@ -33,7 +33,13 @@ module.exports = {
      */
     // `gatsby-plugin-react-next`,
     `gatsby-transformer-sharp`,
-    `gatsby-plugin-sharp`,
+    {
+      resolve: `gatsby-plugin-sharp`,
+      options: {
+        stripMetadata: true,
+        defaultQuality: 90,
+      },
+    },
     {
       resolve: `gatsby-source-filesystem`,
       options: {

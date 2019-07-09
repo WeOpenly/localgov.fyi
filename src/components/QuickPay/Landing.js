@@ -10,7 +10,6 @@ import Lock from '../../svgIcons/lock.js';
 import {uploadDocumentAndCreateSubmission} from './actions'
 import { graphql, StaticQuery } from 'gatsby';
 import Img from "gatsby-image";
-import {stepChange} from './actions'
 import AboutSVG from './AboutSvgComp'
 
 
@@ -25,7 +24,13 @@ const HeroIl = () => (
               node {
                 name
                 childImageSharp {
-                  fluid {
+                  fluid (
+  traceSVG: {
+    color: "#f0d3fe"
+    turnPolicy: TURNPOLICY_MINORITY
+    blackOnWhite: true
+  }
+) {
                     base64
                     tracedSVG
                     aspectRatio
@@ -90,7 +95,7 @@ class Landing extends React.Component {
 
         return (<div style={{ width: '100%', display: 'flex', height: '100vh', flexDirection: 'column',justifyContent: 'space-between'}}>
      
-            <div className={`${styles.hero} ${styles.heroLg}`} >
+            <div className={`${styles.hero}`} style={{margin: '16px 0 0 0 '}}>
   
                     <Slider {...settings}>
 
@@ -115,7 +120,7 @@ class Landing extends React.Component {
                         <div style={{ margin: '8px 0', fontWeight: 'bold'}} className={`${styles.h3} ${styles.btnLink}`}>
                                    Snap & Forget
                                 </div>
-                                <div style={{ margin: '8px 0',  textAlign: 'center' }} className={`${styles.p}`}>
+                                <div style={{ margin: '8px 16px',  textAlign: 'center' }} className={`${styles.p}`}>
                                     All you need to do is to snap your bill or ticket, we will take care of understanding your picture and handling the payment
                                 </div>
                             </div>
@@ -128,7 +133,7 @@ class Landing extends React.Component {
                         <div style={{ margin: '8px 0', fontWeight: 'bold', paddingLeft: '12px' }} className={`${styles.h3} ${styles.btnLink}`}>
                             Safe & Secure
                                 </div>
-                            <div style={{ margin: '8px 0', paddingLeft: '12px', textAlign: 'center' }} className={`${styles.p}`}>
+                            <div style={{ margin: '8px 16px',  textAlign: 'center' }} className={`${styles.p}`}>
                               Your details are always safe and secure with evergov
                                 </div>
                     </div>

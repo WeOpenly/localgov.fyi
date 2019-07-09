@@ -94,15 +94,40 @@ class SubmitDetails extends Component {
 
         // can't be zero to proceed
         let price = 'NA'
+        let message  = 'We were not able to understand the amount due, please enter below'
         if (guessPrice && guessPrice!=='NA'){
             price = guessPrice;
             price = String(currency(price).value)
+            message = 'This is a guess, feel free to edit!'
         }
+
         if (userPrice){
+            message = null;
             price = userPrice;
         }
 
         const canSubmit = this.state.card_no && this.state.card_exp && this.state.cvc_number && this.state.postal && this.state.email
+
+        const maxCheck = currency(price).value
+        if (maxCheck > currency('10,000').value){
+            return (<div className={styles.columns}>
+                <div className={`${styles.column} ${styles.col12}`}>
+
+                    <div className={styles.empty}>
+                        <div className={styles.emptyIcon}>
+                            <HeroIl />
+                        </div>
+                        <p className={`${styles.emptyTitle} ${styles.h3}`}>💰That's amount is higher than what we can process at the moment 💰</p>
+
+                        <p className={styles.emptySubtitle}>
+                            Please email <a href="mailto:team@evergov.com" target="_top">team@evergov.com</a> for more details
+                        </p>
+
+                    </div>
+
+                </div>
+            </div>)
+        }
         
         const isPreview = (step === 'show_submit_confirm')
         return (
@@ -113,9 +138,9 @@ class SubmitDetails extends Component {
                 <div className={`${styles.panel} ${styles.menu}`} style={{ padding: '16px 8px' }} >
                     <div className={`${styles.panelHeader} ${styles.textCenter} `}>
                         <div className={styles.panelSubtitle}>
-                            <div className={`${styles.label} ${styles.labelWarning}`} style={{ fontSize: '14px', background: 'rgba(255, 183, 0, .65)', borderRadius: '5px', padding: '6px 8px', color: '#3b4351'  }}>
-                                <span className={`${iconStyles.typcn} ${iconStyles.typcnLightbulb}`}></span>This is a guess, feel free to edit!
-                            </div>
+                                {message ? (<div className={`${styles.label} ${styles.labelWarning}`} style={{ fontSize: '14px', background: 'rgba(255, 183, 0, .65)', borderRadius: '5px', padding: '6px 8px', color: '#3b4351'  }}>
+                                <span className={`${iconStyles.typcn} ${iconStyles.typcnLightbulb}`}></span>{message}
+                            </div>) : null}
                         </div>
                         <div className={`${styles.h1}`} style={{display: 'flex', justifyContent: 'center',  padding: '16px 0 8px 0'}}> <span style={{fontSize: '1rem', alignSelf: 'center'}}>{'$'}</span><ContentEditable
                             style={{ borderBottom: '1px dotted #3b4351'}}
@@ -133,7 +158,7 @@ class SubmitDetails extends Component {
                             <div className={`${styles.column} ${styles.col12}`}>
                                 <li className={styles.divider}></li>
                                 <div style={{ paddingBottom: '8px', margin: '16px 0 0 0', textAlign: 'center'}}>
-                                    <span className={`${iconStyles.typcn} ${iconStyles.typcnLockClosedOutline}`}></span><span style={{fontSize: '14px'}}>Your transactions are always <a href="#" >safe & secure</a></span>
+                                    <span className={`${iconStyles.typcn} ${iconStyles.typcnLockClosedOutline}`}></span><span style={{fontSize: '14px'}}>Your data, and transactions are always safe & secure</span>
                                 </div>
                                 <label className={`${styles.formLabel} ${styles.textUppercase} ${styles.textBold}`} style={{fontSize: '12px'}}>
                     Card number

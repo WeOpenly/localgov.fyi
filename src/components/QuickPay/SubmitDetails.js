@@ -64,7 +64,6 @@ class SubmitDetails extends Component {
     componentDidMount(){
         const { dispatch, createdSubId } = this.props;
         dispatch(subscribeUploadAnalysis(createdSubId));
-     
     }
 
     changeEmail(e){
@@ -106,10 +105,12 @@ class SubmitDetails extends Component {
             price = userPrice;
         }
 
-        const canSubmit = this.state.card_no && this.state.card_exp && this.state.cvc_number && this.state.postal && this.state.email
+        const valCheck = currency(price).value
 
-        const maxCheck = currency(price).value
-        if (maxCheck > currency('10,000').value){
+        const canSubmit = this.state.card_no && this.state.card_exp && this.state.cvc_number && this.state.postal && this.state.email && valCheck > currency('10.00').value
+
+       
+        if (valCheck > currency('10,000').value){
             return (<div className={styles.columns}>
                 <div className={`${styles.column} ${styles.col12}`}>
 
@@ -125,6 +126,8 @@ class SubmitDetails extends Component {
 
                 </div>
             </div>)
+        } else if (valCheck <= currency('10.00').value){
+            message = 'The amount due is too low to make a transaction'
         }
         
         const isPreview = (step === 'show_submit_confirm')

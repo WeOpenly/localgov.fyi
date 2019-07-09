@@ -13,7 +13,6 @@ import ServiceFlowDialog from '../components/Delivery/ServiceFlowDialog';
 
 import ContentLoader from 'react-content-loader';
 
-import KeyboardBackspace from '@material-ui/icons/KeyboardBackspace';
 import ServiceDetail from '../components/ServiceDetail';
 import DetailTemplate from '../components/detailTemplate';
 import ServiceHeader from '../components/ServiceHeader';
@@ -26,6 +25,7 @@ import MoreLinks from '../components/ServicePage/MoreLinks';
 
 import withRoot from '../withRoot';
 import {trackView} from "../components/common/tracking";
+import specStyles from '../components/QuickPay/spectre.min.module.css';
 
 const windowGlobal = typeof window !== 'undefined' && window;
 
@@ -231,6 +231,7 @@ class ServiceDetailTemplate extends React.Component {
             loggedin: false,
             logincheckloading: true,
         };
+        this.slugify = this.slugify.bind(this);
     }
 
     componentDidMount() {
@@ -246,6 +247,15 @@ class ServiceDetailTemplate extends React.Component {
         // }
         // // }
         
+    }
+    
+    slugify(text) {
+        return text.toString().toLowerCase()
+        .replace(/\s+/g, '-')           // Replace spaces with -
+        .replace(/[^\w\-]+/g, '')       // Remove all non-word chars
+        .replace(/\-\-+/g, '-')         // Replace multiple - with single -
+        .replace(/^-+/, '')             // Trim - from start of text
+        .replace(/-+$/, '');            // Trim - from end of text
     }
 
     componentWillUnmount(){
@@ -425,7 +435,31 @@ class ServiceDetailTemplate extends React.Component {
         if (serDel.length > 0) {
             jsonLd['potentialAction'] = serDel[0]['potentialAction']
         }
+        
+        let hieLinks = null;
 
+        let actionCard = null;
+
+        if (service_parent) {
+            const { name, description, logo_url } = service_parent;
+            const service_parent_slug = this.slugify(name)
+
+            actionCard = (<GlossaryCard isMobile={isMobile} name={name} description={description} logoUrl={logo_url} />)
+            hieLinks = (<ul vocab="https://schema.org/" typeof="BreadcrumbList" className={specStyles.breadcrumb}>
+                <li property="itemListElement" typeof="ListItem" className={specStyles.breadcrumbItem}>
+                    <a property="item" typeof="WebPage" href="/"> <span property="name">Home</span></a>
+                    <meta property="position" content="1"/>
+                </li>
+                <li property="itemListElement" typeof="ListItem"  className={specStyles.breadcrumbItem}>
+                    <a property="item" typeof="WebPage" href="/services"><span property="name">Services</span></a>
+                    <meta property="position" content="2" />
+                </li>
+                <li property="itemListElement" typeof="ListItem" className={specStyles.breadcrumbItem}>
+                    <a href={`/services/${service_parent_slug}`} ><span property="name">{name}</span></a>
+                    <meta property="position" content="3" />
+                </li>
+            </ul>)
+        }
 
         let serHeader = null;
         if (name){
@@ -440,6 +474,7 @@ class ServiceDetailTemplate extends React.Component {
                 orgNameOnly={org_name}
                 orgID={org_id}
                 orgHieComp={orgHieComp}
+                hieLinks={hieLinks}
                 info={contact_details}
                 serDelLinks={service_del_links}
                 logoSizes={serLogoSvg} />
@@ -448,13 +483,6 @@ class ServiceDetailTemplate extends React.Component {
 
         let backButton = null;
     
-        let actionCard = null;
-
-        if (service_parent){
-            const { name, description, logo_url } = service_parent;
-            actionCard = (<GlossaryCard isMobile={isMobile} name={name} description={description} logoUrl={logo_url} />)
-        }
-
         return (
             <DetailTemplate isMobile={isMobile}  location={this.props.location}>
                 <Helmet>
@@ -489,13 +517,11 @@ class ServiceDetailTemplate extends React.Component {
 
                     </Grid>
                     <Grid item xs={12} sm={10} className={this.props.isMobile ? classes.ser_detail_body_mob : classes.ser_detail_body}>
-                         
+
                         <Grid item xs={12}>
                             {serHeader}
                         </Grid>
                            
-
-                            
                         <Grid item xs={12}  className={classes.ser_detail_details}>
                             <ServiceDetail name={name} 
                                 isMobile={isMobile}

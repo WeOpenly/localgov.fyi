@@ -93,9 +93,9 @@ class Landing extends React.Component {
             slidesToScroll: 1
         };
 
-        return (<div style={{ width: '100%', display: 'flex', height: '100vh', flexDirection: 'column',justifyContent: 'space-between'}}>
+        return (<div style={{ width: '100%', display: 'flex', height: '100vh', flexDirection: 'column',justifyContent: 'space-evenly'}}>
      
-            <div className={`${styles.hero}`} style={{margin: '16px 0 0 0 '}}>
+            <div style={{margin: '8px 0 0 0 '}}>
   
                     <Slider {...settings}>
 

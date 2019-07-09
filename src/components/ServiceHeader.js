@@ -222,7 +222,7 @@ class ServiceHeader extends Component {
   }
 
   render() {
-    const { classes, name, offeredIn, info, serDelLinks, id, logoSizes, service_delivery_enabled, views, orgLogoSvg, orgHieComp, orgNameOnly, is_parent_ser, is_assoc_ser, selectedAddr, areaAddr, assoc_orig_name } = this.props;
+    const { classes, name, offeredIn, info, serDelLinks, id, logoSizes, service_delivery_enabled, views, orgLogoSvg, orgHieComp, orgNameOnly, is_parent_ser, is_assoc_ser, selectedAddr, areaAddr, assoc_orig_name, hieLinks } = this.props;
     
     let origLocationText = areaAddr;
     if (selectedAddr){
@@ -365,9 +365,12 @@ class ServiceHeader extends Component {
 
     return (
       <Grid container spacing={0} className={!this.props.isMobile ? classes.service_header_main : classes.service_header_mainMobile}>
-   
+        {hieLinks ? (<Grid item xs={12} align="left">
+          {hieLinks}
+        </Grid>) : null}
         <Grid item xs={12} md={8}>
           {extraMessage}
+         
           <div className={!this.props.isMobile ? classes.service_header_cardTop : classes.service_header_cardTop_mob}>
             
             <div className={!this.props.isMobile ?  classes.service_header_title: classes.service_header_title_mob}>

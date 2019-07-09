@@ -88,7 +88,7 @@ class Landing extends React.Component {
             adaptiveHeight: false,
             autoplay: true,
             infinite: true,
-            speed: 700,
+            speed: 1000,
             slidesToShow: 1,
             slidesToScroll: 1
         };
@@ -121,7 +121,7 @@ class Landing extends React.Component {
                                    Snap & Forget
                                 </div>
                                 <div style={{ margin: '8px 16px',  textAlign: 'center' }} className={`${styles.p}`}>
-                                    All you need to do is to snap your bill or ticket, we will take care of understanding your picture and handling the payment
+                                    All you need to do is to snap your bill or ticket, we will take care of understanding it & handling the payment
                                 </div>
                             </div>
                             </div>

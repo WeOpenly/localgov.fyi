@@ -114,9 +114,7 @@ class SubmitDetails extends Component {
                 <div className={`${styles.column} ${styles.col12}`}>
 
                     <div className={styles.empty}>
-                        <div className={styles.emptyIcon}>
-                            <HeroIl />
-                        </div>
+                       
                         <p className={`${styles.emptyTitle} ${styles.h3}`}>💰That's amount is higher than what we can process at the moment 💰</p>
 
                         <p className={styles.emptySubtitle}>
@@ -216,6 +214,7 @@ class SubmitDetails extends Component {
                                     placeholder="you@youremail.com"
                                     className={styles.formInput}
                                     name="email"
+                                    required
                                     onChange={this.changeEmail}
                                     onBlur={()=> {}}
                                     value={userEmail ? userEmail : ""}

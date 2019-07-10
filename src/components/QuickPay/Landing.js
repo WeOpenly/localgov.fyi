@@ -88,7 +88,7 @@ class Landing extends React.Component {
             adaptiveHeight: false,
             autoplay: true,
             infinite: true,
-            speed: 1000,
+            speed: 1200,
             slidesToShow: 1,
             slidesToScroll: 1
         };

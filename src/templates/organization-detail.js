@@ -1,4 +1,4 @@
-import React from "react"
+import React, { Fragment } from "react"
 import { connect } from "react-redux";
 
 import Helmet from "react-helmet";
@@ -41,15 +41,11 @@ const styles = theme => ({
         height: "100%"
         },
     },
-  orgTitle: {
-    marginTop: theme.spacing.unit *3,
-    marginBottom: theme.spacing.unit *3,
-  },
-  orgSubheading: {
-    marginBottom: theme.spacing.unit,
-  },
+
   org_detail_serviceListComponent : {
     marginBottom: theme.spacing.unit * 2,
+    display: 'flex',
+    flexWrap: 'wrap'
   },
   org_detail_servicesContainer: {
     marginTop: theme.spacing.unit * 3,
@@ -204,11 +200,12 @@ other_orgs_from_state
             }
             return service
           });
+
           serCards = servicesAtLevel.map((ser, idx) => {
             const deliveryLink = ser.service_del_links && ser.service_del_links[0] ? ser.service_del_links[0] : null;
 
             return (
-              <Grid item xs={12} md={4} key={ser.id}>
+      
                 <ServiceCard
                   isMobile={isMobile}
                   resultType='service'
@@ -220,7 +217,7 @@ other_orgs_from_state
                   description={ser.service_description}
                   deliveryLink={deliveryLink}
                 />
-              </Grid>
+    
             );
           });
         }
@@ -250,24 +247,27 @@ other_orgs_from_state
               </Typography>);
             }
             orgTitle = (
-              <div className={classes.orgTitle}>
+              <Fragment>
                 {orgHeading}
-                {index > 0 && orgSubheading}
-              </div>
+                
+                {index > 0 ? 
+                  orgSubheading
+                  : null}
+              </Fragment>
             );
           }
         }
          
         serviceListComp = (
-          <Grid container spacing={8} className={classes.org_detail_serviceListComponent} key={detailsAtLevel.org ? detailsAtLevel.org.id : index}>
-            {index > 0 && <Grid item xs={12}>
-              {orgTitle}
-            </Grid>}
-            <Grid item xs={12}>
-              <Grid container spacing={16}>
-                {serCards}
-              </Grid>
-            </Grid>
+          <Grid item xs={12} md={12}  className={classes.org_detail_serviceListComponent} key={detailsAtLevel.org ? detailsAtLevel.org.id : index}>
+            {index > 0 && <div style={{margin: '16px 0', width: '100%'}} align="left">
+        
+                {orgTitle}
+            </div>}   
+            <div style={{display: 'flex', flexWrap: 'wrap', justifyContent: 'space-between'}}>
+              {serCards}
+            </div>
+               
           </Grid>
         );
 
@@ -290,7 +290,7 @@ other_orgs_from_state
 
     return (
       <DetailTemplate isMobile={isMobile} location={this.props.location}>
-      <Grid container spacing={16}>
+
         <Helmet>
           <script type="application/ld+json">{`${JSON.stringify(jsonLd)}`}</script>
           <title>{`${name} info, contact details and services | Evergov`}</title>
@@ -306,40 +306,36 @@ other_orgs_from_state
             <link rel="canonical" href={`https://evergov.com/${url_slug}/`} />
         
         </Helmet>
-        <Grid container spacing={16} item xs={12} md={12}>
+        <Grid container spacing={16}>
           <Grid item xs={12}>
             <br />
             {contactDetailComponent}
           </Grid>
-        </Grid>
-        <Grid container spacing={16} item xs={12} md={12} className={classes.org_detail_servicesContainer}>
-          <Grid item xs={12} md={6}>
-            <Typography variant="subheading" component="h4">
-              What would you like to get done?
+            <Grid item xs={12} md={6}>
+              <Typography variant="subheading" component="h4">
+                What would you like to get done?
             </Typography>
-          </Grid>
-          <Grid item xs={12} md={6} className={classes.filters}>
-            <ChipFilter
-              tags={['Apply', 'Pay', 'Register', 'Renew', 'Report']}
-              changeFilter={this.changeFilter}
-            />
-          </Grid>
-          <Grid item xs={12}>
-            {allServiceList.length ? allServiceList : <Typography variant="body1">No services found.</Typography>}
-          </Grid>
+            </Grid>
+            <Grid item xs={12} md={6} className={classes.filters}>
+              <ChipFilter
+                tags={['Apply', 'Pay', 'Register', 'Renew', 'Report']}
+                changeFilter={this.changeFilter}
+              />
+            </Grid>
+            <Grid item xs={12}>
+              {allServiceList.length ? allServiceList : <Typography variant="body1">No services found.</Typography>}
+            </Grid>
+            <Grid item xs={12} >
+              <div style={{width: '320px'}}>
+              <Typography variant="title">
+                {other_orgs_from_state_heading}
+              </Typography>
+              </div>
+            </Grid>
+            <Grid item xs={12} >
+              {otherOrgsFromState}
+            </Grid>
         </Grid>
-        <Grid container spacing={16} item xs={12} md={12} className={classes.org_detail_other_orgs_container}>
-          <Grid item xs={12} md={6}>
-            <Typography variant="title">
-             {other_orgs_from_state_heading}
-            </Typography>
-          </Grid>
-        
-          <Grid item xs={12}>
-            {otherOrgsFromState}
-          </Grid>
-        </Grid>
-      </Grid>
        <div className={classes.org_detail_footer}>
           <Footer isMobile={isMobile} page={this.props.location.pathname} />
         </div>

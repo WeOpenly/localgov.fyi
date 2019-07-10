@@ -13,16 +13,10 @@ import { withStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
 import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
-import CardMedia from '@material-ui/core/CardMedia';
-import Typography from '@material-ui/core/Typography';
-import Menu from '@material-ui/core/Menu';
-import MenuItem from '@material-ui/core/MenuItem';
-import Button from '@material-ui/core/Button';
-import IconButton from '@material-ui/core/IconButton';
-import SvgIcon from '@material-ui/core/SvgIcon';
-import Divider from '@material-ui/core/Divider';
-import MoreVert from '@material-ui/icons/MoreVert';
 
+import Typography from '@material-ui/core/Typography';
+
+import Button from '@material-ui/core/Button';
 
 import withRoot from '../withRoot';
 
@@ -31,12 +25,13 @@ import { trackClick} from "./common/tracking";
 const styles = theme => ({
   service_card_card: {
     display: 'flex',
+    maxWidth: '320px',
     flexDirection: 'column',
     justifyContent: 'baseline',
     borderTop: `2px solid #AB93FF`,
     boxShadow: '0px 3px 5px 0px rgba(0,0,0,0.1),0px 1px 1px 0px rgba(0,0,0,0.07),0px 2px 6px 1px rgba(0,0,0,0.06)',
     padding: theme.spacing.unit/2,
-    height: theme.spacing.unit * 19,
+    height: theme.spacing.unit * 20,
     margin: theme.spacing.unit
   },
 service_card_cardTop : {
@@ -55,6 +50,7 @@ service_card_caption : {
 service_card_cardActions : {
     display: 'flex',
     justifyContent: 'flex-end',
+    marginTop: theme.spacing.unit,
     padding:0,
   },
 service_card_iconButton : {
@@ -99,12 +95,6 @@ const RawHTML = ({ children, className = "" }) => (
 class SearchResult extends Component {
     constructor(props) {
         super(props);
-        this.state = {
-            anchorEl: null,
-            copied: false,
-                loggedin: false,
-    logincheckloading: true
-        };
         this.handleClick = this.handleClick.bind(this);
         this.handleDeliveryClick = this.handleDeliveryClick.bind(this);
         this.handleMoreVertClick = this.handleMoreVertClick.bind(this);
@@ -112,16 +102,7 @@ class SearchResult extends Component {
         this.handleCopy = this.handleCopy.bind(this);
     }
       componentDidMount(){
-    const loggedin = false;
-    this.setState({
-      logincheckloading: false,
-    });
-    if (loggedin){
-      this.setState({
-        loggedin: true,
-      })
-    }
-  }
+        }
 
     handleClick() {
         const { trackClick, resultType, id, toLink, title,  listIndex} = this.props;
@@ -150,7 +131,7 @@ class SearchResult extends Component {
 
     render() {
         const { classes, title, description, deliveryLink, toLink, id, org_name } = this.props;
-        const { anchorEl, copied } = this.state;
+
         const windowGlobal = typeof window !== 'undefined' && window;
         const windowLocation = windowGlobal.location ? windowGlobal.location : {};
         const shareLink = windowLocation.origin + toLink + '/';
@@ -182,31 +163,6 @@ class SearchResult extends Component {
                             <Typography variant="body2" component="h1"  className={classes.service_card_cardTitle} onClick={this.handleClick}>
                                 {title}
                             </Typography>
-                            <IconButton onClick={this.handleMoreVertClick} className={classes.service_card_iconButton}>
-                                <MoreVert/>
-                            </IconButton>
-                            <Menu
-                                id="simple-menu"
-                                anchorEl={anchorEl}
-                                open={Boolean(anchorEl)}
-                                onClose={this.handleClose}
-                            >
-                                <CopyToClipboard text={shareLink} onCopy={this.handleCopy}>
-                                    <MenuItem className={classes.service_card_menuItem}>
-                                        <Typography>{copied ? 'Copied!' : 'Copy link'}</Typography>
-                                    </MenuItem>
-                                </CopyToClipboard>
-                                <MenuItem onClick={this.handleClose} className={classes.service_card_menuItem}>
-                                    <FacebookShareButton url={shareLink} className={classes.service_card_shareButton}>
-                                        <Typography>Facebook</Typography>
-                                    </FacebookShareButton>
-                                </MenuItem>
-                                <MenuItem onClick={this.handleClose} className={classes.service_card_menuItem}>
-                                    <TwitterShareButton url={shareLink} className={classes.service_card_shareButton}>
-                                        <Typography>Twitter</Typography>
-                                    </TwitterShareButton>
-                                </MenuItem>
-                            </Menu>
                         </div>
                         <Typography variant="caption" className={classes.service_card_caption} onClick={this.handleClick}>
                             <RawHTML className={classes.service_card_raw}>{subtitle}</RawHTML>

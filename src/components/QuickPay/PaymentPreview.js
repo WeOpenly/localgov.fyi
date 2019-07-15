@@ -4,6 +4,7 @@ import { connect } from "react-redux";
 import styles from "./spectre.min.module.css"
 import iconStyles from './typicons.min.module.css';
 import currency from 'currency.js';
+const windowGlobal = typeof window !== 'undefined' && window
 
 import { finalizeSubmit, stepChange } from './actions';
 
@@ -33,6 +34,12 @@ class PaymentPreview extends Component {
         this.onSubmit = this.onSubmit.bind(this);
     }
 
+    componentDidMount(){
+        if (windowGlobal){
+            windowGlobal.scrollTo(0, 0)
+        }
+    }
+    
     onSubmit(ev) {
         ev.preventDefault();
         const { createdSubId, dispatch } = this.props;
@@ -111,7 +118,7 @@ class PaymentPreview extends Component {
                     </li>
                     <li className={styles.divider}></li>
                     <li className={styles.menuItem} style={{ display: 'flex', justifyContent: 'space-between' }}>
-                        <div className={styles.tooltip} data-tooltip="Evergov performs this on your behalf for a small fee">
+                        <div className={`${styles.tooltip} ${styles.tooltipRight}`} data-tooltip="Evergov performs this on your behalf for a small fee">
                             <span className={`${iconStyles.typcn} ${iconStyles.typcnSupport}`}></span>Service Fee<sup><span className={`${iconStyles.typcn} ${iconStyles.typcnInfoLarge}`}></span></sup>
                         </div>
 

@@ -66,7 +66,7 @@ class FooterSupport extends Component {
                         Terms
                         </a>
                     </Typography>
-                    <Typography >
+                    <Typography variant="caption">
                     <a
                         href={`/privacy`}
                         className={classes.footer_social_icon}

@@ -109,6 +109,15 @@ class FooterDiscover extends Component {
                 </div>
                 <div className={classes.disco_footer_links}>
                     <Typography variant="caption">
+                        <a
+                            href={`/quick_pay`}
+                            className={classes.footer_social_icon}
+
+                            target="_blank">
+                            Quick Pay
+                        </a>
+                    </Typography>
+                    <Typography variant="caption">
                     <a
                         href={`/locations`}
                         className={classes.footer_social_icon}

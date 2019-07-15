@@ -107,15 +107,8 @@ const styles = theme => ({
 class Case2 extends Component {
     constructor(props) {
         super(props);
-        this.state = {
-            isMob: false,
-        }
     }
 
-    componentWillMount() {
-        this.setState({ isMob: isMobileOnly });
-
-    }
 
     componentWillReceiveProps(nextProps) {
         const { dispatch } = this.props;

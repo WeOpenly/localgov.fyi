@@ -70,30 +70,20 @@ class HeaderAccountMenu extends Component {
     const { classes, isMobile } = this.props;
 
 
-    if (isMobile) {
-      return null;
-    }
+    // if (isMobile) {
+    //   return null;
+    // }
 
     return (
       <div className={classes.h_a_m_loging_signup_container}>
         <Button
           variant="text"
-          aria-label="services-list"
+          aria-label="quick pay"
           className={classes.h_a_m_login_button}
-          href="/services"
+          href="/quick_pay"
           color="inherit"
         >
-          Services
-        </Button>
-
-        <Button
-          variant="text"
-          href="/locations"
-          aria-label="locations-list"
-          className={classes.h_a_m_signup_button}
-          color="inherit"
-        >
-          Locations
+          Quick pay
         </Button>
       </div>
     );

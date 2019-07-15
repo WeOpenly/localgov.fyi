@@ -97,7 +97,7 @@ class SubmitDetails extends Component {
         if (guessPrice && guessPrice!=='NA'){
             price = guessPrice;
             price = String(currency(price).value)
-            message = 'This is a guess, feel free to edit!'
+            message = 'This is an estimate based on your receipt, feel free to edit!'
         }
 
         if (userPrice){
@@ -146,6 +146,7 @@ class SubmitDetails extends Component {
                         <div className={`${styles.h1}`} style={{display: 'flex', justifyContent: 'center',  padding: '16px 0 8px 0'}}> <span style={{fontSize: '1rem', alignSelf: 'center'}}>{'$'}</span><ContentEditable
                             style={{ borderBottom: '1px dotted #3b4351'}}
                             innerRef={this.contentEditable}
+                            type="number"
                             html={price} // innerHTML of the editable div
                             disabled={false}       // use true to disable editing
                             onChange={this.changePrice} // handle innerHTML change

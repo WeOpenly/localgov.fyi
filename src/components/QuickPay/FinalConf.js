@@ -42,7 +42,7 @@ const HeroIl = () => (
             return (<Img
                 title={`evergov`}
                 alt={`illustration of evergov`}
-                style={{ width: '320px', height: '200px' }}
+                style={{ width: '300px', height: '180px' }}
 
                 fluid={data.heroIl.edges[0].node.childImageSharp.fluid} />)
         }} />
@@ -77,9 +77,14 @@ class FinalConf extends React.Component {
                     <p className={`${styles.emptyTitle} ${styles.h3}`}>You're all set!</p>
                     <h6 style={{paddingBottom: '4px'}}> Sit back & relax, we will take it from here!</h6>
 
-                    <p className={styles.emptySubtitle}> 📨 We will soon send an email confirming your transaction! <br/>
-                        <small>🚨 Make sure to check your spam folder incase you don't see it in your inbox 🚨</small></p>
+                    <p className={styles.emptySubtitle}> 📨 We just sent a conformation email for your payment 
+
                     
+                      </p>
+                    <br />
+                    <div className={`${styles.toast} ${styles.toastPrimary}`} style={{ background: '#ece6ff', color: '#66758c',borderRadius: '5px', padding: '6px 8px'  }}>
+                        🚨 Make sure to check your spam folder incase you don't see it in your inbox 🚨
+                    </div>
                 </div>
 
                 </div>

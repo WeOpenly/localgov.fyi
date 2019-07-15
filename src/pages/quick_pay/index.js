@@ -6,7 +6,7 @@ import { Elements, StripeProvider } from 'react-stripe-elements';
 import Landing from '../../components/QuickPay/Landing'
 import SubmitDetails from '../../components/QuickPay/SubmitDetails'
 import FinalConf from '../../components/QuickPay/FinalConf'
-
+import Footer from '../../components/Footer';
 import styles from "../../components/QuickPay/spectre.min.module.css"
 import FirebaseContext from '../../components/QuickPay/firebase/context.js';
 import getFirebse from '../../components/QuickPay/firebase/firebase.js';
@@ -46,7 +46,7 @@ class QPIndex extends React.Component {
 
         
         const submitDetails = (<div className={styles.columns}>
-            <div className={`${styles.column} ${styles.col12}`}>
+            <div className={`${styles.column} ${styles.col12}`} style={{minHeight: '600px'}}>
                 <StripeProvider stripe={this.state.stripe}>
                     <Elements>
                         <SubmitDetails />
@@ -85,7 +85,7 @@ class QPIndex extends React.Component {
                     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick-theme.min.css" />
             </Helmet>
 
-                {step !== 'show_landing' ?  (<header className={styles.navbar} style={{ background: '#fff', padding: '4px 2px',boxShadow:'0 2px 4px rgba(50,50,93,.11)'}}>
+                <header className={styles.navbar} style={{ background: '#fff', padding: '4px 2px',boxShadow:'0 2px 4px rgba(50,50,93,.11)'}}>
                     <section className={styles.navbarSection}>
                         <a href="/" style={{ fontSize: '22px' }} className={`${styles.btn} ${styles.btnLink} ${styles.h1}`}>evergov</a><sub className={styles.textUppercase}  style={{ fontSize: '9px', paddingTop: '4px', letterSpacing: '0.1rem',fontWeight: 'bold' }} >Quick Pay</sub>
                     </section>
@@ -94,7 +94,7 @@ class QPIndex extends React.Component {
                         <a href="/" style={{ fontSize: '14px' }} className={`${styles.btn} ${styles.btnLink}`}>Terms</a>
                         <a href="/" style={{ fontSize: '14px' }} className={`${styles.btn} ${styles.btnLink}`}>Privacy</a>
                     </section>
-                </header>) : null}
+                </header>
             <FirebaseContext.Provider value={getFirebse}>
                 <div className={`${styles.container} ${styles.gridSm}`}>
                         {(step === 'show_landing' || step === 'final_conf') ? null : (<div className={`${styles.columns} ${styles.col12}`} >
@@ -111,7 +111,13 @@ class QPIndex extends React.Component {
                     {
                         (step === 'final_conf') ? <FinalConf /> : null
                     }
+    
+                        <div className={`${styles.column} ${styles.col12}`}>
+                            <Footer isMobile={true} />
+                        </div>
+            
                 </div>
+                    
             </FirebaseContext.Provider>
             </Fragment>
         )

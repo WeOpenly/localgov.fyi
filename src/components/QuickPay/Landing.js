@@ -52,7 +52,7 @@ const HeroIl = () => (
             return (<Img
                 title={`evergov`}
                 alt={`illustration of evergov`}
-                style={{ width: '280px', height: '200px' }}
+                style={{ width: '280px', height: '160px' }}
 
                 fluid={data.heroIl.edges[0].node.childImageSharp.fluid} />)
         }} />
@@ -93,9 +93,9 @@ class Landing extends React.Component {
             slidesToScroll: 1
         };
 
-        return (<div style={{ width: '100%', display: 'flex', height: '100vh', flexDirection: 'column',justifyContent: 'center', 'scrollX': 'hidden'}}>
+        return (<div style={{ width: '100%', display: 'flex', flexDirection: 'column',justifyContent: 'center', 'scrollX': 'hidden'}}>
      
-            <div style={{margin: '40px 0 0 0 ', flex: '70'}}>
+            <div style={{margin: '40px 0 0 0 '}}>
   
                     <Slider {...settings}>
 
@@ -106,7 +106,7 @@ class Landing extends React.Component {
                         <div style={{ display: 'flex', justifyContent: 'center', flexDirection: 'column', 'alignItems': 'center' }}>
                             <div style={{fontSize: '1.75rem', fontWeight: 'bold', margin: '8px 0'}} className={`${styles.btn} ${styles.btnLink} ${styles.h1} ${styles.textCenter}`}>evergov</div><div className={styles.textUppercase} style={{ fontSize: '0.55rem',letterSpacing: '0.1rem', fontWeight: 'bold' }}> Quick Pay </div>
                             <div style={{ margin: '8px 0',}} className={`${styles.p}`}>
-                                Hassle free government services
+                                ⚡Lightning fast service payments
                             </div>
                             </div>
                         </div>
@@ -140,13 +140,38 @@ class Landing extends React.Component {
                     </div>
                     
                     </Slider> 
-               
             </div>
-            <div style={{width: '100%', borderTop: '1px solid #d4d4d4', padding: '24px', marginTop: '24px', flex: '30'}}>
+            <div style={{width: '100%', borderTop: '1px solid #d4d4d4', padding: '24px', marginTop: '56px'}}>
                 <input onChange={this.onChange} className={`${inputStyles.inputfile} ${styles.btn} ${styles.btnPrimary} ${styles.btnLg}`}  type="file" id="inputfile" accept="image/*" capture/>
                
                 <label htmlFor="inputfile"> <span className={`${iconStyles.typcn} ${iconStyles.typcnCameraOutline}` }></span>{btnLabel}</label>
                     </div>
+
+            <div style={{ width: '100%', padding: '24px 24px 56px 24px', borderBottom: '1px solid #d4d4d4', margin: '24px 0'}}>
+
+               
+                <div className={styles.card} style={{ boxShadow: '0 .25rem 1rem rgba(48,55,66,.15)'}}>
+                    <div className={`${styles.cardHeader}`}>
+                    <div className={`${styles.cardTitle} ${styles.h5} ${styles.textCenter}`}>
+                        😍 Users love evergov
+                    </div>
+                    </div>
+                    <div className={styles.cardBody}>
+                        <blockquote>
+
+                            <p>The advance of technology is based on making it fit in so that you don't really even notice it, so it's part of everyday life. </p>
+                          
+                              <cite>- Bill Gates</cite>
+                </blockquote>
+
+                        <blockquote>
+
+                            <p>The advance of technology is based on making it fit in so that you don't really even notice it, so it's part of everyday life.</p>
+                              <cite>- Bill Gates</cite>
+                </blockquote>
+                    </div>
+                </div>
+            </div>
         </div>
         )
     }

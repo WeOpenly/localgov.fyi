@@ -2,12 +2,12 @@ import React from "react"
 import { graphql, StaticQuery } from 'gatsby';
 import Img from "gatsby-image";
 
-const AboutSVG = () => (
+const Step3 = () => (
     <StaticQuery
-        query={graphql`query AboutSVGq2 {
+        query={graphql`query Step3Il {
   heroIl: 
   allFile(
-            filter: { relativePath: { eq: "STEP1.png" } }
+            filter: { relativePath: { eq: "STEP3.png" } }
           ) {
             edges {
               node {
@@ -41,8 +41,8 @@ const AboutSVG = () => (
             return (<Img
                 title={`evergov`}
                 alt={`illustration of evergov`}
-              style={{ width: '320px', height: '200px' }}
+                style={{ width: '320px', height: '200px' }}
                 sizes={data.heroIl.edges[0].node.childImageSharp.fluid} />)
         }} />
 )
-export default AboutSVG
+export default Step3

@@ -11,14 +11,14 @@ import {uploadDocumentAndCreateSubmission} from './actions'
 import { graphql, StaticQuery } from 'gatsby';
 import Img from "gatsby-image";
 import AboutSVG from './AboutSvgComp'
-
+import Step3 from './Step3'
 
 const HeroIl = () => (
     <StaticQuery
         query={graphql`query heroIl3Query {
   heroIl: 
   allFile(
-            filter: { relativePath: { eq: "indexhero.png" } }
+            filter: { relativePath: { eq: "STEP2.png" } }
           ) {
             edges {
               node {
@@ -52,7 +52,7 @@ const HeroIl = () => (
             return (<Img
                 title={`evergov`}
                 alt={`illustration of evergov`}
-                style={{ width: '280px', height: '160px' }}
+                style={{ width: '280px', height: '200px' }}
 
                 fluid={data.heroIl.edges[0].node.childImageSharp.fluid} />)
         }} />
@@ -88,15 +88,15 @@ class Landing extends React.Component {
             adaptiveHeight: false,
             autoplay: true,
             infinite: true,
-            speed: 1200,
+            speed: 1500,
             slidesToShow: 1,
             slidesToScroll: 1
         };
 
         return (<div style={{ width: '100%', display: 'flex', flexDirection: 'column',justifyContent: 'center', 'scrollX': 'hidden'}}>
-     
-            <div style={{margin: '40px 0 0 0 '}}>
-  
+            <div style={{ fontWeight: 'bold', margin: '24px 0' }} className={`${styles.h6} ${styles.textCenter}`}> ⚡ Lightning fast service payments</div>
+            <div style={{margin: '8px 0 0 0 '}}>
+              
                     <Slider {...settings}>
 
                         <div >
@@ -104,9 +104,9 @@ class Landing extends React.Component {
                           <AboutSVG />
                             </div>
                         <div style={{ display: 'flex', justifyContent: 'center', flexDirection: 'column', 'alignItems': 'center' }}>
-                            <div style={{fontSize: '1.75rem', fontWeight: 'bold', margin: '8px 0'}} className={`${styles.btn} ${styles.btnLink} ${styles.h1} ${styles.textCenter}`}>evergov</div><div className={styles.textUppercase} style={{ fontSize: '0.55rem',letterSpacing: '0.1rem', fontWeight: 'bold' }}> Quick Pay </div>
-                            <div style={{ margin: '8px 0',}} className={`${styles.p}`}>
-                                ⚡Lightning fast service payments
+  
+                            <div style={{ margin: '8px 0', color: '#66758c', fontSize: '0.7rem'}} className={`${styles.p}`}>
+                            Snap your bills or tickets
                             </div>
                             </div>
                         </div>
@@ -117,25 +117,21 @@ class Landing extends React.Component {
                             <HeroIl />
                         </div>
                         <div style={{ display: 'flex', justifyContent: 'center', flexDirection: 'column', 'alignItems': 'center' }}>
-                        <div style={{ margin: '8px 0', fontWeight: 'bold'}} className={`${styles.h3} ${styles.btnLink}`}>
-                                   Snap & Forget
-                                </div>
-                                <div style={{ margin: '8px 16px',  textAlign: 'center' }} className={`${styles.p}`}>
-                                    All you need to do is to snap your bill or ticket, we will take care of understanding it & handling the payment
+   
+                            <div style={{ margin: '8px 16px', color: '#66758c', textAlign: 'center', fontSize: '0.7rem' }} className={`${styles.p}`}>
+                                   Check your details & pay securely
                                 </div>
                             </div>
                             </div>
                     <div>
-                        <div style={{ display: 'flex', justifyContent: 'center', marginBottom: '24px' }}>
-                            <Lock />
+                        <div style={{ display: 'flex', justifyContent: 'center',  }}>
+                            <Step3 />
                         </div>
                         <div style={{ display: 'flex', justifyContent: 'center', flexDirection: 'column', 'alignItems': 'center' }}>
-                        <div style={{ margin: '8px 0', fontWeight: 'bold', paddingLeft: '12px' }} className={`${styles.h3} ${styles.btnLink}`}>
-                            Safe & Secure
-                                </div>
-                            <div style={{ margin: '8px 16px',  textAlign: 'center' }} className={`${styles.p}`}>
-                              Your details are always safe and secure with evergov
-                                </div>
+         
+                            <p style={{ margin: '8px 16px', color: '#66758c', textAlign: 'center', fontSize: '0.7rem' }} className={`${styles.emptySubtitle}`}>
+                              You can rest, while we take care of cumbersome processes
+                        </p>
                     </div>
                     </div>
                     

@@ -155,9 +155,9 @@ class Landing extends React.Component {
                     <div className={styles.cardBody}>
                         <blockquote>
 
-                            <p>The advance of technology is based on making it fit in so that you don't really even notice it, so it's part of everyday life. </p>
+                            <p> I didn’t expect the process to be so fast- go to the website, snap a picture of the ticket, click OK - done in 30 seconds! </p>
                           
-                              <cite>- Bill Gates</cite>
+                              <cite>- Abby</cite>
                 </blockquote>
 
                         <blockquote>

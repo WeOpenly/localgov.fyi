@@ -17,7 +17,7 @@ import Grid from '@material-ui/core/Grid';
 import {withStyles} from '@material-ui/core/styles';
 import { fetchGoogLoc, updateSearchText, setGoogRegion } from "./actions";
 
-import { trackClick, trackInput} from "../common/tracking";
+import { trackClick, trackEvent, trackInput} from "../common/tracking";
 
 const styles = theme => ({
     ser_template_card: {
@@ -154,7 +154,10 @@ class GoogAutoComplete extends React.Component {
           .then(results => getLatLng(results[0]))
           .then(latLng => fetchGoogLoc(serviceTemplateId, ...latLng))
           .catch(error => console.error("Error", error));
+        
         this.props.setSearchText(address)
+        this.props.trackEvent('glossary_results_item_select', { service_template_id: serviceTemplateId, address: address })
+
         this.searchInput.blur();
     };
 
@@ -242,6 +245,9 @@ const mapDispatchToProps = (dispatch) => {
       trackClick: (click_type, resultType, id, title, listIndex) => {
         dispatch(trackClick(click_type, resultType, id, title, listIndex));
       },
+        trackEvent: (ev, data) => {
+            dispatch(trackEvent(ev, data));
+        },
       fetchGoogLoc: (serviceTemplateId, lat, lng) => {
         dispatch(fetchGoogLoc(serviceTemplateId, lat, lng));
       },

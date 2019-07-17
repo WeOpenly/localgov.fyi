@@ -149,21 +149,24 @@ class Landing extends React.Component {
                 <div className={styles.card} style={{ boxShadow: '0 .25rem 1rem rgba(48,55,66,.15)'}}>
                     <div className={`${styles.cardHeader}`}>
                     <div className={`${styles.cardTitle} ${styles.h5} ${styles.textCenter}`}>
-                        😍 Users love evergov
+                        😍 Users love Evergov
                     </div>
                     </div>
                     <div className={styles.cardBody}>
                         <blockquote>
 
-                            <p> I didn’t expect the process to be so fast- go to the website, snap a picture of the ticket, click OK - done in 30 seconds! </p>
+                            <p> I didn’t expect the process to be so fast- go to the website, snap a picture of the ticket, click OK 
+                            <br/>
+                            - done in 30 seconds! </p>
                           
                               <cite>- Abby</cite>
                 </blockquote>
 
                         <blockquote>
 
-                            <p>The advance of technology is based on making it fit in so that you don't really even notice it, so it's part of everyday life.</p>
-                              <cite>- Bill Gates</cite>
+                            <p>What's worse than the ticket itself is the time it takes to pay. <br/>
+                            Evergov has given me that time back.</p>
+                            <cite>- Jesse</cite>
                 </blockquote>
                     </div>
                 </div>

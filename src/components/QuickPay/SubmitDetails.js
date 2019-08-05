@@ -92,7 +92,7 @@ class SubmitDetails extends Component {
         }
 
         // can't be zero to proceed
-        let price = 'NA'
+        let price = '0.00'
         let message  = 'We were not able to understand the amount due, please enter below'
         if (guessPrice && guessPrice!=='NA'){
             price = guessPrice;
@@ -107,7 +107,7 @@ class SubmitDetails extends Component {
 
         const valCheck = currency(price).value
 
-        const canSubmit = this.state.card_no && this.state.card_exp && this.state.cvc_number && this.state.postal && this.state.email && valCheck > currency('10.00').value
+        const canSubmit = this.state.card_no && this.state.card_exp && this.state.cvc_number && this.state.postal && this.state.email && valCheck > currency('3.00').value
 
        
         if (valCheck > currency('10,000').value){
@@ -126,7 +126,7 @@ class SubmitDetails extends Component {
 
                 </div>
             </div>)
-        } else if (valCheck <= currency('10.00').value){
+        } else if (valCheck <= currency('3.00').value){
             message = 'The amount due is too low to make a transaction'
         }
         

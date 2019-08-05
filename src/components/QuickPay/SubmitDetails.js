@@ -107,7 +107,7 @@ class SubmitDetails extends Component {
 
         const valCheck = currency(price).value
 
-        const canSubmit = this.state.card_no && this.state.card_exp && this.state.cvc_number && this.state.postal && this.state.email && valCheck > currency('3.00').value
+        const canSubmit = this.state.card_no && this.state.card_exp && this.state.cvc_number && this.state.postal && this.state.email && valCheck > currency('2.00').value
 
        
         if (valCheck > currency('10,000').value){
@@ -126,8 +126,11 @@ class SubmitDetails extends Component {
 
                 </div>
             </div>)
-        } else if (valCheck <= currency('3.00').value){
+        } else if (valCheck <= currency('2.00').value){
             message = 'The amount due is too low to make a transaction'
+            if (valCheck === currency('0.00').value){
+                message = 'We were not able to understand the amount due, please enter below'
+            }
         }
         
         const isPreview = (step === 'show_submit_confirm')

@@ -333,7 +333,7 @@ class ServiceHeader extends Component {
      
       }
 
-      return <div className={classes.service_header_contactIcons}>{value} </div>;
+      return <div key={value} className={classes.service_header_contactIcons}>{value} </div>;
     });
 
       const actionButton = null;

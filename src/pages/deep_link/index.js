@@ -12,7 +12,7 @@ import withRoot from '../../withRoot';
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 import Paper from '@material-ui/core/Paper';
-
+import GoodBye from '../../illus/GoodBye'
 import {trackClick} from "../../components/common/tracking";
 
 import {decode} from 'universal-base64';
@@ -101,7 +101,7 @@ class DeepLink extends Component {
                         evergov
                     </Typography>
                     <Paper className={classes.ser_redir_details}>
-                        <CircularProgress />
+                       <GoodBye />
                         <Typography variant="subheading" style={{paddingBottom: 16 }}gutterBottom>
                             See you soon!
                         </Typography>

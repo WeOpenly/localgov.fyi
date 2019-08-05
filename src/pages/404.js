@@ -10,8 +10,25 @@ import Divider from '@material-ui/core/Divider';
 import NotFoundIcon from '../svgIcons/NotFound';
 import withRoot from '../withRoot';
 import {trackView} from "../components/common/tracking";
+import NotFoundSvg from "../illus/NotFoundSvg";
 
 const styles = theme => ({
+    "@global": {
+        html: {
+            WebkitFontSmoothing: "antialiased", // Antialiasing.
+            MozOsxFontSmoothing: "grayscale" // Antialiasing.
+        },
+        body: {
+            height: "100%",
+            overflow: "hidden",
+            margin: 0,
+            padding: 0,
+            background: "#fff",
+            overflowWrap: "break-word",
+            overflowY: "scroll",
+            overflowX: "hidden"
+        }
+    },
     nf_root: {
         height: '80vh',
         display: 'flex',
@@ -53,7 +70,7 @@ class NotFound extends Component {
                 <Grid container spacing={16} align="center">
                     <Grid item xs='auto' sm={4} />
                     <Grid item xs={12} sm={4}>
-                        <NotFoundIcon style={{ fontSize: '168px' }}/>
+                        <NotFoundSvg />
                     </Grid>
                     <Grid item xs='auto' sm={4} />
 

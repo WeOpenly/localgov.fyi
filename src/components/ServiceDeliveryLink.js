@@ -58,7 +58,11 @@ const styles = theme => ({
   },
   ser_del_link_button: {
     width: '100%',
-    marginBottom: theme.spacing.unit
+    marginBottom: theme.spacing.unit,
+    '&:hover': {
+      color: 'white',
+      backgroundColor: theme.palette.primary['400']
+    }
   },
   ser_del_link_paper: {
     paddingLeft: theme.spacing.unit,

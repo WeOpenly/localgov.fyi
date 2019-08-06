@@ -68,6 +68,7 @@ service_card_shareButton : {
   },
 service_card_cardContent : {
     paddingBottom: 0,
+    minWidth: '320px',
     height : theme.spacing.unit * 13,
 },
 service_card_dividerWrapper : {

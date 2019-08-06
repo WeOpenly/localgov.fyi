@@ -42,8 +42,11 @@ export const trackEvent = (event_type, event_props) => async (dispatch, getState
     if (!Fingerprint2) {
         return
     }
-    Fingerprint2.getPromise(fpOptions).then(function (result, components) {
+
+    Fingerprint2.getPromise(fpOptions).then(function (components) {
         try {
+            var values = components.map(function (component) { return component.value })
+            var result = Fingerprint2.x64hash128(values.join(''), 31)
 
             if (windowGlobal && windowGlobal.mixpanel) {
                 windowGlobal
@@ -55,7 +58,7 @@ export const trackEvent = (event_type, event_props) => async (dispatch, getState
                     .track(`event_${event_type}`, event_props);
             }
 
-        } catch (e) { }
+        } catch (e) { console.log(e)}
     });
 };
 
@@ -63,8 +66,10 @@ export const trackView = (page_layout_type, viewing_entity_type, viewing_entity_
     if (!Fingerprint2) {
         return
     }
-    Fingerprint2.getPromise(fpOptions).then(function (result, components) {
+    Fingerprint2.getPromise(fpOptions).then(function (components) {
         try {
+            var values = components.map(function (component) { return component.value })
+            var result = Fingerprint2.x64hash128(values.join(''), 31)
 
             const eventParams = {
                 v_e_t: viewing_entity_type,
@@ -85,7 +90,7 @@ export const trackView = (page_layout_type, viewing_entity_type, viewing_entity_
                     .track(`page_view_${page_layout_type}`, eventParams);
             }
 
-        } catch (e) { }
+        } catch (e) { console.log(e) }
     });
 };
 
@@ -94,8 +99,11 @@ export const trackInput = (input_type, text, extra) => async (dispatch, getState
     if (!Fingerprint2) {
         return
     }
-    Fingerprint2.getPromise(fpOptions).then(function (result, components) {
+
+    Fingerprint2.getPromise(fpOptions).then(function (components) {
         try {
+            var values = components.map(function (component) { return component.value })
+            var result = Fingerprint2.x64hash128(values.join(''), 31)
 
             const eventParams = {
                 s: text,
@@ -110,7 +118,7 @@ export const trackInput = (input_type, text, extra) => async (dispatch, getState
             }
 
         } catch (e) {
-
+            console.log(e) 
         }
     });
 };
@@ -120,8 +128,11 @@ export const trackClick = (click_type, clicked_entity_type, clicked_entity_id, c
     if (!Fingerprint2) {
         return
     }
-    Fingerprint2.getPromise(fpOptions).then(function (result, components) {
+    Fingerprint2.getPromise(fpOptions).then(function (components) {
         try {
+
+            var values = components.map(function (component) { return component.value })
+            var result = Fingerprint2.x64hash128(values.join(''), 31)
 
             const eventParams = {
                 pos_in_list: pos_in_list,
@@ -141,7 +152,7 @@ export const trackClick = (click_type, clicked_entity_type, clicked_entity_id, c
 
 
         } catch (e) {
-
+         console.log("fpfail", e) 
         }
     });
 };

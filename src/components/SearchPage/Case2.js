@@ -151,7 +151,6 @@ class Case2 extends Component {
                 navigate(`/${url}`)
                 return loadingComp
             }
-        
         } else{
             return (  <Grid container>
                 <Grid item sm={12} className={this.props.isMobile ? classes.ser_case1_suggested_row_mob : classes.ser_case1_suggested_row}>

@@ -16,8 +16,8 @@ function requestSearchResults() {
     return { type: types.REQUEST_SEARCH_RESULTS }
 }
 
-function recvSearchResults(results, whichCase, shouldRedirect, is_parent_ser, is_assoc_ser, assoc_original_name) {
-    return { type: types.RECV_SEARCH_RESULTS_SUCCESS, case: whichCase, results, is_parent_ser, shouldRedirect, is_assoc_ser, assoc_original_name}
+function recvSearchResults(results, whichCase, locResult, shouldRedirect, is_parent_ser, is_assoc_ser, assoc_original_name) {
+    return { type: types.RECV_SEARCH_RESULTS_SUCCESS, case: whichCase, results, is_parent_ser, locResult, shouldRedirect, is_assoc_ser, assoc_original_name}
 }
 
 function failedRecvSearchResults() {
@@ -50,7 +50,7 @@ export function fetchSearchResults(lat, lng, service_template_id, service_text) 
             const resp = await YusufApi(null, `get_search_results?${newQueryString}`, null, null);
 
             if (resp && resp.success) {
-                dispatch(recvSearchResults(resp.results, resp.case, resp.is_redirect, resp.is_parent_ser, resp.is_assoc_ser, resp.assoc_original_name));
+                dispatch(recvSearchResults(resp.results, resp.case, resp.location, resp.is_redirect, resp.is_parent_ser, resp.is_assoc_ser, resp.assoc_original_name));
             }
             else{
                 dispatch(failedRecvSearchResults()); 

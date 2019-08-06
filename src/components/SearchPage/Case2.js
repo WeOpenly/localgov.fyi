@@ -125,7 +125,7 @@ class Case2 extends Component {
 
 
     render() {
-        const {classes, searchResults, searchResultsLoading , shouldRedirect} = this.props;
+        const {classes, searchResults, searchResultsLoading , locResult, shouldRedirect} = this.props;
         const resultsAvailable = searchResults && Object.keys(searchResults).length > 0;
         const loadingComp = this.props.isMobile ? (<Grid container>
             <Grid item sm={1} />
@@ -141,7 +141,6 @@ class Case2 extends Component {
         </Grid>)
 
         if (searchResultsLoading){
-         
             return loadingComp
         }
 
@@ -151,6 +150,24 @@ class Case2 extends Component {
                 navigate(`/${url}`)
                 return loadingComp
             }
+        } if (!searchResultsLoading && locResult && searchResults && searchResults.length > 0 && !shouldRedirect) {
+            return (<Grid container>
+                <Grid item sm={12} className={this.props.isMobile ? classes.ser_case1_suggested_row_mob : classes.ser_case1_suggested_row}>
+                    <OrgAggregate {...locResult} />
+                </Grid>
+
+                <Grid item sm={12} className={this.props.isMobile ? classes.ser_case1_suggested_row_mob : classes.ser_case1_suggested_row}>
+                    <Typography
+                        varant="h6"
+                        className={this.props.isMobile ? classes.ser_case1_suggested_row_heading_mob : classes.ser_case1_suggested_row_heading}>
+                        Popular Services
+                    </Typography>
+                    <div className={this.props.isMobile ? classes.ser_case1_suggested_row_mob : classes.ser_case1_suggested_row}>
+                        <RelatedServiceTemplates />
+                    </div>
+                </Grid>
+
+            </Grid>)
         } else{
             return (  <Grid container>
                 <Grid item sm={12} className={this.props.isMobile ? classes.ser_case1_suggested_row_mob : classes.ser_case1_suggested_row}>

@@ -34,6 +34,7 @@ export function searchPage(state = initialState, action) {
             return {
                 ...state,
                 searchResultsLoading: false,
+                locResult: action.locResult,
                 is_parent_ser: action.is_parent_ser,
                 is_assoc_ser: action.is_assoc_ser,
                 assoc_original_name: action.assoc_original_name,

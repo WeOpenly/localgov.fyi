@@ -156,3 +156,20 @@ export const trackClick = (click_type, clicked_entity_type, clicked_entity_id, c
         }
     });
 };
+
+
+export const trackQPevent = (event_type, distId, event_props) => async (dispatch, getState) => {
+    console.log(event_type, distId, event_props)
+    try {
+        if (windowGlobal && windowGlobal.mixpanel) {
+                windowGlobal
+                    .mixpanel
+                    .identify(distId);
+            windowGlobal.mixpanel.people.set({ "$distinct_id": distId });
+                windowGlobal
+                    .mixpanel
+                    .track(`qp_event_${event_type}`, event_props);
+        }
+    }
+    catch (e) { console.log(e) }
+};

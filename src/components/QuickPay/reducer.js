@@ -2,7 +2,7 @@ import * as types from "./ActionTypes";
 
 const initialState = {
     anonUserID: null,
-    anonUserLoading: false,
+    anonUserLoading: true,
     anonUserLoadingFailed: false,
     step: 'show_landing', //show_landing, guess_price_and_update_details, show_submit_confirm, final_conf
     landingPageLoading: true,

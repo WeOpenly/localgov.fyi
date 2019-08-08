@@ -8,6 +8,8 @@ import { graphql, StaticQuery } from 'gatsby';
 import Img from "gatsby-image";
 import {uploadDocumentAndCreateSubmission} from './actions'
 import {stepChange} from './actions'
+import { trackQPevent } from '../common/tracking';
+
 
 const HeroIl = () => (
     <StaticQuery
@@ -52,19 +54,13 @@ const HeroIl = () => (
 class FinalConf extends React.Component {
     constructor(props) {
         super(props);
-        
-        this.onChange = this.onChange.bind(this);
     }
 
-    onChange(e){
-        const { dispatch, anonUserID} = this.props;
-
-        const files = Array.from(e.target.files)
-
-        if (files){
-            dispatch(uploadDocumentAndCreateSubmission(files[0], anonUserID))
-        }
+    componentDidMount() {
+      const { anonUserID } = this.props;
+      this.props.trackEvent('final_confirmation_page', anonUserID, {})
     }
+
 
     render() {
         return (<div className={styles.columns}>
@@ -93,10 +89,19 @@ class FinalConf extends React.Component {
     }
 }
 
+const mapDispatchToProps = (dispatch) => {
+  return {
+    trackEvent: (ev, id, data) => {
+      dispatch(trackQPevent(ev, id, data));
+    }
+  }
+}
+
+
 const mapStateToProps = function (state, ownProps) {
     return {
         ...state.quickPay
     };
 };
 
-export default connect(mapStateToProps)(FinalConf);
+export default connect(mapStateToProps, mapDispatchToProps)(FinalConf);

@@ -12,6 +12,7 @@ import { graphql, StaticQuery } from 'gatsby';
 import Img from "gatsby-image";
 import AboutSVG from './AboutSvgComp'
 import Step3 from './Step3'
+import { trackQPevent} from '../common/tracking';
 
 const HeroIl = () => (
     <StaticQuery
@@ -64,6 +65,11 @@ class Landing extends React.Component {
         this.onChange = this.onChange.bind(this);
     }
 
+    componentDidMount(){
+        const { anonUserID, dispatch} = this.props;
+        dispatch(trackQPevent('landing_page', anonUserID, {}))
+    }
+
     onChange(e){
         const { dispatch, anonUserID} = this.props;
 
@@ -88,7 +94,7 @@ class Landing extends React.Component {
             adaptiveHeight: false,
             autoplay: true,
             infinite: true,
-            speed: 1500,
+            speed: 3500,
             slidesToShow: 1,
             slidesToScroll: 1
         };
@@ -175,6 +181,8 @@ class Landing extends React.Component {
         )
     }
 }
+
+
 
 const mapStateToProps = function (state, ownProps) {
     return {

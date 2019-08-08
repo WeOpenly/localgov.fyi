@@ -13,6 +13,7 @@ import PaymentPreview from './PaymentPreview'
 
 import styles from "./spectre.min.module.css"
 import iconStyles from './typicons.min.module.css';
+import { trackQPevent } from '../common/tracking';
 
 import {subscribeUploadAnalysis, stepChange, updatePrice, updateEmail} from './actions';
 import TablePaginationActions from '@material-ui/core/TablePagination/TablePaginationActions';
@@ -62,8 +63,9 @@ class SubmitDetails extends Component {
     }
 
     componentDidMount(){
-        const { dispatch, createdSubId } = this.props;
+        const { dispatch, createdSubId, anonUserID, step } = this.props;
         dispatch(subscribeUploadAnalysis(createdSubId));
+        dispatch(trackQPevent(`${step}_loading`, anonUserID, { submissionId: createdSubId}))
     }
 
     changeEmail(e){
@@ -79,10 +81,17 @@ class SubmitDetails extends Component {
     };
 
     onPreview(ev) {
-        const { createdSubId, dispatch } = this.props;
-        console.log("onPreview");
+        const { createdSubId, dispatch, anonUserID } = this.props;
         ev.preventDefault();
         dispatch(stepChange('show_submit_confirm'));
+        dispatch(trackQPevent('show_submit_confirm', anonUserID, { submissionId: createdSubId }))
+    }
+
+    componentWillReceiveProps(nextProps){
+        console.log(nextProps, this.props);
+        if (this.props.analyseInProgress !== nextProps.analyseInProgress && nextProps.analyseInProgress === false){
+            this.props.dispatch(trackQPevent(`${this.props.step}_loaded`, this.props.anonUserID, { submissionId: this.props.createdSubId }))
+        }
     }
 
     render() {
@@ -242,6 +251,7 @@ class SubmitDetails extends Component {
 }
 
 const InjectedForm = injectStripe(SubmitDetails);
+
 
 const mapStateToProps = function (state, ownProps) {
     return {

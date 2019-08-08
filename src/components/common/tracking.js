@@ -159,7 +159,7 @@ export const trackClick = (click_type, clicked_entity_type, clicked_entity_id, c
 
 
 export const trackQPevent = (event_type, distId, event_props) => async (dispatch, getState) => {
-    console.log(event_type, distId, event_props)
+
     try {
         if (windowGlobal && windowGlobal.mixpanel) {
                 windowGlobal

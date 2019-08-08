@@ -88,7 +88,7 @@ class SubmitDetails extends Component {
     }
 
     componentWillReceiveProps(nextProps){
-        console.log(nextProps, this.props);
+  
         if (this.props.analyseInProgress !== nextProps.analyseInProgress && nextProps.analyseInProgress === false){
             this.props.dispatch(trackQPevent(`${this.props.step}_loaded`, this.props.anonUserID, { submissionId: this.props.createdSubId }))
         }

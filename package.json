@@ -60,6 +60,7 @@
         "react-dom": "^16.8.6",
         "react-headroom": "^2.2.4",
         "react-helmet": "^5.2.0",
+        "react-html5-camera-photo": "^1.4.3",
         "react-icons": "^3.2.2",
         "react-json-schema": "^1.2.2",
         "react-jsonschema-form": "^1.6.1",

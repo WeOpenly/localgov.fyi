@@ -6,6 +6,7 @@ import inputStyles from './inputfile.module.css';
 import iconStyles from './typicons.min.module.css';
 import Slider from "react-slick";
 import Lock from '../../svgIcons/lock.js';
+import CameraCapture from './CameraCapture';
 
 import {uploadDocumentAndCreateSubmission} from './actions'
 import { graphql, StaticQuery } from 'gatsby';
@@ -63,7 +64,19 @@ class Landing extends React.Component {
         super(props);
         
         this.onChange = this.onChange.bind(this);
+        this.toggleCamera = this.toggleCamera.bind(this);
+        this.state = {
+            showCamera: false,
+        }
     }
+
+
+    toggleCamera(toggle){
+        this.setState({
+            showCamera: !toggle,
+        })
+    }
+
 
     componentDidMount(){
         const { anonUserID, dispatch} = this.props;
@@ -143,12 +156,16 @@ class Landing extends React.Component {
                     
                     </Slider> 
             </div>
+  
             <div style={{width: '100%', borderTop: '1px solid #d4d4d4', padding: '24px', marginTop: '56px'}}>
                 <input onChange={this.onChange} className={`${inputStyles.inputfile} ${styles.btn} ${styles.btnPrimary} ${styles.btnLg}`}  type="file" id="inputfile" accept="image/*" capture/>
                
                 <label htmlFor="inputfile"> <span className={`${iconStyles.typcn} ${iconStyles.typcnCameraOutline}` }></span>{btnLabel}</label>
                     </div>
 
+            <div>
+            <CameraCapture />
+        </div>
             <div style={{ width: '100%', padding: '24px 24px 56px 24px', borderBottom: '1px solid #d4d4d4', margin: '24px 0'}}>
 
                

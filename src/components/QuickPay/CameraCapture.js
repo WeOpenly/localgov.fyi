@@ -35,6 +35,7 @@ class CameraCapture extends React.Component {
             <a href="#close" className={styles.modalOverlay} aria-label="Close"></a>
             <div className={`${styles.modalContainer}`} style={{height: '100%', maxHeight: '100vh', padding: '0px'}}>
                 <Camera
+                    cancelCamera={this.props.cancelCamera}
                     idealFacingMode={FACING_MODES.ENVIRONMENT}
                     imageType={IMAGE_TYPES.JPG}
                     imageCompression={0.7}

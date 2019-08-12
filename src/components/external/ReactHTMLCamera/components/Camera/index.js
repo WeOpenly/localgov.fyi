@@ -55,7 +55,7 @@ const Overlay = () => (
 
           </svg>
         </div>
-         </div>
+      </div>
       <div className="below-right" >
         <div style={{ width: '128px', margin: '16px' }}>
           <svg width="128" height="128" fill="none"  >
@@ -243,11 +243,12 @@ class Camera extends React.Component {
           <Overlay />
         </div>
         <div style={{ height: '80px', marginBottom: '24px', padding: '8px', background: '#000'}}>
-        
+      
           <CircleButton
             isClicked={!this.state.isShowVideo}
             onClick={this.handleTakePhoto}
           />
+          <div onClick={this.props.cancelCamera} style={{ color: '#ffe', padding: '16px', cursor: 'pointer' }}>Cancel</div>
         </div>
       
       </div>

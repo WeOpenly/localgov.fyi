@@ -284,7 +284,7 @@ class Landing extends React.Component {
           
         <div>
                 {snapComp}
-                {this.state.showCameraCap ? <CameraCapture onPhotoTaken={this.onMediaPhotoTaken} onCameraError={this.onCameraError} /> : null}
+                {this.state.showCameraCap ? <CameraCapture cancelCamera={this.toggleCamera} onPhotoTaken={this.onMediaPhotoTaken} onCameraError={this.onCameraError} /> : null}
         </div>
             <div style={{ width: '100%', padding: '24px 24px 56px 24px', borderBottom: '1px solid #d4d4d4', margin: '24px 0'}}>
 

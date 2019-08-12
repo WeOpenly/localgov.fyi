@@ -1,4 +1,4 @@
-import clickSound from './data/click-sound.base64.json';
+// import clickSound from './data/click-sound.base64.json';
 
 export function getShowHideStyle (isDisplay) {
   const displayStyle = isDisplay
@@ -32,8 +32,8 @@ export function isDynamicPropsUpdate (props, nextProps) {
 }
 
 export function playClickAudio () {
-  let audio = new Audio('data:audio/mp3;base64,' + clickSound.base64);
-  audio.play();
+  // let audio = new Audio('data:audio/mp3;base64,' + clickSound.base64);
+  // audio.play();
 }
 
 export function printCameraInfo (info) {

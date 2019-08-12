@@ -3,6 +3,7 @@ import * as types from './ActionTypes';
 const windowGlobal = typeof window !== 'undefined' && window
 
 import getFirebase from './firebase/firebase';
+import { trackQPevent } from '../common/tracking';
 const firebase = getFirebase();
 const storageRef = firebase.storage().ref();
 
@@ -77,15 +78,15 @@ export function uploadDocumentAndCreateSubmission(file, userId) {
             created_at: dateNow,
         })
             .then(function (docRef) {
-                console.log("Document written with ID: ", docRef.id);
 
                 storageRef.child(`user_submission_imgs/${userId}/${docRef.id}-${dateNow}.jpg`).put(file).then(function (snapshot) {
-                    console.log('Uploaded a blob or file!', snapshot);
+    
                     snapshot.ref.getDownloadURL().then(function (downloadUrl) {
-                        console.log(downloadUrl);
+                       
                         firebase.firestore().collection("user_submission").doc(docRef.id).update({ img_url: downloadUrl });
                         dispatch(uploadDocumentSuccess(docRef.id))
-                        dispatch(stepChange('guess_price_and_update_details'))
+                        dispatch(stepChange('guess_price_and_update_details'));
+                        dispatch(trackQPevent('picture_uploaded', userId, { url: downloadUrl }));
                     })
                 }).catch((error) => {
                     console.log(error);

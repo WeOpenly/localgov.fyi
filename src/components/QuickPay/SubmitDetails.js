@@ -102,7 +102,7 @@ class SubmitDetails extends Component {
 
         // can't be zero to proceed
         let price = '0.00'
-        let message  = 'We were not able to understand the amount due, please enter below'
+        let message = 'Since I’m just a bot, I couldn’t figure out the amount due. Please enter the correct amount below'
         if (guessPrice && guessPrice!=='NA'){
             price = guessPrice;
             price = String(currency(price).value)
@@ -136,9 +136,18 @@ class SubmitDetails extends Component {
                 </div>
             </div>)
         } else if (valCheck <= currency('2.00').value){
-            message = 'The amount due is too low to make a transaction'
+            message = "Looks like the amount to pay is too low. Since I’m just a bot & may get this wrong, feel free to edit."
+            if (userPrice){
+                message = 'The amount due is too low to make a transaction'
+            }
             if (valCheck === currency('0.00').value){
-                message = 'We were not able to understand the amount due, please enter below'
+                if (userPrice){
+                    message = 'The amount due is too low to make a transaction'
+                }
+                else{
+                    message = 'Since I’m just a bot, I couldn’t figure out the amount due. Please enter the correct amount below”'
+                }
+               
             }
         }
         
@@ -240,6 +249,9 @@ class SubmitDetails extends Component {
                 </div>
                 </div>
                 <div className={styles.panelFooter}>
+                            {!canSubmit && userEmail ? (<div style={{ fontSize: '14px', borderRadius: '5px', width: '100%', padding: '6px 8px', color: '#3b4351', textAlign: 'center' }}>
+                                <span className={`${iconStyles.typcn} ${iconStyles.typcnInfoLarge}`}></span> Please complete payment details to proceed
+                        </div>) : null}
                             <button disabled={!canSubmit} style={{ marginTop: '16px', width: '100%', fontSize: '14px' }} className={`${styles.btn} ${styles.btnPrimary} ${styles.btnLg} ${styles.textUppercase} ${styles.textBold}`} onClick={this.onPreview}>Preview</button>
 
                       </div>

@@ -2,19 +2,21 @@
                  position: relative;
                  text-align: center;
                  display: flex;
+                 flex: 80;
              }
              
              .react-html5-camera-photo>video {
-                 width: 768px;
+                 /* width: 768px; */
+                 object-fit: fill;
              }
              
              .react-html5-camera-photo>img {
-                 width: 768px;
+                 object-fit: fill;
              }
              
              .overlay {
+                 object-fit: fill;
                  width: 100%;
-                 max-width: 768px;
                  position: absolute;
                  display: flex;
                  flex-direction: column;
@@ -57,7 +59,7 @@
              .react-html5-camera-photo-fullscreen>video,
              .react-html5-camera-photo-fullscreen>img {
                  width: 100vw;
-                 height: 100vh;
+                 height: 80vh;
              }
              
              .react-html5-camera-photo-fullscreen>video {
@@ -66,5 +68,5 @@
              
              .react-html5-camera-photo-fullscreen>.display-error {
                  width: 100vw;
-                 height: 100vh;
+                 height: 80vh;
              }

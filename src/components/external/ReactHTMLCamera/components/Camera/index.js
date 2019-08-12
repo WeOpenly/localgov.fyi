@@ -192,7 +192,7 @@ class Camera extends React.Component {
 
     let classNameFullscreen = isFullscreen ? 'react-html5-camera-photo-fullscreen' : '';
     return (
-      <div style={{width: '100%', maxWidth: '768px', display: 'flex', flexDirection: 'column'}}>
+      <div style={{width: '100%', height: '100vh', minHeight: '568px', maxWidth: '768px', display: 'flex', flexDirection: 'column'}}>
         <div className={'react-html5-camera-photo ' + classNameFullscreen}>
           <DisplayError
             cssClass={'display-error'}

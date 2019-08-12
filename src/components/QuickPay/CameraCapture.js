@@ -20,7 +20,7 @@ class CameraCapture extends React.Component {
     }
 
     onTakePhoto(dataUri){
-        console.log('takePhoto', dataUri);
+       this.props.onPhotoTaken(dataUri);
     }
 
     componentDidMount() {
@@ -33,13 +33,14 @@ class CameraCapture extends React.Component {
    
         return (<div className={`${styles.modal} ${styles.active}  ${styles.modalLg}`} style={{ backgroundColor: '#000' }}>
             <a href="#close" className={styles.modalOverlay} aria-label="Close"></a>
-            <div className={`${styles.modalContainer}`}>
+            <div className={`${styles.modalContainer}`} style={{height: '100%', maxHeight: '100vh', padding: '0px'}}>
                 <Camera
                     idealFacingMode={FACING_MODES.ENVIRONMENT}
                     imageType={IMAGE_TYPES.JPG}
-                    imageCompression={0.97}
+                    imageCompression={0.7}
                     isMaxResolution={false}
                     isImageMirror={false}
+                    onCameraError={this.props.onCameraError}
                     isSilentMode={true}
                     isDisplayStartCameraError={true}
                     isFullscreen={false}

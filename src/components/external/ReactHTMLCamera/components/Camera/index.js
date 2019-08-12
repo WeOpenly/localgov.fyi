@@ -217,7 +217,7 @@ class Camera extends React.Component {
           />
           <Overlay />
         </div>
-        <div style={{height: '80px', padding: '8px', background: '#000'}}>
+        <div style={{ height: '80px', marginBottom: '24px', padding: '8px', background: '#000'}}>
         
           <CircleButton
             isClicked={!this.state.isShowVideo}

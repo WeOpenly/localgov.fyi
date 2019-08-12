@@ -40,7 +40,7 @@ const styles = theme => ({
     fontWeight: '500',
 
     display: 'flex',
-    border: 'none',
+
     justifyContent: 'center'
 
   },
@@ -77,7 +77,7 @@ class HeaderAccountMenu extends Component {
     return (
       <div className={classes.h_a_m_loging_signup_container}>
         <Button
-          variant="text"
+          variant="outlined"
           aria-label="quick pay"
           className={classes.h_a_m_login_button}
           href="/quick_pay"

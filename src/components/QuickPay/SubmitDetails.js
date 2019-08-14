@@ -46,6 +46,7 @@ class SubmitDetails extends Component {
         this.changeEmail = this.changeEmail.bind(this);
         this.changePrice = this.changePrice.bind(this);
         this.stripeElementChange = this.stripeElementChange.bind(this);
+        this.resetPrice = this.resetPrice.bind(this);
         this.state = {
             card_no: false,
             card_exp: false,
@@ -53,6 +54,11 @@ class SubmitDetails extends Component {
             postal: false,
             email: false,
         }
+    }
+
+    resetPrice(){
+        const {dispatch, guessPrice} = this.props;
+        dispatch(updatePrice(String(currency(guessPrice).value)));
     }
 
     stripeElementChange(element, name){
@@ -129,6 +135,11 @@ class SubmitDetails extends Component {
 
                         <p className={styles.emptySubtitle}>
                             Please email <a href="mailto:team@evergov.com" target="_top">team@evergov.com</a> for more details
+                        </p>
+
+                        <p className={styles.emptySubtitle} >
+                            <button onClick={this.resetPrice} className={`${styles.btn} ${styles.btnLink}`}>Change amount
+                            </button>
                         </p>
 
                     </div>
@@ -250,7 +261,7 @@ class SubmitDetails extends Component {
                 </div>
                 <div className={styles.panelFooter}>
                             {!canSubmit && userEmail ? (<div style={{ fontSize: '14px', borderRadius: '5px', width: '100%', padding: '6px 8px', color: '#3b4351', textAlign: 'center' }}>
-                                <span className={`${iconStyles.typcn} ${iconStyles.typcnInfoLarge}`}></span> Please complete payment details to proceed
+                                <span className={`${iconStyles.typcn} ${iconStyles.typcnInfoLarge}`}></span> Please enter the correct amount due, and complete payment details to proceed
                         </div>) : null}
                             <button disabled={!canSubmit} style={{ marginTop: '16px', width: '100%', fontSize: '14px' }} className={`${styles.btn} ${styles.btnPrimary} ${styles.btnLg} ${styles.textUppercase} ${styles.textBold}`} onClick={this.onPreview}>Preview</button>
 

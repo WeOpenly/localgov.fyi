@@ -347,10 +347,7 @@ class MobileSuggestions extends Component {
                 Search Services
               </label>
                 <SearchIcon className={classes.index_page_search_iconButton} aria-label="search" />
-                <InputBase id="mob_ser_suggestions" inputProps={inputProps} onFocus={(ev, val) => {
-                    this.onFocus();
-                    inputProps.onFocus(ev, val);
-                }} className={classes.ser_gloss_search_input} />
+                <InputBase id="mob_ser_suggestions" inputProps={inputProps} className={classes.ser_gloss_search_input} />
             </Paper>
         );
     }
@@ -469,6 +466,7 @@ class MobileSuggestions extends Component {
         const inputProps = {
           onChange: this.handleChange,
           type: "search",
+          onFocus: this.onFocus,
           placeholder: this.state.placeholder,
           value: serviceSearchText ? serviceSearchText : ""
         };

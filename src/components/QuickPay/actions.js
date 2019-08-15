@@ -2,7 +2,7 @@
 import * as types from './ActionTypes';
 const windowGlobal = typeof window !== 'undefined' && window
 
-import getFirebase from './firebase/firebase';
+import getFirebase from '../common/firebase/firebase';
 import { trackQPevent } from '../common/tracking';
 const firebase = getFirebase();
 const storageRef = firebase.storage().ref();

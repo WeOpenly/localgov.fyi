@@ -10,8 +10,8 @@ import SubmitDetails from '../../components/QuickPay/SubmitDetails'
 import FinalConf from '../../components/QuickPay/FinalConf'
 import Footer from '../../components/Footer';
 import styles from "../../components/QuickPay/spectre.min.module.css"
-import FirebaseContext from '../../components/QuickPay/firebase/context.js';
-import getFirebse from '../../components/QuickPay/firebase/firebase.js';
+import FirebaseContext from '../../components/common/firebase/context.js';
+import getFirebse from '../../components/common/firebase/firebase.js';
 import { loginAnon } from '../../components/QuickPay/actions';
 const windowGlobal = typeof window !== 'undefined' && window
 

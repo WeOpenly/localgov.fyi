@@ -39,6 +39,7 @@ import Suggested from '../components/ServiceTemplatePage/Suggested';
 import TemplateHero from '../components/ServiceTemplatePage/TemplateHero';
 import GoogAutoComplete from '../components/ServiceTemplatePage/GoogAutoComplete';
 import OtherLocations from '../components/ServiceTemplatePage/OtherLocations';
+import Banner from '../components/Banner';
 
 const styles = theme => ({
   "@global": {
@@ -403,6 +404,7 @@ class ServiceGlossary extends Component {
             <div className={classes.ser_gloss_footer}>
               <FooterNew isMobile={this.props.isMobile} />
             </div>
+            <Banner title="hello" button={'button'} />
           </Fragment>
         );
     }

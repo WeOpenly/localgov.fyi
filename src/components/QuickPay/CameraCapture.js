@@ -38,8 +38,8 @@ class CameraCapture extends React.Component {
                     cancelCamera={this.props.cancelCamera}
                     idealFacingMode={FACING_MODES.ENVIRONMENT}
                     imageType={IMAGE_TYPES.JPG}
-                    imageCompression={0.7}
-                    isMaxResolution={false}
+                    imageCompression={0}
+                    isMaxResolution={true}
                     isImageMirror={false}
                     onCameraError={this.props.onCameraError}
                     isSilentMode={true}

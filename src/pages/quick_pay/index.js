@@ -3,6 +3,8 @@ import PropTypes from 'prop-types';
 import { connect } from "react-redux";
 import Helmet from 'react-helmet';
 import { Elements, StripeProvider } from 'react-stripe-elements';
+import {returnToSnap} from '../../components/QuickPay/actions'
+
 import Landing from '../../components/QuickPay/Landing'
 import SubmitDetails from '../../components/QuickPay/SubmitDetails'
 import FinalConf from '../../components/QuickPay/FinalConf'
@@ -18,8 +20,14 @@ class QPIndex extends React.Component {
     constructor(props) {
         super(props);
         this.state = { stripe: null };
+        this.returnToSnap = this.returnToSnap.bind(this);
     }
     
+    returnToSnap(){
+        const {dispatch} = this.props;
+        dispatch(returnToSnap());
+    }
+
     componentWillMount() {
         const {dispatch} = this.props;
          dispatch(loginAnon());
@@ -61,7 +69,7 @@ class QPIndex extends React.Component {
           
                 <ul className={styles.step} style={{margin: '16px 0px'}}>
                     <li className={`${styles.stepItem} ${step === 'show_landing' ? styles.active : ''}`}>
-                        <a href="#" >Snap</a>
+                        <a href="#" onClick={this.returnToSnap} >Snap</a>
 
                     </li>
                     <li className={`${styles.stepItem} ${step === 'guess_price_and_update_details' ? styles.active : ''}`}>

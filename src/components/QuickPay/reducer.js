@@ -31,6 +31,27 @@ export function quickPay(state = initialState, action) {
                 ...state,
                 anonUserLoading: true,
             }
+        case types.QP_RETURN_TO_SNAP:
+            return {
+                ...state,
+                step: 'show_landing',
+                landingPageLoading: true,
+
+                createSubInProgress: false,
+                createdSubId: null,
+                createSubFailed: false,
+
+                analyseInProgress: false,
+                analyseFailed: false,
+
+                guessPrice: null,
+                userPrice: null,
+                userEmail: null,
+
+                submitErrors: null,
+                submitInProgress: false,
+                submitFailed: false,
+            }
         case types.QP_ANON_USER_SUCCESS:
             return {
                 ...state,

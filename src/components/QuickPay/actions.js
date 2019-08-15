@@ -10,6 +10,10 @@ const storageRef = firebase.storage().ref();
 
 const dateNow = Date.now();
 
+export function returnToSnap(){
+    return { type: types.QP_RETURN_TO_SNAP }
+}
+
 export function loginBegin() {
     return { type: types.QP_ANON_USER_LOAD_BEGIN }
 }

@@ -6,11 +6,15 @@ import {userRequests} from '../components/UserRequests/reducer';
 import {serTemplate} from '../components/ServiceTemplatePage/reducer';
 import {indexPage} from '../components/IndexPage/reducer';
 import {searchPage} from '../components/SearchPage/reducer';
-import { nearbyOrgs} from '../components/Nearby/reducer'
+import { nearbyOrgs} from '../components/Nearby/reducer';
+import { oneUser } from '../components/One/userReducer';
+import { oneServices } from '../components/One/serviceReducer';
 import {reducer as formReducer} from 'redux-form';
 
 export default combineReducers({
     form: formReducer,
+    oneUser,
+    oneServices,
     quickPay,
     delivery,
     userRequests,

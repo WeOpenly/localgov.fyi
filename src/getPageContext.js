@@ -95,8 +95,8 @@ const theme = createMuiTheme({
         ]
     },
     typography: {
-        fontFamily: '-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen-Sans,Ubuntu,Cantarell,"Helvetica Neue", sans-serif',
-        fontSize: 14,
+        fontFamily: "'Inter-Var-Web', - apple - system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans- serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'",
+        fontSize: 15,
         fontWeightLight: 300,
         fontWeightRegular: 400,
         fontWeightMedium: 500,
@@ -119,14 +119,14 @@ const theme = createMuiTheme({
         headline: {
             fontSize: "1.5rem",
             fontWeight: 700,
-                fontFamily: '"Nunito Sans",  -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen-Sans,Ubuntu,Cantarell,"Helvetica Neue", sans-serif',
+              
             lineHeight: "1.35417em",
             color: "rgba(30, 30, 50,0.84)"
         },
         smHeadline: {
             fontSize: "0.8rem",
             fontWeight: 700,
-            fontFamily: '"Nunito Sans",  -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen-Sans,Ubuntu,Cantarell,"Helvetica Neue", sans-serif',
+           
             lineHeight: "1.35417em",
             color: "rgba(30, 30, 50,0.84)"
         },
@@ -140,35 +140,35 @@ const theme = createMuiTheme({
         subheading: {
             fontSize: "1.125rem",
             fontWeight: 500,
-                fontFamily: '"Nunito Sans",  -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen-Sans,Ubuntu,Cantarell,"Helvetica Neue", sans-serif',
+             
             lineHeight: "2.0em",
             color: "rgba(30, 30, 50, 0.68)"
         },
         body2: {
             fontSize: "0.999rem",
             fontWeight: 300,
-                fontFamily: '"Nunito Sans",  -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen-Sans,Ubuntu,Cantarell,"Helvetica Neue", sans-serif',
+            
             lineHeight: "1.46429em",
             color: "rgba(30, 30, 50,0.99)"
         },
         body3: {
             fontSize: "0.995rem",
             fontWeight: 700,
-            fontFamily: '"Nunito Sans",  -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen-Sans,Ubuntu,Cantarell,"Helvetica Neue", sans-serif',
+           
             lineHeight: "1.76429em",
             color: "rgba(30, 30, 50,0.87)"
         },
         body1: {
             fontSize: "0.975rem",
             fontWeight: 300,
-                fontFamily: '"Nunito Sans",  -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen-Sans,Ubuntu,Cantarell,"Helvetica Neue", sans-serif',
+               
             lineHeight: "1.46429em",
             color: "rgba(30, 30, 50,0.87)"
         },
         caption: {
             fontSize: "0.87rem",
             fontWeight: 300,
-                fontFamily: '"Nunito Sans",  -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen-Sans,Ubuntu,Cantarell,"Helvetica Neue", sans-serif',
+           
             lineHeight: "1.375em",
             color: "rgba(30, 30, 50,0.54)"
         },
@@ -177,7 +177,6 @@ const theme = createMuiTheme({
             textTransform: "uppercase",
             letterSpaceing: '4px',
             fontWeight: 700,
-                fontFamily: '"Nunito Sans", -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen-Sans,Ubuntu,Cantarell,"Helvetica Neue", sans-serif',
         }
     }
 });

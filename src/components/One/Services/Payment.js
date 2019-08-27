@@ -109,12 +109,12 @@ class Payment extends Component {
             <div className={`${styles.column} ${styles.colSm2}`}>
               <PlaidLink
                 clientName="Evergov One"
-                env="sandbox"
+                  env={process.env.GATSBY_PLAID_ENV}
                 className={`${styles.btn}  ${styles.btnPrimary}`}
                 style={{ background: 'rgb(86, 39, 255)', color: "#fff", width: '100%'}}
                 selectAccount={true}
                 product={["auth"]}
-                publicKey="f777e5352dcc043874ef16d189cd0e"
+                    publicKey={process.env.GATSBY_PLAID_PUBLIC_KEY}
                 onExit={this.handleOnExit}
                 onSuccess={this.handleOnSuccess}
               > 

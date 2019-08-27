@@ -19,10 +19,6 @@ class Services extends Component {
     this.submitPayment = this.submitPayment.bind(this);
   }
 
-  componentDidMount(){
-    const {dispatch} = this.props;
-    dispatch(updateStep('add_services'));
-  }
 
   submitPayment(plaidToken, accountId, planId){
     const {dispatch, uid} = this.props;
@@ -100,7 +96,7 @@ class Services extends Component {
           <div className={`${styles.column} ${styles.col12}`}>{tabs}</div>
         </div>
         <Router>
-          <ServiceList path="/add_services" />
+          <ServiceList path="/" />
           <ServiceDetails path="/update_services_details" />
           <Payment path="/add_payment" submitPayment={this.submitPayment} paymentSetupDone={this.props.paymentSetupDone} paymentSetupInProgress={this.props.paymentSetupInProgress}/>
         </Router>

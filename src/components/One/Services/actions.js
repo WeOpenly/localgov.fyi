@@ -8,9 +8,8 @@ const windowGlobal = typeof window !== "undefined" && window;
 
 import getFirebase from "../../common/firebase/firebase";
 import { trackQPevent } from "../../common/tracking";
+
 const firebase = getFirebase();
-const storageRef = firebase.storage().ref();
-const authRef = firebase.auth();
 
 const dateNow = Date.now();
 
@@ -29,7 +28,7 @@ export function uploadFile(uid, file, cb){
 }
 
 export function selectServiceLoading() {
-  return { type: types.ONE_USER_ADD_SELECTED_SERVICE_LOADING };
+  return { type: types.ONE_USER_SERVICES_SAVING, toggle:true };
 }
 
 export function selectServiceSuccess(selectedServices) {
@@ -105,7 +104,7 @@ export function selectService(uid, service) {
 
 
 export function updateSelectServiceLoading() {
-  return { type: types.ONE_USER_UPDATE_SELECTED_SERVICE_DETAILS_LOADING };
+  return { type: types.ONE_USER_SERVICES_SAVING, toggle:true };
 }
 
 export function updateSelectServiceSuccess(result) {
@@ -121,7 +120,7 @@ export function UpdateSelectServiceFailed() {
 export function finalizeService(uid, formData, service) {
          return async (dispatch, getState) => {
            dispatch(updateSelectServiceLoading());
-            console.log(service)
+
 
            const existingSelected = getState().oneServices
              .selectedServices;

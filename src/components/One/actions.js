@@ -4,17 +4,19 @@ import { log } from "util";
 
 // import 'regenerator-runtime/runtime';
 import * as types from './ActionTypes';
-const windowGlobal = typeof window !== 'undefined' && window
+
 
 import getFirebase from '../common/firebase/firebase';
 import { trackQPevent } from '../common/tracking';
 
-if (windowGlobal){
-    const firebase = getFirebase();
-    const storageRef = firebase.storage().ref();
-    const authRef = firebase.auth();
 
+let authRef;
+const firebase = getFirebase();
+if (firebase){
+    authRef = firebase.auth();
 }
+
+
 
 const dateNow = Date.now();
 
@@ -118,7 +120,7 @@ function checkAndAddUser(user){
 
         userRef.get().then((docData) => {
             if (docData.exists){
-                let prefs = { isFirstTime, isBusiness: docData.data().isBusiness, isIndividual: docData.data().isIndividual, createdAt: dateNow.toString(), paymentSetupDone: docData.data().stripe_resp}
+                let prefs = { isFirstTime, isBusiness: docData.data().isBusiness, isIndividual: docData.data().isIndividual, createdAt: dateNow.toString(), paymentSetupDone: docData.data().paymentSetupDone}
                 dispatch(addUserPrefs(prefs))
             }
             else{
@@ -261,7 +263,7 @@ export function setupPayment(uid, plaid_token, plaid_account_id, plan_id) {
        .update({
          plaid_token: plaid_token,
          plaid_account_id: plaid_account_id,
-           selected_plan_id: "plan_id"
+           selected_plan_id: plan_id
        }).then(function(){
            dispatch(watchForStripeResp(uid));
        })

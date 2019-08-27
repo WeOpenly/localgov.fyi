@@ -16,6 +16,7 @@ import Receipts from './Receipts';
 import Services from './Services';
 import Home from './Home';
 import UserTypeChoice from "./UserTypeChoice";
+import Toast from '../Toast';
 
 import {logout} from '../actions';
 
@@ -49,6 +50,7 @@ class OneDashboard extends React.Component {
 
         return (
           <Fragment>
+            <Toast />
             <div
               className={`${expStyles.offCanvas} ${
                 expStyles.offCanvasSidebarShow
@@ -68,34 +70,35 @@ class OneDashboard extends React.Component {
                 }}
               >
                 <div>
-                  <div className={`${expStyles.nav}`}>
-                    <Link className={`${expStyles.navItem}`} to="/one/dashboard" getProps={({ isCurrent }) => {
+                  <div className={`${styles.nav}`} >
+                    <Link className={`${styles.navItem}`} to="/one/dashboard" getProps={({ isCurrent }) => {
                       // the object returned here is passed to the
                       // anchor element's props
                       return {
                         style: {
-                          color: isCurrent ? "#455060" : "#3500f3"
+                          color: !isCurrent ? "#6a64bf" : "#3500f3",
                         }
                       };
                     }}>
                       <span
                         className={`${iconStyles.typcn} ${
-                          iconStyles.typcnHomeOutline
+                          iconStyles.typcnHome
                         }`}
                         style={{
-                          fontSize: "1.1rem",
-                          cursor: "pointer"
+                          fontSize: "1.2rem",
+                          cursor: "pointer",
+                  
                         }}
                       />
                     </Link>
                   </div>
                   <div style={{ marginTop: "16px" }}>
-                    <Link to="services" className={`${expStyles.navItem}`} getProps={({ isPartiallyCurrent }) => {
+                    <Link to="services" className={`${styles.navItem}`} getProps={({ isPartiallyCurrent }) => {
                       // the object returned here is passed to the
                       // anchor element's props
                       return {
                         style: {
-                          color: isPartiallyCurrent ? "#455060" : "#3500f3"
+                          color: !isPartiallyCurrent ? "#6a64bf" : "#3500f3"
                         }
                       };
               }}>
@@ -104,19 +107,19 @@ class OneDashboard extends React.Component {
                           iconStyles.typcnPuzzle
                         }`}
                         style={{
-                          fontSize: "1.1rem",
+                          fontSize: "1.2rem",
                           cursor: "pointer"
                         }}
                       />
                     </Link>
                   </div>
                   <div style={{ marginTop: "16px" }}>
-                    <Link to="receipts" className={`${expStyles.navItem}`}  getProps={({ isCurrent }) => {
+                    <Link to="receipts" className={`${styles.navItem}`}  getProps={({ isCurrent }) => {
                       // the object returned here is passed to the
                       // anchor element's props
                       return {
                         style: {
-                          color: isCurrent ? "#455060" : "#3500f3"
+                          color: !isCurrent ? "#6a64bf" : "#3500f3"
                         }
                       };
                     }}>
@@ -125,9 +128,9 @@ class OneDashboard extends React.Component {
                           iconStyles.typcnDocumentText
                         }`}
                         style={{
-                          fontSize: "1.1rem",
+                          fontSize: "1.2rem",
                           cursor: "pointer",
-                
+
                         }}
                       />
                     </Link>

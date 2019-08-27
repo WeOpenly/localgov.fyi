@@ -69,7 +69,7 @@ class ServiceList extends Component {
     }
 
     const notSelected = Object.keys(selectedServices).length === 0;
-    console.log(selectedServices)
+ 
     const serComps = availableSers.map(ser => (
       <Tile
         key={ser.id}

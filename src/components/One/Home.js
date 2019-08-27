@@ -41,7 +41,7 @@ class OneHome extends React.Component {
 
         return (
           <Fragment>
-       
+           
             <div className={`${styles.container} ${styles.gridLg}`}>
 
 
@@ -113,7 +113,7 @@ class OneHome extends React.Component {
                   >
                     <h1> Gov services made delightfully easy </h1>
                     <p>
-                     Manage all your government interactions in the one place
+                     Manage all your government interactions in one place
                     </p>
 
                     <div>
@@ -156,7 +156,7 @@ class OneHome extends React.Component {
               >
                 <div className={`${styles.column} ${styles.colXs12}}`}>
                   <h3> Never miss a <TextLoop>
-                    <h3>proptery tax payment</h3>
+                    <h3>property tax payment</h3>
                     <h3>vehicle registration renewal</h3>
                     <h3>utility bill payment</h3>
                     <h3>business licence renewal</h3>
@@ -164,7 +164,7 @@ class OneHome extends React.Component {
                   <p >
                     We handle the renewals, auto payments and more on
                     your behalf <br/> it takes just a couple of minutes to get
-                    you going..
+                    you going...
                   </p>
                 </div>
               </div>
@@ -216,7 +216,7 @@ class OneHome extends React.Component {
                           styles.textGray
                         }`}
                       >
-                        We take care of all your government service interactions including payments, renewals & much more on your behalf while you can rest
+                        We take care of all of your government service interactions including payments, renewals & much more on your behalf while you can rest.
                       </div>
                     </div>
                   </div>
@@ -321,10 +321,10 @@ class OneHome extends React.Component {
               style={{ margin: "4rem 0 4rem 0", padding: '2.5rem 0.5rem', background:"#f7f8f9" }}
             >
               <div
-                className={`${styles.column} ${styles.col2} ${styles.hideXs}`}
+                className={`${styles.column} ${styles.col3} ${styles.hideXs}`}
               />
               <div
-                className={`${styles.column} ${styles.col4} ${styles.colXs12}`}
+                className={`${styles.column} ${styles.col3} ${styles.colXs12}`}
               >
                 <div>
                   <span
@@ -342,15 +342,15 @@ class OneHome extends React.Component {
                         
                         </div>
               </div>
-              <div className={`${styles.column} ${styles.col4} ${styles.colXs12}`}>
+              <div className={`${styles.column} ${styles.col3} ${styles.colXs12}`}>
                 <div className={`${styles.textGray}`}>
                   <em>
-                    This makes sense, given that state agencies and larger cities have been working for years  to consolidate their own digital services and <br/> create single login interfaces that save citizens the trouble of navigating to different departments
-                    </em>
+                    "This makes sense, given that state agencies and larger cities have been working for years  to consolidate their own digital services and <br/> create single login interfaces that save citizens the trouble of navigating to different departments"
+                 </em>
                   </div>
               </div>
               <div
-                className={`${styles.column} ${styles.col2} ${styles.hideXs}`}
+                className={`${styles.column} ${styles.col3} ${styles.hideXs}`}
               />
             </div>
             <div className={styles.columns} style={{ marginTop: "6rem" }}>
@@ -407,7 +407,7 @@ class OneHome extends React.Component {
                     team@evergov.com
                   </h3>
                   <h5>
-                    650-(999)-0013
+                    650-245-2911
                   </h5>
 
                 </div>

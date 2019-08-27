@@ -8,7 +8,7 @@ import { ErrorMessage } from "formik";
 import classnames from "classnames";
 import Dropzone from "react-dropzone";
 const windowGlobal = typeof window !== 'undefined' && window
-// import {uploadFile} from '../actions';
+import {uploadFile} from '../actions';
 
 
 const Label = ({ error, children, htmlFor, ...props }) =>
@@ -62,7 +62,7 @@ class FileInput extends Component {
               progStep = progStep - 1;
             //setFieldValue(field.name, this.state.files);
        }
-       const dateNow = Date.now();
+
       if (windowGlobal) {
         uploadFile(uid, file, updateStates)
       }

@@ -69,7 +69,7 @@ class PaymentPlans extends Component {
 
     render() {
         let plans = [{
-            "id": 'lite-dev',
+            "id": 'lite',
             "tag": "labelDefault",
             "name": 'Lite',
             "price": "99",
@@ -81,7 +81,7 @@ class PaymentPlans extends Component {
             ]
         }, 
             {
-                "id": 'Plus-dev',
+                "id": 'plus',
                 "tag": "labelSecondary",
                 "name": 'Plus',
                 "price": "199",
@@ -93,7 +93,7 @@ class PaymentPlans extends Component {
                 ]
             },
             {
-                "id": 'one_time_dev',
+                "id": 'life_long',
                 "tag": "labelSuccess",
                 "name": 'LifeLong',
                 "price": "999",
@@ -105,42 +105,6 @@ class PaymentPlans extends Component {
                 ]
             }
         ]
-        if (process.env.GATSBY_FIREBASE_PROJECT_ID === 'evergov-prod'){
-            plans = [{
-                "id": 'lite-prod',
-                "name": 'Lite',
-                "price": "99",
-                "duration": "Year",
-                "features": [
-                    "Upto 4 Services",
-                    "24/7 Support",
-                    "Recurring Annual Payment"
-                ]
-            },
-            {
-                "id": 'Plus-prod',
-                "name": 'Plus',
-                "price": "199",
-                "duration": "Year",
-                "features": [
-                    "Upto 10 Services",
-                    "24/7 Support",
-                    "Recurring Annual Payment"
-                ]
-            },
-            {
-                "id": 'one_time_prod',
-                "name": 'LifeLong',
-                "price": "999",
-                "duration": "Forever",
-                "features": [
-                    "Unlimited Services",
-                    "24/7 Support",
-                    "Use Forever",
-                ]
-            }
-            ]
-        }
 
         const planComps =  plans.map((plan, idx) => {
             return <PaymentPlan id={plan.id} name={plan.name} tag={plan.tag}

@@ -2,6 +2,8 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { navigate } from "@reach/router";
 import PropTypes from "prop-types";
+import styles from "../spectre.min.module.css";
+import iconStyles from "../typicons.min.module.css";
 
 
 class Home extends Component {
@@ -10,8 +12,106 @@ class Home extends Component {
     }
 
     render() {
-  
-       return "home"
+      const { oneUser, oneServices} = this.props;
+      const {paymentSetupDone, isBusiness, userDetails} = oneUser;
+      const { allAvailableServices, selectedServices} = oneServices;
+
+      let availableSers = allAvailableServices.individual;
+      if (isBusiness) {
+        availableSers = allAvailableServices.business;
+      }
+
+      const selectedLen = Object.keys(selectedServices).length;
+      const avLen = availableSers.length;
+
+      return (<div className={styles.columns}>
+        <div
+          className={`${styles.column} ${styles.col8}`}
+          style={{ margin: "3rem 0 1rem 1rem" }}
+        >
+          <h3
+            className={` ${
+              styles.textLeft
+              }`}
+          >
+            Hello, {userDetails.displayName}
+          </h3>
+          <div className={styles.divider} />
+        </div>
+        <div className={`${styles.column} ${styles.col4}`} />
+        <div className={`${styles.column} ${styles.col12}`} style={{ margin: "0.5rem" }}>
+         
+          <div
+            className={styles.emptyAction}
+            style={{ display: "flex", justifyContent: "left" }}
+          >
+            <div style={{ display: "flex"}}>
+
+              <div
+                className={`${styles.tile} ${styles.btn} ${
+                  styles.textLeft
+                  }`}
+                onClick={() => navigate('/one/dashboard/services/')}
+                style={{
+                  padding: "1.5rem 2rem 1rem 1rem",
+                  margin: '0 1rem',
+                  border: "1px solid rgba(86, 39, 255, .2)",
+           
+                  boxShadow: "none",
+                  height: "auto",
+                  boxShadow: "0 .1rem 0.1rem rgba(48,55,66,.10)"
+                }}
+              >
+                <div className={styles.tileIcon} >
+                  <span style={{
+                    background: "#3500f3",
+                    color: "#fff",
+
+                    fontSize: '1.5rem',
+                    borderRadius: "0.3rem",
+                    boxShadow: "0 0.1rem 0.5rem rgba(86, 39, 255, .2)"
+                  }} className={`${iconStyles.typcn} ${iconStyles.typcnPuzzle}`}></span>
+                </div>
+                <div className={styles.tileContent}>
+                  <h5 className={styles.tileTitle}>  {selectedLen}/ {avLen} services setup </h5>
+                </div>
+              </div>
+            </div>
+            <div style={{ display: "flex", alignSelf: "center" }}>
+
+            <div
+              className={`${styles.tile} ${styles.btn} ${
+                styles.textLeft
+                }`}
+                onClick={() => navigate('/one/dashboard/services/add_payment')}
+              style={{
+                padding: "1.5rem 2rem 1rem 1rem",
+                margin: '0 1rem',
+                border: "1px solid rgba(86, 39, 255, .2)",
+      
+                boxShadow: "none",
+                height: "auto",
+                boxShadow: "0 .1rem 0.1rem rgba(48,55,66,.10)"
+              }}
+            >
+              <div className={styles.tileIcon} >
+                <span style={{
+                    background: paymentSetupDone ? "#30ae40": "#3500f3",
+                    color: "#fff",
+                    
+                    fontSize: '1.5rem',
+                    borderRadius: "0.3rem",
+                    boxShadow: "0 0.1rem 0.5rem rgba(86, 39, 255, .2)"
+                }} className={`${iconStyles.typcn} ${iconStyles.typcnCreditCard}`}></span>
+                </div>
+              <div className={styles.tileContent}>
+                <h5 className={styles.tileTitle}>   Payment Setup is {paymentSetupDone ? `complete`: `incomplete`} </h5>
+              </div>
+            </div>
+            </div>
+          </div>
+        </div>
+      </div>)
     }
 }
 

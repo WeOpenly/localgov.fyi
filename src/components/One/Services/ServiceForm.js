@@ -60,7 +60,9 @@ class ServiceForm extends Component {
             }}
           >
             <div className={styles.cardHeader}>
-              <h5 className={` ${styles.cardTitle}`}>{name}</h5>
+              <h5 className={` ${styles.cardTitle}`}>{name} {this.props.isFinalized ? (<span
+                className={`${iconStyles.typcn} ${styles.textSuccess} ${iconStyles.typcnTick}`}
+              />) : null} </h5>
               <div className={`${styles.cardBody}`}>
                 <Formik
                   enableReinitialize={true}

@@ -95,7 +95,7 @@ const theme = createMuiTheme({
         ]
     },
     typography: {
-        fontFamily: "'Inter-Var-Web', - apple - system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans- serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'",
+        fontFamily: "'Inter-Var-Web', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans- serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'",
         fontSize: 15,
         fontWeightLight: 300,
         fontWeightRegular: 400,

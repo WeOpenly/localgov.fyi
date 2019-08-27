@@ -35,7 +35,7 @@ const AboutSVG = () => (
       return (<Img
         title={`evergov`}
         alt={`illustration of evergov`}
-        style={{ width: '400px' }}
+        style={{ width: '440px' }}
         sizes={data.heroIl.edges[0].node.childImageSharp.fluid} />)
     }} />
 )

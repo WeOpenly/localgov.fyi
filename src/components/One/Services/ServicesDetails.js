@@ -39,6 +39,7 @@ class ServicesDetails extends Component {
         <ServiceForm
           key={`service-form-${selected.id}`}
           selectedService={selected}
+          isFinalized={(selected.id in selectedServices && 'formData' in selectedServices[selected.id])}
           onSubmit={this.addSelectedService}
         />
       );

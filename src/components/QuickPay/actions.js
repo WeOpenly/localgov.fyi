@@ -4,8 +4,14 @@ const windowGlobal = typeof window !== 'undefined' && window
 
 import getFirebase from '../common/firebase/firebase';
 import { trackQPevent } from '../common/tracking';
-const firebase = getFirebase();
-const storageRef = firebase.storage().ref();
+
+
+if (windowGlobal) {
+    const firebase = getFirebase();
+    const storageRef = firebase.storage().ref();
+    const authRef = firebase.auth();
+
+}
 
 
 const dateNow = Date.now();

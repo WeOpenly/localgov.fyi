@@ -366,6 +366,7 @@ const initialState = {
       }
     ]
   },
+  saving: false,
   paymentAuthorized: false,
   currentStep: "add_services", // 'update_services_details', 'add_payment', 'payment_added'
   selectedServices: {},
@@ -376,6 +377,12 @@ const initialState = {
 
 export function oneServices(state = initialState, action) {
     switch (action.type) {
+      case types.ONE_USER_SERVICES_SAVING:
+          return {
+            ...state,
+            saving: action.toggle
+          }
+          break;
       case types.ONE_USER_SERVICES_UPDATE_STEP:
         return {
           ...state,
@@ -392,6 +399,7 @@ export function oneServices(state = initialState, action) {
       case types.ONE_USER_UPDATE_SELECTED_SERVICE_DETAILS:
         return {
           ...state,
+          saving: false,
           selectedServices: action.result,
           loadingSelectedServices: false,
           loadingSelectedServicesFailed: false
@@ -400,6 +408,7 @@ export function oneServices(state = initialState, action) {
       case types.ONE_USER_UPDATE_SELECTED_SERVICE_DETAILS_LOADING_FAILED:
         return {
             ...state,
+            saving: false,
             loadingSelectedServices: false,
             loadingSelectedServicesFailed: true
         };
@@ -407,6 +416,7 @@ export function oneServices(state = initialState, action) {
       case types.ONE_USER_LOGIN_ADD_SERVICE_DETAILS:
         return {
           ...state,
+          saving: false,
           selectedServices: action.selectedServices,
           loadingSelectedServices: false,
           loadingSelectedServicesFailed: false
@@ -415,6 +425,7 @@ export function oneServices(state = initialState, action) {
       case types.ONE_USER_LOGIN_SERVICE_DETAILS_LOADING:
         return {
           ...state,
+          saving: false,
           loadingSelectedServices: true,
           loadingSelectedServicesFailed: false
         };
@@ -422,6 +433,7 @@ export function oneServices(state = initialState, action) {
       case types.ONE_USER_LOGIN_SERVICE_DETAILS_LOADING_FAILED:
         return {
           ...state,
+          saving: false,
           loadingSelectedServices: false,
           loadingSelectedServicesFailed: true
         };
@@ -429,6 +441,7 @@ export function oneServices(state = initialState, action) {
       case types.ONE_USER_ADD_SELECTED_SERVICE_LOADING:
         return {
           ...state,
+          saving: false,
           loadingSelectedServices: true,
           loadingSelectedServicesFailed: false
         };
@@ -436,6 +449,7 @@ export function oneServices(state = initialState, action) {
       case types.ONE_USER_ADD_SELECTED_SERVICE:
         return {
           ...state,
+          saving: false,
           selectedServices: action.selectedServices,
           loadingSelectedServices: false,
           loadingSelectedServicesFailed: false
@@ -444,6 +458,7 @@ export function oneServices(state = initialState, action) {
       case types.ONE_USER_ADD_SELECTED_SERVICE_LOADING_FAILED:
         return {
           ...state,
+          saving: false,
           loadingSelectedServices: false,
           loadingSelectedServicesFailed: true
         };

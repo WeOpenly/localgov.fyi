@@ -1,7 +1,16 @@
-import app from 'firebase/app';
-import 'firebase/auth';
-import 'firebase/firestore';
-import 'firebase/storage';
+// import app from 'firebase/app';
+// import 'firebase/auth';
+// import 'firebase/firestore';
+// import 'firebase/storage';
+
+const windowGlobal = typeof window !== 'undefined' && window
+
+if (windowGlobal){
+    var firebase = require('firebase/app');
+    require('firebase/auth');
+    require('firebase/firestore');
+    require('firebase/storage');
+}
 
 const firebaseConfig = {
     apiKey: process.env.GATSBY_FIREBASE_API_KEY,
@@ -20,10 +29,11 @@ const getFirebase  = () => {
     if (firebaseCache) {
         return firebaseCache
     }
-
-    app.initializeApp(firebaseConfig)
-    firebaseCache = app
-    return app
+    if (windowGlobal) {
+        firebase.initializeApp(firebaseConfig)
+        firebaseCache = firebase
+        return firebase
+    }
 }
 
 export default getFirebase

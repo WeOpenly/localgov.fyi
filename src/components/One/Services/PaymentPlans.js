@@ -9,8 +9,8 @@ const PaymentPlan = props => (
         <div
             className={styles.card}
             style={{
-                border: "1px solid rgba(86, 39, 255, .2)",
-                background: "#fff",
+                border: `1px solid ${props.isSelected ? '#30ae40' : 'rgba(86, 39, 255, .2)'}`,
+                background: `${props.isSelected ? '#f7f8f9' : '#fff'}`,
                 margin: '1rem 0',
                 padding: '0.5rem',
                 borderRadius: "0.3rem",
@@ -60,11 +60,16 @@ class PaymentPlans extends Component {
     constructor(props) {
         super(props);
         this.onSelectPaymentPlan = this.onSelectPaymentPlan.bind(this);
+        this.state = {
+            selected: false,
+        }
     }
 
     onSelectPaymentPlan(plan) {
-        console.log(plan)
         this.props.onSelectPlan(plan)
+        this.setState({
+            selected: plan
+        })
     }
 
     render() {
@@ -110,7 +115,7 @@ class PaymentPlans extends Component {
             return <PaymentPlan id={plan.id} name={plan.name} tag={plan.tag}
                 price={plan.price} duration={plan.duration}
                 selectPaymentPlan={this.onSelectPaymentPlan}
-                features={plan.features}
+                features={plan.features} isSelected={plan.id === this.state.selected}
                 />
         })
 

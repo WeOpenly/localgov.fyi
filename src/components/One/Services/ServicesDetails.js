@@ -34,20 +34,40 @@ class ServicesDetails extends Component {
       }
     });
 
-    const allForms = Object.values(selectedServices).map(selected => {
-      return (
-        <ServiceForm
-          key={`service-form-${selected.id}`}
-          selectedService={selected}
-          isFinalized={(selected.id in selectedServices && 'formData' in selectedServices[selected.id])}
-          onSubmit={this.addSelectedService}
-        />
-      );
+    const allSelectedForms = Object.values(selectedServices).map(selected => {
+      if (!(selected.id in selectedServices && 'formData' in selectedServices[selected.id])) {
+        return (
+          <ServiceForm
+            key={`service-form-${selected.id}`}
+            selectedService={selected}
+            isFinalized={(selected.id in selectedServices && 'formData' in selectedServices[selected.id])}
+            onSubmit={this.addSelectedService}
+          />
+        );
+      }
     });
+
+    const allFinalizedForms = Object.values(selectedServices).map(selected => {
+      if (selected.id in selectedServices && 'formData' in selectedServices[selected.id]){
+        return (
+          <ServiceForm
+            key={`service-form-${selected.id}`}
+            selectedService={selected}
+            isFinalized={(selected.id in selectedServices && 'formData' in selectedServices[selected.id])}
+            onSubmit={this.addSelectedService}
+          />
+        );
+      }
+  
+    });
+
     return (
       <Fragment>
         <div className={styles.columns} style={{ marginTop: "1rem" }}>
-          {allForms}
+          {allSelectedForms}
+        </div>
+        <div className={styles.columns} style={{ margin: "1.5rem 0" }}>
+          {allFinalizedForms}
         </div>
         <div className={styles.columns}>
           <div className={`${styles.column} ${styles.colSm3}`} />

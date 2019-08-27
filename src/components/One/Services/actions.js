@@ -42,7 +42,7 @@ export function selectServiceFailed() {
 
 export function unSelectService(uid, service){
 return async (dispatch, getState) => {
-  dispatch(selectServiceLoading());
+  // dispatch(selectServiceLoading());
 
   const existingSelected = getState().oneServices.selectedServices;
   console.log(existingSelected, "es");
@@ -72,7 +72,7 @@ return async (dispatch, getState) => {
 
 export function selectService(uid, service) {
   return async (dispatch, getState) => {
-    dispatch(selectServiceLoading());
+    // dispatch(selectServiceLoading());
 
     const existingSelected = getState().oneServices.selectedServices;
     

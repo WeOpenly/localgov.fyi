@@ -9,10 +9,11 @@ import {updateStep} from "../actions";
 
 const Tile = props => (
   <div
-    className={`${styles.tile} ${styles.tileCentered} ${styles.btn} ${
+    className={`${styles.tile} ${styles.tileCentered}  ${
       styles.textLeft
     } ${styles.formCheckbox}`}
     style={{
+      background: `${(props.isSelected && !props.isFinalized) ? '#ece6ff': '#fff'}`,
       padding: "1rem",
       border: "none",
       boxShadow: "none",
@@ -25,14 +26,25 @@ const Tile = props => (
       <div className={styles.tileTitle}> {props.ser.name} </div>
     </div>
 
-    <div className={styles.tileAction} onClick={props.onItemClick}>
+    <div className={styles.tileAction} style={{cursor: 'pointer'}} onClick={props.onItemClick}>
       {props.isFinalized ? (<span
+        className={`${styles.label} ${styles.labelRounded} `}
+      ><span
         className={`${iconStyles.typcn} ${styles.textSuccess} ${iconStyles.typcnTick}`}
-      />) : props.isSelected ? (<span
+      /></span>) : props.isSelected ? (<span
+        className={`${styles.label} ${styles.labelRounded} `}
+      ><span
           className={`${iconStyles.typcn}  ${styles.textError}  ${iconStyles.typcnMinus}`}
-        />): (<span
-        className={`${iconStyles.typcn} ${iconStyles.typcnPlus}`}
-      />)} 
+        /></span>): (
+            <span
+              className={`${styles.label} ${styles.labelRounded} `}
+            >
+              <span
+
+                className={`${iconStyles.typcn} ${iconStyles.typcnPlus}`}
+              />
+            </span>
+      )} 
     </div>
   </div>
 );

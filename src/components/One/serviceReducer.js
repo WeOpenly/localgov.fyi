@@ -3,7 +3,6 @@ import * as types from "./ActionTypes";
 // atleast one service requirements should be filled
 
 const initialState = {
- 
   allAvailableServices: {
     individual: [
       {

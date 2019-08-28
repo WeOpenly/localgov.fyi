@@ -98,7 +98,7 @@ class Services extends Component {
         <Router>
           <ServiceList path="/" />
           <ServiceDetails path="/update_services_details" />
-          <Payment path="/add_payment" submitPayment={this.submitPayment} paymentSetupDone={this.props.paymentSetupDone} paymentSetupInProgress={this.props.paymentSetupInProgress}/>
+          <Payment path="/add_payment" submitPayment={this.submitPayment} paymentSetupDone={this.props.paymentSetupDone} paymentSetupInProgress={this.props.paymentSetupInProgress} isBusiness={this.props.isBusiness}/>
         </Router>
       </Fragment>
     );
@@ -111,6 +111,7 @@ const mapStateToProps = function (state, ownProps) {
     return {
         ...state.oneServices,
       paymentSetupDone: state.oneUser.paymentSetupDone,
+      isBusiness: state.oneUser.isBusiness,
       paymentSetupInProgress: state.oneUser.paymentSetupInProgress,
         uid: state.oneUser.userDetails.uid,
     };

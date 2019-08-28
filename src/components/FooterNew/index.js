@@ -51,11 +51,12 @@ class FooterNew extends Component {
                     <FooterDiscover isMobile={isMobile}/>
                     <FooterSupport isMobile={isMobile}/>
                 </div>
+           
                 <div className={classes.new_footer_copyright}>
                     <Typography variant="caption">
                         © {date}, Openly Technologies, Inc.
                     </Typography>
-         
+
                 </div>
             </div>
         );

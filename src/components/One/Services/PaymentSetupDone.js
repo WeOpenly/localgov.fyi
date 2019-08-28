@@ -67,7 +67,7 @@ class FinalConf extends React.Component {
                     <div style={{display: 'flex', justifyContent: 'center', margin: '1.5rem'}}>
                         <HeroIl />
                     </div>
-                    <p style={{ paddingBottom: '4px' }}> We will take it from here. Our team will reach out to you if there is any info needed..</p>
+                    <p style={{ paddingBottom: '4px' }}> We will take it from here. Our team will reach out to you if there is any info needed</p>
 
                     <div className={styles.emptyAction}>
                         <button onClick={() => navigate("/one/dashboard")} className={`${styles.btn} ${styles.btnPrimary}`}>Go to dashboard</button>

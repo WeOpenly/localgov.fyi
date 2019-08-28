@@ -95,7 +95,7 @@ class Payment extends Component {
           <div className={`${styles.column} ${styles.col1}`} />
           <div className={`${styles.column} ${styles.col10}`}>
             <div className={styles.columns}>
-              <PaymentPlans onSelectPlan={this.selectPaymentPlan} />
+              <PaymentPlans userTypeSelected={true} isBusiness={this.props.isBusiness} onSelectPlan={this.selectPaymentPlan} />
             </div>
           </div>
           <div className={`${styles.column} ${styles.col1}`} />

@@ -67,7 +67,6 @@ class Payment extends Component {
   }
 
   handleOnSuccess(public_token, metadata) {
-    console.log("handlesuccess", public_token, metadata);
     this.props.submitPayment(public_token, metadata.account_id, this.state.selectedPlan)
   }
 
@@ -105,8 +104,8 @@ class Payment extends Component {
             <div className={`${styles.column} ${styles.col1}`} />
             <div className={`${styles.column} ${styles.col10}`}>
               <div className={styles.columns}>
-            <div className={`${styles.column} ${styles.colSm5}`} />
-            <div className={`${styles.column} ${styles.colSm2}`}>
+                <div className={`${styles.column} ${styles.colSm5} ${styles.hideXs}`} />
+            <div className={`${styles.column} ${styles.colSm2} ${styles.colXs12}`} style={{margin: '1rem 0'}}>
               <PlaidLink
                 clientName="Evergov One"
                   env={process.env.GATSBY_PLAID_ENV}
@@ -123,7 +122,7 @@ class Payment extends Component {
               </PlaidLink>
                   <div className={`${styles.textGray} ${styles.textCenter}`} style={{paddingTop: '0.1rem'}}><small>  <span className={`${iconStyles.typcn} ${iconStyles.typcnInfoLarge}`}></span><span style={{ fontSize: '14px' }}>You accept our terms by cicking this</span> </small></div>
             </div>
-            <div className={`${styles.column} ${styles.colSm5}`} />
+                <div className={`${styles.column} ${styles.colSm5} ${styles.hideXs}`} />
               </div>
             </div>
             <div className={`${styles.column} ${styles.col1}`} />

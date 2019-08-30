@@ -50,11 +50,7 @@ export function loginGoog(enteredEmail) {
                 'login_hint': enteredEmail
             });
         }
-     
-       
-
         authRef.signInWithRedirect(provider);
-
     }
 }
 
@@ -251,6 +247,49 @@ export function watchForStripeResp(uid) {
          };
        }
 
+
+
+function receiptsBegin() {
+    return { type: types.ONE_USER_RECEIPTS_LOADING };
+}
+
+export function receiptsSuccess(receipts) {
+    return { type: types.ONE_USER_RECEIPTS_SUCCESS, receipts };
+}
+
+export function receiptsFailure() {
+    return { type: types.ONE_USER_RECEIPTS_LOADING_FAILED };
+}
+
+export function watchForReceipts(uid) {
+    return async (dispatch, getState) => {
+        console.log(uid, 'watchForReceipts');
+
+        const oneUserReceipt = firebase.firestore()
+            .collection('one_user_receipts')
+            .doc(uid)
+ 
+        console.log(oneUserReceipt);
+
+        dispatch(receiptsBegin())
+
+        oneUserReceipt.get().then((docData, err) => {
+           console.log(docData.data());
+           const data = docData.data()
+           if (data){
+               const {receipts} = data
+               if (receipts){
+                   dispatch(receiptsSuccess(receipts))
+               }
+           }
+        }).catch((fail) => {
+            console.log(fail, "servicesreffail")
+        });
+
+    
+    };
+}
+
 export function setupPayment(uid, plaid_token, plaid_account_id, plan_id) {
   return async (dispatch, getState) => {
     dispatch(setupBegin());
@@ -261,9 +300,9 @@ export function setupPayment(uid, plaid_token, plaid_account_id, plan_id) {
        .collection("one_user")
        .doc(uid)
        .update({
-         plaid_token: plaid_token,
-         plaid_account_id: plaid_account_id,
-           selected_plan_id: plan_id
+            plaid_token: plaid_token,
+            plaid_account_id: plaid_account_id,
+            selected_plan_id: plan_id
        }).then(function(){
            dispatch(watchForStripeResp(uid));
        })

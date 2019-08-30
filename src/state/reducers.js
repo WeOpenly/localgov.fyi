@@ -9,10 +9,13 @@ import {searchPage} from '../components/SearchPage/reducer';
 import { nearbyOrgs} from '../components/Nearby/reducer';
 import { oneUser } from '../components/One/userReducer';
 import { oneServices } from '../components/One/serviceReducer';
+import { oneReceipts } from '../components/One/receiptReducer';
+
 import {reducer as formReducer} from 'redux-form';
 
 export default combineReducers({
     form: formReducer,
+    oneReceipts,
     oneUser,
     oneServices,
     quickPay,

@@ -157,32 +157,34 @@ class PaymentPlans extends Component {
                 ],
                 "covers": [
                     "Business Licence Renewals",
-                    "Utility Bill Payments"
+                    "Utility Bill Payments",
+                    "Renew Fictitious Business Licence or DBA"
                 ]
             },
             {
                 "id": 'plus-busi',
-                "tag": "labelSecondary",
-                "name": 'Plus',
+                "tag": "labelWarning",
+                "name": 'Startup',
                 "price": "199",
                 "duration": "Year",
                 "features": [
-
                     "24/7 Support",
                     "Recurring Annual Payment"
                 ],
                 "covers": [
-                    "Everything in Lite, plus up to 10 services of your choice",
+                    "Delaware Franchise Tax Filing",
+                    "California Franchise Tax Filing",
+                    "Any two other service filings of your choice",
                 ]
             },
             {
                 "id": 'life_long_busi',
                 "tag": "labelSuccess",
-                "name": 'LifeLong',
+                "name": 'Pro',
                 "price": "999",
                 "duration": "Forever",
                 "features": [
-                    "24/7 Support",
+                    "Dedicated best-in-class support",
                     "Use Forever",
                 ],
                 "covers": [

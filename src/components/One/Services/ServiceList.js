@@ -128,13 +128,13 @@ class ServiceList extends Component {
             }`}
             style={{ marginTop: "1rem" }}
           >
-            <button
+            {notSelected ? null : (<button
               onClick={() => this.updateStep("update_services_details")}
               disabled={notSelected}
               className={`${styles.btn}  ${styles.btnPrimary}`}
             >
-              Add Details
-            </button>
+              Add Your Details
+            </button>)}
           </div>
           <div className={`${styles.column} ${styles.colSm3}`} />
         </div>

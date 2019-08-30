@@ -100,6 +100,14 @@ class FileInput extends Component {
               {...getRootProps()}
             >
               <div className={`${styles.col12} ${styles.colSm12}`}>
+                  <div style={{ margin: "0 0 0 0" }}>
+                    {label && (
+                      <Label htmlFor={name} error={error}>
+                        {label}
+                      </Label>
+                    )}
+                  </div>
+
                 <div
                   style={{
                     display: "flex",
@@ -118,13 +126,6 @@ class FileInput extends Component {
                     background: `${isDragActive ? "#fff" : "#f7f8f9"}`
                   }}
                 >
-                  <div style={{ margin: "16px 0 0 0" }}>
-                    {label && (
-                      <Label htmlFor={name} error={error}>
-                        {label}
-                      </Label>
-                    )}
-                  </div>
 
                   <div
                     className={styles.textGray}
@@ -147,7 +148,7 @@ class FileInput extends Component {
                     </div>
                     <div>
                       {!isDragActive &&
-                        "Click here or drop a file to upload!"}
+                        "Click here or drop a file to upload"}
                       {isDragReject && "File type not accepted, sorry!"}
                     </div>
                   </div>

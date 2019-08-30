@@ -307,7 +307,7 @@ const initialState = {
         ]
       },
       {
-        id: 1,
+        id: 2,
         name: "Utility Bill",
         icon: null,
         formSchema: [
@@ -362,7 +362,64 @@ const initialState = {
             ]
           }
         ]
-      }
+      },
+      {
+        id: 3,
+        name: "Delaware Franchise Tax Filing",
+        icon: null,
+        formSchema: [
+          {
+            id: "licenceFile",
+            name: "licenceFile",
+            label: "Upload your Certificate of Incorporation",
+            description:
+              "Upload their Certificate of Incorporation",
+            type: "fileArray",
+            validationType: "mixed",
+            validations: [
+              {
+                type: "required",
+                params: ["this field is required"]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        id: 4,
+        name: "California Franchise Tax Filing",
+        icon: null,
+        formSchema: [
+          {
+            id: "corpNumber",
+            name: "corpNumber",
+            label: "California Corporate Number",
+            description: "California Corporate Number",
+            type: "string",
+            validationType: "string",
+            validations: [
+              {
+                type: "required",
+                params: ["this field is required"]
+              }
+            ]
+          },
+          {
+            id: "licenceFile",
+            name: "licenceFile",
+            label: "Upload latest filing",
+            description: "Upload latest filing",
+            type: "fileArray",
+            validationType: "mixed",
+            validations: [
+              {
+                type: "required",
+                params: ["this field is required"]
+              }
+            ]
+          }
+        ]
+      },
     ]
   },
   saving: false,

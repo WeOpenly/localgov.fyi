@@ -17,6 +17,8 @@ import Services from './Services';
 import Home from './Home';
 import UserTypeChoice from "./UserTypeChoice";
 import Toast from '../Toast';
+import SideBar from './SideBar';
+import AppBar from './AppBar';
 
 import {logout} from '../actions';
 
@@ -24,8 +26,19 @@ import {logout} from '../actions';
 class OneDashboard extends React.Component {
     constructor(props) {
         super(props);
+        this.state = {
+          open: true,
+        }
         this.logout = this.logout.bind(this);
+        this.toggleSidebar = this.toggleSidebar.bind(this);
     }
+
+    toggleSidebar(){
+      this.setState({
+        open: !this.state.open
+      })
+    }
+
 
     logout(){
         const {dispatch} = this.props;
@@ -51,115 +64,27 @@ class OneDashboard extends React.Component {
         return (
           <Fragment>
             <Toast />
+           
             <div
-              className={`${expStyles.offCanvas} ${
-                expStyles.offCanvasSidebarShow
-              }`}
+              className={`${expStyles.offCanvas} ${this.state.open ? `${expStyles.offCanvasSidebarShow}` : `${expStyles.offCanvasSidebar}`
+                }`}
               style={{ height: "100vh" }}
             >
               <div
-                className={`${expStyles.offCanvasSidebar} `}
+                className={`${expStyles.offCanvasSidebar}`}
                 style={{
                   background: "#fff",
-                  boxShadow: '0 0 0.1rem .1rem rgba(50,50,93,.04)',
-                  minWidth: "4rem",
+                  boxShadow: '0 0 1.5rem 0.3rem rgba(50,50,93,.04)',
+                  minWidth: "12rem",
                   display: "flex",
                   flexDirection: "column",
                   alignItems: "center",
-                  justifyContent: "space-around"
+                  justifyContent: "space-between"
                 }}
               >
-                <div>
-                  <div className={`${styles.nav}`} >
-                    <Link className={`${styles.navItem}`} to="/one/dashboard" getProps={({ isCurrent }) => {
-                      // the object returned here is passed to the
-                      // anchor element's props
-                      return {
-                        style: {
-                          color: !isCurrent ? "#6a64bf" : "#3500f3",
-                        }
-                      };
-                    }}>
-                      <span
-                        className={`${iconStyles.typcn} ${
-                          iconStyles.typcnHome
-                        }`}
-                        style={{
-                          fontSize: "1.2rem",
-                          cursor: "pointer",
-                  
-                        }}
-                      />
-                    </Link>
-                  </div>
-                  <div style={{ marginTop: "16px" }}>
-                    <Link to="services" className={`${styles.navItem}`} getProps={({ isPartiallyCurrent }) => {
-                      // the object returned here is passed to the
-                      // anchor element's props
-                      return {
-                        style: {
-                          color: !isPartiallyCurrent ? "#6a64bf" : "#3500f3"
-                        }
-                      };
-              }}>
-                      <span
-                        className={`${iconStyles.typcn} ${
-                          iconStyles.typcnPuzzle
-                        }`}
-                        style={{
-                          fontSize: "1.2rem",
-                          cursor: "pointer"
-                        }}
-                      />
-                    </Link>
-                  </div>
-                  <div style={{ marginTop: "16px" }}>
-                    <Link to="receipts" className={`${styles.navItem}`}  getProps={({ isCurrent }) => {
-                      // the object returned here is passed to the
-                      // anchor element's props
-                      return {
-                        style: {
-                          color: !isCurrent ? "#6a64bf" : "#3500f3"
-                        }
-                      };
-                    }}>
-                      <span
-                        className={`${iconStyles.typcn} ${
-                          iconStyles.typcnDocumentText
-                        }`}
-                        style={{
-                          fontSize: "1.2rem",
-                          cursor: "pointer",
-
-                        }}
-                      />
-                    </Link>
-                  </div>
-                </div>
-                <div
-                  style={{
-                    borderTop: "1px solid rgba(50,50,93,.04)",
-                    marginTop: "16px",
-                    paddingTop: "16px"
-                  }}
-                >
-                  <div>
-                    <span
-                      className={`${iconStyles.typcn} ${
-                        iconStyles.typcnSupport
-                      }`}
-                      style={{ fontSize: "1rem", cursor: "pointer" }}
-                    />
-                  </div>
-                  <div>
-                    <span
-                      className={`${iconStyles.typcn} ${
-                        iconStyles.typcnMessages
-                      }`}
-                      style={{ fontSize: "1rem", cursor: "pointer" }}
-                    />
-                  </div>
-                </div>
+                
+                <SideBar onMenuClick={this.toggleSidebar} open={this.state.open} displayName={displayName} photoURL={photoURL} onLogout={this.logout} />
+              
               </div>
               <div
                 className={`${expStyles.offCanvasContent}`}
@@ -169,103 +94,16 @@ class OneDashboard extends React.Component {
                                 background: "#f7f8f9"
                 }}
               >
-                <header
-                  className={styles.navbar}
-                  style={{
-                    background: "#fff",
-                    padding: "12px 16px",
-                    boxShadow: '0 0 0.3rem .1rem rgba(50,50,93,.04)',
-                  }}
-                >
-                  <section className={styles.navbarSection}>
-                    <h6>
-                      <a
-                        href="/one"
-                        
-                      style={{ fontSize: "1.2rem", color:"#3500f3" }}
-                        className={`${
-                          styles.h1
-                          }`}
-                      >
-                        evergov  <sub
-                          className={styles.textUppercase}
-                          style={{
-                            color: '#455060',
-                            fontSize: "0.5rem",
-                            paddingTop: "4px",
-                            letterSpacing: "0.1rem",
-                            fontWeight: "bold"
-                          }}
-                        >
-                          One
-                    </sub>
-                    </a>
-                      </h6>
-                   
-                  </section>
+             
+                <AppBar onMenuClick={this.toggleSidebar} showCrumbs={!this.state.open}/>
 
-                  <section className={styles.navbarSection}>
-                    <div
-                      className={`${styles.tile} ${
-                        styles.tileCentered
-                      }`}
-                    >
-                      <div className={`${styles.tileIcon} `}>
-                        <figure
-                          className={`${styles.avatar} ${
-                            styles.avatarSm
-                          }`}
-                          data-initial="YB"
-                          style={{ backgroundColor: "#5755d9" }}
-                        >
-                          <img src={photoURL} alt="..." />
-                        </figure>
-                      </div>
-                      <div className={styles.tileContent}>
-                        {displayName}
-                      </div>
-                    </div>
-                    <div className={`${styles.dropdown} ${styles.dropdownRight}`}>
-                      <a href="#" className={`${styles.dropdownToggle}`} >
-                        <span
-                          className={`${iconStyles.typcn} ${
-                            iconStyles.typcnUser
-                            }`}
-                          style={{
-                            margin: '1rem 0.5rem 0 1rem', 
-                            cursor: "pointer"
-                          }}
-                        />
-                        </a>
-                      <ul className={styles.menu}>
-                        <li className={styles.menuItem}>
-
-                          <Link to="account" >
-                            Account
-                          </Link>
-                        </li>
-                        <li className={styles.menuItem}>
-                          
-                          <a
-                          style={{cursor: 'pointer'}}
-                            onClick={this.logout}
-                          >
-                            Log out
-                          </a>
-                        </li>
-                     
-                      </ul>
-                  </div>
-       
-                  </section>
-                </header>
                 <div
                   className={styles.container}
                   style={{ background: "#f7f8f9" }}
                 >
                   <Router>
                     <Home path="/" />
-                    <Account path="/account" />
+                    <Account path="/account" logout={this.logout} />
                     <Services path="/services/*" />
                     <Receipts path="/receipts" />
                   </Router>

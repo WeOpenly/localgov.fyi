@@ -5,12 +5,14 @@ import PropTypes from "prop-types";
 
 import styles from "../spectre.min.module.css"
 import iconStyles from '../typicons.min.module.css';
+
 class Account extends Component {
     constructor(props) {
         super(props);
     }
 
     render() {
+
         return (
             <div className={styles.columns} style={{ marginTop: "1rem" }}>
                 <div className={`${styles.column} ${styles.col4}`} />
@@ -57,6 +59,13 @@ class Account extends Component {
                             </div>
                         </div>
                         <div className={styles.panelFooter}>
+                            <button
+                                onClick={() => this.props.logout()}
+                                
+                                className={`${styles.btn} ${styles.btnSm}`}
+                            >
+                             Logout
+            </button>
                         </div>
                     </div>
                 </div>

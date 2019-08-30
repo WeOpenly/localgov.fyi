@@ -29,13 +29,13 @@ class Home extends Component {
           className={`${styles.column} ${styles.col8}`}
           style={{ margin: "3rem 0 1rem 1rem" }}
         >
-          <h3
+          <h2
             className={` ${
               styles.textLeft
               }`}
           >
             Hello, {userDetails.displayName}
-          </h3>
+          </h2>
           <div className={styles.divider} />
         </div>
         <div className={`${styles.column} ${styles.col4}`} />
@@ -105,7 +105,7 @@ class Home extends Component {
                 }} className={`${iconStyles.typcn} ${iconStyles.typcnCreditCard}`}></span>
                 </div>
               <div className={styles.tileContent}>
-                <h5 className={styles.tileTitle}>   Payment Setup is {paymentSetupDone ? `complete`: `incomplete`} </h5>
+                <h5 className={styles.tileTitle}>  Payment Setup is {paymentSetupDone ? `complete`: `incomplete`} </h5>
               </div>
             </div>
             </div>

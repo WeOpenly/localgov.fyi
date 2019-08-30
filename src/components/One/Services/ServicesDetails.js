@@ -66,7 +66,7 @@ class ServicesDetails extends Component {
         <div className={styles.columns} style={{ marginTop: "1rem" }}>
           {allSelectedForms}
         </div>
-        <div className={styles.columns} style={{ margin: "1.5rem 0" }}>
+        <div className={styles.columns} style={{ margin: "1rem 0" }}>
           {allFinalizedForms}
         </div>
         <div className={styles.columns}>

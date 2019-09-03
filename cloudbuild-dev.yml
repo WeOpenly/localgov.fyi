@@ -4,6 +4,10 @@ steps:
 - name: gcr.io/cloud-builders/gsutil
   dir: 'localgov.fyi'
   args: ['cp', 'gs://$PROJECT_ID-netlify-env/creds.sh', 'creds.sh']
+- name: node:8
+  dir: 'localgov.fyi'
+  entrypoint: npm
+  args: ['install', 'netlify-cli']
 - name: ubuntu
   dir: 'localgov.fyi'
   args: ['ls']

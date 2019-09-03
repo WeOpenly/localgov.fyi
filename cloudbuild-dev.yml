@@ -9,7 +9,6 @@ steps:
   args: ['ls']
 - name: node:8
   dir: 'localgov.fyi'
-  entrypoint: bash
   args: ['bash', '-c', 'source ./creds.sh && ./deploy-prod.sh']
 - name: ubuntu
   dir: 'localgov.fyi'

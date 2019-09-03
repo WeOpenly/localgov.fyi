@@ -13,6 +13,10 @@ steps:
   args: ['install', '--save']
 - name: node:8
   dir: 'localgov.fyi'
+  entrypoint: npm
+  args: ['install', 'netlify-cli']
+- name: node:8
+  dir: 'localgov.fyi'
   entrypoint: node
   args: ['./node_modules/.bin/gatsby', 'build', '--prefix-paths']
   env: ['PROJECT_ID=$PROJECT_ID']
@@ -22,9 +26,6 @@ steps:
 - name: gcr.io/cloud-builders/gsutil
   dir: 'localgov.fyi'
   args: ['cp', 'gs://$PROJECT_ID-netlify-env/creds.sh', 'creds.sh']
-- name: docker.io/kramos/alpine-zip
-  dir: 'localgov.fyi'
-  args: ['-r', 'website.zip', 'public/']
 - name: ubuntu
   dir: 'localgov.fyi'
   args: ['ls']

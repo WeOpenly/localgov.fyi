@@ -163,8 +163,8 @@ class Home extends Component {
                         </figure>
                     </div>
 
-                    <div className={styles.tileContent} style={{overflow: 'visible'}}>
-                        <div>
+                    <div className={styles.tileContent} >
+                        <div style={{ maxWidth: '120px' }}>
                             <h6>{displayName}</h6>
                           
                             <Link to="account">

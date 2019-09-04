@@ -10,4 +10,4 @@ if [ -z "$PACKAGE" ]; then
 fi
 
 
-cd packages/$PACKAGE && gcloud builds submit --config cloudbuild-${GOOGLE_PROJECT}.yml
+cd packages/$PACKAGE && gcloud builds submit --config cloudbuild-${GOOGLE_PROJECT}.yml --async

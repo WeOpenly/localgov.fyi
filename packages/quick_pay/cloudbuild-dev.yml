@@ -1,6 +1,6 @@
 steps:
 - name: gcr.io/cloud-builders/git
-  args: ['clone', 'https://github.com/WeOpenly/localgov.fyi.git']
+  args: ['clone', '-b', 'lerna-tools', 'https://github.com/WeOpenly/localgov.fyi.git']
 - name: node:8
   dir: 'localgov.fyi/packages/quick_pay'
   entrypoint: npm

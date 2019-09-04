@@ -13,4 +13,5 @@
 .git
 .gitignore
 .cache
+public
 node_modules

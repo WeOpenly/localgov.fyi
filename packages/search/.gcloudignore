@@ -12,5 +12,5 @@
 # below:
 .git
 .gitignore
-
+public
 node_modules

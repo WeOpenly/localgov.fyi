@@ -3,18 +3,18 @@ import PropTypes from 'prop-types';
 import { connect } from "react-redux";
 import Helmet from 'react-helmet';
 import { Elements, StripeProvider } from 'react-stripe-elements';
-import { returnToSnap } from '../../components/QuickPay/actions'
+
 import { Router, Route, navigate } from "@reach/router";
 
-import Footer from '../../components/Footer';
-import styles from "../../components/One/spectre.min.module.css"
-import FirebaseContext from '../../components/common/firebase/context.js';
-import Private from '../../components/One/Private';
-import getFirebse from '../../components/common/firebase/firebase.js';
-import { checkLogin} from '../../components/One/actions';
-import OneHome from '../../components/One/Home';
-import OneNotFound from '../../components/One/NotFound';
-import OneDashboard from '../../components/One/Dashboard/Dashboard'
+import Footer from '../components/FooterNew';
+import styles from "../components/spectre.min.module.css"
+import FirebaseContext from '../common/firebase/context.js';
+import Private from '../components/Private';
+import getFirebse from '../common/firebase/firebase.js';
+import { checkLogin} from '../components/actions';
+import OneHome from '../components/Home';
+import OneNotFound from '../components/NotFound';
+import OneDashboard from './dashboard/index'
 
 const windowGlobal = typeof window !== 'undefined' && window
 
@@ -60,8 +60,8 @@ class OneIndex extends React.Component {
                     <Router>
                         <OneNotFound default />
                              
-                        <Private as={OneDashboard} path="/one/dashboard/*" />
-                        <OneHome path="/one" />
+                        <Private as={OneDashboard} path="/dashboard/*" />
+                        <OneHome path="/" />
                     
                     </Router>
           

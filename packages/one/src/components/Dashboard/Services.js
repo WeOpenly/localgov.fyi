@@ -7,8 +7,8 @@ import ServiceList from '../Services/ServiceList';
 import ServiceDetails from '../Services/ServicesDetails';
 import Payment from '../Services/Payment';
 
-import styles from "../spectre.min.module.css";
-import iconStyles from "../typicons.min.module.css";
+import styles from "../spectre.min.module.css"
+import iconStyles from '../typicons.min.module.css';
 
 import { setupPayment, updateStep} from '../actions';
 

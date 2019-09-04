@@ -4,10 +4,11 @@ import { log } from "util";
 
 // import 'regenerator-runtime/runtime';
 import * as types from "../ActionTypes";
-const windowGlobal = typeof window !== "undefined" && window;
-
 import getFirebase from "../../common/firebase/firebase";
 import { trackQPevent } from "../../common/tracking";
+
+
+const windowGlobal = typeof window !== "undefined" && window;
 
 const firebase = getFirebase();
 

@@ -70,7 +70,7 @@ class FinalConf extends React.Component {
                     <p style={{ paddingBottom: '4px' }}> We will take it from here. Our team will reach out to you if there is any info needed</p>
 
                     <div className={styles.emptyAction}>
-                        <button onClick={() => navigate("/one/dashboard")} className={`${styles.btn} ${styles.btnPrimary}`}>Go to dashboard</button>
+                        <button onClick={() => navigate("/dashboard")} className={`${styles.btn} ${styles.btnPrimary}`}>Go to dashboard</button>
                     </div>
                    
                 </div>

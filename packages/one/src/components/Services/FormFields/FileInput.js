@@ -7,9 +7,10 @@ import { connect } from "react-redux";
 import { ErrorMessage } from "formik";
 import classnames from "classnames";
 import Dropzone from "react-dropzone";
-const windowGlobal = typeof window !== 'undefined' && window
+
 import {uploadFile} from '../actions';
 
+const windowGlobal = typeof window !== 'undefined' && window
 
 const Label = ({ error, children, htmlFor, ...props }) =>
   children ? (

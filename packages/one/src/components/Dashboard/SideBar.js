@@ -5,8 +5,8 @@ import { navigate } from "@reach/router";
 import { Router, Link, Match } from "@reach/router";
 
 
-import styles from "../spectre.min.module.css";
-import iconStyles from "../typicons.min.module.css";
+import styles from "../spectre.min.module.css"
+import iconStyles from '../typicons.min.module.css';
 
 
 class Home extends Component {
@@ -52,7 +52,7 @@ class Home extends Component {
                 <div style={{marginTop: '4rem'}}>
 
               
-                <div className={`${styles.navItem} ${styles.textBold}`} onClick={()=> navigate('/one/dashboard')}>
+                <div className={`${styles.navItem} ${styles.textBold}`} onClick={()=> navigate('/dashboard')}>
                         <div className={`${styles.btn} ${styles.btnMd}  ${styles.btnLink}`}>
                         <span
                             className={`${iconStyles.typcn} ${
@@ -68,7 +68,7 @@ class Home extends Component {
                 </div>
                
                     <div className={styles.divider} />
-                    <div className={`${styles.navItem}`} onClick={() => navigate('/one/dashboard/services')} >
+                    <div className={`${styles.navItem}`} onClick={() => navigate('/dashboard/services')} >
                         <div className={`${styles.btn} ${styles.btnMd}  ${styles.btnLink}`}>
                         <span
                             className={`${iconStyles.typcn} ${
@@ -86,7 +86,7 @@ class Home extends Component {
                        
                 </div>
                     <div className={styles.divider} />
-                    <div className={`${styles.navItem}`} onClick={() => navigate('/one/dashboard/receipts')}>
+                    <div className={`${styles.navItem}`} onClick={() => navigate('/dashboard/receipts')}>
                         <div className={`${styles.btn} ${styles.btnMd}  ${styles.btnLink}`}>
                         <span
                             className={`${iconStyles.typcn} ${
@@ -167,7 +167,7 @@ class Home extends Component {
                         <div style={{ maxWidth: '120px' }}>
                             <h6>{displayName}</h6>
                           
-                            <Link to="account">
+                            <Link to="/dashboard/account">
                                 <small>Settings</small>
                             </Link>
                            

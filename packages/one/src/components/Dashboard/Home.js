@@ -2,8 +2,8 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { navigate } from "@reach/router";
 import PropTypes from "prop-types";
-import styles from "../spectre.min.module.css";
-import iconStyles from "../typicons.min.module.css";
+import styles from "../spectre.min.module.css"
+import iconStyles from '../typicons.min.module.css';
 
 
 class Home extends Component {
@@ -51,7 +51,7 @@ class Home extends Component {
                 className={`${styles.tile} ${styles.btn} ${
                   styles.textLeft
                   }`}
-                onClick={() => navigate('/one/dashboard/services/')}
+                onClick={() => navigate('/dashboard/services/')}
                 style={{
                   padding: "1.5rem 2rem 1rem 1rem",
                   margin: '0 1rem',
@@ -83,7 +83,7 @@ class Home extends Component {
               className={`${styles.tile} ${styles.btn} ${
                 styles.textLeft
                 }`}
-                onClick={() => navigate('/one/dashboard/services/add_payment')}
+                onClick={() => navigate('/dashboard/services/add_payment')}
               style={{
                 padding: "1.5rem 2rem 1rem 1rem",
                 margin: '0 1rem',

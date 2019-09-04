@@ -21,7 +21,7 @@ if (firebase){
 const dateNow = Date.now();
 
 export function updateStep(step){
-    navigate(`/one/dashboard/services/${step}`)
+    navigate(`/dashboard/services/${step}`)
     return { type: types.ONE_USER_SERVICES_UPDATE_STEP,  step};
 }
 
@@ -158,9 +158,9 @@ function checkAndAddUserService(user) {
             .doc(uid)
 
         if(creationTime === lastSignInTime){
-            navigate("/one/dashboard/services");
+            navigate("/dashboard/services");
         }else{
-             navigate("/one/dashboard");
+             navigate("/dashboard");
         }
 
         servicesRef.get().then((docData) => {
@@ -193,7 +193,7 @@ export function checkLogin(enteredEmail) {
                 dispatch(checkAndAddUserService(user))
             } else {
                 dispatch(isNotLoggedIn())
-                navigate('/one')
+                navigate('/')
             }
         })
     }

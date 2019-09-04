@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import { navigate } from "@reach/router";
 import { updateUserType } from "../actions";
 
-import styles from "../spectre.min.module.css";
+import styles from "../spectre.min.module.css"
 import iconStyles from '../typicons.min.module.css';
 
 class UserTypeChoice extends Component {

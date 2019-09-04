@@ -5,7 +5,7 @@ import styles from "./spectre.min.module.css"
 import iconStyles from './typicons.min.module.css';
 import { graphql, StaticQuery } from 'gatsby';
 import Img from "gatsby-image";
-import NotFoundSvg from "../../illus/NotFoundSvg";
+import NotFoundSvg from "../illus/NotFoundSvg";
 
 
 class OneNotFound extends React.Component {

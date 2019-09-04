@@ -3,11 +3,8 @@ import { connect } from "react-redux";
 import { navigate } from "@reach/router";
 import { Router, Link } from "@reach/router";
 
-
-import styles from "../spectre.min.module.css";
-import iconStyles from "../typicons.min.module.css";
-
-
+import styles from "../spectre.min.module.css"
+import iconStyles from '../typicons.min.module.css';
 
 class AppBar extends Component {
     constructor(props) {

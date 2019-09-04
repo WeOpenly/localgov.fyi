@@ -1,0 +1,72 @@
+             .react-html5-camera-photo {
+                 position: relative;
+                 text-align: center;
+                 display: flex;
+                 flex: 80;
+             }
+             
+             .react-html5-camera-photo>video {
+                 /* width: 768px; */
+                 object-fit: fill;
+             }
+             
+             .react-html5-camera-photo>img {
+                 object-fit: fill;
+             }
+             
+             .overlay {
+                 object-fit: fill;
+                 width: 100%;
+                 position: absolute;
+                 display: flex;
+                 flex-direction: column;
+                 justify-content: space-between;
+                 top: 0;
+                 bottom: 0;
+                 color: #fff;
+                 text-align: center;
+                 align-self: center;
+             }
+             
+             .above-marker {
+                 display: flex;
+                 flex-direction: row;
+                 justify-content: space-between;
+             }
+             
+             .below-marker {
+                 display: flex;
+                 justify-content: space-between;
+             }
+             
+             .react-html5-camera-photo>.display-error {
+                 width: 768px;
+                 margin: 0 auto;
+             }
+             
+             @media(max-width:768px) {
+                 .react-html5-camera-photo>video,
+                 .react-html5-camera-photo>img {
+                     width: 100%;
+                     height: 100%;
+                 }
+                 .react-html5-camera-photo>.display-error {
+                     width: 100%;
+                 }
+             }
+             /* fullscreen enable by props */
+             
+             .react-html5-camera-photo-fullscreen>video,
+             .react-html5-camera-photo-fullscreen>img {
+                 width: 100vw;
+                 height: 80vh;
+             }
+             
+             .react-html5-camera-photo-fullscreen>video {
+                 object-fit: fill;
+             }
+             
+             .react-html5-camera-photo-fullscreen>.display-error {
+                 width: 100vw;
+                 height: 80vh;
+             }

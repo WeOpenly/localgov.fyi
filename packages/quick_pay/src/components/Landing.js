@@ -56,11 +56,12 @@ const HeroIl = () => (
             return (<Img
                 title={`evergov`}
                 alt={`illustration of evergov`}
-                style={{ width: '280px', height: '200px' }}
+                style={{ width: '120px', height: '90px' }}
 
                 fluid={data.heroIl.edges[0].node.childImageSharp.fluid} />)
         }} />
 )
+
 class Landing extends React.Component {
     constructor(props) {
         super(props);
@@ -227,61 +228,57 @@ class Landing extends React.Component {
             </div>)
         }
 
-        var settings = {
-            dots: true,
-            adaptiveHeight: false,
-            autoplay: true,
-            infinite: true,
-            speed: 3500,
-            slidesToShow: 1,
-            slidesToScroll: 1
-        };
 
-        return (<div style={{ width: '100%', display: 'flex', flexDirection: 'column',justifyContent: 'center', 'scrollX': 'hidden'}}>
-            <div style={{ fontWeight: 'bold', margin: '24px 0' }} className={`${styles.h6} ${styles.textCenter}`}> ⚡ Lightning fast service payments</div>
-            <div style={{margin: '8px 0 0 0 '}}>
-              
-                    <Slider {...settings}>
+        return (<div className={styles.columns}>
+            <div
+                className={`${styles.column} ${styles.textCenter} ${styles.col12}`}
+                style={{ margin: "3rem 0 0 0 " }}
+            >
+                <h2 style={{ color: '#5627ff' }}>evergov </h2><small className={`${styles.textUppercase} ${styles.textGray}`} style={{ letterSpacing: '0.1rem', fontWeight: 'bold' }} >Quick Pay</small>
+    
+    </div>
+            <div
+                className={`${styles.column} ${styles.col12}`}
+                style={{ margin: "0 0 1rem 0" }}
+            >
+                <h5 style={{ margin: '8px 0' }} className={`${styles.textCenter}`}> ⚡ Lightning fast service payments</h5>
+            </div>
+            <div
+                className={`${styles.column} ${styles.col12} ${styles.textCenter}`}
+                style={{ margin: "1rem 0 1rem 1rem" }}
+            >
+        
+    
+                <div style={{ display: 'flex', justifyContent: 'center', flexDirection: 'column', 'alignItems': 'center' }} >
+                        <AboutSVG />
+                    </div>
+                    <div style={{ display: 'flex', justifyContent: 'center', flexDirection: 'column', 'alignItems': 'center' }}>
 
-                        <div >
-                            <div style={{display: 'flex', justifyContent: 'center'}}>
-                          <AboutSVG />
-                            </div>
-                        <div style={{ display: 'flex', justifyContent: 'center', flexDirection: 'column', 'alignItems': 'center' }}>
-  
-                            <div style={{ margin: '8px 0', color: '#66758c', fontSize: '0.7rem'}} className={`${styles.p}`}>
+                        <p>
                             Snap your bills or tickets
-                            </div>
-                            </div>
-                        </div>
-                  
-                
-                            <div>
-                        <div style={{ display: 'flex', justifyContent: 'center' }}>
-                            <HeroIl />
-                        </div>
-                        <div style={{ display: 'flex', justifyContent: 'center', flexDirection: 'column', 'alignItems': 'center' }}>
-   
-                            <div style={{ margin: '8px 16px', color: '#66758c', textAlign: 'center', fontSize: '0.7rem' }} className={`${styles.p}`}>
-                                   Check your details & pay securely
-                                </div>
-                            </div>
-                            </div>
-                    <div>
-                        <div style={{ display: 'flex', justifyContent: 'center',  }}>
-                            <Step3 />
-                        </div>
-                        <div style={{ display: 'flex', justifyContent: 'center', flexDirection: 'column', 'alignItems': 'center' }}>
-         
-                            <p style={{ margin: '8px 16px', color: '#66758c', textAlign: 'center', fontSize: '0.7rem' }} className={`${styles.emptySubtitle}`}>
-                              You can rest, while we take care of cumbersome processes
                         </p>
                     </div>
-                    </div>
-                    
-                    </Slider> 
-            </div>
-          
+                <div style={{ display: 'flex', justifyContent: 'center', flexDirection: 'column', 'alignItems': 'center' }} >
+                    <HeroIl />
+                </div>
+                <div style={{ display: 'flex', justifyContent: 'center', flexDirection: 'column', 'alignItems': 'center' }}>
+
+                    <p>
+                     Check your details & pay securely
+                        </p>
+                </div>
+                <div style={{ display: 'flex', justifyContent: 'center', flexDirection: 'column', 'alignItems': 'center' }} >
+                    <Step3 />
+                </div>
+                <div style={{ display: 'flex', justifyContent: 'center', flexDirection: 'column', 'alignItems': 'center' }}>
+
+                    <p>
+                        You can rest, while we take care of cumbersome processes
+                        </p>
+                </div>
+                      
+                
+
         <div>
                 {snapComp}
                 {this.state.showCameraCap ? <CameraCapture cancelCamera={this.toggleCamera} onPhotoTaken={this.onMediaPhotoTaken} onCameraError={this.onCameraError} /> : null}
@@ -313,6 +310,7 @@ class Landing extends React.Component {
                 </blockquote>
                     </div>
                 </div>
+            </div>
             </div>
         </div>
         )

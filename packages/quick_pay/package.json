@@ -24,7 +24,6 @@
         "gatsby-plugin-create-client-paths": "^2.0.5",
         "gatsby-plugin-favicon": "^3.1.6",
         "gatsby-plugin-layout": "^1.0.15",
-        "gatsby-plugin-manifest": "^2.2.13",
         "gatsby-plugin-netlify": "^2.0.17",
         "gatsby-plugin-nprogress": "^2.0.10",
         "gatsby-plugin-purgecss": "^4.0.0",

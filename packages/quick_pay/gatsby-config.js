@@ -47,25 +47,7 @@ module.exports = {
       }
     },
     `gatsby-transformer-remark`,
-    // This plugin transforms JSON file nodes.
     `gatsby-transformer-json`,
-    // This plugin sets up the popular css-in-js library Glamor. It handles adding a
-    // Babel plugin and webpack configuration as well as setting up optimized
-    // server rendering and client re-hydration. This plugin takes your
-    // configuration and generates a web manifest file so Gatsbygram can be added to
-    // your homescreen on Android.
-    {
-      resolve: `gatsby-plugin-manifest`,
-      options: {
-        name: ` evergov one`,
-        short_name: `Evergov One`,
-        start_url: `/`,
-        background_color: `#f7f7f7`,
-        theme_color: `#0000ca`,
-        display: `minimal-ui`,
-        icon: "src/favicon.png"
-      }
-    },
     {
       resolve: "gatsby-plugin-webpack-bundle-analyser-v2",
       options: {

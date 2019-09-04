@@ -25,7 +25,7 @@ import MoreLinks from '../components/ServicePage/MoreLinks';
 
 import withRoot from '../withRoot';
 import {trackView} from "../components/common/tracking";
-import specStyles from '../components/QuickPay/spectre.min.module.css';
+import specStyles from '../components/spectre.min.module.css';
 
 const windowGlobal = typeof window !== 'undefined' && window;
 

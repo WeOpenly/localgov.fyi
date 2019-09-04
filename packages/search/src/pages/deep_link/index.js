@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {connect} from "react-redux";
 import {navigate} from '@reach/router';
-import CircularProgress from '@material-ui/core/CircularProgress';;
+import CircularProgress from '@material-ui/core/CircularProgress';
 import Img from "gatsby-image";
 
 import {CopyToClipboard} from 'react-copy-to-clipboard';

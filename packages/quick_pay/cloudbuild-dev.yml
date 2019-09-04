@@ -1,40 +1,24 @@
 steps:
 - name: gcr.io/cloud-builders/git
-  args: ['clone',  '-b', 'develop', '--single-branch', 'https://github.com/WeOpenly/localgov.fyi.git']
-- name: gcr.io/cloud-builders/gsutil
-  dir: 'localgov.fyi'
-  args: ['cp', 'gs://$PROJECT_ID-netlify-env/dsp-creds.sh', 'dsp-creds.sh']
-- name: 'gcr.io/evergov-dev3/curl-python'
-  dir: 'localgov.fyi'
-  args: ['bash', '-c',  'source ./dsp-creds.sh && python ./pre_process.py']
+  args: ['clone', 'https://github.com/WeOpenly/localgov.fyi.git']
 - name: node:8
-  dir: 'localgov.fyi'
+  dir: 'localgov.fyi/packages/quick_pay'
   entrypoint: npm
   args: ['install', '--save']
 - name: node:8
-  dir: 'localgov.fyi'
+  dir: 'localgov.fyi/packages/quick_pay'
   entrypoint: node
   args: ['./node_modules/.bin/gatsby', 'build', '--prefix-paths']
   env: ['PROJECT_ID=$PROJECT_ID']
-- name: ubuntu
-  dir: 'localgov.fyi'
-  args: ['cp', '_redirects', 'public']
 - name: gcr.io/cloud-builders/gsutil
-  dir: 'localgov.fyi'
-  args: ['cp', 'gs://$PROJECT_ID-netlify-env/creds.sh', 'creds.sh']
-- name: node:8
-  dir: 'localgov.fyi'
-  entrypoint: npm
-  args: ['install', 'netlify-cli']
+  dir: 'localgov.fyi/packages/quick_pay'
+  args: ['cp', 'gs://$PROJECT_ID-netlify-env/quick_pay-creds.sh', 'quick_pay-creds.sh']
 - name: ubuntu
-  dir: 'localgov.fyi'
+  dir: 'localgov.fyi/packages/quick_pay'
   args: ['ls']
 - name: node:8
-  dir: 'localgov.fyi'
-  args: ['bash', '-c', 'source ./creds.sh && ./deploy-prod.sh']
-- name: ubuntu
-  dir: 'localgov.fyi'
-  args: ['env']
+  dir: 'localgov.fyi/packages/quick_pay'
+  args: ['bash', '-c', 'source ./quick_pay-creds.sh && ./deploy.sh']
 timeout: 3600s
 options:
   diskSizeGb: 20

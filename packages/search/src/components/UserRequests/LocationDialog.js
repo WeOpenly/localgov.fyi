@@ -2,7 +2,6 @@ import React, {Component, Fragment} from 'react';
 import PropTypes from 'prop-types';
 import {connect} from "react-redux";
 
-import CircularProgress from '@material-ui/core/CircularProgress';;
 
 import {navigate} from '@reach/router';
 import IconButton from '@material-ui/core/IconButton';
@@ -14,10 +13,8 @@ import DialogContent from '@material-ui/core/DialogContent';
 import queryString from 'query-string'
 import MuiDialogTitle from '@material-ui/core/DialogTitle';
 import {withStyles} from '@material-ui/core/styles';
-import Divider from '@material-ui/core/Divider';
+
 import Form from "react-jsonschema-form";
-import Grid from '@material-ui/core/Grid';
-import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';

@@ -50,7 +50,6 @@
         "lodash": "^4.17.11",
         "mkdirp": "^0.5.1",
         "mousetrap": "^1.6.0",
-        "netlify-cli": "^2.8.1",
         "progress": "^2.0.1",
         "prop-types": "^15.5.8",
         "rc-drawer": "^2.0.8",
@@ -122,7 +121,9 @@
         "babel-loader": "^8.0.5",
         "babel-plugin-dynamic-import-webpack": "^1.1.0",
         "eslint-config-react-app": "^4.0.1",
+        "gatsby-cli": "^2.7.44",
         "gatsby-plugin-webpack-bundle-analyser-v2": "^1.1.1",
+        "netlify-cli": "^2.8.1",
         "regenerator-runtime": "^0.12.1",
         "start-server-and-test": "^1.7.5",
         "webpack-bundle-analyzer": "^3.3.2"

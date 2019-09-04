@@ -14,8 +14,8 @@ require('dotenv').config({
 
 module.exports = {
   siteMetadata: {
-    title: `Evergov: Search for local government organizations, and services`,
-    siteUrl: `https://evergov.com`
+    title: `Evergov One: One dashboard to manage all your government services`,
+    siteUrl: `https://one.evergov.com`
   },
   plugins: [
     /*
@@ -40,67 +40,12 @@ module.exports = {
         defaultQuality: 90,
       },
     },
-    {
-      resolve: `gatsby-source-filesystem`,
-      options: {
-        name: `orgs`,
-        path: path.join(__dirname, `data/orgs`)
-      }
-    },
-    {
-      resolve: `gatsby-source-filesystem`,
-      options: {
-        name: `logos`,
-        path: path.join(__dirname, `data/logos`)
-      }
-    },
+    
     {
       resolve: `gatsby-source-filesystem`,
       options: {
         name: `illus`,
         path: path.join(__dirname, `src/illus`)
-      }
-    },
-    {
-      resolve: `gatsby-source-filesystem`,
-      options: {
-        name: `sers`,
-        path: path.join(__dirname, `data/sers`)
-      }
-    },
-    {
-      resolve: `gatsby-source-filesystem`,
-      options: {
-        name: `all_locations`,
-        path: path.join(__dirname, `data/all_locations`)
-      }
-    },
-    {
-      resolve: `gatsby-source-filesystem`,
-      options: {
-        name: `service_glossary`,
-        path: path.join(__dirname, `data/service_glossary`)
-      }
-    },
-    {
-      resolve: `gatsby-source-filesystem`,
-      options: {
-        name: `logos`,
-        path: path.join(__dirname, `data/logos`)
-      }
-    },
-    {
-      resolve: `gatsby-source-filesystem`,
-      options: {
-        name: `img`,
-        path: path.join(__dirname, `src/images`)
-      }
-    },
-    {
-      resolve: `gatsby-source-filesystem`,
-      options: {
-        path: path.join(__dirname, `tos`),
-        name: "tos"
       }
     },
     `gatsby-transformer-remark`,
@@ -116,7 +61,7 @@ module.exports = {
             }
             allSitePage(filter : {
               path: {
-               nin : ["/404/","/dev-404-page/","/app/", "/app/profile/",  "/app/auth/callback/", "/app/auth/", "/deep_link/"],
+               nin : ["/dashboard/"],
         
               }
             }) {
@@ -150,8 +95,8 @@ module.exports = {
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
-        name: ` evergov`,
-        short_name: `Evergov`,
+        name: ` evergov one`,
+        short_name: `Evergov One`,
         start_url: `/`,
         background_color: `#f7f7f7`,
         theme_color: `#0000ca`,
@@ -168,7 +113,7 @@ module.exports = {
     {
       resolve: `gatsby-plugin-create-client-paths`,
       options: {
-        prefixes: [`/search/*`, `/one/*`, `/quick_pay/*`,`/app/*`, `/deep_link/*`]
+        prefixes: [`/dashboard/*`]
       }
     },
     {
@@ -183,7 +128,7 @@ module.exports = {
     {
       resolve: `gatsby-plugin-favicon`,
       options: {
-        logo: "./src/favicon.png",
+        logo: "./src/favicon.ico",
         injectHTML: true,
         icons: {
           android: true,
@@ -203,14 +148,8 @@ module.exports = {
       options: {
         host: "https://evergov.com",
         sitemap: "https://evergov.com/sitemap.xml",
-        policy: [{ userAgent: "*", disallow: [`/app/*`, `/deep_link/*`] }]
+        policy: [{ userAgent: "*", disallow: [`/dashboard/*`] }]
       }
-    },
-    {
-      resolve: `gatsby-plugin-polyfill-io`,
-      options: {
-        features: [`IntersectionObserver`]
-      },
     },
     `gatsby-plugin-remove-serviceworker`,
     'gatsby-plugin-brotli',

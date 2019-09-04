@@ -1,21 +1,20 @@
-const path = require(`path`)
-let activeEnv = 'staging'
+const path = require(`path`);
+let activeEnv = "staging";
 
-if (process.env.PROJECT_ID && process.env.PROJECT_ID==='evergov-prod'){
-  activeEnv ='production'
+if (process.env.PROJECT_ID && process.env.PROJECT_ID === "evergov-prod") {
+  activeEnv = "production";
 }
 
-const pt = __dirname + `/.env.${activeEnv}`
+const pt = __dirname + `/.env.${activeEnv}`;
 
-require('dotenv').config({
-  path : pt
+require("dotenv").config({
+  path: pt
 });
-
 
 module.exports = {
   siteMetadata: {
-    title: `Evergov: Search for local government organizations, and services`,
-    siteUrl: `https://evergov.com`
+    title: `Evergov QuickPay: Lightning fast government service payments`,
+    siteUrl: `https://pay.evergov.com`
   },
   plugins: [
     /*
@@ -37,21 +36,7 @@ module.exports = {
       resolve: `gatsby-plugin-sharp`,
       options: {
         stripMetadata: true,
-        defaultQuality: 90,
-      },
-    },
-    {
-      resolve: `gatsby-source-filesystem`,
-      options: {
-        name: `orgs`,
-        path: path.join(__dirname, `data/orgs`)
-      }
-    },
-    {
-      resolve: `gatsby-source-filesystem`,
-      options: {
-        name: `logos`,
-        path: path.join(__dirname, `data/logos`)
+        defaultQuality: 90
       }
     },
     {
@@ -61,85 +46,7 @@ module.exports = {
         path: path.join(__dirname, `src/illus`)
       }
     },
-    {
-      resolve: `gatsby-source-filesystem`,
-      options: {
-        name: `sers`,
-        path: path.join(__dirname, `data/sers`)
-      }
-    },
-    {
-      resolve: `gatsby-source-filesystem`,
-      options: {
-        name: `all_locations`,
-        path: path.join(__dirname, `data/all_locations`)
-      }
-    },
-    {
-      resolve: `gatsby-source-filesystem`,
-      options: {
-        name: `service_glossary`,
-        path: path.join(__dirname, `data/service_glossary`)
-      }
-    },
-    {
-      resolve: `gatsby-source-filesystem`,
-      options: {
-        name: `logos`,
-        path: path.join(__dirname, `data/logos`)
-      }
-    },
-    {
-      resolve: `gatsby-source-filesystem`,
-      options: {
-        name: `img`,
-        path: path.join(__dirname, `src/images`)
-      }
-    },
-    {
-      resolve: `gatsby-source-filesystem`,
-      options: {
-        path: path.join(__dirname, `tos`),
-        name: "tos"
-      }
-    },
     `gatsby-transformer-remark`,
-    {
-      resolve: `gatsby-plugin-sitemap`,
-      options: {
-        query: `
-          {
-            site {
-              siteMetadata {
-                siteUrl
-              }
-            }
-            allSitePage(filter : {
-              path: {
-               nin : ["/404/","/dev-404-page/","/app/", "/app/profile/",  "/app/auth/callback/", "/app/auth/", "/deep_link/"],
-        
-              }
-            }) {
-              edges {
-                
-                node {
-
-                  path
-
-                }
-              }
-            }
-        }`,
-        serialize: ({ site, allSitePage }) =>
-          allSitePage.edges.map(edge => {
-            return {
-              url: site.siteMetadata.siteUrl + edge.node.path,
-              changefreq: `weekly`,
-              priority: 0.9
-            };
-          })
-      }
-    },
     // This plugin transforms JSON file nodes.
     `gatsby-transformer-json`,
     // This plugin sets up the popular css-in-js library Glamor. It handles adding a
@@ -150,8 +57,8 @@ module.exports = {
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
-        name: ` evergov`,
-        short_name: `Evergov`,
+        name: ` evergov one`,
+        short_name: `Evergov One`,
         start_url: `/`,
         background_color: `#f7f7f7`,
         theme_color: `#0000ca`,
@@ -162,13 +69,13 @@ module.exports = {
     {
       resolve: "gatsby-plugin-webpack-bundle-analyser-v2",
       options: {
-        devMode: false,
-      },
+        devMode: false
+      }
     },
     {
       resolve: `gatsby-plugin-create-client-paths`,
       options: {
-        prefixes: [`/search/*`, `/one/*`, `/quick_pay/*`,`/app/*`, `/deep_link/*`]
+        prefixes: [`/dashboard/*`]
       }
     },
     {
@@ -203,17 +110,11 @@ module.exports = {
       options: {
         host: "https://evergov.com",
         sitemap: "https://evergov.com/sitemap.xml",
-        policy: [{ userAgent: "*", disallow: [`/app/*`, `/deep_link/*`] }]
+        policy: [{ userAgent: "*", disallow: [`*`] }]
       }
     },
-    {
-      resolve: `gatsby-plugin-polyfill-io`,
-      options: {
-        features: [`IntersectionObserver`]
-      },
-    },
     `gatsby-plugin-remove-serviceworker`,
-    'gatsby-plugin-brotli',
+    "gatsby-plugin-brotli",
     `gatsby-plugin-react-helmet`,
     `gatsby-plugin-netlify`
     // This plugin generates a service worker and AppShell html file so the site

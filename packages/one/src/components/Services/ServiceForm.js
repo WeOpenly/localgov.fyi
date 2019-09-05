@@ -8,6 +8,7 @@ import FieldComponents from "./FormFields/FieldComponents";
 import { createYupSchema } from "./yupSchemaCreator";
 import { Formik, Form, Field } from "formik";
 import * as yup from "yup";
+import ServiceFaq from "./ServiceFaq";
 
 
 
@@ -33,82 +34,78 @@ class ServiceForm extends Component {
   render() {
     const { selectedService, canSkip, uploadedFile } = this.props;
     const { name, icon } = selectedService;
-    const { initialFormData, formData } = selectedService;
+    const { initialFormData, formData, faqs } = selectedService;
     let initialValues = formData;
     if (!formData){
         initialValues = initialFormData;
     }
 
     return (
-        <Fragment>
-
-        <div
-          className={`${styles.column} ${styles.col2} ${styles.hideXs}`}
-        />
-        <div
-          className={`${styles.column} ${styles.col8} ${styles.colXs12}`}
-        >
+      <Fragment>
+        <div className={`${styles.column} ${styles.col1} ${styles.hideXs}`} />
+        <div className={`${styles.column} ${styles.col6} ${styles.colXs12}`}>
+          <h5 className={` ${styles.cardTitle}`} style={{margin: '1rem 0.2rem'}}>
+            {name}{" "}
+            {this.props.isFinalized ? (
+              <span
+                className={`${iconStyles.typcn} ${styles.textSuccess} ${iconStyles.typcnTick}`}
+              />
+            ) : null}{" "}
+          </h5>
           <div
             className={styles.card}
             style={{
               border: "1px solid rgba(86, 39, 255, .2)",
               background: "#fff",
-              marginBottom:"4rem",
-              padding: '0.2rem',
+              marginBottom: "4rem",
+              padding: "0.2rem",
               borderRadius: "0.3rem",
               boxShadow: "0 .1rem 0.1rem rgba(48,55,66,.10)"
             }}
           >
-            <div className={styles.cardHeader}>
-              <h5 className={` ${styles.cardTitle}`}>{name} {this.props.isFinalized ? (<span
-                className={`${iconStyles.typcn} ${styles.textSuccess} ${iconStyles.typcnTick}`}
-              />) : null} </h5>
-              <div className={`${styles.cardBody}`}>
-                <Formik
-                  enableReinitialize={true}
-                  initialValues={initialValues}
-                  validationSchema={this.yupSchema()}
-                  className={styles.formGroup}
-                  onSubmit={values => {
-                    // same shape as initial values
+            <div className={`${styles.cardBody}`}>
+              <Formik
+                enableReinitialize={true}
+                initialValues={initialValues}
+                validationSchema={this.yupSchema()}
+                className={styles.formGroup}
+                onSubmit={values => {
+                  // same shape as initial values
 
-                    this.submitForm(values);
-                  }}
-                  render={(props, actions) => {
-                    return (
-                      <form
-                        className={styles.formHorizontal}
-                        onSubmit={props.handleSubmit}
-                      >
-                        <FieldComponents
-                          key={`${name}-field-component`}
-                          {...props}
-                          formSchema={selectedService.formSchema}
-                        />
-                        <div className={styles.textRight}>
-                          <button
-                            disabled={!props.isValid}
-                            className={`${styles.btn} ${
-                              styles.btnPrimary
-                            } ${styles.btnLg}`}
-                            type="submit"
-                          >
-                            {!formData ? 
-                            ` Submit `: ` Update`}
-                          </button>
-                        </div>
-                      </form>
-                    );
-                  }}
-                />
-              </div>
+                  this.submitForm(values);
+                }}
+                render={(props, actions) => {
+                  return (
+                    <form
+                      className={styles.formHorizontal}
+                      onSubmit={props.handleSubmit}
+                    >
+                      <FieldComponents
+                        key={`${name}-field-component`}
+                        {...props}
+                        formSchema={selectedService.formSchema}
+                      />
+                      <div className={styles.textRight}>
+                        <button
+                          disabled={!props.isValid}
+                          className={`${styles.btn} ${styles.btnPrimary} ${styles.btnLg}`}
+                          type="submit"
+                        >
+                          {!formData ? ` Submit ` : ` Update`}
+                        </button>
+                      </div>
+                    </form>
+                  );
+                }}
+              />
             </div>
           </div>
         </div>
-        <div
-          className={`${styles.column} ${styles.col2} ${styles.hideXs}`}
-        />
-                  </Fragment>
+        <div className={`${styles.column} ${styles.col4} ${styles.colXs12}`}>
+          <ServiceFaq faqs={faqs} serviceId={name} />
+        </div>
+        <div className={`${styles.column} ${styles.col1} ${styles.hideXs}`} />
+      </Fragment>
     );
   }
 }

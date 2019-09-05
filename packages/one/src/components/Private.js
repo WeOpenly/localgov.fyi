@@ -9,9 +9,19 @@ class Private extends Component {
         super(props);
     }
 
+
+
     render() {
-        let { as: Comp, ...props } = this.props;
-        return props.authenticated ? <Comp {...props} /> : null;
+        const { component: Component, ...rest } = this.props
+        const {location, authenticated} = this.props;
+        let noOnLoginPage = location.pathname !== `/`
+
+        if (!authenticated && noOnLoginPage) {
+            navigate("/")
+            return null
+        }
+        
+        return <Component {...rest} />
     }
 }
 

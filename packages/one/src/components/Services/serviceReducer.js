@@ -422,6 +422,7 @@ const initialState = {
       },
     ]
   },
+  stripeCardModalOpen: false,
   saving: false,
   paymentAuthorized: false,
   currentStep: "add_services", // 'update_services_details', 'add_payment', 'payment_added'
@@ -433,6 +434,11 @@ const initialState = {
 
 export function oneServices(state = initialState, action) {
     switch (action.type) {
+      case types.TOGGLE_STRIPE_MODAL:
+        return {
+          ...state,
+          stripeCardModalOpen: action.toggle
+        };
       case types.ONE_USER_SERVICES_SAVING:
           return {
             ...state,

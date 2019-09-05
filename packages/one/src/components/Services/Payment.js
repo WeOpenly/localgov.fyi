@@ -5,8 +5,12 @@ import PropTypes from "prop-types";
 import styles from "../spectre.min.module.css";
 import iconStyles from "../typicons.min.module.css";
 import PlaidLink from "react-plaid-link";
-import PaymentSetupDone from './PaymentSetupDone';
+import PaymentSetupDone from "./PaymentSetupDone";
 import PaymentPlans from "./PaymentPlans";
+import CardPaymentMethod from './CardPaymentMethod';
+import { toggleStripeModal } from "./actions";
+import { StripeProvider } from "react-stripe-elements";
+const windowGlobal = typeof window !== "undefined" && window;
 
 
 const PaymentPlan = props => (
@@ -23,23 +27,30 @@ const PaymentPlan = props => (
       <div className={styles.cardHeader}>
         {props.tag ? (
           <span
-            className={`${styles.label} ${styles.labelRounded} ${styles.labelSecondary} ${
-              styles.floatRight
-            }`}
+            className={`${styles.label} ${styles.labelRounded} ${styles.labelSecondary} ${styles.floatRight}`}
           >
             {props.tag}
           </span>
         ) : null}
-        <div className={styles.h3}>{" "}<small>$</small>{props.price}</div>
+        <div className={styles.h3}>
+          {" "}
+          <small>$</small>
+          {props.price}
+        </div>
         <div className={`${styles.cardSubitle} ${styles.textGray}`}>
-          <span className={`${iconStyles.typcn} ${iconStyles.typcnCalendar}`}></span>{props.duration}
+          <span
+            className={`${iconStyles.typcn} ${iconStyles.typcnCalendar}`}
+          ></span>
+          {props.duration}
         </div>
       </div>
       <div className={styles.cardBody} />
       <div className={styles.cardFooter}>
         <button
           onClick={() => props.selectPaymentPlan(props.id)}
-          className={`${styles.btn} ${props.focus ? `${styles.btnPrimary}` : `${styles.btnSecondary}`}`}
+          className={`${styles.btn} ${
+            props.focus ? `${styles.btnPrimary}` : `${styles.btnSecondary}`
+          }`}
         >
           Select this plan
         </button>
@@ -48,16 +59,51 @@ const PaymentPlan = props => (
   </div>
 );
 
-
 class Payment extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      selectedPlan: null
+      selectedPlan: null,
+      stripe: null,
+      stripeCardModalOpen: false
     };
     this.selectPaymentPlan = this.selectPaymentPlan.bind(this);
     this.handleOnSuccess = this.handleOnSuccess.bind(this);
     this.handleOnExit = this.handleOnExit.bind(this);
+    this.toggleCardDetails = this.toggleCardDetails.bind(this);
+    this.onCardPaymentSubmit = this.onCardPaymentSubmit.bind(this);
+  }
+
+  toggleCardDetails(toggle) {
+
+    this.setState({
+      stripeCardModalOpen: toggle
+    });
+  }
+
+  onCardPaymentSubmit(stripe_token) {
+    
+    this.props.setupCardPayment(stripe_token, this.state.selectedPlan);
+  }
+
+
+  componentDidMount() {
+    if (windowGlobal) {
+      if (window.Stripe) {
+        this.setState({ stripe: window.Stripe(process.env.GATSBY_STRIPE_KEY) });
+      } else {
+        document.querySelector("#stripe-js").addEventListener("load", () => {
+          // Create Stripe instance once Stripe.js loads
+          this.setState({
+            stripe: window.Stripe(process.env.GATSBY_STRIPE_KEY)
+          });
+        });
+      }
+    }
+    const  {landingPlan } = this.props;
+    if (landingPlan){
+      this.selectPaymentPlan(landingPlan);
+    }
   }
 
   selectPaymentPlan(plan) {
@@ -67,7 +113,12 @@ class Payment extends Component {
   }
 
   handleOnSuccess(public_token, metadata) {
-    this.props.submitPayment(public_token, metadata.account_id, this.state.selectedPlan)
+   
+    this.props.submitBankPayment(
+      public_token,
+      metadata.account_id,
+      this.state.selectedPlan
+    );
   }
 
   handleOnExit(err, metadata) {
@@ -76,53 +127,103 @@ class Payment extends Component {
   }
 
   render() {
-
-    if (this.props.paymentSetupInProgress){
-      return (
-        <div className={styles.loading} />
-      )
+    if (this.props.paymentSetupInProgress) {
+      return <div className={styles.loading} />;
     }
 
-    if (this.props.paymentSetupDone){
-      return <PaymentSetupDone />
+    if (this.props.paymentSetupDone) {
+      return <PaymentSetupDone />;
     }
 
-    const { selectedPlan } = this.state;
+    const { selectedPlan, stripeCardModalOpen } = this.state;
+
     return (
       <Fragment>
-        <div className={styles.columns} style={{ marginTop: "1rem" }}>
+        <StripeProvider stripe={this.state.stripe}>
+          <CardPaymentMethod
+            email={this.props.email}
+            stripeCardModalOpen={stripeCardModalOpen}
+            onClose={this.toggleCardDetails}
+            onStripeToken={this.onCardPaymentSubmit}
+          />
+        </StripeProvider>
+
+        <div className={styles.columns} style={{ margin: "1rem 0" }}>
           <div className={`${styles.column} ${styles.col1}`} />
           <div className={`${styles.column} ${styles.col10}`}>
             <div className={styles.columns}>
-              <PaymentPlans userTypeSelected={true} isBusiness={this.props.isBusiness} onSelectPlan={this.selectPaymentPlan} />
+              <PaymentPlans
+                userTypeSelected={true}
+                isBusiness={this.props.isBusiness}
+                onSelectPlan={this.selectPaymentPlan}
+              />
             </div>
           </div>
           <div className={`${styles.column} ${styles.col1}`} />
         </div>
         {selectedPlan ? (
-          <div className={styles.columns} style={{ marginTop: "3rem" }}>
+          <div className={styles.columns} style={{ margin: "3rem 0" }}>
             <div className={`${styles.column} ${styles.col1}`} />
             <div className={`${styles.column} ${styles.col10}`}>
               <div className={styles.columns}>
-                <div className={`${styles.column} ${styles.colSm5} ${styles.hideXs}`} />
-            <div className={`${styles.column} ${styles.colSm2} ${styles.colXs12}`} style={{margin: '1rem 0'}}>
-              <PlaidLink
-                clientName="Evergov One"
-                  env={process.env.GATSBY_PLAID_ENV}
-                className={`${styles.btn}  ${styles.btnPrimary}`}
-                style={{ background: 'rgb(86, 39, 255)', color: "#fff", width: '100%'}}
-                selectAccount={true}
-                product={["auth"]}
+                <div
+                  className={`${styles.column} ${styles.colSm5} ${styles.hideXs}`}
+                />
+                <div
+                  className={`${styles.column} ${styles.colSm2} ${styles.colXs12}`}
+                  style={{
+                    margin: "1rem 0",
+                    display: "flex",
+
+                    flexWrap: "wrap"
+                  }}
+                >
+                  <div style={{ color: "#fff", width: "300px" }}>
+                    <button
+                      className={`${styles.btn}  ${styles.btnPrimary}`}
+                      style={{
+                        background: "rgb(86, 39, 255)",
+                        color: "#fff",
+                        width: "100%"
+                      }}
+                      onClick={this.toggleCardDetails}
+                    >
+                      <span
+                        className={`${iconStyles.typcn} ${iconStyles.typcnLockClosed}`}
+                      ></span>{" "}
+                      Finish payment with credit card
+                    </button>
+                  </div>
+                  <div
+                    style={{ width: "300px" }}
+                    className={`${styles.divider} ${styles.textCenter}`}
+                    data-content="OR"
+                  ></div>
+                  <PlaidLink
+                    clientName="Evergov One"
+                    env={process.env.GATSBY_PLAID_ENV}
+                    className={`${styles.btn}  ${styles.btnPrimary}`}
+                    style={{
+                      background: "rgb(86, 39, 255)",
+                      color: "#fff",
+                      width: "300px"
+                    }}
+                    selectAccount={true}
+                    product={["auth"]}
                     publicKey={process.env.GATSBY_PLAID_PUBLIC_KEY}
-                onExit={this.handleOnExit}
-                onSuccess={this.handleOnSuccess}
-              > 
-                    <span className={`${iconStyles.typcn} ${iconStyles.typcnLockClosed}`}></span>  Connect your bank account
- 
-              </PlaidLink>
-                  <div className={`${styles.textGray} ${styles.textCenter}`} style={{paddingTop: '0.1rem'}}><small>  <span className={`${iconStyles.typcn} ${iconStyles.typcnInfoLarge}`}></span><span style={{ fontSize: '14px' }}>You accept our terms by cicking this</span> </small></div>
-            </div>
-                <div className={`${styles.column} ${styles.colSm5} ${styles.hideXs}`} />
+                    onExit={this.handleOnExit}
+                    onSuccess={this.handleOnSuccess}
+                  >
+                    <span
+                      className={`${iconStyles.typcn} ${iconStyles.typcnLockClosed}`}
+                    ></span>{" "}
+                    Connect your bank account
+                  </PlaidLink>
+                </div>
+
+                <div
+                  className={`${styles.column} ${styles.colSm5} ${styles.hideXs}`}
+                />
               </div>
             </div>
             <div className={`${styles.column} ${styles.col1}`} />
@@ -133,6 +234,10 @@ class Payment extends Component {
   }
 }
 
+const mapStateToProps = function(state, ownProps) {
+  return {
+    
+  };
+};
 
-
-export default Payment;
+export default connect(mapStateToProps)(Payment);

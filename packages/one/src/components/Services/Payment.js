@@ -75,17 +75,14 @@ class Payment extends Component {
   }
 
   toggleCardDetails(toggle) {
-
     this.setState({
       stripeCardModalOpen: toggle
     });
   }
 
   onCardPaymentSubmit(stripe_token) {
-    
     this.props.setupCardPayment(stripe_token, this.state.selectedPlan);
   }
-
 
   componentDidMount() {
     if (windowGlobal) {
@@ -101,8 +98,11 @@ class Payment extends Component {
       }
     }
     const  {landingPlan } = this.props;
+    console.log(landingPlan, "componentdidmount")
     if (landingPlan){
-      this.selectPaymentPlan(landingPlan);
+      this.setState({
+        selectedPlan: landingPlan
+      })
     }
   }
 
@@ -137,6 +137,7 @@ class Payment extends Component {
 
     const { selectedPlan, stripeCardModalOpen } = this.state;
 
+    console.log(this.state, "payment")
     return (
       <Fragment>
         <StripeProvider stripe={this.state.stripe}>
@@ -154,6 +155,7 @@ class Payment extends Component {
             <div className={styles.columns}>
               <PaymentPlans
                 userTypeSelected={true}
+                selectedPlan={this.state.selectedPlan}
                 isBusiness={this.props.isBusiness}
                 onSelectPlan={this.selectPaymentPlan}
               />
@@ -234,10 +236,5 @@ class Payment extends Component {
   }
 }
 
-const mapStateToProps = function(state, ownProps) {
-  return {
-    
-  };
-};
 
-export default connect(mapStateToProps)(Payment);
+export default Payment;

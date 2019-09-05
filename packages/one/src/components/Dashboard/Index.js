@@ -16,7 +16,10 @@ import SideBar from './SideBar';
 import AppBar from './AppBar';
 
 import { logout } from '../../components/actions';
+import {setLandingUserType, setLandingPlan} from '../../components/actions';
 import Home from './Home';
+
+const windowGlobal = typeof window !== "undefined" && window;
 
 
 class OneDashboard extends React.Component {
@@ -28,6 +31,22 @@ class OneDashboard extends React.Component {
         this.logout = this.logout.bind(this);
         this.toggleSidebar = this.toggleSidebar.bind(this);
     }
+
+    componentDidMount(){
+        const {dispatch} = this.props;
+        if(windowGlobal){
+            const userType = windowGlobal.localStorage.getItem("userType");
+            const plan = windowGlobal.localStorage.getItem("plan");
+
+            if(userType){
+                dispatch(setLandingUserType(userType));
+            }
+            if(plan){
+                dispatch(setLandingPlan(plan));
+            }
+        }
+    }
+
 
     toggleSidebar() {
         this.setState({

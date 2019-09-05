@@ -13,6 +13,7 @@ const createOptions = (fontSize, padding) => {
           background: "#fcfcff",
           backgroundImage: "none",
           border: ".06rem solid #bcc3ce",
+          boxShadow: "rgba(50, 50, 93, 0.14902) 0px 1px 3px, rgba(0, 0, 0, 0.0196078) 0px 1px 0px",
           borderRadius: ".2rem",
           fontFamily: "Source Code Pro, monospace",
           "::placeholder": {
@@ -54,7 +55,7 @@ class StripeCheckoutForm extends React.Component {
             >
               Card details
             </label>
-              <CardElement {...createOptions(this.props.fontSize)} />
+              <CardElement {...createOptions('16px')} />
 
             <button
               style={{ marginTop: "16px", width: "100%", fontSize: "14px" }}

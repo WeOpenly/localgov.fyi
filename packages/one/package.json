@@ -77,7 +77,7 @@
         "react-slick": "^0.24.0",
         "react-social-sharing": "^3.0.1",
         "react-stonecutter": "^0.3.9",
-        "react-stripe-elements": "^2.0.1",
+        "react-stripe-elements": "^2.0.3",
         "react-structured-data": "0.0.9",
         "react-text-loop": "^2.0.2",
         "react-tiny-virtual-list": "^2.2.0",

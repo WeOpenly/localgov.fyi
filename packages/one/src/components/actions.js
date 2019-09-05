@@ -290,7 +290,7 @@ export function watchForReceipts(uid) {
     };
 }
 
-export function setupPayment(uid, plaid_token, plaid_account_id, plan_id) {
+export function setupCardPayment(uid, stripe_token, plan_id) {
   return async (dispatch, getState) => {
     dispatch(setupBegin());
 
@@ -300,15 +300,50 @@ export function setupPayment(uid, plaid_token, plaid_account_id, plan_id) {
        .collection("one_user")
        .doc(uid)
        .update({
-            plaid_token: plaid_token,
-            plaid_account_id: plaid_account_id,
-            selected_plan_id: plan_id
-       }).then(function(){
-           dispatch(watchForStripeResp(uid));
+         payment_method: "card",
+         stripe_token: stripe_token,
+         selected_plan_id: plan_id
+       })
+       .then(function() {
+         dispatch(watchForStripeResp(uid));
        })
        .catch(function(error) {
-           
          dispatch(setupPaymentFailed(error));
        });
   };
+}
+
+
+
+export function setupBankPayment(uid, plaid_token, plaid_account_id, plan_id) {
+         return async (dispatch, getState) => {
+           dispatch(setupBegin());
+
+           const userRef = firebase
+             .firestore()
+             .collection("one_user")
+             .doc(uid)
+             .update({
+               payment_method: "bank_account",
+               plaid_token: plaid_token,
+               plaid_account_id: plaid_account_id,
+               selected_plan_id: plan_id
+             })
+             .then(function() {
+               dispatch(watchForStripeResp(uid));
+             })
+             .catch(function(error) {
+               dispatch(setupPaymentFailed(error));
+             });
+         };
+       }
+
+export function setLandingUserType(userType){
+return {
+  type: types.SET_LANDING_USER_TYPE,
+  userType
+};
+}
+export function setLandingPlan(plan){
+return {type: types.SET_LANDING_SELECTED_PLAN, plan}
 }

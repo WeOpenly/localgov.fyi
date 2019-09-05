@@ -90,7 +90,7 @@ class PaymentPlans extends Component {
     }
 
     onSelectPaymentPlan(plan) {
-        this.props.onSelectPlan(plan)
+        this.props.onSelectPlan(plan, this.state.userType);
         this.setState({
             selected: plan
         })

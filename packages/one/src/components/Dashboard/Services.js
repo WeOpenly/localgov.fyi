@@ -10,27 +10,34 @@ import Payment from '../Services/Payment';
 import styles from "../spectre.min.module.css"
 import iconStyles from '../typicons.min.module.css';
 
-import { setupPayment, updateStep} from '../actions';
-
+import { setupBankPayment, setupCardPayment, updateStep} from '../actions';
+import {toggleStripeModal} from '../Services/actions'
 
 class Services extends Component {
   constructor(props) {
     super(props);
-    this.submitPayment = this.submitPayment.bind(this);
+    this.submitBankPayment = this.submitBankPayment.bind(this);
+    this.setupCardPayment = this.setupCardPayment.bind(this);
   }
 
-
-  submitPayment(plaidToken, accountId, planId){
-    const {dispatch, uid} = this.props;
-    dispatch(setupPayment(uid, plaidToken, accountId, planId));
+  submitBankPayment(plaidToken, accountId, planId) {
+    const { dispatch, uid } = this.props;
+    dispatch(setupBankPayment(uid, plaidToken, accountId, planId));
   }
+
+  setupCardPayment(str_tok, planId) {
+    const { dispatch, uid } = this.props;
+    dispatch(setupCardPayment(uid, str_tok, planId));
+  }
+
 
   render() {
     const {
       selectedServices,
       currentStep,
+      stripeCardModalOpen,
       loadingSelectedServicesFailed,
-      loadingSelectedServices,
+      loadingSelectedServices
     } = this.props;
 
     if (loadingSelectedServices) {
@@ -42,38 +49,40 @@ class Services extends Component {
     }
 
     const hasProgress = selectedServices.length !== 0;
-     const tabs = (
-       <ul className={styles.step} style={{ margin: "16px 0px" }}>
-         <li
-           className={`${styles.stepItem} ${
-             currentStep === "add_services" ? styles.active : ""
-           }`}
-         >
-           <a href="#" onClick={this.returnToSnap}>
-             Pick Services
-           </a>
-         </li>
-         <li
-           className={`${styles.stepItem} ${
-             currentStep === "update_services_details" ? styles.active : ""
-           }`}
-         >
-           <a href="#">Add Service Details</a>
-         </li>
-         <li
-           className={`${styles.stepItem} ${
-             currentStep === "add_payment" ? styles.active : ""
-           }`}
-         >
-           <a href="#">Setup Payment</a>
-         </li>
-       </ul>
-     );
-    
-    let currentStepMsg = "We will need some info from you to make the most of Evergov One"
+    const tabs = (
+      <ul className={styles.step} style={{ margin: "16px 0px" }}>
+        <li
+          className={`${styles.stepItem} ${
+            currentStep === "add_services" ? styles.active : ""
+          }`}
+        >
+          <a href="#" onClick={this.returnToSnap}>
+            Pick Services
+          </a>
+        </li>
+        <li
+          className={`${styles.stepItem} ${
+            currentStep === "update_services_details" ? styles.active : ""
+          }`}
+        >
+          <a href="#">Add Service Details</a>
+        </li>
+        <li
+          className={`${styles.stepItem} ${
+            currentStep === "add_payment" ? styles.active : ""
+          }`}
+        >
+          <a href="#">Setup Payment</a>
+        </li>
+      </ul>
+    );
 
-    if (currentStep === 'add_payment'){
-        currentStepMsg = "One last thing! Please choose the plan that would best suit your need"
+    let currentStepMsg =
+      "We will need some info from you to make the most of Evergov One";
+
+    if (currentStep === "add_payment") {
+      currentStepMsg =
+        "One last thing! Please choose the plan that would best suit your need";
     }
 
     return (
@@ -85,9 +94,7 @@ class Services extends Component {
             style={{ marginTop: "2rem" }}
           >
             <p
-              className={`${styles.emptyTitle} ${styles.h5} ${
-                styles.textCenter
-              }`}
+              className={`${styles.emptyTitle} ${styles.h5} ${styles.textCenter}`}
             >
               {currentStepMsg}
             </p>
@@ -98,7 +105,17 @@ class Services extends Component {
         <Router>
           <ServiceList path="/" />
           <ServiceDetails path="/update_services_details" />
-          <Payment path="/add_payment" submitPayment={this.submitPayment} paymentSetupDone={this.props.paymentSetupDone} paymentSetupInProgress={this.props.paymentSetupInProgress} isBusiness={this.props.isBusiness}/>
+          <Payment
+            path="/add_payment"
+            submitBankPayment={this.submitBankPayment}
+            setupCardPayment={this.setupCardPayment}
+            paymentSetupDone={this.props.paymentSetupDone}
+            paymentSetupInProgress={this.props.paymentSetupInProgress}
+            isBusiness={this.props.isBusiness}
+            landingPlan={this.props.landingPlan}
+            landingType={this.props.landingType}
+            email={this.props.email}
+          />
         </Router>
       </Fragment>
     );
@@ -109,11 +126,14 @@ class Services extends Component {
 
 const mapStateToProps = function (state, ownProps) {
     return {
-        ...state.oneServices,
+      ...state.oneServices,
       paymentSetupDone: state.oneUser.paymentSetupDone,
       isBusiness: state.oneUser.isBusiness,
       paymentSetupInProgress: state.oneUser.paymentSetupInProgress,
-        uid: state.oneUser.userDetails.uid,
+      uid: state.oneUser.userDetails.uid,
+      email: state.oneUser.userDetails.email,
+      landingPlan: state.oneUser.landingPlan,
+      landingType: state.oneUser.landingType
     };
 };
 

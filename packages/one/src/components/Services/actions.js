@@ -14,6 +14,9 @@ const firebase = getFirebase();
 
 const dateNow = Date.now();
 
+export function toggleStripeModal(toggle){
+  return {type: types.TOGGLE_STRIPE_MODAL, toggle}
+}
 
 export function uploadFile(uid, file, cb){
   firebase.storage().ref().child(`one_user_service_attachments/${uid}/${file.name}`)

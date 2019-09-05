@@ -1,27 +1,38 @@
 import * as types from "./ActionTypes";
 
 const initialState = {
-    loginInProgress: false,
-    loginCheckInProgress: false,
-    loginFailure: false,
-    loginFailureMsg: '',
-    authenticated: false,
-    userDetails: {
-
-    },
-    paymentSetupDone: false,
-    paymentSetupInProgress: false,
-    paymentSetupFailed: false,
-    userDetailsLoading: false,
-    userDetailsLoadingFailed: false,
-    isFirstTime: false, // for onboarding slider
-    isBusiness: false,
-    isIndividual: false,
+  loginInProgress: false,
+  loginCheckInProgress: false,
+  loginFailure: false,
+  loginFailureMsg: "",
+  authenticated: false,
+  userDetails: {},
+  paymentSetupDone: false,
+  paymentSetupInProgress: false,
+  paymentSetupFailed: false,
+  userDetailsLoading: false,
+  userDetailsLoadingFailed: false,
+  isFirstTime: false, // for onboarding slider
+  isBusiness: false,
+  isIndividual: false,
+  landingPlan: null,
+  landingType: null,
 };
+
 
 
 export function oneUser(state = initialState, action) {
     switch (action.type) {
+      case types.SET_LANDING_SELECTED_PLAN:
+        return {
+          ...state,
+          landingPlan: action.plan
+        }
+      case types.SET_LANDING_USER_TYPE:
+        return {
+          ...state,
+          landingType: action.userType
+        };
       case types.ONE_GOOG_USER_LOGIN_START:
         return {
           ...state,

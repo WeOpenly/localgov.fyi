@@ -5,6 +5,7 @@ import PropTypes from "prop-types";
 import styles from "../spectre.min.module.css";
 import iconStyles from "../typicons.min.module.css";
 import ServiceForm from "./ServiceForm";
+import ServiceActionBar from "./ServiceActionBar";
 import {finalizeService} from './actions';
 import { updateStep } from "../actions";
 
@@ -72,23 +73,24 @@ class ServicesDetails extends Component {
         <div className={styles.columns}>
           <div className={`${styles.column} ${styles.colSm3}`} />
           <div
-            className={`${styles.column} ${styles.colSm6} ${
-              styles.colXs12
-            } ${styles.textRight}`}
+            className={`${styles.column} ${styles.colSm6} ${styles.colXs12} ${styles.textRight}`}
             style={{ margin: "2rem 0 4rem 0" }}
-          >
+          ></div>
+          <div className={`${styles.column} ${styles.col2} ${styles.hideXs}`} />
+        </div>
+        <ServiceActionBar
+          action={
             <button
               onClick={() => this.updateStep("add_payment")}
               disabled={finalizedSerCount === 0}
               className={`${styles.btn}  ${styles.btnPrimary}`}
             >
-              {this.props.paymentSetupDone ? `Modify payment settings` : `Setup Payment`} 
+              {this.props.paymentSetupDone
+                ? `Modify payment settings`
+                : `Setup Payment`}
             </button>
-          </div>
-          <div
-            className={`${styles.column} ${styles.col2} ${styles.hideXs}`}
-          />
-        </div>
+          }
+        />
       </Fragment>
     );
   }

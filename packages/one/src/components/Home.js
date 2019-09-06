@@ -46,98 +46,101 @@ class OneHome extends React.Component {
 
         return (
           <Fragment>
-           
-            <div className={`${styles.container} ${styles.gridLg}`}>
-
-
-              <div className={styles.columns} style={{  }}>
-
-                <div className={`${styles.column} ${styles.col12}`}>
-                       <header
-              className={styles.navbar}
-          
-            >
-                    <section style={{ padding: '0.5rem' }}className={styles.navbarSection}>
-             
-                  <Link
-                    to="/one"
-                  >
-                  <a href="#" style={{textDecoration: 'none'}}>
-                    <h3>  evergov  <sub
-                      className={styles.textUppercase}
-                      style={{
-                        color: '#455060',
-                        fontSize: "0.5rem",
-                        paddingTop: "4px",
-                        letterSpacing: "0.1rem",
-                        fontWeight: "bold"
-                      }}
+            <div className={`${styles.container} ${styles.gridXl}`}>
+              <div className={styles.columns}>
+                <div className={`${styles.column} ${styles.col1}`}></div>
+                <div className={`${styles.column} ${styles.col10}`}>
+                  <header className={styles.navbar}>
+                    <section
+                      style={{ padding: "0.5rem" }}
+                      className={styles.navbarSection}
                     >
-                      One
-                    </sub>   </h3>
+                      <Link to="/one">
+                        <a href="#" style={{ textDecoration: "none" }}>
+                          <h3>
+                            {" "}
+                            evergov{" "}
+                            <sub
+                              className={styles.textUppercase}
+                              style={{
+                                color: "#455060",
+                                fontSize: "0.5rem",
+                                paddingTop: "4px",
+                                letterSpacing: "0.1rem",
+                                fontWeight: "bold"
+                              }}
+                            >
+                              One
+                            </sub>{" "}
+                          </h3>
+                        </a>
+                      </Link>
+                    </section>
 
-                  </a>
-                 
-                  </Link>
-             
-              </section>
-
-              <section className={styles.navbarSection}>
-                <Link
-                  to="/terms"
-                  style={{padding: '0.5rem'}}
-                >
-                  Terms
-                </Link>
-                <Link
-                  to="/privacy"
-                  style={{ padding: '0.5rem' }}
-                >
-                  Privacy
-                </Link>
-              </section>
-            </header>
+                    <section className={styles.navbarSection}>
+                      <Link to="/terms" style={{ padding: "0.5rem" }}>
+                        Terms
+                      </Link>
+                      <Link to="/privacy" style={{ padding: "0.5rem" }}>
+                        Privacy
+                      </Link>
+                    </section>
+                  </header>
                 </div>
-        
+                <div className={`${styles.column} ${styles.col1}`}></div>
               </div>
               <div
                 className={`${styles.columns}`}
                 style={{ margin: "4rem 0 4rem 0" }}
               >
+                <div className={`${styles.column} ${styles.col1}`}></div>
                 <div
-                  className={`${styles.column} ${styles.colSm6} ${
-                    styles.colXs12
-                  }`}
+                  className={`${styles.column} ${styles.colMd6} ${styles.colSm12}`}
                 >
                   <div
                     style={{
                       display: "flex",
                       flexDirection: "column",
-                      marginTop: "64px"
+                      marginTop: "40px"
                     }}
                   >
-                    <h1> Gov services made delightfully easy </h1>
-                    <p>
-                     Manage all your government interactions in one place
+                    <h1
+                      style={{
+                        margin: '1rem 1rem 1rem 0',
+                        fontSize: "2.1rem",
+                        lineHeight: "2.5rem"
+                      }}
+                    >
+                      {" "}
+                      The easiest way to interact with government services
+                    </h1>
+                    <p
+                      style={{
+                        fontSize: "1rem",
+                        lineHeight: "1.3rem"
+                      }}
+                    >
+                      Think government services can't be simple and transparent?
+                      <br />
+                      Experience the new generation of consumer-friendly
+                      government services.
                     </p>
 
-                    <div>
+                    <div style={{ maxWidth: "400px" }}>
                       {loginInProgress ? (
                         <div className={styles.loading} />
                       ) : (
                         <div className={styles.inputGroup}>
                           <input
-                          onChange={this.changeEmail}
+                            onChange={this.changeEmail}
                             type="email"
-                              className={`${styles.formInput} ${styles.inputLg}`}
-                              style={{height: '2.1rem', marginRight: '0.5rem'}}
+                            className={`${styles.formInput} ${styles.inputLg}`}
+                            style={{ height: "2.1rem", marginRight: "0.5rem" }}
                             placeholder="your@email.com"
                           />
                           <button
                             onClick={this.loginGoog}
-                            className={`${styles.btn} ${
-                              styles.btnSecondary
-                            } ${styles.inputGroupButton}`}
+                            className={`${styles.btn} ${styles.btnSecondary} ${styles.inputGroupButton}`}
                           >
                             Get Started
                           </button>
@@ -146,184 +149,181 @@ class OneHome extends React.Component {
                     </div>
                   </div>
                 </div>
+
                 <div
-                  className={`${styles.column} ${styles.colSm6} ${
-                    styles.hideXs
-                  }`}
-                  style={{  display:'flex', justifyContent: 'right' }}
+                  className={`${styles.column} ${styles.colMd6} ${styles.hideSm}`}
+                  style={{ display: "flex", justifyContent: "right" }}
                 >
                   <AboutIl />
                 </div>
               </div>
               <div
                 className={`${styles.columns}  ${styles.textCenter}`}
-                style={{ margin: "8rem 0 4rem 0" }}
+                style={{ margin: "6rem 0 4rem 0" }}
               >
-                <div className={`${styles.column} ${styles.colXs12}}`}>
-                  <h3> Never miss a <TextLoop>
-                    <h3>property tax payment</h3>
-                    <h3>vehicle registration renewal</h3>
-                    <h3>utility bill payment</h3>
-                    <h3>business licence renewal</h3>
-                  </TextLoop> </h3>
-                  <p >
-                    We handle the renewals, auto payments and more on
-                    your behalf <br/> it takes just a couple of minutes to get
-                    you going...
+                <div className={`${styles.column} ${styles.col1}`}></div>
+                <div className={`${styles.column} ${styles.colXs10}}`}>
+                  <h3>
+                    {" "}
+                    Never miss a{" "}
+                    <TextLoop>
+                      <h3>property tax payment</h3>
+                      <h3>vehicle registration renewal</h3>
+                      <h3>utility bill payment</h3>
+                      <h3>business licence renewal</h3>
+                    </TextLoop>{" "}
+                  </h3>
+                  <p>
+                    We handle the renewals, auto payments and more on your
+                    behalf
                   </p>
                 </div>
+                <div className={`${styles.column} ${styles.col1}`}></div>
               </div>
               <div
                 className={`${styles.columns}`}
                 style={{ margin: "4rem 0 4rem 0" }}
               >
+                <div className={`${styles.column} ${styles.col1}`}></div>
                 <div
-                  className={`${styles.column} ${styles.colSm4} ${
-                    styles.colXs12
-                  }`}
+                  className={`${styles.column} ${styles.colSm4} ${styles.colXs12}`}
                 >
                   <div
-                    className={`${styles.card} ${styles.textCenter}`}
+                    className={`${styles.card} ${styles.textLeft}`}
                     style={{
-                      border: '1px solid rgba(48,55,66,.10)',
+                      border: "1px solid rgba(48,55,66,.10)",
                       background: "#fff",
-                      height: '224px',
+                      height: "180px",
+                      width: "300px",
                       marginBottom: "4rem",
                       marginTop: "1rem",
-                      padding: '0.2rem',
+                      padding: "0.4rem",
                       borderRadius: "0.3rem",
-                      boxShadow: "0 .1rem 0.1rem rgba(48,55,66,.10)"
+                      boxShadow: "0 .3rem 0.8rem rgba(48,55,66,.10)"
                     }}
                   >
-                    <div className={styles.cardImage} style={{
-                      margin: "1.1rem 0 0.6rem 0",
-                   }}>
-                      <span style={{
-                        background: "#30ae40",
-                        color: "#fff",
-                        fontSize: '1.5rem',
-                        padding: '0.4rem',
-                        borderRadius: "0.3rem",
-                        boxShadow: "0 0.5rem 1rem rgba(48,174,100,.20)"
-                      }} className={`${iconStyles.typcn} ${iconStyles.typcnFlashOutline}`}></span>  
-                    </div>
-                      
                     <div className={styles.cardHeader}>
-                     
-                      <h5
-                        className={`${styles.cardTitle}`}
-                        
-                      >
-                    We'll do the heavy lifting
-                      </h5>
-                      <div
-                        className={`${styles.cardSubitle} ${
-                          styles.textGray
-                        }`}
-                      >
-                        We take care of all of your government service interactions including payments, renewals & much more on your behalf while you can rest.
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div
-                  className={`${styles.column} ${styles.colSm4}  ${
-                    styles.colXs12
-                  }`}
-                >
-                  <div
-                    className={`${styles.card} ${styles.textCenter}`}
-                    style={{
-                      border: '1px solid rgba(48,55,66,.10)',
-                      background: "#fff",
-                      height: '224px',
-                      marginTop: "1rem",
-                      marginBottom: "4rem",
-                      padding: '0.2rem',
-                      borderRadius: "0.3rem",
-                      boxShadow: "0 .1rem 0.1rem rgba(48,55,66,.10)"
-                    }}
-                  >
-                    <div className={styles.cardImage} style={{
-                      margin: "1.1rem 0 0.6rem 0",
-                    }}>
-                      <span style={{
-                        background: "#3500f3",
-                        color: "#fff",
-                        padding: '0.4rem',
-                        fontSize: '1.5rem',
-                        borderRadius: "0.3rem",
-                        boxShadow: "0 0.5rem 1rem rgba(86, 39, 255, .2)"
-                      }} className={`${iconStyles.typcn} ${iconStyles.typcnInfinity}`}></span>  
-                      </div>
-                    <div className={styles.cardHeader}>
-                      <h5
-                        className={`${styles.cardTitle}`}
-                      >
-                      All in one place
-                      </h5>
-                      <div
-                        className={`${styles.cardSubitle} ${
-                          styles.textGray
-                        }`}
-                      >
-                        We bring together all of your gov service related accounts, bills, licenses and more, so you can seamlessly manage them from one place.
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div
-                  className={`${styles.column} ${styles.colSm4}  ${
-                    styles.colXs12
-                  }`}
-                >
-                  <div
-                    className={`${styles.card} ${styles.textCenter}`}
-                    style={{
-                      border: '1px solid rgba(48,55,66,.10)',
-                      background: "#fff",
-                      height: '224px',
-                      marginTop: "1rem",
-                      marginBottom: "4rem",
-                      padding: '0.2rem',
-                      borderRadius: "0.3rem",
-                      boxShadow: "0 .1rem 0.1rem rgba(48,55,66,.10)"
-                    }}
-                  >
+                      <h5 className={`${styles.cardTitle}`}>
+                        <span
+                          style={{
+                            background: "#fff",
+                            color: "#ffd367",
 
-                    <div className={styles.cardImage} style={{
-                      margin: "1.1rem 0 0.6rem 0",
-                    }}>
-                      <span style={{
-                        background: "#d73e48",
-                        color: "#fff",
-                        padding: '0.4rem',
-                        fontSize: '1.5rem',
-                        borderRadius: "0.3rem",
-                        boxShadow: "0 0.5rem 1rem rgba(215, 62, 72, .2)"
-                      }}  className={`${iconStyles.typcn} ${iconStyles.typcnLockClosedOutline}`}></span>
-                      </div>
-                    <div className={styles.cardHeader}>
-                      <h5
-                        className={`${styles.cardTitle}`}
-                      >
-                         Secure
+                            fontSize: "1.2rem",
+                            padding: "0.2rem 0",
+                            borderRadius: "0.3rem"
+                          }}
+                          className={`${iconStyles.typcn} ${iconStyles.typcnFlashOutline}`}
+                        ></span>{" "}
+                        We'll do the heavy lifting
                       </h5>
-                      <div
-                        className={`${styles.cardSubitle} ${
-                          styles.textGray
-                        }`}
-                      >
-                        We deeply care about user privacy & data. We don’t sell your data and use industry standard encryption for all transactions. 
-                      </div>
+                    </div>
+                    <div className={styles.cardBody}>
+                      <p className={`${styles.cardSubitle} ${styles.textGray}`}>
+                        We take care of all of your government service
+                        interactions including payments, renewals & much more on
+                        your behalf while you can rest.
+                      </p>
                     </div>
                   </div>
                 </div>
+                <div
+                  className={`${styles.column} ${styles.colSm4}  ${styles.colXs12}`}
+                >
+                  <div
+                    className={`${styles.card} ${styles.textLeft}`}
+                    style={{
+                      border: "1px solid rgba(48,55,66,.10)",
+                      background: "#fff",
+                      width: "300px",
+
+                      height: "180px",
+                      marginBottom: "4rem",
+                      marginTop: "1rem",
+                      padding: "0.4rem",
+                      borderRadius: "0.3rem",
+                      boxShadow: "0 .3rem 0.8rem rgba(48,55,66,.10)"
+                    }}
+                  >
+                    <div className={styles.cardHeader}>
+                      <h5 className={`${styles.cardTitle}`}>
+                        <span
+                          style={{
+                            background: "#fff",
+                            color: "#3500f3",
+
+                            fontSize: "1.2rem",
+                            padding: "0.2rem 0",
+                            borderRadius: "0.3rem"
+                          }}
+                          className={`${iconStyles.typcn} ${iconStyles.typcnInfinity}`}
+                        ></span>{" "}
+                        All in one place
+                      </h5>
+                    </div>
+                    <div className={styles.cardBody}>
+                      <p className={`${styles.cardSubitle} ${styles.textGray}`}>
+                        We bring together all of your gov service related
+                        accounts, bills, licenses and more, so you can
+                        seamlessly manage them from one place.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+
+                <div
+                  className={`${styles.column} ${styles.colSm4}  ${styles.colXs12}`}
+                >
+                  <div
+                    className={`${styles.card} ${styles.textLeft}`}
+                    style={{
+                      border: "1px solid rgba(48,55,66,.10)",
+                      background: "#fff",
+                      height: "180px",
+                      width: "300px",
+                      marginBottom: "4rem",
+                      marginTop: "1rem",
+                      padding: "0.4rem",
+                      borderRadius: "0.3rem",
+                      boxShadow: "0 .3rem 0.8rem rgba(48,55,66,.10)"
+                    }}
+                  >
+                    <div className={styles.cardHeader}>
+                      <h5 className={`${styles.cardTitle}`}>
+                        <span
+                          style={{
+                            background: "#fff",
+                            color: "#30ae40",
+
+                            fontSize: "1.2rem",
+                            padding: "0.2rem 0",
+                            borderRadius: "0.3rem"
+                          }}
+                          className={`${iconStyles.typcn} ${iconStyles.typcnLockClosedOutline}`}
+                        ></span>{" "}
+                        Secure
+                      </h5>
+                    </div>
+                    <div className={styles.cardBody}>
+                      <p className={`${styles.cardSubitle} ${styles.textGray}`}>
+                        We deeply care about user privacy & data. We don’t sell
+                        your data and use industry standard encryption for all
+                        transactions.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+
+                <div className={`${styles.column} ${styles.col1}`}></div>
               </div>
             </div>
             <div
               className={`${styles.columns}`}
-              style={{ margin: "4rem 0 4rem 0", padding: '2.5rem 0.5rem', background:"#f7f8f9" }}
+              style={{
+                margin: "4rem 0 4rem 0",
+                padding: "2.5rem 0.5rem",
+                background: "#f7f8f9"
+              }}
             >
               <div
                 className={`${styles.column} ${styles.col3} ${styles.hideXs}`}
@@ -332,27 +332,31 @@ class OneHome extends React.Component {
                 className={`${styles.column} ${styles.col3} ${styles.colXs12}`}
               >
                 <div>
-                  <span
-                    className={`${styles.textGray}`}
-                  >
-                  <i>
-                    As featured in
-                  </i>
-                    
+                  <span className={`${styles.textGray}`}>
+                    <i>As featured in</i>
                   </span>
-
                 </div>
-                        <div>
-                  <a target="_blank" href="https://www.govtech.com/gov-experience/EverGov-Wants-to-Make-Local-Government-Services-More-Searchable.html"><GovTechSvg/></a>
-                        
-                        </div>
+                <div>
+                  <a
+                    target="_blank"
+                    href="https://www.govtech.com/gov-experience/EverGov-Wants-to-Make-Local-Government-Services-More-Searchable.html"
+                  >
+                    <GovTechSvg />
+                  </a>
+                </div>
               </div>
-              <div className={`${styles.column} ${styles.col3} ${styles.colXs12}`}>
-                <div className={`${styles.textGray}`}>
+              <div
+                className={`${styles.column} ${styles.col3} ${styles.colXs12}`}
+              >
+                <div>
                   <em>
-                    "This makes sense, given that state agencies and larger cities have been working for years  to consolidate their own digital services and <br/> create single login interfaces that save citizens the trouble of navigating to different departments"
-                 </em>
-                  </div>
+                    "This makes sense, given that state agencies and larger
+                    cities have been working for years to consolidate their own
+                    digital services and <br /> create single login interfaces
+                    that save citizens the trouble of navigating to different
+                    departments"
+                  </em>
+                </div>
               </div>
               <div
                 className={`${styles.column} ${styles.col3} ${styles.hideXs}`}
@@ -363,31 +367,29 @@ class OneHome extends React.Component {
               <div className={`${styles.column}  ${styles.col8}`}>
                 <div className={styles.textCenter}>
                   <h3> Simple pricing </h3>
-                  <div
-                    className={`${styles.cardSubitle} ${
-                      styles.textGray
-                      }`}
-                  >
-                        Set it and forget it
-                      </div>
+                  <div className={`${styles.cardSubitle} ${styles.textGray}`}>
+                    Set it and forget it
+                  </div>
                 </div>
-            
-                <div
-                  className={`${styles.columns}`}
-                  style={{ margin: "4rem 0" }}
-                >
-              
-
-                  <PaymentPlans onSelectPlan={this.loginGoog}/>
-
-
+              </div>
+              <div className={`${styles.column} ${styles.col2}`} />
+            </div>
+            <div className={styles.columns} style={{ marginTop: "2rem" }}>
+              <div className={`${styles.column} ${styles.col2}`} />
+              <div className={`${styles.column}  ${styles.col8}`}>
+                <div className={`${styles.columns}`}>
+                  <PaymentPlans onSelectPlan={this.loginGoog} />
                 </div>
               </div>
               <div className={`${styles.column} ${styles.col2}`} />
             </div>
             <div
               className={`${styles.columns}`}
-              style={{ margin: "4rem 0 4rem 0", padding: '2.5rem 0.5rem', background: "#f7f8f9" }}
+              style={{
+                margin: "4rem 0 4rem 0",
+                padding: "2.5rem 0.5rem",
+                background: "#f7f8f9"
+              }}
             >
               <div
                 className={`${styles.column} ${styles.col2} ${styles.hideXs}`}
@@ -396,80 +398,65 @@ class OneHome extends React.Component {
                 className={`${styles.column} ${styles.col8} ${styles.colXs12} ${styles.textCenter}`}
               >
                 <div>
-                  <span
-                    className={`${styles.textGray}`}
-                  >
-                  
-                    <h5>
-                      Get in touch
-                  </h5>
-
+                  <span className={`${styles.textGray}`}>
+                    <h5>Get in touch</h5>
                   </span>
-
                 </div>
                 <div>
-                  <h3>
-                    team@evergov.com
-                  </h3>
-                  <h5>
-                    650-667-0070
-                  </h5>
-
+                  <h3>team@evergov.com</h3>
+                  <h5>650-667-0070</h5>
                 </div>
               </div>
-     
+
               <div
                 className={`${styles.column} ${styles.col2} ${styles.hideXs}`}
               />
             </div>
             <div
               className={`${styles.columns}  ${styles.textCenter}`}
-              style={{ margin: "8rem 0 3rem 0" }}
+              style={{ margin: "8rem 0" }}
             >
-              <div className={`${styles.column} ${styles.colXs12}}`}>
-                <h3>Sign up now</h3>
-
-                   <div
-              className={`${styles.columns}  ${styles.textCenter}`}
-              style={{ margin: "1rem 0 8rem 0" }}
-                >  
-                  <div className={`${styles.column} ${styles.col4}}`}/>
-                <div className={`${styles.column} ${styles.colXs4}}`}>
-                    {loginInProgress ? (
-                      <div className={styles.loading} />
-                    ) : (
-                        <div className={styles.inputGroup}>
-                          <input
-                            type="email"
-                            onChange={this.changeEmail}
-                            className={`${styles.formInput} ${styles.inputLg}`}
-                            style={{ height: '2.1rem', marginRight: '0.5rem' }}
-                            placeholder="your@email.com"
-                          />
-                          <button
-                            onClick={this.loginGoog}
-                            className={`${styles.btn} ${
-                              styles.btnSecondary
-                              } ${styles.inputGroupButton}`}
-                          >
-                            Get Started
-                          </button>
-                        </div>
-                      )}
+              <div
+                className={`${styles.column} ${styles.col4} ${styles.hideXs}`}
+              />
+              <div
+                className={`${styles.column} ${styles.col4} ${styles.colXs12} ${styles.textCenter}`}
+              >
+                {loginInProgress ? (
+                  <div className={styles.loading} />
+                ) : (
+                  <div>
+                    <h3 style={{ paddingBottom: "1rem" }}>Sign up now</h3>
+                    <div className={styles.inputGroup}>
+                      <input
+                        type="email"
+                        onChange={this.changeEmail}
+                        className={`${styles.formInput} ${styles.inputLg}`}
+                        style={{ height: "2.1rem", marginRight: "0.5rem" }}
+                        placeholder="your@email.com"
+                      />
+                      <button
+                        onClick={this.loginGoog}
+                        className={`${styles.btn} ${styles.btnSecondary} ${styles.inputGroupButton}`}
+                      >
+                        Get Started
+                      </button>
+                    </div>
                   </div>
-                    <div className={`${styles.column} ${styles.col4}}`}/>
-            </div>
-              
+                )}
               </div>
+              <div
+                className={`${styles.column} ${styles.col4} ${styles.hideXs}`}
+              />
             </div>
-        
+
             <div className={styles.columns} style={{ marginTop: "1rem" }}>
-              <div className={`${styles.column} ${styles.col2}`}/>
-            <div className={`${styles.column} ${styles.col8}`}>
+              <div className={`${styles.column} ${styles.col2}`} />
+              <div className={`${styles.column} ${styles.col8}`}>
                 <div className={styles.divider} />
-              <Footer isMobile={true} />
-            </div>
-              <div className={`${styles.column} ${styles.col2}`}/>
+                <Footer isMobile={true} />
+              </div>
+              <div className={`${styles.column} ${styles.col2}`} />
             </div>
           </Fragment>
         );

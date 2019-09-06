@@ -8,6 +8,7 @@ import PlaidLink from "react-plaid-link";
 import PaymentSetupDone from "./PaymentSetupDone";
 import PaymentPlans from "./PaymentPlans";
 import CardPaymentMethod from './CardPaymentMethod';
+import ServiceActionBar from "./ServiceActionBar";
 import { toggleStripeModal } from "./actions";
 import { StripeProvider } from "react-stripe-elements";
 const windowGlobal = typeof window !== "undefined" && window;
@@ -98,7 +99,6 @@ class Payment extends Component {
       }
     }
     const  {landingPlan } = this.props;
-    console.log(landingPlan, "componentdidmount")
     if (landingPlan){
       this.setState({
         selectedPlan: landingPlan
@@ -137,7 +137,7 @@ class Payment extends Component {
 
     const { selectedPlan, stripeCardModalOpen } = this.state;
 
-    console.log(this.state, "payment")
+
     return (
       <Fragment>
         <StripeProvider stripe={this.state.stripe}>
@@ -164,72 +164,60 @@ class Payment extends Component {
           <div className={`${styles.column} ${styles.col1}`} />
         </div>
         {selectedPlan ? (
-          <div className={styles.columns} style={{ margin: "3rem 0" }}>
-            <div className={`${styles.column} ${styles.col1}`} />
-            <div className={`${styles.column} ${styles.col10}`}>
-              <div className={styles.columns}>
-                <div
-                  className={`${styles.column} ${styles.colSm5} ${styles.hideXs}`}
-                />
-                <div
-                  className={`${styles.column} ${styles.colSm2} ${styles.colXs12}`}
-                  style={{
-                    margin: "1rem 0",
-                    display: "flex",
-
-                    flexWrap: "wrap"
-                  }}
-                >
-                  <div style={{ color: "#fff", width: "300px" }}>
-                    <button
-                      className={`${styles.btn}  ${styles.btnPrimary}`}
-                      style={{
-                        background: "rgb(86, 39, 255)",
-                        color: "#fff",
-                        width: "100%"
-                      }}
-                      onClick={this.toggleCardDetails}
-                    >
-                      <span
-                        className={`${iconStyles.typcn} ${iconStyles.typcnLockClosed}`}
-                      ></span>{" "}
-                      Finish payment with credit card
-                    </button>
-                  </div>
-                  <div
-                    style={{ width: "300px" }}
-                    className={`${styles.divider} ${styles.textCenter}`}
-                    data-content="OR"
-                  ></div>
-                  <PlaidLink
-                    clientName="Evergov One"
-                    env={process.env.GATSBY_PLAID_ENV}
-                    className={`${styles.btn}  ${styles.btnPrimary}`}
+          <ServiceActionBar
+            action={
+              <div
+                className={`${styles.column} ${styles.colSm2} ${styles.colXs12}`}
+                style={{
+                  display: "flex",
+                  justifyContent: 'right',
+                  flexWrap: "wrap"
+                }}
+              >
+                <div style={{ color: "#fff", width: "300px" }}>
+                  <button
+                    className={`${styles.btn} ${styles.btnPrimary}`}
                     style={{
                       background: "rgb(86, 39, 255)",
                       color: "#fff",
-                      width: "300px"
+                      width: "100%"
                     }}
-                    selectAccount={true}
-                    product={["auth"]}
-                    publicKey={process.env.GATSBY_PLAID_PUBLIC_KEY}
-                    onExit={this.handleOnExit}
-                    onSuccess={this.handleOnSuccess}
+                    onClick={this.toggleCardDetails}
                   >
                     <span
                       className={`${iconStyles.typcn} ${iconStyles.typcnLockClosed}`}
                     ></span>{" "}
-                    Connect your bank account
-                  </PlaidLink>
+                    Finish payment with credit card
+                  </button>
                 </div>
-
                 <div
-                  className={`${styles.column} ${styles.colSm5} ${styles.hideXs}`}
-                />
+     
+                  className={`${styles.dividerVert} ${styles.textCenter}`}
+                  data-content="OR"
+                ></div>
+                <PlaidLink
+                  clientName="Evergov One"
+                  env={process.env.GATSBY_PLAID_ENV}
+                  className={`${styles.btn}  ${styles.btnPrimary}`}
+                  style={{
+                    background: "rgb(86, 39, 255)",
+                    color: "#fff",
+                    width: "300px"
+                  }}
+                  selectAccount={true}
+                  product={["auth"]}
+                  publicKey={process.env.GATSBY_PLAID_PUBLIC_KEY}
+                  onExit={this.handleOnExit}
+                  onSuccess={this.handleOnSuccess}
+                >
+                  <span
+                    className={`${iconStyles.typcn} ${iconStyles.typcnLockClosed}`}
+                  ></span>{" "}
+                  Connect your bank account
+                </PlaidLink>
               </div>
-            </div>
-            <div className={`${styles.column} ${styles.col1}`} />
-          </div>
+            }
+          />
         ) : null}
       </Fragment>
     );

@@ -8,6 +8,8 @@ import iconStyles from "../typicons.min.module.css";
 import { selectService, unSelectService } from "./actions";
 import {updateStep} from "../actions";
 import ServiceListItem from "./ServiceListItem";
+import ServiceActionBar from "./ServiceActionBar";
+
 
 class ServiceList extends Component {
   constructor(props) {
@@ -41,7 +43,12 @@ class ServiceList extends Component {
     }
 
     const notSelected = Object.keys(selectedServices).length === 0;
- 
+    const breakpointColumnsObj = {
+      default: 3,
+      1380: 2,
+      740: 1,
+    };
+
     const serComps = availableSers.map(ser => (
       <ServiceListItem
         key={ser.id}
@@ -66,9 +73,10 @@ class ServiceList extends Component {
           <div className={`${styles.column} ${styles.col1} ${styles.hideXs}`} />
           <div className={`${styles.column} ${styles.col10} ${styles.colXs12}`}>
             <Masonry
-              breakpointCols={3}
+              breakpointCols={breakpointColumnsObj}
               style={{
                 display: "flex",
+                justifyContent: 'center',
                 width: "auto"
               }}
             >
@@ -77,13 +85,7 @@ class ServiceList extends Component {
           </div>
           <div className={`${styles.column} ${styles.col1} ${styles.hideXs}`} />
         </div>
-        <div className={styles.columns}>
-          <div className={`${styles.column} ${styles.colSm3}`} />
-          <div
-            className={`${styles.column} ${styles.colSm6} ${styles.colXs12} ${styles.textRight}`}
-            style={{ marginTop: "1rem" }}
-          >
-            {notSelected ? null : (
+       {notSelected ? null : (<ServiceActionBar action={(
               <button
                 onClick={() => this.updateStep("update_services_details")}
                 disabled={notSelected}
@@ -91,10 +93,7 @@ class ServiceList extends Component {
               >
                 Add Your Details
               </button>
-            )}
-          </div>
-          <div className={`${styles.column} ${styles.colSm3}`} />
-        </div>
+            )}/>)}
       </Fragment>
     );
   }

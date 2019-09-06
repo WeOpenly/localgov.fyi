@@ -2,6 +2,7 @@ import React from 'react';
 import { injectStripe, CardElement } from 'react-stripe-elements';
 
 import styles from "../spectre.min.module.css";
+import iconStyles from "../typicons.min.module.css";
 
 const createOptions = (fontSize, padding) => {
     return {
@@ -49,20 +50,28 @@ class StripeCheckoutForm extends React.Component {
     render() {
         return (
           <form onSubmit={this.handleSubmit}>
-            <label
-              className={`${styles.formLabel} ${styles.textUppercase} ${styles.textBold}`}
-              style={{ fontSize: "12px" }}
-            >
-              Card details
-            </label>
-              <CardElement {...createOptions('16px')} />
+            <CardElement {...createOptions("16px")} />
 
             <button
-              style={{ marginTop: "16px", width: "100%", fontSize: "14px" }}
+              style={{ marginTop: "2rem", width: "100%", fontSize: "14px" }}
               className={`${styles.btn} ${styles.btnPrimary} ${styles.btnLg} ${styles.textUppercase} ${styles.textBold}`}
             >
               Finish Payment
             </button>
+            <p
+              style={{
+                paddingBottom: "8px",
+                margin: "8px 0 0 0",
+                textAlign: 'center'
+              }}
+            >
+              <span
+                className={`${iconStyles.typcn} ${iconStyles.typcnLockClosedOutline}`}
+              ></span>
+              <span style={{ fontSize: "14px" }}>
+                Your data, and transactions are always safe & secure
+              </span>
+            </p>
           </form>
         );
     }

@@ -9,6 +9,7 @@ import Payment from '../Services/Payment';
 
 import styles from "../spectre.min.module.css"
 import iconStyles from '../typicons.min.module.css';
+import ServiceActionBar from '../Services/ServiceActionBar';
 
 import { setupBankPayment, setupCardPayment, updateStep} from '../actions';
 import {toggleStripeModal} from '../Services/actions'
@@ -84,6 +85,7 @@ class Services extends Component {
       currentStepMsg =
         "One last thing! Please choose the plan that would best suit your need";
     }
+    
 
     return (
       <Fragment>
@@ -101,6 +103,7 @@ class Services extends Component {
           </div>
           <div className={`${styles.column} ${styles.col3}`} />
           <div className={`${styles.column} ${styles.col12}`}>{tabs}</div>
+         
         </div>
         <Router>
           <ServiceList path="/" />

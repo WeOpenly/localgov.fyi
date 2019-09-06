@@ -27,8 +27,8 @@ class CardPaymentMethod extends React.Component {
             />
             <div className={styles.modalContainer}>
               <div className={styles.columns} style={{ margin: "1rem 0" }}>
-                <div className={styles.modalHeader}>
-                  <h5 className={styles.modalTitle}>Finish Subscription</h5>
+                <div className={styles.modalHeader} style={{textAlign: 'center'}}>
+                  <h5 className={styles.modalTitle}>Finalize your subscription</h5>
                 </div>
                 <div
                   className={`${styles.column} ${styles.col12}`}

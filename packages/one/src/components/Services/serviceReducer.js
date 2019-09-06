@@ -9,6 +9,8 @@ const initialState = {
         id: 0,
         name: "Property Taxes",
         icon: null,
+        shortDescription:
+          "Property taxes fall into two categories, Secured and Unsecured. A Secured property tax is a tax for a physical property, most often real estate and land. An Unsecured property tax is for personal items, like an airplane, boat, or business. ",
         faqs: [
           {
             header: "What is this about?",
@@ -17,7 +19,8 @@ const initialState = {
           },
           {
             header: "How often do I need to do this?",
-            description: "Property taxes payments depend on the county or the school district the property is located in. It is usually paid in two parts every year."
+            description:
+              "Property taxes payments depend on the county or the school district the property is located in. It is usually paid in two parts every year."
           }
         ],
         initialFormData: {
@@ -75,6 +78,7 @@ const initialState = {
         id: 1,
         name: "Utility Bill",
         icon: null,
+        shortDescription: "it's a renewal",
         faqs: [
           {
             header: "What is this about?",
@@ -142,6 +146,7 @@ const initialState = {
         id: 2,
         name: "Pet Licence",
         icon: null,
+        shortDescription: "it's a renewal",
         faqs: [
           {
             header: "What is this about?",
@@ -186,6 +191,7 @@ const initialState = {
       {
         id: 3,
         name: "Renew Vehicle Registration",
+        shortDescription: "it's a renewal",
         faqs: [
           {
             header: "What is this about?",
@@ -193,7 +199,8 @@ const initialState = {
           },
           {
             header: "How often do I need to do this?",
-            description: "Most vehicle registrations are valid only for an year and need to be renewed annually."
+            description:
+              "Most vehicle registrations are valid only for an year and need to be renewed annually."
           }
         ],
         icon: null,
@@ -241,6 +248,8 @@ const initialState = {
         id: 0,
         name: "Renew Business Licence",
         icon: null,
+        shortDescription:
+          "A business license permits a business to operate in a specific town, city, or state. Almost all business require to have them filed. ",
         faqs: [
           {
             header: "What is this about?",
@@ -341,6 +350,8 @@ const initialState = {
         id: 1,
         name: "Renew Fictitious Business Licence or DBA",
         icon: null,
+        shortDescription:
+          'A fictitious business name, sometimes referred as DBA, short for "doing business as," filing for a DBA allows you to conduct business under a name other than your own—your DBA is different from your name as the business owner, or your business\'s legal, registered name.',
         faqs: [
           {
             header: "What is this about?",
@@ -375,6 +386,7 @@ const initialState = {
         id: 2,
         name: "Utility Bill",
         icon: null,
+        shortDescription: "a Description",
         formSchema: [
           {
             id: "providerName",
@@ -432,6 +444,8 @@ const initialState = {
         id: 3,
         name: "Delaware Franchise Tax Filing",
         icon: null,
+        shortDescription:
+          "All active Domestic Corporation Annual Reports and Franchise Taxes for the prior year are due annually.",
         faqs: [
           {
             header: "What is this about?",
@@ -465,6 +479,8 @@ const initialState = {
         id: 4,
         name: "California Franchise Tax Filing",
         icon: null,
+        shortDescription:
+          "All new limited liability companies (LLCs), S corporations, C corporations, limited partnerships (LPs), and limited liability partnershps (LLPs) registered in the state of California should pay a franchise tax. ",
         faqs: [
           {
             header: "What is this about?",

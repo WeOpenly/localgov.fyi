@@ -2,10 +2,7 @@ import React, { Component, Fragment } from "react";
 import { connect } from "react-redux";
 import { navigate } from "@reach/router";
 import PropTypes from "prop-types";
-import { Router, Link } from "@reach/router";
-import Account from './Account';
-import Receipts from './Receipts';
-import Services from './Services';
+
 
 import styles from "../spectre.min.module.css"
 import iconStyles from '../typicons.min.module.css';
@@ -119,12 +116,6 @@ class Home extends Component {
           </div>
         </div>
       </div>
-
-        <Router>
-          <Account path="/dashboard/account" logout={this.logout} />
-          <Services path="/dashboard/services/*" />
-          <Receipts path="/dashboard/receipts" />
-        </Router>
 </Fragment>
       )
     }

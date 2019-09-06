@@ -24,19 +24,33 @@ class ServiceActionBar extends React.Component {
         className={className}
         style={{
           background: "#fff",
-
+          display: "flex",
+          justifyContent: "center",
           boxShadow: "0 0 0.5rem 0.3rem rgba(50,50,93,.04)"
         }}
       >
-        <div
-          style={{
-            padding: "1rem 0",
-            display: "flex",
-            justifyContent: "right",
-            marginRight: "300px"
-          }}
-        >
-          {action}
+        <div className={`${styles.container} ${styles.gridXl}`}>
+          <div className={`${styles.columns}`}>
+            <div
+              className={`${styles.column} ${styles.col2} ${styles.hideXs}`}
+            />
+            <div
+              className={`${styles.column} ${styles.col7} ${styles.colXs12} ${styles.textCenter}`}
+            >
+              <div
+                style={{
+                  padding: "1rem 0",
+                  display: "flex",
+                  justifyContent: "right"
+                }}
+              >
+                {action}
+              </div>
+            </div>
+            <div
+              className={`${styles.column} ${styles.col3} ${styles.hideXs}`}
+            />
+          </div>
         </div>
       </div>
     );

@@ -77,7 +77,8 @@ class ServiceList extends Component {
               style={{
                 display: "flex",
                 justifyContent: 'center',
-                width: "auto"
+                width: "auto",
+                marginBottom: '6rem'
               }}
             >
               {serComps}

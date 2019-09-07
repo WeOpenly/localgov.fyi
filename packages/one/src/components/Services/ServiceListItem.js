@@ -35,7 +35,7 @@ class ServiceListItem extends React.Component {
           }`,
           marginBottom: "4rem",
           maxHeight: "340px",
-          minHeight: "120px",
+          minHeight: "180px",
           margin: "0.5rem",
           padding: "0.2rem",
           width: "300px",
@@ -46,20 +46,12 @@ class ServiceListItem extends React.Component {
         <div
           className={styles.cardImage}
           style={{
+            display: 'flex',
+            justifyContent: 'center',
             margin: "1.1rem 0 0.6rem 0"
           }}
         >
-          <span
-            style={{
-              background: "#3500f3",
-              color: "#fff",
-              padding: "0.4rem",
-              fontSize: "1.5rem",
-              borderRadius: "0.3rem",
-              boxShadow: "0 0.5rem 1rem rgba(86, 39, 255, .2)"
-            }}
-            className={`${iconStyles.typcn} ${iconStyles.typcnInfinity}`}
-          ></span>
+          {this.props.ser.icon}
         </div>
         <div
           className={styles.cardHeader}

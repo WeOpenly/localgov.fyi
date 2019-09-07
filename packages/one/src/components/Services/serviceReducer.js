@@ -1,4 +1,12 @@
+import React from "react";
 import * as types from "../ActionTypes";
+import ProptaxSvg from "../../svgIcons/PropTaxIl";
+import UtilBill from "../../svgIcons/utbIl";
+import BusinessLic from "../../svgIcons/BusinessLic";
+import PetLic from "../../illus/PetLic";
+import Renew from "../../illus/Renew";
+import CalFranchTax from '../../illus/CalFranchTax';
+import DelFranchTax from "../../illus/DelFranchTax";
 
 // atleast one service requirements should be filled
 
@@ -8,7 +16,7 @@ const initialState = {
       {
         id: 0,
         name: "Property Taxes",
-        icon: null,
+        icon: <ProptaxSvg style={{ width: "64px" }} />,
         shortDescription:
           "Property taxes fall into two categories, Secured and Unsecured. A Secured property tax is a tax for a physical property, most often real estate and land. An Unsecured property tax is for personal items, like an airplane, boat, or business. ",
         faqs: [
@@ -77,16 +85,19 @@ const initialState = {
       {
         id: 1,
         name: "Utility Bill",
-        icon: null,
-        shortDescription: "it's a renewal",
+        icon: <UtilBill style={{ width: "64px" }} />,
+        shortDescription:
+          "Depending on the location you are based in, some utilities like water, sewer, trash are taken care by your city or county.",
         faqs: [
           {
             header: "What is this about?",
-            description: "it's a bill"
+            description:
+              "Depending on the location you are based in, some utilities like water, sewer, trash are taken care by your city or county."
           },
           {
             header: "How often do I need to do this?",
-            description: "Once a month, usually"
+            description:
+              "Utility bills are generally due monthly or bi-monthly."
           }
         ],
         formSchema: [
@@ -145,16 +156,19 @@ const initialState = {
       {
         id: 2,
         name: "Pet Licence",
-        icon: null,
-        shortDescription: "it's a renewal",
+        icon: <PetLic style={{ width: "64px" }} />,
+        shortDescription:
+          "Law requires that all pets (usually dogs or cats) over the age of four months be licensed through the local animal care and control agency.",
         faqs: [
           {
             header: "What is this about?",
-            description: "it's a licence"
+            description:
+              "Law requires that all pets (usually dogs or cats) over the age of four months be licensed through the local animal care and control agency."
           },
           {
             header: "How often do I need to do this?",
-            description: "Once a year, usually"
+            description:
+              "Pet Licenses need to be renewed annually or bi-annually depending on the city/county laws."
           }
         ],
         formSchema: [
@@ -191,11 +205,13 @@ const initialState = {
       {
         id: 3,
         name: "Renew Vehicle Registration",
-        shortDescription: "it's a renewal",
+        shortDescription:
+          "All motor vehicles needs to have a valid registration through your local Department of Motor Vehicles to be actively used. ",
         faqs: [
           {
             header: "What is this about?",
-            description: "it's a renewal"
+            description:
+              "All motor vehicles needs to have a valid registration through your local Department of Motor Vehicles to be actively used."
           },
           {
             header: "How often do I need to do this?",
@@ -203,7 +219,7 @@ const initialState = {
               "Most vehicle registrations are valid only for an year and need to be renewed annually."
           }
         ],
-        icon: null,
+        icon: <Renew style={{ width: "64px" }} />,
         formSchema: [
           {
             id: "plateNumber",
@@ -247,7 +263,7 @@ const initialState = {
       {
         id: 0,
         name: "Renew Business Licence",
-        icon: null,
+        icon: <BusinessLic style={{ width: "64px" }} />,
         shortDescription:
           "A business license permits a business to operate in a specific town, city, or state. Almost all business require to have them filed. ",
         faqs: [
@@ -349,7 +365,7 @@ const initialState = {
       {
         id: 1,
         name: "Renew Fictitious Business Licence or DBA",
-        icon: null,
+        icon: <BusinessLic style={{ width: "64px" }} />,
         shortDescription:
           'A fictitious business name, sometimes referred as DBA, short for "doing business as," filing for a DBA allows you to conduct business under a name other than your own—your DBA is different from your name as the business owner, or your business\'s legal, registered name.',
         faqs: [
@@ -385,7 +401,7 @@ const initialState = {
       {
         id: 2,
         name: "Utility Bill",
-        icon: null,
+        icon: <UtilBill style={{ width: "64px" }} />,
         shortDescription: "a Description",
         formSchema: [
           {
@@ -443,7 +459,7 @@ const initialState = {
       {
         id: 3,
         name: "Delaware Franchise Tax Filing",
-        icon: null,
+        icon: <DelFranchTax style={{width: '64px'}} />,
         shortDescription:
           "All active Domestic Corporation Annual Reports and Franchise Taxes for the prior year are due annually.",
         faqs: [
@@ -478,7 +494,7 @@ const initialState = {
       {
         id: 4,
         name: "California Franchise Tax Filing",
-        icon: null,
+        icon: <CalFranchTax style={{width: '64px'}} />,
         shortDescription:
           "All new limited liability companies (LLCs), S corporations, C corporations, limited partnerships (LPs), and limited liability partnershps (LLPs) registered in the state of California should pay a franchise tax. ",
         faqs: [

@@ -4,6 +4,12 @@
 
 /blog/* https://blogevergov.wordpress.com/:splat 200!
 
+/one/* https://one.evergov.com/:splat 200!
+
+/quick_pay/* https://pay.evergov.com/:splat 200!
+
+/pay/* https://pay.evergov.com/:splat 200!
+
 /api/dsp/* https://dsp-dot-evergov-prod.appspot.com/:splat 200!
 
 https://evergov.netlify.com/* https://evergov.com/:splat 301!

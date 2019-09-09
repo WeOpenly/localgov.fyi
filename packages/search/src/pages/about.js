@@ -125,7 +125,8 @@ class OneHome extends React.Component {
             <div className={`${styles.column} ${styles.col1}`}></div>
             <div className={`${styles.column} ${styles.colXs10}}`}>
               <h2>
-                We’re building the new generation of consumer-friendly
+                We’re building the new generation of <br /> consumer-friendly{" "}
+                <br />
                 government services.
               </h2>
             </div>
@@ -146,15 +147,17 @@ class OneHome extends React.Component {
           </div>{" "}
           <div
             className={`${styles.columns}  ${styles.textCenter}`}
-            style={{ margin: "6rem 0 0 0" }}
+            style={{ margin: "1rem 0 0 0" }}
           >
             <div className={`${styles.column} ${styles.col1}`}></div>
             <div className={`${styles.column} ${styles.colXs10}}`}>
-              <h4>
+              <h5>
                 We believe that access to government services should be simple
-                and transparent & trying to do our part to catalyze that
-                movement. We do this in two ways:
-              </h4>
+                and transparent & we are <br /> trying to do our part to
+                catalyze that movement. <br />
+              </h5>
+              <br/>
+              <h6 className={styles.textGray}>We do this in two ways:</h6>
             </div>
             <div className={`${styles.column} ${styles.col1}`}></div>
           </div>
@@ -219,7 +222,6 @@ class OneHome extends React.Component {
                 style={{ border: "none" }}
                 className={`${styles.card} ${styles.textCenter}`}
               >
-                
                 <div className={styles.cardHeader}>
                   <h6 className={`${styles.cardTitle}`}>Create an account</h6>
                 </div>
@@ -232,7 +234,6 @@ class OneHome extends React.Component {
                 style={{ border: "none" }}
                 className={`${styles.card} ${styles.textCenter}`}
               >
-                
                 <div className={styles.cardHeader}>
                   <h6 className={`${styles.cardTitle}`}>
                     Add your service details <br /> & link your payment info
@@ -247,7 +248,6 @@ class OneHome extends React.Component {
                 style={{ border: "none" }}
                 className={`${styles.card} ${styles.textCenter}`}
               >
-              
                 <div className={styles.cardHeader}>
                   <h6 className={`${styles.cardTitle}`}>Sit back & relax</h6>
                 </div>

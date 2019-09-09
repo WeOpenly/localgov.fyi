@@ -148,18 +148,6 @@ module.exports = {
     // configuration and generates a web manifest file so Gatsbygram can be added to
     // your homescreen on Android.
     {
-      resolve: `gatsby-plugin-manifest`,
-      options: {
-        name: ` evergov`,
-        short_name: `Evergov`,
-        start_url: `/`,
-        background_color: `#f7f7f7`,
-        theme_color: `#0000ca`,
-        display: `minimal-ui`,
-        icon: "src/favicon.png"
-      }
-    },
-    {
       resolve: "gatsby-plugin-webpack-bundle-analyser-v2",
       options: {
         devMode: false,
@@ -168,7 +156,7 @@ module.exports = {
     {
       resolve: `gatsby-plugin-create-client-paths`,
       options: {
-        prefixes: [`/search/*`, `/one/*`, `/quick_pay/*`,`/app/*`, `/deep_link/*`]
+        prefixes: [`/search/*`, `/deep_link/*`]
       }
     },
     {

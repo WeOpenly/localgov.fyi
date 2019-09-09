@@ -1,198 +1,182 @@
-import React, { Fragment } from 'react';
-import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
-import Link from 'gatsby-link';
-import Helmet from "react-helmet";
+import React, { Fragment } from "react";
+import PropTypes from "prop-types";
+import { connect } from "react-redux";
 
-import Nav from '../components/Nav/Common';
-import { withStyles } from '@material-ui/core/styles';
-import AppBar from '@material-ui/core/AppBar';
-import Grid from '@material-ui/core/Grid';
-import Typography from '@material-ui/core/Typography';
-import Button from '@material-ui/core/Button';
-import Search from '@material-ui/icons/Search';
-import AboutIl from '../svgIcons/AboutIl.js';
 
-import withRoot from '../withRoot';
-import HeaderWithSearch from '../components/HeaderWithSearch';
-import { trackView } from "../components/common/tracking";
+import Footer from "../components/FooterNew";
+import Link from "gatsby-link";
+import TextLoop from "react-text-loop";
+import { graphql, StaticQuery } from "gatsby";
+import Img from "gatsby-image";
 
-const styles = theme => ({
-  header: {
-    background: theme.palette.common.white,
-    color: theme.palette.primary['700'],
-    boxShadow: `0 0 0 0 ${theme.palette.common.white}`,
-    borderBottom: `1px solid ${theme.palette.primary['50']}`
-  },
-  link: {
-    textDecoration: 'none',
-  },
-  title:{
-    paddingTop: theme.spacing.unit * 2,
-    paddingBottom: theme.spacing.unit * 2,
-    paddingLeft: theme.spacing.unit * 2,
-  },
-  section1: {
-    display: 'flex',
-    justifyContent: 'center',
-    alignItems: 'center',
-    height: '100vh',
-    marginLeft: theme.spacing.unit * -2,
-    marginRight: theme.spacing.unit * -2,
-    // paddingTop: theme.spacing.unit * 20,
-    paddingLeft: theme.spacing.unit * 2,
-    paddingRight: theme.spacing.unit * 2,
-    backgroundColor: theme.palette.primary['500'],
-  },
-  headline: {
-    fontSize: '2.75rem',
-    lineHeight: '3.5rem',
-    color: theme.palette.common.white,
-  },
-  section2: {
-    height: '100vh',
-    marginLeft: theme.spacing.unit * -2,
-    marginRight: theme.spacing.unit * -2,
-    paddingTop: theme.spacing.unit * 30,
-    paddingLeft: theme.spacing.unit * 2,
-    paddingRight: theme.spacing.unit * 2,
-    background: '#fafafa',
-  },
-  about_desc:{
-    marginTop: theme.spacing.unit * 10,
-    maxWidth: '500px',
-    display: 'flex',
-    flexDirection : 'column',
-    justifyContent: 'center',
-  },
-  about_desc_mob:{
-    display: 'flex',
-    marginTop: theme.spacing.unit * 5,
-    flexDirection: 'column',
-    justifyContent: 'center',
-    alignItems: 'center',
-    margin: theme.spacing.unit*2
-  },
-  section2Center: {
-    display: 'flex',
-    justifyContent: 'center',
-    paddingLeft: theme.spacing.unit * 8,
-    paddingRight: theme.spacing.unit * 8,
-  },
-  searchIcon: {
-    fontSize: 128,
-    marginTop: -theme.spacing.unit,
-    marginRight: theme.spacing.unit * 4,
-  },
-  section3: {
-    height: '100vh',
-    marginBottom: -151,
-    paddingTop: theme.spacing.unit * 30,
-  },
-  section3Content: {
-    display: 'flex',
-    justifyContent: 'center',
-    width: '100%',
-  },
-  section3Text: {
-    width: 400,
-  },
-  subheading: {
-    color: theme.palette.primary['500'],
-  },
-  bodyText: {
-    marginTop: theme.spacing.unit * 2,
-  },
-  mailTo: {
-    color: theme.palette.primary['500'],
-    textDecoration: 'none',
-    '&:hover': {
-      textDecoration: 'underline',
-    },
-  },
-  about_section_1:{
-    display: 'flex',
-    justifyContent: 'center',
-  }
-  
-});
 
-class About extends React.Component {
+import styles from "../components/spectre.min.module.css";
+import iconStyles from "../components/typicons.min.module.css";
+
+const windowGlobal = typeof window !== "undefined" && window;
+
+const HeroIl = () => (
+  <StaticQuery
+    query={graphql`
+      query heroIl2Query {
+        heroIl: allFile(filter: { relativePath: { eq: "indexhero.png" } }) {
+          edges {
+            node {
+              name
+              childImageSharp {
+                fluid {
+                  base64
+                  tracedSVG
+                  aspectRatio
+                  src
+                  srcSet
+                  srcWebp
+                  srcSetWebp
+                  sizes
+                  originalImg
+                  originalName
+                }
+              }
+            }
+          }
+        }
+      }
+    `}
+    render={data => {
+      return (
+        <Img
+          title={`evergov`}
+          alt={`illustration of evergov`}
+          style={{ width: "400px" }}
+          fluid={data.heroIl.edges[0].node.childImageSharp.fluid}
+        />
+      );
+    }}
+  />
+);
+
+
+const FaqItem = props => (
+  <Fragment>
+    <div className={styles.accordion}>
+      <input type="checkbox" id={props.name} name={props.name} hidden />
+      <label className={styles.accordionHeader} for={props.name}>
+        <h5>
+          {" "}
+          {props.header}
+          <span
+            className={`${iconStyles.typcn} ${iconStyles.typcnChevronRight}`}
+          />
+        </h5>
+      </label>
+      <div className={styles.accordionBody}>
+        <div
+          style={{ padding: "0.5rem 0.5rem" }}
+          dangerouslySetInnerHTML={{ __html: props.description }}
+        ></div>
+      </div>
+    </div>
+
+    <div className={styles.divider} />
+  </Fragment>
+);
+
+class OneHome extends React.Component {
   constructor(props) {
     super(props);
-    
-  }
-
-  componentDidMount() {
-    const { dispatch } = this.props;
-    dispatch(trackView('about', null, null, null));
-    // const script = document.createElement("script");
-
-    // script.src = "https://maps.googleapis.com/maps/api/js?key=AIzaSyBr4RixcEvuxgGr9EwNeiHCqUITczxvvuc&libraries=places&callback=initIndex";
-    // script.async = true;
-    // script.defer = true;
-    // document.head.appendChild(script);
-    // this.props.fetchAreaGuess();
   }
 
   render() {
-    const {classes} = this.props;
+    const { loginInProgress } = this.props;
+    const faqs = [
+      {
+        q: "Can you handle other services what were listed above?",
+        a:
+          "<p>Yes. If it’s not in the list above, you can reach out to us once you create your account using the support option in your dashboard.</p>"
+      },
+      {
+        q: "Do I need to connect my bank account?",
+        a:
+          "<p>We offer different payment options including credit card payment & different transfer by linking your account. You can choose what suits your case best.</p>"
+      },
+      {
+        q: "Can you help me with single payments for things like tickets?",
+        a:
+          "<p>Sure, try out lightning fast payment service <a href='https://pay.evergov.com'>here</a></p>"
+      },
+      {
+        q: "How can I contact the support team if I have more questions?",
+        a:
+          "<p>Please drop us a line here with more details about your question & one of our team members will respond in a day or two.</p>"
+      }
+    ];
+    const faqComps = faqs.map((faq, idx) => {
+      return (
+        <FaqItem header={faq.q} name={`home-faq-${idx}`} description={faq.a} />
+      );
+    });
 
     return (
       <Fragment>
-        <Helmet>
-          <title>{`About | evergov`}</title>
-          <meta
-            name="description"
-            content={`All your government servicesin a single place`}
-          />
-        </Helmet>
-        <Nav />
-        <div className={classes.about_section_1}>
-          {!this.props.isMobile ? (
-            <div className={classes.about_ill}>
-              <AboutIl />
-            </div>
-          ) : null}
-          <div
-            className={
-              this.props.isMobile
-                ? classes.about_desc_mob
-                : classes.about_desc
-            }
-          >
-            <Typography variant="display1" align="left">
-              We are on a mission to make every government service
-              accessible online.
-            </Typography>
-
-            <Typography
-              variant="caption"
-              align="left"
-              className={classes.bodyText}
-            >
-              Be it individuals or businesses, we are making sense of all
-              the government services out there and serving them on a silver
-              platter for all.
-            </Typography>
-            <Typography
-              variant="body1"
-              align="left"
-              className={classes.bodyText}
-            >
-              We are a small team with a big vision to make government
-              services delightful. We are adding more services and locations
-              everday. If you haven't found anything you are looking for and
-              want us to add them, drop us a line{" "}
-              {
-                <a
-                  href="mailto:team@weopenly.com"
-                  className={classes.mailTo}
+        <div className={`${styles.container} ${styles.gridXl}`}>
+          <div className={styles.columns}>
+            <div className={`${styles.column} ${styles.col1}`}></div>
+            <div className={`${styles.column} ${styles.col10}`}>
+              <header className={styles.navbar}>
+                <section
+                  style={{ padding: "0.5rem" }}
+                  className={styles.navbarSection}
                 >
-                  here.
-                </a>
-              }
-            </Typography>
+                  <Link to="/">
+                    <a href="#" style={{ textDecoration: "none" }}>
+                      <h3>evergov</h3>
+                    </a>
+                  </Link>
+                </section>
+
+                <section className={styles.navbarSection}>
+                  <Link to="/terms" style={{ padding: "0.5rem" }}>
+                    Terms
+                  </Link>
+                  <Link to="/privacy" style={{ padding: "0.5rem" }}>
+                    Privacy
+                  </Link>
+                </section>
+              </header>
+            </div>
+            <div className={`${styles.column} ${styles.col1}`}></div>
+          </div>
+          <div
+            className={`${styles.columns}  ${styles.textCenter}`}
+            style={{ margin: "6rem 0 4rem 0" }}
+          >
+            <div className={`${styles.column} ${styles.col1}`}></div>
+            <div className={`${styles.column} ${styles.colXs10}}`}>
+              <h3>
+                We’re building the new generation of consumer-friendly
+                government services.
+              </h3>
+            </div>
+            <div className={`${styles.column} ${styles.col1}`}></div>
+          </div>
+          <div
+            className={`${styles.columns}  ${styles.textCenter}`}
+            style={{ margin: "6rem 0 4rem 0" }}
+          >
+            <div className={`${styles.column} ${styles.col1}`}></div>
+            <div className={`${styles.column} ${styles.colXs10}}`}>
+              <HeroIl />
+            </div>
+            <div className={`${styles.column} ${styles.col1}`}></div>
+          </div>
+  
+          <div className={styles.columns} style={{ marginTop: "1rem" }}>
+            <div className={`${styles.column} ${styles.col2}`} />
+            <div className={`${styles.column} ${styles.col8}`}>
+              <div className={styles.divider} />
+              <Footer isMobile={true} />
+            </div>
+            <div className={`${styles.column} ${styles.col2}`} />
           </div>
         </div>
       </Fragment>
@@ -200,14 +184,10 @@ class About extends React.Component {
   }
 }
 
-About.propTypes = {
-  classes: PropTypes.object.isRequired
-};
-
-const mapStateToProps = (state, ownProps) => {
+const mapStateToProps = function(state, ownProps) {
   return {
-    ...state,
+    ...state.oneUser
   };
 };
 
-export default connect(mapStateToProps)(withRoot(withStyles(styles)(About)));
+export default connect(mapStateToProps)(OneHome);

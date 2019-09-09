@@ -87,34 +87,6 @@ class OneHome extends React.Component {
   }
 
   render() {
-    const { loginInProgress } = this.props;
-    const faqs = [
-      {
-        q: "Can you handle other services what were listed above?",
-        a:
-          "<p>Yes. If it’s not in the list above, you can reach out to us once you create your account using the support option in your dashboard.</p>"
-      },
-      {
-        q: "Do I need to connect my bank account?",
-        a:
-          "<p>We offer different payment options including credit card payment & different transfer by linking your account. You can choose what suits your case best.</p>"
-      },
-      {
-        q: "Can you help me with single payments for things like tickets?",
-        a:
-          "<p>Sure, try out lightning fast payment service <a href='https://pay.evergov.com'>here</a></p>"
-      },
-      {
-        q: "How can I contact the support team if I have more questions?",
-        a:
-          "<p>Please drop us a line here with more details about your question & one of our team members will respond in a day or two.</p>"
-      }
-    ];
-    const faqComps = faqs.map((faq, idx) => {
-      return (
-        <FaqItem header={faq.q} name={`home-faq-${idx}`} description={faq.a} />
-      );
-    });
 
     return (
       <Fragment>
@@ -148,28 +120,140 @@ class OneHome extends React.Component {
           </div>
           <div
             className={`${styles.columns}  ${styles.textCenter}`}
-            style={{ margin: "6rem 0 4rem 0" }}
+            style={{ margin: "6rem 0 0 0" }}
           >
             <div className={`${styles.column} ${styles.col1}`}></div>
             <div className={`${styles.column} ${styles.colXs10}}`}>
-              <h3>
+              <h2>
                 We’re building the new generation of consumer-friendly
                 government services.
-              </h3>
+              </h2>
             </div>
             <div className={`${styles.column} ${styles.col1}`}></div>
           </div>
           <div
             className={`${styles.columns}  ${styles.textCenter}`}
-            style={{ margin: "6rem 0 4rem 0" }}
+            style={{ margin: "0px" }}
           >
             <div className={`${styles.column} ${styles.col1}`}></div>
-            <div className={`${styles.column} ${styles.colXs10}}`}>
+            <div
+              className={`${styles.column} ${styles.colXs10}`}
+              style={{ display: "flex", justifyContent: "center" }}
+            >
               <HeroIl />
             </div>
             <div className={`${styles.column} ${styles.col1}`}></div>
+          </div>{" "}
+          <div
+            className={`${styles.columns}  ${styles.textCenter}`}
+            style={{ margin: "6rem 0 0 0" }}
+          >
+            <div className={`${styles.column} ${styles.col1}`}></div>
+            <div className={`${styles.column} ${styles.colXs10}}`}>
+              <h4>
+                We believe that access to government services should be simple
+                and transparent & trying to do our part to catalyze that
+                movement. We do this in two ways:
+              </h4>
+            </div>
+            <div className={`${styles.column} ${styles.col1}`}></div>
           </div>
-  
+          <div
+            className={`${styles.columns}`}
+            style={{
+              margin: "4rem 0 4rem 0",
+              padding: "2.5rem 0.5rem"
+            }}
+          >
+            <div
+              className={`${styles.column} ${styles.col3} ${styles.hideXs}`}
+            />
+            <div
+              className={`${styles.column} ${styles.col3} ${styles.colXs12}`}
+            >
+              <div>
+                <span className={`${styles.textGray}`}>
+                  <i>As featured in</i>
+                </span>
+              </div>
+              <div>
+                <a
+                  target="_blank"
+                  href="https://www.govtech.com/gov-experience/EverGov-Wants-to-Make-Local-Government-Services-More-Searchable.html"
+                >
+                  discovery
+                </a>
+              </div>
+            </div>
+            <div
+              className={`${styles.column} ${styles.col3} ${styles.colXs12}`}
+            >
+              <div>delivery</div>
+            </div>
+            <div
+              className={`${styles.column} ${styles.col3} ${styles.hideXs}`}
+            />
+          </div>
+          <div
+            className={`${styles.columns}  ${styles.textCenter}`}
+            style={{ margin: "6rem 0 2rem 0" }}
+          >
+            <div className={`${styles.column} ${styles.col1}`}></div>
+            <div className={`${styles.column} ${styles.colXs10}}`}>
+              <h3>Get started in a few minutes</h3>
+              <p>
+                We cover a variety of the most popular recurring services you
+                will need.
+              </p>
+            </div>
+            <div className={`${styles.column} ${styles.col1}`}></div>
+          </div>
+          <div
+            className={`${styles.columns} `}
+            style={{ margin: "4rem 0 8rem 0", background: "#f7f8f9" }}
+          >
+            <div
+              className={`${styles.column}  ${styles.colSm4} ${styles.colXs12}`}
+            >
+              <div
+                style={{ border: "none" }}
+                className={`${styles.card} ${styles.textCenter}`}
+              >
+                
+                <div className={styles.cardHeader}>
+                  <h6 className={`${styles.cardTitle}`}>Create an account</h6>
+                </div>
+              </div>
+            </div>
+            <div
+              className={`${styles.column}  ${styles.colSm4} ${styles.colXs12}`}
+            >
+              <div
+                style={{ border: "none" }}
+                className={`${styles.card} ${styles.textCenter}`}
+              >
+                
+                <div className={styles.cardHeader}>
+                  <h6 className={`${styles.cardTitle}`}>
+                    Add your service details <br /> & link your payment info
+                  </h6>
+                </div>
+              </div>
+            </div>
+            <div
+              className={`${styles.column}  ${styles.colSm4} ${styles.colXs12}`}
+            >
+              <div
+                style={{ border: "none" }}
+                className={`${styles.card} ${styles.textCenter}`}
+              >
+              
+                <div className={styles.cardHeader}>
+                  <h6 className={`${styles.cardTitle}`}>Sit back & relax</h6>
+                </div>
+              </div>
+            </div>
+          </div>
           <div className={styles.columns} style={{ marginTop: "1rem" }}>
             <div className={`${styles.column} ${styles.col2}`} />
             <div className={`${styles.column} ${styles.col8}`}>

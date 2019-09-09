@@ -1,1 +1,1 @@
-./node_modules/.bin/netlify deploy --site ${NETLIFY_SITE} --auth $NETLIFY_AUTH_TOKEN --dir public --prod
+./node_modules/.bin/netlify deploy --site ${NETLIFY_SITE_ID} --auth ${NETLIFY_AUTH_TOKEN} --dir public --prod

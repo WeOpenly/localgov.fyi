@@ -13,4 +13,5 @@
 .git
 .gitignore
 public
+data
 node_modules

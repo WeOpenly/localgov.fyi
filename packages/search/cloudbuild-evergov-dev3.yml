@@ -16,7 +16,7 @@ steps:
   args: ['ls']
 - name: node:8
   dir: 'localgov.fyi/packages/search'
-  args: ['bash', '-c', 'source ./creds.sh && ./deploy.sh']
+  args: ['bash', '-c', 'source ./creds.sh && env && ./deploy.sh']
 - name: ubuntu
   dir: 'localgov.fyi/packages/search'
   args: ['env']

@@ -12,6 +12,7 @@
 # below:
 .git
 .gitignore
+.cache
 public
 data
 node_modules

@@ -101,44 +101,42 @@ class FooterDiscover extends Component {
 
 
         return (
-            <div className={classes.disco_footer}>
-                <div className={classes.disco_footer_header}>
-                    <Typography variant="display1" style={{ fontSize: "0.85rem" }} >
-                        Discover
-                    </Typography>
-                </div>
-                <div className={classes.disco_footer_links}>
-                    <Typography variant="caption">
-                        <a
-                            href={`/quick_pay`}
-                            className={classes.footer_social_icon}
-
-                            target="_blank">
-                            Quick Pay
-                        </a>
-                    </Typography>
-                    <Typography variant="caption">
-                    <a
-                        href={`/locations`}
-                        className={classes.footer_social_icon}
-
-                        target="_blank">
-                 
-                        Locations
-                    
-                        </a>
-                    </Typography>
-                    <Typography variant="caption">
-                    <a
-                        href={`/services`}
-                        className={classes.footer_social_icon}
-
-                        target="_blank">
-                        Services
-                        </a>
-                    </Typography>
-                </div>
+          <div className={classes.disco_footer}>
+            <div className={classes.disco_footer_header}>
+              <Typography variant="display1" style={{ fontSize: "0.85rem" }}>
+                Discover
+              </Typography>
             </div>
+            <div className={classes.disco_footer_links}>
+              <Typography variant="caption">
+                <a
+                  href={`https://pay.evergov.com`}
+                  className={classes.footer_social_icon}
+                  target="_blank"
+                >
+                  Quick Pay
+                </a>
+              </Typography>
+              <Typography variant="caption">
+                <a
+                  href={`/locations`}
+                  className={classes.footer_social_icon}
+                  target="_blank"
+                >
+                  Locations
+                </a>
+              </Typography>
+              <Typography variant="caption">
+                <a
+                  href={`/services`}
+                  className={classes.footer_social_icon}
+                  target="_blank"
+                >
+                  Services
+                </a>
+              </Typography>
+            </div>
+          </div>
         );
     }
 }

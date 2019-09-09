@@ -2,7 +2,7 @@ steps:
 - name: gcr.io/cloud-builders/git
   args: ['clone', 'https://github.com/WeOpenly/localgov.fyi.git']
 - name: gcr.io/cloud-builders/gsutil
-  dir: 'localgov.fyi'
+  dir: 'localgov.fyi/packages/search'
   args: ['cp', 'gs://$PROJECT_ID-netlify-env/dsp-creds.sh', 'dsp-creds.sh']
 - name: 'gcr.io/evergov-prod/curl-python'
   dir: 'localgov.fyi/packages/search'

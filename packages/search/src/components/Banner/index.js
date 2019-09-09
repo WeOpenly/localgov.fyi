@@ -98,7 +98,7 @@ class Banner extends Component {
                                 color="primary"
                             variant="contained"
                             aria-label="quick pay"
-                            href="/quick_pay"
+                            href="https://pay.evergov.com"
                                 style={{ color: '#fff' }}
                         >
                             Try now   ⚡

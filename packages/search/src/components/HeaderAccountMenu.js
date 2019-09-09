@@ -80,7 +80,7 @@ class HeaderAccountMenu extends Component {
           variant="outlined"
           aria-label="quick pay"
           className={classes.h_a_m_login_button}
-          href="/quick_pay"
+          href="https://pay.evergov.com"
           color="inherit"
         >
           Quick pay

@@ -8,7 +8,8 @@ import Link from "gatsby-link";
 import TextLoop from "react-text-loop";
 import { graphql, StaticQuery } from "gatsby";
 import Img from "gatsby-image";
-
+import Step1 from '../illus/Step1.js'
+import Step2 from '../illus/Step2.js'
 
 import styles from "../components/spectre.min.module.css";
 import iconStyles from "../components/typicons.min.module.css";
@@ -47,7 +48,7 @@ const HeroIl = () => (
         <Img
           title={`evergov`}
           alt={`illustration of evergov`}
-          style={{ width: "400px" }}
+          style={{ width: "320px", height: '320px' }}
           fluid={data.heroIl.edges[0].node.childImageSharp.fluid}
         />
       );
@@ -123,7 +124,7 @@ class OneHome extends React.Component {
             style={{ margin: "6rem 0 0 0" }}
           >
             <div className={`${styles.column} ${styles.col1}`}></div>
-            <div className={`${styles.column} ${styles.colXs10}}`}>
+            <div className={`${styles.column} ${styles.col10}}`}>
               <h2>
                 We’re building the new generation of <br /> consumer-friendly{" "}
                 <br />
@@ -138,7 +139,7 @@ class OneHome extends React.Component {
           >
             <div className={`${styles.column} ${styles.col1}`}></div>
             <div
-              className={`${styles.column} ${styles.colXs10}`}
+              className={`${styles.column} ${styles.col10}`}
               style={{ display: "flex", justifyContent: "center" }}
             >
               <HeroIl />
@@ -147,17 +148,18 @@ class OneHome extends React.Component {
           </div>{" "}
           <div
             className={`${styles.columns}  ${styles.textCenter}`}
-            style={{ margin: "1rem 0 0 0" }}
+            style={{ margin: "4rem 0 0 0" }}
           >
             <div className={`${styles.column} ${styles.col1}`}></div>
-            <div className={`${styles.column} ${styles.colXs10}}`}>
-              <h5>
-                We believe that access to government services should be simple
-                and transparent & we are <br /> trying to do our part to
+            <div className={`${styles.column} ${styles.col10}}`}>
+              <h4>
+                We believe that access to government services should be <br/>
+                simple
+                and transparent & we are trying to do our part to<br /> 
                 catalyze that movement. <br />
-              </h5>
-              <br/>
-              <h6 className={styles.textGray}>We do this in two ways:</h6>
+              </h4>
+              <br />
+              <h5 className={styles.textGray}>We do this in two ways:</h5>
             </div>
             <div className={`${styles.column} ${styles.col1}`}></div>
           </div>
@@ -169,32 +171,85 @@ class OneHome extends React.Component {
             }}
           >
             <div
-              className={`${styles.column} ${styles.col3} ${styles.hideXs}`}
+              className={`${styles.column} ${styles.col2} ${styles.hideXs}`}
             />
             <div
-              className={`${styles.column} ${styles.col3} ${styles.colXs12}`}
+              className={`${styles.column} ${styles.col4} ${styles.colXs12} ${styles.textCenter}`}
             >
-              <div>
-                <span className={`${styles.textGray}`}>
-                  <i>As featured in</i>
-                </span>
-              </div>
-              <div>
-                <a
-                  target="_blank"
-                  href="https://www.govtech.com/gov-experience/EverGov-Wants-to-Make-Local-Government-Services-More-Searchable.html"
-                >
-                  discovery
-                </a>
+              <div
+                style={{
+                  display: "flex",
+                  flexDirection: "column",
+                  justifyContent: "center",
+                  alignItems: "center"
+                }}
+              >
+                <div>
+                  <Step1 />
+                </div>
+                <div>
+                  <h5>Discovery</h5>
+                </div>
+                <div style={{ padding: "0.5rem 2rem" }}>
+                  <p>
+                    Find any service & all the related info instantly with a
+                    single search.
+                  </p>
+                </div>
+                <div>
+                  <a
+                    href="https://evergov.com"
+                    target="_blank"
+                    className={`${styles.btn} ${styles.btnLink}`}
+                  >
+                    Try Evergov Search
+                  </a>
+                </div>
               </div>
             </div>
             <div
-              className={`${styles.column} ${styles.col3} ${styles.colXs12}`}
+              className={`${styles.column} ${styles.col4} ${styles.colXs12} ${styles.textCenter}`}
             >
-              <div>delivery</div>
+              <div
+                style={{
+                  display: "flex",
+                  flexDirection: "column",
+                  justifyContent: "center",
+                  alignItems: "center"
+                }}
+              >
+                <div>
+                  <Step2 />
+                </div>
+                <div>
+                  <h5>Delivery</h5>
+                </div>
+                <div style={{ padding: "0.5rem 2rem" }}>
+                  <p>
+                    Manage all government interactions with a single account
+                    securely.
+                  </p>
+                </div>
+                <div>
+                  <a
+                    href="https://pay.evergov.com"
+                    target="_blank"
+                    className={`${styles.btn} ${styles.btnLink}`}
+                  >
+                    Try Evergov Pay
+                  </a>
+                  <a
+                    href="https://one.evergov.com"
+                    target="_blank"
+                    className={`${styles.btn} ${styles.btnLink}`}
+                  >
+                    Try Evergov One
+                  </a>
+                </div>
+              </div>
             </div>
             <div
-              className={`${styles.column} ${styles.col3} ${styles.hideXs}`}
+              className={`${styles.column} ${styles.col2} ${styles.hideXs}`}
             />
           </div>
           <div

@@ -153,9 +153,9 @@ class OneHome extends React.Component {
             <div className={`${styles.column} ${styles.col1}`}></div>
             <div className={`${styles.column} ${styles.col10}}`}>
               <h4>
-                We believe that access to government services should be <br/>
-                simple
-                and transparent & we are trying to do our part to<br /> 
+                We believe that access to government services should be <br />
+                simple and transparent & we are trying to do our part to
+                <br />
                 catalyze that movement. <br />
               </h4>
               <br />
@@ -253,33 +253,18 @@ class OneHome extends React.Component {
             />
           </div>
           <div
-            className={`${styles.columns}  ${styles.textCenter}`}
-            style={{ margin: "6rem 0 2rem 0" }}
-          >
-            <div className={`${styles.column} ${styles.col1}`}></div>
-            <div className={`${styles.column} ${styles.colXs10}}`}>
-              <h3>Get started in a few minutes</h3>
-              <p>
-                We cover a variety of the most popular recurring services you
-                will need.
-              </p>
-            </div>
-            <div className={`${styles.column} ${styles.col1}`}></div>
-          </div>
-          <div
             className={`${styles.columns} `}
-            style={{ margin: "4rem 0 8rem 0", background: "#f7f8f9" }}
+            style={{ margin: "4rem 0 8rem 0", padding: '3rem 0', background: "#f7f8f9" }}
           >
             <div
               className={`${styles.column}  ${styles.colSm4} ${styles.colXs12}`}
             >
               <div
                 style={{ border: "none" }}
-                className={`${styles.card} ${styles.textCenter}`}
+                className={`${styles.textCenter}`}
               >
-                <div className={styles.cardHeader}>
-                  <h6 className={`${styles.cardTitle}`}>Create an account</h6>
-                </div>
+                <h3 className={`${styles.cardTitle}`}>60,000 +</h3>
+                <p>Users</p>
               </div>
             </div>
             <div
@@ -287,13 +272,10 @@ class OneHome extends React.Component {
             >
               <div
                 style={{ border: "none" }}
-                className={`${styles.card} ${styles.textCenter}`}
+                className={`${styles.textCenter}`}
               >
-                <div className={styles.cardHeader}>
-                  <h6 className={`${styles.cardTitle}`}>
-                    Add your service details <br /> & link your payment info
-                  </h6>
-                </div>
+                <h3 className={`${styles.cardTitle}`}>2500 +</h3>
+                <p>Services</p>
               </div>
             </div>
             <div
@@ -301,11 +283,10 @@ class OneHome extends React.Component {
             >
               <div
                 style={{ border: "none" }}
-                className={`${styles.card} ${styles.textCenter}`}
+                className={`${styles.textCenter}`}
               >
-                <div className={styles.cardHeader}>
-                  <h6 className={`${styles.cardTitle}`}>Sit back & relax</h6>
-                </div>
+                <h3 className={`${styles.cardTitle}`}>1000 +</h3>
+                <p>Agencies</p>
               </div>
             </div>
           </div>

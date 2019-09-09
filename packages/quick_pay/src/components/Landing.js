@@ -13,6 +13,10 @@ import { graphql, StaticQuery } from 'gatsby';
 import Img from "gatsby-image";
 import AboutSVG from './AboutSvgComp'
 import Step3 from './Step3'
+import CardLogos from '../illus/CardLogos.js';
+import AbbyPic from '../illus/Abby';
+import JessePic from '../illus/Jesse';
+
 import { trackQPevent} from '../common/tracking';
 
 const windowGlobal = typeof window !== 'undefined' && window
@@ -56,7 +60,7 @@ const HeroIl = () => (
             return (<Img
                 title={`evergov`}
                 alt={`illustration of evergov`}
-                style={{ width: '120px', height: '90px' }}
+                style={{ width: '150px', height: '110px' }}
 
                 fluid={data.heroIl.edges[0].node.childImageSharp.fluid} />)
         }} />
@@ -204,7 +208,7 @@ class Landing extends React.Component {
         let loadingComp = <div className={styles.loading}></div>
         let snapComp = null;    
 
-        let btnLabel = 'Snap to get started'
+        let btnLabel = 'SNAP TO GET STARTED'
         if(createSubInProgress){
             btnLabel = 'Uploading ...'
         }
@@ -214,13 +218,13 @@ class Landing extends React.Component {
         }
 
         if (!this.state.checkingMediaDevices && this.state.useMediaApi) {
-            snapComp = (<div style={{ width: '100%', borderTop: '1px solid #d4d4d4', padding: '24px', marginTop: '56px' }}>
+            snapComp = (<div style={{ width: '100%',  padding: '24px' }}>
                 
-                <button style={{ marginTop: '16px', width: '100%', fontSize: '14px' }} className={`${styles.btn} ${styles.btnPrimary} ${styles.btnLg} ${styles.textUppercase} ${styles.textBold}`} onClick={this.toggleCamera}> <span className={`${iconStyles.typcn} ${iconStyles.typcnCameraOutline}`}></span>{btnLabel}</button>
+                <button style={{ height:'48px', marginTop: '16px', width: '100%', fontSize: '14px' }} className={`${styles.btn} ${styles.btnPrimary} ${styles.textUppercase} ${styles.textBold}`} onClick={this.toggleCamera}> <span className={`${iconStyles.typcn} ${iconStyles.typcnCameraOutline}`}></span>{btnLabel}</button>
 
             </div>)
         } else {
-            snapComp = (<div style={{ width: '100%', borderTop: '1px solid #d4d4d4', padding: '24px', marginTop: '56px' }}>
+            snapComp = (<div style={{ width: '100%',  padding: '24px', }}>
 
                 <input onChange={this.onChange} className={`${inputStyles.inputfile} ${styles.btn} ${styles.btnPrimary} ${styles.btnLg}`} type="file" id="inputfile" accept="image/*" capture />
 
@@ -229,91 +233,271 @@ class Landing extends React.Component {
         }
 
 
-        return (<div className={styles.columns}>
+        return (
+          <div className={styles.columns}>
             <div
-                className={`${styles.column} ${styles.textCenter} ${styles.col12}`}
-                style={{ margin: "3rem 0 0 0 " }}
+              className={`${styles.column} ${styles.textCenter} ${styles.col12}`}
+              style={{ margin: "1.5rem 0 0 0 " }}
             >
-                <h2 style={{ color: '#5627ff' }}>evergov </h2><small className={`${styles.textUppercase} ${styles.textGray}`} style={{ letterSpacing: '0.1rem', fontWeight: 'bold' }} >Quick Pay</small>
-    
-    </div>
-            <div
-                className={`${styles.column} ${styles.col12}`}
-                style={{ margin: "0 0 1rem 0" }}
-            >
-                <h5 style={{ margin: '8px 0' }} className={`${styles.textCenter}`}> ⚡ Lightning fast service payments</h5>
+              <h2 style={{ color: "#5627ff" }}>evergov </h2>
+              <small
+                className={`${styles.textUppercase} ${styles.textGray}`}
+                style={{ letterSpacing: "0.1rem", fontWeight: "bold" }}
+              >
+                Quick Pay
+              </small>
             </div>
             <div
-                className={`${styles.column} ${styles.col12} ${styles.textCenter}`}
-                style={{ margin: "1rem 0 1rem 1rem" }}
+              className={`${styles.column} ${styles.col12}`}
+              style={{ margin: "0.5rem 0 1rem 0" }}
             >
-        
-    
-                <div style={{ display: 'flex', justifyContent: 'center', flexDirection: 'column', 'alignItems': 'center' }} >
-                        <AboutSVG />
-                    </div>
-                    <div style={{ display: 'flex', justifyContent: 'center', flexDirection: 'column', 'alignItems': 'center' }}>
-
-                        <p>
-                            Snap your bills or tickets
-                        </p>
-                    </div>
-                <div style={{ display: 'flex', justifyContent: 'center', flexDirection: 'column', 'alignItems': 'center' }} >
-                    <HeroIl />
-                </div>
-                <div style={{ display: 'flex', justifyContent: 'center', flexDirection: 'column', 'alignItems': 'center' }}>
-
-                    <p>
-                     Check your details & pay securely
-                        </p>
-                </div>
-                <div style={{ display: 'flex', justifyContent: 'center', flexDirection: 'column', 'alignItems': 'center' }} >
-                    <Step3 />
-                </div>
-                <div style={{ display: 'flex', justifyContent: 'center', flexDirection: 'column', 'alignItems': 'center' }}>
-
-                    <p>
-                        You can rest, while we take care of cumbersome processes
-                        </p>
-                </div>
-                      
-                
-
-        <div>
-                {snapComp}
-                {this.state.showCameraCap ? <CameraCapture cancelCamera={this.toggleCamera} onPhotoTaken={this.onMediaPhotoTaken} onCameraError={this.onCameraError} /> : null}
-        </div>
-            <div style={{ width: '100%', padding: '24px 24px 56px 24px', borderBottom: '1px solid #d4d4d4', margin: '24px 0'}}>
-
-               
-                <div className={styles.card} style={{ boxShadow: '0 .25rem 1rem rgba(48,55,66,.15)'}}>
-                    <div className={`${styles.cardHeader}`}>
-                    <div className={`${styles.cardTitle} ${styles.h5} ${styles.textCenter}`}>
-                        😍 Users love Evergov
-                    </div>
-                    </div>
-                    <div className={styles.cardBody}>
-                        <blockquote>
-
-                            <p> I didn’t expect the process to be so fast- go to the website, snap a picture of the ticket, click OK 
-                            <br/>
-                            - done in 30 seconds! </p>
-                          
-                              <cite>- Abby</cite>
-                </blockquote>
-
-                        <blockquote>
-
-                            <p>What's worse than the ticket itself is the time it takes to pay. <br/>
-                            Evergov has given me that time back.</p>
-                            <cite>- Jesse</cite>
-                </blockquote>
-                    </div>
-                </div>
+              <h4
+                style={{ margin: "8px 0" }}
+                className={`${styles.textCenter}`}
+              >
+                {" "}
+                ⚡Lightning fast service payments
+              </h4>
             </div>
+            <div
+              className={`${styles.column} ${styles.col12} ${styles.textCenter}`}
+              style={{ margin: "1rem 0 0 0 " }}
+            >
+              <div
+                style={{
+                  display: "flex",
+                  justifyContent: "center",
+                  flexDirection: "column",
+                  alignItems: "center"
+                }}
+              >
+                <AboutSVG />
+              </div>
+              <div
+                style={{
+                  display: "flex",
+                  justifyContent: "center",
+                  flexDirection: "column",
+                  alignItems: "center"
+                }}
+              >
+                <p>Snap your bills or tickets</p>
+              </div>
+              <div
+                style={{
+                  display: "flex",
+                  justifyContent: "center",
+                  flexDirection: "column",
+                  alignItems: "center"
+                }}
+              >
+                <HeroIl />
+              </div>
+              <div
+                style={{
+                  display: "flex",
+                  justifyContent: "center",
+                  flexDirection: "column",
+                  alignItems: "center"
+                }}
+              >
+                <p>Check your details & pay securely</p>
+              </div>
+              <div
+                style={{
+                  display: "flex",
+                  justifyContent: "center",
+                  flexDirection: "column",
+                  alignItems: "center"
+                }}
+              >
+                <Step3 />
+              </div>
+              <div
+                style={{
+                  display: "flex",
+                  justifyContent: "center",
+                  flexDirection: "column",
+                  alignItems: "center"
+                }}
+              >
+                <p>You can rest, while we take care of cumbersome processes</p>
+              </div>
             </div>
-        </div>
-        )
+            <div
+              className={`${styles.column} ${styles.col12} ${styles.textCenter}`}
+              style={{ margin: "0" }}
+            >
+              {snapComp}
+              {this.state.showCameraCap ? (
+                <CameraCapture
+                  cancelCamera={this.toggleCamera}
+                  onPhotoTaken={this.onMediaPhotoTaken}
+                  onCameraError={this.onCameraError}
+                />
+              ) : null}
+            </div>
+            <div
+              className={`${styles.column} ${styles.col12} ${styles.textCenter}`}
+              style={{
+                display: "flex",
+                flexWrap: "wrap",
+                justifyContent: "center"
+              }}
+            >
+              <CardLogos />
+            </div>
+            <div
+              className={`${styles.column} ${styles.col12} ${styles.textCenter}`}
+              style={{
+                marginTop: "0.5rem",
+                marginBottom: "1rem",
+                display: "flex",
+                flexWrap: "wrap",
+                justifyContent: "center"
+              }}
+            >
+              <div
+                style={{
+                  textAlign: "center"
+                }}
+              >
+                <span
+                  className={`${iconStyles.typcn} ${iconStyles.typcnLockClosedOutline}`}
+                ></span>
+                <span style={{ fontSize: "14px" }}>
+                  Your data, and transactions are always safe & secure
+                </span>
+              </div>
+            </div>
+
+            <div
+              className={`${styles.column} ${styles.col12}`}
+              style={{ margin: "1rem 0" }}
+            >
+              <div className={styles.divider} />
+            </div>
+            <div
+              className={`${styles.column} ${styles.col12}`}
+              style={{ margin: "0.5rem 0" }}
+            >
+              <h5 className={` ${styles.textCenter}`}>😍 Users Love Evergov</h5>
+            </div>
+            <div
+              className={`${styles.column} ${styles.col12}`}
+              style={{ margin: "0 0 0.5rem 0" }}
+            >
+              <div
+                className={`${styles.card} ${styles.textLeft}`}
+                style={{
+                  margin: "1rem 0.2rem",
+                  padding: "0.2rem 0.2rem",
+                  height: "140px",
+                  border: "1px solid rgba(48,55,66,.10)",
+                  boxShadow: "0 .1rem 0.1rem rgba(48,55,66,.10)"
+                }}
+              >
+                <div
+                  className={styles.cardBody}
+                  style={{ display: "flex", alignItems: "center" }}
+                >
+                  <div>
+                    <h6 style={{ textAlign: "left" }}>❝</h6>I didn’t expect the
+                    process to be so fast- go to the website, snap a picture of
+                    the ticket, click OK - <b>done in 30 seconds! </b>
+                    <h6 style={{ textAlign: "right" }}>Abby</h6>
+                  </div>
+
+                  <div style={{ width: "200px", textAlign: "center" }}>
+                    <figure
+                      className={`${styles.avatar} ${styles.avatarXl}`}
+                      data-initial="EG"
+                      style={{
+                        backgroundColor: "#3500f3",
+                        fontSize: "2rem",
+                        boxShadow: "0 0.2rem 0.5rem rgba(48,55,66,.30)",
+                        border: "1px solid #fff",
+                        width: "4rem",
+                        height: "4rem"
+                      }}
+                    >
+                      <AbbyPic />
+                    </figure>
+                  </div>
+                </div>
+              </div>
+
+              <div
+                className={`${styles.card} ${styles.textLeft}`}
+                style={{
+                  margin: "1rem 0.2rem",
+                  padding: "0.2rem 0.2rem",
+                  height: "140px",
+                  border: "1px solid rgba(48,55,66,.10)",
+                  boxShadow: "0 .1rem 0.1rem rgba(48,55,66,.10)"
+                }}
+              >
+                <div
+                  className={styles.cardBody}
+                  style={{ display: "flex", alignItems: "center" }}
+                >
+                  <div>
+                    <h6 style={{ textAlign: "left" }}>❝</h6> What's worse than
+                    the ticket itself is the time it takes to pay.{" "}
+                    <b>Evergov has given me that time back.</b>
+                    <h6 style={{ textAlign: "right" }}>Jesse</h6>
+                  </div>
+
+                  <div style={{ width: "170px", textAlign: "center" }}>
+                    <figure
+                      className={`${styles.avatar} ${styles.avatarXl}`}
+                      data-initial="EG"
+                      style={{
+                        backgroundColor: "#fff",
+                        fontSize: "2rem",
+                        width: "4rem",
+                        boxShadow: "0 0.2rem 0.5rem rgba(48,55,66,.30)",
+                        border: "1px solid #fff",
+                        height: "4rem"
+                      }}
+                    >
+                      <JessePic />
+                    </figure>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div
+              className={`${styles.column} ${styles.col12} ${styles.textCenter}`}
+              style={{
+                margin: "0.5rem",
+                display: "flex",
+                flexDirection: "column",
+                justifyContent: "center"
+              }}
+            >
+              <div>
+                <small>over</small>
+              </div>
+              <div>
+                <h3>50,000</h3>
+              </div>
+              <div>
+                <small>
+                  accessed government services via Evergov in the last 6 months
+                </small>
+              </div>
+            </div>
+            <div
+              className={`${styles.column} ${styles.col12} ${styles.textCenter}`}
+              style={{
+                marginTop: "1rem"
+              }}
+            >
+              <div className={styles.divider} />
+            </div>
+          </div>
+        );
     }
 }
 

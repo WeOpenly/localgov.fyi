@@ -503,8 +503,6 @@ html:lang(ko) {
 }
 
 .btn {
-    -webkit-appearance: none;
-    -moz-appearance: none;
     appearance: none;
     background: #fff;
     border: .05rem solid #5627ff;

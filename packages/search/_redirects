@@ -1,7 +1,5 @@
 /org_images/* http://storage.googleapis.com/evergov-prod-dsp-uploads/organization_logo_uploads/:splat 200!
     
-    /api/yusuf/* http://127.0.0.1:8010/:splat 200!
-
 /blog/* https://blogevergov.wordpress.com/:splat 200!
 
 /one/* https://one.evergov.com/:splat 200!

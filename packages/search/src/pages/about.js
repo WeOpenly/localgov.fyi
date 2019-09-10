@@ -82,13 +82,12 @@ const FaqItem = props => (
   </Fragment>
 );
 
-class OneHome extends React.Component {
+class About extends React.Component {
   constructor(props) {
     super(props);
   }
 
   render() {
-
     return (
       <Fragment>
         <Helmet>
@@ -270,10 +269,7 @@ class OneHome extends React.Component {
             <div
               className={`${styles.column} ${styles.col8} ${styles.colXs12} ${styles.textCenter}`}
             >
-           
-              <p>
-                our progress so far ...
-              </p>
+              <p>our progress so far ...</p>
             </div>
 
             <div
@@ -355,10 +351,5 @@ class OneHome extends React.Component {
   }
 }
 
-const mapStateToProps = function(state, ownProps) {
-  return {
-    ...state.oneUser
-  };
-};
 
-export default connect(mapStateToProps)(OneHome);
+export default About;

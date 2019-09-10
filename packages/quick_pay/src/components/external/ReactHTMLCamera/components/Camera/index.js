@@ -248,7 +248,7 @@ class Camera extends React.Component {
             isClicked={!this.state.isShowVideo}
             onClick={this.handleTakePhoto}
           />
-          <div onClick={this.props.cancelCamera} style={{ color: '#ffe', padding: '16px', cursor: 'pointer' }}>Cancel</div>
+          <div onClick={this.props.cancelCamera} style={{ color: '#ffe', padding: '16px', cursor: 'pointer', textAlign: 'left' }}>Cancel</div>
         </div>
       
       </div>

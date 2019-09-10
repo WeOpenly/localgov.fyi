@@ -66,6 +66,11 @@ export function stepChange(newStep) {
 }
 
 
+export function attachSubmissionImg(imgUrl) {
+    return { type: types.QP_ATTACH_SUBMISSION_IMG, imgUrl };
+}
+
+
 // upload_picture and create sub
 export function uploadDocumentBegin() {
     return { type: types.QP_CREATE_SUB_START }
@@ -84,32 +89,47 @@ export function uploadDocumentAndCreateSubmission(file, userId) {
         dispatch(uploadDocumentBegin())
 
 
-        firebase.firestore().collection("user_submission").add({
-            user_id: userId,
-            created_at: dateNow,
-        })
-            .then(function (docRef) {
-
-                storageRef.child(`user_submission_imgs/${userId}/${docRef.id}-${dateNow}.jpg`).put(file).then(function (snapshot) {
-    
-                    snapshot.ref.getDownloadURL().then(function (downloadUrl) {
-                       
-                        firebase.firestore().collection("user_submission").doc(docRef.id).update({ img_url: downloadUrl });
-                        dispatch(uploadDocumentSuccess(docRef.id))
-                        dispatch(stepChange('guess_price_and_update_details'));
-                        dispatch(trackQPevent('picture_uploaded', userId, { url: downloadUrl }));
+        firebase
+            .firestore()
+            .collection("user_submission")
+            .add({
+                user_id: userId,
+                created_at: dateNow
+            })
+            .then(function(docRef) {
+            console.log(docRef);
+            storageRef
+                .child(
+                `user_submission_imgs/${userId}/${docRef.id}-${dateNow}.jpg`
+                )
+                .put(file)
+                .then(function(snapshot) {
+                snapshot.ref.getDownloadURL().then(function(downloadUrl) {
+                    firebase
+                    .firestore()
+                    .collection("user_submission")
+                    .doc(docRef.id)
+                    .update({ img_url: downloadUrl });
+                    dispatch(uploadDocumentSuccess(docRef.id));
+                    dispatch(attachSubmissionImg(downloadUrl));
+                    dispatch(stepChange("guess_price_and_update_details"));
+                    dispatch(
+                    trackQPevent("picture_uploaded", userId, {
+                        url: downloadUrl
                     })
-                }).catch((error) => {
-                    console.log(error);
-                    dispatch(uploadDocumentFailed(error))
+                    );
+                });
+                })
+                .catch(error => {
+                    console.log(error, "error");
+                    dispatch(uploadDocumentFailed(error));
                 });
             })
-            .catch(function (error) {
+            .catch(function(error) {
                 console.log("Error adding document: ", error);
-                dispatch(uploadDocumentFailed(error))
+                dispatch(uploadDocumentFailed(error));
             });
-
-    }
+        }
 }
 
 // guess_price and populate form

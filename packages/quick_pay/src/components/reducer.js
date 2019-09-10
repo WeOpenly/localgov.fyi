@@ -6,7 +6,7 @@ const initialState = {
     anonUserLoadingFailed: false,
     step: 'show_landing', //show_landing, guess_price_and_update_details, show_submit_confirm, final_conf
     landingPageLoading: true,
-
+    submissionImgUrl: null,
     createSubInProgress: false,
     createdSubId: null,
     createSubFailed: false,
@@ -26,6 +26,11 @@ const initialState = {
 
 export function quickPay(state = initialState, action) {
     switch (action.type) {
+        case types.QP_ATTACH_SUBMISSION_IMG:
+            return {
+              ...state,
+              submissionImgUrl: action.imgUrl,
+            };
         case types.QP_ANON_USER_LOAD_BEGIN:
             return {
                 ...state,

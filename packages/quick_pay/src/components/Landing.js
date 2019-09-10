@@ -236,27 +236,15 @@ class Landing extends React.Component {
         return (
           <div className={styles.columns}>
             <div
-              className={`${styles.column} ${styles.textCenter} ${styles.col12}`}
-              style={{ margin: "1.5rem 0 0 0 " }}
-            >
-              <h2 style={{ color: "#5627ff" }}>evergov </h2>
-              <small
-                className={`${styles.textUppercase} ${styles.textGray}`}
-                style={{ letterSpacing: "0.1rem", fontWeight: "bold" }}
-              >
-                Quick Pay
-              </small>
-            </div>
-            <div
               className={`${styles.column} ${styles.col12}`}
-              style={{ margin: "0.5rem 0 1rem 0" }}
+              style={{ margin: "1.5rem 0 1rem 0" }}
             >
               <h4
                 style={{ margin: "8px 0" }}
                 className={`${styles.textCenter}`}
               >
                 {" "}
-                ⚡Lightning fast service payments
+                ⚡ Lightning fast service payments
               </h4>
             </div>
             <div

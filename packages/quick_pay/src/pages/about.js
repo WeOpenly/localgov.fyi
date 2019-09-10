@@ -80,7 +80,7 @@ const FaqItem = props => (
   </Fragment>
 );
 
-class OneHome extends React.Component {
+class About extends React.Component {
   constructor(props) {
     super(props);
   }
@@ -349,10 +349,6 @@ class OneHome extends React.Component {
   }
 }
 
-const mapStateToProps = function(state, ownProps) {
-  return {
-    ...state.oneUser
-  };
-};
 
-export default connect(mapStateToProps)(OneHome);
+
+export default About;

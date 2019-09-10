@@ -14,6 +14,8 @@ import PaymentPreview from './PaymentPreview'
 import styles from "./spectre.min.module.css"
 import iconStyles from './typicons.min.module.css';
 import { trackQPevent } from '../common/tracking';
+import LicenceLogo from "../illus/QPLoading";
+import CardLogos from "../illus/CardLogos.js";
 
 import {subscribeUploadAnalysis, stepChange, updatePrice, updateEmail} from './actions';
 import TablePaginationActions from '@material-ui/core/TablePagination/TablePaginationActions';
@@ -102,8 +104,32 @@ class SubmitDetails extends Component {
 
     render() {
         const { analyseInProgress, guessPrice, userPrice, userEmail, step } = this.props;
+
         if (analyseInProgress) {
-            return (<div className={styles.loading}></div>) 
+          return (
+            <div className={styles.columns}>
+              <div
+                className={`${styles.column} ${styles.col12} ${styles.textCenter}`}
+              >
+                <div className={styles.card} style={{ paddingTop: "1rem" }}>
+                  <div
+                    className={`${styles.cardHeader} ${styles.h3}`}
+                    style={{ display: "flex", justifyContent: "center" }}
+                  >
+                    <LicenceLogo />
+                  </div>
+
+                  <p className={styles.cardBody} style={{ paddingTop: "1rem" }}>
+                    <h5>
+                      {" "}
+                      <div className={styles.loading}></div> Analyzing your snap
+                      ...
+                    </h5>
+                  </p>
+                </div>
+              </div>
+            </div>
+          );
         }
 
         // can't be zero to proceed
@@ -164,111 +190,251 @@ class SubmitDetails extends Component {
         
         const isPreview = (step === 'show_submit_confirm')
         return (
-            <Fragment>
-                {isPreview && (<PaymentPreview stripe={this.props.stripe} />)}
-            <div  style={{display: `${isPreview ? 'none' : 'visible'}`}} >
-                
-                <div className={`${styles.panel} ${styles.menu}`} style={{ padding: '16px 8px' }} >
-                    <div className={`${styles.panelHeader} ${styles.textCenter} `}>
-                        <div className={styles.panelSubtitle}>
-                                {message ? (<div className={`${styles.label} ${styles.labelWarning}`} style={{ fontSize: '14px', background: 'rgba(255, 183, 0, .65)', borderRadius: '5px', padding: '6px 8px', color: '#3b4351'  }}>
-                                <span className={`${iconStyles.typcn} ${iconStyles.typcnLightbulb}`}></span>{message}
-                            </div>) : null}
+          <Fragment>
+            {isPreview && <PaymentPreview stripe={this.props.stripe} />}
+            <div style={{ display: `${isPreview ? "none" : "visible"}` }}>
+              <div
+                className={styles.columns}
+                style={{
+                  padding: "0.5rem 0.5rem 1.5rem 0.5rem",
+                  border: "1px solid rgba(86, 39, 255, .2)",
+                  background: "#fff",
+                  margin: "0.1rem",
+                  borderRadius: "0.3rem",
+                  boxShadow: "0 .1rem 0.1rem rgba(48,55,66,.10)"
+                }}
+              >
+                <div className={`${styles.column} ${styles.col12}`}>
+                  <div
+                    className={`${styles.panelHeader} ${styles.textCenter} `}
+                  >
+                    <div className={styles.panelSubtitle}>
+                      {message ? (
+                        <div
+                          className={`${styles.label} ${styles.labelWarning}`}
+                          style={{
+                            fontSize: "12px",
+                            background: "#fff",
+                            border: "1px solid rgba(255, 183, 0, .9)",
+                            borderRadius: "5px",
+                            padding: "6px 6px",
+                            color: "#3b4351"
+                          }}
+                        >
+                          <span
+                            style={{
+                              color: "#ffb700",
+                              padding: "0 4px 0 0 "
+                            }}
+                            className={`${iconStyles.typcn} ${iconStyles.typcnLightbulb}`}
+                          ></span>
+                          {message}
                         </div>
-                        <div className={`${styles.h1}`} style={{display: 'flex', justifyContent: 'center',  padding: '16px 0 8px 0'}}> <span style={{fontSize: '1rem', alignSelf: 'center'}}>{'$'}</span><ContentEditable
-                            style={{ borderBottom: '1px dotted #3b4351'}}
-                            innerRef={this.contentEditable}
-                            type="number"
-                            html={price} // innerHTML of the editable div
-                            disabled={false}       // use true to disable editing
-                            onChange={this.changePrice} // handle innerHTML change
-                             // Use a custom HTML tag (uses a div by default)
-                        /></div>
-              
+                      ) : null}
                     </div>
-                   
-                <div className={styles.panelBody}>
-                        <div className={styles.columns}>
-                            <div className={`${styles.column} ${styles.col12}`}>
-                                <li className={styles.divider}></li>
-                                <div style={{ paddingBottom: '8px', margin: '16px 0 0 0', textAlign: 'center'}}>
-                                    <span className={`${iconStyles.typcn} ${iconStyles.typcnLockClosedOutline}`}></span><span style={{fontSize: '14px'}}>Your data, and transactions are always safe & secure</span>
-                                </div>
-                                <label className={`${styles.formLabel} ${styles.textUppercase} ${styles.textBold}`} style={{fontSize: '12px'}}>
+                    <div
+                      className={`${styles.h1}`}
+                      style={{
+                        display: "flex",
+                        justifyContent: "center",
+                        padding: "16px 0 8px 0"
+                      }}
+                    >
+                      {" "}
+                      <span style={{ fontSize: "1rem", alignSelf: "center" }}>
+                        {"$"}
+                      </span>
+                      <ContentEditable
+                        style={{ borderBottom: "1px dotted #3b4351" }}
+                        innerRef={this.contentEditable}
+                        type="number"
+                        html={price} // innerHTML of the editable div
+                        disabled={false} // use true to disable editing
+                        onChange={this.changePrice} // handle innerHTML change
+                        // Use a custom HTML tag (uses a div by default)
+                      />
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div
+                className={styles.columns}
+                style={{
+                  padding: "1rem 1rem",
+                  border: "1px solid rgba(86, 39, 255, .2)",
+                  background: "#fff",
+                  margin: "1rem 0",
+                  borderRadius: "0.3rem",
+                  boxShadow: "0 .1rem 0.1rem rgba(48,55,66,.10)"
+                }}
+              >
+                <div
+                  className={`${styles.column} ${styles.col8} ${styles.textLeft} `}
+                >
+                  <div
+                    style={{
+                      margin: "0 0 1rem 0"
+                    }}
+                  >
+                    <h5> Add Payment Details </h5>
+
+                    <span
+                      style={{ padding: "0 4px 0 0 ", color: "#30ae40" }}
+                      className={`${iconStyles.typcn} ${iconStyles.typcnLockClosedOutline}`}
+                    ></span>
+                    <span style={{ fontSize: "10px" }}>
+                      Your data, and transactions are always safe & secure
+                    </span>
+                  </div>
+                </div>
+                <div
+                  className={`${styles.column} ${styles.col4} ${styles.textRight}`}
+                >
+                  <div
+                    style={{
+                      display: "flex",
+                      justifyContent: "right"
+                    }}
+                  >
+                    <CardLogos />
+                  </div>
+                </div>
+                <div className={`${styles.column} ${styles.col12}`}>
+                  <label
+                    className={`${styles.formLabel} ${styles.textUppercase} ${styles.textBold}`}
+                    style={{ fontSize: "12px" }}
+                  >
                     Card number
-          <CardNumberElement
-                                            name="card_no"
-                                            onChange={(element) => this.stripeElementChange(element, 'card_no')}
+                    <CardNumberElement
+                      name="card_no"
+                      onChange={element =>
+                        this.stripeElementChange(element, "card_no")
+                      }
                       className={styles.formInput}
-                        {...createOptions('19px')}
+                      {...createOptions("19px")}
                     />
-                </label>
+                  </label>
                 </div>
-                            <div className={`${styles.column} ${styles.col5}`}>
-                                <label className={`${styles.formLabel} ${styles.textUppercase} ${styles.textBold}`} style={{ fontSize: '12px' }}>
+                <div className={`${styles.column} ${styles.col5}`}>
+                  <label
+                    className={`${styles.formLabel} ${styles.textUppercase} ${styles.textBold}`}
+                    style={{ fontSize: "12px" }}
+                  >
                     Exp. date
-          <CardExpiryElement
-                                            name="card_exp"
-                                            onChange={(element) => this.stripeElementChange(element, 'card_exp')}
-                        className={styles.formInput}
-                        {...createOptions('19px')}
+                    <CardExpiryElement
+                      name="card_exp"
+                      onChange={element =>
+                        this.stripeElementChange(element, "card_exp")
+                      }
+                      className={styles.formInput}
+                      {...createOptions("19px")}
                     />
-                </label>
+                  </label>
                 </div>
-                            <div className={`${styles.column} ${styles.col3}`}>
-                    <label className={`${styles.formLabel} ${styles.textUppercase} ${styles.textBold}`} style={{ fontSize: '12px' }}>
+                <div className={`${styles.column} ${styles.col3}`}>
+                  <label
+                    className={`${styles.formLabel} ${styles.textUppercase} ${styles.textBold}`}
+                    style={{ fontSize: "12px" }}
+                  >
                     CVC
-          <CardCVCElement
-                name="cvc_number"
-                onChange={(element) => this.stripeElementChange(element, 'cvc_number')}
-                        className={styles.formInput}
-                        {...createOptions('19px')}
+                    <CardCVCElement
+                      name="cvc_number"
+                      onChange={element =>
+                        this.stripeElementChange(element, "cvc_number")
+                      }
+                      className={styles.formInput}
+                      {...createOptions("19px")}
                     />
-                </label>
+                  </label>
                 </div>
-                            <div className={`${styles.column} ${styles.col4}`}>
-                    <label className={`${styles.formLabel} ${styles.textUppercase} ${styles.textBold}`} style={{ fontSize: '12px' }}>
+                <div className={`${styles.column} ${styles.col4}`}>
+                  <label
+                    className={`${styles.formLabel} ${styles.textUppercase} ${styles.textBold}`}
+                    style={{ fontSize: "12px" }}
+                  >
                     Postal code
-          <PostalCodeElement
-                    name="postal"
-                    onChange={(element) => this.stripeElementChange(element, 'postal')}
-                        className={styles.formInput}
-                        {...createOptions('19px')}
+                    <PostalCodeElement
+                      name="postal"
+                      onChange={element =>
+                        this.stripeElementChange(element, "postal")
+                      }
+                      className={styles.formInput}
+                      {...createOptions("19px")}
                     />
-                </label>
+                  </label>
                 </div>
-                           
-                            <div className={`${styles.column} ${styles.col12}`}>
-                                <li className={styles.divider}></li>
-                              
-                                <label className={`${styles.formLabel}`} style={{ fontSize: '14px', margin: '16px 0 8px 0', textAlign: 'center'}}>
-                                    <span className={`${iconStyles.typcn} ${iconStyles.typcnMail}`}></span>Provide us your email to keep you updated
-                                </label>
 
-                                <input
-                                    type="email"
-                                    placeholder="you@youremail.com"
-                                    className={styles.formInput}
-                                    name="email"
-                                    required
-                                    onChange={this.changeEmail}
-                                    onBlur={()=> {}}
-                                    value={userEmail ? userEmail : ""}
-                                />
-                            
-                            </div>
-                </div>
-                </div>
-                <div className={styles.panelFooter}>
-                            {!canSubmit && userEmail ? (<div style={{ fontSize: '14px', borderRadius: '5px', width: '100%', padding: '6px 8px', color: '#3b4351', textAlign: 'center' }}>
-                                <span className={`${iconStyles.typcn} ${iconStyles.typcnInfoLarge}`}></span> Please enter the correct amount due, and complete payment details to proceed
-                        </div>) : null}
-                            <button disabled={!canSubmit} style={{ marginTop: '16px', width: '100%', fontSize: '14px' }} className={`${styles.btn} ${styles.btnPrimary} ${styles.btnLg} ${styles.textUppercase} ${styles.textBold}`} onClick={this.onPreview}>Preview</button>
+                <div
+                  className={`${styles.column} ${styles.col12}`}
+                  style={{ margin: "1rem 0" }}
+                >
+                  <li className={styles.divider}></li>
 
-                      </div>
+                  <label
+                    className={`${styles.formLabel}`}
+                    style={{
+                      margin: "16px 0 8px 0",
+                      textAlign: "left"
+                    }}
+                  >
+                    <div>
+                      <span
+                        style={{
+                          padding: "0 4px 0 0 ",
+                          color: "rgba(86, 39, 255, .9)"
+                        }}
+                        className={`${iconStyles.typcn} ${iconStyles.typcnMail}`}
+                      ></span>
+                      Provide us your email to keep you updated
+                    </div>
+                  </label>
+
+                  <input
+                    type="email"
+                    placeholder="you@youremail.com"
+                    className={styles.formInput}
+                    name="email"
+                    required
+                    onChange={this.changeEmail}
+                    onBlur={() => {}}
+                    value={userEmail ? userEmail : ""}
+                  />
                 </div>
+
+                <div className={`${styles.column} ${styles.col12}`}>
+                  {!canSubmit && userEmail ? (
+                    <div
+                      style={{
+                        fontSize: "14px",
+                        borderRadius: "5px",
+                        width: "100%",
+                        padding: "6px 8px",
+                        color: "#3b4351"
+                      }}
+                    >
+                      <span
+                        className={`${iconStyles.typcn} ${iconStyles.typcnInfoLarge}`}
+                      ></span>{" "}
+                      Please enter the correct amount due, and complete payment
+                      details to proceed
+                    </div>
+                  ) : null}
+                  <button
+                    disabled={!canSubmit}
+                    style={{
+                      marginTop: "16px",
+                      width: "100%",
+                      fontSize: "14px"
+                    }}
+                    className={`${styles.btn} ${styles.btnPrimary} ${styles.btnLg} ${styles.textUppercase} ${styles.textBold}`}
+                    onClick={this.onPreview}
+                  >
+                    Preview
+                  </button>
+                </div>
+              </div>
             </div>
-            </Fragment>
+          </Fragment>
         );
     }
 }

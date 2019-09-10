@@ -1,7 +1,7 @@
 import React, { Fragment } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
-
+import Helmet from "react-helmet";
 
 import Footer from "../components/FooterNew";
 import Link from "gatsby-link";
@@ -91,6 +91,9 @@ class OneHome extends React.Component {
 
     return (
       <Fragment>
+        <Helmet>
+          <title>{`About | Evergov`}</title>
+        </Helmet>
         <div className={`${styles.container} ${styles.gridXl}`}>
           <div className={styles.columns}>
             <div className={`${styles.column} ${styles.col1}`}></div>
@@ -166,7 +169,7 @@ class OneHome extends React.Component {
           <div
             className={`${styles.columns}`}
             style={{
-              margin: "4rem 0 4rem 0",
+              margin: "2rem 0 4rem 0",
               padding: "2.5rem 0.5rem"
             }}
           >
@@ -207,6 +210,7 @@ class OneHome extends React.Component {
                 </div>
               </div>
             </div>
+            <div className={styles.dividerVert}></div>
             <div
               className={`${styles.column} ${styles.col4} ${styles.colXs12} ${styles.textCenter}`}
             >
@@ -254,8 +258,27 @@ class OneHome extends React.Component {
           </div>
           <div
             className={`${styles.columns} `}
-            style={{ margin: "4rem 0 8rem 0", padding: '3rem 0', background: "#f7f8f9" }}
+            style={{
+              margin: "4rem 0 8rem 0",
+              padding: "3rem 0 2rem 0",
+              background: "#f7f8f9"
+            }}
           >
+            <div
+              className={`${styles.column} ${styles.col2} ${styles.hideXs}`}
+            />
+            <div
+              className={`${styles.column} ${styles.col8} ${styles.colXs12} ${styles.textCenter}`}
+            >
+           
+              <p>
+                our progress so far ...
+              </p>
+            </div>
+
+            <div
+              className={`${styles.column} ${styles.col2} ${styles.hideXs}`}
+            />
             <div
               className={`${styles.column}  ${styles.colSm4} ${styles.colXs12}`}
             >
@@ -263,7 +286,7 @@ class OneHome extends React.Component {
                 style={{ border: "none" }}
                 className={`${styles.textCenter}`}
               >
-                <h3 className={`${styles.cardTitle}`}>60,000 +</h3>
+                <h2 className={`${styles.cardTitle}`}>60,000 +</h2>
                 <p>Users</p>
               </div>
             </div>
@@ -274,7 +297,7 @@ class OneHome extends React.Component {
                 style={{ border: "none" }}
                 className={`${styles.textCenter}`}
               >
-                <h3 className={`${styles.cardTitle}`}>2500 +</h3>
+                <h2 className={`${styles.cardTitle}`}>2500 +</h2>
                 <p>Services</p>
               </div>
             </div>
@@ -285,10 +308,38 @@ class OneHome extends React.Component {
                 style={{ border: "none" }}
                 className={`${styles.textCenter}`}
               >
-                <h3 className={`${styles.cardTitle}`}>1000 +</h3>
+                <h2 className={`${styles.cardTitle}`}>1000 +</h2>
                 <p>Agencies</p>
               </div>
             </div>
+          </div>
+          <div
+            className={`${styles.columns}`}
+            style={{
+              margin: "2rem 0 8rem 0",
+              padding: "2.5rem 0.5rem"
+            }}
+          >
+            <div
+              className={`${styles.column} ${styles.col2} ${styles.hideXs}`}
+            />
+            <div
+              className={`${styles.column} ${styles.col8} ${styles.colXs12} ${styles.textCenter}`}
+            >
+              <h5>
+                We are a small team with a big vision & always all ears to
+                improve.
+              </h5>
+              <br />
+              <p>
+                Drop us a line <a href="mailto:team@evergov.com">here</a> to
+                chat.
+              </p>
+            </div>
+
+            <div
+              className={`${styles.column} ${styles.col2} ${styles.hideXs}`}
+            />
           </div>
           <div className={styles.columns} style={{ marginTop: "1rem" }}>
             <div className={`${styles.column} ${styles.col2}`} />

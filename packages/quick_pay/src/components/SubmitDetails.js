@@ -259,6 +259,11 @@ class SubmitDetails extends Component {
                       />
                     </div>
                   </div>
+                  <div
+                    className={`${styles.panelHeader} ${styles.textCenter} `}
+                  >
+                      
+                  </div>
                 </div>
               </div>
               <div
@@ -366,7 +371,7 @@ class SubmitDetails extends Component {
                     className={`${styles.formLabel}`}
                     style={{
                       margin: "16px 0 8px 0",
-     
+
                       textAlign: "left"
                     }}
                   >

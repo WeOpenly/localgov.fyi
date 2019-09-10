@@ -6,7 +6,7 @@ const initialState = {
     anonUserLoadingFailed: false,
     step: 'show_landing', //show_landing, guess_price_and_update_details, show_submit_confirm, final_conf
     landingPageLoading: true,
-    submissionImgUrl: null,
+    submissionImgUrl: "https://placeholder.com/100",
     createSubInProgress: false,
     createdSubId: null,
     createSubFailed: false,

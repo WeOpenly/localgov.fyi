@@ -390,10 +390,15 @@ class Landing extends React.Component {
               <div
                 className={`${styles.card} ${styles.textLeft}`}
                 style={{
-                  margin: "1rem 0.2rem",
+                  margin: "0.5rem 0.2rem",
                   padding: "0.2rem 0.2rem",
-                  height: "140px",
-                  border: "1px solid rgba(48,55,66,.10)",
+                  height: "160px",
+
+                  border: "1px solid rgba(86, 39, 255, .2)",
+                  background: "#fff",
+                  marginBottom: "4rem",
+
+                  borderRadius: "0.3rem",
                   boxShadow: "0 .1rem 0.1rem rgba(48,55,66,.10)"
                 }}
               >
@@ -405,10 +410,16 @@ class Landing extends React.Component {
                     <h6 style={{ textAlign: "left" }}>❝</h6>I didn’t expect the
                     process to be so fast- go to the website, snap a picture of
                     the ticket, click OK - <b>done in 30 seconds! </b>
-                    <h6 style={{ textAlign: "right" }}>Abby</h6>
+                    <p style={{ textAlign: "right" }}>Abby</p>
                   </div>
 
-                  <div style={{ width: "200px", textAlign: "center" }}>
+                  <div
+                    style={{
+                      width: "200px",
+                      margin: "0px 1rem",
+                      textAlign: "center"
+                    }}
+                  >
                     <figure
                       className={`${styles.avatar} ${styles.avatarXl}`}
                       data-initial="EG"
@@ -432,8 +443,13 @@ class Landing extends React.Component {
                 style={{
                   margin: "1rem 0.2rem",
                   padding: "0.2rem 0.2rem",
-                  height: "140px",
-                  border: "1px solid rgba(48,55,66,.10)",
+                  height: "160px",
+
+                  border: "1px solid rgba(86, 39, 255, .2)",
+                  background: "#fff",
+    
+
+                  borderRadius: "0.3rem",
                   boxShadow: "0 .1rem 0.1rem rgba(48,55,66,.10)"
                 }}
               >
@@ -445,10 +461,16 @@ class Landing extends React.Component {
                     <h6 style={{ textAlign: "left" }}>❝</h6> What's worse than
                     the ticket itself is the time it takes to pay.{" "}
                     <b>Evergov has given me that time back.</b>
-                    <h6 style={{ textAlign: "right" }}>Jesse</h6>
+                    <p style={{ textAlign: "right" }}>Jesse</p>
                   </div>
 
-                  <div style={{ width: "170px", textAlign: "center" }}>
+                  <div
+                    style={{
+                      width: "170px",
+                      textAlign: "center",
+                      margin: "0px 1rem"
+                    }}
+                  >
                     <figure
                       className={`${styles.avatar} ${styles.avatarXl}`}
                       data-initial="EG"

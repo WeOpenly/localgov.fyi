@@ -111,20 +111,24 @@ class SubmitDetails extends Component {
               <div
                 className={`${styles.column} ${styles.col12} ${styles.textCenter}`}
               >
-                <div className={styles.card} style={{ paddingTop: "1rem" }}>
+                <div
+                  className={styles.card}
+                  style={{ border: "none", padding: "5rem" }}
+                >
                   <div
                     className={`${styles.cardHeader} ${styles.h3}`}
                     style={{ display: "flex", justifyContent: "center" }}
                   >
                     <LicenceLogo />
                   </div>
-
-                  <p className={styles.cardBody} style={{ paddingTop: "1rem" }}>
-                    <h5>
-                      {" "}
-                      <div className={styles.loading}></div> Analyzing your snap
-                      ...
-                    </h5>
+                  <div
+                    className={styles.loading}
+                    style={{ marginTop: "1rem" }}
+                  >
+                    {" "}
+                  </div>
+                  <p className={styles.cardBody} style={{ paddingTop: "3rem" }}>
+                    <h5> Analyzing your snap</h5>
                   </p>
                 </div>
               </div>
@@ -269,34 +273,22 @@ class SubmitDetails extends Component {
                 }}
               >
                 <div
-                  className={`${styles.column} ${styles.col8} ${styles.textLeft} `}
+                  className={`${styles.column} ${styles.col12} ${styles.textLeft} `}
                 >
                   <div
                     style={{
                       margin: "0 0 1rem 0"
                     }}
                   >
-                    <h5> Add Payment Details </h5>
+                    <CardLogos />
 
                     <span
                       style={{ padding: "0 4px 0 0 ", color: "#30ae40" }}
                       className={`${iconStyles.typcn} ${iconStyles.typcnLockClosedOutline}`}
                     ></span>
                     <span style={{ fontSize: "10px" }}>
-                      Your data, and transactions are always safe & secure
+                      Your data & transactions are always safe & secure
                     </span>
-                  </div>
-                </div>
-                <div
-                  className={`${styles.column} ${styles.col4} ${styles.textRight}`}
-                >
-                  <div
-                    style={{
-                      display: "flex",
-                      justifyContent: "right"
-                    }}
-                  >
-                    <CardLogos />
                   </div>
                 </div>
                 <div className={`${styles.column} ${styles.col12}`}>
@@ -374,6 +366,7 @@ class SubmitDetails extends Component {
                     className={`${styles.formLabel}`}
                     style={{
                       margin: "16px 0 8px 0",
+     
                       textAlign: "left"
                     }}
                   >

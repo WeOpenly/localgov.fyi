@@ -2,7 +2,7 @@ import React from "react";
 import * as types from "../ActionTypes";
 import ProptaxSvg from "../../svgIcons/PropTaxIl";
 import UtilBill from "../../svgIcons/utbIl";
-import BusinessLic from "../../svgIcons/BusinessLic";
+import BusinessLic from "../../svgIcons/businessLic";
 import PetLic from "../../illus/PetLic";
 import Renew from "../../illus/Renew";
 import CalFranchTax from '../../illus/CalFranchTax';

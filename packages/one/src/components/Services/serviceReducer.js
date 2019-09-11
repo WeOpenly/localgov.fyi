@@ -3,7 +3,7 @@ import * as types from "../ActionTypes";
 import ProptaxSvg from "../../svgIcons/PropTaxIl";
 import UtilBill from "../../svgIcons/utbIl";
 import BusinessLic from "../../svgIcons/businessLic";
-import PetLic from "../../illus/BusinessLic";
+import PetLic from "../../illus/Renew";
 import Renew from "../../illus/Renew";
 import CalFranchTax from '../../illus/CalFranchTax';
 import DelFranchTax from "../../illus/DelFranchTax";

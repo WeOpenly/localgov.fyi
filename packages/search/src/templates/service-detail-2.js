@@ -9,7 +9,7 @@ import {withStyles} from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 import CircularProgress from '@material-ui/core/CircularProgress';;
-import ServiceFlowDialog from '../components/Delivery/ServiceFlowDialog';
+
 
 import ContentLoader from 'react-content-loader';
 
@@ -511,7 +511,7 @@ class ServiceDetailTemplate extends React.Component {
 
                 </Helmet>
 
-                <ServiceFlowDialog isMobile={isMobile} service_name={name} service_id={id} /> 
+             
                 <Grid container>
                     <Grid item xs="auto" sm={1}>
 

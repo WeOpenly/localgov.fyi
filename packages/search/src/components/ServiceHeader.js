@@ -340,7 +340,7 @@ class ServiceHeader extends Component {
 
 
 
-    const serviceFlowButton = service_delivery_enabled ? (<Button size="small" variant="outlined" color="primary" onClick={this.toggleServiceFlow} className={classes.service_header_notifyButton}>Pay with evergov</Button>) : null;
+  
     const sdl = <ServiceDeliveryLink orgNameOnly={orgNameOnly} views={views} id={id} service_name={name} org_name={offeredIn} serDelLinks={serDelLinks} />
 
     let extraMessage = null;
@@ -395,11 +395,7 @@ class ServiceHeader extends Component {
             <div className={classes.service_header_serDelLink}>
               {sdl}
             </div>
-                <div className={classes.service_header_serviceNotify}>
-                  <div className={classes.service_header_serDelLink}>
-                      {serviceFlowButton}
-                  </div>
-                </div>    
+               
               </div>
         </Grid>
       </Grid>

@@ -4,7 +4,7 @@ import {navigate} from '@reach/router';
 
 import { connect } from 'react-redux';
 import ContentLoader from "react-content-loader"
-
+import specStyles from "./spectre.min.module.css";
 import AnchorLink from 'react-anchor-link-smooth-scroll'
 
 import { withStyles } from '@material-ui/core/styles';
@@ -115,264 +115,224 @@ class ServiceDetail extends Component {
         this.setState({currentTab: value});
     };
 
-    componentDidMount(){
-
-        const { classes, name, orgHieSlug, description, price, alltimings, allForms, allfaq, allSteps } = this.props;
-        let tabs = []
-        let timingList = null;
-        if (alltimings.length > 0) {
-            timingList = alltimings.map((timing, index) => {
-                const { day, open } = timing;
-                const breakTime = timing["break"];
-                let openTime = "";
-
-                if (open && breakTime) {
-                    openTime = `OPEN: ${open} CLOSED: ${breakTime}`;
-                }
-
-                return (
-                    <div disableGutters>
-                        <div
-                            primary={openTime}
-                            secondary={day}
-                            secondaryTypographyProps={{
-                                variant: "subheading"
-                            }} />
-                    </div>
-                );
-            });
-        }
-
-        let stepList = null;
-        if (allSteps.length > 0) {
-            stepList = allSteps.map((step, index) => {
-                const { description } = step;
-                const text = (
-                    <RawHTML>
-                        {description}
-                    </RawHTML>
-                );
-                return <div style={{ display: 'flex' }} disableGutters>
-                    <Typography type="caption" className={classes.serviceDetailStepNumber} gutterBottom>
-                        {index + 1}
-                    </Typography>
-                    <Typography type="body1" className={classes.serviceDetailStepText} gutterBottom>
-                        {text}
-                    </Typography>
-
-                </div>;
-            });
-        }
-
-        let formList = null;
-        if (allForms.length > 0) {
-            formList = allForms.map((form, index) => {
-                const { name, url, price } = form;
-                return <div button disableGutters>
-                    <a
-                        primary={name}
-                        onClick={() => {
-                            if (url) {
-                                windowGlobal.open(url, "_blank");
-                            }
-                        }}
-                        secondary={price}
-                        className={classes.ser_detail_formLink} />
-                </div>;
-            });
-        }
-
-        let qaList = null;
-        if (allfaq.length > 0) {
-            qaList = allfaq.map((qa, index) => {
-                const { answer, question } = qa;
-                const text = (
-                    <RawHTML>
-                        {answer}
-                    </RawHTML>
-                );
-
-                return <Fragment>
-                    <div style={{display: 'flex', flexDirection: 'column'}} disableGutters>
-                        <Typography style={{ fontSize: "1.15rem", padding: '8px' }} variant='display1'>{question}</Typography>
-
-                        <Typography style={{padding: '8px'}} variant="body1">{text}</Typography>
-                    </div>
-                    {(index !== allfaq.length - 1) ? <Divider style={{ margin: '8px' }} /> : null}
-                </Fragment>;
-            });
-        }
- 
-        tabs.push(
-            <div className={classes.ser_detail_tab_item}>
-                <AnchorLink
-                    style={{
-                        textDecoration: 'none'
-                    }}
-                    offset='48'
-                    href={`#about`}>
-                    <Typography className={classes.set_list_link_anchor} variant="subheading">About
-                </Typography>
-                </AnchorLink>
-            </div>
-        )
-
-
-
-        if (qaList){
-            tabs.push(<div className={classes.ser_detail_tab_item}>
-                <AnchorLink
-                    style={{
-                        textDecoration: 'none'
-                    }}
-                    offset='48'
-                    href={`#faqs`}>
-                    <Typography className={classes.set_list_link_anchor} variant="subheading">FAQs
-                </Typography>
-                </AnchorLink>
-            </div>)
-        }
-       
-
-        if (stepList) {
-            tabs.push(<div className={classes.ser_detail_tab_item}>
-                <AnchorLink
-                    style={{
-                        textDecoration: 'none'
-                    }}
-                    offset='48'
-                    href={`#steps`}>
-                    <Typography className={classes.set_list_link_anchor} variant="subheading">Steps
-                </Typography>
-                </AnchorLink>
-            </div>)
-        }
-
-
-        if (formList) {
-            tabs.push(<div className={classes.ser_detail_tab_item}>
-                <AnchorLink
-                    style={{
-                        textDecoration: 'none'
-                    }}
-                    offset='48'
-                    href={`#forms`}>
-                    <Typography className={classes.set_list_link_anchor} variant="subheading">Forms
-                </Typography>
-                </AnchorLink>
-            </div>)
-        }
-
-        if (timingList) {
-            tabs.push(<div className={classes.ser_detail_tab_item}>
-                <AnchorLink
-                    style={{
-                        textDecoration: 'none'
-                    }}
-                    offset='48'
-                    href={`#timings`}>
-                    <Typography className={classes.set_list_link_anchor} variant="subheading">Timings
-                </Typography>
-                </AnchorLink>
-            </div>)
-        }
-
-        let tabContent = []
-
-        if(description){
-            tabContent.push(<Fragment>
- 
-                <div className={classes.ser_detail_cardContent} id={`about`}>
-                 
-                    <Typography variant="body1" gutterBottom>
-                        <RawHTML>{description}</RawHTML>
-                    </Typography>
-
-                    {price && (<Fragment>
-                      <Typography variant="subheading" gutterBottom>
-                        Price
-                    </Typography>
-                    <Typography variant="body2" gutterBottom>
-                       {price}
-                    </Typography> 
-               </Fragment>)}
-                  
-                </div>
-            </Fragment>)
-        }else{
-            tabContent.push(<Fragment>
-                    <div className={classes.ser_detail_cardContent} id={`about`}>
-                    <Typography variant="body1" gutterBottom>
-                        {name} in the {orgHieSlug} using this service
-                    </Typography>
-                </div>
-            </Fragment>)
-        }
-        
-        if(qaList){
-            tabContent.push(<Fragment>
-                <Typography className={classes.ser_tab_content_heading} component="h2" variant="title">FAQs
-                      </Typography>
-                <div className={classes.ser_detail_cardContent} id={`faqs`}>
-                   {qaList}
-                </div>
-            </Fragment>)
-        }
-
-        if(stepList){
-            tabContent.push(<Fragment>
-                <Typography className={classes.ser_tab_content_heading} component="h2" variant="title">Steps
-                      </Typography>
-                <div className={classes.ser_detail_cardContent} id={`steps`}>
-                   {stepList}
-                </div>
-            </Fragment>)
-        }
-
-        if(formList){
-            tabContent.push(<Fragment>
-                <Typography className={classes.ser_tab_content_heading} component="h2" variant="title">Forms
-                      </Typography>
-                <div className={classes.ser_detail_cardContent} id={`forms`}>
-                   {formList}
-                </div>
-            </Fragment>)
-        }
-       
-        if(timingList){
-            tabContent.push(<Fragment>
-                <Typography className={classes.ser_tab_content_heading} component="h2" variant="title">Timings
-                      </Typography>
-                <div className={classes.ser_detail_cardContent} id={`timings`}>
-                   {timingList}
-                </div>
-            </Fragment>)
-        }
-
-        this.setState({
-            tabs,
-            tabContent,
-        })
-    }
 
    
     render() {
-        const { classes, description, price, timingList, formList, qaList, stepList, locList } = this.props;
-        const {tabs} = this.state;
 
+    const {
+              classes,
+              name,
+              orgHieSlug,
+              description,
+              price,
+              alltimings,
+              allForms,
+              allfaq,
+              allSteps
+            } = this.props;
+        let tabs = [];
+        let tabContent = []
 
-        if (!tabs || tabs.length === 0 || tabs.length !== this.state.tabContent.length){
-            return <Tabloader />
-        }
-    
+         let timingList = null;
+         if (alltimings.length > 0) {
+           timingList = alltimings.map((timing, index) => {
+             const { day, open } = timing;
+             const breakTime = timing["break"];
+             let openTime = "";
+
+             if (open && breakTime) {
+               openTime = `OPEN: ${open} CLOSED: ${breakTime}`;
+             }
+
+             return (
+               <div disableGutters>
+                 <div
+                   primary={openTime}
+                   secondary={day}
+                   secondaryTypographyProps={{
+                     variant: "subheading"
+                   }}
+                 />
+               </div>
+             );
+           });
+         }
+                 let stepList = null;
+                 if (allSteps.length > 0) {
+                   stepList = allSteps.map((step, index) => {
+                     const { description } = step;
+                     const text = <RawHTML>{description}</RawHTML>;
+                     return (
+                       <div style={{ display: "flex" }} disableGutters>
+                         <Typography
+                           type="caption"
+                           className={classes.serviceDetailStepNumber}
+                           gutterBottom
+                         >
+                           {index + 1}
+                         </Typography>
+                         <Typography
+                           type="body1"
+                           className={classes.serviceDetailStepText}
+                           gutterBottom
+                         >
+                           {text}
+                         </Typography>
+                       </div>
+                     );
+                   });
+                 }
+
+                 let formList = null;
+                 if (allForms.length > 0) {
+                   formList = allForms.map((form, index) => {
+                     const { name, url, price } = form;
+                     return (
+                       <div button disableGutters>
+                         <a
+                           primary={name}
+                           onClick={() => {
+                             if (url) {
+                               windowGlobal.open(url, "_blank");
+                             }
+                           }}
+                           secondary={price}
+                           className={classes.ser_detail_formLink}
+                         />
+                       </div>
+                     );
+                   });
+                 }
+
+                 let qaList = null;
+                 if (allfaq.length > 0) {
+                   qaList = allfaq.map((qa, index) => {
+                     const { answer, question } = qa;
+                     const text = <RawHTML>{answer}</RawHTML>;
+
+                     return (
+                       <Fragment>
+                         <div
+                           style={{ display: "flex", flexDirection: "column", margin: '1rem 0.2rem 0.2rem 0.2rem' }}
+                           disableGutters
+                         >
+                           <h5>
+                            {question}
+                           </h5>
+                            
+                          <p style={{fontSize: '0.9rem', margin: '0.2rem'}}>
+                             {text}
+                           </p>
+                         </div>
+                         {index !== allfaq.length - 1 ? (
+                           <div className={specStyles.divider} />
+                         ) : null}
+                       </Fragment>
+                     );
+                   });
+                 }
+
+                 if (description) {
+                   tabContent.push(
+                     <Fragment>
+                       <div
+                         className={classes.ser_detail_cardContent}
+                         id={`about`}
+                       >
+                         <p style={{ fontSize: "1rem" }}>
+                           <RawHTML>{description}</RawHTML>
+                         </p>
+
+                         {price && (
+                           <Fragment>
+                             <h5>Price</h5>
+
+                             <p style={{ fontSize: "1rem" }}>{price}</p>
+                           </Fragment>
+                         )}
+                       </div>
+                     </Fragment>
+                   );
+                 } else {
+                   tabContent.push(
+                     <Fragment>
+                       <div
+                         className={classes.ser_detail_cardContent}
+                         id={`about`}
+                       >
+                         <p style={{ fontSize: "1rem" }}>
+                           {name} in the {orgHieSlug} using this service
+                         </p>
+                       </div>
+                     </Fragment>
+                   );
+                 }
+
+                 if (qaList) {
+                   tabContent.push(
+                     <Fragment>
+                          <h4>
+                         FAQs
+                      </h4>
+                       <p
+                         className={classes.ser_detail_cardContent}
+                         id={`faqs`}
+                       >
+                         {qaList}
+                       </p>
+                     </Fragment>
+                   );
+                 }
+
+                 if (stepList) {
+                   tabContent.push(
+                     <Fragment>
+                       <h4>Steps</h4>
+                       <p
+                         className={classes.ser_detail_cardContent}
+                         id={`steps`}
+                       >
+                         {stepList}
+                       </p>
+                     </Fragment>
+                   );
+                 }
+
+                 if (formList) {
+                   tabContent.push(
+                     <Fragment>
+                       <h4>Forms</h4>
+                       <p
+                         className={classes.ser_detail_cardContent}
+                         id={`forms`}
+                       >
+                         {formList}
+                       </p>
+                     </Fragment>
+                   );
+                 }
+
+                 if (timingList) {
+                   tabContent.push(
+                     <Fragment>
+                      <h4>
+                        Timings
+                      </h4>
+                    
+                       <p
+                        
+                         id={`timings`}
+                       >
+                         {timingList}
+                       </p>
+                     </Fragment>
+                   );
+                 }
 
          return (<Fragment>
-             <div className={this.state.isMob ? classes.ser_detail_tab_container_mob : classes.ser_detail_tab_container}>
-            {tabs}
-
-            </div>
+        
              <Divider style={{ margin: '8px 8px 24px 0px' }} />
-             {this.state.tabContent}
+             {tabContent}
              </Fragment>
        )
     }

@@ -19,6 +19,7 @@ import CardLogos from "../illus/CardLogos.js";
 
 import {subscribeUploadAnalysis, stepChange, updatePrice, updateEmail} from './actions';
 import TablePaginationActions from '@material-ui/core/TablePagination/TablePaginationActions';
+import { navigate } from '@reach/router';
 
 const createOptions = (fontSize, padding) => {
     return {
@@ -103,7 +104,7 @@ class SubmitDetails extends Component {
     }
 
     render() {
-        const { analyseInProgress, guessPrice, userPrice, userEmail, step } = this.props;
+        const { analyseInProgress, submissionImgUrl, guessPrice, userPrice, userEmail, step } = this.props;
 
         if (analyseInProgress) {
           return (
@@ -195,18 +196,83 @@ class SubmitDetails extends Component {
         const isPreview = (step === 'show_submit_confirm')
         return (
           <Fragment>
+            <div
+              style={{
+                padding: "0.3rem",
+
+                background: "#fff",
+                borderRadius: "0.3rem",
+                margin: "0.3rem 0"
+              }}
+              className={styles.columns}
+            >
+              <div className={`${styles.column} ${styles.col12}`}>
+                {submissionImgUrl ? (
+                  <div
+                    className={`${styles.tile} ${styles.tileCentered}`}
+                    style={{
+                      fontSize: "12px",
+                      background: "#ece6ff",
+                      borderLeft: "2px solid #5627ff",
+                      borderRadius: "5px",
+                      padding: "6px 6px",
+                      color: "#3b4351"
+                    }}
+                  >
+                    <div
+                      className={`${styles.tileIcon} `}
+                      style={{ width: "auto", height: "26px" }}
+                    >
+                      <img
+                        style={{ width: "auto", height: "26px" }}
+                        src={submissionImgUrl}
+                        alt={submissionImgUrl}
+                      />
+                    </div>
+
+                    <div className={styles.tileContent}>
+                      <div className={styles.tileTitle}>
+                        <a target="_blank" href={submissionImgUrl}>
+                          {" "}
+                          Your submission{" "}
+                        </a>
+                      </div>
+                    </div>
+
+                    <div
+                      onClick={() => {
+                        window.location.href = "/";
+                      }}
+                      className={styles.tileAction}
+                      style={{
+                        cursor: "pointer"
+                      }}
+                    >
+                      <span
+                        style={{
+                          color: "#5627ff",
+                          padding: "0 4px 0 0 ",
+                          fontSize: "1.5rem"
+                        }}
+                        className={`${iconStyles.typcn} ${iconStyles.typcnRefresh}`}
+                      ></span>
+                    </div>
+                  </div>
+                ) : null}
+              </div>
+            </div>
             {isPreview && <PaymentPreview stripe={this.props.stripe} />}
             <div style={{ display: `${isPreview ? "none" : "visible"}` }}>
               <div
-                className={styles.columns}
                 style={{
-                  padding: "0.5rem 0.5rem 1.5rem 0.5rem",
+                  padding: "0.5rem",
                   border: "1px solid rgba(86, 39, 255, .2)",
                   background: "#fff",
-                  margin: "0.1rem",
                   borderRadius: "0.3rem",
+                  margin: "0.1rem",
                   boxShadow: "0 .1rem 0.1rem rgba(48,55,66,.10)"
                 }}
+                className={styles.columns}
               >
                 <div className={`${styles.column} ${styles.col12}`}>
                   <div
@@ -259,13 +325,9 @@ class SubmitDetails extends Component {
                       />
                     </div>
                   </div>
-                  <div
-                    className={`${styles.panelHeader} ${styles.textCenter} `}
-                  >
-                      
-                  </div>
                 </div>
               </div>
+
               <div
                 className={styles.columns}
                 style={{

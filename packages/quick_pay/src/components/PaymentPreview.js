@@ -92,62 +92,127 @@ class PaymentPreview extends Component {
         const finalAmtShow = finalAmt.value;
 
         return (
-            <form onSubmit={this.onSubmit}>
-                <ul className={styles.menu} style={{padding: '16px 8px'}}>
-                    <li className={styles.menuItem} style={{ display: 'flex', justifyContent: 'center', fontSize: '1rem', fontWeight: 'bold', paddingBottom: '32px' }}>        
-                            Payment Summary
-                    </li>
-                    <li className={styles.menuItem} style={{display: 'flex', justifyContent: 'space-between'}}>
-                        <div >
-                            <span className={`${iconStyles.typcn} ${iconStyles.typcnCreditCard}`}></span>Amount to pay
-                        </div>
-                        
-                        <div className={styles.menuItem}>
-                         {`$`}{price}
-                        </div>
-                    </li>
-                    <li className={styles.divider}></li>
-                    <li className={styles.menuItem} style={{ display: 'flex', justifyContent: 'space-between' }}>
-                        <div >
-                            <span className={`${iconStyles.typcn} ${iconStyles.typcnTime}`}></span>Estimated wait
-                        </div>
+          <form onSubmit={this.onSubmit}>
+            <ul className={styles.menu} style={{ padding: "16px 8px" }}>
+              <li
+                className={styles.menuItem}
+                style={{
+                  display: "flex",
+                  justifyContent: "center",
+                  paddingBottom: "32px"
+                }}
+              >
+                <h4>Payment Summary</h4>
+              </li>
+              <li
+                className={styles.menuItem}
+                style={{ display: "flex", justifyContent: "space-between" }}
+              >
+                <div>
+                  <span
+                    className={`${iconStyles.typcn} ${iconStyles.typcnCreditCard}`}
+                  ></span>
+                  Amount to pay
+                </div>
 
-                        <div className={styles.menuItem}>
-                            Less then a day
-                        </div>
-                    </li>
-                    <li className={styles.divider}></li>
-                    <li className={styles.menuItem} style={{ display: 'flex', justifyContent: 'space-between' }}>
-                        <div className={`${styles.tooltip} ${styles.tooltipRight}`} data-tooltip="Evergov performs this on your behalf for a small fee">
-                            <span className={`${iconStyles.typcn} ${iconStyles.typcnSupport}`}></span>Service Fee<sup><span className={`${iconStyles.typcn} ${iconStyles.typcnInfoLarge}`}></span></sup>
-                        </div>
+                <div className={styles.menuItem}>
+                  {`$`}
+                  {price}
+                </div>
+              </li>
+              <li className={styles.divider}></li>
+              <li
+                className={styles.menuItem}
+                style={{ display: "flex", justifyContent: "space-between" }}
+              >
+                <div>
+                  <span
+                    className={`${iconStyles.typcn} ${iconStyles.typcnTime}`}
+                  ></span>
+                  Estimated wait
+                </div>
 
-                        <div className={styles.menuItem}>
-                            5%
-                        </div>
-                    </li>
-                    <li className={styles.divider}></li>
- 
-          
-                    <li className={styles.menuItem} style={{ display: 'flex', justifyContent: 'space-between', padding: '8px 16px' }}>
-                        <div style={{fontWeight: 'bold'}}>
-                            Total
-                        </div>
+                <div className={styles.menuItem}>Less then a day</div>
+              </li>
+              <li className={styles.divider}></li>
+              <li
+                className={styles.menuItem}
+                style={{ display: "flex", justifyContent: "space-between" }}
+              >
+                <div
+                  className={`${styles.tooltip} ${styles.tooltipRight}`}
+                  data-tooltip="Evergov performs this on your behalf for a small fee"
+                >
+                  <span
+                    className={`${iconStyles.typcn} ${iconStyles.typcnSupport}`}
+                  ></span>
+                  Service Fee
+                  <sup>
+                    <span
+                      className={`${iconStyles.typcn} ${iconStyles.typcnInfoLarge}`}
+                    ></span>
+                  </sup>
+                </div>
 
-                        <div className={styles.menuItem} style={{ fontWeight: 'bold' }}>
-                            {'$'}{finalAmtShow}
-                        </div>
-                    </li>
-                
-                    <li className={styles.menuItem} style={{ display: 'flex', justifyContent: 'space-between', padding: '8px 8px 0 8px' }}>
-                        <button style={{ marginTop: '16px', width: '100%', fontSize: '14px' }} className={`${styles.btn} ${styles.btnPrimary} ${styles.btnLg} ${styles.textUppercase} ${styles.textBold}`} type="submit">   <span className={`${iconStyles.typcn} ${iconStyles.typcnThumbsUp}`}></span>Pay  {'$'}{finalAmtShow}</button>
-                    </li>
-                    <li className={styles.menuItem} style={{ display: 'flex', justifyContent: 'center', padding: '0px 8px', alignItems: 'center' }}>
-                        <span className={`${iconStyles.typcn} ${iconStyles.typcnInfoLarge}`}></span><span style={{ fontSize: '14px' }}> You accept terms by cicking this</span>
-                    </li>
-                </ul>
-            </form>
+                <div className={styles.menuItem}>5%</div>
+              </li>
+              <li className={styles.divider}></li>
 
+              <li
+                className={styles.menuItem}
+                style={{
+                  display: "flex",
+                  justifyContent: "space-between",
+                  padding: "8px 10px"
+                }}
+              >
+                <div style={{ fontWeight: "bold" }}>Total</div>
+
+                <div className={styles.menuItem} style={{ fontWeight: "bold" }}>
+                  {"$"}
+                  {finalAmtShow}
+                </div>
+              </li>
+
+              <li
+                className={styles.menuItem}
+                style={{
+                  display: "flex",
+                  justifyContent: "space-between",
+                  padding: "8px 8px 0 8px"
+                }}
+              >
+                <button
+                  style={{ marginTop: "16px", width: "100%", fontSize: "14px" }}
+                  className={`${styles.btn} ${styles.btnPrimary} ${styles.btnLg} ${styles.textUppercase} ${styles.textBold}`}
+                  type="submit"
+                >
+                  {" "}
+                  <span
+                    className={`${iconStyles.typcn} ${iconStyles.typcnThumbsUp}`}
+                  ></span>
+                  Pay {"$"}
+                  {finalAmtShow}
+                </button>
+              </li>
+              <li
+                className={styles.menuItem}
+                style={{
+                  display: "flex",
+                  justifyContent: "center",
+                  padding: "4px 8px",
+                  alignItems: "center"
+                }}
+              >
+                <small style={{ fontSize: "12px" }}>
+                  <span
+                    className={`${iconStyles.typcn} ${iconStyles.typcnInfoLarge}`}
+                  ></span>
+                  You accept terms by cicking this
+                </small>
+              </li>
+            </ul>
+          </form>
         );
     }
 }

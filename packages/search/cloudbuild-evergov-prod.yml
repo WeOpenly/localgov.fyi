@@ -4,7 +4,7 @@ steps:
 - name: gcr.io/cloud-builders/gsutil
   dir: 'localgov.fyi/packages/search'
   args: ['cp', 'gs://$PROJECT_ID-netlify-env/dsp-creds.sh', 'dsp-creds.sh']
-- name: 'gcr.io/evergov-prod/curl-python'
+- name: 'circleci/python'
   dir: 'localgov.fyi/packages/search'
   args: ['bash', '-c',  'source ./dsp-creds.sh && python ./pre_process.py']
 - name: node:8

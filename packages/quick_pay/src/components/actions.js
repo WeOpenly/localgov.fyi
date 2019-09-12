@@ -84,7 +84,7 @@ export function uploadDocumentFailed(){
     return { type: types.QP_CREATE_SUB_FAILED}
 }
 
-export function uploadDocumentAndCreateSubmission(file, userId) {
+export function uploadDocumentAndCreateSubmission(file, userId, cameraApiType) {
     return async (dispatch, getState) => {
         dispatch(uploadDocumentBegin())
 
@@ -114,9 +114,10 @@ export function uploadDocumentAndCreateSubmission(file, userId) {
                     dispatch(attachSubmissionImg(downloadUrl));
                     dispatch(stepChange("guess_price_and_update_details"));
                     dispatch(
-                    trackQPevent("picture_uploaded", userId, {
-                        url: downloadUrl
-                    })
+                      trackQPevent("picture_uploaded", userId, {
+                        url: downloadUrl,
+                        cameraApiType: cameraApiType
+                      })
                     );
                 });
                 })

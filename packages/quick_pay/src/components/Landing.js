@@ -108,7 +108,7 @@ class Landing extends React.Component {
         // fd.append("canvasImage", blob);
         // console.log(fd);
         // if (fd) {
-        dispatch(uploadDocumentAndCreateSubmission(blob, anonUserID))
+        dispatch(uploadDocumentAndCreateSubmission(blob, anonUserID, 'user_media_api'))
         // }
     }
 
@@ -181,7 +181,7 @@ class Landing extends React.Component {
         const files = Array.from(e.target.files)
 
         if (files){
-            dispatch(uploadDocumentAndCreateSubmission(files[0], anonUserID))
+            dispatch(uploadDocumentAndCreateSubmission(files[0], anonUserID, 'standard_camera'))
         }
        
     }

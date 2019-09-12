@@ -79,7 +79,7 @@ export function selectService(uid, service) {
     // dispatch(selectServiceLoading());
 
     const existingSelected = getState().oneServices.selectedServices;
-    
+    console.log(existingSelected, uid, service)
 
     if(!(service.id in existingSelected)){
         const servicesRef = firebase
@@ -88,6 +88,7 @@ export function selectService(uid, service) {
               .doc(uid);
         
 
+        delete service.icon
         const newSelectedServices = existingSelected;
         newSelectedServices[service.id] = service;
         

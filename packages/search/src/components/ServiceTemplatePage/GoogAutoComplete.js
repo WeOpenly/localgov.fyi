@@ -152,7 +152,13 @@ class GoogAutoComplete extends React.Component {
         geocodeByAddress(address)
           .then(this.parseState)
           .then(results => getLatLng(results[0]))
-          .then(latLng => fetchGoogLoc(serviceTemplateId, ...latLng))
+          .then(latLng => {
+              console.log(latLng)
+              if(latLng){
+                 fetchGoogLoc(serviceTemplateId, ...latLng);
+              }
+             
+          })
           .catch(error => console.error("Error", error));
         
         this.props.setSearchText(address)

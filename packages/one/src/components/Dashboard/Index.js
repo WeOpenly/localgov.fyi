@@ -14,6 +14,7 @@ import UserTypeChoice from "./UserTypeChoice";
 import Toast from '../Toast';
 import SideBar from './SideBar';
 import AppBar from './AppBar';
+import FAQs from "./FAQs";
 
 import { logout } from '../../components/actions';
 import {setLandingUserType, setLandingPlan, toggleSidebar} from '../../components/actions';
@@ -136,6 +137,7 @@ class OneDashboard extends React.Component {
                   <Account path="/account" logout={this.logout} />
                   <Services path="/services/*" />
                   <Receipts path="/receipts" />
+                  <FAQs path="/faqs" />
                 </Router>
               </div>
             </div>

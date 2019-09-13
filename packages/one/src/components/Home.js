@@ -93,7 +93,7 @@ class OneHome extends React.Component {
           {
             q: "How can I contact the support team if I have more questions?",
             a:
-              "<p>Please drop us a line here with more details about your question & one of our team members will respond in a day or two.</p>"
+             "<p>Please drop us a line <a href='mailto:team@evergov.com'>here</a>   with more details about your question & one of our team members will respond in a day or two.</p>"
           }
         ];
          const faqComps = faqs.map((faq, idx) => {

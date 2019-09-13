@@ -153,11 +153,9 @@ class GoogAutoComplete extends React.Component {
           .then(this.parseState)
           .then(results => getLatLng(results[0]))
           .then(latLng => {
-              console.log(latLng)
               if(latLng.lat && latLng.lng){
                  fetchGoogLoc(serviceTemplateId, latLng.lat, latLng.lng);
               }
-             
           })
           .catch(error => console.error("Error", error));
         

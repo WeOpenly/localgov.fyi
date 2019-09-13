@@ -154,8 +154,8 @@ class GoogAutoComplete extends React.Component {
           .then(results => getLatLng(results[0]))
           .then(latLng => {
               console.log(latLng)
-              if(latLng){
-                 fetchGoogLoc(serviceTemplateId, ...latLng);
+              if(latLng.lat && latLng.lng){
+                 fetchGoogLoc(serviceTemplateId, latLng.lat, latLng.lng);
               }
              
           })
@@ -251,9 +251,9 @@ const mapDispatchToProps = (dispatch) => {
       trackClick: (click_type, resultType, id, title, listIndex) => {
         dispatch(trackClick(click_type, resultType, id, title, listIndex));
       },
-        trackEvent: (ev, data) => {
-            dispatch(trackEvent(ev, data));
-        },
+      trackEvent: (ev, data) => {
+        dispatch(trackEvent(ev, data));
+      },
       fetchGoogLoc: (serviceTemplateId, lat, lng) => {
         dispatch(fetchGoogLoc(serviceTemplateId, lat, lng));
       },

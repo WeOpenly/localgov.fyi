@@ -88,7 +88,7 @@ export function selectService(uid, service) {
               .doc(uid);
         
 
-        delete service.icon
+  
         const newSelectedServices = existingSelected;
         newSelectedServices[service.id] = service;
         

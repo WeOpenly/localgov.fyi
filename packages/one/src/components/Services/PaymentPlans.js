@@ -40,7 +40,7 @@ const PaymentPlan = props => (
             style={{ fontSize: "0.8rem" }}
             className={`${styles.textGray} ${styles.textUppercase} ${styles.cardSubTitle}`}
           >
-            <small>/ {props.duration}</small>
+            <small className={styles.textBold}>/ {props.duration}</small>
           </span>
         </div>
       </div>
@@ -213,7 +213,7 @@ class PaymentPlans extends Component {
                 "tag": "labelSuccess",
                 "name": 'Pro',
                 "price": "999",
-                "duration": "Forever",
+                "duration": "Year",
                 "features": [
                     "Dedicated best-in-class support",
                     "Use Forever",

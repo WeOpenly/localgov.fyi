@@ -71,18 +71,9 @@ class ServiceList extends Component {
       <Fragment>
         <div className={styles.columns} style={{ marginTop: "1rem" }}>
           <div className={`${styles.column} ${styles.col1} ${styles.hideXs}`} />
-          <div style={{padding: '1rem'}} className={`${styles.column} ${styles.col10} ${styles.colXs12}`}>
-            <Masonry
-              breakpointCols={breakpointColumnsObj}
-              style={{
-                display: "flex",
-                justifyContent: 'center',
-                width: "auto",
-                marginBottom: '10rem'
-              }}
-            >
+          <div style={{padding: '1rem', display: 'flex', flexDirection: 'column', alignItems: 'center', paddingBottom: '12rem'}} className={`${styles.column} ${styles.col10} ${styles.colXs12}`}>
+
               {serComps}
-            </Masonry>
           </div>
           <div className={`${styles.column} ${styles.col1} ${styles.hideXs}`} />
         </div>

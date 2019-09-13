@@ -1,22 +1,13 @@
 import React from "react";
 import * as types from "../ActionTypes";
-import ProptaxSvg from "../../svgIcons/PropTaxIl";
-import UtilBill from "../../svgIcons/utbIl";
-import BusinessLic from "../../svgIcons/businessLic";
-import PetLic from "../../illus/Renew";
-import Renew from "../../illus/Renew";
-import CalFranchTax from '../../illus/CalFranchTax';
-import DelFranchTax from "../../illus/DelFranchTax";
 
-// atleast one service requirements should be filled
 
 const initialState = {
   allAvailableServices: {
     individual: [
       {
         id: 0,
-        name: "Property Taxes",
-        icon: <ProptaxSvg style={{ width: "64px" }} />,
+        name: "Property Taxes", 
         shortDescription:
           "Property taxes fall into two categories, Secured and Unsecured. A Secured property tax is a tax for a physical property, most often real estate and land. An Unsecured property tax is for personal items, like an airplane, boat, or business. ",
         faqs: [
@@ -85,7 +76,6 @@ const initialState = {
       {
         id: 1,
         name: "Utility Bill",
-        icon: <UtilBill style={{ width: "64px" }} />,
         shortDescription:
           "Depending on the location you are based in, some utilities like water, sewer, trash are taken care by your city or county.",
         faqs: [
@@ -156,7 +146,6 @@ const initialState = {
       {
         id: 2,
         name: "Pet Licence",
-        icon: <PetLic style={{ width: "64px" }} />,
         shortDescription:
           "Law requires that all pets (usually dogs or cats) over the age of four months be licensed through the local animal care and control agency.",
         faqs: [
@@ -219,7 +208,6 @@ const initialState = {
               "Most vehicle registrations are valid only for an year and need to be renewed annually."
           }
         ],
-        icon: <Renew style={{ width: "64px" }} />,
         formSchema: [
           {
             id: "plateNumber",
@@ -261,9 +249,8 @@ const initialState = {
     ],
     business: [
       {
-        id: 0,
+        id: 4,
         name: "Renew Business Licence",
-        icon: <BusinessLic style={{ width: "64px" }} />,
         shortDescription:
           "A business license permits a business to operate in a specific town, city, or state. Almost all business require to have them filed. ",
         faqs: [
@@ -363,9 +350,8 @@ const initialState = {
         ]
       },
       {
-        id: 1,
+        id: 5,
         name: "Renew Fictitious Business Licence or DBA",
-        icon: <BusinessLic style={{ width: "64px" }} />,
         shortDescription:
           'A fictitious business name, sometimes referred as DBA, short for "doing business as," filing for a DBA allows you to conduct business under a name other than your own—your DBA is different from your name as the business owner, or your business\'s legal, registered name.',
         faqs: [
@@ -399,9 +385,8 @@ const initialState = {
         ]
       },
       {
-        id: 2,
+        id: 6,
         name: "Utility Bill",
-        icon: <UtilBill style={{ width: "64px" }} />,
         shortDescription: "a Description",
         formSchema: [
           {
@@ -457,9 +442,8 @@ const initialState = {
         ]
       },
       {
-        id: 3,
+        id: 7,
         name: "Delaware Franchise Tax Filing",
-        icon: <DelFranchTax style={{width: '64px'}} />,
         shortDescription:
           "All active Domestic Corporation Annual Reports and Franchise Taxes for the prior year are due annually.",
         faqs: [
@@ -492,9 +476,8 @@ const initialState = {
         ]
       },
       {
-        id: 4,
+        id: 8,
         name: "California Franchise Tax Filing",
-        icon: <CalFranchTax style={{width: '64px'}} />,
         shortDescription:
           "All new limited liability companies (LLCs), S corporations, C corporations, limited partnerships (LPs), and limited liability partnershps (LLPs) registered in the state of California should pay a franchise tax. ",
         faqs: [

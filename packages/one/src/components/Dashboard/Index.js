@@ -74,7 +74,6 @@ class OneDashboard extends React.Component {
             return <div className={styles.loading} />;
         }
 
-        console.log(isBusiness, isIndividual);
 
         const userTypeSet =
             (isBusiness || isIndividual) && !userDetailsLoading;

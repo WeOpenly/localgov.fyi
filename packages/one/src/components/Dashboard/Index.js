@@ -16,7 +16,7 @@ import SideBar from './SideBar';
 import AppBar from './AppBar';
 
 import { logout } from '../../components/actions';
-import {setLandingUserType, setLandingPlan} from '../../components/actions';
+import {setLandingUserType, setLandingPlan, toggleSidebar} from '../../components/actions';
 import Home from './Home';
 
 const windowGlobal = typeof window !== "undefined" && window;
@@ -25,15 +25,13 @@ const windowGlobal = typeof window !== "undefined" && window;
 class OneDashboard extends React.Component {
     constructor(props) {
         super(props);
-        this.state = {
-            open: true,
-        }
         this.logout = this.logout.bind(this);
         this.toggleSidebar = this.toggleSidebar.bind(this);
     }
 
     componentDidMount(){
         const {dispatch} = this.props;
+ 
         if(windowGlobal){
             const userType = windowGlobal.localStorage.getItem("userType");
             const plan = windowGlobal.localStorage.getItem("plan");
@@ -48,10 +46,9 @@ class OneDashboard extends React.Component {
     }
 
 
-    toggleSidebar() {
-        this.setState({
-            open: !this.state.open
-        })
+    toggleSidebar(toggle) {
+       const {dispatch} = this.props;
+       dispatch(toggleSidebar(toggle));
     }
 
 
@@ -61,66 +58,89 @@ class OneDashboard extends React.Component {
     }
 
     render() {
-        const { userDetailsLoading, userDetails, userDetailsLoadingFailed, isFirstTime, isBusiness, isIndividual } = this.props.oneUser;
+        const {
+          userDetailsLoading,
+          userDetails,
+          userDetailsLoadingFailed,
+          isFirstTime,
+          isBusiness,
+          isIndividual,
+          openSideBar,
+          landingPlan,
+          landingType
+        } = this.props.oneUser;
 
         if (userDetailsLoading) {
             return <div className={styles.loading} />;
         }
 
+        console.log(isBusiness, isIndividual);
+
         const userTypeSet =
             (isBusiness || isIndividual) && !userDetailsLoading;
+        const landUserTypeSet = landingType && !userDetailsLoading;
 
         if (!userTypeSet) {
-            return <UserTypeChoice />
+            if (!landUserTypeSet) {
+                return <UserTypeChoice />;
+            }
         }
 
         const { displayName, photoURL } = userDetails;
 
         return (
-            <Fragment>
-                <Toast />
+          <Fragment>
+            <Toast />
 
-                <div
-                    className={`${expStyles.offCanvas} ${this.state.open ? `${expStyles.offCanvasSidebarShow}` : `${expStyles.offCanvasSidebar}`
-                        }`}
-                    style={{ height: "100vh" }}
-                >
-                    <div
-                        className={`${expStyles.offCanvasSidebar}`}
-                        style={{
-                            background: "#fff",
-                            boxShadow: '0 0 1.5rem 0.3rem rgba(50,50,93,.04)',
-                            minWidth: "12rem",
-                            display: "flex",
-                            flexDirection: "column",
-                            alignItems: "center",
-                            justifyContent: "space-between"
-                        }}
-                    >
-
-                        <SideBar onMenuClick={this.toggleSidebar} open={this.state.open} displayName={displayName} photoURL={photoURL} onLogout={this.logout} />
-
-                    </div>
-                    <div
-                        className={`${expStyles.offCanvasContent}`}
-                        style={{
-                            overflowY: 'scroll',
-                            padding: "0rem 0rem 0.4rem 0rem",
-                            background: "#f7f8f9"
-                        }}
-                    >
-
-                        <AppBar onMenuClick={this.toggleSidebar} showCrumbs={!this.state.open} />
-                        <Router>
-                            <Home path="/" />
-                            <Account path="/account" logout={this.logout} />
-                            <Services path="/services/*" />
-                            <Receipts path="/receipts" />
-                        </Router>
-                       
-                    </div>
-                </div>
-            </Fragment>
+            <div
+              className={`${expStyles.offCanvas} ${
+                openSideBar
+                  ? `${expStyles.offCanvasSidebarShow}`
+                  : `${expStyles.offCanvasSidebar}`
+              }`}
+              style={{ height: "100vh" }}
+            >
+              <div
+                className={`${expStyles.offCanvasSidebar}`}
+                style={{
+                  background: "#fff",
+                  boxShadow: "0 0 1.5rem 0.3rem rgba(50,50,93,.04)",
+                  minWidth: "12rem",
+                  display: "flex",
+                  flexDirection: "column",
+                  alignItems: "center",
+                  justifyContent: "space-between"
+                }}
+              >
+                <SideBar
+                  onMenuClick={this.toggleSidebar}
+                  open={openSideBar}
+                  displayName={displayName}
+                  photoURL={photoURL}
+                  onLogout={this.logout}
+                />
+              </div>
+              <div
+                className={`${expStyles.offCanvasContent}`}
+                style={{
+                  overflowY: "scroll",
+                  padding: "0rem 0rem 0.4rem 0rem",
+                  background: "#f7f8f9"
+                }}
+              >
+                <AppBar
+                  onMenuClick={this.toggleSidebar}
+                  showCrumbs={!openSideBar}
+                />
+                <Router>
+                  <Home path="/" />
+                  <Account path="/account" logout={this.logout} />
+                  <Services path="/services/*" />
+                  <Receipts path="/receipts" />
+                </Router>
+              </div>
+            </div>
+          </Fragment>
         );
     }
 }

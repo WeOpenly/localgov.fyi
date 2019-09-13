@@ -38,8 +38,8 @@ class ServiceListItem extends React.Component {
           minHeight: "180px",
           margin: "0.5rem",
           padding: "0.2rem",
-          display: 'flex',
-          justifyContent: 'center',
+          display: "flex",
+          justifyContent: "center",
           width: "300px",
           borderRadius: "0.3rem",
           boxShadow: "0 .1rem 0.1rem rgba(48,55,66,.10)"
@@ -48,17 +48,19 @@ class ServiceListItem extends React.Component {
         <div
           className={styles.cardImage}
           style={{
-            display: 'flex',
-            justifyContent: 'center',
-            margin: "1.1rem 0 0.6rem 0"
+            display: "flex",
+            justifyContent: "center",
+            margin: "1.1rem 0 0.6rem 0",
+            cursor: "pointer"
           }}
+          onClick={this.expandCard}
         >
           {this.props.ser.icon}
         </div>
         <div
-          className={styles.cardHeader}
           style={{ cursor: "pointer" }}
           onClick={this.expandCard}
+          className={styles.cardHeader}
         >
           <h6 className={`${styles.cardTitle}`}>{this.props.ser.name} </h6>
         </div>

@@ -9,16 +9,22 @@ import * as types from './ActionTypes';
 import getFirebase from '../common/firebase/firebase';
 import { trackQPevent } from '../common/tracking';
 
+const windowGlobal = typeof window !== "undefined" && window;
 
 let authRef;
 const firebase = getFirebase();
 if (firebase){
     authRef = firebase.auth();
 }
-
-
-
 const dateNow = Date.now();
+
+
+export function toggleSidebar(toggle){
+    return {
+        type: types.TOGGLE_SIDEBAR, 
+        toggle
+    }
+}
 
 export function updateStep(step){
     navigate(`/dashboard/services/${step}`)
@@ -63,15 +69,19 @@ export function setLoggedOut(){
 
 export function logout(enteredEmail) {
     return async (dispatch, getState) => {
-    firebase.auth().signOut().then(function () {
-        // Sign-out successful.
-        console.log('LOGOUT');
-        dispatch(setLoggedOut())
-        // navigate('/one')
-    }).catch(function (error) {
-        // An error happened.
-        console.log(error);
-    });
+          if (windowGlobal) {
+            windowGlobal.localStorage.clear();
+          }
+        
+        firebase.auth().signOut().then(function () {
+            // Sign-out successful.
+            console.log('LOGOUT');
+            dispatch(setLoggedOut())
+            // navigate('/one')
+        }).catch(function (error) {
+            // An error happened.
+            console.log(error);
+        });
     }
 }
 
@@ -118,6 +128,7 @@ function checkAndAddUser(user){
             if (docData.exists){
                 let prefs = { isFirstTime, isBusiness: docData.data().isBusiness, isIndividual: docData.data().isIndividual, createdAt: dateNow.toString(), paymentSetupDone: docData.data().paymentSetupDone}
                 dispatch(addUserPrefs(prefs))
+                dispatch(toggleSidebar(true));
             }
             else{
                 userRef.set({ ...providerData[0], uid: uid, isBusiness: false, isIndividual: false, createdAt: dateNow.toString(), paymentSetupDone: false})
@@ -339,11 +350,12 @@ export function setupBankPayment(uid, plaid_token, plaid_account_id, plan_id) {
        }
 
 export function setLandingUserType(userType){
-return {
-  type: types.SET_LANDING_USER_TYPE,
-  userType
-};
+    return {
+        type: types.SET_LANDING_USER_TYPE,
+        userType
+    };
 }
+
 export function setLandingPlan(plan){
-return {type: types.SET_LANDING_SELECTED_PLAN, plan}
+    return {type: types.SET_LANDING_SELECTED_PLAN, plan}
 }

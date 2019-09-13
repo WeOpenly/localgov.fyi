@@ -32,7 +32,7 @@ class AppBar extends Component {
                 }}
             >
                     <section className={styles.navbarSection} style={{marginLeft: '1rem'}}>
-                        {showCrumbs ? (<div onClick={onMenuClick}>
+                        {showCrumbs ? (<div onClick={() => onMenuClick(true)}>
                             <span
                                 className={`${iconStyles.typcn} ${
                                     iconStyles.typcnThMenu

@@ -20,7 +20,7 @@ class Toast extends Component {
         setTimeout( ()  => {
             this.setState({
                 show: false,
-            }) }, 3000);
+            }) }, 5000);
     }
     
     componentWillReceiveProps(nextProps){
@@ -41,7 +41,7 @@ class Toast extends Component {
         return (<div className={`${styles.toast} ${className} ${styles.textBold}`}>      
             <p><span  
               className={`${iconStyles.typcn} ${styles.textSuccess} ${iconStyles.typcnTick}`}
-            />Saved</p>
+            />Saved, we will review your documents soon</p>
             </div>)            
         
     }

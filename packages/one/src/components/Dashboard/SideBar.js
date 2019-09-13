@@ -46,7 +46,7 @@ class Home extends Component {
 
                       
                 </Link>
-                    <div onClick={onMenuClick} className={`${styles.btn} ${styles.btnClear}`} />
+                    <div onClick={() => onMenuClick(false)} className={`${styles.btn} ${styles.btnClear}`} />
 
                 </div>
                 <div style={{marginTop: '4rem'}}>

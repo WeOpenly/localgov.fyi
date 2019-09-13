@@ -170,11 +170,11 @@ class Payment extends Component {
                 className={`${styles.column} ${styles.colSm2} ${styles.colXs12}`}
                 style={{
                   display: "flex",
-                  justifyContent: 'right',
+                  justifyContent: "right",
                   flexWrap: "wrap"
                 }}
               >
-                <div style={{ color: "#fff", width: "300px" }}>
+                <div style={{ color: "#fff", width: "260px" }}>
                   <button
                     className={`${styles.btn} ${styles.btnPrimary}`}
                     style={{
@@ -187,11 +187,10 @@ class Payment extends Component {
                     <span
                       className={`${iconStyles.typcn} ${iconStyles.typcnLockClosed}`}
                     ></span>{" "}
-                    Finish payment with credit card
+                    Pay with credit card
                   </button>
                 </div>
                 <div
-     
                   className={`${styles.dividerVert} ${styles.textCenter}`}
                   data-content="OR"
                 ></div>
@@ -202,7 +201,7 @@ class Payment extends Component {
                   style={{
                     background: "rgb(86, 39, 255)",
                     color: "#fff",
-                    width: "300px"
+                    width: "260px"
                   }}
                   selectAccount={true}
                   product={["auth"]}
@@ -213,7 +212,7 @@ class Payment extends Component {
                   <span
                     className={`${iconStyles.typcn} ${iconStyles.typcnLockClosed}`}
                   ></span>{" "}
-                  Connect your bank account
+                  Connect bank account
                 </PlaidLink>
               </div>
             }

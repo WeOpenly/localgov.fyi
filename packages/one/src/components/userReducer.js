@@ -2,6 +2,7 @@ import * as types from "./ActionTypes";
 
 const initialState = {
   loginInProgress: false,
+  openSideBar: false,
   loginCheckInProgress: false,
   loginFailure: false,
   loginFailureMsg: "",
@@ -23,6 +24,11 @@ const initialState = {
 
 export function oneUser(state = initialState, action) {
     switch (action.type) {
+      case types.TOGGLE_SIDEBAR:
+        return {
+          ...state,
+          openSideBar: action.toggle
+        };
       case types.SET_LANDING_SELECTED_PLAN:
         return {
           ...state,

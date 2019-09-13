@@ -253,6 +253,7 @@ const mapDispatchToProps = (dispatch) => {
         dispatch(trackEvent(ev, data));
       },
       fetchGoogLoc: (serviceTemplateId, lat, lng) => {
+        console.log(lat, lng)
         dispatch(fetchGoogLoc(serviceTemplateId, lat, lng));
       },
       setSearchText: addr => {

@@ -73,12 +73,13 @@ function failedFetchGoogleLoc() {
 }
 
 
-export function fetchGoogLoc(serTemplateId, latlng) {
+export function fetchGoogLoc(serTemplateId, lat, lng) {
     return async(dispatch, getState) => {
         dispatch(clearAll());
         dispatch(requestFetchGoogleLoc());
 
-        const {lat, lng} = latlng;
+        console.log(lat, lng);
+        
         try {
             const resp = await YusufApi(null, `template_results?service_template_id=${serTemplateId}&lat=${lat}&lng=${lng}`, null, null);
 

@@ -10,6 +10,7 @@ import Avatar from '@material-ui/core/Avatar';
 import IconButton from '@material-ui/core/IconButton';
 import AccountCircle from '@material-ui/icons/AccountCircle';
 
+import specStyles from "./spectre.min.module.css";
 import ListItem from '@material-ui/core/ListItem';
 import CircularProgress from '@material-ui/core/CircularProgress';
 import MoreIcon from '@material-ui/icons/MoreVert';
@@ -53,15 +54,13 @@ const styles = theme => ({
   },
   h_a_m_loging_signup_container: {
     display: 'flex',
+    marginBottom: theme.spacing.unit,
   }
 });
 
 class HeaderAccountMenu extends Component {
   constructor(props) {
     super(props);
-
-
-
   }
 
 
@@ -76,15 +75,12 @@ class HeaderAccountMenu extends Component {
 
     return (
       <div className={classes.h_a_m_loging_signup_container}>
-        <Button
-          variant="outlined"
-          aria-label="quick pay"
-          className={classes.h_a_m_login_button}
+        <a
           href="https://pay.evergov.com"
-          color="inherit"
+          className={`${specStyles.btn} ${specStyles.btnPrimary}`}
         >
-          Quick pay
-        </Button>
+     QUICK PAY
+        </a>
       </div>
     );
   }

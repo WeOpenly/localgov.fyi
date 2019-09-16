@@ -2,7 +2,7 @@ import React, { Component, Fragment } from 'react';
 
 import { connect } from "react-redux";
 import currency from 'currency.js';
-
+import Drawer from "react-drag-drawer";
 import ContentEditable from 'react-contenteditable'
 import {
     CardNumberElement,
@@ -12,6 +12,8 @@ import {
 import PaymentPreview from './PaymentPreview'
 
 import styles from "./spectre.min.module.css"
+import modalStyles from './modal.min.module.css'
+
 import iconStyles from './typicons.min.module.css';
 import { trackQPevent } from '../common/tracking';
 import LicenceLogo from "../illus/QPLoading";
@@ -50,6 +52,7 @@ class SubmitDetails extends Component {
         this.changePrice = this.changePrice.bind(this);
         this.stripeElementChange = this.stripeElementChange.bind(this);
         this.resetPrice = this.resetPrice.bind(this);
+        this.fixCardDetails = this.fixCardDetails.bind(this);
         this.state = {
             card_no: false,
             card_exp: false,
@@ -57,6 +60,11 @@ class SubmitDetails extends Component {
             postal: false,
             email: false,
         }
+    }
+
+    fixCardDetails(){
+      const {dispatch} = this.props;
+      dispatch(stepChange("guess_price_and_update_details"));
     }
 
     resetPrice(){
@@ -261,8 +269,8 @@ class SubmitDetails extends Component {
                 ) : null}
               </div>
             </div>
-            {isPreview && <PaymentPreview stripe={this.props.stripe} />}
-            <div style={{ display: `${isPreview ? "none" : "visible"}` }}>
+
+            <div>
               <div
                 style={{
                   padding: "0.5rem",
@@ -275,6 +283,14 @@ class SubmitDetails extends Component {
                 className={styles.columns}
               >
                 <div className={`${styles.column} ${styles.col12}`}>
+                  <Drawer
+                    open={isPreview}
+                    containerElementClass={modalStyles.container}
+                    modalElementClass={modalStyles.modal}
+                    onRequestClose={this.fixCardDetails}
+                  >
+                    <PaymentPreview stripe={this.props.stripe} />
+                  </Drawer>
                   <div
                     className={`${styles.panelHeader} ${styles.textCenter} `}
                   >

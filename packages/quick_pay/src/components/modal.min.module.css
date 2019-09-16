@@ -1,0 +1,29 @@
+.modal {
+    outline: none;
+    background: white;
+    width: 76rem;
+    max-width: 90%;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    z-index: 15;
+    will-change: transform;
+    transform: translate3d(0, 0, 0);
+}
+
+.container {
+    align-items: center;
+}
+
+@media (max-width: 768px) {
+    .modal {
+        width: 100%;
+        max-width: 100%;
+        margin-bottom: 0;
+        border-top-left-radius: 8px;
+        border-top-right-radius: 8px;
+    }
+    .container {
+        align-items: flex-end;
+    }
+}

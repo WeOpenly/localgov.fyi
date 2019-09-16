@@ -66,7 +66,7 @@ class FinalConf extends React.Component {
         return (<div className={styles.columns}>
                 <div className={`${styles.column} ${styles.col12}`}>
           
-                <div className={styles.empty}>
+                <div className={styles.empty} style={{background: '#fff'}}>
                     <div className={styles.emptyIcon}>
                         <HeroIl />
                     </div>

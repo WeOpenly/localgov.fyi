@@ -73,7 +73,7 @@ class FinalConf extends React.Component {
                     <p className={`${styles.emptyTitle} ${styles.h3}`}>You're all set!</p>
                     <h6 style={{paddingBottom: '4px'}}> Sit back & relax, we will take it from here!</h6>
 
-                    <p className={styles.emptySubtitle}> 📨 We just sent a conformation email for your payment 
+                    <p className={styles.emptySubtitle}> 📨 We just sent a confirmation email for your payment 
 
                     
                       </p>

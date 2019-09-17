@@ -37,11 +37,6 @@ class PaymentPreview extends Component {
         }
     }
 
-    componentDidMount(){
-        if (windowGlobal){
-            windowGlobal.scrollTo(0, 0)
-        }
-    }
     
     onSubmit(ev) {
         ev.preventDefault();

@@ -22,6 +22,7 @@ import CardLogos from "../illus/CardLogos.js";
 import {subscribeUploadAnalysis, stepChange, updatePrice, updateEmail} from './actions';
 import TablePaginationActions from '@material-ui/core/TablePagination/TablePaginationActions';
 import { navigate } from '@reach/router';
+const windowGlobal = typeof window !== "undefined" && window;
 
 const createOptions = (fontSize, padding) => {
     return {
@@ -108,6 +109,9 @@ class SubmitDetails extends Component {
   
         if (this.props.analyseInProgress !== nextProps.analyseInProgress && nextProps.analyseInProgress === false){
             this.props.dispatch(trackQPevent(`${this.props.step}_loaded`, this.props.anonUserID, { submissionId: this.props.createdSubId }))
+             if (windowGlobal) {
+               windowGlobal.scrollTo(0, 0);
+             }
         }
     }
 
@@ -468,6 +472,7 @@ class SubmitDetails extends Component {
                   <input
                     type="email"
                     placeholder="you@youremail.com"
+                    style={{fontSize: '16px'}}
                     className={styles.formInput}
                     name="email"
                     required

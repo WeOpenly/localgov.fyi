@@ -1,11 +1,11 @@
 .modal {
-    width: 100%;
-    max-width: 100%;
-    margin-bottom: 0;
-    border-top-left-radius: 8px;
-    border-top-right-radius: 8px;
+    width: 100% !important;
+    max-width: 100% !important;
+    margin-bottom: 0 !important;
+    border-top-left-radius: 8px !important;
+    border-top-right-radius: 8px !important;
 }
 
 .container {
-    align-items: flex-end;
+    align-items: flex-end !important;
 }

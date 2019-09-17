@@ -81,7 +81,8 @@ const styles = theme => ({
 
 const LiteSerTemplate = (props) => {
     return (
-        <Card
+        
+        <a
             style={{
             cursor: 'pointer',
             width: '240px',
@@ -91,7 +92,7 @@ const LiteSerTemplate = (props) => {
             borderTop: `2px solid #AB93FF`,
             boxShadow: '0px 3px 5px 0px rgba(0,0,0,0.1),0px 1px 1px 0px rgba(0,0,0,0.07),0px 2px 6px 1px rgba(0,0,0,0.06)'
         }}
-            onClick={() => navigate(`/services/${props.slug}`)}>
+            href={`/services/${props.slug}`}>
             <CardContent>
                 <Typography variant="body2" gutterBottom>
                     {props.name}
@@ -100,7 +101,7 @@ const LiteSerTemplate = (props) => {
                     {`Offered in ${props.org_count} locations`}
                 </Typography>
             </CardContent>
-        </Card>
+        </a>
     )
 }
 

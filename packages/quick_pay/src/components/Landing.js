@@ -7,6 +7,7 @@ import iconStyles from './typicons.min.module.css';
 import Slider from "react-slick";
 import Lock from '../svgIcons/lock.js';
 import CameraCapture from './CameraCapture';
+import FileInput from "./FileInput";
 
 import {uploadDocumentAndCreateSubmission} from './actions'
 import { graphql, StaticQuery } from 'gatsby';
@@ -316,14 +317,7 @@ class Landing extends React.Component {
               className={`${styles.column} ${styles.col12} ${styles.textCenter}`}
               style={{ margin: "0" }}
             >
-              {snapComp}
-              {this.state.showCameraCap ? (
-                <CameraCapture
-                  cancelCamera={this.toggleCamera}
-                  onPhotoTaken={this.onMediaPhotoTaken}
-                  onCameraError={this.onCameraError}
-                />
-              ) : null}
+              <FileInput />
             </div>
             <div
               className={`${styles.column} ${styles.col12} ${styles.textCenter}`}

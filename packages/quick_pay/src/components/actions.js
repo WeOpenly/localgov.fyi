@@ -133,6 +133,11 @@ export function uploadDocumentAndCreateSubmission(file, userId, cameraApiType) {
         }
 }
 
+
+
+
+
+
 // guess_price and populate form
 export function subscribeUploadAnalysisBegin() {
     return { type: types.QP_ANALYSE_DOC_START }

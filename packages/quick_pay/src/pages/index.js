@@ -6,6 +6,8 @@ import { Elements, StripeProvider } from 'react-stripe-elements';
 import {returnToSnap} from '../components/actions'
 
 import Landing from '../components/Landing'
+import LandingDesktop from "../components/LandingDesktop";
+
 import SubmitDetails from '../components/SubmitDetails'
 
 import FinalConf from '../components/FinalConf'
@@ -20,7 +22,7 @@ const windowGlobal = typeof window !== 'undefined' && window
 class QPIndex extends React.Component {
     constructor(props) {
         super(props);
-        this.state = { stripe: null };
+        this.state = { stripe: null, width: windowGlobal.innerWidth };
         this.returnToSnap = this.returnToSnap.bind(this);
     }
     
@@ -48,6 +50,7 @@ class QPIndex extends React.Component {
     render() {
         const { anonUserLoading, analyseInProgress } = this.props;
         let comp = <div className={styles.loading}></div>
+        const isMobile = this.state.width <= 500;
 
         if (anonUserLoading){
             return comp
@@ -85,51 +88,96 @@ class QPIndex extends React.Component {
     
         )
        
+        let landing = <LandingDesktop />
+
+        if (isMobile){
+            landing = <Landing />
+        }
+
         return (
-            <Fragment>
+          <Fragment>
             <Helmet>
-                <title>{`Evergov Quickpay`}
-                </title>
-                    <link rel="stylesheet" type="text/css" charset="UTF-8" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick.min.css" />
-                    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick-theme.min.css" />
+              <title>{`Evergov Quickpay`}</title>
+              <link
+                rel="stylesheet"
+                type="text/css"
+                charset="UTF-8"
+                href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick.min.css"
+              />
+              <link
+                rel="stylesheet"
+                type="text/css"
+                href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick-theme.min.css"
+              />
             </Helmet>
 
-                <header className={styles.navbar} style={{ background: '#fff', padding: '4px 2px',boxShadow:'0 2px 4px rgba(50,50,93,.11)'}}>
-                    <section className={styles.navbarSection}>
-                        <a href="/" style={{ fontSize: '22px' }} className={`${styles.btn} ${styles.btnLink} ${styles.h1}`}>evergov</a><sub className={styles.textUppercase}  style={{ fontSize: '9px', paddingTop: '4px', letterSpacing: '0.1rem',fontWeight: 'bold' }} >Quick Pay</sub>
-                    </section>
-            
-                    <section className={styles.navbarSection}>
-                        <a href="/" style={{ fontSize: '14px' }} className={`${styles.btn} ${styles.btnLink}`}>Terms</a>
-                        <a href="/" style={{ fontSize: '14px' }} className={`${styles.btn} ${styles.btnLink}`}>Privacy</a>
-                    </section>
-                </header>
+            <header
+              className={styles.navbar}
+              style={{
+                background: "#fff",
+                padding: "4px 2px",
+                boxShadow: "0 2px 4px rgba(50,50,93,.11)"
+              }}
+            >
+              <section className={styles.navbarSection}>
+                <a
+                  href="/"
+                  style={{ fontSize: "22px" }}
+                  className={`${styles.btn} ${styles.btnLink} ${styles.h1}`}
+                >
+                  evergov
+                </a>
+                <sub
+                  className={styles.textUppercase}
+                  style={{
+                    fontSize: "9px",
+                    paddingTop: "4px",
+                    letterSpacing: "0.1rem",
+                    fontWeight: "bold"
+                  }}
+                >
+                  Quick Pay
+                </sub>
+              </section>
+
+              <section className={styles.navbarSection}>
+                <a
+                  href="/"
+                  style={{ fontSize: "14px" }}
+                  className={`${styles.btn} ${styles.btnLink}`}
+                >
+                  Terms
+                </a>
+                <a
+                  href="/"
+                  style={{ fontSize: "14px" }}
+                  className={`${styles.btn} ${styles.btnLink}`}
+                >
+                  Privacy
+                </a>
+              </section>
+            </header>
             <FirebaseContext.Provider value={getFirebse}>
-                <div className={`${styles.container} ${styles.gridSm}`}>
-                        {(step === 'show_landing' || step === 'final_conf') ? null : (<div className={`${styles.columns} ${styles.col12}`} >
-                            {tabs}
-                        </div>)}
-                    {
-                        step === 'show_landing' ? (
-                                    <Landing />
-                            ) : null
-                    }
-                    {
-                        (step === 'guess_price_and_update_details' || step === 'show_submit_confirm')  ? submitDetails : null
-                    }
-                    {
-                        (step === 'final_conf') ? <FinalConf /> : null
-                    }
-    
-                        <div className={`${styles.column} ${styles.col12}`}>
-                            <Footer isMobile={true} />
-                        </div>
-            
+              <div className={`${styles.container} ${styles.gridLg}`}>
+                {step === "show_landing" || step === "final_conf" ? null : (
+                  <div className={`${styles.columns} ${styles.col12}`}>
+                    {tabs}
+                  </div>
+                )}
+                {step === "show_landing" ? landing : null}
+                {step === "guess_price_and_update_details" ||
+                step === "show_submit_confirm"
+                  ? submitDetails
+                  : null}
+                {step === "final_conf" ? <FinalConf /> : null}
+
+                <div className={`${styles.column} ${styles.col12}`}>
+                  <Footer isMobile={true} />
                 </div>
-                    
+              </div>
             </FirebaseContext.Provider>
-            </Fragment>
-        )
+          </Fragment>
+        );
     }
 }
 

@@ -42,16 +42,7 @@ let fontcss = null;
     }} />)
 // }
 
-const searchLinksSchema = {
-  "@context": "http://schema.org",
-  "@type": "WebSite",
-  "url": "https://evergov.com/",
-  "potentialAction": {
-    "@type": "SearchAction",
-    "target": "https://evergov.com/search/?q={search_term_string}",
-    "query-input": "required name=search_term_string"
-  }
-}
+
 
 const OrgLogoSchema = {
   "@context": "https://schema.org",
@@ -100,7 +91,7 @@ export default class HTML extends React.Component {
             name="msvalidate.01"
             content="D1BADF38847C730E9DC76BE0CCC4B42B"
           />
-          <JsonLd data={searchLinksSchema} />
+    
    
           <meta
             property="og:site_name"

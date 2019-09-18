@@ -9,6 +9,7 @@ import { Router, Link } from "@reach/router";
 import Account from './Account';
 import Receipts from './Receipts';
 import Services from './Services';
+import ManageServices from "./ManageServices";
 
 import UserTypeChoice from "./UserTypeChoice";
 import Toast from '../Toast';

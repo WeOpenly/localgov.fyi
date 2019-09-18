@@ -169,7 +169,7 @@ function checkAndAddUserService(user) {
             .doc(uid)
 
         if(creationTime === lastSignInTime){
-            navigate("/dashboard/services");
+            navigate("/dashboard/onboard");
         }else{
              navigate("/dashboard");
         }

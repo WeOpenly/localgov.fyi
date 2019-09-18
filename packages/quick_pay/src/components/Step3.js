@@ -41,8 +41,10 @@ const Step3 = () => (
             return (<Img
                 title={`evergov`}
                 alt={`illustration of evergov`}
-              style={{ width: '150px', height: '140px' }}
+              style={{ width: '150px', height: '125px', marginTop: '24px' }}
                 sizes={data.heroIl.edges[0].node.childImageSharp.fluid} />)
         }} />
 )
+
+
 export default Step3

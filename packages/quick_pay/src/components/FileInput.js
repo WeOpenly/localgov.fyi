@@ -70,7 +70,7 @@ class FileInput extends Component {
                       marginTop: "8px",
                       flexDirection: "column",
                       justifyContent: "center",
-                      padding: '2rem',
+                      padding: "2rem",
                       alignItems: "center",
                       border: "1px dotted rgba(86, 39, 255, .2)",
                       borderRadius: "10px",
@@ -115,7 +115,9 @@ class FileInput extends Component {
               />
             ) : null}
           </div>
-          <div style={{ width: "100%", display: "flex", justifyContent: 'center' }}>
+          <div
+            style={{ width: "100%", display: "flex", justifyContent: "center" }}
+          >
             <div>
               <div
                 className={`${styles.column} ${styles.col12} ${styles.textCenter}`}
@@ -142,6 +144,7 @@ class FileInput extends Component {
                   }}
                 >
                   <span
+                    style={{ padding: "0 4px 0 0 ", color: "#30ae40" }}
                     className={`${iconStyles.typcn} ${iconStyles.typcnLockClosedOutline}`}
                   ></span>
                   <span style={{ fontSize: "12px" }}>

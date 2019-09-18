@@ -89,6 +89,7 @@ const LiteSerTemplate = (props) => {
             display: 'flex',
             flexDirection: 'column',
             margin: 16,
+            textDecoration: 'none',
             borderTop: `2px solid #AB93FF`,
             boxShadow: '0px 3px 5px 0px rgba(0,0,0,0.1),0px 1px 1px 0px rgba(0,0,0,0.07),0px 2px 6px 1px rgba(0,0,0,0.06)'
         }}
@@ -205,50 +206,57 @@ class ServiceList extends Component {
         }
 
         return (
-            <Fragment>
-                <Helmet defaultTitle={`Services on Evergov`} titleTemplate={`%s | evergov`}>
-                    <meta name="og:type" content="website"/>
-                    <meta
-                        property="og:site_name"
-                        content={`Find All Government Services in a Single Place`}/>
+          <Fragment>
+            <Helmet>
+              <title>{`Services | Evergov`}</title>
 
-                    <link
-                        rel="canonical"
-                        href={`https://evergov.com${this.props.location.pathname}`}/>
-                    <meta
-                        property="og:url"
-                        content={`https://evergov.com${this.props.location.pathname}`}/>
-                    <html lang="en"/>
+              <link rel="canonical" href={`https://evergov.com/services/`} />
+              <meta property="og:title" content={`Services | Evergov`} />
+              <meta
+                property="og:url"
+                content={`https://evergov.com/services/`}
+              />
 
-                </Helmet>
-                <NavSearch />
-                <Grid container>
-                    <Grid item xs={1} sm={4}/>
-                    <Grid className={classes.ser_list_heading} item xs={10} sm={4} align="center">
-                        <Typography variant="display1">
-                            Services on Evergov
-                        </Typography>
-                    </Grid>
-                    <Grid item xs={1} sm={4}/>
-                </Grid>
-                <Grid container>
-                    <Grid item xs="auto" sm={1}/>
-                    <Grid className={classes.ser_list_container} item xs={12} sm={10} align="left">
+              <meta name="description" content={`Services on Evergov`} />
 
-                        <div className={classes.ser_list_cat_list_container}>
-                            {catComponents}
-                        </div>
-                        <div className={classes.ser_list_service_card_container}>
-                            {serComponents}
-                        </div>
-
-                    </Grid>
-                    <Grid item xs="auto" sm={1}/>
-                </Grid>
-                <div className={classes.ser_list_footer}>
-                    <Footer page={this.props.location.pathname}/>
+              <meta property="og:description" content={`Services on Evergov`} />
+            </Helmet>
+            <NavSearch />
+            <Grid container>
+              <Grid item xs={1} sm={4} />
+              <Grid
+                className={classes.ser_list_heading}
+                item
+                xs={10}
+                sm={4}
+                align="center"
+              >
+                <Typography variant="display1">Services on Evergov</Typography>
+              </Grid>
+              <Grid item xs={1} sm={4} />
+            </Grid>
+            <Grid container>
+              <Grid item xs="auto" sm={1} />
+              <Grid
+                className={classes.ser_list_container}
+                item
+                xs={12}
+                sm={10}
+                align="left"
+              >
+                <div className={classes.ser_list_cat_list_container}>
+                  {catComponents}
                 </div>
-            </Fragment>
+                <div className={classes.ser_list_service_card_container}>
+                  {serComponents}
+                </div>
+              </Grid>
+              <Grid item xs="auto" sm={1} />
+            </Grid>
+            <div className={classes.ser_list_footer}>
+              <Footer page={this.props.location.pathname} />
+            </div>
+          </Fragment>
         );
     }
 }

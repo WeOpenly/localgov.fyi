@@ -92,6 +92,29 @@ class About extends React.Component {
       <Fragment>
         <Helmet>
           <title>{`About | Evergov`}</title>
+     
+
+          <link rel="canonical" href={`https://evergov.com/about/`} />
+          <meta
+            property="og:title"
+            content={`About | Evergov`}
+          />
+          <meta
+            property="og:url"
+            content={`https://evergov.com/about/`}
+          />
+
+
+            <meta
+              name="description"
+              content={`We are building a new generation of consumer friendly government services`}
+            />
+
+
+          <meta
+            property="og:description"
+            content={`We are building a new generation of consumer friendly government services`}
+          />
         </Helmet>
         <div className={`${styles.container} ${styles.gridXl}`}>
           <div className={styles.columns}>

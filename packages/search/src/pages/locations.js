@@ -1,7 +1,7 @@
 import React, {Component, Fragment} from 'react';
 import Link from 'gatsby-link';
 import {navigate} from '@reach/router';
-
+import Helmet from 'react-helmet'
 
 import {connect} from "react-redux";
 import Masonry from 'react-masonry-component';
@@ -222,27 +222,46 @@ class Locations extends Component {
 
     return (
       <Fragment>
-        <NavSearch isMobile={isMobile}/>
+        <Helmet>
+          <title>{`Locations | Evergov`}</title>
+
+          <link rel="canonical" href={`https://evergov.com/locations/`} />
+          <meta property="og:title" content={`Locations | Evergov`} />
+          <meta property="og:url" content={`https://evergov.com/locations/`} />
+
+          <meta
+            name="description"
+            content={`Currently serving ${locLen} governments`}
+          />
+
+          <meta
+            property="og:description"
+            content={`Currently serving ${locLen} governments`}
+          />
+        </Helmet>
+        <NavSearch isMobile={isMobile} />
         <LocatioDialog />
         <Grid container className={classes.titleWrapper}>
-          <Grid item xs={2}/>
+          <Grid item xs={2} />
           <Grid item xs={8} align="center">
-            <Typography variant="display1" className={classes.title}>{`Currently serving ${locLen} governments`}</Typography>
-            <Typography variant="caption" className={classes.subtitle}>.. and adding more every day</Typography>
-            <Divider/>
+            <Typography
+              variant="display1"
+              className={classes.title}
+            >{`Currently serving ${locLen} governments`}</Typography>
+            <Typography variant="caption" className={classes.subtitle}>
+              .. and adding more every day
+            </Typography>
+            <Divider />
           </Grid>
-          <Grid item xs={2}/>
+          <Grid item xs={2} />
         </Grid>
         {userLocReqFormRaw}
         <Grid container>
-          <Grid item md={2}/>
+          <Grid item md={2} />
           <Grid item md={8} align="center">
-            <Masonry >
-              {locComponents}
-            </Masonry>
-
+            <Masonry>{locComponents}</Masonry>
           </Grid>
-          <Grid item md={2}/>
+          <Grid item md={2} />
         </Grid>
       </Fragment>
     );

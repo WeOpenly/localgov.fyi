@@ -93,11 +93,11 @@ const Tabloader = () => (
 
 
 const RawHTML = ({ children, className = "" }) => (
-    <div
-        className={className}
-        style={{padding:0, margin: 0, color: "rgba(30, 30, 50,0.87)"}}
-        dangerouslySetInnerHTML={{ __html: children.replace(/\n/g, " ") }}
-    />
+  <div
+    itemProp="text"
+    style={{ padding: 0, margin: 0, color: "rgba(30, 30, 50,0.87)" }}
+    dangerouslySetInnerHTML={{ __html: children.replace(/\n/g, " ") }}
+  />
 );
 
 class ServiceDetail extends Component {
@@ -213,16 +213,29 @@ class ServiceDetail extends Component {
                      return (
                        <Fragment>
                          <div
-                           style={{ display: "flex", flexDirection: "column", margin: '1rem 0.2rem 0.2rem 0.2rem' }}
+                           style={{
+                             display: "flex",
+                             flexDirection: "column",
+                             margin: "1rem 0.2rem 0.2rem 0.2rem"
+                           }}
                            disableGutters
                          >
-                           <h5>
-                            {question}
-                           </h5>
-                            
-                          <p style={{fontSize: '0.9rem', margin: '0.2rem'}}>
+                           <div
+                             itemScope
+                             itemProp="mainEntity"
+                             itemType="https://schema.org/Question"
+                           >
+                             <h5 itemProp="name">{question}</h5>
+                           </div>
+
+                           <div
+                             itemScope
+                             itemProp="acceptedAnswer"
+                             itemType="https://schema.org/Answer"
+                             style={{ margin: "0.2rem" }}
+                           >
                              {text}
-                           </p>
+                           </div>
                          </div>
                          {index !== allfaq.length - 1 ? (
                            <div className={specStyles.divider} />

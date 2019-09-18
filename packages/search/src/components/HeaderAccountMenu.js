@@ -54,7 +54,9 @@ const styles = theme => ({
   },
   h_a_m_loging_signup_container: {
     display: 'flex',
-    marginBottom: theme.spacing.unit,
+    alignItems: 'flex-end',
+    marginBottom: theme.spacing.unit + 4,
+    marginRight: '8px',
   }
 });
 

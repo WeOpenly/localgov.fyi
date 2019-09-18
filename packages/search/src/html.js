@@ -53,6 +53,19 @@ const searchLinksSchema = {
   }
 }
 
+const OrgLogoSchema = {
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  url: "http://www.evergov.com",
+  logo: "http://www.evergov.com/imgs/logo.png",
+  contactPoint: [
+    {
+      "@type": "ContactPoint",
+      telephone: "+1-650-667-0070",
+      contactType: "customer service"
+    }
+  ]
+};
 //     return (       <html {...this.props.htmlAttributes}>         <head> <meta
 // charSet="UTF-8"/>           <meta name="google-site-verification" content=
 // "uH1LpzdwISxquJSjjpqad8DL6vkOs_OVsdLLu8wNXSM" />           <meta
@@ -108,6 +121,9 @@ export default class HTML extends React.Component {
             name="viewport"
             content="width=device-width, initial-scale=1, shrink-to-fit=no"
           />
+
+              <JsonLd data={OrgLogoSchema} />
+   
           <script
             async
             defer

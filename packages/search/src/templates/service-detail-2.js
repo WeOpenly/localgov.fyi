@@ -420,17 +420,17 @@ class ServiceDetailTemplate extends React.Component {
 
 
         const jsonLd = {
+          "@context": "http://schema.org",
+          "@type": "GovernmentService",
+          "@id": `https://evergov.com/${url_slug}/`,
+          name: `${name}`,
+          serviceOperator: {
             "@context": "http://schema.org",
-            "@type": "GovernmentService",
-            "@id": `https://evergov.com/${url_slug}/`,
-            "name": `${name}`,
-            "operator": {
-                "@context": "http://schema.org",
-                "@id": `https://evergov.com/${org_slug}/`,
-                "@type": "GovernmentOrganization",
-                "name": `${org_name}`
-            }
-        }
+            "@id": `https://evergov.com/${org_slug}/`,
+            "@type": "GovernmentOrganization",
+            name: `${org_name}`
+          }
+        };
         
         if (serDel.length > 0) {
             jsonLd['potentialAction'] = serDel[0]['potentialAction']
@@ -445,20 +445,60 @@ class ServiceDetailTemplate extends React.Component {
             const service_parent_slug = this.slugify(name)
 
             actionCard = (<GlossaryCard isMobile={isMobile} name={name} description={description} logoUrl={logo_url} />)
-            hieLinks = (<ul vocab="https://schema.org/" typeof="BreadcrumbList" className={specStyles.breadcrumb}>
-                <li property="itemListElement" typeof="ListItem" className={specStyles.breadcrumbItem}>
-                    <a property="item" typeof="WebPage" href="/"> <span property="name">Home</span></a>
-                    <meta property="position" content="1"/>
+            hieLinks = (
+              <ul
+                itemScope
+                itemType="https://schema.org/BreadcrumbList"
+                className={specStyles.breadcrumb}
+              >
+                <li
+                  itemScope
+                  itemProp="itemListElement"
+                  itemType="https://schema.org/ListItem"
+                  className={specStyles.breadcrumbItem}
+                >
+                  <a
+                    itemProp="item"
+                    itemType="https://schema.org/WebPage"
+                    href="/"
+                  >
+                    {" "}
+                    <span itemProp="name">Home</span>
+                  </a>
+                  <meta itemProp="position" content="1" />
                 </li>
-                <li property="itemListElement" typeof="ListItem"  className={specStyles.breadcrumbItem}>
-                    <a property="item" typeof="WebPage" href="/services"><span property="name">Services</span></a>
-                    <meta property="position" content="2" />
+                <li
+                  itemScope
+                  itemProp="itemListElement"
+                  itemType="https://schema.org/ListItem"
+                  className={specStyles.breadcrumbItem}
+                >
+                  <a
+                    itemProp="item"
+                    itemType="https://schema.org/WebPage"
+                    href="/services"
+                  >
+                    <span itemProp="name">Services</span>
+                  </a>
+                  <meta itemProp="position" content="2" />
                 </li>
-                <li property="itemListElement" typeof="ListItem" className={specStyles.breadcrumbItem}>
-                    <a href={`/services/${service_parent_slug}`} ><span property="name">{name}</span></a>
-                    <meta property="position" content="3" />
+                <li
+                  itemScope
+                  itemProp="itemListElement"
+                  itemType="https://schema.org/ListItem"
+                  className={specStyles.breadcrumbItem}
+                >
+                  <a
+                    itemProp="item"
+                    itemType="https://schema.org/WebPage"
+                    href={`/services/${service_parent_slug}`}
+                  >
+                    <span itemProp="name">{name}</span>
+                  </a>
+                  <meta itemProp="position" content="3" />
                 </li>
-            </ul>)
+              </ul>
+            );
         }
 
         let serHeader = null;
@@ -488,6 +528,7 @@ class ServiceDetailTemplate extends React.Component {
                 <Helmet>
                     <title>{`${name} | ${org_name} | Evergov`}
                     </title>
+                    <html itemScope itemType="https://schema.org/FAQPage" />
                     <script src="https://js.stripe.com/v3/"></script>
                     <link href={"/css/stripe.css"} rel="stylesheet" />
                     <script type="application/ld+json">{`${JSON.stringify(jsonLd)}`}</script>

@@ -21,6 +21,7 @@ class ManageServiceList extends Component {
 
   updateService(ser, vals){
     const {dispatch, uid} = this.props;
+    console.log(ser, vals, "updateService");
     dispatch(unSelectService(uid, ser));
     dispatch(finalizeService(uid, vals, ser));
   }
@@ -32,6 +33,7 @@ class ManageServiceList extends Component {
 
   addSelectedService(ser) {
     const { dispatch, uid } = this.props;
+    console.log(uid, ser, "addselectedservice");
     dispatch(selectService(uid, ser));
   }
 
@@ -46,31 +48,39 @@ class ManageServiceList extends Component {
     const notSelected = Object.keys(selectedServices).length === 0;
     
     const finalizedSers = availableSers.map(selected => {
-   if (selected.id in selectedServices && 'formData' in selectedServices[selected.id]){
+      if (
+        selected.id in selectedServices &&
+        "formData" in selectedServices[selected.id]
+      ) {
         return (
           <ExpandableServiceListItem
             key={selected.id}
+            isFinalized={
+              selected.id in selectedServices &&
+              "formData" in selectedServices[selected.id]
+            }
             updateServiceDetails={this.updateService}
             removeServiceDetails={this.removeSelectedService}
-            ser={selected}
+            ser={selectedServices[selected.id]}
           />
         );
       }
     });
 
-    const notFinalizedSers = availableSers.map(selected => {
+    const notFinalizedSers = availableSers.map(ser => {
       if (
-        !(
-          selected.id in selectedServices &&
-          "formData" in selectedServices[selected.id]
-        )
+        !(ser.id in selectedServices && "formData" in selectedServices[ser.id])
       ) {
         return (
           <ExpandableServiceListItem
-            key={selected.id}
+            key={ser.id}
+            isFinalized={
+              ser.id in selectedServices &&
+              "formData" in selectedServices[ser.id]
+            }
             updateServiceDetails={this.updateService}
             removeServiceDetails={this.removeSelectedService}
-            ser={selected}
+            ser={ser}
           />
         );
       }

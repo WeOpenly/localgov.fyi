@@ -37,6 +37,7 @@ class ServiceForm extends Component {
     const { name, icon } = selectedService;
     const { initialFormData, formData, faqs } = selectedService;
     let initialValues = formData;
+    console.log(selectedService.formData);
     if (!formData){
         initialValues = initialFormData;
     }
@@ -53,12 +54,12 @@ class ServiceForm extends Component {
             className={` ${styles.cardTitle}`}
             style={{ margin: "1rem 0.2rem" }}
           >
-            {this.props.showName ? `${name} ` : null}
-            {this.props.isFinalized ? (
+            {this.props.showName ?       this.props.isFinalized ? (
               <span
                 className={`${iconStyles.typcn} ${styles.textSuccess} ${iconStyles.typcnTick}`}
               />
-            ) : null}{" "}
+            ) : null : null}
+      
           </h5>
           <div
             className={styles.card}

@@ -27,7 +27,7 @@ const iconMap = {
 
 let cx = classNames.bind(styles);
 
-class ServiceListItem extends React.Component {
+class ExpServiceListItem extends React.Component {
   constructor(props) {
     super(props);
     this.expandCard = this.expandCard.bind(this);
@@ -40,14 +40,6 @@ class ServiceListItem extends React.Component {
     this.setState({
       expanded: !this.state.expanded
     });
-  }
-
-  saveServiceUpdates() {
-
-  }
-
-  onServiceDelete(){
-
   }
 
   render() {
@@ -79,8 +71,7 @@ class ServiceListItem extends React.Component {
               display: "flex",
               justifyContent: "center",
               margin: "0.8rem 0",
-              flex: "10",
-
+              flex: "10"
             }}
           >
             {icon}
@@ -115,7 +106,10 @@ class ServiceListItem extends React.Component {
               <div className={`${styles.cardHeader}`}>
                 <h6> {this.props.ser.name} </h6>
               </div>
-              <div className={styles.cardSubtitle} style={{paddingLeft:'0.9rem'}}>
+              <div
+                className={styles.cardSubtitle}
+                style={{ paddingLeft: "0.9rem" }}
+              >
                 <div className={styles.textGray}>
                   {this.props.ser.shortDescription}
                 </div>
@@ -131,10 +125,9 @@ class ServiceListItem extends React.Component {
                       key={`service-form-${this.props.ser.id}`}
                       selectedService={this.props.ser}
                       showName={false}
-                      isFinalized={false}
+                      isFinalized={this.props.isFinalized}
                       showFaq={false}
-                      onSubmit={this.saveServiceUpdates}
-                      onDelete={this.onServiceDelete}
+                      onSubmit={this.props.updateServiceDetails}
                     />
                   </div>
                 ) : null}
@@ -146,4 +139,5 @@ class ServiceListItem extends React.Component {
     );
   }
 }
-export default ServiceListItem;
+
+export default ExpServiceListItem;

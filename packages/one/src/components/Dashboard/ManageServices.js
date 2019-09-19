@@ -5,18 +5,24 @@ import PropTypes from "prop-types";
 import Masonry from "react-masonry-css";
 import styles from "../spectre.min.module.css";
 import iconStyles from "../typicons.min.module.css";
-import { selectService, unSelectService } from "../Services/actions";
+import { selectService, unSelectService, finalizeService } from "../Services/actions";
 
 
 import ExpandableServiceListItem from "../Services/ExpandableServiceListItem";
 
 
-class ServiceList extends Component {
+class ManageServiceList extends Component {
   constructor(props) {
     super(props);
     this.addSelectedService = this.addSelectedService.bind(this);
     this.removeSelectedService = this.removeSelectedService.bind(this);
- 
+    this.updateService = this.updateService.bind(this);
+  }
+
+  updateService(ser, vals){
+    const {dispatch, uid} = this.props;
+    dispatch(unSelectService(uid, ser));
+    dispatch(finalizeService(uid, vals, ser));
   }
 
   removeSelectedService(ser) {
@@ -44,8 +50,8 @@ class ServiceList extends Component {
         return (
           <ExpandableServiceListItem
             key={selected.id}
-            updateServiceDetails={() => {}}
-            removeServiceDetails={() => {}}
+            updateServiceDetails={this.updateService}
+            removeServiceDetails={this.removeSelectedService}
             ser={selected}
           />
         );
@@ -62,8 +68,8 @@ class ServiceList extends Component {
         return (
           <ExpandableServiceListItem
             key={selected.id}
-            updateServiceDetails={() => {}}
-            removeServiceDetails={() => {}}
+            updateServiceDetails={this.updateService}
+            removeServiceDetails={this.removeSelectedService}
             ser={selected}
           />
         );
@@ -159,4 +165,4 @@ const mapStateToProps = function(state, ownProps) {
   };
 };
 
-export default connect(mapStateToProps)(ServiceList);
+export default connect(mapStateToProps)(ManageServiceList);

@@ -41,7 +41,12 @@ class ServicesDetails extends Component {
           <ServiceForm
             key={`service-form-${selected.id}`}
             selectedService={selected}
-            isFinalized={(selected.id in selectedServices && 'formData' in selectedServices[selected.id])}
+            showName={true}
+            showFaq={true}
+            isFinalized={
+              selected.id in selectedServices &&
+              "formData" in selectedServices[selected.id]
+            }
             onSubmit={this.addSelectedService}
           />
         );
@@ -52,9 +57,14 @@ class ServicesDetails extends Component {
       if (selected.id in selectedServices && 'formData' in selectedServices[selected.id]){
         return (
           <ServiceForm
+            showName={true}
+            showFaq={true}
             key={`service-form-${selected.id}`}
             selectedService={selected}
-            isFinalized={(selected.id in selectedServices && 'formData' in selectedServices[selected.id])}
+            isFinalized={
+              selected.id in selectedServices &&
+              "formData" in selectedServices[selected.id]
+            }
             onSubmit={this.addSelectedService}
           />
         );

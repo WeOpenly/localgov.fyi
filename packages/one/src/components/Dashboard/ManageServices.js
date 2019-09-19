@@ -19,10 +19,10 @@ class ManageServiceList extends Component {
     this.updateService = this.updateService.bind(this);
   }
 
-  updateService(ser, vals){
+  updateService(vals, ser){
     const {dispatch, uid} = this.props;
-    console.log(ser, vals, "updateService");
     dispatch(unSelectService(uid, ser));
+    dispatch(selectService(uid, ser));
     dispatch(finalizeService(uid, vals, ser));
   }
 
@@ -99,6 +99,7 @@ class ManageServiceList extends Component {
           </div>
           <div className={`${styles.column} ${styles.col1}`} />
         </div>
+        {finalizedSers.length > 0 ? (
         <div className={styles.columns}>
           <div className={`${styles.column} ${styles.col1} ${styles.hideXs}`} />
           <div
@@ -113,7 +114,7 @@ class ManageServiceList extends Component {
             <h6>Linked Services</h6>
           </div>
           <div className={`${styles.column} ${styles.col1} ${styles.hideXs}`} />
-        </div>
+        </div>) : null }
         <div className={styles.columns} style={{}}>
           <div className={`${styles.column} ${styles.col1} ${styles.hideXs}`} />
           <div
@@ -130,7 +131,7 @@ class ManageServiceList extends Component {
           </div>
           <div className={`${styles.column} ${styles.col1} ${styles.hideXs}`} />
         </div>
-        <div className={styles.columns}>
+        {notFinalizedSers.length > 0 ? (<div className={styles.columns}>
           <div className={`${styles.column} ${styles.col1} ${styles.hideXs}`} />
           <div
             style={{
@@ -145,7 +146,7 @@ class ManageServiceList extends Component {
             <h6>Services to link</h6>
           </div>
           <div className={`${styles.column} ${styles.col1} ${styles.hideXs}`} />
-        </div>
+        </div>) : null }
         <div className={styles.columns} style={{}}>
           <div className={`${styles.column} ${styles.col1} ${styles.hideXs}`} />
           <div

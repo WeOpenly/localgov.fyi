@@ -28,7 +28,6 @@ class ServiceForm extends Component {
 
   submitForm(values ) {
     const { onSubmit, selectedService } = this.props;
-    console.log(values, onSubmit)
     onSubmit(values, selectedService);
   }
 

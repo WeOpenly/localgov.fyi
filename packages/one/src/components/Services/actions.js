@@ -113,6 +113,7 @@ export function updateSelectServiceLoading() {
 }
 
 export function updateSelectServiceSuccess(result) {
+  console.log(result)
   return { type: types.ONE_USER_UPDATE_SELECTED_SERVICE_DETAILS, result };
 }
 
@@ -129,8 +130,9 @@ export function finalizeService(uid, formData, service) {
 
            const existingSelected = getState().oneServices
              .selectedServices;
-
+   
            if (service.id in existingSelected) {
+             console.log("here")
              const servicesRef = firebase
                .firestore()
                .collection("one_user_services")

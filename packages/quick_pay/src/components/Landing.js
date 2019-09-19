@@ -317,7 +317,14 @@ class Landing extends React.Component {
               className={`${styles.column} ${styles.col12} ${styles.textCenter}`}
               style={{ margin: "0" }}
             >
-              <FileInput />
+              {snapComp}
+              {this.state.showCameraCap ? (
+                <CameraCapture
+                  cancelCamera={this.toggleCamera}
+                  onPhotoTaken={this.onMediaPhotoTaken}
+                  onCameraError={this.onCameraError}
+                />
+              ) : null}
             </div>
             <div
               className={`${styles.column} ${styles.col12} ${styles.textCenter}`}
@@ -429,7 +436,6 @@ class Landing extends React.Component {
 
                   border: "1px solid rgba(86, 39, 255, .2)",
                   background: "#fff",
-    
 
                   borderRadius: "0.3rem",
                   boxShadow: "0 .1rem 0.1rem rgba(48,55,66,.10)"

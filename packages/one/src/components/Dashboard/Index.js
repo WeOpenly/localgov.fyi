@@ -136,7 +136,8 @@ class OneDashboard extends React.Component {
                 <Router>
                   <Home path="/" />
                   <Account path="/account" logout={this.logout} />
-                  <Services path="/services/*" />
+                  <ManageServices path="/services/*" />
+                  <Services path="/onboard/*" />
                   <Receipts path="/receipts" />
                   <FAQs path="/faqs" />
                 </Router>

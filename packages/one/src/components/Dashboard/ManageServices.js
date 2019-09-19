@@ -1,73 +1,151 @@
 import React, { Component, Fragment } from "react";
 import { connect } from "react-redux";
 import { navigate } from "@reach/router";
-import { Router, Link } from "@reach/router";
-
-import ServiceList from "../Services/ServiceList";
-import ServiceDetails from "../Services/ServicesDetails";
-import Payment from "../Services/Payment";
-
+import PropTypes from "prop-types";
+import Masonry from "react-masonry-css";
 import styles from "../spectre.min.module.css";
 import iconStyles from "../typicons.min.module.css";
-import ServiceActionBar from "../Services/ServiceActionBar";
+import { selectService, unSelectService } from "../Services/actions";
 
-import { setupBankPayment, setupCardPayment, updateStep } from "../actions";
-import { toggleStripeModal } from "../Services/actions";
 
-class Services extends Component {
+import ExpandableServiceListItem from "../Services/ExpandableServiceListItem";
+
+
+class ServiceList extends Component {
   constructor(props) {
     super(props);
-    this.submitBankPayment = this.submitBankPayment.bind(this);
-    this.setupCardPayment = this.setupCardPayment.bind(this);
+    this.addSelectedService = this.addSelectedService.bind(this);
+    this.removeSelectedService = this.removeSelectedService.bind(this);
+ 
   }
 
-  submitBankPayment(plaidToken, accountId, planId) {
+  removeSelectedService(ser) {
     const { dispatch, uid } = this.props;
-    dispatch(setupBankPayment(uid, plaidToken, accountId, planId));
+    dispatch(unSelectService(uid, ser));
   }
 
-  setupCardPayment(str_tok, planId) {
+  addSelectedService(ser) {
     const { dispatch, uid } = this.props;
-    dispatch(setupCardPayment(uid, str_tok, planId));
+    dispatch(selectService(uid, ser));
   }
 
   render() {
-    const {
-      selectedServices,
-      currentStep,
-      stripeCardModalOpen,
-      loadingSelectedServicesFailed,
-      loadingSelectedServices
-    } = this.props;
+    const { allAvailableServices, isBusiness, selectedServices } = this.props;
 
-    if (loadingSelectedServices) {
-      return <div className={styles.loading} />;
+    let availableSers = allAvailableServices.individual;
+    if (isBusiness) {
+      availableSers = allAvailableServices.business;
     }
 
-    if (loadingSelectedServicesFailed) {
-      return null; // msg here
-    }
+    const notSelected = Object.keys(selectedServices).length === 0;
+    
+    const finalizedSers = availableSers.map(selected => {
+   if (selected.id in selectedServices && 'formData' in selectedServices[selected.id]){
+        return (
+          <ExpandableServiceListItem
+            key={selected.id}
+            updateServiceDetails={() => {}}
+            removeServiceDetails={() => {}}
+            ser={selected}
+          />
+        );
+      }
+    });
 
-    const hasProgress = selectedServices.length !== 0;
-
+    const notFinalizedSers = availableSers.map(selected => {
+      if (
+        !(
+          selected.id in selectedServices &&
+          "formData" in selectedServices[selected.id]
+        )
+      ) {
+        return (
+          <ExpandableServiceListItem
+            key={selected.id}
+            updateServiceDetails={() => {}}
+            removeServiceDetails={() => {}}
+            ser={selected}
+          />
+        );
+      }
+    });
 
     return (
       <Fragment>
-        <Router>
-          <ServiceList path="/" />
-          <ServiceDetails path="/update_services_details" />
-          <Payment
-            path="/add_payment"
-            submitBankPayment={this.submitBankPayment}
-            setupCardPayment={this.setupCardPayment}
-            paymentSetupDone={this.props.paymentSetupDone}
-            paymentSetupInProgress={this.props.paymentSetupInProgress}
-            isBusiness={this.props.isBusiness}
-            landingPlan={this.props.landingPlan}
-            landingType={this.props.landingType}
-            email={this.props.email}
-          />
-        </Router>
+        <div className={styles.columns}>
+          <div className={`${styles.column} ${styles.col1}`} />
+          <div
+            className={`${styles.column} ${styles.col10}`}
+            style={{ margin: "3rem 0 1rem 1rem" }}
+          >
+            <h2 className={` ${styles.textLeft}`}>Services</h2>
+            <div className={styles.divider} />
+          </div>
+          <div className={`${styles.column} ${styles.col1}`} />
+        </div>
+        <div className={styles.columns}>
+          <div className={`${styles.column} ${styles.col1} ${styles.hideXs}`} />
+          <div
+            style={{
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "left",
+              margin: "0 0 0 1rem"
+            }}
+            className={`${styles.column} ${styles.colXs10}`}
+          >
+            <h6>Linked Services</h6>
+          </div>
+          <div className={`${styles.column} ${styles.col1} ${styles.hideXs}`} />
+        </div>
+        <div className={styles.columns} style={{}}>
+          <div className={`${styles.column} ${styles.col1} ${styles.hideXs}`} />
+          <div
+            style={{
+              padding: "1rem",
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "left",
+              paddingBottom: "1rem"
+            }}
+            className={`${styles.column} ${styles.col10} ${styles.colXs12}`}
+          >
+            {finalizedSers}
+          </div>
+          <div className={`${styles.column} ${styles.col1} ${styles.hideXs}`} />
+        </div>
+        <div className={styles.columns}>
+          <div className={`${styles.column} ${styles.col1} ${styles.hideXs}`} />
+          <div
+            style={{
+              padding: "1rem",
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "left",
+              margin: "1rem 0 0 1rem"
+            }}
+            className={`${styles.column} ${styles.colXs10}`}
+          >
+            <h6>Services to link</h6>
+          </div>
+          <div className={`${styles.column} ${styles.col1} ${styles.hideXs}`} />
+        </div>
+        <div className={styles.columns} style={{}}>
+          <div className={`${styles.column} ${styles.col1} ${styles.hideXs}`} />
+          <div
+            style={{
+              padding: "1rem",
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "left",
+              paddingBottom: "1rem"
+            }}
+            className={`${styles.column} ${styles.col10} ${styles.colXs12}`}
+          >
+            {notFinalizedSers}
+          </div>
+          <div className={`${styles.column} ${styles.col1} ${styles.hideXs}`} />
+        </div>
       </Fragment>
     );
   }
@@ -76,14 +154,9 @@ class Services extends Component {
 const mapStateToProps = function(state, ownProps) {
   return {
     ...state.oneServices,
-    paymentSetupDone: state.oneUser.paymentSetupDone,
     isBusiness: state.oneUser.isBusiness,
-    paymentSetupInProgress: state.oneUser.paymentSetupInProgress,
-    uid: state.oneUser.userDetails.uid,
-    email: state.oneUser.userDetails.email,
-    landingPlan: state.oneUser.landingPlan,
-    landingType: state.oneUser.landingType
+    uid: state.oneUser.userDetails.uid
   };
 };
 
-export default connect(mapStateToProps)(Services);
+export default connect(mapStateToProps)(ServiceList);

@@ -32,7 +32,7 @@ class ServiceForm extends Component {
   }
 
   render() {
-    const { selectedService, canSkip, uploadedFile } = this.props;
+    const { selectedService, canSkip, uploadedFile, showFaq } = this.props;
     const { name, icon } = selectedService;
     const { initialFormData, formData, faqs } = selectedService;
     let initialValues = formData;
@@ -43,9 +43,16 @@ class ServiceForm extends Component {
     return (
       <Fragment>
         <div className={`${styles.column} ${styles.col1} ${styles.hideXs}`} />
-        <div className={`${styles.column} ${styles.col6} ${styles.colXs12}`}>
-          <h5 className={` ${styles.cardTitle}`} style={{margin: '1rem 0.2rem'}}>
-            {name}{" "}
+        <div
+          className={`${styles.column} ${
+            showFaq ? `${styles.col6}` : `${styles.col12}`
+          } ${styles.colXs12}`}
+        >
+          <h5
+            className={` ${styles.cardTitle}`}
+            style={{ margin: "1rem 0.2rem" }}
+          >
+            {this.props.showName ? `${name} ` : null}
             {this.props.isFinalized ? (
               <span
                 className={`${iconStyles.typcn} ${styles.textSuccess} ${iconStyles.typcnTick}`}
@@ -101,9 +108,11 @@ class ServiceForm extends Component {
             </div>
           </div>
         </div>
-        <div className={`${styles.column} ${styles.col4} ${styles.colXs12}`}>
-          <ServiceFaq faqs={faqs} serviceId={name} />
-        </div>
+        {showFaq ? (
+          <div className={`${styles.column} ${styles.col4} ${styles.colXs12}`}>
+            <ServiceFaq faqs={faqs} serviceId={name} />
+          </div>
+        ) : null}
         <div className={`${styles.column} ${styles.col1} ${styles.hideXs}`} />
       </Fragment>
     );

@@ -72,7 +72,7 @@ const PaymentPlan = props => (
       </div>
       <div className={styles.cardFooter}>
         {props.isSelected ? <div style={{height: '40px'}}></div> : (<button
-          onClick={() => props.selectPaymentPlan(props.id)}
+          onClick={() => props.selectPaymentPlan(props)}
           className={`${styles.btn} ${
             props.focus ? `${styles.btnPrimary}` : `${styles.btnSecondary}`
           }`}
@@ -92,7 +92,7 @@ class PaymentPlans extends Component {
         this.state = {
             selected: false,
             showSelections: true,
-            userType: 'individual',
+            userType: null,
         }
     }
 
@@ -121,108 +121,95 @@ class PaymentPlans extends Component {
     }
 
     onSelectPaymentPlan(plan) {
-        this.props.onSelectPlan(plan, this.state.userType);
         this.setState({
-            selected: plan
+            selected: plan.id
         })
+
+        this.selectType(plan.for)
+        this.props.onSelectPlan(plan.id, plan.for);
     }
 
     render() {
-        let plans = [{
-            "id": 'lite-indiv',
-            "tag": "labelDefault",
-            "name": 'Lite',
-            "price": "49",
-            "duration": "Year",
-            "features": [
-                "24/7 Support",
-                "Recurring Annual Payment"
-            ],
-            "covers": [
-                "Propterty Tax Payments",
-                "Utility Bill Payments",
-                "Vehicle Registration Renewals",
-                "Pet Licensing"
+        let plans = [
+          {
+            id: "lite-indiv",
+            for: "individual",
+            tag: "labelDefault",
+            name: "Lite",
+            price: "49",
+            duration: "Year",
+            features: ["24/7 Support", "Recurring Annual Payment"],
+            covers: [
+              "Propterty Tax Payments",
+              "Utility Bill Payments",
+              "Vehicle Registration Renewals",
+              "Pet Licensing"
             ]
-        }, 
-            {
-                "id": 'plus-indiv',
-                "tag": "labelSecondary",
-                "name": 'Plus',
-                "price": "99",
-                "duration": "Year",
-                "features": [
-                
-                    "24/7 Support",
-                    "Recurring Annual Payment"
-                ],
-                "covers": [
-                    "Everything in Lite, plus up to 10 services of your choice",
-                ]
-            },
-            {
-                "id": 'life_long_indiv',
-                "tag": "labelSuccess",
-                "name": 'LifeLong',
-                "price": "499",
-                "duration": "Forever",
-                "features": [
-                    "24/7 Support",
-                    "Use Forever",
-                ],
-                "covers": [
-                    "Unlimited services of your choice",
-                ]
-            }
-        ]
+          },
+          {
+            id: "plus-indiv",
+            for: "individual",
+            tag: "labelSecondary",
+            name: "Plus",
+            price: "99",
+            duration: "Year",
+            features: ["24/7 Support", "Recurring Annual Payment"],
+            covers: [
+              "Everything in Lite, plus up to 10 services of your choice"
+            ]
+          },
+          {
+            id: "life_long_indiv",
+            for: "individual",
+            tag: "labelSuccess",
+            name: "LifeLong",
+            price: "499",
+            duration: "Forever",
+            features: ["24/7 Support", "Use Forever"],
+            covers: ["Unlimited services of your choice"]
+          }
+        ];
         if (this.state.userType === 'business'){
-            plans = [{
-                "id": 'lite-busi',
-                "tag": "labelDefault",
-                "name": 'Lite',
-                "price": "99",
-                "duration": "Year",
-                "features": [
-                    "24/7 Support",
-                    "Recurring Annual Payment"
-                ],
-                "covers": [
-                    "Business Licence Renewals",
-                    "Utility Bill Payments",
-                    "Renew Fictitious Business Licence or DBA"
+            plans = [
+              {
+                id: "lite-busi",
+                for: "business",
+                tag: "labelDefault",
+                name: "Lite",
+                price: "99",
+                duration: "Year",
+                features: ["24/7 Support", "Recurring Annual Payment"],
+                covers: [
+                  "Business Licence Renewals",
+                  "Utility Bill Payments",
+                  "Renew Fictitious Business Licence or DBA"
                 ]
-            },
-            {
-                "id": 'plus-busi',
-                "tag": "labelWarning",
-                "name": 'Startup',
-                "price": "199",
-                "duration": "Year",
-                "features": [
-                    "24/7 Support",
-                    "Recurring Annual Payment"
-                ],
-                "covers": [
-                    "Delaware Franchise Tax Filing",
-                    "California Franchise Tax Filing",
-                    "Any two other service filings of your choice",
+              },
+              {
+                id: "plus-busi",
+                for: "business",
+                tag: "labelWarning",
+                name: "Startup",
+                price: "199",
+                duration: "Year",
+                features: ["24/7 Support", "Recurring Annual Payment"],
+                covers: [
+                  "Delaware Franchise Tax Filing",
+                  "California Franchise Tax Filing",
+                  "Any two other service filings of your choice"
                 ]
-            },
-            {
-                "id": 'life_long_busi',
-                "tag": "labelSuccess",
-                "name": 'Pro',
-                "price": "999",
-                "duration": "Year",
-                "features": [
-                    "Dedicated best-in-class support",
-                    "Use Forever",
-                ],
-                "covers": [
-                    "Unlimited services of your choice",
-                ]
-            }
-            ]
+              },
+              {
+                id: "life_long_busi",
+                for: "business",
+                tag: "labelSuccess",
+                name: "Pro",
+                price: "999",
+                duration: "Year",
+                features: ["Dedicated best-in-class support", "Use Forever"],
+                covers: ["Unlimited services of your choice"]
+              }
+            ];
         }
   
 
@@ -230,6 +217,7 @@ class PaymentPlans extends Component {
             return (
               <PaymentPlan
                 id={plan.id}
+                for={plan.for}
                 name={plan.name}
                 tag={plan.tag}
                 price={plan.price}

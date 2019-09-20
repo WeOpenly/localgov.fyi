@@ -100,7 +100,7 @@ class AddCustomService extends Component {
               showName={false}
               isFinalized={false}
               showFaq={false}
-              onSubmit={this.props.updateServiceDetails}
+              onSubmit={onSave}
             />
           </div>
         </div>

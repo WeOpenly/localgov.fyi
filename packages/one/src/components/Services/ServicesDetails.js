@@ -8,12 +8,19 @@ import ServiceForm from "./ServiceForm";
 import ServiceActionBar from "./ServiceActionBar";
 import {finalizeService} from './actions';
 import { updateStep } from "../actions";
+const windowGlobal = typeof window !== "undefined" && window;
 
 class ServicesDetails extends Component {
   constructor(props) {
     super(props);
     this.addSelectedService = this.addSelectedService.bind(this);
     this.updateStep = this.updateStep.bind(this);
+  }
+
+  componentDidMount(){
+    if(windowGlobal){
+        windowGlobal.scrollTo(0, 150);
+    }
   }
 
   addSelectedService(vals, ser) {
@@ -90,15 +97,35 @@ class ServicesDetails extends Component {
         </div>
         <ServiceActionBar
           action={
-            <button
-              onClick={() => this.updateStep("add_payment")}
-              disabled={finalizedSerCount === 0}
-              className={`${styles.btn}  ${styles.btnPrimary}`}
+            <div
+              className={`${styles.column}  ${styles.colXs12}`}
+              style={{
+                display: "flex",
+                justifyContent: "space-around",
+                flexWrap: "wrap"
+              }}
             >
-              {this.props.paymentSetupDone
-                ? `Modify payment settings`
-                : `Setup Payment`}
-            </button>
+              <div >
+                <button
+                  onClick={() => this.updateStep("add_services")}
+     
+                  className={`${styles.btn}`}
+                >
+                Pick Services
+                </button>
+              </div>
+              <div>
+                <button
+                  onClick={() => this.updateStep("add_payment")}
+                  disabled={finalizedSerCount === 0}
+                  className={`${styles.btn}  ${styles.btnPrimary}`}
+                >
+                  {this.props.paymentSetupDone
+                    ? `Modify payment settings`
+                    : `Setup Payment`}
+                </button>
+              </div>
+            </div>
           }
         />
       </Fragment>

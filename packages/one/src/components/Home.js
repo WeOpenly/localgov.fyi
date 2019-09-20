@@ -65,10 +65,15 @@ class OneHome extends React.Component {
 
     loginGoog(plan, userType){
         const {dispatch} = this.props;
+  
         dispatch(loginGoog(this.state.email));
         if(windowGlobal){
-          windowGlobal.localStorage.setItem('plan', plan);
-          windowGlobal.localStorage.setItem('userType', userType)
+          if (plan){
+            windowGlobal.localStorage.setItem("plan", plan);
+          }
+          if(userType){
+            windowGlobal.localStorage.setItem("userType", userType);
+          }
         }
     }
 
@@ -117,7 +122,7 @@ class OneHome extends React.Component {
                       style={{ padding: "0.5rem" }}
                       className={styles.navbarSection}
                     >
-                      <Link to="/one">
+                      <Link to="/">
                         <a href="#" style={{ textDecoration: "none" }}>
                           <h3>
                             {" "}
@@ -619,7 +624,7 @@ class OneHome extends React.Component {
                           placeholder="your@email.com"
                         />
                         <button
-                          onClick={this.loginGoog}
+                          onClick={() => this.loginGoog()}
                           className={`${styles.btn} ${styles.btnSecondary} ${styles.inputGroupButton}`}
                         >
                           Get Started

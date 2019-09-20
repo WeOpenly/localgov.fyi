@@ -9,7 +9,7 @@ import { selectService, unSelectService } from "./actions";
 import {updateStep} from "../actions";
 import ServiceListItem from "./ServiceListItem";
 import ServiceActionBar from "./ServiceActionBar";
-
+const windowGlobal = typeof window !== "undefined" && window;
 
 class ServiceList extends Component {
   constructor(props) {
@@ -17,6 +17,12 @@ class ServiceList extends Component {
     this.addSelectedService = this.addSelectedService.bind(this);
     this.removeSelectedService = this.removeSelectedService.bind(this);
     this.updateStep = this.updateStep.bind(this);
+  }
+
+  componentDidMount(){
+      if (windowGlobal) {
+        windowGlobal.scrollTo(200, 150);
+      }
   }
 
   updateStep(step) {
@@ -71,25 +77,42 @@ class ServiceList extends Component {
       <Fragment>
         <div className={styles.columns} style={{ marginTop: "1rem" }}>
           <div className={`${styles.column} ${styles.col1} ${styles.hideXs}`} />
-          <div style={{padding: '1rem', display: 'flex', flexDirection: 'column', alignItems: 'center', paddingBottom: '12rem'}} className={`${styles.column} ${styles.col10} ${styles.colXs12}`}>
-
-              {serComps}
+          <div
+            style={{
+              padding: "1rem",
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "center",
+              paddingBottom: "12rem"
+            }}
+            className={`${styles.column} ${styles.col10} ${styles.colXs12}`}
+          >
+            {serComps}
           </div>
           <div className={`${styles.column} ${styles.col1} ${styles.hideXs}`} />
         </div>
-       {notSelected ? null : (<ServiceActionBar action={(
-              <button
-                onClick={() => this.updateStep("update_services_details")}
-                disabled={notSelected}
-                className={`${styles.btn}  ${styles.btnPrimary}`}
-              >
-                Add Your Details
-              </button>
-            )}/>)}
+        {notSelected ? null : (
+          <ServiceActionBar
+            action={
+           
+
+          <button
+                  onClick={() => this.updateStep("update_services_details")}
+                  disabled={notSelected}
+                  className={`${styles.btn}  ${styles.btnPrimary}`}
+                >
+                  Add Your Details
+                </button>
+               
+            }
+          />
+        )}
       </Fragment>
     );
   }
 }
+
+
 
 const mapStateToProps = function(state, ownProps) {
   return {

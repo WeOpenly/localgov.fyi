@@ -19,6 +19,7 @@ class ManageServiceList extends Component {
     this.state = {
       addSerModalOpen: false
     };
+    this.finalizeService = this.finalizeService.bind(this)
     this.toggleSerAddDetails = this.toggleSerAddDetails.bind(this);
     this.addSelectedService = this.addSelectedService.bind(this);
     this.removeSelectedService = this.removeSelectedService.bind(this);
@@ -43,9 +44,15 @@ class ManageServiceList extends Component {
     dispatch(unSelectService(uid, ser));
   }
 
+  finalizeService(vals, ser) {
+    const { dispatch, uid } = this.props;
+    dispatch(selectService(uid, ser));
+    dispatch(finalizeService(uid, vals, ser));
+    this.toggleSerAddDetails(false)
+  }
+
   addSelectedService(ser) {
     const { dispatch, uid } = this.props;
-    console.log(uid, ser, "addselectedservice");
     dispatch(selectService(uid, ser));
   }
 
@@ -59,11 +66,8 @@ class ManageServiceList extends Component {
 
     const notSelected = Object.keys(selectedServices).length === 0;
 
-    const finalizedSers = availableSers.map(selected => {
-      if (
-        selected.id in selectedServices &&
-        "formData" in selectedServices[selected.id]
-      ) {
+    const finalizedSers = Object.values(selectedServices).map(selected => {
+      if ("formData" in selectedServices[selected.id]) {
         return (
           <ExpandableServiceListItem
             key={selected.id}
@@ -128,7 +132,7 @@ class ManageServiceList extends Component {
           <div className={`${styles.column} ${styles.col1}`} />
         </div>
         <div className={styles.columns}>
-          <div className={`${styles.column} ${styles.col12}`} >
+          <div className={`${styles.column} ${styles.col12}`}>
             <div className={styles.divider} />
           </div>
         </div>
@@ -140,6 +144,7 @@ class ManageServiceList extends Component {
           >
             <AddCustomServiceDialog
               addSerModalOpen={this.state.addSerModalOpen}
+              onSave={this.finalizeService}
               onClose={this.toggleSerAddDetails}
             />
           </div>

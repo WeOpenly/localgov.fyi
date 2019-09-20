@@ -10,7 +10,7 @@ let cx = classNames.bind(styles);
 
 class AddCustomServiceDialog extends React.Component {
   render() {
-    const { addSerModalOpen } = this.props;
+    const { addSerModalOpen, onSave } = this.props;
 
     let className = cx({
       modal: true,
@@ -34,7 +34,7 @@ class AddCustomServiceDialog extends React.Component {
               className={`${styles.column} ${styles.col12}`}
               style={{ padding: "1rem" }}
             >
-              <AddCustomService />
+              <AddCustomService onSave={onSave} />
             </div>
           </div>
         </div>

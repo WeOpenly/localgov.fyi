@@ -27,7 +27,7 @@ export function toggleSidebar(toggle){
 }
 
 export function updateStep(step){
-    navigate(`/dashboard/services/${step}`)
+    navigate(`/dashboard/onboard/${step}`)
     return { type: types.ONE_USER_SERVICES_UPDATE_STEP,  step};
 }
 
@@ -169,7 +169,7 @@ function checkAndAddUserService(user) {
             .doc(uid)
 
         if(creationTime === lastSignInTime){
-            navigate("/dashboard/onboard");
+            navigate("/dashboard/onboard/add_services");
         }else{
              navigate("/dashboard");
         }

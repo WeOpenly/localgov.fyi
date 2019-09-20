@@ -53,12 +53,18 @@ class ServiceForm extends Component {
             className={` ${styles.cardTitle}`}
             style={{ margin: "1rem 0.2rem" }}
           >
-            {this.props.showName ?       this.props.isFinalized ? (
-              <span
-                className={`${iconStyles.typcn} ${styles.textSuccess} ${iconStyles.typcnTick}`}
-              />
-            ) : null : null}
-      
+            {this.props.showName ? (
+              this.props.isFinalized ? (
+                <Fragment>
+                  {name}
+                  <span
+                    className={`${iconStyles.typcn} ${styles.textSuccess} ${iconStyles.typcnTick}`}
+                  />
+                </Fragment>
+              ) : (
+              name
+              )
+            ) : null}
           </h5>
           <div
             className={styles.card}

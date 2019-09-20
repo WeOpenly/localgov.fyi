@@ -106,7 +106,7 @@ class Services extends Component {
          
         </div>
         <Router>
-          <ServiceList path="/" />
+          <ServiceList path="/add_services" />
           <ServiceDetails path="/update_services_details" />
           <Payment
             path="/add_payment"

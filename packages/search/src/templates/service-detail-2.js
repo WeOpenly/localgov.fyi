@@ -482,7 +482,7 @@ class ServiceDetailTemplate extends React.Component {
                   </a>
                   <meta itemProp="position" content="2" />
                 </li>
-                <li
+                {name ? (<li
                   itemScope
                   itemProp="itemListElement"
                   itemType="https://schema.org/ListItem"
@@ -496,7 +496,7 @@ class ServiceDetailTemplate extends React.Component {
                     <span itemProp="name">{name}</span>
                   </a>
                   <meta itemProp="position" content="3" />
-                </li>
+                </li>) : null}
               </ul>
             );
         }

@@ -225,16 +225,15 @@ class ServiceDetail extends Component {
                              itemProp="mainEntity"
                              itemType="https://schema.org/Question"
                            >
-                             <h5 itemProp="name">{question}</h5>
-                           </div>
-
-                           <div
-                             itemScope
-                             itemProp="acceptedAnswer"
-                             itemType="https://schema.org/Answer"
-                             style={{ margin: "0.2rem" }}
-                           >
-                             {text}
+                             <h4 itemProp="name">{question}</h4>
+                             <div
+                               itemScope
+                               itemProp="acceptedAnswer"
+                               itemType="https://schema.org/Answer"
+                               style={{ margin: "0.2rem" }}
+                             >
+                               {text}
+                             </div>
                            </div>
                          </div>
                          {index !== allfaq.length - 1 ? (

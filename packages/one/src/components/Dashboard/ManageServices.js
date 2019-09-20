@@ -3,6 +3,8 @@ import { connect } from "react-redux";
 import { navigate } from "@reach/router";
 import PropTypes from "prop-types";
 import Masonry from "react-masonry-css";
+import AddCustomServiceDialog from "../Services/AddCustomService/Dialog";
+
 import styles from "../spectre.min.module.css";
 import iconStyles from "../typicons.min.module.css";
 import { selectService, unSelectService, finalizeService } from "../Services/actions";
@@ -14,13 +16,23 @@ import ExpandableServiceListItem from "../Services/ExpandableServiceListItem";
 class ManageServiceList extends Component {
   constructor(props) {
     super(props);
+    this.state = {
+      addSerModalOpen: false
+    };
+    this.toggleSerAddDetails = this.toggleSerAddDetails.bind(this);
     this.addSelectedService = this.addSelectedService.bind(this);
     this.removeSelectedService = this.removeSelectedService.bind(this);
     this.updateService = this.updateService.bind(this);
   }
 
-  updateService(vals, ser){
-    const {dispatch, uid} = this.props;
+  toggleSerAddDetails(toggle) {
+    this.setState({
+      addSerModalOpen: toggle
+    });
+  }
+
+  updateService(vals, ser) {
+    const { dispatch, uid } = this.props;
     dispatch(unSelectService(uid, ser));
     dispatch(selectService(uid, ser));
     dispatch(finalizeService(uid, vals, ser));
@@ -46,7 +58,7 @@ class ManageServiceList extends Component {
     }
 
     const notSelected = Object.keys(selectedServices).length === 0;
-    
+
     const finalizedSers = availableSers.map(selected => {
       if (
         selected.id in selectedServices &&
@@ -91,30 +103,69 @@ class ManageServiceList extends Component {
         <div className={styles.columns}>
           <div className={`${styles.column} ${styles.col1}`} />
           <div
-            className={`${styles.column} ${styles.col10}`}
+            className={`${styles.column} ${styles.col8}`}
             style={{ margin: "3rem 0 1rem 1rem" }}
           >
             <h2 className={` ${styles.textLeft}`}>Services</h2>
+          </div>
+          <div className={`${styles.column} ${styles.col2}`}>
+            <button
+              className={`${styles.btn}`}
+              style={{
+                background: "rgb(86, 39, 255)",
+                color: "#fff",
+                width: "100%",
+                margin: "3rem 0 1rem 1rem"
+              }}
+              onClick={this.toggleSerAddDetails}
+            >
+              <span
+                className={`${iconStyles.typcn} ${iconStyles.typcnDocumentAdd}`}
+              ></span>{" "}
+              Add Service
+            </button>
+          </div>
+          <div className={`${styles.column} ${styles.col1}`} />
+        </div>
+        <div className={styles.columns}>
+          <div className={`${styles.column} ${styles.col12}`} >
             <div className={styles.divider} />
+          </div>
+        </div>
+        <div className={styles.columns}>
+          <div className={`${styles.column} ${styles.col1}`} />
+          <div
+            className={`${styles.column} ${styles.col10}`}
+            style={{ margin: "3rem 0 1rem 1rem" }}
+          >
+            <AddCustomServiceDialog
+              addSerModalOpen={this.state.addSerModalOpen}
+              onClose={this.toggleSerAddDetails}
+            />
           </div>
           <div className={`${styles.column} ${styles.col1}`} />
         </div>
         {finalizedSers.length > 0 ? (
-        <div className={styles.columns}>
-          <div className={`${styles.column} ${styles.col1} ${styles.hideXs}`} />
-          <div
-            style={{
-              display: "flex",
-              flexDirection: "column",
-              alignItems: "left",
-              margin: "0 0 0 1rem"
-            }}
-            className={`${styles.column} ${styles.colXs10}`}
-          >
-            <h6>Linked Services</h6>
+          <div className={styles.columns}>
+            <div
+              className={`${styles.column} ${styles.col1} ${styles.hideXs}`}
+            />
+            <div
+              style={{
+                display: "flex",
+                flexDirection: "column",
+                alignItems: "left",
+                margin: "0 0 0 1rem"
+              }}
+              className={`${styles.column} ${styles.colXs10}`}
+            >
+              <h6>Linked Services</h6>
+            </div>
+            <div
+              className={`${styles.column} ${styles.col1} ${styles.hideXs}`}
+            />
           </div>
-          <div className={`${styles.column} ${styles.col1} ${styles.hideXs}`} />
-        </div>) : null }
+        ) : null}
         <div className={styles.columns} style={{}}>
           <div className={`${styles.column} ${styles.col1} ${styles.hideXs}`} />
           <div
@@ -131,22 +182,28 @@ class ManageServiceList extends Component {
           </div>
           <div className={`${styles.column} ${styles.col1} ${styles.hideXs}`} />
         </div>
-        {notFinalizedSers.length > 0 ? (<div className={styles.columns}>
-          <div className={`${styles.column} ${styles.col1} ${styles.hideXs}`} />
-          <div
-            style={{
-              padding: "1rem",
-              display: "flex",
-              flexDirection: "column",
-              alignItems: "left",
-              margin: "1rem 0 0 1rem"
-            }}
-            className={`${styles.column} ${styles.colXs10}`}
-          >
-            <h6>Services to link</h6>
+        {notFinalizedSers.length > 0 ? (
+          <div className={styles.columns}>
+            <div
+              className={`${styles.column} ${styles.col1} ${styles.hideXs}`}
+            />
+            <div
+              style={{
+                padding: "1rem",
+                display: "flex",
+                flexDirection: "column",
+                alignItems: "left",
+                margin: "1rem 0 0 1rem"
+              }}
+              className={`${styles.column} ${styles.colXs10}`}
+            >
+              <h6>Services to link</h6>
+            </div>
+            <div
+              className={`${styles.column} ${styles.col1} ${styles.hideXs}`}
+            />
           </div>
-          <div className={`${styles.column} ${styles.col1} ${styles.hideXs}`} />
-        </div>) : null }
+        ) : null}
         <div className={styles.columns} style={{}}>
           <div className={`${styles.column} ${styles.col1} ${styles.hideXs}`} />
           <div

@@ -116,11 +116,11 @@ class ExpServiceListItem extends React.Component {
               </div>
               <div
                 className={`${styles.cardBody}`}
-                style={{ cursor: "pointer" }}
+        
               >
                 {this.state.expanded ? (
                   <div className={styles.columns} style={{ margin: "1rem 0" }}>
-                    <div className={styles.divider}></div>
+            
                     <ServiceForm
                       key={`service-form-${this.props.ser.id}`}
                       selectedService={this.props.ser}

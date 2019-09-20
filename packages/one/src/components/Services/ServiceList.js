@@ -5,7 +5,8 @@ import PropTypes from "prop-types";
 import Masonry from "react-masonry-css";
 import styles from "../spectre.min.module.css";
 import iconStyles from "../typicons.min.module.css";
-import { selectService, unSelectService } from "./actions";
+import AddCustomServiceDialog from './AddCustomService/Dialog'
+import { selectService, unSelectService, finalizeService } from "./actions";
 import {updateStep} from "../actions";
 import ServiceListItem from "./ServiceListItem";
 import ServiceActionBar from "./ServiceActionBar";
@@ -14,15 +15,33 @@ const windowGlobal = typeof window !== "undefined" && window;
 class ServiceList extends Component {
   constructor(props) {
     super(props);
+    this.state = {
+      addSerModalOpen: false
+    };
+    this.finalizeService = this.finalizeService.bind(this);
+    this.toggleSerAddDetails = this.toggleSerAddDetails.bind(this);
     this.addSelectedService = this.addSelectedService.bind(this);
     this.removeSelectedService = this.removeSelectedService.bind(this);
     this.updateStep = this.updateStep.bind(this);
   }
 
-  componentDidMount(){
-      if (windowGlobal) {
-        windowGlobal.scrollTo(200, 150);
-      }
+  toggleSerAddDetails(toggle) {
+    this.setState({
+      addSerModalOpen: toggle
+    });
+  }
+
+  finalizeService(vals, ser) {
+    const { dispatch, uid } = this.props;
+    dispatch(selectService(uid, ser));
+    dispatch(finalizeService(uid, vals, ser));
+    this.toggleSerAddDetails(false);
+  }
+
+  componentDidMount() {
+    if (windowGlobal) {
+      windowGlobal.scrollTo(200, 150);
+    }
   }
 
   updateStep(step) {
@@ -52,7 +71,7 @@ class ServiceList extends Component {
     const breakpointColumnsObj = {
       default: 3,
       1380: 2,
-      740: 1,
+      740: 1
     };
 
     const serComps = availableSers.map(ser => (
@@ -73,9 +92,90 @@ class ServiceList extends Component {
       />
     ));
 
+    const addService = (
+      <div
+        className={`${styles.card}`}
+        style={{
+          border: "1px solid rgba(48,55,66,.10)",
+          background: "#fff",
+          marginBottom: "4rem",
+          margin: "0.4rem 0.1rem 0 0.1rem",
+          padding: "0.3rem 0.5rem 0 0.5rem",
+          display: "flex",
+          justifyContent: "left",
+          width: "100%",
+          borderRadius: "0.3rem",
+          boxShadow: "0 .1rem 0.1rem rgba(48,55,66,.10)"
+        }}
+      >
+        <div style={{ display: "flex" }}>
+          <div style={{ display: "flex", flexDirection: "column" }}>
+            <div className={styles.cardHeader}>
+              <h6 className={`${styles.cardTitle}`}>
+                {" "}
+                Not finding what you're looking for?{" "}
+              </h6>
+            </div>
+
+            <div className={`${styles.cardBody}`}>
+              You just need to give us some details about any service, and we
+              will take care of the rest!
+            </div>
+            <div className={`${styles.cardFooter}`}>
+              <button
+                className={`${styles.btn}`}
+                style={{
+                  background: "rgb(86, 39, 255)",
+                  color: "#fff",
+                  width: "100%",
+                  margin: "1rem"
+                }}
+                onClick={this.toggleSerAddDetails}
+              >
+                <span
+                  className={`${iconStyles.typcn} ${iconStyles.typcnDocumentAdd}`}
+                ></span>{" "}
+                Add Service
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    );
+
     return (
       <Fragment>
         <div className={styles.columns} style={{ marginTop: "1rem" }}>
+          <div className={`${styles.column} ${styles.col1} ${styles.hideXs}`} />
+          <div
+            style={{
+              padding: "1rem",
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "center",
+              paddingBottom: "1rem"
+            }}
+            className={`${styles.column} ${styles.col10} ${styles.colXs12}`}
+          >
+            {serComps}
+          </div>
+          <div className={`${styles.column} ${styles.col1} ${styles.hideXs}`} />
+        </div>
+        <div className={styles.columns}>
+          <div className={`${styles.column} ${styles.col1}`} />
+          <div
+            className={`${styles.column} ${styles.col10}`}
+            style={{ margin: "3rem 0 1rem 1rem" }}
+          >
+            <AddCustomServiceDialog
+              addSerModalOpen={this.state.addSerModalOpen}
+              onSave={this.finalizeService}
+              onClose={this.toggleSerAddDetails}
+            />
+          </div>
+          <div className={`${styles.column} ${styles.col1}`} />
+        </div>
+        <div className={styles.columns}>
           <div className={`${styles.column} ${styles.col1} ${styles.hideXs}`} />
           <div
             style={{
@@ -87,23 +187,23 @@ class ServiceList extends Component {
             }}
             className={`${styles.column} ${styles.col10} ${styles.colXs12}`}
           >
-            {serComps}
+            <div className={`${styles.column} ${styles.col10}`}>
+              {addService}
+            </div>
           </div>
           <div className={`${styles.column} ${styles.col1} ${styles.hideXs}`} />
         </div>
+
         {notSelected ? null : (
           <ServiceActionBar
             action={
-           
-
-          <button
-                  onClick={() => this.updateStep("update_services_details")}
-                  disabled={notSelected}
-                  className={`${styles.btn}  ${styles.btnPrimary}`}
-                >
-                  Add Your Details
-                </button>
-               
+              <button
+                onClick={() => this.updateStep("update_services_details")}
+                disabled={notSelected}
+                className={`${styles.btn}  ${styles.btnPrimary}`}
+              >
+                Add Your Details
+              </button>
             }
           />
         )}

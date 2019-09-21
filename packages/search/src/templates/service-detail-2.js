@@ -528,7 +528,7 @@ class ServiceDetailTemplate extends React.Component {
                 <Helmet>
                     <title>{`${name} | ${org_name} | Evergov`}
                     </title>
-                    <html itemScope itemType="https://schema.org/FAQPage" />
+                    {(allfaq.length > 0) ? (<html itemScope itemType="https://schema.org/FAQPage" />) : null}
                     <script src="https://js.stripe.com/v3/"></script>
                     <link href={"/css/stripe.css"} rel="stylesheet" />
                     <script type="application/ld+json">{`${JSON.stringify(jsonLd)}`}</script>

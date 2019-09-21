@@ -97,6 +97,7 @@ class ServiceForm extends Component {
                       <FieldComponents
                         key={`${name}-field-component`}
                         {...props}
+                        serName={name}
                         formSchema={selectedService.formSchema}
                       />
                       <div className={styles.textRight}>
@@ -105,7 +106,10 @@ class ServiceForm extends Component {
                           className={`${styles.btn} ${styles.btnPrimary} ${styles.btnLg}`}
                           type="submit"
                         >
-                          {!formData ? ` Submit ` : ` Update`}
+                          <span
+                            className={`${iconStyles.typcn} ${iconStyles.typcnArrowSync}`}
+                          ></span>
+                          {!formData ? `Save ` : ` Save Changes`}
                         </button>
                       </div>
                     </form>

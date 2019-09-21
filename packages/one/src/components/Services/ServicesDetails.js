@@ -97,35 +97,31 @@ class ServicesDetails extends Component {
         </div>
         <ServiceActionBar
           action={
-            <div
-              className={`${styles.column}  ${styles.colXs12}`}
-              style={{
-                display: "flex",
-                justifyContent: "space-around",
-                flexWrap: "wrap"
-              }}
-            >
-              <div >
-                <button
-                  onClick={() => this.updateStep("add_services")}
-     
-                  className={`${styles.btn}`}
-                >
+            <Fragment>
+              <button
+                onClick={() => this.updateStep("add_services")}
+                className={`${styles.btn}`}
+              >
+                {" "}
+                <span
+                  className={`${iconStyles.typcn} ${iconStyles.typcnArrowLeft}`}
+                ></span>{" "}
                 Pick Services
-                </button>
-              </div>
-              <div>
-                <button
-                  onClick={() => this.updateStep("add_payment")}
-                  disabled={finalizedSerCount === 0}
-                  className={`${styles.btn}  ${styles.btnPrimary}`}
-                >
-                  {this.props.paymentSetupDone
-                    ? `Modify payment settings`
-                    : `Setup Payment`}
-                </button>
-              </div>
-            </div>
+              </button>
+
+              <button
+                onClick={() => this.updateStep("add_payment")}
+                disabled={finalizedSerCount === 0}
+                className={`${styles.btn}  ${styles.btnPrimary}`}
+              >
+                {this.props.paymentSetupDone
+                  ? `Modify payment settings`
+                  : `Setup Payment`}{" "}
+                <span
+                  className={`${iconStyles.typcn} ${iconStyles.typcnArrowRight}`}
+                ></span>{" "}
+              </button>
+            </Fragment>
           }
         />
       </Fragment>

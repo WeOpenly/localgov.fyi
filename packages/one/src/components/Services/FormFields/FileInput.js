@@ -78,7 +78,8 @@ class FileInput extends Component {
       placeholder,
       type,
       label,
-      disabled
+      disabled,
+      serName
     } = this.props;
     const { name, onBlur, value } = this.props.field;
     const { touched, errors, handleBlur, handleChange } = this.props.form;
@@ -101,13 +102,13 @@ class FileInput extends Component {
               {...getRootProps()}
             >
               <div className={`${styles.col12} ${styles.colSm12}`}>
-                  <div style={{ margin: "0 0 0 0" }}>
-                    {label && (
-                      <Label htmlFor={name} error={error}>
-                        {label}
-                      </Label>
-                    )}
-                  </div>
+                <div style={{ margin: "0 0 0 0" }}>
+                  {label && (
+                    <Label htmlFor={name} error={error}>
+                      {label}
+                    </Label>
+                  )}
+                </div>
 
                 <div
                   style={{
@@ -127,7 +128,6 @@ class FileInput extends Component {
                     background: `${isDragActive ? "#fff" : "#f7f8f9"}`
                   }}
                 >
-
                   <div
                     className={styles.textGray}
                     style={{
@@ -139,17 +139,14 @@ class FileInput extends Component {
                   >
                     <div>
                       <span
-                        className={`${iconStyles.typcn} ${
-                          iconStyles.typcnUpload
-                        }`}
+                        className={`${iconStyles.typcn} ${iconStyles.typcnUpload}`}
                         style={{
                           fontSize: "1.1rem"
                         }}
                       />
                     </div>
                     <div>
-                      {!isDragActive &&
-                        "Click here or drop a file to upload"}
+                      {!isDragActive && "Click here or drop a file to upload"}
                       {isDragReject && "File type not accepted, sorry!"}
                     </div>
                   </div>
@@ -180,17 +177,17 @@ class FileInput extends Component {
             this.state.files.map((fileUrl, idx) => (
               <div
                 key={`attachment-${idx}`}
-             
-                style={{ margin: "4px 0" , cursor: "pointer" }}
+                style={{ margin: "4px 0", cursor: "pointer" }}
               >
                 <a target="_blank" href={fileUrl}>
-                  <span className={`${styles.label} ${styles.labelSecondary}`} style={{background: "#fff"}}>
+                  <span
+                    className={`${styles.label} ${styles.labelSecondary}`}
+                    style={{ background: "#fff" }}
+                  >
                     <span
-                      className={`${iconStyles.typcn} ${
-                        iconStyles.typcnAttachment
-                      }`}
+                      className={`${iconStyles.typcn} ${iconStyles.typcnAttachment}`}
                     />
-                    Document {idx + 1}
+                    {serName} {idx + 1}
                   </span>{" "}
                 </a>
               </div>

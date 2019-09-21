@@ -27,12 +27,13 @@ export function switchInput (field) {
 }
 
 class FieldComponents extends React.Component {
-  renderField = (field, errors) => {
+  renderField = (field, errors, serName) => {
     let specific = switchInput(field);
     let props = {
       key: `field-components-fields-${field.name}`,
       label: field.label,
       name: field.name,
+      serName: serName,
       placeholder: field.placeholder ? field.placeholder : "",
       type: field.type ? field.type : "text",
       ...specific,
@@ -44,7 +45,7 @@ class FieldComponents extends React.Component {
 
   render() {
     return this.props.formSchema.map(field =>
-      this.renderField(field, this.props.errors)
+      this.renderField(field, this.props.errors, this.props.serName)
     );
   }
 }

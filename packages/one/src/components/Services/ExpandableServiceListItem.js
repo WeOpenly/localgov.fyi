@@ -25,6 +25,8 @@ const iconMap = {
   8: <CalFranchTax style={{ width: "64px", height: "64px" }} />
 };
 
+const defaultIcon = <DelFranchTax style={{ width: "100px", height: "64px" }} />;
+
 let cx = classNames.bind(styles);
 
 class ExpServiceListItem extends React.Component {
@@ -43,7 +45,12 @@ class ExpServiceListItem extends React.Component {
   }
 
   render() {
-    const icon = iconMap[this.props.ser.id];
+    let icon = iconMap[this.props.ser.id];
+        if (!icon) {
+          icon = defaultIcon;
+        }
+
+
     return (
       <div
         className={`${styles.card}`}

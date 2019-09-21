@@ -24,18 +24,16 @@ class ServiceActionBar extends React.Component {
         className={className}
         style={{
           background: "#fff",
-          display: "flex",
-          justifyContent: "right",
           boxShadow: "0 0 0.5rem 0.3rem rgba(50,50,93,.04)"
         }}
       >
         <div className={`${styles.container} ${styles.gridXl}`}>
           <div className={`${styles.columns}`}>
             <div
-              className={`${styles.column} ${styles.col2} ${styles.hideXs}`}
+              className={`${styles.column} ${styles.col1} ${styles.hideXs}`}
             />
             <div
-              className={`${styles.column} ${styles.col7} ${styles.colXs12} ${styles.textCenter}`}
+              className={`${styles.column} ${styles.col10} ${styles.colXs12} ${styles.textCenter}`}
             >
               <div
                 style={{
@@ -48,7 +46,7 @@ class ServiceActionBar extends React.Component {
               </div>
             </div>
             <div
-              className={`${styles.column} ${styles.col3} ${styles.hideXs}`}
+              className={`${styles.column} ${styles.col1} ${styles.hideXs}`}
             />
           </div>
         </div>

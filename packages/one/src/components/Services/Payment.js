@@ -166,14 +166,19 @@ class Payment extends Component {
         {selectedPlan ? (
           <ServiceActionBar
             action={
-              <div
-                className={`${styles.column} ${styles.colSm2} ${styles.colXs12}`}
-                style={{
-                  display: "flex",
-                  justifyContent: "right",
-                  flexWrap: "wrap"
-                }}
+              <Fragment>
+
+               <button
+                onClick={() => this.updateStep("update_services_details")}
+                className={`${styles.btn}`}
               >
+                {" "}
+                <span
+                  className={`${iconStyles.typcn} ${iconStyles.typcnArrowLeft}`}
+                ></span>{" "}
+                Add Details
+              </button>
+              <div style={{display: 'flex'}}>
                 <div style={{ color: "#fff", width: "260px" }}>
                   <button
                     className={`${styles.btn} ${styles.btnPrimary}`}
@@ -215,6 +220,7 @@ class Payment extends Component {
                   Connect bank account
                 </PlaidLink>
               </div>
+              </Fragment>
             }
           />
         ) : null}

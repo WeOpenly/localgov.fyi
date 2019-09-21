@@ -108,8 +108,8 @@ class ServiceList extends Component {
           boxShadow: "0 .1rem 0.1rem rgba(48,55,66,.10)"
         }}
       >
-        <div style={{ display: "flex" }}>
-          <div style={{ display: "flex", flexDirection: "column" }}>
+ 
+     
             <div className={styles.cardHeader}>
               <h6 className={`${styles.cardTitle}`}>
                 {" "}
@@ -124,12 +124,6 @@ class ServiceList extends Component {
             <div className={`${styles.cardFooter}`}>
               <button
                 className={`${styles.btn}`}
-                style={{
-                  background: "rgb(86, 39, 255)",
-                  color: "#fff",
-                  width: "100%",
-                  margin: "1rem"
-                }}
                 onClick={this.toggleSerAddDetails}
               >
                 <span
@@ -138,8 +132,8 @@ class ServiceList extends Component {
                 Add Service
               </button>
             </div>
-          </div>
-        </div>
+
+
       </div>
     );
 
@@ -155,9 +149,12 @@ class ServiceList extends Component {
               alignItems: "center",
               paddingBottom: "1rem"
             }}
-            className={`${styles.column} ${styles.col10} ${styles.colXs12}`}
+            className={`${styles.column} ${styles.col6} ${styles.colXs12}`}
           >
             {serComps}
+          </div>
+          <div className={`${styles.column} ${styles.col4} ${styles.colXs12}`}>
+            {addService}
           </div>
           <div className={`${styles.column} ${styles.col1} ${styles.hideXs}`} />
         </div>
@@ -175,35 +172,23 @@ class ServiceList extends Component {
           </div>
           <div className={`${styles.column} ${styles.col1}`} />
         </div>
-        <div className={styles.columns}>
-          <div className={`${styles.column} ${styles.col1} ${styles.hideXs}`} />
-          <div
-            style={{
-              padding: "1rem",
-              display: "flex",
-              flexDirection: "column",
-              alignItems: "center",
-              paddingBottom: "12rem"
-            }}
-            className={`${styles.column} ${styles.col10} ${styles.colXs12}`}
-          >
-            <div className={`${styles.column} ${styles.col10}`}>
-              {addService}
-            </div>
-          </div>
-          <div className={`${styles.column} ${styles.col1} ${styles.hideXs}`} />
-        </div>
 
         {notSelected ? null : (
           <ServiceActionBar
             action={
-              <button
-                onClick={() => this.updateStep("update_services_details")}
-                disabled={notSelected}
-                className={`${styles.btn}  ${styles.btnPrimary}`}
-              >
-                Add Your Details
-              </button>
+              <Fragment>
+                <div></div>
+                <button
+                  onClick={() => this.updateStep("update_services_details")}
+                  disabled={notSelected}
+                  className={`${styles.btn}  ${styles.btnPrimary}`}
+                >
+                  Add Your Details{" "}
+                  <span
+                    className={`${iconStyles.typcn} ${iconStyles.typcnArrowRight}`}
+                  ></span>{" "}
+                </button>
+              </Fragment>
             }
           />
         )}

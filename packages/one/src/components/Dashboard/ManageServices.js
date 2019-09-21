@@ -136,20 +136,7 @@ class ManageServiceList extends Component {
             <div className={styles.divider} />
           </div>
         </div>
-        <div className={styles.columns}>
-          <div className={`${styles.column} ${styles.col1}`} />
-          <div
-            className={`${styles.column} ${styles.col10}`}
-            style={{ margin: "3rem 0 1rem 1rem" }}
-          >
-            <AddCustomServiceDialog
-              addSerModalOpen={this.state.addSerModalOpen}
-              onSave={this.finalizeService}
-              onClose={this.toggleSerAddDetails}
-            />
-          </div>
-          <div className={`${styles.column} ${styles.col1}`} />
-        </div>
+
         {finalizedSers.length > 0 ? (
           <div className={styles.columns}>
             <div
@@ -160,7 +147,7 @@ class ManageServiceList extends Component {
                 display: "flex",
                 flexDirection: "column",
                 alignItems: "left",
-                margin: "0 0 0 1rem"
+                margin: "1rem 0 0 1rem"
               }}
               className={`${styles.column} ${styles.colXs10}`}
             >
@@ -194,7 +181,6 @@ class ManageServiceList extends Component {
             />
             <div
               style={{
-                padding: "1rem",
                 display: "flex",
                 flexDirection: "column",
                 alignItems: "left",
@@ -224,6 +210,20 @@ class ManageServiceList extends Component {
             {notFinalizedSers}
           </div>
           <div className={`${styles.column} ${styles.col1} ${styles.hideXs}`} />
+        </div>
+        <div className={styles.columns}>
+          <div className={`${styles.column} ${styles.col1}`} />
+          <div
+            className={`${styles.column} ${styles.col10}`}
+            style={{ margin: "3rem 0 1rem 1rem" }}
+          >
+            <AddCustomServiceDialog
+              addSerModalOpen={this.state.addSerModalOpen}
+              onSave={this.finalizeService}
+              onClose={this.toggleSerAddDetails}
+            />
+          </div>
+          <div className={`${styles.column} ${styles.col1}`} />
         </div>
       </Fragment>
     );

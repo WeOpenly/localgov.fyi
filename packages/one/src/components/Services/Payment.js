@@ -10,6 +10,7 @@ import PaymentPlans from "./PaymentPlans";
 import CardPaymentMethod from './CardPaymentMethod';
 import ServiceActionBar from "./ServiceActionBar";
 import { toggleStripeModal } from "./actions";
+import { updateStep } from "../actions";
 import { StripeProvider } from "react-stripe-elements";
 const windowGlobal = typeof window !== "undefined" && window;
 
@@ -75,6 +76,11 @@ class Payment extends Component {
     this.onCardPaymentSubmit = this.onCardPaymentSubmit.bind(this);
   }
 
+  updateStep(step) {
+    const { dispatch } = this.props;
+    dispatch(updateStep(step));
+  }
+
   toggleCardDetails(toggle) {
     this.setState({
       stripeCardModalOpen: toggle
@@ -98,11 +104,11 @@ class Payment extends Component {
         });
       }
     }
-    const  {landingPlan } = this.props;
-    if (landingPlan){
+    const { landingPlan } = this.props;
+    if (landingPlan) {
       this.setState({
         selectedPlan: landingPlan
-      })
+      });
     }
   }
 
@@ -113,7 +119,6 @@ class Payment extends Component {
   }
 
   handleOnSuccess(public_token, metadata) {
-   
     this.props.submitBankPayment(
       public_token,
       metadata.account_id,
@@ -136,7 +141,6 @@ class Payment extends Component {
     }
 
     const { selectedPlan, stripeCardModalOpen } = this.state;
-
 
     return (
       <Fragment>
@@ -167,59 +171,58 @@ class Payment extends Component {
           <ServiceActionBar
             action={
               <Fragment>
-
-               <button
-                onClick={() => this.updateStep("update_services_details")}
-                className={`${styles.btn}`}
-              >
-                {" "}
-                <span
-                  className={`${iconStyles.typcn} ${iconStyles.typcnArrowLeft}`}
-                ></span>{" "}
-                Add Details
-              </button>
-              <div style={{display: 'flex'}}>
-                <div style={{ color: "#fff", width: "260px" }}>
-                  <button
-                    className={`${styles.btn} ${styles.btnPrimary}`}
+                <button
+                  onClick={() => this.updateStep("update_services_details")}
+                  className={`${styles.btn}`}
+                >
+                  {" "}
+                  <span
+                    className={`${iconStyles.typcn} ${iconStyles.typcnArrowLeft}`}
+                  ></span>{" "}
+                  Add Details
+                </button>
+                <div style={{ display: "flex" }}>
+                  <div style={{ color: "#fff", width: "260px" }}>
+                    <button
+                      className={`${styles.btn} ${styles.btnPrimary}`}
+                      style={{
+                        background: "rgb(86, 39, 255)",
+                        color: "#fff",
+                        width: "100%"
+                      }}
+                      onClick={this.toggleCardDetails}
+                    >
+                      <span
+                        className={`${iconStyles.typcn} ${iconStyles.typcnLockClosed}`}
+                      ></span>{" "}
+                      Pay with credit card
+                    </button>
+                  </div>
+                  <div
+                    className={`${styles.dividerVert} ${styles.textCenter}`}
+                    data-content="OR"
+                  ></div>
+                  <PlaidLink
+                    clientName="Evergov One"
+                    env={process.env.GATSBY_PLAID_ENV}
+                    className={`${styles.btn}  ${styles.btnPrimary}`}
                     style={{
                       background: "rgb(86, 39, 255)",
                       color: "#fff",
-                      width: "100%"
+                      width: "260px"
                     }}
-                    onClick={this.toggleCardDetails}
+                    selectAccount={true}
+                    product={["auth"]}
+                    publicKey={process.env.GATSBY_PLAID_PUBLIC_KEY}
+                    onExit={this.handleOnExit}
+                    onSuccess={this.handleOnSuccess}
                   >
                     <span
                       className={`${iconStyles.typcn} ${iconStyles.typcnLockClosed}`}
                     ></span>{" "}
-                    Pay with credit card
-                  </button>
+                    Connect bank account
+                  </PlaidLink>
                 </div>
-                <div
-                  className={`${styles.dividerVert} ${styles.textCenter}`}
-                  data-content="OR"
-                ></div>
-                <PlaidLink
-                  clientName="Evergov One"
-                  env={process.env.GATSBY_PLAID_ENV}
-                  className={`${styles.btn}  ${styles.btnPrimary}`}
-                  style={{
-                    background: "rgb(86, 39, 255)",
-                    color: "#fff",
-                    width: "260px"
-                  }}
-                  selectAccount={true}
-                  product={["auth"]}
-                  publicKey={process.env.GATSBY_PLAID_PUBLIC_KEY}
-                  onExit={this.handleOnExit}
-                  onSuccess={this.handleOnSuccess}
-                >
-                  <span
-                    className={`${iconStyles.typcn} ${iconStyles.typcnLockClosed}`}
-                  ></span>{" "}
-                  Connect bank account
-                </PlaidLink>
-              </div>
               </Fragment>
             }
           />
@@ -229,5 +232,12 @@ class Payment extends Component {
   }
 }
 
+const mapStateToProps = function(state, ownProps) {
+  return {
+    ...state.oneServices,
+    uid: state.oneUser.userDetails.uid,
+    paymentSetupDone: state.oneUser.paymentSetupDone,
+  };
+};
 
-export default Payment;
+export default connect(mapStateToProps)(Payment);

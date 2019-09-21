@@ -66,13 +66,54 @@ class ServiceList extends Component {
     if (isBusiness) {
       availableSers = allAvailableServices.business;
     }
-
+    // const isAddedandnotFinalized
     const notSelected = Object.keys(selectedServices).length === 0;
-    const breakpointColumnsObj = {
-      default: 3,
-      1380: 2,
-      740: 1
-    };
+
+    const finalizedSers = Object.values(selectedServices).map(ser => {
+      if ("formData" in selectedServices[ser.id]) {
+        return (
+          <ServiceListItem
+            key={ser.id}
+            isFinalized={
+              ser.id in selectedServices && "formData" in selectedServices[ser.id]
+            }
+            isSelected={ser.id in selectedServices ? true : false}
+            onItemClick={() => {
+              if (ser.id in selectedServices) {
+                this.removeSelectedService(ser);
+              } else {
+                this.addSelectedService(ser);
+              }
+            }}
+            ser={ser}
+          />
+        );
+      }
+    });
+
+    const notFinalizedSers = availableSers.map(ser => {
+      if (
+        !(ser.id in selectedServices && "formData" in selectedServices[ser.id])
+      ) {
+        return (
+          <ServiceListItem
+            key={ser.id}
+            isFinalized={
+              ser.id in selectedServices && "formData" in selectedServices[ser.id]
+            }
+            isSelected={ser.id in selectedServices ? true : false}
+            onItemClick={() => {
+              if (ser.id in selectedServices) {
+                this.removeSelectedService(ser);
+              } else {
+                this.addSelectedService(ser);
+              }
+            }}
+            ser={ser}
+          />
+        );
+      }
+    });
 
     const serComps = availableSers.map(ser => (
       <ServiceListItem
@@ -151,10 +192,26 @@ class ServiceList extends Component {
             }}
             className={`${styles.column} ${styles.col6} ${styles.colXs12}`}
           >
-            {serComps}
+            {notFinalizedSers}
           </div>
           <div className={`${styles.column} ${styles.col4} ${styles.colXs12}`}>
             {addService}
+          </div>
+          <div className={`${styles.column} ${styles.col1} ${styles.hideXs}`} />
+        </div>
+        <div className={styles.columns} style={{ marginTop: "1rem" }}>
+          <div className={`${styles.column} ${styles.col1} ${styles.hideXs}`} />
+          <div
+            style={{
+              padding: "1rem",
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "center",
+              paddingBottom: "1rem"
+            }}
+            className={`${styles.column} ${styles.col10} ${styles.colXs12}`}
+          >
+            {finalizedSers}
           </div>
           <div className={`${styles.column} ${styles.col1} ${styles.hideXs}`} />
         </div>

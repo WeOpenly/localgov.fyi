@@ -142,7 +142,7 @@ class StripeCheckoutForm extends React.Component {
           <div style={{margin: '0.5rem 0'}} className={`${styles.column} ${styles.col12}`}>
             <div className={styles.formGroup}>
               <label className={styles.formSwitch}>
-                <input type="checkbox" checked />
+                <input type="checkbox"  />
                 <i className={styles.formIcon}></i> Use this payment method for making
                 service payments too
               </label>

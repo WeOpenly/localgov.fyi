@@ -15,6 +15,7 @@
         "babel-polyfill": "^6.26.0",
         "classnames": "^2.2.6",
         "core-js": "^2.5.7",
+        "minipass": "2.7.0",
         "currency.js": "^1.2.2",
         "dotenv": "^6.2.0",
         "fingerprintjs2": "^2.1.0",

@@ -128,7 +128,7 @@ function checkAndAddUser(user){
             if (docData.exists){
                 let prefs = { isFirstTime, isBusiness: docData.data().isBusiness, isIndividual: docData.data().isIndividual, createdAt: dateNow.toString(), paymentSetupDone: docData.data().paymentSetupDone}
                 dispatch(addUserPrefs(prefs))
-                dispatch(toggleSidebar(true));
+             
             }
             else{
                 userRef.set({ ...providerData[0], uid: uid, isBusiness: false, isIndividual: false, createdAt: dateNow.toString(), paymentSetupDone: false})

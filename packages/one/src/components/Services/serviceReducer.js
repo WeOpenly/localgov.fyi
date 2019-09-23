@@ -7,7 +7,7 @@ const initialState = {
     individual: [
       {
         id: 0,
-        name: "Property Taxes", 
+        name: "Property Taxes",
         shortDescription:
           "Property taxes fall into two categories, Secured and Unsecured. A Secured property tax is a tax for a physical property, most often real estate and land. An Unsecured property tax is for personal items, like an airplane, boat, or business. ",
         faqs: [
@@ -387,7 +387,8 @@ const initialState = {
       {
         id: 6,
         name: "Utility Bill",
-        shortDescription: "a Description",
+        shortDescription:
+          "Depending on the location you are based in, some utilities like water, sewer, trash are taken care by your city or county.",
         formSchema: [
           {
             id: "providerName",

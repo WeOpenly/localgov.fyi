@@ -49,6 +49,7 @@ class OneDashboard extends React.Component {
 
 
     toggleSidebar(toggle) {
+      console.log('here')
        const {dispatch} = this.props;
        dispatch(toggleSidebar(toggle));
     }
@@ -93,42 +94,16 @@ class OneDashboard extends React.Component {
           <Fragment>
             <Toast />
 
-            <div
-              className={`${expStyles.offCanvas} ${
-                openSideBar
-                  ? `${expStyles.offCanvasSidebarShow}`
-                  : `${expStyles.offCanvasSidebar}`
-              }`}
-              style={{ height: "100vh" }}
-            >
-              <div
-                className={`${expStyles.offCanvasSidebar}`}
-                style={{
-                  background: "#fff",
-                  boxShadow: "0 0 1.5rem 0.3rem rgba(50,50,93,.04)",
-                  minWidth: "12rem",
-                  display: "flex",
-                  flexDirection: "column",
-                  alignItems: "center",
-                  justifyContent: "space-between"
-                }}
-              >
-                <SideBar
-                  onMenuClick={this.toggleSidebar}
-                  open={openSideBar}
-                  displayName={displayName}
-                  photoURL={photoURL}
-                  onLogout={this.logout}
-                />
-              </div>
-              <div
-                className={`${expStyles.offCanvasContent}`}
-                style={{
-                  overflowY: "scroll",
-                  padding: "0rem 0rem 0.4rem 0rem",
-                  background: "#f7f8f9"
-                }}
-              >
+            <div>
+              <SideBar
+                onMenuClick={this.toggleSidebar}
+                open={openSideBar}
+                displayName={displayName}
+                photoURL={photoURL}
+                onLogout={this.logout}
+              />
+
+        
                 <AppBar
                   onMenuClick={this.toggleSidebar}
                   showCrumbs={!openSideBar}
@@ -141,7 +116,7 @@ class OneDashboard extends React.Component {
                   <Receipts path="/receipts" />
                   <FAQs path="/faqs" />
                 </Router>
-              </div>
+          
             </div>
           </Fragment>
         );

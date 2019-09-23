@@ -41,42 +41,42 @@ class FooterSupport extends Component {
         const { classes, } = this.props;
 
         return (
-            <div className={classes.support_footer}>
-                <div className={classes.support_footer_header}>
-                    <Typography variant="display1" style={{ fontSize: "0.85rem" }} >
-                        Support
-                    </Typography>
-                </div>
-                <div className={classes.support_footer_links}>
-                    <Typography variant="caption" >
-                    <a
-                        href={`https://evergov.zendesk.com/hc/en-us`}
-                        className={classes.footer_social_icon}
-
-                        target="_blank">
-                        Help
-                        </a>
-                        </Typography>
-                    <Typography variant="caption">
-                    <a
-                        href={`/terms`}
-                        className={classes.footer_social_icon}
-
-                        target="_blank">
-                        Terms
-                        </a>
-                    </Typography>
-                    <Typography variant="caption">
-                    <a
-                        href={`/privacy`}
-                        className={classes.footer_social_icon}
-
-                        target="_blank">
-                        Privacy
-                        </a>
-                    </Typography>
-                </div>
+          <div className={classes.support_footer}>
+            <div className={classes.support_footer_header}>
+              <Typography variant="display1" style={{ fontSize: "0.85rem" }}>
+                Support
+              </Typography>
             </div>
+            <div className={classes.support_footer_links}>
+              <Typography variant="caption">
+                <a
+                  href={`https://evergov.zendesk.com/hc/en-us`}
+                  className={classes.footer_social_icon}
+                  target="_blank"
+                >
+                  Help
+                </a>
+              </Typography>
+              <Typography variant="caption">
+                <a
+                  href={`https://evergov.com/terms`}
+                  className={classes.footer_social_icon}
+                  target="_blank"
+                >
+                  Terms
+                </a>
+              </Typography>
+              <Typography variant="caption">
+                <a
+                  href={`https://evergov.com/privacy`}
+                  className={classes.footer_social_icon}
+                  target="_blank"
+                >
+                  Privacy
+                </a>
+              </Typography>
+            </div>
+          </div>
         );
     }
 }

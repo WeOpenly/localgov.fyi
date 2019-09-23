@@ -110,7 +110,7 @@ class FooterDiscover extends Component {
             <div className={classes.disco_footer_links}>
               <Typography variant="caption">
                 <a
-                  href={`/quick_pay`}
+                  href={`https://evergov.com/quick_pay`}
                   className={classes.footer_social_icon}
                   target="_blank"
                 >
@@ -120,7 +120,7 @@ class FooterDiscover extends Component {
 
               <Typography variant="caption">
                 <a
-                  href={`/services`}
+                  href={`https://evergov.com/services`}
                   className={classes.footer_social_icon}
                   target="_blank"
                 >
@@ -129,7 +129,7 @@ class FooterDiscover extends Component {
               </Typography>
               <Typography variant="caption">
                 <a
-                  href={`/locations`}
+                  href={`https://evergov.com/locations`}
                   className={classes.footer_social_icon}
                   target="_blank"
                 >

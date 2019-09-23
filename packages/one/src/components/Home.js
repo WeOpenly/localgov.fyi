@@ -145,12 +145,21 @@ class OneHome extends React.Component {
                     </section>
 
                     <section className={styles.navbarSection}>
-                      <Link to="/terms" style={{ padding: "0.5rem" }}>
+                      <a
+                        href={`https://evergov.com/terms`}
+                        style={{ padding: "0.5rem" }}
+                        target="_blank"
+                      >
                         Terms
-                      </Link>
-                      <Link to="/privacy" style={{ padding: "0.5rem" }}>
+                      </a>
+
+                      <a
+                        href={`https://evergov.com/privacy`}
+                        style={{ padding: "0.5rem" }}
+                        target="_blank"
+                      >
                         Privacy
-                      </Link>
+                      </a>
                     </section>
                   </header>
                 </div>
@@ -539,11 +548,8 @@ class OneHome extends React.Component {
                   className={`${styles.column} ${styles.col8} ${styles.colXs12} ${styles.textCenter}`}
                 >
                   <div>
-                  
-                      <h3>FAQs</h3>
-     
+                    <h3>FAQs</h3>
                   </div>
-               
                 </div>
 
                 <div
@@ -563,7 +569,6 @@ class OneHome extends React.Component {
                 <div
                   className={`${styles.column} ${styles.col8} ${styles.colXs12} ${styles.textLeft}`}
                 >
-     
                   {faqComps}
                 </div>
 

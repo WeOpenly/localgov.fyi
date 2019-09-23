@@ -88,7 +88,7 @@ class Services extends Component {
     
 
     return (
-      <Fragment>
+      <div style={{height: '100%'}}>
         <div className={styles.columns}>
           <div className={`${styles.column} ${styles.col3}`} />
           <div
@@ -120,7 +120,7 @@ class Services extends Component {
             email={this.props.email}
           />
         </Router>
-      </Fragment>
+      </div>
     );
   }
 }

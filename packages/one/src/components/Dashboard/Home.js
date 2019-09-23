@@ -27,7 +27,7 @@ class Home extends Component {
       const avLen = availableSers.length;
 
       return (
-      <Fragment>
+      <div style={{height: '100%'}}>
         <div className={styles.columns}>
         <div
           className={`${styles.column} ${styles.col8}`}
@@ -59,7 +59,7 @@ class Home extends Component {
                 style={{
                   padding: "1.5rem 2rem 1rem 1rem",
                   margin: '0 1rem',
-                  border: "1px solid rgba(86, 39, 255, .2)",
+            
            
                   boxShadow: "none",
                   height: "auto",
@@ -91,8 +91,7 @@ class Home extends Component {
               style={{
                 padding: "1.5rem 2rem 1rem 1rem",
                 margin: '0 1rem',
-                border: "1px solid rgba(86, 39, 255, .2)",
-      
+          
                 boxShadow: "none",
                 height: "auto",
                 boxShadow: "0 .1rem 0.1rem rgba(48,55,66,.10)"
@@ -116,7 +115,7 @@ class Home extends Component {
           </div>
         </div>
       </div>
-</Fragment>
+</div>
       )
     }
 }

@@ -103,7 +103,7 @@ class ManageServiceList extends Component {
     });
 
     return (
-      <Fragment>
+      <div style={{height: '100%'}}>
         <div className={styles.columns}>
           <div className={`${styles.column} ${styles.col1}`} />
           <div
@@ -225,7 +225,7 @@ class ManageServiceList extends Component {
           </div>
           <div className={`${styles.column} ${styles.col1}`} />
         </div>
-      </Fragment>
+      </div>
     );
   }
 }

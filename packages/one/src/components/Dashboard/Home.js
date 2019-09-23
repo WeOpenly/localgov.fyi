@@ -23,7 +23,15 @@ class Home extends Component {
         availableSers = allAvailableServices.business;
       }
 
-      const selectedLen = Object.keys(selectedServices).length;
+
+      let selectedSerLen = 0;
+    const finalizedSers = Object.values(selectedServices).map(selected => {
+      if ("formData" in selectedServices[selected.id]) {
+        selectedSerLen = selectedSerLen +1;
+      }
+    });
+
+      const selectedLen = selectedSerLen;
       const avLen = availableSers.length;
 
       return (
@@ -59,8 +67,6 @@ class Home extends Component {
                 style={{
                   padding: "1.5rem 2rem 1rem 1rem",
                   margin: '0 1rem',
-            
-           
                   boxShadow: "none",
                   height: "auto",
                   boxShadow: "0 .1rem 0.1rem rgba(48,55,66,.10)"

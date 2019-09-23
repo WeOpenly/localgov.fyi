@@ -83,6 +83,29 @@ class ManageServiceList extends Component {
       }
     });
 
+    let nonAddedSersLen = 0;
+    const addedSersNotFinalized = availableSers.map(ser => {
+      if (
+        (ser.id in selectedServices) &&
+          !("formData" in selectedServices[ser.id])
+      ) {
+        nonAddedSersLen +=1;
+        return (
+          <ExpandableServiceListItem
+            key={ser.id}
+            isFinalized={
+              ser.id in selectedServices &&
+              "formData" in selectedServices[ser.id]
+            }
+            updateServiceDetails={this.updateService}
+            removeServiceDetails={this.removeSelectedService}
+            ser={ser}
+          />
+        );
+      }
+    });
+
+
     const notFinalizedSers = availableSers.map(ser => {
       if (
         !(ser.id in selectedServices && "formData" in selectedServices[ser.id])
@@ -103,7 +126,7 @@ class ManageServiceList extends Component {
     });
 
     return (
-      <div style={{height: '100%'}}>
+      <div style={{ height: "100%" }}>
         <div className={styles.columns}>
           <div className={`${styles.column} ${styles.col1}`} />
           <div
@@ -174,6 +197,51 @@ class ManageServiceList extends Component {
           </div>
           <div className={`${styles.column} ${styles.col1} ${styles.hideXs}`} />
         </div>
+
+        {nonAddedSersLen.length > 0 ? (
+          <Fragment>
+            <div className={styles.columns}>
+              <div
+                className={`${styles.column} ${styles.col1} ${styles.hideXs}`}
+              />
+              <div
+                style={{
+                  display: "flex",
+                  flexDirection: "column",
+                  alignItems: "left",
+                  margin: "1rem 0 0 1rem"
+                }}
+                className={`${styles.column} ${styles.colXs10}`}
+              >
+                <h6>Added Services to Link</h6>
+              </div>
+              <div
+                className={`${styles.column} ${styles.col1} ${styles.hideXs}`}
+              />
+            </div>
+            <div className={styles.columns} style={{}}>
+              <div
+                className={`${styles.column} ${styles.col1} ${styles.hideXs}`}
+              />
+              <div
+                style={{
+                  padding: "1rem",
+                  display: "flex",
+                  flexDirection: "column",
+                  alignItems: "left",
+                  paddingBottom: "1rem"
+                }}
+                className={`${styles.column} ${styles.col10} ${styles.colXs12}`}
+              >
+                {addedSersNotFinalized}
+              </div>
+              <div
+                className={`${styles.column} ${styles.col1} ${styles.hideXs}`}
+              />
+            </div>
+          </Fragment>
+        ) : null}
+
         {notFinalizedSers.length > 0 ? (
           <div className={styles.columns}>
             <div
@@ -188,7 +256,7 @@ class ManageServiceList extends Component {
               }}
               className={`${styles.column} ${styles.colXs10}`}
             >
-              <h6>Services to link</h6>
+              <h6>Services to add</h6>
             </div>
             <div
               className={`${styles.column} ${styles.col1} ${styles.hideXs}`}

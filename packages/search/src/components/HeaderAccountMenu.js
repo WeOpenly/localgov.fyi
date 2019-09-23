@@ -65,8 +65,6 @@ class HeaderAccountMenu extends Component {
     super(props);
   }
 
-
-
   render() {
     const { classes, isMobile } = this.props;
 

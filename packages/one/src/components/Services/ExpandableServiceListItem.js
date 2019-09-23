@@ -90,9 +90,9 @@ class ExpServiceListItem extends React.Component {
                 onClick={this.expandCard}
                 className={`${styles.btn} ${styles.floatRight} ${styles.btnLink}`}
               >
-                {this.state.expanded ? (
+                {this.props.isFinalized ? (
                   <span
-                    className={`${iconStyles.typcn} ${iconStyles.typcnArrowUpThick}`}
+                    className={`${iconStyles.typcn} ${iconStyles.typcnArrowDownThick}`}
                     style={{
                       fontSize: "0.8rem",
 
@@ -101,7 +101,7 @@ class ExpServiceListItem extends React.Component {
                   />
                 ) : (
                   <span
-                    className={`${iconStyles.typcn} ${iconStyles.typcnArrowDownThick}`}
+                    className={`${iconStyles.typcn} ${iconStyles.typcnPlus}`}
                     style={{
                       fontSize: "0.8rem",
 
@@ -121,13 +121,9 @@ class ExpServiceListItem extends React.Component {
                   {this.props.ser.shortDescription}
                 </div>
               </div>
-              <div
-                className={`${styles.cardBody}`}
-        
-              >
+              <div className={`${styles.cardBody}`}>
                 {this.state.expanded ? (
                   <div className={styles.columns} style={{ margin: "1rem 0" }}>
-            
                     <ServiceForm
                       key={`service-form-${this.props.ser.id}`}
                       selectedService={this.props.ser}

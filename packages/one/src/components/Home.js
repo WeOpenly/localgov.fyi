@@ -113,7 +113,7 @@ class OneHome extends React.Component {
 
         return (
           <Fragment>
-            <div className={`${styles.container} ${styles.gridXl}`}>
+            <div style={{background: '#fff'}} className={`${styles.container} ${styles.gridXl}`}>
               <div className={styles.columns}>
                 <div className={`${styles.column} ${styles.col1}`}></div>
                 <div className={`${styles.column} ${styles.col10}`}>

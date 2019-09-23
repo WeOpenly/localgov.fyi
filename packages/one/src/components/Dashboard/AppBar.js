@@ -22,58 +22,52 @@ class AppBar extends Component {
         } = this.props;
 
         return (
-            <div>
+          <div>
             <header
-                className={styles.navbar}
-                style={{
-                    background: '#fff',
-                    padding: "0.6rem 0.5rem",
-                    boxShadow: '0 0 0.5rem 0.3rem rgba(50,50,93,.04)',
-                }}
+              className={styles.navbar}
+              style={{
+                background: "#fff",
+                padding: "0.6rem 0.5rem",
+                boxShadow: "0 0 0.5rem 0.3rem rgba(50,50,93,.04)"
+              }}
             >
-                    <section className={styles.navbarSection} style={{marginLeft: '1rem'}}>
-                        {showCrumbs ? (<div onClick={() => onMenuClick(true)}>
-                            <span
-                                className={`${iconStyles.typcn} ${
-                                    iconStyles.typcnThMenu
-                                    }`}
-                                style={{ fontSize: "1rem", cursor: "pointer", marginRight: '1rem' }}
-                            />
-                            </div>) : null}
-                        <div className={styles.inputGroup}>
-                            <input
-                                className={`${styles.formInput} ${styles.inputLg}`}
-                                style={{ height: '2.1rem' }}
-                            />
-                            <button className={`${styles.btn} ${styles.btnMd}   ${styles.inputGroupBtn}`}><span
-                                className={`${iconStyles.typcn} ${
-                                    iconStyles.typcnZoomOutline
-                                    }`}
-                                style={{ fontSize: "1rem", cursor: "pointer" }}
-                            /></button>
-                        </div>
-                  
-                        </section>
-                <section className={styles.navbarSection}>
-                    <div>
-                            <div className={`${styles.btn} ${styles.btnMd}  ${styles.btnLink}`}>
-                        <span
-                            className={`${iconStyles.typcn} ${
-                                iconStyles.typcnBell
-                                }`}
-                            style={{ fontSize: "1rem", cursor: "pointer" }}
-                        />
-                        </div>
-                    </div>
-                </section>
+              <section
+                className={styles.navbarSection}
+                style={{ marginLeft: "1rem" }}
+              >
+                {showCrumbs ? (
+                  <div onClick={() => onMenuClick(true)}>
+                    <span
+                      className={`${iconStyles.typcn} ${iconStyles.typcnThMenu}`}
+                      style={{
+                        fontSize: "1rem",
+                        cursor: "pointer",
+                        marginRight: "1rem"
+                      }}
+                    />
+                  </div>
+                ) : null}
+          
+              </section>
+              <section className={styles.navbarSection}>
+                <a
+                  href={`https://evergov.com/terms`}
+                  style={{ padding: "0.5rem" }}
+                  target="_blank"
+                >
+                  Terms
+                </a>
 
-
-               
+                <a
+                  href={`https://evergov.com/privacy`}
+                  style={{ padding: "0.5rem" }}
+                  target="_blank"
+                >
+                  Privacy
+                </a>
+              </section>
             </header>
-           
-       
-
-            </div>
+          </div>
         );
     }
 }

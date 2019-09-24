@@ -20,10 +20,9 @@ class OneIndex extends React.Component {
     }
 
 
-    componentWillMount() {
+    componentDidMount() {
         const {dispatch} = this.props;
-        dispatch(checkLogin())
-
+        dispatch(checkLogin()); 
     }
 
 

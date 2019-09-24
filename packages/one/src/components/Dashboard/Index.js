@@ -33,7 +33,7 @@ class OneDashboard extends React.Component {
 
     componentDidMount(){
         const {dispatch} = this.props;
- 
+
         if(windowGlobal){
             const userType = windowGlobal.localStorage.getItem("userType");
             const plan = windowGlobal.localStorage.getItem("plan");

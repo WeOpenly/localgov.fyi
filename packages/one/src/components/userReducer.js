@@ -3,7 +3,7 @@ import * as types from "./ActionTypes";
 const initialState = {
   loginInProgress: false,
   openSideBar: false,
-  loginCheckInProgress: false,
+  loginCheckInProgress: true,
   loginFailure: false,
   loginFailureMsg: "",
   authenticated: false,
@@ -37,7 +37,7 @@ export function oneUser(state = initialState, action) {
       case types.SET_LANDING_USER_TYPE:
         return {
           ...state,
-          landingType: action.userType
+          landingType: action.userType,
         };
       case types.ONE_GOOG_USER_LOGIN_START:
         return {

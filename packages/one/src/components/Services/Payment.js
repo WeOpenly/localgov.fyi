@@ -153,7 +153,7 @@ class Payment extends Component {
           />
         </StripeProvider>
 
-        <div className={styles.columns} style={{ margin: "1rem 0" }}>
+        <div className={styles.columns} style={{ margin: "1rem 0 4rem 0" }}>
           <div className={`${styles.column} ${styles.col1}`} />
           <div className={`${styles.column} ${styles.col10}`}>
             <div className={styles.columns}>

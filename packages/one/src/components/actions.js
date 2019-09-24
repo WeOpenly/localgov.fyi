@@ -118,6 +118,7 @@ function checkAndAddUser(user){
     return async (dispatch, getState) => {
         const { providerData, metadata, uid } = user;
         const { creationTime, lastSignInTime } = user;
+
         const userRef = firebase.firestore()
             .collection('one_user')
             .doc(uid)
@@ -131,12 +132,21 @@ function checkAndAddUser(user){
              
             }
             else{
-                userRef.set({ ...providerData[0], uid: uid, isBusiness: false, isIndividual: false, createdAt: dateNow.toString(), paymentSetupDone: false})
+                const userLandingType = getState().oneUser.landingType;
+
+                userRef.set({
+                  ...providerData[0],
+                  uid: uid,
+                  isBusiness: userLandingType === "business",
+                  isIndividual: userLandingType === 'individual',
+                  createdAt: dateNow.toString(),
+                  paymentSetupDone: false
+                });
                 let prefs = {
                   isFirstTime,
-                  isBusiness: false,
-                  isIndividual: false,
-                  paymentSetupDone: false,
+                  isBusiness: userLandingType === "business",
+                  isIndividual: userLandingType === "individual",
+                  paymentSetupDone: false
                 };
                 dispatch(addUserPrefs(prefs))
             }
@@ -168,11 +178,11 @@ function checkAndAddUserService(user) {
             .collection('one_user_services')
             .doc(uid)
 
-        if(creationTime === lastSignInTime){
-            navigate("/dashboard/onboard/add_services");
-        }else{
-             navigate("/dashboard");
-        }
+        // if(creationTime === lastSignInTime){
+        //     navigate("/dashboard/onboard/add_services");
+        // }else{
+        //      navigate("/dashboard");
+        // }
 
         servicesRef.get().then((docData) => {
             if (docData.exists) {
@@ -197,11 +207,27 @@ function checkAndAddUserService(user) {
 export function checkLogin(enteredEmail) {
     return async (dispatch, getState) => {
         dispatch(checkLoggedIn())
+        
+        const pathname = windowGlobal.location.pathname
+
         authRef.onAuthStateChanged(user => {
             if (user) {
-                dispatch(isLoggedIn(user))
-                dispatch(checkAndAddUser(user))
-                dispatch(checkAndAddUserService(user))
+                dispatch(isLoggedIn(user));
+                dispatch(checkAndAddUser(user));
+                dispatch(checkAndAddUserService(user));
+                const { providerData, metadata, uid } = user;
+                const { creationTime, lastSignInTime } = metadata;
+            
+                if(creationTime === lastSignInTime){
+                    navigate("/dashboard/onboard/add_services");
+                } 
+                else {
+                    if(pathname === '/'){
+                          navigate(`/dashboard`);
+                    }
+                  
+                }
+           
             } else {
                 dispatch(isNotLoggedIn())
                 navigate('/')

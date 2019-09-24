@@ -93,7 +93,7 @@ class Home extends Component {
               className={`${styles.tile} ${styles.btn} ${
                 styles.textLeft
                 }`}
-                onClick={() => navigate('/dashboard/services/add_payment')}
+                onClick={() => navigate('/dashboard/onboard/add_payment')}
               style={{
                 padding: "1.5rem 2rem 1rem 1rem",
                 margin: '0 1rem',

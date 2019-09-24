@@ -37,10 +37,10 @@ module.exports = {
       resolve: `gatsby-plugin-sharp`,
       options: {
         stripMetadata: true,
-        defaultQuality: 90,
-      },
+        defaultQuality: 90
+      }
     },
-    
+
     {
       resolve: `gatsby-source-filesystem`,
       options: {
@@ -91,8 +91,8 @@ module.exports = {
     {
       resolve: "gatsby-plugin-webpack-bundle-analyser-v2",
       options: {
-        devMode: false,
-      },
+        devMode: false
+      }
     },
     {
       resolve: `gatsby-plugin-create-client-paths`,
@@ -110,21 +110,17 @@ module.exports = {
       }
     },
     {
-      resolve: `gatsby-plugin-favicon`,
+      resolve: `gatsby-plugin-manifest`,
       options: {
-        logo: "./src/favicon.png",
-        injectHTML: true,
-        icons: {
-          android: true,
-          appleIcon: true,
-          appleStartup: true,
-          coast: true,
-          favicons: true,
-          firefox: true,
-          twitter: true,
-          yandex: true,
-          windows: true
-        }
+        name: `The Cool Application`,
+        short_name: `Cool App`,
+        description: `The application does cool things and makes your life better.`,
+        lang: `en`,
+        display: `standalone`,
+        icon: `src/favicon.png`,
+        start_url: `/`,
+        background_color: `#0000ca`,
+        theme_color: `#fff`,
       }
     },
     {
@@ -136,7 +132,7 @@ module.exports = {
       }
     },
     `gatsby-plugin-remove-serviceworker`,
-    'gatsby-plugin-brotli',
+    "gatsby-plugin-brotli",
     `gatsby-plugin-react-helmet`,
     `gatsby-plugin-netlify`
     // This plugin generates a service worker and AppShell html file so the site

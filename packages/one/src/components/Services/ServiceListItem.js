@@ -20,8 +20,8 @@ const iconMap = {
   4: <BusinessLic style={{ width: "64px", height: "64px" }} />,
   5: <BusinessLic style={{ width: "64px", height: "64px" }} />,
   6: <UtilBill style={{ width: "64px", height: "64px" }} />,
-  7: <DelFranchTax style={{ width: "64px", height: "64px" }} />,
-  8: <CalFranchTax style={{ width: "64px", height: "64px" }} />
+  7: <DelFranchTax style={{ width: "64px", height: "40px" }} />,
+  8: <CalFranchTax style={{ width: "64px", height: "80px" }} />
 };
 
 const defaultIcon = <DelFranchTax style={{ width: "64px", height: "64px" }}/>

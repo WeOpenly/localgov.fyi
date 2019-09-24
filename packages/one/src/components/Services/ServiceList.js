@@ -207,7 +207,7 @@ class ServiceList extends Component {
               display: "flex",
               flexDirection: "column",
               alignItems: "center",
-              paddingBottom: "1rem"
+              paddingBottom: "10rem"
             }}
             className={`${styles.column} ${styles.col10} ${styles.colXs12}`}
           >

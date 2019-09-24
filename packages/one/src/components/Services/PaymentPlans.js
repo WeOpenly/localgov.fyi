@@ -6,7 +6,7 @@ import iconStyles from "../typicons.min.module.css";
 
 const PaymentPlan = props => (
   <div
-    key={props.name}
+    key={props.id}
     className={`${styles.column} ${styles.colSm3} ${styles.colXs12}`}
   >
     <div
@@ -71,14 +71,18 @@ const PaymentPlan = props => (
         </div>
       </div>
       <div className={styles.cardFooter}>
-        {props.isSelected ? <div style={{height: '40px'}}></div> : (<button
-          onClick={() => props.selectPaymentPlan(props)}
-          className={`${styles.btn} ${
-            props.focus ? `${styles.btnPrimary}` : `${styles.btnSecondary}`
-          }`}
-        >
-          Select this plan
-        </button>)}
+        {props.isSelected ? (
+          <div style={{ height: "40px" }}></div>
+        ) : (
+          <button
+            onClick={() => props.selectPaymentPlan(props)}
+            className={`${styles.btn} ${
+              props.focus ? `${styles.btnPrimary}` : `${styles.btnSecondary}`
+            }`}
+          >
+            Select this plan
+          </button>
+        )}
       </div>
     </div>
   </div>

@@ -1,10 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { navigate } from "@reach/router";
-import PropTypes from "prop-types";
-import styles from "./spectre.min.module.css";
-import { auth } from "firebase";
-import { checkLogin } from "./actions";
 
 
 class Private extends Component {
@@ -12,12 +8,9 @@ class Private extends Component {
         super(props);
     }
 
-
-
-
     render() {
         const { component: Component, ...rest } = this.props
-        console.log('private', this.props)
+  
         const { location, authenticated, loginCheckInProgress } = this.props;
         let noOnLoginPage = location.pathname !== `/`
         

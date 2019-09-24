@@ -208,8 +208,11 @@ export function checkLogin(enteredEmail) {
     return async (dispatch, getState) => {
         dispatch(checkLoggedIn())
         
-        const pathname = windowGlobal.location.pathname
-
+        let pathname= '/';
+        if (windowGlobal){
+            pathname = windowGlobal.location.pathname;
+        }
+         
         authRef.onAuthStateChanged(user => {
             if (user) {
                 dispatch(isLoggedIn(user));

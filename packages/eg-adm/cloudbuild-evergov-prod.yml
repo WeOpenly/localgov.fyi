@@ -1,0 +1,25 @@
+steps:
+- name: gcr.io/cloud-builders/git
+  args: ['clone', 'https://github.com/WeOpenly/localgov.fyi.git']
+- name: node:8
+  dir: 'localgov.fyi/packages/eg-adm'
+  entrypoint: npm
+  args: ['install', '--save']
+- name: node:8
+  dir: 'localgov.fyi/packages/eg-adm'
+  entrypoint: node
+  args: ['./node_modules/.bin/gatsby', 'build', '--prefix-paths']
+  env: ['PROJECT_ID=$PROJECT_ID']
+- name: gcr.io/cloud-builders/gsutil
+  dir: 'localgov.fyi/packages/eg-adm'
+  args: ['cp', 'gs://$PROJECT_ID-netlify-env/eg-adm-creds.sh', 'eg-adm-creds.sh']
+- name: ubuntu
+  dir: 'localgov.fyi/packages/eg-adm'
+  args: ['ls']
+- name: node:8
+  dir: 'localgov.fyi/packages/eg-adm'
+  args: ['bash', '-c', 'source ./eg-adm-creds.sh && ./deploy.sh']
+timeout: 3600s
+options:
+  diskSizeGb: 20
+  machineType: 'N1_HIGHCPU_8'

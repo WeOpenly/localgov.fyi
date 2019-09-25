@@ -1,0 +1,1 @@
+export const NO_SEARCH_RESULTS = 'no_search_results';

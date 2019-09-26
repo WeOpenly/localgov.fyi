@@ -1,12 +1,10 @@
 import { navigate } from "@reach/router";
-
 import { log } from "util";
 
-// import 'regenerator-runtime/runtime';
 import * as types from "./ActionTypes";
 
-import getFirebase from "../common/firebase/firebase";
-import { trackQPevent } from "../common/tracking";
+import getFirebase from "../../common/firebase/firebase";
+import { trackQPevent } from "../../common/tracking";
 
 const windowGlobal = typeof window !== "undefined" && window;
 
@@ -17,24 +15,17 @@ if (firebase) {
 }
 const dateNow = Date.now();
 
-export function toggleSidebar(toggle) {
-  return {
-    type: types.TOGGLE_SIDEBAR,
-    toggle
-  };
-}
-
 
 export function loginBegin() {
-  return { type: types.ONE_GOOG_USER_LOGIN_START };
+  return { type: types.ADM_GOOG_USER_LOGIN_START };
 }
 
 export function loginSuccess(userId) {
-  return { type: types.ONE_GOOG_USER_LOGIN_SUCCESS, userId };
+  return { type: types.ADM_GOOG_USER_LOGIN_SUCCESS, userId };
 }
 
 export function loginFailed() {
-  return { type: types.ONE_GOOG_USER_LOGIN_FAILURE };
+  return { type: types.ADM_GOOG_USER_LOGIN_FAILURE };
 }
 
 export function loginGoog(enteredEmail) {
@@ -55,7 +46,7 @@ export function loginGoog(enteredEmail) {
 
 export function setLoggedOut() {
   return {
-    type: types.ONE_GOOG_LOG_OUT
+    type: types.ADM_GOOG_LOG_OUT
   };
 }
 
@@ -82,7 +73,7 @@ export function logout(enteredEmail) {
 }
 
 export function checkLoggedIn() {
-  return { type: types.ONE_USER_LOGIN_CHECK_START };
+  return { type: types.ADM_USER_LOGIN_CHECK_START };
 }
 
 function isLoggedIn(user) {
@@ -91,11 +82,11 @@ function isLoggedIn(user) {
     ...providerData[0],
     uid: uid
   };
-  return { type: types.ONE_USER_LOGIN_CHECK_LOGGED_IN, prefs };
+  return { type: types.ADM_USER_LOGIN_CHECK_LOGGED_IN, prefs };
 }
 
 function isNotLoggedIn() {
-  return { type: types.ONE_USER_LOGIN_CHECK_NOT_LOGGED_IN };
+  return { type: types.ADM_USER_LOGIN_CHECK_NOT_LOGGED_IN };
 }
 
 

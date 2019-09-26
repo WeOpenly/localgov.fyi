@@ -51,6 +51,7 @@
         "minipass": "2.7.0",
         "mkdirp": "^0.5.1",
         "mousetrap": "^1.6.0",
+        "mui-datatables": "^2.11.1",
         "progress": "^2.0.1",
         "prop-types": "^15.5.8",
         "rc-drawer": "^2.0.9",

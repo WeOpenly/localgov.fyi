@@ -1,8 +1,10 @@
 import { combineReducers } from 'redux'
 
 
-import { oneUser } from '../components/userReducer';
+import { oneUser } from '../components/login/userReducer';
+import {admOneUserReducer} from '../components/One/admOneUserReducer'
 
 export default combineReducers({
-    oneUser,
-})
+  oneUser,
+  admOneUserReducer
+});

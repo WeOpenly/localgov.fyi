@@ -6,7 +6,7 @@ import styles from "../../components/spectre.min.module.css";
 
 import { checkLogin } from "../../components/login/actions";
 
-import DashBoardIndex from "../../components/Dashboardindex";
+import DashBoardIndex from "../../components/Dashboard/Index";
 
 class OneDashboard extends React.Component {
   constructor(props) {

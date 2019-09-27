@@ -14,7 +14,7 @@ import RepeatOne from '@material-ui/icons/RepeatOneOutlined'
 import ExpandLess from "@material-ui/icons/ExpandLess";
 import ExpandMore from "@material-ui/icons/ExpandMore";
 import StarBorder from "@material-ui/icons/StarBorder";
-import CalendarTodayOutlined from "@material-ui/icons/CalendarTodayOutlined";
+import SpaOutLined from "@material-ui/icons/Spa";
 import GroupWorkOutlined from '@material-ui/icons/GroupWorkOutlined'
 
 const useStyles = makeStyles(theme => ({
@@ -77,9 +77,9 @@ export default function NestedList() {
             className={classes.nested}
           >
             <ListItemIcon>
-              <CalendarTodayOutlined />
+              <SpaOutLined />
             </ListItemIcon>
-            <ListItemText primary="Calendar" />
+            <ListItemText primary="Services" />
           </ListItem>
         </List>
       </Collapse>

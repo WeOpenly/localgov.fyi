@@ -74,3 +74,6 @@ typings/
 # Serverless directories
 .serverless
 
+
+# Local Netlify folder
+.netlify

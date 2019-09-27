@@ -18,7 +18,7 @@ import Link from "@material-ui/core/Link";
 import MenuIcon from "@material-ui/icons/Menu";
 import ChevronLeftIcon from "@material-ui/icons/ChevronLeft";
 
-import DashboardHome from './DashboardHome';
+import DashboardHome from './Dashboardhome';
 import One from './One/Index';
 import SidebarItems from './SidebarItems';
 import { logout } from "./login/actions";

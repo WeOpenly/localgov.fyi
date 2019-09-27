@@ -6,13 +6,9 @@ import Grid from "@material-ui/core/Grid";
 import Paper from "@material-ui/core/Paper";
 
 const useStyles = makeStyles(theme => ({
-  root: {
-    width: "100%",
-    maxWidth: 360,
-    backgroundColor: theme.palette.background.paper
-  },
-  nested: {
-    paddingLeft: theme.spacing(4)
+  container: {
+    paddingTop: theme.spacing(4),
+    paddingBottom: theme.spacing(4)
   }
 }));
 
@@ -21,7 +17,7 @@ export default function NestedList() {
 
 
   return (
-<Container maxWidth="lg" className={classes.container}>
+<Container maxWidth="xl" className={classes.container}>
   <Grid container spacing={3}>
     
   </Grid>

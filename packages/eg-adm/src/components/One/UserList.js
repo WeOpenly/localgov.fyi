@@ -6,7 +6,11 @@ import Container from "@material-ui/core/Container";
 import Grid from "@material-ui/core/Grid";
 import { withStyles } from "@material-ui/core/styles";
 import CircularProgress from "@material-ui/core/CircularProgress";
-import { subscribeForUsers, unsubscribeForUsers } from "./actions";
+import {
+  subscribeForUsers,
+  unsubscribeForUsers,
+  setUserDetail
+} from "./actions";
 
 import MUIDataTable from "mui-datatables";
 const styles = theme => ({
@@ -22,61 +26,73 @@ const styles = theme => ({
 const columns = [
   {
     name: "uid",
-    label: "uid",
+    label: "uid"
   },
-   {
+  {
     name: "email",
-    label: "email",
+    label: "email"
   },
-   {
+  {
     name: "paymentSetupDone",
-    label: "paymentSetupDone",
+    label: "paymentSetupDone"
   },
-   {
+  {
     name: "plan",
-    label: "plan",
+    label: "plan"
   }
-  
 ];
 
- const options = {
-   filterType: "dropdown",
-   responsive: "scroll"
- };
 
  
 class UserList extends Component {
   constructor(props) {
     super(props);
+    this.onRowClick = this.onRowClick.bind(this);
   }
 
-  componentDidMount(){
-    const {dispatch} = this.props;
+  onRowClick(rowData, rowMeta) {
+      const userId = rowData[0];
+      const {dispatch} = this.props;
+      const userData = {
+        email: rowData[1],
+        paymentSetupDone: rowData[2],
+        name: 'Name',
+        userType: 'Business',
+        planType: 'plan',
+        stripeCusLink: 'http://stripe.com',
+      }
+      dispatch(setUserDetail(userData));
+      navigate(`/dashboard/one/user/${userId}`, {uid: userId});
+  }
+
+  componentDidMount() {
+    const { dispatch } = this.props;
     dispatch(subscribeForUsers());
   }
 
-  componentWillUnmount(){
-      const {dispatch} = this.props;
-      dispatch(unsubscribeForUsers());
+  componentWillUnmount() {
+    const { dispatch } = this.props;
+    dispatch(unsubscribeForUsers());
   }
 
   render() {
-    const {
-    fetching,
-    items,
-    failure,
-    } = this.props;
+    const { fetching, items, failure } = this.props;
     const { classes } = this.props;
-    
-    if (fetching){
-        return <CircularProgress className={classes.progress} />;
+    const options = {
+        filterType: "dropdown",
+        responsive: "scrollMaxHeight",
+        onRowClick: this.onRowClick
+    };
+
+    if (fetching) {
+      return <CircularProgress className={classes.progress} />;
     }
 
     return (
       <Grid container spacing={3}>
         <Grid item xs={12}>
           <MUIDataTable
-            title={"Employee List"}
+            title={"User List"}
             data={items}
             columns={columns}
             options={options}

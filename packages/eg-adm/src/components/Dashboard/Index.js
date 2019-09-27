@@ -214,7 +214,8 @@ class OneDashboard extends React.Component {
         <SidebarItems />
       </Drawer>
       <main className={classes.content}>
-        <Container maxWidth="sm">
+        <div className={classes.appBarSpacer} />
+        <Container maxWidth="lg">
           <Router>
             <DashboardHome path="/" />
             <One path="/one/*" />

@@ -24,14 +24,13 @@ class OneIndex extends Component {
 
 
   render() {
-  
     const { classes } = this.props;
 
     return (
         <Router>
             <UserList path="/users" />
-            <UserDetail path="/users/:userId" />
-    </Router>
+            <UserDetail path="/user/:userId" />
+        </Router>
     );
   }
 }

@@ -74,3 +74,48 @@ export function unsubscribeForUsers(){
         }
     }
 }
+
+
+function fetchUserSer() {
+  return { type: types.FETCH_USER_SER };
+}
+
+export function recvUserSer(sers) {
+  return { type: types.FETCH_USER_SER_SUCCESS, sers };
+}
+
+export function recvUserSerFailure() {
+  return { type: types.FETCH_USER_SER_FAILURE };
+}
+
+
+export function setUserDetail(userData) {
+         return {
+           type: types.SET_USER_DETAIL,
+           userData
+         };
+       }
+
+export function getUserServiceDetails(uid){
+    return async (dispatch, getState) => {
+      let serRef = firebase
+        .firestore()
+        .collection("one_user_services")
+        .doc(uid);
+      dispatch(fetchUserSer());
+
+      let getDoc = serRef
+        .get()
+        .then(doc => {
+          if (!doc.exists) {
+            console.log("No such document!");
+          } else {
+            const docData = doc.data();
+            dispatch(recvUserSer(docData));
+          }
+        })
+        .catch(err => {
+          dispatch(recvUserSerFailure());
+        });
+    }
+}

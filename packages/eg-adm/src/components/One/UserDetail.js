@@ -1,12 +1,28 @@
-import React from "react";
-import { makeStyles } from "@material-ui/core/styles";
+import React, { Component, Fragment } from "react";
+import { connect } from "react-redux";
+import { navigate } from "@reach/router";
+import { Router, Link } from "@reach/router";
+import Container from "@material-ui/core/Container";
 import Card from "@material-ui/core/Card";
 import CardActions from "@material-ui/core/CardActions";
 import CardContent from "@material-ui/core/CardContent";
+import Grid from "@material-ui/core/Grid";
 import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
+import { withStyles } from "@material-ui/core/styles";
+import CircularProgress from "@material-ui/core/CircularProgress";
+import { getUserServiceDetails, setUserDetail } from "./actions";
 
-const useStyles = makeStyles({
+
+
+const styles = theme => ({
+  container: {
+    paddingTop: theme.spacing(4),
+    paddingBottom: theme.spacing(4)
+  },
+  progress: {
+    margin: theme.spacing(2)
+  },
   card: {
     minWidth: 275
   },
@@ -23,39 +39,70 @@ const useStyles = makeStyles({
   }
 });
 
-export default function SimpleCard() {
-  const classes = useStyles();
-  const bull = <span className={classes.bullet}>•</span>;
 
-  return (
-    <Card className={classes.card}>
-      <CardContent>
-        <Typography
-          className={classes.title}
-          color="textSecondary"
-          gutterBottom
-        >
-          Word of the Day
-        </Typography>
-        <Typography variant="h5" component="h2">
-          be
-          {bull}
-          nev
-          {bull}o{bull}
-          lent
-        </Typography>
-        <Typography className={classes.pos} color="textSecondary">
-          adjective
-        </Typography>
-        <Typography variant="body2" component="p">
-          well meaning and kindly.
-          <br />
-          {'"a benevolent smile"'}
-        </Typography>
-      </CardContent>
-      <CardActions>
-        <Button size="small">Learn More</Button>
-      </CardActions>
-    </Card>
-  );
+class UserDetail extends Component {
+  constructor(props) {
+    super(props);
+  }
+
+  componentDidMount() {
+    const { dispatch } = this.props;
+    console.log(this.props.userId, "mount");
+    dispatch(getUserServiceDetails(this.props.userId));
+  }
+
+  componentWillUnmount() {
+    const { dispatch } = this.props;
+    dispatch(setUserDetail());
+  }
+
+  render() {
+    const {serDetails, userId, classes}= this.props;
+    const { fetching, userData, services, failure } = serDetails;
+
+    if (fetching) {
+      return <CircularProgress className={classes.progress} />;
+    }
+
+    console.log(userData, services);
+
+    return (
+      <Grid container spacing={3}>
+        <Grid item xs={12}>
+          <Card className={classes.card}>
+            <CardContent>
+              <Typography
+                className={classes.title}
+                color="textSecondary"
+                gutterBottom
+              >
+                {userData.email}
+              </Typography>
+              <Typography variant="h5" component="h2">
+                {userData.name}
+              </Typography>
+              <Typography className={classes.pos} color="textSecondary">
+                {userData.userType}
+              </Typography>
+              <Typography variant="body2" component="p">
+                {userData.planType}
+              </Typography>
+            </CardContent>
+            <CardActions>
+              <Button size="small">{userData.stripeCusLink}</Button>
+            </CardActions>
+          </Card>
+        </Grid>
+        <Grid item xs={12}></Grid>
+      </Grid>
+    );
+  }
 }
+
+const mapStateToProps = function(state, ownProps) {
+  return {
+    serDetails: state.admOneUserSerReducer
+  };
+};
+
+export default connect(mapStateToProps)(withStyles(styles)(UserDetail));

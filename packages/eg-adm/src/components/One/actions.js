@@ -48,9 +48,7 @@ function cleanedRow(row){
     }
 
     if('createdAt' in row){
-        const date = new Date(row.createdAt);
-        let dateInt = parseInt(date, 10);
-        data.createdAt = dateInt.toUTCString();
+        data.createdAt = row.createdAt;
     }
 
     return data

@@ -128,6 +128,8 @@ export function getUserServiceDetails(uid){
           }
         })
         .catch(err => {
+          console.log(err);
+          
           dispatch(recvUserSerFailure());
         });
     }

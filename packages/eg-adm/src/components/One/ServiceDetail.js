@@ -41,7 +41,6 @@ class ServiceDetail extends Component {
 
   render() {
     const { service, classes } = this.props;
-    console.log(service);
 
     return (
       <Card className={classes.card}>

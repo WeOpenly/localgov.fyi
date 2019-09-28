@@ -31,6 +31,30 @@ export function recvItemsFailure() {
   return { type: types.FETCH_USER_ITEMS_FAILURE };
 }
 
+
+function cleanedRow(row){
+    let data = {
+        uid: row.uid,
+        name: row.displayName || '',
+        email: row.email || '',
+        paymentSetupDone: row.paymentSetupDone,
+        type: row.isBusiness ? 'Business': 'Individual',
+        selectedPlan: row.selected_plan_id,
+        welcome_email_sent: row.welcome_email_sent
+    }
+
+    if('stripe_resp' in row){
+        data.stripe_cus_link = `http://stripe.com/customers/${row.stripe_resp.customer}`;
+    }
+
+    if('createdAt' in row){
+        var date = new Date(row.createdAt);
+        data.createdAt = date.toUTCString();
+    }
+
+    return data
+}
+
 export function subscribeForUsers() {
     return async (dispatch, getState) => {
     unsub = firebase
@@ -42,19 +66,7 @@ export function subscribeForUsers() {
 
             docData.forEach(doc => {
                 const data = doc.data();
-                if (
-                  data.uid &&
-                  data.email &&
-                  ('paymentSetupDone' in data) &&
-                  data.selected_plan_id
-                ){
-                    items.push([
-                    data.uid,
-                    data.email,
-                     data.paymentSetupDone,
-                  data.selected_plan_id
-                    ]);
-                }
+                items.push(cleanedRow(data));
             });
 
             if (items) {

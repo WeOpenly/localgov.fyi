@@ -12,7 +12,15 @@ import {
   setUserDetail
 } from "./actions";
 
-import MUIDataTable from "mui-datatables";
+import Table from "@material-ui/core/Table";
+import TableBody from "@material-ui/core/TableBody";
+import TableCell from "@material-ui/core/TableCell";
+import TableHead from "@material-ui/core/TableHead";
+import TableRow from "@material-ui/core/TableRow";
+import Paper from "@material-ui/core/Paper";
+
+
+
 const styles = theme => ({
   container: {
     paddingTop: theme.spacing(4),
@@ -20,28 +28,16 @@ const styles = theme => ({
   },
   progress: {
     margin: theme.spacing(2)
+  },
+  table: {
+    minWidth: 650
+  },
+  root: {
+    width: "100%",
+    marginTop: theme.spacing(3),
+    overflowX: "auto"
   }
 });
-
-const columns = [
-  {
-    name: "uid",
-    label: "uid"
-  },
-  {
-    name: "email",
-    label: "email"
-  },
-  {
-    name: "paymentSetupDone",
-    label: "paymentSetupDone"
-  },
-  {
-    name: "plan",
-    label: "plan"
-  }
-];
-
 
  
 class UserList extends Component {
@@ -50,18 +46,11 @@ class UserList extends Component {
     this.onRowClick = this.onRowClick.bind(this);
   }
 
-  onRowClick(rowData, rowMeta) {
-      const userId = rowData[0];
+  onRowClick(rowData) {
+      const userId = rowData.uid;
       const {dispatch} = this.props;
-      const userData = {
-        email: rowData[1],
-        paymentSetupDone: rowData[2],
-        name: 'Name',
-        userType: 'Business',
-        planType: 'plan',
-        stripeCusLink: 'http://stripe.com',
-      }
-      dispatch(setUserDetail(userData));
+   
+      dispatch(setUserDetail(rowData));
       navigate(`/dashboard/one/user/${userId}`, {uid: userId});
   }
 
@@ -78,11 +67,7 @@ class UserList extends Component {
   render() {
     const { fetching, items, failure } = this.props;
     const { classes } = this.props;
-    const options = {
-        filterType: "dropdown",
-        responsive: "scrollMaxHeight",
-        onRowClick: this.onRowClick
-    };
+
 
     if (fetching) {
       return <CircularProgress className={classes.progress} />;
@@ -91,12 +76,33 @@ class UserList extends Component {
     return (
       <Grid container spacing={3}>
         <Grid item xs={12}>
-          <MUIDataTable
-            title={"User List"}
-            data={items}
-            columns={columns}
-            options={options}
-          />
+          <Paper className={classes.root}>
+            <Table className={classes.table}>
+              <TableHead>
+                <TableRow>
+                  <TableCell>Dessert (100g serving)</TableCell>
+                  <TableCell align="right">Calories</TableCell>
+                  <TableCell align="right">Fat&nbsp;(g)</TableCell>
+                  <TableCell align="right">Carbs&nbsp;(g)</TableCell>
+                  <TableCell align="right">Protein&nbsp;(g)</TableCell>
+                </TableRow>
+              </TableHead>
+              <TableBody>
+                {items.map(row => (
+                  <TableRow onClick={() => this.onRowClick(row)} key={row.name}>
+                    <TableCell component="th" scope="row">
+                      {row.name}
+                    </TableCell>
+                    <TableCell align="right">{row.email}</TableCell>
+                    <TableCell align="right">{row.selectedPlan}</TableCell>
+                    <TableCell align="right">{row.type}</TableCell>
+                    <TableCell align="right">{row.paymentSetupDone}</TableCell>
+                    <TableCell align="right">{row.createdAt}</TableCell>
+                  </TableRow>
+                ))}
+              </TableBody>
+            </Table>
+          </Paper>
         </Grid>
       </Grid>
     );

@@ -11,6 +11,8 @@ import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
 import { withStyles } from "@material-ui/core/styles";
 import CircularProgress from "@material-ui/core/CircularProgress";
+import ServiceList from './ServiceList';
+
 import { getUserServiceDetails, setUserDetail } from "./actions";
 
 
@@ -24,6 +26,7 @@ const styles = theme => ({
     margin: theme.spacing(2)
   },
   card: {
+    marginTop:  theme.spacing(2),
     minWidth: 275
   },
   bullet: {
@@ -64,7 +67,7 @@ class UserDetail extends Component {
       return <CircularProgress className={classes.progress} />;
     }
 
-    console.log(userData, services);
+    console.log(services, 'userdetail')
 
     return (
       <Grid container spacing={3}>
@@ -82,18 +85,25 @@ class UserDetail extends Component {
                 {userData.name}
               </Typography>
               <Typography className={classes.pos} color="textSecondary">
-                {userData.userType}
+                {userData.type}
               </Typography>
               <Typography variant="body2" component="p">
-                {userData.planType}
+                {userData.selectedPlan}
               </Typography>
             </CardContent>
             <CardActions>
-              <Button size="small">{userData.stripeCusLink}</Button>
+              <Button size="small">
+                <a href={userData.stripe_cus_link} target="_blank">
+                  {" "}
+                  Stripe Profile
+                </a>
+              </Button>
             </CardActions>
           </Card>
         </Grid>
-        <Grid item xs={12}></Grid>
+        <Grid item xs={12}>
+          <ServiceList services={services} />
+        </Grid>
       </Grid>
     );
   }

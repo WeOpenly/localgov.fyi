@@ -80,11 +80,12 @@ class UserList extends Component {
             <Table className={classes.table}>
               <TableHead>
                 <TableRow>
-                  <TableCell>Dessert (100g serving)</TableCell>
-                  <TableCell align="right">Calories</TableCell>
-                  <TableCell align="right">Fat&nbsp;(g)</TableCell>
-                  <TableCell align="right">Carbs&nbsp;(g)</TableCell>
-                  <TableCell align="right">Protein&nbsp;(g)</TableCell>
+                  <TableCell>Name</TableCell>
+                  <TableCell align="right">Email</TableCell>
+                  <TableCell align="right">Selected Plan</TableCell>
+                  <TableCell align="right">Type</TableCell>
+                  <TableCell align="right">Payment Setup Done</TableCell>
+                  <TableCell align="right">Created At</TableCell>
                 </TableRow>
               </TableHead>
               <TableBody>

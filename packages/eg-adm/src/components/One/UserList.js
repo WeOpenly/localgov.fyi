@@ -90,7 +90,7 @@ class UserList extends Component {
               </TableHead>
               <TableBody>
                 {items.map(row => (
-                  <TableRow onClick={() => this.onRowClick(row)} key={row.name}>
+                  <TableRow onClick={() => this.onRowClick(row)} key={row.uid}>
                     <TableCell component="th" scope="row">
                       {row.name}
                     </TableCell>

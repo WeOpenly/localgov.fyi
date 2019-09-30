@@ -215,6 +215,7 @@ export function checkLogin(enteredEmail) {
          
         authRef.onAuthStateChanged(user => {
             if (user) {
+
                 dispatch(isLoggedIn(user));
                 dispatch(checkAndAddUser(user));
                 dispatch(checkAndAddUserService(user));

@@ -97,7 +97,7 @@ class AdmIndex extends React.Component {
     const { loginCheckInProgress } = this.props;
 
     const { classes } = this.props;
-console.log(classes)
+
     return (
       <Fragment>
         <Helmet>

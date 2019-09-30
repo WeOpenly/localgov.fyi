@@ -103,21 +103,26 @@ export function checkLogin(enteredEmail) {
     authRef.onAuthStateChanged(user => {
       if (user) {
         dispatch(isLoggedIn(user));
-
-        const { providerData, metadata, uid } = user;
-        const { creationTime, lastSignInTime } = metadata;
-
-        if (creationTime === lastSignInTime) {
-          navigate("/dashboard/onboard/add_services");
-        } else {
-          if (pathname === "/") {
-            navigate(`/dashboard`);
+      authRef.currentUser
+        .getIdTokenResult()
+        .then(idTokenResult => {
+          // Confirm the user is an Admin.
+          if (!!idTokenResult.claims.admin) {
+             if (pathname === "/") {
+               navigate(`/dashboard`);
+             }
+          } else {
+            dispatch(isNotLoggedIn());
+            navigate("/");
           }
-        }
-      } else {
+        })
+        .catch(error => {
+          console.log(error);
+        });
+    } else {
         dispatch(isNotLoggedIn());
         navigate("/");
-      }
-    });
-  };
+    }
+  });
+}
 }

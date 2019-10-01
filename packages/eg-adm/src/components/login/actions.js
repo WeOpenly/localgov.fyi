@@ -103,19 +103,19 @@ export function checkLogin(enteredEmail) {
     authRef.onAuthStateChanged(user => {
       if (user) {
         dispatch(isLoggedIn(user));
-      authRef.currentUser
-        .getIdTokenResult()
-        .then(idTokenResult => {
-          // Confirm the user is an Admin.
-          if (!!idTokenResult.claims.admin) {
-             if (pathname === "/") {
-               navigate(`/dashboard`);
-             }
-          } else {
-            dispatch(isNotLoggedIn());
-            navigate("/");
-          }
-        })
+        authRef.currentUser
+          .getIdTokenResult()
+          .then(idTokenResult => {
+            // Confirm the user is an Admin.
+            if (!!idTokenResult.claims.admin) {
+              if (pathname === "/") {
+                navigate(`/dashboard`);
+              }
+            } else {
+              dispatch(isNotLoggedIn());
+              navigate("/");
+            }
+          })
         .catch(error => {
           console.log(error);
         });

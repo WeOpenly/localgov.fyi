@@ -72,7 +72,7 @@ export default function NestedList() {
             <ListItemText primary="Service Packages" />
           </ListItem>
           <ListItem
-            onClick={() => navigate("/dashboard/one/calendar")}
+            onClick={() => navigate("/dashboard/one/all_services")}
             button
             className={classes.nested}
           >

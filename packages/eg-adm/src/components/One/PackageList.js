@@ -22,10 +22,14 @@ import TableRow from "@material-ui/core/TableRow";
 import Paper from "@material-ui/core/Paper";
 
 import {
-  subscribeForSers,
-  unsubscribeForSers,
-  createSerDetail
-} from "./serActions";
+  subscribeForSers, unsubscribeForSers
+} from './serActions';
+
+import {
+  subscribePackageItems,
+  unsubscribePackageItems,
+  createPackageDetail
+} from "./packActions";
 
 const styles = theme => ({
   container: {
@@ -48,59 +52,61 @@ const styles = theme => ({
   }
 });
 
- 
-class UserList extends Component {
+class PackList extends Component {
   constructor(props) {
     super(props);
     this.state = {
-        showAdd: false,
-    }
+      showAdd: false
+    };
     this.onRowClick = this.onRowClick.bind(this);
-    this.onAddClick = this.onAddClick.bind(this)
-    this.newSerFieldEdit = this.newSerFieldEdit.bind(this)
-    this.onNewSubmit = this.onNewSubmit.bind(this)
+    this.onAddClick = this.onAddClick.bind(this);
+    this.newSerFieldEdit = this.newSerFieldEdit.bind(this);
+    this.onNewSubmit = this.onNewSubmit.bind(this);
   }
 
-  newSerFieldEdit(e){
-      this.setState({
-         [e.target.name] : e.target.value
-      })
+  newSerFieldEdit(e) {
+    this.setState({
+      [e.target.name]: e.target.value
+    });
   }
 
   onRowClick(rowData) {
-      const sid = rowData.sid;
-      const {dispatch} = this.props;
+    const pid = rowData.pid;
+    const { dispatch } = this.props;
 
-      navigate(`/dashboard/one/all_services/${sid}`);
+    navigate(`/dashboard/one/packages/${pid}`);
   }
 
-  onAddClick(){
+  onAddClick() {
     this.setState({
-        showAdd: !this.state.showAdd,
-    })
+      showAdd: !this.state.showAdd
+    });
   }
 
-  onNewSubmit(){
-    const {dispatch} = this.props;
+  onNewSubmit() {
+    const { dispatch } = this.props;
 
-    dispatch(createSerDetail(this.state.sid, this.state.name, {},[]))
-    this.onAddClick()
+    dispatch(createPackageDetail(this.state.pid, this.state.name, {}, []));
+    this.onAddClick();
   }
 
   componentDidMount() {
     const { dispatch } = this.props;
+    dispatch(subscribePackageItems());
     dispatch(subscribeForSers());
   }
 
   componentWillUnmount() {
     const { dispatch } = this.props;
+    dispatch(unsubscribePackageItems());
     dispatch(unsubscribeForSers());
   }
 
   render() {
     const { fetching, items, failure } = this.props;
     const { classes } = this.props;
-
+    
+    console.log(this.props);
 
     if (fetching) {
       return <CircularProgress className={classes.progress} />;
@@ -114,26 +120,22 @@ class UserList extends Component {
             onClick={this.onAddClick}
             className={classes.button}
           >
-            Add service
+            Add package
           </Button>
           <Dialog
             open={this.state.showAdd}
             onClose={this.onAddClick}
             aria-labelledby="form-dialog-title"
           >
-            <DialogTitle id="form-dialog-title">Add New Service</DialogTitle>
+            <DialogTitle id="form-dialog-title">Add New Package</DialogTitle>
             <DialogContent>
-              <DialogContentText>
-               Follow convention like
-               SER_[FIRST_4_OF_EACH_WORD]_[PACKAGE_TYPE]_[LOC]
-               eg: SER_PROP_TAX_INDIV or SER_BUS_LIC_BUS_PHX
-              </DialogContentText>
+    
               <TextField
                 autoFocus
                 margin="dense"
-                id="ser_id"
-                name="sid"
-                label="Service Id"
+                id="pack_id"
+                name="pid"
+                label="Package Id"
                 type="text"
                 onChange={this.newSerFieldEdit}
                 fullWidth
@@ -141,9 +143,9 @@ class UserList extends Component {
               <TextField
                 autoFocus
                 margin="dense"
-                id="ser_name"
+                id="pack_name"
                 name="name"
-                label="Service Name"
+                label="Package Name"
                 onChange={this.newSerFieldEdit}
                 type="text"
                 fullWidth
@@ -170,9 +172,9 @@ class UserList extends Component {
               </TableHead>
               <TableBody>
                 {items.map(row => (
-                  <TableRow onClick={() => this.onRowClick(row)} key={row.sid}>
+                  <TableRow onClick={() => this.onRowClick(row)} key={row.pid}>
                     <TableCell component="th" scope="row">
-                      {row.sid}
+                      {row.pid}
                     </TableCell>
                     <TableCell align="right">{row.name}</TableCell>
                   </TableRow>
@@ -188,8 +190,8 @@ class UserList extends Component {
 
 const mapStateToProps = function(state, ownProps) {
   return {
-    ...state.admOneSerReducer
+    ...state.admOnePackReducer
   };
 };
 
-export default connect(mapStateToProps)(withStyles(styles)(UserList));
+export default connect(mapStateToProps)(withStyles(styles)(PackList));

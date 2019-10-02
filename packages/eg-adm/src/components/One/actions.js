@@ -7,6 +7,7 @@ import * as types from "./ActionTypes";
 
 import getFirebase from "../../common/firebase/firebase";
 import { trackQPevent } from "../../common/tracking";
+import { async } from "q";
 
 const windowGlobal = typeof window !== "undefined" && window;
 

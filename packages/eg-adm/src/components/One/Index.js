@@ -8,6 +8,10 @@ import { withStyles } from "@material-ui/core/styles";
 
 import UserList from './UserList';
 import UserDetail from './UserDetail';
+import ServiceList from "./ServiceList";
+import ServiceDetail from "./ServiceDetail";
+import PackList from "./PackageList";
+import PackDetail from "./PackageDetail";
 
 const styles = theme => ({
   container: {
@@ -27,10 +31,14 @@ class OneIndex extends Component {
     const { classes } = this.props;
 
     return (
-        <Router>
-            <UserList path="/users" />
-            <UserDetail path="/user/:userId" />
-        </Router>
+      <Router>
+        <UserList path="/users" />
+        <UserDetail path="/user/:userId" />
+        <ServiceList path="/all_services" />
+        <ServiceDetail path="/all_services/:serId" />
+        <PackList path="/packages" />
+        <PackDetail path="/packages/:packId" />
+      </Router>
     );
   }
 }

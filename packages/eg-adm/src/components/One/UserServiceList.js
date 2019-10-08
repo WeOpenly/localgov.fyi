@@ -7,6 +7,7 @@ import Grid from "@material-ui/core/Grid";
 import { withStyles } from "@material-ui/core/styles";
 import Paper from "@material-ui/core/Paper";
 import ServiceDetail from './UserServiceDetail';
+import {submitMeta} from './actions';
 
 const styles = theme => ({
   container: {
@@ -29,13 +30,19 @@ const styles = theme => ({
 class ServiceList extends Component {
   constructor(props) {
     super(props);
+    this.onMetaSubmit = this.onMetaSubmit.bind(this)
   }
 
+  onMetaSubmit(sid, meta){
+    const {dispatch, uid} = this.props;
+    dispatch(submitMeta(uid, sid, meta))
+  }
 
   render() {
     const { services } = this.props;
     const { classes } = this.props;
     const {selectedServices} = services;
+    console.log("ServiceList",this.props);
 
     if (!selectedServices){
         return null
@@ -43,7 +50,9 @@ class ServiceList extends Component {
 
     const userFinalizedSers = Object.values(selectedServices).map(selected => {
       if ("formData" in selected) {
-        return <ServiceDetail service={selected}/>;
+        return (
+          <ServiceDetail onMetaSubmit={this.onMetaSubmit} service={selected} />
+        );
       }
     });
     

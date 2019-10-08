@@ -11,7 +11,7 @@ import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
 import { withStyles } from "@material-ui/core/styles";
 import CircularProgress from "@material-ui/core/CircularProgress";
-import ServiceList from './ServiceList';
+import UserServiceList from "./UserServiceList";
 
 import { getUserServiceDetails, setUserDetail } from "./actions";
 
@@ -56,7 +56,7 @@ class UserDetail extends Component {
 
   componentWillUnmount() {
     const { dispatch } = this.props;
-    dispatch(setUserDetail());
+
   }
 
   render() {
@@ -67,7 +67,6 @@ class UserDetail extends Component {
       return <CircularProgress className={classes.progress} />;
     }
 
-    console.log(services, 'userdetail')
 
     return (
       <Grid container spacing={3}>
@@ -102,7 +101,7 @@ class UserDetail extends Component {
           </Card>
         </Grid>
         <Grid item xs={12}>
-          <ServiceList services={services} />
+          <UserServiceList services={services} uid={userId}/>
         </Grid>
       </Grid>
     );

@@ -133,3 +133,46 @@ export function getUserServiceDetails(uid){
         });
     }
 }
+
+
+export function submitMeta(uid, sid, metadata){
+  return async (dispatch, getState) => {
+    let serRef = firebase
+      .firestore()
+      .collection("one_user_services")
+      .doc(uid);
+
+    dispatch(fetchUserSer());
+
+    let getDoc = serRef
+      .get()
+      .then(doc => {
+        if (!doc.exists) {
+          console.log("No such document!");
+        } else {
+          const docData = doc.data();
+
+          let oldSers = docData.selectedServices;
+
+          let oldSerDetails = oldSers[sid];
+          oldSerDetails["metadata"] = metadata;
+
+          oldSers[sid] = oldSerDetails;
+
+          firebase
+            .firestore()
+            .collection("one_user_services")
+            .doc(uid)
+            .update({
+              selectedServices: oldSers
+            }).then(() => {
+              dispatch(getUserServiceDetails(uid))
+            });
+        }
+      })
+      .catch(err => {
+        console.log(err);
+        dispatch(recvUserSerFailure());
+      });
+  };
+}

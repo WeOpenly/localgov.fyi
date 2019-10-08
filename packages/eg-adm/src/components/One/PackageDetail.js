@@ -32,9 +32,6 @@ import DialogContent from "@material-ui/core/DialogContent";
 import DialogContentText from "@material-ui/core/DialogContentText";
 import DialogTitle from "@material-ui/core/DialogTitle";
 
-import { JsonEditor as Editor } from "jsoneditor-react";
-import "jsoneditor-react/es/editor.min.css";
-
 import PlanList from "./PlanList";
 import { subscribeForSers } from "./serActions";
 import {

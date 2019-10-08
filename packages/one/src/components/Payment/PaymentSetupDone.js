@@ -86,8 +86,8 @@ class FinalConf extends React.Component {
 
 const mapStateToProps = function (state, ownProps) {
     return {
-        name: state.oneUser.userDetails.displayName,
-        isFirstTime: state.oneUser.userDetails.isFirstTime,
+        name: state.oneUser.details.displayName,
+        isFirstTime: state.oneUser.detials.isFirstTime,
     };
 };
 

@@ -79,7 +79,7 @@ class Receipts extends Component {
 const mapStateToProps = function (state, ownProps) {
     return {
         ...state.oneReceipts,
-        uid: state.oneUser.userDetails.uid,
+        uid: state.oneUser.details.uid,
     };
 };
 

@@ -1,21 +1,25 @@
 import React, {Fragment} from 'react';
 import PropTypes from 'prop-types';
 import { connect } from "react-redux";
-import styles from "./spectre.min.module.css"
-import iconStyles from './typicons.min.module.css';
-import Footer from "./FooterNew";
+
+import styles from "../spectre.min.module.css"
+import iconStyles from '../typicons.min.module.css';
+
+import Footer from "../FooterNew";
 import Link from 'gatsby-link';
 import TextLoop from "react-text-loop";
 import { graphql, StaticQuery } from 'gatsby';
 import Img from "gatsby-image";
 
-import CreateAccount from "../illus/CreateAccount.js";
-import AddDetails from "../illus/AddDetails.js";
-import Relax from "../illus/Relax.js";
+import CreateAccount from "../../illus/CreateAccount.js";
+import AddDetails from "../../illus/AddDetails.js";
+import Relax from "../../illus/Relax.js";
 
-import AboutIl from '../svgIcons/AboutIl.js';
-import PaymentPlans from './Services/PaymentPlans'
-import { loginGoog} from "./actions";
+import AboutIl from '../../svgIcons/AboutIl.js';
+import PaymentPlans from '../Payment/PaymentPlans';
+
+import { loginGoog } from "../User/actions";
+
 
 const windowGlobal = typeof window !== "undefined" && window;
 
@@ -47,7 +51,7 @@ const FaqItem = props => (
 );
 
 
-class OneHome extends React.Component {
+class LandingHome extends React.Component {
     constructor(props) {
         super(props);
         this.loginGoog = this.loginGoog.bind(this);
@@ -71,14 +75,14 @@ class OneHome extends React.Component {
             windowGlobal.localStorage.setItem("plan", plan);
           }
           if(userType){
-            windowGlobal.localStorage.setItem("userType", userType);
+            windowGlobal.localStorage.setItem("package", userType);
           }
         }
         dispatch(loginGoog(this.state.email));
     }
 
     render() {
-        const { loginInProgress } = this.props;
+        const { authInProgress } = this.props.oneUser;
         const faqs = [
           {
             q: "Can you handle other services what were listed above?",
@@ -113,7 +117,7 @@ class OneHome extends React.Component {
 
         return (
           <Fragment>
-            <div  className={`${styles.container} ${styles.gridXl}`}>
+            <div className={`${styles.container} ${styles.gridXl}`}>
               <div className={styles.columns}>
                 <div className={`${styles.column} ${styles.col1}`}></div>
                 <div className={`${styles.column} ${styles.col10}`}>
@@ -203,7 +207,7 @@ class OneHome extends React.Component {
                     </p>
 
                     <div style={{ maxWidth: "400px" }}>
-                      {loginInProgress ? (
+                      {authInProgress ? (
                         <div className={styles.loading} />
                       ) : (
                         <div className={styles.inputGroup}>
@@ -457,7 +461,7 @@ class OneHome extends React.Component {
                 >
                   <div
                     style={{ border: "none" }}
-                    className={`${styles.card} ${styles.textCenter}`}
+                    className={` ${styles.textCenter}`}
                   >
                     <div
                       className={styles.cardImage}
@@ -477,7 +481,7 @@ class OneHome extends React.Component {
                 >
                   <div
                     style={{ border: "none" }}
-                    className={`${styles.card} ${styles.textCenter}`}
+                    className={` ${styles.textCenter}`}
                   >
                     <div
                       className={styles.cardImage}
@@ -497,7 +501,7 @@ class OneHome extends React.Component {
                 >
                   <div
                     style={{ border: "none" }}
-                    className={`${styles.card} ${styles.textCenter}`}
+                    className={` ${styles.textCenter}`}
                   >
                     <div
                       className={styles.cardImage}
@@ -615,7 +619,7 @@ class OneHome extends React.Component {
                 <div
                   className={`${styles.column} ${styles.col4} ${styles.colXs12} ${styles.textCenter}`}
                 >
-                  {loginInProgress ? (
+                  {authInProgress ? (
                     <div className={styles.loading} />
                   ) : (
                     <div>
@@ -659,8 +663,9 @@ class OneHome extends React.Component {
 
 const mapStateToProps = function (state, ownProps) {
     return {
-        ...state.oneUser
+      oneUser: state.oneUser,
+      oneService: state.oneServices,
     };
 };
 
-export default connect(mapStateToProps)(OneHome);
+export default connect(mapStateToProps)(LandingHome);

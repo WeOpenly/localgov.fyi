@@ -79,7 +79,7 @@ class Account extends Component {
 
 const mapStateToProps = function (state, ownProps) {
     return {
-        ...state.oneUser.userDetails,
+        ...state.oneUser.details,
         isBusiness: state.oneUser.isBusiness,
     };
 };

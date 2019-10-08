@@ -1,7 +1,7 @@
 import React from "react";
 import { Elements } from "react-stripe-elements";
 
-import StrIpeCheckoutForm from "./StrIpeCheckoutForm";
+import StrIpeCheckoutForm from "../Payment/StrIpeCheckoutForm";
 
 import styles from "../spectre.min.module.css";
 import iconStyles from "../typicons.min.module.css";

@@ -59,10 +59,7 @@ class ManageServiceList extends Component {
   render() {
     const { allAvailableServices, isBusiness, selectedServices } = this.props;
 
-    let availableSers = allAvailableServices.individual;
-    if (isBusiness) {
-      availableSers = allAvailableServices.business;
-    }
+    let availableSers = allAvailableServices;
 
     const notSelected = Object.keys(selectedServices).length === 0;
 
@@ -302,7 +299,7 @@ const mapStateToProps = function(state, ownProps) {
   return {
     ...state.oneServices,
     isBusiness: state.oneUser.isBusiness,
-    uid: state.oneUser.userDetails.uid
+    uid: state.oneUser.details.uid
   };
 };
 

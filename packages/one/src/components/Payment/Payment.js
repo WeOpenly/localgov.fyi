@@ -8,9 +8,11 @@ import PlaidLink from "react-plaid-link";
 import PaymentSetupDone from "./PaymentSetupDone";
 import PaymentPlans from "./PaymentPlans";
 import CardPaymentMethod from './CardPaymentMethod';
-import ServiceActionBar from "./ServiceActionBar";
-import { toggleStripeModal } from "./actions";
-import { updateStep } from "../actions";
+import ServiceActionBar from "../Services/ServiceActionBar";
+import { toggleStripeModal } from "../Services/actions";
+
+import { updateServerOnboardingStep } from "../User/actions";
+
 import { StripeProvider } from "react-stripe-elements";
 const windowGlobal = typeof window !== "undefined" && window;
 
@@ -77,8 +79,9 @@ class Payment extends Component {
   }
 
   updateStep(step) {
-    const { dispatch } = this.props;
-    dispatch(updateStep(step));
+    const { dispatch, oneUser } = this.props;
+    const { uid } = oneUser.details;
+    dispatch(updateServerOnboardingStep(uid, step));
   }
 
   toggleCardDetails(toggle) {
@@ -132,11 +135,21 @@ class Payment extends Component {
   }
 
   render() {
-    if (this.props.paymentSetupInProgress) {
+    const { oneSers, oneUserSers, oneUser, oneUserPayment } = this.props;
+
+    const { authInProgress, authFailure, details } = oneUser;
+
+    const {
+      paymentSetupDone,
+      paymentSetupInProgress,
+      paymentSetupFailed
+    } = oneUserPayment;
+
+    if (paymentSetupInProgress) {
       return <div className={styles.loading} />;
     }
 
-    if (this.props.paymentSetupDone) {
+    if (paymentSetupDone) {
       return <PaymentSetupDone />;
     }
 
@@ -160,13 +173,14 @@ class Payment extends Component {
               <PaymentPlans
                 userTypeSelected={true}
                 selectedPlan={this.state.selectedPlan}
-                isBusiness={this.props.isBusiness}
+                packName={this.props.packName}
                 onSelectPlan={this.selectPaymentPlan}
               />
             </div>
           </div>
           <div className={`${styles.column} ${styles.col1}`} />
         </div>
+
         {selectedPlan ? (
           <ServiceActionBar
             action={
@@ -232,12 +246,16 @@ class Payment extends Component {
   }
 }
 
+
+
 const mapStateToProps = function(state, ownProps) {
   return {
-    ...state.oneServices,
-    uid: state.oneUser.userDetails.uid,
-    paymentSetupDone: state.oneUser.paymentSetupDone,
+    oneSers: state.oneServices,
+    oneUserSers: state.oneUserServices,
+    oneUser: state.oneUser, 
+    oneUserPayment: state.oneUserPayment,
+    ...ownProps,
   };
 };
-
+// paymentSetupDone
 export default connect(mapStateToProps)(Payment);

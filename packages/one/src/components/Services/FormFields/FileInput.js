@@ -200,7 +200,7 @@ class FileInput extends Component {
 
 const mapStateToProps = function(state, ownProps) {
   return {
-    uid: state.oneUser.userDetails.uid,
+    uid: state.oneUser.details.uid,
   };
 };
 

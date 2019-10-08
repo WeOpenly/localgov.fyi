@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react';
+import React, {Fragment} from 'react';
 import PropTypes from 'prop-types';
 import { connect } from "react-redux";
 import Helmet from 'react-helmet';
@@ -10,29 +10,31 @@ import styles from "../components/spectre.min.module.css"
 import FirebaseContext from '../common/firebase/context.js';
 
 import getFirebse from '../common/firebase/firebase.js';
-import { checkLogin} from '../components/actions';
-import OneHome from '../components/Home';
+import { checkLogin} from '../components/User/actions';
+import { fetchPackageDetails } from "../components/Landing/actions";
+
+import OneHome from '../components/Landing/Home';
 
 
-class OneIndex extends React.Component {
+class Index extends React.Component {
     constructor(props) {
         super(props);
     }
 
-
     componentDidMount() {
         const {dispatch} = this.props;
         dispatch(checkLogin()); 
+        dispatch(fetchPackageDetails()); 
     }
 
-
     render() {
-        const { loginCheckInProgress } = this.props;
-        if (loginCheckInProgress){
-            return (<div className={styles.loading}></div>)
+        const { authInProgress } = this.props.oneUser;
+        const { fetching } = this.props.oneService;
+
+        if (authInProgress || fetching) {
+          return <div className={styles.loading}></div>;
         }
         
-
         return (
             <Fragment>
                 <Helmet>
@@ -40,7 +42,7 @@ class OneIndex extends React.Component {
                     </title>
                 </Helmet>
                 <FirebaseContext.Provider value={getFirebse}>
-                    <OneHome/>          
+                    <OneHome />          
                 </FirebaseContext.Provider>
             </Fragment>
         )
@@ -49,8 +51,9 @@ class OneIndex extends React.Component {
 
 const mapStateToProps = function (state, ownProps) {
     return {
-        ...state.oneUser
+      oneService: state.oneServices,
+      oneUser: state.oneUser
     };
 };
 
-export default connect(mapStateToProps)(OneIndex);
+export default connect(mapStateToProps)(Index);

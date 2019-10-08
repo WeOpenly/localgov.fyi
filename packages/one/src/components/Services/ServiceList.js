@@ -7,7 +7,7 @@ import styles from "../spectre.min.module.css";
 import iconStyles from "../typicons.min.module.css";
 import AddCustomServiceDialog from './AddCustomService/Dialog'
 import { selectService, unSelectService, finalizeService } from "./actions";
-import {updateStep} from "../actions";
+import { updateServerOnboardingStep } from "../User/actions";
 import ServiceListItem from "./ServiceListItem";
 import ServiceActionBar from "./ServiceActionBar";
 const windowGlobal = typeof window !== "undefined" && window;
@@ -32,54 +32,71 @@ class ServiceList extends Component {
   }
 
   finalizeService(vals, ser) {
-    const { dispatch, uid } = this.props;
+    const { dispatch, oneUser } = this.props;
+    const {uid} = oneUser.details;
+    console.log(ser);
     dispatch(selectService(uid, ser));
     dispatch(finalizeService(uid, vals, ser));
     this.toggleSerAddDetails(false);
   }
 
-  componentDidMount() {
-    if (windowGlobal) {
-      windowGlobal.scrollTo(200, 150);
-    }
-  }
 
   updateStep(step) {
-    const { dispatch } = this.props;
-    dispatch(updateStep(step));
+   const { dispatch, oneUser } = this.props;
+   const { uid } = oneUser.details;
+    dispatch(updateServerOnboardingStep(uid, step));
   }
 
   removeSelectedService(ser) {
-    const { dispatch, uid } = this.props;
+    const { dispatch, oneUser } = this.props;
+     const { uid } = oneUser.details;
     dispatch(unSelectService(uid, ser));
   }
 
   addSelectedService(ser) {
-    const { dispatch, uid } = this.props;
+    const { dispatch, oneUser } = this.props;
+    const { uid } = oneUser.details;
+    
     dispatch(selectService(uid, ser));
   }
 
   render() {
-    const { allAvailableServices, isBusiness, selectedServices } = this.props;
+    const { oneSers, oneUserSers, oneUser } = this.props;
+    const {
+      fetching: selectedServicesFetching,
+      failed: selectedServicesFailed,
+      selectedServices
+    } = oneUserSers;
+    const {
+      fetching: allSersFetching,
+      failed: allSersFailed,
+      sers: allOneSers
+    } = oneSers;
 
-    let availableSers = allAvailableServices.individual;
-    if (isBusiness) {
-      availableSers = allAvailableServices.business;
+    const { authInProgress, authFailure, details } = oneUser;
+
+    if (allSersFetching || selectedServicesFetching) {
+      return "loading";
     }
-    // const isAddedandnotFinalized
-    const notSelected = Object.keys(selectedServices).length === 0;
 
+    const { packType } = details;
+
+    const allSers = allOneSers[packType];
+
+
+    const notSelected = Object.keys(selectedServices).length === 0;
+    
     const finalizedSers = Object.values(selectedServices).map(ser => {
-      if ("formData" in selectedServices[ser.id]) {
+      if ("formData" in selectedServices[ser.sid]) {
         return (
           <ServiceListItem
-            key={ser.id}
+            key={ser.sid}
             isFinalized={
-              ser.id in selectedServices && "formData" in selectedServices[ser.id]
+              ser.sid in selectedServices && "formData" in selectedServices[ser.sid]
             }
-            isSelected={ser.id in selectedServices ? true : false}
+            isSelected={ser.sid in selectedServices ? true : false}
             onItemClick={() => {
-              if (ser.id in selectedServices) {
+              if (ser.sid in selectedServices) {
                 this.removeSelectedService(ser);
               } else {
                 this.addSelectedService(ser);
@@ -90,20 +107,21 @@ class ServiceList extends Component {
         );
       }
     });
-
-    const notFinalizedSers = availableSers.map(ser => {
+    
+    const notFinalizedSers = allSers.map(ser => {
       if (
-        !(ser.id in selectedServices && "formData" in selectedServices[ser.id])
+        !(ser.sid in selectedServices && "formData" in selectedServices[ser.sid])
       ) {
         return (
           <ServiceListItem
-            key={ser.id}
+            key={ser.sid}
             isFinalized={
-              ser.id in selectedServices && "formData" in selectedServices[ser.id]
+              ser.sid in selectedServices &&
+              "formData" in selectedServices[ser.sid]
             }
-            isSelected={ser.id in selectedServices ? true : false}
+            isSelected={ser.sid in selectedServices ? true : false}
             onItemClick={() => {
-              if (ser.id in selectedServices) {
+              if (ser.sid in selectedServices) {
                 this.removeSelectedService(ser);
               } else {
                 this.addSelectedService(ser);
@@ -115,15 +133,15 @@ class ServiceList extends Component {
       }
     });
 
-    const serComps = availableSers.map(ser => (
+    const serComps = allSers.map(ser => (
       <ServiceListItem
-        key={ser.id}
+        key={ser.sid}
         isFinalized={
-          ser.id in selectedServices && "formData" in selectedServices[ser.id]
+          ser.sid in selectedServices && "formData" in selectedServices[ser.sid]
         }
-        isSelected={ser.id in selectedServices ? true : false}
+        isSelected={ser.sid in selectedServices ? true : false}
         onItemClick={() => {
-          if (ser.id in selectedServices) {
+          if (ser.sid in selectedServices) {
             this.removeSelectedService(ser);
           } else {
             this.addSelectedService(ser);
@@ -258,9 +276,9 @@ class ServiceList extends Component {
 
 const mapStateToProps = function(state, ownProps) {
   return {
-    ...state.oneServices,
-    isBusiness: state.oneUser.isBusiness,
-    uid: state.oneUser.userDetails.uid,
+    oneSers: state.oneServices,
+    oneUserSers: state.oneUserServices,
+    oneUser: state.oneUser,
   };
 };
 

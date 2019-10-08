@@ -7,7 +7,7 @@ import iconStyles from "../typicons.min.module.css";
 import ServiceForm from "./ServiceForm";
 import ServiceActionBar from "./ServiceActionBar";
 import {finalizeService} from './actions';
-import { updateStep } from "../actions";
+import { updateServerOnboardingStep } from "../User/actions";
 const windowGlobal = typeof window !== "undefined" && window;
 
 class ServicesDetails extends Component {
@@ -24,17 +24,41 @@ class ServicesDetails extends Component {
   }
 
   addSelectedService(vals, ser) {
-    const { dispatch, uid } = this.props;
+ const { dispatch, oneUser } = this.props;
+ const { uid } = oneUser.details;
     dispatch(finalizeService(uid, vals, ser));
   }
 
   updateStep(step) {
-    const { dispatch } = this.props;
-    dispatch(updateStep(step));
+ const { dispatch, oneUser } = this.props;
+ const { uid } = oneUser.details;
+    dispatch(updateServerOnboardingStep(uid, step));
   }
 
   render() {
-    const { isBusiness, selectedServices, allAvailableServices } = this.props;
+    const { oneSers, oneUserSers, oneUser } = this.props;
+    const {
+      fetching: selectedServicesFetching,
+      failed: selectedServicesFailed,
+      selectedServices
+    } = oneUserSers;
+    const {
+      fetching: allSersFetching,
+      failed: allSersFailed,
+      sers: allOneSers
+    } = oneSers;
+
+    const { authInProgress, authFailure, details } = oneUser;
+
+    if (allSersFetching || selectedServicesFetching) {
+      return "loading";
+    }
+
+    const { packType } = details;
+
+    const allSers = allOneSers[packType];
+
+
     let finalizedSerCount = 0;
     Object.values(selectedServices).map(ser => {
       if (ser.formData) {
@@ -43,16 +67,16 @@ class ServicesDetails extends Component {
     });
 
     const allSelectedForms = Object.values(selectedServices).map(selected => {
-      if (!(selected.id in selectedServices && 'formData' in selectedServices[selected.id])) {
+      if (!(selected.sid in selectedServices && 'formData' in selectedServices[selected.sid])) {
         return (
           <ServiceForm
-            key={`service-form-${selected.id}`}
+            key={`service-form-${selected.sid}`}
             selectedService={selected}
             showName={true}
             showFaq={true}
             isFinalized={
-              selected.id in selectedServices &&
-              "formData" in selectedServices[selected.id]
+              selected.sid in selectedServices &&
+              "formData" in selectedServices[selected.sid]
             }
             onSubmit={this.addSelectedService}
           />
@@ -61,22 +85,21 @@ class ServicesDetails extends Component {
     });
 
     const allFinalizedForms = Object.values(selectedServices).map(selected => {
-      if (selected.id in selectedServices && 'formData' in selectedServices[selected.id]){
+      if (selected.sid in selectedServices && 'formData' in selectedServices[selected.sid]){
         return (
           <ServiceForm
             showName={true}
             showFaq={true}
-            key={`service-form-${selected.id}`}
+            key={`service-form-${selected.sid}`}
             selectedService={selected}
             isFinalized={
-              selected.id in selectedServices &&
-              "formData" in selectedServices[selected.id]
+              selected.sid in selectedServices &&
+              "formData" in selectedServices[selected.sid]
             }
             onSubmit={this.addSelectedService}
           />
         );
       }
-  
     });
 
     return (
@@ -129,11 +152,12 @@ class ServicesDetails extends Component {
   }
 }
 
+
 const mapStateToProps = function(state, ownProps) {
   return {
-    ...state.oneServices,
-    uid: state.oneUser.userDetails.uid,
-    paymentSetupDone: state.oneUser.paymentSetupDone,
+    oneSers: state.oneServices,
+    oneUserSers: state.oneUserServices,
+    oneUser: state.oneUser,
   };
 };
 

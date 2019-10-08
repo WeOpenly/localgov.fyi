@@ -8,17 +8,19 @@ import expStyles from "../../components/spectre-exp.min.module.css";
 import { Router, Link } from "@reach/router";
 import Account from './Account';
 import Receipts from './Receipts';
-import Services from './Services';
+
 import ManageServices from "./ManageServices";
 
-import UserTypeChoice from "./UserTypeChoice";
 import Toast from '../Toast';
 import SideBar from './SideBar';
 import AppBar from './AppBar';
 import FAQs from "./FAQs";
+import OnboardingServices from "./OnboardingServices";
 
-import { logout } from '../../components/actions';
-import {setLandingUserType, setLandingPlan, toggleSidebar} from '../../components/actions';
+import { logout } from "../../components/User/actions";
+import {setLandingUserType, setLandingPlan} from '../../components/User/actions';
+import {toggleSidebar} from './actions';
+
 import Home from './Home';
 
 const windowGlobal = typeof window !== "undefined" && window;
@@ -31,21 +33,7 @@ class OneDashboard extends React.Component {
         this.toggleSidebar = this.toggleSidebar.bind(this);
     }
 
-    componentDidMount(){
-        const {dispatch} = this.props;
 
-        if(windowGlobal){
-            const userType = windowGlobal.localStorage.getItem("userType");
-            const plan = windowGlobal.localStorage.getItem("plan");
-
-            if(userType){
-                dispatch(setLandingUserType(userType));
-            }
-            if(plan){
-                dispatch(setLandingPlan(plan));
-            }
-        }
-    }
 
 
     toggleSidebar(toggle) {
@@ -62,33 +50,17 @@ class OneDashboard extends React.Component {
 
     render() {
         const {
-          userDetailsLoading,
-          userDetails,
-          userDetailsLoadingFailed,
-          isFirstTime,
-          isBusiness,
-          isIndividual,
-          openSideBar,
-          landingPlan,
-          landingType
+          authInProgress,
+          details,
         } = this.props.oneUser;
 
-        if (userDetailsLoading) {
-            return <div className={styles.loading} />;
+        const {openSideBar} = this.props.dashboard;
+
+        if (authInProgress) {
+          return <div className={styles.loading} />;
         }
 
-
-        const userTypeSet =
-            (isBusiness || isIndividual) && !userDetailsLoading;
-        const landUserTypeSet = landingType && !userDetailsLoading;
-
-        if (!userTypeSet) {
-            if (!landUserTypeSet) {
-                return <UserTypeChoice />;
-            }
-        }
-
-        const { displayName, photoURL } = userDetails;
+        const { displayName, photoURL } = details;
 
         return (
           <Fragment>
@@ -102,21 +74,18 @@ class OneDashboard extends React.Component {
                 photoURL={photoURL}
                 onLogout={this.logout}
               />
-
-        
                 <AppBar
                   onMenuClick={this.toggleSidebar}
                   showCrumbs={!openSideBar}
                 />
                 <Router>
                   <Home path="/" />
+                  <OnboardingServices path="/onboard/*" />
                   <Account path="/account" logout={this.logout} />
                   <ManageServices path="/services/*" />
-                  <Services path="/onboard/*" />
                   <Receipts path="/receipts" />
                   <FAQs path="/faqs" />
                 </Router>
-          
             </div>
           </Fragment>
         );
@@ -125,6 +94,7 @@ class OneDashboard extends React.Component {
 
 const mapStateToProps = function (state, ownProps) {
     return {
+        dashboard: state.dashboard,
         oneUser: state.oneUser,
         oneServices: state.oneServices
     };

@@ -7,7 +7,7 @@ const initialState = {
 };
 
 
-export function oneReceipts(state = initialState, action) {
+export function oneUserReceipts(state = initialState, action) {
     switch (action.type) {
         case types.ONE_USER_RECEIPTS_LOADING:
             return {

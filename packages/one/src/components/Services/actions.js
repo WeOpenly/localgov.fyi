@@ -3,7 +3,7 @@ import { navigate } from "@reach/router";
 import { log } from "util";
 
 // import 'regenerator-runtime/runtime';
-import * as types from "../ActionTypes";
+import * as types from "./ActionTypes";
 import getFirebase from "../../common/firebase/firebase";
 import { trackQPevent } from "../../common/tracking";
 
@@ -14,9 +14,7 @@ const firebase = getFirebase();
 
 const dateNow = Date.now();
 
-export function toggleStripeModal(toggle){
-  return {type: types.TOGGLE_STRIPE_MODAL, toggle}
-}
+
 
 export function uploadFile(uid, file, cb){
   firebase.storage().ref().child(`one_user_service_attachments/${uid}/${file.name}`)
@@ -31,41 +29,47 @@ export function uploadFile(uid, file, cb){
     });  
 }
 
-export function selectServiceLoading() {
-  return { type: types.ONE_USER_SERVICES_SAVING, toggle:true };
+
+function selectServiceLoading(){
+  return {
+    type: types.UPDATE_SELECTED_SERVICES_START
+  };
 }
 
-export function selectServiceSuccess(selectedServices) {
-  return { type: types.ONE_USER_ADD_SELECTED_SERVICE, selectedServices };
+function selectServiceSuccess(sers){
+  return {
+    type: types.UPDATE_SELECTED_SERVICES_SUCCESS, sers
+  };
 }
 
-export function selectServiceFailed() {
-  return { type: types.ONE_USER_ADD_SELECTED_SERVICE_LOADING_FAILED };
+function selectServiceFailed(){
+return {
+  type: types.UPDATE_SELECTED_SERVICES_SUCCESS
+};
 }
-
 
 export function unSelectService(uid, service){
 return async (dispatch, getState) => {
-  // dispatch(selectServiceLoading());
 
-  const existingSelected = getState().oneServices.selectedServices;
-  console.log(existingSelected, "es");
 
-  if ((service.id in existingSelected)) {
+  const existingSelected = getState().oneUserServices.selectedServices;
+
+
+  if ((service.sid in existingSelected)) {
     const servicesRef = firebase
       .firestore()
       .collection("one_user_services")
       .doc(uid);
 
     const newSelectedServices = existingSelected;
-    delete newSelectedServices[service.id]
+    delete newSelectedServices[service.sid]
 
     servicesRef
       .update({
         selectedServices: newSelectedServices
       })
       .then(function(err) {
-        dispatch(selectServiceSuccess(newSelectedServices));
+        dispatch(recvUserServices(newSelectedServices));
       })
       .catch(function(error) {
         dispatch(selectServiceFailed(error));
@@ -78,82 +82,174 @@ export function selectService(uid, service) {
   return async (dispatch, getState) => {
     // dispatch(selectServiceLoading());
 
-    const existingSelected = getState().oneServices.selectedServices;
-    console.log(existingSelected, uid, service)
+    const existingSelected = getState().oneUserServices.selectedServices;
 
-    if(!(service.id in existingSelected)){
+
+    if(!(service.sid in existingSelected)){
         const servicesRef = firebase
               .firestore()
               .collection("one_user_services")
               .doc(uid);
-        
 
-  
         const newSelectedServices = existingSelected;
-        newSelectedServices[service.id] = service;
-        
+        newSelectedServices[service.sid] = service;
+
         servicesRef
           .update({
             selectedServices: newSelectedServices
           })
           .then(function(err) {
-            dispatch(selectServiceSuccess(newSelectedServices));
+            dispatch(recvUserServices(newSelectedServices));
           })
           .catch(function(error) {
             dispatch(selectServiceFailed(error));
           });
     }
-      
   };
 }
 
 
-export function updateSelectServiceLoading() {
-  return { type: types.ONE_USER_SERVICES_SAVING, toggle:true };
+export function finalizeServiceLoading() {
+  return { type: types.UPDATE_FINALIZED_SERVICES_START };
 }
 
-export function updateSelectServiceSuccess(result) {
-  console.log(result)
-  return { type: types.ONE_USER_UPDATE_SELECTED_SERVICE_DETAILS, result };
+export function finalizeServiceSuccess(result) {
+  return { type: types.UPDATE_FINALIZED_SERVICES_SUCCESS, result };
 }
 
-export function UpdateSelectServiceFailed() {
+export function finalizeServiceFailed() {
   return {
-    type: types.ONE_USER_UPDATE_SELECTED_SERVICE_DETAILS_LOADING_FAILED
+    type: types.UPDATE_FINALIZED_SERVICES_FAILED
   };
 }
 
 export function finalizeService(uid, formData, service) {
-         return async (dispatch, getState) => {
-           dispatch(updateSelectServiceLoading());
+  return async (dispatch, getState) => {
+   dispatch(finalizeServiceLoading());
+    const existingSelected = getState().oneUserServices
+      .selectedServices;
+
+    if (service.sid in existingSelected) {
+      console.log("here")
+      const servicesRef = firebase
+        .firestore()
+        .collection("one_user_services")
+        .doc(uid);
+
+    const currentSer = existingSelected[service.sid];
+    currentSer["formData"] = formData;
+    const newSerSelected = existingSelected;
+    newSerSelected[service.sid] = currentSer;
+
+      servicesRef
+        .update({
+          selectedServices: newSerSelected
+        })
+        .then(function(err) {
+          dispatch(finalizeServiceSuccess(existingSelected));
+        })
+        .catch(function(error) {
+          dispatch(finalizeServiceFailed(error));
+        });
+    }
+  };
+}
 
 
-           const existingSelected = getState().oneServices
-             .selectedServices;
-   
-           if (service.id in existingSelected) {
-             console.log("here")
-             const servicesRef = firebase
-               .firestore()
-               .collection("one_user_services")
-               .doc(uid);
+function loadingUserServices() {
+  return { type: types.USER_SERVICES_FETCH_LOADING };
+}
 
-            const currentSer = existingSelected[service.id];
-            currentSer["formData"] = formData;
-            const newSerSelected = existingSelected;
-            newSerSelected[service.id] = currentSer;
+function recvUserServices(sers) {
+  return { type: types.USER_SERVICES_FETCH_SUCCESS, sers };
+}
 
-             servicesRef
-               .update({
-                 selectedServices: newSerSelected
-               })
-               .then(function(err) {
-                 dispatch(updateSelectServiceSuccess(existingSelected));
-               })
-               .catch(function(error) {
-                 dispatch(UpdateSelectServiceFailed(error));
-               });
-           }
-         };
-       }
+function failedLoadingUserServices() {
+  return { type: types.USER_SERVICES_FETCH_FAILED };
+}
+
+
+function watchServicesForChanges(uid) {
+  return async (dispatch, getState) => {
+    const userWatch = firebase
+      .firestore()
+      .collection("one_user_services")
+      .doc(uid)
+      .onSnapshot(function(doc) {
+        const details = doc.data();
+        const { selectedServices } = details;
+        dispatch(recvUserServices(selectedServices));
+      });
+  };
+}
+
+
+// export function fetchOrSetUserServiceDetails(uid, step){
+//    return async (dispatch, getState) => {
+//      dispatch(loadingUserServices());
+
+//      const servicesRef = firebase
+//        .firestore()
+//        .collection("one_user_services")
+//        .doc(uid);
+
+//      servicesRef
+//        .get()
+//        .then(docData => {
+//          if (!docData.exists) {
+//            // no services -create dummy sers
+//            let sers = {
+//              selectedServices: {}
+//            };
+
+//            servicesRef.set({ ...sers });
+//            dispatch(recvUserServices({}));
+//          } else {
+//            const sers = docData.data().selectedServices;
+//            const noSerLen = Object.keys(sers).length === 0;
+//            if (noSerLen) {
+//              navigate(`/dashboard/onboard/${step}`);
+//            } else {
+//              navigate(`/dashboard/services`);
+//            }
+//            dispatch(watchServicesForChanges(uid));
+//          }
+//        })
+//        .catch(fail => {
+//          dispatch(failedLoadingUserServices());
+//        });
+//    };
+// }
+
+export function fetchOrSetUserServiceDetails(uid) {
+  return async (dispatch, getState) => {
+    dispatch(loadingUserServices());
+
+      const servicesRef = firebase
+        .firestore()
+        .collection("one_user_services")
+        .doc(uid);
+
+      servicesRef
+        .get()
+        .then(docData => {
+          if (!docData.exists) {
+            // no services -create dummy sers
+            let sers = {
+              selectedServices: {}
+            };
+            servicesRef.set({ ...sers });
+            dispatch(recvUserServices({}));     
+          } else {
+            dispatch(watchServicesForChanges(uid));
+          }
+        })
+        .catch(fail => {
+          dispatch(failedLoadingUserServices());
+        });
+  };
+}
+
+
+
 

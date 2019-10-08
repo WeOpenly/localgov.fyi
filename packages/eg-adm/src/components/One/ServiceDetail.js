@@ -19,8 +19,6 @@ import { Formik, Form, Field, FieldArray } from "formik";
 import { FormikTextField, } from "formik-material-fields";
 import TextField from "@material-ui/core/TextField";
 
-
-import { JsonEditor as Editor } from "jsoneditor-react";
 import "jsoneditor-react/es/editor.min.css";
 import { fetchSerDetail, updateSerDetail } from "./serActions";
 import ServiceList from "./ServiceList";
@@ -28,6 +26,7 @@ import ServiceList from "./ServiceList";
 
 const NewEditor = (props) => {
   if (typeof window !== 'undefined') {
+    const Editor = require("jsoneditor-react").JsonEditor;
     const ace = require('brace').ace;
     require('brace/mode/javascript');
     require('brace/theme/github');

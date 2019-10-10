@@ -33,9 +33,6 @@ class OneDashboard extends React.Component {
         this.toggleSidebar = this.toggleSidebar.bind(this);
     }
 
-
-
-
     toggleSidebar(toggle) {
       console.log('here')
        const {dispatch} = this.props;

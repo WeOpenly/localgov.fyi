@@ -108,10 +108,10 @@ class Payment extends Component {
         });
       }
     }
-    const { landingPlan } = this.props;
-    if (landingPlan) {
+    const {details } = this.props.oneUser;
+    if (details && details.selected_plan_id){
       this.setState({
-        selectedPlan: landingPlan
+        selectedPlan: details.selected_plan_id
       });
     }
   }

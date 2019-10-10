@@ -158,7 +158,7 @@ function fetchOrSetUserDetails(user) {
           }
 
           if (plan){
-            details["plan"] = plan;
+            details["selected_plan_id"] = plan;
           } 
 
           userRef.set({ ...details });
@@ -190,7 +190,7 @@ export function checkLogin(enteredEmail) {
         if(userWatch){
           userWatch();
         }
-        navigate("/");
+        navigate(pathname);
       }
     });
   };

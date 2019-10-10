@@ -62,7 +62,7 @@ class UserDetail extends Component {
   render() {
     const {serDetails, userId, classes}= this.props;
     const { fetching, userData, services, failure } = serDetails;
-
+  
     if (fetching) {
       return <CircularProgress className={classes.progress} />;
     }
@@ -101,7 +101,7 @@ class UserDetail extends Component {
           </Card>
         </Grid>
         <Grid item xs={12}>
-          <UserServiceList services={services} uid={userId}/>
+         {services ?  (<UserServiceList services={services} uid={userId}/>) : null}
         </Grid>
       </Grid>
     );

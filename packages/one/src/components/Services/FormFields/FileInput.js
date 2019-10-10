@@ -28,7 +28,7 @@ class FileInput extends Component {
     super(props);
     this.state = {
       files: [],
-      uploadinProgress:false
+      uploadinProgress: false
     };
 
     this.onDrop = this.onDrop.bind(this);

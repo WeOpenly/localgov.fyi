@@ -91,7 +91,6 @@ class SerDetail extends Component {
     }catch (e){
       console.log(e)
     }
-    
   }
 
   saveFromSchema(){

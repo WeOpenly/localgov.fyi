@@ -1,5 +1,5 @@
 import React, { Component, Fragment } from "react";
-
+import { connect } from "react-redux";
 import Card from "@material-ui/core/Card";
 import CardActions from "@material-ui/core/CardActions";
 import CardContent from "@material-ui/core/CardContent";
@@ -14,12 +14,21 @@ import Select from "@material-ui/core/Select";
 import InputLabel from "@material-ui/core/InputLabel";
 import MenuItem from "@material-ui/core/MenuItem";
 import TextField from "@material-ui/core/TextField";
+import ExpansionPanel from "@material-ui/core/ExpansionPanel";
+import ExpansionPanelSummary from "@material-ui/core/ExpansionPanelSummary";
+import ExpansionPanelDetails from "@material-ui/core/ExpansionPanelDetails";
 
+import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import DateFnsUtils from "@date-io/date-fns";
 import {
   MuiPickersUtilsProvider,
   KeyboardDatePicker
 } from "@material-ui/pickers";
+
+import {subscribeTxnItems} from './txnActions'
+
+import UserSerTxnList from "./UserSerTxnList";
+
 
 const styles = theme => ({
   container: {
@@ -57,7 +66,7 @@ const styles = theme => ({
   }
 });
 
-class ServiceDetail extends Component {
+class UserServiceDetail extends Component {
   constructor(props) {
     super(props);
     var d1 = new Date();
@@ -74,8 +83,9 @@ class ServiceDetail extends Component {
       every: 1,
       freq: null,
       start: d2,
-      until: null,
-      comments: ''
+      until: d2,
+      comments: '',
+      expanded: false,
     };
 
     this.addFreqData = this.addFreqData.bind(this);
@@ -84,20 +94,18 @@ class ServiceDetail extends Component {
     this.changeEvery = this.changeEvery.bind(this);
     this.changeStart = this.changeStart.bind(this);
     this.changeComments = this.changeComments.bind(this);
+    this.expand = this.expand.bind(this);
   }
 
+  expand(){
+    this.setState({
+      expanded: !this.state.expanded
+    })
+  }
 
   componentDidMount(){
-    const { metadata } = this.props.service;
-    if(metadata){
-      this.setState({
-        every: metadata.every,
-        freq: metadata.freq,
-        start: new Date(metadata.start.seconds),
-        until: new Date(metadata.until.seconds),
-        comments: metadata.comments
-      })
-    }
+    const {uid, dispatch} = this.props;
+    dispatch(subscribeTxnItems(uid));
   }
 
   changeComments(ev){
@@ -119,14 +127,14 @@ class ServiceDetail extends Component {
     });
   }
 
-  changeEvery(every) {
+  changeEvery(ev) {
+    console.log(ev.target.value);
     this.setState({
-      every: every.target.value
+      every: ev.target.value
     });
   }
 
   changeStart(start){
-    console.log(start);
     this.setState({
       start: start
     });
@@ -134,11 +142,57 @@ class ServiceDetail extends Component {
 
   addFreqData() {
     const {service} = this.props;
-    this.props.onMetaSubmit(service.sid, this.state);
+    const data = this.state;
+    delete data['expanded'];
+    console.log(service.sid, data)
+    this.props.onMetaSubmit(service.sid, data);
+  }
+
+
+  componentWillReceiveProps(nextProps){
+    const { items, service } = this.props;
+    if (items[service.sid] !== nextProps.items[service.sid]) {
+     
+      const { metadata } = nextProps.items[service.sid];
+      const d1 = new Date(metadata.start);
+      const d1start = new Date(
+        d1.getUTCFullYear(),
+        d1.getUTCMonth(),
+        d1.getUTCDate(),
+        d1.getUTCHours(),
+        d1.getUTCMinutes(),
+        d1.getUTCSeconds()
+      );
+      const d2 = new Date(metadata.until);
+      const d2start = new Date(
+        d2.getUTCFullYear(),
+        d2.getUTCMonth(),
+        d2.getUTCDate(),
+        d2.getUTCHours(),
+        d2.getUTCMinutes(),
+        d2.getUTCSeconds()
+      );
+
+      this.setState({
+        every: metadata.every,
+        freq: metadata.freq,
+        start: d1start,
+        until: d2start,
+        comments: metadata.comments
+      });
+    }
   }
 
   render() {
-    const { service, classes } = this.props;
+    const { service, classes, fetching, items, failed  } = this.props;
+
+    if (fetching) {
+      return <CircularProgress className={classes.progress} />;
+    }
+
+
+    console.log(this.state, 'state userservice detail')
+
     const canSubmit =
       this.state.every &&
       this.state.freq &&
@@ -147,122 +201,142 @@ class ServiceDetail extends Component {
       this.state.comments;
 
     return (
-      <Card className={classes.card}>
-        <CardContent>
-          <Typography
-            className={classes.title}
-            color="textSecondary"
-            gutterBottom
-          >
-            {service.id}
-          </Typography>
-          <Typography variant="h5" component="h2">
-            {service.name}
-          </Typography>
-          <Typography variant="body2" component="p">
-            <pre>{JSON.stringify(service.formData, null, 2)}</pre>
-          </Typography>
-
-          <Typography
-            className={classes.title}
-            color="textSecondary"
-            gutterBottom
-          >
-            Set Transaction details
-          </Typography>
-
-          <MuiPickersUtilsProvider utils={DateFnsUtils}>
-            <Grid container justify="space-around">
-              <TextField
-                id="standard-repeats"
-                label="repeats"
-                className={classes.textField}
-                value={this.state.every}
-                onChange={this.changeEvery}
-                margin="normal"
-              />
-
-              <FormControl className={classes.formControl}>
-                <InputLabel htmlFor="freq-simple">every</InputLabel>
-                <Select
-                  value={this.state.freq}
-                  onChange={this.changeFreq}
-                  inputProps={{
-                    name: "freq",
-                    id: "freq-simple"
-                  }}
-                >
-                  <MenuItem value={"DAILY"}>DAILY</MenuItem>
-                  <MenuItem value={"WEEKLY"}>WEEKLY</MenuItem>
-                  <MenuItem value={"MONTHLY"}>MONTHLY</MenuItem>
-                  <MenuItem value={"YEARLY"}>YEARLY</MenuItem>
-                </Select>
-              </FormControl>
-
-              <KeyboardDatePicker
-                disableToolbar
-                variant="inline"
-                format="MM/dd/yyyy"
-                margin="normal"
-                id="date-picker-start"
-                label="Starting Date"
-                value={this.state.start}
-                onChange={this.changeStart}
-                KeyboardButtonProps={{
-                  "aria-label": "change start date"
-                }}
-              />
-
-              <KeyboardDatePicker
-                disableToolbar
-                variant="inline"
-                format="MM/dd/yyyy"
-                margin="normal"
-                id="date-picker-inline"
-                label="Until"
-                value={this.state.until}
-                onChange={this.changeUntil}
-                KeyboardButtonProps={{
-                  "aria-label": "change date"
-                }}
-              />
+      <ExpansionPanel expanded={this.state.expanded} onChange={this.expand}>
+        <ExpansionPanelSummary
+          expandIcon={<ExpandMoreIcon />}
+          aria-controls="panel1bh-content"
+          id="panel1bh-header"
+        >
+          <Typography className={classes.heading}>{service.name}</Typography>
+        </ExpansionPanelSummary>
+        <ExpansionPanelDetails>
+          <Grid container spacing={3}>
+            <Grid item xs={12}>
+              <Card className={classes.card}>
+                <CardContent>
+                  <Typography
+                    className={classes.title}
+                    color="textSecondary"
+                    gutterBottom
+                  >
+                    {service.id}
+                  </Typography>
+                  <Typography variant="h5" component="h2">
+                    {service.name} submission details
+                  </Typography>
+                  <Typography variant="body2" component="p">
+                    <pre>{JSON.stringify(service.formData, null, 2)}</pre>
+                  </Typography>
+                </CardContent>
+              </Card>
             </Grid>
-          </MuiPickersUtilsProvider>
-          <Typography
-            className={classes.title}
-            color="textSecondary"
-            gutterBottom
-          >
-            Comments
-          </Typography>
-          <Grid container justify="space-around">
-            <TextField
-              id="standard-multiline-flexible"
-              label="Comments"
-              multiline
-              rowsMax="4"
-              fullWidth
-              value={this.state.comments}
-              onChange={this.changeComments}
-              className={classes.textField}
-              margin="normal"
-            />
-          </Grid>
-        </CardContent>
+            <Grid item xs={12}>
+              {" "}
+              <Card className={classes.card}>
+                <CardContent>
+                  <Typography variant="h5" component="h2">
+                    {service.name} transaction meta data
+                  </Typography>
 
-        <CardActions disableSpacing>
-          <Button
-              disabled={!canSubmit}
-            variant="outlined"
-            href="#contained-buttons"
-            onClick={this.addFreqData}
-          >
-            Submit 
-          </Button>
-        </CardActions>
-      </Card>
+                  <MuiPickersUtilsProvider utils={DateFnsUtils}>
+                    <Grid container justify="space-between">
+                      <TextField
+                        id="standard-repeats"
+                        label="repeats"
+                        className={classes.textField}
+                        value={this.state.every}
+                        onChange={this.changeEvery}
+                        margin="normal"
+                      />
+
+                      <FormControl className={classes.formControl}>
+                        <InputLabel htmlFor="freq-simple">every</InputLabel>
+                        <Select
+                          value={this.state.freq}
+                          onChange={this.changeFreq}
+                          inputProps={{
+                            name: "freq",
+                            id: "freq-simple"
+                          }}
+                        >
+                          <MenuItem value={"DAILY"}>DAILY</MenuItem>
+                          <MenuItem value={"WEEKLY"}>WEEKLY</MenuItem>
+                          <MenuItem value={"MONTHLY"}>MONTHLY</MenuItem>
+                          <MenuItem value={"YEARLY"}>YEARLY</MenuItem>
+                        </Select>
+                      </FormControl>
+
+                      <KeyboardDatePicker
+                        disableToolbar
+                        variant="inline"
+                        format="MM/dd/yyyy"
+                        margin="normal"
+                        id="date-picker-start"
+                        label="Starting Date"
+                        value={this.state.start}
+                        onChange={this.changeStart}
+                        KeyboardButtonProps={{
+                          "aria-label": "change start date"
+                        }}
+                      />
+
+                      <KeyboardDatePicker
+                        disableToolbar
+                        variant="inline"
+                        format="MM/dd/yyyy"
+                        margin="normal"
+                        id="date-picker-inline"
+                        label="Until"
+                        value={this.state.until}
+                        onChange={this.changeUntil}
+                        KeyboardButtonProps={{
+                          "aria-label": "change date"
+                        }}
+                      />
+                    </Grid>
+                  </MuiPickersUtilsProvider>
+
+                  <Grid container justify="space-around">
+                    <TextField
+                      id="standard-multiline-flexible"
+                      label="Comments"
+                      multiline
+                      rowsMax="4"
+                      fullWidth
+                      value={this.state.comments}
+                      onChange={this.changeComments}
+                      className={classes.textField}
+                      margin="normal"
+                    />
+                  </Grid>
+                </CardContent>
+
+                <CardActions disableSpacing>
+                  <Button
+                    disabled={!canSubmit}
+                    variant="outlined"
+                    href="#contained-buttons"
+                    onClick={this.addFreqData}
+                  >
+                    Submit
+                  </Button>
+                </CardActions>
+              </Card>
+            </Grid>
+            <Grid item xs={12}>
+              <UserSerTxnList serId={service.sid} uid={this.props.uid} />
+            </Grid>
+          </Grid>
+        </ExpansionPanelDetails>
+      </ExpansionPanel>
     );
   }
 }
 
-export default withStyles(styles)(ServiceDetail);
+const mapStateToProps = function(state, ownProps) {
+  return {
+    ...state.admOneUserSerTxnReducer
+  };
+};
+
+export default connect(mapStateToProps)(withStyles(styles)(UserServiceDetail));

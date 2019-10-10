@@ -69,7 +69,7 @@
         "react-contenteditable": "^3.2.6",
         "react-copy-to-clipboard": "^5.0.1",
         "react-dom": "^16.8.6",
-        "react-dropzone": "^10.1.9",
+        "react-dropzone": "^10.1.10",
         "react-headroom": "^2.2.4",
         "react-helmet": "^5.2.0",
         "react-html5-camera-photo": "^1.4.3",

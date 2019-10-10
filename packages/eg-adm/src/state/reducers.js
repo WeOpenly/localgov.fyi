@@ -8,6 +8,7 @@ import { admOneSerReducer } from "../components/One/admOneSerReducer";
 import { admOneSerDetailReducer } from "../components/One/admOneSerDetailReducer";
 import { admOnePackReducer } from "../components/One/admOnePackReducer";
 import { admOnePackDetailReducer } from "../components/One/admOnePackDetailReducer";
+import { admOneUserSerTxnReducer } from "../components/One/admOneUserSerTxnReducer";
 
 export default combineReducers({
   oneUser,
@@ -16,5 +17,6 @@ export default combineReducers({
   admOneSerReducer,
   admOneSerDetailReducer,
   admOnePackReducer,
-  admOnePackDetailReducer
+  admOnePackDetailReducer,
+  admOneUserSerTxnReducer
 });

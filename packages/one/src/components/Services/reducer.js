@@ -77,7 +77,7 @@ export function oneUserServices(state = initialState, action) {
         return {
           ...state,
           updating: false,
-          selectedServices: action.sers,
+          selectedServices: action.result,
           updateFailed: false
         };
         break;

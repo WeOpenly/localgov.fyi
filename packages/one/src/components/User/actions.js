@@ -31,7 +31,16 @@ function recvOnboardingDetails(details) {
   return { type: types.USER_DETAILS_SUCCESS, details };
 }
 
-
+export function updateServerOnboardingStep(uid, step) {
+  return async (dispatch, getState) => {
+    const userRef = firebase
+      .firestore()
+      .collection("one_user")
+      .doc(uid)
+      .update({ currentOnboardingStep: step })
+      .then();
+  };
+}
 
 export function loginGoog(enteredEmail) {
   return async (dispatch, getState) => {
@@ -60,14 +69,14 @@ function watchUserForChanges(uid){
         .doc(uid)
         .onSnapshot(function(doc) {
           const details = doc.data();
-          const { currentOnboardingStep } = details;
-          if (currentOnboardingStep) {
-              if (currentOnboardingStep !== "payment_added") {
-                navigate(`/dashboard/onboard/${currentOnboardingStep}`);
-              } else {
-                navigate(`/dashboard/services`);
-              }
+          const { currentOnboardingStep, onboardingDone } = details;
+
+          if (!onboardingDone) {
+            navigate(`/dashboard/onboard/${currentOnboardingStep}`);
+          } else {
+            navigate(`/dashboard/services`);
           }
+
           dispatch(fetchOrSetUserServiceDetails(uid));
           dispatch(recvOnboardingDetails(details));
         });
@@ -153,9 +162,8 @@ function fetchOrSetUserDetails(user) {
           } 
 
           userRef.set({ ...details });
-        } else {
-          dispatch(watchUserForChanges(uid));
-        }
+        } 
+        dispatch(watchUserForChanges(uid));
       })
       .catch(fail => {
         dispatch(failedLoadingOnboardingDetails());
@@ -177,31 +185,29 @@ export function checkLogin(enteredEmail) {
       if (user) {
         dispatch(fetchOrSetUserDetails(user));
         dispatch(setAuthenticated(true));
-        // dispatch(watchUserForChanges(user.uid));
       } else {
         dispatch(setAuthenticated(false));
         if(userWatch){
           userWatch();
         }
-
         navigate("/");
       }
     });
   };
 }
 
-
-export function updateServerOnboardingStep(uid, step) {
-  return async (dispatch, getState) => {
-    const userRef = firebase
-      .firestore()
-      .collection("one_user")
-      .doc(uid)
-      .update({ currentOnboardingStep: step })
-      .then();
-  };
+export function finishOnboarding(uid){
+   return async (dispatch, getState) => {
+     const userRef = firebase
+       .firestore()
+       .collection("one_user")
+       .doc(uid)
+       .update({ onboardingDone: true})
+       .then(() => {
+         navigate('/dashboard/services')
+       });
+   };
 }
-
 
 export function updateUserPackage(uid, pack) {
   return async (dispatch, getState) => {

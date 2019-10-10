@@ -7,7 +7,6 @@ const initialState = {
   authFailureMsg: "",
   authenticated: false,
   details: {},
-  currentOnboardingStep: "user_type", 
   landingPlan: null,
   landingType: null
 };
@@ -15,13 +14,6 @@ const initialState = {
 
 export function oneUser(state = initialState, action) {
     switch (action.type) {
-      case types.ONBOARD_UPDATE_STEP:
-        return {
-          ...state,
-          currentOnboardingStep: action.step
-        };
-        break;
-
       case types.SET_LANDING_USER_TYPE:
         return {
           ...state,

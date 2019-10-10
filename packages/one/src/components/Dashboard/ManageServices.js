@@ -33,48 +33,68 @@ class ManageServiceList extends Component {
   }
 
   updateService(vals, ser) {
-    const { dispatch, uid } = this.props;
+    const { dispatch, oneUser } = this.props;
+    const { uid } = oneUser.details;
     dispatch(unSelectService(uid, ser));
     dispatch(selectService(uid, ser));
     dispatch(finalizeService(uid, vals, ser));
   }
 
   removeSelectedService(ser) {
-    const { dispatch, uid } = this.props;
+    const { dispatch, oneUser } = this.props;
+    const { uid } = oneUser.details;
     dispatch(unSelectService(uid, ser));
   }
 
   finalizeService(vals, ser) {
-    const { dispatch, uid } = this.props;
+    const { dispatch, oneUser } = this.props;
+    const { uid } = oneUser.details;
     dispatch(selectService(uid, ser));
     dispatch(finalizeService(uid, vals, ser));
     this.toggleSerAddDetails(false)
   }
 
   addSelectedService(ser) {
-    const { dispatch, uid } = this.props;
+    const { dispatch, oneUser } = this.props;
+    const { uid } = oneUser.details;
     dispatch(selectService(uid, ser));
   }
 
   render() {
-    const { allAvailableServices, isBusiness, selectedServices } = this.props;
-
-    let availableSers = allAvailableServices;
-
+    const { oneSers, oneUserSers, oneUser } = this.props;
+    const {
+      fetching: selectedServicesFetching,
+      failed: selectedServicesFailed,
+      selectedServices
+    } = oneUserSers;
+    const {
+      fetching: allSersFetching,
+      failed: allSersFailed,
+      sers: allAvailableServices
+    } = oneSers;
+    console.log(selectedServices);
+    const { authInProgress, authFailure, details } = oneUser;
+    
+    const { packType } = details;
+    if (allSersFetching || selectedServicesFetching) {
+      return "loading";
+    }
+    const availableSers = allAvailableServices[packType];
+    
     const notSelected = Object.keys(selectedServices).length === 0;
 
     const finalizedSers = Object.values(selectedServices).map(selected => {
-      if ("formData" in selectedServices[selected.id]) {
+      if ("formData" in selectedServices[selected.sid]) {
         return (
           <ExpandableServiceListItem
-            key={selected.id}
+            key={selected.sid}
             isFinalized={
-              selected.id in selectedServices &&
-              "formData" in selectedServices[selected.id]
+              selected.sid in selectedServices &&
+              "formData" in selectedServices[selected.sid]
             }
             updateServiceDetails={this.updateService}
             removeServiceDetails={this.removeSelectedService}
-            ser={selectedServices[selected.id]}
+            ser={selectedServices[selected.sid]}
           />
         );
       }
@@ -83,16 +103,16 @@ class ManageServiceList extends Component {
     let nonAddedSersLen = 0;
     const addedSersNotFinalized = availableSers.map(ser => {
       if (
-        (ser.id in selectedServices) &&
-          !("formData" in selectedServices[ser.id])
+        (ser.sid in selectedServices) &&
+          !("formData" in selectedServices[ser.sid])
       ) {
         nonAddedSersLen +=1;
         return (
           <ExpandableServiceListItem
-            key={ser.id}
+            key={ser.sid}
             isFinalized={
-              ser.id in selectedServices &&
-              "formData" in selectedServices[ser.id]
+              ser.sid in selectedServices &&
+              "formData" in selectedServices[ser.sid]
             }
             updateServiceDetails={this.updateService}
             removeServiceDetails={this.removeSelectedService}
@@ -105,14 +125,14 @@ class ManageServiceList extends Component {
 
     const notFinalizedSers = availableSers.map(ser => {
       if (
-        !(ser.id in selectedServices && "formData" in selectedServices[ser.id])
+        !(ser.sid in selectedServices && "formData" in selectedServices[ser.sid])
       ) {
         return (
           <ExpandableServiceListItem
-            key={ser.id}
+            key={ser.sid}
             isFinalized={
-              ser.id in selectedServices &&
-              "formData" in selectedServices[ser.id]
+              ser.sid in selectedServices &&
+              "formData" in selectedServices[ser.sid]
             }
             updateServiceDetails={this.updateService}
             removeServiceDetails={this.removeSelectedService}
@@ -297,9 +317,9 @@ class ManageServiceList extends Component {
 
 const mapStateToProps = function(state, ownProps) {
   return {
-    ...state.oneServices,
-    isBusiness: state.oneUser.isBusiness,
-    uid: state.oneUser.details.uid
+    oneSers: state.oneServices,
+    oneUserSers: state.oneUserServices,
+    oneUser: state.oneUser
   };
 };
 

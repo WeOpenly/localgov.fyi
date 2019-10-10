@@ -45,7 +45,7 @@ class ExpServiceListItem extends React.Component {
   }
 
   render() {
-    let icon = iconMap[this.props.ser.id];
+    let icon = iconMap[this.props.ser.sid];
         if (!icon) {
           icon = defaultIcon;
         }

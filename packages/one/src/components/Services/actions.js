@@ -50,10 +50,9 @@ return {
 
 export function unSelectService(uid, service){
 return async (dispatch, getState) => {
-
+  dispatch(selectServiceLoading());
 
   const existingSelected = getState().oneUserServices.selectedServices;
-
 
   if ((service.sid in existingSelected)) {
     const servicesRef = firebase
@@ -69,7 +68,7 @@ return async (dispatch, getState) => {
         selectedServices: newSelectedServices
       })
       .then(function(err) {
-        dispatch(recvUserServices(newSelectedServices));
+        dispatch(selectServiceSuccess(newSelectedServices));
       })
       .catch(function(error) {
         dispatch(selectServiceFailed(error));
@@ -80,10 +79,11 @@ return async (dispatch, getState) => {
 
 export function selectService(uid, service) {
   return async (dispatch, getState) => {
-    // dispatch(selectServiceLoading());
+      dispatch(selectServiceLoading());
 
     const existingSelected = getState().oneUserServices.selectedServices;
 
+    console.log(existingSelected, 'existing selected');
 
     if(!(service.sid in existingSelected)){
         const servicesRef = firebase
@@ -99,7 +99,7 @@ export function selectService(uid, service) {
             selectedServices: newSelectedServices
           })
           .then(function(err) {
-            dispatch(recvUserServices(newSelectedServices));
+            dispatch(selectServiceSuccess(newSelectedServices));
           })
           .catch(function(error) {
             dispatch(selectServiceFailed(error));
@@ -249,7 +249,3 @@ export function fetchOrSetUserServiceDetails(uid) {
         });
   };
 }
-
-
-
-

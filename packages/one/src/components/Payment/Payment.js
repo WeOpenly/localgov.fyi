@@ -11,7 +11,7 @@ import CardPaymentMethod from './CardPaymentMethod';
 import ServiceActionBar from "../Services/ServiceActionBar";
 import { toggleStripeModal } from "../Services/actions";
 
-import { updateServerOnboardingStep } from "../User/actions";
+import { updateServerOnboardingStep, finishOnboarding } from "../User/actions";
 
 import { StripeProvider } from "react-stripe-elements";
 const windowGlobal = typeof window !== "undefined" && window;
@@ -76,6 +76,7 @@ class Payment extends Component {
     this.handleOnExit = this.handleOnExit.bind(this);
     this.toggleCardDetails = this.toggleCardDetails.bind(this);
     this.onCardPaymentSubmit = this.onCardPaymentSubmit.bind(this);
+  
   }
 
   updateStep(step) {
@@ -129,6 +130,7 @@ class Payment extends Component {
     );
   }
 
+
   handleOnExit(err, metadata) {
     // handle the case when your user exits Link
     console.log(err, metadata);
@@ -149,9 +151,7 @@ class Payment extends Component {
       return <div className={styles.loading} />;
     }
 
-    if (paymentSetupDone) {
-      return <PaymentSetupDone />;
-    }
+   
 
     const { selectedPlan, stripeCardModalOpen } = this.state;
 

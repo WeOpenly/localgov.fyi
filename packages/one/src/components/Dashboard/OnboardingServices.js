@@ -11,8 +11,10 @@ import UserTypeChoice from "./UserTypeChoice";
 import styles from "../spectre.min.module.css"
 import iconStyles from '../typicons.min.module.css';
 import ServiceActionBar from '../Services/ServiceActionBar';
+import PaymentSetupDone from '../Payment/PaymentSetupDone'
+import { finishOnboarding } from "../User/actions";
 
-import { setupBankPayment, setupCardPayment, updateStep} from '../actions';
+import { setupBankPayment, setupCardPayment} from '../Payment/actions';
 import {toggleStripeModal} from '../Services/actions'
 
 class OnboardingServices extends Component {
@@ -20,34 +22,42 @@ class OnboardingServices extends Component {
     super(props);
     this.submitBankPayment = this.submitBankPayment.bind(this);
     this.setupCardPayment = this.setupCardPayment.bind(this);
+    this.finishOnboarding = this.finishOnboarding.bind(this);
   }
 
   submitBankPayment(plaidToken, accountId, planId) {
-    const { dispatch, uid } = this.props;
+    const { dispatch, user } = this.props;
+    const { uid } = user.details;
     dispatch(setupBankPayment(uid, plaidToken, accountId, planId));
   }
 
+  finishOnboarding() {
+    const { dispatch, user } = this.props;
+    const { uid } = user.details;
+    dispatch(finishOnboarding(uid));
+  }
+
   setupCardPayment(str_tok, planId) {
-    const { dispatch, uid } = this.props;
+    const { dispatch, user } = this.props;
+    const { uid } = user.details;
     dispatch(setupCardPayment(uid, str_tok, planId));
   }
 
   render() {
-    const {
-      currentOnboardingStep,
-      details,
-      landingPlan,
-      landingType
-    } = this.props.user;
+    const { details, landingPlan, landingType } = this.props.user;
+
+    const { currentOnboardingStep } = details;
+
+    const { packName, paymentSetupDone } = details;
 
     const {
-      packName,
-      paymentSetupDone
-    } = details;
+      fetching,
+      updating,
+      selectedServices,
+      failed
+    } = this.props.userServices;
 
-    const { fetching, updating, selectedServices, failed } = this.props.userServices;
-
-    const {email} = details;
+    const { email } = details;
 
     if (fetching || updating) {
       return <div className={styles.loading} />;
@@ -124,13 +134,14 @@ class OnboardingServices extends Component {
           <UserTypeChoice path="/user_type" />
           <ServiceList path="/add_services" />
           <ServiceDetails path="/update_services_details" />
+          <PaymentSetupDone
+            path="/payment_added"
+            finishOnboarding={this.finishOnboarding}
+          />
           <Payment
             path="/add_payment"
             submitBankPayment={this.submitBankPayment}
             setupCardPayment={this.setupCardPayment}
-            paymentSetupDone={false}
-            paymentSetupInProgress={false}
-            isBusiness={false}
             landingPlan={landingPlan}
             landingType={landingType}
             email={email}

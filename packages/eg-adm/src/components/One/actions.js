@@ -20,6 +20,24 @@ const dateNow = Date.now();
 
 let unsub = null;
 
+
+
+export function uploadFile(uid, file, cb) {
+  firebase
+    .storage()
+    .ref()
+    .child(`one_user_service_txns/${uid}/${file.name}`)
+    .put(file)
+    .then(function(snapshot) {
+      snapshot.ref.getDownloadURL().then(function(downloadUrl) {
+        console.log(downloadUrl);
+        cb(downloadUrl);
+      });
+    }).catch((err) => {
+      console.log(err)
+    });
+}
+
 function fetchItems() {
   return { type: types.FETCH_USER_ITEMS_START };
 }
@@ -123,55 +141,69 @@ export function getUserServiceDetails(uid){
             console.log("No such document!");
           } else {
             const docData = doc.data();
+            console.log(docData, "getUserServiceDetails");
             dispatch(recvUserSer(docData));
           }
         })
         .catch(err => {
           console.log(err);
-          
           dispatch(recvUserSerFailure());
         });
     }
 }
 
 
-export function submitMeta(uid, sid, metadata){
+
+
+export function submitTxnMeta(uid, sid, metadata){
   return async (dispatch, getState) => {
-    let serRef = firebase
+    let serTxnRef = firebase
       .firestore()
-      .collection("one_user_services")
+      .collection("one_user_services_txns")
       .doc(uid);
 
     dispatch(fetchUserSer());
 
-    let getDoc = serRef
+    let getDoc = serTxnRef
       .get()
       .then(doc => {
         if (!doc.exists) {
-          console.log("No such document!");
+          let newMeta = metadata;
+          newMeta["start"] = metadata["start"].valueOf();
+          newMeta["until"] = metadata["until"].valueOf();
+          const txnForSet = {          }
+          txnForSet[sid] = {
+            metadata: newMeta,
+            txns: []
+          };
+          serTxnRef.set(txnForSet);
         } else {
-          const docData = doc.data();
+          let olddocData = doc.data();
+          let oldSerDetails = olddocData[sid]
+          let newMeta = metadata;
+          newMeta['start'] = metadata['start'].valueOf();
+          newMeta['until'] = metadata['until'].valueOf();
+          oldSerDetails["metadata"] = newMeta;
+          
+          olddocData[sid] = oldSerDetails;
 
-          let oldSers = docData.selectedServices;
-
-          let oldSerDetails = oldSers[sid];
-          oldSerDetails["metadata"] = metadata;
-
-          oldSers[sid] = oldSerDetails;
-
+          console.log(olddocData)
           firebase
             .firestore()
-            .collection("one_user_services")
+            .collection("one_user_services_txns")
             .doc(uid)
             .update({
-              selectedServices: oldSers
-            }).then(() => {
-              dispatch(getUserServiceDetails(uid))
+              ...olddocData
+            })
+            .then(() => {
+              dispatch(getUserServiceDetails(uid));
+            }).catch((err) =>{
+              console.log(err)
             });
         }
       })
       .catch(err => {
-        console.log(err);
+
         dispatch(recvUserSerFailure());
       });
   };

@@ -57,27 +57,40 @@ class FinalConf extends React.Component {
             msg = `You did it, ${this.props.name}!`
         }
 
-        return (<div className={styles.columns}>
-            <div className={`${styles.column}  ${styles.textCenter} ${styles.col12}`}>
-
-                <div className={styles.empty}>
-                    
-                    
-                    <h3 className={`${styles.emptyTitle} ${styles.h3}`}> {msg}  </h3>
-                    <div style={{display: 'flex', justifyContent: 'center', margin: '1.5rem'}}>
-                        <HeroIl />
-                    </div>
-                    <p style={{ paddingBottom: '4px' }}> We will take it from here. Our team will reach out to you if there is any info needed</p>
-
-                    <div className={styles.emptyAction}>
-                        <button onClick={() => navigate("/dashboard")} className={`${styles.btn} ${styles.btnPrimary}`}>Go to dashboard</button>
-                    </div>
-                   
+        return (
+          <div className={styles.columns}>
+            <div
+              className={`${styles.column}  ${styles.textCenter} ${styles.col12}`}
+            >
+              <div className={styles.empty} style={{ background: "#fcfdfe" }}>
+                <h3 className={`${styles.emptyTitle} ${styles.h3}`}> {msg} </h3>
+                <div
+                  style={{
+                    display: "flex",
+                    justifyContent: "center",
+                    margin: "1.5rem"
+                  }}
+                >
+                  <HeroIl />
                 </div>
+                <p style={{ paddingBottom: "4px" }}>
+                  {" "}
+                  We will take it from here. Our team will reach out to you if
+                  there is any info needed
+                </p>
 
+                <div className={styles.emptyAction}>
+                  <button
+                    onClick={() => this.props.finishOnboarding()}
+                    className={`${styles.btn} ${styles.btnPrimary}`}
+                  >
+                    Go to dashboard
+                  </button>
+                </div>
+              </div>
             </div>
-        </div>
-        )
+          </div>
+        );
     }
 }
 
@@ -87,7 +100,7 @@ class FinalConf extends React.Component {
 const mapStateToProps = function (state, ownProps) {
     return {
         name: state.oneUser.details.displayName,
-        isFirstTime: state.oneUser.detials.isFirstTime,
+        isFirstTime: state.oneUser.details.isFirstTime,
     };
 };
 

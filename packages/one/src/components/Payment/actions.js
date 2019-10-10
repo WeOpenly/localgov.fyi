@@ -6,7 +6,7 @@ import { log } from "util";
 import * as types from "./ActionTypes";
 import getFirebase from "../../common/firebase/firebase";
 import { trackQPevent } from "../../common/tracking";
-
+import { updateServerOnboardingStep } from "../User/actions";
 const windowGlobal = typeof window !== "undefined" && window;
 
 const firebase = getFirebase();
@@ -41,6 +41,7 @@ export function watchForStripeResp(uid) {
         const stripe_resp = doc.data().stripe_resp;
         if (stripe_resp) {
           dispatch(setupPaymentSuccess());
+          dispatch(updateServerOnboardingStep(uid, 'payment_added'));
         }
       });
   };
@@ -92,7 +93,7 @@ export function watchForReceipts(uid) {
 export function setupCardPayment(uid, stripe_token, plan_id) {
   return async (dispatch, getState) => {
     dispatch(setupBegin());
-
+  
     const userRef = firebase
       .firestore()
       .collection("one_user")

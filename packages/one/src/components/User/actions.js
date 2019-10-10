@@ -119,7 +119,7 @@ function fetchOrSetUserDetails(user) {
     let plan = null;
 
     if (windowGlobal) {
-      packType = windowGlobal.localStorage.getItem("packType");
+      packType = windowGlobal.localStorage.getItem("package");
       plan = windowGlobal.localStorage.getItem("plan");
     }
 

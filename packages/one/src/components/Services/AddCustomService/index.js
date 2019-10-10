@@ -24,7 +24,7 @@ class AddCustomService extends Component {
     const slugService = slugify(this.state.serviceName);
 
     const flexFormSchema = {
-      id: `FLEX_SERVICE_${slugService}`,
+      sid: `FLEX_SERVICE_${slugService}`,
       name: `${this.state.serviceName}`,
       faqs: [],
       formSchema: [

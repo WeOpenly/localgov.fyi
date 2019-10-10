@@ -14,18 +14,35 @@ class Home extends Component {
     }
 
     render() {
-      const { oneUser, oneServices} = this.props;
-      const { paymentSetupDone, isBusiness, details } = oneUser;
-      const { allAvailableServices, selectedServices} = oneServices;
-      
-      console.log(oneServices, 'Home');
+      const { oneSers, oneUserSers, oneUser } = this.props;
+      const {
+        fetching: selectedServicesFetching,
+        failed: selectedServicesFailed,
+        selectedServices
+      } = oneUserSers;
+      const {
+        fetching: allSersFetching,
+        failed: allSersFailed,
+        sers: allOneSers
+      } = oneSers;
+
+      const { authInProgress, authFailure, details } = oneUser;
+
+      if (allSersFetching || selectedServicesFetching) {
+        return "loading";
+      }
+
+      const { packType, paymentSetupDone } = details;
+
+      const allAvailableServices = allOneSers[packType];
+
 
       let availableSers = allAvailableServices;
 
 
       let selectedSerLen = 0;
     const finalizedSers = Object.values(selectedServices).map(selected => {
-      if ("formData" in selectedServices[selected.id]) {
+      if ("formData" in selectedServices[selected.sid]) {
         selectedSerLen = selectedSerLen +1;
       }
     });
@@ -87,7 +104,7 @@ class Home extends Component {
                     </div>
                   </div>
                 </div>
-                <div style={{ display: "flex", alignSelf: "center" }}>
+                {!paymentSetupDone ? (<div style={{ display: "flex", alignSelf: "center" }}>
                   <div
                     className={`${styles.tile} ${styles.btn} ${styles.textLeft}`}
                     onClick={() => navigate("/dashboard/onboard/add_payment")}
@@ -121,7 +138,7 @@ class Home extends Component {
                       </h5>
                     </div>
                   </div>
-                </div>
+                </div>) : null}
               </div>
             </div>
           </div>
@@ -133,8 +150,9 @@ class Home extends Component {
 
 const mapStateToProps = function (state, ownProps) {
   return {
+    oneSers: state.oneServices,
+    oneUserSers: state.oneUserServices,
     oneUser: state.oneUser,
-    oneServices: state.oneServices
   };
 };
 

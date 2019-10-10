@@ -12,6 +12,7 @@ class UserTypeChoice extends Component {
     this.chooseUserType = this.chooseUserType.bind(this);
   }
 
+
   chooseUserType(type){
     const { dispatch, oneUser } = this.props;
     const {details} = oneUser;

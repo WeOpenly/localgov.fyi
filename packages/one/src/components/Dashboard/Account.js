@@ -47,14 +47,14 @@ class Account extends Component {
                             <div className={`${styles.tile} ${styles.tileCentered}`}>
                                 <div className={styles.tileContent}>
                                     <h6 className={styles.tileTitle} >Evergov Plan</h6>
-                                    <div className={styles.tileSubtitle}>lite</div>
+                                    <div className={styles.tileSubtitle}>{this.props.selected_plan_id}</div>
                                 </div>
 
                             </div>
                             <div className={`${styles.tile} ${styles.tileCentered}`}>
                                 <div className={styles.tileContent}>
                                     <h6 className={styles.tileTitle} >Account Type</h6>
-                                    <div className={styles.tileSubtitle}>{this.props.isBusiness ? `Business` : `Individual`} </div>
+                                    <div className={styles.tileSubtitle}>{this.props.packType} </div>
                                 </div>
                             </div>
                         </div>
@@ -80,7 +80,6 @@ class Account extends Component {
 const mapStateToProps = function (state, ownProps) {
     return {
         ...state.oneUser.details,
-        isBusiness: state.oneUser.isBusiness,
     };
 };
 

@@ -48,7 +48,7 @@ class OnboardingServices extends Component {
 
     const { currentOnboardingStep } = details;
 
-    const { packName, paymentSetupDone } = details;
+    const {  paymentSetupDone } = details;
 
     const {
       fetching,

@@ -29,7 +29,24 @@ class Home extends Component {
       const { authInProgress, authFailure, details } = oneUser;
 
       if (allSersFetching || selectedServicesFetching) {
-        return "loading";
+        return (
+        <div className={styles.columns} style={{ marginTop: "1rem" }}>
+          <div className={`${styles.column} ${styles.col1} ${styles.hideXs}`} />
+          <div
+            style={{
+              padding: "1rem",
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "center",
+              paddingBottom: "1rem"
+            }}
+            className={`${styles.column} ${styles.col10} ${styles.colXs12}`}
+          >
+            <div className={styles.loading} />
+          </div>
+
+          <div className={`${styles.column} ${styles.col1} ${styles.hideXs}`} />
+        </div>)
       }
 
       const { packType, paymentSetupDone } = details;

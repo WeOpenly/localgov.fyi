@@ -49,9 +49,7 @@ class UserTypeChoice extends Component {
                 <div style={{ display: "flex", alignSelf: "center" }}>
                   <div
                     className={`${styles.card} ${styles.textCenter}`}
-                    onClick={() =>
-                      this.chooseUserType({ packType: "individual" })
-                    }
+                    onClick={() => this.chooseUserType({ packType: "ind" })}
                     style={{
                       border: "1px solid rgba(86, 39, 255, .2)",
                       background: "#fff",
@@ -89,9 +87,7 @@ class UserTypeChoice extends Component {
                 <div style={{ display: "flex", alignSelf: "center" }}>
                   <div
                     className={`${styles.card} ${styles.textCenter}`}
-                    onClick={() =>
-                      this.chooseUserType({ packType: "business" })
-                    }
+                    onClick={() => this.chooseUserType({ packType: "starter" })}
                     style={{
                       border: "1px solid rgba(86, 39, 255, .2)",
                       background: "#fff",

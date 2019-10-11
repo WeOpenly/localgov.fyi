@@ -90,243 +90,245 @@ const PaymentPlan = props => (
 
 
 class PaymentPlans extends Component {
-    constructor(props) {
-        super(props);
-        this.onSelectPaymentPlan = this.onSelectPaymentPlan.bind(this);
-        this.state = {
-            selected: false,
-            showSelections: true,
-            userType: null,
+  constructor(props) {
+    super(props);
+    this.onSelectPaymentPlan = this.onSelectPaymentPlan.bind(this);
+    this.state = {
+      selected: false,
+      showSelections: true,
+      userType: null
+    };
+  }
+
+  componentDidMount() {
+    const { packType } = this.props;
+    if (packType) {
+      this.setState({
+        userType: packType
+      });
+    }
+  }
+
+  componentWillReceiveProps(nextProps) {
+    if (!this.props.selectedPlan && nextProps.selectedPlan) {
+      this.setState({
+        selected: nextProps.selectedPlan,
+        showSelections: false
+      });
+    }
+    if (!this.props.selectedPlan && nextProps.selectedPlan) {
+      this.setState({
+        selected: nextProps.selectedPlan,
+        showSelections: false
+      });
+    }
+  }
+
+  selectType(userType) {
+    this.setState({
+      userType: userType
+    });
+  }
+
+  onSelectPaymentPlan(plan) {
+    this.setState({
+      selected: plan.id
+    });
+
+    this.selectType(plan.for);
+    this.props.onSelectPlan(plan.id, plan.for);
+  }
+
+  render() {
+    let plans = [
+      {
+        id: "lite-indiv",
+        for: "ind",
+        tag: "labelDefault",
+        name: "Lite",
+        price: "49",
+        duration: "Year",
+        features: ["24/7 Support", "Recurring Annual Payment"],
+        covers: [
+          "Propterty Tax Payments",
+          "Utility Bill Payments",
+          "Vehicle Registration Renewals",
+          "Pet Licensing"
+        ]
+      },
+      {
+        id: "plus-indiv",
+        for: "ind",
+        tag: "labelSecondary",
+        name: "Plus",
+        price: "99",
+        duration: "Year",
+        features: ["24/7 Support", "Recurring Annual Payment"],
+        covers: ["Everything in Lite, plus up to 10 services of your choice"]
+      },
+      {
+        id: "life_long_indiv",
+        for: "ind",
+        tag: "labelSuccess",
+        name: "LifeLong",
+        price: "499",
+        duration: "Forever",
+        features: ["24/7 Support", "Use Forever"],
+        covers: ["Unlimited services of your choice"]
+      }
+    ];
+    if (this.state.userType === "starter") {
+      plans = [
+        {
+          id: "lite-busi",
+          for: "starter",
+          tag: "labelDefault",
+          name: "Lite",
+          price: "99",
+          duration: "Year",
+          features: ["24/7 Support", "Recurring Annual Payment"],
+          covers: [
+            "Business Licence Renewals",
+            "Utility Bill Payments",
+            "Renew Fictitious Business Licence or DBA"
+          ]
+        },
+        {
+          id: "plus-busi",
+          for: "starter",
+          tag: "labelWarning",
+          name: "Startup",
+          price: "199",
+          duration: "Year",
+          features: ["24/7 Support", "Recurring Annual Payment"],
+          covers: [
+            "Delaware Franchise Tax Filing",
+            "California Franchise Tax Filing",
+            "Any two other service filings of your choice"
+          ]
+        },
+        {
+          id: "life_long_busi",
+          for: "starter",
+          tag: "labelSuccess",
+          name: "Pro",
+          price: "999",
+          duration: "Year",
+          features: ["Dedicated best-in-class support", "Use Forever"],
+          covers: ["Unlimited services of your choice"]
         }
+      ];
     }
 
-    componentDidMount(){
-        const { isBusiness } = this.props;
-        if (isBusiness){
-            this.setState({
-                userType:'business'
-            })
-        }
-    }
+    const planComps = plans.map((plan, idx) => {
+      return (
+        <PaymentPlan
+          id={plan.id}
+          for={plan.for}
+          name={plan.name}
+          tag={plan.tag}
+          price={plan.price}
+          duration={plan.duration}
+          covers={plan.covers}
+          selectPaymentPlan={this.onSelectPaymentPlan}
+          features={plan.features}
+          isSelected={plan.id === this.state.selected}
+        />
+      );
+    });
 
-    componentWillReceiveProps(nextProps){
-        if (!this.props.selectedPlan && nextProps.selectedPlan){
-            this.setState({
-              selected: nextProps.selectedPlan,
-              showSelections: false,
-            });
-        }
-    }
+    return (
+      <Fragment>
+        {this.props.userTypeSelected ? null : (
+          <div
+            className={`${styles.column} ${styles.col12} ${styles.textCenter}`}
+          >
+            <div style={{ display: "flex", justifyContent: "center" }}>
+              <div style={{ display: "flex", alignSelf: "center" }}>
+                <div
+                  className={`${styles.card} ${styles.textCenter}`}
+                  onClick={() => this.selectType("ind")}
+                  style={{
+                    border: "1px solid rgba(86, 39, 255, .2)",
+                    background: `${
+                      this.state.userType === "ind" ? "#f6f7f8" : "#fff"
+                    }`,
+                    cursor: "pointer",
+                    padding: "0 0.5rem",
+                    margin: "0 0.5rem",
+                    borderRadius: "0.9rem"
+                  }}
+                >
+                  <div
+                    className={styles.cardImage}
+                    style={{
+                      margin: "1rem 0 0.4rem 0"
+                    }}
+                  >
+                    <span
+                      style={{
+                        background: "#3500f3",
+                        color: "#fff",
+                        padding: "0.4rem",
+                        fontSize: "0.9rem",
+                        borderRadius: "0.3rem",
+                        boxShadow: "0 0.1rem 1rem rgba(86, 39, 255, .2)"
+                      }}
+                      className={`${iconStyles.typcn} ${iconStyles.typcnUserOutline}`}
+                    ></span>
+                  </div>
 
-    selectType(userType){
-        this.setState({
-            userType: userType
-        })
-    }
+                  <div className={styles.cardHeader}>
+                    <h6 className={`${styles.cardTitle}`}>Individual</h6>
+                  </div>
+                </div>
+              </div>
+              <div style={{ display: "flex", alignSelf: "center" }}>
+                <div
+                  className={`${styles.card} ${styles.textCenter}`}
+                  onClick={() => this.selectType("starter")}
+                  style={{
+                    border: "1px solid rgba(86, 39, 255, .2)",
+                    background: `${
+                      this.state.userType === "starter" ? "#f6f7f8" : "#fff"
+                    }`,
+                    cursor: "pointer",
+                    padding: "0 0.5rem",
+                    margin: "0 0.5rem",
+                    borderRadius: "0.9rem"
+                  }}
+                >
+                  <div
+                    className={styles.cardImage}
+                    style={{
+                      margin: "1rem 0 0.4rem 0"
+                    }}
+                  >
+                    <span
+                      style={{
+                        background: "#3500f3",
+                        color: "#fff",
+                        padding: "0.4rem",
+                        fontSize: "0.9rem",
+                        borderRadius: "0.3rem",
+                        boxShadow: "0 0.1rem 1rem rgba(86, 39, 255, .2)"
+                      }}
+                      className={`${iconStyles.typcn} ${iconStyles.typcnBriefcase}`}
+                    ></span>
+                  </div>
 
-    onSelectPaymentPlan(plan) {
-        this.setState({
-            selected: plan.id
-        })
-
-        this.selectType(plan.for)
-        this.props.onSelectPlan(plan.id, plan.for);
-    }
-
-    render() {
-        let plans = [
-          {
-            id: "lite-indiv",
-            for: "individual",
-            tag: "labelDefault",
-            name: "Lite",
-            price: "49",
-            duration: "Year",
-            features: ["24/7 Support", "Recurring Annual Payment"],
-            covers: [
-              "Propterty Tax Payments",
-              "Utility Bill Payments",
-              "Vehicle Registration Renewals",
-              "Pet Licensing"
-            ]
-          },
-          {
-            id: "plus-indiv",
-            for: "individual",
-            tag: "labelSecondary",
-            name: "Plus",
-            price: "99",
-            duration: "Year",
-            features: ["24/7 Support", "Recurring Annual Payment"],
-            covers: [
-              "Everything in Lite, plus up to 10 services of your choice"
-            ]
-          },
-          {
-            id: "life_long_indiv",
-            for: "individual",
-            tag: "labelSuccess",
-            name: "LifeLong",
-            price: "499",
-            duration: "Forever",
-            features: ["24/7 Support", "Use Forever"],
-            covers: ["Unlimited services of your choice"]
-          }
-        ];
-        if (this.state.userType === 'business'){
-            plans = [
-              {
-                id: "lite-busi",
-                for: "business",
-                tag: "labelDefault",
-                name: "Lite",
-                price: "99",
-                duration: "Year",
-                features: ["24/7 Support", "Recurring Annual Payment"],
-                covers: [
-                  "Business Licence Renewals",
-                  "Utility Bill Payments",
-                  "Renew Fictitious Business Licence or DBA"
-                ]
-              },
-              {
-                id: "plus-busi",
-                for: "business",
-                tag: "labelWarning",
-                name: "Startup",
-                price: "199",
-                duration: "Year",
-                features: ["24/7 Support", "Recurring Annual Payment"],
-                covers: [
-                  "Delaware Franchise Tax Filing",
-                  "California Franchise Tax Filing",
-                  "Any two other service filings of your choice"
-                ]
-              },
-              {
-                id: "life_long_busi",
-                for: "business",
-                tag: "labelSuccess",
-                name: "Pro",
-                price: "999",
-                duration: "Year",
-                features: ["Dedicated best-in-class support", "Use Forever"],
-                covers: ["Unlimited services of your choice"]
-              }
-            ];
-        }
-  
-
-        const planComps =  plans.map((plan, idx) => {
-            return (
-              <PaymentPlan
-                id={plan.id}
-                for={plan.for}
-                name={plan.name}
-                tag={plan.tag}
-                price={plan.price}
-                duration={plan.duration}
-                covers={plan.covers}
-                selectPaymentPlan={this.onSelectPaymentPlan}
-                features={plan.features}
-                isSelected={plan.id === this.state.selected}
-              />
-            );
-        })
-
-        return (
-            <Fragment>
-                {this.props.userTypeSelected ? null : (<div className={`${styles.column} ${styles.col12} ${styles.textCenter}`}>
-                    <div style={{display: 'flex', justifyContent: 'center'}}>
-                        <div style={{ display: "flex", alignSelf: "center" }}>
-
-                            <div
-                                className={`${styles.card} ${styles.textCenter}`}
-                                onClick={() =>
-                                    this.selectType('individual')
-                                }
-                                style={{
-                                    border: "1px solid rgba(86, 39, 255, .2)",
-                                    background: `${this.state.userType==='individual' ? '#f6f7f8' : '#fff'}`,
-                                    cursor: 'pointer',
-                                    padding: '0 0.5rem',
-                                    margin: '0 0.5rem',
-                                    borderRadius: "0.9rem",
-                                    
-                                }}
-                            >
-                                <div className={styles.cardImage} style={{
-                                    margin: "1rem 0 0.4rem 0",
-                                }}>
-                                    <span style={{
-                                        background: "#3500f3",
-                                        color: "#fff",
-                                        padding: '0.4rem',
-                                        fontSize: '0.9rem',
-                                        borderRadius: "0.3rem",
-                                        boxShadow: "0 0.1rem 1rem rgba(86, 39, 255, .2)"
-                                    }} className={`${iconStyles.typcn} ${iconStyles.typcnUserOutline}`}></span>
-                                </div>
-
-                                <div className={styles.cardHeader}>
-
-                                    <h6
-                                        className={`${styles.cardTitle}`}
-
-                                    >
-                                        Individual
-                      </h6>
-                                </div>
-                            </div>
-                        </div>
-                        <div style={{ display: "flex", alignSelf: "center" }}>
-
-                            <div
-                                className={`${styles.card} ${styles.textCenter}`}
-                                onClick={() =>
-                                    this.selectType('business')
-                                }
-                                style={{
-                                    border: "1px solid rgba(86, 39, 255, .2)",
-                                    background: `${this.state.userType === 'business' ? '#f6f7f8' : '#fff'}`,
-                                    cursor: 'pointer',
-                                    padding: '0 0.5rem',
-                                    margin: '0 0.5rem',
-                                    borderRadius: "0.9rem",
-                                  
-                                }}
-                            >
-                                <div className={styles.cardImage} style={{
-                                    margin: "1rem 0 0.4rem 0",
-                                }}>
-                                    <span style={{
-                                        background: "#3500f3",
-                                        color: "#fff",
-                                        padding: '0.4rem',
-                                        fontSize: '0.9rem',
-                                        borderRadius: "0.3rem",
-                                        boxShadow: "0 0.1rem 1rem rgba(86, 39, 255, .2)"
-                                    }} className={`${iconStyles.typcn} ${iconStyles.typcnBriefcase}`}></span>
-                                </div>
-
-                                <div className={styles.cardHeader}>
-
-                                    <h6
-                                        className={`${styles.cardTitle}`}
-
-                                    >
-                                        Business
-                      </h6>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                  
-                </div>)}
-                {planComps}
-            </Fragment>
-        );
-    }
+                  <div className={styles.cardHeader}>
+                    <h6 className={`${styles.cardTitle}`}>Business</h6>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        )}
+        {planComps}
+      </Fragment>
+    );
+  }
 }
 
 

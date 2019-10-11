@@ -59,6 +59,7 @@ class LandingHome extends React.Component {
           email: ''
         }
         this.changeEmail = this.changeEmail.bind(this);
+        this.loginGoogWplan = this.loginGoogWplan.bind(this);
     }
 
     changeEmail(ev){
@@ -67,17 +68,22 @@ class LandingHome extends React.Component {
       })
     }
 
-    loginGoog(plan, userType){
-        const {dispatch} = this.props;
+    loginGoogWplan(plan, userType){
+       const { dispatch } = this.props;
 
-        if(windowGlobal){
-          if (plan){
-            windowGlobal.localStorage.setItem("plan", plan);
-          }
-          if(userType){
-            windowGlobal.localStorage.setItem("package", userType);
-          }
-        }
+       if (windowGlobal) {
+         if (plan) {
+           windowGlobal.localStorage.setItem("plan", plan);
+         }
+         if (userType) {
+           windowGlobal.localStorage.setItem("package", userType);
+         }
+       }
+       dispatch(loginGoog(this.state.email));
+    }
+
+    loginGoog(){
+        const {dispatch} = this.props;
         dispatch(loginGoog(this.state.email));
     }
 
@@ -533,7 +539,7 @@ class LandingHome extends React.Component {
                 <div className={`${styles.column} ${styles.col2}`} />
                 <div className={`${styles.column}  ${styles.col8}`}>
                   <div className={`${styles.columns}`}>
-                    <PaymentPlans onSelectPlan={this.loginGoog} />
+                    <PaymentPlans onSelectPlan={this.loginGoogWplan} />
                   </div>
                 </div>
                 <div className={`${styles.column} ${styles.col2}`} />

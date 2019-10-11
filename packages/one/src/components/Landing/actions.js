@@ -55,7 +55,7 @@ export function fetchPackageDetails() {
             const businessRef = firebase
               .firestore()
               .collection("one_package")
-              .doc("business");
+              .doc("starter");
 
             let busSerIds = [];
             businessRef.get().then(docData => {
@@ -69,7 +69,7 @@ export function fetchPackageDetails() {
                  const indivRef = firebase
                    .firestore()
                    .collection("one_package")
-                   .doc("individual");
+                   .doc("ind");
 
                  let indSerIds = [];
                  indivRef.get().then(docData => {
@@ -89,8 +89,8 @@ export function fetchPackageDetails() {
                       });
                   
                       const allSers = {};
-                      allSers["business"] = busSers;
-                      allSers["individual"] = indivSers;
+                      allSers["starter"] = busSers;
+                      allSers["ind"] = indivSers;
 
                       dispatch(recvAllAvailbleServices(allSers));
                    } else {

@@ -172,8 +172,8 @@ class Payment extends Component {
             <div className={styles.columns}>
               <PaymentPlans
                 userTypeSelected={true}
+                packType={details.packType}
                 selectedPlan={this.state.selectedPlan}
-                packName={this.props.packName}
                 onSelectPlan={this.selectPaymentPlan}
               />
             </div>

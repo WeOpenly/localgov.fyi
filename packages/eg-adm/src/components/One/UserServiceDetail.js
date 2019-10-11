@@ -186,9 +186,9 @@ class UserServiceDetail extends Component {
   render() {
     const { service, classes, fetching, items, failed  } = this.props;
 
-    if (fetching) {
-      return <CircularProgress className={classes.progress} />;
-    }
+    // if (fetching) {
+    //   return <CircularProgress className={classes.progress} />;
+    // }
 
 
     console.log(this.state, 'state userservice detail')
@@ -324,7 +324,7 @@ class UserServiceDetail extends Component {
               </Card>
             </Grid>
             <Grid item xs={12}>
-              <UserSerTxnList serId={service.sid} uid={this.props.uid} />
+              {items ? <UserSerTxnList serId={service.sid} uid={this.props.uid} /> : null}
             </Grid>
           </Grid>
         </ExpansionPanelDetails>

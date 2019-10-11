@@ -208,3 +208,46 @@ export function submitTxnMeta(uid, sid, metadata){
       });
   };
 }
+
+
+export function submitNewServiceDetails(uid, sid, formData){
+  return async (dispatch, getState) => {
+    let serTxnRef = firebase
+      .firestore()
+      .collection("one_service")
+      .doc(sid);
+
+    dispatch(fetchUserSer());
+
+    let getDoc = serTxnRef
+      .get()
+      .then(doc => {
+        if (!doc.exists) {
+ 
+        } else {
+          let serData = doc.data();
+          serData['formData'] = JSON.parse(formData)
+          console.log(serData);
+          let userSerRef = firebase
+            .firestore()
+            .collection("one_user_services")
+            .doc(uid).get().then(doc => {
+              let oneuserSerdata = doc.data()
+              let oldSersSelected = oneuserSerdata.selectedServices;
+              oldSersSelected[sid] = serData;
+              firebase
+                .firestore()
+                .collection("one_user_services")
+                .doc(uid)
+                .update({
+                  selectedServices: oldSersSelected
+                });
+            })
+        }
+      })
+      .catch(err => {
+console.log(err)
+        dispatch(recvUserSerFailure());
+      });
+  };
+}

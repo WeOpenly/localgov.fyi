@@ -12,8 +12,19 @@ import Typography from "@material-ui/core/Typography";
 import { withStyles } from "@material-ui/core/styles";
 import CircularProgress from "@material-ui/core/CircularProgress";
 import UserServiceList from "./UserServiceList";
+import Dialog from "@material-ui/core/Dialog";
+import TextField from "@material-ui/core/TextField";
+import DialogActions from "@material-ui/core/DialogActions";
+import DialogContent from "@material-ui/core/DialogContent";
+import DialogContentText from "@material-ui/core/DialogContentText";
+import DialogTitle from "@material-ui/core/DialogTitle";
 
-import { getUserServiceDetails, setUserDetail } from "./actions";
+import SerListAutoComplete from "./SerListAutoComplete";
+import {
+  getUserServiceDetails,
+  setUserDetail,
+  submitNewServiceDetails
+} from "./actions";
 
 
 
@@ -46,27 +57,62 @@ const styles = theme => ({
 class UserDetail extends Component {
   constructor(props) {
     super(props);
+    this.state = {
+      showAdd: false,
+      selectedSer: {},
+    };
+    this.onAddClick = this.onAddClick.bind(this);
+    this.newSerFieldEdit = this.newSerFieldEdit.bind(this);
+    this.onNewSubmit = this.onNewSubmit.bind(this);
+    this.onSelectSer = this.onSelectSer.bind(this);
+  }
+
+  newSerFieldEdit(e) {
+    this.setState({
+      [e.target.name]: e.target.value
+    });
+  }
+
+  onSelectSer(ser){
+    console.log(ser);
+    this.setState({
+      selectedSer: ser
+    })
+  }
+
+  onAddClick() {
+    this.setState({
+      showAdd: !this.state.showAdd
+    });
+  }
+
+  onNewSubmit() {
+    const { dispatch, userId } = this.props;
+    const selectedSer = this.state.selectedSer.sid;
+    const formData = this.state.formData;
+
+    console.log(selectedSer, formData);
+    dispatch(submitNewServiceDetails(userId, selectedSer, formData));
+    this.onAddClick();
   }
 
   componentDidMount() {
-    const { dispatch } = this.props;
+    const { dispatch, } = this.props;
     console.log(this.props.userId, "mount");
     dispatch(getUserServiceDetails(this.props.userId));
   }
 
   componentWillUnmount() {
     const { dispatch } = this.props;
-
   }
 
   render() {
-    const {serDetails, userId, classes}= this.props;
+    const { serDetails, userId, classes } = this.props;
     const { fetching, userData, services, failure } = serDetails;
-  
+
     if (fetching) {
       return <CircularProgress className={classes.progress} />;
     }
-
 
     return (
       <Grid container spacing={3}>
@@ -101,7 +147,50 @@ class UserDetail extends Component {
           </Card>
         </Grid>
         <Grid item xs={12}>
-         {services ?  (<UserServiceList services={services} uid={userId}/>) : null}
+          <Button
+            variant="contained"
+            onClick={this.onAddClick}
+            className={classes.button}
+          >
+            Add User Service Details
+          </Button>
+          <Dialog
+            maxWidth="md"
+            fullWidth={true}
+            open={this.state.showAdd}
+            onClose={this.onAddClick}
+            aria-labelledby="form-dialog-title"
+          >
+            <DialogTitle id="form-dialog-title">
+              Add User Service Details
+            </DialogTitle>
+            <DialogContent>
+              <SerListAutoComplete onSelectSer={this.onSelectSer} />
+              <TextField
+                autoFocus
+                margin="dense"
+                id="formData"
+                name="formData"
+                label="Service form data"
+                onChange={this.newSerFieldEdit}
+                type="text"
+                fullWidth
+              />
+            </DialogContent>
+            <DialogActions>
+              <Button onClick={this.onAddClick} color="primary">
+                Cancel
+              </Button>
+              <Button onClick={this.onNewSubmit} color="primary">
+                Add
+              </Button>
+            </DialogActions>
+          </Dialog>
+        </Grid>
+        <Grid item xs={12}>
+          {services ? (
+            <UserServiceList services={services} uid={userId} />
+          ) : null}
         </Grid>
       </Grid>
     );
@@ -110,6 +199,7 @@ class UserDetail extends Component {
 
 const mapStateToProps = function(state, ownProps) {
   return {
+  
     serDetails: state.admOneUserSerReducer
   };
 };

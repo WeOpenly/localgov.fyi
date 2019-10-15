@@ -249,3 +249,65 @@ export function fetchOrSetUserServiceDetails(uid) {
         });
   };
 }
+
+
+function loadingSerTxns(){
+  return {
+    type: types.LOADING_SERVICE_TXNS
+  };
+}
+
+function recvSerTxns(txnData){
+  return {
+    type: types.RECV_SERVICE_TXNS,
+    txnData
+  };
+}
+
+function failedRecvSerTxns(){
+  return {
+    type: types.FAILED_RECV_SERVICE_TXNS
+  }
+}
+
+// all service txns
+function watchServiceTxnsForChanges(uid){
+    return async (dispatch, getState) => {
+      const userTxnWatch = firebase
+        .firestore()
+        .collection("one_user_services_txns")
+        .doc(uid)
+        .onSnapshot(function(doc) {
+          const details = doc.data();
+          dispatch(recvSerTxns(details));
+        });
+    };
+}
+
+
+export function fetchOrSetUserSerTxneDetails(uid){
+   return async (dispatch, getState) => {
+     dispatch(loadingSerTxns());
+
+     const servicesTxnRef = firebase
+       .firestore()
+       .collection("one_user_services_txns")
+       .doc(uid);
+
+     servicesTxnRef
+       .get()
+       .then(docData => {
+         if (!docData.exists) {
+           // no services -create dummy sers
+           let txnData = {};
+           servicesTxnRef.set({ ...txnData });
+           dispatch(recvSerTxns({}));
+         } else {
+           dispatch(watchServiceTxnsForChanges(uid));
+         }
+       })
+       .catch(fail => {
+         dispatch(failedRecvSerTxns());
+       });
+   };
+}

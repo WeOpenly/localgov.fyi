@@ -9,7 +9,7 @@ import styles from "../spectre.min.module.css";
 import iconStyles from "../typicons.min.module.css";
 import { selectService, unSelectService, finalizeService } from "../Services/actions";
 
-
+import ExpFinalizedServiceListItem from "../Services/ExpFinalizedServiceListItem";
 import ExpandableServiceListItem from "../Services/ExpandableServiceListItem";
 
 
@@ -62,7 +62,11 @@ class ManageServiceList extends Component {
 
   render() {
     const { oneSers, oneUserSers, oneUser } = this.props;
+    
     const {
+      txnDataLoading,
+      txnData,
+      txnDataFailed,
       fetching: selectedServicesFetching,
       failed: selectedServicesFailed,
       selectedServices
@@ -72,7 +76,7 @@ class ManageServiceList extends Component {
       failed: allSersFailed,
       sers: allAvailableServices
     } = oneSers;
-    console.log(selectedServices);
+
     const { authInProgress, authFailure, details } = oneUser;
     
     const { packType } = details;
@@ -103,12 +107,15 @@ class ManageServiceList extends Component {
     const finalizedSers = Object.values(selectedServices).map(selected => {
       if ("formData" in selectedServices[selected.sid]) {
         return (
-          <ExpandableServiceListItem
+          <ExpFinalizedServiceListItem
             key={selected.sid}
             isFinalized={
               selected.sid in selectedServices &&
               "formData" in selectedServices[selected.sid]
             }
+            txnDataLoading={txnDataLoading}
+            txnData={txnData}
+            txnDataFailed={txnDataFailed}
             updateServiceDetails={this.updateService}
             removeServiceDetails={this.removeSelectedService}
             ser={selectedServices[selected.sid]}
@@ -208,7 +215,7 @@ class ManageServiceList extends Component {
               }}
               className={`${styles.column} ${styles.colXs10}`}
             >
-              <h6>Linked Services</h6>
+              <h4>Linked Services</h4>
             </div>
             <div
               className={`${styles.column} ${styles.col1} ${styles.hideXs}`}
@@ -247,7 +254,7 @@ class ManageServiceList extends Component {
                 }}
                 className={`${styles.column} ${styles.colXs10}`}
               >
-                <h6>Added Services to Link</h6>
+                <h4>Added Services to Link</h4>
               </div>
               <div
                 className={`${styles.column} ${styles.col1} ${styles.hideXs}`}
@@ -290,7 +297,7 @@ class ManageServiceList extends Component {
               }}
               className={`${styles.column} ${styles.colXs10}`}
             >
-              <h6>Services to add</h6>
+              <h4>Services to add</h4>
             </div>
             <div
               className={`${styles.column} ${styles.col1} ${styles.hideXs}`}

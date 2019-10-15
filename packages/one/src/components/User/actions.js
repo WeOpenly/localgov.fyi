@@ -5,7 +5,10 @@ import * as types from "./ActionTypes";
 
 import getFirebase from "../../common/firebase/firebase";
 import { trackQPevent } from "../../common/tracking";
-import { fetchOrSetUserServiceDetails } from "../Services/actions";
+import {
+  fetchOrSetUserServiceDetails,
+  fetchOrSetUserSerTxneDetails
+} from "../Services/actions";
 
 
 const windowGlobal = typeof window !== "undefined" && window;
@@ -77,7 +80,6 @@ function watchUserForChanges(uid){
             navigate(`/dashboard/services`);
           }
 
-          dispatch(fetchOrSetUserServiceDetails(uid));
           dispatch(recvOnboardingDetails(details));
         });
   }
@@ -164,6 +166,8 @@ function fetchOrSetUserDetails(user) {
           userRef.set({ ...details });
         } 
         dispatch(watchUserForChanges(uid));
+        dispatch(fetchOrSetUserServiceDetails(uid));
+        dispatch(fetchOrSetUserSerTxneDetails(uid));
       })
       .catch(fail => {
         dispatch(failedLoadingOnboardingDetails());

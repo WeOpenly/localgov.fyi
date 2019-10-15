@@ -179,6 +179,13 @@ export function submitTxnMeta(uid, sid, metadata){
           serTxnRef.set(txnForSet);
         } else {
           let olddocData = doc.data();
+          if (!olddocData[sid]){
+            olddocData[sid] = {
+              metadata: {},
+              txns: []
+            };
+          }
+
           let oldSerDetails = olddocData[sid]
           let newMeta = metadata;
           newMeta['start'] = metadata['start'].valueOf();
@@ -203,7 +210,7 @@ export function submitTxnMeta(uid, sid, metadata){
         }
       })
       .catch(err => {
-
+        console.log(err)
         dispatch(recvUserSerFailure());
       });
   };

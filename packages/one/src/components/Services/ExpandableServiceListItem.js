@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Fragment } from "react";
 import { Elements } from "react-stripe-elements";
 
 import styles from "../spectre.min.module.css";
@@ -46,25 +46,23 @@ class ExpServiceListItem extends React.Component {
 
   render() {
     let icon = iconMap[this.props.ser.sid];
-        if (!icon) {
-          icon = defaultIcon;
-        }
-
+    if (!icon) {
+      icon = defaultIcon;
+    }
 
     return (
       <div
         className={`${styles.card}`}
         style={{
-          border: "1px solid rgba(48,55,66,.10)",
+          border: "1px solid rgba(86, 39, 255, .1)",
           background: `${
             this.props.isSelected && !this.props.isFinalized
               ? "#ece6ff"
               : "#fff"
           }`,
-          marginBottom: "2rem",
-          minHeight: "80px",
-          margin: "0.5rem",
-          padding: "0.2rem 0.5rem",
+
+          margin: "1rem 0",
+          padding: "0.5rem",
           display: "flex",
           justifyContent: "left",
           width: "100%",
@@ -73,22 +71,11 @@ class ExpServiceListItem extends React.Component {
         }}
       >
         <div style={{ display: "flex", justifyContent: "space-between" }}>
-          <div
-            style={{
-              display: "flex",
-              justifyContent: "center",
-              margin: "0.8rem 0",
-              flex: "10"
-            }}
-          >
-            {icon}
-          </div>
-
           <div style={{ display: "flex", flex: "90", flexDirection: "column" }}>
             <div className={styles.cardHeader}>
               <button
                 onClick={this.expandCard}
-                className={`${styles.btn} ${styles.floatRight} ${styles.btnLink}`}
+                className={`${styles.btn}  ${styles.btnSm}  ${styles.floatRight} `}
               >
                 {this.props.isFinalized ? (
                   <span
@@ -100,18 +87,22 @@ class ExpServiceListItem extends React.Component {
                     }}
                   />
                 ) : (
-                  <span
-                    className={`${iconStyles.typcn} ${iconStyles.typcnPlus}`}
-                    style={{
-                      fontSize: "0.8rem",
+                  <Fragment>
+                    {" "}
+                    <span
+                      className={`${iconStyles.typcn}  ${iconStyles.typcnPlus}`}
+                      style={{
+                        fontSize: "0.8rem",
 
-                      cursor: "pointer"
-                    }}
-                  />
+                        cursor: "pointer"
+                      }}
+                    />
+                    Add
+                  </Fragment>
                 )}
               </button>
               <div className={`${styles.cardHeader}`}>
-                <h6> {this.props.ser.name} </h6>
+                <h5> {this.props.ser.name} </h5>
               </div>
               <div
                 className={styles.cardSubtitle}

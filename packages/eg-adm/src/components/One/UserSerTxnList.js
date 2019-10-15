@@ -188,7 +188,7 @@ class UserServiceTxnList extends Component {
     console.log(serId)
 
     let txnList = []
-    if (items[serId]){
+    if (items[serId] && items[serId].txns){
       txnList = items[serId].txns;
     }
 

@@ -121,14 +121,14 @@ class UserServiceDetail extends Component {
   }
 
   changeUntil(until) {
-    console.log('until', until);
+
     this.setState({
       until: until
     });
   }
 
   changeEvery(ev) {
-    console.log(ev.target.value);
+
     this.setState({
       every: ev.target.value
     });
@@ -190,8 +190,6 @@ class UserServiceDetail extends Component {
     //   return <CircularProgress className={classes.progress} />;
     // }
 
-
-    console.log(this.state, 'state userservice detail')
 
     const canSubmit =
       this.state.every &&

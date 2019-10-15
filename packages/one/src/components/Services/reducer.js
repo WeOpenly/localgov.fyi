@@ -2,12 +2,19 @@ import React from "react";
 import * as types from "./ActionTypes";
 import * as onboardTypes from '../User/ActionTypes';
 
+export const LOADING_SERVICE_TXNS = "LOADING_SERVICE_TXNS";
+export const RECV_SERVICE_TXNS = "RECV_SERVICE_TXNS";
+export const FAILED_RECV_SERVICE_TXNS = "FAILED_RECV_SERVICE_TXNS";
+
 
 const initialState = {
   updating: false,
   updateMsg: '',
   updateFailed: false,
   selectedServices: {},
+  txnDataLoading: false,
+  txnData: {},
+  txnDataFailed: false,
   fetching: false,
   failed: false
 };
@@ -15,6 +22,28 @@ const initialState = {
      
 export function oneUserServices(state = initialState, action) {
     switch (action.type) {
+      case types.LOADING_SERVICE_TXNS:
+        return {
+          ...state,
+          txnDataLoading: true,
+          txnDataFailed: false
+        };
+        break;
+      case types.RECV_SERVICE_TXNS:
+        return {
+          ...state,
+          txnDataLoading: false,
+          txnDataFailed: false,
+          txnData: action.txnData
+        };
+        break;
+      case types.FAILED_RECV_SERVICE_TXNS:
+        return {
+          ...state,
+          txnDataLoading: false,
+          txnDataFailed: true
+        };
+        break;
       case types.USER_SERVICES_FETCH_LOADING:
         return {
           ...state,

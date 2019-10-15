@@ -76,7 +76,7 @@ export function createTxn(uid, serId, txnData) {
           let olddocData = doc.data();
 
           let oldSerDetails = olddocData[serId];
-          let newTxns = oldSerDetails["txns"];
+          let newTxns = oldSerDetails["txns"] || [];
           newTxns.push(txnData);
           oldSerDetails["txns"] = newTxns;
           olddocData[serId] = oldSerDetails;

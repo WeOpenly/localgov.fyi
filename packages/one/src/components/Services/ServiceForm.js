@@ -69,9 +69,9 @@ class ServiceForm extends Component {
           <div
             className={styles.card}
             style={{
-              border: "1px solid rgba(86, 39, 255, .2)",
+              border: "1px solid rgba(86, 39, 255, .1)",
               background: "#fff",
-              marginBottom: "4rem",
+              marginBottom: "2rem",
               padding: "0.2rem",
               borderRadius: "0.3rem",
               boxShadow: "0 .1rem 0.1rem rgba(48,55,66,.10)"

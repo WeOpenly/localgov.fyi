@@ -74,7 +74,7 @@ class UserDetail extends Component {
   }
 
   onSelectSer(ser){
-    console.log(ser);
+
     this.setState({
       selectedSer: ser
     })
@@ -91,14 +91,14 @@ class UserDetail extends Component {
     const selectedSer = this.state.selectedSer.sid;
     const formData = this.state.formData;
 
-    console.log(selectedSer, formData);
+
     dispatch(submitNewServiceDetails(userId, selectedSer, formData));
     this.onAddClick();
   }
 
   componentDidMount() {
     const { dispatch, } = this.props;
-    console.log(this.props.userId, "mount");
+
     dispatch(getUserServiceDetails(this.props.userId));
   }
 

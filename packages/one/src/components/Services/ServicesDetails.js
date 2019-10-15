@@ -47,7 +47,7 @@ class ServicesDetails extends Component {
       failed: allSersFailed,
       sers: allOneSers
     } = oneSers;
-
+    console.log(this.props, 'servicedetails')
     const { authInProgress, authFailure, details } = oneUser;
 
     if (allSersFetching || selectedServicesFetching) {

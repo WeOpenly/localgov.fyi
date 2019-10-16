@@ -3,6 +3,8 @@ import { connect } from "react-redux";
 import { navigate } from "@reach/router";
 import { Router, Link } from "@reach/router";
 import Container from "@material-ui/core/Container";
+import { RRule, RRuleSet, rrulestr } from "rrule";
+
 import Grid from "@material-ui/core/Grid";
 import { withStyles } from "@material-ui/core/styles";
 import CircularProgress from "@material-ui/core/CircularProgress";
@@ -11,11 +13,29 @@ import CircularProgress from "@material-ui/core/CircularProgress";
 //   unsubscribeForUsers,
 //   setUserDetail
 // } from "./actions";
+import FormControl from "@material-ui/core/FormControl";
+import Select from "@material-ui/core/Select";
+import InputLabel from "@material-ui/core/InputLabel";
+import MenuItem from "@material-ui/core/MenuItem";
+
+import TextField from "@material-ui/core/TextField";
+import ExpansionPanel from "@material-ui/core/ExpansionPanel";
+import ExpansionPanelSummary from "@material-ui/core/ExpansionPanelSummary";
+import ExpansionPanelDetails from "@material-ui/core/ExpansionPanelDetails";
+
+import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
+import DateFnsUtils from "@date-io/date-fns";
+import {
+  MuiPickersUtilsProvider,
+  KeyboardDatePicker
+} from "@material-ui/pickers";
+
+import FormHelperText from "@material-ui/core/FormHelperText";
 
 import Dropzone from "react-dropzone";
 
 import Button from "@material-ui/core/Button";
-import TextField from "@material-ui/core/TextField";
+
 import Dialog from "@material-ui/core/Dialog";
 
 import DialogActions from "@material-ui/core/DialogActions";
@@ -44,6 +64,10 @@ const styles = theme => ({
   container: {
     paddingTop: theme.spacing(4),
     paddingBottom: theme.spacing(4)
+  },
+  formControl: {
+    margin: theme.spacing(1),
+    minWidth: 120
   },
   progress: {
     margin: theme.spacing(2)
@@ -100,13 +124,16 @@ class UserServiceTxnList extends Component {
     const { dispatch } = this.props;
     
   }
+
   onNewSubmit() {
-    const { txn_id, files } = this.state;
+    const { txn_id, files, txn_for_date } = this.state;
     const { uid, serId, dispatch } = this.props;
     const txnData = {
       txn_id: txn_id,
-      txn_files: files
+      txn_files: files,
+      txn_for_date: txn_for_date
     };
+    console.log(txnData, 'onNewSubmit');
     dispatch(createTxn(uid, serId, txnData));
     this.onAddClick();
   }
@@ -184,14 +211,40 @@ class UserServiceTxnList extends Component {
     if (fetching) {
       return <CircularProgress className={classes.progress} />;
     }
-    console.log(items);
-    console.log(serId)
+ 
 
     let txnList = []
+    let txnNextDatesList = [];
     if (items[serId] && items[serId].txns){
       txnList = items[serId].txns;
+      let txnMeta = items[serId].metadata;
+      if (txnMeta){
+
+        const rrule = new RRule({
+          freq: RRule[txnMeta["freq"]],
+          interval: parseInt(txnMeta["every"]),
+          dtstart: new Date(txnMeta["start"]),
+          until: new Date(txnMeta["until"])
+        });
+        
+     
+  
+        const txnNextDates = rrule.between(
+          new Date(Date.now()),
+          new Date(txnMeta["until"])
+        );
+        
+        txnNextDatesList = txnNextDates.map((date, i) => (
+          <MenuItem value={date}> {date.toISOString()}</MenuItem>
+        ));
+      }
     }
 
+    let dispSelectedTxnDate = "";
+    if (this.state.txn_for_date){
+      dispSelectedTxnDate = new Date(this.state.txn_for_date).toUTCString();
+    }
+    console.log(dispSelectedTxnDate);
     return (
       <Grid container spacing={3}>
         <Grid item xs={12}>
@@ -208,7 +261,7 @@ class UserServiceTxnList extends Component {
             onClose={this.onAddClick}
             aria-labelledby="form-dialog-title"
           >
-            <DialogTitle id="form-dialog-title">Add New Package</DialogTitle>
+            <DialogTitle id="form-dialog-title">Add New Txn</DialogTitle>
             <DialogContent>
               <TextField
                 autoFocus
@@ -221,6 +274,21 @@ class UserServiceTxnList extends Component {
                 onChange={this.newSerFieldEdit}
                 fullWidth
               />
+              <FormControl className={classes.formControl}>
+                <InputLabel htmlFor="for-date">For Date</InputLabel>
+                <Select
+                  value={dispSelectedTxnDate}
+                  name="txn_for_date"
+                  id="txn_for_date"
+                  onChange={this.newSerFieldEdit}
+                  inputProps={{
+                    name: "txn_for_date",
+                    id: "for-date"
+                  }}
+                >
+                  {txnNextDatesList}
+                </Select>
+              </FormControl>
               <Dropzone onDrop={this.onDrop} multiple>
                 {({
                   getRootProps,

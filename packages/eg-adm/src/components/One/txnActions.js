@@ -2,6 +2,7 @@ import * as types from "./ActionTypes";
 import getFirebase from "../../common/firebase/firebase";
 import { trackQPevent } from "../../common/tracking";
 import { async } from "q";
+import { RRule, RRuleSet, rrulestr } from "rrule";
 
 const windowGlobal = typeof window !== "undefined" && window;
 
@@ -63,7 +64,7 @@ export function createTxn(uid, serId, txnData) {
       .firestore()
       .collection("one_user_services_txns")
       .doc(uid);
-    const txnDataWdate = txnData;
+    
     const d = new Date()
     txnData['addedAt'] = d.valueOf()
 
@@ -80,6 +81,36 @@ export function createTxn(uid, serId, txnData) {
           newTxns.push(txnData);
           oldSerDetails["txns"] = newTxns;
           olddocData[serId] = oldSerDetails;
+
+          let oldMeta = oldSerDetails['metadata'];
+          const rule = new RRule({
+            freq: RRule[oldMeta["freq"]],
+            interval: parseInt(oldMeta["every"]),
+            dtstart: new Date(oldMeta["start"]),
+            until: new Date(oldMeta["until"])
+          });
+
+
+          var date = new Date(txnData["txn_for_date"]);
+          var nowUtc = Date.UTC(
+            date.getUTCFullYear(),
+            date.getUTCMonth(),
+            date.getUTCDate(),
+            date.getUTCHours(),
+            date.getUTCMinutes(),
+            date.getUTCSeconds()
+          );
+
+ 
+          console.log("createTxn", nowUtc);
+
+          const nextDue = rule.after(new Date(nowUtc));
+
+          console.log('createTxn', nextDue, "dddddRRRRULE");
+
+          let newMeta = oldMeta;
+          newMeta["nextDue"] = nextDue.valueOf();
+          oldSerDetails['metadata'] = newMeta;
 
           firebase
             .firestore()

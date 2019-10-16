@@ -1,6 +1,7 @@
 import { navigate } from "@reach/router";
 
 import { log } from "util";
+import { RRule, RRuleSet, rrulestr } from "rrule";
 
 // import 'regenerator-runtime/runtime';
 import * as types from "./ActionTypes";
@@ -163,14 +164,37 @@ export function submitTxnMeta(uid, sid, metadata){
       .doc(uid);
 
     dispatch(fetchUserSer());
+    const rule = new RRule({
+      freq: RRule[metadata["freq"]],
+      interval: parseInt(metadata["every"]),
+      byweekday: [RRule.MO],
+      dtstart: new Date(metadata["start"]),
+      until: new Date(metadata["until"])
+    });
+
+
+    var ruleText = new RRule({
+      freq: RRule[metadata["freq"]],
+      interval: parseInt(metadata["every"])
+    });
+    const ruleTextRecur = ruleText.toText();
+
+    const nextDue = rule.after(
+      new Date(Date.now()),
+    );
+    
+    let newMeta = metadata;
+    newMeta['nextDue'] = nextDue.valueOf();
+    newMeta["start"] = metadata["start"].valueOf();
+    newMeta["until"] = metadata["until"].valueOf();
+    newMeta["recurText"] = ruleTextRecur;
 
     let getDoc = serTxnRef
       .get()
       .then(doc => {
         if (!doc.exists) {
-          let newMeta = metadata;
-          newMeta["start"] = metadata["start"].valueOf();
-          newMeta["until"] = metadata["until"].valueOf();
+     
+          
           const txnForSet = {          }
           txnForSet[sid] = {
             metadata: newMeta,
@@ -187,11 +211,9 @@ export function submitTxnMeta(uid, sid, metadata){
           }
 
           let oldSerDetails = olddocData[sid]
-          let newMeta = metadata;
-          newMeta['start'] = metadata['start'].valueOf();
-          newMeta['until'] = metadata['until'].valueOf();
+        
           oldSerDetails["metadata"] = newMeta;
-          
+
           olddocData[sid] = oldSerDetails;
 
           console.log(olddocData)

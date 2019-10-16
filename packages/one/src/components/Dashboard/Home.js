@@ -16,10 +16,14 @@ class Home extends Component {
     render() {
       const { oneSers, oneUserSers, oneUser } = this.props;
       const {
+        txnDataLoading,
+        txnData,
+        txnDataFailed,
         fetching: selectedServicesFetching,
         failed: selectedServicesFailed,
         selectedServices
       } = oneUserSers;
+
       const {
         fetching: allSersFetching,
         failed: allSersFailed,
@@ -28,6 +32,27 @@ class Home extends Component {
 
       const { authInProgress, authFailure, details } = oneUser;
 
+      const currentMonth = new Date(Date.now()).getMonth();
+      console.log(currentMonth);
+
+      const upNextMonth = Object.keys(txnData).filter((txn, idx) => {
+        return (
+          currentMonth + 1 >= new Date(txnData[txn].metadata.nextDue).getMonth()) &&
+          (new Date(txnData[txn].metadata.nextDue).getMonth() <= currentMonth);
+      })
+
+      const upNext3Months = Object.keys(txnData).filter((txn, idx) => {
+        return (
+          currentMonth + 1 >= new Date(txnData[txn].metadata.nextDue).getMonth()) &&
+          (new Date(txnData[txn].metadata.nextDue).getMonth() <= currentMonth + 4)
+      })
+
+      // const upNext6Months = Object.keys(txnData).map((txn, idx) => {
+      //   return (currentMonth + 1 >= Date(txnData[txn].metadata.nextDue).getMonth()) &&
+      //     (Date(txnData[txn].metadata.nextDue).getMonth() <= currentMonth + 7);
+      // });
+
+      console.log(upNextMonth, upNext3Months);
       if (allSersFetching || selectedServicesFetching) {
         return (
         <div className={styles.columns} style={{ marginTop: "1rem" }}>
@@ -54,110 +79,134 @@ class Home extends Component {
       const allAvailableServices = allOneSers[packType];
 
 
-      let availableSers = allAvailableServices;
-
-
-      let selectedSerLen = 0;
+    let availableSers = allAvailableServices;
+    let selectedSerLen = 0;
     const finalizedSers = Object.values(selectedServices).map(selected => {
       if ("formData" in selectedServices[selected.sid]) {
         selectedSerLen = selectedSerLen +1;
       }
     });
 
-      const selectedLen = selectedSerLen;
-      const avLen = availableSers.length;
+    const selectedLen = selectedSerLen;
+    const avLen = availableSers.length;
 
       return (
         <div style={{ height: "100%" }}>
           <div className={styles.columns}>
+            <div className={`${styles.column} ${styles.col1}`} />
             <div
               className={`${styles.column} ${styles.col8}`}
-              style={{ margin: "3rem 0 1rem 1rem" }}
+              style={{ margin: "3rem 0 1rem 0" }}
             >
               <h2 className={` ${styles.textLeft}`}>
+                {" "}
                 Hello, {details.displayName}
               </h2>
-              <div className={styles.divider} />
             </div>
-            <div className={`${styles.column} ${styles.col4}`} />
+            <div className={`${styles.column} ${styles.col2}`}></div>
+            <div className={`${styles.column} ${styles.col1}`} />
+          </div>
+          <div className={styles.columns}>
+            <div className={`${styles.column} ${styles.col1}`} />
             <div
-              className={`${styles.column} ${styles.col12}`}
-              style={{ margin: "0.5rem" }}
+              className={`${styles.column} ${styles.col10}`}
+              style={{ margin: "1rem 0 1rem 0" }}
             >
               <div
                 className={styles.emptyAction}
                 style={{ display: "flex", justifyContent: "left" }}
               >
-                <div style={{ display: "flex" }}>
+                <div style={{ display: "flex", flexWrap: 'wrap' }}>
                   <div
-                    className={`${styles.tile} ${styles.btn} ${styles.textLeft}`}
+                    className={`${styles.tile}  ${styles.textLeft}`}
                     onClick={() => navigate("/dashboard/services/")}
                     style={{
+                      background: "#6a41ff",
+                      color: "#fff",
                       padding: "1.5rem 2rem 1rem 1rem",
-                      margin: "0 1rem",
-                      boxShadow: "none",
-                      height: "auto",
-                      boxShadow: "0 .1rem 0.1rem rgba(48,55,66,.10)"
+                      width: "280px",
+                      height: "180px",
+                      margin: "0.1rem 1rem",
+                      boxShadow: "0 .5rem 0.8rem rgba(48,55,66,.10)"
                     }}
                   >
                     <div className={styles.tileIcon}>
                       <span
                         style={{
-                          background: "#3500f3",
                           color: "#fff",
-
-                          fontSize: "1.5rem",
-                          borderRadius: "0.3rem",
-                          boxShadow: "0 0.1rem 0.5rem rgba(86, 39, 255, .2)"
+                          fontSize: "5rem",
+                          borderRadius: "0.3rem"
                         }}
                         className={`${iconStyles.typcn} ${iconStyles.typcnPuzzle}`}
                       ></span>
                     </div>
-                    <div className={styles.tileContent}>
-                      <h5 className={styles.tileTitle}>
+                    <div
+                      className={styles.tileContent}
+                      style={{
+                        margin: "2rem 0"
+                      }}
+                    >
+                      <h2 className={styles.tileTitle}>
                         {" "}
-                        {selectedLen}/ {avLen} services setup{" "}
-                      </h5>
+                        {selectedLen} <small>/</small> {avLen}
+                      </h2>
+                      <p className={`${styles.tileSubtitle}`}>Services setup</p>
                     </div>
                   </div>
-                </div>
-                {!paymentSetupDone ? (<div style={{ display: "flex", alignSelf: "center" }}>
                   <div
-                    className={`${styles.tile} ${styles.btn} ${styles.textLeft}`}
-                    onClick={() => navigate("/dashboard/onboard/add_payment")}
+                    className={`${styles.tile}  ${styles.textLeft}`}
+                    onClick={() => navigate("/dashboard/services/")}
                     style={{
+                      background: paymentSetupDone ? "#30ae40" : "#db535c",
+                      color: "#fff",
                       padding: "1.5rem 2rem 1rem 1rem",
-                      margin: "0 1rem",
-
-                      boxShadow: "none",
-                      height: "auto",
-                      boxShadow: "0 .1rem 0.1rem rgba(48,55,66,.10)"
+                      width: "280px",
+                      height: "180px",
+                      margin: "0.1rem 1rem",
+                      boxShadow: "0 .5rem 0.8rem rgba(48,55,66,.10)"
                     }}
                   >
                     <div className={styles.tileIcon}>
                       <span
                         style={{
-                          background: paymentSetupDone ? "#30ae40" : "#3500f3",
                           color: "#fff",
-
-                          fontSize: "1.5rem",
-                          borderRadius: "0.3rem",
-                          boxShadow: "0 0.1rem 0.5rem rgba(86, 39, 255, .2)"
+                          fontSize: "5rem",
+                          borderRadius: "0.3rem"
                         }}
                         className={`${iconStyles.typcn} ${iconStyles.typcnCreditCard}`}
                       ></span>
                     </div>
-                    <div className={styles.tileContent}>
-                      <h5 className={styles.tileTitle}>
+                    <div
+                      className={styles.tileContent}
+                      style={{
+                        margin: "2rem 0"
+                      }}
+                    >
+                      <p className={`${styles.tileSubtitle}`}>
                         {" "}
                         Payment Setup is{" "}
                         {paymentSetupDone ? `complete` : `incomplete`}{" "}
-                      </h5>
+                      </p>
                     </div>
                   </div>
-                </div>) : null}
+                </div>
               </div>
             </div>
+            <div className={`${styles.column} ${styles.col1}`} />
+          </div>
+
+          <div className={styles.columns}>
+            <div className={`${styles.column} ${styles.col1}`} />
+            <div
+              className={`${styles.column} ${styles.col8}`}
+              style={{ margin: "3rem 0 1rem 0" }}
+            >
+              <h2 className={` ${styles.textLeft}`}>
+                Upcoming
+              </h2>
+            </div>
+            <div className={`${styles.column} ${styles.col2}`}></div>
+            <div className={`${styles.column} ${styles.col1}`} />
           </div>
         </div>
       );

@@ -85,6 +85,7 @@ class UserServiceDetail extends Component {
       start: d2,
       until: d2,
       comments: '',
+      nextDue: '',
       expanded: false,
     };
 
@@ -144,7 +145,6 @@ class UserServiceDetail extends Component {
     const {service} = this.props;
     const data = this.state;
     delete data['expanded'];
-    console.log(service.sid, data)
     this.props.onMetaSubmit(service.sid, data);
   }
 
@@ -178,6 +178,7 @@ class UserServiceDetail extends Component {
         freq: metadata.freq,
         start: d1start,
         until: d2start,
+        nextDue: new Date(metadata.nextDue).toDateString(),
         comments: metadata.comments
       });
     }
@@ -235,7 +236,9 @@ class UserServiceDetail extends Component {
                   <Typography variant="h5" component="h2">
                     {service.name} transaction meta data
                   </Typography>
-
+                  {this.state.nextDue ? (<Typography variant="h6" component="h6">
+                    {this.state.nextDue} next due
+                  </Typography>) : null}
                   <MuiPickersUtilsProvider utils={DateFnsUtils}>
                     <Grid container justify="space-between">
                       <TextField
@@ -322,7 +325,9 @@ class UserServiceDetail extends Component {
               </Card>
             </Grid>
             <Grid item xs={12}>
-              {items ? <UserSerTxnList serId={service.sid} uid={this.props.uid} /> : null}
+              {items ? (
+                <UserSerTxnList serId={service.sid} uid={this.props.uid} />
+              ) : null}
             </Grid>
           </Grid>
         </ExpansionPanelDetails>

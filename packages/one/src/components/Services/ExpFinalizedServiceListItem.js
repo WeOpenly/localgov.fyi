@@ -58,6 +58,8 @@ class ExpFinalizedServiceListItem extends React.Component {
     if (this.props.txnData && !this.props.txnDataFailed) {
       txnComp = (
         <div
+          data-tooltip={`We have received your data and \n will update this once we are \n done processing`}
+          className={styles.tooltip}
           style={{
             display: "flex",
             flexDirection: "column",
@@ -68,18 +70,15 @@ class ExpFinalizedServiceListItem extends React.Component {
           <div style={{ margin: "0.5rem 0" }}>
             <div
               className={styles.chip}
-              style={{ background: "rgba(255, 183, 0, .65)" }}
+              style={{
+                background: "rgba(255, 183, 30, .7)"
+              }}
             >
               <span
                 className={`${iconStyles.typcn} ${iconStyles.typcnArrowRepeat}`}
               />
               Processing
             </div>
-          </div>
-
-          <div className={styles.textGray}>
-            We've received your data and will update this once we are done
-            processing
           </div>
         </div>
       );
@@ -88,10 +87,10 @@ class ExpFinalizedServiceListItem extends React.Component {
         const { txns, metadata } = this.props.txnData[this.props.ser.sid];
         txnList = txns;
         if (metadata) {
-          let until = null;
-          if (metadata.until){
-            until = new Date(metadata.until)
-            until = until.toDateString()
+          let nextDue = null;
+          if (metadata.nextDue) {
+            nextDue = new Date(metadata.nextDue);
+            nextDue = nextDue.toDateString();
           }
 
           txnComp = (
@@ -103,27 +102,41 @@ class ExpFinalizedServiceListItem extends React.Component {
                 justifyContent: "left"
               }}
             >
-              <div style={{ margin: "0.2rem 0" }}>
-                {metadata.every && metadata.freq ? (
+              <div style={{ margin: "0.2rem 0.1rem" }}>
+                <div
+                  className={styles.chip}
+                  style={{
+                    background: "rgba(50, 182, 67, .1)",
+                    marginRight: "0.1rem",
+                    color: "#2da23c"
+                  }}
+                >
+                  <span
+                    className={`${iconStyles.typcn} ${iconStyles.typcnFlash}`}
+                  />
+                  Automated{" "}
+                </div>
+
+                {metadata.recurText ? (
                   <div
                     className={styles.chip}
-                    style={{ background: "#f4f0ff" }}
+                    style={{ background: "#f4f0ff", color: "#6a41ff" }}
                   >
                     <span
                       className={`${iconStyles.typcn} ${iconStyles.typcnStopwatch}`}
                     />
-                    Recurs every {metadata.every} {metadata.freq}
+                    Recurs {metadata.recurText}
                   </div>
                 ) : null}
-                {metadata.until ? (
+                {metadata.nextDue ? (
                   <div
                     className={styles.chip}
-                    style={{ background: "rgba(50, 182, 67, .6)", color: '#fff' }}
+                    style={{ background: "#f4f0ff", color: "#6a41ff" }}
                   >
                     <span
                       className={`${iconStyles.typcn} ${iconStyles.typcnCalendarOutline}`}
                     />
-                    Next due {until}
+                    Next due {nextDue}
                   </div>
                 ) : null}
               </div>

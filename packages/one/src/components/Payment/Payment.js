@@ -217,7 +217,7 @@ class Payment extends Component {
                     data-content="OR"
                   ></div>
                   <PlaidLink
-                    clientName="Evergov One"
+                    clientName="papergov One"
                     env={process.env.GATSBY_PLAID_ENV}
                     className={`${styles.btn}  ${styles.btnPrimary}`}
                     style={{

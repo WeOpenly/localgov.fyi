@@ -45,8 +45,8 @@ const HeroIl = () => (
     render={data => {
       return (
         <Img
-          title={`evergov`}
-          alt={`illustration of evergov`}
+          title={`papergov`}
+          alt={`illustration of papergov`}
           style={{ width: "320px", height: "320px" }}
           fluid={data.heroIl.edges[0].node.childImageSharp.fluid}
         />
@@ -89,7 +89,7 @@ class About extends React.Component {
     return (
       <Fragment>
         <Helmet>
-          <title>{`About | Evergov`}</title>
+          <title>{`About | papergov`}</title>
         </Helmet>
         <div className={`${styles.container} ${styles.gridXl}`}>
           <div className={styles.columns}>
@@ -102,7 +102,7 @@ class About extends React.Component {
                 >
                   <Link to="/">
                     <a href="#" style={{ textDecoration: "none" }}>
-                      <h3>evergov</h3>
+                      <h3>papergov</h3>
                     </a>
                   </Link>
                 </section>
@@ -198,11 +198,11 @@ class About extends React.Component {
                 </div>
                 <div>
                   <a
-                    href="https://evergov.com"
+                    href="https://papergov.com"
                     target="_blank"
                     className={`${styles.btn} ${styles.btnLink}`}
                   >
-                    Try Evergov Search
+                    Try papergov Search
                   </a>
                 </div>
               </div>
@@ -233,18 +233,18 @@ class About extends React.Component {
                 </div>
                 <div>
                   <a
-                    href="https://pay.evergov.com"
+                    href="https://pay.papergov.com"
                     target="_blank"
                     className={`${styles.btn} ${styles.btnLink}`}
                   >
-                    Try Evergov Pay
+                    Try papergov Pay
                   </a>
                   <a
-                    href="https://one.evergov.com"
+                    href="https://one.papergov.com"
                     target="_blank"
                     className={`${styles.btn} ${styles.btnLink}`}
                   >
-                    Try Evergov One
+                    Try papergov One
                   </a>
                 </div>
               </div>
@@ -326,7 +326,7 @@ class About extends React.Component {
               </h5>
               <br />
               <p>
-                Drop us a line <a href="mailto:team@evergov.com">here</a> to
+                Drop us a line <a href="mailto:team@papergov.com">here</a> to
                 chat.
               </p>
             </div>

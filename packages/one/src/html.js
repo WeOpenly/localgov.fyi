@@ -45,10 +45,10 @@ let fontcss = null;
 const searchLinksSchema = {
   "@context": "http://schema.org",
   "@type": "WebSite",
-  "url": "https://evergov.com/",
+  "url": "https://papergov.com/",
   "potentialAction": {
     "@type": "SearchAction",
-    "target": "https://evergov.com/search/?q={search_term_string}",
+    "target": "https://papergov.com/search/?q={search_term_string}",
     "query-input": "required name=search_term_string"
   }
 }
@@ -59,8 +59,8 @@ const searchLinksSchema = {
 // name="msvalidate.01" content="D1BADF38847C730E9DC76BE0CCC4B42B" /> <meta
 // name="yandex-verification" content="25711aadc401a373" /> <JsonLd
 // data={searchLinksSchema} />           <meta name="description"
-// content={`evergov.com - Search for local government organizations, and
-// services`} />           <meta property="og:site_name" content={`evergov.com`}
+// content={`papergov.com - Search for local government organizations, and
+// services`} />           <meta property="og:site_name" content={`papergov.com`}
 // />           <meta property="twitter:card" name="twitter:card"
 // content="summary_large_image" />           <meta property="twitter:site"
 // name="twitter:site" content="@weopenly" /> <meta httpEquiv="x-ua-compatible"
@@ -91,7 +91,7 @@ export default class HTML extends React.Component {
    
           <meta
             property="og:site_name"
-            content={`Evergov: all your gov services in a single place`}
+            content={`papergov: all your gov services in a single place`}
           />
           <meta
             property="twitter:card"
@@ -101,7 +101,7 @@ export default class HTML extends React.Component {
           <meta
             property="twitter:site"
             name="twitter:site"
-            content="@myevergov"
+            content="@mypapergov"
           />
           <meta httpEquiv="x-ua-compatible" content="ie=edge" />
           <meta

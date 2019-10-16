@@ -99,7 +99,7 @@ class LandingHome extends React.Component {
                         <a href="#" style={{ textDecoration: "none" }}>
                           <h3>
                             {" "}
-                            evergov{" "}
+                            papergov{" "}
                             <sub
                               className={styles.textUppercase}
                               style={{
@@ -119,7 +119,7 @@ class LandingHome extends React.Component {
 
                     <section className={styles.navbarSection}>
                       <a
-                        href={`https://evergov.com/terms`}
+                        href={`https://papergov.com/terms`}
                         style={{ padding: "0.5rem" }}
                         target="_blank"
                       >
@@ -127,7 +127,7 @@ class LandingHome extends React.Component {
                       </a>
 
                       <a
-                        href={`https://evergov.com/privacy`}
+                        href={`https://papergov.com/privacy`}
                         style={{ padding: "0.5rem" }}
                         target="_blank"
                       >
@@ -160,7 +160,7 @@ class LandingHome extends React.Component {
                         lineHeight: "2.5rem"
                       }}
                     >
-                      Login to your Evergov Account
+                      Login to your papergov Account
                     </h2>
                     <div style={{ maxWidth: "400px" }}>
                       {authInProgress ? (

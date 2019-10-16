@@ -48,7 +48,7 @@ class Home extends Component {
                 >
                   <h3>
                     {" "}
-                    evergov{" "}
+                    papergov{" "}
                     <sub
                       className={styles.textUppercase}
                       style={{

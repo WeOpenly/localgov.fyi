@@ -38,7 +38,7 @@ class Index extends React.Component {
         return (
             <Fragment>
                 <Helmet>
-                    <title>{`Evergov One`}
+                    <title>{`papergov One`}
                     </title>
                 </Helmet>
                 <FirebaseContext.Provider value={getFirebse}>

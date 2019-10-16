@@ -28,8 +28,8 @@ function Copyright() {
   return (
     <Typography variant="body2" color="textSecondary" align="center">
       {"Copyright © "}
-      <Link color="inherit" href="https://one.evergov.com/">
-    evergov-adm
+      <Link color="inherit" href="https://one.papergov.com/">
+    papergov-adm
       </Link>{" "}
       {new Date().getFullYear()}
       {"."}
@@ -188,7 +188,7 @@ class OneDashboard extends React.Component {
             noWrap
             className={classes.title}
           >
-            Evergov Admin
+            papergov Admin
           </Typography>
           <Button onClick={this.logout} color="inherit">
             Logout

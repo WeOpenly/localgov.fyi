@@ -46,7 +46,7 @@ class Account extends Component {
                             </div>
                             <div className={`${styles.tile} ${styles.tileCentered}`}>
                                 <div className={styles.tileContent}>
-                                    <h6 className={styles.tileTitle} >Evergov Plan</h6>
+                                    <h6 className={styles.tileTitle} >papergov Plan</h6>
                                     <div className={styles.tileSubtitle}>{this.props.selected_plan_id}</div>
                                 </div>
 

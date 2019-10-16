@@ -51,7 +51,7 @@ class AppBar extends Component {
               </section>
               <section className={styles.navbarSection}>
                 <a
-                  href={`https://evergov.com/terms`}
+                  href={`https://papergov.com/terms`}
                   style={{ padding: "0.5rem" }}
                   target="_blank"
                 >
@@ -59,7 +59,7 @@ class AppBar extends Component {
                 </a>
 
                 <a
-                  href={`https://evergov.com/privacy`}
+                  href={`https://papergov.com/privacy`}
                   style={{ padding: "0.5rem" }}
                   target="_blank"
                 >

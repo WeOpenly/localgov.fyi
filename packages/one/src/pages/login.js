@@ -37,7 +37,7 @@ class Login extends React.Component {
     return (
       <Fragment>
         <Helmet>
-          <title>{`Evergov One | Login`}</title>
+          <title>{`papergov One | Login`}</title>
         </Helmet>
         <FirebaseContext.Provider value={getFirebse}>
           <LoginHome />

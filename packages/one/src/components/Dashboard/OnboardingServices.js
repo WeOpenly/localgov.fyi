@@ -100,7 +100,7 @@ class OnboardingServices extends Component {
     );
 
     let currentStepMsg =
-      "We will need some info from you to make the most of Evergov One";
+      "We will need some info from you to make the most of papergov One";
 
     if (currentOnboardingStep === "add_payment") {
       currentStepMsg =

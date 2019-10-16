@@ -50,7 +50,7 @@ class FooterSupport extends Component {
             <div className={classes.support_footer_links}>
               <Typography variant="caption">
                 <a
-                  href={`https://evergov.zendesk.com/hc/en-us`}
+                  href={`https://papergov.zendesk.com/hc/en-us`}
                   className={classes.footer_social_icon}
                   target="_blank"
                 >
@@ -59,7 +59,7 @@ class FooterSupport extends Component {
               </Typography>
               <Typography variant="caption">
                 <a
-                  href={`https://evergov.com/terms`}
+                  href={`https://papergov.com/terms`}
                   className={classes.footer_social_icon}
                   target="_blank"
                 >
@@ -68,7 +68,7 @@ class FooterSupport extends Component {
               </Typography>
               <Typography variant="caption">
                 <a
-                  href={`https://evergov.com/privacy`}
+                  href={`https://papergov.com/privacy`}
                   className={classes.footer_social_icon}
                   target="_blank"
                 >

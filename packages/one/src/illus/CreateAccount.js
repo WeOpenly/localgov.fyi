@@ -32,7 +32,7 @@ const CreateAccount = () => (
     render={data => {
       return (
         <Img
-          title={`evergov`}
+          title={`papergov`}
           alt={`Create account`}
           style={{ width: "180px" }}
           sizes={data.heroIl.edges[0].node.childImageSharp.fluid}

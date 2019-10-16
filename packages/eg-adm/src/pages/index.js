@@ -31,7 +31,7 @@ function Copyright() {
   return (
     <Typography variant="body2" color="textSecondary" align="center">
       {"Copyright © "}
-      <MuiLink color="inherit" href="https://one.evergov.com/">
+      <MuiLink color="inherit" href="https://one.papergov.com/">
    one-adm
       </MuiLink>{" "}
       {new Date().getFullYear()}
@@ -101,7 +101,7 @@ class AdmIndex extends React.Component {
     return (
       <Fragment>
         <Helmet>
-          <title>{`Evergov One`}</title>
+          <title>{`papergov One`}</title>
         </Helmet>
         <FirebaseContext.Provider value={getFirebse}>
           <Container component="main" maxWidth="xs">
@@ -111,7 +111,7 @@ class AdmIndex extends React.Component {
                 <LockOutlinedIcon />
               </Avatar>
               <Typography component="h1" variant="h5">
-                Evergov Admin
+                papergov Admin
               </Typography>
 
               <Button

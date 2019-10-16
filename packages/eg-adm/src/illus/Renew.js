@@ -32,8 +32,8 @@ const Renew = ({ style }) => (
     render={data => {
       return (
         <Img
-          title={`evergov`}
-          alt={`illustration of evergov`}
+          title={`papergov`}
+          alt={`illustration of papergov`}
           style={style}
           sizes={data.heroIl.edges[0].node.childImageSharp.fluid}
         />

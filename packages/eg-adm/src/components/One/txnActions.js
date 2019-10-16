@@ -101,7 +101,6 @@ export function createTxn(uid, serId, txnData) {
             date.getUTCSeconds()
           );
 
- 
           console.log("createTxn", nowUtc);
 
           const nextDue = rule.after(new Date(nowUtc));

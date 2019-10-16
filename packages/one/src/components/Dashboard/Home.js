@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import { navigate } from "@reach/router";
 import PropTypes from "prop-types";
 
-
+import ExpFinalizedServiceListItem from "../Services/ExpFinalizedServiceListItem";
 import styles from "../spectre.min.module.css"
 import iconStyles from '../typicons.min.module.css';
 
@@ -32,27 +32,50 @@ class Home extends Component {
 
       const { authInProgress, authFailure, details } = oneUser;
 
-      const currentMonth = new Date(Date.now()).getMonth();
-      console.log(currentMonth);
+      const currentDate = new Date(Date.now());
+      let d = new Date(Date.now());
+      d.setMonth(d.getMonth() + 1);
 
       const upNextMonth = Object.keys(txnData).filter((txn, idx) => {
+        console.log(currentDate, d, new Date(txnData[txn].metadata.nextDue));
         return (
-          currentMonth + 1 >= new Date(txnData[txn].metadata.nextDue).getMonth()) &&
-          (new Date(txnData[txn].metadata.nextDue).getMonth() <= currentMonth);
+          currentDate <= new Date(txnData[txn].metadata.nextDue) &&
+          new Date(txnData[txn].metadata.nextDue) < d
+        );
       })
 
-      const upNext3Months = Object.keys(txnData).filter((txn, idx) => {
-        return (
-          currentMonth + 1 >= new Date(txnData[txn].metadata.nextDue).getMonth()) &&
-          (new Date(txnData[txn].metadata.nextDue).getMonth() <= currentMonth + 4)
-      })
+      console.log(upNextMonth);
 
+      const finalizedSersComp = Object.values(selectedServices).map(
+        selected => {
+          if (
+            "formData" in selectedServices[selected.sid] &&
+            upNextMonth.includes(selected.sid)
+          ) {
+            return (
+              <ExpFinalizedServiceListItem
+                key={selected.sid}
+                isFinalized={
+                  selected.sid in selectedServices &&
+                  "formData" in selectedServices[selected.sid]
+                }
+                txnDataLoading={txnDataLoading}
+                txnData={txnData}
+                txnDataFailed={txnDataFailed}
+                updateServiceDetails={this.updateService}
+                removeServiceDetails={this.removeSelectedService}
+                ser={selectedServices[selected.sid]}
+              />
+            );
+          }
+        }
+      );
       // const upNext6Months = Object.keys(txnData).map((txn, idx) => {
       //   return (currentMonth + 1 >= Date(txnData[txn].metadata.nextDue).getMonth()) &&
       //     (Date(txnData[txn].metadata.nextDue).getMonth() <= currentMonth + 7);
       // });
 
-      console.log(upNextMonth, upNext3Months);
+
       if (allSersFetching || selectedServicesFetching) {
         return (
         <div className={styles.columns} style={{ marginTop: "1rem" }}>
@@ -116,7 +139,7 @@ class Home extends Component {
                 className={styles.emptyAction}
                 style={{ display: "flex", justifyContent: "left" }}
               >
-                <div style={{ display: "flex", flexWrap: 'wrap' }}>
+                <div style={{ display: "flex", flexWrap: "wrap" }}>
                   <div
                     className={`${styles.tile}  ${styles.textLeft}`}
                     onClick={() => navigate("/dashboard/services/")}
@@ -201,12 +224,30 @@ class Home extends Component {
               className={`${styles.column} ${styles.col8}`}
               style={{ margin: "3rem 0 1rem 0" }}
             >
-              <h2 className={` ${styles.textLeft}`}>
-                Upcoming
-              </h2>
+              <h2 className={` ${styles.textLeft}`}>Upcoming</h2>
             </div>
             <div className={`${styles.column} ${styles.col2}`}></div>
             <div className={`${styles.column} ${styles.col1}`} />
+          </div>
+          <div className={styles.columns} style={{}}>
+            <div
+              className={`${styles.column} ${styles.col1} ${styles.hideXs}`}
+            />
+            <div
+              style={{
+                padding: "1rem",
+                display: "flex",
+                flexDirection: "column",
+                alignItems: "left",
+                paddingBottom: "1rem"
+              }}
+              className={`${styles.column} ${styles.col10} ${styles.colXs12}`}
+            >
+              {finalizedSersComp}
+            </div>
+            <div
+              className={`${styles.column} ${styles.col1} ${styles.hideXs}`}
+            />
           </div>
         </div>
       );

@@ -138,6 +138,7 @@ export function finalizeService(uid, formData, service) {
 
     const currentSer = existingSelected[service.sid];
     currentSer["formData"] = formData;
+    currentSer['finalizedAt'] = Date.now();
     const newSerSelected = existingSelected;
     newSerSelected[service.sid] = currentSer;
 

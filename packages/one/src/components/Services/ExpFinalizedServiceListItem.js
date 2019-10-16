@@ -58,7 +58,7 @@ class ExpFinalizedServiceListItem extends React.Component {
     if (this.props.txnData && !this.props.txnDataFailed) {
       txnComp = (
         <div
-          data-tooltip={`We have received your data and \n will update this once we are \n done processing`}
+          data-tooltip={`We have received your data and \n will update details about next due date,  \n once we are done processing`}
           className={styles.tooltip}
           style={{
             display: "flex",

@@ -135,6 +135,11 @@ class UserServiceTxnList extends Component {
     };
     console.log(txnData, 'onNewSubmit');
     dispatch(createTxn(uid, serId, txnData));
+    this.setState({
+      txn_id: null,
+      txn_files: null,
+      txn_for_date: null
+    });
     this.onAddClick();
   }
 

@@ -62,8 +62,8 @@ class ShareBox extends React.Component {
 
     render() {
         const {classes, title, messageToShare} = this.props;
-        const fbShareMessage = `${messageToShare} @evergov`;
-        const twitterShareMessage = `${messageToShare} @myevergov`;
+        const fbShareMessage = `${messageToShare} @papergov`;
+        const twitterShareMessage = `${messageToShare} @mypapergov`;
       
         const windowGlobal = typeof window !== 'undefined' && window
         let linkToShare = '';

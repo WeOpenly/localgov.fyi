@@ -250,17 +250,17 @@ def get_all_locations():
 
 def write_standard_redirects():
     print(DSP_HOST, YUSUF_HOST)
-    redir_string = """/org_images/* http://storage.googleapis.com/evergov-prod-dsp-uploads/organization_logo_uploads/:splat 200!
+    redir_string = """/org_images/* http://storage.googleapis.com/papergov-prod-dsp-uploads/organization_logo_uploads/:splat 200!
     
 /api/yusuf/* {y}/:splat 200!
 
-/blog/* https://blogevergov.wordpress.com/:splat 200!
+/blog/* https://blogpapergov.wordpress.com/:splat 200!
 
 /api/dsp/* {d}/:splat 200!
 
-https://evergov.netlify.com/* https://evergov.com/:splat 301!
+https://papergov.netlify.com/* https://papergov.com/:splat 301!
 
-http://evergov.netlify.com/* https://evergov.com/:splat 301!
+http://papergov.netlify.com/* https://papergov.com/:splat 301!
 
 /app/*  /app/auth/callback/  200
 /app/*  /app/  200

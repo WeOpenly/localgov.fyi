@@ -86,8 +86,8 @@ class Index extends React.Component {
     return (
       <Fragment>
         <Helmet
-          defaultTitle={`Evergov: Find All Government Services in a Single Place`}
-          titleTemplate={`%s | evergov`}
+          defaultTitle={`papergov: Find All Government Services in a Single Place`}
+          titleTemplate={`%s | papergov`}
         >
           <meta name="og:type" content="website" />
           <meta
@@ -101,11 +101,11 @@ class Index extends React.Component {
 
           <link
             rel="canonical"
-            href={`https://evergov.com${this.props.location.pathname}`}
+            href={`https://papergov.com${this.props.location.pathname}`}
           />
           <meta
             property="og:url"
-            content={`https://evergov.com${this.props.location.pathname}`}
+            content={`https://papergov.com${this.props.location.pathname}`}
           />
           <html lang="en" />
         </Helmet>

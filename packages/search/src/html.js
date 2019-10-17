@@ -47,8 +47,8 @@ let fontcss = null;
 const OrgLogoSchema = {
   "@context": "https://schema.org",
   "@type": "Organization",
-  url: "http://www.evergov.com",
-  logo: "http://www.evergov.com/imgs/logo.png",
+  url: "http://www.papergov.com",
+  logo: "http://www.papergov.com/imgs/logo.png",
   contactPoint: [
     {
       "@type": "ContactPoint",
@@ -63,8 +63,8 @@ const OrgLogoSchema = {
 // name="msvalidate.01" content="D1BADF38847C730E9DC76BE0CCC4B42B" /> <meta
 // name="yandex-verification" content="25711aadc401a373" /> <JsonLd
 // data={searchLinksSchema} />           <meta name="description"
-// content={`evergov.com - Search for local government organizations, and
-// services`} />           <meta property="og:site_name" content={`evergov.com`}
+// content={`papergov.com - Search for local government organizations, and
+// services`} />           <meta property="og:site_name" content={`papergov.com`}
 // />           <meta property="twitter:card" name="twitter:card"
 // content="summary_large_image" />           <meta property="twitter:site"
 // name="twitter:site" content="@weopenly" /> <meta httpEquiv="x-ua-compatible"
@@ -95,7 +95,7 @@ export default class HTML extends React.Component {
    
           <meta
             property="og:site_name"
-            content={`Evergov: all your gov services in a single place`}
+            content={`papergov: all your gov services in a single place`}
           />
           <meta
             property="twitter:card"
@@ -105,7 +105,7 @@ export default class HTML extends React.Component {
           <meta
             property="twitter:site"
             name="twitter:site"
-            content="@myevergov"
+            content="@mypapergov"
           />
           <meta httpEquiv="x-ua-compatible" content="ie=edge" />
           <meta

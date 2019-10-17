@@ -425,7 +425,7 @@ class ServiceDeliveryLink extends Component {
               variant="headline"
               component="h2"
               className={classes.ser_del_link_title}>
-              How was your experience with evergov?
+              How was your experience with papergov?
             </Typography>
             <Button
               onClick={this.handleGood}
@@ -520,7 +520,7 @@ class ServiceDeliveryLink extends Component {
           {submitting && <div className={classes.ser_del_link_afterSubmit}>
             <CircularProgress />
           </div>}
-          {success && (<ShareBox title={`Help them find government services easily`} messageToShare={`${service_name} easily on EverGov`}/>)}
+          {success && (<ShareBox title={`Help them find government services easily`} messageToShare={`${service_name} easily on papergov`}/>)}
           {failure && <div className={classes.ser_del_link_afterSubmit}>
             <MoodBad className={classes.ser_del_link_icon}/>
             <Typography variant="body1" className={classes.ser_del_link_bodyText}>Something went wrong. Please try again.</Typography>

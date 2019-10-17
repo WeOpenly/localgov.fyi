@@ -223,11 +223,11 @@ class Locations extends Component {
     return (
       <Fragment>
         <Helmet>
-          <title>{`Locations | Evergov`}</title>
+          <title>{`Locations | papergov`}</title>
 
-          <link rel="canonical" href={`https://evergov.com/locations/`} />
-          <meta property="og:title" content={`Locations | Evergov`} />
-          <meta property="og:url" content={`https://evergov.com/locations/`} />
+          <link rel="canonical" href={`https://papergov.com/locations/`} />
+          <meta property="og:title" content={`Locations | papergov`} />
+          <meta property="og:url" content={`https://papergov.com/locations/`} />
 
           <meta
             name="description"

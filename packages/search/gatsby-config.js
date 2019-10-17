@@ -1,7 +1,7 @@
 const path = require(`path`)
 let activeEnv = 'staging'
 
-if (process.env.PROJECT_ID && process.env.PROJECT_ID==='evergov-prod'){
+if (process.env.PROJECT_ID && process.env.PROJECT_ID==='papergov-prod'){
   activeEnv ='production'
 }
 
@@ -14,8 +14,8 @@ require('dotenv').config({
 
 module.exports = {
   siteMetadata: {
-    title: `Evergov: Search for local government organizations, and services`,
-    siteUrl: `https://evergov.com`
+    title: `papergov: Search for local government organizations, and services`,
+    siteUrl: `https://papergov.com`
   },
   plugins: [
     /*
@@ -189,8 +189,8 @@ module.exports = {
     {
       resolve: `gatsby-plugin-robots-txt`,
       options: {
-        host: "https://evergov.com",
-        sitemap: "https://evergov.com/sitemap.xml",
+        host: "https://papergov.com",
+        sitemap: "https://papergov.com/sitemap.xml",
         policy: [{ userAgent: "*", disallow: [`/app/*`, `/deep_link/*`] }]
       }
     },

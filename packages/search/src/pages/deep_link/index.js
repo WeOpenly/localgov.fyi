@@ -98,7 +98,7 @@ class DeepLink extends Component {
             <Grid container spacing={16}>
                 <Grid item xs={12} align="center" className={classes.redirDataContainer}>
                     <Typography variant="display2" color="primary" gutterBottom>
-                        evergov
+                        papergov
                     </Typography>
                     <Paper className={classes.ser_redir_details}>
                        <GoodBye />
@@ -107,7 +107,7 @@ class DeepLink extends Component {
                         </Typography>
                         <Typography variant="body1" gutterBottom>
 
-                            You are currently leaving evergov, and will be auto redirected to
+                            You are currently leaving papergov, and will be auto redirected to
 
                         </Typography>
                         <Typography variant="body2" gutterBottom>

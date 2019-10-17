@@ -43,11 +43,11 @@ class CommonNav extends Component {
                 <Grid item sm={1} />
                 <Grid item sm={10} align="center" className={classes.index_hero_nav_items}>
                     <Typography
-                        variant="title">
+                        variant="display1">
                         <a
                             href="/"
                             className={classes.index_hero_app_name}>
-                            evergov
+                            papergov
                            </a>
                     </Typography>
                     <HeaderAccountMenu isMobile={isMobile} location={location} />

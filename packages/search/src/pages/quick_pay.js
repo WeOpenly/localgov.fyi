@@ -14,7 +14,7 @@ class QPIndex extends Component {
 
   componentDidMount() {
       if (windowGlobal) {
-        window.location.replace("https://pay.evergov.com");
+        window.location.replace("https://pay.papergov.com");
       }
   }
 

@@ -83,129 +83,129 @@ class OtherLocationList extends React.Component {
       items: [
         {
           name: 'Atlanta',
-          orgLink : 'https://evergov.com/organization/usa/georgia-state/fulton-county/atlanta-city/ '
+          orgLink : 'https://papergov.com/organization/usa/georgia-state/fulton-county/atlanta-city/ '
         },
         {
           "name": "Austin",
-          "orgLink": "https://evergov.com/organization/usa/texas-state/travis-county/austin-city/"
+          "orgLink": "https://papergov.com/organization/usa/texas-state/travis-county/austin-city/"
         },
         {
           "name": "Boston",
-          "orgLink": "https://evergov.com/organization/usa/massachusetts-state/suffolk-county/boston-city/"
+          "orgLink": "https://papergov.com/organization/usa/massachusetts-state/suffolk-county/boston-city/"
         },
         {
           "name": "Chicago",
-          "orgLink": "https://evergov.com/organization/usa/illinois-state/cook-county/chicago-city/"
+          "orgLink": "https://papergov.com/organization/usa/illinois-state/cook-county/chicago-city/"
         },
         {
           "name": "Columbus",
-          "orgLink": "https://evergov.com/organization/usa/ohio-state/franklin-county/columbus-city/"
+          "orgLink": "https://papergov.com/organization/usa/ohio-state/franklin-county/columbus-city/"
         },
         {
           "name": "Dallas",
-          "orgLink": "https://evergov.com/organization/usa/texas-state/dallas-county/dallas-city/"
+          "orgLink": "https://papergov.com/organization/usa/texas-state/dallas-county/dallas-city/"
         },
         {
           "name": "Detroit",
-          "orgLink": "https://evergov.com/organization/usa/michigan-state/wayne-county/detroit-city/"
+          "orgLink": "https://papergov.com/organization/usa/michigan-state/wayne-county/detroit-city/"
         },
         {
           "name": "El Paso",
-          "orgLink": "https://evergov.com/organization/usa/texas-state/el-paso-county/el-paso-city/"
+          "orgLink": "https://papergov.com/organization/usa/texas-state/el-paso-county/el-paso-city/"
         },
         {
           "name": "Fort Worth",
-          "orgLink": "https://evergov.com/organization/usa/texas-state/tarrant-county/fort-worth-city/"
+          "orgLink": "https://papergov.com/organization/usa/texas-state/tarrant-county/fort-worth-city/"
         },
         {
           name: 'Houston',
-          orgLink: 'https://evergov.com/organization/usa/texas-state/harris-county/houston-city/'
+          orgLink: 'https://papergov.com/organization/usa/texas-state/harris-county/houston-city/'
         },
         {
           "name": "Jacksonville",
-          "orgLink": "https://evergov.com/organization/usa/florida-state/duval-county/jacksonville-city/"
+          "orgLink": "https://papergov.com/organization/usa/florida-state/duval-county/jacksonville-city/"
         },
         {
           "name": "Jersey City",
-          "orgLink": "https://evergov.com/organization/usa/new-jersey-state/hudson-county/jersey-city-city/"
+          "orgLink": "https://papergov.com/organization/usa/new-jersey-state/hudson-county/jersey-city-city/"
         },
         {
           "name": "Indianapolis",
-          "orgLink": "https://evergov.com/organization/usa/indiana-state/marion-county/indianapolis-city/"
+          "orgLink": "https://papergov.com/organization/usa/indiana-state/marion-county/indianapolis-city/"
         },
         {
           "name": "Kansas City",
-          "orgLink": "https://evergov.com/organization/usa/missouri-state/platte-county/kansas-city-city/"
+          "orgLink": "https://papergov.com/organization/usa/missouri-state/platte-county/kansas-city-city/"
         },
         {
           name: 'Las Vegas',
-orgLink : 'https://evergov.com/organization/usa/nevada-state/clark-county/las-vegas-city/'
+orgLink : 'https://papergov.com/organization/usa/nevada-state/clark-county/las-vegas-city/'
         },
         
         {
           "name": "Los Angeles",
-          "orgLink": "https://evergov.com/organization/usa/california-state/los-angeles-county/los-angeles-city/"
+          "orgLink": "https://papergov.com/organization/usa/california-state/los-angeles-county/los-angeles-city/"
         },
         {
           "name": "Milwaukee",
-          "orgLink": "https://evergov.com/organization/usa/wisconsin-state/milwaukee-county/milwaukee-city/"
+          "orgLink": "https://papergov.com/organization/usa/wisconsin-state/milwaukee-county/milwaukee-city/"
         },
         {
           "name": "Nashville",
-          "orgLink": "https://evergov.com/organization/usa/tennessee-state/davidson-county/nashville-city/"
+          "orgLink": "https://papergov.com/organization/usa/tennessee-state/davidson-county/nashville-city/"
         },
         {
           name: 'New York',
-          orgLink: 'https://evergov.com/organization/usa/new-york-state/bronx-county/new-york-city/'
+          orgLink: 'https://papergov.com/organization/usa/new-york-state/bronx-county/new-york-city/'
         },
         {
           "name": "Oakland",
-          "orgLink": "https://evergov.com/organization/usa/california-state/alameda-county/oakland-city/"
+          "orgLink": "https://papergov.com/organization/usa/california-state/alameda-county/oakland-city/"
         },
         {
           "name": "Oklahoma",
-          "orgLink": "https://evergov.com/organization/usa/oklahoma-state/oklahoma-county/oklahoma-city-city/"
+          "orgLink": "https://papergov.com/organization/usa/oklahoma-state/oklahoma-county/oklahoma-city-city/"
         },
         {
           "name": "Portland",
-          "orgLink": "https://evergov.com/organization/usa/oregon-state/multnomah-county/portland-city/"
+          "orgLink": "https://papergov.com/organization/usa/oregon-state/multnomah-county/portland-city/"
         },
         {
           "name": "Phoenix",
-          "orgLink": "https://evergov.com/organization/usa/arizona-state/maricopa-county/phoenix-city/"
+          "orgLink": "https://papergov.com/organization/usa/arizona-state/maricopa-county/phoenix-city/"
         },
         {
           name: 'Philadelphia',
-orgLink : 'https://evergov.com/organization/usa/pennsylvania-state/philadelphia-county/'
+orgLink : 'https://papergov.com/organization/usa/pennsylvania-state/philadelphia-county/'
         },
         {
           "name": "Pittsburgh",
-          "orgLink": "https://evergov.com/organization/usa/pennsylvania-state/allegheny-county/pittsburgh-city/"
+          "orgLink": "https://papergov.com/organization/usa/pennsylvania-state/allegheny-county/pittsburgh-city/"
         },
         {
           "name": "San Antonio",
-          "orgLink": "https://evergov.com/organization/usa/texas-state/bexar-county/san-antonio-city/"
+          "orgLink": "https://papergov.com/organization/usa/texas-state/bexar-county/san-antonio-city/"
         },
         {
           name: 'San Francisco',
           orgLink: 
-          "https://evergov.com/organization/usa/california-state/san-francisco-county/"
+          "https://papergov.com/organization/usa/california-state/san-francisco-county/"
         },
         {
           "name": "San Diego",
-          "orgLink": "https://evergov.com/organization/usa/california-state/san-diego-county/san-diego-city/"
+          "orgLink": "https://papergov.com/organization/usa/california-state/san-diego-county/san-diego-city/"
         },
         {
           name: 'San Jose',
-          orgLink: 'https://evergov.com/organization/usa/california-state/santa-clara-county/san-jose-city/'
+          orgLink: 'https://papergov.com/organization/usa/california-state/santa-clara-county/san-jose-city/'
         },
         {
           "name": "Seattle",
-          "orgLink": "https://evergov.com/organization/usa/washington-state/king-county/seattle-city/"
+          "orgLink": "https://papergov.com/organization/usa/washington-state/king-county/seattle-city/"
         },
         {
           "name": "Tucson",
-          "orgLink": "https://evergov.com/organization/usa/arizona-state/pima-county/tucson-city/"
+          "orgLink": "https://papergov.com/organization/usa/arizona-state/pima-county/tucson-city/"
         }
       ]
     } 
@@ -255,7 +255,7 @@ orgLink : 'https://evergov.com/organization/usa/pennsylvania-state/philadelphia-
                     : classes.ser_org_list_header
                 }
               >
-                Discover Evergov
+                Discover papergov
               </Typography>
             </div>
             <div className={classes.ser_org_list}>{otherLinks}</div>

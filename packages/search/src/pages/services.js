@@ -208,18 +208,18 @@ class ServiceList extends Component {
         return (
           <Fragment>
             <Helmet>
-              <title>{`Services | Evergov`}</title>
+              <title>{`Services | papergov`}</title>
 
-              <link rel="canonical" href={`https://evergov.com/services/`} />
-              <meta property="og:title" content={`Services | Evergov`} />
+              <link rel="canonical" href={`https://papergov.com/services/`} />
+              <meta property="og:title" content={`Services | papergov`} />
               <meta
                 property="og:url"
-                content={`https://evergov.com/services/`}
+                content={`https://papergov.com/services/`}
               />
 
-              <meta name="description" content={`Services on Evergov`} />
+              <meta name="description" content={`Services on papergov`} />
 
-              <meta property="og:description" content={`Services on Evergov`} />
+              <meta property="og:description" content={`Services on papergov`} />
             </Helmet>
             <NavSearch />
             <Grid container>
@@ -231,7 +231,7 @@ class ServiceList extends Component {
                 sm={4}
                 align="center"
               >
-                <Typography variant="display1">Services on Evergov</Typography>
+                <Typography variant="display1">Services on papergov</Typography>
               </Grid>
               <Grid item xs={1} sm={4} />
             </Grid>

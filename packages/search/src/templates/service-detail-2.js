@@ -422,11 +422,11 @@ class ServiceDetailTemplate extends React.Component {
         const jsonLd = {
           "@context": "http://schema.org",
           "@type": "GovernmentService",
-          "@id": `https://evergov.com/${url_slug}/`,
+          "@id": `https://papergov.com/${url_slug}/`,
           name: `${name}`,
           serviceOperator: {
             "@context": "http://schema.org",
-            "@id": `https://evergov.com/${org_slug}/`,
+            "@id": `https://papergov.com/${org_slug}/`,
             "@type": "GovernmentOrganization",
             name: `${org_name}`
           }
@@ -526,29 +526,29 @@ class ServiceDetailTemplate extends React.Component {
         return (
             <DetailTemplate isMobile={isMobile}  location={this.props.location}>
                 <Helmet>
-                    <title>{`${name} | ${org_name} | Evergov`}
+                    <title>{`${name} | ${org_name} | papergov`}
                     </title>
                     {(allfaq.length > 0) ? (<html itemScope itemType="https://schema.org/FAQPage" />) : null}
                     <script src="https://js.stripe.com/v3/"></script>
                     <link href={"/css/stripe.css"} rel="stylesheet" />
                     <script type="application/ld+json">{`${JSON.stringify(jsonLd)}`}</script>
-                    <link rel="canonical" href={`https://evergov.com/${url_slug}/`} />
+                    <link rel="canonical" href={`https://papergov.com/${url_slug}/`} />
                     <meta
                         property="og:title"
-                        content={`${name} | ${org_name} | Evergov`} />
-                    <meta property="og:url" content={`https://evergov.com/${url_slug}/`} />
+                        content={`${name} | ${org_name} | papergov`} />
+                    <meta property="og:url" content={`https://papergov.com/${url_slug}/`} />
 
                     {description ? (<meta
                         name="description"
                         content={description.substr(0, 300)} />) : (<meta
                             name="description"
-                            content={`${name} online in ${org_name} seamlessly with Evergov. Be it property taxes, utility bills, tickets or permits and licenses, you can find them all on Evergov.`} />)}
+                            content={`${name} online in ${org_name} seamlessly with papergov. Be it property taxes, utility bills, tickets or permits and licenses, you can find them all on papergov.`} />)}
                     <meta
                         name="keywords"
                         content={`${name} online , ${org_name} services `} />
                     <meta
                         property="og:description"
-                        content={`Forms, Price, Checklist, FAQS, Timings and Local Government Service Contact Details for ${name} offered in ${org_name} | Evergov`} />
+                        content={`Forms, Price, Checklist, FAQS, Timings and Local Government Service Contact Details for ${name} offered in ${org_name} | papergov`} />
 
                 </Helmet>
 

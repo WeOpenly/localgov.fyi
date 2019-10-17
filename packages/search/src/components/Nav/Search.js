@@ -124,7 +124,7 @@ class SearchNav extends Component {
             >
               <Typography variant="title">
                 <Link to="/" className={classes.search_header_app_name}>
-                  evergov
+                  papergov
                 </Link>
               </Typography>
               {suggestionSection}

@@ -4,7 +4,7 @@
 
 **Last revised on: 25th June, 2018**
 
-The website located at evergov.com (the "**Site**") is a copyrighted work belonging to Openly Technologies Inc. (“**Company**”, “**us**”, “**our**”, and “**we**”).  Certain features of the Site may be subject to additional guidelines, terms, or rules, which will be posted on the Site in connection with such features.  All such additional terms, guidelines, and rules are incorporated by reference into these Terms.
+The website located at papergov.com (the "**Site**") is a copyrighted work belonging to Openly Technologies Inc. (“**Company**”, “**us**”, “**our**”, and “**we**”).  Certain features of the Site may be subject to additional guidelines, terms, or rules, which will be posted on the Site in connection with such features.  All such additional terms, guidelines, and rules are incorporated by reference into these Terms.
 
 THESE TERMS OF USE (THESE "**TERMS**") SET FORTH THE LEGALLY BINDING TERMS AND CONDITIONS THAT GOVERN YOUR USE OF THE SITE.  BY ACCESSING OR USING THE SITE, YOU ARE ACCEPTING THESE TERMS (ON BEHALF OF YOURSELF OR THE ENTITY THAT YOU REPRESENT), AND YOU REPRESENT AND WARRANT THAT YOU HAVE THE RIGHT, AUTHORITY, AND CAPACITY TO ENTER INTO THESE TERMS (ON BEHALF OF YOURSELF OR THE ENTITY THAT YOU REPRESENT).  YOU MAY NOT ACCESS OR USE THE SITE OR ACCEPT THE TERMS IF YOU ARE NOT AT LEAST 18 YEARS OLD.  IF YOU DO NOT AGREE WITH ALL OF THE PROVISIONS OF THESE TERMS, DO NOT ACCESS AND/OR USE THE SITE.
 

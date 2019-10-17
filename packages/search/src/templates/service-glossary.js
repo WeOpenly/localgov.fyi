@@ -288,19 +288,19 @@ class ServiceGlossary extends Component {
         return (
           <Fragment>
             <Helmet>
-              <title>{`${service_name} | Evergov`}</title>
+              <title>{`${service_name} | papergov`}</title>
               <link
                 rel="canonical"
-                href={`https://evergov.com/services/${service_name_slug}/`}
+                href={`https://papergov.com/services/${service_name_slug}/`}
               />
 
               <meta
                 property="og:title"
-                content={`${service_name} | Evergov`}
+                content={`${service_name} | papergov`}
               />
               <meta
                 property="og:url"
-                content={`https://evergov.com/services/${service_name_slug}/`}
+                content={`https://papergov.com/services/${service_name_slug}/`}
               />
 
               <meta
@@ -313,7 +313,7 @@ class ServiceGlossary extends Component {
               />
               <meta
                 property="og:description"
-                content={`Forms, Price, Timings and Local Government Service Contact Details for ${service_name} | Evergov`}
+                content={`Forms, Price, Timings and Local Government Service Contact Details for ${service_name} | papergov`}
               />
             </Helmet>
 
@@ -328,7 +328,7 @@ class ServiceGlossary extends Component {
               >
                 <Typography variant="title">
                   <Link to="/" className={classes.ser_gloss_app_name}>
-                    evergov
+                    papergov
                 </Link>
                 </Typography>
               

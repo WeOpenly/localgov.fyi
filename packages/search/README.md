@@ -1,6 +1,6 @@
-# evergov.com
+# papergov.com
 
-Front-end for https://evergov.com/
+Front-end for https://papergov.com/
 
 Mostly based on [Gatsbygram Case Study](https://www.gatsbyjs.org/blog/gatsbygram-case-study/) with redux and material-ui thrown into the mix.
 

@@ -47,7 +47,7 @@ class FooterDiscover extends Component {
         const { classes, isMobile } = this.props;
 
         const facebookLogo = (<a
-            href={`https://www.facebook.com/evergov/`}
+            href={`https://www.facebook.com/papergov/`}
             className={classes.org_header_buttonContent}
 
             target="_blank">
@@ -62,7 +62,7 @@ class FooterDiscover extends Component {
 
 
         const twitterLogo = (<a
-            href={`https://twitter.com/myevergov`}
+            href={`https://twitter.com/mypapergov`}
             className={classes.footer_social_icon}
             target="_blank">
             <SvgIcon
@@ -74,7 +74,7 @@ class FooterDiscover extends Component {
             </SvgIcon></a>)
 
         const mediumLogo = (<a
-            href={`https://medium.com/evergov`}
+            href={`https://medium.com/papergov`}
             className={classes.footer_social_icon}
 
             target="_blank"><SvgIcon
@@ -86,7 +86,7 @@ class FooterDiscover extends Component {
             </SvgIcon></a>)
 
         const igLogo = (<a
-            href={`https://www.instagram.com/myevergov/`}
+            href={`https://www.instagram.com/papergov/`}
             className={classes.footer_social_icon}
 
             target="_blank"><SvgIcon
@@ -110,7 +110,7 @@ class FooterDiscover extends Component {
             <div className={classes.disco_footer_links}>
               <Typography variant="caption">
                 <a
-                  href={`https://pay.evergov.com`}
+                  href={`https://pay.papergov.com`}
                   className={classes.footer_social_icon}
                   target="_blank"
                 >

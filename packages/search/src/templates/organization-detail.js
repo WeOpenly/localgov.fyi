@@ -281,7 +281,7 @@ other_orgs_from_state
 
     const jsonLd = {
       "@context": "http://schema.org",
-      "@id": `https://evergov.com/${url_slug}/`,
+      "@id": `https://papergov.com/${url_slug}/`,
       "@type": "Organization",
       name: `${name}`,
       sameAs: sameAs,
@@ -293,7 +293,7 @@ other_orgs_from_state
 
         <Helmet>
           <script type="application/ld+json">{`${JSON.stringify(jsonLd)}`}</script>
-          <title>{`${name} info, contact details and services | Evergov`}</title>
+          <title>{`${name} info, contact details and services | papergov`}</title>
           <meta
             name="description"
             content={`${name} info, county / city hall contact details, utilities, and services`}
@@ -301,9 +301,9 @@ other_orgs_from_state
           <meta name="keywords"
               content={`${name} online, info , local government services`}/>
           <meta property="og:title" content={`${name}`} />
-            <meta property="og:url" content={`https://evergov.com/${url_slug}/`} />
+            <meta property="og:url" content={`https://papergov.com/${url_slug}/`} />
           <meta property="og:description" content={`${name} info, contact details and services`} />
-            <link rel="canonical" href={`https://evergov.com/${url_slug}/`} />
+            <link rel="canonical" href={`https://papergov.com/${url_slug}/`} />
         
         </Helmet>
         <Grid container spacing={16}>

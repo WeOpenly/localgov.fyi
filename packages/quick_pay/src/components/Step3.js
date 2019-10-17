@@ -39,8 +39,8 @@ const Step3 = () => (
 }`}
         render={data => {
             return (<Img
-                title={`evergov`}
-                alt={`illustration of evergov`}
+                title={`papergov`}
+                alt={`illustration of papergov`}
               style={{ width: '150px', height: '125px', marginTop: '24px' }}
                 sizes={data.heroIl.edges[0].node.childImageSharp.fluid} />)
         }} />

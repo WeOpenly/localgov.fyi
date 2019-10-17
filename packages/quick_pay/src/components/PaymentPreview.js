@@ -197,7 +197,7 @@ class PaymentPreview extends Component {
                     >
                       <div
                         className={`${styles.tooltip} ${styles.tooltipRight}`}
-                        data-tooltip="Evergov performs this on your behalf for a small fee"
+                        data-tooltip="papergov performs this on your behalf for a small fee"
                       >
                         <span
                           className={`${iconStyles.typcn} ${iconStyles.typcnSupport}`}

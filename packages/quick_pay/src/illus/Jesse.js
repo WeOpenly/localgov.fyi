@@ -32,7 +32,7 @@ const JessePic = () => (
     render={data => {
       return (
         <Img
-          title={`evergov`}
+          title={`papergov`}
           alt={`Page Not Found`}
           style={{ width: "72px" }}
           sizes={data.heroIl.edges[0].node.childImageSharp.fluid}

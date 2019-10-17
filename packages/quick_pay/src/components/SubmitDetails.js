@@ -177,7 +177,7 @@ class SubmitDetails extends Component {
                         <p className={`${styles.emptyTitle} ${styles.h3}`}>💰That's amount is higher than what we can process at the moment 💰</p>
 
                         <p className={styles.emptySubtitle}>
-                            Please email <a href="mailto:team@evergov.com" target="_top">team@evergov.com</a> for more details
+                            Please email <a href="mailto:team@papergov.com" target="_top">team@papergov.com</a> for more details
                         </p>
 
                         <p className={styles.emptySubtitle} >

@@ -59,8 +59,8 @@ const HeroIl = () => (
 }`}
         render={data => {
             return (<Img
-                title={`evergov`}
-                alt={`illustration of evergov`}
+                title={`papergov`}
+                alt={`illustration of papergov`}
                 style={{ width: '150px', height: '110px' }}
 
                 fluid={data.heroIl.edges[0].node.childImageSharp.fluid} />)
@@ -370,7 +370,7 @@ class Landing extends React.Component {
               className={`${styles.column} ${styles.col12}`}
               style={{ margin: "0.5rem 0" }}
             >
-              <h5 className={` ${styles.textCenter}`}>😍 Users Love Evergov</h5>
+              <h5 className={` ${styles.textCenter}`}>😍 Users Love papergov</h5>
             </div>
             <div
               className={`${styles.column} ${styles.col12}`}
@@ -448,7 +448,7 @@ class Landing extends React.Component {
                   <div>
                     <h6 style={{ textAlign: "left" }}>❝</h6> What's worse than
                     the ticket itself is the time it takes to pay.{" "}
-                    <b>Evergov has given me that time back.</b>
+                    <b>papergov has given me that time back.</b>
                     <p style={{ textAlign: "right" }}>Jesse</p>
                   </div>
 
@@ -494,7 +494,7 @@ class Landing extends React.Component {
               </div>
               <div>
                 <small>
-                  accessed government services via Evergov in the last 6 months
+                  accessed government services via papergov in the last 6 months
                 </small>
               </div>
             </div>

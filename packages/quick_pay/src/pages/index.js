@@ -97,7 +97,7 @@ class QPIndex extends React.Component {
         return (
           <Fragment>
             <Helmet>
-              <title>{`Evergov Quickpay`}</title>
+              <title>{`papergov Quickpay`}</title>
               <link
                 rel="stylesheet"
                 type="text/css"
@@ -125,7 +125,7 @@ class QPIndex extends React.Component {
                   style={{ fontSize: "22px" }}
                   className={`${styles.btn} ${styles.btnLink} ${styles.h1}`}
                 >
-                  evergov
+                  papergov
                 </a>
                 <sub
                   className={styles.textUppercase}

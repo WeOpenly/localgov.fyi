@@ -55,7 +55,7 @@ class FooterSocial extends Component {
         const { classes, isMobile } = this.props;
 
         const facebookLogo = (<a
-            href={`https://www.facebook.com/evergov/`}
+            href={`https://www.facebook.com/papergov/`}
             className={classes.org_header_buttonContent}
            
             target="_blank">
@@ -70,7 +70,7 @@ class FooterSocial extends Component {
 
 
         const twitterLogo = (<a
-            href={`https://twitter.com/myevergov`}
+            href={`https://twitter.com/mypapergov`}
             className={classes.footer_social_icon}
             target="_blank">
             <SvgIcon
@@ -82,7 +82,7 @@ class FooterSocial extends Component {
         </SvgIcon></a>)
 
         const mediumLogo = (<a
-            href={`https://www.medium.com/evergov/`}
+            href={`https://www.medium.com/papergov/`}
             className={classes.footer_social_icon}
 
             target="_blank"><SvgIcon
@@ -96,7 +96,7 @@ class FooterSocial extends Component {
                 />
             </SvgIcon></a>)
         const igLogo = (<a
-            href={`https://www.instagram.com/myevergov/`}
+            href={`https://www.instagram.com/mypapergov/`}
             className={classes.footer_social_icon}
            
             target="_blank"><SvgIcon
@@ -115,7 +115,7 @@ class FooterSocial extends Component {
             <div className={classes.social_footer}>
                 <div className={classes.social_footer_header}>
                     <Typography variant="display1" style={{ fontSize: "0.85rem"}} >
-                        Evergov
+                        papergov
                     </Typography>
                 </div>
                 <div className={classes.social_footer_links}>
@@ -129,7 +129,7 @@ class FooterSocial extends Component {
                     </Typography>
                     <Typography variant="caption">
                     <a
-                        href={`https://evergov.com/blog`}
+                        href={`https://papergov.com/blog`}
                         className={classes.footer_social_icon}
 
                         target="_blank">

@@ -50,7 +50,7 @@ class FooterSupport extends Component {
                 <div className={classes.support_footer_links}>
                     <Typography variant="caption" >
                     <a
-                        href={`https://evergov.zendesk.com/hc/en-us`}
+                        href={`https://papergov.zendesk.com/hc/en-us`}
                         className={classes.footer_social_icon}
 
                         target="_blank">

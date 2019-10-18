@@ -173,11 +173,11 @@ class Home extends Component {
                 <div
                   className={`${styles.tile}  ${styles.textLeft}`}
                   onClick={() => {
-                    paymentSetupDone ? navigate("/dashboard/onboard/add_payment") : navigate("/dashboard")
+                    !paymentSetupDone ? navigate("/dashboard/onboard/add_payment") : navigate("/dashboard")
                   }}
                   style={{
                     background: paymentSetupDone ? "#30ae40" : "#db535c",
-                    cursor: paymentSetupDone ? 'pointer': 'none',
+                    cursor: !paymentSetupDone ? 'pointer': 'none',
                     color: "#fff",
                     padding: "1.5rem 2rem 1rem 1rem",
                     width: "280px",

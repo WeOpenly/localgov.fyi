@@ -122,28 +122,6 @@ class Home extends Component {
                   </div>
                 </div>
                 <div className={styles.divider} />
-                <div
-                  className={`${styles.navItem}`}
-                  onClick={() => {
-                    navigate("/dashboard/receipts");
-                    onMenuClick(false);
-                  }}
-                >
-                  <div
-                    className={`${styles.btn} ${styles.btnMd}  ${styles.btnLink}`}
-                  >
-                    <span
-                      className={`${iconStyles.typcn} ${iconStyles.typcnDocumentText}`}
-                      style={{
-                        fontSize: "0.8rem",
-                        padding: "0 1rem 0 0",
-                        cursor: "pointer"
-                      }}
-                    />
-                    Receipts
-                  </div>
-                </div>
-                <div className={styles.divider} />
                 <div className={`${styles.navItem}`}>
                   <div
                     className={`${styles.btn} ${styles.btnMd}  ${styles.btnLink}`}

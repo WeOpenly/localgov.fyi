@@ -15,8 +15,6 @@ import CreateAccount from "../../illus/CreateAccount.js";
 import AddDetails from "../../illus/AddDetails.js";
 import Relax from "../../illus/Relax.js";
 
-import AboutIl from '../../svgIcons/AboutIl.js';
-import PaymentPlans from '../Payment/PaymentPlans';
 
 import { loginGoog } from "../User/actions";
 

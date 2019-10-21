@@ -11,9 +11,9 @@ import FirebaseContext from "../common/firebase/context.js";
 
 import getFirebse from "../common/firebase/firebase.js";
 import { checkLogin } from "../components/User/actions";
-import { fetchPackageDetails } from "../components/Landing/actions";
+import { fetchSpecificPackageDetails } from "../components/Landing/actions";
 
-import OneHome from "../components/Landing/Home";
+import StartupHome from "../components/Landing/Startup";
 
 class Startup extends React.Component {
   constructor(props) {
@@ -23,7 +23,7 @@ class Startup extends React.Component {
   componentDidMount() {
     const { dispatch } = this.props;
     dispatch(checkLogin());
-    dispatch(fetchPackageDetails());
+    dispatch(fetchSpecificPackageDetails("starter"));
   }
 
   render() {
@@ -40,7 +40,7 @@ class Startup extends React.Component {
           <title>{`papergov One`}</title>
         </Helmet>
         <FirebaseContext.Provider value={getFirebse}>
-          <OneHome />
+          <StartupHome />
         </FirebaseContext.Provider>
       </Fragment>
     );

@@ -80,30 +80,42 @@ class PackDetail extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      showAdd: false
+      showAdd: false,
+      newPlanSers: []
     };
     this.onAddClick = this.onAddClick.bind(this);
     this.editPackDetail = this.editPackDetail.bind(this);
     this.newPlanEdit = this.newPlanEdit.bind(this);
+    this.upateNewPlanSers = this.upateNewPlanSers.bind(this);
 
     this.onNewPlanSubmit = this.onNewPlanSubmit.bind(this);
     this.updateServicesInPackage = this.updateServicesInPackage.bind(this);
     this.onPlanDelete = this.onPlanDelete.bind(this);
   }
 
-  onPlanDelete(pId){
-    const {dispatch} = this.props;
+  onPlanDelete(pId) {
+    const { dispatch } = this.props;
     const { packData } = this.props.pack;
     const { plans } = packData;
+
+    dispatch(updatePlansInPackage(this.props.packId, plans, pId, null));
+  }
+
+  upateNewPlanSers(ser){
+    console.log(ser, this.state.newPlanSers);
+    let newSers = this.state.newPlanSers;
+    let contains = false;
+    let exSers = newSers.filter((ns, i)=> ns.sid===ser.sid)
     
-    dispatch(
-      updatePlansInPackage(
-        this.props.packId,
-        plans,
-        pId,
-        null
-      )
-    );
+    if (exSers.length > 0){
+      newSers = newSers.filter((ns, i) => ns.sid !== ser.sid);      
+    } else {
+      newSers.push(ser)
+    }
+
+    this.setState({
+      newPlanSers: newSers
+    });
   }
 
   onNewPlanSubmit() {
@@ -113,7 +125,7 @@ class PackDetail extends Component {
     const planData = {
       plan_id: this.state.plan_id,
       plan_name: this.state.plan_name,
-      max_sers: this.state.max_sers
+      sers: this.state.newPlanSers
     };
 
     dispatch(
@@ -168,6 +180,8 @@ class PackDetail extends Component {
     const { fetching, failure, packData } = this.props.pack;
     const { services, plans } = packData;
 
+
+
     if (!packData || Object.keys(packData).length === 0) {
       return null;
     }
@@ -195,6 +209,45 @@ class PackDetail extends Component {
                   edge="end"
                   onChange={() => this.updateServicesInPackage(ser.sid)}
                   checked={services.indexOf(ser.sid) !== -1}
+                  inputProps={{
+                    "aria-labelledby": "switch-list-label-wifi"
+                  }}
+                />
+              </ListItemSecondaryAction>
+            </ListItem>
+          ))}
+        </List>
+      );
+    }
+
+    let packageSers = [];
+    if (!this.props.ser.fetching && this.props.ser.items.length > 0) {
+
+      packageSers = this.props.ser.items.filter(
+        (ser, idx) => services.indexOf(ser.sid) !== -1
+      );
+    }
+
+
+    let sersToAddtoPlan = [];
+    if (packageSers.length > 0) {
+      sersToAddtoPlan = (
+        <List
+          subheader={<ListSubheader>Pick services for this plan</ListSubheader>}
+          className={classes.root}
+        >
+          {packageSers.map((ser, idx) => (
+            <ListItem>
+              <ListItemText
+                id="switch-list-label-wifi"
+                primary={ser.name}
+                secondary={ser.sid}
+              />
+              <ListItemSecondaryAction>
+                <Switch
+                  edge="end"
+                  onChange={() => this.upateNewPlanSers(ser)}
+                  checked={this.state.newPlanSers.indexOf(ser) !== -1}
                   inputProps={{
                     "aria-labelledby": "switch-list-label-wifi"
                   }}
@@ -252,11 +305,12 @@ class PackDetail extends Component {
                 margin="dense"
                 id="plan_id"
                 name="plan_id"
-                label="Plan Id"
-                type="text"
+                label="Plan ID"
                 onChange={this.newPlanEdit}
+                type="text"
                 fullWidth
               />
+
               <TextField
                 autoFocus
                 margin="dense"
@@ -267,16 +321,29 @@ class PackDetail extends Component {
                 type="text"
                 fullWidth
               />
+
               <TextField
                 autoFocus
                 margin="dense"
-                id="max_sers"
-                name="max_sers"
-                label="Max Services"
+                id="monthly_plan_id"
+                name="monthly_plan_id"
+                label="Monthly Stripe Plan ID"
                 onChange={this.newPlanEdit}
-                type="number"
+                type="text"
                 fullWidth
               />
+              <TextField
+                autoFocus
+                margin="dense"
+                id="yearly_plan_id"
+                name="yearly_plan_id"
+                label="Yearly Stripe Plan ID"
+                onChange={this.newPlanEdit}
+                type="text"
+                fullWidth
+              />
+
+              <Paper className={classes.container}>{sersToAddtoPlan}</Paper>
             </DialogContent>
             <DialogActions>
               <Button onClick={this.onAddClick} color="primary">

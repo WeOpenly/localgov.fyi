@@ -51,7 +51,8 @@ class PlanList extends Component {
                 <TableRow>
                   <TableCell>ID</TableCell>
                   <TableCell align="right">Name</TableCell>
-                  <TableCell align="right">Max Services</TableCell>
+                  <TableCell align="right">Sers</TableCell>
+
                   <TableCell align="right">Delete</TableCell>
                 </TableRow>
               </TableHead>
@@ -62,7 +63,7 @@ class PlanList extends Component {
                       {row.plan_id}
                     </TableCell>
                     <TableCell align="right">{row.plan_name}</TableCell>
-                    <TableCell align="right">{row.max_sers}</TableCell>
+                    <TableCell align="right">{row.sers.map((s, i)=> (`${s.sid},\n`))}</TableCell>
                     <TableCell align="right">
                       <Fab
                         color="primary"

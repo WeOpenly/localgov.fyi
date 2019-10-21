@@ -60,10 +60,12 @@ class PlanList extends Component {
                 {plans.map(row => (
                   <TableRow key={row.plan_id}>
                     <TableCell component="th" scope="row">
-                      {row.plan_id}
+                      {row.pg_plan_id}
                     </TableCell>
-                    <TableCell align="right">{row.plan_name}</TableCell>
-                    <TableCell align="right">{row.sers.map((s, i)=> (`${s.sid},\n`))}</TableCell>
+                    <TableCell align="right">{row.pg_plan_name}</TableCell>
+                    <TableCell align="right">
+                      {row.sers.map((s, i) => `${s.sid},\n`)}
+                    </TableCell>
                     <TableCell align="right">
                       <Fab
                         color="primary"

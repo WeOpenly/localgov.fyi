@@ -123,8 +123,12 @@ class PackDetail extends Component {
     const { packData } = this.props.pack;
     const { plans } = packData;
     const planData = {
-      plan_id: this.state.plan_id,
-      plan_name: this.state.plan_name,
+      pg_plan_id: this.state.pg_plan_id,
+      pg_plan_name: this.state.pg_plan_name,
+      monthly_plan_price: this.state.monthly_plan_price,
+      monthly_plan_id: this.state.monthly_plan_id,
+      yearly_plan_price: this.state.yearly_plan_price,
+      yearly_plan_id: this.state.yearly_plan_id,
       sers: this.state.newPlanSers
     };
 
@@ -303,9 +307,9 @@ class PackDetail extends Component {
               <TextField
                 autoFocus
                 margin="dense"
-                id="plan_id"
-                name="plan_id"
-                label="Plan ID"
+                id="pg_plan_id"
+                name="pg_plan_id"
+                label="Distinct ID"
                 onChange={this.newPlanEdit}
                 type="text"
                 fullWidth
@@ -314,11 +318,22 @@ class PackDetail extends Component {
               <TextField
                 autoFocus
                 margin="dense"
-                id="plan_name"
-                name="plan_name"
-                label="Plan Name"
+                id="pg_plan_name"
+                name="pg_plan_name"
+                label="Display Plan Name"
                 onChange={this.newPlanEdit}
                 type="text"
+                fullWidth
+              />
+
+              <TextField
+                autoFocus
+                margin="dense"
+                id="monthly_plan_price"
+                name="monthly_plan_price"
+                label="Monthly Stripe Plan Price (Dollars)"
+                onChange={this.newPlanEdit}
+                type="number"
                 fullWidth
               />
 
@@ -332,6 +347,18 @@ class PackDetail extends Component {
                 type="text"
                 fullWidth
               />
+
+              <TextField
+                autoFocus
+                margin="dense"
+                id="yearly_plan_price"
+                name="yearly_plan_price"
+                label="Yearly Stripe Plan Price (Dollars)"
+                onChange={this.newPlanEdit}
+                type="number"
+                fullWidth
+              />
+
               <TextField
                 autoFocus
                 margin="dense"

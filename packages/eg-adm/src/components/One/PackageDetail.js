@@ -81,6 +81,7 @@ class PackDetail extends Component {
     super(props);
     this.state = {
       showAdd: false,
+      pg_plan_id:  Date.now(),
       newPlanSers: []
     };
     this.onAddClick = this.onAddClick.bind(this);
@@ -140,6 +141,16 @@ class PackDetail extends Component {
         planData
       )
     );
+    
+    this.setState({
+      pg_plan_id: null,
+      pg_plan_name: null,
+      monthly_plan_price: null,
+      monthly_plan_id: null,
+      yearly_plan_price: null,
+      yearly_plan_id: null,
+      sers: []
+    });
     this.onAddClick();
   }
 
@@ -310,6 +321,7 @@ class PackDetail extends Component {
                 id="pg_plan_id"
                 name="pg_plan_id"
                 label="Distinct ID"
+                
                 onChange={this.newPlanEdit}
                 type="text"
                 fullWidth

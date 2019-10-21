@@ -162,14 +162,14 @@ export function updatePlansInPackage(pid, plans, planId, planData) {
     let newPlans = plans;
     // check to see if exists
     const planExists =  newPlans.filter(function(newPlan) {
-	    return newPlan.plan_id === planId;
+	    return newPlan.pg_plan_id === planId;
     });
 
     console.log(planExists, "planExists");
 
     if (planExists.length > 0) {
       newPlans = newPlans.filter(function(newPlan) {
-	        return newPlan.plan_id !== planId;
+	        return newPlan.pg_plan_id !== planId;
       });
     } else {
       newPlans.push(planData);

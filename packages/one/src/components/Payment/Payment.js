@@ -117,6 +117,8 @@ class Payment extends Component {
       } else {
         selected_stripe_plan = chosenPlan[0].yearly_plan_id;
       }
+      
+      console.log(selectedPlan, selected_stripe_plan);
 
       this.props.setupCardPayment(
         stripe_token,

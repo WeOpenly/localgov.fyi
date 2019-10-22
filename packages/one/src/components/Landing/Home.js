@@ -91,9 +91,9 @@ class LandingHome extends React.Component {
         const { authInProgress } = this.props.oneUser;
         const faqs = [
           {
-            q: "Can you handle other services what were listed above?",
+            q: "What services can you help me with?",
             a:
-              "<p>Yes. If it’s not in the list above, you can reach out to us once you create your account using the support option in your dashboard.</p>"
+              "<p>We are currently offering the most frequent services for homeowners and startups. You can check the exact list of services by clicking ‘Learn More’ on the cards above. </p>"
           },
           {
             q: "Do I need to connect my bank account?",
@@ -101,14 +101,14 @@ class LandingHome extends React.Component {
               "<p>We offer different payment options including credit card payment & different transfer by linking your account. You can choose what suits your case best.</p>"
           },
           {
-            q: "Can you help me with single payments for things like tickets?",
+            q: "Can i do one-time payments for notices or bills?",
             a:
               "<p>Sure, try out lightning fast payment service <a href='https://pay.papergov.com'>here</a></p>"
           },
           {
             q: "How can I contact the support team if I have more questions?",
             a:
-             "<p>Please drop us a line <a href='mailto:team@papergov.com'>here</a>   with more details about your question & one of our team members will respond in a day or two.</p>"
+              "<p>Please drop us a line <a href='mailto:team@papergov.com'>here</a>   with more details about your question & one of our team members will respond in a day or two.</p>"
           }
         ];
          const faqComps = faqs.map((faq, idx) => {

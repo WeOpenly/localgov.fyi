@@ -25,10 +25,10 @@ class OnboardingServices extends Component {
     this.finishOnboarding = this.finishOnboarding.bind(this);
   }
 
-  submitBankPayment(plaidToken, accountId, planId) {
+  submitBankPayment(plaidToken, accountId, planId, strId) {
     const { dispatch, user } = this.props;
     const { uid } = user.details;
-    dispatch(setupBankPayment(uid, plaidToken, accountId, planId));
+    dispatch(setupBankPayment(uid, plaidToken, accountId, planId, strId));
   }
 
   finishOnboarding() {
@@ -37,10 +37,10 @@ class OnboardingServices extends Component {
     dispatch(finishOnboarding(uid));
   }
 
-  setupCardPayment(str_tok, planId) {
+  setupCardPayment(str_tok, planId, strId) {
     const { dispatch, user } = this.props;
     const { uid } = user.details;
-    dispatch(setupCardPayment(uid, str_tok, planId));
+    dispatch(setupCardPayment(uid, str_tok, planId, strId));
   }
 
   render() {

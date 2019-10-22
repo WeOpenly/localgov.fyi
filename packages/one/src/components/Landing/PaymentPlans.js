@@ -119,7 +119,7 @@ class PaymentPlans extends Component {
     const monthlyPlans = plans.map((plan, idx) => {
       return (
         <PaymentPlan
-          id={plan.monthly_plan_id}
+          id={plan.pg_plan_id}
           name={plan.pg_plan_name}
           tag={"labelDefault"}
           price={plan.monthly_plan_price}
@@ -135,7 +135,7 @@ class PaymentPlans extends Component {
     const yearlyPlans = plans.map((plan, idx) => {
       return (
         <PaymentPlan
-          id={plan.yearly_plan_id}
+          id={plan.pg_plan_id}
           name={plan.pg_plan_name}
           tag={"labelDefault"}
           price={plan.yearly_plan_price}

@@ -90,7 +90,7 @@ export function watchForReceipts(uid) {
   };
 }
 
-export function setupCardPayment(uid, stripe_token, plan_id) {
+export function setupCardPayment(uid, stripe_token, plan_id, str_id) {
   return async (dispatch, getState) => {
     dispatch(setupBegin());
   
@@ -101,7 +101,8 @@ export function setupCardPayment(uid, stripe_token, plan_id) {
       .update({
         payment_method: "card",
         stripe_token: stripe_token,
-        selected_plan_id: plan_id
+        selected_plan_id: plan_id,
+        selected_stripe_plan_id: str_id,
       })
       .then(function() {
         dispatch(watchForStripeResp(uid));
@@ -112,7 +113,7 @@ export function setupCardPayment(uid, stripe_token, plan_id) {
   };
 }
 
-export function setupBankPayment(uid, plaid_token, plaid_account_id, plan_id) {
+export function setupBankPayment(uid, plaid_token, plaid_account_id, plan_id, str_id) {
   return async (dispatch, getState) => {
     dispatch(setupBegin());
 
@@ -124,7 +125,8 @@ export function setupBankPayment(uid, plaid_token, plaid_account_id, plan_id) {
         payment_method: "bank_account",
         plaid_token: plaid_token,
         plaid_account_id: plaid_account_id,
-        selected_plan_id: plan_id
+        selected_plan_id: plan_id,
+        selected_stripe_plan_id: str_id
       })
       .then(function() {
         dispatch(watchForStripeResp(uid));

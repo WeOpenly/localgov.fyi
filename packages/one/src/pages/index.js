@@ -9,6 +9,8 @@ import { Router, Route, navigate, Root } from "@reach/router";
 import styles from "../components/spectre.min.module.css"
 import FirebaseContext from '../common/firebase/context.js';
 
+
+
 import getFirebse from '../common/firebase/firebase.js';
 import { checkLogin} from '../components/User/actions';
 import { fetchPackageDetails, fetchSpecificPackageDetails } from "../components/Landing/actions";
@@ -21,22 +23,6 @@ const windowGlobal = typeof window !== "undefined" && window;
 class Index extends React.Component {
     constructor(props) {
         super(props);
-    }
-
-    componentDidMount() {
-        const {dispatch} = this.props;
-        dispatch(checkLogin()); 
-        let pack = null;
-
-        if (windowGlobal) {
-            pack = windowGlobal.localStorage.getItem("package");
-        }
-        if(pack){
-            dispatch(fetchSpecificPackageDetails(pack));
-        } else{
-            dispatch(fetchPackageDetails()); 
-        }
-
     }
 
     render() {

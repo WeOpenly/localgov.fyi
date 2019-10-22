@@ -93,7 +93,36 @@ class Payment extends Component {
   }
 
   onCardPaymentSubmit(stripe_token) {
-    this.props.setupCardPayment(stripe_token, this.state.selectedPlan);
+      const {
+        fetching: allSersFetching,
+        failed: allSersFailed,
+        sers: allOneSers,
+        plans
+      } = this.props.oneSers;
+      const { packDuration, selectedPlan } = this.state;
+
+      let selected_stripe_plan = null;
+
+      const chosenPlan = plans.filter(function(newPlan) {
+        return newPlan.pg_plan_id === selectedPlan;
+      });
+
+      if (!chosenPlan.length > 0){
+        return
+      }
+
+  
+      if (packDuration === "monthly") {
+        selected_stripe_plan = chosenPlan[0].monthly_plan_id;
+      } else {
+        selected_stripe_plan = chosenPlan[0].yearly_plan_id;
+      }
+
+      this.props.setupCardPayment(
+        stripe_token,
+        this.state.selectedPlan,
+        selected_stripe_plan
+      );
   }
 
   componentDidMount() {
@@ -109,26 +138,47 @@ class Payment extends Component {
         });
       }
     }
-    const {details } = this.props.oneUser;
-    if (details && details.selected_plan_id){
-      this.setState({
-        selectedPlan: details.selected_plan_id
-      });
-    }
   }
 
   selectPaymentPlan(plan, packType, packDuration) {
+    console.log(plan, packType, packDuration)
     this.setState({
       selectedPlan: plan,
-      packDuration: packDuration
+      packDuration: packDuration,
     });
   }
 
   handleOnSuccess(public_token, metadata) {
+    const {
+      fetching: allSersFetching,
+      failed: allSersFailed,
+      sers: allOneSers,
+      plans
+    } = this.props.oneSers;
+    const {packDuration, selectedPlan} = this.state;
+    
+    let selected_stripe_plan = null;
+
+    const chosenPlan = plans.filter(function(newPlan) {
+      return newPlan.pg_plan_id === selectedPlan;
+    });
+
+    if (!chosenPlan.length > 0) {
+      return;
+    }
+
+
+    if (packDuration === "monthly") {
+      selected_stripe_plan = chosenPlan[0].monthly_plan_id;
+    } else {
+      selected_stripe_plan = chosenPlan[0].yearly_plan_id;
+    }
+      
     this.props.submitBankPayment(
       public_token,
       metadata.account_id,
-      this.state.selectedPlan
+      selectedPlan,
+      selected_stripe_plan
     );
   }
 

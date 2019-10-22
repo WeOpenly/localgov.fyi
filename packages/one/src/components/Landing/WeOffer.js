@@ -15,23 +15,25 @@ import DelFranchTax from "../../illus/DelFranchTax";
 import ServiceForm from "../Services/ServiceForm";
 
 const iconMap = {
-  SER_PROP_TAX_IND: <ProptaxSvg style={{ width: "64px", height: "64px" }} />,
-  SER_PET_LIC_INDIV: <PetLic style={{ width: "64px", height: "64px" }} />,
-  SER_REN_BUS_LIC_BIZ: <Renew style={{ width: "64px", height: "64px" }} />,
-  SER_REN_DBA_BIZ: <BusinessLic style={{ width: "64px", height: "64px" }} />,
+  SER_PROP_TAX_IND: <ProptaxSvg style={{ width: "80px", height: "64px" }} />,
+  SER_PET_LIC_INDIV: <PetLic style={{ width: "80px", height: "64px" }} />,
+  SER_REN_BUS_LIC_BIZ: <Renew style={{ width: "80px", height: "64px" }} />,
+  SER_REN_DBA_BIZ: <BusinessLic style={{ width: "80px", height: "64px" }} />,
   SER_STA_OF_INF_FIL_BUS_CAL: (
-    <BusinessLic style={{ width: "64px", height: "64px" }} />
+    <BusinessLic style={{ width: "80px", height: "64px" }} />
   ),
   "SER_UTIL_BILL_INDEV": (
-    <UtilBill style={{ width: "64px", height: "64px" }} />
+    <UtilBill style={{ width: "80px", height: "64px" }} />
   ),
   SER_DEL_FRA_TAX_BIZ: (
-    <DelFranchTax style={{ width: "64px", height: "64px" }} />
+    <DelFranchTax style={{ width: "80px", height: "64px" }} />
   ),
   SER_CAL_FRA_TAX_BIZ: (
-    <CalFranchTax style={{ width: "64px", height: "64px" }} />
+    <CalFranchTax style={{ width: "50px", height: "64px" }} />
   )
 };
+const defaultIcon = <DelFranchTax style={{ width: "100px", height: "64px" }} />;
+
 
 class WeOffer extends Component {
   constructor(props) {
@@ -76,8 +78,8 @@ class WeOffer extends Component {
           style={{
             border: "1px solid rgba(48,55,66,.10)",
             background: "#fff",
-            width: '18rem',
-            height: '15rem',
+            width: "18rem",
+            height: "18rem",
             marginBottom: "1rem",
             marginTop: "1rem",
             padding: "0.4rem",
@@ -85,9 +87,16 @@ class WeOffer extends Component {
             boxShadow: "0 .3rem 0.8rem rgba(48,55,66,.10)"
           }}
         >
-                  <div className={styles.cardImage} style={{display: 'flex', justifyContent: 'center', margin: '0.7rem'}}>
-          {iconMap[ser.sid]}
-                  </div>
+          <div
+            className={styles.cardImage}
+            style={{
+              display: "flex",
+              justifyContent: "center",
+              margin: "0.7rem"
+            }}
+          >
+            {iconMap[ser.sid] ? iconMap[ser.sid] : defaultIcon}
+          </div>
           <div className={styles.cardHeader}>
             <h5 className={`${styles.cardTitle}`}>{ser.name}</h5>
           </div>

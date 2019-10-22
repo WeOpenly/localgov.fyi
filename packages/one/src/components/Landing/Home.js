@@ -15,8 +15,9 @@ import CreateAccount from "../../illus/CreateAccount.js";
 import AddDetails from "../../illus/AddDetails.js";
 import Relax from "../../illus/Relax.js";
 
+import ProptaxSvg from "../../svgIcons/PropTaxIl";
 import AboutIl from '../../svgIcons/AboutIl.js';
-import PaymentPlans from '../Payment/PaymentPlans';
+import BusinessLic from "../../svgIcons/businessLic";
 
 import { loginGoog } from "../User/actions";
 
@@ -211,28 +212,6 @@ class LandingHome extends React.Component {
                       Experience the new generation of consumer-friendly
                       government services.
                     </p>
-
-                    <div style={{ maxWidth: "400px" }}>
-                      {authInProgress ? (
-                        <div className={styles.loading} />
-                      ) : (
-                        <div className={styles.inputGroup}>
-                          <input
-                            onChange={this.changeEmail}
-                            type="email"
-                            className={`${styles.formInput} ${styles.inputLg}`}
-                            style={{ height: "2.1rem", marginRight: "0.5rem" }}
-                            placeholder="your@email.com"
-                          />
-                          <button
-                            onClick={this.loginGoog}
-                            className={`${styles.btn} ${styles.btnSecondary} ${styles.inputGroupButton}`}
-                          >
-                            Get Started
-                          </button>
-                        </div>
-                      )}
-                    </div>
                   </div>
                 </div>
 
@@ -266,10 +245,12 @@ class LandingHome extends React.Component {
                 </div>
                 <div className={`${styles.column} ${styles.col1}`}></div>
               </div>
+
               <div
                 className={`${styles.columns}`}
                 style={{ margin: "4rem 0 4rem 0" }}
               >
+                <div className={`${styles.column} ${styles.colSm2}`}></div>
                 <div
                   className={`${styles.column} ${styles.colSm4} ${styles.colXs12}`}
                 >
@@ -278,125 +259,128 @@ class LandingHome extends React.Component {
                     style={{
                       border: "1px solid rgba(48,55,66,.10)",
                       background: "#fff",
-                      minHeight: "200px",
+                      height: "360px",
 
                       marginBottom: "4rem",
                       marginTop: "1rem",
                       padding: "0.4rem",
-                      borderRadius: "0.3rem",
-                      boxShadow: "0 .3rem 0.8rem rgba(48,55,66,.10)"
+                      borderRadius: "0.3rem"
                     }}
                   >
-                    <div className={styles.cardHeader}>
-                      <h5 className={`${styles.cardTitle}`}>
-                        <span
-                          style={{
-                            background: "#fff",
-                            color: "#ffd367",
-
-                            fontSize: "1.2rem",
-                            padding: "0.2rem 0",
-                            borderRadius: "0.3rem"
-                          }}
-                          className={`${iconStyles.typcn} ${iconStyles.typcnFlashOutline}`}
-                        ></span>{" "}
-                        We'll do the heavy lifting
+                    <div
+                      className={styles.cardImage}
+                      style={{
+                        display: "flex",
+                        justifyContent: "center",
+                        marginTop: "0.5rem",
+                        height: "126px",
+                        marginBottom: "0.7rem"
+                      }}
+                    >
+                      <ProptaxSvg style={{ width: "120px" }} />
+                    </div>
+                    <div
+                      className={`${styles.cardheader} ${styles.textCenter}`}
+                    >
+                      <h5
+                        className={`${styles.cardTitle} ${styles.textCenter}`}
+                      >
+                        For Homeowners
                       </h5>
                     </div>
-                    <div className={styles.cardBody}>
+                    <div
+                      className={`${styles.cardBody} ${styles.textCenter}`}
+                      style={{ marginBottom: "1rem" }}
+                    >
                       <p className={`${styles.cardSubitle} ${styles.textGray}`}>
-                        We take care of all of your government service
-                        interactions including payments, renewals & much more on
-                        your behalf while you can rest.
+                        Manage and automate all your bills & home related
+                        paperwork easily from a single place.
                       </p>
+                    </div>
+                    <div
+                      className={styles.cardFooter}
+                      style={{
+                        display: "flex",
+                        justifyContent: "center",
+                        margin: "0.2rem 0"
+                      }}
+                    >
+                      <a className={`${styles.btn} ${styles.btnSecondary}`}>
+                        Get Started
+                      </a>
+                      <a
+                        href="/home-owners"
+                        className={`${styles.btn} ${styles.btnLink}`}
+                      >
+                        Learn More
+                      </a>
                     </div>
                   </div>
                 </div>
                 <div
-                  className={`${styles.column} ${styles.colSm4}  ${styles.colXs12}`}
+                  className={`${styles.column} ${styles.colSm4} ${styles.colXs12}`}
                 >
                   <div
                     className={`${styles.card} ${styles.textLeft}`}
                     style={{
                       border: "1px solid rgba(48,55,66,.10)",
                       background: "#fff",
-                      minHeight: "200px",
+                      height: "360px",
 
                       marginBottom: "4rem",
                       marginTop: "1rem",
                       padding: "0.4rem",
-                      borderRadius: "0.3rem",
-                      boxShadow: "0 .3rem 0.8rem rgba(48,55,66,.10)"
+                      borderRadius: "0.3rem"
                     }}
                   >
-                    <div className={styles.cardHeader}>
-                      <h5 className={`${styles.cardTitle}`}>
-                        <span
-                          style={{
-                            background: "#fff",
-                            color: "#3500f3",
-
-                            fontSize: "1.2rem",
-                            padding: "0.2rem 0",
-                            borderRadius: "0.3rem"
-                          }}
-                          className={`${iconStyles.typcn} ${iconStyles.typcnInfinity}`}
-                        ></span>{" "}
-                        All in one place
+                    <div
+                      className={styles.cardImage}
+                      style={{
+                        display: "flex",
+                        justifyContent: "center",
+                        marginTop: "0.5rem",
+                        marginBottom: "0.7rem",
+                        height: "126px"
+                      }}
+                    >
+                      <BusinessLic style={{ width: "160px" }} />
+                    </div>
+                    <div
+                      className={`${styles.cardheader} ${styles.textCenter}`}
+                    >
+                      <h5
+                        className={`${styles.cardTitle} ${styles.textCenter}`}
+                      >
+                        For Startups
                       </h5>
                     </div>
-                    <div className={styles.cardBody}>
+                    <div className={`${styles.cardBody} ${styles.textCenter}`}>
                       <p className={`${styles.cardSubitle} ${styles.textGray}`}>
-                        We bring together all of your gov service related
-                        accounts, bills, licenses and more, so you can
-                        seamlessly manage them from one place.
+                        Streamline how you manage all your company related
+                        filings & automate your compliance needs.
                       </p>
+                    </div>
+                    <div
+                      className={styles.cardFooter}
+                      style={{
+                        display: "flex",
+                        justifyContent: "center",
+                        margin: "0.2rem 0"
+                      }}
+                    >
+                      <a className={`${styles.btn} ${styles.btnSecondary}`}>
+                        Get Started
+                      </a>
+                      <a
+                        href="/startup"
+                         className={`${styles.btn} ${styles.btnLink}`}
+                      >
+                        Learn More
+                      </a>
                     </div>
                   </div>
                 </div>
-
-                <div
-                  className={`${styles.column} ${styles.colSm4}  ${styles.colXs12}`}
-                >
-                  <div
-                    className={`${styles.card} ${styles.textLeft}`}
-                    style={{
-                      border: "1px solid rgba(48,55,66,.10)",
-                      background: "#fff",
-                      minHeight: "200px",
-
-                      marginBottom: "4rem",
-                      marginTop: "1rem",
-                      padding: "0.4rem",
-                      borderRadius: "0.3rem",
-                      boxShadow: "0 .3rem 0.8rem rgba(48,55,66,.10)"
-                    }}
-                  >
-                    <div className={styles.cardHeader}>
-                      <h5 className={`${styles.cardTitle}`}>
-                        <span
-                          style={{
-                            background: "#fff",
-                            color: "#30ae40",
-
-                            fontSize: "1.2rem",
-                            padding: "0.2rem 0",
-                            borderRadius: "0.3rem"
-                          }}
-                          className={`${iconStyles.typcn} ${iconStyles.typcnLockClosedOutline}`}
-                        ></span>{" "}
-                        Secure
-                      </h5>
-                    </div>
-                    <div className={styles.cardBody}>
-                      <p className={`${styles.cardSubitle} ${styles.textGray}`}>
-                        We deeply care about user privacy & data. We don’t sell
-                        your data and use industry standard encryption for all
-                        transactions.
-                      </p>
-                    </div>
-                  </div>
-                </div>
+                <div className={`${styles.column} ${styles.colSm2}`}></div>
               </div>
 
               <div
@@ -523,27 +507,7 @@ class LandingHome extends React.Component {
                   </div>
                 </div>
               </div>
-              <div className={styles.columns} style={{ marginTop: "6rem" }}>
-                <div className={`${styles.column} ${styles.col2}`} />
-                <div className={`${styles.column}  ${styles.col8}`}>
-                  <div className={styles.textCenter}>
-                    <h3> Simple pricing </h3>
-                    <div className={`${styles.cardSubitle} ${styles.textGray}`}>
-                      Set it and forget it
-                    </div>
-                  </div>
-                </div>
-                <div className={`${styles.column} ${styles.col2}`} />
-              </div>
-              <div className={styles.columns} style={{ marginTop: "2rem" }}>
-                <div className={`${styles.column} ${styles.col2}`} />
-                <div className={`${styles.column}  ${styles.col8}`}>
-                  <div className={`${styles.columns}`}>
-                    <PaymentPlans onSelectPlan={this.loginGoogWplan} />
-                  </div>
-                </div>
-                <div className={`${styles.column} ${styles.col2}`} />
-              </div>
+
               <div
                 className={`${styles.columns}`}
                 style={{
@@ -613,43 +577,6 @@ class LandingHome extends React.Component {
 
                 <div
                   className={`${styles.column} ${styles.col2} ${styles.hideXs}`}
-                />
-              </div>
-              <div
-                className={`${styles.columns}  ${styles.textCenter}`}
-                style={{ margin: "8rem 0" }}
-              >
-                <div
-                  className={`${styles.column} ${styles.col4} ${styles.hideXs}`}
-                />
-                <div
-                  className={`${styles.column} ${styles.col4} ${styles.colXs12} ${styles.textCenter}`}
-                >
-                  {authInProgress ? (
-                    <div className={styles.loading} />
-                  ) : (
-                    <div>
-                      <h3 style={{ paddingBottom: "1rem" }}>Sign up now</h3>
-                      <div className={styles.inputGroup}>
-                        <input
-                          type="email"
-                          onChange={this.changeEmail}
-                          className={`${styles.formInput} ${styles.inputLg}`}
-                          style={{ height: "2.1rem", marginRight: "0.5rem" }}
-                          placeholder="your@email.com"
-                        />
-                        <button
-                          onClick={() => this.loginGoog()}
-                          className={`${styles.btn} ${styles.btnSecondary} ${styles.inputGroupButton}`}
-                        >
-                          Get Started
-                        </button>
-                      </div>
-                    </div>
-                  )}
-                </div>
-                <div
-                  className={`${styles.column} ${styles.col4} ${styles.hideXs}`}
                 />
               </div>
 

@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { navigate } from "@reach/router";
 import PropTypes from "prop-types";
-import {watchForReceipts} from '../actions';
+
 import styles from "../spectre.min.module.css"
 import iconStyles from '../typicons.min.module.css';
 
@@ -21,7 +21,7 @@ class Receipts extends Component {
 
     componentDidMount(){
         const {dispatch, uid} = this.props;
-        dispatch(watchForReceipts(uid))
+        // dispatch(watchForReceipts(uid))
     }
 
     render() {

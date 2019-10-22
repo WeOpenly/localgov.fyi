@@ -13,7 +13,6 @@ class CardPaymentMethod extends React.Component {
 
         let className = cx({
             modal: true,
-  
             active: stripeCardModalOpen,
         });
 

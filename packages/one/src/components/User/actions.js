@@ -73,7 +73,7 @@ function watchUserForChanges(uid){
         .onSnapshot(function(doc) {
           const details = doc.data();
           const { currentOnboardingStep, onboardingDone } = details;
-
+    
           if (!onboardingDone) {
             navigate(`/dashboard/onboard/${currentOnboardingStep}`);
           } else {
@@ -119,19 +119,14 @@ function fetchOrSetUserDetails(user) {
     let details = {}
     let packType = null;
     let plan = null;
+    let planDuration = null;
 
     if (windowGlobal) {
       packType = windowGlobal.localStorage.getItem("package");
       plan = windowGlobal.localStorage.getItem("plan");
+      planDuration = windowGlobal.localStorage.getItem("planDuration");
     }
 
-    //  setting this to firebase one_user
-    //  {
-    //   ...details,
-    //   onboardingDone: false,
-    //   currentOnboardingStep: false,
-    //  package:
-    // }
 
     const userRef = firebase
       .firestore()
@@ -161,6 +156,9 @@ function fetchOrSetUserDetails(user) {
 
           if (plan){
             details["selected_plan_id"] = plan;
+          }
+          if (planDuration){
+            details["planDuration"] = planDuration;
           } 
 
           userRef.set({ ...details });

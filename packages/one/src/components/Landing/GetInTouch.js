@@ -6,7 +6,7 @@ import PropTypes from "prop-types";
 import styles from "../spectre.min.module.css";
 import iconStyles from "../typicons.min.module.css";
 
-class WeOffer extends Component {
+class GetInTouch extends Component {
   constructor(props) {
     super(props);
   }
@@ -35,4 +35,4 @@ class WeOffer extends Component {
   }
 }
 
-export default WeOffer;
+export default GetInTouch;

@@ -11,10 +11,12 @@ import FirebaseContext from '../common/firebase/context.js';
 
 import getFirebse from '../common/firebase/firebase.js';
 import { checkLogin} from '../components/User/actions';
-import { fetchPackageDetails } from "../components/Landing/actions";
+import { fetchPackageDetails, fetchSpecificPackageDetails } from "../components/Landing/actions";
 
 import OneHome from '../components/Landing/Home';
 
+
+const windowGlobal = typeof window !== "undefined" && window;
 
 class Index extends React.Component {
     constructor(props) {
@@ -24,7 +26,17 @@ class Index extends React.Component {
     componentDidMount() {
         const {dispatch} = this.props;
         dispatch(checkLogin()); 
-        dispatch(fetchPackageDetails()); 
+        let pack = null;
+
+        if (windowGlobal) {
+            pack = windowGlobal.localStorage.getItem("package");
+        }
+        if(pack){
+            dispatch(fetchSpecificPackageDetails(pack));
+        } else{
+            dispatch(fetchPackageDetails()); 
+        }
+
     }
 
     render() {

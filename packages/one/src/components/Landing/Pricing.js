@@ -21,7 +21,16 @@ class Pricing extends React.Component {
 
 
   render() {
-    const {loading, plans, failed, onSelectPlan} = this.props;
+    const {
+      loading,
+      plans,
+      failed,
+      onSelectPlan,
+      packName,
+      selectedPlan,
+      planDuration,
+      showHeading
+    } = this.props;
 
 
     if (loading){
@@ -48,7 +57,7 @@ class Pricing extends React.Component {
 
     return (
       <Fragment>
-        <div
+        {!showHeading ? null : (<div
           className={`${styles.columns}`}
           style={{
             margin: "8rem 0 2rem 0"
@@ -58,26 +67,27 @@ class Pricing extends React.Component {
           <div className={`${styles.column}  ${styles.col8}`}>
             <div className={styles.textCenter}>
               <h3> Simple & Transparent Pricing </h3>
-          
             </div>
           </div>
           <div className={`${styles.column} ${styles.col2}`} />
-        </div>
+        </div>)}
         <div
           className={`${styles.columns}`}
           style={{
             margin: "2rem 0 8rem 0"
           }}
         >
-         
-        <div className={`${styles.column} ${styles.col1}`} />
-        <div className={`${styles.column}  ${styles.col10}`}>
-        
-            <PaymentPlans plans={plans} onSelectPlan={onSelectPlan} />
-       
-        </div>
-        <div className={`${styles.column} ${styles.col1}`} />
-    
+          <div className={`${styles.column} ${styles.col1}`} />
+          <div className={`${styles.column}  ${styles.col10}`}>
+            <PaymentPlans
+              plans={plans}
+              onSelectPlan={onSelectPlan}
+              packName={packName}
+              selectedPlan={selectedPlan}
+              planDuration={planDuration}
+            />
+          </div>
+          <div className={`${styles.column} ${styles.col1}`} />
         </div>
       </Fragment>
     );

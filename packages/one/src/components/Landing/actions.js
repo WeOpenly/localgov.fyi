@@ -19,8 +19,8 @@ export function startFetchAllAvailbleServices() {
 }
 
 export function recvAllAvailbleServices(sers, plans) {
-         return { type: types.ONE_SERVICES_LOADING_SUCCESS, sers, plans };
-       }
+    return { type: types.ONE_SERVICES_LOADING_SUCCESS, sers, plans };
+  }
 
 export function faileRecvAllAvailbleServices() {
   return {
@@ -138,7 +138,7 @@ export function fetchSpecificPackageDetails(packName) {
             let packNameSers = sers.filter((ser, idx) => {
               return packNameSerIds.includes(ser.sid);
             });
-
+            
             const allSers = {};
             allSers[packName] = packNameSers;
 

@@ -93,7 +93,7 @@ class PaymentPlans extends Component {
     this.onSelectPaymentPlan = this.onSelectPaymentPlan.bind(this);
     this.toggleDuration = this.toggleDuration.bind(this);
     this.state = {
-      showYearly: true,
+      showYearly: true
     };
   }
 
@@ -104,12 +104,17 @@ class PaymentPlans extends Component {
   }
 
   onSelectPaymentPlan(plan) {
-    this.props.onSelectPlan(plan.id, plan.for);
+    this.props.onSelectPlan(
+      plan.id,
+      this.props.packName,
+      this.state.showYearly ? "yearly" : "monthly"
+    );
   }
 
   render() {
-    const {plans} = this.props;
-
+    const { plans, selectedPlan, planDuration } = this.props;
+    let preselected = false;
+    let preselectedPlans = [];
 
     const monthlyPlans = plans.map((plan, idx) => {
       return (
@@ -118,7 +123,7 @@ class PaymentPlans extends Component {
           name={plan.pg_plan_name}
           tag={"labelDefault"}
           price={plan.monthly_plan_price}
-          duration={'mo'}
+          duration={"mo"}
           covers={plan.sers}
           selectPaymentPlan={this.onSelectPaymentPlan}
           features={plan.features || []}
@@ -127,38 +132,85 @@ class PaymentPlans extends Component {
       );
     });
 
-      const yearlyPlans = plans.map((plan, idx) => {
-        return (
-          <PaymentPlan
-            id={plan.yearly_plan_id}
-            name={plan.pg_plan_name}
-            tag={"labelDefault"}
-            price={plan.yearly_plan_price}
-            duration={"year"}
-            covers={plan.sers}
-            selectPaymentPlan={this.onSelectPaymentPlan}
-            features={plan.features || []}
-            isSelected={false}
-          />
-        );
-      });
+    const yearlyPlans = plans.map((plan, idx) => {
+      return (
+        <PaymentPlan
+          id={plan.yearly_plan_id}
+          name={plan.pg_plan_name}
+          tag={"labelDefault"}
+          price={plan.yearly_plan_price}
+          duration={"year"}
+          covers={plan.sers}
+          selectPaymentPlan={this.onSelectPaymentPlan}
+          features={plan.features || []}
+          isSelected={false}
+        />
+      );
+    });
+
+    if (selectedPlan && planDuration) {
+      preselected = true;
+      if (planDuration === "yearly") {
+        preselectedPlans = plans.map((plan, idx) => {
+          if (plan.pg_plan_id === selectedPlan) {
+            return (
+              <PaymentPlan
+                id={plan.yearly_plan_id}
+                name={plan.pg_plan_name}
+                tag={"labelDefault"}
+                price={plan.yearly_plan_price}
+                duration={"year"}
+                covers={plan.sers}
+                selectPaymentPlan={this.onSelectPaymentPlan}
+                features={plan.features || []}
+                isSelected={false}
+              />
+            );
+          }
+        });
+      } else if (planDuration === "monthly") {
+        preselectedPlans = plans.map((plan, idx) => {
+          if (plan.pg_plan_id === selectedPlan) {
+            return (
+              <PaymentPlan
+                id={plan.monthly_plan_id}
+                name={plan.pg_plan_name}
+                tag={"labelDefault"}
+                price={plan.monthly_plan_price}
+                duration={"mo"}
+                covers={plan.sers}
+                selectPaymentPlan={this.onSelectPaymentPlan}
+                features={plan.features || []}
+                isSelected={false}
+              />
+            );
+          }
+        });
+      }
+    }
 
     const durationComps = (
       <div
-        style={{ display: "flex", justifyContent: "center", width: "320px" }}
+        style={{
+          display: "flex",
+          justifyContent: "center",
+          width: "320px",
+          borderRadius: "0.3rem",
+
+          border: `1px solid rgba(86, 39, 255, .2)`,
+          boxShadow: "0 .1rem 0.1rem rgba(48,55,66,.10)"
+        }}
       >
         <div
           style={{
-            width: "150px",
+            width: "160px",
             cursor: "pointer",
-            border: `1px solid rgba(86, 39, 255, .2)`,
+            padding: "0.6rem 0.4rem",
             background: `${
               this.state.showYearly ? "#fff" : "rgba(86, 39, 255, .9)"
             }`,
-            padding: "0.5rem",
-            borderRadius: "0.3rem",
-            color: `${this.state.showYearly ? "#000" : "#fff"}`,
-            boxShadow: "0 .1rem 0.1rem rgba(48,55,66,.10)"
+
+            color: `${this.state.showYearly ? "#000" : "#fff"}`
           }}
           onClick={this.toggleDuration}
         >
@@ -166,16 +218,14 @@ class PaymentPlans extends Component {
         </div>
         <div
           style={{
-            width: "150px",
+            width: "156px",
             cursor: "pointer",
-            border: `1px solid rgba(86, 39, 255, .2)`,
+            padding: "0.6rem 0.4rem",
             background: `${
               !this.state.showYearly ? "#fff" : "rgba(86, 39, 255, .9)"
             }`,
-            padding: "0.5rem",
-            borderRadius: "0.3rem",
-            color: `${!this.state.showYearly ? "#000" : "#fff"}`,
-            boxShadow: "0 .1rem 0.1rem rgba(48,55,66,.10)"
+
+            color: `${!this.state.showYearly ? "#000" : "#fff"}`
           }}
           onClick={this.toggleDuration}
         >
@@ -184,16 +234,24 @@ class PaymentPlans extends Component {
       </div>
     );
 
+    if (preselected){
+      return preselectedPlans;
+    }
+
     return (
       <Fragment>
         <div
           className={`${styles.columns} ${styles.textCenter}`}
-          style={{ display: "flex", justifyContent: "center", marginBottom: '2rem' }}
+          style={{
+            display: "flex",
+            justifyContent: "center",
+            marginBottom: "2rem"
+          }}
         >
           {durationComps}
-        </div>
+        </div> 
         <div className={`${styles.columns}`}>
-          {this.state.showYearly ? yearlyPlans : monthlyPlans}
+            {this.state.showYearly ? yearlyPlans : monthlyPlans}
         </div>
       </Fragment>
     );

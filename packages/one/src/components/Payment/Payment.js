@@ -5,8 +5,8 @@ import PropTypes from "prop-types";
 import styles from "../spectre.min.module.css";
 import iconStyles from "../typicons.min.module.css";
 import PlaidLink from "react-plaid-link";
-import PaymentSetupDone from "./PaymentSetupDone";
-import PaymentPlans from "./PaymentPlans";
+import Pricing from '../Landing/Pricing';
+
 import CardPaymentMethod from './CardPaymentMethod';
 import ServiceActionBar from "../Services/ServiceActionBar";
 import { toggleStripeModal } from "../Services/actions";
@@ -68,6 +68,7 @@ class Payment extends Component {
     super(props);
     this.state = {
       selectedPlan: null,
+      packDuration: 'monthly',
       stripe: null,
       stripeCardModalOpen: false
     };
@@ -116,9 +117,10 @@ class Payment extends Component {
     }
   }
 
-  selectPaymentPlan(plan) {
+  selectPaymentPlan(plan, packType, packDuration) {
     this.setState({
-      selectedPlan: plan
+      selectedPlan: plan,
+      packDuration: packDuration
     });
   }
 
@@ -151,7 +153,12 @@ class Payment extends Component {
       return <div className={styles.loading} />;
     }
 
-   
+      const {
+        fetching: allSersFetching,
+        failed: allSersFailed,
+        sers: allOneSers,
+        plans,
+      } = oneSers;
 
     const { selectedPlan, stripeCardModalOpen } = this.state;
 
@@ -166,20 +173,17 @@ class Payment extends Component {
           />
         </StripeProvider>
 
-        <div className={styles.columns} style={{ margin: "1rem 0 4rem 0" }}>
-          <div className={`${styles.column} ${styles.col1}`} />
-          <div className={`${styles.column} ${styles.col10}`}>
-            <div className={styles.columns}>
-              <PaymentPlans
-                userTypeSelected={true}
-                packType={details.packType}
-                selectedPlan={this.state.selectedPlan}
-                onSelectPlan={this.selectPaymentPlan}
-              />
-            </div>
-          </div>
-          <div className={`${styles.column} ${styles.col1}`} />
-        </div>
+        <Pricing
+          userTypeSelected={true}
+          packName={details.packType}
+          selectedPlan={details.selected_plan_id}
+          planDuration={details.planDuration}
+          onSelectPlan={this.selectPaymentPlan}
+          loading={allSersFetching}
+          plans={plans}
+          showHeading={false}
+          failed={allSersFailed}
+        />
 
         {selectedPlan ? (
           <ServiceActionBar

@@ -15,24 +15,22 @@ import DelFranchTax from "../../illus/DelFranchTax";
 import ServiceForm from "../Services/ServiceForm";
 
 const iconMap = {
-  SER_PROP_TAX_IND: <ProptaxSvg style={{ width: "80px", height: "64px" }} />,
-  SER_PET_LIC_INDIV: <PetLic style={{ width: "80px", height: "64px" }} />,
-  SER_REN_BUS_LIC_BIZ: <Renew style={{ width: "80px", height: "64px" }} />,
-  SER_REN_DBA_BIZ: <BusinessLic style={{ width: "80px", height: "64px" }} />,
+  SER_PROP_TAX_IND: <ProptaxSvg style={{ width: "80px", height: "80px" }} />,
+  SER_PET_LIC_INDIV: <PetLic style={{ width: "80px", height: "80px" }} />,
+  SER_REN_BUS_LIC_BIZ: <Renew style={{ width: "80px", height: "80px" }} />,
+  SER_REN_DBA_BIZ: <BusinessLic style={{ width: "80px", height: "80px" }} />,
   SER_STA_OF_INF_FIL_BUS_CAL: (
-    <BusinessLic style={{ width: "80px", height: "64px" }} />
+    <BusinessLic style={{ width: "80px", height: "80px" }} />
   ),
-  "SER_UTIL_BILL_INDEV": (
-    <UtilBill style={{ width: "80px", height: "64px" }} />
-  ),
+  SER_UTIL_BILL_INDEV: <UtilBill style={{ width: "80px", height: "80px" }} />,
   SER_DEL_FRA_TAX_BIZ: (
-    <DelFranchTax style={{ width: "80px", height: "64px" }} />
+    <DelFranchTax style={{ width: "80px", height: "80px" }} />
   ),
   SER_CAL_FRA_TAX_BIZ: (
-    <CalFranchTax style={{ width: "50px", height: "64px" }} />
+    <CalFranchTax style={{ width: "50px", height: "80px" }} />
   )
 };
-const defaultIcon = <DelFranchTax style={{ width: "100px", height: "64px" }} />;
+const defaultIcon = <DelFranchTax style={{ width: "100px", height: "80px" }} />;
 
 
 class WeOffer extends Component {

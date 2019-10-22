@@ -21,30 +21,40 @@ import OneHome from '../components/Landing/Home';
 const windowGlobal = typeof window !== "undefined" && window;
 
 class Index extends React.Component {
-    constructor(props) {
-        super(props);
-    }
+  constructor(props) {
+    super(props);
+  }
 
-    render() {
-        const { authInProgress } = this.props.oneUser;
-        const { fetching } = this.props.oneService;
-
-        if (authInProgress || fetching) {
-          return <div className={styles.loading}></div>;
+  componentDidMount() {
+    const { dispatch } = this.props;
+    if (windowGlobal) {
+        const packType = windowGlobal.localStorage.getItem("package");
+        dispatch(checkLogin());
+        if (packType){
+            dispatch(fetchSpecificPackageDetails(packType));
         }
-        
-        return (
-            <Fragment>
-                <Helmet>
-                    <title>{`papergov One`}
-                    </title>
-                </Helmet>
-                <FirebaseContext.Provider value={getFirebse}>
-                    <OneHome />          
-                </FirebaseContext.Provider>
-            </Fragment>
-        )
     }
+  }
+
+  render() {
+    const { authInProgress } = this.props.oneUser;
+    const { fetching } = this.props.oneService;
+
+    if (authInProgress || fetching) {
+      return <div className={styles.loading}></div>;
+    }
+
+    return (
+      <Fragment>
+        <Helmet>
+          <title>{`papergov One`}</title>
+        </Helmet>
+        <FirebaseContext.Provider value={getFirebse}>
+          <OneHome />
+        </FirebaseContext.Provider>
+      </Fragment>
+    );
+  }
 }
 
 const mapStateToProps = function (state, ownProps) {

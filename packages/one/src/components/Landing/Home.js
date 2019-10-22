@@ -71,7 +71,6 @@ class LandingHome extends React.Component {
 
     loginGoogWplan(plan, userType){
        const { dispatch } = this.props;
-
        if (windowGlobal) {
          if (plan) {
            windowGlobal.localStorage.setItem("plan", plan);
@@ -305,7 +304,10 @@ class LandingHome extends React.Component {
                         margin: "0.2rem 0"
                       }}
                     >
-                      <a className={`${styles.btn} ${styles.btnSecondary}`}>
+                      <a
+                        onClick={() => this.loginGoogWplan(null, "ho")}
+                        className={`${styles.btn} ${styles.btnSecondary}`}
+                      >
                         Get Started
                       </a>
                       <a
@@ -368,12 +370,15 @@ class LandingHome extends React.Component {
                         margin: "0.2rem 0"
                       }}
                     >
-                      <a className={`${styles.btn} ${styles.btnSecondary}`}>
+                      <a
+                        onClick={() => this.loginGoogWplan(null, "starter")}
+                        className={`${styles.btn} ${styles.btnSecondary}`}
+                      >
                         Get Started
                       </a>
                       <a
                         href="/startup"
-                         className={`${styles.btn} ${styles.btnLink}`}
+                        className={`${styles.btn} ${styles.btnLink}`}
                       >
                         Learn More
                       </a>
@@ -383,51 +388,6 @@ class LandingHome extends React.Component {
                 <div className={`${styles.column} ${styles.colSm2}`}></div>
               </div>
 
-              <div
-                className={`${styles.columns}`}
-                style={{
-                  margin: "4rem 0 4rem 0",
-                  padding: "2.5rem 0.5rem",
-                  background: "#f7f8f9"
-                }}
-              >
-                <div
-                  className={`${styles.column} ${styles.col3} ${styles.hideXs}`}
-                />
-                <div
-                  className={`${styles.column} ${styles.col3} ${styles.colXs12}`}
-                >
-                  <div>
-                    <span className={`${styles.textGray}`}>
-                      <i>As featured in</i>
-                    </span>
-                  </div>
-                  <div>
-                    <a
-                      target="_blank"
-                      href="https://www.govtech.com/gov-experience/papergov-Wants-to-Make-Local-Government-Services-More-Searchable.html"
-                    >
-                      <GovTechSvg />
-                    </a>
-                  </div>
-                </div>
-                <div
-                  className={`${styles.column} ${styles.col3} ${styles.colXs12}`}
-                >
-                  <div>
-                    <em>
-                      "This makes sense, given that state agencies and larger
-                      cities have been working for years to consolidate their
-                      own digital services and <br /> create single login
-                      interfaces that save citizens the trouble of navigating to
-                      different departments"
-                    </em>
-                  </div>
-                </div>
-                <div
-                  className={`${styles.column} ${styles.col3} ${styles.hideXs}`}
-                />
-              </div>
               <div
                 className={`${styles.columns}  ${styles.textCenter}`}
                 style={{ margin: "6rem 0 2rem 0" }}
@@ -507,7 +467,51 @@ class LandingHome extends React.Component {
                   </div>
                 </div>
               </div>
-
+              <div
+                className={`${styles.columns}`}
+                style={{
+                  margin: "4rem 0 4rem 0",
+                  padding: "2.5rem 0.5rem",
+                  background: "#f7f8f9"
+                }}
+              >
+                <div
+                  className={`${styles.column} ${styles.col3} ${styles.hideXs}`}
+                />
+                <div
+                  className={`${styles.column} ${styles.col3} ${styles.colXs12}`}
+                >
+                  <div>
+                    <span className={`${styles.textGray}`}>
+                      <i>As featured in</i>
+                    </span>
+                  </div>
+                  <div>
+                    <a
+                      target="_blank"
+                      href="https://www.govtech.com/gov-experience/papergov-Wants-to-Make-Local-Government-Services-More-Searchable.html"
+                    >
+                      <GovTechSvg />
+                    </a>
+                  </div>
+                </div>
+                <div
+                  className={`${styles.column} ${styles.col3} ${styles.colXs12}`}
+                >
+                  <div>
+                    <em>
+                      "This makes sense, given that state agencies and larger
+                      cities have been working for years to consolidate their
+                      own digital services and <br /> create single login
+                      interfaces that save citizens the trouble of navigating to
+                      different departments"
+                    </em>
+                  </div>
+                </div>
+                <div
+                  className={`${styles.column} ${styles.col3} ${styles.hideXs}`}
+                />
+              </div>
               <div
                 className={`${styles.columns}`}
                 style={{

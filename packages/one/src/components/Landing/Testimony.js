@@ -21,7 +21,7 @@ class Testimony extends React.Component {
         style={{
           margin: "0.5rem 0.2rem",
           padding: "0.2rem 0.5rem",
-          height: "300px",
+          minHeight: "300px",
 
           border: "1px solid rgba(86, 39, 255, .2)",
           background: "#fff",
@@ -45,7 +45,8 @@ class Testimony extends React.Component {
 
             <p>{this.props.comment}</p>
           </div>
-
+        </div>
+        <div className={styles.cardFooter}>
           <div
             style={{
               display: "flex",
@@ -55,7 +56,7 @@ class Testimony extends React.Component {
               justifyContent: "center"
             }}
           >
-            <div style={{ marginBottom: "0.4rem" }}>
+            <div style={{ marginBottom: "0.8rem" }}>
               <figure
                 className={`${styles.avatar} ${styles.avatarXl}`}
                 data-initial="EG"
@@ -70,7 +71,13 @@ class Testimony extends React.Component {
                 {this.props.picture}
               </figure>
             </div>
-            <div style={{ display: "flex", flexDirection: "column" }}>
+            <div
+              style={{
+                display: "flex",
+                flexDirection: "column",
+                marginBottom: "0.8rem"
+              }}
+            >
               <h6>{this.props.userName}</h6>
               <p className={styles.textGray}>{this.props.userDesc}</p>
             </div>

@@ -85,7 +85,7 @@ class Hero extends React.Component {
         >
           <div className={`${styles.column} ${styles.col1}`}></div>
           <div
-            className={`${styles.column} ${styles.colMd6} ${styles.colSm12}`}
+            className={`${styles.column} ${styles.colMd5} ${styles.colSm12}`}
           >
             <div
               style={{
@@ -138,11 +138,12 @@ class Hero extends React.Component {
           </div>
 
           <div
-            className={`${styles.column} ${styles.colMd6} ${styles.hideSm}`}
+            className={`${styles.column} ${styles.colMd5} ${styles.hideSm}`}
             style={{ display: "flex", justifyContent: "right" }}
           >
             {this.props.illustration}
           </div>
+          <div className={`${styles.column} ${styles.col1}`}></div>
         </div>
       </Fragment>
     );

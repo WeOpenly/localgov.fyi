@@ -18,9 +18,9 @@ export function startFetchAllAvailbleServices() {
   return { type: types.ONE_SERVICES_LOADING };
 }
 
-export function recvAllAvailbleServices(sers) {
-  return { type: types.ONE_SERVICES_LOADING_SUCCESS, sers };
-}
+export function recvAllAvailbleServices(sers, plans) {
+         return { type: types.ONE_SERVICES_LOADING_SUCCESS, sers, plans };
+       }
 
 export function faileRecvAllAvailbleServices() {
   return {
@@ -132,6 +132,7 @@ export function fetchSpecificPackageDetails(packName) {
             const packDetails = docData.data();
 
             const { services } = packDetails;
+            const {plans} = packDetails;
             packNameSerIds = packNameSerIds.concat(services);
 
             let packNameSers = sers.filter((ser, idx) => {
@@ -141,7 +142,7 @@ export function fetchSpecificPackageDetails(packName) {
             const allSers = {};
             allSers[packName] = packNameSers;
 
-            dispatch(recvAllAvailbleServices(allSers));
+            dispatch(recvAllAvailbleServices(allSers, plans));
           } else {
             console.log(`${packName} package doesn't exist`);
           }

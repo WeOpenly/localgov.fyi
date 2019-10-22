@@ -19,7 +19,7 @@ class FeatureCard extends Component {
         style={{
           border: "1px solid rgba(48,55,66,.10)",
           background: "#fff",
-          minHeight: "200px",
+          minHeight: "170px",
 
           marginBottom: "4rem",
           marginTop: "1rem",

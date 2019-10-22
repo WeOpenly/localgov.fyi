@@ -22,7 +22,7 @@ class GetStarted extends React.Component {
       <Fragment>
         <div className={`${styles.columns}  ${styles.textCenter}`}>
           <div className={`${styles.column} ${styles.col1}`}></div>
-          <div className={`${styles.column} ${styles.colXs10}}`}>
+          <div className={`${styles.column} ${styles.colXs10}}`} style={{marginBottom: '2rem'}}>
             <h3>Get started in a few minutes</h3>
             <p>
               We cover a variety of the most popular recurring services you will

@@ -4,6 +4,7 @@ import * as types from "./ActionTypes";
 const initialState = {
   fetching: false,
   sers: {},
+  plans: [],
   failed: false,
 };
 
@@ -21,7 +22,8 @@ export function oneServices(state = initialState, action) {
         ...state,
         fetching: false,
         failed: false,
-        sers: action.sers
+        sers: action.sers,
+        plans: action.plans,
       };
       break;
     case types.ONE_SERVICES_LOADING_FAILED:

@@ -12,12 +12,16 @@ import { graphql, StaticQuery } from 'gatsby';
 import Img from "gatsby-image";
 
 import AboutIl from "../../svgIcons/AboutIl.js";
+import ObservrTesti from "../../illus/ObservrTesti.js"
+import EthoTesti from '../../illus/EthoTesti.js';
 
 import Hero from './Hero';
 import FeatureCard from './Feature';
 import GetStarted from "./GetStarted";
 import WeOffer from "./WeOffer";
 import GetInTouch from "./GetInTouch";
+import Pricing from "./Pricing";
+import Testimony from './Testimony';
 
 import { loginGoog } from "../User/actions";
 
@@ -88,6 +92,8 @@ class LandingStartup extends React.Component {
 
     render() {
         const { authInProgress } = this.props.oneUser;
+        const {fetching: allSerFetching, failed: allSersFailed, sers, plans} = this.props.oneService;
+
         const faqs = [
           {
             q: "Can you handle other services what were listed above?",
@@ -103,13 +109,9 @@ class LandingStartup extends React.Component {
             q: "Can you help me with single payments for things like tickets?",
             a:
               "<p>Sure, try out lightning fast payment service <a href='https://pay.papergov.com'>here</a></p>"
-          },
-          {
-            q: "How can I contact the support team if I have more questions?",
-            a:
-             "<p>Please drop us a line <a href='mailto:team@papergov.com'>here</a>   with more details about your question & one of our team members will respond in a day or two.</p>"
           }
         ];
+
          const faqComps = faqs.map((faq, idx) => {
            return (
              <FaqItem
@@ -202,17 +204,72 @@ class LandingStartup extends React.Component {
                   />
                 </div>
               </div>
-  
-              <div
-                className={`${styles.columns} `}
-                style={{ margin: "4rem 0 8rem 0" }}
-              >
-                <WeOffer />
-              </div>
-   
-              <GetStarted />
 
-          
+              <GetStarted />
+              
+              <WeOffer
+                packName="starter"
+                services={sers}
+                loading={allSerFetching}
+              />
+
+              <Pricing
+                loading={allSerFetching}
+                plans={plans}
+                failed={allSersFailed}
+                onSelectPlan={this.loginGoogWplan}
+              />
+
+              <div className={`${styles.columns}`}>
+                <div
+                  className={`${styles.column} ${styles.colSm6} ${styles.colXs12}`}
+                >
+                  <Testimony
+                    picture={
+                      <ObservrTesti style={{ width: "72px", height: "72px" }} />
+                    }
+                    comment={
+                      <div>
+                        Throughout a startup lifecycle, you accumulate a ton of
+                        reoccurring payments and fees that you can’t automate.
+                        &nbsp;
+                        <b>
+                          Keeping track of these time-sensitive tasks is a
+                          hassle and inevitably takes a ton of time away from
+                          the productive business. Papergov has allowed me to
+                          offload these tasks and virtually set them to autopay,
+                          saving us both time and money!
+                        </b>
+                      </div>
+                    }
+                    userName="Lucas Toohey"
+                    userDesc="CEO, Observr"
+                  />
+                </div>
+                <div
+                  className={`${styles.column} ${styles.colSm6} ${styles.colXs12}`}
+                >
+                  <Testimony
+                    picture={
+                      <EthoTesti style={{ width: "72px", height: "72px" }} />
+                    }
+                    comment={
+                      <div>
+                        Papergov has freed up 5 full days on my calendar that I
+                        otherwise spent frustratingly circling the halls of
+                        government offices to stay compliant. &nbsp;
+                        <b>
+                          They are bringing government services to the 21st
+                          century by making these processes fast & simple
+                        </b>
+                      </div>
+                    }
+                    userName="Krishna Manda"
+                    userDesc="CEO, Etho"
+                  />
+                </div>
+              </div>
+
               <div
                 className={`${styles.columns}`}
                 style={{
@@ -265,7 +322,6 @@ class LandingStartup extends React.Component {
               >
                 <GetInTouch />
               </div>
-                {/* terstmonials */}
 
               <div className={styles.columns} style={{ marginTop: "1rem" }}>
                 <div className={`${styles.column} ${styles.col2}`} />

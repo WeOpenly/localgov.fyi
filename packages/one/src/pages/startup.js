@@ -23,6 +23,7 @@ class Startup extends React.Component {
   componentDidMount() {
     const { dispatch } = this.props;
     dispatch(checkLogin());
+    
     dispatch(fetchSpecificPackageDetails("starter"));
   }
 

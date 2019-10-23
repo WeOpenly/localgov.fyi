@@ -139,78 +139,84 @@ class LandingStartup extends React.Component {
             uthInProgress={authInProgress}
             onGetStartedClick={this.loginGoog}
           />
-
           <div
             className={`${styles.columns}`}
             style={{ margin: "4rem 0 4rem 0" }}
           >
-            <div
-              className={`${styles.column} ${styles.colSm4} ${styles.colXs12}`}
-            >
-              <FeatureCard
-                icon={
-                  <span
-                    style={{
-                      background: "#fff",
-                      color: "#ffd367",
+            <div className={`${styles.column} ${styles.col1}`}></div>
+            <div className={`${styles.column} ${styles.col10}`}>
+              <div
+                className={`${styles.columns}`}
+                style={{ margin: "4rem 0 4rem 0" }}
+              >
+                <div
+                  className={`${styles.column} ${styles.colSm4} ${styles.colXs12}`}
+                >
+                  <FeatureCard
+                    icon={
+                      <span
+                        style={{
+                          background: "#fff",
+                          color: "#ffd367",
 
-                      fontSize: "1.2rem",
-                      padding: "0.2rem 0",
-                      borderRadius: "0.3rem"
-                    }}
-                    className={`${iconStyles.typcn} ${iconStyles.typcnFlashOutline}`}
-                  ></span>
-                }
-                heading={"Simple"}
-                description="One account for all services & no more sending in paper checks or creating multiple accounts for each service to pay your bills"
-              />
-            </div>
+                          fontSize: "1.2rem",
+                          padding: "0.2rem 0",
+                          borderRadius: "0.3rem"
+                        }}
+                        className={`${iconStyles.typcn} ${iconStyles.typcnFlashOutline}`}
+                      ></span>
+                    }
+                    heading={"Simple"}
+                    description="One account for all services & no more sending in paper checks or creating multiple accounts for each service to pay your bills"
+                  />
+                </div>
 
-            <div
-              className={`${styles.column} ${styles.colSm4}  ${styles.colXs12}`}
-            >
-              <FeatureCard
-                icon={
-                  <span
-                    style={{
-                      background: "#fff",
-                      color: "#3500f3",
+                <div
+                  className={`${styles.column} ${styles.colSm4}  ${styles.colXs12}`}
+                >
+                  <FeatureCard
+                    icon={
+                      <span
+                        style={{
+                          background: "#fff",
+                          color: "#3500f3",
 
-                      fontSize: "1.2rem",
-                      padding: "0.2rem 0",
-                      borderRadius: "0.3rem"
-                    }}
-                    className={`${iconStyles.typcn} ${iconStyles.typcnInfinity}`}
-                  ></span>
-                }
-                heading={"Savings"}
-                description="Say goodbye to late fees. Our automated system keeps track of your bills and handles them all for you"
-              />
-            </div>
+                          fontSize: "1.2rem",
+                          padding: "0.2rem 0",
+                          borderRadius: "0.3rem"
+                        }}
+                        className={`${iconStyles.typcn} ${iconStyles.typcnInfinity}`}
+                      ></span>
+                    }
+                    heading={"Savings"}
+                    description="Say goodbye to late fees. Our automated system keeps track of your bills and handles them all for you"
+                  />
+                </div>
 
-            <div
-              className={`${styles.column} ${styles.colSm4}  ${styles.colXs12}`}
-            >
-              <FeatureCard
-                icon={
-                  <span
-                    style={{
-                      background: "#fff",
-                      color: "#30ae40",
+                <div
+                  className={`${styles.column} ${styles.colSm4}  ${styles.colXs12}`}
+                >
+                  <FeatureCard
+                    icon={
+                      <span
+                        style={{
+                          background: "#fff",
+                          color: "#30ae40",
 
-                      fontSize: "1.2rem",
-                      padding: "0.2rem 0",
-                      borderRadius: "0.3rem"
-                    }}
-                    className={`${iconStyles.typcn} ${iconStyles.typcnLockClosedOutline}`}
-                  ></span>
-                }
-                heading={"Secure"}
-                description="We deeply care about user privacy and data. We don’t sell your data & we use industry-standard encryption for all transactions"
-              />
+                          fontSize: "1.2rem",
+                          padding: "0.2rem 0",
+                          borderRadius: "0.3rem"
+                        }}
+                        className={`${iconStyles.typcn} ${iconStyles.typcnLockClosedOutline}`}
+                      ></span>
+                    }
+                    heading={"Secure"}
+                    description="We deeply care about user privacy and data. We don’t sell your data & we use industry-standard encryption for all transactions"
+                  />
+                </div>
+              </div>
             </div>
           </div>
-
           <GetStarted />
 
           <WeOffer packName="ho" services={sers} loading={allSerFetching} />
@@ -223,35 +229,68 @@ class LandingStartup extends React.Component {
             packName="ho"
             onSelectPlan={this.loginGoogWplan}
           />
-
-          <div className={`${styles.columns}`}>
-            <div className={`${styles.column} ${styles.colSm3}`}></div>
-            <div className={`${styles.column} ${styles.colSm6}`}>
-              <Testimony
-                picture={
-                  <ThibautTesti style={{ width: "72px", height: "72px" }} />
-                }
-                comment={
-                  <div>
-                    I have automated paying my utility bills through Papergov.
-                    &nbsp;
-                    <b>
-                      I know that wherever I move, I can trust Papergov to be my
-                      user-friendly interface to the government!
-                    </b>
+          <div
+            className={`${styles.columns}`}
+            style={{ margin: "4rem 0 4rem 0" }}
+          >
+            <div className={`${styles.column} ${styles.col1}`}></div>
+            <div className={`${styles.column} ${styles.col10}`}>
+              <div
+                className={`${styles.columns}`}
+                style={{
+                  margin: "0rem 0 2rem 0"
+                }}
+              >
+                <div className={`${styles.column} ${styles.col2}`} />
+                <div className={`${styles.column}  ${styles.col8}`}>
+                  <div className={styles.textCenter}>
+                    <h3> Love for Papergov </h3>
                   </div>
-                }
-                userName="Thibaut Labarre"
-                userDesc=""
-              />
+                </div>
+                <div className={`${styles.column} ${styles.col2}`} />
+              </div>
+              <div className={`${styles.columns}`}>
+                <div className={`${styles.column} ${styles.colSm3}`}></div>
+                <div className={`${styles.column} ${styles.colSm6}`}>
+                  <Testimony
+                    picture={
+                      <ThibautTesti style={{ width: "72px", height: "72px" }} />
+                    }
+                    comment={
+                      <div>
+                        I have automated paying my utility bills through
+                        Papergov. &nbsp;
+                        <b>
+                          I know that wherever I move, I can trust Papergov to
+                          be my user-friendly interface to the government!
+                        </b>
+                      </div>
+                    }
+                    userName="Thibaut Labarre"
+                    userDesc=""
+                  />
+                </div>
+                <div className={`${styles.column} ${styles.colSm3}`}></div>
+              </div>
             </div>
-            <div className={`${styles.column} ${styles.colSm3}`}></div>
+            <div className={`${styles.column} ${styles.col1}`}></div>
           </div>
 
           <div
             className={`${styles.columns}`}
             style={{
-              margin: "4rem 0 0 0",
+              margin: "6rem 0 2rem 0",
+              padding: "2.5rem 0.5rem",
+              background: "#f7f8f9"
+            }}
+          >
+            <GetInTouch />
+          </div>
+
+          <div
+            className={`${styles.columns}`}
+            style={{
+              margin: "6rem 0 1rem 0",
               padding: "2.5rem 0.5rem"
             }}
           >
@@ -273,7 +312,7 @@ class LandingStartup extends React.Component {
           <div
             className={`${styles.columns}`}
             style={{
-              margin: "0rem 0 1rem 0",
+              margin: "0rem 0 8rem 0",
               padding: "0.5rem 0.5rem"
             }}
           >
@@ -289,16 +328,6 @@ class LandingStartup extends React.Component {
             <div
               className={`${styles.column} ${styles.col2} ${styles.hideXs}`}
             />
-          </div>
-          <div
-            className={`${styles.columns}`}
-            style={{
-              margin: "8rem 0 8rem 0",
-              padding: "2.5rem 0.5rem",
-              background: "#f7f8f9"
-            }}
-          >
-            <GetInTouch />
           </div>
 
           <div className={styles.columns} style={{ marginTop: "1rem" }}>

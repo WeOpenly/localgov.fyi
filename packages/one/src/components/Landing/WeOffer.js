@@ -20,17 +20,17 @@ const iconMap = {
   SER_REN_BUS_LIC_BIZ: <Renew style={{ width: "80px", height: "80px" }} />,
   SER_REN_DBA_BIZ: <BusinessLic style={{ width: "80px", height: "80px" }} />,
   SER_STA_OF_INF_FIL_BUS_CAL: (
-    <BusinessLic style={{ width: "80px", height: "80px" }} />
+    <BusinessLic style={{ width: "100px", height: "80px" }} />
   ),
   SER_UTIL_BILL_INDEV: <UtilBill style={{ width: "80px", height: "80px" }} />,
   SER_DEL_FRA_TAX_BIZ: (
-    <DelFranchTax style={{ width: "80px", height: "80px" }} />
+    <DelFranchTax style={{ width: "100px", height: "80px" }} />
   ),
   SER_CAL_FRA_TAX_BIZ: (
-    <CalFranchTax style={{ width: "50px", height: "80px" }} />
+    <CalFranchTax style={{ width: "60px", height: "80px" }} />
   )
 };
-const defaultIcon = <DelFranchTax style={{ width: "100px", height: "80px" }} />;
+const defaultIcon = <DelFranchTax style={{ width: "130px", height: "78px" }} />;
 
 
 class WeOffer extends Component {
@@ -77,12 +77,11 @@ class WeOffer extends Component {
             border: "1px solid rgba(48,55,66,.10)",
             background: "#fff",
             width: "18rem",
-            height: "18rem",
+            height: "19rem",
             marginBottom: "1rem",
             marginTop: "1rem",
             padding: "0.4rem",
-            borderRadius: "0.3rem",
-            boxShadow: "0 .3rem 0.8rem rgba(48,55,66,.10)"
+            borderRadius: "0.3rem"
           }}
         >
           <div
@@ -90,7 +89,7 @@ class WeOffer extends Component {
             style={{
               display: "flex",
               justifyContent: "center",
-              margin: "0.7rem"
+              margin: "0.9rem"
             }}
           >
             {iconMap[ser.sid] ? iconMap[ser.sid] : defaultIcon}
@@ -99,7 +98,10 @@ class WeOffer extends Component {
             <h5 className={`${styles.cardTitle}`}>{ser.name}</h5>
           </div>
           <div className={styles.cardBody}>
-            <p className={`${styles.cardSubitle} ${styles.textGray}`}>
+            <p
+              style={{ lineHeight: "1.1rem" }}
+              className={`${styles.cardSubitle} ${styles.textGray}`}
+            >
               {ser.shortDescription}
             </p>
           </div>
@@ -132,7 +134,7 @@ class WeOffer extends Component {
           <div className={`${styles.column} ${styles.col1}`} />
           <div
             className={`${styles.column}  ${styles.col10}`}
-            style={{ display: "flex", flexWrap: "wrap", justifyContent: 'space-evenly' }}
+            style={{ display: "flex", flexWrap: "wrap", justifyContent: 'space-around' }}
           >
             {serComps}
           </div>

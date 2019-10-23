@@ -19,13 +19,12 @@ class FeatureCard extends Component {
         style={{
           border: "1px solid rgba(48,55,66,.10)",
           background: "#fff",
-          minHeight: "170px",
+          minHeight: "190px",
 
           marginBottom: "4rem",
           marginTop: "1rem",
           padding: "0.4rem",
-          borderRadius: "0.3rem",
-          boxShadow: "0 .3rem 0.8rem rgba(48,55,66,.10)"
+          borderRadius: "0.3rem"
         }}
       >
         <div className={styles.cardHeader}>
@@ -35,7 +34,10 @@ class FeatureCard extends Component {
           </h5>
         </div>
         <div className={styles.cardBody}>
-          <p className={`${styles.cardSubitle} ${styles.textGray}`}>
+          <p
+            style={{ lineHeight: "1.1rem" }}
+            className={`${styles.cardSubitle} ${styles.textGray}`}
+          >
             {description}
           </p>
         </div>

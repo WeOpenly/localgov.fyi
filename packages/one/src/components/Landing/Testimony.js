@@ -23,12 +23,12 @@ class Testimony extends React.Component {
           padding: "0.2rem 0.5rem",
           minHeight: "300px",
 
-          border: "1px solid rgba(86, 39, 255, .2)",
+          border: "1px solid rgba(86, 39, 255, .1)",
           background: "#fff",
           marginBottom: "4rem",
 
           borderRadius: "0.3rem",
-          boxShadow: "0 .1rem 0.1rem rgba(48,55,66,.10)"
+          boxShadow: "0 .1rem 0.7rem rgba(48,55,66,.10)"
         }}
       >
         <div
@@ -41,9 +41,9 @@ class Testimony extends React.Component {
           }}
         >
           <div style={{ display: "flex", flexDirection: "column" }}>
-            <h4 style={{ textAlign: "left", color: "rgba(86, 39, 255)" }}>❝</h4>
+            <h3 style={{ textAlign: "left", color: "rgba(86, 39, 255)" }}>❝</h3>
 
-            <p>{this.props.comment}</p>
+            <p style={{lineHeight: '1.1rem'}}>{this.props.comment}</p>
           </div>
         </div>
         <div className={styles.cardFooter}>

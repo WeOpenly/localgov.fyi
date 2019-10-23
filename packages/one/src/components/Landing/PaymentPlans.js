@@ -6,7 +6,10 @@ import iconStyles from "../typicons.min.module.css";
 const PaymentPlan = props => (
   <div
     key={props.id}
-    className={`${styles.column} ${styles.colSm3} ${styles.colXs12}`}
+    className={`${styles.column} ${styles.col3} ${styles.colXs12}`}
+    style={{
+      minWidth: '340px'
+    }}
   >
     <div
       className={styles.card}
@@ -35,19 +38,19 @@ const PaymentPlan = props => (
           {" "}
           <small>$</small>
           <span style={{ fontWeight: 700 }}>{props.price}</span>
-          <span
+          <div
             style={{ fontSize: "0.8rem" }}
             className={`${styles.textGray} ${styles.textUppercase} ${styles.cardSubTitle}`}
           >
-            <small className={styles.textBold}>/ {props.duration}</small>
-          </span>
+            <small className={styles.textBold}>Per {props.duration}</small>
+          </div>
         </div>
       </div>
       <div className={styles.cardBody}>
         <div className={styles.divider} />
 
         <div style={{ padding: "0.5rem 0", minHeight: "12rem" }}>
-          <div className={`${styles.textUppercase} ${styles.textGray}`}>
+          <div style={{ margin: "0.2rem"}} className={`${styles.textUppercase} ${styles.textGray}`}>
             {" "}
             <small> Includes </small>{" "}
           </div>
@@ -115,7 +118,7 @@ class PaymentPlans extends Component {
     const { plans, selectedPlan, planDuration } = this.props;
     let preselected = false;
     let preselectedPlans = [];
-
+    console.log(plans,selectedPlan, planDuration, 'paymentplans')
     const monthlyPlans = plans.map((plan, idx) => {
       return (
         <PaymentPlan
@@ -123,7 +126,7 @@ class PaymentPlans extends Component {
           name={plan.pg_plan_name}
           tag={"labelDefault"}
           price={plan.monthly_plan_price}
-          duration={"mo"}
+          duration={"month"}
           covers={plan.sers}
           selectPaymentPlan={this.onSelectPaymentPlan}
           features={plan.features || []}
@@ -177,7 +180,7 @@ class PaymentPlans extends Component {
                 name={plan.pg_plan_name}
                 tag={"labelDefault"}
                 price={plan.monthly_plan_price}
-                duration={"mo"}
+                duration={"month"}
                 covers={plan.sers}
                 selectPaymentPlan={this.onSelectPaymentPlan}
                 features={plan.features || []}
@@ -235,7 +238,14 @@ class PaymentPlans extends Component {
     );
 
     if (preselected){
-      return preselectedPlans;
+      return (
+        <div
+          className={`${styles.columns}`}
+          style={{ display: "flex", justifyContent: "center" }}
+        >
+          {preselectedPlans}
+        </div>
+      )
     }
 
     return (
@@ -250,7 +260,7 @@ class PaymentPlans extends Component {
         >
           {durationComps}
         </div> 
-        <div className={`${styles.columns}`}>
+        <div className={`${styles.columns}`} style={{display: 'flex', justifyContent: 'center'}}>
             {this.state.showYearly ? yearlyPlans : monthlyPlans}
         </div>
       </Fragment>

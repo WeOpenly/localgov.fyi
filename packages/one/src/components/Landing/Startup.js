@@ -144,73 +144,78 @@ class LandingStartup extends React.Component {
             className={`${styles.columns}`}
             style={{ margin: "4rem 0 4rem 0" }}
           >
-            <div
-              className={`${styles.column} ${styles.colSm4} ${styles.colXs12}`}
-            >
-              <FeatureCard
-                icon={
-                  <span
-                    style={{
-                      background: "#fff",
-                      color: "#ffd367",
+            <div className={`${styles.column} ${styles.col1}`}></div>
+            <div className={`${styles.column} ${styles.col10}`}>
+              <div className={`${styles.columns}`}>
+                <div
+                  className={`${styles.column} ${styles.colSm4} ${styles.colXs12}`}
+                >
+                  <FeatureCard
+                    icon={
+                      <span
+                        style={{
+                          background: "#fff",
+                          color: "#ffd367",
 
-                      fontSize: "1.2rem",
-                      padding: "0.2rem 0",
-                      borderRadius: "0.3rem"
-                    }}
-                    className={`${iconStyles.typcn} ${iconStyles.typcnFlashOutline}`}
-                  ></span>
-                }
-                heading={"We do the heavy lifting"}
-                description="We figure out & do all the necessary filings automatically required for your business online and keep track of them"
-              />
+                          fontSize: "1.2rem",
+                          padding: "0.2rem 0",
+                          borderRadius: "0.3rem"
+                        }}
+                        className={`${iconStyles.typcn} ${iconStyles.typcnFlashOutline}`}
+                      ></span>
+                    }
+                    heading={"We do the heavy lifting"}
+                    description="We figure out & do all the necessary filings automatically required for your business online and keep track of them"
+                  />
+                </div>
+
+                <div
+                  className={`${styles.column} ${styles.colSm4}  ${styles.colXs12}`}
+                >
+                  <FeatureCard
+                    icon={
+                      <span
+                        style={{
+                          background: "#fff",
+                          color: "#3500f3",
+
+                          fontSize: "1.2rem",
+                          padding: "0.2rem 0",
+                          borderRadius: "0.3rem"
+                        }}
+                        className={`${iconStyles.typcn} ${iconStyles.typcnInfinity}`}
+                      ></span>
+                    }
+                    heading={"Saves you time"}
+                    description="Dealing with government agencies is no fun & we take care of these redundant processes so that you focus on your business"
+                  />
+                </div>
+
+                <div
+                  className={`${styles.column} ${styles.colSm4}  ${styles.colXs12}`}
+                >
+                  <FeatureCard
+                    icon={
+                      <span
+                        style={{
+                          background: "#fff",
+                          color: "#30ae40",
+
+                          fontSize: "1.2rem",
+                          padding: "0.2rem 0",
+                          borderRadius: "0.3rem"
+                        }}
+                        className={`${iconStyles.typcn} ${iconStyles.typcnLockClosedOutline}`}
+                      ></span>
+                    }
+                    heading={"Your Trusted Partner"}
+                    description="We work with experts for all your compliance needs so that you are always on top of these & have no surprises coming your ways"
+                  />
+                </div>
+              </div>
             </div>
-
-            <div
-              className={`${styles.column} ${styles.colSm4}  ${styles.colXs12}`}
-            >
-              <FeatureCard
-                icon={
-                  <span
-                    style={{
-                      background: "#fff",
-                      color: "#3500f3",
-
-                      fontSize: "1.2rem",
-                      padding: "0.2rem 0",
-                      borderRadius: "0.3rem"
-                    }}
-                    className={`${iconStyles.typcn} ${iconStyles.typcnInfinity}`}
-                  ></span>
-                }
-                heading={"Saves you time"}
-                description="Dealing with government agencies is no fun & we take care of these redundant processes so that you focus on your business"
-              />
-            </div>
-
-            <div
-              className={`${styles.column} ${styles.colSm4}  ${styles.colXs12}`}
-            >
-              <FeatureCard
-                icon={
-                  <span
-                    style={{
-                      background: "#fff",
-                      color: "#30ae40",
-
-                      fontSize: "1.2rem",
-                      padding: "0.2rem 0",
-                      borderRadius: "0.3rem"
-                    }}
-                    className={`${iconStyles.typcn} ${iconStyles.typcnLockClosedOutline}`}
-                  ></span>
-                }
-                heading={"Your Trusted Partner"}
-                description="We work with experts for all your compliance needs so that you are always on top of these & have no surprises coming your ways"
-              />
-            </div>
+            <div className={`${styles.column} ${styles.col1}`}></div>
           </div>
-
           <GetStarted />
 
           <WeOffer
@@ -228,60 +233,93 @@ class LandingStartup extends React.Component {
             onSelectPlan={this.loginGoogWplan}
           />
 
-          <div className={`${styles.columns}`}>
-            <div
-              className={`${styles.column} ${styles.colSm6} ${styles.colXs12}`}
-            >
-              <Testimony
-                picture={
-                  <ObservrTesti style={{ width: "72px", height: "72px" }} />
-                }
-                comment={
-                  <div>
-                    Throughout a startup lifecycle, you accumulate a ton of
-                    reoccurring payments and fees that you can’t automate.
-                    &nbsp;
-                    <b>
-                      Keeping track of these time-sensitive tasks is a hassle
-                      and inevitably takes a ton of time away from the
-                      productive business. Papergov has allowed me to offload
-                      these tasks and virtually set them to autopay, saving us
-                      both time and money!
-                    </b>
+          <div
+            className={`${styles.columns}`}
+            style={{ margin: "4rem 0 4rem 0" }}
+          >
+            <div className={`${styles.column} ${styles.col1}`}></div>
+            <div className={`${styles.column} ${styles.col10}`}>
+              <div
+                className={`${styles.columns}`}
+                style={{
+                  margin: "0rem 0 2rem 0"
+                }}
+              >
+                <div className={`${styles.column} ${styles.col2}`} />
+                <div className={`${styles.column}  ${styles.col8}`}>
+                  <div className={styles.textCenter}>
+                    <h3> Love for Papergov </h3>
                   </div>
-                }
-                userName="Lucas Toohey"
-                userDesc="CEO, Observr"
-              />
+                </div>
+                <div className={`${styles.column} ${styles.col2}`} />
+              </div>
+              <div className={`${styles.columns}`}>
+                <div
+                  className={`${styles.column} ${styles.colSm4} ${styles.colXs12}`}
+                >
+                  <Testimony
+                    picture={
+                      <ObservrTesti style={{ width: "72px", height: "72px" }} />
+                    }
+                    comment={
+                      <div>
+                        Throughout a startup lifecycle, you accumulate a ton of
+                        reoccurring payments and fees that you can’t automate.
+                        &nbsp;
+                        <b>
+                          Keeping track of these time-sensitive tasks is a
+                          hassle and inevitably takes a ton of time away from
+                          the productive business. Papergov has allowed me to
+                          offload these tasks and virtually set them to autopay,
+                          saving us both time and money!
+                        </b>
+                      </div>
+                    }
+                    userName="Lucas Toohey"
+                    userDesc="CEO, Observr"
+                  />
+                </div>
+                <div
+                  className={`${styles.column} ${styles.colSm6} ${styles.colXs12}`}
+                >
+                  <Testimony
+                    picture={
+                      <EthoTesti style={{ width: "72px", height: "72px" }} />
+                    }
+                    comment={
+                      <div>
+                        Papergov has freed up 5 full days on my calendar that I
+                        otherwise spent frustratingly circling the halls of
+                        government offices to stay compliant. &nbsp;
+                        <b>
+                          They are bringing government services to the 21st
+                          century by making these processes fast & simple
+                        </b>
+                      </div>
+                    }
+                    userName="Krishna Manda"
+                    userDesc="CEO, Etho"
+                  />
+                </div>
+              </div>
             </div>
-            <div
-              className={`${styles.column} ${styles.colSm6} ${styles.colXs12}`}
-            >
-              <Testimony
-                picture={
-                  <EthoTesti style={{ width: "72px", height: "72px" }} />
-                }
-                comment={
-                  <div>
-                    Papergov has freed up 5 full days on my calendar that I
-                    otherwise spent frustratingly circling the halls of
-                    government offices to stay compliant. &nbsp;
-                    <b>
-                      They are bringing government services to the 21st century
-                      by making these processes fast & simple
-                    </b>
-                  </div>
-                }
-                userName="Krishna Manda"
-                userDesc="CEO, Etho"
-              />
-            </div>
+            <div className={`${styles.column} ${styles.col1}`}></div>
+          </div>
+          <div
+            className={`${styles.columns}`}
+            style={{
+              margin: "6rem 0 2rem 0",
+              padding: "2.5rem 0.5rem",
+              background: "#f7f8f9"
+            }}
+          >
+            <GetInTouch />
           </div>
 
           <div
             className={`${styles.columns}`}
             style={{
-              margin: "4rem 0 0 0",
+              margin: "6rem 0 1rem 0",
               padding: "2.5rem 0.5rem"
             }}
           >
@@ -303,7 +341,7 @@ class LandingStartup extends React.Component {
           <div
             className={`${styles.columns}`}
             style={{
-              margin: "0rem 0 1rem 0",
+              margin: "0rem 0 8rem 0",
               padding: "0.5rem 0.5rem"
             }}
           >
@@ -319,16 +357,6 @@ class LandingStartup extends React.Component {
             <div
               className={`${styles.column} ${styles.col2} ${styles.hideXs}`}
             />
-          </div>
-          <div
-            className={`${styles.columns}`}
-            style={{
-              margin: "8rem 0 8rem 0",
-              padding: "2.5rem 0.5rem",
-              background: "#f7f8f9"
-            }}
-          >
-            <GetInTouch />
           </div>
 
           <div className={styles.columns} style={{ marginTop: "1rem" }}>

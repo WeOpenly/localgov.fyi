@@ -300,19 +300,19 @@ class LandingHome extends React.Component {
                       className={styles.cardFooter}
                       style={{
                         display: "flex",
-                        justifyContent: "center",
+                        justifyContent: "space-between",
                         margin: "0.2rem 0"
                       }}
                     >
                       <a
                         onClick={() => this.loginGoogWplan(null, "ho")}
-                        className={`${styles.btn} ${styles.btnSecondary}`}
+                        className={`${styles.btn} ${styles.btnSm} ${styles.btnSecondary}`}
                       >
                         Get Started
                       </a>
                       <a
                         href="/home-owners"
-                        className={`${styles.btn} ${styles.btnLink}`}
+                        className={`${styles.btn} ${styles.btnSm}  ${styles.btnLink}`}
                       >
                         Learn More
                       </a>
@@ -366,19 +366,19 @@ class LandingHome extends React.Component {
                       className={styles.cardFooter}
                       style={{
                         display: "flex",
-                        justifyContent: "center",
+                        justifyContent: "space-between",
                         margin: "0.2rem 0"
                       }}
                     >
                       <a
                         onClick={() => this.loginGoogWplan(null, "starter")}
-                        className={`${styles.btn} ${styles.btnSecondary}`}
+                        className={`${styles.btn} ${styles.btnSm} ${styles.btnSecondary}`}
                       >
                         Get Started
                       </a>
                       <a
                         href="/startup"
-                        className={`${styles.btn} ${styles.btnLink}`}
+                        className={`${styles.btn} ${styles.btnSm}  ${styles.btnLink}`}
                       >
                         Learn More
                       </a>
@@ -489,7 +489,7 @@ class LandingHome extends React.Component {
                   <div>
                     <a
                       target="_blank"
-                      href="https://www.govtech.com/gov-experience/papergov-Wants-to-Make-Local-Government-Services-More-Searchable.html"
+                      href="https://www.govtech.com/gov-experience/EverGov-Wants-to-Make-Local-Government-Services-More-Searchable.html"
                     >
                       <GovTechSvg />
                     </a>

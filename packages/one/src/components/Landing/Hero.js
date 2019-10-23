@@ -74,6 +74,13 @@ class Hero extends React.Component {
                 >
                   Privacy
                 </a>
+                <button
+                  onClick={() => onGetStartedClick(this.state.email)}
+                  style={{ margin: "0.5rem" }}
+                  className={`${styles.btn} ${styles.btnSm} ${styles.btnSecondary} ${styles.inputGroupButton}`}
+                >
+                  Login
+                </button>
               </section>
             </header>
           </div>

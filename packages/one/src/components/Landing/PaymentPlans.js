@@ -8,7 +8,7 @@ const PaymentPlan = props => (
     key={props.id}
     className={`${styles.column} ${styles.col3} ${styles.colXs12}`}
     style={{
-      minWidth: '340px'
+      minWidth: "340px"
     }}
   >
     <div
@@ -50,7 +50,10 @@ const PaymentPlan = props => (
         <div className={styles.divider} />
 
         <div style={{ padding: "0.5rem 0", minHeight: "12rem" }}>
-          <div style={{ margin: "0.2rem"}} className={`${styles.textUppercase} ${styles.textGray}`}>
+          <div
+            style={{ margin: "0.2rem" }}
+            className={`${styles.textUppercase} ${styles.textGray}`}
+          >
             {" "}
             <small> Includes </small>{" "}
           </div>
@@ -74,7 +77,16 @@ const PaymentPlan = props => (
       </div>
       <div className={styles.cardFooter}>
         {props.isSelected ? (
-          <div style={{ height: "40px" }}></div>
+          <div style={{ height: "40px" }}>
+            <button
+              onClick={() => props.selectPaymentPlan(props)}
+              className={`${styles.btn} ${
+                props.focus ? `${styles.btnPrimary}` : `${styles.btnSecondary}`
+              }`}
+            >
+              Finalize Subscription
+            </button>
+          </div>
         ) : (
           <button
             onClick={() => props.selectPaymentPlan(props)}
@@ -118,7 +130,7 @@ class PaymentPlans extends Component {
     const { plans, selectedPlan, planDuration } = this.props;
     let preselected = false;
     let preselectedPlans = [];
-    console.log(plans,selectedPlan, planDuration, 'paymentplans')
+   
     const monthlyPlans = plans.map((plan, idx) => {
       return (
         <PaymentPlan
@@ -158,7 +170,7 @@ class PaymentPlans extends Component {
           if (plan.pg_plan_id === selectedPlan) {
             return (
               <PaymentPlan
-                id={plan.yearly_plan_id}
+                id={plan.pg_plan_id}
                 name={plan.pg_plan_name}
                 tag={"labelDefault"}
                 price={plan.yearly_plan_price}
@@ -166,7 +178,7 @@ class PaymentPlans extends Component {
                 covers={plan.sers}
                 selectPaymentPlan={this.onSelectPaymentPlan}
                 features={plan.features || []}
-                isSelected={false}
+                isSelected={true}
               />
             );
           }
@@ -176,7 +188,7 @@ class PaymentPlans extends Component {
           if (plan.pg_plan_id === selectedPlan) {
             return (
               <PaymentPlan
-                id={plan.monthly_plan_id}
+                id={plan.pg_plan_id}
                 name={plan.pg_plan_name}
                 tag={"labelDefault"}
                 price={plan.monthly_plan_price}
@@ -184,7 +196,7 @@ class PaymentPlans extends Component {
                 covers={plan.sers}
                 selectPaymentPlan={this.onSelectPaymentPlan}
                 features={plan.features || []}
-                isSelected={false}
+                isSelected={true}
               />
             );
           }

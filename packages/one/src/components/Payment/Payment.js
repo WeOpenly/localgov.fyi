@@ -100,25 +100,27 @@ class Payment extends Component {
         plans
       } = this.props.oneSers;
       const { packDuration, selectedPlan } = this.state;
-
+    
       let selected_stripe_plan = null;
 
       const chosenPlan = plans.filter(function(newPlan) {
         return newPlan.pg_plan_id === selectedPlan;
       });
 
+ console.log("here", plans, stripe_token, selectedPlan, chosenPlan, packDuration);
+
       if (!chosenPlan.length > 0){
         return
       }
 
-  
+ 
       if (packDuration === "monthly") {
         selected_stripe_plan = chosenPlan[0].monthly_plan_id;
       } else {
         selected_stripe_plan = chosenPlan[0].yearly_plan_id;
       }
-      
-      console.log(selectedPlan, selected_stripe_plan);
+
+     console.log('here', stripe_token, selectedPlan, chosenPlan, packDuration);
 
       this.props.setupCardPayment(
         stripe_token,

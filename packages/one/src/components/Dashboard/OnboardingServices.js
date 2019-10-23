@@ -40,6 +40,7 @@ class OnboardingServices extends Component {
   setupCardPayment(str_tok, planId, strId) {
     const { dispatch, user } = this.props;
     const { uid } = user.details;
+    console.log(str_tok, planId, strId);
     dispatch(setupCardPayment(uid, str_tok, planId, strId));
   }
 

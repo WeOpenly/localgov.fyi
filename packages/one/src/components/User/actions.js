@@ -9,7 +9,7 @@ import {
   fetchOrSetUserServiceDetails,
   fetchOrSetUserSerTxneDetails
 } from "../Services/actions";
-
+import {fetchSpecificPackageDetails } from '../Landing/actions';
 
 const windowGlobal = typeof window !== "undefined" && window;
 
@@ -162,7 +162,11 @@ function fetchOrSetUserDetails(user) {
           } 
 
           userRef.set({ ...details });
-        } 
+        }else{
+          const details = docData.data();
+          dispatch(fetchSpecificPackageDetails(details.packType));
+        }
+
         dispatch(watchUserForChanges(uid));
         dispatch(fetchOrSetUserServiceDetails(uid));
         dispatch(fetchOrSetUserSerTxneDetails(uid));
@@ -185,6 +189,7 @@ export function checkLogin(enteredEmail) {
 
     authRef.onAuthStateChanged(user => {
       if (user) {
+       
         dispatch(fetchOrSetUserDetails(user));
         dispatch(setAuthenticated(true));
       } else {

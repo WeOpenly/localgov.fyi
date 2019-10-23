@@ -13,6 +13,7 @@ import Img from "gatsby-image";
 
 import IndexHeroIl from '../../illus/IndexHero.js';
 import ThibautTesti from "../../illus/ThibautTesti.js";
+import HelenTesti from "../../illus/HelenTesti.js";
 import AboutIl from "../../svgIcons/AboutIl.js";
 
 import Hero from './Hero';
@@ -250,8 +251,9 @@ class LandingStartup extends React.Component {
                 <div className={`${styles.column} ${styles.col2}`} />
               </div>
               <div className={`${styles.columns}`}>
-                <div className={`${styles.column} ${styles.colSm3}`}></div>
-                <div className={`${styles.column} ${styles.colSm6}`}>
+                <div
+                  className={`${styles.column} ${styles.colSm4} ${styles.colXs12}`}
+                >
                   <Testimony
                     picture={
                       <ThibautTesti style={{ width: "72px", height: "72px" }} />
@@ -270,7 +272,30 @@ class LandingStartup extends React.Component {
                     userDesc=""
                   />
                 </div>
-                <div className={`${styles.column} ${styles.colSm3}`}></div>
+                <div
+                  className={`${styles.column} ${styles.colSm6} ${styles.colXs12}`}
+                >
+                  <Testimony
+                    picture={
+                      <HelenTesti style={{ width: "72px", height: "72px" }} />
+                    }
+                    comment={
+                      <div>
+                        I hate the bills that come in months before they are due
+                        because I lose the paper bills and almost miss the due
+                        dates, especially car registration and property taxes.
+                        &nbsp;
+                        <b>
+                          With Papergov, I just snap a picture of the bill and
+                          forget about it. Papergov makes sure I pay on time and
+                          reminds me that it is about to make the payment
+                        </b>
+                      </div>
+                    }
+                    userName="Helen Shaughnessy"
+                    userDesc=""
+                  />
+                </div>
               </div>
             </div>
             <div className={`${styles.column} ${styles.col1}`}></div>

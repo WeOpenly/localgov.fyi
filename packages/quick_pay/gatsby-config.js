@@ -46,6 +46,8 @@ module.exports = {
         path: path.join(__dirname, `src/illus`)
       }
     },
+    `gatsby-transformer-remark`,
+    `gatsby-transformer-json`,
     {
       resolve: `gatsby-source-filesystem`,
       options: {
@@ -53,8 +55,6 @@ module.exports = {
         path: path.join(__dirname, `src/services`)
       }
     },
-    `gatsby-transformer-remark`,
-    `gatsby-transformer-json`,
     {
       resolve: "gatsby-plugin-webpack-bundle-analyser-v2",
       options: {

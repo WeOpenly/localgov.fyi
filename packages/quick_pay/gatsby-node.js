@@ -23,16 +23,16 @@ exports.createPages = ({ graphql, actions }) => {
     resolve(
       graphql(`
         {
-            allDataJson {
-              edges {
-                node {
-                  title
-                  name
-                  url_slug
-                  uploadable
-                }
+          allServicesJson {
+            edges {
+              node {
+                title
+                name
+                url_slug
+                uploadable
               }
             }
+          }
         }
       `).then(result => {
         if (result.errors) {
@@ -46,11 +46,9 @@ exports.createPages = ({ graphql, actions }) => {
 
         // org pages
 
-        const setTemplate = path.resolve(
-          `src/templates/service.js`
-        );
+        const setTemplate = path.resolve(`src/templates/service.js`);
 
-        _.each(result.data.allDataJson.edges, edge => {
+        _.each(result.data.allServicesJson.edges, edge => {
           createPage({
             path: `${edge.node.url_slug}/`,
             component: slash(setTemplate),

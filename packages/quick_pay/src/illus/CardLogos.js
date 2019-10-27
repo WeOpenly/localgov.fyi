@@ -2,7 +2,7 @@ import React from "react";
 import { graphql, StaticQuery } from "gatsby";
 import Img from "gatsby-image";
 
-const CardLogos = () => (
+const CardLogos = (props) => (
   <StaticQuery
     query={graphql`
       query cardlogosQ {
@@ -34,7 +34,7 @@ const CardLogos = () => (
         <Img
           title={`papergov`}
           alt={`Page Not Found`}
-          style={{ width: "150px" }}
+          style={props.style}
           sizes={data.heroIl.edges[0].node.childImageSharp.fluid}
         />
       );

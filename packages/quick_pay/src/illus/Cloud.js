@@ -1,23 +1,17 @@
-import React from "react"
-import { graphql, StaticQuery } from 'gatsby';
+import React from "react";
+import { graphql, StaticQuery } from "gatsby";
 import Img from "gatsby-image";
 
-const Step3 = props => (
+const Cloud = (props) => (
   <StaticQuery
     query={graphql`
-      query Step3Il {
-        heroIl: allFile(filter: { relativePath: { eq: "STEP3.png" } }) {
+      query Cloudq {
+        heroIl: allFile(filter: { relativePath: { eq: "cloud.png" } }) {
           edges {
             node {
               name
               childImageSharp {
-                fluid(
-                  traceSVG: {
-                    color: "#f0d3fe"
-                    turnPolicy: TURNPOLICY_MINORITY
-                    blackOnWhite: true
-                  }
-                ) {
+                fluid {
                   base64
                   tracedSVG
                   aspectRatio
@@ -39,7 +33,7 @@ const Step3 = props => (
       return (
         <Img
           title={`papergov`}
-          alt={`illustration of papergov`}
+          alt={`Page Not Found`}
           style={props.style}
           sizes={data.heroIl.edges[0].node.childImageSharp.fluid}
         />
@@ -48,5 +42,4 @@ const Step3 = props => (
   />
 );
 
-
-export default Step3
+export default Cloud;

@@ -2,7 +2,7 @@ import React from "react"
 import { graphql, StaticQuery } from 'gatsby';
 import Img from "gatsby-image";
 
-const GoodBye = () => (
+const GoodBye = (style) => (
     <StaticQuery
         query={graphql`query GoodByesvgq {
   heroIl: 
@@ -35,7 +35,7 @@ const GoodBye = () => (
             return (<Img
                 title={`papergov`}
                 alt={`Deep link good bye`}
-                style={{ width: '264px' }}
+                style={{width: '180px'}}
                 sizes={data.heroIl.edges[0].node.childImageSharp.fluid} />)
         }} />
 )

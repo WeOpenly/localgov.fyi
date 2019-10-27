@@ -11,8 +11,17 @@ import CameraCapture from "./CameraCapture";
 import { uploadDocumentAndCreateSubmission } from "./actions";
 import { graphql, StaticQuery } from "gatsby";
 import Img from "gatsby-image";
+
+
+import FeatureCard from "./Landing/Feature";
+import Testimony from './Landing/Testimony';
+
 import AboutSVG from "./AboutSvgComp";
 import Step3 from "./Step3";
+
+import GoodBye from "../illus/GoodBye";
+import Safety from "../illus/Safety";
+import Register from "../illus/Register";
 
 import AbbyPic from "../illus/Abby";
 import JessePic from "../illus/Jesse";
@@ -204,7 +213,7 @@ class LandingDesktop extends React.Component {
   }
 
   render() {
-    const { createSubInProgress } = this.props;
+    const { createSubInProgress, uploadable } = this.props;
     let loadingComp = <div className={styles.loading}></div>;
     let snapComp = null;
 
@@ -217,251 +226,135 @@ class LandingDesktop extends React.Component {
       snapComp = loadingComp;
     }
 
- 
-
     return (
       <div className={styles.columns}>
         <div
-          className={`${styles.column} ${styles.col12}`}
-          style={{ margin: "1.5rem 0 1rem 0" }}
-        >
-          <h2 style={{ margin: "1rem 0" }} className={`${styles.textCenter}`}>
-            {" "}
-            ⚡ Lightning fast service payments
-          </h2>
-        </div>
-
-        <div
           className={`${styles.column} ${styles.col12} ${styles.textCenter}`}
-          style={{
-            margin: "1rem 0 0 0 ",
-            display: "flex",
-            justifyContent: "center"
-          }}
-        >
-          <div
-            style={{
-              display: "flex",
-              justifyContent: "center",
-              flexDirection: "column",
-              alignItems: "center"
-            }}
-          >
-            <AboutSVG />
-            <p style={{ width: "200px" }}>Upload your bills or tickets</p>
-          </div>
-          <div
-            style={{
-              display: "flex",
-              justifyContent: "center",
-              flexDirection: "column",
-              alignItems: "center"
-            }}
-          ></div>
-          <div
-            style={{
-              display: "flex",
-              justifyContent: "center",
-              flexDirection: "column",
-              alignItems: "center"
-            }}
-          >
-            <HeroIl />
-            <p style={{ width: "200px" }}>Check your details & pay securely</p>
-          </div>
-          <div
-            style={{
-              display: "flex",
-              justifyContent: "center",
-              flexDirection: "column",
-              alignItems: "center"
-            }}
-          ></div>
-          <div
-            style={{
-              display: "flex",
-              justifyContent: "center",
-              flexDirection: "column",
-              alignItems: "center"
-            }}
-          >
-            <Step3 />
-            <p style={{ width: "200px" }}>
-              You can rest, while we take care of cumbersome processes
-            </p>
-          </div>
-          <div
-            style={{
-              display: "flex",
-              justifyContent: "center",
-              flexDirection: "column",
-              alignItems: "center"
-            }}
-          ></div>
-        </div>
-        <div
-          className={`${styles.column} ${styles.col12} ${styles.textCenter}`}
-          style={{ margin: "16px" }}
-        >
-      
-            <FileInput onFileAdded={this.onFileAdded}/>
-     
-        </div>
-        <div
-          className={`${styles.column} ${styles.col12}`}
           style={{ margin: "1rem 0" }}
         >
-          <div className={styles.divider} />
+          <FileInput uploadable={uploadable} onFileAdded={this.onFileAdded} />
         </div>
+
         <div
-          className={`${styles.column} ${styles.col12}`}
-          style={{ margin: "0.5rem 0" }}
+          className={`${styles.column} ${styles.col12} ${styles.textCenter}`}
+          style={{ margin: "4rem 0 1rem 0" }}
         >
-          <h5 className={` ${styles.textCenter}`}>😍 Users Love papergov</h5>
-          <div className={styles.columns}>
-                  <div
-              className={`${styles.column} ${styles.col2}`}/>
-            <div
-              className={`${styles.column} ${styles.col4}`}
-              style={{ margin: "1rem 0" }}
-            >
-              <div
-                className={`${styles.card} ${styles.textLeft}`}
-                style={{
-                  padding: "0.2rem 0.2rem",
-                  height: "240px",
+          <h4>Convenience, Guaranteed.</h4>
+        </div>
 
-                  border: "1px solid rgba(86, 39, 255, .2)",
-                  background: "#fff",
+        <div
+          className={`${styles.columns}`}
+          style={{ margin: "1rem 0 1rem 0" }}
+        >
+          <div
+            className={`${styles.column} ${styles.colSm4} ${styles.colXs12}`}
+          >
+            <FeatureCard
+              icon={<GoodBye style={{ width: "180px" }} />}
+              heading={"Simple"}
+              description="One account for all services & no more sending in paper checks or creating multiple accounts for each service to pay your bills"
+            />
+          </div>
 
-                  borderRadius: "0.3rem",
-                  boxShadow: "0 .1rem 0.1rem rgba(48,55,66,.10)"
-                }}
-              >
-                <div
-                  style={{
-                    width: "auto",
-                    margin: "1rem 0 0 0",
-                    textAlign: "center"
-                  }}
-                >
-                  <figure
-                    className={`${styles.avatar} ${styles.avatarXl}`}
-                    data-initial="EG"
-                    style={{
-                      backgroundColor: "#3500f3",
-                      fontSize: "2rem",
-                      boxShadow: "0 0.2rem 0.5rem rgba(48,55,66,.30)",
-                      border: "1px solid #fff",
-                      width: "4rem",
-                      height: "4rem"
-                    }}
-                  >
-                    <AbbyPic />
-                  </figure>
-                </div>
-                <div className={styles.cardHeader}>
-                  <h6 style={{ textAlign: "center" }}>Abby</h6>
-                </div>
-                <div
-                  className={styles.cardBody}
-                  style={{ display: "flex", alignItems: "center" }}
-                >
-                  <div>
-                    <h6
-                      className={styles.textGray}
-                      style={{ textAlign: "left" }}
-                    >
-                      ❝
-                    </h6>
-                    I didn’t expect the process to be so fast- go to the
-                    website, snap a picture of the ticket, click OK -{" "}
-                    <b>done in 30 seconds!</b>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div
-              className={`${styles.column} ${styles.col4}`}
-              style={{ margin: "1rem 0" }}
-            >
-              <div
-                className={`${styles.card} ${styles.textLeft}`}
-                style={{
-                  padding: "0.2rem 0.2rem",
-                  height: "240px",
+          <div
+            className={`${styles.column} ${styles.colSm4}  ${styles.colXs12}`}
+          >
+            <FeatureCard
+              icon={<Register style={{ width: "100px" }} />}
+              heading={"Savings"}
+              description="Say goodbye to late fees. Our automated system keeps track of your bills and handles them all for you"
+            />
+          </div>
 
-                  border: "1px solid rgba(86, 39, 255, .2)",
-                  background: "#fff",
-
-                  borderRadius: "0.3rem",
-                  boxShadow: "0 .1rem 0.1rem rgba(48,55,66,.10)"
-                }}
-              >
-                <div
-                  style={{
-                    width: "auto",
-                    margin: "1rem 0 0 0",
-                    textAlign: "center"
-                  }}
-                >
-                  <figure
-                    className={`${styles.avatar} ${styles.avatarXl}`}
-                    data-initial="EG"
-                    style={{
-                      backgroundColor: "#3500f3",
-                      fontSize: "2rem",
-                      boxShadow: "0 0.2rem 0.5rem rgba(48,55,66,.30)",
-                      border: "1px solid #fff",
-                      width: "4rem",
-                      height: "4rem"
-                    }}
-                  >
-                    <JessePic />
-                  </figure>
-                </div>
-                <div className={styles.cardHeader}>
-                  <h6 style={{ textAlign: "center" }}>Jesse</h6>
-                </div>
-                <div
-                  className={styles.cardBody}
-                  style={{ display: "flex", alignItems: "center" }}
-                >
-                  <div>
-                    <h6
-                      className={styles.textGray}
-                      style={{ textAlign: "left" }}
-                    >
-                      ❝
-                    </h6>
-                    What's worse than the ticket itself is the time it takes to
-                    pay. <b>papergov has given me that time back.</b>
-                  </div>
-                </div>
-              </div>
-            </div>
-                       <div
-              className={`${styles.column} ${styles.col2}`}/>
+          <div
+            className={`${styles.column} ${styles.colSm4}  ${styles.colXs12}`}
+          >
+            <FeatureCard
+              icon={<Safety style={{ width: "180px" }} />}
+              heading={"Secure"}
+              description="We deeply care about user privacy and data. We don’t sell your data & we use industry-standard encryption for all transactions"
+            />
           </div>
         </div>
+
+        <div
+          className={`${styles.columns}`}
+          style={{ margin: "1rem 0 2rem 0" }}
+        >
+          <div className={`${styles.column} ${styles.col1}`}></div>
+          <div className={`${styles.column} ${styles.col10}`}>
+            <div
+              className={`${styles.columns}`}
+              style={{
+                margin: "0rem 0 2rem 0"
+              }}
+            >
+              <div className={`${styles.column} ${styles.col2}`} />
+              <div className={`${styles.column}  ${styles.col8}`}>
+                <div className={styles.textCenter}>
+                  <h4>Love for Papergov</h4>
+                </div>
+              </div>
+              <div className={`${styles.column} ${styles.col2}`} />
+            </div>
+            <div className={`${styles.columns}`}>
+              <div
+                className={`${styles.column} ${styles.colSm4} ${styles.colXs12}`}
+              >
+                <Testimony
+                  picture={
+                    <AbbyPic style={{ width: "72px", height: "72px" }} />
+                  }
+                  comment={
+                    <div>
+                      What's worse than the ticket itself is the time it takes
+                      to pay. <b>papergov has given me that time back.</b>
+                    </div>
+                  }
+                  userName="Abby"
+                />
+              </div>
+              <div
+                className={`${styles.column} ${styles.colSm6} ${styles.colXs12}`}
+              >
+                <Testimony
+                  picture={
+                    <JessePic style={{ width: "72px", height: "72px" }} />
+                  }
+                  comment={
+                    <div>
+                      I didn’t expect the process to be so fast- go to the
+                      website, snap a picture of the ticket, click OK -{" "}
+                      <b>done in 30 seconds!</b>
+                    </div>
+                  }
+                  userName="Jesse"
+                />
+              </div>
+            </div>
+          </div>
+          <div className={`${styles.column} ${styles.col1}`}></div>
+        </div>
+
         <div
           className={`${styles.column} ${styles.col12} ${styles.textCenter}`}
           style={{
             display: "flex",
             flexDirection: "column",
-            justifyContent: "center"
+            justifyContent: "center",
+            margin: "0rem 0 4rem 0"
           }}
         >
           <div>
             <small>over</small>
           </div>
           <div>
-            <h3>50,000</h3>
+            <h2>100,000</h2>
           </div>
           <div>
-            <small>
+            <p>
               accessed government services via papergov in the last 6 months
-            </small>
+            </p>
           </div>
         </div>
 

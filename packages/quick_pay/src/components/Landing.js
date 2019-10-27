@@ -1,71 +1,34 @@
 import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from "react-redux";
+import { graphql, StaticQuery } from 'gatsby';
+import Img from "gatsby-image";
+
 import styles from "./spectre.min.module.css"
 import inputStyles from './inputfile.module.css';
 import iconStyles from './typicons.min.module.css';
-import Slider from "react-slick";
-import Lock from '../svgIcons/lock.js';
-import CameraCapture from './CameraCapture';
-import FileInput from "./FileInput";
 
-import {uploadDocumentAndCreateSubmission} from './actions'
-import { graphql, StaticQuery } from 'gatsby';
-import Img from "gatsby-image";
-import AboutSVG from './AboutSvgComp'
-import Step3 from './Step3'
+import FeatureCard from './Landing/Feature';
+import Testimony from "./Landing/Testimony";
+
 import CardLogos from '../illus/CardLogos.js';
 import AbbyPic from '../illus/Abby';
 import JessePic from '../illus/Jesse';
 
+import GoodBye from "../illus/GoodBye";
+import Safety from '../illus/Safety';
+import Register from '../illus/Register';
+
+import Lock from '../svgIcons/lock.js';
+import CameraCapture from './CameraCapture';
+import FileInput from "./FileInput";
+
 import { trackQPevent} from '../common/tracking';
+import { uploadDocumentAndCreateSubmission } from "./actions";
 
 const windowGlobal = typeof window !== 'undefined' && window
 
-const HeroIl = () => (
-    <StaticQuery
-        query={graphql`query heroIl3Query {
-  heroIl: 
-  allFile(
-            filter: { relativePath: { eq: "STEP2.png" } }
-          ) {
-            edges {
-              node {
-                name
-                childImageSharp {
-                  fluid (
-  traceSVG: {
-    color: "#f0d3fe"
-    turnPolicy: TURNPOLICY_MINORITY
-    blackOnWhite: true
-  }
-) {
-                    base64
-                    tracedSVG
-                    aspectRatio
-                    src
-                    srcSet
-                    srcWebp
-                    srcSetWebp
-                    sizes
-                    originalImg
-                    originalName
-                  }
-                }
-              }
-            }
-          }
 
-}`}
-        render={data => {
-            return (<Img
-                title={`papergov`}
-                alt={`illustration of papergov`}
-                style={{ width: '150px', height: '110px' }}
-
-                fluid={data.heroIl.edges[0].node.childImageSharp.fluid} />)
-        }} />
-)
 
 class Landing extends React.Component {
     constructor(props) {
@@ -205,114 +168,67 @@ class Landing extends React.Component {
     }
 
     render() {
-        const {createSubInProgress} = this.props;
+        const {createSubInProgress, name, uploadable} = this.props;
         let loadingComp = <div className={styles.loading}></div>
         let snapComp = null;    
 
         let btnLabel = 'SNAP TO GET STARTED'
-        if(createSubInProgress){
-            btnLabel = 'Uploading ...'
-        }
+     
+          if (createSubInProgress) {
+            btnLabel = "Uploading ...";
+          }
 
         if (this.state.checkingMediaDevices) {
             snapComp = loadingComp
         }
 
         if (!this.state.checkingMediaDevices && this.state.useMediaApi) {
-            snapComp = (<div style={{ width: '100%',  padding: '24px' }}>
-                
-                <button style={{ height:'48px', marginTop: '16px', width: '100%', fontSize: '14px' }} className={`${styles.btn} ${styles.btnPrimary} ${styles.textUppercase} ${styles.textBold}`} onClick={this.toggleCamera}> <span className={`${iconStyles.typcn} ${iconStyles.typcnCameraOutline}`}></span>{btnLabel}</button>
-
-            </div>)
+            snapComp = (
+              <div style={{ width: "100%", padding: "24px 24px 16px 24px" }}>
+                <button
+                  style={{
+                    height: "48px",
+                    marginTop: "16px",
+                    width: "100%",
+                    fontSize: "14px"
+                  }}
+                  className={`${styles.btn} ${styles.btnPrimary} ${styles.textUppercase} ${styles.textBold}`}
+                  onClick={this.toggleCamera}
+                >
+                  {" "}
+                  <span
+                    className={`${iconStyles.typcn} ${iconStyles.typcnCameraOutline}`}
+                  ></span>
+                  {btnLabel}
+                </button>
+              </div>
+            );
         } else {
-            snapComp = (<div style={{ width: '100%',  padding: '24px', }}>
+            snapComp = (
+              <div style={{ width: "100%", padding: "24px 24px 16px 24px" }}>
+                <input
+                  onChange={this.onChange}
+                  className={`${inputStyles.inputfile} ${styles.btn} ${styles.btnPrimary} ${styles.btnLg}`}
+                  type="file"
+                  id="inputfile"
+                  accept="image/*"
+                  capture
+                />
 
-                <input onChange={this.onChange} className={`${inputStyles.inputfile} ${styles.btn} ${styles.btnPrimary} ${styles.btnLg}`} type="file" id="inputfile" accept="image/*" capture />
-
-                <label htmlFor="inputfile"> <span className={`${iconStyles.typcn} ${iconStyles.typcnCameraOutline}`}></span>{btnLabel}</label>
-            </div>)
+                <label htmlFor="inputfile">
+                  {" "}
+                  <span
+                    className={`${iconStyles.typcn} ${iconStyles.typcnCameraOutline}`}
+                  ></span>
+                  {btnLabel}
+                </label>
+              </div>
+            );
         }
 
 
         return (
           <div className={styles.columns}>
-            <div
-              className={`${styles.column} ${styles.col12}`}
-              style={{ margin: "1.5rem 0 1rem 0" }}
-            >
-              <h4
-                style={{ margin: "8px 0" }}
-                className={`${styles.textCenter}`}
-              >
-                {" "}
-                ⚡ Lightning fast service payments
-              </h4>
-            </div>
-            <div
-              className={`${styles.column} ${styles.col12} ${styles.textCenter}`}
-              style={{ margin: "1rem 0 0 0 " }}
-            >
-              <div
-                style={{
-                  display: "flex",
-                  justifyContent: "center",
-                  flexDirection: "column",
-                  alignItems: "center"
-                }}
-              >
-                <AboutSVG />
-              </div>
-              <div
-                style={{
-                  display: "flex",
-                  justifyContent: "center",
-                  flexDirection: "column",
-                  alignItems: "center"
-                }}
-              >
-                <p>Snap your bills or tickets</p>
-              </div>
-              <div
-                style={{
-                  display: "flex",
-                  justifyContent: "center",
-                  flexDirection: "column",
-                  alignItems: "center"
-                }}
-              >
-                <HeroIl />
-              </div>
-              <div
-                style={{
-                  display: "flex",
-                  justifyContent: "center",
-                  flexDirection: "column",
-                  alignItems: "center"
-                }}
-              >
-                <p>Check your details & pay securely</p>
-              </div>
-              <div
-                style={{
-                  display: "flex",
-                  justifyContent: "center",
-                  flexDirection: "column",
-                  alignItems: "center"
-                }}
-              >
-                <Step3 />
-              </div>
-              <div
-                style={{
-                  display: "flex",
-                  justifyContent: "center",
-                  flexDirection: "column",
-                  alignItems: "center"
-                }}
-              >
-                <p>You can rest, while we take care of cumbersome processes</p>
-              </div>
-            </div>
             <div
               className={`${styles.column} ${styles.col12} ${styles.textCenter}`}
               style={{ margin: "0" }}
@@ -334,7 +250,7 @@ class Landing extends React.Component {
                 justifyContent: "center"
               }}
             >
-              <CardLogos />
+              <CardLogos style={{ width: "150px" }} />
             </div>
             <div
               className={`${styles.column} ${styles.col12} ${styles.textCenter}`}
@@ -352,6 +268,7 @@ class Landing extends React.Component {
                 }}
               >
                 <span
+                  style={{ padding: "0 4px 0 0 ", color: "#30ae40" }}
                   className={`${iconStyles.typcn} ${iconStyles.typcnLockClosedOutline}`}
                 ></span>
                 <span style={{ fontSize: "14px" }}>
@@ -359,122 +276,100 @@ class Landing extends React.Component {
                 </span>
               </div>
             </div>
-
             <div
-              className={`${styles.column} ${styles.col12}`}
-              style={{ margin: "1rem 0" }}
+              className={`${styles.column} ${styles.col12} ${styles.textCenter}`}
+              style={{ margin: "2rem 0 0rem 0" }}
             >
-              <div className={styles.divider} />
+              <h4>Convenience, Guaranteed.</h4>
             </div>
-            <div
-              className={`${styles.column} ${styles.col12}`}
-              style={{ margin: "0.5rem 0" }}
-            >
-              <h5 className={` ${styles.textCenter}`}>😍 Users Love papergov</h5>
-            </div>
-            <div
-              className={`${styles.column} ${styles.col12}`}
-              style={{ margin: "0 0 0.5rem 0" }}
-            >
-              <div
-                className={`${styles.card} ${styles.textLeft}`}
-                style={{
-                  margin: "0.5rem 0.2rem",
-                  padding: "0.2rem 0.2rem",
-                  height: "160px",
 
-                  border: "1px solid rgba(86, 39, 255, .2)",
-                  background: "#fff",
-                  marginBottom: "4rem",
-
-                  borderRadius: "0.3rem",
-                  boxShadow: "0 .1rem 0.1rem rgba(48,55,66,.10)"
-                }}
-              >
+            <div
+              className={`${styles.columns}`}
+              style={{ margin: "0rem 0 1rem 0" }}
+            >
+              <div className={`${styles.column} ${styles.col1}`}></div>
+              <div className={`${styles.column} ${styles.col10}`}>
                 <div
-                  className={styles.cardBody}
-                  style={{ display: "flex", alignItems: "center" }}
+                  className={`${styles.columns}`}
+                  style={{ margin: "0rem 0 1rem 0" }}
                 >
-                  <div>
-                    <h6 style={{ textAlign: "left" }}>❝</h6>I didn’t expect the
-                    process to be so fast- go to the website, snap a picture of
-                    the ticket, click OK - <b>done in 30 seconds! </b>
-                    <p style={{ textAlign: "right" }}>Abby</p>
+                  <div
+                    className={`${styles.column} ${styles.colSm4} ${styles.colXs12}`}
+                  >
+                    <FeatureCard
+                      icon={<GoodBye />}
+                      heading={"Simple"}
+                      description="One account for all services & no more sending in paper checks or creating multiple accounts for each service to pay your bills"
+                    />
                   </div>
 
                   <div
-                    style={{
-                      width: "200px",
-                      margin: "0px 1rem",
-                      textAlign: "center"
-                    }}
+                    className={`${styles.column} ${styles.colSm4}  ${styles.colXs12}`}
                   >
-                    <figure
-                      className={`${styles.avatar} ${styles.avatarXl}`}
-                      data-initial="EG"
-                      style={{
-                        backgroundColor: "#3500f3",
-                        fontSize: "2rem",
-                        boxShadow: "0 0.2rem 0.5rem rgba(48,55,66,.30)",
-                        border: "1px solid #fff",
-                        width: "4rem",
-                        height: "4rem"
-                      }}
-                    >
-                      <AbbyPic />
-                    </figure>
+                    <FeatureCard
+                      icon={<Register />}
+                      heading={"Savings"}
+                      description="Say goodbye to late fees. Our automated system keeps track of your bills and handles them all for you"
+                    />
+                  </div>
+
+                  <div
+                    className={`${styles.column} ${styles.colSm4}  ${styles.colXs12}`}
+                  >
+                    <FeatureCard
+                      icon={<Safety />}
+                      heading={"Secure"}
+                      description="We deeply care about user privacy and data. We don’t sell your data & we use industry-standard encryption for all transactions"
+                    />
                   </div>
                 </div>
               </div>
+            </div>
 
+            <div
+              className={`${styles.column} ${styles.col12} ${styles.textCenter}`}
+              style={{ margin: "0rem 0 1rem 0" }}
+            >
+              <h5 className={` ${styles.textCenter}`}>
+                😍 Users Love papergov
+              </h5>
+            </div>
+            <div
+              className={`${styles.columns}`}
+              style={{ margin: "0rem 0.5rem" }}
+            >
               <div
-                className={`${styles.card} ${styles.textLeft}`}
-                style={{
-                  margin: "1rem 0.2rem",
-                  padding: "0.2rem 0.2rem",
-                  height: "160px",
-
-                  border: "1px solid rgba(86, 39, 255, .2)",
-                  background: "#fff",
-
-                  borderRadius: "0.3rem",
-                  boxShadow: "0 .1rem 0.1rem rgba(48,55,66,.10)"
-                }}
+                className={`${styles.column} ${styles.colSm4} ${styles.colXs12}`}
               >
-                <div
-                  className={styles.cardBody}
-                  style={{ display: "flex", alignItems: "center" }}
-                >
-                  <div>
-                    <h6 style={{ textAlign: "left" }}>❝</h6> What's worse than
-                    the ticket itself is the time it takes to pay.{" "}
-                    <b>papergov has given me that time back.</b>
-                    <p style={{ textAlign: "right" }}>Jesse</p>
-                  </div>
-
-                  <div
-                    style={{
-                      width: "170px",
-                      textAlign: "center",
-                      margin: "0px 1rem"
-                    }}
-                  >
-                    <figure
-                      className={`${styles.avatar} ${styles.avatarXl}`}
-                      data-initial="EG"
-                      style={{
-                        backgroundColor: "#fff",
-                        fontSize: "2rem",
-                        width: "4rem",
-                        boxShadow: "0 0.2rem 0.5rem rgba(48,55,66,.30)",
-                        border: "1px solid #fff",
-                        height: "4rem"
-                      }}
-                    >
-                      <JessePic />
-                    </figure>
-                  </div>
-                </div>
+                <Testimony
+                  picture={
+                    <AbbyPic style={{ width: "72px", height: "72px" }} />
+                  }
+                  comment={
+                    <div>
+                      What's worse than the ticket itself is the time it takes
+                      to pay. <b>papergov has given me that time back.</b>
+                    </div>
+                  }
+                  userName="Abby"
+                />
+              </div>
+              <div
+                className={`${styles.column} ${styles.colSm6} ${styles.colXs12}`}
+              >
+                <Testimony
+                  picture={
+                    <JessePic style={{ width: "72px", height: "72px" }} />
+                  }
+                  comment={
+                    <div>
+                      I didn’t expect the process to be so fast- go to the
+                      website, snap a picture of the ticket, click OK -{" "}
+                      <b>done in 30 seconds!</b>
+                    </div>
+                  }
+                  userName="Jesse"
+                />
               </div>
             </div>
             <div
@@ -490,12 +385,12 @@ class Landing extends React.Component {
                 <small>over</small>
               </div>
               <div>
-                <h3>50,000</h3>
+                <h3>100,000</h3>
               </div>
               <div>
-                <small>
+                <p>
                   accessed government services via papergov in the last 6 months
-                </small>
+                </p>
               </div>
             </div>
             <div

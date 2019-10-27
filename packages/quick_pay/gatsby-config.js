@@ -49,6 +49,13 @@ module.exports = {
     `gatsby-transformer-remark`,
     `gatsby-transformer-json`,
     {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        name: `data`,
+        path: path.join(__dirname, `data`)
+      }
+    },
+    {
       resolve: "gatsby-plugin-webpack-bundle-analyser-v2",
       options: {
         devMode: false

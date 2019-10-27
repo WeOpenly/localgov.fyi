@@ -10,8 +10,10 @@ import LandingDesktop from "../components/LandingDesktop";
 
 import SubmitDetails from '../components/SubmitDetails'
 
-import FinalConf from '../components/FinalConf'
+import Hero from '../components/Landing/Hero';
+import FinalConf from '../components/FinalConf';
 import Footer from '../components/FooterNew';
+
 import styles from "../components/spectre.min.module.css"
 import FirebaseContext from '../common/firebase/context.js';
 import getFirebse from '../common/firebase/firebase.js';
@@ -96,67 +98,8 @@ class QPIndex extends React.Component {
 
         return (
           <Fragment>
-            <Helmet>
-              <title>{`papergov Quickpay`}</title>
-              <link
-                rel="stylesheet"
-                type="text/css"
-                charset="UTF-8"
-                href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick.min.css"
-              />
-              <link
-                rel="stylesheet"
-                type="text/css"
-                href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick-theme.min.css"
-              />
-            </Helmet>
+            <Hero title="Lightning Fast Service Payments" isMobile={isMobile} />
 
-            <header
-              className={styles.navbar}
-              style={{
-                background: "#fff",
-                padding: "4px 2px",
-                boxShadow: "0 2px 4px rgba(50,50,93,.11)"
-              }}
-            >
-              <section className={styles.navbarSection}>
-                <a
-                  href="/"
-                  style={{ fontSize: "22px" }}
-                  className={`${styles.btn} ${styles.btnLink} ${styles.h1}`}
-                >
-                  papergov
-                </a>
-                <sub
-                  className={styles.textUppercase}
-                  style={{
-                    fontSize: "9px",
-                    paddingTop: "4px",
-                    letterSpacing: "0.1rem",
-                    fontWeight: "bold"
-                  }}
-                >
-                  Quick Pay
-                </sub>
-              </section>
-
-              <section className={styles.navbarSection}>
-                <a
-                  href="/"
-                  style={{ fontSize: "14px" }}
-                  className={`${styles.btn} ${styles.btnLink}`}
-                >
-                  Terms
-                </a>
-                <a
-                  href="/"
-                  style={{ fontSize: "14px" }}
-                  className={`${styles.btn} ${styles.btnLink}`}
-                >
-                  Privacy
-                </a>
-              </section>
-            </header>
             <FirebaseContext.Provider value={getFirebse}>
               <div className={`${styles.container} ${styles.gridLg}`}>
                 {step === "show_landing" || step === "final_conf" ? null : (

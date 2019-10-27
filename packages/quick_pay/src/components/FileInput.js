@@ -4,6 +4,7 @@ import expStyles from "./spectre-exp.min.module.css";
 import iconStyles from "./typicons.min.module.css";
 import CardLogos from "../illus/CardLogos.js";
 import Dropzone from "react-dropzone";
+import CloudIl from '../illus/Cloud';
 
 import { uploadFile } from "./actions";
 
@@ -40,123 +41,134 @@ class FileInput extends Component {
   }
 
   render() {
+    const {uploadable} = this.props;
+    let label = "Drop a file here to begin";
+    
+    if (uploadable){
+      label = `Drop your ${uploadable} here to begin`;
+    }
+    
     return (
-      <Fragment>
-        <div
-          className={styles.card}
-          style={{
-            boxShadow: "0 .25rem 1rem rgba(48,55,66,.15)",
-            padding: "0.5rem 2rem"
-          }}
-        >
-          <Dropzone onDrop={this.onDrop}>
-            {({
-              getRootProps,
-              getInputProps,
-              isDragActive,
-              isDragReject,
-              rejectedFiles
-            }) => (
-              <div
-                className={`${styles.formGroup}  ${
-                  this.props.classes ? this.props.classes : ""
-                }`}
-                {...getRootProps()}
-              >
-                <div className={`${styles.col12} ${styles.colSm12}`}>
+        <Fragment>
+          <div
+            className={styles.card}
+            style={{
+              boxShadow: "0 .25rem 1rem rgba(48,55,66,.15)",
+              padding: "0.5rem 2.5rem"
+            }}
+          >
+            <Dropzone onDrop={this.onDrop}>
+              {({
+                getRootProps,
+                getInputProps,
+                isDragActive,
+                isDragReject,
+                rejectedFiles
+              }) => (
+                <Fragment>
                   <div
-                    style={{
-                      display: "flex",
-                      marginTop: "8px",
-                      flexDirection: "column",
-                      justifyContent: "center",
-                      padding: "2rem",
-                      alignItems: "center",
-                      border: "1px dotted rgba(86, 39, 255, .2)",
-                      borderRadius: "10px",
-                      cursor: "pointer",
-                      background: `${isDragActive ? "#fff" : "#f7f8f9"}`
-                    }}
+                    className={`${styles.formGroup}  ${
+                      this.props.classes ? this.props.classes : ""
+                    }`}
+                    {...getRootProps()}
                   >
-                    <div
-                      className={styles.textGray}
-                      style={{
-                        margin: "16px",
-                        display: "flex",
-                        flexDirection: "column",
-                        alignItems: "center"
-                      }}
-                    >
-                      <div>
-                        <span
-                          className={`${iconStyles.typcn} ${iconStyles.typcnUpload}`}
+                    <div className={`${styles.col12} ${styles.colSm12}`}>
+                      <div
+                        style={{
+                          display: "flex",
+                          marginTop: "8px",
+                          flexDirection: "column",
+                          justifyContent: "center",
+                          padding: "2rem",
+                          alignItems: "center",
+                          border: "1px dotted rgba(86, 39, 255, .2)",
+                          borderRadius: "10px",
+                          cursor: "pointer",
+                          background: `${isDragActive ? "#f7f8f9" : "#f7f8f9"}`
+                        }}
+                      >
+                        <div
+                          className={styles.textGray}
                           style={{
-                            fontSize: "1.1rem"
+                            margin: "16px",
+                            display: "flex",
+                            flexDirection: "column",
+                            alignItems: "center"
                           }}
-                        />
-                      </div>
-                      <div>
-                        {!isDragActive && "Click here or drop a file to upload"}
-                        {isDragReject && "File type not accepted, sorry!"}
+                        >
+                          <CloudIl style={{ width: "40px" }} />
+                          <div>
+                            {!isDragActive ? (
+                              <div style={{ margin: "0.7rem" }}>
+                                <h6> {label} </h6>
+                              </div>
+                            ) : null}
+                            {isDragReject && "File type not accepted, sorry!"}
+                          </div>
+                        </div>
+
+                        <input {...getInputProps()} />
                       </div>
                     </div>
-                    <input {...getInputProps()} />
                   </div>
-                </div>
-              </div>
-            )}
-          </Dropzone>
-          <div style={{ width: "100%" }}>
-            {this.state.uploadinProgress ? (
-              <progress
-                style={{ width: "100%" }}
-                className={expStyles.progress}
-                max="100"
-              />
-            ) : null}
-          </div>
-          <div
-            style={{ width: "100%", display: "flex", justifyContent: "center" }}
-          >
-            <div>
-              <div
-                className={`${styles.column} ${styles.col12} ${styles.textCenter}`}
-                style={{
-                  display: "flex",
-                  flexWrap: "wrap",
-                  justifyContent: "center"
-                }}
-              >
-                <CardLogos />
-              </div>
-              <div
-                className={`${styles.column} ${styles.col12} ${styles.textCenter}`}
-                style={{
-                  marginBottom: "1rem",
-                  display: "flex",
-                  flexWrap: "wrap",
-                  justifyContent: "center"
-                }}
-              >
+                </Fragment>
+              )}
+            </Dropzone>
+            <div style={{ width: "100%" }}>
+              {this.state.uploadinProgress ? (
+                <progress
+                  style={{ width: "100%" }}
+                  className={expStyles.progress}
+                  max="100"
+                />
+              ) : null}
+            </div>
+            <div
+              style={{
+                margin: "0.5rem 0",
+                width: "100%",
+                display: "flex",
+                justifyContent: "center"
+              }}
+            >
+              <div>
                 <div
+                  className={`${styles.column} ${styles.col12} ${styles.textCenter}`}
                   style={{
-                    textAlign: "center"
+                    display: "flex",
+                    flexWrap: "wrap",
+                    justifyContent: "center"
                   }}
                 >
-                  <span
-                    style={{ padding: "0 4px 0 0 ", color: "#30ae40" }}
-                    className={`${iconStyles.typcn} ${iconStyles.typcnLockClosedOutline}`}
-                  ></span>
-                  <span style={{ fontSize: "12px" }}>
-                    Your data, and transactions are always safe & secure
-                  </span>
+                  <CardLogos style={{ width: "130px" }} />
+                </div>
+                <div
+                  className={`${styles.column} ${styles.col12} ${styles.textCenter}`}
+                  style={{
+                    display: "flex",
+                    flexWrap: "wrap",
+                    justifyContent: "center"
+                  }}
+                >
+                  <div
+                    style={{
+                      textAlign: "center"
+                    }}
+                  >
+                    <span
+                      style={{ padding: "0 4px 0 0 ", color: "#30ae40" }}
+                      className={`${iconStyles.typcn} ${iconStyles.typcnLockClosedOutline}`}
+                    ></span>
+                    <span style={{ fontSize: "10px" }}>
+                      Your data, and transactions are always safe & secure
+                    </span>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
-        </div>
-      </Fragment>
-    );
+        </Fragment>
+      );
   }
 }
 

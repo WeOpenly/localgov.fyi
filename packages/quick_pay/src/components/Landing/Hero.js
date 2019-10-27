@@ -79,7 +79,11 @@ class Hero extends React.Component {
 
   render() {
     const { title, name, uploadable, isMobile} = this.props;
-  
+    let uploadStr = 'bills or tickets'
+    if(uploadable){
+      uploadStr = uploadable;
+    }
+
     let heroComps = (
       <Fragment>
         <div
@@ -103,7 +107,7 @@ class Hero extends React.Component {
             >
               <LandingCard
                 icon={<AboutSVG style={{ width: "120px", height: "120px" }} />}
-                heading={`Upload your ${uploadable}`}
+                heading={`Upload your ${uploadStr}`}
               />
             </div>
 
@@ -162,7 +166,7 @@ class Hero extends React.Component {
                     icon={
                       <AboutSVG style={{ width: "120px", height: "120px" }} />
                     }
-                    heading={`Snap your ${uploadable}`}
+                    heading={`Snap your ${uploadStr}`}
                   />
                 </div>
 

@@ -88,7 +88,6 @@ export default class HTML extends React.Component {
             content="D1BADF38847C730E9DC76BE0CCC4B42B"
           />
           <JsonLd data={searchLinksSchema} />
-   
           <meta
             property="og:site_name"
             content={`papergov: all your gov services in a single place`}
@@ -101,13 +100,14 @@ export default class HTML extends React.Component {
           <meta
             property="twitter:site"
             name="twitter:site"
-            content="@mypapergov"
+            content="@papergov"
           />
           <meta httpEquiv="x-ua-compatible" content="ie=edge" />
           <meta
             name="viewport"
-            content="width=device-width, initial-scale=1, shrink-to-fit=no"
+            content="width=device-width, minimum-scale=1, initial-scale=1, shrink-to-fit=no"
           />
+       
           <script
             async
             defer
@@ -129,7 +129,6 @@ export default class HTML extends React.Component {
           />{" "}
           {this.props.postBodyComponents}
         </body>
-   
       </html>
     );
   }

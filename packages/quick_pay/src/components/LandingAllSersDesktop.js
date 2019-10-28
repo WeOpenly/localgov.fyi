@@ -12,6 +12,7 @@ import Typography from '@material-ui/core/Typography';
 import Lock from "../svgIcons/lock.js";
 import CameraCapture from "./CameraCapture";
 
+
 import { uploadDocumentAndCreateSubmission } from "./actions";
 import { graphql, StaticQuery } from "gatsby";
 import Img from "gatsby-image";
@@ -19,6 +20,7 @@ import { makeStyles, withStyles } from "@material-ui/core/styles";
 
 import FeatureCard from "./Landing/Feature";
 import Testimony from "./Landing/Testimony";
+import LandingCard from "./Landing/LandingCard";
 
 
 import AboutSVG from "./AboutSvgComp";
@@ -280,7 +282,7 @@ class LandingDesktop extends React.Component {
       snapComp = loadingComp;
     }
 
-    console.log(sers[this.state.selectedServiceIndex])
+
     const tabComp = (
       <StyledTabs
         value={this.state.selectedServiceIndex}
@@ -304,10 +306,59 @@ class LandingDesktop extends React.Component {
  
     const tabPanelComps = filteredSers.map((s, idx) => {
         return (
-          <FileInput
-            insideTab uploadable={s.node.uploadable}
-            onFileAdded={this.onFileAdded}
-          />
+          <Fragment>
+            <div className={`${styles.column} ${styles.col1}`}></div>
+            <div className={`${styles.column} ${styles.col10}`}>
+              <div
+                className={`${styles.columns}`}
+                style={{ margin: "2rem 0 2rem 0" }}
+              >
+                <div
+                  className={`${styles.column} ${styles.colSm4} ${styles.colXs12}`}
+                >
+                  <LandingCard
+                    icon={
+                      <AboutSVG style={{ width: "120px", height: "120px" }} />
+                    }
+                    heading={`Upload your ${s.node.uploadable}`}
+                  />
+                </div>
+
+                <div
+                  className={`${styles.column} ${styles.colSm4}  ${styles.colXs12}`}
+                >
+                  <LandingCard
+                    icon={
+                      <HeroIl style={{ width: "120px", height: "120px" }} />
+                    }
+                    heading={"Check your details & pay securely"}
+                  />
+                </div>
+
+                <div
+                  className={`${styles.column} ${styles.colSm4}  ${styles.colXs12}`}
+                >
+                  <LandingCard
+                    icon={<Step3 style={{ width: "120px", height: "120px" }} />}
+                    heading={
+                      "You can rest, while we take care of cumbersome processes"
+                    }
+                  />
+                </div>
+              </div>
+            </div>
+            <div className={`${styles.column} ${styles.col1}`}></div>
+            <div
+              className={`${styles.column} ${styles.col12}`}
+              style={{ margin: "1.5rem 0 1rem 0" }}
+            >
+              <FileInput
+                insideTab
+                uploadable={s.node.uploadable}
+                onFileAdded={this.onFileAdded}
+              />
+            </div>
+          </Fragment>
         );
     });
     
@@ -328,12 +379,9 @@ class LandingDesktop extends React.Component {
             >
               {tabComp}
             </div>
-            <div
-              className={`${styles.column} ${styles.col12} ${styles.textCenter}`}
-              style={{ margin: "1rem 0" }}
-            >
+          
               {tabPanelComps}
-            </div>
+      
           </div>
         </div>
 

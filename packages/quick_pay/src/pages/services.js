@@ -113,7 +113,10 @@ class QPAllServices extends React.Component {
 
     return (
       <Fragment>
-        <Hero title="Lightning Fast Service Payments" isMobile={isMobile} />
+        <Hero
+          title="Lightning Fast Service Payments"
+          isAllSer={true} isMobile={isMobile}
+        />
 
         <FirebaseContext.Provider value={getFirebse}>
           <div className={`${styles.container} ${styles.gridLg}`}>

@@ -1,33 +1,6 @@
 import React, { Component } from "react";
-
-import Typography from '@material-ui/core/Typography';
-import { withStyles } from '@material-ui/core/styles';
-
-
-const styles = theme => ({
-    support_footer: {
-        margin: `${theme.spacing.unit * 3}px 0`,
-        display: 'flex',
-        flexDirection: 'column',
-        alignItems: 'left'
-    },
-    support_footer_header: {
-        marginBottom: theme.spacing.unit,
-    },
-   support_footer_links: {
-        display: 'flex',
-        justifyContent: 'space-between',
-        flexDirection: 'column',
-        alignItems: 'left'
-    },
-    svgIcon: {
-        fontSize: '20px'
-    },
-    support_container: {
-        display: 'flex',
-        justifyContent: 'space-between'
-    }
-});
+import styles from "../spectre.min.module.css";
+import iconStyles from "../typicons.min.module.css";
 
 
 class FooterSupport extends Component {
@@ -41,44 +14,84 @@ class FooterSupport extends Component {
         const { classes, } = this.props;
 
         return (
-          <div className={classes.support_footer}>
-            <div className={classes.support_footer_header}>
-              <Typography variant="display1" style={{ fontSize: "0.85rem" }}>
-                Support
-              </Typography>
-            </div>
-            <div className={classes.support_footer_links}>
-              <Typography variant="caption">
+          <div className={`${styles.columns}`}>
+            <div
+              className={`${styles.column} ${styles.col12}  ${styles.hideXs} ${styles.textLeft}}`}
+            >
+              <div style={{ paddingBottom: "0.5rem" }}>
+                <h6> Support</h6>
+              </div>
+
+              <div>
                 <a
                   href={`https://papergov.zendesk.com/hc/en-us`}
-                  className={classes.footer_social_icon}
+                  className={styles.textGray}
                   target="_blank"
                 >
-                  Help
+                  Help & FAQ
                 </a>
-              </Typography>
-              <Typography variant="caption">
+              </div>
+
+              <div>
                 <a
                   href={`https://papergov.com/terms`}
-                  className={classes.footer_social_icon}
+                  className={styles.textGray}
                   target="_blank"
                 >
                   Terms
                 </a>
-              </Typography>
-              <Typography variant="caption">
+              </div>
+
+              <div>
                 <a
+                  className={styles.textGray}
                   href={`https://papergov.com/privacy`}
-                  className={classes.footer_social_icon}
                   target="_blank"
                 >
                   Privacy
                 </a>
-              </Typography>
+              </div>
+            </div>
+            <div
+              className={`${styles.column} ${styles.col12}  ${styles.showXs} ${styles.textCenter}`}
+            >
+              <div style={{ paddingBottom: "0.5rem" }}>
+                <h6> Support</h6>
+              </div>
+
+              <div>
+                <a
+                  href={`https://papergov.zendesk.com/hc/en-us`}
+                  className={styles.textGray}
+                  target="_blank"
+                >
+                  Help & FAQ
+                </a>
+              </div>
+
+              <div>
+                <a
+                  href={`https://papergov.com/terms`}
+                  className={styles.textGray}
+                  target="_blank"
+                >
+                  Terms
+                </a>
+              </div>
+
+              <div>
+                <a
+                  className={styles.textGray}
+                  href={`https://papergov.com/privacy`}
+                  target="_blank"
+                >
+                  Privacy
+                </a>
+              </div>
             </div>
           </div>
         );
     }
 }
 
-export default withStyles(styles)(FooterSupport);
+export default FooterSupport;

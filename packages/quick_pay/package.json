@@ -89,6 +89,7 @@
         "babel-plugin-dynamic-import-webpack": "^1.1.0",
         "eslint-config-react-app": "^4.0.1",
         "gatsby-plugin-webpack-bundle-analyser-v2": "^1.1.1",
+        "react-social-icons": "^4.1.0",
         "regenerator-runtime": "^0.12.1",
         "start-server-and-test": "^1.7.5",
         "webpack-bundle-analyzer": "^3.3.2"

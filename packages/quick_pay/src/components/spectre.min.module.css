@@ -265,7 +265,7 @@ a:hover {
 }
 
 a:visited {
-    color: #c4bce2
+    color: #6a41ff
 }
 
 h1,
@@ -2160,13 +2160,14 @@ summary.accordion-header::-webkit-details-marker {
 }
 
 .badge[data-badge]::after {
-    font-size: .7rem;
-    height: .9rem;
     line-height: 1;
     min-width: .9rem;
-    padding: .1rem .2rem;
     text-align: center;
-    white-space: nowrap
+    white-space: nowrap;
+    font-size: .6rem;
+    height: 1rem;
+    padding: .2rem .3rem;
+    font-weight: bold;
 }
 
 .badge:not([data-badge])::after,

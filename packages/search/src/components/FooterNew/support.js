@@ -8,10 +8,8 @@ class FooterSupport extends Component {
         super(props);
     }
 
-
-
     render() {
-        const { classes, } = this.props;
+        const { classes } = this.props;
 
         return (
           <div className={`${styles.columns}`}>
@@ -22,29 +20,29 @@ class FooterSupport extends Component {
                 <h6> Support</h6>
               </div>
 
-              <div>
+              <div style={{ marginBottom: "0.2rem" }}>
                 <a
                   href={`https://papergov.zendesk.com/hc/en-us`}
-                  className={styles.textGray}
+                  className={`${styles.textGray} ${styles.textSemibold}`}
                   target="_blank"
                 >
                   Help & FAQ
                 </a>
               </div>
 
-              <div>
+              <div style={{ marginBottom: "0.2rem" }}>
                 <a
                   href={`https://papergov.com/terms`}
-                  className={styles.textGray}
+                  className={`${styles.textGray} ${styles.textSemibold}`}
                   target="_blank"
                 >
                   Terms
                 </a>
               </div>
 
-              <div>
+              <div style={{ marginBottom: "0.2rem" }}>
                 <a
-                  className={styles.textGray}
+                  className={`${styles.textGray} ${styles.textSemibold}`}
                   href={`https://papergov.com/privacy`}
                   target="_blank"
                 >
@@ -59,29 +57,29 @@ class FooterSupport extends Component {
                 <h6> Support</h6>
               </div>
 
-              <div>
+              <div style={{ marginBottom: "0.2rem" }}>
                 <a
                   href={`https://papergov.zendesk.com/hc/en-us`}
-                  className={styles.textGray}
+                  className={`${styles.textGray} ${styles.textSemibold}`}
                   target="_blank"
                 >
                   Help & FAQ
                 </a>
               </div>
 
-              <div>
+              <div style={{ marginBottom: "0.2rem" }}>
                 <a
                   href={`https://papergov.com/terms`}
-                  className={styles.textGray}
+                  className={`${styles.textGray} ${styles.textSemibold}`}
                   target="_blank"
                 >
                   Terms
                 </a>
               </div>
 
-              <div>
+              <div style={{ marginBottom: "0.2rem" }}>
                 <a
-                  className={styles.textGray}
+                  className={`${styles.textGray} ${styles.textSemibold}`}
                   href={`https://papergov.com/privacy`}
                   target="_blank"
                 >

@@ -19,15 +19,20 @@ class FooterCompany extends Component {
             <h6> Company</h6>
           </div>
 
-          <div>
-            <a className={styles.textGray} href={`/about`} target="_blank">
+          <div style={{ marginBottom: "0.2rem" }}>
+            <a
+              className={`${styles.textGray} ${styles.textSemibold}`}
+              href={`/about`}
+              target="_blank"
+            >
               About
             </a>
           </div>
 
-          <div>
+          <div style={{ marginBottom: "0.2rem" }}>
             <a
-              className={styles.textGray}
+              className={`${styles.textGray} ${styles.textSemibold}`}
+    
               href={`https://papergov.com/blog`}
               target="_blank"
             >

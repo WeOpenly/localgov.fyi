@@ -3126,7 +3126,7 @@ a.text-secondary:visited {
 }
 
 .text-gray {
-    color: #9da4ac !important
+    color: #96a1ad !important
 }
 
 a.text-gray:focus,
@@ -3667,6 +3667,10 @@ a.text-error:visited {
 
 .text-normal {
     font-weight: 400
+}
+
+.text-semibold {
+    font-weight: 500
 }
 
 .text-bold {

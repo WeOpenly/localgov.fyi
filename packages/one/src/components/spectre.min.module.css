@@ -2167,7 +2167,7 @@ summary.accordion-header::-webkit-details-marker {
 .badge[data-badge]::after {
     background: #5627ff;
     background-clip: padding-box;
-    border-radius: .5rem;
+    border-radius: .2rem;
     box-shadow: 0 0 0 .1rem #fff;
     color: #fff;
     content: attr(data-badge);
@@ -2176,11 +2176,13 @@ summary.accordion-header::-webkit-details-marker {
 }
 
 .badge[data-badge]::after {
-    font-size: .7rem;
+    font-size: .6rem;
+    font-weight: 800;
     height: .9rem;
     line-height: 1;
     min-width: .9rem;
-    padding: .1rem .2rem;
+    margin-left: 0.1rem;
+    padding: .12rem .2rem;
     text-align: center;
     white-space: nowrap
 }
@@ -3135,6 +3137,10 @@ a.text-secondary:hover {
 
 a.text-secondary:visited {
     color: #f4f0ff
+}
+
+.text-semibold {
+    font-weight: 500
 }
 
 .text-gray {

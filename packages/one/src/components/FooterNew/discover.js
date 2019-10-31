@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import styles from "../spectre.min.module.css";
 import iconStyles from "../typicons.min.module.css";
 
-
 class FooterDiscover extends Component {
   constructor(props) {
     super(props);
@@ -20,11 +19,10 @@ class FooterDiscover extends Component {
             <h6>Discover</h6>
           </div>
 
-
-          <div>
-            <a className={styles.textGray} href={`https://pay.papergov.com`} target="_blank">
+          <div style={{ marginBottom: "0.2rem" }}>
+            <a href={`https://one.papergov.com`} target="_blank">
               <span
-                className={`${styles.badge} ${styles.textGray}`}
+                className={`${styles.badge} ${styles.textSemibold} ${styles.textGray}`}
                 data-badge="NEW"
               >
                 Quick Pay For All Services
@@ -32,9 +30,10 @@ class FooterDiscover extends Component {
             </a>
           </div>
 
-          <div>
+
+          <div style={{ marginBottom: "0.2rem" }}>
             <a
-              className={styles.textGray}
+              className={`${styles.textGray} ${styles.textSemibold}`}
               href={`https://papergov.com/locations`}
               target="_blank"
             >
@@ -42,9 +41,9 @@ class FooterDiscover extends Component {
             </a>
           </div>
 
-          <div>
+          <div style={{ marginBottom: "0.2rem" }}>
             <a
-              className={styles.textGray}
+              className={`${styles.textGray} ${styles.textSemibold}`}
               href={`https://papergov.com/services`}
               target="_blank"
             >
@@ -59,26 +58,20 @@ class FooterDiscover extends Component {
             <h6>Discover</h6>
           </div>
 
-          <div>
+          <div style={{ marginBottom: "0.2rem" }}>
             <a href={`https://one.papergov.com`} target="_blank">
               <span
                 className={`${styles.badge} ${styles.textGray}`}
                 data-badge="NEW"
               >
-                Manage all your bills in one place
+                Quick Pay For All Services
               </span>
             </a>
           </div>
 
-          <div>
-            <a className={styles.textGray} href={`/services`} target="_blank">
-              Quick Pay For All Services
-            </a>
-          </div>
-
-          <div>
+          <div style={{ marginBottom: "0.2rem" }}>
             <a
-              className={styles.textGray}
+              className={`${styles.badge} ${styles.textGray}`}
               href={`https://papergov.com/locations`}
               target="_blank"
             >
@@ -86,9 +79,9 @@ class FooterDiscover extends Component {
             </a>
           </div>
 
-          <div>
+          <div style={{ marginBottom: "0.2rem" }}>
             <a
-              className={styles.textGray}
+              className={`${styles.badge} ${styles.textGray}`}
               href={`https://papergov.com/services`}
               target="_blank"
             >

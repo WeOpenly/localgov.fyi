@@ -59,6 +59,7 @@ service_header_cardTop : {
   },
   service_header_title : {
     marginRight: theme.spacing.unit * 5,
+    paddingTop: theme.spacing.unit *2,
   },
   service_header_title_mob : {
 
@@ -154,7 +155,7 @@ service_header_deliveryLinkWrapper : {
 service_header_serviceActions : {
     display: 'flex',
     justifyContent: 'center',
-    padding: theme.spacing.unit*2
+    padding: `0 ${theme.spacing.unit*2}`,
   },
 service_header_deliveryLinkWrapperMobile : {
     display: 'flex',

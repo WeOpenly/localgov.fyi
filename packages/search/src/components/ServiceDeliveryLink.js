@@ -1,6 +1,9 @@
 import React, {Component, Fragment} from 'react';
 import PropTypes from 'prop-types';
 import {connect} from "react-redux";
+import speStyles from "./spectre.min.module.css";
+import iconStyles from "./typicons.min.module.css";
+
 
 import {withStyles} from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
@@ -46,22 +49,31 @@ const styles = theme => ({
     alignItems: "center",
     justifyContent: "center",
     boxShadow: `0 0 0 0`,
-    border: `1px solid ${theme.palette.primary['50']}`
+    border: `1px solid ${theme.palette.primary["50"]}`
   },
   ser_del_link_feedbackIcon: {
     margin: theme.spacing.unit
   },
   ser_del_link_content: {
-    display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'center'
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center"
   },
   ser_del_link_button: {
-    width: '100%',
-    marginBottom: theme.spacing.unit,
-    '&:hover': {
-      color: 'white',
-      backgroundColor: theme.palette.primary['400']
+    width: "100%",
+    marginBottom: "4px",
+    "&:hover": {
+      color: "white",
+      backgroundColor: theme.palette.primary["400"]
+    }
+  },
+  ser_del_link_button_qp: {
+    width: "100%",
+    marginBottom: "4px",
+    color: "white",
+     "&:hover": {
+      color: theme.palette.primary["400"],
+      backgroundColor: 'white'
     }
   },
   ser_del_link_paper: {
@@ -70,61 +82,57 @@ const styles = theme => ({
     paddingTop: theme.spacing.unit * 2,
     // borderTop : `6px solid ${theme.palette.primary["500"]}`,
     backgroundImage: `linear-gradient(to left bottom, #6f47ff, #5d38f2, #4829e4, #3017d7)`,
-    backgroundColor: theme.palette.primary['400']
+    backgroundColor: theme.palette.primary["400"]
   },
   ser_del_link_title: {
     color: theme.palette.common.white,
     paddingBottom: theme.spacing.unit * 2
   },
   ser_del_link_satisfiedDialog: {
-    display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'center',
-    justifyContent: 'center',
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center",
+    justifyContent: "center",
     margin: theme.spacing.unit * 4
   },
   ser_del_link_form: {
-    width: '350px'
+    width: "350px"
   },
   ser_del_link_bootstrapInput: {
     borderRadius: 3,
-    color: theme.palette.primary['200'],
-    border: '1px solid #ced4da',
-    padding: '10px 12px 12px 12px',
+    color: theme.palette.primary["200"],
+    border: "1px solid #ced4da",
+    padding: "10px 12px 12px 12px",
     marginTop: theme.spacing.unit,
-    width: '100%',
-    transition: theme
-      .transitions
-      .create(['border-color', 'box-shadow'])
+    width: "100%",
+    transition: theme.transitions.create(["border-color", "box-shadow"])
   },
   ser_del_link_bootstrapInputComment: {
     borderRadius: 3,
-    color: theme.palette.primary['200'],
-    border: '1px solid #ced4da',
-    padding: '10px 12px 12px 12px',
+    color: theme.palette.primary["200"],
+    border: "1px solid #ced4da",
+    padding: "10px 12px 12px 12px",
     marginTop: theme.spacing.unit,
-    width: '100%',
-    height: '100px',
-    'wordBreak': 'break-word',
-    transition: theme
-      .transitions
-      .create(['border-color', 'box-shadow'])
+    width: "100%",
+    height: "100px",
+    wordBreak: "break-word",
+    transition: theme.transitions.create(["border-color", "box-shadow"])
   },
   ser_del_link_dialogButton: {
     marginTop: theme.spacing.unit * 2,
     marginBottom: theme.spacing.unit * 2,
-    backgroundColor: 'white',
-    color: theme.palette.primary['700'],
-    textTransform: 'capitalize',
-    '&:hover': {
-      color: 'white'
+    backgroundColor: "white",
+    color: theme.palette.primary["700"],
+    textTransform: "capitalize",
+    "&:hover": {
+      color: "white"
     }
   },
-  ser_del_button_msg_container:{
-    display: 'flex',
-    flexDirection: 'column',
-    width: '100%',
-    justifyContent: 'space-between'
+  ser_del_button_msg_container: {
+    display: "flex",
+    flexDirection: "column",
+    width: "100%",
+    justifyContent: "space-between"
   },
   ser_del_link_dialogButton2: {
     marginTop: theme.spacing.unit * 2,
@@ -132,56 +140,56 @@ const styles = theme => ({
   },
   ser_del_link_afterSubmit: {
     margin: theme.spacing.unit * 6,
-    display: 'flex',
-    flexDirection: 'column',
-    justifyContent: 'center',
-    alignItems: 'center'
+    display: "flex",
+    flexDirection: "column",
+    justifyContent: "center",
+    alignItems: "center"
   },
   ser_del_link_spinner: {
-    color: theme.palette.primary['500']
+    color: theme.palette.primary["500"]
   },
   ser_del_link_icon: {
-    color: theme.palette.primary['500'],
+    color: theme.palette.primary["500"],
     fontSize: 32,
     marginBottom: theme.spacing.unit * 2
   },
   ser_del_link_successIcon: {
-    color: theme.palette.primary['100'],
+    color: theme.palette.primary["100"],
     fontSize: 56,
-    margin: theme.spacing.unit *2
+    margin: theme.spacing.unit * 2
   },
   ser_del_link_bodyText: {
     color: theme.palette.common.white
   },
   ser_del_redir: {},
   ser_del_link_close: {
-    position: 'absolute',
-    top: '8px',
-    right: '8px'
+    position: "absolute",
+    top: "8px",
+    right: "8px"
   },
-ser_del_link_icymi:{
-  display: 'flex',
-  alignItems: 'center',
-  paddingTop: theme.spacing.unit,
-},
-  ser_del_link_icymi_icon:{
-    color: theme.palette.primary['100'],
-    margin: theme.spacing.unit,
+  ser_del_link_icymi: {
+    display: "flex",
+    alignItems: "center",
+    paddingTop: theme.spacing.unit
   },
-ser_del_link_icymi_text:{
-  color: theme.palette.primary['100']
-},
+  ser_del_link_icymi_icon: {
+    color: theme.palette.primary["100"],
+    margin: theme.spacing.unit
+  },
+  ser_del_link_icymi_text: {
+    color: theme.palette.primary["100"]
+  },
   template_views_card_item: {
     display: "flex",
     justifyContent: "center"
   },
   template_views_card_item_mob: {
-    display: "flex",
+    display: "flex"
   },
   template_views_card_mob: {
     display: "flex",
     flexWrap: "wrap",
-    paddingLeft: theme.spacing.unit,
+    paddingLeft: theme.spacing.unit
   },
   template_views_card: {
     display: "flex",
@@ -353,6 +361,13 @@ class ServiceDeliveryLink extends Component {
       failure
     } = this.state;
 
+    let canQuickPay = true;
+
+    if(service_name.includes('Register') || service_name.includes('Apply') || service_name.includes('Check')){
+      canQuickPay = false;
+    }
+
+
     if (!serDelLinks) {
       return null;
     }
@@ -372,6 +387,8 @@ class ServiceDeliveryLink extends Component {
     }
 
     let serButtons = null;
+    let qpButton = null;
+    let linkText = 'Quick Pay';
     if(serDelLinks){
       serButtons = serDelLinks.map((link, idx) => {
         const data = {
@@ -381,15 +398,16 @@ class ServiceDeliveryLink extends Component {
         }
         const encodedData = encode(JSON.stringify(data))
         const redir = `/deep_link/?data=${encodedData}`
+        linkText = `Quick ${link.link_name}`
         return (
           <Button
             key={link.link_name}
             href={redir}
             onClick={this.handleClick}
             target="_blank"
-            variant="contained"
+            variant="outlined"
             color="primary"
-            size="large"
+            size="small"
             className={classes.ser_del_link_button}>
             {this.state.redirectClicked
               ? (<CircularProgress />)
@@ -397,6 +415,25 @@ class ServiceDeliveryLink extends Component {
           </Button>
         );
       });
+    }
+
+    if(canQuickPay){
+      const redir = 'https://pay.papergov.com';
+      qpButton = (
+        <Button
+          key={"qp-button"}
+          href={redir}
+          onClick={this.handleClick}
+          target="_blank"
+          variant="contained"
+          color="primary"
+          size="small"
+          style={{ color: "#fff" }}
+          className={classes.ser_del_link_button_qp}
+        >
+          {this.state.redirectClicked ? <CircularProgress /> : `${linkText}`}
+        </Button>
+      );
     }
 
     const dialog = (
@@ -545,33 +582,55 @@ class ServiceDeliveryLink extends Component {
       )
     }
 
-    const viewsComp = (moreThan > 10) ? (<div className={this.state.isMob ? classes.template_views_card_item_mob : classes.template_views_card_item}>
-      <div>
-        {" "}
-        <SvgUsers style={{ fontSize: "26px" }} />{" "}
-      </div>{" "}
-      <div className={classes.template_views_message}>
-        <Typography
-          variant="caption"
-          className={classes.template_views_message_text}
+    const viewsComp =
+      moreThan > 10 ? (
+        <div
+          className={
+            this.state.isMob
+              ? classes.template_views_card_item_mob
+              : classes.template_views_card_item
+          }
         >
-        <b>{moreThan}</b> people accessed this
-          service in the past month
-                </Typography>
-      </div>
-    </div>) : null
+          <div>
+            {" "}
+            <SvgUsers style={{ fontSize: "20px" }} />{" "}
+          </div>{" "}
+          <div className={classes.template_views_message}>
+            <div className={speStyles.textGray}>
+              <b>{moreThan}</b> accessed this month
+            </div>
+          </div>
+        </div>
+      ) : null;
 
     return (
       <Fragment>
         <div className={classes.ser_del_button_msg_container}>
-          {serButtons}
           {viewsComp}
+          {serButtons}
+          {qpButton ? (
+            <Fragment>
+              <div className={speStyles.divider} />
+              {qpButton}
+              <div
+                className={
+                  this.state.isMob
+                    ? classes.template_views_card_item_mob
+                    : classes.template_views_card_item
+                }
+              >
+                <div className={speStyles.textGray}>
+                  <p>⚡ No Login. Snap, Pay & Done!</p>
+                </div>
+              </div>
+            </Fragment>
+          ) : null}
         </div>
-      
+
         {redirMsg}
         {dialog}
       </Fragment>
-   );
+    );
   }
 }
 

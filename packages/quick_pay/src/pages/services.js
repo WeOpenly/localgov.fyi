@@ -183,11 +183,7 @@ class QPAllServices extends React.Component {
           <div className={`${styles.column} ${styles.col1}`}></div>
         </div>
 
-        <Hero
-          title="Lightning Fast Service Payments"
-          isAllSer={true}
-          isMobile={isMobile}
-        />
+
 
         <FirebaseContext.Provider value={getFirebse}>
           <div className={`${styles.container} ${styles.gridLg}`}>

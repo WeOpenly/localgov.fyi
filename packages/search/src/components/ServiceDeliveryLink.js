@@ -71,9 +71,8 @@ const styles = theme => ({
     width: "100%",
     marginBottom: "4px",
     color: "white",
-     "&:hover": {
-      color: theme.palette.primary["400"],
-      backgroundColor: 'white'
+     "&:visited": {
+      color: `white !important`,
     }
   },
   ser_del_link_paper: {
@@ -423,7 +422,7 @@ class ServiceDeliveryLink extends Component {
     }
 
     if(canQuickPay){
-      const redir = 'https://pay.papergov.com';
+      const redir = 'https://pay.papergov.com/?utm_source=service_page';
       qpButton = (
         <Button
           key={"qp-button"}
@@ -433,7 +432,10 @@ class ServiceDeliveryLink extends Component {
           variant="contained"
           color="primary"
           size="small"
-          style={{ color: "#fff" }}
+          style={{
+            marginBottom: '4px',
+       
+          }}
           className={classes.ser_del_link_button_qp}
         >
           {this.state.redirectClicked ? <CircularProgress /> : `${linkText}`}
@@ -624,7 +626,7 @@ class ServiceDeliveryLink extends Component {
                     : classes.template_views_card_item
                 }
               >
-                <div className={speStyles.textGray}>
+                <div className={`${speStyles.textGray} ${speStyles.textSemibold}`}>
                   <p>⚡ No Login. Snap, Pay & Done!</p>
                 </div>
               </div>

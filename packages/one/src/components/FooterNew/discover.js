@@ -20,7 +20,10 @@ class FooterDiscover extends Component {
           </div>
 
           <div style={{ marginBottom: "0.2rem" }}>
-            <a href={`https://one.papergov.com`} target="_blank">
+            <a
+              href={`https://pay.papergov.com/?utm_source=one_footer`}
+              target="_blank"
+            >
               <span
                 className={`${styles.badge} ${styles.textSemibold} ${styles.textGray}`}
                 data-badge="NEW"
@@ -29,8 +32,6 @@ class FooterDiscover extends Component {
               </span>
             </a>
           </div>
-
-
           <div style={{ marginBottom: "0.2rem" }}>
             <a
               className={`${styles.textGray} ${styles.textSemibold}`}
@@ -40,7 +41,6 @@ class FooterDiscover extends Component {
               All Locations
             </a>
           </div>
-
           <div style={{ marginBottom: "0.2rem" }}>
             <a
               className={`${styles.textGray} ${styles.textSemibold}`}

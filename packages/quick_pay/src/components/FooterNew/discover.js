@@ -20,7 +20,7 @@ class FooterDiscover extends Component {
           </div>
 
           <div style={{ marginBottom: "0.2rem" }}>
-            <a href={`https://one.papergov.com`} target="_blank">
+            <a href={`https://one.papergov.com/?utm_source=pay_footer`} target="_blank">
               <span
                 className={`${styles.badge} ${styles.textSemibold} ${styles.textGray}`}
                 data-badge="NEW"
@@ -33,7 +33,7 @@ class FooterDiscover extends Component {
           <div style={{ marginBottom: "0.2rem" }}>
             <a
               className={`${styles.textGray} ${styles.textSemibold}`}
-              href={`https://pay.papergov.com/`}
+              href={`https://pay.papergov.com/services`}
               target="_blank"
             >
               Quick Pay For All Services

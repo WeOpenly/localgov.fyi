@@ -205,59 +205,7 @@ class Hero extends React.Component {
 
     return (
       <Fragment>
-        <Helmet>
-          <title>{`Papergov Quickpay`}</title>
-        </Helmet>
-
-        <div className={styles.columns}>
-          <div className={`${styles.column} ${styles.col1}`}></div>
-          <div className={`${styles.column} ${styles.col10}`}>
-            <header className={styles.navbar}>
-              <section
-                style={{ padding: "0.5rem 0" }}
-                className={styles.navbarSection}
-              >
-                <Link to="/">
-                  <a href="#" style={{ textDecoration: "none" }}>
-                    <h3>
-                      papergov
-                      <sub
-                        className={styles.textUppercase}
-                        style={{
-                          color: "#455060",
-                          fontSize: "0.5rem",
-                          letterSpacing: "0.1rem",
-                          fontWeight: "bold"
-                        }}
-                      >
-                        QuickPay
-                      </sub>
-                    </h3>
-                  </a>
-                </Link>
-              </section>
-
-              <section className={styles.navbarSection}>
-                <a
-                  href={`https://papergov.com/terms`}
-                  style={{ padding: "0.5rem" }}
-                  target="_blank"
-                >
-                  Terms
-                </a>
-
-                <a
-                  href={`https://papergov.com/privacy`}
-                  style={{ padding: "0.5rem" }}
-                  target="_blank"
-                >
-                  Privacy
-                </a>
-              </section>
-            </header>
-          </div>
-          <div className={`${styles.column} ${styles.col1}`}></div>
-        </div>
+      
 
         <div className={styles.columns}>{heroComps}</div>
       </Fragment>

@@ -3,6 +3,8 @@ import PropTypes from 'prop-types';
 import { connect } from "react-redux";
 import Helmet from 'react-helmet';
 import { Elements, StripeProvider } from 'react-stripe-elements';
+import Link from "gatsby-link";
+
 import {returnToSnap} from '../components/actions'
 
 import Landing from '../components/Landing'
@@ -106,6 +108,59 @@ class QPIndex extends React.Component {
 
         return (
           <Fragment>
+            <Helmet>
+              <title>{`Papergov Quickpay`}</title>
+            </Helmet>
+
+            <div className={styles.columns}>
+              <div className={`${styles.column} ${styles.col1}`}></div>
+              <div className={`${styles.column} ${styles.col10}`}>
+                <header className={styles.navbar}>
+                  <section
+                    style={{ padding: "0.5rem 0" }}
+                    className={styles.navbarSection}
+                  >
+                    <Link to="/">
+                      <a href="#" style={{ textDecoration: "none" }}>
+                        <h3>
+                          papergov
+                          <sub
+                            className={styles.textUppercase}
+                            style={{
+                              color: "#455060",
+                              fontSize: "0.5rem",
+                              letterSpacing: "0.1rem",
+                              fontWeight: "bold"
+                            }}
+                          >
+                            QuickPay
+                          </sub>
+                        </h3>
+                      </a>
+                    </Link>
+                  </section>
+
+                  <section className={styles.navbarSection}>
+                    <a
+                      href={`https://papergov.com/terms`}
+                      style={{ padding: "0.5rem" }}
+                      target="_blank"
+                    >
+                      Terms
+                    </a>
+
+                    <a
+                      href={`https://papergov.com/privacy`}
+                      style={{ padding: "0.5rem" }}
+                      target="_blank"
+                    >
+                      Privacy
+                    </a>
+                  </section>
+                </header>
+              </div>
+              <div className={`${styles.column} ${styles.col1}`}></div>
+            </div>
             <FirebaseContext.Provider value={getFirebse}>
               <div className={`${styles.container} ${styles.gridLg}`}>
                 {step === "show_landing" || step === "final_conf" ? null : (

@@ -367,7 +367,7 @@ class SubmitDetails extends Component {
                       margin: "0 0 1rem 0"
                     }}
                   >
-                    <CardLogos />
+                    <CardLogos style={{width: '100px'}}/>
 
                     <span
                       style={{ padding: "0 4px 0 0 ", color: "#30ae40" }}

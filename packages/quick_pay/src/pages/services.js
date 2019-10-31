@@ -5,7 +5,7 @@ import Helmet from "react-helmet";
 import { Elements, StripeProvider } from "react-stripe-elements";
 import { returnToSnap } from "../components/actions";
 import { graphql } from "gatsby";
-
+import Link from "gatsby-link";
 import Landing from "../components/Landing";
 import LandingDesktop from "../components/LandingDesktop";
 
@@ -105,17 +105,88 @@ class QPAllServices extends React.Component {
       </ul>
     );
 
-    let landing = <LandingAllSersDesktop sers={this.props.data.sers.edges} />;
 
-    if (isMobile) {
-      landing = <LandingAllSers sers={this.props.data.sers.edges} />;
-    }
+        let landing = (
+          <Fragment>
+            <Hero
+              title="Lightning Fast Service Payments"
+              isMobile={isMobile}
+              isAllSer={true}
+            />
+            <LandingAllSersDesktop sers={this.props.data.sers.edges} />;
+          </Fragment>
+        );
+
+        if (isMobile) {
+          landing = (
+            <Fragment>
+              <Hero
+                title="Lightning Fast Service Payments"
+                isAllSer={true}
+                isMobile={isMobile}
+              />
+              <LandingAllSers sers={this.props.data.sers.edges} />
+            </Fragment>
+          );
+        }
+
 
     return (
       <Fragment>
+        <div className={styles.columns}>
+          <div className={`${styles.column} ${styles.col1}`}></div>
+          <div className={`${styles.column} ${styles.col10}`}>
+            <header className={styles.navbar}>
+              <section
+                style={{ padding: "0.5rem 0" }}
+                className={styles.navbarSection}
+              >
+                <Link to="/">
+                  <a href="#" style={{ textDecoration: "none" }}>
+                    <h3>
+                      papergov
+                      <sub
+                        className={styles.textUppercase}
+                        style={{
+                          color: "#455060",
+                          fontSize: "0.5rem",
+                          letterSpacing: "0.1rem",
+                          fontWeight: "bold"
+                        }}
+                      >
+                        QuickPay
+                      </sub>
+                    </h3>
+                  </a>
+                </Link>
+              </section>
+
+              <section className={styles.navbarSection}>
+                <a
+                  href={`https://papergov.com/terms`}
+                  style={{ padding: "0.5rem" }}
+                  target="_blank"
+                >
+                  Terms
+                </a>
+
+                <a
+                  href={`https://papergov.com/privacy`}
+                  style={{ padding: "0.5rem" }}
+                  target="_blank"
+                >
+                  Privacy
+                </a>
+              </section>
+            </header>
+          </div>
+          <div className={`${styles.column} ${styles.col1}`}></div>
+        </div>
+
         <Hero
           title="Lightning Fast Service Payments"
-          isAllSer={true} isMobile={isMobile}
+          isAllSer={true}
+          isMobile={isMobile}
         />
 
         <FirebaseContext.Provider value={getFirebse}>

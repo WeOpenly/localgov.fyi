@@ -363,7 +363,12 @@ class ServiceDeliveryLink extends Component {
 
     let canQuickPay = true;
 
-    if(service_name.includes('Register') || service_name.includes('Apply') || service_name.includes('Check')){
+    if (
+      service_name.includes("Activity") ||
+      service_name.includes("Register") ||
+      service_name.includes("Apply") ||
+      service_name.includes("Check")
+    ) {
       canQuickPay = false;
     }
 

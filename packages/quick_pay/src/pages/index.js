@@ -90,16 +90,22 @@ class QPIndex extends React.Component {
     
         )
        
-        let landing = <LandingDesktop />
+        let landing = (
+          <Fragment>
+            <Hero title="Lightning Fast Service Payments" isMobile={isMobile} />
+            <LandingDesktop />
+          </Fragment>
+        );
 
         if (isMobile){
-            landing = <Landing />
+            landing = (<Fragment>
+                <Hero title="Lightning Fast Service Payments" isMobile={isMobile} />
+                <Landing />
+            </Fragment>)
         }
 
         return (
           <Fragment>
-            <Hero title="Lightning Fast Service Payments" isMobile={isMobile} />
-
             <FirebaseContext.Provider value={getFirebse}>
               <div className={`${styles.container} ${styles.gridLg}`}>
                 {step === "show_landing" || step === "final_conf" ? null : (

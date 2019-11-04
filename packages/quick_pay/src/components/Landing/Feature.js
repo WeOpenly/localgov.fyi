@@ -44,7 +44,7 @@ class FeatureCard extends Component {
         <div className={`${styles.cardBody} ${styles.textCenter}`}>
           <p
             style={{ lineHeight: "1.1rem" }}
-            className={`${styles.cardSubitle} ${styles.textGray}`}
+            className={`${styles.cardSubitle} ${styles.textGray} ${styles.textSemibold}`}
           >
             {description}
           </p>

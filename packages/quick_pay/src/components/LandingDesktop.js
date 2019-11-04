@@ -13,7 +13,7 @@ import { graphql, StaticQuery } from "gatsby";
 import Img from "gatsby-image";
 
 
-import FeatureCard from "./Landing/Feature";
+import FeatureGrid from "./Landing/FeatureGrid";
 import Testimony from './Landing/Testimony';
 
 import AboutSVG from "./AboutSvgComp";
@@ -246,35 +246,7 @@ class LandingDesktop extends React.Component {
           className={`${styles.columns}`}
           style={{ margin: "1rem 0 1rem 0" }}
         >
-          <div
-            className={`${styles.column} ${styles.colSm4} ${styles.colXs12}`}
-          >
-            <FeatureCard
-              icon={<GoodBye style={{ width: "180px" }} />}
-              heading={"Simple"}
-              description="One account for all services & no more sending in paper checks or creating multiple accounts for each service to pay your bills"
-            />
-          </div>
-
-          <div
-            className={`${styles.column} ${styles.colSm4}  ${styles.colXs12}`}
-          >
-            <FeatureCard
-              icon={<Register style={{ width: "100px" }} />}
-              heading={"Savings"}
-              description="Say goodbye to late fees. Our automated system keeps track of your bills and handles them all for you"
-            />
-          </div>
-
-          <div
-            className={`${styles.column} ${styles.colSm4}  ${styles.colXs12}`}
-          >
-            <FeatureCard
-              icon={<Safety style={{ width: "180px" }} />}
-              heading={"Secure"}
-              description="We deeply care about user privacy and data. We don’t sell your data & we use industry-standard encryption for all transactions"
-            />
-          </div>
+        <FeatureGrid />
         </div>
 
         <div

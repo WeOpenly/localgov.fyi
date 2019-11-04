@@ -113,7 +113,7 @@ class QPAllServices extends React.Component {
               isMobile={isMobile}
               isAllSer={true}
             />
-            <LandingAllSersDesktop sers={this.props.data.sers.edges} />;
+            <LandingAllSersDesktop sers={this.props.data.sers.edges} />
           </Fragment>
         );
 

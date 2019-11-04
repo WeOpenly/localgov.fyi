@@ -280,7 +280,7 @@ class About extends React.Component {
                 style={{ border: "none" }}
                 className={`${styles.textCenter}`}
               >
-                <h2 className={`${styles.cardTitle}`}>60,000 +</h2>
+                <h2 className={`${styles.cardTitle}`}>100,000 +</h2>
                 <p>Users</p>
               </div>
             </div>

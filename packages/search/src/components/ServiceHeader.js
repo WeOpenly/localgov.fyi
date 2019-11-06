@@ -12,7 +12,6 @@ import { withStyles } from "@material-ui/core/styles";
 import Typography from "@material-ui/core/Typography";
 import Grid from "@material-ui/core/Grid";
 
-
 import IconButton from "@material-ui/core/IconButton";
 
 import ServiceDeliveryLink from "./ServiceDeliveryLink";
@@ -102,7 +101,7 @@ const styles = theme => ({
     color: theme.palette.primary["400"]
   },
   service_header_contactIcons: {
-    marginTop: theme.spacing.unit /2,
+    marginTop: theme.spacing.unit / 2
   },
   service_header_serviceNotify: {},
   org_header_avatar: {
@@ -357,7 +356,7 @@ class ServiceHeader extends Component {
         value = (
           <div key={idx} style={{ marginBottom: "0.1rem" }}>
             <a
-         href={`mailto:${value}`}
+              href={`mailto:${value}`}
               className={`${spStyles.textLinkGray} ${spStyles.textSemibold}`}
               onClick={() =>
                 this.trackClickSocialIcon(contactType, cd.contact_value)
@@ -367,7 +366,6 @@ class ServiceHeader extends Component {
               {icons[contactType]} {value}
             </a>
           </div>
-         
         );
       } else {
         value = (
@@ -476,7 +474,10 @@ class ServiceHeader extends Component {
             >
               <h2>{name}</h2>
 
-              <p style={{marginBottom: '0.5rem', marginTop: '0.5rem'}} className={`${spStyles.textSemibold}`}>
+              <p
+                style={{ marginBottom: "0.5rem", marginTop: "0.5rem" }}
+                className={`${spStyles.textSemibold}`}
+              >
                 Offered by{" "}
                 <span className={classes.service_header_in}>
                   {" "}

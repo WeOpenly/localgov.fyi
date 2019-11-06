@@ -529,8 +529,7 @@ class ServiceDetailTemplate extends React.Component {
                     <title>{`${name} | ${org_name} | papergov`}
                     </title>
                     {(allfaq.length > 0) ? (<html itemScope itemType="https://schema.org/FAQPage" />) : null}
-                    <script src="https://js.stripe.com/v3/"></script>
-                    <link href={"/css/stripe.css"} rel="stylesheet" />
+                  
                     <script type="application/ld+json">{`${JSON.stringify(jsonLd)}`}</script>
                     <link rel="canonical" href={`https://papergov.com/${url_slug}/`} />
                     <meta

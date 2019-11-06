@@ -1,7 +1,7 @@
 const path = require(`path`)
 let activeEnv = 'staging'
 
-if (process.env.PROJECT_ID && process.env.PROJECT_ID==='papergov-prod'){
+if (process.env.PROJECT_ID && process.env.PROJECT_ID==='evergov-prod'){
   activeEnv ='production'
 }
 

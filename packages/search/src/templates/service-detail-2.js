@@ -10,6 +10,7 @@ import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 import CircularProgress from '@material-ui/core/CircularProgress';;
 
+import SearchNav from "../components/Nav/Search";
 
 import ContentLoader from 'react-content-loader';
 
@@ -524,75 +525,109 @@ class ServiceDetailTemplate extends React.Component {
         let backButton = null;
     
         return (
-            <DetailTemplate isMobile={isMobile}  location={this.props.location}>
-                <Helmet>
-                    <title>{`${name} | ${org_name} | papergov`}
-                    </title>
-                    {(allfaq.length > 0) ? (<html itemScope itemType="https://schema.org/FAQPage" />) : null}
-                  
-                    <script type="application/ld+json">{`${JSON.stringify(jsonLd)}`}</script>
-                    <link rel="canonical" href={`https://papergov.com/${url_slug}/`} />
-                    <meta
-                        property="og:title"
-                        content={`${name} | ${org_name} | papergov`} />
-                    <meta property="og:url" content={`https://papergov.com/${url_slug}/`} />
+          <>
+            <Helmet>
+              <title>{`${name} | ${org_name} | papergov`}</title>
+              {allfaq.length > 0 ? (
+                <html itemScope itemType="https://schema.org/FAQPage" />
+              ) : null}
 
-                    {description ? (<meta
-                        name="description"
-                        content={description.substr(0, 300)} />) : (<meta
-                            name="description"
-                            content={`${name} online in ${org_name} seamlessly with papergov. Be it property taxes, utility bills, tickets or permits and licenses, you can find them all on papergov.`} />)}
-                    <meta
-                        name="keywords"
-                        content={`${name} online , ${org_name} services `} />
-                    <meta
-                        property="og:description"
-                        content={`Forms, Price, Checklist, FAQS, Timings and Local Government Service Contact Details for ${name} offered in ${org_name} | papergov`} />
+              <script type="application/ld+json">{`${JSON.stringify(
+                jsonLd
+              )}`}</script>
+              <link
+                rel="canonical"
+                href={`https://papergov.com/${url_slug}/`}
+              />
+              <meta
+                property="og:title"
+                content={`${name} | ${org_name} | papergov`}
+              />
+              <meta
+                property="og:url"
+                content={`https://papergov.com/${url_slug}/`}
+              />
 
-                </Helmet>
+              {description ? (
+                <meta name="description" content={description.substr(0, 300)} />
+              ) : (
+                <meta
+                  name="description"
+                  content={`${name} online in ${org_name} seamlessly with papergov. Be it property taxes, utility bills, tickets or permits and licenses, you can find them all on papergov.`}
+                />
+              )}
+              <meta
+                name="keywords"
+                content={`${name} online , ${org_name} services `}
+              />
+              <meta
+                property="og:description"
+                content={`Forms, Price, Checklist, FAQS, Timings and Local Government Service Contact Details for ${name} offered in ${org_name} | papergov`}
+              />
+            </Helmet>
 
-             
-                <Grid container>
-                    <Grid item xs="auto" sm={1}>
-
-                    </Grid>
-                    <Grid item xs={12} sm={10} className={this.props.isMobile ? classes.ser_detail_body_mob : classes.ser_detail_body}>
-
-                        <Grid item xs={12}>
-                            {serHeader}
-                        </Grid>
-                           
-                        <Grid item xs={12}  className={classes.ser_detail_details}>
-                            <ServiceDetail name={name} 
-                                isMobile={isMobile}
-                            orgHieSlug={orgHieSlug} description={description} price={price} alltimings={alltimings} allForms={allForms} allfaq={allfaq} allSteps={allSteps} />
-                        </Grid>
-                          
-
-                        <Grid item xs={12} sm={12} className={classes.ser_detail_action_card}>
-                            {actionCard}
-                        </Grid>
-
-                        </Grid>
-       
-                    <Grid item xs="auto"  sm={1}>
-
-                    </Grid>
-         
-                    <Grid item xs={12} className={classes.ser_detail_morelinks} >
-                        <MoreLinks isMobile={isMobile} otherServices={otherServices} state_name={state_org_details.area.name} org_name={org_name}
-                        stateServices={state_org_details.offered_services}
-                        glossaryLinks={state_org_details.offered_services}/>
-                    </Grid>
+            <Grid container>
+              <SearchNav isMobile={isMobile} />
+              <Grid item xs="auto" sm={1} md={2}></Grid>
+              <Grid
+                item
+                xs={12}
+                sm={10}
+                md={8}
+                className={
+                  this.props.isMobile
+                    ? classes.ser_detail_body_mob
+                    : classes.ser_detail_body
+                }
+              >
+                <Grid item xs={12}>
+                  {serHeader}
                 </Grid>
 
-       
-                <div className={classes.ser_detail_footer}>
-                    <Footer isMobile={isMobile} page={this.props.location.pathname} />
-                </div>
-                {serviceDeliveryFeedbackForm}
-            </DetailTemplate>
-        )
+                <Grid item xs={12} className={classes.ser_detail_details}>
+                  <ServiceDetail
+                    name={name}
+                    isMobile={isMobile}
+                    orgHieSlug={orgHieSlug}
+                    description={description}
+                    price={price}
+                    alltimings={alltimings}
+                    allForms={allForms}
+                    allfaq={allfaq}
+                    allSteps={allSteps}
+                  />
+                </Grid>
+
+                <Grid
+                  item
+                  xs={12}
+                  sm={12}
+                  className={classes.ser_detail_action_card}
+                >
+                  {actionCard}
+                </Grid>
+              </Grid>
+
+              <Grid item xs="auto" sm={1} md={2}></Grid>
+
+              <Grid item xs={12} className={classes.ser_detail_morelinks}>
+                <MoreLinks
+                  isMobile={isMobile}
+                  otherServices={otherServices}
+                  state_name={state_org_details.area.name}
+                  org_name={org_name}
+                  stateServices={state_org_details.offered_services}
+                  glossaryLinks={state_org_details.offered_services}
+                />
+              </Grid>
+            </Grid>
+
+            <div className={classes.ser_detail_footer}>
+              <Footer isMobile={isMobile} page={this.props.location.pathname} />
+            </div>
+            {serviceDeliveryFeedbackForm}
+          </>
+        );
     }
 }
 

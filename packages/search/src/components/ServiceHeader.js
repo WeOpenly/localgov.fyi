@@ -4,16 +4,17 @@ import { navigate } from "@reach/router";
 
 import Img from "gatsby-image";
 
+import iconStyles from "./typicons.min.module.css";
+import spStyles from "./spectre.min.module.css";
 import HighLightOutlined from "@material-ui/icons/HighlightOutlined";
 
 import { withStyles } from "@material-ui/core/styles";
 import Typography from "@material-ui/core/Typography";
 import Grid from "@material-ui/core/Grid";
 
-import Button from "@material-ui/core/Button";
+
 import IconButton from "@material-ui/core/IconButton";
 
-import SvgIcon from "@material-ui/core/SvgIcon";
 import ServiceDeliveryLink from "./ServiceDeliveryLink";
 
 import { hideResultHelperMsg } from "./SearchPage/actions";
@@ -35,14 +36,12 @@ const styles = theme => ({
     boxShadow: "0 0 0 0",
     paddingTop: theme.spacing.unit * 2,
     paddingLeft: theme.spacing.unit * 2,
-    paddingRight: theme.spacing.unit * 2,
-    paddingBottom: theme.spacing.unit * 2
+    paddingRight: theme.spacing.unit * 2
   },
   service_header_cardTop: {
     display: "flex",
     justifyContent: "left",
     paddingTop: theme.spacing.unit,
-    paddingBottom: theme.spacing.unit,
     flexWrap: "wrap"
   },
   service_header_cardTop_mob: {
@@ -103,7 +102,7 @@ const styles = theme => ({
     color: theme.palette.primary["400"]
   },
   service_header_contactIcons: {
-    marginTop: theme.spacing.unit
+    marginTop: theme.spacing.unit /2,
   },
   service_header_serviceNotify: {},
   org_header_avatar: {
@@ -129,6 +128,13 @@ const styles = theme => ({
     color: theme.palette.primary["500"]
   },
   service_header_serviceShare: {},
+  service_header_cardActions_mob: {
+    textAlign: "center",
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center",
+    marginBottom: theme.spacing.unit * 2
+  },
   service_header_deliveryLinkWrapper: {
     display: "flex",
     flexDirection: "column",
@@ -143,8 +149,7 @@ const styles = theme => ({
     fontSize: "1rem"
   },
   svgIcon: {
-    fontSize: "18px",
-    marginRight: 8,
+    fontSize: "16px",
     color: theme.palette.primary["400"]
   },
   service_header_serviceActions: {
@@ -283,49 +288,34 @@ class ServiceHeader extends Component {
     const contactDetailButtons = sortedInfo.map((cd, idx, arr) => {
       const icons = {
         phone: (
-          <SvgIcon
-            className={classes.svgIcon}
-            xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 0 512 512"
-          >
-            <path d="M436.9 364.8c-14.7-14.7-50-36.8-67.4-45.1-20.2-9.7-27.6-9.5-41.9.8-11.9 8.6-19.6 16.6-33.3 13.6-13.7-2.9-40.7-23.4-66.9-49.5-26.2-26.2-46.6-53.2-49.5-66.9-2.9-13.8 5.1-21.4 13.6-33.3 10.3-14.3 10.6-21.7.8-41.9C184 125 162 89.8 147.2 75.1c-14.7-14.7-18-11.5-26.1-8.6 0 0-12 4.8-23.9 12.7-14.7 9.8-22.9 18-28.7 30.3-5.7 12.3-12.3 35.2 21.3 95 27.1 48.3 53.7 84.9 93.2 124.3l.1.1.1.1c39.5 39.5 76 66.1 124.3 93.2 59.8 33.6 82.7 27 95 21.3 12.3-5.7 20.5-13.9 30.3-28.7 7.9-11.9 12.7-23.9 12.7-23.9 2.9-8.1 6.2-11.4-8.6-26.1z" />
-          </SvgIcon>
+          <span
+            style={{ padding: "0" }}
+            className={`${iconStyles.typcn} ${iconStyles.typcnPhone}`}
+          ></span>
         ),
         address: (
-          <SvgIcon
-            className={classes.svgIcon}
-            xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 0 512 512"
-          >
-            <path d="M256 32c-88.004 0-160 70.557-160 156.801C96 306.4 256 480 256 480s160-173.6 160-291.199C416 102.557 344.004 32 256 32zm0 212.801c-31.996 0-57.144-24.645-57.144-56 0-31.357 25.147-56 57.144-56s57.144 24.643 57.144 56c0 31.355-25.148 56-57.144 56z" />
-          </SvgIcon>
+          <span
+            style={{ padding: "0" }}
+            className={`${iconStyles.typcn} ${iconStyles.typcnLocation}`}
+          ></span>
         ),
         email: (
-          <SvgIcon
-            className={classes.svgIcon}
-            xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 0 512 512"
-          >
-            <path d="M437.332 80H74.668C51.199 80 32 99.198 32 122.667v266.666C32 412.802 51.199 432 74.668 432h362.664C460.801 432 480 412.802 480 389.333V122.667C480 99.198 460.801 80 437.332 80zM432 170.667L256 288 80 170.667V128l176 117.333L432 128v42.667z" />
-          </SvgIcon>
+          <span
+            style={{ padding: "0" }}
+            className={`${iconStyles.typcn} ${iconStyles.typcnMail}`}
+          ></span>
         ),
         facebook: (
-          <SvgIcon
-            className={classes.svgIcon}
-            xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 0 512 512"
-          >
-            <path d="M426.8 64H85.2C73.5 64 64 73.5 64 85.2v341.6c0 11.7 9.5 21.2 21.2 21.2H256V296h-45.9v-56H256v-41.4c0-49.6 34.4-76.6 78.7-76.6 21.2 0 44 1.6 49.3 2.3v51.8h-35.3c-24.1 0-28.7 11.4-28.7 28.2V240h57.4l-7.5 56H320v152h106.8c11.7 0 21.2-9.5 21.2-21.2V85.2c0-11.7-9.5-21.2-21.2-21.2z" />
-          </SvgIcon>
+          <span
+            style={{ padding: "0" }}
+            className={`${iconStyles.typcn} ${iconStyles.typcnSocialFacebookCircular}`}
+          ></span>
         ),
         twitter: (
-          <SvgIcon
-            className={classes.svgIcon}
-            xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 0 512 512"
-          >
-            <path d="M492 109.5c-17.4 7.7-36 12.9-55.6 15.3 20-12 35.4-31 42.6-53.6-18.7 11.1-39.4 19.2-61.5 23.5C399.8 75.8 374.6 64 346.8 64c-53.5 0-96.8 43.4-96.8 96.9 0 7.6.8 15 2.5 22.1-80.5-4-151.9-42.6-199.6-101.3-8.3 14.3-13.1 31-13.1 48.7 0 33.6 17.2 63.3 43.2 80.7-16-.4-31-4.8-44-12.1v1.2c0 47 33.4 86.1 77.7 95-8.1 2.2-16.7 3.4-25.5 3.4-6.2 0-12.3-.6-18.2-1.8 12.3 38.5 48.1 66.5 90.5 67.3-33.1 26-74.9 41.5-120.3 41.5-7.8 0-15.5-.5-23.1-1.4C62.8 432 113.7 448 168.3 448 346.6 448 444 300.3 444 172.2c0-4.2-.1-8.4-.3-12.5C462.6 146 479 129 492 109.5z" />
-          </SvgIcon>
+          <span
+            style={{ padding: "0" }}
+            className={`${iconStyles.typcn} ${iconStyles.typcnSocialTwitterCircular}`}
+          ></span>
         )
       };
 
@@ -335,10 +325,10 @@ class ServiceHeader extends Component {
       const contactType = cd.contact_type.toLowerCase();
       if (contactType.toLowerCase() === "phone") {
         value = (
-          <Typography variant="caption" style={{ display: "flex" }}>
+          <div key={idx} style={{ marginBottom: "0.1rem" }}>
             <a
               href={`tel:${value}`}
-              className={classes.service_header_buttonContent}
+              className={`${spStyles.textLinkGray} ${spStyles.textSemibold}`}
               onClick={() =>
                 this.trackClickSocialIcon(contactType, cd.contact_value)
               }
@@ -346,14 +336,14 @@ class ServiceHeader extends Component {
             >
               {icons[contactType]} {value}
             </a>
-          </Typography>
+          </div>
         );
       } else if (contactType.toLowerCase() === "address") {
         value = (
-          <Typography variant="caption">
+          <div key={idx} style={{ marginBottom: "0.1rem" }}>
             <a
               href={`http://maps.google.com/?q=${value}`}
-              className={classes.service_header_buttonContent}
+              className={`${spStyles.textLinkGray} ${spStyles.textSemibold}`}
               onClick={() =>
                 this.trackClickSocialIcon(contactType, cd.contact_value)
               }
@@ -361,14 +351,14 @@ class ServiceHeader extends Component {
             >
               {icons[contactType]} {value}
             </a>
-          </Typography>
+          </div>
         );
       } else if (contactType.toLowerCase() === "email") {
         value = (
-          <Typography variant="caption" style={{ display: "flex" }}>
+          <div key={idx} style={{ marginBottom: "0.1rem" }}>
             <a
-              href={`mailto:${value}`}
-              className={classes.service_header_buttonContent}
+         href={`mailto:${value}`}
+              className={`${spStyles.textLinkGray} ${spStyles.textSemibold}`}
               onClick={() =>
                 this.trackClickSocialIcon(contactType, cd.contact_value)
               }
@@ -376,14 +366,15 @@ class ServiceHeader extends Component {
             >
               {icons[contactType]} {value}
             </a>
-          </Typography>
+          </div>
+         
         );
       } else {
         value = (
-          <Typography variant="caption" style={{ display: "flex" }}>
+          <div key={idx} style={{ marginBottom: "0.1rem" }}>
             <a
               href={`${value}`}
-              className={classes.service_header_buttonContent}
+              className={`${spStyles.textLinkGray} ${spStyles.textSemibold}`}
               onClick={() =>
                 this.trackClickSocialIcon(contactType, cd.contact_value)
               }
@@ -391,7 +382,7 @@ class ServiceHeader extends Component {
             >
               {icons[contactType]} {value}
             </a>
-          </Typography>
+          </div>
         );
       }
 
@@ -462,11 +453,11 @@ class ServiceHeader extends Component {
         }
       >
         {hieLinks ? (
-          <Grid item xs={12} align="left">
+          <Grid item xs={12} align={this.props.isMobile ? `center` : `left`}>
             {hieLinks}
           </Grid>
         ) : null}
-        <Grid item xs={12} md={8}>
+        <Grid item xs={12} md={9}>
           {extraMessage}
 
           <div
@@ -483,29 +474,29 @@ class ServiceHeader extends Component {
                   : classes.service_header_title_mob
               }
             >
-              <Typography component="h1" variant="display1">
-                {name}
-              </Typography>
+              <h2>{name}</h2>
 
-              <Typography
-                variant="subheading"
-                className={classes.ser_header_offered_in_org}
-                onClick={this.handleOrgClick}
-              >
+              <p style={{marginBottom: '0.5rem', marginTop: '0.5rem'}} className={`${spStyles.textSemibold}`}>
                 Offered by{" "}
                 <span className={classes.service_header_in}>
                   {" "}
                   {orgHieComp}{" "}
                 </span>
-              </Typography>
+              </p>
             </div>
           </div>
 
-          <div className={classes.service_header_cardActions}>
+          <div
+            className={
+              !this.props.isMobile
+                ? classes.service_header_cardActions
+                : classes.service_header_cardActions_mob
+            }
+          >
             {contactDetailButtons && contactDetailButtons}
           </div>
         </Grid>
-        <Grid item xs={12} md={4}>
+        <Grid item xs={12} md={3}>
           <div className={classes.service_header_serviceActions}>
             <div className={classes.service_header_serDelLink}>{sdl}</div>
           </div>

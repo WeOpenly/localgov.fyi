@@ -603,9 +603,9 @@ class ServiceDeliveryLink extends Component {
             <SvgUsers style={{ fontSize: "20px" }} />{" "}
           </div>{" "}
           <div className={classes.template_views_message}>
-            <div className={speStyles.textGray}>
+            <p className={speStyles.textGray}>
               <b>{moreThan}</b> accessed this month
-            </div>
+            </p>
           </div>
         </div>
       ) : null;
@@ -626,7 +626,7 @@ class ServiceDeliveryLink extends Component {
                     : classes.template_views_card_item
                 }
               >
-                <div className={`${speStyles.textGray} ${speStyles.textSemibold}`}>
+                <div className={`${speStyles.textSemibold}`}>
                   <p>⚡ No Login. Snap, Pay & Done!</p>
                 </div>
               </div>

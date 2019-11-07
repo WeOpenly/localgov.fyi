@@ -603,9 +603,11 @@ class ServiceDeliveryLink extends Component {
             <SvgUsers style={{ fontSize: "20px" }} />{" "}
           </div>{" "}
           <div className={classes.template_views_message}>
-            <p className={speStyles.textGray}>
-              <b>{moreThan}</b> accessed this month
-            </p>
+            <div className={`${speStyles.textSemibold}`}>
+              <p style={{marginBottom: '0.5rem'}}>
+                <b>{moreThan}</b> accessed this month
+              </p>
+            </div>
           </div>
         </div>
       ) : null;

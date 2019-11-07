@@ -8,13 +8,11 @@ const styles = theme => ({
   more_links: {
     display: "flex",
     flexDirection: "column",
-    marginTop: theme.spacing.unit * 5,
+    marginTop: theme.spacing.unit * 4,
     marginBottom: theme.spacing.unit * 5
   },
   more_links_container: {
     display: "flex",
-
-    width: "1000px",
     alignSelf: "center",
     justifyContent: "space-between"
   },
@@ -25,7 +23,7 @@ const styles = theme => ({
     textAlign: "center"
   },
   disco_footer: {
-    paddingTop: theme.spacing.unit * 2
+    padding: theme.spacing.unit * 2,
   },
   ser_more_links_header: {
     marginBottom: theme.spacing.unit

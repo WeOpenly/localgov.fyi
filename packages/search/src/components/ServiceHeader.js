@@ -455,7 +455,7 @@ class ServiceHeader extends Component {
             {hieLinks}
           </Grid>
         ) : null}
-        <Grid item xs={12} md={9}>
+        <Grid item xs={12} md={8}>
           {extraMessage}
 
           <div
@@ -497,7 +497,7 @@ class ServiceHeader extends Component {
             {contactDetailButtons && contactDetailButtons}
           </div>
         </Grid>
-        <Grid item xs={12} md={3}>
+        <Grid item xs={12} md={4}>
           <div className={classes.service_header_serviceActions}>
             <div className={classes.service_header_serDelLink}>{sdl}</div>
           </div>

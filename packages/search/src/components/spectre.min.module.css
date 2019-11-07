@@ -20,6 +20,12 @@ section {
     display: block
 }
 
+article {
+    line-height: 1.5rem;
+    letter-spacing: -0.014em;
+    font-size: 0.85rem;
+}
+
 h1 {
     font-size: 2em;
     margin: .67em 0
@@ -3129,6 +3135,14 @@ a.text-secondary:visited {
     color: #96a1ad !important
 }
 
+a.text-link-gray {
+    color: #96a1ad !important
+}
+
+a.text-link-gray:hover {
+    color: #6a41ff !important
+}
+
 a.text-gray:focus,
 a.text-gray:hover {
     color: #adb6c4
@@ -3627,6 +3641,88 @@ a.text-error:visited {
 .py-2 {
     padding-bottom: .4rem!important;
     padding-top: .4rem!important
+}
+
+.s-rounded {
+    border-radius: .1rem
+}
+
+.s-circle {
+    border-radius: 50%
+}
+
+.text-left {
+    text-align: left
+}
+
+.text-right {
+    text-align: right
+}
+
+.text-center {
+    text-align: center
+}
+
+.text-justify {
+    text-align: justify
+}
+
+.text-lowercase {
+    text-transform: lowercase
+}
+
+.text-uppercase {
+    text-transform: uppercase
+}
+
+.text-capitalize {
+    text-transform: capitalize
+}
+
+.text-normal {
+    font-weight: 400
+}
+
+.text-semibold {
+    font-weight: 500
+}
+
+.text-bold {
+    font-weight: 700
+}
+
+.text-italic {
+    font-style: italic
+}
+
+.text-large {
+    font-size: 1.2em
+}
+
+.text-ellipsis {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap
+}
+
+.text-clip {
+    overflow: hidden;
+    text-overflow: clip;
+    white-space: nowrap
+}
+
+.text-break {
+    -webkit-hyphens: auto;
+    -ms-hyphens: auto;
+    hyphens: auto;
+    word-break: break-word;
+    word-wrap: break-word;
+    padding-right: .4rem !important
+}
+
+.py-2 {
+    padding-bottom: .4rem !important;
+    padding-top: .4rem !important
 }
 
 .s-rounded {

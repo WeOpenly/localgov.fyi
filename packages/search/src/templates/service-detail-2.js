@@ -19,6 +19,8 @@ import DetailTemplate from "../components/detailTemplate";
 import ServiceHeader from "../components/ServiceHeader";
 import GlossaryCard from "../components/ServicePage/GlossaryCard";
 
+import MediaNetAd from "../components/MediaNetAd";
+
 import Footer from "../components/Footer";
 import ServiceCard from "../components/ServiceCard";
 
@@ -238,23 +240,39 @@ class ServiceDetailTemplate extends React.Component {
     if (windowGlobal) {
       console.log(isMobile, this.desktopinstance, this.mobileInstance)
  
-       if (this.desktopinstance2) {
-         windowGlobal.atOptions = {
-           key: "4b3335c41092aeff9cbb352a65422c25",
-           format: "iframe",
-           height: 600,
-           width: 160,
-           params: {}
-         };
+      if (this.desktopinstance2) {
+        windowGlobal.atOptions = {
+          key: "4b3335c41092aeff9cbb352a65422c25",
+          format: "iframe",
+          height: 600,
+          width: 160,
+          params: {}
+        };
 
-         let desktopinstanceexternalJs =
-           "//www.bcloudhost.com/4b3335c41092aeff9cbb352a65422c25/invoke.js";
+        let desktopinstanceexternalJs =
+          "//www.bcloudhost.com/4b3335c41092aeff9cbb352a65422c25/invoke.js";
 
-         const script = document.createElement("script");
-         script.src = desktopinstanceexternalJs;
-         script.async = true;
-         this.desktopinstance2.appendChild(script);
-       }
+        const script = document.createElement("script");
+        script.src = desktopinstanceexternalJs;
+        script.async = true;
+        this.desktopinstance2.appendChild(script);
+      }
+
+      if (this.desktopinstance1){
+              try {
+                 window._mNHandle.queue.push(function() {
+                   window._mNDetails.loadTag(
+                     "876473088",
+                     "160x600",
+                     "876473088"
+                   );
+                 });
+               } catch (error) {}
+      }
+
+      if (this.mobileInstance1){
+
+      }
     }
   }
 
@@ -614,25 +632,7 @@ class ServiceDetailTemplate extends React.Component {
 
             <Grid item xs={12} align="center">
               {isMobile ? (
-                <div
-                  style={{
-                    width: "100%",
-                    marginTop: "24px",
-                    marginBottom: "16px"
-                  }}
-                >
-                  <a href="https://yllix.com/publishers/757936" target="_blank">
-                    <img
-                      src="//ylx-aff.advertica-cdn.com/pub_zn9ugf.png"
-                      style={{
-                        border: "none",
-                        margin: 0,
-                        padding: 0,
-                        verticalAlign: "baseline"
-                      }}
-                    />
-                  </a>
-                </div>
+                <MediaNetAd dims="300x250" slotId="189122234" />
               ) : null}
             </Grid>
 
@@ -684,17 +684,7 @@ class ServiceDetailTemplate extends React.Component {
 
           <Grid item sm={0} md={2}>
             {!isMobile ? (
-              <a href="https://yllix.com/publishers/757936" target="_blank">
-                <img
-                  src="//ylx-aff.advertica-cdn.com/pub/120x600.png"
-                  style={{
-                    border: "none",
-                    margin: 0,
-                    padding: 0,
-                    verticalAlign: "baseline"
-                  }}
-                />
-              </a>
+              <MediaNetAd dims="160x600" slotId="876473088" />
             ) : null}
           </Grid>
         </Grid>

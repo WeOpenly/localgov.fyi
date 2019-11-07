@@ -91,8 +91,7 @@ export default class HTML extends React.Component {
             name="msvalidate.01"
             content="D1BADF38847C730E9DC76BE0CCC4B42B"
           />
-    
-   
+
           <meta
             property="og:site_name"
             content={`papergov: all your gov services in a single place`}
@@ -113,8 +112,12 @@ export default class HTML extends React.Component {
             content="width=device-width, initial-scale=1, shrink-to-fit=no"
           />
 
-              <JsonLd data={OrgLogoSchema} />
+          <JsonLd data={OrgLogoSchema} />
    
+          <script
+            src="//contextual.media.net/dmedianet.js?cid=8CUPIJJ6W"
+            async="async"
+          ></script>
           <script
             async
             defer
@@ -136,7 +139,6 @@ export default class HTML extends React.Component {
           />{" "}
           {this.props.postBodyComponents}
         </body>
-   
       </html>
     );
   }

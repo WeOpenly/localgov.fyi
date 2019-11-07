@@ -612,6 +612,24 @@ class ServiceDetailTemplate extends React.Component {
               {serHeader}
             </Grid>
 
+            <Grid item xs={12} align="center">
+              {isMobile ? (
+                <div style={{width: '100%', marginTop: '24px', marginBottom: '16px'}}>
+                  <a href="https://yllix.com/publishers/757936" target="_blank">
+                    <img
+                      src="//ylx-aff.advertica-cdn.com/pub_zn9ugf.png"
+                      style={{
+                        border: "none",
+                        margin: 0,
+                        padding: 0,
+                        verticalAlign: "baseline"
+                      }}
+                    />
+                  </a>
+                </div>
+              ) : null}
+            </Grid>
+
             <Grid item xs={12} className={classes.ser_detail_details}>
               <ServiceDetail
                 name={name}
@@ -645,6 +663,7 @@ class ServiceDetailTemplate extends React.Component {
                 ></iframe>
               ) : null}
             </Grid>
+
             <Grid item xs={12} className={classes.ser_detail_morelinks}>
               <MoreLinks
                 isMobile={isMobile}

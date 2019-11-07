@@ -614,7 +614,13 @@ class ServiceDetailTemplate extends React.Component {
 
             <Grid item xs={12} align="center">
               {isMobile ? (
-                <div style={{width: '100%', marginTop: '24px', marginBottom: '16px'}}>
+                <div
+                  style={{
+                    width: "100%",
+                    marginTop: "24px",
+                    marginBottom: "16px"
+                  }}
+                >
                   <a href="https://yllix.com/publishers/757936" target="_blank">
                     <img
                       src="//ylx-aff.advertica-cdn.com/pub_zn9ugf.png"
@@ -678,16 +684,17 @@ class ServiceDetailTemplate extends React.Component {
 
           <Grid item sm={0} md={2}>
             {!isMobile ? (
-              <iframe
-                src="//rcm-na.amazon-adsystem.com/e/cm?o=1&p=11&l=ez&f=ifr&linkID=c695779a0f11f57d47ebc1a69abb11a7&t=papergovsearc-20&tracking_id=papergovsearc-20"
-                width="120"
-                height="600"
-                scrolling="no"
-                border="0"
-                marginwidth="0"
-                style={{ border: "none" }}
-                frameborder="0"
-              ></iframe>
+              <a href="https://yllix.com/publishers/757936" target="_blank">
+                <img
+                  src="//ylx-aff.advertica-cdn.com/pub/120x600.png"
+                  style={{
+                    border: "none",
+                    margin: 0,
+                    padding: 0,
+                    verticalAlign: "baseline"
+                  }}
+                />
+              </a>
             ) : null}
           </Grid>
         </Grid>

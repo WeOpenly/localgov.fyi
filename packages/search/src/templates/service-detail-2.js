@@ -258,21 +258,8 @@ class ServiceDetailTemplate extends React.Component {
         this.desktopinstance2.appendChild(script);
       }
 
-      if (this.desktopinstance1){
-              try {
-                 window._mNHandle.queue.push(function() {
-                   window._mNDetails.loadTag(
-                     "876473088",
-                     "160x600",
-                     "876473088"
-                   );
-                 });
-               } catch (error) {}
-      }
 
-      if (this.mobileInstance1){
 
-      }
     }
   }
 
@@ -654,11 +641,12 @@ class ServiceDetailTemplate extends React.Component {
               item
               xs={12}
               sm={12}
+              align="center"
               className={classes.ser_detail_action_card}
             >
               {!isMobile ? (
                 <iframe
-                  src="//rcm-na.amazon-adsystem.com/e/cm?o=1&p=48&l=ur1&category=big_events&banner=1TFSRPF3D2AGCWV00K82&f=ifr&linkID=9a5a5b5c900d5cd9b6b03ae5df1b7d6d&t=papergovsearc-20&tracking_id=papergovsearc-20"
+                  src="//rcm-na.amazon-adsystem.com/e/cm?o=1&p=48&l=ur1&category=amazonhomepage&f=ifr&linkID=dcc896d88bf6e17d89720b03cb475dd4&t=papergovsearc-20&tracking_id=papergovsearc-20"
                   width="728"
                   height="90"
                   scrolling="no"
@@ -667,7 +655,16 @@ class ServiceDetailTemplate extends React.Component {
                   style={{ border: "none" }}
                   frameborder="0"
                 ></iframe>
-              ) : null}
+              ) : (
+                <iframe
+                  style={{width:'120px', height:'240px'}}
+                  marginwidth="0"
+                  marginheight="0"
+                  scrolling="no"
+                  frameborder="0"
+                  src="//ws-na.amazon-adsystem.com/widgets/q?ServiceVersion=20070822&OneJS=1&Operation=GetAdHtml&MarketPlace=US&source=ac&ref=tf_til&ad_type=product_link&tracking_id=papergovsearc-20&marketplace=amazon&region=US&placement=B00UXG4WR8&asins=B00UXG4WR8&linkId=0bfb49505fe07e9ecdd94dcbf8dc922a&show_border=true&link_opens_in_new_window=true&price_color=b8b8b8&title_color=0016bf&bg_color=ffffff"
+                ></iframe>
+              )}
             </Grid>
 
             <Grid item xs={12} className={classes.ser_detail_morelinks}>

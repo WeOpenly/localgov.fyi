@@ -639,7 +639,7 @@ class ServiceDetailTemplate extends React.Component {
                     marginTop: "8px",
                     borderTop: "1px solid #d4d4d4",
                     paddingTop: '8px'
-         
+                    
                   }}
                 />
               ) : null}
@@ -709,7 +709,7 @@ class ServiceDetailTemplate extends React.Component {
                 containerStyles={{
                   marginTop: "16px",
                   borderLeft: "1px solid #d4d4d4",
-                  paddingLeft: "8px"
+                  paddingLeft: "24px"
                 }}
               />
             ) : null}

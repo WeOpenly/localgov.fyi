@@ -40,7 +40,7 @@ class MediaNet extends Component {
 
 
     return (
-    <div>
+  <>
       <div
              id={this.props.slotId}
              style={{ display: "block", width: "100%", height: "100%", ...containerStyles }}
@@ -54,7 +54,7 @@ class MediaNet extends Component {
                className={`${iconStyles.typcn}  ${iconStyles.typcnSpanner}`}
              />
            </div>
-         </div>
+         </>
     );
   }
 }

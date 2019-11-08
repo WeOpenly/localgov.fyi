@@ -1,4 +1,9 @@
 import React, { Component } from "react";
+
+import specStyles from "./spectre.min.module.css";
+import iconStyles from "./typicons.min.module.css";
+
+
 const windowGlobal = typeof window !== "undefined" && window;
 
 class MediaNet extends Component {
@@ -31,9 +36,26 @@ class MediaNet extends Component {
     //   return null;
     // }
 
-    return <div id={this.props.slotId} 
-          style={{display: 'block', width: '100%', height: '100%' }} 
-          ></div>;
+    const {containerStyles} = this.props;
+
+
+    return (
+    <div>
+      <div
+             id={this.props.slotId}
+             style={{ display: "block", width: "100%", height: "100%", ...containerStyles }}
+           >
+
+           </div>
+           <div className={specStyles.textGray}>
+             <small>ADVERTISEMENT</small>
+             <span
+               style={{ fontSize: "12px" }}
+               className={`${iconStyles.typcn}  ${iconStyles.typcnSpanner}`}
+             />
+           </div>
+         </div>
+    );
   }
 }
 

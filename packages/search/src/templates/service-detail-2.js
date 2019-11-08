@@ -29,6 +29,7 @@ import MoreLinks from "../components/ServicePage/MoreLinks";
 import withRoot from "../withRoot";
 import { trackView } from "../components/common/tracking";
 import specStyles from "../components/spectre.min.module.css";
+import iconStyles from "../components/typicons.min.module.css";
 
 const windowGlobal = typeof window !== "undefined" && window;
 
@@ -598,9 +599,21 @@ class ServiceDetailTemplate extends React.Component {
 
         <Grid container>
           <SearchNav isMobile={isMobile} />
-          <Grid item sm={0} md={2}>
+          <Grid item sm={0} md={2} align="center">
             {!isMobile ? (
-              <div ref={el => (this.desktopinstance2 = el)}></div>
+              <div style={{ marginTop: "16px" }}>
+                <div
+                  style={{ borderRight: "1px solid #d4d4d4" }}
+                  ref={el => (this.desktopinstance2 = el)}
+                ></div>
+                <div className={specStyles.textGray}>
+                  <small>ADVERTISEMENT</small>
+                  <span
+                    style={{ fontSize: "12px" }}
+                    className={`${iconStyles.typcn}  ${iconStyles.typcnSpanner}`}
+                  />
+                </div>
+              </div>
             ) : null}
           </Grid>
           <Grid
@@ -619,7 +632,16 @@ class ServiceDetailTemplate extends React.Component {
 
             <Grid item xs={12} align="center">
               {isMobile ? (
-                <MediaNetAd dims="300x250" slotId="189122234" />
+                <MediaNetAd
+                  dims="300x250"
+                  slotId="189122234"
+                  containerStyles={{
+                    marginTop: "8px",
+                    borderTop: "1px solid #d4d4d4",
+                    paddingTop: '8px'
+         
+                  }}
+                />
               ) : null}
             </Grid>
 
@@ -657,7 +679,7 @@ class ServiceDetailTemplate extends React.Component {
                 ></iframe>
               ) : (
                 <iframe
-                  style={{width:'120px', height:'240px'}}
+                  style={{ width: "120px", height: "240px" }}
                   marginwidth="0"
                   marginheight="0"
                   scrolling="no"
@@ -679,9 +701,17 @@ class ServiceDetailTemplate extends React.Component {
             </Grid>
           </Grid>
 
-          <Grid item sm={0} md={2}>
+          <Grid item sm={0} md={2} align="center">
             {!isMobile ? (
-              <MediaNetAd dims="160x600" slotId="876473088" />
+              <MediaNetAd
+                dims="160x600"
+                slotId="876473088"
+                containerStyles={{
+                  marginTop: "16px",
+                  borderLeft: "1px solid #d4d4d4",
+                  paddingLeft: "8px"
+                }}
+              />
             ) : null}
           </Grid>
         </Grid>

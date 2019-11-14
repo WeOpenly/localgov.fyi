@@ -2,5 +2,12 @@
     "title": "Lightning Fast Property Tax Payments",
     "name": "Proptery Tax Payment",
     "uploadable": "Property Tax Statement",
-    "url_slug": "pay-property-tax"
+    "url_slug": "pay-property-tax",
+    "enable_subs": true,
+    "sub_packages": [{
+        "duration": "22",
+        "cost_monthly": "1",
+        "cost_yearly": "3",
+        "stripe_pack_id": "22"
+    }]
 }

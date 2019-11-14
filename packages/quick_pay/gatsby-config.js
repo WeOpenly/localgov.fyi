@@ -99,7 +99,7 @@ module.exports = {
       options: {
         host: "https://evergov.com",
         sitemap: "https://evergov.com/sitemap.xml",
-        policy: [{ userAgent: "*", disallow: [`*`] }]
+        policy: [{ userAgent: "*", disallow: [`/`, `/status`] }]
       }
     },
     `gatsby-plugin-remove-serviceworker`,

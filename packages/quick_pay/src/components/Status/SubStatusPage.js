@@ -36,6 +36,10 @@ class SubStatusPage extends React.Component {
       return comp;
     }
 
+    if (!details){
+      return comp;
+    }
+
     const {
       img_url,
       guess_price,
@@ -43,9 +47,7 @@ class SubStatusPage extends React.Component {
       created_at,
     } = details;
 
-    console.log("QPStatus", details);
-
-
+    
     return (
       <div className={`${styles.container} ${styles.gridLg}`}>
         <div className={`${styles.columns}`}>

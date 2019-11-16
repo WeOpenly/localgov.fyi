@@ -108,11 +108,21 @@ class SubStatusPage extends React.Component {
                 </div>
 
                 <div>
-                  <span
-                    style={{ padding: "0 4px 0 0 ", color: "#fff" }}
-                    className={`${iconStyles.typcn} ${iconStyles.typcnSupport}`}
-                  ></span>
-                  Contact Support
+                  <button
+                    style={{
+                      marginBottom: "3rem",
+                      width: "100%",
+                      fontSize: "14px"
+                    }}
+                    className={`${styles.btn} ${styles.btnPrimary} ${styles.btnLg} ${styles.textUppercase} ${styles.textBold}`}
+                    type="submit"
+                  >
+                    <span
+                      style={{ padding: "0 4px 0 0 ", color: "#fff" }}
+                      className={`${iconStyles.typcn} ${iconStyles.typcnSupport}`}
+                    ></span>
+                    Contact Support
+                  </button>
                 </div>
               </div>
             </div>

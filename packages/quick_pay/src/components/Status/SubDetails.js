@@ -47,18 +47,19 @@ class SubDetails extends Component {
               justifyContent: "space-between"
             }}
           >
-            <p style={{ marginBottom: "0.2rem", fontStyle: 'bold' }}
-            className={styles.textBold}>
+            <p
+              style={{ marginBottom: "0.2rem", fontStyle: "bold" }}
+              className={styles.textBold}
+            >
               Amount to pay
             </p>
 
             <div className={`${styles.menuItem} ${styles.textBold}`}>
-              {`$`} 
+              {`$`}
               {price}
             </div>
           </li>
 
-          <li className={styles.divider}></li>
           <li
             className={styles.menuItem}
             style={{
@@ -71,7 +72,6 @@ class SubDetails extends Component {
               data-tooltip="papergov performs this on your behalf for a small
               fee"
             >
-            
               Service Fee
               <sup>
                 <span
@@ -83,6 +83,7 @@ class SubDetails extends Component {
             <div className={styles.menuItem}>5%</div>
           </li>
 
+          <li className={styles.divider}></li>
           <li
             className={styles.menuItem}
             style={{

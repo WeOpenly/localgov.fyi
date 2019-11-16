@@ -48,7 +48,6 @@ class QPIndex extends React.Component {
                 });
             }
         }
-    
     }
 
     render() {

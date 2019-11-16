@@ -64,7 +64,7 @@ module.exports = {
     {
       resolve: `gatsby-plugin-create-client-paths`,
       options: {
-        prefixes: [`/dashboard/*`]
+        prefixes: [`/status/*`]
       }
     },
     {
@@ -99,7 +99,7 @@ module.exports = {
       options: {
         host: "https://evergov.com",
         sitemap: "https://evergov.com/sitemap.xml",
-        policy: [{ userAgent: "*", disallow: [`/`, `/status`] }]
+        policy: [{ userAgent: "*", disallow: [`/`, `/status/*`] }]
       }
     },
     `gatsby-plugin-remove-serviceworker`,

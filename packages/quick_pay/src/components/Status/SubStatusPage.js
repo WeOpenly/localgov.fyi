@@ -38,10 +38,9 @@ class SubStatusPage extends React.Component {
 
     const {
       img_url,
-      guessPrice,
-      userPrice,
+      guess_price,
+      user_price,
       created_at,
-      step
     } = details;
 
     console.log("QPStatus", details);
@@ -61,7 +60,7 @@ class SubStatusPage extends React.Component {
                 </div>
 
                 <div>
-                  <SubDetails guessPrice={guessPrice} userPrice={userPrice} />
+                  <SubDetails guessPrice={guess_price} userPrice={user_price} />
                 </div>
 
                 <div>
@@ -100,7 +99,7 @@ class SubStatusPage extends React.Component {
                 </div>
 
                 <div>
-                  <SubDetails guessPrice={guessPrice} userPrice={userPrice} />
+                  <SubDetails guessPrice={guess_price} userPrice={user_price} />
                 </div>
 
                 <div>

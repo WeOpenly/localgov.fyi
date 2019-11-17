@@ -76,6 +76,7 @@ const styles = theme => ({
     marginTop: "16px",
     paddingLeft: `${theme.spacing.unit * 4}px`,
     paddingRight: `${theme.spacing.unit * 4}px`,
+    boxShadow: `0 .15rem 0.5rem rgba(48,55,66,.10)`,
     background: "#fff"
   },
   ser_detail_body_mob: {
@@ -177,7 +178,6 @@ const styles = theme => ({
   },
   ser_detail_loading_spinner: {},
   service_detail_footer: {
-    borderTop: `1px solid #dcdcdc`,
     paddingTop: theme.spacing.unit,
     marginTop: theme.spacing.unit * 4
   },
@@ -186,9 +186,6 @@ const styles = theme => ({
   },
   ser_detail_footer: {
     width: "100%",
-    borderTop: `1px solid #dcdcdc`,
-    paddingTop: theme.spacing.unit,
-    marginTop: theme.spacing.unit * 6
   },
   ser_detail_morelinks: {
     borderTop: `1px solid #dcdcdc`,
@@ -604,7 +601,7 @@ class ServiceDetailTemplate extends React.Component {
           />
         </Helmet>
 
-        <Grid container style={{ background: "#fefeff" }}>
+        <Grid container style={{ background: "#f9fafc" }}>
           <SearchNav isMobile={isMobile} />
           <Grid item sm={0} md={2} align="center">
             {!isMobile ? (

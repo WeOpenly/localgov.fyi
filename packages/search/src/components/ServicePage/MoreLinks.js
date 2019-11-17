@@ -8,8 +8,8 @@ const styles = theme => ({
   more_links: {
     display: "flex",
     flexDirection: "column",
-    marginTop: theme.spacing.unit * 4,
-    marginBottom: theme.spacing.unit * 5
+    marginTop: theme.spacing.unit * 5,
+    marginBottom: theme.spacing.unit * 6
   },
   more_links_container: {
     display: "flex",

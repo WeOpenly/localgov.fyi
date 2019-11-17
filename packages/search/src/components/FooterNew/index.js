@@ -60,12 +60,12 @@ class FooterNew extends Component {
       />
     );
     return (
-      <div className={`${styles.columns}`}>
+      <div className={`${styles.columns}`} style={{ background: "#f9fafc" }}>
         <div className={`${styles.column}  ${styles.col1} $ `}></div>
         <div className={`${styles.column}  ${styles.col10} `}>
           <div
             className={`${styles.columns}`}
-            style={{ borderTop: "rgba(48,55,66,.15)", paddingTop: "2rem" }}
+            style={{ borderTop: "rgba(48,55,66,.15)", paddingTop: "4rem" }}
           >
             <div
               className={`${styles.column} ${styles.col8} ${styles.colLg8}  ${styles.colSm8} ${styles.colXs12} ${styles.textCenter}`}

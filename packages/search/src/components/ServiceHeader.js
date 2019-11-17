@@ -29,13 +29,14 @@ const styles = theme => ({
     paddingTop: theme.spacing.unit * 2,
     paddingLeft: theme.spacing.unit,
     paddingRight: theme.spacing.unit,
-    paddingBottom: theme.spacing.unit * 2
+    paddingBottom: theme.spacing.unit * 4
   },
   service_header_mainMobile: {
     boxShadow: "0 0 0 0",
     paddingTop: theme.spacing.unit * 2,
     paddingLeft: theme.spacing.unit * 2,
-    paddingRight: theme.spacing.unit * 2
+    paddingRight: theme.spacing.unit * 2,
+    paddingBottom: theme.spacing.unit * 1
   },
   service_header_cardTop: {
     display: "flex",

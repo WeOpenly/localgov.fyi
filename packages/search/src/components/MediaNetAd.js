@@ -40,21 +40,31 @@ class MediaNet extends Component {
 
 
     return (
-  <>
-      <div
-             id={this.props.slotId}
-             style={{ display: "block", width: "100%", height: "100%", ...containerStyles }}
-           >
-
-           </div>
-           <div className={specStyles.textGray}>
-             <small>ADVERTISEMENT</small>
-             <span
-               style={{ fontSize: "12px" }}
-               className={`${iconStyles.typcn}  ${iconStyles.typcnSpanner}`}
-             />
-           </div>
-         </>
+      <>
+        <div className={specStyles.textGray}>
+          <small style={{ fontSize: "10px" }}>ADVERTISEMENT</small>
+          <span
+            style={{ fontSize: "10px" }}
+            className={`${iconStyles.typcn}  ${iconStyles.typcnSpanner}`}
+          />
+        </div>
+        <div
+          id={this.props.slotId}
+          style={{
+            display: "block",
+            width: "100%",
+            height: "auto",
+            ...containerStyles
+          }}
+        ></div>
+        <div className={specStyles.textGray}>
+          <small style={{ fontSize: "10px" }}>ADVERTISEMENT</small>
+          <span
+            style={{ fontSize: "10px" }}
+            className={`${iconStyles.typcn}  ${iconStyles.typcnSpanner}`}
+          />
+        </div>
+      </>
     );
   }
 }

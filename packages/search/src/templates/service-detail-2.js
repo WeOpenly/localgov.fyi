@@ -72,10 +72,16 @@ const styles = theme => ({
     border: `1px solid ${theme.palette.primary["50"]}`
   },
   ser_detail_body: {
-    paddingLeft: `${theme.spacing.unit * 6}px`,
-    paddingRight: `${theme.spacing.unit * 6}px`
+    marginTop: "16px",
+    paddingLeft: `${theme.spacing.unit * 4}px`,
+    paddingRight: `${theme.spacing.unit * 4}px`,
+    background: "#fff"
   },
-  ser_detail_body_mob: {},
+  ser_detail_body_mob: {
+      background: "#fff",
+    paddingLeft: `${theme.spacing.unit * 1}px`,
+    paddingRight: `${theme.spacing.unit * 1}px`
+  },
   ser_detail_cards: {
     marginBottom: theme.spacing.unit * 2,
     paddingTop: theme.spacing.unit,
@@ -597,23 +603,19 @@ class ServiceDetailTemplate extends React.Component {
           />
         </Helmet>
 
-        <Grid container>
+        <Grid container style={{ background: "#fefeff" }}>
           <SearchNav isMobile={isMobile} />
           <Grid item sm={0} md={2} align="center">
             {!isMobile ? (
-              <div style={{ marginTop: "16px" }}>
-                <div
-                  style={{ borderRight: "1px solid #d4d4d4" }}
-                  ref={el => (this.desktopinstance2 = el)}
-                ></div>
-                <div className={specStyles.textGray}>
-                  <small>ADVERTISEMENT</small>
-                  <span
-                    style={{ fontSize: "12px" }}
-                    className={`${iconStyles.typcn}  ${iconStyles.typcnSpanner}`}
-                  />
-                </div>
-              </div>
+              <MediaNetAd
+                dims="160x600"
+                slotId="975270174"
+                containerStyles={{
+                  marginTop: "16px",
+                  borderRight: "1px solid #ececec",
+                  paddingRight: "24px"
+                }}
+              />
             ) : null}
           </Grid>
           <Grid
@@ -638,8 +640,7 @@ class ServiceDetailTemplate extends React.Component {
                   containerStyles={{
                     marginTop: "8px",
                     borderTop: "1px solid #d4d4d4",
-                    paddingTop: '8px'
-                    
+                    paddingTop: "8px"
                   }}
                 />
               ) : null}
@@ -667,16 +668,16 @@ class ServiceDetailTemplate extends React.Component {
               className={classes.ser_detail_action_card}
             >
               {!isMobile ? (
-                <iframe
-                  src="//rcm-na.amazon-adsystem.com/e/cm?o=1&p=48&l=ur1&category=amazonhomepage&f=ifr&linkID=dcc896d88bf6e17d89720b03cb475dd4&t=papergovsearc-20&tracking_id=papergovsearc-20"
-                  width="728"
-                  height="90"
-                  scrolling="no"
-                  border="0"
-                  marginwidth="0"
-                  style={{ border: "none" }}
-                  frameborder="0"
-                ></iframe>
+                <MediaNetAd
+                  dims="728x90"
+                  slotId="187844963"
+                  containerStyles={{
+                    marginTop: "8px",
+                    borderTop: "1px solid #ececec",
+                    borderBottom: "1px solid #ececec",
+                    paddingTop: "8px"
+                  }}
+                />
               ) : (
                 <iframe
                   style={{ width: "120px", height: "240px" }}
@@ -708,7 +709,7 @@ class ServiceDetailTemplate extends React.Component {
                 slotId="876473088"
                 containerStyles={{
                   marginTop: "16px",
-                  borderLeft: "1px solid #d4d4d4",
+                  borderLeft: "1px solid #ececec",
                   paddingLeft: "24px"
                 }}
               />

@@ -64,7 +64,8 @@ const styles = theme => ({
     maxWidth: "1000px"
   },
   ser_detail_details: {
-    width: "100%"
+    width: "100%",
+    lineHeight: '1.3rem',
   },
   ser_detail_cardWrapper: {
     borderRadius: 3,

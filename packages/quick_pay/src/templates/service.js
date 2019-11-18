@@ -2,6 +2,7 @@ import React, { Fragment } from "react";
 import PropTypes from "prop-types";
 
 import { connect } from "react-redux";
+import Link from "gatsby-link";
 
 import Helmet from "react-helmet";
 import { Elements, StripeProvider } from "react-stripe-elements";
@@ -70,7 +71,7 @@ class ServiceTemplate extends React.Component {
   }
 
   render() {
-    const { title, name, uploadable } = this.props.pageContext.data;
+    const { title, name, uploadable, enable_subs, sub_packages } = this.props.pageContext.data;
 
     const { anonUserLoading, analyseInProgress } = this.props;
 
@@ -89,7 +90,7 @@ class ServiceTemplate extends React.Component {
         >
           <StripeProvider stripe={this.state.stripe}>
             <Elements>
-              <SubmitDetails />
+              <SubmitDetails enable_subs={enable_subs} sub_packages={sub_packages} />
             </Elements>
           </StripeProvider>
         </div>
@@ -137,7 +138,61 @@ class ServiceTemplate extends React.Component {
           <title>{`papergov Quickpay | ${title}`}</title>
         </Helmet>
 
-        <Hero uploadable={uploadable} title={title} name={name} isMobile={isMobile} />
+        <div className={styles.columns}>
+          <div className={`${styles.column} ${styles.col1}`}></div>
+          <div className={`${styles.column} ${styles.col10}`}>
+            <header className={styles.navbar}>
+              <section
+                style={{ padding: "0.5rem 0" }}
+                className={styles.navbarSection}
+              >
+                <Link to="/">
+                  <a href="#" style={{ textDecoration: "none" }}>
+                    <h3>
+                      papergov
+                      <sub
+                        className={styles.textUppercase}
+                        style={{
+                          color: "#455060",
+                          fontSize: "0.5rem",
+                          letterSpacing: "0.1rem",
+                          fontWeight: "bold"
+                        }}
+                      >
+                        QuickPay
+                      </sub>
+                    </h3>
+                  </a>
+                </Link>
+              </section>
+
+              <section className={styles.navbarSection}>
+                <a
+                  href={`https://papergov.com/terms`}
+                  style={{ padding: "0.5rem" }}
+                  target="_blank"
+                >
+                  Terms
+                </a>
+
+                <a
+                  href={`https://papergov.com/privacy`}
+                  style={{ padding: "0.5rem" }}
+                  target="_blank"
+                >
+                  Privacy
+                </a>
+              </section>
+            </header>
+          </div>
+          <div className={`${styles.column} ${styles.col1}`}></div>
+        </div>
+        <Hero
+          uploadable={uploadable}
+          title={title}
+          name={name}
+          isMobile={isMobile}
+        />
 
         <FirebaseContext.Provider value={getFirebse}>
           <div className={`${styles.container} ${styles.gridLg}`}>

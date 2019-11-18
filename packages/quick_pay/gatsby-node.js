@@ -30,6 +30,13 @@ exports.createPages = ({ graphql, actions }) => {
                 name
                 url_slug
                 uploadable
+                enable_subs
+                sub_packages {
+                  duration
+                  cost_monthly
+                  cost_yearly
+                  stripe_pack_id
+                }
               }
             }
           }

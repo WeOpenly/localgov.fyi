@@ -242,7 +242,7 @@ class LandingDesktop extends React.Component {
 
   onFileAdded(files) {
     const { dispatch, anonUserID } = this.props;
-    console.log(files, "onfileadded");
+
     if (files) {
       dispatch(uploadDocumentAndCreateSubmission(files[0], anonUserID));
     }

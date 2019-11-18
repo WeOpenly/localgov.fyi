@@ -47,6 +47,7 @@ export function loginAnon() {
                 dispatch(loginFailed(errorMessage))
             }
         });
+        
 
         firebase.auth().onAuthStateChanged(user => {
             if (user) {
@@ -87,13 +88,13 @@ export function uploadDocumentFailed(){
 export function uploadDocumentAndCreateSubmission(file, userId, cameraApiType) {
     return async (dispatch, getState) => {
         dispatch(uploadDocumentBegin())
-        console.log(file, userId, cameraApiType)
+
         firebase
             .firestore()
             .collection("user_submission")
             .add({
-            user_id: userId,
-            created_at: dateNow
+                user_id: userId,
+                created_at: dateNow
             })
             .then(function(docRef) {
             storageRef
@@ -103,34 +104,33 @@ export function uploadDocumentAndCreateSubmission(file, userId, cameraApiType) {
                 .put(file)
                 .then(function(snapshot) {
            
-                snapshot.ref.getDownloadURL().then(function(downloadUrl) {
-                    firebase
-                    .firestore()
-                    .collection("user_submission")
-                    .doc(docRef.id)
-                    .update({ img_url: downloadUrl });
-                    dispatch(uploadDocumentSuccess(docRef.id));
-                    dispatch(attachSubmissionImg(downloadUrl));
-                    dispatch(stepChange("guess_price_and_update_details"));
-                    dispatch(
-                    trackQPevent("picture_uploaded", userId, {
-                        url: downloadUrl,
-                        cameraApiType: cameraApiType
-                    })
-                    );
-                });
+                    snapshot.ref.getDownloadURL().then(function(downloadUrl) {
+                        firebase
+                        .firestore()
+                        .collection("user_submission")
+                        .doc(docRef.id)
+                        .update({ img_url: downloadUrl });
+                        dispatch(uploadDocumentSuccess(docRef.id));
+                        dispatch(attachSubmissionImg(downloadUrl));
+                        dispatch(stepChange("guess_price_and_update_details"));
+                        dispatch(
+                        trackQPevent("picture_uploaded", userId, {
+                            url: downloadUrl,
+                            cameraApiType: cameraApiType
+                        })
+                        );
+                    });
                 })
                 .catch(error => {
-                console.log(error, "error");
-                dispatch(uploadDocumentFailed(error));
+                    console.log(error, "error");
+                    dispatch(uploadDocumentFailed(error));
                 });
             })
             .catch(function(error) {
-            console.log("Error adding document: ", error);
-            dispatch(uploadDocumentFailed(error));
+                console.log("Error adding document: ", error);
+                dispatch(uploadDocumentFailed(error));
             });
  
-        
         }
 }
 

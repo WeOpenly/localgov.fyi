@@ -250,6 +250,7 @@ class SubmitDetails extends Component {
     }
 
     const isPreview = step === "show_submit_confirm";
+
     return (
       <Fragment>
         <div

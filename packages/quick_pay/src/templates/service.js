@@ -208,7 +208,6 @@ class ServiceTemplate extends React.Component {
           </div>
           <div className={`${styles.column} ${styles.col1}`}></div>
         </div>
-      
 
         <FirebaseContext.Provider value={getFirebse}>
           <div className={`${styles.container} ${styles.gridLg}`}>

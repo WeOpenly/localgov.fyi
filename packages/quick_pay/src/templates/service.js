@@ -126,12 +126,33 @@ class ServiceTemplate extends React.Component {
       </ul>
     );
 
-    let landing = <LandingDesktop uploadable={uploadable} name={name} />;
+    let landing = (
+      <Fragment>
+        <Hero
+          uploadable={uploadable}
+          title={title}
+          name={name}
+          isMobile={isMobile}
+        />
+        <LandingDesktop uploadable={uploadable} name={name} />;
+      </Fragment>
+    );
 
     if (isMobile) {
-      landing = <Landing uploadable={uploadable} name={name} />;
+      landing = (
+        <Fragment>
+          <Hero
+            uploadable={uploadable}
+            title={title}
+            name={name}
+            isMobile={isMobile}
+          />
+          <Landing uploadable={uploadable} name={name} />;
+        </Fragment>
+      );
     }
 
+     
     return (
       <Fragment>
         <Helmet>
@@ -187,12 +208,7 @@ class ServiceTemplate extends React.Component {
           </div>
           <div className={`${styles.column} ${styles.col1}`}></div>
         </div>
-        <Hero
-          uploadable={uploadable}
-          title={title}
-          name={name}
-          isMobile={isMobile}
-        />
+      
 
         <FirebaseContext.Provider value={getFirebse}>
           <div className={`${styles.container} ${styles.gridLg}`}>

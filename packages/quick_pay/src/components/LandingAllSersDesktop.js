@@ -174,7 +174,9 @@ class LandingDesktop extends React.Component {
     // fd.append("canvasImage", blob);
     // console.log(fd);
     // if (fd) {
-    dispatch(uploadDocumentAndCreateSubmission(blob, anonUserID));
+    dispatch(
+      uploadDocumentAndCreateSubmission(blob, anonUserID, "user_media_api")
+    );
     // }
   }
 
@@ -244,7 +246,7 @@ class LandingDesktop extends React.Component {
     const { dispatch, anonUserID } = this.props;
 
     if (files) {
-      dispatch(uploadDocumentAndCreateSubmission(files[0], anonUserID));
+      dispatch(uploadDocumentAndCreateSubmission(files[0], anonUserID, 'on_file_added'));
     }
   }
 

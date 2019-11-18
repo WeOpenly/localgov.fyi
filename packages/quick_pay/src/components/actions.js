@@ -87,23 +87,22 @@ export function uploadDocumentFailed(){
 export function uploadDocumentAndCreateSubmission(file, userId, cameraApiType) {
     return async (dispatch, getState) => {
         dispatch(uploadDocumentBegin())
-
-
+        console.log(file, userId, cameraApiType)
         firebase
             .firestore()
             .collection("user_submission")
             .add({
-                user_id: userId,
-                created_at: dateNow
+            user_id: userId,
+            created_at: dateNow
             })
             .then(function(docRef) {
-            console.log(docRef);
             storageRef
                 .child(
                 `user_submission_imgs/${userId}/${docRef.id}-${dateNow}.jpg`
                 )
                 .put(file)
                 .then(function(snapshot) {
+           
                 snapshot.ref.getDownloadURL().then(function(downloadUrl) {
                     firebase
                     .firestore()
@@ -114,22 +113,24 @@ export function uploadDocumentAndCreateSubmission(file, userId, cameraApiType) {
                     dispatch(attachSubmissionImg(downloadUrl));
                     dispatch(stepChange("guess_price_and_update_details"));
                     dispatch(
-                      trackQPevent("picture_uploaded", userId, {
+                    trackQPevent("picture_uploaded", userId, {
                         url: downloadUrl,
                         cameraApiType: cameraApiType
-                      })
+                    })
                     );
                 });
                 })
                 .catch(error => {
-                    console.log(error, "error");
-                    dispatch(uploadDocumentFailed(error));
+                console.log(error, "error");
+                dispatch(uploadDocumentFailed(error));
                 });
             })
             .catch(function(error) {
-                console.log("Error adding document: ", error);
-                dispatch(uploadDocumentFailed(error));
+            console.log("Error adding document: ", error);
+            dispatch(uploadDocumentFailed(error));
             });
+ 
+        
         }
 }
 

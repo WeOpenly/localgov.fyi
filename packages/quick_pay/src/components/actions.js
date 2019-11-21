@@ -14,6 +14,7 @@ if (windowGlobal) {
     storageRef = firebase.storage().ref();
 }
 
+const db = firebase.firestore();
 
 const dateNow = Date.now();
 
@@ -88,48 +89,44 @@ export function uploadDocumentFailed(){
 export function uploadDocumentAndCreateSubmission(file, userId, cameraApiType) {
     return async (dispatch, getState) => {
         dispatch(uploadDocumentBegin())
+        var userSub = db.collection("user_submission");
 
-        firebase
-            .firestore()
-            .collection("user_submission")
-            .add({
-                user_id: userId,
-                created_at: dateNow
-            })
-            .then(function(docRef) {
-            storageRef
-                .child(
-                `user_submission_imgs/${userId}/${docRef.id}-${dateNow}.jpg`
-                )
-                .put(file)
-                .then(function(snapshot) {
-           
-                    snapshot.ref.getDownloadURL().then(function(downloadUrl) {
-                        firebase
-                        .firestore()
-                        .collection("user_submission")
-                        .doc(docRef.id)
-                        .update({ img_url: downloadUrl });
-                        dispatch(uploadDocumentSuccess(docRef.id));
-                        dispatch(attachSubmissionImg(downloadUrl));
-                        dispatch(stepChange("guess_price_and_update_details"));
-                        dispatch(
-                        trackQPevent("picture_uploaded", userId, {
-                            url: downloadUrl,
-                            cameraApiType: cameraApiType
-                        })
-                        );
-                    });
+    userSub
+      .add({
+        user_id: userId,
+        created_at: dateNow
+      })
+      .then(function(docRef) {
+        storageRef
+          .child(`user_submission_imgs/${userId}/${docRef.id}-${dateNow}.jpg`)
+          .put(file)
+          .then(function(snapshot) {
+            snapshot.ref.getDownloadURL().then(function(downloadUrl) {
+              firebase
+                .firestore()
+                .collection("user_submission")
+                .doc(docRef.id)
+                .update({ img_url: downloadUrl });
+              dispatch(uploadDocumentSuccess(docRef.id));
+              dispatch(attachSubmissionImg(downloadUrl));
+              dispatch(stepChange("guess_price_and_update_details"));
+              dispatch(
+                trackQPevent("picture_uploaded", userId, {
+                  url: downloadUrl,
+                  cameraApiType: cameraApiType
                 })
-                .catch(error => {
-                    console.log(error, "error");
-                    dispatch(uploadDocumentFailed(error));
-                });
-            })
-            .catch(function(error) {
-                console.log("Error adding document: ", error);
-                dispatch(uploadDocumentFailed(error));
+              );
             });
+          })
+          .catch(error => {
+            console.log(error, "error");
+            dispatch(uploadDocumentFailed(error));
+          });
+      })
+      .catch(function(error) {
+        console.log("Error adding document: ", error);
+        dispatch(uploadDocumentFailed(error));
+      });
  
         }
 }
@@ -157,8 +154,7 @@ export function subscribeUploadAnalysis(subId){
     return async (dispatch, getState) => {
         console.log(subId, 'subscribeUploadAnalysis')
         dispatch(subscribeUploadAnalysisBegin())
-        const query = firebase.firestore()
-            .collection('user_submission')
+        const query = db.collection('user_submission')
             .doc(subId)
         query.onSnapshot(function (doc) {
             const docData = doc.data()
@@ -195,7 +191,7 @@ export function finalizeSubmit(subId, email, price, token) {
     return async (dispatch, getState) => {
         dispatch(submitDetailsBegin())
 
-        firebase.firestore().collection("user_submission").doc(subId).update({
+        db.collection("user_submission").doc(subId).update({
             user_price: price,
             stripe_token: token,
             email: email

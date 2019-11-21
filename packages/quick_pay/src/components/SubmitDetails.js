@@ -338,7 +338,11 @@ class SubmitDetails extends Component {
                 modalElementClass={modalStyles.modal}
                 onRequestClose={this.fixCardDetails}
               >
-                <PaymentPreview stripe={this.props.stripe} />
+                <PaymentPreview
+                  enable_subs={enable_subs}
+                  sub_packages={sub_packages}
+                  stripe={this.props.stripe}
+                />
               </Drawer>
               <div className={`${styles.panelHeader} ${styles.textCenter} `}>
                 <div className={styles.panelSubtitle}>

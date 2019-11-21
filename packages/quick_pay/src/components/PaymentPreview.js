@@ -5,6 +5,7 @@ import styles from "./spectre.min.module.css"
 import iconStyles from './typicons.min.module.css';
 import currency from 'currency.js';
 import { finalizeSubmit, stepChange } from './actions';
+import ChoosePayment from './PaymentPreview/choose';
 
 const windowGlobal = typeof window !== 'undefined' && window
 
@@ -42,7 +43,9 @@ class PaymentPreview extends Component {
         ev.preventDefault();
         const { createdSubId, dispatch } = this.props;
         const { guessPrice, userPrice, userEmail } = this.props;
-    
+        const {enable_subs, sub_packages} = this.props;
+
+
         let price = 'NA'
         if (guessPrice && guessPrice !== 'NA') {
             price = guessPrice;
@@ -83,6 +86,9 @@ class PaymentPreview extends Component {
 
     render() {
         const { guessPrice, userPrice } = this.props;
+        const { enable_subs, sub_packages } = this.props;
+      
+
         let price = 'NA'
         if (guessPrice && guessPrice !== 'NA') {
             price = guessPrice;
@@ -94,6 +100,29 @@ class PaymentPreview extends Component {
   
         const finalAmt = currency(price).add(currency(price).multiply("0.05"))
         const finalAmtShow = finalAmt.value;
+
+        if(enable_subs){
+          return (
+            <div className={`${styles.column} ${styles.col12}`}>
+              <div
+                style={{
+                  padding: "0.3rem",
+                  background: "#fff",
+                  borderRadius: "0.3rem"
+                }}
+                className={styles.columns}
+              >
+                <div className={`${styles.column} ${styles.col12}`}>
+                  <ChoosePayment
+                    enable_subs={enable_subs}
+                    sub_packages={sub_packages}
+                  />
+                </div>
+              </div>
+            </div>
+          );
+         
+        }
 
         return (
           <div className={`${styles.column} ${styles.col12}`}>
@@ -141,139 +170,7 @@ class PaymentPreview extends Component {
                         </div>
                       </li>
                     ) : null}
-                    <li
-                      className={styles.menuItem}
-                      style={{
-                        display: "flex",
-                        justifyContent: "center",
-                        padding: "16px 8px"
-                      }}
-                    >
-                      <h5>Payment Summary</h5>
-                    </li>
-                    <li
-                      className={styles.menuItem}
-                      style={{
-                        display: "flex",
-                        justifyContent: "space-between"
-                      }}
-                    >
-                      <div>
-                        <span
-                          className={`${iconStyles.typcn} ${iconStyles.typcnCreditCard}`}
-                        ></span>
-                        Amount to pay
-                      </div>
-
-                      <div className={styles.menuItem}>
-                        {`$`}
-                        {price}
-                      </div>
-                    </li>
-                    <li className={styles.divider}></li>
-                    <li
-                      className={styles.menuItem}
-                      style={{
-                        display: "flex",
-                        justifyContent: "space-between"
-                      }}
-                    >
-                      <div>
-                        <span
-                          className={`${iconStyles.typcn} ${iconStyles.typcnTime}`}
-                        ></span>
-                        Estimated wait
-                      </div>
-
-                      <div className={styles.menuItem}>Less then a day</div>
-                    </li>
-                    <li className={styles.divider}></li>
-                    <li
-                      className={styles.menuItem}
-                      style={{
-                        display: "flex",
-                        justifyContent: "space-between"
-                      }}
-                    >
-                      <div
-                        className={`${styles.tooltip} ${styles.tooltipRight}`}
-                        data-tooltip="papergov performs this on your behalf for a small fee"
-                      >
-                        <span
-                          className={`${iconStyles.typcn} ${iconStyles.typcnSupport}`}
-                        ></span>
-                        Service Fee
-                        <sup>
-                          <span
-                            className={`${iconStyles.typcn} ${iconStyles.typcnInfoLarge}`}
-                          ></span>
-                        </sup>
-                      </div>
-
-                      <div className={styles.menuItem}>5%</div>
-                    </li>
-                    <li className={styles.divider}></li>
-
-                    <li
-                      className={styles.menuItem}
-                      style={{
-                        display: "flex",
-                        justifyContent: "space-between",
-                        padding: "8px 10px"
-                      }}
-                    >
-                      <div style={{ fontWeight: "bold" }}>Total</div>
-
-                      <div
-                        className={styles.menuItem}
-                        style={{ fontWeight: "bold" }}
-                      >
-                        {"$"}
-                        {finalAmtShow}
-                      </div>
-                    </li>
-
-                    <li
-                      className={styles.menuItem}
-                      style={{
-                        display: "flex",
-                        justifyContent: "space-between",
-                        padding: "8px 8px 0 8px"
-                      }}
-                    >
-                      <button
-                        style={{
-                          marginTop: "16px",
-                          width: "100%",
-                          fontSize: "14px"
-                        }}
-                        className={`${styles.btn} ${styles.btnPrimary} ${styles.btnLg} ${styles.textUppercase} ${styles.textBold}`}
-                        type="submit"
-                      >
-                        {" "}
-                        <span
-                          className={`${iconStyles.typcn} ${iconStyles.typcnThumbsUp}`}
-                        ></span>
-                        Pay {"$"}
-                        {finalAmtShow}
-                      </button>
-                    </li>
-                    <li
-                      className={styles.menuItem}
-                      style={{
-                        display: "flex",
-                        justifyContent: "center",
-                        padding: "8px 8px",
-                        alignItems: "center"
-                      }}
-                    >
-                      <small style={{ fontSize: "12px" }}>
-                        <span
-                          className={`${iconStyles.typcn} ${iconStyles.typcnInfoLarge}`}
-                        ></span>
-                        You accept terms by cicking this
-                      </small>
-                    </li>
+                   
                   </ul>
                 </form>
               </div>

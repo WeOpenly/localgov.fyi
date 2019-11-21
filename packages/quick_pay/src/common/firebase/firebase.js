@@ -12,6 +12,8 @@ if (windowGlobal){
     require('firebase/storage');
 }
 
+console.log(process.env);
+
 const firebaseConfig = {
     apiKey: process.env.GATSBY_FIREBASE_API_KEY,
     authDomain: process.env.GATSBY_FIREBASE_DOMAIN,

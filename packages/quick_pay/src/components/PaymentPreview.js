@@ -40,7 +40,10 @@ class PaymentPreview extends Component {
 
     
     onSubmit(ev) {
+      if(ev){
         ev.preventDefault();
+      }
+        
         const { createdSubId, dispatch } = this.props;
         const { guessPrice, userPrice, userEmail } = this.props;
         const {enable_subs, sub_packages} = this.props;
@@ -114,6 +117,8 @@ class PaymentPreview extends Component {
               >
                 <div className={`${styles.column} ${styles.col12}`}>
                   <ChoosePayment
+                    createCharge={this.onSubmit}
+                    finalAmtShow={finalAmtShow}
                     enable_subs={enable_subs}
                     sub_packages={sub_packages}
                   />

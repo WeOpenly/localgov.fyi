@@ -6,15 +6,17 @@ import { trackQPevent } from '../common/tracking';
 
 let firebase = null;
 let storageRef = null;
+let db = null;
 
 const windowGlobal = typeof window !== 'undefined' && window
 
 if (windowGlobal) {
     firebase = getFirebase();
     storageRef = firebase.storage().ref();
+    db = firebase.firestore();
 }
 
-const db = firebase.firestore();
+
 
 const dateNow = Date.now();
 

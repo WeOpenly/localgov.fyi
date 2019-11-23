@@ -7,15 +7,17 @@ import {serTemplate} from '../components/ServiceTemplatePage/reducer';
 import {indexPage} from '../components/IndexPage/reducer';
 import {searchPage} from '../components/SearchPage/reducer';
 import { nearbyOrgs} from '../components/Nearby/reducer';
+import {serPack} from '../components/SerPack/reducer';
 
 import {reducer as formReducer} from 'redux-form';
 
 export default combineReducers({
-    form: formReducer,
-    delivery,
-    userRequests,
-    serTemplate,
-    indexPage,
-    searchPage,
-    nearbyOrgs
-})
+  form: formReducer,
+  delivery,
+  userRequests,
+  serTemplate,
+  indexPage,
+  searchPage,
+  nearbyOrgs,
+  serPack
+});

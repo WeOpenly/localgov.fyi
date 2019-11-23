@@ -8,15 +8,6 @@ const fs = require("fs");
 // bootstrap is finished so you have access to any information necessary to
 // programmatically create pages.
 
-
-
-
-
-
-
-
-
-
 exports.createPages = ({ graphql, actions }) => {
   const { createPage } = actions
 
@@ -303,6 +294,17 @@ org_details {
           });
         });
 
+
+        //uber pack
+        const packTemplate = path.resolve(`src/templates/service-package.js`);
+        
+        createPage({
+          path: `uber-driver-pack/`,
+          component: slash(packTemplate),
+          context: {
+            pack_name: 'uber'
+          }
+        });
         //service page
 
         const serTemplate = path.resolve(

@@ -32,9 +32,8 @@ class FooterNew extends Component {
         <div className={styles.tileIcon}>
           <figure
             className={`${styles.avatar} ${styles.avatarXl}`}
-            data-initial="EG"
             style={{
-              backgroundColor: "#3500f3",
+              backgroundColor: "#fff",
               boxShadow: "0 0.1rem 0.1rem rgba(48,55,66,.30)",
               border: "1px solid #fff",
               width: "64px",

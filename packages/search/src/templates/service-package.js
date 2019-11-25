@@ -82,59 +82,59 @@ class ServicePackage extends Component {
             </div>
             <div className={`${styles.column} ${styles.col3}`}></div>
 
-            <div className={`${styles.column} ${styles.col3}`}></div>
-            <div className={`${styles.column} ${styles.col6}`}>
+            <div className={`${styles.column} ${styles.col2}`}></div>
+            <div className={`${styles.column} ${styles.col8}`}>
               <div
                 style={{ background: "#eef0f3" }}
                 className={styles.divider}
               ></div>
             </div>
-            <div className={`${styles.column} ${styles.col3}`}></div>
+            <div className={`${styles.column} ${styles.col2}`}></div>
 
-            <div className={`${styles.column} ${styles.col3}`}></div>
+            <div className={`${styles.column} ${styles.col1}`}></div>
             <div
               style={{ marginBottom: "4rem" }}
-              className={`${styles.column} ${styles.col6}`}
+              className={`${styles.column} ${styles.col10}`}
             >
               <GeneralSection serPack={serPack} />
             </div>
-            <div className={`${styles.column} ${styles.col3}`}></div>
+            <div className={`${styles.column} ${styles.col1}`}></div>
 
-            <div className={`${styles.column} ${styles.col3}`}></div>
-            <div className={`${styles.column} ${styles.col6}`}>
+            <div className={`${styles.column} ${styles.col2}`}></div>
+            <div className={`${styles.column} ${styles.col8}`}>
               <div
                 style={{ background: "#eef0f3" }}
                 className={styles.divider}
               ></div>
             </div>
-            <div className={`${styles.column} ${styles.col3}`}></div>
+            <div className={`${styles.column} ${styles.col2}`}></div>
 
-            <div className={`${styles.column} ${styles.col3}`}></div>
+            <div className={`${styles.column} ${styles.col1}`}></div>
             <div
               style={{ marginBottom: "4rem" }}
-              className={`${styles.column} ${styles.col6}`}
+              className={`${styles.column} ${styles.col10}`}
             >
               <CitySection serPack={serPack} />
             </div>
-            <div className={`${styles.column} ${styles.col3}`}></div>
+            <div className={`${styles.column} ${styles.col1}`}></div>
 
-            <div className={`${styles.column} ${styles.col3}`}></div>
-            <div className={`${styles.column} ${styles.col6}`}>
+            <div className={`${styles.column} ${styles.col2}`}></div>
+            <div className={`${styles.column} ${styles.col8}`}>
               <div
                 style={{ background: "#eef0f3" }}
                 className={styles.divider}
               ></div>
             </div>
-            <div className={`${styles.column} ${styles.col3}`}></div>
+            <div className={`${styles.column} ${styles.col2}`}></div>
 
-            <div className={`${styles.column} ${styles.col3}`}></div>
+            <div className={`${styles.column} ${styles.col1}`}></div>
             <div
               style={{ marginBottom: "4rem" }}
-              className={`${styles.column} ${styles.col6}`}
+              className={`${styles.column} ${styles.col10}`}
             >
               <PaySection serPack={serPack} />
             </div>
-            <div className={`${styles.column} ${styles.col3}`}></div>
+            <div className={`${styles.column} ${styles.col1}`}></div>
 
             <div className={`${styles.column} ${styles.col12}`}>
               <FooterNew />

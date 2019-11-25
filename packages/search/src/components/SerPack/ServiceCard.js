@@ -28,12 +28,13 @@ class FooterNew extends Component {
       <div
         className={`${styles.tile} ${styles.textLeft}`}
         style={{
-            minWidth: '360px',
+            minWidth: '340px',
+            maxWidth: '360px',
           background: "#fdfdfd",
           margin: "0.2rem 0.5rem",
           border: "1px solid rgba(48,55,66,.10)",
           borderRadius: "0.4rem",
-          padding: "1.5rem 1.2rem 0.6rem 1.2rem",
+          padding: "1.5rem 1rem 0.6rem 1.2rem",
           boxShadow:
             "0px 2px 3px 0px rgba(0,0,0,0.1),0px 1px 1px 0px rgba(0,0,0,0.03),0px 1px 2px 4px rgba(0,0,0,0.02)"
         }}

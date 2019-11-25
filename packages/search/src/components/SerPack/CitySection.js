@@ -85,7 +85,7 @@ class CitySection extends Component {
           <div
             className={styles.tileContent}
             style={{
-              padding: "0 0.1rem",
+              padding: "0 4rem",
               display: "flex",
               justifyContent: "center",
               alignItems: "flex-start"
@@ -102,7 +102,10 @@ class CitySection extends Component {
               <h4 style={{ color: "rgba(255, 183, 0, .99)" }}>
                 Local Requirements
               </h4>
-              <p className={` `} style={{lineHeight: '1.1rem'}}>
+              <p
+                className={` `}
+                style={{ lineHeight: "1.1rem", paddingRight: "4rem" }}
+              >
                 Driver-partners operating on the Uber app may be required by
                 local governments to obtain a business license (or related local
                 business tax liabilities) and pay associated fees. Business
@@ -115,7 +118,11 @@ class CitySection extends Component {
           <div className={`${styles.column} ${styles.col1}`}></div>
           <div
             className={`${styles.column} ${styles.col10}`}
-            style={{ display: "flex", justifyContent: "space-evenly" }}
+            style={{
+              display: "flex",
+              justifyContent: "space-evenly",
+              flexWrap: "wrap"
+            }}
           >
             {details}
           </div>

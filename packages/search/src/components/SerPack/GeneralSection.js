@@ -97,7 +97,7 @@ class FooterNew extends Component {
           <div
             className={styles.tileContent}
             style={{
-              padding: "0 0.1rem",
+              padding: "0 4rem",
               display: "flex",
               justifyContent: "center",
               alignItems: "flex-start"
@@ -111,10 +111,10 @@ class FooterNew extends Component {
             </div>
 
             <div className={styles.textLeft}>
-              <h4 style={{ color: "rgba(50, 182, 67, .95)"}}>
+              <h4 style={{ color: "rgba(50, 182, 67, .95)" }}>
                 General Requirements
               </h4>
-              <p style={{lineHeight: '1.1rem'}}>
+              <p style={{ lineHeight: "1.1rem", paddingRight: "4rem" }}>
                 Driver-partners need to submit copies of driver’s license,
                 vehicle registration, proof of insurance, your photo, and some
                 information for a background check.
@@ -127,7 +127,11 @@ class FooterNew extends Component {
           <div className={`${styles.column} ${styles.col1}`}></div>
           <div
             className={`${styles.column} ${styles.col10}`}
-            style={{ display: "flex", justifyContent: "space-evenly" }}
+            style={{
+              display: "flex",
+              justifyContent: "space-evenly",
+              flexWrap: "wrap"
+            }}
           >
             {details}
           </div>

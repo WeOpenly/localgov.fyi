@@ -106,7 +106,7 @@ if (loading) {
           <div
             className={styles.tileContent}
             style={{
-              padding: "0 0.1rem",
+              padding: "0 4rem",
               display: "flex",
               justifyContent: "center",
               alignItems: "flex-start"
@@ -123,7 +123,7 @@ if (loading) {
               <h4 style={{ color: "rgba(215, 62, 72, .7)" }}>
                 Tickets, tolls & violations
               </h4>
-              <p style={{ lineHeight: "1.1rem" }}>
+              <p style={{ lineHeight: "1.1rem", paddingRight: '4rem' }}>
                 Handling unforeseen parking tickets, traffic tickets, tolls or
                 other notices/violations couldn't be eaiser. Just snap a picture
                 of the ticket/notice & we take care of the rest for you.
@@ -136,7 +136,11 @@ if (loading) {
           <div className={`${styles.column} ${styles.col1}`}></div>
           <div
             className={`${styles.column} ${styles.col10}`}
-            style={{ display: "flex", justifyContent: "space-evenly" }}
+            style={{
+              display: "flex",
+              justifyContent: "space-evenly",
+              flexWrap: "wrap"
+            }}
           >
             {details}
           </div>

@@ -45,10 +45,10 @@ class Index extends React.Component {
         className={` ${styles.textCenter}`}
         style={{
           margin: "0.5rem 0.2rem",
-          padding: "5rem 0.5rem 1rem 0.5rem",
+          padding: "3rem 0.5rem 1rem 0.5rem",
           minHeight: "300px",
           border: "none",
-          background: "#fff",
+
           marginBottom: "1rem"
         }}
       >
@@ -81,13 +81,20 @@ class Index extends React.Component {
               style={{
                 display: "flex",
                 flexDirection: "column",
+                alignItems: "center",
                 margin: "1rem 0 1rem 0"
               }}
             >
-              <h2> Driver compliance and app icons</h2>
-              <p className={styles.textGray}>
-                The logotype for the Rider, Driver, Eats, and Freight apps
-                represents our core products.
+              <h2 style={{ color: "rgba(86, 39, 255, .7)" }}>
+                {" "}
+                Driver-partner Compliance Simplified{" "}
+              </h2>
+              <p
+                style={{ maxWidth: "380px", padding: "0.5rem" }}
+                className={styles.textSemibold}
+              >
+                Find all your compliance needs in a single place so that you can
+                focus on what you best.
               </p>
             </div>
           </div>
@@ -110,9 +117,9 @@ class Index extends React.Component {
                 >
                   <div className={styles.inputGroup} style={{ width: "100%" }}>
                     <input
-                      className={`${styles.formInput} ${styles.inputLg}`}
+                      className={`${styles.formInput} ${styles.inputXl}`}
                       {...getInputProps({
-                        placeholder: "Search Locations For Compliance Details"
+                        placeholder: "Enter a location to get started"
                       })}
                     />
                   </div>

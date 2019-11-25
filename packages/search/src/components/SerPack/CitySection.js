@@ -39,7 +39,7 @@ class CitySection extends Component {
         <div
           className={styles.empty}
           style={{
-            background: "#fff",
+      
             borderRadius: "0.6rem",
             display: "flex",
             flexDirection: "column",
@@ -77,8 +77,7 @@ class CitySection extends Component {
         <div
           className={`${styles.tile} ${styles.textCenter}`}
           style={{
-      
-            marginBottom: "1rem",
+            marginBottom: "2rem",
             marginTop: "1rem",
             padding: "1rem 0.4rem 0rem 0.4rem"
           }}
@@ -100,9 +99,14 @@ class CitySection extends Component {
             </div>
 
             <div className={styles.textLeft}>
-              <h4 style={{ color: "#455060" }}>Local Requirements</h4>
-              <p className={` ${styles.textGray}`}>
-                Be as general as you can be
+              <h4 style={{ color: "rgba(255, 183, 0, .99)" }}>
+                Local Requirements
+              </h4>
+              <p className={` `} style={{lineHeight: '1.1rem'}}>
+                Driver-partners operating on the Uber app may be required by
+                local governments to obtain a business license (or related local
+                business tax liabilities) and pay associated fees. Business
+                Licenses need to be renewed annually in most cases.
               </p>
             </div>
           </div>

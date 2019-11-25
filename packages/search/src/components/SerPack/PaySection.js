@@ -42,7 +42,7 @@ if (loading) {
     <div
       className={styles.empty}
       style={{
-        background: "#fff",
+   
         borderRadius: "0.6rem",
         display: "flex",
         flexDirection: "column",
@@ -64,7 +64,8 @@ if (loading) {
     if (location_sers && location_sers.length > 0) {
       const cardDetails = {
         contact_details: location_sers[0].contact_details,
-        service_name: 'Parking Ticket Citation',
+        service_name: 'Pay Parking Ticket or Citation',
+        buttonText: 'Pay now',
         org_logo: location_sers[0].organization.logo_url,
         org_name: location_sers[0].organization.org_name,
         learn_more_url: location_sers[0].url_slug,
@@ -79,7 +80,8 @@ if (loading) {
       if (location_sers && location_sers.length > 0) {
         const cardDetails = {
           contact_details: location_sers[0].contact_details,
-          service_name: 'Toll Bill Violation',
+          service_name: "Pay Traffic Citation or Ticket",
+          buttonText: 'Pay now',
           org_logo: location_sers[0].organization.logo_url,
           org_name: location_sers[0].organization.org_name,
           learn_more_url: location_sers[0].url_slug,
@@ -94,10 +96,9 @@ if (loading) {
         <div
           className={`${styles.tile} ${styles.textCenter}`}
           style={{
-            background: "#fff",
             display: "flex",
             justifyContent: "center",
-            marginBottom: "1rem",
+            marginBottom: "2rem",
             marginTop: "1rem",
             padding: "1rem 0.4rem 0rem 0.4rem"
           }}
@@ -119,9 +120,13 @@ if (loading) {
             </div>
 
             <div className={styles.textLeft}>
-              <h4 style={{ color: "#455060" }}>Tickets, tolls & violations</h4>
-              <p className={` ${styles.textGray}`}>
-                Be as general as you can be
+              <h4 style={{ color: "rgba(215, 62, 72, .7)" }}>
+                Tickets, tolls & violations
+              </h4>
+              <p style={{ lineHeight: "1.1rem" }}>
+                Handling unforeseen parking tickets, traffic tickets, tolls or
+                other notices/violations couldn't be eaiser. Just snap a picture
+                of the ticket/notice & we take care of the rest for you.
               </p>
             </div>
           </div>

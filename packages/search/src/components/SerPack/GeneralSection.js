@@ -33,8 +33,7 @@ class FooterNew extends Component {
           <div
             className={styles.empty}
             style={{
-              background: "#fff",
-          
+         
               borderRadius: "0.6rem",
               display: "flex",
               flexDirection: "column",
@@ -88,10 +87,9 @@ class FooterNew extends Component {
         <div
           className={`${styles.tile} ${styles.textCenter}`}
           style={{
-            background: "#fff",
             display: "flex",
             justifyContent: "center",
-            marginBottom: "1rem",
+            marginBottom: "2rem",
             marginTop: "1rem",
             padding: "1rem 0.4rem 0rem 0.4rem"
           }}
@@ -107,15 +105,19 @@ class FooterNew extends Component {
           >
             <div className={styles.tileIcon} style={{ marginRight: "0.5rem" }}>
               <span
-                style={{ color: "rgba(50, 182, 67, .95)", fontSize: "1.5rem" }}
+                style={{ color: "rgba(50, 182, 67, .95)", fontSize: "1.6rem" }}
                 className={`${iconStyles.typcn} ${iconStyles.typcnFolder}`}
               />
             </div>
 
             <div className={styles.textLeft}>
-              <h4 style={{ color: "#455060" }}>General Requirements</h4>
-              <p className={` ${styles.textGray}`}>
-                Be as general as you can be
+              <h4 style={{ color: "rgba(50, 182, 67, .95)"}}>
+                General Requirements
+              </h4>
+              <p style={{lineHeight: '1.1rem'}}>
+                Driver-partners need to submit copies of driver’s license,
+                vehicle registration, proof of insurance, your photo, and some
+                information for a background check.
               </p>
             </div>
           </div>
@@ -123,7 +125,12 @@ class FooterNew extends Component {
 
         <div className={styles.columns}>
           <div className={`${styles.column} ${styles.col1}`}></div>
-          <div className={`${styles.column} ${styles.col10}`} style={{display: 'flex', justifyContent: 'space-evenly'}}>{details}</div>
+          <div
+            className={`${styles.column} ${styles.col10}`}
+            style={{ display: "flex", justifyContent: "space-evenly" }}
+          >
+            {details}
+          </div>
           <div className={`${styles.column} ${styles.col1}`}></div>
         </div>
       </Fragment>

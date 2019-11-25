@@ -71,20 +71,41 @@ class ServicePackage extends Component {
           <title>{`${pack_name} | papergov`}</title>
         </Helmet>
 
-        <div className={`${styles.container} ${styles.gridXl}`}>
+        <div
+          className={`${styles.container} ${styles.gridXl}`}
+          style={{ background: "#f9fafc" }}
+        >
           <div className={`${styles.columns} `}>
             <div className={`${styles.column} ${styles.col3}`}></div>
             <div className={`${styles.column} ${styles.col6}`}>
-              <Index serPack={serPack} onSearchChange={this.onSearchChange}/>
+              <Index serPack={serPack} onSearchChange={this.onSearchChange} />
+            </div>
+            <div className={`${styles.column} ${styles.col3}`}></div>
+
+            <div className={`${styles.column} ${styles.col3}`}></div>
+            <div className={`${styles.column} ${styles.col6}`}>
+              <div
+                style={{ background: "#eef0f3" }}
+                className={styles.divider}
+              ></div>
             </div>
             <div className={`${styles.column} ${styles.col3}`}></div>
 
             <div className={`${styles.column} ${styles.col3}`}></div>
             <div
               style={{ marginBottom: "4rem" }}
-               className={`${styles.column} ${styles.col6}`}
+              className={`${styles.column} ${styles.col6}`}
             >
               <GeneralSection serPack={serPack} />
+            </div>
+            <div className={`${styles.column} ${styles.col3}`}></div>
+
+            <div className={`${styles.column} ${styles.col3}`}></div>
+            <div className={`${styles.column} ${styles.col6}`}>
+              <div
+                style={{ background: "#eef0f3" }}
+                className={styles.divider}
+              ></div>
             </div>
             <div className={`${styles.column} ${styles.col3}`}></div>
 
@@ -98,6 +119,15 @@ class ServicePackage extends Component {
             <div className={`${styles.column} ${styles.col3}`}></div>
 
             <div className={`${styles.column} ${styles.col3}`}></div>
+            <div className={`${styles.column} ${styles.col6}`}>
+              <div
+                style={{ background: "#eef0f3" }}
+                className={styles.divider}
+              ></div>
+            </div>
+            <div className={`${styles.column} ${styles.col3}`}></div>
+
+            <div className={`${styles.column} ${styles.col3}`}></div>
             <div
               style={{ marginBottom: "4rem" }}
               className={`${styles.column} ${styles.col6}`}
@@ -106,7 +136,6 @@ class ServicePackage extends Component {
             </div>
             <div className={`${styles.column} ${styles.col3}`}></div>
 
-         
             <div className={`${styles.column} ${styles.col12}`}>
               <FooterNew />
             </div>

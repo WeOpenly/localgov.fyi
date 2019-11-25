@@ -15,18 +15,27 @@ class FooterNew extends Component {
   }
 
   render() {
-    const { contact_details, service_name, learn_more_url, quickpay_url, org_name, org_logo } = this.props;
+    const {
+      contact_details,
+      buttonText, service_name,
+      learn_more_url,
+      quickpay_url,
+      org_name,
+      org_logo
+    } = this.props;
 
     return (
       <div
         className={`${styles.tile} ${styles.textLeft}`}
         style={{
+            minWidth: '360px',
           background: "#fdfdfd",
           margin: "0.2rem 0.5rem",
           border: "1px solid rgba(48,55,66,.10)",
-          borderRadius: "0.6rem",
-          padding: "1rem 1rem 0.6rem 1.2rem",
-        
+          borderRadius: "0.4rem",
+          padding: "1.5rem 1.2rem 0.6rem 1.2rem",
+          boxShadow:
+            "0px 2px 3px 0px rgba(0,0,0,0.1),0px 1px 1px 0px rgba(0,0,0,0.03),0px 1px 2px 4px rgba(0,0,0,0.02)"
         }}
       >
         <div className={styles.tileIcon}>
@@ -52,9 +61,9 @@ class FooterNew extends Component {
           }}
         >
           <div>
-            <h5 >{service_name}</h5>
+            <h5>{service_name}</h5>
             <p
-              style={{ marginBotton: "0.2rem", paddingRight: "1rem", }}
+              style={{ marginBotton: "0.2rem", paddingRight: "1rem" }}
               className={`${styles.cardSubitle} ${styles.textGray}`}
             >
               {org_name}
@@ -69,7 +78,7 @@ class FooterNew extends Component {
             }}
           >
             <a
-              className={` ${styles.btn} ${styles.btnLink}`}
+              className={`${styles.btn} ${styles.btnLink} ${styles.textLinkGray} ${styles.textSemibold}`}
               href={`https://papergov.com/${learn_more_url}`}
               target="_blank"
             >
@@ -80,7 +89,7 @@ class FooterNew extends Component {
               href={quickpay_url}
               target="_blank"
             >
-              Apply now
+              {buttonText ? buttonText : `Apply now`}
             </a>
           </div>
         </div>

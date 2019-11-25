@@ -831,10 +831,10 @@ legend {
     -webkit-appearance: none;
     -moz-appearance: none;
     appearance: none;
-    background: #fcfcff;
+    background: #fffcff;
     background-image: none;
     border: .06rem solid #bcc3ce;
-    border-radius: .2rem;
+    border-radius: .3rem;
     color: #3b4351;
     display: block;
     font-size: .8rem;
@@ -854,15 +854,15 @@ legend {
 }
 
 .form-input:-ms-input-placeholder {
-    color: #bcc3ce
+    color: #3b4351
 }
 
 .form-input::-ms-input-placeholder {
-    color: #bcc3ce
+    color: #3b4351
 }
 
 .form-input::placeholder {
-    color: #bcc3ce
+    color: #3b4351
 }
 
 .form-input.input-sm {
@@ -874,6 +874,12 @@ legend {
 .form-input.input-lg {
     font-size: .9rem;
     height: 2rem;
+    padding: .4rem .7rem
+}
+
+.form-input.input-xl {
+    font-size: 1rem;
+    height: 2.3rem;
     padding: .35rem .6rem
 }
 

@@ -4,7 +4,7 @@ import { connect } from "react-redux";
 import styles from "./spectre.min.module.css"
 import iconStyles from './typicons.min.module.css';
 import currency from 'currency.js';
-import { finalizeSubmit, stepChange } from './actions';
+import { finalizeSubmit, stepChange, finalizeSubscription } from "./actions";
 import ChoosePayment from './PaymentPreview/choose';
 
 const windowGlobal = typeof window !== 'undefined' && window
@@ -30,274 +30,318 @@ const createOptions = (fontSize, padding) => {
 };
 
 class PaymentPreview extends Component {
-    constructor(props) {
-        super(props);
-        this.onSubmit = this.onSubmit.bind(this);
-        this.state = {
-          failedMsg: null,
-        }
-    }
+  constructor(props) {
+    super(props);
+    this.onSubmit = this.onSubmit.bind(this);
+    this.onCreateSub = this.onCreateSub.bind(this);
 
-    
-    onSubmit(ev) {
-      if(ev){
-        ev.preventDefault();
+    this.state = {
+      failedMsg: null
+    };
+  }
+
+  onCreateSub(packId){
+      const { createdSubId, dispatch } = this.props;
+      const { guessPrice, userPrice, userEmail } = this.props;
+      const { enable_subs, sub_packages } = this.props;
+
+      let price = "NA";
+      if (guessPrice && guessPrice !== "NA") {
+        price = guessPrice;
+        price = String(currency(price).value);
       }
-        
-        const { createdSubId, dispatch } = this.props;
-        const { guessPrice, userPrice, userEmail } = this.props;
-        const {enable_subs, sub_packages} = this.props;
+      if (userPrice) {
+        price = userPrice;
+      }
 
+      const finalAmt = currency(price).add(currency(price).multiply("0.05"));
+      const finalAmtInt = finalAmt.intValue;
 
-        let price = 'NA'
-        if (guessPrice && guessPrice !== 'NA') {
-            price = guessPrice;
-            price = String(currency(price).value)
-        }
-        if (userPrice) {
-            price = userPrice;
-        }
+      if (finalAmtInt < 200) {
+        return;
+      }
 
-        const finalAmt = currency(price).add(currency(price).multiply("0.05"))
-        const finalAmtInt = finalAmt.intValue;
+      if (this.props.stripe) {
+        this.props.stripe
+          .createToken({ type: "card", email: userEmail })
+          .then(payload => {
+            if (payload && payload.token) {
+              dispatch(
+                finalizeSubscription(
+                  createdSubId,
+                  userEmail,
+                  price,
+                  payload.token.id,
+                  packId
+                )
+              );
+              dispatch(stepChange("final_conf"));
+            }
+            if (payload && payload.error) {
+              const { message } = payload.error;
+              this.setState({
+                failedMsg: message
+              });
+            }
+          });
+      } else {
+        console.log("Stripe.js hasn't loaded yet.");
+      }
+  }
 
-        if (finalAmtInt < 200){
-            return
-        }
-
-        if (this.props.stripe) {
-            this
-                .props
-                .stripe
-                .createToken({ type: 'card', email: userEmail})
-                .then((payload) => {
-                    if (payload && payload.token) {
-                        dispatch(finalizeSubmit(createdSubId, userEmail, price, payload.token.id));
-                        dispatch(stepChange('final_conf'));
-                    }
-                    if(payload && payload.error){
-                      const {message}  = payload.error
-                      this.setState({
-                        failedMsg: message
-                      })
-                    }
-                });
-        } else {
-            console.log("Stripe.js hasn't loaded yet.");
-        }
+  onSubmit(ev) {
+    if (ev) {
+      ev.preventDefault();
     }
 
-    render() {
-        const { guessPrice, userPrice } = this.props;
-        const { enable_subs, sub_packages } = this.props;
-      
+    const { createdSubId, dispatch } = this.props;
+    const { guessPrice, userPrice, userEmail } = this.props;
+    const { enable_subs, sub_packages } = this.props;
 
-        let price = 'NA'
-        if (guessPrice && guessPrice !== 'NA') {
-            price = guessPrice;
-            price = String(currency(price).value)
-        }
-        if (userPrice) {
-            price = userPrice;
-        }
-  
-        const finalAmt = currency(price).add(currency(price).multiply("0.05"))
-        const finalAmtShow = finalAmt.value;
+    let price = "NA";
+    if (guessPrice && guessPrice !== "NA") {
+      price = guessPrice;
+      price = String(currency(price).value);
+    }
+    if (userPrice) {
+      price = userPrice;
+    }
 
-        if(enable_subs){
-          return (
+    const finalAmt = currency(price).add(currency(price).multiply("0.05"));
+    const finalAmtInt = finalAmt.intValue;
+
+    if (finalAmtInt < 200) {
+      return;
+    }
+
+    if (this.props.stripe) {
+      this.props.stripe
+        .createToken({ type: "card", email: userEmail })
+        .then(payload => {
+          if (payload && payload.token) {
+            dispatch(
+              finalizeSubmit(createdSubId, userEmail, price, payload.token.id)
+            );
+            dispatch(stepChange("final_conf"));
+          }
+          if (payload && payload.error) {
+            const { message } = payload.error;
+            this.setState({
+              failedMsg: message
+            });
+          }
+        });
+    } else {
+      console.log("Stripe.js hasn't loaded yet.");
+    }
+  }
+
+  render() {
+    const { guessPrice, userPrice } = this.props;
+    const { enable_subs, sub_packages } = this.props;
+
+    let price = "NA";
+    if (guessPrice && guessPrice !== "NA") {
+      price = guessPrice;
+      price = String(currency(price).value);
+    }
+    if (userPrice) {
+      price = userPrice;
+    }
+
+    const finalAmt = currency(price).add(currency(price).multiply("0.05"));
+    const finalAmtShow = finalAmt.value;
+
+    if (enable_subs) {
+      return (
+        <div className={`${styles.column} ${styles.col12}`}>
+          <div
+            style={{
+              padding: "0.3rem",
+              background: "#fff",
+              borderRadius: "0.3rem"
+            }}
+            className={styles.columns}
+          >
             <div className={`${styles.column} ${styles.col12}`}>
-              <div
-                style={{
-                  padding: "0.3rem",
-                  background: "#fff",
-                  borderRadius: "0.3rem"
-                }}
-                className={styles.columns}
-              >
-                <div className={`${styles.column} ${styles.col12}`}>
-                  <ChoosePayment
-                    createCharge={this.onSubmit}
-                    finalAmtShow={finalAmtShow}
-                    enable_subs={enable_subs}
-                    sub_packages={sub_packages}
-                  />
-                </div>
-              </div>
-            </div>
-          );
-         
-        }
-
-        return (
-          <div className={`${styles.column} ${styles.col12}`}>
-            <div
-              style={{
-                padding: "0.3rem",
-
-                background: "#fff",
-                borderRadius: "0.3rem"
-              }}
-              className={styles.columns}
-            >
-              <div className={`${styles.column} ${styles.col12}`}>
-                <form onSubmit={this.onSubmit}>
-                  <ul style={{ margin: "0.8rem" }}>
-                    {this.state.failedMsg ? (
-                      <li
-                        className={styles.menuItem}
-                        style={{
-                          display: "flex",
-                          justifyContent: "center",
-                          padding: "8px 8px"
-                        }}
-                      >
-                        <div
-                          className={`${styles.label} ${styles.labelWarning}`}
-                          style={{
-                            fontSize: "12px",
-                            background: "#fff",
-                            border: "1px solid rgba(215, 62, 72, .95)",
-                            borderRadius: "5px",
-                            padding: "6px 6px",
-                            color: "#3b4351"
-                          }}
-                        >
-                          <span
-                            style={{
-                              color: "#d73e48",
-                              padding: "0 4px 0 0 "
-                            }}
-                            className={`${iconStyles.typcn} ${iconStyles.typcnWarning}`}
-                          ></span>
-                          Payment was not successfull because{" "}
-                          {this.state.failedMsg}
-                        </div>
-                      </li>
-                    ) : null}
-                  </ul>
-                  <li
-                    className={styles.menuItem}
-                    style={{
-                      display: "flex",
-                      justifyContent: "center",
-                      padding: "16px 8px"
-                    }}
-                  >
-                    <h5>Payment Summary</h5>
-                  </li>
-                  <li
-                    className={styles.menuItem}
-                    style={{
-                      display: "flex",
-                      justifyContent: "space-between"
-                    }}
-                  >
-                    <div>
-                      <span
-                        className={`${iconStyles.typcn} ${iconStyles.typcnCreditCard}`}
-                      ></span>
-                      Amount to pay
-                    </div>
-
-                    <div className={styles.menuItem}>
-                      {`$`}
-                      {price}
-                    </div>
-                  </li>
-                  <li className={styles.divider}></li>
-                  <li
-                    className={styles.menuItem}
-                    style={{
-                      display: "flex",
-                      justifyContent: "space-between"
-                    }}
-                  >
-                    <div
-                      className={`${styles.tooltip} ${styles.tooltipRight}`}
-                      data-tooltip="papergov performs this on your behalf for a small fee"
-                    >
-                      <span
-                        className={`${iconStyles.typcn} ${iconStyles.typcnSupport}`}
-                      ></span>
-                      Service Fee
-                      <sup>
-                        <span
-                          className={`${iconStyles.typcn} ${iconStyles.typcnInfoLarge}`}
-                        ></span>
-                      </sup>
-                    </div>
-
-                    <div className={styles.menuItem}>5%</div>
-                  </li>
-                  <li className={styles.divider}></li>
-
-                  <li
-                    className={styles.menuItem}
-                    style={{
-                      display: "flex",
-                      justifyContent: "space-between",
-                      padding: "8px 10px"
-                    }}
-                  >
-                    <div style={{ fontWeight: "bold" }}>Total</div>
-
-                    <div
-                      className={styles.menuItem}
-                      style={{ fontWeight: "bold" }}
-                    >
-                      {"$"}
-                      {finalAmtShow}
-                    </div>
-                  </li>
-
-                  <li
-                    className={styles.menuItem}
-                    style={{
-                      display: "flex",
-                      justifyContent: "space-between",
-                      padding: "8px 8px 0 8px"
-                    }}
-                  >
-                    <button
-                      style={{
-                        marginTop: "16px",
-                        width: "100%",
-                        fontSize: "14px"
-                      }}
-                      className={`${styles.btn} ${styles.btnPrimary} ${styles.btnLg} ${styles.textUppercase} ${styles.textBold}`}
-                      type="submit"
-                    >
-                      {" "}
-                      <span
-                        className={`${iconStyles.typcn} ${iconStyles.typcnThumbsUp}`}
-                      ></span>
-                      Pay {"$"}
-                      {finalAmtShow}
-                    </button>
-                  </li>
-                  <li
-                    className={styles.menuItem}
-                    style={{
-                      display: "flex",
-                      justifyContent: "center",
-                      padding: "8px 8px",
-                      alignItems: "center"
-                    }}
-                  >
-                    <small style={{ fontSize: "12px" }}>
-                      <span
-                        className={`${iconStyles.typcn} ${iconStyles.typcnInfoLarge}`}
-                      ></span>
-                      You accept terms by cicking this
-                    </small>
-                  </li>
-                </form>
-              </div>
+              <ChoosePayment
+                createCharge={this.onSubmit}
+                onCreateSub={this.onCreateSub}
+                finalAmtShow={finalAmtShow}
+                enable_subs={enable_subs}
+                sub_packages={sub_packages}
+              />
             </div>
           </div>
-        );
+        </div>
+      );
     }
+
+    return (
+      <div className={`${styles.column} ${styles.col12}`}>
+        <div
+          style={{
+            padding: "0.3rem",
+
+            background: "#fff",
+            borderRadius: "0.3rem"
+          }}
+          className={styles.columns}
+        >
+          <div className={`${styles.column} ${styles.col12}`}>
+            <form onSubmit={this.onSubmit}>
+              <ul style={{ margin: "0.8rem" }}>
+                {this.state.failedMsg ? (
+                  <li
+                    className={styles.menuItem}
+                    style={{
+                      display: "flex",
+                      justifyContent: "center",
+                      padding: "8px 8px"
+                    }}
+                  >
+                    <div
+                      className={`${styles.label} ${styles.labelWarning}`}
+                      style={{
+                        fontSize: "12px",
+                        background: "#fff",
+                        border: "1px solid rgba(215, 62, 72, .95)",
+                        borderRadius: "5px",
+                        padding: "6px 6px",
+                        color: "#3b4351"
+                      }}
+                    >
+                      <span
+                        style={{
+                          color: "#d73e48",
+                          padding: "0 4px 0 0 "
+                        }}
+                        className={`${iconStyles.typcn} ${iconStyles.typcnWarning}`}
+                      ></span>
+                      Payment was not successfull because {this.state.failedMsg}
+                    </div>
+                  </li>
+                ) : null}
+              </ul>
+              <li
+                className={styles.menuItem}
+                style={{
+                  display: "flex",
+                  justifyContent: "center",
+                  padding: "16px 8px"
+                }}
+              >
+                <h5>Payment Summary</h5>
+              </li>
+              <li
+                className={styles.menuItem}
+                style={{
+                  display: "flex",
+                  justifyContent: "space-between"
+                }}
+              >
+                <div>
+                  <span
+                    className={`${iconStyles.typcn} ${iconStyles.typcnCreditCard}`}
+                  ></span>
+                  Amount to pay
+                </div>
+
+                <div className={styles.menuItem}>
+                  {`$`}
+                  {price}
+                </div>
+              </li>
+              <li className={styles.divider}></li>
+              <li
+                className={styles.menuItem}
+                style={{
+                  display: "flex",
+                  justifyContent: "space-between"
+                }}
+              >
+                <div
+                  className={`${styles.tooltip} ${styles.tooltipRight}`}
+                  data-tooltip="papergov performs this on your behalf for a small fee"
+                >
+                  <span
+                    className={`${iconStyles.typcn} ${iconStyles.typcnSupport}`}
+                  ></span>
+                  Service Fee
+                  <sup>
+                    <span
+                      className={`${iconStyles.typcn} ${iconStyles.typcnInfoLarge}`}
+                    ></span>
+                  </sup>
+                </div>
+
+                <div className={styles.menuItem}>5%</div>
+              </li>
+              <li className={styles.divider}></li>
+
+              <li
+                className={styles.menuItem}
+                style={{
+                  display: "flex",
+                  justifyContent: "space-between",
+                  padding: "8px 10px"
+                }}
+              >
+                <div style={{ fontWeight: "bold" }}>Total</div>
+
+                <div className={styles.menuItem} style={{ fontWeight: "bold" }}>
+                  {"$"}
+                  {finalAmtShow}
+                </div>
+              </li>
+
+              <li
+                className={styles.menuItem}
+                style={{
+                  display: "flex",
+                  justifyContent: "space-between",
+                  padding: "8px 8px 0 8px"
+                }}
+              >
+                <button
+                  style={{
+                    marginTop: "16px",
+                    width: "100%",
+                    fontSize: "14px"
+                  }}
+                  className={`${styles.btn} ${styles.btnPrimary} ${styles.btnLg} ${styles.textUppercase} ${styles.textBold}`}
+                  type="submit"
+                >
+                  {" "}
+                  <span
+                    className={`${iconStyles.typcn} ${iconStyles.typcnThumbsUp}`}
+                  ></span>
+                  Pay {"$"}
+                  {finalAmtShow}
+                </button>
+              </li>
+              <li
+                className={styles.menuItem}
+                style={{
+                  display: "flex",
+                  justifyContent: "center",
+                  padding: "8px 8px",
+                  alignItems: "center"
+                }}
+              >
+                <small style={{ fontSize: "12px" }}>
+                  <span
+                    className={`${iconStyles.typcn} ${iconStyles.typcnInfoLarge}`}
+                  ></span>
+                  You accept terms by cicking this
+                </small>
+              </li>
+            </form>
+          </div>
+        </div>
+      </div>
+    );
+  }
 }
 
 

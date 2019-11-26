@@ -32,7 +32,6 @@ exports.createPages = ({ graphql, actions }) => {
                 uploadable
                 enable_subs
                 sub_packages {
-                  duration
                   cost_monthly
                   cost_yearly
                   stripe_pack_id

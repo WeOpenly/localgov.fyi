@@ -5,9 +5,8 @@
     "url_slug": "pay-property-tax",
     "enable_subs": true,
     "sub_packages": [{
-        "duration": "22",
-        "cost_monthly": "1",
-        "cost_yearly": "3",
-        "stripe_pack_id": "22"
+        "cost_monthly": "30.00",
+        "cost_yearly": "2.50",
+        "stripe_pack_id": "plan_GFFuBUHaFI9BeQ"
     }]
 }

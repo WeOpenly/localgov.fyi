@@ -205,3 +205,26 @@ export function finalizeSubmit(subId, email, price, token) {
             });
     }
 }
+
+
+export function finalizeSubscription(subId, email, price, token, packId) {
+  return async (dispatch, getState) => {
+    dispatch(submitDetailsBegin());
+
+    db.collection("user_submission")
+      .doc(subId)
+      .update({
+        user_price: price,
+        stripe_token: token,
+        email: email,
+        packId: packId,
+        hasAutoPay: true,
+      })
+      .then(function() {
+        dispatch(submitDetailsSuccess());
+      })
+      .catch(function(error) {
+        dispatch(submitDetailsFailed(error));
+      });
+  };
+}

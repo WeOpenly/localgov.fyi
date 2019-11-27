@@ -153,6 +153,11 @@ class PaymentPreview extends Component {
     const finalAmtShow = finalAmt.value;
 
     if (enable_subs) {
+  
+      const yearlyCost = currency(sub_packages[0].cost_yearly).multiply(12);
+    
+      const withSubCost = currency(finalAmtShow).add(yearlyCost).value;
+
       return (
         <div className={`${styles.column} ${styles.col12}`}>
           <div
@@ -165,6 +170,8 @@ class PaymentPreview extends Component {
           >
             <div className={`${styles.column} ${styles.col12}`}>
               <ChoosePayment
+                price={price}
+                withSubCost={withSubCost}
                 createCharge={this.onSubmit}
                 onCreateSub={this.onCreateSub}
                 finalAmtShow={finalAmtShow}

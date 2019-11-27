@@ -32,7 +32,13 @@ class ChoosePayment extends Component {
   }
 
   render() {
-    const { sub_prompt, sub_packages, finalAmtShow } = this.props;
+    const {
+      sub_prompt,
+      sub_packages,
+      finalAmtShow,
+      price,
+      withSubCost
+    } = this.props;
 
     const yearlyCost = sub_packages[0].cost_yearly
 
@@ -40,7 +46,6 @@ class ChoosePayment extends Component {
       <div style={{ marginBottom: "1rem", marginTop: "1rem" }}>
         <div
           className={`${styles.tile} ${styles.textLeft}`}
-          onClick={() => this.setChoice("single")}
           style={{
             display: "flex",
             border: "1px solid rgba(48,55,66,.10)",
@@ -59,46 +64,74 @@ class ChoosePayment extends Component {
           </div>
           <div
             className={styles.tileContent}
-            style={{ flex: "55%", padding: "0.2rem 0.3rem 1rem 0" }}
+            style={{ flex: "85%", padding: "0.2rem 0.3rem 1rem 0" }}
           >
             <div>
               <h5 style={{ color: "rgba(86, 39, 255, .6)" }}>
                 One Time Payment
               </h5>
-              <p
-                style={{ margin: "0.2rem 0", paddingRight: "1rem" }}
-                className={`${styles.textSemibold}`}
+              <div
+                style={{
+                  marginTop: "0.5rem",
+                  display: "flex",
+                  flexDirection: "column"
+                }}
               >
-                Just pay this tax bill <br />
-              </p>
+                <div
+                  style={{
+                    margin: "0 0",
+        
+                    display: "flex",
+                    justifyContent: "space-between"
+                  }}
+                  className={`${styles.textGray}`}
+                >
+                  <div> Just pay this one time </div>
+                  <div>
+                    <small> $</small>
+                    {price}
+                  </div>
+                </div>
+                <div
+                  style={{
+                    margin: "0 0",
+             
+                    display: "flex",
+                    justifyContent: "space-between"
+                  }}
+                  className={`${styles.textGray}`}
+                >
+                  <div> Transaction fee </div>
+                  <div> 5%</div>
+                </div>
+                <div
+                  style={{
+                    margin: "0 0",
+             
+                    display: "flex",
+                    justifyContent: "space-between"
+                  }}
+                  className={`${styles.textGray}`}
+                >
+                  <div> Estimated wait </div>
+                  <div> 1 day</div>
+                </div>
+
+                <button
+                  style={{
+                    marginTop: "16px",
+                    width: "100%",
+                    fontSize: "14px"
+                  }}
+                  onClick={() => this.setChoice("single")}
+                  className={`${styles.btn} ${styles.btnSecondary} ${styles.btnLg} ${styles.textUppercase} ${styles.textBold}`}
+                >
+                  Pay {"$"}
+                  {finalAmtShow}
+                </button>
+              </div>
             </div>
           </div>
-          <div
-            className={styles.tileAction}
-            style={{
-              display: "flex",
-              flex: "30%",
-              flexDirection: "column",
-              alignItems: "center",
-              justifyContent: "center",
-              padding: "1rem 0.5rem 0 0"
-            }}
-          >
-            <h5>
-              <small> $ </small> {finalAmtShow}
-            </h5>
-          </div>
-        </div>
-        <div
-          style={{
-            display: "flex",
-            justifyContent: "left",
-            padding: "0.2rem 0 0 0"
-          }}
-        >
-          <small className={styles.textGray}>
-            5% transaction fee applied
-          </small>
         </div>
       </div>
     );
@@ -107,7 +140,6 @@ class ChoosePayment extends Component {
       <div style={{ marginBottom: "1rem", marginTop: "1rem" }}>
         <div
           className={`${styles.tile} ${styles.textLeft}`}
-          onClick={() => this.setChoice("sub")}
           style={{
             border: "1px solid rgba(50, 182, 67, .4)",
             cursor: "pointer",
@@ -125,46 +157,78 @@ class ChoosePayment extends Component {
           </div>
           <div
             className={styles.tileContent}
-            style={{ flex: "65%", padding: "0.2rem 0.3rem 1rem 0" }}
+            style={{ flex: "85%", padding: "0.2rem 0.3rem 1rem 0" }}
           >
             <div>
               <h5 style={{ color: "#2da23c" }}> Setup Autopay</h5>
-              <p
-                style={{ margin: "0.2rem 0" }}
-                className={`${styles.textSemibold}`}
+              <div
+                style={{
+                  marginTop: "0.5rem",
+                  display: "flex",
+                  flexDirection: "column"
+                }}
               >
-                Your future tax bills on autopay
-                <br />
-              </p>
+                <div
+                  style={{
+                    margin: "0 0",
+
+                    display: "flex",
+                    justifyContent: "space-between"
+                  }}
+                  className={`${styles.textGray}`}
+                >
+                  <div> Amount for this bill </div>
+                  <div>
+                    <small> $</small>
+                    {price}
+                  </div>
+                </div>
+                <div
+                  style={{
+                    margin: "0 0",
+
+                    display: "flex",
+                    justifyContent: "space-between"
+                  }}
+                  className={`${styles.textGray}`}
+                >
+                  <div> Transaction fee </div>
+                  <div> 5%</div>
+                </div>
+                <div
+                  style={{
+                    margin: "0 0",
+
+                    display: "flex",
+                    justifyContent: "space-between"
+                  }}
+                  className={`${styles.textSemibold}`}
+                >
+                  <div> Your future bills on autopay *</div>
+                  <div>
+                    <small> $</small>
+                    {yearlyCost}
+                    <small className={styles.textGray}> / mo</small>
+                  </div>
+                </div>
+                <button
+                  style={{
+                    marginTop: "16px",
+                    width: "100%",
+                    fontSize: "14px"
+                  }}
+                  onClick={() => this.setChoice("sub")}
+                  className={`${styles.btn} ${styles.btnSuccess} ${styles.textUppercase} ${styles.textBold}`}
+                >
+                  Pay {"$"}
+                  {withSubCost}
+                </button>
+              </div>
             </div>
           </div>
-          <div
-            className={styles.tileAction}
-            style={{
-              display: "flex",
-              flex: "20%",
-              flexDirection: "column",
-              alignItems: "center",
-              justifyContent: "center",
-              padding: "0.3rem 0.2rem 0 0"
-            }}
-          >
-            <h5>
-              <small> $ </small> {yearlyCost}{" "}
-            </h5>
-            <small className={styles.textGray}> month </small>
-          </div>
         </div>
-        <div
-          style={{
-            display: "flex",
-            justifyContent: "left",
-            padding: "0.2rem 0 0 0"
-          }}
-        >
-          <small className={styles.textGray}>
-            Doesn’t include your actual tax bill & transaction fee
-          </small>
+        <div style={{ display: "flex", justifyContent: "left" }}>
+          <small className={styles.textGray}>*billed yearly </small>
         </div>
       </div>
     );

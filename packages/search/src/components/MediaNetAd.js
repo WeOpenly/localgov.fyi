@@ -41,13 +41,13 @@ class MediaNet extends Component {
 
     return (
       <>
-        <div className={specStyles.textGray}>
+        <a className={specStyles.textGray} target="_blank" href="/ads">
           <small style={{ fontSize: "10px" }}>ADVERTISEMENT</small>
           <span
             style={{ fontSize: "10px" }}
             className={`${iconStyles.typcn}  ${iconStyles.typcnSpanner}`}
           />
-        </div>
+        </a>
         <div
           id={this.props.slotId}
           style={{
@@ -57,13 +57,13 @@ class MediaNet extends Component {
             ...containerStyles
           }}
         ></div>
-        <div className={specStyles.textGray}>
+        <a className={specStyles.textGray} target="_blank" href="/ads">
           <small style={{ fontSize: "10px" }}>ADVERTISEMENT</small>
           <span
             style={{ fontSize: "10px" }}
             className={`${iconStyles.typcn}  ${iconStyles.typcnSpanner}`}
           />
-        </div>
+        </a>
       </>
     );
   }

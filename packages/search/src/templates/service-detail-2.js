@@ -657,36 +657,8 @@ class ServiceDetailTemplate extends React.Component {
                 allSteps={allSteps}
               />
             </Grid>
-
-            <Grid
-              item
-              xs={12}
-              sm={12}
-              align="center"
-              className={classes.ser_detail_action_card}
-            >
-              {!isMobile ? (
-                <MediaNetAd
-                  dims="728x90"
-                  slotId="187844963"
-                  containerStyles={{
-                    marginTop: "8px",
-                    borderTop: "1px solid #ececec",
-                    borderBottom: "1px solid #ececec",
-                    paddingTop: "8px"
-                  }}
-                />
-              ) : (
-                <iframe
-                  style={{ width: "120px", height: "240px" }}
-                  marginwidth="0"
-                  marginheight="0"
-                  scrolling="no"
-                  frameborder="0"
-                  src="//ws-na.amazon-adsystem.com/widgets/q?ServiceVersion=20070822&OneJS=1&Operation=GetAdHtml&MarketPlace=US&source=ac&ref=tf_til&ad_type=product_link&tracking_id=papergovsearc-20&marketplace=amazon&region=US&placement=B00UXG4WR8&asins=B00UXG4WR8&linkId=0bfb49505fe07e9ecdd94dcbf8dc922a&show_border=true&link_opens_in_new_window=true&price_color=b8b8b8&title_color=0016bf&bg_color=ffffff"
-                ></iframe>
-              )}
-            </Grid>
+                  
+           
 
             <Grid item xs={12} className={classes.ser_detail_morelinks}>
               <MoreLinks

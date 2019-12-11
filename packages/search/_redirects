@@ -4,7 +4,7 @@
 
 /learn/* https://papergov.ghost.io/:splat 200!
 
-/news-room/* https://papergov.wordpress.com/:splat 200!
+/newsroom/* https://papergov.wordpress.com/:splat 200!
 
 /quick_pay/* https://pay.papergov.com/:splat 200!
 

@@ -250,11 +250,17 @@ def get_all_locations():
 
 def write_standard_redirects():
     print(DSP_HOST, YUSUF_HOST)
-    redir_string = """/org_images/* http://storage.googleapis.com/papergov-prod-dsp-uploads/organization_logo_uploads/:splat 200!
+    redir_string = """/org_images/* http://storage.googleapis.com/evergov-prod-dsp-uploads/organization_logo_uploads/:splat 200!
     
 /api/yusuf/* {y}/:splat 200!
 
-/blog/* https://blogpapergov.wordpress.com/:splat 200!
+/quick_pay/* https://pay.papergov.com/:splat 200!
+
+/pay/* https://pay.papergov.com/:splat 200!
+
+/learn/* https://papergov.ghost.io/: splat 200!
+
+/newsroom/* https://papergov.wordpress.com/: splat 200!
 
 /api/dsp/* {d}/:splat 200!
 

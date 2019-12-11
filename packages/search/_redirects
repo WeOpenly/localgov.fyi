@@ -2,7 +2,9 @@
     
 /one/* https://one.papergov.com/:splat 200!
 
-/blog/* https://papergov.wordpress.com/:splat 200!
+/learn/* https://papergov.ghost.io/:splat 200!
+
+/news-room/* https://papergov.wordpress.com/:splat 200!
 
 /quick_pay/* https://pay.papergov.com/:splat 200!
 

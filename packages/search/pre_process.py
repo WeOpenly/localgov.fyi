@@ -258,9 +258,9 @@ def write_standard_redirects():
 
 /pay/* https://pay.papergov.com/:splat 200!
 
-/learn/* https://papergov.ghost.io/: splat 200!
+/learn/* https://papergov.ghost.io/:splat 200!
 
-/newsroom/* https://papergov.wordpress.com/: splat 200!
+/newsroom/* https://papergov.wordpress.com/:splat 200!
 
 /api/dsp/* {d}/:splat 200!
 

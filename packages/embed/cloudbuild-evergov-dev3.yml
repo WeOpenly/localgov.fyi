@@ -1,0 +1,25 @@
+steps:
+- name: gcr.io/cloud-builders/git
+  args: ['clone', '-b', 'develop', '--single-branch', 'https://github.com/WeOpenly/localgov.fyi.git']
+- name: node:8
+  dir: 'localgov.fyi/packages/embed'
+  entrypoint: npm
+  args: ['install', '--save']
+- name: node:8
+  dir: 'localgov.fyi/packages/embed'
+  entrypoint: node
+  args: ['./node_modules/.bin/gatsby', 'build', '--prefix-paths']
+  env: ['PROJECT_ID=$PROJECT_ID']
+- name: gcr.io/cloud-builders/gsutil
+  dir: 'localgov.fyi/packages/embed'
+  args: ['cp', 'gs://$PROJECT_ID-netlify-env/embed-creds.sh', 'embed-creds.sh']
+- name: ubuntu
+  dir: 'localgov.fyi/packages/embed'
+  args: ['ls']
+- name: node:8
+  dir: 'localgov.fyi/packages/embed'
+  args: ['bash', '-c', 'source ./embed-creds.sh && ./deploy.sh']
+timeout: 3600s
+options:
+  diskSizeGb: 20
+  machineType: 'N1_HIGHCPU_8'

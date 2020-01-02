@@ -239,7 +239,7 @@ html {
 }
 
 body {
-    background: #fcfdfe;
+    background: transparent;
     color: #3b4351;
     font-size: .8rem;
     overflow-x: hidden;

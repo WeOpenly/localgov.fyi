@@ -70,13 +70,6 @@ class SerLocationShell extends Component {
         <div
           className={`${styles.column} ${styles.col12} ${styles.hideXs} ${styles.textLeft}`}
         >
-          <div></div>
-          <div>{allLocSers}</div>
-        </div>
-        <div
-          className={`${styles.column} ${styles.col12} ${styles.showXs} ${styles.textCenter}`}
-        >
-          <div></div>
           <div>{allLocSers}</div>
         </div>
       </div>

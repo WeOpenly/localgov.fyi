@@ -70,30 +70,7 @@ export default class HTML extends React.Component {
       <html lang="en" {...this.props.htmlAttributes}>
         <head>
           <meta charSet="utf-8" />
-          <meta
-            name="google-site-verification"
-            content="p3v6COYIhh8GXmPp7G12ZTegImSx88kJ8mmc-AAOPoc"
-          />
-          <meta
-            name="msvalidate.01"
-            content="D1BADF38847C730E9DC76BE0CCC4B42B"
-          />
-   
-          <meta
-            property="og:site_name"
-            content={`papergov: all your gov services in a single place`}
-          />
-          <meta
-            property="twitter:card"
-            name="twitter:card"
-            content="summary_large_image"
-          />
-          <meta
-            property="twitter:site"
-            name="twitter:site"
-            content="@mypapergov"
-          />
-          <meta httpEquiv="x-ua-compatible" content="ie=edge" />
+
           <meta
             name="viewport"
             content="width=device-width, initial-scale=1, shrink-to-fit=no"

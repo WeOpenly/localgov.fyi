@@ -18,11 +18,14 @@ class SerLocationShell extends Component {
   componentDidMount() {
     const { dispatch, location } = this.props;
     const searchValues = queryString.parse(location.search);
-
+    console.log(searchValues);
     // if (searchValues && searchValues.ser_temp_id) {
     //   dispatch(fetchAutoLoc(searchValues.ser_temp_id));
     // }
-    dispatch(fetchAutoLoc("f26d145a-8058-4ec3-bb44-7baa82d3fa21"));
+    if (searchValues && searchValues.id){
+      dispatch(fetchAutoLoc(searchValues.id));
+    }
+   
 
   }
 

@@ -40,12 +40,18 @@ module.exports = {
         defaultQuality: 90
       }
     },
-
     {
       resolve: `gatsby-source-filesystem`,
       options: {
         name: `illus`,
         path: path.join(__dirname, `src/illus`)
+      }
+    },
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        name: `service_glossary`,
+        path: path.join(__dirname, `data/service_glossary`)
       }
     },
     `gatsby-transformer-remark`,
@@ -61,8 +67,7 @@ module.exports = {
             }
             allSitePage(filter : {
               path: {
-               nin : ["/dashboard/"],
-        
+               nin : ["/dyamic/"],
               }
             }) {
               edges {
@@ -87,7 +92,6 @@ module.exports = {
     },
     // This plugin transforms JSON file nodes.
     `gatsby-transformer-json`,
-
     {
       resolve: "gatsby-plugin-webpack-bundle-analyser-v2",
       options: {
@@ -97,7 +101,7 @@ module.exports = {
     {
       resolve: `gatsby-plugin-create-client-paths`,
       options: {
-        prefixes: [`/dashboard/*`]
+        prefixes: [`/dynamic/*`]
       }
     },
     {
@@ -120,7 +124,7 @@ module.exports = {
         icon: `src/favicon.png`,
         start_url: `/`,
         background_color: `#0000ca`,
-        theme_color: `#fff`,
+        theme_color: `#fff`
       }
     },
     {

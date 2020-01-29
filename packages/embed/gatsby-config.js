@@ -138,7 +138,18 @@ module.exports = {
     `gatsby-plugin-remove-serviceworker`,
     "gatsby-plugin-brotli",
     `gatsby-plugin-react-helmet`,
-    `gatsby-plugin-netlify`
+    {
+      resolve: `gatsby-plugin-netlify`,
+      options: {
+        headers: {
+          "/*": [
+            "X-XSS-Protection: 0",
+            "Content-Security-Policy: frame-ancestors 'self' https://*.papergov.com",
+            "X-Frame-Options: ALLOW-FROM https://*.papergov.com"
+          ]
+        }
+      }
+    }
     // This plugin generates a service worker and AppShell html file so the site
     // works offline and is otherwise resistant to bad networks. Works with almost
     // any site!

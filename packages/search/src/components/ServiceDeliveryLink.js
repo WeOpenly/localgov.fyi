@@ -360,7 +360,7 @@ class ServiceDeliveryLink extends Component {
       failure
     } = this.state;
 
-    let canQuickPay = true;
+    let canQuickPay = false;
 
     if (
       service_name.includes("Activity") ||

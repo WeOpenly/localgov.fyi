@@ -49,7 +49,6 @@ const styles = theme => ({
   },
   index_section2: {},
   index_footer: {
-    borderTop: `1px solid #dcdcdc`,
     paddingTop: theme.spacing.unit,
     marginTop: theme.spacing.unit * 4
   },

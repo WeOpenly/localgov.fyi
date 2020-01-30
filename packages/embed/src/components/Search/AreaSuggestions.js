@@ -108,17 +108,10 @@ class GoogAutoComplete extends React.Component {
             getSuggestionItemProps,
             loading
           }) => (
-            <div style={{ width: "100%" }}>
-              <div elevation={2}>
-                {loading ? (
-                  <div className={styles.loading} />
-                ) : (
-                  <span
-                    className={`${iconStyles.typcn} ${iconStyles.typcnLocationArrow}`}
-                  />
-                )}
-
+            <div className={styles.hasIconLeft}>
+              <div>
                 <InputBase
+                  className={styles.formInput}
                   inputProps={{
                     "aria-label": "search locations",
                     "aria-autocomplete": "list",
@@ -137,6 +130,15 @@ class GoogAutoComplete extends React.Component {
                     }
                   })}
                 />
+                <i className={styles.formIcon}>
+                  {loading ? (
+                    <div className={styles.loading} />
+                  ) : (
+                    <span
+                      className={`${iconStyles.typcn} ${iconStyles.typcnLocationArrow}`}
+                    />
+                  )}
+                </i>
               </div>
 
               <div id="area_suggestions_1" role="listbox" square>

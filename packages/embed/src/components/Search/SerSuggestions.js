@@ -151,13 +151,11 @@ class SerSuggest extends Component {
     const { classes, inHeader } = this.props;
 
     return (
-      <div elevation={2}>
-        <InputBase inputProps={inputProps} />
-        <div onClick={this.props.onSearch}>
-          <span
-            className={`${iconStyles.typcn} ${iconStyles.typcnZoom}`}
-          />
-        </div>
+      <div className={styles.hasIconRight}>
+        <InputBase className={styles.formInput} inputProps={inputProps} />
+        <i onClick={this.props.onSearch}>
+          <span className={`${iconStyles.typcn} ${iconStyles.typcnZoom}`} />
+        </i>
       </div>
     );
   }
@@ -245,24 +243,18 @@ class SerSuggest extends Component {
       value: serviceSearchText ? serviceSearchText : ""
     };
 
-    const theme = {
-  
 
-    };
 
     return (
-      <div >
-        <form
-          onSubmit={this.onSubmit}
-         
-        >
+      <div className={styles.hasIconLeft}>
+        <form onSubmit={this.onSubmit}>
           <Autosuggest
             id="serviceSuggestions"
             {...autosuggestProps}
             inputProps={inputProps}
-            theme={theme}
+   
           />
-        </form> 
+        </form>
       </div>
     );
   }

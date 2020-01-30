@@ -81,7 +81,7 @@ export function executeSearch() {
       selectedLocationLatLng,
       selectedTemplateId,
       serviceSearchText
-    } = getState().indexPage;
+    } = getState().dynamicSearch;
     let lat = null;
     let lng = null;
 

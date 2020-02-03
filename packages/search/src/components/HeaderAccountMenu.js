@@ -75,12 +75,7 @@ class HeaderAccountMenu extends Component {
 
     return (
       <div className={classes.h_a_m_loging_signup_container}>
-        <a
-          href="https://pay.papergov.com"
-          className={`${specStyles.btn} ${specStyles.btnPrimary}`}
-        >
-     QUICK PAY
-        </a>
+      
       </div>
     );
   }

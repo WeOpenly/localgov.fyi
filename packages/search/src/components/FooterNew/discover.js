@@ -31,15 +31,7 @@ class FooterDiscover extends Component {
             </a>
           </div>
 
-          <div style={{ marginBottom: "0.2rem" }}>
-            <a
-              className={`${styles.textGray} ${styles.textSemibold}`}
-              href={`https://pay.papergov.com/`}
-              target="_blank"
-            >
-              Quick Pay For All Services
-            </a>
-          </div>
+ 
 
           <div style={{ marginBottom: "0.2rem" }}>
             <a
@@ -92,15 +84,7 @@ class FooterDiscover extends Component {
             </a>
           </div>
 
-          <div style={{ marginBottom: "0.2rem" }}>
-            <a
-              className={`${styles.badge} ${styles.textGray}`}
-              href={`https://pay.papergov.com/services/??utm_source=search_footer`}
-              target="_blank"
-            >
-              Quick Pay For All Services
-            </a>
-          </div>
+
 
           <div style={{ marginBottom: "0.2rem" }}>
             <a

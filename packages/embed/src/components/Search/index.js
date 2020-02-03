@@ -33,10 +33,21 @@ class Search extends Component {
     }
 
     return (
-          <Fragment>
+
+        <div className={`${styles.columns}`}>
+          <div
+            style={{ margin: "0 0 1.5rem 0" }}
+            className={`${styles.column}  ${styles.col3} ${styles.colLg3}  ${styles.colSm4} ${styles.colXs12} `}
+          >
             <AreaSuggestions />
+          </div>
+          <div
+            style={{ margin: "0 0 1.5rem 0" }}
+            className={`${styles.column} ${styles.col9} ${styles.colLg9}  ${styles.colSm8} ${styles.colXs12} ${styles.textLeft}`}
+          >
             <SerSuggestions onSearch={this.onSearch} />
-          </Fragment>
+          </div>
+        </div>
     );
   }
 }

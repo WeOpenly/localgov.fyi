@@ -14,11 +14,9 @@ import Utilitybill from "../../svgIcons/utbIl.js";
 
 import { updateServciceSearchText, selectServiceTemplateId } from "./actions";
 
+import autoStyles from "./auto.module.css";
 import styles from "../spectre.min.module.css";
 import iconStyles from "../typicons.min.module.css";
-
-
-
 
 class SerSuggest extends Component {
   constructor(props) {
@@ -88,8 +86,8 @@ class SerSuggest extends Component {
   renderSectionTitle(section) {
     const { classes } = this.props;
     return (
-      <div>
-        <h6>
+      <div style={{marginBottom: '8px', marginLeft: '4px'}}>
+        <h6 className={styles.textGray}>
           <span className={`${iconStyles.typcn} ${iconStyles.typcnFlash}`} />{" "}
           {section.title}
         </h6>
@@ -110,10 +108,11 @@ class SerSuggest extends Component {
   renderSuggestionsContainer(options) {
     const { containerProps, children } = options;
 
+
     return (
-      <div {...containerProps} square>
+      <ul {...containerProps} >
         {children}
-      </div>
+      </ul>
     );
   }
 
@@ -124,22 +123,12 @@ class SerSuggest extends Component {
       : { backgroundColor: "#ffffff", cursor: "pointer" };
 
     return (
-      <div
-        style={{
-          padding: "8px",
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "left",
-          width: "240px",
-          ...style
-        }}
-      >
-        {" "}
-        {suggestion.icon}
-        <p>
-            {suggestion.name}
-        </p>
-      </div>
+      <a href="#" style={{margin: '4px 0px'}}>
+        <div className={`${styles.tile} ${styles.tileCentered}`}>
+          <div style={{height: '24px'}} className={styles.tileIcon}>{suggestion.icon}</div>
+          <div className={styles.tileContent}>{suggestion.name}</div>
+        </div>
+      </a>
     );
   }
 
@@ -151,11 +140,18 @@ class SerSuggest extends Component {
     const { classes, inHeader } = this.props;
 
     return (
-      <div className={styles.hasIconRight}>
-        <InputBase className={styles.formInput} inputProps={inputProps} />
-        <i onClick={this.props.onSearch}>
+      <div className={styles.inputGroup}>
+        <InputBase
+          className={`${styles.formInput} ${styles.inputLg}`}
+          inputProps={inputProps}
+        />
+        <button
+          onClick={this.props.onSearch}
+          className={`${styles.btn} ${styles.btnPrimary} ${styles.inputGroupBtn} ${styles.btnMd}`}
+        >
+          {" "}
           <span className={`${iconStyles.typcn} ${iconStyles.typcnZoom}`} />
-        </i>
+        </button>
       </div>
     );
   }
@@ -243,16 +239,21 @@ class SerSuggest extends Component {
       value: serviceSearchText ? serviceSearchText : ""
     };
 
-
-
+    const theme = {
+      suggestionsContainer: styles.menu,
+      suggestion: styles.menuItem,
+      suggestionsList: autoStyles.suggestionsList
+    };
+    
     return (
       <div className={styles.hasIconLeft}>
         <form onSubmit={this.onSubmit}>
           <Autosuggest
+            style={{ position: "relative" }}
             id="serviceSuggestions"
             {...autosuggestProps}
             inputProps={inputProps}
-   
+            theme={theme}
           />
         </form>
       </div>
@@ -278,9 +279,6 @@ const mapStateToProps = function(state, ownProps) {
   };
 };
 
-const ConnSerSuggest = connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(SerSuggest);
+const ConnSerSuggest = connect(mapStateToProps, mapDispatchToProps)(SerSuggest);
 
 export default ConnSerSuggest;

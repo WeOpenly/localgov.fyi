@@ -32,7 +32,7 @@ class SearchIndex extends React.Component {
             >
               <div
                 style={{
-                  margin: "1rem 0"
+                  margin: "1.3rem 0 0 0",
                 }}
                 className={styles.panelBody}
               >

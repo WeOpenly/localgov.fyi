@@ -147,6 +147,7 @@ class DeepLink extends Component {
 }
 
 
+
 const mapDispatchToProps = (dispatch) => {
     return {
         trackClick: (click_type, resultType, id, title, listIndex) => {

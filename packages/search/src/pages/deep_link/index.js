@@ -65,7 +65,7 @@ class DeepLink extends Component {
                 const jsonDecoded = JSON.parse(decoded)
                 const {u, s} = jsonDecoded;
                 trackClick('external', 'service_delivery_link', u, s, 0);
-                // setTimeout(() => windowGlobal.location.href =u , 4000);
+                setTimeout(() => windowGlobal.location.href =u , 4000);
                 this.setState({decoding: false, decodedData: jsonDecoded})
             } catch (e) {
                 this.setState({decoding: false, decodeError: true})

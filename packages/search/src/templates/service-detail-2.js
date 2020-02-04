@@ -243,8 +243,7 @@ class ServiceDetailTemplate extends React.Component {
     dispatch(trackView("entity_detail", "service", id, name));
 
     if (windowGlobal) {
-      console.log(isMobile, this.desktopinstance, this.mobileInstance)
- 
+  
       if (this.desktopinstance2) {
         windowGlobal.atOptions = {
           key: "4b3335c41092aeff9cbb352a65422c25",

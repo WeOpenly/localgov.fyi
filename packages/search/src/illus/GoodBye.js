@@ -35,7 +35,7 @@ const GoodBye = () => (
             return (<Img
                 title={`papergov`}
                 alt={`Deep link good bye`}
-                style={{ width: '264px' }}
+                style={{ width: '234px' }}
                 sizes={data.heroIl.edges[0].node.childImageSharp.fluid} />)
         }} />
 )

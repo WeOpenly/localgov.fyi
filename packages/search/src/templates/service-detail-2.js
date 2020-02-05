@@ -74,6 +74,7 @@ const styles = theme => ({
   },
   ser_detail_body: {
     marginTop: "16px",
+    marginBottom: "16px",
     paddingLeft: `${theme.spacing.unit * 4}px`,
     paddingRight: `${theme.spacing.unit * 4}px`,
     boxShadow: `0 .15rem 0.5rem rgba(48,55,66,.10)`,
@@ -656,8 +657,6 @@ class ServiceDetailTemplate extends React.Component {
                 allSteps={allSteps}
               />
             </Grid>
-                  
-           
 
             <Grid item xs={12} className={classes.ser_detail_morelinks}>
               <MoreLinks
@@ -683,6 +682,16 @@ class ServiceDetailTemplate extends React.Component {
                 }}
               />
             ) : null}
+          </Grid>
+          <Grid item sm={12} align="center">
+            <MediaNetAd
+              dims="728x90"
+              slotId="788671455"
+              containerStyles={{
+                marginTop: "16px",
+                borderLeft: "1px solid #ececec",
+              }}
+            />
           </Grid>
         </Grid>
 

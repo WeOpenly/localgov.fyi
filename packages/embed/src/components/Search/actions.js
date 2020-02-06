@@ -104,7 +104,9 @@ export function executeSearch() {
       params["service_text"] = serviceSearchText;
     }
     const newQueryString = queryString.stringify(params);
-    navigate(`/search?${newQueryString}`);
+    if(windowGlobal){
+      windowGlobal.location.href = `https://papergov.com/search?${newQueryString}`
+    }
   };
 }
 

@@ -10,6 +10,8 @@ class SearchIndex extends React.Component {
     super(props);
   }
 
+
+
   render() {
     return (
       <div className={`${styles.container} ${styles.gridXl}`}>
@@ -32,7 +34,7 @@ class SearchIndex extends React.Component {
             >
               <div
                 style={{
-                  margin: "1.3rem 0 0 0",
+                  margin: "1.3rem 0 0 0"
                 }}
                 className={styles.panelBody}
               >
@@ -43,7 +45,7 @@ class SearchIndex extends React.Component {
                 className={styles.panelFooter}
                 style={{
                   borderTop: "1px solid rgba(48,55,66,.10)",
-                  margin: "1rem 0 0.6rem 0",
+                  margin: "1.5rem 0 0.6rem 0",
                   padding: "0.4rem 0 0 0",
                   display: "flex",
                   justifyContent: "right"

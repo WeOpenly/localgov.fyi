@@ -22,7 +22,7 @@ class SerSuggest extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      placeholder: "Search for Parking Citations, Licences ..",
+      placeholder: "Search for Citations, Licences ..",
       showSuggestions: true,
       staticServiceTemplates: [
         {
@@ -108,6 +108,9 @@ class SerSuggest extends Component {
   renderSuggestionsContainer(options) {
     const { containerProps, children } = options;
 
+    if (!children){
+      return null;
+    }
 
     return (
       <ul {...containerProps} >
@@ -147,9 +150,8 @@ class SerSuggest extends Component {
         />
         <button
           onClick={this.props.onSearch}
-          className={`${styles.btn} ${styles.btnPrimary} ${styles.inputGroupBtn} ${styles.btnMd}`}
+          className={`${styles.btn} ${styles.btnPrimary} ${styles.inputGroupBtn} ${styles.btnLg}`}
         >
-          {" "}
           <span className={`${iconStyles.typcn} ${iconStyles.typcnZoom}`} />
         </button>
       </div>
@@ -246,10 +248,9 @@ class SerSuggest extends Component {
     };
     
     return (
-      <div className={styles.hasIconLeft}>
+      <div style={{ position: "absolute", width: "340px" }}>
         <form onSubmit={this.onSubmit}>
           <Autosuggest
-            style={{ position: "relative" }}
             id="serviceSuggestions"
             {...autosuggestProps}
             inputProps={inputProps}

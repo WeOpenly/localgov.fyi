@@ -23,6 +23,7 @@ import MediaNetAd from "../components/MediaNetAd";
 
 import Footer from "../components/Footer";
 import ServiceCard from "../components/ServiceCard";
+import AttachmentList from '../components/AttachmentList';
 
 import MoreLinks from "../components/ServicePage/MoreLinks";
 
@@ -306,6 +307,7 @@ class ServiceDetailTemplate extends React.Component {
       service_del_links,
       service_parent,
       state_org_details,
+      service_attachments,
       service_reminder_bp_json,
       otherServices,
       logoSizes,
@@ -315,6 +317,7 @@ class ServiceDetailTemplate extends React.Component {
     } = this.props.pageContext.data;
 
     const { classes, isMobile } = this.props;
+
     let orgLogoSvg = null;
     if (org_logo_sizes && org_logo_sizes.fluid) {
       orgLogoSvg = org_logo_sizes.fluid;
@@ -412,6 +415,8 @@ class ServiceDetailTemplate extends React.Component {
         }
       };
     });
+
+    const serAtts = <AttachmentList attachments={service_attachments} />
 
     const serviceDeliveryFeedbackForm = (
       <form
@@ -648,6 +653,7 @@ class ServiceDetailTemplate extends React.Component {
               <ServiceDetail
                 name={name}
                 isMobile={isMobile}
+                serAtts={serAtts}
                 orgHieSlug={orgHieSlug}
                 description={description}
                 price={price}
@@ -689,7 +695,7 @@ class ServiceDetailTemplate extends React.Component {
               slotId="788671455"
               containerStyles={{
                 marginTop: "16px",
-                borderLeft: "1px solid #ececec",
+                borderLeft: "1px solid #ececec"
               }}
             />
           </Grid>

@@ -351,41 +351,10 @@ class ServiceDetailTemplate extends React.Component {
     }
 
     let serRemFormRaw = null;
-    // if (service_reminder_bp_json){
-    //     const { field_schema} = service_reminder_bp_json;
-    //     serRemFormRaw = <RawForm field_schema={field_schema} id={service_reminder_bp_json.id} service_id={id} org_id={org_id}/>
-    // }
-    // else{
-    //     serRemFormRaw = <RawForm field_schema={JSON.stringify(genericFSchema)} id="generic_ser_rem_form" service_id={id} org_id={org_id} />
-    // }
+
 
     let serRemFormCard = null;
-    // if (service_reminder_bp_json) {
-    //     const { field_schema, ui_schema, thanks_msg, greeting_msg} = service_reminder_bp_json;
-    //     serRemFormCard = <SerRemCard
-    //     key={id}
-    //     service_delivery_enabled={service_delivery_enabled}
-    //     field_schema={field_schema}
-    //     greeting_msg={greeting_msg}
-    //     thanks_msg={thanks_msg}
-    //     ui_schema={ui_schema}
-    //     ser_rem_form_id={service_reminder_bp_json.id}
-    //     service_id={id}
-    //     org_id={org_id}/>
-    // }
-    // else {
-    //     serRemFormCard = <SerRemCard
-    //         key = "generic_ser_rem_form"
-    //         service_delivery_enabled={service_delivery_enabled}
-    //         field_schema={JSON.stringify(genericFSchema)}
-    //         service_delivery_enabled={service_delivery_enabled}
-    //         greeting_msg={null}
-    //         thanks_msg={null}
-    //         ui_schema={null}
-    //         ser_rem_form_id="generic_ser_rem_form"
-    //         service_id={id}
-    //         org_id={org_id} />
-    // }
+
 
     let serLogoSvg = null;
     if (logoSizes && logoSizes.sizes) {
@@ -415,8 +384,6 @@ class ServiceDetailTemplate extends React.Component {
         }
       };
     });
-
-    const serAtts = <AttachmentList attachments={service_attachments} />
 
     const serviceDeliveryFeedbackForm = (
       <form
@@ -563,6 +530,23 @@ class ServiceDetailTemplate extends React.Component {
           logoSizes={serLogoSvg}
         />
       );
+    }
+    
+    let serAtts = null;
+    if (service_attachments) {
+      const attMap = {};
+
+      service_attachments.forEach(item => {
+        const key = item.group;
+        const collection = attMap[key];
+        if (!collection) {
+          attMap[key] = [item];
+        } else {
+          collection.push(item);
+        }
+      });
+
+      serAtts = <AttachmentList key="att-list" attMap={attMap} />;
     }
 
     let backButton = null;

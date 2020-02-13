@@ -37,26 +37,36 @@ class Attachment extends Component {
     });
 
     return (
-      <Fragment>
-        <div className={className}>
-          <a
-            href="#close"
-            onClick={this.closeAttachment}
-            className={styles.modalOverlay}
-            aria-label="Close"
-          />
-          <div className={styles.modalContainer}>
-            <div className={styles.modalHeader} style={{ textAlign: "center" }}>
-              <h5 className={styles.modalTitle}>{name}</h5>
-            </div>
+      <div key={`att-img-${name}`} id={`att-img-${name}`}>
+        {this.state.isOpen ? (
+          <div className={className}>
+            <a
+              href="#close"
+              onClick={this.closeAttachment}
+              className={styles.modalOverlay}
+              aria-label="Close"
+            />
+            <div className={styles.modalContainer}>
+              <div
+                className={styles.modalHeader}
+                style={{ textAlign: "center" }}
+              >
+                <h5 className={styles.modalTitle}>{name}</h5>
+              </div>
 
-            <div className={`${styles.modalBody}`}>
-              <img src={url} className={styles.imgFitContain} alt={name} />
+              <div className={`${styles.modalBody}`}>
+                <img src={url} className={styles.imgFitContain} alt={name} />
+              </div>
             </div>
           </div>
-        </div>
+        ) : null}
 
-        <div style={{ width: "240px", cursor: 'pointer' }} onClick={this.openAttachment}>
+        <div
+          key={`img-${name}`}
+          id={`img-${name}`}
+          style={{ width: "240px", cursor: "pointer" }}
+          onClick={this.openAttachment}
+        >
           <figure
             className={`${styles.figure}`}
             style={{ textAlign: "center" }}
@@ -64,7 +74,6 @@ class Attachment extends Component {
             <img
               style={{ width: "240px" }}
               src={url}
-         
               className={styles.imgFitCover}
               alt={name}
             />
@@ -73,7 +82,7 @@ class Attachment extends Component {
             </figcaption>
           </figure>
         </div>
-      </Fragment>
+      </div>
     );
   }
 }

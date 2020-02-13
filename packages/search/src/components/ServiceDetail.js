@@ -12,6 +12,9 @@ import { withStyles } from "@material-ui/core/styles";
 import Typography from "@material-ui/core/Typography";
 
 import Divider from "@material-ui/core/Divider";
+
+import AttachmentList from './AttachmentList';
+
 import { trackClick } from "./common/tracking";
 const windowGlobal = typeof window !== "undefined" ? window : null;
 
@@ -305,7 +308,6 @@ class ServiceDetail extends Component {
       tabContent.push(
         <Fragment>
           <h4>Timings</h4>
-
           <p id={`timings`}>{timingList}</p>
         </Fragment>
       );

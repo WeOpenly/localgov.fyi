@@ -38,8 +38,6 @@ class ComboBox extends Component {
       );
     }
 
-    console.log(services, item);
-
     if (services && services.length == 1){
         selectTemplate(services[0].node.id);
     }

@@ -20,13 +20,20 @@ class Create extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      selectedTemplate: ""
+      selectedTemplate: "",
+      serUrl: ""
     };
     this.selectTemplate = this.selectTemplate.bind(this);
+    this.setSerUrl = this.setSerUrl.bind(this);
   }
 
-  selectTemplate(id){
-    console.log(id);
+  setSerUrl(ev){
+    this.setState({
+      serUrl: ev.target.value
+    });
+  }
+
+  selectTemplate(id) {
     this.setState({
       selectedTemplate: id
     });
@@ -36,7 +43,6 @@ class Create extends React.Component {
     const { classes } = this.props;
     const { services } = this.props.data;
     const { edges } = services;
-
 
     return (
       <Fragment>
@@ -79,6 +85,47 @@ class Create extends React.Component {
                   }}
                 />
               </pre>
+            </div>
+            <div className={`${styles.column} ${styles.col2}`}></div>
+
+            <div className={`${styles.column} ${styles.col2}`}></div>
+            <div
+              style={{ marginBottom: "4rem" }}
+              className={`${styles.column} ${styles.col2}`}
+            >
+              <label className={styles.formLabel} for="input-example-1">
+                <h6> Service embed</h6>
+              </label>
+              <input
+                className={`${styles.formInput}`}
+                name="flex_service_name"
+                type="text"
+                placeholder="service slug"
+                onChange={this.setSerUrl}
+                value={this.state.serUrl || ""}
+              />
+              <span className={styles.textGray}>
+                eg: online-recreational-activityclass-registration-denver-co
+              </span>
+            </div>
+
+            <div style={{}} className={`${styles.column} ${styles.col1}`}>
+              <div className={styles.dividerVert} data-content=""></div>
+            </div>
+
+            <div
+              style={{ marginBottom: "4rem" }}
+              className={`${styles.column} ${styles.col5}`}
+            >
+              {this.state.serUrl ? (
+                <pre type="text" className={styles.code} data-lang="HTML">
+                  <code
+                    dangerouslySetInnerHTML={{
+                      __html: `<textarea style=" font-family: inherit; font-size: inherit; line-height: inherit; margin: 0; height: auto; -webkit-appearance: none; -moz-appearance: none; appearance: none; background: #fff; background-color: rgb(255, 255, 255); background-image: none; background-image: none; border: .05rem solid #bcc3ce; border-radius: .1rem; color: #3b4351; display: block; font-size: .8rem; height: 10.8rem; line-height: 1.2rem; max-width: 100%; outline: 0; padding: .25rem .4rem; position: relative; transition: background .2s,border .2s,box-shadow .2s,color .2s; width: 100%; "><div style="position: relative; overflow: hidden; padding-top: 56.25%; height: auto;"> <iframe style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; max-height: 320px; border: 0;" frameborder="0" gesture="media" allow="encrypted-media" src="${process.env.EMBED_BACKEND}/services/${this.state.serUrl}" ></iframe> </div></textarea>`
+                    }}
+                  />
+                </pre>
+              ) : null}
             </div>
             <div className={`${styles.column} ${styles.col2}`}></div>
 

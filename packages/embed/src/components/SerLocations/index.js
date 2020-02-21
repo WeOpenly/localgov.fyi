@@ -18,7 +18,7 @@ class SerLocationShell extends Component {
   componentDidMount() {
     const { dispatch, location } = this.props;
     const searchValues = queryString.parse(location.search);
-    console.log(searchValues);
+
     // if (searchValues && searchValues.ser_temp_id) {
     //   dispatch(fetchAutoLoc(searchValues.ser_temp_id));
     // }
@@ -38,7 +38,7 @@ class SerLocationShell extends Component {
 
     } = this.props;
 
-    console.log(this.props, "SerlocShell")
+
     if (autoLocLoading) {
       return 'loading';
     }

@@ -1,6 +1,6 @@
 /org_images/* http://storage.googleapis.com/evergov-prod-dsp-uploads/organization_logo_uploads/:splat 200!
     
-/api/yusuf/* https://yusuf-dot-evergov-prod.wl.r.appspot.com/:splat 200!
+/api/yusuf/* http://127.0.0.1:8010/:splat 200!
 
 /quick_pay/* https://pay.papergov.com/:splat 200!
 
@@ -10,7 +10,7 @@
 
 /newsroom/* https://papergov.wordpress.com/:splat 200!
 
-/api/dsp/* https://dsp-dot-evergov-prod.wl.r.appspot.com//:splat 200!
+/api/dsp/* https://dsp-dot-evergov-prod.appspot.com/:splat 200!
 
 https://papergov.netlify.com/* https://papergov.com/:splat 301!
 

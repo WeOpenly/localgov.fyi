@@ -50,7 +50,7 @@ class GoogAutoComplete extends React.Component {
       inHeader
     } = this.props;
 
-    console.log(this.props, "props");
+ 
     const searchOptions = {
       types: ["(cities)"],
       componentRestrictions: {

@@ -1,5 +1,7 @@
-import React from 'react';
-import { connect } from "react-redux";
+import React from "react";
+
+import { graphql } from "gatsby";
+import queryString from "query-string";
 
 import SerLocationShell from "../../components/SerLocations";
 
@@ -11,6 +13,25 @@ class SerLocations extends React.Component {
   }
 
   render() {
+    const { location } = this.props;
+    const { services } = this.props.data;
+    const { edges } = services;
+
+    let defaultTemplateName = null;
+    let defaultTemplateUrlSlug = null;
+    let defaultTemplateDesc = null;
+
+    const searchValues = queryString.parse(location.search);
+    if (searchValues && searchValues.id){
+        const currentTemplate = edges.filter((ser => ser.node.id === searchValues.id))
+        if (currentTemplate.length > 0){
+          defaultTemplateName = currentTemplate[0].node.service_name
+          defaultTemplateUrlSlug = currentTemplate[0].node.service_name_slug
+          defaultTemplateDesc = currentTemplate[0].node.service_glossary_description
+        }
+    }
+
+    
     return (
       <div className={`${styles.container} ${styles.gridXl}`}>
         <div
@@ -32,11 +53,16 @@ class SerLocations extends React.Component {
             >
               <div
                 style={{
-                  margin: "1rem 0"
+                  margin: "0"
                 }}
                 className={styles.panelBody}
               >
-                <SerLocationShell location={this.props.location} />
+                <SerLocationShell
+                  defaultTemplateName={defaultTemplateName}
+                  defaultTemplateSlug={defaultTemplateUrlSlug}
+                  defaultTemplateDesc={defaultTemplateDesc}
+                  location={this.props.location}
+                />
               </div>
 
               <div
@@ -57,7 +83,7 @@ class SerLocations extends React.Component {
                   }}
                 >
                   <div className={styles.textGray}> powered by</div>
-                  <a href="https://papergov.com">
+                  <a href="https://papergov.com" target="_blank">
                     <h6>papergov</h6>
                   </a>
                 </div>
@@ -69,5 +95,20 @@ class SerLocations extends React.Component {
     );
   }
 }
+
+export const query = graphql`
+         query servicesQueryDynamic {
+           services: allServiceGlossaryJson {
+             edges {
+               node {
+                 id
+                 service_name
+                 service_glossary_description
+                 service_name_slug
+               }
+             }
+           }
+         }
+       `;
 
 export default SerLocations;

@@ -56,7 +56,6 @@ class ServiceDetailTemplate extends React.Component {
       org_logo_sizes
     } = this.props.pageContext.data;
 
- 
 
     const { classes, isMobile } = this.props;
 
@@ -69,23 +68,27 @@ class ServiceDetailTemplate extends React.Component {
     let orgHieSlug = null;
 
     if (org_area_hie.length === 1) {
+      let url = `https://papergov.com${state_org_details.url_slu}`;
       orgHieComp = (
-        <Link className={styles.textBold} style={{ color: "#6F47FF" }} to={state_org_details.url_slug}>
+        <a target="_blank" className={styles.textBold} style={{ color: "#6F47FF" }} href={url}>
           {org_name}
-        </Link>
+        </a>
       );
       orgHieSlug = org_name;
     } else {
       if (org_area_hie.length) {
+        let url = `${org_slug}`;
+        let stateUrl = `https://papergov.com/${state_org_details.url_slug}`;
+
         orgHieComp = (
-          <span >
-            <Link style={{ color: "#6F47FF" }} to={org_slug}>
+          <span>
+            <a target="_blank" style={{ color: "#6F47FF" }} href={url}>
               {org_name}
-            </Link>
+            </a>
             ,{" "}
-            <Link style={{ color: "#6F47FF" }} to={state_org_details.url_slug}>
+            <a target="_blank" style={{ color: "#6F47FF" }} href={stateUrl}>
               {org_area_hie[org_area_hie.length - 1].area_name}
-            </Link>
+            </a>
           </span>
         );
         orgHieSlug = `${org_name}, ${

@@ -3,12 +3,13 @@ import { connect } from "react-redux";
 
 import queryString from "query-string";
 
-import SerLocationCard from './SerLocationCard';
+import SerLocationCard from "./SerLocationCard";
+import SerTemplateCard from "../SerTemplateCard";
 
 import styles from "../spectre.min.module.css";
 import iconStyles from "../typicons.min.module.css";
 
-import {fetchAutoLoc} from './actions'
+import { fetchAutoLoc } from "./actions";
 
 class SerLocationShell extends Component {
   constructor(props) {
@@ -22,11 +23,9 @@ class SerLocationShell extends Component {
     // if (searchValues && searchValues.ser_temp_id) {
     //   dispatch(fetchAutoLoc(searchValues.ser_temp_id));
     // }
-    if (searchValues && searchValues.id){
+    if (searchValues && searchValues.id) {
       dispatch(fetchAutoLoc(searchValues.id));
     }
-   
-
   }
 
   render() {
@@ -35,38 +34,41 @@ class SerLocationShell extends Component {
       autoLocResults,
       autoLocFailed,
       autoLocRegion,
-
+      defaultTemplateName,
+      defaultTemplateSlug,
+      defaultTemplateDesc
     } = this.props;
 
+    let allLocSers = (
+      <SerTemplateCard
+        name={defaultTemplateName}
+        slug={defaultTemplateSlug}
+        desc={defaultTemplateDesc}
+      />
+    );
 
-    if (autoLocLoading) {
-      return 'loading';
+    if (autoLocResults.length > 0) {
+
+      allLocSers = autoLocResults.map((locResult, item) => {
+        const locsHere = locResult.location_sers.map((res, idx) => {
+          return (
+            <SerLocationCard
+              key={idx}
+              idx={idx}
+              organization={res.organization}
+              ser_url_slug={res.url_slug}
+              area={res.area}
+            />
+          );
+        });
+        return (
+          <Fragment>
+            <h5 style={{marginTop: "2rem", paddingBottom: "1rem" }}>{locResult.header}</h5>
+            <div>{locsHere}</div>
+          </Fragment>
+        );
+      });
     }
-
-    if (autoLocFailed){
-      return null;
-    }
-
-    let allLocSers = []
-    allLocSers = autoLocResults.map((locResult, item) => {
-       const locsHere = locResult.location_sers.map((res, idx) => {
-         return (
-           <SerLocationCard
-             key={idx}
-             idx={idx}
-             organization={res.organization}
-             ser_url_slug={res.url_slug}
-             area={res.area}
-           />
-         );
-       });
-       return (
-         <Fragment>
-           <h4 style={{paddingBottom: '1rem'}}>{locResult.header}</h4>
-           <div>{locsHere}</div>
-         </Fragment>
-       );
-    })
 
     return (
       <div className={`${styles.columns}`}>

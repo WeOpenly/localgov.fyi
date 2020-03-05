@@ -106,7 +106,8 @@ export function executeSearch() {
     const newQueryString = queryString.stringify(params);
     if(windowGlobal){
       const linkToOpen = `https://papergov.com/search?${newQueryString}`
-      windowGlobal.open(linkToOpen, "_blank");
+ 
+      windowGlobal.open(linkToOpen);
     }
   };
 }

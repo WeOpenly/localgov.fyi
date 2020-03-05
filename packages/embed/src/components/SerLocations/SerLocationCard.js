@@ -49,10 +49,11 @@ class SerLocationCard extends Component {
       <a
         className={`${styles.tile} ${styles.textLeft}`}
         style={{
+          cursor: "pointer",
           minWidth: "340px",
           maxWidth: "360px",
           background: "#fefefe",
-          margin: "0.2rem 0.5rem",
+          margin: "0.2rem 0.5rem 0.7rem 0.5rem",
           border: "1px solid rgba(48,55,66,.30)",
           borderRadius: "0.4rem",
           padding: "1.5rem 1rem 0.6rem 1.2rem"
@@ -69,7 +70,7 @@ class SerLocationCard extends Component {
               height: "64px"
             }}
           >
-            <img src={logoUrl} />
+            <img src={`${process.env.GATSBY_CANONICAL_DOMAIN}/${logoUrl}`} />
           </figure>
         </div>
         <div
@@ -80,7 +81,7 @@ class SerLocationCard extends Component {
             flexDirection: "column"
           }}
         >
-          <div>
+          <div >
             <h5>{areaName}</h5>
             <p
               style={{ marginBotton: "0.2rem", paddingRight: "1rem" }}

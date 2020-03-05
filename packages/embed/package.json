@@ -129,7 +129,7 @@
         "eslint-config-react-app": "^4.0.1",
         "gatsby-cli": "^2.7.50",
         "gatsby-plugin-webpack-bundle-analyser-v2": "^1.1.1",
-        "netlify-cli": "^2.15.0",
+        "netlify-cli": "^2.36.0",
         "regenerator-runtime": "^0.12.1",
         "start-server-and-test": "^1.10.2",
         "webpack-bundle-analyzer": "^3.5.1"

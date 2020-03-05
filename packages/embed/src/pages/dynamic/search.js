@@ -55,11 +55,11 @@ class SearchIndex extends React.Component {
                   style={{
                     display: "flex",
                     justifyContent: "space-evenly",
-                    width: "160px"
+                    width: "180px"
                   }}
                 >
                   <div className={styles.textGray}> powered by</div>
-                  <a href="https://papergov.com">
+                  <a href="https://papergov.com" target="_blank">
                     <h6>papergov</h6>
                   </a>
                 </div>

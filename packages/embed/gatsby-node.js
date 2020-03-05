@@ -147,7 +147,7 @@ exports.createPages = ({ graphql, actions }) => {
                 price: service.price,
                 service_del_links: service.service_del_links || [],
                 org_id: org_details.id,
-                org_slug: `${process.env.GATSBY_CANONICAL_DOMAIN}${org_details.url_slug}`,
+                org_slug: `${process.env.GATSBY_CANONICAL_DOMAIN}/${org_details.url_slug}`,
                 org_area_hie: org_details.area.hierarchy || [],
                 org_name: org_details.org_name
               }

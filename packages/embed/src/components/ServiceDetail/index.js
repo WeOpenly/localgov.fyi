@@ -9,7 +9,7 @@ class ServiceDetail extends Component {
   }
 
   render() {
-    const { name, id,url_slug, offeredIn, info, serDelLinks } = this.props;
+    const { name, id, url_slug, offeredIn, info, serDelLinks } = this.props;
     const windowGlobal = typeof window !== "undefined" && window;
     const windowLocation = windowGlobal.location ? windowGlobal.location : {};
 
@@ -158,7 +158,7 @@ class ServiceDetail extends Component {
       >
         <div className={styles.cardHeader} style={{ marginLeft: "0.1rem" }}>
           <h3 className={`${styles.cardTitle}`}>{name}</h3>
-          <h6>{offeredIn}</h6>
+          <h6> {offeredIn}</h6>
         </div>
         <div className={styles.cardBody}>
           <p

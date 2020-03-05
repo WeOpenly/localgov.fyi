@@ -149,9 +149,9 @@ class SerSuggest extends Component {
           inputProps={inputProps}
         />
         <button
-          onClick={this.props.onSearch}
+          type="submit"
           className={`${styles.btn} ${styles.btnPrimary} ${styles.inputGroupBtn} ${styles.btnLg}`}
-        >
+        > 
           <span className={`${iconStyles.typcn} ${iconStyles.typcnZoom}`} />
         </button>
       </div>

@@ -278,45 +278,45 @@ http://papergov.netlify.com/* https://papergov.com/:splat 301!
 
 """.format(y=YUSUF_HOST, d=DSP_HOST)
 
-    res = urllib2.urlopen('{h}/arthur/redirects?token={t}'.format(h=DSP_HOST, t=token))
-    result = json.load(res)
+    # res = urllib2.urlopen('{h}/arthur/redirects?token={t}'.format(h=DSP_HOST, t=token))
+    # result = json.load(res)
 
-    if not result.get('success'):
-        print("failed getting redirects")
-        return
+    # if not result.get('success'):
+    #     print("failed getting redirects")
+    #     return
 
-    orgs = result.get('orgs')
-    services = result.get('sers')
+    # orgs = result.get('orgs')
+    # services = result.get('sers')
 
-    for org_id in orgs:
-        org_revs = orgs[org_id]
-        if not org_revs:
-            continue
+    # for org_id in orgs:
+    #     org_revs = orgs[org_id]
+    #     if not org_revs:
+    #         continue
         
-        latest_rev = org_revs[-1]
-        other_revs = org_revs[:-1]
+    #     latest_rev = org_revs[-1]
+    #     other_revs = org_revs[:-1]
 
-        redir_string = redir_string + "\norganization/{f}/     /{s}/   301!".format(
-            f=org_id, s=latest_rev)
+    #     redir_string = redir_string + "\norganization/{f}/     /{s}/   301!".format(
+    #         f=org_id, s=latest_rev)
         
-        for rev in other_revs:
-            redir_string = redir_string + "\n/{f}/     /{s}/   301!".format(
-                f=rev, s=latest_rev)
+    #     for rev in other_revs:
+    #         redir_string = redir_string + "\n/{f}/     /{s}/   301!".format(
+    #             f=rev, s=latest_rev)
 
-    for ser_id in services:
-        ser_revs = services[ser_id]
-        if not ser_revs:
-            continue
+    # for ser_id in services:
+    #     ser_revs = services[ser_id]
+    #     if not ser_revs:
+    #         continue
 
-        latest_rev = ser_revs[-1]
-        other_revs = ser_revs[:-1]
+    #     latest_rev = ser_revs[-1]
+    #     other_revs = ser_revs[:-1]
         
-        redir_string = redir_string + "\nservice/{f}/     /{s}/   301!".format(
-            f=ser_id, s=latest_rev)
+    #     redir_string = redir_string + "\nservice/{f}/     /{s}/   301!".format(
+    #         f=ser_id, s=latest_rev)
 
-        for rev in other_revs:
-            redir_string = redir_string + "\n/{f}/     /{s}/   301!".format(
-                f=rev, s=latest_rev)
+    #     for rev in other_revs:
+    #         redir_string = redir_string + "\n/{f}/     /{s}/   301!".format(
+    #             f=rev, s=latest_rev)
             
     with open('_redirects', 'w+') as f:
         f.write(redir_string)

@@ -2,6 +2,8 @@ import React, { Component, Fragment } from "react";
 
 import styles from "../spectre.min.module.css";
 import iconStyles from "../typicons.min.module.css";
+const windowGlobal = typeof window !== "undefined" && window;
+const windowLocation = windowGlobal.location ? windowGlobal.location : {};
 
 const RawHTML = ({ children, className = "" }) => (
   <div
@@ -14,17 +16,28 @@ const RawHTML = ({ children, className = "" }) => (
 class SerTemplateCard extends Component {
   constructor(props) {
     super(props);
+    this.state = {
+      isMounted: false,
+      defaultDesc: ''
+    }
+  }
+
+  componentDidMount(){
+    this.setState({
+      isMounted: true,
+      defaultDesc: `<p>Learn more about <b>${name} </b> at <a href="${process.env.GATSBY_CANONICAL_DOMAIN}/services/${slug}">papergov.com</a></p>`
+    })
   }
 
   render() {
-
     const { name, slug, desc } = this.props;
-    const windowGlobal = typeof window !== "undefined" && window;
-    const windowLocation = windowGlobal.location ? windowGlobal.location : {};
 
+    if (!this.state.isMounted){
+      return null
+    }
 
-    const defaultDesc = `<p>Learn more about <b>${name} </b> at <a href="${process.env.GATSBY_CANONICAL_DOMAIN}/services/${slug}">papergov.com</a></p>`;
-
+    console.log(this.props, this.state);
+    
     return (
       <div
         className={`${styles.card} ${styles.textLeft}`}
@@ -43,7 +56,7 @@ class SerTemplateCard extends Component {
             style={{ lineHeight: "1.1rem" }}
             className={`${styles.cardSubtitle}`}
           >
-            {desc ? desc : defaultDesc}
+            {desc ? desc : this.state.defaultDesc}
           </RawHTML>
         </div>
         <div

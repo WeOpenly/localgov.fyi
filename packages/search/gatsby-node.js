@@ -73,9 +73,7 @@ exports.createPages = ({ graphql, actions }) => {
                   contact_value
                 }
                 other_orgs_from_state {
-                  area {
-                    name
-                  }
+                  org_name
                   url_slug
                   id
                 }
@@ -270,6 +268,7 @@ exports.createPages = ({ graphql, actions }) => {
         const serGlossaryTemplate = path.resolve(
           `src/templates/service-glossary.js`
         );
+
         _.each(result.data.allServiceGlossaryJson.edges, edge => {
           createPage({
             path: `services/${edge.node.service_name_slug}/`,

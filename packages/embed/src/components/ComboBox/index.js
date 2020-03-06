@@ -63,7 +63,7 @@ class ComboBox extends Component {
     return (
         <Fragment>
           <label className={styles.formLabel} for="input-example-1">
-            <h6>Select a service template</h6>
+
           </label>
           <Combobox className={styles.formGroup} onSelect={this.onSelect}>
             <ComboboxInput

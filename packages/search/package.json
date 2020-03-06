@@ -22,6 +22,7 @@
         "formik": "^1.5.8",
         "fuse.js": "^3.4.5",
         "gatsby": "^2.10.5",
+        "gatsby-cli": "^2.10.0",
         "gatsby-image": "^2.2.3",
         "gatsby-link": "^2.2.0",
         "gatsby-plugin-brotli": "^1.1.2",

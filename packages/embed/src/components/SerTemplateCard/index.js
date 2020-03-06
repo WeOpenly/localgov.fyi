@@ -23,6 +23,7 @@ class SerTemplateCard extends Component {
   }
 
   componentDidMount(){
+    const { name, slug, desc } = this.props;
     this.setState({
       isMounted: true,
       defaultDesc: `<p>Learn more about <b>${name} </b> at <a href="${process.env.GATSBY_CANONICAL_DOMAIN}/services/${slug}">papergov.com</a></p>`
@@ -37,7 +38,7 @@ class SerTemplateCard extends Component {
     }
 
     console.log(this.props, this.state);
-    
+
     return (
       <div
         className={`${styles.card} ${styles.textLeft}`}

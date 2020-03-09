@@ -246,7 +246,7 @@ html {
 
 body {
     background: #fff;
-    color: #3b4351;
+    color: #5d6675;
     font-size: .8rem;
     overflow-x: hidden;
     text-rendering: optimizeLegibility
@@ -280,11 +280,13 @@ h3,
 h4,
 h5,
 h6 {
-    color: inherit;
+    color: rgb(59, 67, 81);
     font-weight: 700;
     line-height: 1.2;
     margin-bottom: .2em;
-    margin-top: 0
+    margin-top: 0;
+    letter-spacing: -0.03em;
+    line-height: calc(var(--spacingv) * 3);
 }
 
 .h1,

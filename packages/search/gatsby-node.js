@@ -86,6 +86,10 @@ exports.createPages = ({ graphql, actions }) => {
                   }
                   services {
                     service_name
+                    service_faq {
+                      answer
+                      question
+                    }
                     service_del_links {
                       link_name
                       url
@@ -310,7 +314,7 @@ exports.createPages = ({ graphql, actions }) => {
         });
         //service page
 
-        const serTemplate = path.resolve(`src/templates/service-detail-2.js`);
+        const serTemplate = path.resolve(`src/templates/service-detail.js`);
 
         _.each(result.data.allSersJson.edges, edge => {
           const { node } = edge;

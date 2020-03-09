@@ -1,57 +1,11 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 
-import Grid from '@material-ui/core/Grid';
+import styles from "../spectre.min.module.css";
 
 import SuggestedRow from './SuggestedRow';
 import LocationCard from '../UserRequests/LocationCard';
-import { withStyles } from '@material-ui/core/styles';
-import ContentLoader from "react-content-loader"
 
-const SuggestedLoader = () => (
-    <ContentLoader
-        height={200}
-        width={400}
-        speed={100}
-        primaryColor="#f3f3f3"
-        secondaryColor="#d5d9f3"
-    >
-        <rect x="11" y="75" rx="0" ry="0" width="166" height="61" />
-        <rect x="8" y="12" rx="0" ry="0" width="304" height="19" />
-    </ContentLoader>
-)
-
-const styles = theme => ({
-    ser_template_card: {
-        cursor: 'pointer',
-        width: '240px',
-        display: 'flex',
-        flexDirection: 'column',
-        padding: theme.spacing.unit,
-        margin: theme.spacing.unit,
-        boxShadow: `0 2px 5px 2px ${theme.palette.primary['100']}`,
-    },
-    ser_template_card_img: {
-        display: 'flex',
-        justifyContent: 'center',
-        minHeight: '80px',
-        padding: theme.spacing.unit * 3
-    },
-    ser_template_card_content: {
-        textAlign: 'center',
-        display: 'flex',
-        justifyContent: 'center',
-
-    },
-    ser_gloss_suggested_row: {
-        paddingLeft: theme.spacing.unit,
-        marginTop: theme.spacing.unit * 2,
-    },
-ser_gloss_suggested_failed_row:{
-    display: 'flex',
-    justifyContent: 'center'
-}
-});
 
 class Suggested extends Component {
     constructor(props) {
@@ -61,22 +15,20 @@ class Suggested extends Component {
 
     render() { 
         const { service_name, isMobile} = this.props;
-        const { autoLocLoading, autoLocResults, autoLocFailed, handleOrgClick, classes} = this.props;
+        const { autoLocLoading, autoLocResults, autoLocFailed, handleOrgClick} = this.props;
         const { googLocLoading, googLocResults, googlLocFailed, noGoogSuggestsFound, searchText} = this.props;
    
         if (autoLocLoading || googLocLoading){
-            return (<Grid container>
-                <Grid item sm={1} />
-                <Grid item sm={5} className={classes.ser_gloss_suggested_row}>
-                    <SuggestedLoader />
-                </Grid>
-                <Grid item sm={6} />
-                <Grid item sm={1} />
-                <Grid item sm={5} className={classes.ser_gloss_suggested_row}>
-                    <SuggestedLoader />
-                </Grid>
-                <Grid item sm={6} />
-            </Grid>)
+            return (
+              <div className={`${styles.columns}`}>
+                <div
+                  className={`${styles.column} ${styles.col12} ${styles.textCenter}`}
+                  style={{padding: '2rem '}}
+                >
+                <div className={styles.loading} />
+                </div>
+              </div>
+            );
         }
 
       
@@ -103,13 +55,20 @@ class Suggested extends Component {
         }
 
         if ((noGoogSuggestsFound || googlLocFailed) && searchText) {
-            return (<Grid container>
-                <Grid item xs="auto" />
-                <Grid item xs={12} className={classes.ser_gloss_suggested_failed_row}>
-                    <LocationCard isMobile={isMobile} compact message={`Sorry, we couldn't find any results for '${searchText}'`} />
-                </Grid>
-                <Grid item xs="auto" />
-            </Grid>)
+            return (
+              <div className={`${styles.columns}`}>
+                <div
+                  className={`${styles.column} ${styles.col12} ${styles.textCenter}`}
+                  style={{ padding: "2rem " }}
+                >
+                  <LocationCard
+                    isMobile={isMobile}
+                    compact
+                    message={`Sorry, we couldn't find any results for '${searchText}'`}
+                  />
+                </div>
+              </div>
+            );
         }
 
         return locationCards
@@ -123,4 +82,4 @@ const mapStateToProps = function (state, ownProps) {
     };
 };
 
-export default connect(mapStateToProps)(withStyles(styles)(Suggested));
+export default connect(mapStateToProps)(Suggested);

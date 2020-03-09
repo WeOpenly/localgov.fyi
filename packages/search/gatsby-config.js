@@ -31,7 +31,6 @@ module.exports = {
      * recursively reads in files and adds them to the data
      * tree.
      */
-    // `gatsby-plugin-react-next`,
     `gatsby-transformer-sharp`,
     {
       resolve: `gatsby-plugin-sharp`,

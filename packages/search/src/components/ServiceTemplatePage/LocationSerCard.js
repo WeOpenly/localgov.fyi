@@ -81,7 +81,7 @@ class LocationSerCard extends Component {
 
         if (organization.logo_url){
             const filename = organization.logo_url.replace(/^.*[\\\/]/, "");
-            logoUrl = `/org_images/${filename}_128_thumb.jpg`;
+            logoUrl = `https://papergov.com/org_images/${filename}_128_thumb.jpg`;
         }
 
         if (!(areaName && ser_url_slug)) {
@@ -90,47 +90,91 @@ class LocationSerCard extends Component {
 
     
 
-      let avatar = (<Avatar className={classes.ser_list_org_agg_logo_dum}>
-        <LocationCity fontSize="medium" style={{ color: '#AB93FF' }} />
-      </Avatar>)
+      let avatar = (
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            background: "#fff",
+            width: "64px",
+            height: "64px",
+            flexGrow: "0",
+            flexShrink: "0",
+            flex: '20',
+            borderRadius: "0.5rem",
+            marginRight: "1rem",
+            borderRadius: ".8rem",
+            
+            border: "1px solid #AB93FF"
+          }}
+        >
+          <LocationCity fontSize="large" style={{ width: '64px', color: "#AB93FF" }} />
+        </div>
+      );
 
       if (logoUrl) {
         avatar = (
-          <Defer
-            render={() => <img alt={areaName} className={classes.suggest_loc_logo} src={`${logoUrl}`}></img>}
-            renderPlaceholder={null}
-            loadOnScreen
-          />
-        )
+          <div
+            style={{
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+              flexGrow: "0",
+              flexShrink: "0",
+              background: "#fff",
+              padding: "0.2rem",
+
+              flex: "20",
+              borderRadius: "0.5rem",
+              marginRight: "1rem",
+              borderRadius: ".8rem",
+              border: "1px solid #AB93FF"
+            }}
+          >
+            <div style={{ width: "64px", height: "64px" }}>
+    
+              <img style={{width: 'inherit', height: 'inherit'}} src={logoUrl} alt={name}></img>
+            </div>
+          </div>
+        );
       }
     
         const border = highlight ? `#d782d9` : `#AB93FF`
+
+
+
         return (
           <a
             style={{
               cursor: "pointer",
               width: "288px",
-              marginLeft: '16px',
-              marginRight:'16px',
-              marginTop: '16px',
+              background: "#fff",
+              color: "#3a4251",
+              marginLeft: "16px",
+              marginRight: "16px",
+              padding: "1rem 1rem",
+              marginTop: "16px",
               display: "flex",
-              flexDirection: "column",
-              textDecoration: "none",
-              borderTop: `2px solid ${border}`,
+              alignItems: "center",
+              borderRadius: ".8rem",
+              boxShadow: "0 0 1px rgba(0,0,0,.08),0 2px 4px rgba(0,0,0,.03)",
+              '&::hover': {
+                boxShadow: "none"
+              },
+              textDecoration: "none"
             }}
             href={`/${ser_url_slug}`}
           >
-            <div className={classes.suggest_loc_card}>
-              <div className={classes.suggest_loc_logo_container}>
-                {avatar}
+            {avatar}
+
+            <div
+              style={{ display: "flex", flexDirection: "column", flex: "80" }}
+            >
+              <div className={styles.textBold}>
+                <h6>{areaName}</h6>
               </div>
-           
-              <div className={classes.suggest_loc_org_details}>
-                <Typography variant="body2" gutterBottom>
-                  {areaName}
-                </Typography>
-                <Typography variant="caption">{state}</Typography>
-              </div>
+              <div className={styles.textSmall}>{state}</div>
             </div>
           </a>
         );

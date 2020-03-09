@@ -4,64 +4,23 @@ import {navigate} from '@reach/router';
 import Helmet from 'react-helmet'
 
 import {connect} from "react-redux";
-import Masonry from 'react-masonry-component';
-import NavSearch from '../components/Nav/Search';
+
+import SearchNav from "../components/Nav/Search";
 import queryString from 'query-string'
-import {withStyles} from '@material-ui/core/styles';
-import AppBar from '@material-ui/core/AppBar';
-import Grid from '@material-ui/core/Grid';
-import Typography from '@material-ui/core/Typography';
-import Divider from '@material-ui/core/Divider';
+
 import {graphql} from "gatsby";
 
 import RawForm from '../components/Reminders/RawForm';
-import withRoot from '../withRoot';
+
 import HeaderWithSearch from '../components/HeaderWithSearch';
 import LocatioDialog from '../components/UserRequests/LocationDialog';
 import { toggleLocationRequestDialog } from "../components/UserRequests/actions.js";
 
 import {trackView, trackClick} from "../components/common/tracking";
 
-const styles = theme => ({
-  titleWrapper: {
-    textAlign: 'center',
-    padding: theme.spacing.unit *4,
-    margin: theme.spacing.unit *2
-  },
-  subtitle: {
-    marginTop: theme.spacing.unit,
-    marginBottom: theme.spacing.unit * 4
-  },
-  section: {
-    marginBottom: theme.spacing.unit
-  },
-  masonryGrid: {
-    display: 'flex',
-    marginLeft: '-10px',
-    width: 'auto'
-  },
-  masonryGridColumn: {
-    paddingLeft: '30px',
-    backgroundClip: 'padding-box'
-  },
-  gridBlockTitle: {
-    paddingTop: theme.spacing.unit *2
-  },
-  link: {
-    padding: theme.spacing.unit
-  },
-  gridBlockItem: {
-    width: 200
-  },
-  heading: {
-    fontWeight: 600
-  },
-  listItem: {
-    display: 'flex',
-    marginTop: theme.spacing.unit,
-    marginLeft: theme.spacing.unit
-  }
-});
+
+import styles from "../components/spectre.min.module.css";
+import iconStyles from "../components/typicons.min.module.css";
 
 
 const genericFSchema = {
@@ -186,33 +145,41 @@ class Locations extends Component {
         strippedName = strippedName.replace("Town of ", "")
 
         return (
-          <div key={`${id}-${idx}`} className={classes.gridBlockListItem}>
+
             <a
+              key={`${id}-${idx}`}
               style={{
-              textDecoration: 'underline',
-              cursor: 'pointer'
-            }}
-              onClick={() => this.handleOrgClick(id, org_name, idx, `/${url_slug}/`)}
-              className={classes.link}>
-              <Typography variant="body1">
-                {strippedName}
-              </Typography>
+                textDecoration: "underline",
+                cursor: "pointer"
+              }}
+              onClick={() =>
+                this.handleOrgClick(id, org_name, idx, `/${url_slug}/`)
+              }
+            >
+              <p>{strippedName}</p>
             </a>
-          </div>
-        )
+ 
+        );
       });
 
       const stateComp = (
-        <div key={`${state}-container`} className={classes.gridBlockItem}>
-          <div className={classes.gridBlockTitle}>
-
-            <Typography id={`${state}`} variant="subheading" className={classes.heading}>
-              <a href={`#${state}`}>
-                {state}
-              </a>
-            </Typography>
+        <div
+          style={{ marginBottom: "2rem" }}
+          key={`${state}-container`}
+          className={styles.textCenter}
+        >
+          <div style={{ marginBottom: "1rem" }}>
+            <a href={`#${state}`}>
+              <h5>{state}</h5>
+            </a>
           </div>
-          <div className={classes.gridBlockBody}>
+          <div
+            style={{
+              display: "grid",
+              textAlign: "center",
+              gridTemplateColumns: "repeat(auto-fit, 150px)"
+            }}
+          >
             {orgComps}
           </div>
         </div>
@@ -239,30 +206,46 @@ class Locations extends Component {
             content={`Currently serving ${locLen} governments`}
           />
         </Helmet>
-        <NavSearch isMobile={isMobile} />
         <LocatioDialog />
-        <Grid container className={classes.titleWrapper}>
-          <Grid item xs={2} />
-          <Grid item xs={8} align="center">
-            <Typography
-              variant="display1"
-              className={classes.title}
-            >{`Currently serving ${locLen} governments`}</Typography>
-            <Typography variant="caption" className={classes.subtitle}>
+        <div
+          className={`${styles.container}`}
+          style={{ background: "#f8f9fc" }}
+        >
+          <div className={`${styles.columns} ${styles.hideMd}`}>
+            <div
+              className={`${styles.column} ${styles.col12}`}
+              style={{ background: "#fff" }}
+            >
+              <SearchNav />
+            </div>
+            <div className={`${styles.column} ${styles.col1}`}></div>
+            <div
+              className={`${styles.column} ${styles.col10} ${styles.textCenter}`}
+              style={{
+                marginTop: "1rem",
+                padding: "2rem"
+              }}
+            >
+              <h2>{`Papergov currently serves ${locLen} governments`}</h2>
               .. and adding more every day
-            </Typography>
-            <Divider />
-          </Grid>
-          <Grid item xs={2} />
-        </Grid>
+            </div>
+            <div className={`${styles.column} ${styles.col1}`}></div>
+
+            <div className={`${styles.column} ${styles.col1}`}></div>
+            <div
+              className={`${styles.column} ${styles.col10} ${styles.textCenter}`}
+              style={{
+                marginTop: "1rem",
+        
+              }}
+   
+            >
+              {locComponents}
+            </div>
+            <div className={`${styles.column} ${styles.col1}`}></div>
+          </div>
+        </div>
         {userLocReqFormRaw}
-        <Grid container>
-          <Grid item md={2} />
-          <Grid item md={8} align="center">
-            <Masonry>{locComponents}</Masonry>
-          </Grid>
-          <Grid item md={2} />
-        </Grid>
       </Fragment>
     );
   }
@@ -304,6 +287,6 @@ const mapStateToProps = function (state, ownProps) {
   };
 };
 
-const ConnLocations = connect(mapStateToProps, mapDispatchToProps)(withRoot(withStyles(styles)(Locations)));
+const ConnLocations = connect(mapStateToProps, mapDispatchToProps)(Locations);
 
 export default ConnLocations;

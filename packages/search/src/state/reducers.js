@@ -8,6 +8,7 @@ import {indexPage} from '../components/IndexPage/reducer';
 import {searchPage} from '../components/SearchPage/reducer';
 import { nearbyOrgs} from '../components/Nearby/reducer';
 import {serPack} from '../components/SerPack/reducer';
+import { dynamicSearch } from "../components/SearchHeader/reducer";
 
 import {reducer as formReducer} from 'redux-form';
 
@@ -19,5 +20,6 @@ export default combineReducers({
   indexPage,
   searchPage,
   nearbyOrgs,
-  serPack
+  serPack,
+  dynamicSearch
 });

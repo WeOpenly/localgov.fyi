@@ -86,11 +86,11 @@ margin: 0,
 });
 
 const RawHTML = ({ children, className = "" }) => (
-    <div
-        className={className}
-        style={{padding:0, margin: 0}}
-        dangerouslySetInnerHTML={{ __html: children.replace(/\n/g, " ") }}
-    />
+  <div
+    className={className}
+    style={{ padding: 0, margin: 0, fontSize: "0.7rem", color: "#96a1ad" }}
+    dangerouslySetInnerHTML={{ __html: children.replace(/\n/g, " ") }}
+  />
 );
 
 class SearchResult extends Component {
@@ -154,30 +154,58 @@ class SearchResult extends Component {
 
         let subtitle = '';
         if (description){
-            subtitle = (description.length > 80) ? description.substr(0, 79) + '&hellip;' : description;
+            subtitle = (description.length > 130) ? description.substr(0, 129) + '&hellip;' : description;
         }
         
         return (
-            <Card className={classes.service_card_card}>
-                    <CardContent className={classes.service_card_cardContent}>
-                        <div className={classes.service_card_cardTop}>
-                            <Typography variant="body2" component="h1"  className={classes.service_card_cardTitle} onClick={this.handleClick}>
-                                {title}
-                            </Typography>
-                        </div>
-                        <Typography variant="caption" className={classes.service_card_caption} onClick={this.handleClick}>
-                            <RawHTML className={classes.service_card_raw}>{subtitle}</RawHTML>
-                            
-                        </Typography>
-                    </CardContent>
-
-                    <CardActions className={classes.service_card_cardActions}>
-                    {(deliveryLink && deliveryLink.link_name) && <Button size="small" color="primary" href={redir}  target="_blank" onClick={this.handleDeliveryClick}>
-                            {deliveryLink.link_name}
-                        </Button>}
-                
-                    </CardActions>
-            </Card>
+          <div
+            style={{
+              cursor: "pointer",
+              width: "288px",
+              background: "#fff",
+              color: "#3a4251",
+              marginLeft: "16px",
+              marginRight: "16px",
+              padding: "1rem 1rem",
+              marginTop: "16px",
+              display: "flex",
+              alignItems: "center",
+              borderRadius: ".8rem",
+              boxShadow: "0 0 1px rgba(0,0,0,.08),0 2px 4px rgba(0,0,0,.03)",
+              "&::hover": {
+                boxShadow: "none"
+              },
+              textDecoration: "none"
+            }}
+          >
+            <div
+              style={{ display: "flex", flexDirection: "column", flex: "80" }}
+            >
+              <div className={styles.textBold}>
+                <h6>{title}</h6>
+              </div>
+              <div>
+                <RawHTML
+                  className={`${styles.textSmall} ${styles.textGray}`}
+                >
+                  {subtitle}
+                </RawHTML>
+              </div>
+              <div>
+                {deliveryLink && deliveryLink.link_name && (
+                  <button
+                    className={`${styles.btn} ${styles.btnSecondary}  ${styles.btnSm}`}
+                    href={redir}
+                    target="_blank"
+                    onClick={this.handleDeliveryClick}
+                    color="primary"
+                  >
+                    {deliveryLink.link_name}
+                  </button>
+                )}
+              </div>
+            </div>
+          </div>
         );
     }
 }

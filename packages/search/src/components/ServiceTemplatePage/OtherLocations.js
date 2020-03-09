@@ -1,85 +1,14 @@
 import React, { Component, Fragment } from "react";
 import { connect } from "react-redux";
 
-
-import Typography from '@material-ui/core/Typography';
-import { withStyles } from '@material-ui/core/styles';
-
-import Grid from '@material-ui/core/Grid';
 import Fuse from 'fuse.js';
 import OtherStateLocations from './OtherStateLocations';
 
+import styles from "../spectre.min.module.css";
+
+
 import LocationSerCard from './LocationSerCard';
-import StateSuggest from '../StateSuggest';
-
-const styles = theme => ({
-  ser_gloss_gridItemLocation_mob_focus: {
-    boxShadow: `0 0 3px 0px ${theme.palette.primary["600"]}`
-  },
-  show_more_mob:{
-    margin: theme.spacing.unit,
-    textAlign: 'center',
-    cursor: 'pointer',
-    textDecoration: 'underline',
-  },
-  ser_gloss_suggested_row: {
-    marginTop: theme.spacing.unit * 4,
-
-  },
-  ser_gloss_suggested_row_heading: {
-    paddingLeft: theme.spacing.unit,
-    paddingBottom: theme.spacing.unit * 2,
-    fontSize: "18px"
-  },
-  ser_gloss_suggested_row_locs: {
-    display: "flex",
-    flexWrap: "wrap",
-    justifyContent: "left",
-    margin: theme.spacing.unit
-  },
-  ser_gloss_suggested_row_locs_mob: {
-    display: "flex",
-    flexWrap: "wrap",
-    justifyContent: "center",
-    margin: theme.spacing.unit
-  },
-  suggest_loc_card: {
-    display: "flex",
-  },
-  ser_gloss_suggested_row_heading_mob: {
-    fontSize: "16px",
-    paddingLeft: theme.spacing.unit,
-    paddingBottom: theme.spacing.unit * 2
-  },
-  ser_gloss_others_row_header_container: {
-    display: "flex",
-    justifyContent: "space-between",
-    flexWrap: "wrap",
-    alignItems: "center",
-    position: "relative"
-  },
-  v_list_body:{
-    '&::-webkit-scrollbar': {
-      width: 0, // remove scrollbar space
-      background: 'transparent', // make scrollbar invisible
-    },
-  },
-  ser_gloss_others_row_header_container_mob: {
-    display: "flex",
-    justifyContent: "center",
-    flexWrap: "wrap",
-    alignItems: "center",
-    position: "relative"
-  },
-  suggest_loc_logo: {
-    width: 56,
-    height: 56,
-    boxShadow: `0 0 0px 1px ${theme.palette.primary["200"]}`,
-    border: "1px solid #fff",
-    marginRight: theme.spacing.unit * 2
-  }
-});
-
+import StateSuggest from './StateSuggest';
 
 
 class OtherLocations extends Component {
@@ -175,64 +104,55 @@ class OtherLocations extends Component {
       if (!this.state.showMore){
         moreLocs = (<a
           onClick={() => this.toggleShowMore(this.state.showMore)}
-          className={classes.show_more_mob}
+
         >
-          <Typography
-            variant="title"
-            component="body1">
-            Show More Locations
-      </Typography>
+        <p>
+          Show More Locations
+        </p>
         </a>)
       } 
         if (!this.props.isMobile || this.state.showMore){
-          moreLocs = (<Fragment> 
-            <div
-            className={
-              isMobile
-                ? classes.ser_gloss_others_row_header_container_mob
-                : classes.ser_gloss_others_row_header_container
-            }
-          >
-            <Typography
-              variant="title"
-              component="h2"
-              className={
-                this.props.isMobile
-                  ? classes.ser_gloss_suggested_row_heading_mob
-                  : classes.ser_gloss_suggested_row_heading
-              }
-            >
-              More locations offering this service
-                </Typography>
-            <StateSuggest
-              isMobile={isMobile}
-              clearStateName={this.clearStateName}
-              selected={this.state.stateName}
-              allStates={allStates}
-              onSelectSuggestion={this.setStateFilter}
-            />
-           
-          </div>
-            <div className={classes.ser_gloss_suggested_row_locs}>
-              {locs}
-            </div>
-          </Fragment>
-            )
+          moreLocs = (
+            <Fragment>
+              <div style={{ marginBottom: "1rem" }}>
+                <h5>More locations offering this service</h5>
+              </div>
+              <div style={{ width: "300px", marginBottom: "1rem" }}>
+                <StateSuggest
+                  isMobile={isMobile}
+                  clearStateName={this.clearStateName}
+                  selected={this.state.stateName}
+                  allStates={allStates}
+                  onSelectSuggestion={this.setStateFilter}
+                />
+              </div>
+              <div
+                style={{
+                  display: "grid",
+                  gridTemplateColumns: "repeat(auto-fit, 300px)"
+                }}
+              >
+                {locs}
+              </div>
+            </Fragment>
+          );
         }
         
         return (
-          <Grid container>
-            <OtherStateLocations isMobile={isMobile} allOrgs={allOrgs} />
-            <Grid item sm={1} />
-            <Grid
-              item
-              sm={10}
-              className={classes.ser_gloss_suggested_row}
+          <div className={`${styles.columns}`}>
+            <div className={`${styles.column} ${styles.col12} `}>
+              <OtherStateLocations isMobile={isMobile} allOrgs={allOrgs} />
+            </div>
+
+            <div
+              style={{
+                marginTop: "3rem",
+              }}
+              className={`${styles.column} ${styles.col12}`}
             >
-            {moreLocs}
-            </Grid>
-            <Grid item sm={1} />
-          </Grid>
+              {moreLocs}
+            </div>
+          </div>
         );
     }
 }
@@ -244,4 +164,4 @@ const mapStateToProps = function (state, ownProps) {
     };
 };
 
-export default connect(mapStateToProps)(withStyles(styles)(OtherLocations));
+export default connect(mapStateToProps)(OtherLocations);

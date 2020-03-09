@@ -1,165 +1,116 @@
-import React, { Component, Fragment } from 'react';
+import React, { Component, Fragment } from "react";
 import { connect } from "react-redux";
 
-import { withStyles } from '@material-ui/core/styles';
-import Typography from '@material-ui/core/Typography';
+// import { withStyles } from '@material-ui/core/styles';
+import Typography from "@material-ui/core/Typography";
 
-import Grid from '@material-ui/core/Grid';
-import Link from 'gatsby-link';
-import HeaderAccountMenu from '../HeaderAccountMenu';
-import AreaSuggestions from '../IndexPage/AreaSuggestions'
-import SerSuggestions from '../IndexPage/SerSuggestions'
-import MobileSuggestions from '../IndexPage/MobileSuggestions'
+import Grid from "@material-ui/core/Grid";
+import Link from "gatsby-link";
+// import HeaderAccountMenu from '../HeaderAccountMenu';
+// import AreaSuggestions from '../IndexPage/AreaSuggestions'
+// import SerSuggestions from '../IndexPage/SerSuggestions'
+// import MobileSuggestions from '../IndexPage/MobileSuggestions'
 
-import { fetchAreaGuess, executeSearch } from '../IndexPage/actions';
+import SearchHeader from "../SearchHeader";
+
+import { fetchAreaGuess, executeSearch } from "../IndexPage/actions";
 import { trackClick } from "../common/tracking";
-import ContentLoader from "react-content-loader"
+import ContentLoader from "react-content-loader";
 
-
-const SearchLoader = () => (
-  <ContentLoader 
-    height={30}
-    width={600}
-    speed={2}
-    primaryColor="#f3f3f3"
-    secondaryColor="#ecebeb"
-  >
-    <rect x="33" y="5" rx="3" ry="3" width="143" height="32" /> 
-    <rect x="193" y="5" rx="3" ry="3" width="429" height="32" />
-  </ContentLoader>
-)
-
-const styles = theme => ({
-    header_search_cont: {
-        display: 'flex',
-        
-    },
-    header_search_cont_desk:{
-        display: 'flex'
-    },
-    search_nav:{
-        background: theme.palette.primary['50'],
-        minHeight: theme.spacing.unit * 6,
-        boxShadow: '0px 1px 2px 0px rgba(0,0,0,0.1),0px 1px 1px 0px rgba(0,0,0,0.07),0px 2px 6px 1px rgba(0,0,0,0.06)'
-    },
-    search_header_nav_items_mob:{
-        display: 'flex',
-        width: '100%',
-        justifyContent: 'space-between',
-        alignItems: 'center',
-        paddingLeft: theme.spacing.unit,
-    },
-    search_header_nav_items: {
-        display: 'flex',
-        width: '100%',
-        justifyContent: 'space-between',
-        alignItems: 'center',
-        padding: `${theme.spacing.unit}px ${theme.spacing.unit*2}px`,
-    },
-    search_header_app_name: {
-        marginRight: theme.spacing.unit *4,
-        textDecoration: 'none',
-        cursor: 'pointer',
-        '&:hover': {
-            color: theme.palette.primary['700'],
-        }
-    },
-});
-
+import styles from "../spectre.min.module.css";
+import iconStyles from "../typicons.min.module.css";
 
 class SearchNav extends Component {
-    constructor(props) {
-        super(props);
+  constructor(props) {
+    super(props);
+    this.onSearch = this.onSearch.bind(this);
+  }
 
-        this.onSearch = this.onSearch.bind(this);
-    }
+  componentDidMount() {
+    this.props.fetchAreaGuess();
+  }
 
-    componentDidMount() {
+  onSearch() {
+    this.props.executeSearch();
+  }
 
-        this.props.fetchAreaGuess();
-    }
+  render() {
+    const { classes, location, areaGuessLoading, areaGuessResult } = this.props;
 
-    onSearch() {
-        this.props.executeSearch()
-    }
+    return (
+      <div
+        className={`${styles.columns}`}
+        style={{
+          padding: "0.7rem 0rem 0.7rem 1rem",
+          boxShadow: "0 0 0.5rem 0.3rem rgba(50,50,93,.04)"
+        }}
+      >
+        <div
+          className={`${styles.column} ${styles.col2}`}
+          style={{ display: "flex", paddingTop: "0.2rem" }}
+        >
+          <a style={{ textDecoration: "none" }} href="/">
+            <h4>papergov</h4>
+          </a>
+        </div>
+        <div className={`${styles.column} ${styles.col7}`}>
+          <SearchHeader />
+        </div>
+        <div
+          className={`${styles.column} ${styles.col3} `}
+          style={{ display: "flex" }}
+        >
+          <a
+            className={`${styles.textGray}`}
+            href={`https://papergov.com/locations`}
+            style={{ padding: "0.5rem" }}
+            target="_blank"
+          >
+            Locations
+          </a>
 
-    render() {
-        const { classes, location, areaGuessLoading, areaGuessResult } = this.props;
-        let suggestionSection = (
-          <div className={classes.header_search_cont_desk}>
-            <SearchLoader />
-          </div>
-        );
- 
-        if (!areaGuessLoading && areaGuessResult){
-            if(this.props.isMobile){
-                suggestionSection = (<div className={classes.header_search_cont}><MobileSuggestions inHeader={true} onSearch={this.onSearch} /></div> )
-            }
-            else{
-                suggestionSection = (<Fragment>
-                    <div className={classes.header_search_cont_desk}>
-                        <AreaSuggestions inHeader={true} />
-                        <SerSuggestions inHeader={true} onSearch={this.onSearch} />
-                    </div>
-                </Fragment>)
-            }
-
-
-        }
-
-    
-        return (
-          <Grid container className={classes.search_nav}>
-            <Grid item xs="auto" />
-            <Grid
-              item
-              xs={12}
-              sm={9}
-              align="center"
-              className={
-                this.props.isMobile
-                  ? classes.search_header_nav_items_mob
-                  : classes.search_header_nav_items
-              }
-            >
-              <Typography variant="title">
-                <Link to="/" className={classes.search_header_app_name}>
-                  papergov
-                </Link>
-              </Typography>
-              {suggestionSection}
-            </Grid>
-            <Grid item xs="auto" sm={3}  style={{'display': 'flex', justifyContent: 'flex-end'}}>
-              {!this.props.isMobile && (
-                <HeaderAccountMenu location={location} />
-              )}
-            </Grid>
-            <Grid item xs="auto" />
-          </Grid>
-        );
-    }
+          <a
+            className={`${styles.textGray}`}
+            href={`https://papergov.com/services`}
+            style={{ padding: "0.5rem" }}
+            target="_blank"
+          >
+            Services
+          </a>
+          <a
+            className={`${styles.textGray}`}
+            href={`https://papergov.com/help`}
+            style={{ padding: "0.5rem" }}
+            target="_blank"
+          >
+            Help
+          </a>
+        </div>
+      </div>
+    );
+  }
 }
-const mapDispatchToProps = (dispatch) => {
-    return {
-        trackClick: (click_type, resultType, id, title, listIndex) => {
-            dispatch(trackClick(click_type, resultType, id, title, listIndex));
-        },
-        fetchAreaGuess: () => {
-            dispatch(fetchAreaGuess())
-        },
-        executeSearch: () => {
-            dispatch(executeSearch())
-        }
+const mapDispatchToProps = dispatch => {
+  return {
+    trackClick: (click_type, resultType, id, title, listIndex) => {
+      dispatch(trackClick(click_type, resultType, id, title, listIndex));
+    },
+    fetchAreaGuess: () => {
+      dispatch(fetchAreaGuess());
+    },
+    executeSearch: () => {
+      dispatch(executeSearch());
     }
-}
-
-const mapStateToProps = function (state, ownProps) {
-    return {
-        ...state.indexPage,
-        ...ownProps
-    };
+  };
 };
 
-const ConnSearchNav = connect(mapStateToProps, mapDispatchToProps)(withStyles(styles)(SearchNav));
+const mapStateToProps = function(state, ownProps) {
+  return {
+    ...state.indexPage,
+    ...ownProps
+  };
+};
+
+const ConnSearchNav = connect(mapStateToProps, mapDispatchToProps)(SearchNav);
 
 export default ConnSearchNav;

@@ -1,5 +1,4 @@
 import React, {Component, Fragment} from "react";
-import { Elements } from "react-stripe-elements";
 
 import styles from "./spectre.min.module.css";
 import classNames from "classnames/bind";

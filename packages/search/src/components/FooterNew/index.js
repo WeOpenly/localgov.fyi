@@ -1,5 +1,11 @@
 import React, { Component } from "react";
-import { SocialIcon } from "react-social-icons";
+import {
+  FaFacebook,
+  FaTwitter,
+  FaMedium,
+  FaInstagram,
+  FaLinkedin
+} from "react-icons/fa";
 
 import FooterDiscover from "./discover";
 import FooterSupport from "./support";
@@ -18,47 +24,36 @@ class FooterNew extends Component {
     const date = new Date().getFullYear();
 
     const facebookLogo = (
-      <SocialIcon
-        url="https://twitter.com/papergov"
-        network="facebook"
-  
-        style={{ height: 20, width: 20 }}
-      />
+      <a href="https://facebook.com/papergov">
+        <FaFacebook />
+      </a>
     );
 
     const twitterLogo = (
-      <SocialIcon
-        url="https://twitter.com/papergov"
-        network="twitter"
-    
-        style={{ height: 20, width: 20 }}
-      />
+      <a href="https://facebook.com/papergov">
+        <FaTwitter />
+      </a>
     );
 
     const mediumLogo = (
-      <SocialIcon
-        url="https://www.medium.com/papergov/"
-        network="medium"
-
-        style={{ height: 20, width: 20 }}
-      />
+      <a href="https://www.medium.com/papergov/">
+        <FaMedium />
+      </a>
     );
+
     const igLogo = (
-      <SocialIcon
-        url="https://www.instagram.com/papergov/"
-        network="instagram"
-
-        style={{ height: 20, width: 20 }}
-      />
+      <a href="https://www.instagram.com/papergov/">
+        <FaInstagram />
+      </a>
     );
+
 
     const LiLogo = (
-      <SocialIcon
-        url="https://www.linkedin.com/company/papergov/"
-        network="linkedin"
-        style={{ height: 20, width: 20 }}
-      />
+      <a href="https://www.linkedin.com/company/papergov/">
+        <FaLinkedin />
+      </a>
     );
+
     return (
       <div className={`${styles.columns}`} style={{ background: "#f9fafc" }}>
         <div className={`${styles.column}  ${styles.col1} $ `}></div>

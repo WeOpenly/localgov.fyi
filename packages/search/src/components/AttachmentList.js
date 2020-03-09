@@ -32,8 +32,18 @@ class AttachmentList extends Component {
 
       attachmenComponents.push(
         <div id={key} key={key}>
-          <h4>{key}</h4>
-          <div key={`container-${key}`} style={{marginTop: '1rem', display: 'flex', justifyContent: 'space-between', flexWrap: 'wrap'}}>{collectionComponents}</div>
+          <h3 style={{ margin: "2rem 0" }}>{key}</h3>
+          <div
+            key={`container-${key}`}
+            style={{
+              marginTop: "1rem",
+              display: "flex",
+              justifyContent: "space-between",
+              flexWrap: "wrap"
+            }}
+          >
+            {collectionComponents}
+          </div>
         </div>
       );
     }

@@ -144,7 +144,7 @@ index_page_ser_control_items:{
     },
     index_page_ser_suggestions_container_mob: {
         display: 'flex',
-        margin: theme.spacing.unit*2,
+        margin: '24px 0',
         flexDirection: 'column',
         width: '100%',
         position: 'relative',

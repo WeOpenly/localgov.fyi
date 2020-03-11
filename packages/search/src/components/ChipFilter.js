@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { withStyles } from '@material-ui/core/styles';
 import Chip from '@material-ui/core/Chip';
 
-import withRoot from '../withRoot';
 
 const styles = theme => ({
   cf_chip: {

@@ -9,19 +9,7 @@ import { navigate } from "@reach/router";
 
 import Helmet from "react-helmet";
 
-import { withStyles } from "@material-ui/core/styles";
-import { Defer } from "react-progressive-loader";
-import Grid from "@material-ui/core/Grid";
-import Typography from "@material-ui/core/Typography";
-
-import IconButton from "@material-ui/core/IconButton";
-
-import Share from "@material-ui/icons/Share";
 import RelatedServiceTemplates from "../components/RelatedServiceTemplates";
-import Footer from "../components/Footer";
-import withRoot from "../withRoot";
-import Info from "@material-ui/icons/InfoOutlined";
-import HeaderAccountMenu from "../components/HeaderAccountMenu";
 
 import {
   fetchGoogLoc,
@@ -46,7 +34,6 @@ import Suggested from "../components/ServiceTemplatePage/Suggested";
 import TemplateHero from "../components/ServiceTemplatePage/TemplateHero";
 import GoogAutoComplete from "../components/ServiceTemplatePage/GoogAutoComplete";
 import OtherLocations from "../components/ServiceTemplatePage/OtherLocations";
-import Banner from "../components/Banner";
 
 import styles from "../components/spectre.min.module.css";
 import iconStyles from "../components/typicons.min.module.css";
@@ -254,7 +241,7 @@ class ServiceGlossary extends Component {
             <div
               className={`${styles.column} ${styles.col10}`}
               style={{
-                margin: "1rem 0 2rem 0"
+                margin: "3rem 0 2rem 0"
               }}
             >
               <Suggested
@@ -293,13 +280,28 @@ class ServiceGlossary extends Component {
             <div className={`${styles.column} ${styles.col1}`}></div>
           </div>
           <div className={`${styles.columns} ${styles.showMd}`}>
-            <div className={`${styles.column} ${styles.col12}`}>
+            <div
+              style={{
+                padding: "0.5rem 0rem 0.5rem 0.5rem"
+              }}
+              className={`${styles.column} ${styles.col12}`}
+            >
               <a style={{ textDecoration: "none" }} href="/">
                 <h4>papergov</h4>
               </a>
             </div>
 
-            <div className={`${styles.column} ${styles.col12}`}>
+            <div
+              style={{
+                marginTop: "0.5rem",
+                padding: "1.5rem",
+               
+                transition: "opacity .2s ease-in-out",
+                borderRadius: "0.8rem",
+              
+              }}
+              className={`${styles.column} ${styles.col12}`}
+            >
               <TemplateHero
                 hieLinks={hieLinks}
                 id={id}
@@ -311,17 +313,12 @@ class ServiceGlossary extends Component {
                 service_glossary_description={service_glossary_description}
               />
             </div>
-            <div className={`${styles.column} ${styles.col12}`}>
-              <GoogAutoComplete
-                isMobile={this.props.isMobile}
-                serviceTemplateId={id}
-              />
-            </div>
+
             <div
               className={`${styles.column} ${styles.col12}`}
               style={{
-                marginTop: "2rem",
-                padding: "1.5rem"
+           
+                padding: "1rem"
               }}
             >
               <Suggested
@@ -334,7 +331,7 @@ class ServiceGlossary extends Component {
               className={`${styles.column} ${styles.col12}`}
               style={{
                 marginTop: "3rem",
-                padding: "1.5rem"
+                padding: "1rem"
               }}
             >
               <OtherLocations isMobile={this.props.isMobile} allOrgs={orgs} />
@@ -401,6 +398,6 @@ const mapStateToProps = function(state, ownProps) {
 const ConnServiceGlossary = connect(
   mapStateToProps,
   mapDispatchToProps
-)(withRoot(withStyles(styles)(ServiceGlossary)));
+)(ServiceGlossary);
 
 export default ConnServiceGlossary;

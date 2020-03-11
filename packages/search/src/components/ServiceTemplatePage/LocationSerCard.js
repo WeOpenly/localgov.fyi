@@ -61,8 +61,6 @@ class LocationSerCard extends Component {
         super(props);
     }
 
-
-
     render() {
       const { classes, area, organization, ser_url_slug, highlight, isMobile } = this.props;
         let state = null;
@@ -133,8 +131,11 @@ class LocationSerCard extends Component {
             }}
           >
             <div style={{ width: "64px", height: "64px" }}>
-    
-              <img style={{width: 'inherit', height: 'inherit'}} src={logoUrl} alt={name}></img>
+              <img
+                style={{ width: "inherit", height: "inherit" }}
+                src={logoUrl}
+                alt={areaName}
+              ></img>
             </div>
           </div>
         );

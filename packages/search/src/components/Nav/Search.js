@@ -38,55 +38,76 @@ class SearchNav extends Component {
     const { classes, location, areaGuessLoading, areaGuessResult } = this.props;
 
     return (
-      <div
-        className={`${styles.columns}`}
-        style={{
-          padding: "0.7rem 0rem 0.7rem 1rem",
-          boxShadow: "0 0 0.5rem 0.3rem rgba(50,50,93,.04)"
-        }}
-      >
+      <>
         <div
-          className={`${styles.column} ${styles.col2}`}
-          style={{ display: "flex", paddingTop: "0.2rem" }}
+          className={`${styles.columns} ${styles.hideMd}`}
+          style={{
+            padding: "0.7rem 0rem 0.7rem 1rem",
+            boxShadow: "0 0 0.5rem 0.3rem rgba(50,50,93,.04)"
+          }}
         >
-          <a style={{ textDecoration: "none" }} href="/">
-            <h4>papergov</h4>
-          </a>
-        </div>
-        <div className={`${styles.column} ${styles.col7}`}>
-          <SearchHeader />
-        </div>
-        <div
-          className={`${styles.column} ${styles.col3} `}
-          style={{ display: "flex" }}
-        >
-          <a
-            className={`${styles.textGray}`}
-            href={`https://papergov.com/locations`}
-            style={{ padding: "0.5rem" }}
-            target="_blank"
+          <div
+            className={`${styles.column} ${styles.col2}`}
+            style={{ display: "flex", paddingTop: "0.2rem" }}
           >
-            Locations
-          </a>
+            <a style={{ textDecoration: "none" }} href="/">
+              <h4>papergov</h4>
+            </a>
+          </div>
+          <div className={`${styles.column} ${styles.col7}`}>
+            <SearchHeader />
+          </div>
+          <div
+            className={`${styles.column} ${styles.col3} `}
+            style={{ display: "flex", justifyContent:'right' }}
+          >
+            <a
+              className={`${styles.textGray}`}
+              href={`https://papergov.com/locations`}
+              style={{ padding: "0.5rem" }}
+              target="_blank"
+            >
+              Locations
+            </a>
 
-          <a
-            className={`${styles.textGray}`}
-            href={`https://papergov.com/services`}
-            style={{ padding: "0.5rem" }}
-            target="_blank"
-          >
-            Services
-          </a>
-          <a
-            className={`${styles.textGray}`}
-            href={`https://papergov.com/help`}
-            style={{ padding: "0.5rem" }}
-            target="_blank"
-          >
-            Help
-          </a>
+            <a
+              className={`${styles.textGray}`}
+              href={`https://papergov.com/services`}
+              style={{ padding: "0.5rem" }}
+              target="_blank"
+            >
+              Services
+            </a>
+            <a
+              className={`${styles.textGray}`}
+              href={`https://papergov.com/help`}
+              style={{ padding: "0.5rem" }}
+              target="_blank"
+            >
+              Help
+            </a>
+          </div>
         </div>
-      </div>
+        <div className={styles.showMd}>
+          <div
+            className={`${styles.columns}`}
+            style={{
+              padding: "0.5rem 0.7rem 0.2rem 0.5rem",
+              boxShadow: "0 0 0.5rem 0.3rem rgba(50,50,93,.04)"
+            }}
+          >
+            <div className={`${styles.column} ${styles.colMd4}`}>
+              <a style={{ textDecoration: "none" }} href="/">
+                <h4>papergov</h4>
+              </a>
+            </div>
+
+            <div className={`${styles.column} ${styles.colMd8} `}>
+              <SearchHeader />
+            </div>
+          </div>
+        </div>
+      </>
     );
   }
 }

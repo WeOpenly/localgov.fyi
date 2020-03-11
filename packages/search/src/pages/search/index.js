@@ -8,13 +8,18 @@ import Grid from '@material-ui/core/Grid';
 
 import SearchResults from '../../components/SearchPage/Results';
 import CommonNav from '../../components/Nav/Common';
-import withRoot from '../../withRoot';
+
 import Footer from '../../components/Footer';
+
+import withRoot from "../../withRoot";
 
 import { trackView, trackEvent } from "../../components/common/tracking";
 import {fetchSearchResults} from '../../components/SearchPage/actions.js';
 import { navigate } from '@reach/router';
+import FooterNew from '../../components/FooterNew';
 
+
+import spStyles from "../../components/spectre.min.module.css";
 const windowGlobal = typeof window !== 'undefined' && window
 
 const styles = theme => ({
@@ -102,23 +107,27 @@ class Search extends React.Component {
         const {classes } = this.props;
         const { location } = this.props;
 
-        return (<Grid container className={classes.search_page_container}>
-            <CommonNav location={location} />
-            <Grid item xs="auto" sm={1} />
-            <Grid item
-                xs={12}
-                sm={10}
-                className={!this.props.isMobile
-                    ? classes.search_page_search_results_container
-                    : classes.search_page_search_results_container_mob}
-            > 
+        return (
+          <div
+            className={`${spStyles.container}`}
+            style={{ background: "#f8f9fc" }}
+          >
+            <div className={`${spStyles.columns} `}>
+              <div className={`${spStyles.column} ${spStyles.col1}`}></div>
+              <div className={`${spStyles.column} ${spStyles.col10}`}>
+                <CommonNav location={location} />
+              </div>
+              <div className={`${spStyles.column} ${spStyles.col1}`}></div>
+              <div className={`${spStyles.column} ${spStyles.col1}`}></div>
+              <div className={`${spStyles.column} ${spStyles.col10}`}>
                 <SearchResults location={this.props.location} />
-            </Grid>
-            <Grid item xs="auto" sm={1} />
-            <div className={classes.search_page_footer}>
-                <Footer page={this.props.location.pathname} />
+              </div>
             </div>
-        </Grid>);
+
+            <div className={`${spStyles.column} ${spStyles.col1}`}></div>
+            <FooterNew />
+          </div>
+        );
     }
 }
 

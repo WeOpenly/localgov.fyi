@@ -35,7 +35,7 @@ const ProptaxSvg = ({style}) => (
             return (<Img
                 title={`papergov`}
                 alt={`illustration of papergov`}
-                style={style}
+                style={{width: 'inherit', height: 'inherit'}}
                 sizes={data.heroIl.edges[0].node.childImageSharp.fluid} />)
         }} />
 )

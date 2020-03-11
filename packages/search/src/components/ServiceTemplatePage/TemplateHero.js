@@ -57,7 +57,13 @@ class TemplateHero extends Component {
                     <RawHTML>{service_glossary_description}</RawHTML>
                   </p>
                 </div>
-                <div style={{ maxWidth: "500px", marginTop: "2rem", marginBottom: '1rem' }}>
+                <div
+                  style={{
+                    maxWidth: "500px",
+                    marginTop: "2rem",
+                    marginBottom: "1rem"
+                  }}
+                >
                   <GoogAutoComplete serviceTemplateId={id} />
                 </div>
               </div>
@@ -78,6 +84,12 @@ class TemplateHero extends Component {
                 className={`${styles.column} ${styles.col12} ${styles.textLeft}`}
               >
                 <TemplateViews views={views} orgsCnt={orgsCnt} />
+              </div>
+
+              <div
+                className={`${styles.column} ${styles.col12} ${styles.textLeft}`}
+              >
+                <GoogAutoComplete serviceTemplateId={id} />
               </div>
             </div>
           </>

@@ -230,6 +230,7 @@ exports.createPages = ({ graphql, actions }) => {
                     base64
                     tracedSVG
                     aspectRatio
+                    
                     src
                     srcSet
                     srcWebp

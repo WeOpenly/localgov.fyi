@@ -1,38 +1,12 @@
 import React, { Component, Fragment } from 'react';
 import { connect } from "react-redux";
 
-import { navigate } from '@reach/router';
-import Button from '@material-ui/core/Button';
-import { withStyles } from '@material-ui/core/styles';
-import Typography from '@material-ui/core/Typography';
-import Grid from '@material-ui/core/Grid';
-import IconButton from '@material-ui/core/IconButton';
-
 import ServiceTemplateCard from '../ServiceTemplateCard';
 
 import { trackClick } from "../common/tracking";
 
-const styles = theme => ({
-    related_ser_list: {
-        display: 'flex',
-        justifyContent: 'space-between',
-    },
-    relates_ser_list_compact: {
-        display: 'flex',
-        justifyContent: 'center',
-        flex: '1',
-        margin: theme.spacing.unit,
-        marginRight: '4px',
-        marginLeft: '4px',
-        borderRadius: '2px',
-        padding: theme.spacing.unit * 4,
-    },
-    related_ser_list_mob: {
-        display: 'flex',
-        flexDirection: 'column',
-        alignItems: 'center'
-    }
-});
+import styles from "../spectre.min.module.css";
+import iconStyles from "../typicons.min.module.css";
 
 
 
@@ -82,14 +56,20 @@ const SerTemplateCards = (props) => {
     //     sers = sers.slice(0, 4)
 
     return (
-        <Fragment>
-            {sers.map((item, idx) => {
-                return (
-                    <ServiceTemplateCard isMobile={props.isMobile} compact={props.compact} key={item.name} name={item.name} slug={item.link} />
-                )
-            })}
-        </Fragment>
-    )
+      <Fragment>
+        {sers.map((item, idx) => {
+          return (
+            <ServiceTemplateCard
+              isMobile={props.isMobile}
+              compact={props.compact}
+              key={item.name}
+              name={item.name}
+              slug={item.link}
+            />
+          );
+        })}
+      </Fragment>
+    );
 }
 
 // const serTemp = (     <StaticQuery         query={graphql ` query
@@ -109,16 +89,20 @@ class IndexServiceTemplates extends Component {
         const { classes, currentNameSlug, showAdd, compact, isMobile } = this.props;
         
         return (
-            <Fragment>
-                <Grid
-                    container
-                    className={!isMobile
-                        ? !compact ? classes.related_ser_list : classes.relates_ser_list_compact
-                        : classes.related_ser_list_mob}>
-
-                    <SerTemplateCards isMobile={isMobile} compact={compact} currentNameSlug={currentNameSlug}  />
-                </Grid>
-            </Fragment>
+          <div style={{ margin: "4rem 0" }} className={`${styles.columns}`}>
+            <div
+              style={{ margin: "2rem 0 2rem 0" }}
+              className={`${styles.column} ${styles.col12} ${styles.textCenter}`}
+            >
+              <div style={{display: 'flex', flexWrap: 'wrap', justifyContent: 'center'}}>
+                <SerTemplateCards
+                  isMobile={isMobile}
+                  compact={compact}
+                  currentNameSlug={currentNameSlug}
+                />
+              </div>
+            </div>
+          </div>
         );
     }
 }
@@ -138,6 +122,6 @@ const mapStateToProps = function (state, ownProps) {
     };
 };
 
-const ConnIndexServiceTemplates = connect(mapStateToProps, mapDispatchToProps)(withStyles(styles)(IndexServiceTemplates));
+const ConnIndexServiceTemplates = connect(mapStateToProps, mapDispatchToProps)(IndexServiceTemplates);
 
 export default ConnIndexServiceTemplates;

@@ -1,34 +1,6 @@
 import React, { Component } from "react";
-import spStyles from "../spectre.min.module.css";
+import styles from "../spectre.min.module.css";
 
-import Typography from "@material-ui/core/Typography";
-import { withStyles } from "@material-ui/core/styles";
-
-const styles = theme => ({
-  more_links: {
-    display: "flex",
-    flexDirection: "column",
-    marginTop: theme.spacing.unit * 5,
-    marginBottom: theme.spacing.unit * 6
-  },
-  more_links_container: {
-    display: "flex",
-    alignSelf: "center",
-    justifyContent: "space-between"
-  },
-  more_links_container_mob: {
-    display: "flex",
-    flexDirection: "column",
-    justifyContent: "space-around",
-    textAlign: "center"
-  },
-  disco_footer: {
-    padding: theme.spacing.unit * 2,
-  },
-  ser_more_links_header: {
-    marginBottom: theme.spacing.unit
-  }
-});
 
 class MoreLinks extends Component {
   constructor(props) {
@@ -70,7 +42,7 @@ class MoreLinks extends Component {
       <div key={idx} style={{ marginBottom: "0.2rem" }}>
         <a
           href={`/services/${gl.link}`}
-          className={`${spStyles.textLinkGray} ${spStyles.textSemibold}`}
+          className={`${styles.textLinkGray} ${styles.textSemibold}`}
           target="_blank"
         >
           {gl.name}
@@ -82,7 +54,7 @@ class MoreLinks extends Component {
       <div key={idx} style={{ marginBottom: "0.2rem" }}>
         <a
           href={`/${ser.url_slug}`}
-          className={`${spStyles.textLinkGray} ${spStyles.textSemibold}`}
+          className={`${styles.textLinkGray} ${styles.textSemibold}`}
           target="_blank"
         >
           {ser.service_name}
@@ -91,12 +63,12 @@ class MoreLinks extends Component {
     ));
 
     const additionalServices = (
-      <div className={classes.disco_footer}>
+      <div >
         <div style={{ paddingBottom: "0.5rem" }}>
           <h6>Popular in {org_name}</h6>
         </div>
 
-        <div className={classes.disco_footer_links}>{otherSers}</div>
+        <div>{otherSers}</div>
       </div>
     );
 
@@ -104,7 +76,7 @@ class MoreLinks extends Component {
       <div key={idx} style={{ marginBottom: "0.2rem" }}>
         <a
           href={`/${ss.url_slug}`}
-          className={`${spStyles.textLinkGray} ${spStyles.textSemibold}`}
+          className={`${styles.textLinkGray} ${styles.textSemibold}`}
           target="_blank"
         >
           {ss.name}
@@ -113,36 +85,34 @@ class MoreLinks extends Component {
     ));
 
     const stateSers = (
-      <div className={classes.disco_footer}>
+      <div>
         <div style={{ paddingBottom: "0.5rem" }}>
           <h6>Services in {state_name}</h6>
         </div>
 
-        <div className={classes.disco_footer_links}>{stateSerLinks}</div>
+        <div >{stateSerLinks}</div>
       </div>
     );
 
     const glossLinks = (
-      <div className={classes.disco_footer}>
+      <div >
         <div style={{ paddingBottom: "0.5rem" }}>
           <h6>Trending on papergov</h6>
         </div>
 
-        <div className={classes.disco_footer_links}>{glosaaryLinks}</div>
+        <div >{glosaaryLinks}</div>
       </div>
     );
 
     return (
-      <div className={classes.more_links}>
-        <div
-          className={
-            this.props.isMobile
-              ? classes.more_links_container_mob
-              : classes.more_links_container
-          }
-        >
+      <div className={`${styles.columns}`}>
+        <div className={`${styles.column} ${styles.colSm12} ${styles.colMd3}`}>
           {glossLinks}
+        </div>
+        <div className={`${styles.column} ${styles.colSm12} ${styles.colMd3}`}>
           {additionalServices}
+        </div>
+        <div className={`${styles.column} ${styles.colSm12} ${styles.colMd3}`}>
           {stateSers}
         </div>
       </div>
@@ -150,4 +120,4 @@ class MoreLinks extends Component {
   }
 }
 
-export default withStyles(styles)(MoreLinks);
+export default MoreLinks;

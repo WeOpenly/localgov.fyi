@@ -20,46 +20,10 @@ import { fetchAreaGuess } from "../components/IndexPage/actions";
 import {trackView, trackClick} from "../components/common/tracking";
 import AreaSuggestedServices from '../components/IndexPage/AreaSuggestedservices.js';
 import OtherLocations from '../components/IndexPage/OtherLocations.js';
+import FooterNew from '../components/FooterNew';
 
-const styles = theme => ({
-  "@global": {
-    html: {
-      WebkitFontSmoothing: "antialiased", // Antialiasing.
-      MozOsxFontSmoothing: "grayscale", // Antialiasing.
-      height: "100%"
-    },
-    body: {
-      margin: 0,
-      padding: 0,
-      height: "100%",
-      width: "100%",
-      background: "#fff",
-      overflowWrap: "break-word",
-      overflowY: "scroll",
-      overflowX: "hidden"
-    },
-    "body>div": {
-      display: "block",
-      height: "100%"
-    },
-    "body>div>div": {
-      display: "block",
-      height: "100%"
-    }
-  },
-  index_section2: {},
-  index_footer: {
-    paddingTop: theme.spacing.unit,
-    marginTop: theme.spacing.unit * 4
-  },
-  index_hero_suggestions_loading:{
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-    minHeight: '480px'
-  }
-});
-
+import styles from "../components/spectre.min.module.css";
+import iconStyles from "../components/typicons.min.module.css";
 
 
 
@@ -85,8 +49,8 @@ class Index extends React.Component {
     return (
       <Fragment>
         <Helmet
-          defaultTitle={`papergov: Find All Government Services in a Single Place`}
-          titleTemplate={`%s | papergov`}
+          defaultTitle={`Papergov: Find All Government Services in a Single Place`}
+          titleTemplate={`%s | Papergov`}
         >
           <meta name="og:type" content="website" />
           <meta
@@ -108,27 +72,48 @@ class Index extends React.Component {
           />
           <html lang="en" />
         </Helmet>
+        <div
+          className={`${styles.container}`}
+          style={{ background: "#f8f9fc" }}
+        >
+          <div className={`${styles.columns} `}>
+            <div
+              className={`${styles.column} ${styles.col12}`}
+              style={{
+                padding: "1.5rem"
+              }}
+            >
+              <IndexHero
+                isMobile={this.props.isMobile}
+                appReady={appReady}
+                location={this.props.location}
+              />
+            </div>
 
-        <Grid container className={classes.index_hero}>
-          <Grid item xs={12}>
-            <IndexHero isMobile={this.props.isMobile} appReady={appReady} location={this.props.location} />
-          </Grid>
-          <Grid item xs={12}>
-            <AreaSuggestedServices isMobile={this.props.isMobile} appReady={appReady} />
-          </Grid>        
-          <Grid item xs={12}>
-            <OtherLocations isMobile={this.props.isMobile}  />
-          </Grid>
-        </Grid>
-        <div className={classes.index_footer}>
-          <Footer isMobile={this.props.isMobile}  page={this.props.location.pathname} />
+            <div
+              className={`${styles.column} ${styles.col12}`}
+              style={{
+                background: "#fff",
+                borderRadius: "0.8rem",
+                boxShadow: "0 0 1px rgba(0,0,0,.08),0 2px 4px rgba(0,0,0,.03)"
+              }}
+            >
+              <AreaSuggestedServices
+                isMobile={this.props.isMobile}
+                appReady={appReady}
+              />
+            </div>
+
+            <div className={`${styles.column} ${styles.col12}`}>
+              <OtherLocations isMobile={this.props.isMobile} />
+            </div>
+          </div>
+          <FooterNew />
         </div>
       </Fragment>
     );
   }
 }
-
-
 
 
 const mapStateToProps = function (state, ownProps) {
@@ -138,6 +123,6 @@ const mapStateToProps = function (state, ownProps) {
   };
 };
 
-const ConnIndex = connect(mapStateToProps)(withRoot(withStyles(styles, {name: 'index-styles'})(Index)));
+const ConnIndex = connect(mapStateToProps)(Index);
 
 export default ConnIndex;

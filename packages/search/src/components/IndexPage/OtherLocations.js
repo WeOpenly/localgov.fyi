@@ -3,14 +3,15 @@ import PropTypes from 'prop-types';
 import { connect } from "react-redux";
 import {Link} from 'gatsby';
 
-import { fade } from "@material-ui/core/styles/colorManipulator";
-import Button from '@material-ui/core/Button';
-import { withStyles } from '@material-ui/core/styles';
-import Grid from '@material-ui/core/Grid';
-import OrgLite from '../Organization/Lite';
-import Typography from '@material-ui/core/Typography';
+
+
 import ContentLoader from "react-content-loader"
-import Public from '@material-ui/icons/Public';
+
+import styles from "../spectre.min.module.css";
+import iconStyles from "../typicons.min.module.css";
+
+
+
 const windowGlobal = typeof window !== 'undefined' && window
 
 
@@ -26,55 +27,6 @@ const SuggestedLoader = () => (
   </ContentLoader>
 )
 
-const styles = theme => ({
-  index_otherLinkItem_mob: {
-    display: "flex",
-    flex: "1 1 100%",
-    border: "none",
-    margin: theme.spacing.unit,
-    color: "#4F1FFF",
-    letterSpacing: "2px",
-    justifyContent: "center"
-  },
-  ser_org_list: {
-    display: "flex",
-    flexWrap: "wrap",
-    justifyContent: "center"
-  },
-  index_otherLinkItem: {
-    display: "flex",
-    flex: "1 1 30%",
-    border: "none",
-    margin: theme.spacing.unit,
-    color: fade("#000", 0.75),
-    letterSpacing: "4px",
-    justifyContent: "center"
-  },
-  ser_org_list_header_container_mob: {
-    display: "flex",
-    justifyContent: "center",
-    alignItems: "center",
-    paddingBottom: theme.spacing.unit * 2
-  },
-  ser_org_list_header_container: {
-    display: "flex",
-    justifyContent: "center",
-    alignItems: "center",
-    paddingBottom: theme.spacing.unit * 6
-  },
-  ser_org_list_header_mob: {
-    fontSize: "16px"
-  },
-  ser_org_list_container: {
-    alignItems: "center",
-    display: "flex",
-    minHeight: "720px",
-    marginTop: theme.spacing.unit * 2,
-    justifyContent: "center",
-    flexDirection: "column",
-    flexWrap: "wrap"
-  }
-});
 
 class OtherLocationList extends React.Component {
   constructor(props) {
@@ -217,60 +169,55 @@ orgLink : 'https://papergov.com/organization/usa/pennsylvania-state/philadelphia
     const {classes } = this.props;
 
        const otherLinks = this.state.items.slice(0, 24).map((item, idx) => {
-         return (<Button key={`other-link-${idx}`} variant="outlined"  href={`${item.orgLink}`} className={this.props.isMobile ? classes.index_otherLinkItem_mob : classes.index_otherLinkItem}>
-         {item.name}
-      </Button>);
+         return (
+           <h5
+             key={`other-link-${idx}`}
+             style={{ margin: "1rem", minWidth: '200px' }}
+           >
+             <a href={`${item.orgLink}`}>{item.name}</a>
+           </h5>
+         );
       });
 
-      // otherLinks.push((<Typography variant="body2" style={{ padding: '16px' }}>
-      //   <Link to={`locations`} style={{ color: '#5627FF'}} >
-      //     More Locations
-      //     </Link>
-      // </Typography>
-      // ))
-      return (
-        <Grid container>
-          <Grid item sm={1} />
 
-          <Grid item sm={10} className={classes.ser_org_list_container}>
+      return (
+        <div style={{ margin: "4rem 0" }} className={`${styles.columns}`}>
+          <div
+            style={{ margin: "0rem 0 4rem 0" }}
+            className={`${styles.column} ${styles.col12} ${styles.textCenter}`}
+          >
+            <h3>Discover Papergov</h3>
+          </div>
+
+          <div
+            className={`${styles.column} ${styles.col1} ${styles.textCenter}`}
+          ></div>
+          <div
+            className={`${styles.column} ${styles.col10} ${styles.textCenter}`}
+          >
             <div
-              className={
-                this.props.isMobile
-                  ? classes.ser_org_list_header_container_mob
-                  : classes.ser_org_list_header_container
-              }
+              style={{
+                width: "100%",
+                display: "flex",
+                flexWrap: 'wrap',
+                justifyContent: 'center'
+              }}
             >
-              <Public
-                style={{
-                  fontSize: "14",
-                  color: "#4F1FFF",
-                  marginRight: "4px"
-                }}
-              />
-              <Typography
-                variant="title"
-                className={
-                  this.props.isMobile
-                    ? classes.ser_org_list_header_mob
-                    : classes.ser_org_list_header
-                }
-              >
-                Discover papergov
-              </Typography>
+              {otherLinks}
             </div>
-            <div className={classes.ser_org_list}>{otherLinks}</div>
-            <div className={classes.other_locs_more}>
-              <Button
-                variant="outlined"
-                href={"/locations"}
-                className={classes.index_otherLinkItem}
-              >
-                Discover more
-              </Button>
-            </div>
-          </Grid>
-          <Grid item sm={1} />
-        </Grid>
+          </div>
+          <div
+            className={`${styles.column} ${styles.col1} ${styles.textCenter}`}
+          ></div>
+          <div
+            style={{ margin: "4rem 0 0rem 0" }}
+            className={`${styles.column} ${styles.col12} ${styles.textCenter}`}
+          >
+            <a href={"/locations"} className={styles.btn}>
+              Discover more
+            </a>
+          </div>
+        </div>
       );
     } 
   }
@@ -281,4 +228,4 @@ OtherLocationList.propTypes = {
 };
 
 
-export default withStyles(styles)(OtherLocationList);
+export default OtherLocationList;

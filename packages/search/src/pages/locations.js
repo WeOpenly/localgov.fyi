@@ -16,11 +16,14 @@ import HeaderWithSearch from '../components/HeaderWithSearch';
 import LocatioDialog from '../components/UserRequests/LocationDialog';
 import { toggleLocationRequestDialog } from "../components/UserRequests/actions.js";
 
-import {trackView, trackClick} from "../components/common/tracking";
-
+import FooterNew from "../components/FooterNew";
 
 import styles from "../components/spectre.min.module.css";
 import iconStyles from "../components/typicons.min.module.css";
+
+
+import {trackView, trackClick} from "../components/common/tracking";
+
 
 
 const genericFSchema = {
@@ -235,14 +238,44 @@ class Locations extends Component {
             <div
               className={`${styles.column} ${styles.col10} ${styles.textCenter}`}
               style={{
-                marginTop: "1rem",
-        
+                marginTop: "1rem"
               }}
-   
             >
               {locComponents}
             </div>
             <div className={`${styles.column} ${styles.col1}`}></div>
+          </div>
+          <div className={`${styles.columns} ${styles.showMd}`}>
+            <div
+              className={`${styles.column} ${styles.col12}`}
+              style={{ background: "#fff" }}
+            >
+              <SearchNav />
+            </div>
+
+
+            <div
+              className={`${styles.column} ${styles.col12} ${styles.textCenter}`}
+              style={{
+                marginTop: "1rem",
+                padding: "2rem"
+              }}
+            >
+              <h2>{`Papergov currently serves ${locLen} governments`}</h2>
+              .. and adding more every day
+            </div>
+          
+
+   
+            <div
+              className={`${styles.column} ${styles.col12} ${styles.textCenter}`}
+              style={{
+                marginTop: "1rem"
+              }}
+            >
+              {locComponents}
+            </div>
+
           </div>
         </div>
         {userLocReqFormRaw}

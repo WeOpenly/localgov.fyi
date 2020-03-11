@@ -67,7 +67,7 @@ class SuggestedRow extends Component {
     }
 
     return (
-      <div style={{ margin: "3rem 0 0 0" }}>
+      <div style={{ margin: "1rem 0 0 0" }}>
         <div style={{ marginBottom: "0.5rem" }}>
           <h5>{header}</h5>
         </div>

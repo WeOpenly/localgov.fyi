@@ -10,20 +10,16 @@ import Typography from "@material-ui/core/Typography";
 import Button from "@material-ui/core/Button";
 import MiniOrgDetail from "../components/MiniOrgDetail";
 
-import withRoot from "../withRoot";
+
 import OrgHeader from "../components/OrgHeader";
 
 import SearchNav from "../components/Nav/Search";
 
 import ServiceDetail from "../components/ServicePage/ServiceDetail";
-import ServiceHeader from "../components/ServicePage/ServiceHeader";
 
 import MediaNetAd from "../components/MediaNetAd";
 
 import FooterNew from "../components/FooterNew";
-
-import AttachmentList from "../components/AttachmentList";
-import MoreLinks from "../components/ServicePage/MoreLinks";
 
 import styles from "../components/spectre.min.module.css";
 import iconStyles from "../components/typicons.min.module.css";
@@ -36,6 +32,14 @@ const JsonLd = ({ data }) => (
   <script
     type="application/ld+json"
     dangerouslySetInnerHTML={{ __html: JSON.stringify(data) }}
+  />
+);
+
+const RawHTML = ({ children, className = "" }) => (
+  <div
+    itemProp="text"
+    style={{ fontSize: "1rem", letterSpacing: "0.002em", lineHeight: "1.4" }}
+    dangerouslySetInnerHTML={{ __html: children.replace(/\n/g, " ") }}
   />
 );
 
@@ -80,6 +84,7 @@ class OrganizationDetail extends React.Component {
 
     let otherOrgsFromState = null;
     if (other_orgs_from_state) {
+
       otherOrgsFromState = (
         <div
           style={{
@@ -91,21 +96,42 @@ class OrganizationDetail extends React.Component {
           }}
         >
           {other_orgs_from_state.map((item, idx) => {
+          
             return (
-              <div
+              <a
                 style={{
-                  minWidth: "200px",
-                  minHeight: "40px",
+                  cursor: "pointer",
+                  width: "288px",
+                  background: "#fff",
+                  color: "#3a4251",
+                  marginLeft: "16px",
+                  marginRight: "16px",
+                  padding: "1rem 1rem",
+                  marginTop: "16px",
                   display: "flex",
-                  flexWrap: "wrap"
+                  alignItems: "center",
+                  borderRadius: ".8rem",
+                  boxShadow:
+                    "0 0 1px rgba(0,0,0,.08),0 2px 4px rgba(0,0,0,.03)",
+                  "&::hover": {
+                    boxShadow: "none"
+                  },
+                  textDecoration: "none"
                 }}
+                href={`/${item.url_slug}`}
               >
-                <a href={`/${item.url_slug}`}>
-                  <Typography variant="body2" style={{ fontSize: "1.1rem" }}>
-                    {item.area.name}
-                  </Typography>
-                </a>
-              </div>
+                <div
+                  style={{
+                    display: "flex",
+                    flexDirection: "column",
+                    flex: "80"
+                  }}
+                >
+                  <div className={styles.textBold}>
+                    <h6> {item.area.name}</h6>
+                  </div>
+                </div>
+              </a>
             );
           })}
         </div>
@@ -152,7 +178,9 @@ class OrganizationDetail extends React.Component {
       }
     });
 
+    let qaList = [];
     let allServiceList = [];
+
     if (services.length > 0) {
       services.map((detailsAtLevel, index) => {
         let serviceListComp = null;
@@ -197,12 +225,54 @@ class OrganizationDetail extends React.Component {
               />
             );
           });
+
+          servicesAtLevel.map((ser, idx) => {
+            const faqs = ser.service_faq || [];
+
+            const faqListatLevel = faqs.map((qa, index) => {
+              const { answer, question } = qa;
+              const text = <RawHTML>{answer}</RawHTML>;
+
+              return (
+                <Fragment>
+                  <div
+                    style={{
+                      display: "flex",
+                      flexDirection: "column",
+                      margin: "1rem 0.2rem 0.2rem 0.2rem"
+                    }}
+                    disableGutters
+                  >
+                    <div
+                      itemScope
+                      itemProp="mainEntity"
+                      itemType="https://schema.org/Question"
+                    >
+                      <h4 itemProp="name">{question}</h4>
+                      <div
+                        itemScope
+                        itemProp="acceptedAnswer"
+                        itemType="https://schema.org/Answer"
+                        style={{ margin: "1rem 0.3rem" }}
+                      >
+                        {text}
+                      </div>
+                    </div>
+                  </div>
+                  {index !== servicesAtLevel.length - 1 ? (
+                    <div className={styles.divider} />
+                  ) : null}
+                </Fragment>
+              );
+            });
+            qaList = qaList.concat(faqListatLevel);
+          });
         }
 
         if ("org" in detailsAtLevel) {
           if (detailsAtLevel.org && "name" in detailsAtLevel.org) {
             const { name: orgName } = detailsAtLevel.org;
-            const orgHeading = <h5>Services offered by {orgName}</h5>;
+            const orgHeading = <h4>Services offered by <br/>{orgName}</h4>;
 
             let orgSubheading = <p>More services available here</p>;
             if (orgName.toLowerCase().includes("county")) {
@@ -220,7 +290,9 @@ class OrganizationDetail extends React.Component {
             orgTitle = (
               <Fragment>
                 {orgHeading}
-                <div style={{paddingRight: '1rem'}}>{index > 0 ? orgSubheading : null}</div>
+                <div style={{ paddingRight: "1rem" }}>
+                  {index > 0 ? orgSubheading : null}
+                </div>
               </Fragment>
             );
           }
@@ -293,7 +365,7 @@ class OrganizationDetail extends React.Component {
           className={`${styles.container}`}
           style={{ background: "#f8f9fc" }}
         >
-          <div className={`${styles.columns} ${styles.hideMd}`}>
+          <div className={`${styles.columns}`}>
             <div
               className={`${styles.column} ${styles.col12}`}
               style={{ background: "#fff" }}
@@ -312,7 +384,7 @@ class OrganizationDetail extends React.Component {
                 <div
                   className={`${styles.column} ${styles.col12}`}
                   style={{
-                    padding: "2rem",
+                    padding: "2rem 2rem 1rem 2rem",
                     background: "rgba(233,180,255,.15)",
                     transition: "opacity .2s ease-in-out",
                     borderRadius: "0.8rem",
@@ -320,20 +392,51 @@ class OrganizationDetail extends React.Component {
                       "0 0 1px rgba(0,0,0,.08),0 2px 4px rgba(0,0,0,.03)"
                   }}
                 >
-                  {contactDetailComponent}
+                 {contactDetailComponent}
                 </div>
-                <div className={`${styles.column} ${styles.col5}`}>
+                <div
+                  className={`${styles.column} ${styles.col4} ${styles.colMd12}`}
+                >
                   {allServiceList.length
                     ? allServiceList
                     : "No services found."}
                 </div>
-                <div className={`${styles.column} ${styles.col7}`}>faqs</div>
+                <div
+                  className={`${styles.column} ${styles.col8} ${styles.colMd12}`}
+                >
+                  <div className={styles.columns}>
+                    <div className={`${styles.column} ${styles.col12}`}>
+                      <h3 style={{ margin: "3rem 0 1.5rem 0" }}>
+                        Frequently asked questions from {name}
+                      </h3>
+                    </div>
+                    <div
+                      className={`${styles.column} ${styles.col12}`}
+                      style={{
+                        padding: "1.5rem",
+                        background: "#fff",
+                        borderRadius: "0.8rem",
+                        boxShadow:
+                          "0 0 1px rgba(0,0,0,.08),0 2px 4px rgba(0,0,0,.03)"
+                      }}
+                    >
+                      <div style={{ margin: "0rem" }}>
+                        <p id={`faqs`}>{qaList}</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
                 <div className={`${styles.column} ${styles.col12}`}>
+                  <h5 style={{ margin: "3rem 0 1rem 0" }}>
+                    {other_orgs_from_state_heading}
+                  </h5>
                   {otherOrgsFromState}
                 </div>
               </div>
             </div>
+            <div className={`${styles.column} ${styles.col1}`}></div>
           </div>
+     
           <FooterNew isMobile={isMobile} page={this.props.location.pathname} />
         </div>
       </>
@@ -349,5 +452,5 @@ const mapStateToProps = function(state, ownProps) {
 };
 
 export default connect(mapStateToProps)(
-  withRoot(withStyles(styles)(OrganizationDetail))
+(OrganizationDetail)
 );

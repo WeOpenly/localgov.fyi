@@ -1,34 +1,7 @@
-
-
-
-
 import React, { Component } from 'react';
 
-import { withStyles } from '@material-ui/core/styles';
-import Typography from '@material-ui/core/Typography';
-import Grid from '@material-ui/core/Grid';
-import Link from 'gatsby-link';
-import HeaderAccountMenu from '../HeaderAccountMenu';
-
-const styles = theme => ({
-    index_hero_nav: {
-        paddingLeft: theme.spacing.unit,
-    },
-    index_hero_nav_items: {
-        display: 'flex',
-        width: '100%',
-        justifyContent: 'space-between',
-        alignItems: 'center',
-        padding: theme.spacing.unit,
-    },
-    index_hero_app_name: {
-        textDecoration: 'none',
-        cursor: 'pointer',
-        '&:hover': {
-            color: theme.palette.primary['700'],
-        }
-    },
-});
+import styles from "../spectre.min.module.css";
+import iconStyles from "../typicons.min.module.css";
 
 
 class CommonNav extends Component {
@@ -39,24 +12,50 @@ class CommonNav extends Component {
         const { classes, location, isMobile } = this.props;
 
         return (
-            <Grid container className={classes.index_hero_nav}>
-                <Grid item sm={1} />
-                <Grid item sm={10} align="center" className={classes.index_hero_nav_items}>
-                    <Typography
-                        variant="display1">
-                        <a
-                            href="/"
-                            className={classes.index_hero_app_name}>
-                            papergov
-                           </a>
-                    </Typography>
-                    <HeaderAccountMenu isMobile={isMobile} location={location} />
-                </Grid>
-                <Grid item sm={1} />
-            </Grid>
+          <div className={styles.columns}>
+            <div
+              className={`${styles.column} ${styles.col6} ${styles.textLeft}`}
+              style={{ display: "flex", paddingTop: "0.2rem" }}
+            >
+              <a style={{ textDecoration: "none" }} href="/">
+                <h4>papergov</h4>
+              </a>
+            </div>
+
+            <div
+              className={`${styles.column} ${styles.col6} ${styles.textRight}`}
+              style={{ display: "flex", justifyContent: 'right' }}
+            >
+              <a
+          
+                href={`https://papergov.com/locations`}
+                style={{ padding: "0.5rem" }}
+                target="_blank"
+              >
+                Locations
+              </a>
+
+              <a
+         
+                href={`https://papergov.com/services`}
+                style={{ padding: "0.5rem" }}
+                target="_blank"
+              >
+                Services
+              </a>
+              <a
+        
+                href={`https://papergov.com/help`}
+                style={{ padding: "0.5rem" }}
+                target="_blank"
+              >
+                Help
+              </a>
+            </div>
+          </div>
         );
     }
 }
 
 
-export default withStyles(styles)(CommonNav);
+export default CommonNav;

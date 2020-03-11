@@ -468,16 +468,6 @@ class ServiceDetailTemplate extends React.Component {
                     glossaryLinks={state_org_details.offered_services}
                   />
                 </div>
-                <div className={`${styles.column} ${styles.col12}`}>
-                  <MediaNetAd
-                    dims="728x90"
-                    slotId="788671455"
-                    containerStyles={{
-                      marginTop: "16px",
-                      borderLeft: "1px solid #ececec"
-                    }}
-                  />
-                </div>
               </div>
             </div>
             <div className={`${styles.column} ${styles.col2}`}>
@@ -488,6 +478,17 @@ class ServiceDetailTemplate extends React.Component {
                   marginTop: "16px",
                   borderLeft: "1px solid #ececec",
                   paddingLeft: "24px"
+                }}
+              />
+            </div>
+
+            <div className={`${styles.column} ${styles.col12}`}>
+              <MediaNetAd
+                dims="728x90"
+                slotId="788671455"
+                containerStyles={{
+                  marginTop: "16px",
+                  borderLeft: "1px solid #ececec"
                 }}
               />
             </div>

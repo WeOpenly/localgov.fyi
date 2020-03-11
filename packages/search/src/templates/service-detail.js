@@ -419,7 +419,9 @@ class ServiceDetailTemplate extends React.Component {
               <SearchNav />
             </div>
 
-            <div className={`${styles.column} ${styles.col2}`}>
+            <div
+              className={`${styles.column} ${styles.col2} ${styles.textCenter} `}
+            >
               <MediaNetAd
                 dims="160x600"
                 slotId="975270174"
@@ -470,7 +472,9 @@ class ServiceDetailTemplate extends React.Component {
                 </div>
               </div>
             </div>
-            <div className={`${styles.column} ${styles.col2}`}>
+            <div
+              className={`${styles.column} ${styles.col2} ${styles.textCenter}`}
+            >
               <MediaNetAd
                 dims="160x600"
                 slotId="876473088"
@@ -481,8 +485,10 @@ class ServiceDetailTemplate extends React.Component {
                 }}
               />
             </div>
-
-            <div className={`${styles.column} ${styles.col12}`}>
+            <div
+              style={{ marginTop: "8px" }}
+              className={`${styles.column} ${styles.col12} ${styles.textCenter} `}
+            >
               <MediaNetAd
                 dims="728x90"
                 slotId="788671455"

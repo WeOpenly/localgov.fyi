@@ -41,8 +41,12 @@ class MediaNet extends Component {
 
     return (
       <>
-        <a className={specStyles.textGray} target="_blank" href="/ads">
-          <small style={{ fontSize: "10px" }}>ADVERTISEMENT</small>
+        <a
+          className={specStyles.textGray}
+          target="_blank"
+          href="/ads"
+        >
+          <small style={{ fontSize: "10px" }}>AD</small>
           <span
             style={{ fontSize: "10px" }}
             className={`${iconStyles.typcn}  ${iconStyles.typcnSpanner}`}
@@ -57,8 +61,12 @@ class MediaNet extends Component {
             ...containerStyles
           }}
         ></div>
-        <a className={specStyles.textGray} target="_blank" href="/ads">
-          <small style={{ fontSize: "10px" }}>ADVERTISEMENT</small>
+        <a
+          className={specStyles.textGray}
+          target="_blank"
+          href="/ads"
+        >
+          <small style={{ fontSize: "10px" }}>AD</small>
           <span
             style={{ fontSize: "10px" }}
             className={`${iconStyles.typcn}  ${iconStyles.typcnSpanner}`}

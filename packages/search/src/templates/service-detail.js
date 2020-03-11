@@ -534,18 +534,18 @@ class ServiceDetailTemplate extends React.Component {
                     glossaryLinks={state_org_details.offered_services}
                   />
                 </div>
-                <div className={`${styles.column} ${styles.col12}`}>
-                  <MediaNetAd
-                    dims="300x250"
-                    slotId="189122234"
-                    containerStyles={{
-                      marginTop: "8px",
-                      borderTop: "1px solid #d4d4d4",
-                      paddingTop: "8px"
-                    }}
-                  />
-                </div>
               </div>
+            </div>
+            <div className={`${styles.column} ${styles.col12}`}>
+              <MediaNetAd
+                dims="300x250"
+                slotId="189122234"
+                containerStyles={{
+                  marginTop: "8px",
+                  borderTop: "1px solid #d4d4d4",
+                  paddingTop: "8px"
+                }}
+              />
             </div>
           </div>
           <FooterNew isMobile={isMobile} page={this.props.location.pathname} />

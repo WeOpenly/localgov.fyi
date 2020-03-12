@@ -22,6 +22,8 @@ import AreaSuggestedServices from '../components/IndexPage/AreaSuggestedservices
 import OtherLocations from '../components/IndexPage/OtherLocations.js';
 import FooterNew from '../components/FooterNew';
 
+import CoronaBanner from "../components/Banner/Corona";
+
 import styles from "../components/spectre.min.module.css";
 import iconStyles from "../components/typicons.min.module.css";
 
@@ -107,7 +109,11 @@ class Index extends React.Component {
             <div className={`${styles.column} ${styles.col12}`}>
               <OtherLocations isMobile={this.props.isMobile} />
             </div>
+          
+              <CoronaBanner />
+    
           </div>
+
           <FooterNew />
         </div>
       </Fragment>

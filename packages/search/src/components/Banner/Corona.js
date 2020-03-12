@@ -100,8 +100,8 @@ class CoronaBanner extends React.Component {
                 <input
                   className={`${styles.formInput} ${styles.inputLg}`}
                   required
-                  placeholder="Enter you phone number"
-                  type="tel"
+                  placeholder="Phone number or Email"
+                  type="text"
                   name="num"
                   onChange={this.handleChange}
                 />
@@ -138,8 +138,8 @@ class CoronaBanner extends React.Component {
                 <input
                   className={`${styles.formInput} ${styles.inputLg}`}
                   required
-                  placeholder="Enter you phone number"
-                  type="tel"
+                  placeholder="Phone number or Email"
+                  type="text"
                   name="num"
                   onChange={this.handleChange}
                 />
@@ -154,7 +154,6 @@ class CoronaBanner extends React.Component {
             </form>
             {success ? (
               <small style={{ padding: "0.2rem" }}>
-      
                 You are subscribed to recieve alerts
               </small>
             ) : null}

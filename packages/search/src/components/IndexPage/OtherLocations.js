@@ -33,134 +33,130 @@ class OtherLocationList extends React.Component {
     super(props);
     this.state = {
       items: [
-        {
-          name: 'Atlanta',
-          orgLink : 'https://papergov.com/organization/usa/georgia-state/fulton-county/atlanta-city/ '
-        },
-        {
-          "name": "Austin",
-          "orgLink": "https://papergov.com/organization/usa/texas-state/travis-county/austin-city/"
-        },
-        {
-          "name": "Boston",
-          "orgLink": "https://papergov.com/organization/usa/massachusetts-state/suffolk-county/boston-city/"
-        },
-        {
-          "name": "Chicago",
-          "orgLink": "https://papergov.com/organization/usa/illinois-state/cook-county/chicago-city/"
-        },
-        {
-          "name": "Columbus",
-          "orgLink": "https://papergov.com/organization/usa/ohio-state/franklin-county/columbus-city/"
-        },
-        {
-          "name": "Dallas",
-          "orgLink": "https://papergov.com/organization/usa/texas-state/dallas-county/dallas-city/"
-        },
-        {
-          "name": "Detroit",
-          "orgLink": "https://papergov.com/organization/usa/michigan-state/wayne-county/detroit-city/"
-        },
-        {
-          "name": "El Paso",
-          "orgLink": "https://papergov.com/organization/usa/texas-state/el-paso-county/el-paso-city/"
-        },
-        {
-          "name": "Fort Worth",
-          "orgLink": "https://papergov.com/organization/usa/texas-state/tarrant-county/fort-worth-city/"
-        },
-        {
-          name: 'Houston',
-          orgLink: 'https://papergov.com/organization/usa/texas-state/harris-county/houston-city/'
-        },
-        {
-          "name": "Jacksonville",
-          "orgLink": "https://papergov.com/organization/usa/florida-state/duval-county/jacksonville-city/"
-        },
-        {
-          "name": "Jersey City",
-          "orgLink": "https://papergov.com/organization/usa/new-jersey-state/hudson-county/jersey-city-city/"
-        },
-        {
-          "name": "Indianapolis",
-          "orgLink": "https://papergov.com/organization/usa/indiana-state/marion-county/indianapolis-city/"
-        },
-        {
-          "name": "Kansas City",
-          "orgLink": "https://papergov.com/organization/usa/missouri-state/platte-county/kansas-city-city/"
-        },
-        {
-          name: 'Las Vegas',
-orgLink : 'https://papergov.com/organization/usa/nevada-state/clark-county/las-vegas-city/'
-        },
-        
-        {
-          "name": "Los Angeles",
-          "orgLink": "https://papergov.com/organization/usa/california-state/los-angeles-county/los-angeles-city/"
-        },
-        {
-          "name": "Milwaukee",
-          "orgLink": "https://papergov.com/organization/usa/wisconsin-state/milwaukee-county/milwaukee-city/"
-        },
-        {
-          "name": "Nashville",
-          "orgLink": "https://papergov.com/organization/usa/tennessee-state/davidson-county/nashville-city/"
-        },
-        {
-          name: 'New York',
-          orgLink: 'https://papergov.com/organization/usa/new-york-state/bronx-county/new-york-city/'
-        },
-        {
-          "name": "Oakland",
-          "orgLink": "https://papergov.com/organization/usa/california-state/alameda-county/oakland-city/"
-        },
-        {
-          "name": "Oklahoma",
-          "orgLink": "https://papergov.com/organization/usa/oklahoma-state/oklahoma-county/oklahoma-city-city/"
-        },
-        {
-          "name": "Portland",
-          "orgLink": "https://papergov.com/organization/usa/oregon-state/multnomah-county/portland-city/"
-        },
-        {
-          "name": "Phoenix",
-          "orgLink": "https://papergov.com/organization/usa/arizona-state/maricopa-county/phoenix-city/"
-        },
-        {
-          name: 'Philadelphia',
-orgLink : 'https://papergov.com/organization/usa/pennsylvania-state/philadelphia-county/'
-        },
-        {
-          "name": "Pittsburgh",
-          "orgLink": "https://papergov.com/organization/usa/pennsylvania-state/allegheny-county/pittsburgh-city/"
-        },
-        {
-          "name": "San Antonio",
-          "orgLink": "https://papergov.com/organization/usa/texas-state/bexar-county/san-antonio-city/"
-        },
-        {
-          name: 'San Francisco',
-          orgLink: 
-          "https://papergov.com/organization/usa/california-state/san-francisco-county/"
-        },
-        {
-          "name": "San Diego",
-          "orgLink": "https://papergov.com/organization/usa/california-state/san-diego-county/san-diego-city/"
-        },
-        {
-          name: 'San Jose',
-          orgLink: 'https://papergov.com/organization/usa/california-state/santa-clara-county/san-jose-city/'
-        },
-        {
-          "name": "Seattle",
-          "orgLink": "https://papergov.com/organization/usa/washington-state/king-county/seattle-city/"
-        },
-        {
-          "name": "Tucson",
-          "orgLink": "https://papergov.com/organization/usa/arizona-state/pima-county/tucson-city/"
-        }
-      ]
-    } 
+         {
+           name: "Atlanta",
+           orgLink: "https://papergov.com/ga/atlanta/"
+         },
+         {
+           name: "Austin",
+           orgLink: "https://papergov.com/tx/austin/"
+         },
+         {
+           name: "Boston",
+           orgLink: "https://papergov.com/ma/boston/"
+         },
+         {
+           name: "Chicago",
+           orgLink: "https://papergov.com/il/chicago/"
+         },
+         {
+           name: "Columbus",
+           orgLink: "https://papergov.com/oh/columbus/"
+         },
+         {
+           name: "Dallas",
+           orgLink: "https://papergov.com/tx/dallas-county-dallas-city/"
+         },
+         {
+           name: "Detroit",
+           orgLink: "https://papergov.com/mi/detroit/"
+         },
+         {
+           name: "El Paso",
+           orgLink: "https://papergov.com/tx/el-paso-county-el-paso-city/"
+         },
+         {
+           name: "Fort Worth",
+           orgLink: "https://papergov.com/tx/fort-worth/"
+         },
+         {
+           name: "Houston",
+           orgLink: "https://papergov.com/tx/houston/"
+         },
+         {
+           name: "Jacksonville",
+           orgLink: "https://papergov.com/fl/jacksonville/"
+         },
+         {
+           name: "Jersey City",
+           orgLink: "https://papergov.com/nj/jersey-city/"
+         },
+         {
+           name: "Indianapolis",
+           orgLink: "https://papergov.com/in/indianapolis/"
+         },
+         {
+           name: "Kansas City",
+           orgLink: "https://papergov.com/mo/kansas-city/"
+         },
+         {
+           name: "Las Vegas",
+           orgLink: "https://papergov.com/nv/las-vegas/"
+         },
+         {
+           name: "Los Angeles",
+           orgLink: "https://papergov.com/nv/las-vegas/"
+         },
+         {
+           name: "Milwaukee",
+           orgLink: "https://papergov.com//wi/milwaukee-county-milwaukee-city/"
+         },
+         {
+           name: "Nashville",
+           orgLink: "https://papergov.com/tn/nashville/"
+         },
+         {
+           name: "New York",
+           orgLink: "https://papergov.com/ny/bronx-county-new-york-city/"
+         },
+         {
+           name: "Oakland",
+           orgLink: "https://papergov.com/ca/oakland/"
+         },
+         {
+           name: "Oklahoma",
+           orgLink:
+             "https://papergov.com/organization/usa/oklahoma-state/oklahoma-county/oklahoma-city-city/"
+         },
+         {
+           name: "Portland",
+           orgLink:
+             "https://papergov.com/ok/oklahoma-county-oklahoma-city-city/"
+         },
+         {
+           name: "Phoenix",
+           orgLink: "https://papergov.com/az/phoenix/"
+         },
+         {
+           name: "Philadelphia",
+           orgLink: "https://papergov.com/pa/philadelphia/"
+         },
+         {
+           name: "San Antonio",
+           orgLink: "https://papergov.com/tx/san-antonio/"
+         },
+         {
+           name: "San Francisco",
+           orgLink: "https://papergov.com/ca/san-francisco/"
+         },
+         {
+           name: "San Diego",
+           orgLink: "https://papergov.com/ca/san-diego"
+         },
+         {
+           name: "San Jose",
+           orgLink: "https://papergov.com/ca/san-jose"
+         },
+         {
+           name: "Seattle",
+           orgLink: "https://papergov.com/wa/seattle"
+         },
+         {
+           name: "Tucson",
+           orgLink: "https://papergov.com/az/tucson"
+         }
+       ]
+      }
   }
 
 

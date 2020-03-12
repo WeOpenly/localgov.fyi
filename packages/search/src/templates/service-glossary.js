@@ -37,6 +37,7 @@ import OtherLocations from "../components/ServiceTemplatePage/OtherLocations";
 
 import styles from "../components/spectre.min.module.css";
 import iconStyles from "../components/typicons.min.module.css";
+import Corona from "../components/Banner/Corona";
 
 const RawHTML = ({ children, className = "" }) => (
   <div
@@ -351,6 +352,7 @@ class ServiceGlossary extends Component {
             </div>
           </div>
           <FooterNew page={this.props.location.pathname} />
+          <Corona />
           {/* <Banner title="hello" button={"button"} /> */}
         </div>
       </Fragment>

@@ -27,6 +27,7 @@ import iconStyles from "../components/typicons.min.module.css";
 // import MemberListItem from '../components/MemberListItem';
 import ServiceCard from "../components/ServiceCard";
 import { trackView, trackClick } from "../components/common/tracking";
+import Corona from "../components/Banner/Corona";
 
 const JsonLd = ({ data }) => (
   <script
@@ -436,7 +437,7 @@ class OrganizationDetail extends React.Component {
             </div>
             <div className={`${styles.column} ${styles.col1}`}></div>
           </div>
-     
+            <Corona />
           <FooterNew isMobile={isMobile} page={this.props.location.pathname} />
         </div>
       </>

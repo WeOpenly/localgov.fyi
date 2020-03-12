@@ -16,7 +16,7 @@ import FooterNew from "../components/FooterNew";
 
 import AttachmentList from '../components/AttachmentList';
 import MoreLinks from "../components/ServicePage/MoreLinks";
-
+import CoronaBanner from "../components/Banner/Corona";
 import { trackView } from "../components/common/tracking";
 import styles from "../components/spectre.min.module.css";
 import iconStyles from "../components/typicons.min.module.css";
@@ -555,6 +555,7 @@ class ServiceDetailTemplate extends React.Component {
               />
             </div>
           </div>
+          <CoronaBanner />
           <FooterNew isMobile={isMobile} page={this.props.location.pathname} />
         </div>
         {serviceDeliveryFeedbackForm}

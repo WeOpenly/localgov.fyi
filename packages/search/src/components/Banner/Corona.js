@@ -15,7 +15,9 @@ const windowGlobal = typeof window !== "undefined" && window;
 class CoronaBanner extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {}
+    this.state = {
+        success: false
+    }
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
@@ -23,11 +25,20 @@ class CoronaBanner extends React.Component {
     const {dispatch} = this.props;
     ev.preventDefault();
     dispatch(submitForm(this.state.num));
+    this.setState({
+      success: true
+    });
   }
 
 
   handleChange = e => this.setState({ [e.target.name]: e.target.value });
   render() {
+      const {success} = this.state;
+      const {areaGuessResult} = this.props;
+      let city = null;
+      if (areaGuessResult && areaGuessResult.city_name){
+          city = areaGuessResult.city_name
+      }
     return (
       <div
         style={{
@@ -39,7 +50,7 @@ class CoronaBanner extends React.Component {
           padding: "0.5rem",
           background: "rgba(255,255,255, 0.95)",
           transition: "opacity .2s ease-in-out",
-          boxShadow: "0 0 1px rgba(0,0,0,.08),0 2px 4px rgba(0,0,0,.03)",
+          boxShadow: "0 2px 2px rgba(0,0,0,.08),0 2px 8px rgba(0,0,0,.06)",
           left: 0,
           right: 0,
           margin: `3% auto`,
@@ -67,7 +78,7 @@ class CoronaBanner extends React.Component {
                 fontSize="small"
                 style={{ paddingRight: "0.2rem" }}
               />
-              Coronavirus Updates
+              Coronavirus Updates {city ? `From ${city}` : null}
             </h4>
             <p style={{ padding: "0.2rem" }}>
               The World Health Organization has declared the coronavirus
@@ -76,7 +87,12 @@ class CoronaBanner extends React.Component {
             </p>
           </div>
           <div
-            style={{ display: "flex", alignItems: "center" }}
+            style={{
+              display: "flex",
+              flexDirection: "column",
+              justifyContent: "center",
+              alignItems: "center"
+            }}
             className={`${styles.column} ${styles.col4} ${styles.textCenter}`}
           >
             <form onSubmit={this.handleSubmit}>
@@ -98,7 +114,13 @@ class CoronaBanner extends React.Component {
                 </button>
               </div>
             </form>
+            {success ? (
+              <small style={{ padding: "0.2rem" }}>
+                You are subscribed to recieve alerts{" "}
+              </small>
+            ) : null}
           </div>
+
           <div className={`${styles.column} ${styles.col1} `}></div>
         </div>
         <div className={`${styles.columns} ${styles.showMd}`}>
@@ -106,7 +128,8 @@ class CoronaBanner extends React.Component {
             style={{
               display: "flex",
               alignItems: "flex-start",
-              justifyContent: "center"
+              justifyContent: "center",
+              flexDirection: "column"
             }}
             className={`${styles.column} ${styles.col12} ${styles.textCenter}`}
           >
@@ -129,6 +152,12 @@ class CoronaBanner extends React.Component {
                 </button>
               </div>
             </form>
+            {success ? (
+              <small style={{ padding: "0.2rem" }}>
+      
+                You are subscribed to recieve alerts
+              </small>
+            ) : null}
           </div>
           <div
             style={{ padding: "1rem 1rem 0 1rem" }}
@@ -139,14 +168,14 @@ class CoronaBanner extends React.Component {
                 display: "flex",
                 color: "#d73e48",
                 justifyContent: "center",
-                alignItems: 'center'
+                alignItems: "center"
               }}
             >
               <NewReleasesIcon
                 fontSize="small"
                 style={{ paddingRight: "0.2rem" }}
               />
-              Coronavirus Updates
+              Coronavirus Updates {city ? `From ${city}` : null}
             </h5>
             <small>
               The World Health Organization has declared the coronavirus
@@ -160,9 +189,10 @@ class CoronaBanner extends React.Component {
   }
 }
 
+
 const mapStateToProps = function(state, ownProps) {
   return {
-    ...state
+    ...state.dynamicSearch
   };
 };
 

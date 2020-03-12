@@ -5,8 +5,6 @@ import { Link } from "gatsby";
 
 import styles from "../spectre.min.module.css";
 import iconStyles from "../typicons.min.module.css";
-import NewReleasesIcon from "@material-ui/icons/NewReleases";
-
 
 import {submitForm} from './actions';
 
@@ -74,10 +72,7 @@ class CoronaBanner extends React.Component {
                 alignItems: "center"
               }}
             >
-              <NewReleasesIcon
-                fontSize="small"
-                style={{ paddingRight: "0.2rem" }}
-              />
+             
               Coronavirus Updates {city ? `From ${city}` : null}
             </h4>
             <p style={{ padding: "0.2rem" }}>
@@ -170,10 +165,7 @@ class CoronaBanner extends React.Component {
                 alignItems: "center"
               }}
             >
-              <NewReleasesIcon
-                fontSize="small"
-                style={{ paddingRight: "0.2rem" }}
-              />
+             
               Coronavirus Updates {city ? `From ${city}` : null}
             </h5>
             <small>

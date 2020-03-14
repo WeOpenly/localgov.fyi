@@ -357,41 +357,8 @@ class OrgHeader extends Component {
           >
             <div
    
-              style={{ display: "flex" }}
+ 
             >
-              {logoFluid ? (
-                <Img
-                  title={`logo${name}`}
-                  alt={`logo of ${name}`}
-                  style={{ width: "48px" }}
-                  sizes={logoFluid}
-                />
-              ) : (
-                <div
-                  style={{
-                    display: "flex",
-                    justifyContent: "center",
-                    alignItems: "center",
-                    background: "#AB93FF",
-                    width: "48px",
-                    height: "48px",
-                    flexGrow: "0",
-                    flexShrink: "0",
-                    flex: "20",
-                    borderRadius: "0.5rem",
-                    margin: "1rem 1rem 0 0",
-                    borderRadius: ".8rem",
-
-                    border: "1px solid #AB93FF"
-                  }}
-                >
-                  <LocationCity
-                    fontSize="large"
-                    style={{ width: "48px", color: "#fff" }}
-                  />
-                </div>
-              )}
-
               <h1>{name} </h1>
             </div>
             <div

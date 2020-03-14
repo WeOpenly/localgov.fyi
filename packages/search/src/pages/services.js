@@ -184,29 +184,61 @@ class ServiceList extends Component {
               <SearchNav />
             </div>
 
-       
-              <div className={styles.columns}>
-                <div style={{margin: "3rem 0 2rem 0"}} className={`${styles.column} ${styles.col12} ${styles.textCenter}`}>
-                  <h3>Services on papergov</h3>
-                </div>
+            <div className={styles.columns}>
+              <div
+                style={{ margin: "3rem 0 2rem 0" }}
+                className={`${styles.column} ${styles.col12} ${styles.textCenter}`}
+              >
+                <h3>Services on papergov</h3>
+              </div>
 
-                 <div className={`${styles.column} ${styles.col1}`}>
+              <div className={`${styles.column} ${styles.col1}`}></div>
+              <div className={`${styles.column} ${styles.col2}`}>
+                {catComponents}
+              </div>
 
-                 </div>
-                <div className={`${styles.column} ${styles.col2}`}>
-                  {catComponents}
-                </div>
+              <div className={`${styles.column} ${styles.col8}`}>
+                {serComponents}
+              </div>
 
-                <div className={`${styles.column} ${styles.col8}`}>
-                  {serComponents}
-                </div>
-
-                 <div className={`${styles.column} ${styles.col1}`}></div>
-   
+              <div className={`${styles.column} ${styles.col1}`}></div>
             </div>
-        
           </div>
+          <div className={`${styles.columns} ${styles.showMd}`}>
+            <div
+              className={`${styles.column} ${styles.col12}`}
+              style={{ background: "#fff" }}
+            >
+              <SearchNav />
+            </div>
 
+            <div className={styles.columns}>
+              <div
+                style={{ margin: "3rem 0 2rem 0" }}
+                className={`${styles.column} ${styles.col12} ${styles.textCenter}`}
+              >
+                <h3>Services on papergov</h3>
+              </div>
+
+              <div
+                className={`${styles.column} ${styles.col12} ${styles.textCenter}`}
+              >
+                {catComponents}
+              </div>
+
+              <div
+                className={`${styles.column} ${styles.col1} ${styles.textCenter}`}
+              ></div>
+              <div
+                className={`${styles.column} ${styles.col10} ${styles.textCenter}`}
+              >
+                {serComponents}
+              </div>
+              <div
+                className={`${styles.column} ${styles.col1} ${styles.textCenter}`}
+              ></div>
+            </div>
+          </div>
           <FooterNew page={this.props.location.pathname} />
           {/* <Banner title="hello" button={"button"} /> */}
         </div>

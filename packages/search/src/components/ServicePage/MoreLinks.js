@@ -106,13 +106,22 @@ class MoreLinks extends Component {
 
     return (
       <div className={`${styles.columns}`}>
-        <div className={`${styles.column} ${styles.colSm12} ${styles.colMd3}`}>
+        <div
+          style={{ margin: "1rem 0" }}
+          className={`${styles.column} ${styles.colSm12} ${styles.colMd3}`}
+        >
           {glossLinks}
         </div>
-        <div className={`${styles.column} ${styles.colSm12} ${styles.colMd3}`}>
+        <div
+          style={{ margin: "1rem 0" }}
+          className={`${styles.column} ${styles.colSm12} ${styles.colMd3}`}
+        >
           {additionalServices}
         </div>
-        <div className={`${styles.column} ${styles.colSm12} ${styles.colMd3}`}>
+        <div
+          style={{ margin: "1rem 0" }}
+          className={`${styles.column} ${styles.colSm12} ${styles.colMd3}`}
+        >
           {stateSers}
         </div>
       </div>

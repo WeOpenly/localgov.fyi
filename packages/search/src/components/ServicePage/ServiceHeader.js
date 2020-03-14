@@ -320,7 +320,7 @@ class ServiceHeader extends Component {
               <h1>{name}</h1>
 
               <div
-                style={{ marginBottom: "0.5rem", marginTop: "0.5rem" }}
+                style={{ marginBottom: "1rem", marginTop: "1rem" }}
                 className={`${spStyles.textLinkGray}`}
               >
                 Offered by <span> {orgHieComp} </span>

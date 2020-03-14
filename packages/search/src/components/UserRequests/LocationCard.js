@@ -5,13 +5,12 @@ import {connect} from "react-redux";
 import SvgAddloc from '../../svgIcons/addLoc.js';
 
 import styles from "../spectre.min.module.css";
+import specIconStyles from "../spectre-icons.min.module.css";
 
 import {navigate} from "@reach/router";
 
 
 import {trackClick} from "../../components/common/tracking";
-import { toggleLocationRequestDialog } from "./actions.js";
-
 
 class LocationCard extends Component {
     constructor(props) {
@@ -29,12 +28,18 @@ class LocationCard extends Component {
         let icon = null;
         let mobIcon = null;
 
-        icon = (<SvgAddloc style={{
-            fontSize: '56px'
-        }}/>);
-        mobIcon = (<SvgAddloc style={{
-            fontSize: '32px'
-        }}/>)
+        icon = (
+          <span
+            style={{ fontSize: "48px" }}
+            className={`${styles.formIcon} ${specIconStyles.icon} ${specIconStyles.iconLocation}`}
+          />
+        );
+        mobIcon = (
+          <span
+            style={{ fontSize: "32px" }}
+            className={`${styles.formIcon} ${specIconStyles.icon} ${specIconStyles.iconLocation}`}
+          />
+        );
 
      
         
@@ -75,7 +80,7 @@ class LocationCard extends Component {
         
               }}
             >
-              <div style={{ width: "64px", height: "64px" }}>{icon}</div>
+              <div style={{ width: "56px", height: "56px" }}>{icon}</div>
             </div>
 
             <div

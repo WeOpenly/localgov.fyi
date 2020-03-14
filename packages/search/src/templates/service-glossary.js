@@ -104,7 +104,7 @@ class ServiceGlossary extends Component {
     const lowerCaseName = service_name.toLowerCase();
 
     if (lowerCaseName.indexOf("tax") !== -1) {
-      icon = <ProptaxSvg style={{ width: "180px", height: "180px" }} />;
+      icon = <ProptaxSvg style={{ width: "260px", height: "180px" }} />;
       mobIcon = <ProptaxSvg style={{ width: "48px", height: "48px" }} />;
     } else if (lowerCaseName.indexOf("parking") !== -1) {
       icon = <ParkingcitSvg style={{ width: "260px", height: "150px" }} />;

@@ -2,11 +2,6 @@ import React, { Component, Fragment } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import styles from "../spectre.min.module.css";
-import Mood from "@material-ui/icons/Mood";
-import HighLightOutlined from "@material-ui/icons/HighlightOutlined";
-
-import SentimentDissatisfied from "@material-ui/icons/SentimentDissatisfied";
-import MoodBad from "@material-ui/icons/MoodBad";
 
 import { trackClick, trackInput } from "../common/tracking";
 import {
@@ -333,7 +328,7 @@ class ServiceDeliveryLink extends Component {
               </div>
               <div style={{ textAlign: "center", margin: "2rem" }}>
                 <p>
-                  <HighLightOutlined style={{ fontSize: "20px" }} />
+                 
                   In case you missed it, the link opens in a new tab of your
                   browser
                 </p>
@@ -424,7 +419,7 @@ class ServiceDeliveryLink extends Component {
           {submitting && <div>loading</div>}
           {failure && (
             <div>
-              <MoodBad />
+   
               <div>Something went wrong. Please try again.</div>
               <button
                 size="small"

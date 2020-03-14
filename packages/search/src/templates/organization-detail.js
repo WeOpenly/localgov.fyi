@@ -79,6 +79,7 @@ class OrganizationDetail extends React.Component {
     const { isMobile } = this.props;
     const name = org_name;
     const services = hierarchial_service_details;
+
     const { hierarchy } = area;
 
     const { logoSizes } = this.props.pageContext;
@@ -227,9 +228,11 @@ class OrganizationDetail extends React.Component {
             );
           });
 
+          
           servicesAtLevel.map((ser, idx) => {
             const faqs = ser.service_faq || [];
-
+            const { org } = detailsAtLevel;
+            const {name} = org;
             const faqListatLevel = faqs.map((qa, index) => {
               const { answer, question } = qa;
               const text = <RawHTML>{answer}</RawHTML>;
@@ -250,6 +253,11 @@ class OrganizationDetail extends React.Component {
                       itemType="https://schema.org/Question"
                     >
                       <h4 itemProp="name">{question}</h4>
+                      <p style={{marginTop: '0.5rem'}}>
+                        Featured in{" "}
+                        <a href={`/${ser.url_slug}`}>{ser.service_name}</a>,{" "}
+                        {name}
+                      </p>
                       <div
                         itemScope
                         itemProp="acceptedAnswer"
@@ -266,6 +274,7 @@ class OrganizationDetail extends React.Component {
                 </Fragment>
               );
             });
+            
             qaList = qaList.concat(faqListatLevel);
           });
         }
@@ -325,7 +334,24 @@ class OrganizationDetail extends React.Component {
         }
         return null;
       });
+    } 
+
+    if (qaList.length === 0){
+    qaList = (
+      <div
+        className={styles.textCenter}
+        style={{
+          display: "flex",
+          flexDirection: "column",
+          margin: "1rem 0.2rem 0.2rem 0.2rem"
+        }}
+      >
+        No FAQs listed at the moment
+      </div>
+    );
     }
+  
+    
 
     const jsonLd = {
       "@context": "http://schema.org",

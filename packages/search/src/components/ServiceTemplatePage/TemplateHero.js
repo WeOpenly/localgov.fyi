@@ -71,7 +71,7 @@ class TemplateHero extends Component {
                 className={`${styles.column} ${styles.col3} ${styles.textRight}`}
                 style={{ overflow: "hidden" }}
               >
-                {icon}
+                <div style={{ width: "160px" }}>{icon}</div>
               </div>
             </div>
             <div className={`${styles.columns} ${styles.showMd}`}>

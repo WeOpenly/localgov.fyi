@@ -153,7 +153,7 @@ class ServiceDetailTemplate extends React.Component {
 
     if (org_area_hie.length === 1) {
       orgHieComp = (
-        <Link style={{ color: "#6F47FF" }} to={state_org_details.url_slug}>
+        <Link style={{ color: "#6F47FF", margin: '0.5rem 0rem' }} to={state_org_details.url_slug}>
           {org_name}
         </Link>
       );
@@ -162,11 +162,17 @@ class ServiceDetailTemplate extends React.Component {
       if (org_area_hie.length) {
         orgHieComp = (
           <span>
-            <Link style={{ color: "#6F47FF" }} to={org_slug}>
+            <Link
+              style={{ color: "#6F47FF", margin: "0.5rem 0rem" }}
+              to={org_slug}
+            >
               {org_name}
             </Link>
             ,{" "}
-            <Link style={{ color: "#6F47FF" }} to={state_org_details.url_slug}>
+            <Link
+              style={{ color: "#6F47FF", margin: "0.5rem 0rem" }}
+              to={state_org_details.url_slug}
+            >
               {org_area_hie[org_area_hie.length - 1].area_name}
             </Link>
           </span>
@@ -499,21 +505,25 @@ class ServiceDetailTemplate extends React.Component {
               />
             </div>
           </div>
-          <div className={`${styles.columns} ${styles.showMd}`}>
+          <div
+            className={`${styles.columns} ${styles.showMd} ${styles.textCenter}`}
+          >
             <div className={`${styles.column} ${styles.col12}`}>
               <SearchNav />
             </div>
-            <div
-              style={{
-                marginTop: "1rem",
-                padding: "1.5rem",
-                background: "#fff",
-                borderRadius: "0.8rem",
-                boxShadow: "0 0 1px rgba(0,0,0,.08),0 2px 4px rgba(0,0,0,.03)"
-              }}
-              className={`${styles.column} ${styles.col12}`}
-            >
-              <div className={styles.columns}>
+
+            <div className={`${styles.column} ${styles.colMd12}`}>
+              <div
+                style={{
+                  margin: "1rem 0.2rem",
+                  padding: "2rem 0.5rem",
+                  background: "#fff",
+                  transition: "opacity .2s ease-in-out",
+                  borderRadius: "0.8rem",
+                  boxShadow: "0 0 1px rgba(0,0,0,.08),0 2px 4px rgba(0,0,0,.03)"
+                }}
+                className={styles.columns}
+              >
                 <div className={`${styles.column} ${styles.col12}`}>
                   {serHeader}
                 </div>
@@ -543,6 +553,7 @@ class ServiceDetailTemplate extends React.Component {
                 </div>
               </div>
             </div>
+
             <div className={`${styles.column} ${styles.col12}`}>
               <MediaNetAd
                 dims="300x250"

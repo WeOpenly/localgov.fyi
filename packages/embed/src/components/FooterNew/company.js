@@ -32,7 +32,7 @@ class FooterCompany extends Component {
           <div style={{ marginBottom: "0.2rem" }}>
             <a
               className={`${styles.textGray} ${styles.textSemibold}`}
-              href={`https://papergov.com/blog`}
+              href={`https://learn.papergov.com/blog`}
               target="_blank"
             >
               Blog
@@ -55,7 +55,7 @@ class FooterCompany extends Component {
           <div>
             <a
               className={styles.textGray}
-              href={`https://papergov.com/blog`}
+              href={`https://learn.papergov.com/blog`}
               target="_blank"
             >
               Blog

@@ -21,12 +21,12 @@ class FooterDiscover extends Component {
           </div>
 
           <div style={{ marginBottom: "0.2rem" }}>
-            <a href={`https://one.papergov.com`} target="_blank">
+            <a href={`https://embed.papergov.com`} target="_blank">
               <span
                 className={`${styles.badge} ${styles.textSemibold} ${styles.textGray}`}
                 data-badge="NEW"
               >
-                Manage all your bills in one place
+                Widgets
               </span>
             </a>
           </div>
@@ -72,14 +72,14 @@ class FooterDiscover extends Component {
 
           <div style={{ marginBottom: "0.2rem" }}>
             <a
-              href={`https://one.papergov.com/?utm_source=search_footer`}
+              href={`https://embed.papergov.com/?utm_source=search_footer`}
               target="_blank"
             >
               <span
                 className={`${styles.badge} ${styles.textGray}`}
                 data-badge="NEW"
               >
-                Manage all your bills in one place
+                Widgets
               </span>
             </a>
           </div>

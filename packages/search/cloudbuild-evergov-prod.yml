@@ -7,11 +7,11 @@ steps:
 - name: 'gcr.io/evergov-prod/curl-python'
   dir: 'localgov.fyi/packages/search'
   args: ['bash', '-c',  'source ./dsp-creds.sh && python ./pre_process.py', '2>&1']
-- name: node:8
+- name: node:10
   dir: 'localgov.fyi/packages/search'
   entrypoint: npm
   args: ['install', '--save']
-- name: node:8
+- name: node:10
   dir: 'localgov.fyi/packages/search'
   entrypoint: node
   args: ['./node_modules/.bin/gatsby', 'build', '--prefix-paths']
@@ -22,14 +22,14 @@ steps:
 - name: gcr.io/cloud-builders/gsutil
   dir: 'localgov.fyi/packages/search'
   args: ['cp', 'gs://$PROJECT_ID-netlify-env/creds.sh', 'creds.sh']
-- name: node:8
+- name: node:10
   dir: 'localgov.fyi/packages/search'
   entrypoint: npm
   args: ['install', 'netlify-cli']
 - name: ubuntu
   dir: 'localgov.fyi/packages/search'
   args: ['ls']
-- name: node:8
+- name: node:10
   dir: 'localgov.fyi/packages/search'
   args: ['bash', '-c', 'source ./creds.sh && ./deploy.sh']
 - name: ubuntu

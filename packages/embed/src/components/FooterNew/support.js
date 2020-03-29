@@ -21,7 +21,7 @@ class FooterSupport extends Component {
 
           <div style={{ marginBottom: "0.2rem" }}>
             <a
-              href={`https://papergov.zendesk.com/hc/en-us`}
+              href={`https://learn.papergov.com/help-center`}
               className={`${styles.textGray} ${styles.textSemibold}`}
               target="_blank"
             >
@@ -58,7 +58,7 @@ class FooterSupport extends Component {
 
           <div style={{ marginBottom: "0.2rem" }}>
             <a
-              href={`https://papergov.zendesk.com/hc/en-us`}
+              href={`https://learn.papergov.com/help-center`}
               className={`${styles.textGray} ${styles.textSemibold}`}
               target="_blank"
             >

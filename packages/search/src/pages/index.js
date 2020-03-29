@@ -110,7 +110,6 @@ class Index extends React.Component {
               <OtherLocations isMobile={this.props.isMobile} />
             </div>
           
-              <CoronaBanner />
     
           </div>
 

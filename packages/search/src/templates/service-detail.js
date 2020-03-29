@@ -566,7 +566,6 @@ class ServiceDetailTemplate extends React.Component {
               />
             </div>
           </div>
-          <CoronaBanner />
           <FooterNew isMobile={isMobile} page={this.props.location.pathname} />
         </div>
         {serviceDeliveryFeedbackForm}

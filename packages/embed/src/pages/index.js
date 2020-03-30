@@ -43,7 +43,7 @@ class Index extends React.Component {
     return (
       <Fragment>
         <Helmet>
-          <title>{`Papergov Embed`}</title>
+          <title>{`Papergov Widgets`}</title>
         </Helmet>
         <div className={`${styles.container} ${styles.gridXl}`}>
           <div className={`${styles.columns} `}>
@@ -74,7 +74,7 @@ class Index extends React.Component {
               style={{ margin: "2rem 0" }}
               className={`${styles.column} ${styles.col10}`}
             >
-              <h3 style={{ color: "#0000ca" }}>Papergov Search Embed</h3>
+              <h3 style={{ color: "#0000ca" }}>Papergov Search Widget</h3>
               <p>
                 Our Search Widget provides a simple way for your users to
                 discover and act on all local government services on your site.

@@ -71,8 +71,8 @@ const SerTemplateCards = (props) => {
             link: 'pay-parking-citation/'
         },
         {
-            name: 'Register for Recreational Classes',
-            link: 'register-for-recreational-activity-or-class/'
+            name: 'Apply for Unemployment Insurance',
+            link: 'apply-for-unemployment-insurance/'
         }, {
             name: 'Pay Utility Bill',
             link: 'pay-utility-bill/'

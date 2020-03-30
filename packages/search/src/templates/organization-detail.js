@@ -463,7 +463,6 @@ class OrganizationDetail extends React.Component {
             </div>
             <div className={`${styles.column} ${styles.col1}`}></div>
           </div>
-            <Corona />
           <FooterNew isMobile={isMobile} page={this.props.location.pathname} />
         </div>
       </>

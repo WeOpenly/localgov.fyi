@@ -21,14 +21,14 @@ class FooterDiscover extends Component {
 
           <div style={{ marginBottom: "0.2rem" }}>
             <a
-              href={`https://pay.papergov.com/?utm_source=one_footer`}
+              href={`https://learn.papergov.com/knowledge-base?utm_source=embed_footer`}
               target="_blank"
             >
               <span
                 className={`${styles.badge} ${styles.textSemibold} ${styles.textGray}`}
                 data-badge="NEW"
               >
-                Quick Pay For All Services
+                Knowledge Base
               </span>
             </a>
           </div>

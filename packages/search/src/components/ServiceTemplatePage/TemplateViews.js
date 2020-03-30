@@ -39,15 +39,6 @@ class TemplateViews extends Component {
               Offered in {orgsCnt} locations
             </div>
 
-            // <div
-            //   className={`${spStyles.textLinkGray} ${spStyles.textSemibold}`}
-            //  >
-            // <i
-            //    style={{ margin: "0 0.1rem" }}
-            //    className={`${specIconStyles.icon} ${specIconStyles.iconPerson}`}
-            //  />{" "}
-            //  <b>{moreThan}</b> people accessed this service in the last month
-            // </div>
           </div>
         );
     }

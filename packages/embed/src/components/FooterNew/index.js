@@ -19,7 +19,7 @@ class FooterNew extends Component {
 
     const facebookLogo = (
       <SocialIcon
-        url="https://twitter.com/papergov"
+        url="https://facebook.com/papergov"
         network="facebook"
   
         style={{ height: 20, width: 20 }}

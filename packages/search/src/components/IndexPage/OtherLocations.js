@@ -99,7 +99,7 @@ class OtherLocationList extends React.Component {
          },
          {
            name: "Milwaukee",
-           orgLink: "https://papergov.com//wi/milwaukee-county-milwaukee-city/"
+           orgLink: "https://papergov.com/wi/milwaukee-county-milwaukee-city/"
          },
          {
            name: "Nashville",
@@ -116,12 +116,12 @@ class OtherLocationList extends React.Component {
          {
            name: "Oklahoma",
            orgLink:
-             "https://papergov.com/organization/usa/oklahoma-state/oklahoma-county/oklahoma-city-city/"
+             "https://papergov.com/ok/oklahoma-county-oklahoma-city-city"
          },
          {
            name: "Portland",
            orgLink:
-             "https://papergov.com/ok/oklahoma-county-oklahoma-city-city/"
+             "https://papergov.com/or/portland"
          },
          {
            name: "Phoenix",

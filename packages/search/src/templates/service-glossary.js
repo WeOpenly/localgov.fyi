@@ -352,7 +352,6 @@ class ServiceGlossary extends Component {
             </div>
           </div>
           <FooterNew page={this.props.location.pathname} />
-          <Corona />
           {/* <Banner title="hello" button={"button"} /> */}
         </div>
       </Fragment>

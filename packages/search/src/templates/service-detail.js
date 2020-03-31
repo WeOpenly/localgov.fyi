@@ -410,7 +410,7 @@ class ServiceDetailTemplate extends React.Component {
           />
           <meta
             property="og:description"
-            content={`Forms, Price, Checklist, FAQS, Timings and Local Government Service Contact Details for ${name} offered in ${org_name} | papergov`}
+            content={`${name} Online in ${org_name} & access all other government services seamlessly | Papergov`}
           />
         </Helmet>
         <div

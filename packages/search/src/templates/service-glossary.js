@@ -266,6 +266,19 @@ class ServiceGlossary extends Component {
 
             <div className={`${styles.column} ${styles.col1}`}></div>
             <div
+              style={{ marginTop: "8px" }}
+              className={`${styles.column} ${styles.col12} ${styles.textCenter} `}
+            >
+              <MediaNetAd
+                dims="728x90"
+                slotId="835654084"
+                containerStyles={{
+                  marginTop: "16px",
+                  borderLeft: "1px solid #ececec"
+                }}
+              />
+            </div>
+            <div
               className={`${styles.column} ${styles.col10}`}
               style={{
                 marginTop: "3rem",

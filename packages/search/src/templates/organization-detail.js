@@ -463,6 +463,19 @@ class OrganizationDetail extends React.Component {
             </div>
             <div className={`${styles.column} ${styles.col1}`}></div>
           </div>
+          <div
+              style={{ marginTop: "8px" }}
+              className={`${styles.column} ${styles.col12} ${styles.textCenter} `}
+            >
+              <MediaNetAd
+                dims="728x90"
+                slotId="218500355"
+                containerStyles={{
+                  marginTop: "16px",
+                  borderLeft: "1px solid #ececec"
+                }}
+              />
+            </div>
           <FooterNew isMobile={isMobile} page={this.props.location.pathname} />
         </div>
       </>

@@ -9,6 +9,8 @@ import { navigate } from "@reach/router";
 
 import Helmet from "react-helmet";
 
+import MediaNetAd from "../../components/MediaNetAd";
+
 import RelatedServiceTemplates from "../components/RelatedServiceTemplates";
 
 import {

@@ -188,11 +188,11 @@ class ServiceGlossary extends Component {
           <meta name="description" content={service_glossary_description} />
           <meta
             name="keywords"
-            content={`${service_name}, ${service_name} online, Local Government Service Onine, my ${service_name}, ${service_name} near me, How do you ${service_name}, can you ${service_name} onine, ${service_glossary_description}`}
+            content={`${service_name}, ${service_name} online, Local Government Service Online, my ${service_name}, ${service_name} near me, How do you ${service_name}, can you ${service_name} onine, ${service_glossary_description}`}
           />
           <meta
             property="og:description"
-            content={`Forms, Price, Timings and Local Government Service Contact Details for ${service_name} | papergov`}
+            content={`${service_name} Online - Access all government services seamlessly in a single place with Papergov`}
           />
         </Helmet>
 

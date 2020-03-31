@@ -94,7 +94,7 @@ export default class HTML extends React.Component {
 
           <meta
             property="og:site_name"
-            content={`papergov: all your gov services in a single place`}
+            content={`papergov: all government services in a single place`}
           />
           <meta
             property="twitter:card"
@@ -104,7 +104,7 @@ export default class HTML extends React.Component {
           <meta
             property="twitter:site"
             name="twitter:site"
-            content="@mypapergov"
+            content="@papergov"
           />
           <meta httpEquiv="x-ua-compatible" content="ie=edge" />
           <meta
@@ -123,6 +123,10 @@ export default class HTML extends React.Component {
             defer
             src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBr4RixcEvuxgGr9EwNeiHCqUITczxvvuc&libraries=places&callback=allCallBacks"
           />
+          <script type="text/javascript">
+  window.heap=window.heap||[],heap.load=function(e,t){window.heap.appid=e,window.heap.config=t=t||{};var r=document.createElement("script");r.type="text/javascript",r.async=!0,r.src="https://cdn.heapanalytics.com/js/heap-"+e+".js";var a=document.getElementsByTagName("script")[0];a.parentNode.insertBefore(r,a);for(var n=function(e){return function(){heap.push([e].concat(Array.prototype.slice.call(arguments,0)))}},p=["addEventProperties","addUserProperties","clearEventProperties","identify","resetIdentity","removeEventProperty","setEventProperties","track","unsetEventProperty"],o=0;o<p.length;o++)heap[p[o]]=n(p[o])};
+  heap.load("519569848");
+</script>            
 
           {fontcss}
           {/* <link href={"/css/fonts.css"} rel="stylesheet" /> */}

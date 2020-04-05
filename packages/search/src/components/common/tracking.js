@@ -126,6 +126,12 @@ export const trackInput = (input_type, text, extra) => async (dispatch, getState
                 windowGlobal.mixpanel.people.set({ "$distinct_id": result });
                 windowGlobal.mixpanel.track(`input_${input_type}`, eventParams);
             }
+           
+            if (windowGlobal && windowGlobal.amplitude) {
+                windowGlobal
+                    .amplitude.getInstance().logEvent(`input_${input_type}`, eventParams);
+            }
+           
 
         } catch (e) {
             console.log(e) 

@@ -36,7 +36,7 @@ class ServiceTemplateCard extends Component {
         }else if(lowerCaseName.indexOf('utility') !== -1 || lowerCaseName.indexOf('water') !== -1){
           icon = (<Utilitybill style={{ width: '64px', height: '64px' }} />)
           mobIcon = (<Utilitybill style={{ width: '48px', height: '48px'}} />)
-        } else if (lowerCaseName.indexOf('unemployment') !== -1 {
+        } else if (lowerCaseName.indexOf('unemployment') !== -1) {
           icon = (<RecreationSvg style={{ width: '78px', height: '64px'  }} />)
           mobIcon = (<RecreationSvg style={{ width: '48px', height: '32px' }} />)
         }   

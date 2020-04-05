@@ -95,6 +95,11 @@ export const trackView = (page_layout_type, viewing_entity_type, viewing_entity_
                     .track(`page_view_${page_layout_type}`, eventParams);
             }
 
+             if (windowGlobal && windowGlobal.amplitude) {
+                windowGlobal
+                    .amplitude.getInstance().logEvent(`page_view_${page_layout_type}`, eventParams);
+            }
+
         } catch (e) { console.log(e) }
     });
 };

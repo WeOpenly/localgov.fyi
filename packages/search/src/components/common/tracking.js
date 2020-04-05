@@ -57,6 +57,11 @@ export const trackEvent = (event_type, event_props) => async (dispatch, getState
                     .mixpanel
                     .track(`event_${event_type}`, event_props);
             }
+            
+            if (windowGlobal && windowGlobal.amplitude) {
+                windowGlobal
+                    .amplitude.getInstance().logEvent(`event_${event_type}`, event_props);
+            }
 
         } catch (e) { console.log(e)}
     });

@@ -165,6 +165,11 @@ export const trackClick = (click_type, clicked_entity_type, clicked_entity_id, c
                 windowGlobal.mixpanel.people.set({ "$distinct_id": result });
                 windowGlobal.mixpanel.track(`click_${click_type}`, eventParams);
             }
+            
+           if (windowGlobal && windowGlobal.amplitude) {
+                windowGlobal
+                    .amplitude.getInstance().logEvent(`click_${click_type}`, eventParams);
+            }
 
 
         } catch (e) {

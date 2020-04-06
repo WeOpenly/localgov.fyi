@@ -45,7 +45,7 @@ class CommonNav extends Component {
               </a>
               <a
         
-                href={`https://papergov.com/help`}
+                href={`https://learn.papergov.com/help`}
                 style={{ padding: "0.5rem" }}
                 target="_blank"
               >

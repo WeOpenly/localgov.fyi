@@ -209,7 +209,7 @@ class Locations extends Component {
             content={`Currently featuring online services ${locLen} government agencies`}
           />
         </Helmet>
-        <LocationDialog />
+        <LocatioDialog />
         <div
           className={`${styles.container}`}
           style={{ background: "#f8f9fc" }}

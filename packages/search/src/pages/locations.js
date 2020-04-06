@@ -201,15 +201,15 @@ class Locations extends Component {
 
           <meta
             name="description"
-            content={`Currently serving ${locLen} governments`}
+            content={`Currently featuring online services from ${locLen} government agencies`}
           />
 
           <meta
             property="og:description"
-            content={`Currently serving ${locLen} governments`}
+            content={`Currently featuring online services ${locLen} government agencies`}
           />
         </Helmet>
-        <LocatioDialog />
+        <LocationDialog />
         <div
           className={`${styles.container}`}
           style={{ background: "#f8f9fc" }}

@@ -275,7 +275,13 @@ class Locations extends Component {
             >
               {locComponents}
             </div>
+          
 
+            <div className={`${styles.column} ${styles.col10}`}>
+              <FooterNew />
+            </div>
+            <div className={`${styles.column} ${styles.col1}`}></div>
+ 
           </div>
         </div>
         {userLocReqFormRaw}

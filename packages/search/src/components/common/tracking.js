@@ -67,7 +67,7 @@ export const trackEvent = (event_type, event_props) => async (dispatch, getState
     });
 };
 
-export const trackView = (page_layout_type, viewing_entity_type, viewing_entity_id, viewing_entity_name, viewing_entity_page ...extra) => async (dispatch, getState) => {
+export const trackView = (page_layout_type, viewing_entity_type, viewing_entity_id, viewing_entity_name, viewing_entity_page, ...extra) => async (dispatch, getState) => {
     if (!Fingerprint2) {
         return
     }

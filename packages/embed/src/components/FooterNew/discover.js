@@ -21,7 +21,7 @@ class FooterDiscover extends Component {
 
           <div style={{ marginBottom: "0.2rem" }}>
             <a
-              href={`https://learn.papergov.com/knowledge-base?utm_source=embed_footer`}
+              href={`https://learn.papergov.com/knowledge-base`}
               target="_blank"
             >
               <span
@@ -59,7 +59,7 @@ class FooterDiscover extends Component {
           </div>
 
           <div style={{ marginBottom: "0.2rem" }}>
-            <a href={`https://learn.papergov.com/knowledge-base?utm_source=embed_footer`} target="_blank">
+            <a href={`https://learn.papergov.com/knowledge-base`} target="_blank">
               <span
                 className={`${styles.badge} ${styles.textGray}`}
                 data-badge="NEW"

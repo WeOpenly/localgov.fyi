@@ -200,8 +200,22 @@ class ServiceList extends Component {
               <div className={`${styles.column} ${styles.col8}`}>
                 {serComponents}
               </div>
-
+              
               <div className={`${styles.column} ${styles.col1}`}></div>
+              
+              <div
+              className={`${styles.column} ${styles.col2} ${styles.textCenter}`}
+              >
+              <MediaNetAd
+                dims="728x90"
+                slotId="533443262"
+                containerStyles={{
+                  marginTop: "16px",
+                  borderLeft: "1px solid #ececec"
+                }}
+              />
+              </div>
+
             </div>
           </div>
           <div className={`${styles.columns} ${styles.showMd}`}>
@@ -237,6 +251,21 @@ class ServiceList extends Component {
               <div
                 className={`${styles.column} ${styles.col1} ${styles.textCenter}`}
               ></div>
+              <div className={`${styles.column} ${styles.col12}`}>
+              <SearchNav />
+            </div>
+            
+            <div className={`${styles.column} ${styles.col12}`}>
+              <MediaNetAd
+                dims="300x50"
+                slotId="424776710"
+                containerStyles={{
+                  marginTop: "8px",
+                  borderTop: "1px solid #d4d4d4",
+                  paddingTop: "8px"
+                }}
+              />
+             </div>
             </div>
           </div>
           <FooterNew page={this.props.location.pathname} />

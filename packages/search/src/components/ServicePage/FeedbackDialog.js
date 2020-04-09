@@ -112,9 +112,12 @@ class FeedbackDialog extends Component {
                   browser
                 </p>
               </div>
-              <div style={{ textAlign: "center", margin: "2rem" }}>
-                <p>
-                  <MediaNetAd
+
+              <div
+              className={`${styles.column} ${styles.col2} ${styles.textCenter} `}
+              >
+              <p>
+              <MediaNetAd
                 dims="300x50"
                 slotId="424776710"
                 containerStyles={{
@@ -123,8 +126,8 @@ class FeedbackDialog extends Component {
                   paddingTop: "8px"
                 }}
               />
-                </p>
-              </div> 
+              </p>
+            </div>
               
             </div>
           )}
@@ -206,7 +209,7 @@ class FeedbackDialog extends Component {
           {failure && (
             <div>
               <MoodBad />
-              <div>Something went wrong. Please try again.</div>
+              <div>Sorry, something went wrong. Please try again.</div>
               <button
                 size="small"
                 className={`${styles.btn} ${styles.btnSecondary} ${styles.inputGroupBtn} ${styles.btnLg}`}

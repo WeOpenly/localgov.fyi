@@ -244,7 +244,21 @@ class Locations extends Component {
               {locComponents}
             </div>
             <div className={`${styles.column} ${styles.col1}`}></div>
+          <div
+              style={{ marginTop: "8px" }}
+              className={`${styles.column} ${styles.col12} ${styles.textCenter} `}
+            >
+              <MediaNetAd
+                dims="728x90"
+                slotId="184741797"
+                containerStyles={{
+                  marginTop: "16px",
+                  borderLeft: "1px solid #ececec"
+                }}
+              />
+            </div>
           </div>
+
           <div className={`${styles.columns} ${styles.showMd}`}>
             <div
               className={`${styles.column} ${styles.col12}`}
@@ -275,7 +289,19 @@ class Locations extends Component {
             >
               {locComponents}
             </div>
- 
+          
+           <div className={`${styles.column} ${styles.col12}`}>
+              <MediaNetAd
+                dims="300x250"
+                slotId="237236262"
+                containerStyles={{
+                  marginTop: "8px",
+                  borderTop: "1px solid #d4d4d4",
+                  paddingTop: "8px"
+                }}
+              />
+            </div>
+
           </div>
          <FooterNew page={this.props.location.pathname} />
         </div>

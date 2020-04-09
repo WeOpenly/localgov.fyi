@@ -424,7 +424,7 @@ class ServiceDetailTemplate extends React.Component {
             >
               <SearchNav />
             </div>
-
+            // desktop banner ad on the left column 
             <div
               className={`${styles.column} ${styles.col2} ${styles.textCenter} `}
             >
@@ -478,6 +478,7 @@ class ServiceDetailTemplate extends React.Component {
                 </div>
               </div>
             </div>
+           // desktop banner ad on the right column 
             <div
               className={`${styles.column} ${styles.col2} ${styles.textCenter}`}
             >
@@ -492,6 +493,7 @@ class ServiceDetailTemplate extends React.Component {
                 }}
               />
             </div>
+            //desktop ad banner above footer
             <div
               style={{ marginTop: "8px" }}
               className={`${styles.column} ${styles.col12} ${styles.textCenter} `}
@@ -511,6 +513,19 @@ class ServiceDetailTemplate extends React.Component {
           >
             <div className={`${styles.column} ${styles.col12}`}>
               <SearchNav />
+            </div>
+            
+            //mobile ad banner above service info
+            <div className={`${styles.column} ${styles.col12}`}>
+              <MediaNetAd
+                dims="300x50"
+                slotId="424776710"
+                containerStyles={{
+                  marginTop: "8px",
+                  borderTop: "1px solid #d4d4d4",
+                  paddingTop: "8px"
+                }}
+              />
             </div>
 
             <div className={`${styles.column} ${styles.colMd12}`}>
@@ -554,7 +569,8 @@ class ServiceDetailTemplate extends React.Component {
                 </div>
               </div>
             </div>
-
+            
+            // mobile ad banner above footer 
             <div className={`${styles.column} ${styles.col12}`}>
               <MediaNetAd
                 dims="300x250"

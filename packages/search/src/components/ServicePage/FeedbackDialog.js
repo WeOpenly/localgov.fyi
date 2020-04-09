@@ -93,7 +93,7 @@ class FeedbackDialog extends Component {
                   type="submit"
                   className={`${styles.btn} ${styles.btnSecondary} ${styles.inputGroupBtn} ${styles.btnLg}`}
                 >
-                  Good so far &#128522;
+                  Good so far &#128522
                 </button>
               </div>
               <div style={{ textAlign: "center", margin: "2rem" }}>

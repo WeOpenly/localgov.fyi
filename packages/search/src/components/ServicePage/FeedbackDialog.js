@@ -9,6 +9,8 @@ import MoodBad from "@material-ui/icons/MoodBad";
 import styles from "../spectre.min.module.css";
 import classNames from "classnames/bind";
 
+import MediaNetAd from "../components/MediaNetAd";
+
 let cx = classNames.bind(styles);
 
 class FeedbackDialog extends Component {
@@ -91,7 +93,7 @@ class FeedbackDialog extends Component {
                   type="submit"
                   className={`${styles.btn} ${styles.btnSecondary} ${styles.inputGroupBtn} ${styles.btnLg}`}
                 >
-                  Good so far!
+                  Good so far &#128522;
                 </button>
               </div>
               <div style={{ textAlign: "center", margin: "2rem" }}>
@@ -100,7 +102,7 @@ class FeedbackDialog extends Component {
                   className={`${styles.btn} ${styles.btnSecondary} ${styles.inputGroupBtn} ${styles.btnLg}`}
                   type="submit"
                 >
-                  It could have been better.
+                  It could have been better &#128542
                 </button>
               </div>
               <div style={{ textAlign: "center", margin: "2rem" }}>
@@ -110,6 +112,20 @@ class FeedbackDialog extends Component {
                   browser
                 </p>
               </div>
+              <div style={{ textAlign: "center", margin: "2rem" }}>
+                <p>
+                  <MediaNetAd
+                dims="300x50"
+                slotId="424776710"
+                containerStyles={{
+                  marginTop: "8px",
+                  borderTop: "1px solid #d4d4d4",
+                  paddingTop: "8px"
+                }}
+              />
+                </p>
+              </div> 
+              
             </div>
           )}
           {!showSatisfied && !success && !failure && !submitting && (

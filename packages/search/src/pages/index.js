@@ -23,10 +23,10 @@ import OtherLocations from '../components/IndexPage/OtherLocations.js';
 import FooterNew from '../components/FooterNew';
 
 import CoronaBanner from "../components/Banner/Corona";
+import MediaNetAd from "../components/MediaNetAd";
 
 import styles from "../components/spectre.min.module.css";
 import iconStyles from "../components/typicons.min.module.css";
-
 
 
 class Index extends React.Component {
@@ -109,7 +109,33 @@ class Index extends React.Component {
             <div className={`${styles.column} ${styles.col12}`}>
               <OtherLocations isMobile={this.props.isMobile} />
             </div>
-          
+
+           <div
+              style={{ marginTop: "8px" }}
+              className={`${styles.column} ${styles.col12} ${styles.textCenter} `}
+            >
+           {!isMobile ? (
+                <MediaNetAd
+                  dims="728x90"
+                  slotId="226492726"
+                  containerStyles={{
+                  marginTop: "16px",
+                  borderLeft: "1px solid #ececec"
+                }}
+                />
+              ) : (
+                <MediaNetAd
+                  dims="320x50"
+                  slotId="477338292"
+                  containerStyles={{
+                    marginTop: "8px",
+                    borderTop: "1px solid #d4d4d4",
+                    paddingTop: "8px"
+                  }}
+                />
+              )
+              }
+           </div>
     
           </div>
 

@@ -139,7 +139,18 @@ class DeepLink extends Component {
                     paddingTop: "8px"
                   }}
                 />
-              ) : null}
+              ) : (
+                <MediaNetAd
+                  dims="300x50"
+                  slotId="07646404"
+                  containerStyles={{
+                    marginTop: "8px",
+                    borderTop: "1px solid #d4d4d4",
+                    paddingTop: "8px"
+                  }}
+                />
+              )
+              }
             </Grid>
           </Grid>
         );

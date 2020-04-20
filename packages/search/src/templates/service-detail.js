@@ -12,6 +12,8 @@ import ServiceHeader from "../components/ServicePage/ServiceHeader";
 
 import MediaNetAd from "../components/MediaNetAd";
 
+import GoogleAds from "../components/GoogleAds";
+
 import FooterNew from "../components/FooterNew";
 
 import AttachmentList from '../components/AttachmentList';
@@ -480,10 +482,8 @@ class ServiceDetailTemplate extends React.Component {
             <div
               className={`${styles.column} ${styles.col2} ${styles.textCenter}`}
             >
-              <MediaNetAd
-                dims="160x600"
-                slotId="822205785"
-                //slotId="876473088"
+              <GoogleAds
+                slot="9303012204"
                 containerStyles={{
                   marginTop: "16px",
                   borderLeft: "1px solid #ececec",

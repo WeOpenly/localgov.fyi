@@ -1,4 +1,8 @@
 import React, { Component } from "react";
+
+import specStyles from "./spectre.min.module.css";
+import iconStyles from "./typicons.min.module.css";
+
 const windowGlobal = typeof window !== "undefined" && window;
 const externalJs = "//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js";
 

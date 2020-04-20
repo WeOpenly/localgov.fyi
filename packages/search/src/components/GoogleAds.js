@@ -16,27 +16,53 @@ class GoogleAds extends Component {
       js.onload = cb;
     })(document, "script", "google-ads-sdk", () => {
       (adsbygoogle = window.adsbygoogle || []).push({
-        google_ad_client: "ca-pub-4004032613131364"
+        google_ad_client: "ca-pub-5346641393976802"
       });
     });
   }
 
   render() {
 
-    if (process.env.PROJECT_ID !== "evergov-prod") {
-      return null;
-    }
+    //if (process.env.PROJECT_ID !== "evergov-prod") {
+    //  return null;
+    //}
+    
+    const {containerStyles} = this.props;
 
-    return (
-      <ins
+    return (  
+    <>
+        <a
+          className={specStyles.textGray}
+          target="_blank"
+          href="/ads"
+        >
+          <small style={{ fontSize: "10px" }}>AD</small>
+          <span
+            style={{ fontSize: "10px" }}
+            className={`${iconStyles.typcn}  ${iconStyles.typcnSpanner}`}
+          />
+        </a>
+         <ins
         className="adsbygoogle"
         style={{ display: "block" }}
-        data-ad-client="ca-pub-4004032613131364"
+        data-ad-client="ca-pub-5346641393976802"
         data-ad-slot={this.props.slot}
         data-ad-format="auto"
         data-full-width-responsive="true"
-      ></ins>
-    );
+        ></ins>
+        <a
+          className={specStyles.textGray}
+          target="_blank"
+          href="/ads"
+        >
+          <small style={{ fontSize: "10px" }}>AD</small>
+          <span
+            style={{ fontSize: "10px" }}
+            className={`${iconStyles.typcn}  ${iconStyles.typcnSpanner}`}
+          />
+        </a>
+      </>
+    
   }
 }
 

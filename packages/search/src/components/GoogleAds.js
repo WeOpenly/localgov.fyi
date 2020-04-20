@@ -62,7 +62,7 @@ class GoogleAds extends Component {
           />
         </a>
       </>
-    
+    );
   }
 }
 

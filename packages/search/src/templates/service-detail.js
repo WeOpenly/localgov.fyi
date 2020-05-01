@@ -429,15 +429,14 @@ class ServiceDetailTemplate extends React.Component {
             <div
               className={`${styles.column} ${styles.col2} ${styles.textCenter} `}
             >
-              <MediaNetAd
-                dims="160x600"
-                slotId="975270174"
+              <GoogleAds
+                slot="4527672561"
                 containerStyles={{
                   marginTop: "16px",
-                  borderRight: "1px solid #ececec",
-                  paddingRight: "24px"
+                  borderLeft: "1px solid #ececec",
+                  paddingLeft: "24px"
                 }}
-              />
+              /> 
             </div>
             <div
               className={`${styles.column} ${styles.col8}`}
@@ -513,9 +512,8 @@ class ServiceDetailTemplate extends React.Component {
             </div>
             
             <div className={`${styles.column} ${styles.col12}`}>
-              <MediaNetAd
-                dims="300x50"
-                slotId="424776710"
+               <GoogleAds
+                slot="4284129984"
                 containerStyles={{
                   marginTop: "8px",
                   borderTop: "1px solid #d4d4d4",

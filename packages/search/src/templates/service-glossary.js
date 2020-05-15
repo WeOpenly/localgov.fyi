@@ -10,6 +10,7 @@ import { navigate } from "@reach/router";
 import Helmet from "react-helmet";
 
 import MediaNetAd from "../components/MediaNetAd";
+import GoogleAds from "../components/GoogleAds";
 
 import RelatedServiceTemplates from "../components/RelatedServiceTemplates";
 
@@ -239,6 +240,18 @@ class ServiceGlossary extends Component {
               />
             </div>
             <div className={`${styles.column} ${styles.col1}`}></div>
+            <div
+              style={{ marginTop: "8px" }}
+              className={`${styles.column} ${styles.col2} ${styles.textCenter}`}
+            >
+              <GoogleAds
+                slot="2974410569"
+                containerStyles={{
+                  marginTop: "16px",
+                  borderLeft: "1px solid #ececec",
+                }}
+              />
+            </div> 
 
             <div className={`${styles.column} ${styles.col1}`}></div>
             <div
@@ -337,12 +350,30 @@ class ServiceGlossary extends Component {
                 padding: "1rem"
               }}
             >
-              <Suggested
+             
+            <Suggested
                 isMobile={this.props.isMobile}
                 service_name={service_name}
                 handleOrgClick={this.handleOrgClick}
               />
             </div>
+               
+            <div
+              className={`${styles.column} ${styles.col12}`}
+              style={{
+                marginTop: "3rem",
+                padding: "1rem"
+              }}
+            >
+             <GoogleAds
+                slot="8390388778"
+                containerStyles={{
+                  borderTop: "1px solid #d4d4d4",
+                  paddingTop: "8px"
+                }}
+              />
+            </div>
+          
             <div
               className={`${styles.column} ${styles.col12}`}
               style={{

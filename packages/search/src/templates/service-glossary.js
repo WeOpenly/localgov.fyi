@@ -240,18 +240,17 @@ class ServiceGlossary extends Component {
               />
             </div>
             <div className={`${styles.column} ${styles.col1}`}></div>
-            <div
-              style={{ marginTop: "8px" }}
-              className={`${styles.column} ${styles.col2} ${styles.textCenter}`}
-            >
-              <GoogleAds
-                slot="2974410569"
-                containerStyles={{
-                  marginTop: "16px",
-                  borderLeft: "1px solid #ececec",
-                }}
-              />
-            </div> 
+ 
+            <div className={`${styles.column} ${styles.col12}`}>
+                  <GoogleAds
+                    slot="2974410569"
+                    containerStyles={{
+                    marginTop: "8px",
+                    borderTop: "1px solid #ececec",
+                    paddingTop: "8px"
+                    }}
+                  /> 
+             </div>
 
             <div className={`${styles.column} ${styles.col1}`}></div>
             <div

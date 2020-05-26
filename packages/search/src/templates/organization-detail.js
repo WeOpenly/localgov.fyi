@@ -19,6 +19,8 @@ import ServiceDetail from "../components/ServicePage/ServiceDetail";
 
 import MediaNetAd from "../components/MediaNetAd";
 
+import GoogleAds from "../components/GoogleAds";
+
 import FooterNew from "../components/FooterNew";
 
 import styles from "../components/spectre.min.module.css";
@@ -421,6 +423,18 @@ class OrganizationDetail extends React.Component {
                 >
                  {contactDetailComponent}
                 </div>
+                
+                <div className={`${styles.column} ${styles.col12}`}>
+                  <GoogleAds
+                    slot="4331803816"
+                    containerStyles={{
+                    marginTop: "8px",
+                    borderTop: "1px solid #ececec",
+                    paddingTop: "8px"
+                    }}
+                  /> 
+                </div>
+               
                 <div
                   className={`${styles.column} ${styles.col4} ${styles.colMd12}`}
                 >

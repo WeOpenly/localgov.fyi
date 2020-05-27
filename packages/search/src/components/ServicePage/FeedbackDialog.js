@@ -206,6 +206,11 @@ class FeedbackDialog extends Component {
             </Fragment>
           )}
           {submitting && <div>loading</div>}
+          {!failure && (
+            <div>
+              <div>Thank you! We use feedback like this to improve Papergov. It really helps.</div>
+            </div>
+          )}
           {failure && (
             <div>
               <MoodBad />

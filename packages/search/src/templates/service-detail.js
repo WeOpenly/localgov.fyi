@@ -499,6 +499,16 @@ class ServiceDetailTemplate extends React.Component {
                   paddingLeft: "24px"
                 }}
               />
+              
+              <GoogleAds
+                slot="8430824755"
+                containerStyles={{
+                  marginTop: "16px",
+                  borderLeft: "1px solid #ececec",
+                  paddingLeft: "24px"
+                }}
+              />
+             
             </div>
 
             <div
@@ -574,9 +584,8 @@ class ServiceDetailTemplate extends React.Component {
             </div>
             
             <div className={`${styles.column} ${styles.col12}`}>
-              <MediaNetAd
-                dims="300x250"
-                slotId="189122234"
+              <GoogleAds
+                slot="6239775684"
                 containerStyles={{
                   marginTop: "8px",
                   borderTop: "1px solid #d4d4d4",

@@ -522,7 +522,14 @@ class ServiceDetailTemplate extends React.Component {
                 }}
               />
             </div>
+
+           <div>
+             <button = {serviceDeliveryFeedbackForm} > Send Feedback  
+             </button>
+            </div>
+            
           </div>
+          
           <div
             className={`${styles.columns} ${styles.showMd} ${styles.textCenter}`}
           >

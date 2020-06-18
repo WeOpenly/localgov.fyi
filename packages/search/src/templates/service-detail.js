@@ -9,6 +9,8 @@ import SearchNav from "../components/Nav/Search";
 
 import ServiceDetail from "../components/ServicePage/ServiceDetail";
 import ServiceHeader from "../components/ServicePage/ServiceHeader";
+import ServiceHeader from "../components/ServicePage/FeedbackDialog";
+
 
 import MediaNetAd from "../components/MediaNetAd";
 
@@ -516,9 +518,16 @@ class ServiceDetailTemplate extends React.Component {
               className={`${styles.column} ${styles.col12} ${styles.textCenter} `}
             >
              <button  class="btn" onClick = {this.serviceDeliveryFeedbackForm}> Send Feedback  
+            
+            <button
+                  size="small"
+                  className={`${styles.btn} ${styles.btnSecondary}  ${styles.btnSm}`}
+                  onClick={() => FeedbackDialog())} 
+                  color="primary"
+                >
+                  Send Feedback
              </button>
-              {serviceDeliveryFeedbackForm}
-            </div>
+             </div>
 
             <div
               className={`${styles.column} ${styles.col12} ${styles.textCenter} `}

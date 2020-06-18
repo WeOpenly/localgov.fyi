@@ -488,6 +488,15 @@ class ServiceDetailTemplate extends React.Component {
                 </div>
               </div>
             </div>
+            
+            <div
+              className={`${styles.column} ${styles.col12} ${styles.textCenter} `}
+            >
+             <button  class="btn" onClick = {this.serviceDeliveryFeedbackForm}> Send Feedback  
+             </button>
+              {serviceDeliveryFeedbackForm}
+            </div>
+              
             <div
               className={`${styles.column} ${styles.col2} ${styles.textCenter}`}
             >
@@ -523,12 +532,6 @@ class ServiceDetailTemplate extends React.Component {
               />
             </div>
            
-           <div
-              className={`${styles.column} ${styles.col12} ${styles.textCenter} `}
-            >
-             <button  class="btn" onClick = {this.serviceDeliveryFeedbackForm}> Send Feedback  
-             </button>
-            </div>
             
           </div>
           

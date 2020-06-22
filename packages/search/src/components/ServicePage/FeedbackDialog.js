@@ -9,8 +9,6 @@ import MoodBad from "@material-ui/icons/MoodBad";
 import styles from "../spectre.min.module.css";
 import classNames from "classnames/bind";
 
-import MediaNetAd from "../components/MediaNetAd";
-
 let cx = classNames.bind(styles);
 
 class FeedbackDialog extends Component {
@@ -112,22 +110,6 @@ class FeedbackDialog extends Component {
                   browser
                 </p>
               </div>
-
-              <div
-              className={`${styles.column} ${styles.col2} ${styles.textCenter} `}
-              >
-              <p>
-              <MediaNetAd
-                dims="300x50"
-                slotId="424776710"
-                containerStyles={{
-                  marginTop: "8px",
-                  borderTop: "1px solid #d4d4d4",
-                  paddingTop: "8px"
-                }}
-              />
-              </p>
-            </div>
               
             </div>
           )}

@@ -521,7 +521,7 @@ class ServiceDetailTemplate extends React.Component {
             <button
                   size="small"
                   className={`${styles.btn} ${styles.btnSecondary}  ${styles.btnSm}`}
-                  onClick={() => FeedbackDialog())} 
+                  onClick={() => FeedbackDialog()} 
                   color="primary"
                 >
                   Send Feedback

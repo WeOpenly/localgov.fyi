@@ -71,12 +71,15 @@ const SerTemplateCards = (props) => {
             link: 'pay-parking-citation/'
         },
         {
-            name: 'Apply for Unemployment Insurance',
-            link: 'apply-for-unemployment-insurance/'
+            name: 'Register to Vote',
+            link: 'register-to-vote/'
         }, {
             name: 'Pay Utility Bill',
             link: 'pay-utility-bill/'
-        },{
+        }, {
+            name: 'Pay Traffic Ticket',
+            link: 'pay-for-traffic-citation/'
+        }, {
             name: 'Renew Business License',
             link: 'renew-business-license/'
         },

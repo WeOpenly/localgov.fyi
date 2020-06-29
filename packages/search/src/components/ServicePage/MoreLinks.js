@@ -25,8 +25,8 @@ class MoreLinks extends Component {
         link: "pay-parking-citation/"
       },
       {
-        name: "Apply for Unemployment Insurance",
-        link: "apply-for-unemployment-insurance/"
+        name: "Register to Vote",
+        link: "register-to-vote"
       },
       {
         name: "Pay Utility Bill",
@@ -35,6 +35,10 @@ class MoreLinks extends Component {
       {
         name: "Renew Business License",
         link: "renew-business-license/"
+      },
+      {
+        name: "Pay Traffic Ticket",
+        link: "pay-for-traffic-citation/"
       }
     ];
 

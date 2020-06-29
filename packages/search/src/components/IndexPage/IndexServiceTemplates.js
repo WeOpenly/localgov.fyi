@@ -45,6 +45,9 @@ const SerTemplateCards = (props) => {
         }, {
             name: 'Pay Traffic Ticket',
             link: 'pay-for-traffic-citation/'
+        }, {
+            name: 'Renew Business License',
+            link: 'renew-business-license/'
         },
     ]
 

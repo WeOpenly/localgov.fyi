@@ -5,8 +5,10 @@ import ParkingcitSvg from '../svgIcons/ParkingCitIl.js'
 import ProptaxSvg from '../svgIcons/PropTaxIl.js'
 import BusinessLic from '../svgIcons/businessLic.js'
 import RecreationSvg from '../svgIcons/RecreationIl.js'
-import Utilitybill from '../svgIcons/utbIl.js';
+import Utilitybill from '../svgIcons/utbIl.js'
 import Step1 from '../illus/Step1.js'
+import Tax from '../illus/Tax.js';
+
 
 import iconStyles from "./typicons.min.module.css";
 import styles from "./spectre.min.module.css";
@@ -44,8 +46,8 @@ class ServiceTemplateCard extends Component {
           icon = (<RecreationSvg style={{ width: '78px', height: '64px'  }} />)
           mobIcon = (<RecreationSvg style={{ width: '48px', height: '32px' }} />)
         } else if (lowerCaseName.indexOf('traffic') !== -1) {
-          icon = (<Step1 style={{ width: '78px', height: '64px'  }} />)
-          mobIcon = (<Step1 style={{ width: '48px', height: '32px' }} />)
+          icon = (<Tax style={{ width: '78px', height: '64px'  }} />)
+          mobIcon = (<Tax style={{ width: '48px', height: '32px' }} />)
         }     
     
    

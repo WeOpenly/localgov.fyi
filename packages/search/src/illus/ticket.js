@@ -2,11 +2,11 @@ import React from "react";
 import { graphql, StaticQuery } from "gatsby";
 import Img from "gatsby-image";
 
-const Tax = ({ style }) => (
+const Ticket = ({ style }) => (
   <StaticQuery
     query={graphql`
       query CalFranchcq {
-        heroIl: allFile(filter: { relativePath: { eq: "cal-tax.png" } }) {
+        heroIl: allFile(filter: { relativePath: { eq: "ticket.png" } }) {
           edges {
             node {
               name
@@ -42,4 +42,4 @@ const Tax = ({ style }) => (
   />
 );
 
-export default Tax;
+export default Ticket;

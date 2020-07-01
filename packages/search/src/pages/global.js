@@ -17,12 +17,7 @@ import Footer from '../components/Footer';
 import { fetchAreaGuess } from "../components/IndexPage/actions";
 
 import {trackView, trackClick} from "../components/common/tracking";
-import AreaSuggestedServices from '../components/IndexPage/AreaSuggestedservices.js';
-import OtherLocations from '../components/IndexPage/OtherLocations.js';
 import FooterNew from '../components/FooterNew';
-
-import CoronaBanner from "../components/Banner/Corona";
-import MediaNetAd from "../components/MediaNetAd";
 
 import styles from "../components/spectre.min.module.css";
 import iconStyles from "../components/typicons.min.module.css";
@@ -89,11 +84,7 @@ class Index extends React.Component {
                 appReady={appReady}
                 location={this.props.location}
               />
-            </div>
-
-            
-
-           
+            </div>           
     
           </div>
 

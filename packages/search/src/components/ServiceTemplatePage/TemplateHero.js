@@ -53,9 +53,9 @@ class TemplateHero extends Component {
 
                 <TemplateViews views={views} orgsCnt={orgsCnt} />
                 <div>
-                  <p>
-                    <RawHTML>{service_glossary_description}</RawHTML>
-                  </p>
+                  <h6>
+                    {service_glossary_description}
+                  </h6>
                 </div>
                 <div
                   style={{

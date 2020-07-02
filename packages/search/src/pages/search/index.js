@@ -79,17 +79,18 @@ class Search extends React.Component {
                     windowGlobal.location.href = '/'
                 }
             }
-            const {lat, lng, service_template_id, service_text} = values;
+            const {lat, lng, address, service_template_name, service_text} = values;
             if (!lat || !lng){
                 if (windowGlobal) {
                     windowGlobal.location.href = '/'
                 }
             }
-            dispatch(fetchSearchResults(lat, lng, service_template_id, service_text));
+            dispatch(fetchSearchResults(lat, lng, address, service_template_name, service_text));
             dispatch(trackEvent('index_search_query', {
                 lat,
                 lng,
-                service_template_id,
+                address
+                service_template_name,
                 service_text
             }));
         }

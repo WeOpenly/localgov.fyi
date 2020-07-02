@@ -280,17 +280,17 @@ class ServiceGlossary extends Component {
 
             <div className={`${styles.column} ${styles.col1}`}></div>
             <div
-              style={{ marginTop: "8px" }}
               className={`${styles.column} ${styles.col12} ${styles.textCenter} `}
             >
-              <MediaNetAd
-                dims="728x90"
-                slotId="835654084"
-                containerStyles={{
-                  marginTop: "16px",
-                  borderLeft: "1px solid #ececec"
-                }}
-              />
+                  <GoogleAds
+                    slot="6890230530"
+                    containerStyles={{
+                    marginTop: "8px",
+                    borderTop: "1px solid #ececec",
+                    paddingTop: "8px"
+                    }}
+                  /> 
+             </div>
             </div>
             <div
               className={`${styles.column} ${styles.col10}`}
@@ -383,18 +383,13 @@ class ServiceGlossary extends Component {
               <OtherLocations isMobile={this.props.isMobile} allOrgs={orgs} />
             </div>
             <div
-              className={`${styles.column} ${styles.col12}`}
-              style={{
-                marginTop: "3rem",
-                padding: "1rem"
-              }}
+              className={`${styles.column} ${styles.col12} ${styles.textCenter}`}
             >
-             <MediaNetAd
-                dims="320x50"
-                slotId="359023730"
+            <GoogleAds
+                slot="1063474199"
                 containerStyles={{
-                  marginTop: "16px",
-                  borderLeft: "1px solid #ececec"
+                  borderTop: "1px solid #d4d4d4",
+                  paddingTop: "8px"
                 }}
               />
             </div>

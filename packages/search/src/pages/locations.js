@@ -25,6 +25,7 @@ import iconStyles from "../components/typicons.min.module.css";
 import {trackView, trackClick} from "../components/common/tracking";
 
 import MediaNetAd from "../components/MediaNetAd";
+import GoogleAds from "../components/GoogleAds";
 
 
 const genericFSchema = {

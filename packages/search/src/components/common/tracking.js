@@ -67,7 +67,7 @@ export const trackEvent = (event_type, event_props) => async (dispatch, getState
     });
 };
 
-export const trackView = (page_layout_type, viewing_entity_type, viewing_entity_id, viewing_entity_name, viewing_entity_page, ...extra) => async (dispatch, getState) => {
+export const trackView = (page_layout_type, viewing_entity_type, viewing_entity_id, viewing_entity_name, viewing_entity_page, viewing_entity_url, ...extra) => async (dispatch, getState) => {
     if (!Fingerprint2) {
         return
     }
@@ -81,6 +81,7 @@ export const trackView = (page_layout_type, viewing_entity_type, viewing_entity_
                 v_e_id: viewing_entity_id,
                 v_e_n: viewing_entity_name,
                 v_e_p: viewing_entity_page,
+                v_e_url: viewing_entity_url,
                 ...extra
             }
 
@@ -141,7 +142,7 @@ export const trackInput = (input_type, text, extra) => async (dispatch, getState
 };
 
 // clicked type [suggestion, card(page item), external]
-export const trackClick = (click_type, clicked_entity_type, clicked_entity_id, clicked_entity_name, pos_in_list = 0, extra) => async (dispatch, getState) => {
+export const trackClick = (click_type, clicked_entity_type, clicked_entity_id, clicked_entity_name, clicked_entity_url, pos_in_list = 0, extra) => async (dispatch, getState) => {
     if (!Fingerprint2) {
         return
     }
@@ -156,6 +157,7 @@ export const trackClick = (click_type, clicked_entity_type, clicked_entity_id, c
                 c_e_t: clicked_entity_type,
                 c_e_id: clicked_entity_id,
                 c_e_n: clicked_entity_name,
+                c_e_url: clicked_entity_url,
                 ...extra,
             }
 

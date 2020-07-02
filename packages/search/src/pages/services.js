@@ -18,6 +18,7 @@ import iconStyles from "../components/typicons.min.module.css";
 import { trackView, trackClick } from "../components/common/tracking";
 
 import MediaNetAd from "../components/MediaNetAd";
+import GoogleAds from "../components/GoogleAds";
 
 const LiteSerTemplate = props => {
   return (
@@ -208,14 +209,14 @@ class ServiceList extends Component {
               <div
               className={`${styles.column} ${styles.col2} ${styles.textCenter}`}
               >
-              <MediaNetAd
-                dims="728x90"
-                slotId="533443262"
-                containerStyles={{
-                  marginTop: "16px",
-                  borderLeft: "1px solid #ececec"
-                }}
-              />
+              <GoogleAds
+                    slot="4167207737"
+                    containerStyles={{
+                    marginTop: "8px",
+                    borderTop: "1px solid #ececec",
+                    paddingTop: "8px"
+                    }}
+                  /> 
               </div>
 
             </div>
@@ -257,16 +258,15 @@ class ServiceList extends Component {
               <SearchNav />
             </div>
             
-            <div className={`${styles.column} ${styles.col12}`}>
-              <MediaNetAd
-                dims="300x50"
-                slotId="941246155"
-                containerStyles={{
-                  marginTop: "8px",
-                  borderTop: "1px solid #d4d4d4",
-                  paddingTop: "8px"
-                }}
-              />
+            <div className={`${styles.column} ${styles.col12} ${styles.textCenter}``}>
+              <GoogleAds
+                    slot="4167207737"
+                    containerStyles={{
+                    marginTop: "8px",
+                    borderTop: "1px solid #ececec",
+                    paddingTop: "8px"
+                    }}
+                  /> 
              </div>
             </div>
           </div>

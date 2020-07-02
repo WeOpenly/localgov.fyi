@@ -89,7 +89,7 @@ class Search extends React.Component {
             dispatch(trackEvent('index_search_query', {
                 lat,
                 lng,
-                address
+                address,
                 service_template_name,
                 service_text
             }));

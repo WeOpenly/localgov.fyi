@@ -433,10 +433,18 @@ const mapDispatchToProps = dispatch => {
       dispatch(trackClick(click_type, resultType, name, title, listIndex));
     },
     trackFeedback: input => {
-      dispatch(trackInput("service_glossary_search", input));
+      dispatch(trackInput('service_glossary_search', input));
     },
-    trackEvent: (evName, data) => {
-      dispatch(trackEvent(evName, data));
+    trackEvent: (evName, data, input) => {
+      dispatch(trackEvent(evName, data, input));
+    },
+    dispatch(trackEvent('service_glossary_search', {
+                lat,
+                lng,
+                address,
+                service_template_name,
+                service_text
+            }));
     },
     autoGetLoc: serviceTemplateId => {
       dispatch(fetchAutoLoc(serviceTemplateId));

@@ -427,7 +427,7 @@ ServiceGlossary.propTypes = {
 const mapDispatchToProps = dispatch => {
   return {
     trackView: (click_type, resultType, id, title, listIndex) => {
-      dispatch(trackView("service_glossary", null, null, null));
+      dispatch(trackView("service_glossary", null, null, null, null));
     },
     trackClick: (click_type, resultType, id, title, listIndex) => {
       dispatch(trackClick(click_type, resultType, id, title, listIndex));

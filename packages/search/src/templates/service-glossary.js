@@ -241,7 +241,7 @@ class ServiceGlossary extends Component {
             </div>
             <div className={`${styles.column} ${styles.col1}`}></div>
  
-            <div className={`${styles.column} ${styles.col12}`}>
+            <div className={`${styles.column} ${styles.col10} ${styles.textCenter}`}>
                   <GoogleAds
                     slot="2974410569"
                     containerStyles={{
@@ -280,7 +280,7 @@ class ServiceGlossary extends Component {
 
             <div className={`${styles.column} ${styles.col1}`}></div>
             <div
-              className={`${styles.column} ${styles.col12} ${styles.textCenter} `}
+              className={`${styles.column} ${styles.col12} ${styles.textCenter}`}
             >
                   <GoogleAds
                     slot="6890230530"

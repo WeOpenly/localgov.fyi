@@ -205,10 +205,10 @@ class ServiceList extends Component {
               </div>
               
               <div className={`${styles.column} ${styles.col1}`}></div>
-              
-              <div
-              className={`${styles.column} ${styles.col2} ${styles.textCenter}`}
-              >
+
+            </div>
+          </div>
+           <div className={`${styles.column} ${styles.col2} ${styles.textCenter}`}>
               <GoogleAds
                     slot="4167207737"
                     containerStyles={{
@@ -218,9 +218,7 @@ class ServiceList extends Component {
                     }}
                   /> 
               </div>
-
-            </div>
-          </div>
+        
           <div className={`${styles.columns} ${styles.showMd}`}>
             <div
               className={`${styles.column} ${styles.col12}`}

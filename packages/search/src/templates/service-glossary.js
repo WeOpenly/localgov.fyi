@@ -202,17 +202,17 @@ class ServiceGlossary extends Component {
           style={{ background: "#f8f9fc" }}
         >
           <div className={`${styles.columns} ${styles.hideMd}`}>
-            <div className={`${styles.column} ${styles.col1}`}></div>
-            <div
+             <div className={`${styles.column} ${styles.col1}`}></div>
+             <div
               className={`${styles.column} ${styles.col10}`}
               style={{
                 padding: "0.7rem 0rem 0.7rem 1rem"
               }}
-            >
+             >
               <a style={{ textDecoration: "none" }} href="/">
                 <h4>papergov</h4>
               </a>
-            </div>
+             </div>
             <div className={`${styles.column} ${styles.col1}`}></div>
 
             <div className={`${styles.column} ${styles.col1}`}></div>
@@ -226,7 +226,7 @@ class ServiceGlossary extends Component {
                 borderRadius: "0.8rem",
                 boxShadow: "0 0 1px rgba(0,0,0,.08),0 2px 4px rgba(0,0,0,.03)"
               }}
-            >
+             >
               <TemplateHero
                 id={id}
                 hieLinks={hieLinks}
@@ -238,7 +238,7 @@ class ServiceGlossary extends Component {
                 trackClick={this.trackClick}
                 service_glossary_description={service_glossary_description}
               />
-            </div>
+              </div>
             <div className={`${styles.column} ${styles.col1}`}></div>
  
             <div className={`${styles.column} ${styles.col10} ${styles.textCenter}`}>
@@ -291,22 +291,21 @@ class ServiceGlossary extends Component {
                     }}
                   /> 
              </div>
-            </div>
-            <div
-              className={`${styles.column} ${styles.col10}`}
-              style={{
-                marginTop: "3rem",
-                padding: "1.5rem"
-              }}
-            >
+             <div
+               className={`${styles.column} ${styles.col10}`}
+               style={{
+                 marginTop: "3rem",
+                 padding: "1.5rem"
+               }}
+             >
               <RelatedServiceTemplates
                 isMobile={this.props.isMobile}
                 currentNameSlug={service_name_slug}
                 showAdd={true}
               />
-            </div>
+             </div>
             <div className={`${styles.column} ${styles.col1}`}></div>
-          </div>
+
           <div className={`${styles.columns} ${styles.showMd}`}>
             <div
               style={{
@@ -406,7 +405,6 @@ class ServiceGlossary extends Component {
                 showAdd={true}
               />
             </div>
-          </div>
           <FooterNew page={this.props.location.pathname} />
           {/* <Banner title="hello" button={"button"} /> */}
         </div>

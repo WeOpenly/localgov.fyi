@@ -175,19 +175,19 @@ class ServiceList extends Component {
 
           <meta property="og:description" content={`Services on papergov`} />
         </Helmet>
-        <div
+        
+      <div
           className={`${styles.container}`}
           style={{ background: "#f8f9fc" }}
-        >
+      >
           <div className={`${styles.columns} ${styles.hideMd}`}>
-            <div
-              className={`${styles.column} ${styles.col12}`}
-              style={{ background: "#fff" }}
-            >
-              <SearchNav />
-            </div>
+              <div
+                className={`${styles.column} ${styles.col12}`}
+                style={{ background: "#fff" }}
+              >
+                <SearchNav />
+              </div>
 
-            <div className={styles.columns}>
               <div
                 style={{ margin: "3rem 0 2rem 0" }}
                 className={`${styles.column} ${styles.col12} ${styles.textCenter}`}
@@ -207,22 +207,20 @@ class ServiceList extends Component {
               <div className={`${styles.column} ${styles.col1}`}></div>
 
             </div>
-          </div>
         
           <div className={`${styles.columns} ${styles.showMd}`}>
-            <div
-              className={`${styles.column} ${styles.col12}`}
-              style={{ background: "#fff" }}
-            >
-              <SearchNav />
-            </div>
-
-            <div className={styles.columns}>
               <div
-                style={{ margin: "3rem 0 2rem 0" }}
-                className={`${styles.column} ${styles.col12} ${styles.textCenter}`}
+                className={`${styles.column} ${styles.col12}`}
+                style={{ background: "#fff" }}
               >
-                <h3>Services on papergov</h3>
+                <SearchNav />
+              </div>
+
+              <div
+                 style={{ margin: "3rem 0 2rem 0" }}
+                 className={`${styles.column} ${styles.col12} ${styles.textCenter}`}
+              >
+                 <h3>Services on papergov</h3>
               </div>
 
               <div
@@ -234,30 +232,22 @@ class ServiceList extends Component {
               <div
                 className={`${styles.column} ${styles.col1} ${styles.textCenter}`}
               ></div>
+
               <div
                 className={`${styles.column} ${styles.col10} ${styles.textCenter}`}
               >
                 {serComponents}
               </div>
+
               <div
                 className={`${styles.column} ${styles.col1} ${styles.textCenter}`}
               ></div>
+
               <div className={`${styles.column} ${styles.col12}`}>
-              <SearchNav />
-            </div>
+                <SearchNav />
+              </div>
             
-            <div className={`${styles.column} ${styles.col12} ${styles.textCenter}``}>
-              <GoogleAds
-                    slot="4167207737"
-                    containerStyles={{
-                    marginTop: "8px",
-                    borderTop: "1px solid #ececec",
-                    paddingTop: "8px"
-                    }}
-               /> 
-             </div>
             </div>
-          </div>
           <FooterNew page={this.props.location.pathname} />
           {/* <Banner title="hello" button={"button"} /> */}
         </div>

@@ -408,6 +408,7 @@ class ServiceGlossary extends Component {
           <FooterNew page={this.props.location.pathname} />
           {/* <Banner title="hello" button={"button"} /> */}
         </div>
+       </div>
       </Fragment>
     );
   }

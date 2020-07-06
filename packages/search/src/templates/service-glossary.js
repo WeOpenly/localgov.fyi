@@ -305,6 +305,7 @@ class ServiceGlossary extends Component {
               />
              </div>
             <div className={`${styles.column} ${styles.col1}`}></div>
+           </div>
 
           <div className={`${styles.columns} ${styles.showMd}`}>
             <div
@@ -405,9 +406,9 @@ class ServiceGlossary extends Component {
                 showAdd={true}
               />
             </div>
+           </div>
           <FooterNew page={this.props.location.pathname} />
           {/* <Banner title="hello" button={"button"} /> */}
-        </div>
        </div>
       </Fragment>
     );

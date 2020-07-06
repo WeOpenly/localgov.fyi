@@ -432,8 +432,7 @@ const mapDispatchToProps = dispatch => {
     },
     trackEvent: (evName, data, input) => {
       dispatch(trackEvent(evName, data, input));
-    },
-    dispatch(trackEvent('service_glossary_search', {
+      dispatch(trackEvent('service_glossary_search', {
                 lat,
                 lng,
                 address,

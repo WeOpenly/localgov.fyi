@@ -171,8 +171,12 @@ def get_orgs():
             if not os.path.exists(org_logo_filename):
                 with open(org_logo_filename, 'w+'):
                     pass
-
-            urllib.urlretrieve(org_logo, org_logo_filename)
+            
+            try:
+                urllib.urlretrieve(org_logo, org_logo_filename)
+            except Exception as e:
+                print("failed getting logo for {s}, fix the logo url {o}".format(
+                    s=org_slug, o=org_logo_filename))
 
 
 

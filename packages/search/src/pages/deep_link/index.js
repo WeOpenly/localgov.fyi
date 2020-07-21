@@ -8,7 +8,7 @@ import {CopyToClipboard} from 'react-copy-to-clipboard';
 import {FacebookShareButton, TwitterShareButton} from 'react-share';
 
 import MediaNetAd from "../../components/MediaNetAd";
-import GoogleAds from "../components/GoogleAds";
+import GoogleAds from "../../components/GoogleAds";
 
 import queryString from 'query-string'
 import {withStyles} from '@material-ui/core/styles';

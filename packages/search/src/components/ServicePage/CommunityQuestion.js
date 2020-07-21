@@ -50,14 +50,14 @@ class CommunityQuestion extends React.Component {
     axios(axiosOptions)
       .then(response => {
         this.setState({
-          feedbackMsg: "Form submitted successfully!",
+          feedbackMsg: "Thanks! We will try to answer it soon!",
           showForm: !this.state.showForm
         })
         this.domRef.current.reset()
       })
       .catch(err =>
         this.setState({
-          feedbackMsg: "Form could not be submitted.",
+          feedbackMsg: "Sorry! There was some issue in submitting your question!",
         })
       )
   }
@@ -83,7 +83,7 @@ class CommunityQuestion extends React.Component {
                   {/* text area  */}
 
                   <textarea class="form-control"
-                    id="message" ref="message" name="message" placeholder="What is your question?" />
+                    id="message" ref="message" name="message" placeholder="What is your question about this service?" />
 
                    <div className="mt-2">
                      <button class="btn"

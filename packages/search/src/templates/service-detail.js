@@ -10,6 +10,8 @@ import SearchNav from "../components/Nav/Search";
 import ServiceDetail from "../components/ServicePage/ServiceDetail";
 import ServiceHeader from "../components/ServicePage/ServiceHeader";
 import FeedbackDialog from "../components/ServicePage/FeedbackDialog";
+import CommunityQuestion from "../components/ServicePage/CommunityQuestion";
+import SendFeedback from "../components/ServicePage/SendFeedback"
 
 
 import MediaNetAd from "../components/MediaNetAd";
@@ -480,6 +482,9 @@ class ServiceDetailTemplate extends React.Component {
                   />
                 </div>
                 <div className={`${styles.column} ${styles.col12}`}>
+                  <CommunityQuestion> </CommunityQuestion>
+                  </div>
+                <div className={`${styles.column} ${styles.col12}`}>
                   <MoreLinks
                     isMobile={isMobile}
                     otherServices={otherServices}
@@ -514,20 +519,13 @@ class ServiceDetailTemplate extends React.Component {
               />
              
             </div>
-           
+
             <div
               className={`${styles.column} ${styles.col12} ${styles.textCenter} `}
             >
-            
-            <button
-                  size="small"
-                  className={`${styles.btn} ${styles.btnSecondary}  ${styles.btnSm}`}
-                  onClick={() => FeedbackDialog()} 
-                  color="primary"
-                >
-                  Send Feedback
-             </button>
-             </div>
+              <SendFeedback buttonLabel="Send Feedback"></SendFeedback>
+            </div>
+           
 
             <div
               className={`${styles.column} ${styles.col12} ${styles.textCenter} `}
@@ -592,6 +590,9 @@ class ServiceDetailTemplate extends React.Component {
                   />
                 </div>
                 <div className={`${styles.column} ${styles.col12}`}>
+                  <CommunityQuestion> </CommunityQuestion>
+                  </div>
+                <div className={`${styles.column} ${styles.col12}`}>
                   <MoreLinks
                     isMobile={isMobile}
                     otherServices={otherServices}
@@ -600,6 +601,10 @@ class ServiceDetailTemplate extends React.Component {
                     stateServices={state_org_details.offered_services}
                     glossaryLinks={state_org_details.offered_services}
                   />
+                </div>
+                <div className={`${styles.column} ${styles.col12} ${styles.textCenter} `}
+                >
+                  <SendFeedback buttonLabel="Send Feedback"></SendFeedback>
                 </div>
               </div>
             </div>

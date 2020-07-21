@@ -8,6 +8,7 @@ import {CopyToClipboard} from 'react-copy-to-clipboard';
 import {FacebookShareButton, TwitterShareButton} from 'react-share';
 
 import MediaNetAd from "../../components/MediaNetAd";
+import GoogleAds from "../components/GoogleAds";
 
 import queryString from 'query-string'
 import {withStyles} from '@material-ui/core/styles';
@@ -129,28 +130,14 @@ class DeepLink extends Component {
               </Paper>
             </Grid>
             <Grid item xs={12} align="center" className={classes.adContainer}>
-              {!isMobile ? (
-                <MediaNetAd
-                  dims="728x90"
-                  slotId="124203868"
-                  containerStyles={{
-                    marginTop: "8px",
-                    borderTop: "1px solid #d4d4d4",
-                    paddingTop: "8px"
-                  }}
-                />
-              ) : (
-                <MediaNetAd
-                  dims="300x50"
-                  slotId="07646404"
-                  containerStyles={{
-                    marginTop: "8px",
-                    borderTop: "1px solid #d4d4d4",
-                    paddingTop: "8px"
-                  }}
-                />
-              )
-              }
+                <GoogleAds
+                slot="2997691754"
+                containerStyles={{
+                  marginTop: "16px",
+                  borderLeft: "1px solid #ececec",
+                  paddingTop: "8px"
+                }}
+               />
             </Grid>
           </Grid>
         );

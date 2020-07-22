@@ -65,9 +65,9 @@ class CommunityQuestion extends React.Component {
   render() {
     return (
       <>
-            
+        <div class="divider"></div>
         <div className="faq" style={{ margin: "4rem 0rem" }}>
-            <h3 style={{ margin: "2rem 0" }}>Community Q&A</h3>
+            <h4 style={{ margin: "2rem 0" }}>Community Q&A</h4>
 
               {/* this will show wether the form is succesfully be sent or not */}
               {this.state.feedbackMsg && <p style={{ color: "#420EFF" }}>{this.state.feedbackMsg}</p>}
@@ -77,28 +77,44 @@ class CommunityQuestion extends React.Component {
 
                 <form ref={this.domRef} name="AskQuestion" method="POST" data-netlify="true" onSubmit={event => this.handleSubmit(event)}>
 
-                  {/* this  is hidden but netlify need it to make sure netlify bot can see the form */}
+                 {/* this  is hidden but netlify need it to make sure netlify bot can see the form */}
                   <input ref="form-name" type="hidden" name="form-name" value="AskQuestion" />
 
-                  {/* text area  */}
+                  {/* collects the service page path */}
+                  <p hidden>
+                    <label>
+                      Don’t fill this out:{" "}
+                      <input name="path" type="text" value="" />
+                    </label>
+                  </p>
 
+                  {/* text area */}
                   <textarea class="form-control"
-                    id="message" ref="message" name="message" placeholder="What is your question about this service?" />
+                    id="message" ref="message" name="message" placeholder="What is your question?" />
+                  <p> </p>
+                  <label>
+                    <input
+                      required
+                      name="email"
+                      type="email"
+                      placeholder="you@email.com"
+                    />
+                    <p> </p>
+                    <h6 class="form-input-hint"> * We will only use your email to notify about the Q&A!</h6>
+                  </label>
+                  <p> </p>
+                  <button
+                    className={`${styles.btn} ${styles.btnPrimary} ${styles.inputGroupBtn} ${styles.btnLg}`}
+                    type="submit"
+                  >
+                    Submit
+                  </button>
 
-                   <div className="mt-2">
-                     <button class="btn"
-                       style={{
-                         background: "#420EFF",
-                         color: "white",
-                         textTransform: "uppercase",
-                         fontWeight: "bold",
-                       }} type="submit">
-                         Submit
-                      </button>
-                   </div>
                 </form>
+
               </div>
               <p> </p>
+          <div class="divider"></div>
         </div>
       </>
     )

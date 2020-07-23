@@ -89,27 +89,33 @@ class CommunityQuestion extends React.Component {
                   </p>
 
                   {/* text area */}
-                  <textarea class="form-control"
-                    id="message" ref="message" name="message" placeholder="What is your question?" />
-                  <p> </p>
-                  <label>
+                  <p>
+                  <textarea 
+                    required 
+                    class="form-control"
+                    id="message" ref="message" name="message" 
+                    placeholder="What is your question? Please be as precise as possible so that we can be helpful with our answer!" />
+                  </p>
+
+                   <p>
                     <input
                       required
+                      class="form-control"
+                      id="email"
+                      ref="email"
                       name="email"
-                      type="email"
                       placeholder="you@email.com"
                     />
-                    <p> </p>
+                    </p>
                     <h6 class="form-input-hint"> * We will only use your email to notify about the Q&A!</h6>
-                  </label>
-                  <p> </p>
+                  <p> 
                   <button
                     className={`${styles.btn} ${styles.btnPrimary} ${styles.inputGroupBtn} ${styles.btnLg}`}
                     type="submit"
                   >
                     Submit
                   </button>
-
+                  </p>
                 </form>
 
               </div>

@@ -182,7 +182,7 @@ class OtherLocationList extends React.Component {
             style={{ margin: "0rem 0 4rem 0" }}
             className={`${styles.column} ${styles.col12} ${styles.textCenter}`}
           >
-            <h3>Discover Papergov</h3>
+            <h3>Trending now in these locations.</h3>
           </div>
 
           <div

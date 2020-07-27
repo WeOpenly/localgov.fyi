@@ -20,6 +20,7 @@ import { fetchAreaGuess } from "../components/IndexPage/actions";
 import {trackView, trackClick} from "../components/common/tracking";
 import AreaSuggestedServices from '../components/IndexPage/AreaSuggestedservices.js';
 import OtherLocations from '../components/IndexPage/OtherLocations.js';
+import AllStates from '../components/IndexPage/AllStates.js';
 import FooterNew from '../components/FooterNew';
 
 import CoronaBanner from "../components/Banner/Corona";
@@ -108,6 +109,10 @@ class Index extends React.Component {
 
             <div className={`${styles.column} ${styles.col12}`}>
               <OtherLocations isMobile={this.props.isMobile} />
+            </div>
+            
+            <div className={`${styles.column} ${styles.col12}`}>
+              <AllStates isMobile={this.props.isMobile} />
             </div>
     
           </div>

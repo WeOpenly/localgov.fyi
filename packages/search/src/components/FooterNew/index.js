@@ -30,7 +30,7 @@ class FooterNew extends Component {
     );
 
     const twitterLogo = (
-      <a href="https://facebook.com/papergov">
+      <a href="https://twitter.com/papergov">
         <FaTwitter />
       </a>
     );
@@ -97,7 +97,11 @@ class FooterNew extends Component {
               }}
             >
               <div>
-                <h1 className={styles.textGray}>papergov</h1>
+                <h1>papergov</h1>
+              </div>
+
+              <div>
+                <p> Papergov is the leading place to discover & act on all local government services. </p>
               </div>
 
               <div
@@ -127,7 +131,11 @@ class FooterNew extends Component {
               }}
             >
               <div>
-                <h1 className={styles.textGray}>papergov</h1>
+                <h1>papergov</h1>
+              </div>
+
+              <div>
+                <p> Papergov is the leading place to discover & act on all local government services. </p>
               </div>
 
               <div

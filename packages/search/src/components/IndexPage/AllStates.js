@@ -266,7 +266,7 @@ class AllStateList extends React.Component {
             style={{ margin: "0rem 0 2rem 0" }}
             className={`${styles.column} ${styles.col12} ${styles.textCenter}`}
           >
-            <h3>Discover & Act on Local Government Services from all 50 States.</h3>
+            <h3>Local Government Services from all 50 States.</h3>
           </div>
 
           <div

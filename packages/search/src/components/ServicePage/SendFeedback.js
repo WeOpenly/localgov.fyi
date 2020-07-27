@@ -142,7 +142,7 @@ button negative feedback */}
                                         whiteSpace: "nowrap"
                                     }} onClick={() => this.setState({
                                         showNegativeFeedback: !this.state.showNegativeFeedback
-                                    })}>It could have been better &128533; </Button>
+                                    })}>It could have been better &#128528; </Button>
                                 </p>
 
                             </div>

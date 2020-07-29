@@ -49,6 +49,17 @@ class FooterSupport extends Component {
                   Privacy
                 </a>
               </div>
+              
+             <div style={{ marginBottom: "0.2rem" }}>
+                <a
+                  className={`${styles.textGray} ${styles.textSemibold}`}
+                  href={`https://papergov.com/locations/?show_add_loc=true`}
+                  target="_blank"
+                >
+                  Suggest Locations
+                </a>
+              </div>
+            
             </div>
             <div
               className={`${styles.column} ${styles.col12}  ${styles.showXs} ${styles.textCenter}`}
@@ -86,6 +97,17 @@ class FooterSupport extends Component {
                   Privacy
                 </a>
               </div>
+             
+              <div style={{ marginBottom: "0.2rem" }}>
+                <a
+                  className={`${styles.textGray} ${styles.textSemibold}`}
+                  href={`https://papergov.com/locations/?show_add_loc=true`}
+                  target="_blank"
+                >
+                  Suggest Locations
+                </a>
+              </div>
+               
             </div>
           </div>
         );

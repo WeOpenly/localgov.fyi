@@ -62,6 +62,13 @@ class FooterCompany extends Component {
               Blog
             </a>
           </div>
+           
+          <div>
+            <a className={styles.textGray} href={`/ads`} target="_blank">
+              Ads
+            </a>
+          </div>
+      
         </div>
       </div>
     );

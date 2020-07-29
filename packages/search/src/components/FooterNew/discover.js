@@ -56,7 +56,7 @@ class FooterDiscover extends Component {
           <div style={{ marginBottom: "0.2rem" }}>
             <a
               className={`${styles.textGray} ${styles.textSemibold}`}
-              href={`https://learn.papergov.com`}
+              href={`https://learn.papergov.com/knowledge-base`}
               target="_blank"
             >
               Knowledge Base
@@ -103,6 +103,16 @@ class FooterDiscover extends Component {
               target="_blank"
             >
               Service Directory
+            </a>
+          </div>
+          
+          <div style={{ marginBottom: "0.2rem" }}>
+            <a
+              className={`${styles.badge} ${styles.textGray}`}
+              href={`https://learn.papergov.com/knowledge-base`}
+              target="_blank"
+            >
+              Knowledge Base
             </a>
           </div>
         </div>

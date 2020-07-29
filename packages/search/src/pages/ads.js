@@ -123,7 +123,7 @@ class About extends React.Component {
                 <div style={{ padding: "1rem 0.2rem 0.5rem 0.2rem" }}>
                   <p style={{ lineHeight: "1.1rem" }}>
                     Our mission at <b>Papergov</b> is to let anyone discover and
-                    act on government services seamlessly. <br />
+                    act on all government services seamlessly. <br />
                     <br />
                     Being a tiny team, we are trying to figure out ways to
                     sustain to make the most impact & to catalyze the movement
@@ -134,33 +134,20 @@ class About extends React.Component {
                     government service for <b>free</b>. <br />
                     <br />
                     We are well aware that ads might turn you off but we are
-                    doing our best to make them less annoying. We would love to{" "}
+                    doing our best to make them less intrusive. We would love to{" "}
                     <a href="mailto:team@papergov.com">here</a> from you if you
                     have any better ways to approach this.
                     <br /> <br />
-                    P.S: We are also testing other monetization models with{" "}
-                    <a href="https://pay.papergov.com" target="_blank">
-                      Pay
-                    </a>{" "}
-                    and{" "}
-                    <a href="https://one.papergov.com" target="_blank">
-                      One
-                    </a>{" "}
-                    to deliver you an ad-free experience soon.
                   </p>
                 </div>
                 <div>
                   <a
                     className={styles.btn}
-                    href="https://www.patreon.com/bePatron?u=26302926"
-                    data-patreon-widget-type="become-patron-button"
+                    href="mailto:team@papergov.com"
+                    color="primary"
                   >
-                    Help us get to an ad-free Papergov faster
+                    Contact us to Advertise
                   </a>
-                  <script
-                    async
-                    src="https://c6.patreon.com/becomePatronButton.bundle.js"
-                  ></script>
                 </div>
               </div>
             </div>

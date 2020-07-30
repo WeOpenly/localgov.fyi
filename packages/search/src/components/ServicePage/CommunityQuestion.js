@@ -19,6 +19,8 @@ class CommunityQuestion extends React.Component {
     }
   }
 
+const path = window.location.href; 
+
   handleSubmit(event) {
     // Do form submission stuff ...
     // Do not submit form via HTTP, since we're doing that via XHR request.
@@ -85,7 +87,7 @@ class CommunityQuestion extends React.Component {
                   <p hidden>
                     <label>
                       Don’t fill this out:{" "}
-                      <input name="path" type="text" value={window.location.href} />
+                      <input name="path" type="text" value={path} />
                     </label>
                   </p>
 

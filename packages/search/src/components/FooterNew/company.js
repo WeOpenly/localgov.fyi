@@ -39,6 +39,16 @@ class FooterCompany extends Component {
               Blog
             </a>
           </div>
+          
+          <div style={{ marginBottom: "0.2rem" }}>
+            <a
+              className={`${styles.textGray} ${styles.textSemibold}`}
+              href={`/ads`}
+              target="_blank"
+            >
+              Ads
+            </a>
+          </div>
         </div>
         <div
           className={`${styles.column} ${styles.col12}  ${styles.showXs} ${styles.textCenter}`}

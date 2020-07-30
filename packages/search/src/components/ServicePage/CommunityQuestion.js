@@ -29,6 +29,7 @@ class CommunityQuestion extends React.Component {
     const formData = {}
     Object.keys(this.refs).map(key => (formData[key] = this.refs[key].value))
 
+    const path = window.location.href;
 
     // check url location
     const urlLocations = typeof window !== 'undefined' ? window.location.href : '';
@@ -84,7 +85,7 @@ class CommunityQuestion extends React.Component {
                   <p hidden>
                     <label>
                       Don’t fill this out:{" "}
-                      <input name="path" type="text" value="" />
+                      <input name="path" type="text" value={window.location.href} />
                     </label>
                   </p>
 

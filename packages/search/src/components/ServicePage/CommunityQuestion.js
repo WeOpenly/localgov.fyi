@@ -19,7 +19,6 @@ class CommunityQuestion extends React.Component {
     }
   }
 
-const path = window.location.href; 
 
   handleSubmit(event) {
     // Do form submission stuff ...

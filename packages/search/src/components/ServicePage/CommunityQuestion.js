@@ -63,6 +63,9 @@ class CommunityQuestion extends React.Component {
   }
 
   render() {
+    
+    const path= window.location.href;
+    
     return (
       <>
         <div class="divider"></div>
@@ -84,7 +87,7 @@ class CommunityQuestion extends React.Component {
                   <p hidden>
                     <label>
                       Don’t fill this out:{" "}
-                      <input name="path" type="text" value={urlLocations} />
+                      <input name="path" type="text" value={path} />
                     </label>
                   </p>
 

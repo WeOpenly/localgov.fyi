@@ -31,8 +31,6 @@ const path = window.location.href;
     const formData = {}
     Object.keys(this.refs).map(key => (formData[key] = this.refs[key].value))
 
-    const path = window.location.href;
-
     // check url location
     const urlLocations = typeof window !== 'undefined' ? window.location.href : '';
     // Set options for axios. The URL we're submitting to
@@ -87,7 +85,7 @@ const path = window.location.href;
                   <p hidden>
                     <label>
                       Don’t fill this out:{" "}
-                      <input name="path" type="text" value={path} />
+                      <input name="path" type="text" value={urlLocations} />
                     </label>
                   </p>
 

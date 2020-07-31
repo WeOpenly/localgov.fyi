@@ -63,8 +63,7 @@ class CommunityQuestion extends React.Component {
   }
 
   render() {
-    
-    const path= window.location.href;
+   
     
     return (
       <>
@@ -87,7 +86,7 @@ class CommunityQuestion extends React.Component {
                   <p hidden>
                     <label>
                       Don’t fill this out:{" "}
-                      <input name="path" type="text" value={path} />
+                      <input name="path" type="href" value="" />
                     </label>
                   </p>
 

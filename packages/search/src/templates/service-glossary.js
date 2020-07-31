@@ -13,6 +13,7 @@ import MediaNetAd from "../components/MediaNetAd";
 import GoogleAds from "../components/GoogleAds";
 
 import RelatedServiceTemplates from "../components/RelatedServiceTemplates";
+import GenericFAQ from "../components/ServiceTemplatePage/GenericFAQCard";
 
 import {
   fetchGoogLoc,
@@ -276,9 +277,21 @@ class ServiceGlossary extends Component {
             >
               <OtherLocations isMobile={this.props.isMobile} allOrgs={orgs} />
             </div>
+
+            <div
+              className={`${styles.column} ${styles.col10} ${styles.textCenter}`}
+              style={{
+                margin: "0rem 0 2rem 0"
+              }}
+            >
+              <h4>Frequently Asked Questions about {service_name}</h4>
+              <GenericFAQ /> 
+            </div>
+            
+            <div class="divider"></div>
+            
             <div className={`${styles.column} ${styles.col1}`}></div>
 
-            <div className={`${styles.column} ${styles.col1}`}></div>
             <div
               className={`${styles.column} ${styles.col12} ${styles.textCenter}`}
             >
@@ -382,6 +395,7 @@ class ServiceGlossary extends Component {
             >
               <OtherLocations isMobile={this.props.isMobile} allOrgs={orgs} />
             </div>
+            
             <div
               className={`${styles.column} ${styles.col12} ${styles.textCenter}`}
             >
@@ -392,6 +406,17 @@ class ServiceGlossary extends Component {
                   paddingTop: "8px"
                 }}
               />
+            </div>
+            
+            <div
+              className={`${styles.column} ${styles.col12}`}
+              style={{
+                marginTop: "3rem",
+                padding: "1.5rem"
+              }}
+            >
+             <h4>FAQs about {service_name}</h4>
+              <GenericFAQ /> 
             </div>
             <div
               className={`${styles.column} ${styles.col12}`}

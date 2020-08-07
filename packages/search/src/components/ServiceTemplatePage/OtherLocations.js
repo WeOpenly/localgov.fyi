@@ -9,6 +9,7 @@ import styles from "../spectre.min.module.css";
 
 import LocationSerCard from './LocationSerCard';
 import StateSuggest from './StateSuggest';
+import GoogleAds from "../components/GoogleAds";
 
 
 class OtherLocations extends Component {
@@ -152,7 +153,13 @@ class OtherLocations extends Component {
             >
               {moreLocs}
             </div>
-          </div>
+            
+            <GoogleAds
+            slot="8300987303"
+            layout-key="-h6+9-b-38+7i"
+            ad-format="fluid"
+            />
+         </div>
         );
     }
 }

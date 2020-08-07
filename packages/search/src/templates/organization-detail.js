@@ -464,6 +464,11 @@ class OrganizationDetail extends React.Component {
                       <div style={{ margin: "0rem" }}>
                         <p id={`faqs`}>{qaList}</p>
                       </div>
+                      <GoogleAds
+                        slot="7996185844"
+                        layout="in-article"
+                        format="fluid"
+                      />
                     </div>
                   </div>
                 </div>

@@ -9,7 +9,7 @@ import styles from "../spectre.min.module.css";
 
 import LocationSerCard from './LocationSerCard';
 import StateSuggest from './StateSuggest';
-import GoogleAds from "../components/GoogleAds";
+import GoogleAds from "../GoogleAds";
 
 
 class OtherLocations extends Component {

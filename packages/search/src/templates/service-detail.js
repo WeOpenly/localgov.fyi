@@ -484,6 +484,7 @@ class ServiceDetailTemplate extends React.Component {
                 <div className={`${styles.column} ${styles.col12}`}>
                   <CommunityQuestion> </CommunityQuestion>
                   </div>
+                <div class="fb-comments" data-href="https://papergov.com" data-numposts="2" data-width=""></div>
                 <div className={`${styles.column} ${styles.col12}`}>
                   <MoreLinks
                     isMobile={isMobile}

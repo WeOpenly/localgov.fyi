@@ -26,6 +26,7 @@ import CoronaBanner from "../components/Banner/Corona";
 import { trackView } from "../components/common/tracking";
 import styles from "../components/spectre.min.module.css";
 import iconStyles from "../components/typicons.min.module.css";
+import { DiscussionEmbed } from "disqus-react";
 
 const windowGlobal = typeof window !== "undefined" && window;
 
@@ -481,10 +482,23 @@ class ServiceDetailTemplate extends React.Component {
                     allSteps={allSteps}
                   />
                 </div>
+
                 <div className={`${styles.column} ${styles.col12}`}>
-                  <CommunityQuestion> </CommunityQuestion>
-                  </div>
-                <div class="fb-comments" data-href="https://papergov.com" data-numposts="2" data-width=""></div>
+                  <h3 style={{ margin: "2rem 0" }}>Community Forum</h3>
+                  <p> You can ask any questions related to this service here. Our team or others from your location can also chip in</p>
+                   <DiscussionEmbed
+                     shortname='papergov'
+                     config={
+                       {
+                         url: this.props.url_slug,
+                         identifier: this.props.id
+                       }
+                     }
+                   />
+                  <br></br>
+                </div>
+
+
                 <div className={`${styles.column} ${styles.col12}`}>
                   <MoreLinks
                     isMobile={isMobile}

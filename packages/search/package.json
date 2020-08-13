@@ -17,6 +17,7 @@
         "core-js": "^2.5.7",
         "currency.js": "^1.2.2",
         "dotenv": "^6.2.0",
+        "disqus-react": "^1.0.8",
         "eslint-plugin-react-hooks": "^2.0.1",
         "fingerprintjs2": "^2.1.0",
         "firebase": "^6.2.4",

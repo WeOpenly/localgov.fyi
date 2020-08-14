@@ -484,8 +484,8 @@ class ServiceDetailTemplate extends React.Component {
                 </div>
 
                 <div className={`${styles.column} ${styles.col12}`}>
-                  <h3 style={{ margin: "2rem 0" }}>Community Forum</h3>
-                  <p> You can ask any questions related to this service here. Our team or others from your location can also chip in</p>
+                  <h3 style={{ margin: "2rem 0" }}>Community Q&A</h3>
+                  <p> You can ask any questions related to this service here. We will try to answer them soon</p>
                    <DiscussionEmbed
                      shortname='papergov'
                      config={
@@ -604,9 +604,20 @@ class ServiceDetailTemplate extends React.Component {
                     allSteps={allSteps}
                   />
                 </div>
-                <div className={`${styles.column} ${styles.col12}`}>
-                  <CommunityQuestion> </CommunityQuestion>
-                  </div>
+                 <div className={`${styles.column} ${styles.col12}`}> 
+                  <h3 style={{ margin: "2rem 0" }}>Community Forum</h3>
+                  <p> You can ask any questions related to this service here. We will try to answer them soon</p>
+                   <DiscussionEmbed
+                     shortname='papergov'
+                     config={
+                       {
+                         url: this.props.url_slug,
+                         identifier: this.props.id
+                       }
+                     }
+                   />
+                  <br></br>
+                 </div>
                 <div className={`${styles.column} ${styles.col12}`}>
                   <MoreLinks
                     isMobile={isMobile}

@@ -13,6 +13,7 @@ import Step2 from '../illus/Step2.js'
 
 import styles from "../components/spectre.min.module.css";
 import iconStyles from "../components/typicons.min.module.css";
+import ContributeTime from "../components/ContributeTime"
 
 const windowGlobal = typeof window !== "undefined" && window;
 
@@ -215,13 +216,7 @@ class Contribute extends React.Component {
                   </p>
                 </div>
                 <div>
-                  <a
-                    className={styles.btn}
-                    href="https://paypal.me/papergov"
-                    color="primary"
-                  >
-                    Sign me up :) 
-                  </a>
+                   <ContributeTime buttonLabel="Sign me up"> </ContributeTime>
                 </div>
               </div>
             </div>
@@ -254,7 +249,7 @@ class Contribute extends React.Component {
                     href="https://paypal.me/papergov"
                     color="primary"
                   >
-                    Tip us up!
+                    Contribute Now!
                   </a>
                 </div>
                 

@@ -49,7 +49,20 @@ class FooterCompany extends Component {
               Ads
             </a>
           </div>
+          
+          <div style={{ marginBottom: "0.2rem" }}>
+            <a href={`/contribute`} target="_blank">
+              <span
+                className={`${styles.badge} ${styles.textSemibold} ${styles.textGray}`}
+                data-badge="NEW"
+              >
+                Contribute
+              </span>
+            </a>
+          </div>
+ 
         </div>
+
         <div
           className={`${styles.column} ${styles.col12}  ${styles.showXs} ${styles.textCenter}`}
         >
@@ -74,8 +87,23 @@ class FooterCompany extends Component {
           </div>
            
           <div>
-            <a className={styles.textGray} href={`/ads`} target="_blank">
+            <a 
+               className={styles.textGray} 
+               href={`/ads`} 
+               target="_blank"
+            >
               Ads
+            </a>
+          </div>
+       
+          <div>
+            <a 
+               className={styles.textGray} 
+               href={`/contribute`} 
+               target="_blank"
+               data-badge="NEW"
+            >
+              Contribute
             </a>
           </div>
       

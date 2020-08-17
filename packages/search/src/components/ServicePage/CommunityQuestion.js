@@ -77,16 +77,32 @@ class CommunityQuestion extends React.Component {
 
               <div style={this.state.showForm ? {} : { display: "none" }}>
 
-                <form ref={this.domRef} name="AskQuestion" method="POST" data-netlify="true" onSubmit={event => this.handleSubmit(event)}>
+                <form ref={this.domRef} 
+                      name="AskQuestion" 
+                      method="POST" 
+                      action="/"
+                      data-netlify="true" 
+                      onSubmit={event => this.handleSubmit(event)}>
 
                  {/* this  is hidden but netlify need it to make sure netlify bot can see the form */}
                   <input ref="form-name" type="hidden" name="form-name" value="AskQuestion" />
-
+                  
+                  <p hidden>
+                    <label>
+                      Don’t fill this out:{" "}
+                      <input name="bot-field" onChange={this.handleChange} />
+                    </label>
+                  </p>  
+                    
                   {/* collects the service page path */}
                   <p hidden>
                     <label>
                       Don’t fill this out:{" "}
-                      <input name="path" type="href" value="" />
+                      <input 
+                        class="form-control"
+                        name="path" 
+                        type="href" 
+                        value=""/>
                     </label>
                   </p>
 
@@ -95,7 +111,9 @@ class CommunityQuestion extends React.Component {
                   <textarea 
                     required 
                     class="form-control"
-                    id="message" ref="message" name="message" 
+                    id="message" 
+                    ref="message" 
+                    name="message" 
                     placeholder="What is your question? Please be as precise as possible so that we can be helpful with our answer!" />
                   </p>
 

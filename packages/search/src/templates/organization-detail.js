@@ -370,10 +370,10 @@ class OrganizationDetail extends React.Component {
           <script type="application/ld+json">{`${JSON.stringify(
             jsonLd
           )}`}</script>
-          <title>{`Access ${name}'s government services | Papergov`}</title>
+          <title>{`Access ${name}'s government services Online | Papergov`}</title>
           <meta
             name="description"
-            content={`Discover & Act on services in ${name} like Property taxes, Parking & Traffic Tickets, Utility Bills, Business Licenses & more!`}
+            content={`Discover & Act on services in ${name} like Property taxes, Parking & Traffic Tickets, Utility Bills, Business Licenses & more Online!`}
           />
           <meta
             name="keywords"
@@ -386,7 +386,7 @@ class OrganizationDetail extends React.Component {
           />
           <meta
             property="og:description"
-            content={`${name} government services like taxes, utility bills, licenses, permits, tickets & more`}
+            content={`${name} government services like taxes, utility bills, licenses, permits, tickets & more online!`}
           />
           <link rel="canonical" href={`https://papergov.com/${url_slug}/`} />
         </Helmet>

@@ -397,7 +397,7 @@ class ServiceDetailTemplate extends React.Component {
           <link rel="canonical" href={`https://papergov.com/${url_slug}/`} />
           <meta
             property="og:title"
-            content={`${name} | ${org_name} | papergov`}
+            content={`${name} Online | ${org_name} | papergov`}
           />
           <meta
             property="og:url"
@@ -409,16 +409,16 @@ class ServiceDetailTemplate extends React.Component {
           ) : (
             <meta
               name="description"
-              content={`${name} online in ${org_name} seamlessly with papergov. Be it property taxes, utility bills, tickets or permits and licenses, you can find them all on papergov.`}
+              content={`${name} Online in ${org_name} seamlessly with papergov. Be it property taxes, utility bills, tickets or permits and licenses, you can find them all on papergov.`}
             />
           )}
           <meta
             name="keywords"
-            content={`${name} online , ${org_name} services `}
+            content={`${name} Online , ${org_name} services `}
           />
           <meta
             property="og:description"
-            content={`${name} Online in ${org_name} & access all other government services seamlessly | Papergov`}
+            content={`${name} Online in ${org_name} & access all local government services seamlessly | Papergov`}
           />
         </Helmet>
         <div

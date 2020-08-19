@@ -175,13 +175,13 @@ class ServiceGlossary extends Component {
     return (
       <Fragment>
         <Helmet>
-          <title>{`${service_name} | papergov`}</title>
+          <title>{`${service_name} Online | papergov`}</title>
           <link
             rel="canonical"
             href={`https://papergov.com/services/${service_name_slug}/`}
           />
 
-          <meta property="og:title" content={`${service_name} | papergov`} />
+          <meta property="og:title" content={`${service_name} Online | papergov`} />
           <meta
             property="og:url"
             content={`https://papergov.com/services/${service_name_slug}/`}

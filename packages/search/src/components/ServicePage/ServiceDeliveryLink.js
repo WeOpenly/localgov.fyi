@@ -418,6 +418,10 @@ class ServiceDeliveryLink extends Component {
                    <select 
                     className={styles.formInput}
                     style= {{ alignContent: "left" }}
+                    name="category"
+                    type="option"
+                    value= {value}
+                    onChange={this.handleChange}
                     >
                       <option value=""> Pick a category here! </option>
                       <option value="service link">Online Service Page</option>
@@ -441,11 +445,14 @@ class ServiceDeliveryLink extends Component {
                       className={styles.formInput}
                       onChange={this.handleChange}
                     />
+                   <br> </br>
                   </label>
+                  
                   <button
                     className={`${styles.btn} ${styles.btnPrimary} ${styles.inputGroupBtn} ${styles.btnLg}`}
                     type="submit"
                     style={{ margin: "0 0.5rem" }}
+                    onClick={this.handleChange}
                   >
                     Submit
                   </button>
@@ -462,6 +469,25 @@ class ServiceDeliveryLink extends Component {
             </Fragment>
           )}
           {submitting && <div>loading</div>}
+          {success && (
+            <div style={{ padding: "2rem 1rem" }}>
+              <div>
+              <br></br>
+                Thanks! We will use this feedback to improve Papergov. 
+              <br></br>
+              </div>
+              <br></br>
+              <button
+                style={{ margin: "1 1rem" }}
+                size="small"
+                className={`${styles.btn} ${styles.btnSecondary} ${styles.inputGroupBtn} ${styles.btnLg}`}
+                onClick={this.handleClose}
+              >
+              Close 
+              </button>
+              <br></br>
+            </div>
+          )} 
           {failure && (
             <div>
               <div>Something went wrong. Please try again.</div>

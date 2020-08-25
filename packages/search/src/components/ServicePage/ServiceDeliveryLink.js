@@ -343,20 +343,24 @@ class ServiceDeliveryLink extends Component {
               </div>
               <div style={{ textAlign: "center", margin: "2rem" }}>
                 <p>
-                 
+  
                   In case you missed it, the link opens in a new tab of your
                   browser
                 </p>
               </div>
               <div class="divider"></div>
-               <GoogleAds
-                 slot="6545379470"
-                  containerStyles={{
-                    marginTop: "16px",
-                    borderLeft: "1px solid #ececec",
-                    paddingTop: "8px"
-                  }}
-               />
+              <div
+                className={`${styles.column} ${styles.col12} ${styles.textCenter} `}
+              >
+              <GoogleAds
+                slot="6545379470"
+                containerStyles={{
+                  marginTop: "16px",
+                  borderLeft: "1px solid #ececec"
+                }}
+              />
+             </div>
+              
             </div>
           )}
           {!showSatisfied && !success && !failure && !submitting && (
@@ -402,7 +406,7 @@ class ServiceDeliveryLink extends Component {
                       name="feedbackComment"
                       type="text"
                       style={{ margin: "1rem 0" }}
-                      placeholder="Can "
+                      placeholder="Can you please give us more details about your experience?"
                       value={feedbackComment}
                       className={styles.formInput}
                       onChange={this.handleChange}

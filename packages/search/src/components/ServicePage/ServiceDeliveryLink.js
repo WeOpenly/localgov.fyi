@@ -15,7 +15,7 @@ import SvgUsers from "../../svgIcons/users";
 
 import classNames from "classnames/bind";
 
-import GoogleAds from "../components/GoogleAds";
+import GoogleAds from "../GoogleAds";
 
 let cx = classNames.bind(styles);
 

@@ -15,6 +15,8 @@ import SvgUsers from "../../svgIcons/users";
 
 import classNames from "classnames/bind";
 
+import GoogleAds from "../components/GoogleAds";
+
 let cx = classNames.bind(styles);
 
 const windowGlobal = typeof window !== "undefined" && window;
@@ -63,22 +65,35 @@ class ServiceDeliveryLink extends Component {
     if (window.location && window.location.pathname) {
       currentLoc = window.location.pathname;
     }
-
-    this.setState({ showSatisfied: false, satisfied: true, submitting: true });
-
-    fetch("/", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/x-www-form-urlencoded"
-      },
-      body: encodeBody({
-        "form-name": "serviceDeliveryFeedback",
-        path: currentLoc,
-        satisfied: true
-      })
+    
+    this.setState({ 
+      showSatisfied: false,
+      satisfied: true
+    },
+    () => 
+      fetch("/", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/x-www-form-urlencoded"
+        },
+        body: encodeBody({
+          "form-name": "serviceDeliveryFeedback",
+          path: currentLoc,
+          satisfied: true
+        })
     })
-      .then(() => this.setState({ submitting: false, success: true }))
-      .catch(error => this.setState({ submitting: false, failure: true }));
+      .then(() => 
+        this.setState({ 
+          submitting: this.state.submitting,
+          success: this.state.success
+          }))
+        .catch(error => 
+          this.setState({ 
+            submitting: false, 
+            failure: true 
+          })
+        )
+    );
 
     trackFeedback({
       satisfied: true,
@@ -323,7 +338,7 @@ class ServiceDeliveryLink extends Component {
                   className={`${styles.btn} ${styles.btnSecondary} ${styles.inputGroupBtn} ${styles.btnLg}`}
                   type="submit"
                 >
-                  It could have been better.
+                  It could have been better!
                 </button>
               </div>
               <div style={{ textAlign: "center", margin: "2rem" }}>
@@ -333,6 +348,15 @@ class ServiceDeliveryLink extends Component {
                   browser
                 </p>
               </div>
+              <div class="divider"></div>
+               <GoogleAds
+                 slot="6545379470"
+                  containerStyles={{
+                    marginTop: "16px",
+                    borderLeft: "1px solid #ececec",
+                    paddingTop: "8px"
+                  }}
+               />
             </div>
           )}
           {!showSatisfied && !success && !failure && !submitting && (
@@ -342,7 +366,7 @@ class ServiceDeliveryLink extends Component {
                   className={styles.modalHeader}
                   style={{ textAlign: "center" }}
                 >
-                  <h5>Let us know how we can improve</h5>
+                  <h5>Thanks! We would love to know more!</h5>
                 </div>
 
                 <form
@@ -374,17 +398,34 @@ class ServiceDeliveryLink extends Component {
                   </p>
                   <label>
                     <textarea
-                      required={!this.state.satisfied}
+                      required
                       name="feedbackComment"
                       type="text"
                       style={{ margin: "1rem 0" }}
-                      placeholder="Your comments"
+                      placeholder="Can "
                       value={feedbackComment}
                       className={styles.formInput}
                       onChange={this.handleChange}
                       rows={4}
                     />
                   </label>
+                 
+                  <label> 
+                   <select 
+                    className={styles.formInput}
+                    style= {{ alignContent: "left" }}
+                    >
+                      <option value=""> Pick a category here! </option>
+                      <option value="service link">Online Service Page</option>
+                      <option value="404">Service Page Link</option>
+                      <option value="payment">Payment Options</option>
+                      <option value="transaction fee">Trasaction Fees</option>
+                      <option value="faqs">FAQs</option>
+                      <option value="info">Contact Info</option>
+                      <option value="other">Other</option>
+                    </select>
+                  </label>
+
                   <label>
                     <input
                       required
@@ -419,7 +460,6 @@ class ServiceDeliveryLink extends Component {
           {submitting && <div>loading</div>}
           {failure && (
             <div>
-   
               <div>Something went wrong. Please try again.</div>
               <button
                 size="small"

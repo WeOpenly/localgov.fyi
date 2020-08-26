@@ -483,8 +483,7 @@ class OrganizationDetail extends React.Component {
                   {allServiceList.length
                     ? allServiceList
                     : "No services found."}
-                  <div className={`${styles.column} ${styles.col2} ${styles.textCenter} `}
-                  >
+                  <div className={`${styles.column} ${styles.col2} ${styles.textCenter} `}>
                     <GoogleAds
                       slot="6304656571"
                       containerStyles={{
@@ -494,6 +493,7 @@ class OrganizationDetail extends React.Component {
                       }}
                     />
                   </div>
+                 </div>
                 <div
                   className={`${styles.column} ${styles.col8} ${styles.colMd12}`}
                 >

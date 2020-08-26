@@ -229,7 +229,48 @@ class OrganizationDetail extends React.Component {
               />
             );
           });
+          
+          let serqaList = [];
+          let faqServiceList = null;
+            
+          faqServiceList = (
+              <div
+                style={{
+                display: "flex",
+                flexDirection: "column",
+                margin: "1rem 0.2rem 0.2rem 0.2rem"
+               }}
+              >
+               {servicesAtLevel.map((ser, idx) => {
+                return(
+                  <div> 
+                  <div
+                      itemScope
+                      itemProp="mainEntity"
+                      itemType="https://schema.org/Question"
+                      style={{ margin: "1rem 0.3rem" }}
+                  >
 
+                  <h4>How to {ser.service_name} Online in the {name}?</h4>
+                  </div>
+
+                  <div
+                        itemScope
+                        itemProp="acceptedAnswer"
+                        itemType="https://schema.org/Answer"
+                        style={{ fontSize: "1rem", letterSpacing: "0.002em", lineHeight: "1.4" }}
+                  >
+                    You can access all the information on how to {ser.service_name} Online <a href={`/${ser.url_slug}`}>here</a>.
+                  </div>
+                  <div className={styles.divider} /> 
+                  <div class="spectre-min-module--divider--2dnFa"></div>
+                  </div>
+                );
+                })}
+                </div>
+             ); 
+             
+             serqaList = serqaList.concat(faqServiceList);
           
           servicesAtLevel.map((ser, idx) => {
             const faqs = ser.service_faq || [];
@@ -463,6 +504,7 @@ class OrganizationDetail extends React.Component {
                     >
                       <div style={{ margin: "0rem" }}>
                         <p id={`faqs`}>{qaList}</p>
+                        <p id={`faqs`}>{serqaList}</p>
                       </div>
                       <GoogleAds
                         slot="7996185844"

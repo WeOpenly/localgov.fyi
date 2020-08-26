@@ -343,7 +343,6 @@ class ServiceDeliveryLink extends Component {
               </div>
               <div style={{ textAlign: "center", margin: "2rem" }}>
                 <p>
-  
                   In case you missed it, the link opens in a new tab of your
                   browser
                 </p>
@@ -360,7 +359,6 @@ class ServiceDeliveryLink extends Component {
                 }}
               />
              </div>
-              
             </div>
           )}
           {!showSatisfied && !success && !failure && !submitting && (
@@ -400,6 +398,7 @@ class ServiceDeliveryLink extends Component {
                       <input name="path" type="text" value="" />
                     </label>
                   </p>
+
                   <label>
                     <textarea
                       required
@@ -417,10 +416,9 @@ class ServiceDeliveryLink extends Component {
                   <label> 
                    <select 
                     className={styles.formInput}
-                    style= {{ alignContent: "left" }}
+                    style={{ margin: "1rem 0" }}
                     name="category"
                     type="option"
-                    value= {value}
                     onChange={this.handleChange}
                     >
                       <option value=""> Pick a category here! </option>
@@ -468,7 +466,7 @@ class ServiceDeliveryLink extends Component {
               </div>
             </Fragment>
           )}
-          {submitting && <div>loading</div>}
+
           {success && (
             <div style={{ padding: "2rem 1rem" }}>
               <div>

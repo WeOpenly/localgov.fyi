@@ -65,34 +65,34 @@ class ServiceDeliveryLink extends Component {
     if (window.location && window.location.pathname) {
       currentLoc = window.location.pathname;
     }
-    
+
     this.setState({ 
       showSatisfied: false,
       satisfied: true
     },
     () => 
-      fetch("/", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/x-www-form-urlencoded"
-        },
-        body: encodeBody({
-          "form-name": "serviceDeliveryFeedback",
-          path: currentLoc,
-          satisfied: true
-        })
+    fetch("/", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/x-www-form-urlencoded"
+      },
+      body: encodeBody({
+        "form-name": "serviceDeliveryFeedback",
+        path: currentLoc,
+        satisfied: true
+      })
     })
       .then(() => 
+       this.setState({ 
+        submitting: this.state.submitting,
+        success: this.state.success
+        }))
+      .catch(error => 
         this.setState({ 
-          submitting: this.state.submitting,
-          success: this.state.success
-          }))
-        .catch(error => 
-          this.setState({ 
-            submitting: false, 
-            failure: true 
-          })
-        )
+          submitting: false, 
+          failure: true 
+        })
+      )
     );
 
     trackFeedback({
@@ -338,13 +338,13 @@ class ServiceDeliveryLink extends Component {
                   className={`${styles.btn} ${styles.btnSecondary} ${styles.inputGroupBtn} ${styles.btnLg}`}
                   type="submit"
                 >
-                  It could have been better!
+                  It could have been better.
                 </button>
               </div>
               <div style={{ textAlign: "center", margin: "2rem" }}>
                 <p>
                   In case you missed it, the link opens in a new tab of your
-                  browser
+                  browser!
                 </p>
               </div>
               <div class="divider"></div>
@@ -398,38 +398,39 @@ class ServiceDeliveryLink extends Component {
                       <input name="path" type="text" value="" />
                     </label>
                   </p>
-
+                 
                   <label>
                     <textarea
                       required
                       name="feedbackComment"
-                      type="text"
                       style={{ margin: "1rem 0" }}
-                      placeholder="Can you please give us more details about your experience?"
+                      type="text"
+                      placeholder="Your comments"
                       value={feedbackComment}
                       className={styles.formInput}
                       onChange={this.handleChange}
-                      rows={4}
+                      rows="5"
                     />
+                    <br></br>
                   </label>
-                 
+
                   <label> 
-                   <select 
-                    className={styles.formInput}
-                    style={{ margin: "1rem 0" }}
-                    name="category"
-                    type="option"
-                    onChange={this.handleChange}
-                    >
-                      <option value=""> Pick a category here! </option>
-                      <option value="service link">Online Service Page</option>
-                      <option value="404">Service Page Link</option>
-                      <option value="payment">Payment Options</option>
-                      <option value="transaction fee">Trasaction Fees</option>
-                      <option value="faqs">FAQs</option>
-                      <option value="info">Contact Info</option>
-                      <option value="other">Other</option>
-                    </select>
+                  <select 
+                  className={styles.formInput}
+                  style={{ margin: "1rem 0" }}
+                  name="category"
+                  type="option"
+                  onChange={this.handleChange}
+                  >
+                   <option value=""> Pick a category here! </option>
+                   <option value="service link">Service Page Not Working</option>
+                   <option value="404">Page doesn't exist</option>
+                   <option value="payment">Payment Options</option>
+                   <option value="transaction fee">Trasaction Fees</option>
+                   <option value="maps">FAQs</option>
+                   <option value="maps">Contact Info</option>
+                   <option value="other">Other</option>
+                  </select>
                   </label>
 
                   <label>
@@ -443,9 +444,9 @@ class ServiceDeliveryLink extends Component {
                       className={styles.formInput}
                       onChange={this.handleChange}
                     />
-                   <br> </br>
+                    <br></br>
                   </label>
-                  
+                 
                   <button
                     className={`${styles.btn} ${styles.btnPrimary} ${styles.inputGroupBtn} ${styles.btnLg}`}
                     type="submit"
@@ -466,7 +467,6 @@ class ServiceDeliveryLink extends Component {
               </div>
             </Fragment>
           )}
-
           {success && (
             <div style={{ padding: "2rem 1rem" }}>
               <div>
@@ -485,9 +485,9 @@ class ServiceDeliveryLink extends Component {
               </button>
               <br></br>
             </div>
-          )} 
+          )}
           {failure && (
-            <div>
+            <div style={{ padding: "2rem 1rem" }}>
               <div>Something went wrong. Please try again.</div>
               <button
                 size="small"

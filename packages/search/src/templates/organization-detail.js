@@ -325,12 +325,12 @@ class OrganizationDetail extends React.Component {
         if ("org" in detailsAtLevel) {
           if (detailsAtLevel.org && "name" in detailsAtLevel.org) {
             const { name: orgName } = detailsAtLevel.org;
-            const orgHeading = <h4>Services offered by <br/>{orgName}</h4>;
+            const orgHeading = <h4>Online Services offered by <br/>{orgName}</h4>;
 
             let orgSubheading = <p>More services available here</p>;
             if (orgName.toLowerCase().includes("county")) {
               orgSubheading = (
-                <p>Find services from the County agencies of {orgName}</p>
+                <p>Find services from the agencies of {orgName}</p>
               );
             } else if (orgName.toLowerCase().includes("state")) {
               orgSubheading = (
@@ -389,7 +389,7 @@ class OrganizationDetail extends React.Component {
           margin: "1rem 0.2rem 0.2rem 0.2rem"
         }}
       >
-        No FAQs listed at the moment
+        No FAQs listed at the moment!
       </div>
     );
     }

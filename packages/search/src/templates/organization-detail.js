@@ -183,6 +183,7 @@ class OrganizationDetail extends React.Component {
     });
 
     let qaList = [];
+    let serqaList = [];
     let allServiceList = [];
 
     if (services.length > 0) {
@@ -230,7 +231,7 @@ class OrganizationDetail extends React.Component {
             );
           });
           
-          let serqaList = [];
+         
           let faqServiceList = null;
             
           faqServiceList = (
@@ -482,7 +483,17 @@ class OrganizationDetail extends React.Component {
                   {allServiceList.length
                     ? allServiceList
                     : "No services found."}
-                </div>
+                  <div className={`${styles.column} ${styles.col2} ${styles.textCenter} `}
+                  >
+                    <GoogleAds
+                      slot="6304656571"
+                      containerStyles={{
+                      marginTop: "16px",
+                      borderLeft: "1px solid #ececec",
+                      paddingLeft: "24px"
+                      }}
+                    />
+                  </div>
                 <div
                   className={`${styles.column} ${styles.col8} ${styles.colMd12}`}
                 >
@@ -529,27 +540,13 @@ class OrganizationDetail extends React.Component {
               style={{ marginTop: "8px" }}
               className={`${styles.column} ${styles.col12} ${styles.textCenter} `}
             >
-           {!isMobile ? (
-                <MediaNetAd
-                  dims="728x90"
-                  slotId="218500355"
-                  containerStyles={{
+               <GoogleAds
+                slot="4014353396"
+                containerStyles={{
                   marginTop: "16px",
                   borderLeft: "1px solid #ececec"
                 }}
                 />
-              ) : (
-                <MediaNetAd
-                  dims="300x250"
-                  slotId="820812557"
-                  containerStyles={{
-                    marginTop: "8px",
-                    borderTop: "1px solid #d4d4d4",
-                    paddingTop: "8px"
-                  }}
-                />
-              )
-              }
            </div>
           <FooterNew isMobile={isMobile} page={this.props.location.pathname} />
         </div>

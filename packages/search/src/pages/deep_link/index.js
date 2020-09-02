@@ -102,6 +102,16 @@ class DeepLink extends Component {
         const {s, o} = decodedData;
         return (
           <Grid container spacing={16}>
+            <Grid item xs={12} align="center" className={classes.adContainer}>
+                <GoogleAds
+                slot="1317522388"
+                containerStyles={{
+                  marginTop: "8px",
+                  borderLeft: "1px solid #ececec",
+                  paddingTop: "8px"
+                }}
+               />
+            </Grid>
             <Grid
               item
               xs={12}
@@ -133,7 +143,7 @@ class DeepLink extends Component {
                 <GoogleAds
                 slot="2997691754"
                 containerStyles={{
-                  marginTop: "16px",
+                  marginTop: "8px",
                   borderLeft: "1px solid #ececec",
                   paddingTop: "8px"
                 }}

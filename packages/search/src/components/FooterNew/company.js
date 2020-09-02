@@ -54,7 +54,6 @@ class FooterCompany extends Component {
             <a href={`/contribute`} target="_blank">
               <span
                 className={`${styles.badge} ${styles.textSemibold} ${styles.textGray}`}
-                data-badge="NEW"
               >
                 Contribute
               </span>
@@ -101,7 +100,6 @@ class FooterCompany extends Component {
                className={styles.textGray} 
                href={`/contribute`} 
                target="_blank"
-               data-badge="NEW"
             >
               Contribute
             </a>

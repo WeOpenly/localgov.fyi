@@ -48,7 +48,7 @@ class TemplateHero extends Component {
                 className={`${styles.column} ${styles.col9} ${styles.textLeft}`}
               >
                 <div>
-                  <h1>{service_name} </h1>
+                  <h1>{service_name} Online </h1>
                 </div>
 
                 <TemplateViews views={views} orgsCnt={orgsCnt} />
@@ -78,7 +78,7 @@ class TemplateHero extends Component {
               <div
                 className={`${styles.column} ${styles.col12} ${styles.textCenter}`}
               >
-                <h1>{service_name} </h1>
+                <h1>{service_name} Online </h1>
               </div>
               <div
                 className={`${styles.column} ${styles.col12} ${styles.textLeft}`}

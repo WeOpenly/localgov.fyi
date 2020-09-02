@@ -51,12 +51,12 @@ class FooterCompany extends Component {
           </div>
           
           <div style={{ marginBottom: "0.2rem" }}>
-            <a href={`/contribute`} target="_blank">
-              <span
-                className={`${styles.badge} ${styles.textSemibold} ${styles.textGray}`}
-              >
-                Contribute
-              </span>
+            <a 
+              className={`${styles.textGray} ${styles.textSemibold}`}
+              href={`/contribute`} 
+              target="_blank"
+            >
+              Contribute
             </a>
           </div>
  

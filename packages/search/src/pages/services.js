@@ -171,7 +171,7 @@ class ServiceList extends Component {
           <meta property="og:title" content={`Services | papergov`} />
           <meta property="og:url" content={`https://papergov.com/services/`} />
 
-          <meta name="description" content={`Services on papergov`} />
+          <meta name="description" content={`Papergov is the leading place to discover and act on all local government services online. Be it dealing with parking tickets, property taxes, utility bills, business licenses etc., or accessing critical services like voter registration, unemployment insurance - we got you covered! Search for online services from more than 1500+ locations here! `} />
 
           <meta property="og:description" content={`Services on papergov`} />
         </Helmet>

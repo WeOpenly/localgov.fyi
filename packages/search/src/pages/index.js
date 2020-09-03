@@ -52,17 +52,17 @@ class Index extends React.Component {
     return (
       <Fragment>
         <Helmet
-          defaultTitle={`Papergov: Find All Government Services in a Single Place`}
+          defaultTitle={`Papergov: Discover & Act on All Government Services Online`}
           titleTemplate={`%s | Papergov`}
         >
           <meta name="og:type" content="website" />
           <meta
             name="description"
-            content={`Search and get notfied when you're due for local government services like payments of utility bill, property tax, parking citation & renewing business licence`}
+            content={`Papergov is the leading place to discover and act on all local government services online. Be it dealing with parking tickets, property taxes, utility bills, business licenses etc., or accessing critical services like registering to vote, apply for unemployment - we got you covered! Search for services from more than 1500+ locations & more!`}
           />
           <meta
             property="og:site_name"
-            content={`Find All Government Services in a Single Place`}
+            content={`Discover & Act on all Government Services Online`}
           />
 
           <link

@@ -243,7 +243,7 @@ class ServiceGlossary extends Component {
               </div>
             <div className={`${styles.column} ${styles.col10}`}></div>
  
-            <div className={`${styles.column} ${styles.col10} ${styles.textCenter}`}>
+            <div className={`${styles.column} ${styles.col12} ${styles.textCenter}`}>
                   <GoogleAds
                     slot="2974410569"
                     containerStyles={{
@@ -255,11 +255,11 @@ class ServiceGlossary extends Component {
                   /> 
              </div>
 
-            <div className={`${styles.column} ${styles.col10}`}></div>
+            <div className={`${styles.column} ${styles.col12}`}></div>
             <div
-              className={`${styles.column} ${styles.col10}`}
+              className={`${styles.column} ${styles.col12}`}
               style={{
-                margin: "3rem 0 2rem 2rem"
+                margin: "2rem 0 0rem 2rem"
               }}
             >
               <Suggested
@@ -269,20 +269,22 @@ class ServiceGlossary extends Component {
               />
             </div>
             <div className={`${styles.column} ${styles.col1}`}></div>
-
-            <div className={`${styles.column} ${styles.col1}`}></div>
             <div
               className={`${styles.column} ${styles.col10}`}
               style={{
-                margin: "3rem 0 2rem 2rem"
+                margin: "2rem 0 0rem 2rem"
               }}
             >
               <OtherLocations isMobile={this.props.isMobile} allOrgs={orgs} />
             </div>
             
-            <div className={`${styles.column} ${styles.col12}`}>
-                  <h3 style={{ margin: "2rem 0" }}>Community Q&A</h3>
-                  <p> You can ask any questions related to this service here. We will try to answer them soon! You can choose the option of "Post as Guest" below to post anonymously. </p>
+            <div className={`${styles.column} ${styles.col10}`}
+             style={{
+                margin: "2rem 4rem 0rem 2rem"
+              }}
+             >
+             <h3 style={{ margin: "1rem 0" }}>Community Q&A</h3>
+              <p> You can ask any questions related to this service here. We will try to answer them soon! You can choose the option of "Post as Guest" below to post anonymously. </p>
                    
                    <DiscussionEmbed
                      shortname='papergov'
@@ -293,7 +295,6 @@ class ServiceGlossary extends Component {
                        }
                      }
                    />
-                  <br></br>
                 </div>
             
             <div

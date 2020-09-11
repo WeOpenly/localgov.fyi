@@ -356,6 +356,17 @@ class ServiceGlossary extends Component {
               />
             </div>
 
+            <div className={`${styles.column} ${styles.col12}`}>
+               <GoogleAds
+                slot="9814474402"
+                containerStyles={{
+                  marginTop: "8px",
+                  borderTop: "1px solid #d4d4d4",
+                  paddingTop: "8px"
+                }}
+              />
+            </div>
+
             <div
               className={`${styles.column} ${styles.col12}`}
               style={{
@@ -368,22 +379,6 @@ class ServiceGlossary extends Component {
                 isMobile={this.props.isMobile}
                 service_name={service_name}
                 handleOrgClick={this.handleOrgClick}
-              />
-            </div>
-               
-            <div
-              className={`${styles.column} ${styles.col12}`}
-              style={{
-                marginTop: "3rem",
-                padding: "1rem"
-              }}
-            >
-             <GoogleAds
-                slot="8390388778"
-                containerStyles={{
-                  borderTop: "1px solid #d4d4d4",
-                  paddingTop: "8px"
-                }}
               />
             </div>
           

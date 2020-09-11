@@ -40,16 +40,14 @@ class CommunityQuestion extends React.Component {
     // Set options for axios. The URL we're submitting to
 
     const axiosOptions = {
-
-      method: "POST",
-
+      
+      method: "post",
       headers: { "Content-Type": "application/x-www-form-urlencoded" },
       body: encodeBody({
         "form-name": "AskQuestion",
          path: currentLoc,
       }),
       data: qs.stringify(formData),
-
       url: urlLocations,
     }
 
@@ -109,6 +107,8 @@ class CommunityQuestion extends React.Component {
                       Don’t fill this out:{" "}
                       <input 
                         class="form-control"
+                        id="path"
+                        ref="path"
                         name="path" 
                         type="text" 
                         value=""/>

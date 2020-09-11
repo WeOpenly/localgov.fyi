@@ -436,7 +436,16 @@ class ServiceDetailTemplate extends React.Component {
               className={`${styles.column} ${styles.col2} ${styles.textCenter} `}
             >
               <GoogleAds
-                slot="4527672561"
+                slot="3203181630"
+                containerStyles={{
+                  marginTop: "16px",
+                  borderLeft: "1px solid #ececec",
+                  paddingLeft: "24px"
+                }}
+              />
+             
+              <GoogleAds
+                slot="758141034"
                 containerStyles={{
                   marginTop: "16px",
                   borderLeft: "1px solid #ececec",
@@ -447,7 +456,7 @@ class ServiceDetailTemplate extends React.Component {
               <GoogleAds
                 slot="3833110369"
                 containerStyles={{
-                  marginTop: "8px",
+                  marginTop: "16px",
                   borderLeft: "1px solid #ececec",
                   paddingLeft: "24px"
                 }}

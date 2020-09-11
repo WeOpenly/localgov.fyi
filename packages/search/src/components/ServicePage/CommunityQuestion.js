@@ -29,6 +29,11 @@ class CommunityQuestion extends React.Component {
     // that represent the form data we want to send to Netlify.
     const formData = {}
     Object.keys(this.refs).map(key => (formData[key] = this.refs[key].value))
+    
+    let currentLoc = "";
+      if (window.location && window.location.pathname) {
+        currentLoc = window.location.pathname;
+      }
 
     // check url location
     const urlLocations = typeof window !== 'undefined' ? window.location.href : '';
@@ -36,9 +41,13 @@ class CommunityQuestion extends React.Component {
 
     const axiosOptions = {
 
-      method: "post",
+      method: "POST",
 
       headers: { "Content-Type": "application/x-www-form-urlencoded" },
+      body: encodeBody({
+        "form-name": "AskQuestion",
+         path: currentLoc,
+      }),
       data: qs.stringify(formData),
 
       url: urlLocations,
@@ -101,7 +110,7 @@ class CommunityQuestion extends React.Component {
                       <input 
                         class="form-control"
                         name="path" 
-                        type="href" 
+                        type="text" 
                         value=""/>
                     </label>
                   </p>

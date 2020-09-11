@@ -30,6 +30,7 @@ import iconStyles from "../components/typicons.min.module.css";
 import ServiceCard from "../components/ServiceCard";
 import { trackView, trackClick } from "../components/common/tracking";
 import Corona from "../components/Banner/Corona";
+import { DiscussionEmbed } from "disqus-react";
 
 const JsonLd = ({ data }) => (
   <script
@@ -525,6 +526,23 @@ class OrganizationDetail extends React.Component {
                     </div>
                   </div>
                 </div>
+
+                <div className={`${styles.column} ${styles.col12}`}>
+                  <h3 style={{ margin: "2rem 0" }}>Community Q&A</h3>
+                  <p> You can ask any questions related to services from this location here. We will try to answer them soon! You can choose the option of "Post as Guest" below to post anonymously. </p>
+                   
+                   <DiscussionEmbed
+                     shortname='papergov'
+                     config={
+                       {
+                         url: this.props.url_slug,
+                         identifier: this.props.id
+                       }
+                     }
+                   />
+                  <br></br>
+                </div>
+
                 <div className={`${styles.column} ${styles.col12}`}>
                   <h5 style={{ margin: "3rem 0 1rem 0" }}>
                     {other_orgs_from_state_heading}

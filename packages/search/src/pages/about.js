@@ -213,7 +213,7 @@ class About extends React.Component {
                   <Step1 />
                 </div>
                 <div>
-                  <h5>Discovery</h5>
+                  <h5>Explore</h5>
                 </div>
                 <div style={{ padding: "0.5rem 2rem" }}>
                   <p>
@@ -227,7 +227,7 @@ class About extends React.Component {
                     target="_blank"
                     className={`${styles.btn} ${styles.btnLink}`}
                   >
-                    Try papergov Search
+                    Try Papergov Search
                   </a>
                 </div>
               </div>
@@ -248,28 +248,27 @@ class About extends React.Component {
                   <Step2 />
                 </div>
                 <div>
-                  <h5>Delivery</h5>
+                  <h5>Community</h5>
                 </div>
                 <div style={{ padding: "0.5rem 2rem" }}>
                   <p>
-                    Manage all government interactions with a single account
-                    securely.
+                    Engage positively on any local government interactions in a single place.
                   </p>
                 </div>
                 <div>
                   <a
-                    href="https://pay.papergov.com"
+                    href="https://embed.papergov.com"
                     target="_blank"
                     className={`${styles.btn} ${styles.btnLink}`}
                   >
-                    Try papergov Pay
+                    Try papergov widgets
                   </a>
                   <a
-                    href="https://one.papergov.com"
+                    href="https://papergov.com/community/"
                     target="_blank"
                     className={`${styles.btn} ${styles.btnLink}`}
                   >
-                    Try papergov One
+                    Join the community
                   </a>
                 </div>
               </div>
@@ -305,7 +304,7 @@ class About extends React.Component {
                 style={{ border: "none" }}
                 className={`${styles.textCenter}`}
               >
-                <h2 className={`${styles.cardTitle}`}>250,000 +</h2>
+                <h2 className={`${styles.cardTitle}`}>350,000 +</h2>
                 <p>Users</p>
               </div>
             </div>
@@ -316,7 +315,7 @@ class About extends React.Component {
                 style={{ border: "none" }}
                 className={`${styles.textCenter}`}
               >
-                <h2 className={`${styles.cardTitle}`}>2500 +</h2>
+                <h2 className={`${styles.cardTitle}`}>3300 +</h2>
                 <p>Services</p>
               </div>
             </div>
@@ -327,7 +326,7 @@ class About extends React.Component {
                 style={{ border: "none" }}
                 className={`${styles.textCenter}`}
               >
-                <h2 className={`${styles.cardTitle}`}>1000 +</h2>
+                <h2 className={`${styles.cardTitle}`}>1600 +</h2>
                 <p>Agencies</p>
               </div>
             </div>

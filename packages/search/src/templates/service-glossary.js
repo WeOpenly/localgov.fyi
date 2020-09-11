@@ -240,7 +240,7 @@ class ServiceGlossary extends Component {
                 service_glossary_description={service_glossary_description}
               />
               </div>
-            <div className={`${styles.column} ${styles.col1}`}></div>
+            <div className={`${styles.column} ${styles.col10}`}></div>
  
             <div className={`${styles.column} ${styles.col10} ${styles.textCenter}`}>
                   <GoogleAds
@@ -249,15 +249,16 @@ class ServiceGlossary extends Component {
                     marginTop: "8px",
                     borderTop: "1px solid #ececec",
                     paddingTop: "8px"
+                    paddingLeft: "8px"
                     }}
                   /> 
              </div>
 
-            <div className={`${styles.column} ${styles.col1}`}></div>
+            <div className={`${styles.column} ${styles.col10}`}></div>
             <div
               className={`${styles.column} ${styles.col10}`}
               style={{
-                margin: "3rem 0 2rem 0"
+                margin: "3rem 0 2rem 2rem"
               }}
             >
               <Suggested
@@ -272,16 +273,16 @@ class ServiceGlossary extends Component {
             <div
               className={`${styles.column} ${styles.col10}`}
               style={{
-                margin: "0rem 0 2rem 0"
+                margin: "3rem 0 2rem 2rem"
               }}
             >
               <OtherLocations isMobile={this.props.isMobile} allOrgs={orgs} />
             </div>
-
+            
             <div
               className={`${styles.column} ${styles.col10} ${styles.textCenter}`}
               style={{
-                margin: "0rem 0 2rem 0"
+                margin: "1rem 0 2rem 2rem"
               }}
             >
               <h4>Frequently Asked Questions about {service_name}</h4>

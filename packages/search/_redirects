@@ -6,7 +6,7 @@
 
 /pay/* https://pay.papergov.com/:splat 200!
 
-/community/* https://disqus.com/home/forums/papergov/
+/community/* https://disqus.com/home/forums/papergov/:splat 200!
 
 /api/dsp/* https://dsp-dot-evergov-prod.appspot.com/:splat 200!
 

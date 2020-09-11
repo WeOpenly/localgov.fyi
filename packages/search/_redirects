@@ -6,11 +6,7 @@
 
 /pay/* https://pay.papergov.com/:splat 200!
 
-/knowledge-base/*  https://papergov.webflow.io/knowledge-base/:splat 200!
-
-/blog/* https://papergov.webflow.io/blog/:splat 200!
-
-/help/* https://papergov.webflow.io/help-center/:splat 200!
+/community/* https://disqus.com/home/forums/papergov/
 
 /api/dsp/* https://dsp-dot-evergov-prod.appspot.com/:splat 200!
 

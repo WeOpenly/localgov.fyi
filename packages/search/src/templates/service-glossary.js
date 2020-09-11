@@ -14,6 +14,7 @@ import GoogleAds from "../components/GoogleAds";
 
 import RelatedServiceTemplates from "../components/RelatedServiceTemplates";
 import GenericFAQ from "../components/ServiceTemplatePage/GenericFAQCard";
+import { DiscussionEmbed } from "disqus-react";
 
 import {
   fetchGoogLoc,
@@ -278,6 +279,22 @@ class ServiceGlossary extends Component {
             >
               <OtherLocations isMobile={this.props.isMobile} allOrgs={orgs} />
             </div>
+            
+            <div className={`${styles.column} ${styles.col12}`}>
+                  <h3 style={{ margin: "2rem 0" }}>Community Q&A</h3>
+                  <p> You can ask any questions related to this service here. We will try to answer them soon! You can choose the option of "Post as Guest" below to post anonymously. </p>
+                   
+                   <DiscussionEmbed
+                     shortname='papergov'
+                     config={
+                       {
+                         url: this.props.url_slug,
+                         identifier: this.props.id
+                       }
+                     }
+                   />
+                  <br></br>
+                </div>
             
             <div
               className={`${styles.column} ${styles.col10} ${styles.textCenter}`}

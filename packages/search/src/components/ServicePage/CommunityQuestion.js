@@ -43,10 +43,10 @@ class CommunityQuestion extends React.Component {
       
       method: "post",
       headers: { "Content-Type": "application/x-www-form-urlencoded" },
-      body: encodeBody({
+      body: {
         "form-name": "AskQuestion",
          path: currentLoc,
-      }),
+      },
       data: qs.stringify(formData),
       url: urlLocations,
     }

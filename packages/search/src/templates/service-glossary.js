@@ -249,7 +249,7 @@ class ServiceGlossary extends Component {
                     containerStyles={{
                     marginTop: "8px",
                     borderTop: "1px solid #ececec",
-                    paddingTop: "8px"
+                    paddingTop: "8px",
                     paddingLeft: "8px"
                     }}
                   /> 

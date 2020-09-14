@@ -259,7 +259,7 @@ class ServiceGlossary extends Component {
             <div
               className={`${styles.column} ${styles.col12}`}
               style={{
-                margin: "2rem 0 0rem 2rem"
+                margin: "2rem 0 0rem 4rem"
               }}
             >
               <Suggested

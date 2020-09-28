@@ -262,11 +262,13 @@ def write_standard_redirects():
 
 /pay/* https://pay.papergov.com/:splat 200!
 
-/knowledge-base/*  https://papergov.webflow.io/knowledge-base/:splat 200!
+/knowledge-base/*  https://learn.papergov.com/knowledge-base/:splat 200!
 
-/blog/* https://papergov.webflow.io/blog/:splat 200!
+/blog/* https://learn.papergov.com/blog/:splat 200!
 
-/help/* https://papergov.webflow.io/help-center/:splat 200!
+/help/* https://learn.papergov.com/help-center/:splat 200!
+
+/community/* https://disqus.com/by/teampapergov/:splat 200!
 
 /api/dsp/* {d}/:splat 200!
 

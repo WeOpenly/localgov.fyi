@@ -268,7 +268,7 @@ def write_standard_redirects():
 
 /help/* https://learn.papergov.com/help-center/:splat 200!
 
-/community/* https://disqus.com/by/teampapergov/:splat 200!
+/community/* https://disqus.com/home/forums/papergov/:splat 200!
 
 /api/dsp/* {d}/:splat 200!
 

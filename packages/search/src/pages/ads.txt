@@ -1,0 +1,23 @@
+google.com, pub-5346641393976802, DIRECT, f08c47fec0942fa0
+google.com, pub-6650322601660058, DIRECT, f08c47fec0942fa0
+google.com, pub-6650322601660058, RESELLER, f08c47fec0942fa0
+adyoulike.com, 65821909b0ce70f6e87747d8f22c3cf0, DIRECT
+appnexus.com, 9733, RESELLER
+appnexus.com, 2797, DIRECT
+adtech.com, 10383, reseller
+onetag.com, 5cd7fb62fac7ec9, DIRECT
+openx.com, 537133236, RESELLER, 6a698e2ec38604c6
+openx.com, 540717801, RESELLER, 6a698e2ec38604c6 
+pubmatic.com, 158685, RESELLER, 5d62403b186f2ace
+rubiconproject.com, 13380, DIRECT, 0bfd66d529a55807
+rubiconproject.com, 13380, RESELLER, 0bfd66d529a55807
+sovrn.com, 279534, DIRECT, fafdf38b16bf6b2b
+lijit.com, 279534, DIRECT, fafdf38b16bf6b2b
+lijit.com, 279534-eb, DIRECT, fafdf38b16bf6b2b
+taboola.com,1003147,DIRECT,c228e6794e811952
+spotx.tv,71451,RESELLER
+advertising.com, 8603, RESELLER
+contextweb.com, 560382, RESELLER
+openx.com, 539154393, RESELLER
+rubiconproject.com, 16698, RESELLER, 0bfd66d529a55807
+teads.tv, 20240, DIRECT, 15a9c44f6d26cbe1

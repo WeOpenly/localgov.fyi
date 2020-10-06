@@ -77,13 +77,6 @@ module.exports = {
     {
       resolve: `gatsby-source-filesystem`,
       options: {
-        name: `faqs`,
-        path: path.join(__dirname, `data/faqs`)
-      }
-    },
-    {
-      resolve: `gatsby-source-filesystem`,
-      options: {
         name: `service_glossary`,
         path: path.join(__dirname, `data/service_glossary`)
       }

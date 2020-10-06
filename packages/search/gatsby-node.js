@@ -221,6 +221,19 @@ exports.createPages = ({ graphql, actions }) => {
               }
             }
           }
+          allGuides: allMarkdownRemark(sort: {order: DESC, fields: [frontmatter___date]}, filter: {  fileAbsolutePath: { regex: "/guides/"} }, limit: 1000) {
+            edges {
+              node {
+                id
+                fileAbsolutePath
+                html
+                frontmatter {
+                  slug
+                  title
+                }
+              }
+            }
+          }
           allLogos: allFile(filter: { sourceInstanceName: { eq: "logos" } }) {
             edges {
               node {
@@ -313,6 +326,7 @@ exports.createPages = ({ graphql, actions }) => {
             pack_name: "uber"
           }
         });
+        
         //service page
 
         const serTemplate = path.resolve(`src/templates/service-detail.js`);
@@ -366,6 +380,70 @@ exports.createPages = ({ graphql, actions }) => {
                 logoSizes: serviceLogoMap[`${service.id}_ser_logo`]
               }
             }
+          });
+        });
+        
+        //faq page
+
+        const faqTemplate = path.resolve(`src/templates/faqs.js`);
+
+        _.each(result.data.allSersJson.edges, edge => {
+          const { node } = edge;
+          const {
+            service,
+            org_details,
+            state_org_details,
+            new_url_slug,
+          } = node;
+
+          console.log (node)
+
+          createPage({
+            path: `${service.url_slug}/faqs`,
+            component: slash(faqTemplate),
+              context: {
+                data: {
+                  id: service.id,
+                  name: service.service_name,
+                  service_del_links: service.service_del_links || [],
+                  state_org_details: state_org_details,
+                  contact_details: service.contact_details,
+                  service_parent: service.service_parent || null,
+                  org_id: org_details.id,
+                  org_name: org_details.org_name,
+                  org_slug: org_details.url_slug,
+                  org_area_hie: org_details.area.hierarchy || [],
+                  url_slug: service.url_slug,
+                  allfaq: service.service_faq || [],
+                  new_url_slug: new_url_slug
+                }
+              }
+              
+          });
+        });
+
+        //Guide page
+        const guideTemplate = path.resolve(`src/templates/guide.js`);
+
+        _.each(result.data.allGuides.edges, edge => {
+
+          const { node } = edge;
+          const {
+            frontmatter,
+            html
+          } = node;
+
+
+          createPage({
+            path: `${frontmatter.slug}/`,
+            component: slash(guideTemplate),
+            context: {
+              data:{
+                slug: frontmatter.slug,
+                title: frontmatter.title,
+                html: html
+              }
+            } 
           });
         });
 

@@ -77,6 +77,13 @@ module.exports = {
     {
       resolve: `gatsby-source-filesystem`,
       options: {
+        name: `faqs`,
+        path: path.join(__dirname, `data/faqs`)
+      }
+    },
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
         name: `service_glossary`,
         path: path.join(__dirname, `data/service_glossary`)
       }
@@ -86,6 +93,13 @@ module.exports = {
       options: {
         name: `logos`,
         path: path.join(__dirname, `data/logos`)
+      }
+    },
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        name: `guides`,
+        path: path.join(__dirname, `src/guides`)
       }
     },
     {

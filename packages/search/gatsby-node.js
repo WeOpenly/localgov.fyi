@@ -392,11 +392,8 @@ exports.createPages = ({ graphql, actions }) => {
           const {
             service,
             org_details,
-            state_org_details,
-            new_url_slug,
+            state_org_details
           } = node;
-
-          console.log (node)
 
           createPage({
             path: `${service.url_slug}/faqs`,
@@ -414,8 +411,7 @@ exports.createPages = ({ graphql, actions }) => {
                   org_slug: org_details.url_slug,
                   org_area_hie: org_details.area.hierarchy || [],
                   url_slug: service.url_slug,
-                  allfaq: service.service_faq || [],
-                  new_url_slug: new_url_slug
+                  allfaq: service.service_faq || []
                 }
               }
               

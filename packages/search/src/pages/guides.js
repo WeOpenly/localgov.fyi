@@ -1,5 +1,5 @@
 import React, { Fragment } from "react"
-import GuideLink from "../components/guide-link"
+import GuideLink from "../components/GuideLink"
 import SearchNav from "../components/Nav/Search";
 import FooterNew from "../components/FooterNew";
 import styles from "../components/spectre.min.module.css";
@@ -53,7 +53,7 @@ const Posts = null;
           },
       }) => {
       const Posts = edges
-        .filter(edge => !!edge.node.frontmatter.date) // You can filter your posts based on some criteria
+        .filter(edge => !!edge.node.frontmatter.date) 
         .map(edge => <GuideLink key={edge.node.id} post={edge.node} />)
 
 

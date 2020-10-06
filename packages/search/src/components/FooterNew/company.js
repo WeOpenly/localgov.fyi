@@ -39,14 +39,24 @@ class FooterCompany extends Component {
               Blog
             </a>
           </div>
+         
+          <div style={{ marginBottom: "0.2rem" }}>
+            <a
+              className={`${styles.textGray} ${styles.textSemibold}`}
+              href={`/api`}
+              target="_blank"
+            >
+              API
+            </a>
+          </div>
           
           <div style={{ marginBottom: "0.2rem" }}>
             <a
               className={`${styles.textGray} ${styles.textSemibold}`}
-              href={`/ads`}
+              href={`/biz`}
               target="_blank"
             >
-              Ads
+              Advertise
             </a>
           </div>
           
@@ -84,14 +94,24 @@ class FooterCompany extends Component {
               Blog
             </a>
           </div>
+         
+          <div>
+            <a
+              className={styles.textGray}
+              href={`/api`}
+              target="_blank"
+            >
+              API
+            </a>
+          </div>
            
           <div>
             <a 
                className={styles.textGray} 
-               href={`/ads`} 
+               href={`/biz`} 
                target="_blank"
             >
-              Ads
+              Advertise
             </a>
           </div>
        

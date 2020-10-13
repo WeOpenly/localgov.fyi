@@ -386,7 +386,7 @@ class ServiceDetailTemplate extends React.Component {
     return (
       <>
         <Helmet>
-          <title>{`${name} | ${org_name} | papergov`}</title>
+          <title>{`${name} Online | ${org_name} | papergov`}</title>
           {allfaq.length > 0 ? (
             <html itemScope itemType="https://schema.org/FAQPage" />
           ) : null}

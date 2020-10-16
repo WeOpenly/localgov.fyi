@@ -433,6 +433,17 @@ class ServiceDetailTemplate extends React.Component {
               <SearchNav />
             </div>
             <div
+              className={`${styles.column} ${styles.col12} ${styles.textCenter}`}
+            >
+              <GoogleAds
+                slot="4697134237"
+                containerStyles={{
+                  marginTop: "16px",
+                  borderLeft: "1px solid #ececec"
+                }}
+              />
+            </div>
+            <div
               className={`${styles.column} ${styles.col2} ${styles.textCenter} `}
             >
               <GoogleAds
@@ -446,15 +457,6 @@ class ServiceDetailTemplate extends React.Component {
              
               <GoogleAds
                 slot="758141034"
-                containerStyles={{
-                  marginTop: "16px",
-                  borderLeft: "1px solid #ececec",
-                  paddingLeft: "24px"
-                }}
-              />
-               
-              <GoogleAds
-                slot="3833110369"
                 containerStyles={{
                   marginTop: "16px",
                   borderLeft: "1px solid #ececec",
@@ -475,13 +477,6 @@ class ServiceDetailTemplate extends React.Component {
             >
               <div className={styles.columns}>
                 <div className={`${styles.column} ${styles.col12} ${styles.textCenter}`}>
-                   <GoogleAds
-                      slot="697134237"
-                      containerStyles={{
-                      marginTop: "16px",
-                      borderLeft: "1px solid #ececec"
-                      }}
-                    />
                 </div>
                 <div className={`${styles.column} ${styles.col12}`}>
                   {serHeader}
@@ -545,16 +540,6 @@ class ServiceDetailTemplate extends React.Component {
              
               <GoogleAds
                 slot="6076052718"
-                containerStyles={{
-                  marginTop: "16px",
-                  borderLeft: "1px solid #ececec",
-                  paddingLeft: "24px"
-                }}
-              />
-             
-              
-              <GoogleAds
-                slot="8430824755"
                 containerStyles={{
                   marginTop: "16px",
                   borderLeft: "1px solid #ececec",

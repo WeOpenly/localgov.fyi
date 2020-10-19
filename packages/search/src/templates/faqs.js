@@ -249,28 +249,22 @@ class faqTemplate extends React.Component {
             <a
               itemProp="item"
               itemType="https://schema.org/WebPage"
+              href={`/${url_slug}`}
             >
-              <span itemProp="name">Questions</span>
+              <span itemProp="name">{name}</span>
             </a>
             <meta itemProp="position" content="2" />
           </li>
-          {name ? (
             <li
               itemScope
               itemProp="itemListElement"
               itemType="https://schema.org/ListItem"
               className={styles.breadcrumbItem}
             >
-              <a
-                itemProp="item"
-                itemType="https://schema.org/WebPage"
-                href={`/${url_slug}`}
-              >
-                <span itemProp="name">{name}</span>
-              </a>
+                <span itemProp="name">Questions</span>
+
               <meta itemProp="position" content="3" />
             </li>
-          ) : null}
         </ul>
       );
     }

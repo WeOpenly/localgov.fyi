@@ -54,7 +54,7 @@
         "lodash": "^4.17.11",
         "mkdirp": "^0.5.1",
         "mousetrap": "^1.6.0",
-        "netlify-cli": "^2.65.6",
+        "netlify-cli": "^2.65.5",
         "progress": "^2.0.1",
         "prop-types": "^15.5.8",
         "rc-drawer": "^2.0.8",

@@ -40,6 +40,8 @@ class CommunityQuestion extends React.Component {
     const urlLocations = typeof window !== 'undefined' ? window.location.href : '';
     // Set options for axios. The URL we're submitting to
 
+    formData.path = currentLoc;
+    
     const axiosOptions = {
 
       method: "POST",

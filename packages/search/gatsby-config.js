@@ -208,8 +208,7 @@ module.exports = {
     },
     `gatsby-plugin-remove-serviceworker`,
     'gatsby-plugin-brotli',
-    `gatsby-plugin-react-helmet`,
-    `gatsby-plugin-netlify`
+    `gatsby-plugin-react-helmet`
     // This plugin generates a service worker and AppShell html file so the site
     // works offline and is otherwise resistant to bad networks. Works with almost
     // any site!

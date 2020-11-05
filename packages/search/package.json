@@ -118,7 +118,8 @@
         "deploy": "gatsby build --prefix-paths",
         "prodDeploy": "ACTIVE_ENV=production node /usr/local/bin/gatsby build --prefix-paths",
         "storybook": "start-storybook -p 6006",
-        "build-storybook": "build-storybook"
+        "build-storybook": "build-storybook",
+        "webpacker": "node --max_old_space_size=4096 node_modules/.bin/webpack-dev-server --progress --color --config config/webpack/development.js"
     },
     "devDependencies": {
         "@storybook/addon-actions": "^5.0.6",

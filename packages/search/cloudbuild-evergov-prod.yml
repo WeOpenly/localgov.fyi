@@ -15,7 +15,7 @@ steps:
   dir: 'localgov.fyi/packages/search'
   entrypoint: node
   args: ['./node_modules/.bin/gatsby', 'build', '--prefix-paths']
-  env: ['PROJECT_ID=$PROJECT_ID']
+  env: ['PROJECT_ID=$PROJECT_ID', 'NODE_OPTIONS=--max_old_space_size=4096']
 - name: ubuntu
   dir: 'localgov.fyi/packages/search'
   args: ['cp', '_redirects', 'public']

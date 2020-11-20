@@ -221,7 +221,7 @@ exports.createPages = ({ graphql, actions }) => {
               }
             }
           }
-          allGuides: allMarkdownRemark(sort: {order: DESC, fields: [frontmatter___date]}, filter: {  fileAbsolutePath: { regex: "/guides/"} }, limit: 1000) {
+          allGuides: allMarkdownRemark(sort: {order: DESC, fields: [frontmatter___slug]}, filter: {  fileAbsolutePath: { regex: "/how-to/"} }, limit: 1000) {
             edges {
               node {
                 id

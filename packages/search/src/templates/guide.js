@@ -42,41 +42,25 @@ export default function guideTemplate({ pageContext}) {
         <a
           itemProp="item"
           itemType="https://schema.org/WebPage"
-          href={`/guides`}
+          href={`/how-to`}
         >
           <span itemProp="name">Guides</span>
         </a>
         <meta itemProp="position" content="2" />
       </li>
-      {title ? (
-        <li
-          itemScope
-          itemProp="itemListElement"
-          itemType="https://schema.org/ListItem"
-          className={styles.breadcrumbItem}
-        >
-          <a
-            itemProp="item"
-            itemType="https://schema.org/WebPage"
-            href={`/${slug}`}
-          >
-            <span itemProp="name">{title}</span>
-          </a>
-          <meta itemProp="position" content="3" />
-        </li>
-      ) : null}
+      
     </ul>
   )
 
   return (
    <div>
     <Helmet>
-          <title>{`${title} | Guides | papergov`}</title>
+          <title>{`${title} | How-to Guides | papergov`}</title>
 
           <link rel="canonical" href={`https://papergov.com/${slug}/`} />
           <meta
             property="og:title"
-            content={`${title} | Guides | papergov`}
+            content={`${title} | How-to Guides | papergov`}
           />
           <meta
             property="og:url"
@@ -94,7 +78,7 @@ export default function guideTemplate({ pageContext}) {
           />
           <meta
             property="og:description"
-            content={`${title} Online | Papergov`}
+            content={`${title} | Papergov`}
           />
         </Helmet>
         <div

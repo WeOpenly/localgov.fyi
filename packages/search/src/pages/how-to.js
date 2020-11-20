@@ -115,7 +115,11 @@ const Posts = null;
           
                 <div className={`${styles.column} ${styles.col12}`}>
                 {hieLinks}
-                 <div> {Posts} </div>
+                 <div className={`${styles.column} ${styles.col12}`} >
+                   <h3> Papergov How-to Guides  </h3>
+                   <br></br>
+                   <div> {Posts} </div>
+                 </div>
                 </div>
                </div>
              </div>
@@ -143,7 +147,11 @@ const Posts = null;
                 
                  <div className={`${styles.column} ${styles.col12}`}>
                    {hieLinks}    
+                  <div className={`${styles.column} ${styles.col12}`} >
+                   <h3> Papergov How-to Guides  </h3>
+                   <br></br>
                    <div> {Posts} </div>
+                  </div>
                  </div>
                 </div>
               </div>

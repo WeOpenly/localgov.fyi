@@ -4,7 +4,7 @@ import { Link } from "gatsby"
 const GuideLink = ({ post }) => (
   <div>
     <Link to={post.frontmatter.slug}>
-      {post.frontmatter.title} ({post.frontmatter.date})
+      {post.frontmatter.title}
     </Link>
   </div>
 )

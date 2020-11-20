@@ -44,7 +44,7 @@ export default function guideTemplate({ pageContext}) {
           itemType="https://schema.org/WebPage"
           href={`/how-to`}
         >
-          <span itemProp="name">Guides</span>
+          <span itemProp="name">How-to Guides</span>
         </a>
         <meta itemProp="position" content="2" />
       </li>

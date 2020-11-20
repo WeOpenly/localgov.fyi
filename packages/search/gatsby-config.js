@@ -92,7 +92,7 @@ module.exports = {
       resolve: `gatsby-source-filesystem`,
       options: {
         name: `guides`,
-        path: path.join(__dirname, `src/guides`)
+        path: path.join(__dirname, `src/how-to`)
       }
     },
     {

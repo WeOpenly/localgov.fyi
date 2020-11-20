@@ -6,6 +6,7 @@ const GuideLink = ({ post }) => (
     <Link to={post.frontmatter.slug}>
       {post.frontmatter.title}
     </Link>
+    <br> </br>
   </div>
 )
 

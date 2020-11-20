@@ -53,7 +53,7 @@ const Posts = null;
           },
       }) => {
       const Posts = edges
-        .filter(edge => !!edge.node.frontmatter.date) 
+        .filter(edge => !!edge.node.frontmatter.title) 
         .map(edge => <GuideLink key={edge.node.id} post={edge.node} />)
 
 

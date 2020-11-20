@@ -38,7 +38,7 @@ const Posts = null;
           <a
             itemProp="item"
             itemType="https://schema.org/WebPage"
-            href={`/guides`}
+            href={`/how-to`}
           >
             <span itemProp="name">Guides</span>
           </a>
@@ -61,29 +61,29 @@ const Posts = null;
   <Fragment>
 
     <Helmet>
-          <title>{`Guides | papergov`}</title>
+          <title>{`How-to Guides | papergov`}</title>
      
 
-          <link rel="canonical" href={`https://papergov.com/guides/`} />
+          <link rel="canonical" href={`https://papergov.com/how-to/`} />
           <meta
             property="og:title"
-            content={`Guides | papergov`}
+            content={`How-to Guides | papergov`}
           />
           <meta
             property="og:url"
-            content={`https://papergov.com/guides/`}
+            content={`https://papergov.com/how-to/`}
           />
 
 
             <meta
               name="description"
-              content={`All Online Guides about local government services on Papergov`}
+              content={`All How-to Online Guides about local government services on Papergov`}
             />
 
 
           <meta
             property="og:description"
-            content={`All Online Guides about local government services on Papergov`}
+            content={`All How-to Guides about local government services on Papergov`}
           />
 
         </Helmet>
@@ -158,13 +158,12 @@ export default GuidesPage;
 
 export const pageQuery = graphql`
   query {
-    allMarkdownRemark(sort: { order: DESC, fields: [frontmatter___date] }) {
+    allMarkdownRemark(sort: { order: DESC, fields: [frontmatter___title] }) {
       edges {
         node {
           id
           excerpt(pruneLength: 250)
           frontmatter {
-            date(formatString: "MMMM DD, YYYY")
             slug
             title
           }

@@ -116,8 +116,8 @@ const Posts = null;
                 <div className={`${styles.column} ${styles.col12}`}>
                 {hieLinks}
                  <div className={`${styles.column} ${styles.col12}`} >
-                   <h3> Papergov How-to Guides  </h3>
-                   <br></br>
+                   <h3> Papergov How-to Guides </h3>
+
                    <div> {Posts} </div>
                  </div>
                 </div>

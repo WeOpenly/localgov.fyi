@@ -35,7 +35,7 @@ steps:
 - name: ubuntu
   dir: 'localgov.fyi/packages/search'
   args: ['env']
-timeout: 3600s
+timeout: 4200s
 options:
   diskSizeGb: 20
   machineType: 'N1_HIGHCPU_8'

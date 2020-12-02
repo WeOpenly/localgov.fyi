@@ -7,7 +7,7 @@ steps:
 - name: 'gcr.io/evergov-prod/curl-python'
   dir: 'localgov.fyi/packages/search'
   args: ['bash', '-c',  'source ./dsp-creds.sh && python ./pre_process.py', '2>&1']
-  timeout: 3600s
+  timeout: 7200s
 - name: node:12
   dir: 'localgov.fyi/packages/search'
   entrypoint: npm
@@ -36,7 +36,7 @@ steps:
 - name: ubuntu
   dir: 'localgov.fyi/packages/search'
   args: ['env']
-timeout: 4200s
+timeout: 10800s
 options:
   diskSizeGb: 20
   machineType: 'N1_HIGHCPU_8'
